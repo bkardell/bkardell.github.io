@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Brian Kardell: Introduction</title>
+    <style>
+        .source {
+            font-style: italic;
+        }
+        body {
+            display: flex;
+        }
+        h1 { margin: 0.5rem; }
+        ul, li {
+            margin: 0.5rem;
+            text-align: left;
+        }
+        header {
+            padding-top: 1rem;
+            padding-right: 2rem;
+        }
+        .tagline {
+            font-style: italic;
+            text-align: center;
+        }
+
+        main {
+            min-width: 50%;
+            padding: 1rem;
+        }
+        header .title {
+            margin: 1rem 0.5rem;
+            background-color: rgba(123,115,209,0.35);
+            padding-left: 0.25rem;
+        }
+
+        header .profile {
+            width: 50%;
+            margin: 1rem 25%;
+        }
+
+        header .blurb {
+            font-size: 0.75rem;
+            text-align: center;
+        }
+        header .name {
+            text-align: center;
+            font-size: xx-large;
+        }
+
+        @media (max-width: 700px){
+            body {
+                flex-direction: column;
+            }
+            header {
+                border-bottom: 1px solid #afafff;
+            }
+            header li { display: inline; margin-left: -0.5em; }
+            header .blurb li::after { content: '; '; }
+            header  nav li {
+                display: inline-block;
+            }
+            header .title {
+                width: 100%;
+            }
+            main li .source { display: block; }
+        }
+    </style>
+
+  </head>
+  <body>
+    <header>
+        <div class="name">
+            Brian Kardell
+        </div>
+
+        <img class="profile" src="profile.jpg">
+        <div class="tagline">Betterifying the Web</div>
+        <div class="blurb">
+            <ul>
+                <li>Sr Front-End Engineer at Apollo Group, Inc</li>
+                <li>Original Co-author/Co-signer of The Extensible Web Manifesto</li>
+                <li>Co-Founder/Chair, W3C Extensible Web CG</li>
+                <li>Member, W3C (The JS Foundation)</li>
+                <li>Co-author of HitchJS</li>
+                <li>Blogger</li>
+                <li>Standards Geek</li>
+            </ul>
+        </div>
+        <div class="title">Ways to Follow</div>
+        <nav>
+            <ul>
+                <li><a href="briankardell.wordpress.com">Wordpress Blog</a></li>
+                <li><a href="https://medium.com/@briankardell/latest">Posts on Medium</a></li>
+                <li><a href="https://twitter.com/briankardell">Twitter</a></li>
+                <li><a href="https://github.com/bkardell/">Github</a></li>
+                <li><a href="http://codepen.io/bkardell">Codepen</a></li>
+                <li><a href="https://www.linkedin.com/in/brian-kardell-08a4264">LinkedIn</a></li>
+                <li><a href="https://www.instagram.com/kardellbrian">Art on Instagram</a></li>
+                <li><a href="http://fineartamerica.com/profiles/brian-kardell?">Art for Sale</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <h1>All about me...</h1>
+        <p>
+            I believe in the Web and its potential.  I'd like to make it even better, and I'd like your help.
+        </p>
+        <section>
+            <h2>Articles I have authored/Co-authored not on my blog</h2>
+            <ul>
+                <li><a href="https://extensiblewebmanifesto.org">The Extensible Web Manifesto</a></li>
+                <li>
+                    <a href="http://radar.oreilly.com/2015/03/pandoras-box-model.html">Pandora's Box Model</a>
+                    <span class="source">oreilly.com</span>
+                </li>
+                <li>
+                    <a href="https://www.oreilly.com/ideas/proposing-css-input-modality">Proposing CSS input modality</a>
+                    <span class="source">oreilly.com</span>
+                </li>
+                <li>
+                    <a href="https://blog.jquery.com/2016/07/27/the-jquery-foundation-and-standards-2/">The jQuery Foundation and Standards</a>
+                    <span class="source">The jQuery Blog</span>
+                </li>
+                <li>
+                    <a href="https://dev.opera.com/articles/houdini/">Sex, Houdini and the Extensible Web</a>
+                    <span class="source">dev.opera Blog</span>
+                </li>
+                <li>
+                    <a href="https://www.smashingmagazine.com/2013/11/laying-the-groundwork-for-extensibility/">Laying the Groundwork for Extensibility</a>
+                    <span class="source">Smashing Magazine</span>
+                </li>
+                <li>
+                    <a href="https://css-tricks.com/an-intro-to-hitch-js-and-the-extensible-web/">An Intro to HitchJS and the Extensible Web</a>
+                    <span class="source">CSS Tricks</span>
+                </li>
+                <li>
+                    <a>A Plea to Web Developers</a>
+                    <span class="source">net Magazine December 2016 (Issue 287)</span>
+                </li>
+                <li>
+                    <a href="http://codingstuff.org/brian-kardell/">How I Got Into Computers</a>
+                    <span class="source">For a series on codingstuff.org</span>
+                </li>
+            </ul>
+        </section>
+        <section>
+            <h2>Recorded Talks, Podcasts, etc</h2>
+            <ul>
+                <li>
+                    <a href="http://thewebplatformpodcast.com/101-browser-wars-standards-battles">Browser Wars and Standards Battles</a>
+                    <span class="source">The Web Platform Podcast (Eposide 101)</span>
+                </li>
+                <li>
+                    <a href="http://thewebplatformpodcast.com/106-aria-for-developers">ARIA for Developers</a>
+                    <span class="source">The Web Platform Podcast (Eposide 106)</span>
+                </li>
+                <li>
+                    <a href="https://www.youtube.com/watch?v=vl4q0Q9ucIs">Standards and the Extensible Web Manifesto</a>
+                    <span class="source">EdgeConf 4</span>
+                </li>
+                <li>
+                    <a href="https://www.youtube.com/watch?v=IRSdpQXDIAo">You say you want a (r)evolution: Embracing a living system</a>
+                    <span class="source">JSFest Oakland Extensible Web Summit</span>
+                </li>
+                <li>
+                    <a href="https://www.youtube.com/watch?v=rwWEQPc5GRE">Hitchhiker's Guide to Web Standards & Chapters.io</a>
+                    <span class="source">Code & Supply Pittsburgh</span>
+                </li>
+
+
+
+            </ul>
+        </section>
+    </main>
+
+  </body>
+</html>
