@@ -1,0 +1,257 @@
+<html lang="en" resource-type="blogpost"><head>
+    <meta name="viewport" content="width=device-width; initial-scale=1.0;">
+    <title>Brian Kardell: Introduction</title>
+    <style>
+        .source {
+            font-style: italic;
+        }
+        body {
+            display: flex;
+        }
+        h1 { margin: 0.5rem; }
+        code-format {
+            border-left: 0.5rem solid rgba(123,115,209,0.35);
+            display: block;
+            padding: 0.5rem;
+            margin-bottom: 1rem;
+        }
+        [aria-level="1"] {
+            color: #43686b;
+            font-size: 1.45rem;
+        }
+        [aria-level="2"] {
+            color: #856363;
+            font-size: 1.35rem;
+        }
+        [aria-level="3"] {
+            color: #856363;
+            font-size: 1.25rem;
+        }
+        [aria-level="4"] {
+            color: #856363;
+            font-size: 1.15rem;
+        }
+        .posted-on {
+            font-style: italic;
+            font-size: 0.8rem;
+            text-align: right;
+            margin-bottom: 1rem;
+        }
+
+        ul, li {
+            margin: 0.5rem;
+            text-align: left;
+        }
+        header {
+            padding-top: 1rem;
+            padding-right: 2rem;
+        }
+        .tagline {
+            font-style: italic;
+            text-align: center;
+        }
+
+        main {
+            min-width: 50%;
+            width: 80%;
+            padding: 1rem;
+        }
+        header .title {
+            margin: 1rem 0.5rem;
+            background-color: rgba(123,115,209,0.35);
+            padding-left: 0.25rem;
+        }
+
+        header .profile {
+            width: 50%;
+            margin: 1rem 25%;
+        }
+
+        header .blurb {
+            font-size: 0.75rem;
+            text-align: center;
+        }
+        header .name {
+            text-align: center;
+            font-size: xx-large;
+        }
+        .seque {
+            font-style: italic;
+        }
+        .sr-only {
+          position: absolute;
+          width: 1px;
+          height: 1px;
+          padding: 0;
+          margin: -1px;
+          overflow: hidden;
+          clip: rect(0,0,0,0);
+          border: 0;
+        }
+        [for="aboutMeToggle"] {
+            display: none;
+        }
+        article>*:not(contextual-heading), section>*:not(contextual-heading) {
+            margin-left: 0.45rem;
+        }
+        @media (max-width: 800px){
+            body {
+                flex-direction: column;
+            }
+            header {
+                border-bottom: 1px solid #afafff;
+            }
+
+            [for="aboutMeToggle"] {
+                background-color: #675e5e;
+                color: white;
+                padding: 0.25rem;
+                padding-left: 0.5rem;
+                display: block;
+                border-left: 1rem solid black;
+            }
+            #aboutMeToggle:focus + [for="aboutMeToggle"]{
+                outline: 4px solid #c6ddf2;
+            }
+
+            #aboutMeToggle:checked ~ header {
+                display: none;
+            }
+
+            header li { display: inline; margin-left: -0.5em; }
+            header .blurb li::after { content: '; '; }
+            header  nav li {
+                display: inline-block;
+            }
+            header .title {
+                width: 100%;
+            }
+            main li .source { display: block; }
+        }
+    </style>
+
+  </head>
+  <body>
+    <input id="aboutMeToggle" class="sr-only" type="checkbox" checked="">
+    <label for="aboutMeToggle">Toggle author information</label>
+    <header>
+        <div class="name">
+            Brian Kardell
+        </div>
+        <img class="profile" src="/profile.jpg" alt="">
+        <div class="tagline">Betterifying the Web</div>
+        <div class="blurb">
+            <ul>
+                <li>Sr Front-End Engineer at Apollo Group, Inc</li>
+                <li>Original Co-author/Co-signer of The Extensible Web Manifesto</li>
+                <li>Co-Founder/Chair, W3C Extensible Web CG</li>
+                <li>Member, W3C (The JS Foundation)</li>
+                <li>Co-author of HitchJS</li>
+                <li>Blogger</li>
+                <li>Standards Geek</li>
+            </ul>
+        </div>
+        <div class="title">Ways to Follow</div>
+        <nav>
+            <ul>
+                <li><a href="https://briankardell.wordpress.com">Wordpress Blog</a></li>
+                <li><a href="https://medium.com/@briankardell/latest">Posts on Medium</a></li>
+                <li><a href="https://twitter.com/briankardell">Twitter</a></li>
+                <li><a href="https://github.com/bkardell/">Github</a></li>
+                <li><a href="https://codepen.io/bkardell">Codepen</a></li>
+                <li><a href="https://www.linkedin.com/in/brian-kardell-08a4264">LinkedIn</a></li>
+                <li><a href="https://www.instagram.com/kardellbrian">Art on Instagram</a></li>
+                <li><a href="http://fineartamerica.com/profiles/brian-kardell?">Art for Sale</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+    <div class="posted-on">Posted on 9/26/2016</div><article posted-on="9/26/2016" class="sectioning">
+	<contextual-heading role="heading" aria-level="1">Potentially Scattered Thoughts on Web Components and Frameworks</contextual-heading>
+	<p class="segue">Chances are pretty good that you've seen at least one of the many articles and tweets flying around lately about Web Components and Frameworks. For the past week I've watched as all sorts of arguments have been made by friends of mine on both sides and wanted to weigh in and share some thoughts, but my life hasn't been cooperating. Finally, I have a moment so I tried to put down some thoughts that have been banging around in my head... No guarantee they are coherent and I'm out of time, so here they are....</p>
+
+
+	<p>A lot of developers (by far the vast majority) don't work for browser vendors, they aren't involved in building frameworks or standards development. They don't have the time to spend a few years considering all of the gory little details and discussions that got us to where we are today.  A lot of us stay in the loop by looking to and take queues from a comparatively small number of people who do and boil it down for us. We all have to do this with at least some things.  Then, we then further categorize into "good" and "bad" piles mentally, and we use that to determine what's worth spending time on or what will be a waste. Right now, for most people, it's probably a little overwhelming. Which pile do Web Components belong in? Are they going to be Shangri La or a real shit show?</p>
+
+	<p>The answer is: No. Neither. A little of both at times. I'm sorry if that sounds wishy-washy but real life is like that.  It's full of grays. We move forward in fits and starts.  We frequently can't even predict what people will do with things until they get them - I've written about all of this a lot.  Reality is messy.  Getting agreement is hard.  Truth is often subtler than we imagine and non-binary.</p>
+
+	<p>Let me explain what I mean though because without more, that's kind of a non-answer...</p>
+
+	<p>Web Components are <em>super </em>cool, and also - believe it or not - imperfect. I think that they're a fundamental step toward us getting much better at a lot of things, <em>and</em> I think we're kidding ourselves if we think it's not going to be bumpy for a while while we sort some things out.  I believe that we <em>can</em> make them work with very popular frameworks <em>and I also believe </em>that they are not ideally suited to them today for a number of reasons and that people may choose not to use them.  This creates challenges that I think we are not articulating well and... that actually might matter.</p>
+
+	<section class="sectioning">
+		<contextual-heading role="heading" aria-level="2">Web Components or Custom Elements?</contextual-heading>
+		<p>Since I'm talking about articulating to developers... We're not always clear on this.   Sometimes we're even conflating Web Components with Polymer. We're doing better than we were in 2013, but we've got to do better still.  Polymer isn't Web Components in the way that birds aren't ducks.  Polymer is conceptually built around Web Components, but it's a library.  Because it is a library created by Google and it includes polyfills and prollyfills and because these are not always historically clearly labeled, that's gotten a little confusing sometimes.  Occasionally, that's caused bad feelings.  Use Polymer, React, Angular or Ember.  They're all good, I'm not trying to pick on one.  Just be aware what's what and what isn't.  Your mileage may vary.</p>
+
+		<p>So, in an effort to be clear - in this piece I when I say "Web Components" I am talking about Custom Elements and Shadow DOM as those are the two pieces that are near shipping.</p>
+	</section>
+
+
+	<section class="sectioning">
+		<contextual-heading role="heading" aria-level="2">Can/should you use the current incarnation of Web Components with all of the popular frameworks?</contextual-heading>
+		<p>Yes, probably you <em>can</em>... Sort of.</p>
+
+		<p>Believe it or not,<em> I think this is where most of the trouble lie</em>s.  "Can you" isn't the question to ask.  "Should you" or "Will People" are the questions.  One group says "resoundingly yes you should because it is native and therefore is most widely usable."  Another counters "potentially you can, but you really might not want to with a framework because it won't be as convenient as you might think.  A lot of components will either not work or will require wrappers/adapters in practice".  "Can" has a definite answer and, I'm pretty sure the answer is "yes" because we can make just about anything work if we try hard enough (see: the entire Web).</p>
+
+		<p>That's where "should you" comes in and I'm afraid that the answer there doesn't seem so cut and dry - and that "Will People" is kind of up in the air.  Why?  Because "can you" isn't the only variable.  You've probably had experiences where it gets pretty hard and you think "is this really worth it?"  I'll tell you about one of those I had below that makes me sensitive to this one.  I'm happy to be shown "it's worth it" in actual practice and "people will (more than once)" in the real world, but my own experiences thusfar don't entirely bear that out.  I'll also explain why I'm ok with that.</p>
+
+		<p>It's a pickle. But it's a pickle like "should you do x" and we have a lot of those.</p>
+	</section>
+
+	<section class="sectioning">
+		<contextual-heading role="heading" aria-level="2">Will people use Web Components with their framework?</contextual-heading>
+		<p>Yes, or at least they will <em>try </em>if a whole bunch of people are all telling them that for sure this  should work and that's part of what people are worried about.  I'm not sure this is being well articulated but the worry that some have is: It's not going to be the walk in the park that they imagine and that's that's going to turn people off to Web Components. Even framework people think that would be a shame because we <em>all</em> agree that Web Components are a great idea that we absolutely want. Web developers have been disappointed and frustrated a few times already with challenges in the morphing of Web Components as we struggled to get consensus. Regardless of reasons or blame, that seems true and we probably can't afford a lot more of that.</p>
+	</section>
+
+	<section class="sectioning">
+		<contextual-heading role="heading" aria-level="2">So, should we go back to the drawing board and re-think Web Components from the ground up?</contextual-heading>
+		<p><em>Hellz No!</em> But, believe it or not, I don't actually think anyone really meant to imply this literally regardless of what they might have said in 140 characters one day after lunch.</p>
+
+		<p>Why not?</p>
+
+		<p>Because they're a good step forward and not shipping something fits just as neatly under the "we probably can't afford a lot more of that" heading.</p>
+
+		<p>For those who might not be aware, "Web Components" is actually a cold reboot of many previously failed attempts to do many of the same things - HTC, XUL, XAML, FLEX and XBL were all trying to do the same. These efforts were restarted, to the best of my recollection around 2009 or 2010 under the banner "Web Components" - but you can track the general idea of "custom elements" (lowercase because they were more like "Web Components") in some fashion back, practically as far as the Web itself. In all that time, we have never been so close. Why? Because the problem is hard.  Because new things come along and give us pause. Because consensus is hard. Even just between those who actually make a browser it is, in a word: <em>fucking hard</em>. <a href="https://www.youtube.com/watch?v=SHnTocdD7sk" target="_blank">Standards are like this Weird Al Song</a> . On anything that asks for the ability for authors to be able to mint elements and define them, doubly so.</p>
+
+		<p>It's not the end of the game but we can't move on further until we beat this level.</p>
+	</section>
+
+
+	<section class="sectioning">
+		<contextual-heading role="heading" aria-level="2">So what <em>should</em> we do?</contextual-heading>
+		<p>Just be realistic I think. We move forward in steps. If we are pitching an all-singing, all-dancing, no challenges to be found future, that's probably not realistic.  A de-facto <em>implementation</em> that will be used everywhere regardless of framework, might be over-selling a vision until we actually see it broadly happen.  Sure, it might be <em>possible</em>, but possible isn't the only variable.  It's also entirely likely that even if someone posted such a thing, even one with an adapter for Ember or React, or even Polymer of a very popular custom element with "Web Components Underneath" that within a few days someone will say "yeah, but that's inefficient".  It's pretty easy for them to make a derivative component in their framework that does the same thing but cheaper, and it's very likely that many people with that framework will gravitate toward the "more efficient for their framework version."  I'm not sure.  We'll see.  That's all I'm saying.  That and...</p>
+
+		<p>Meh.</p>
+	</section>
+
+	<section class="sectioning">
+		<contextual-heading role="heading" aria-level="2">Meh?</contextual-heading>
+		<p>Yeah, meh. I'm ok with that for now.  We're not there yet, but we'll figure it out as long as we work together.  I know that might sound a little disappointing if you were hoping for total Nirvana - but it's hella better than what we had a few years back.  Declarative solutions are very easy to use and thank goodness we all agree on that much, even to the basic point of how we express them. In fact, all of the major frameworks have a solution that looks a lot like Custom Elements. Here's some markup, is it an Ember component or a Custom Element?  You can't tell.</p>
+
+		<code-format type="html">
+			<pre>&lt;div&gt;
+  &lt;common-button id="btn"&gt;Status&lt;/common-button&gt;
+  &lt;common-badge icon="favorite" for="btn" label="favorite icon"&gt;&lt;/common-badge&gt;
+&lt;/div&gt;</pre>
+		</code-format>
+
+		<p>Yes, it means there might be N implementations of the same thing instead of the one true implementation -- and yes that kinda sucks.  But... meh.</p>
+
+		<p>We have armies of developers who are probably willing to port a popular custom element to their framework of choice until we sort this out.  Within my own company we have some things implemented twice - once as a Custom Element and once as an Angular directive.  It didn't start that way, it<em> wound up that way</em> because that turned out to be easier and more efficient to say to Angular "Ok - you be you".  I fought it until I could fight no more.  Now that we did it, it's not the end of the world.  The folks who write markup still don't need to learn something new moving from frameworkless pages to Angular pages.  Their knowledge is portable.  That's not as amazing as I'd originally hoped, but in practice, it's actually been pretty damned good.  And I'll take it over all of the N-solution, very complex alternatives we had before any day.</p>
+
+		<p>I believe we will get to the day when that isn't necessary, but - if someone says "that day might not be today" I don't think they're just being difficult.  I'm super happy to be shown - in reality - that this isn't likely, but there only time will tell.  Dueling speculations won't tell us, only real experience will.</p>
+
+		<p>The mere fact that we can mint tags and easily transfer understanding between all of these is, in itself, a pretty significant leap in my opinion.  That it allows us to begin the process of developers helping to establish the "slang" and further wrestles away creative powers from being the sole domain of browser vendors and for standards to play the role of dictionary editors is, in and of itself,<a href="https://briankardell.wordpress.com/2013/05/17/dropping-the-f-bomb/"> pretty significant</a>.  We should throw this in the win column regardless of any of that other stuff.</p>
+	</section>
+
+	<section class="sectioning">
+		<contextual-heading role="heading" aria-level="2">What next?  Are we resigned to this forever?</contextual-heading>
+		<p>Nah, I don't think so.  We should manage expectations for now, but React, Ember and Angular all have some really interesting observations about declarative serialization and how we express things and why that's a challenge for Web Components within their frameworks.  We should listen.  We should gain some experience.  We should also write the hell out of some Web Components and see what we can do.  Given new abilities I can't wait to see what developers come up with.  New capabilities inevitably breed new ideas and solutions that it's nearly impossible to imagine until it happens.</p>
+
+		<p>Will it be as pretty as it might be if we started over?  Probably not, but, I think it'll actually get done this way.  If we make some progress, we inch the impossible destination ever closer.</p>
+	</section>
+</article></main>
+
+  
+
+</body></html>
