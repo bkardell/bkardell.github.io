@@ -1,0 +1,209 @@
+<html lang="en" resource-type="blogpost"><head>
+    <meta name="viewport" content="width=device-width; initial-scale=1.0;">
+    <title>Brian Kardell: Introduction</title>
+    <style>
+        .source {
+            font-style: italic;
+        }
+        body {
+            display: flex;
+        }
+        h1 { margin: 0.5rem; }
+        code-format {
+            border-left: 0.5rem solid rgba(123,115,209,0.35);
+            display: block;
+            padding: 0.5rem;
+            margin-bottom: 1rem;
+        }
+        [aria-level="1"] {
+            color: #43686b;
+            font-size: 1.45rem;
+        }
+        [aria-level="2"] {
+            color: #856363;
+            font-size: 1.35rem;
+        }
+        [aria-level="3"] {
+            color: #856363;
+            font-size: 1.25rem;
+        }
+        [aria-level="4"] {
+            color: #856363;
+            font-size: 1.15rem;
+        }
+        .posted-on {
+            font-style: italic;
+            font-size: 0.8rem;
+            text-align: right;
+        }
+
+        ul, li {
+            margin: 0.5rem;
+            text-align: left;
+        }
+        header {
+            padding-top: 1rem;
+            padding-right: 2rem;
+        }
+        .tagline {
+            font-style: italic;
+            text-align: center;
+        }
+
+        main {
+            min-width: 50%;
+            width: 80%;
+            padding: 1rem;
+        }
+        header .title {
+            margin: 1rem 0.5rem;
+            background-color: rgba(123,115,209,0.35);
+            padding-left: 0.25rem;
+        }
+
+        header .profile {
+            width: 50%;
+            margin: 1rem 25%;
+        }
+
+        header .blurb {
+            font-size: 0.75rem;
+            text-align: center;
+        }
+        header .name {
+            text-align: center;
+            font-size: xx-large;
+        }
+        .sr-only {
+          position: absolute;
+          width: 1px;
+          height: 1px;
+          padding: 0;
+          margin: -1px;
+          overflow: hidden;
+          clip: rect(0,0,0,0);
+          border: 0;
+        }
+        [for="aboutMeToggle"] {
+            display: none;
+        }
+        @media (max-width: 800px){
+            body {
+                flex-direction: column;
+            }
+            header {
+                border-bottom: 1px solid #afafff;
+            }
+
+            [for="aboutMeToggle"] {
+                background-color: #675e5e;
+                color: white;
+                padding: 0.25rem;
+                padding-left: 0.5rem;
+                display: block;
+                border-left: 1rem solid black;
+            }
+            #aboutMeToggle:focus + [for="aboutMeToggle"]{
+                outline: 4px solid #c6ddf2;
+            }
+
+            #aboutMeToggle:checked ~ header {
+                display: none;
+            }
+
+            header li { display: inline; margin-left: -0.5em; }
+            header .blurb li::after { content: '; '; }
+            header  nav li {
+                display: inline-block;
+            }
+            header .title {
+                width: 100%;
+            }
+            main li .source { display: block; }
+        }
+    </style>
+
+  </head>
+  <body>
+    <input id="aboutMeToggle" class="sr-only" type="checkbox" checked="">
+    <label for="aboutMeToggle">Toggle author information</label>
+    <header>
+        <div class="name">
+            Brian Kardell
+        </div>
+        <img class="profile" src="/profile.jpg" alt="">
+        <div class="tagline">Betterifying the Web</div>
+        <div class="blurb">
+            <ul>
+                <li>Sr Front-End Engineer at Apollo Group, Inc</li>
+                <li>Original Co-author/Co-signer of The Extensible Web Manifesto</li>
+                <li>Co-Founder/Chair, W3C Extensible Web CG</li>
+                <li>Member, W3C (The JS Foundation)</li>
+                <li>Co-author of HitchJS</li>
+                <li>Blogger</li>
+                <li>Standards Geek</li>
+            </ul>
+        </div>
+        <div class="title">Ways to Follow</div>
+        <nav>
+            <ul>
+                <li><a href="https://briankardell.wordpress.com">Wordpress Blog</a></li>
+                <li><a href="https://medium.com/@briankardell/latest">Posts on Medium</a></li>
+                <li><a href="https://twitter.com/briankardell">Twitter</a></li>
+                <li><a href="https://github.com/bkardell/">Github</a></li>
+                <li><a href="https://codepen.io/bkardell">Codepen</a></li>
+                <li><a href="https://www.linkedin.com/in/brian-kardell-08a4264">LinkedIn</a></li>
+                <li><a href="https://www.instagram.com/kardellbrian">Art on Instagram</a></li>
+                <li><a href="http://fineartamerica.com/profiles/brian-kardell?">Art for Sale</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+    <div class="posted-on">Posted on 5/11/2012</div><article posted-on="5/11/2012" class="sectioning">
+	<contextual-heading role="heading" aria-level="1">(Really) classy CSS</contextual-heading>
+	<p>When CSS was conceived, the basic vision was that HTML should provide structure and semantics while CSS would providing styling via rules based on selectors describing (or selecting) what to style.  In an ideal world, Web pages could be authored by one group of people independently of the visual needs and then another group (designers) could go and write CSS to style it up.  The biggest problem in achieving this ideal was that HTML had such a small number of tags without any real obvious way to add enough semantics to actually accomplish this.  Thus, two things were added very early on:  The humble <code tag-esc="">div</code> and <code>span</code> tags in HTML and the .class in CSS  - the general idea being that the authors of a tree of markup could (quite independently of style concerns) build generic structures and pepper their markup with semantics via classes and ids.</p>
+
+	<section class="sectioning">
+		<contextual-heading role="heading" aria-level="2">Theory vs Reality</contextual-heading>
+
+		<p>In practice, there have been a relatively few cases (like WordPress blogs, for example) where things are simple and standard enough this has worked out "pretty well" and a whole lot more where that is actually not the common experience.  Generally speaking, markup is not created independently of design and changes to design often dictate changes to markup.  Even the attaching and management of classes are changes to markup and if they happen purely to achieve design, well, that's less than desirable.  There have been lots of blogs and articles written over the years about the problems that this created and the creation of new terms like "classitis" and "divitis" to describe their negative impact.</p>
+
+		<p>Still, that was what could get done initially and it was a lot better than what we had prior to it.  Considerably more important, however, is that this was never meant to be the end game - even by the people who created it.  HTML drove forward, creating some new tags and work began on an XML dialect which promised all kinds of things, while CSS followed up almost immediate with CSS 2/2.1 and began CSS 3 (the first draft was published in August 1999, only 3 months after 2.1 went to REC status).  But then, a lot of confusion happened and for a long time, things were pretty stagnant.</p>
+
+		<contextual-heading role="heading" aria-level="2">Solutions</contextual-heading>
+		<p>The solutions to this are pretty clear, and it's arguable just by looking at the history of drafts and discussions that everyone knows what needs to be done about it:  HTML authors need more semantic abilities (new tags help and so do things like data-* attributes), CSS needs new concepts (regions and generated content for example) and more powerful selectors.   The good news is, things are moving again, though not as quickly as many of us would like...</p>
+
+		<p>My friend, and co-author of Hitch, Clint Hill has been posting some good articles about Hitch over on our blog about how Hitch helps with this last part by allowing authors of CSS to use an expanded set of selectors (Hitch provides a selector plugin model, just like jQuery) right in their CSS, affording them with more expressive powers.</p>
+
+		<p>I'll let you <a href="https://hitchjs.wordpress.com/2012/05/11/content-based-css-math/" target="_blank">read the article</a> yourself, but the gist of of it is about a set of selectors for selecting elements based on the numerical qualities of your attributes.  For example, the :-math-greaterthan(attr, number) filter allows you to write CSS like this:</p>
+
+		<code-format type="css">
+			<pre>/* Let's visually call out players who achieve this... */
+.player:-math-greaterthan(data-score, 100000){
+    font-weight: bold;
+}</pre>
+		</code-format>
+
+
+		<contextual-heading role="heading" aria-level="2">Rationale...</contextual-heading>
+
+		<p>Here's a bit more on the theory behind this selector and how it is relevant to the above.</p>
+
+	    <ol>
+	    	<li>The proposal certainly isn't to throw away .class, merely to use it more "as envisioned" in terms described above. If, indeed, you recognized semantic meaning in your tree and maintain it as a class for reasons other than styling - that's great. In our example above, however, it's definitely possible that that is not the case. <em>Clearly there is semantic meaning to the number, but whether a designer decides to attach some arbitrary styling to that or not shouldn't require changes to the tree. This approach allow the appropriate technology to handle the appropriate concerns. From the perspective of a CSS author: You use the classes you have when they are there, and have the expressive power to style things that are purely visual when they are not.</em> The alternative of scattering presentation logic throughout your php or jsp (or whatever) and your javascript to maintain a class in some of these cases is considerably less desirable.</li>
+
+	    	<li>CSS has had attribute selectors for a long time which allow you to select attribute values that are contained with in, exactly equal to, start with or end with values expressed in your selector. There have long been conversations, even tentative plans to further expand attribute selectors to something with more "regExp" power, there have even been plans for a :content pseudo-class which would allow the same thing with textual content - but it's all string based currently. Attribute selectors already support data-* attributes. Literally all that is added is the ability to write rules that consider something numerically rather than textually.</li>
+
+	    	<li>CSS has rich support for algebraic expressions as they relate to structures (children, characters, etc) in the tree and will soon add a calc() function. Again, it makes sense if you think about it that CSS should have appropriate power to do what is required in order to achieve styling without mucking with the tree...</li>
+	    </ol>
+
+	    <p>All of this seems considerably inline with the goals and existing approaches of CSS to me and it seems logical to me, but I'd like to hear what you think...</p>
+
+	    <p>Hitch is a new, open source project <a href="https://github.com/bkardell/Hitch/" target="_blank">hosted on github</a> which we think has a lot of potential.  Check out <a href="http://www.hitchjs.com">http://www.hitchjs.com</a> and the articles on the <a href="https://hitchjs.wordpress.com/">Hitch Blog</a>...  Let us know what you think and share your comments, we'd love to hear from you and have a conversation.</p>
+
+	</section>
+</article></main>
+
+  
+
+</body></html>
