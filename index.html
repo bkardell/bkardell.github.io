@@ -3,125 +3,262 @@
   <head>
     <meta name='viewport' content='width=device-width; initial-scale=1.0;' />
     <title>Brian Kardell: Introduction</title>
-    <style>
-        .source {
-            font-style: italic;
-        }
-        body {
-            display: flex;
-            font: 1em "Helvetica Neue", Helvetica, Arial, sans-serif;
-            font-weight: 300;
-            line-height: 1.625;
-        }
-        h1, h2, h3, h4, h5, h6 { font-weight: bolder; }
-        h1 { margin: 0.5rem; }
-        ul, li {
-            margin: 0.5rem;
-            text-align: left;
-        }
-        header {
-            padding-top: 1rem;
-            padding-right: 2rem;
-        }
-        .tagline {
-            font-style: italic;
-            text-align: center;
-        }
+    <style>.captioned-image {
+    background-color: #eaeaea;
+    display: block;
+    overflow: hidden;
+    padding: 1rem;
+    text-align: center;
+    font-style: italic;
+}
 
-        main {
-            min-width: 50%;
-            width: 80%;
-            padding: 1rem;
-        }
-        header .title {
-            margin: 1rem 0.5rem;
-            background-color: rgba(123,115,209,0.35);
-            padding: 0.3rem;
-            padding-left: 0.25rem;
-            font-weight: bolder;
-            font-size: 0.9rem;
-            border-left: 1rem solid #999298;
-        }
+.captioned-image.p-attached {
+    width: 40%;
+    display: inline-block;
+    margin: 0 1rem 2rem 1rem;
+}
 
-        header .title + nav {
-            font-size: 0.9rem;
-        }
+section > .captioned-image.p-attached {
+    margin-top: 1.5rem; /* correct for heading size*/
+}
 
-        header .profile {
-            width: 50%;
-            margin: 1rem 25%;
-        }
+.captioned-image.p-attached.p-attached-left {
+    float: left;
+}
 
-        header .blurb {
-            font-size: 0.75rem;
-            text-align: center;
-        }
-        header .name {
-            text-align: center;
-            font-size: xx-large;
-        }
+.captioned-image.p-attached.p-attached-right {
+    float: right;
+}
 
-        @media (max-width: 800px){
-            body {
-                flex-direction: column;
-            }
-            header {
-                border-bottom: 1px solid #afafff;
-            }
-            header li { display: inline; margin-left: -0.5em; }
-            header .blurb li::after { content: '; '; }
-            header  nav li {
-                display: inline-block;
-                margin-left: 0.35rem;
-                margin-right: 0.35rem;
-            }
-            header .title {
-                width: 100%;
-            }
-            main li .source { display: block; }
-        }
-    </style>
+.captioned-image.p-attached + * + * {
+    clear: both;
+    margin-top: 2rem;
+}
 
+
+.captioned-image img {
+    display: block;
+    max-width: 100%;
+    margin: 0 auto 1em auto;
+}
+.source {
+    font-style: italic;
+}
+body {
+    display: flex;
+    font: 1em "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-weight: 300;
+    line-height: 1.625;
+}
+h1 { margin: 0.5rem; }
+code-format {
+    border-left: 0.5rem solid rgba(123,115,209,0.35);
+    display: block;
+    padding: 0.5rem;
+    margin-bottom: 1rem;
+}
+[aria-level="1"] {
+    color: #43686b;
+    font-size: 1.45rem;
+}
+[aria-level="2"] {
+    color: #856363;
+    font-size: 1.35rem;
+}
+[aria-level="3"] {
+    color: #856363;
+    font-size: 1.25rem;
+}
+[aria-level="4"] {
+    color: #856363;
+    font-size: 1.15rem;
+}
+.posted-on {
+    font-style: italic;
+    font-size: 0.8rem;
+    text-align: right;
+    margin-bottom: 1rem;
+}
+
+ul, li {
+    margin: 0.5rem;
+    text-align: left;
+}
+header {
+    padding-top: 1rem;
+    padding-right: 2rem;
+}
+.tagline {
+    font-style: italic;
+    text-align: center;
+}
+
+[tag-esc] {
+    color: maroon;
+    font-family: Courier, "Lucida Console", monospace;
+}
+
+[tag-esc]::before {
+    content: '<';
+}
+
+[tag-esc]::after {
+    content: '>';
+}
+
+main {
+    min-width: 50%;
+    width: 80%;
+    padding: 1rem;
+}
+header .title {
+    background-color: rgba(123,115,209,0.35);
+    padding: 0.3rem;
+    padding-left: 0.25rem;
+    font-weight: bolder;
+    font-size: 0.9rem;
+    border-left: 1rem solid #999298;
+}
+
+header .profile {
+    width: 50%;
+    margin: 1rem 25%;
+}
+
+header .title + nav {
+    font-size: 0.9rem;
+}
+
+header .blurb {
+    font-size: 0.75rem;
+    text-align: center;
+}
+header .name {
+    text-align: center;
+    font-size: xx-large;
+}
+.seque {
+    font-style: italic;
+}
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  border: 0;
+}
+[for="aboutMeToggle"] {
+    display: none;
+}
+article>*:not(contextual-heading), section>*:not(contextual-heading) {
+    margin-left: 0.45rem;
+}
+@media (max-width: 800px){
+    body {
+        flex-direction: column;
+    }
+    header {
+        border-bottom: 1px solid #afafff;
+    }
+
+    .captioned-image.p-attached {
+        width: 100%;
+        margin: 1rem 0;
+    }
+
+    .captioned-image.p-attached.p-attached-left,
+    .captioned-image.p-attached.p-attached-right {
+        float: none;
+    }
+
+    [for="aboutMeToggle"] {
+        background-color: #675e5e;
+        color: white;
+        padding: 0.25rem;
+        padding-left: 0.5rem;
+        display: block;
+        border-left: 1rem solid black;
+    }
+    #aboutMeToggle:focus + [for="aboutMeToggle"]{
+        outline: 4px solid #c6ddf2;
+    }
+
+    #aboutMeToggle:checked ~ header {
+        display: none;
+    }
+
+    header li { display: inline; margin-left: -0.5em; }
+    header .blurb li::after { content: '; '; }
+    header  nav li {
+        display: inline-block;
+        margin-left: 0.35rem;
+        margin-right: 0.35rem;
+    }
+    header .title {
+        width: 100%;
+    }
+    main li .source { display: block; }
+}</style>
   </head>
   <body>
-    <header>
-        <div class="name">
-            Brian Kardell
-        </div>
-        <img class="profile" src="profile.jpg" alt="">
-        <div class="tagline">Betterifying the Web</div>
-        <div class="blurb">
-            <ul>
-                <li>Sr Front-End Engineer at Apollo Group, Inc</li>
-                <li>Original Co-author/Co-signer of The Extensible Web Manifesto</li>
-                <li>Co-Founder/Chair, W3C Extensible Web CG</li>
-                <li>Member, W3C (The JS Foundation)</li>
-                <li>Co-author of HitchJS</li>
-                <li>Blogger</li>
-                <li>Standards Geek</li>
-            </ul>
-        </div>
-        <div class="title">Ways to Follow</div>
-        <nav>
-            <ul>
-                <li><a href="https://briankardell.wordpress.com">Wordpress Blog</a></li>
-                <li><a href="https://medium.com/@briankardell/latest">Posts on Medium</a></li>
-                <li><a href="https://twitter.com/briankardell">Twitter</a></li>
-                <li><a href="https://github.com/bkardell/">Github</a></li>
-                <li><a href="https://codepen.io/bkardell">Codepen</a></li>
-                <li><a href="https://www.linkedin.com/in/brian-kardell-08a4264">LinkedIn</a></li>
-                <li><a href="https://www.instagram.com/kardellbrian">Art on Instagram</a></li>
-                <li><a href="http://fineartamerica.com/profiles/brian-kardell?">Art for Sale</a></li>
-            </ul>
-        </nav>
-    </header>
+    <input id="aboutMeToggle" class="sr-only" type="checkbox" checked>
+<label for="aboutMeToggle">Toggle author information</label>
+<header>
+    <div class="name">
+        Brian Kardell
+    </div>
+    <img class="profile" src="/profile.jpg" alt="">
+    <div class="tagline"><a href="/">Betterifying the Web</a></div>
+    <div class="blurb">
+        <ul>
+            <li>Sr Front-End Engineer at Apollo Group, Inc</li>
+            <li>Original Co-author/Co-signer of The Extensible Web Manifesto</li>
+            <li>Co-Founder/Chair, W3C Extensible Web CG</li>
+            <li>Member, W3C (The JS Foundation)</li>
+            <li>Co-author of HitchJS</li>
+            <li>Blogger</li>
+            <li>Standards Geek</li>
+        </ul>
+    </div>
+    <div class="title">Follow Me On...</div>
+    <nav>
+        <ul>
+            <li><a href="https://briankardell.wordpress.com">Wordpress</a></li>
+            <li><a href="https://medium.com/@briankardell/latest">Medium</a></li>
+            <li><a href="https://twitter.com/briankardell">Twitter</a></li>
+            <li><a href="https://github.com/bkardell/">Github</a></li>
+            <li><a href="https://codepen.io/bkardell">Codepen</a></li>
+            <li><a href="https://www.linkedin.com/in/brian-kardell-08a4264">LinkedIn</a></li>
+            <li><a href="https://www.instagram.com/kardellbrian">Instagram (for art)</a></li>
+            <li><a href="http://fineartamerica.com/profiles/brian-kardell?">Fine Art America (art for sale)</a></li>
+        </ul>
+    </nav>
+</header>
     <main>
-        <h1>All about me...</h1>
+    	<style>
+    		section + section {
+    			margin-top: 2rem;
+    			margin-bottom: 2rem;
+    		}
+    	</style>
+        <contextual-heading role="heading" aria-level="1">Stuff about me...</contextual-heading>
         <p>
-            I believe in the Web and its potential.  I'd like to make it even better, and I'd like your help.
+            I believe in the Web and its potential. I'd like to make it even better, and I'd like your help.
         </p>
         <section>
-            <h2>Articles I have authored/co-authored not on my blog</h2>
+            <contextual-heading role="heading" aria-level="2">My blog...</contextual-heading>
+            <p>I'm in the process of making bkardell.com the cannonical source for my posts, here are a few recent ones I've moved so far...</p>
+            <ul>
+                <li><a href="blog/Potentially-Scattered-Thoughts-On-Web-Components.html">Potentially Scattered Thoughts on Web Components</a></li>
+                <li><a href="blog/The-Future-Web-Wants-You.html">The Future Web Wants You</a></li>
+                <li><a href="blog/X-Web-Days-of-Future-Past.html">X-Web: Days of Future Past</a></li>
+            </ul>
+        </section>
+        <section>
+            <contextual-heading role="heading" aria-level="2">Authored/co-authored not on my own blogs</contextual-heading>
             <ul>
                 <li><a href="https://extensiblewebmanifesto.org">The Extensible Web Manifesto</a></li>
                 <li>
@@ -159,7 +296,7 @@
             </ul>
         </section>
         <section>
-            <h2>Recorded Talks, Podcasts, etc</h2>
+            <contextual-heading role="heading" aria-level="2">Some recorded talks, podcasts, etc</contextual-heading>
             <ul>
                 <li>
                     <a href="http://thewebplatformpodcast.com/101-browser-wars-standards-battles">Browser Wars and Standards Battles</a>
