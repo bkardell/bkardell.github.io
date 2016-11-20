@@ -2,11 +2,48 @@
     <meta name="viewport" content="width=device-width; initial-scale=1.0;">
     <title>Brian Kardell: Introduction</title>
     <style>
+        .captioned-image {
+            background-color: #eaeaea;
+            display: block;
+            overflow: hidden;
+            padding: 1rem;
+            text-align: center;
+            font-style: italic;
+        }
+
+        .captioned-image.p-attached {
+            width: 40%;
+            display: inline-block;
+            margin: 0 1rem 2rem 1rem;
+        }
+
+        .captioned-image.p-attached.p-attached-left {
+            float: left;
+        }
+
+        .captioned-image.p-attached.p-attached-right {
+            float: right;
+        }
+
+        .captioned-image.p-attached + * + * {
+            clear: both;
+            margin-top: 2rem;
+        }
+
+
+        .captioned-image img {
+            display: block;
+            max-width: 100%;
+            margin: 0 auto 1em auto;
+        }
         .source {
             font-style: italic;
         }
         body {
             display: flex;
+            font: 1em "Helvetica Neue", Helvetica, Arial, sans-serif;
+            font-weight: 300;
+            line-height: 1.625;
         }
         h1 { margin: 0.5rem; }
         code-format {
@@ -57,9 +94,12 @@
             padding: 1rem;
         }
         header .title {
-            margin: 1rem 0.5rem;
             background-color: rgba(123,115,209,0.35);
+            padding: 0.3rem;
             padding-left: 0.25rem;
+            font-weight: bolder;
+            font-size: 0.9rem;
+            border-left: 1rem solid #999298;
         }
 
         header .profile {
@@ -102,6 +142,16 @@
                 border-bottom: 1px solid #afafff;
             }
 
+            .captioned-image.p-attached {
+                width: 100%;
+                margin: 1rem 0;
+            }
+
+            .captioned-image.p-attached.p-attached-left,
+            .captioned-image.p-attached.p-attached-right {
+                float: none;
+            }
+
             [for="aboutMeToggle"] {
                 background-color: #675e5e;
                 color: white;
@@ -122,6 +172,8 @@
             header .blurb li::after { content: '; '; }
             header  nav li {
                 display: inline-block;
+                margin-left: 0.35rem;
+                margin-right: 0.35rem;
             }
             header .title {
                 width: 100%;
