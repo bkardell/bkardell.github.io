@@ -1,0 +1,293 @@
+<html lang="en" resource-type="blogpost"><head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Brian Kardell: Introduction</title>
+    <style>.captioned-image {
+    background-color: #eaeaea;
+    display: block;
+    overflow: hidden;
+    padding: 1rem;
+    text-align: center;
+    font-style: italic;
+}
+
+.captioned-image.p-attached {
+    width: 40%;
+    display: inline-block;
+    margin: 0 1rem 2rem 1rem;
+}
+
+section > .captioned-image.p-attached {
+    margin-top: 1.5rem; /* correct for heading size*/
+}
+
+.captioned-image.p-attached.p-attached-left {
+    float: left;
+}
+
+.captioned-image.p-attached.p-attached-right {
+    float: right;
+}
+
+.captioned-image.p-attached + * + * {
+    clear: both;
+    margin-top: 2rem;
+}
+
+
+.captioned-image img {
+    display: block;
+    max-width: 100%;
+    margin: 0 auto 1em auto;
+}
+.source {
+    font-style: italic;
+}
+body {
+    display: flex;
+    font: 1em "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-weight: 300;
+    line-height: 1.625;
+}
+h1 { margin: 0.5rem; }
+code-format {
+    border-left: 0.5rem solid rgba(123,115,209,0.35);
+    display: block;
+    padding: 0.5rem;
+    margin-bottom: 1rem;
+}
+[aria-level="1"] {
+    color: #43686b;
+    font-size: 1.45rem;
+}
+[aria-level="2"] {
+    color: #856363;
+    font-size: 1.35rem;
+}
+[aria-level="3"] {
+    color: #856363;
+    font-size: 1.25rem;
+}
+[aria-level="4"] {
+    color: #856363;
+    font-size: 1.15rem;
+}
+.posted-on {
+    font-style: italic;
+    font-size: 0.8rem;
+    text-align: right;
+    margin-bottom: 1rem;
+}
+
+ul, li {
+    margin: 0.5rem;
+    text-align: left;
+}
+header {
+    padding-top: 1rem;
+    padding-right: 2rem;
+    background-color: #fbf5e9;
+}
+.tagline {
+    font-style: italic;
+    text-align: center;
+}
+
+[tag-esc] {
+    color: maroon;
+    font-family: Courier, "Lucida Console", monospace;
+}
+
+[tag-esc]::before {
+    content: '<';
+}
+
+[tag-esc]::after {
+    content: '>';
+}
+
+main {
+    min-width: 50%;
+    width: 80%;
+    padding: 1rem;
+}
+header .title {
+    background-color: rgba(123,115,209,0.35);
+    padding: 0.3rem;
+    padding-left: 0.25rem;
+    font-weight: bolder;
+    font-size: 0.9rem;
+    border-left: 1rem solid #999298;
+}
+
+header .profile {
+    width: 50%;
+    margin: 1rem 25%;
+}
+
+header .title + nav {
+    font-size: 0.9rem;
+}
+
+header .blurb {
+    font-size: 0.75rem;
+    text-align: center;
+}
+header .name {
+    text-align: center;
+    font-size: xx-large;
+}
+.seque {
+    font-style: italic;
+}
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  border: 0;
+}
+[for="aboutMeToggle"] {
+    display: none;
+}
+/* this needs rethinking, it wants a selector like 'not flow content' */
+article>*:not(contextual-heading,a), section>*:not(contextual-heading,a) {
+    margin-left: 0.45rem;
+}
+@media (max-width: 800px){
+    body {
+        flex-direction: column;
+    }
+    header {
+        border-bottom: 1px solid #afafff;
+    }
+
+    .captioned-image.p-attached {
+        width: 100%;
+        margin: 1rem 0;
+    }
+
+    .captioned-image.p-attached.p-attached-left,
+    .captioned-image.p-attached.p-attached-right {
+        float: none;
+    }
+
+    [for="aboutMeToggle"] {
+        background-color: #675e5e;
+        color: white;
+        padding: 0.25rem;
+        padding-left: 0.5rem;
+        display: block;
+        border-left: 1rem solid black;
+    }
+    #aboutMeToggle:focus + [for="aboutMeToggle"]{
+        outline: 4px solid #c6ddf2;
+    }
+
+    #aboutMeToggle:checked ~ header {
+        display: none;
+    }
+
+    header li { display: inline; margin-left: -0.5em; }
+    header .blurb li::after { content: '; '; }
+    header  nav li {
+        display: inline-block;
+        margin-left: 0.35rem;
+        margin-right: 0.35rem;
+    }
+    header .title {
+        width: 100%;
+    }
+    main li .source { display: block; }
+}</style>
+  </head>
+  <body>
+    <input id="aboutMeToggle" class="sr-only" type="checkbox" checked="">
+<label for="aboutMeToggle">Toggle author information</label>
+<header>
+    <div class="name">
+        Brian Kardell
+    </div>
+    <img class="profile" src="/profile.jpg" alt="">
+    <div class="tagline"><a href="/">Betterifying the Web</a></div>
+    <div class="blurb">
+        <ul>
+            <li>Sr Front-End Engineer at Apollo Group, Inc</li>
+            <li>Original Co-author/Co-signer of The Extensible Web Manifesto</li>
+            <li>Co-Founder/Chair, W3C Extensible Web CG</li>
+            <li>Member, W3C (The JS Foundation)</li>
+            <li>Co-author of HitchJS</li>
+            <li>Blogger</li>
+            <li>Art, Science &amp; History Lover</li>
+            <li>Standards Geek</li>
+        </ul>
+    </div>
+    <div class="title">Follow Me On...</div>
+    <nav>
+        <ul>
+            <li><a href="https://briankardell.wordpress.com">Wordpress</a></li>
+            <li><a href="https://medium.com/@briankardell/latest">Medium</a></li>
+            <li><a href="https://twitter.com/briankardell">Twitter</a></li>
+            <li><a href="https://github.com/bkardell/">Github</a></li>
+            <li><a href="https://codepen.io/bkardell">Codepen</a></li>
+            <li><a href="https://www.linkedin.com/in/brian-kardell-08a4264">LinkedIn</a></li>
+            <li><a href="https://www.instagram.com/kardellbrian">Instagram (for art)</a></li>
+            <li><a href="http://fineartamerica.com/profiles/brian-kardell?">Fine Art America (art for sale)</a></li>
+        </ul>
+    </nav>
+</header>
+    <main>
+    <div class="posted-on">Posted on 10/5/2016</div><article posted-on="10/5/2016" original-url="https://medium.com/@briankardell/the-glory-days-of-the-web-418d41c6d9df#.ln78iz252" class="sectioning">
+	<contextual-heading role="heading" aria-level="1">The Glory Days of the Web</contextual-heading>
+	<p class="seque">
+	</p>For the past couple of years, there have been a number of pieces lamenting the current state of Web development: It's gotten pretty complicated. Very recently a <a href="https://hackernoon.com/how-it-feels-to-learn-javascript-in-2016-d3a717dd577f#.m50p34qi8" rel="nofollow" target="_blank">satirical piece on this subject</a> really struck a chord and got a lot of attention. Dion Almaer <a href="https://medium.com/ben-and-dion/i-want-to-go-back-to-the-1950s-of-web-development-fa69d7fe357a#.bqj5a5ug1" target="_blank">wrote a piece in reply </a>in which he introduced what I thought was a really good analogy - the rose colored glasses that we often see the past through...<p></p>
+
+	<blockquote>...it reminds me of folk who talk about the golden era of the 1950s in the US. It isn't hard to look at the current political climate and long for another time. Remember the white picket fences? Life was so good! Those glasses sure are rosy though, and when you take them off you see a society that had huge problems...</blockquote>
+
+	<p>"Huge Problems" is an understatement at the level of "the surface of the sun is warm". In many ways, if most of us were placed in 1950's America we would characterize it as xenophobic, sexist and racist - but also not exactly afraid of taxes or the idea that the government had a big role to play. Today we squabble like it is an all-life-on-earth-ending decision to make what are historically very minor tax tweaks - we just know that the past was somehow better... They were the "glory days" and we don't seem to give a lot of thought to why.</p>
+
+	<p>We seem to do this with everything - it's kind of human nature I think. Ask a 50 year old about their teenage years and they'll likely regale you with stories that make it seem pretty good. Now ask a teen how they feel you'll likely get a very different perspective. Things seem to get simplified, polished and a little more rosy with time. Somewhere in between these is probably a fairly objective â€˜reality'.</p>
+
+	<section class="sectioning">
+		<contextual-heading role="heading" aria-level="2">The Web's Glory Days that I don't actually recall...</contextual-heading>
+		<p>Like Dion, I feel like we're doing that a little with our perspective of writing for the Web. If what you remember (or the story that you've heard) is that "once upon a time we just wrote HTML (and maybe CSS) - there weren't so many frameworks and programming to learn and life was good"- then we have very different recollections.</p>
+
+		<p>If you were writing only HTML and CSS before, for example, and you're not anymore then you're comparing apples and oranges. If you could before, you still can. However, in reality, most sites were not that, even "static" ones.</p>
+
+		<p>Did you manually copy, paste, edit things like your header and footer? If you did, you were one of a small few because these were problems that were obvious even in the mid-90s and answers were provided by even the earliest servers and many popular "IDEs" of the time or tools made it possible to do this as a â€˜build time' process.</p>
+
+		<p>Also obvious, even in the mid-90's, was that no-one would sit and write HTML all day, every day. HTML was, by design, intended to be the lingua-franca for common understanding. It was the thinking that most of it perhaps would be generated by a program, not authored by hand. In fact, the very first significant use, even at CERN, involved writing programs that wrote HTML and TimBL's original browser effectively hid the HTML from you.</p>
+
+		<p>To generate HTML from bits, to query a database or services and so on, to hide things under non-standard abstractions - you need a programming language. Enter the complexity and the variance.</p>
+
+		<p>Over the years I have watched as people built sites using tons of server-side and build tech in order to do precisely this. These involved choosing a server. Once you have a server, frequently there are N choices of languages you can use. Given a language there are frequently N templating languages and N possible frameworks you can use to express how those things pinned together. Some of them required compilation, many had a concept of â€˜build time' work. All of them also had to deal with server configuration that dealt with how you deal with things like threading, connection pooling, caching, etc. All of them dealt with databases, and so on. Did you use cgi/bin and Perl? Did you use .asp and COM? Did you use Java? If you did, did you use JSPs, FreeMarker, ECS, Velocity, JSF or Ice Faces? Did you use Struts, Spring MVC, Spark, Dropwizard? Did you transpile with something like GWT? Did you ever try thinking about portlets? Or did you prefer Ruby on Rails? Or PHP? If it sounds like I am reaching for examples, I can assure you this is an exceptionally abbreviated list of actually popular approaches that I have encountered. People who dealt with those all had similar complaints to the ones I hear now.</p>
+
+		<p>Building this stuff - especially building it well, has never, to the best of my knowledge, or in my experience, been simple.</p>
+
+		<p>It's never not involved a lot of variety of choice or strong opinions about "the right way" or what is "good enough" or tough/interesting challenges regarding how to fit into existing ecosystems. Instead, primarily what seems to have changed is where it's possible to build what.</p>
+
+		<p>Today it is possible to build rich, engaging UI that happens on the client that wasn't really possible before JavaScript - but it's also not exactly new - merely the level at which we aspire to do it is. By the mid-2000's sites were getting pretty rich. The reason we have HTML5 is that JavaScript allowed us to not stand still and wait for something better to come along.</p>
+
+		<p>Was this the simpler time? Not for me it wasn't - in addition to all of the server frameworks, every week there was a new library. Prototype, Scriptaculous, MooTools, Dojo, qooxdoo, Bindows, YUI, ext.js and many more, until finally jQuery. But jQuery itself was pretty low level and stopped there as opposed to something like ext.js which came complete with a UI toolkit. This is where a lot of frameworks come in today - it's not necessary maybe to have a â€˜client approach' and a â€˜server approach' be quite so far apart - maybe that's good.</p>
+	</section>
+
+	<section class="sectioning">
+		<contextual-heading role="heading" aria-level="2">An added bit of non-technical complexity</contextual-heading>
+
+		<p>Somewhere along the way, we seem to have had a split. In some orgs that I worked for, this was all considered "equal". I was a "full stack" developer and the whole stack was equally important. In other orgs, there were "front-end" developers and the front-end was an important discipline on it's own, but it was separate from "design". Design was more of a static deliverable of HTML and CSS and maybe some "demo-y" JavaScript that we probably wouldn't really use. Some people saw that as lesser, some people just thought of it as different. In still others all of this was somehow viewed as "lesser" and "not real programming" and so many "real programmers" avoided it and handed it to people who were actually primarily interested in designs and didn't have experience with "real programming languages". In the meantime, a lot of people strode weird middle grounds.</p>
+
+		<p><strong>So... suck it up?</strong></p>
+
+		<p>No, none of this is to say "suck it up folks, that's just how it is". I too feel like it's gotten a little overwhelming. But I'm more overwhelmed by simpler things. It was a really nice quality of jQuery, for example, that you can simply grab a release off a CDN, include it however you like, and go. Frequently, a simple <code tag-esc="">script</code> include was "good enough" and you were off to the races. Today, a lot of projects lack that level of friendliness. You need to have node installed. And NPM. And probably a certain build tool. And maybe something like TypeScript - just in order to get a single file. And it might be that that file really wants to work with a package manager that you don't know about so you have to get that - and so on. It's hard to not feel overwhelmed by that alone. We should really work on that.</p>
+
+		<p>But I'm also fairly realistic about what we can/should do about it I guess and why I think it is that way. History shows that eventually we do shake the good bits out into standards - and it's slow, kind of painful and more than a little overwhelming at times along the way. But I find hope in knowing that we're all working on making that process a lot better by reconsidering how we approach standards (see also <a href="https://extensiblewebmanifesto.org/" rel="nofollow" target="_blank">The Extensible Web Manifesto</a>, The <a href="https://wicg.io/" rel="nofollow" target="_blank">W3C Incubator CG</a> and <a href="https://chapters.io/" rel="nofollow" target="_blank">Chapters</a>). If we can make this lifecycle better, that could be pretty dramatic. The best thing about standardizing things on the client, in my opinion, is that there's only one. JavaScript isn't really in competition with 17 other languages and there is ultimate only the DOM. That's at least something promising.</p>
+
+		<p>But let's also try to remain realistic in how we compare the present to the Glory Days.</p>
+	</section>
+</article></main>
+
+  
+
+</body></html>

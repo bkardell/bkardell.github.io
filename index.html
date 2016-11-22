@@ -154,7 +154,8 @@ header .name {
 [for="aboutMeToggle"] {
     display: none;
 }
-article>*:not(contextual-heading), section>*:not(contextual-heading) {
+/* this needs rethinking, it wants a selector like 'not flow content' */
+article>*:not(contextual-heading,a), section>*:not(contextual-heading,a) {
     margin-left: 0.45rem;
 }
 @media (max-width: 800px){
@@ -256,6 +257,7 @@ article>*:not(contextual-heading), section>*:not(contextual-heading) {
             <ul>
                 <li><a href="blog/Potentially-Scattered-Thoughts-On-Web-Components.html">Potentially Scattered Thoughts on Web Components</a></li>
                 <li><a href="blog/The-Future-Web-Wants-You.html">The Future Web Wants You</a></li>
+                <li><a href="blog/The-Glory-Days-Of-The-Web.html">The Glory Days of the Web</a></li>
                 <li><a href="blog/X-Web-Days-of-Future-Past.html">X-Web: Days of Future Past</a></li>
                 <li><a href="blog/Prognostication-And-The-Failure-Of-The-Web.html">Prognostication and the Failure of the Web</a></li>
             </ul>
