@@ -1,0 +1,410 @@
+<html lang="en" resource-type="blogpost"><head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Brian Kardell: Introduction</title>
+    <style>.captioned-image {
+    background-color: #eaeaea;
+    display: block;
+    overflow: hidden;
+    padding: 1rem;
+    text-align: center;
+    font-style: italic;
+}
+
+.captioned-image.p-attached {
+    width: 40%;
+    display: inline-block;
+    margin: 0 1rem 2rem 1rem;
+}
+
+section > .captioned-image.p-attached {
+    margin-top: 1.5rem; /* correct for heading size*/
+}
+
+.captioned-image.p-attached.p-attached-left {
+    float: left;
+}
+
+.captioned-image.p-attached.p-attached-right {
+    float: right;
+}
+
+.captioned-image.p-attached + * + * {
+    clear: both;
+    margin-top: 2rem;
+}
+
+
+.captioned-image img {
+    display: block;
+    max-width: 100%;
+    margin: 0 auto 1em auto;
+}
+.source {
+    font-style: italic;
+}
+body {
+    display: flex;
+    font: 1em "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-weight: 300;
+    line-height: 1.625;
+}
+h1 { margin: 0.5rem; }
+code-format {
+    border-left: 0.5rem solid rgba(123,115,209,0.35);
+    display: block;
+    padding: 0.5rem;
+    margin-bottom: 1rem;
+}
+[aria-level="1"] {
+    color: #43686b;
+    font-size: 1.45rem;
+}
+[aria-level="2"] {
+    color: #856363;
+    font-size: 1.35rem;
+}
+[aria-level="3"] {
+    color: #856363;
+    font-size: 1.25rem;
+}
+[aria-level="4"] {
+    color: #856363;
+    font-size: 1.15rem;
+}
+.posted-on {
+    font-style: italic;
+    font-size: 0.8rem;
+    text-align: right;
+    margin-bottom: 1rem;
+}
+
+ul, li {
+    margin: 0.5rem;
+    text-align: left;
+}
+header {
+    padding-top: 1rem;
+    padding-right: 2rem;
+    background-color: #fbf5e9;
+}
+.tagline {
+    font-style: italic;
+    text-align: center;
+}
+
+[tag-esc] {
+    color: maroon;
+    font-family: Courier, "Lucida Console", monospace;
+}
+
+[tag-esc]::before {
+    content: '<';
+}
+
+[tag-esc]::after {
+    content: '>';
+}
+
+main {
+    min-width: 50%;
+    width: 80%;
+    padding: 1rem;
+}
+header .title {
+    background-color: rgba(123,115,209,0.35);
+    padding: 0.3rem;
+    padding-left: 0.25rem;
+    font-weight: bolder;
+    font-size: 0.9rem;
+    border-left: 1rem solid #999298;
+}
+
+header .profile {
+    width: 50%;
+    margin: 1rem 25%;
+}
+
+header .title + nav {
+    font-size: 0.9rem;
+}
+
+header .blurb {
+    font-size: 0.75rem;
+    text-align: center;
+}
+header .name {
+    text-align: center;
+    font-size: xx-large;
+}
+.segue {
+    font-style: italic;
+}
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  border: 0;
+}
+[for="aboutMeToggle"] {
+    display: none;
+}
+/* this needs rethinking, it wants a selector like 'not flow content' */
+article>*:not(contextual-heading,a), section>*:not(contextual-heading,a) {
+    margin-left: 0.45rem;
+}
+@media (max-width: 800px){
+    body {
+        flex-direction: column;
+    }
+    header {
+        border-bottom: 1px solid #afafff;
+    }
+
+    .captioned-image.p-attached {
+        width: 100%;
+        margin: 1rem 0;
+    }
+
+    .captioned-image.p-attached.p-attached-left,
+    .captioned-image.p-attached.p-attached-right {
+        float: none;
+    }
+
+    [for="aboutMeToggle"] {
+        background-color: #675e5e;
+        color: white;
+        padding: 0.25rem;
+        padding-left: 0.5rem;
+        display: block;
+        border-left: 1rem solid black;
+    }
+    #aboutMeToggle:focus + [for="aboutMeToggle"]{
+        outline: 4px solid #c6ddf2;
+    }
+
+    #aboutMeToggle:checked ~ header {
+        display: none;
+    }
+
+    header li { display: inline; margin-left: -0.5em; }
+    header .blurb li::after { content: '; '; }
+    header  nav li {
+        display: inline-block;
+        margin-left: 0.35rem;
+        margin-right: 0.35rem;
+    }
+    header .title {
+        width: 100%;
+    }
+    main li .source { display: block; }
+}</style>
+  </head>
+  <body>
+    <input id="aboutMeToggle" class="sr-only" type="checkbox" checked="">
+<label for="aboutMeToggle">Toggle author information</label>
+<header>
+    <div class="name">
+        Brian Kardell
+    </div>
+    <img class="profile" src="/profile.jpg" alt="">
+    <div class="tagline"><a href="/">Betterifying the Web</a></div>
+    <div class="blurb">
+        <ul>
+            <li>Sr Front-End Engineer at Apollo Group, Inc</li>
+            <li>Original Co-author/Co-signer of The Extensible Web Manifesto</li>
+            <li>Co-Founder/Chair, W3C Extensible Web CG</li>
+            <li>Member, W3C (The JS Foundation)</li>
+            <li>Co-author of HitchJS</li>
+            <li>Blogger</li>
+            <li>Art, Science &amp; History Lover</li>
+            <li>Standards Geek</li>
+        </ul>
+    </div>
+    <div class="title">Follow Me On...</div>
+    <nav>
+        <ul>
+            <li><a rel="me" href="https://briankardell.wordpress.com">Wordpress</a></li>
+            <li><a rel="me" href="https://medium.com/@briankardell">Medium</a></li>
+            <li><a rel="me" href="https://twitter.com/briankardell">Twitter</a></li>
+            <li><a rel="me" href="https://github.com/bkardell/">Github</a></li>
+            <li><a rel="me" href="https://codepen.io/bkardell">Codepen</a></li>
+            <li><a rel="me" href="https://www.linkedin.com/in/brian-kardell-08a4264">LinkedIn</a></li>
+            <li><a rel="me" href="https://www.instagram.com/kardellbrian">Instagram (for
+art)</a></li>
+            <li><a rel="me" href="http://fineartamerica.com/profiles/brian-kardell?">Fine Art
+America (art for sale)</a></li>
+        </ul>
+    </nav>
+</header>
+    <main>
+    <div class="posted-on">Posted on 11/22/2015</div><article posted-on="11/22/2015" class="sectioning">
+	<contextual-heading role="heading" aria-level="1">A Brief(ish) History of the Web Universe - Part I: The Pre-Web</contextual-heading>
+	<p class="segue">
+	There are a couple of posts that I've been wanting to write, but in each of them I keep finding myself wanting to talk about historical context.  Explaining it in place turns out to be too hard and I've been unable to find a resource that unifies that bits I want to talk about.  I've decided, then, that it might be easier then to write this history separately, mostly so that I can refer back to it.  So here it is, "A Brief(ish) History of the Web Universe" aka "The Boring Posts" in a few parts.  No themes, no punch, just history that I hope I can use to help explain where my own perspectives on a whole bunch of things draw from...</p>
+
+	<section class="sectioning">
+		<contextual-heading role="heading" aria-level="2">Background</contextual-heading>
+		<p>Businesses, knowledge, government and correspondence  were, for literally hundreds of years, built on paper documents.   How did we get from that world to this?  And how has that world, and our path, helped shape this one?  I'm particularly interested in the question of whether some of those implications are good or bad - what we can learn from the past in order to improve on our future or understand our present.  So how <em>did </em>we get here from there?</p>
+
+		<p>Arguably the first important step was industrialization.  This changed the game in transforming the <em>size</em> of challenges and created new needs for efficiency.  This gave rise to the need for increasing agreement beginning with standards around physical manufacture - first locally, and then nationally around 1916.  World War II placed intense pressures and funded huge research budgets and international cooperation.  A whole lot of important things shook out in the 1940s and each developed kind of independently. I won't go into them much here except to note a few key points to help set the mental stage of what the world was like going into the story.</p>
+
+		<p>The word "computer" in anything resembling really modern terms wasn't even a thing until 1946.</p>
+
+		<div class="captioned-image p-attached p-attached-left" style="margin-top:0">
+			<img class="wp-image-1396 size-medium" src="https://briankardell.files.wordpress.com/2015/11/102618640-03-01.jpg?w=300" alt=""> The First Digital Computer - ENIAC â€œFor a decade, until a 1955 lightning strike, ENIAC may have run more calculations than all mankind had done up to that point.â€� from computerhistory.org
+		</div>
+
+		<p>In 1947 ISO, the International Standards Organization, was founded.  That same year, the transistor was invented at Bell Labs.  In the late 1940's the Berlin Airlift transported over 2.3 million tons of food, fuel and supplies by developing a "standard form" document could be transmitted over just about any medium - including, for example, by telegraph.  Later this basic technique would become "EDI" (<a href="https://en.wikipedia.org/wiki/Electronic_data_interchange" target="_blank">Electronic Data Interchange</a>) and become the standard for commercial shipping and trade at scale, but It required very tight agreement and coordination on standard business documents and processes.</p>
+
+
+		<p>Transistors revolutionized things, but the silicone chips which really began the revolution weren't yet a thing.  Intel, who pioneered and popularized it wouldn't even be founded until 1968.</p>
+
+		<p>During this interim few decades, the number of people <em>exposed to the idea of </em>computers began, very slowly to to expand - and that gets pretty interesting because we start to see some interesting forks in the road...</p>
+	</section>
+
+	<section class="sectioning">
+		<contextual-heading role="heading" aria-level="2">1960's Interchange, SGML and HyperStuff</contextual-heading>
+		<p>In the mid 1960's Ted Nelson noted the flaw with the historical paper model:</p>
+
+		<blockquote>Systems of paper have grave limitations for either organizing or presenting ideas. A book is never perfectly suited to the reader; one reader is bored, another confused by the same pages. No system of paper-- book or programmed text-- can adapt very far to the interests or needs of a particular reader or student.</blockquote>
+
+		<p>He imagined a very new possibility with computers, first in scholarly papers and then in books. He imagined this as an aid to authors as well which he explained evolve a work from random notes to outlines to advanced works.  He had a big vision.  In his description, he coined three important terms: Hypertext, Hypermedia (originally Hyperfilm) and Hyperlink.  For years, the terms Hypertext and Hypermedia would cause some problems. Some (including it seems to me Nelson) considered media as part of the text because it was serialized and others considered text as a subset of media) -- But this was all way ahead of its time. While it was going down, the price-point and capabilities just weren't really there. As he described in the same paper.</p>
+
+
+		<blockquote>
+			<p class="p1">The costs are now down considerably. A small computer with mass memory and video-type display now costs $37,000;</p>
+		</blockquote>
+
+		<p>Another big aspect of his idea was unifying some underlying systems about files.  Early computers just didn't agree on anything.  There weren't standard chipsets much less standard file types, programs, protocols, etc.</p>
+
+
+		<section class="sectioning">
+			<contextual-heading role="heading" aria-level="3">Markup</contextual-heading>
+			<p>In 1969, in this early world of incompatibility, three men at IBM (Goldfarb, Mosher and Lorie) worked on the idea of using markup documents to allow machines to trade and deal with a simple understanding of "documents" upon which they could specialize understanding, storage, retrieval or processing.  It was called <a href="https://en.wikipedia.org/wiki/IBM_Generalized_Markup_Language" target="_blank">GML</a> after their initials, but later "Generalized Markup Language".  It wasn't especially efficient.  It had nothing to do with HyperAnything nor even EDI in a technical sense.  But it <em>was</em> comparatively easy to get enough rough agreement in order and flexible enough to make things actually work in order to achieve real things.  For example, you could send a GML document to a printer and define separately how precisely it would print.  Here's what it looked like:</p>
+			<code-format type="css"><pre>:h1.Chapter 1:  Introduction
+   :p.GML supported hierarchical containers, such as
+   :ol
+   :li.Ordered lists (like this one),
+   :li.Unordered lists, and
+   :li.Definition lists
+   :eol.
+   as well as simple structures.
+   :p.Markup minimization (later generalized and formalized in SGML),
+   allowed the end-tags to be omitted for the "h1" and "p" elements.</pre></code-format>
+
+   			<p>But GML was actually a script - the tags indicated macros which could be implemented differently.  Over time, GML would inspire a lot, get pretty complicated, philosophical about declarative nature and eventually become SGML (<a href="https://en.wikipedia.org/wiki/Standard_Generalized_Markup_Language" target="_blank">Standard Generalized Markup Language</a>).  This would continue growing in popularity - especially in the print industry.</p>
+   		</section>
+   		<section class="sectioning">
+   			<contextual-heading role="heading" aria-level="3">The changing landscape</contextual-heading>
+			<p>For the next decade, computers got faster, cheaper, and smaller and more popular in business, science and academia and these all matured and evolved on their own.</p>
+
+			<p>Networks were arising too and the need for standardization there seemed obvious.  For about 10 years there was an attempt to create a standard network stack in international committees, but it was cumbersome, complex and not really getting there.  Then, late in this process, Vint Cerf left the committee.  He led work focused on rough consensus and running code for the protocol and, in very short order, the basic Internet was born.</p>
+
+			<p>Around this same time, a hypertext system based on Nelson's ideas, called "Guide" was created at Carnegie Mellon University for Unix workstations.</p>
+		</section>
+
+	</section>
+	<section class="sectioning">
+		<contextual-heading role="heading" aria-level="2">Rise of the Computers</contextual-heading>
+		<p>In the 1980's Macs and PCs, while still expensive, were finally becoming affordable enough that some regular people could hope to purchase them.</p>
+
+		<section class="sectioning">
+			<contextual-heading role="heading" aria-level="3">Return of the HyperStuff</contextual-heading>
+			<p><a href="https://en.wikipedia.org/wiki/Guide_(hypertext)" target="_blank">Guide</a> was commercially sold by, ported by to the Mac and PC by, and later <em>very much improved</em> on by a company called OWL (Office Workstations Limited) led by a man named Ian Ritchie.  It introduced one of the first real hypertext systems to desktops in 1985.  In 1986 Guide won a British Computer Society award. Remember "Guide" and "Ian Ritchie" because they're going to come back up.</p>
+
+			<div class="captioned-image p-attached p-attached-left" style="margin-top:0">
+				<img class=" size-full wp-image-1340 alignleft" src="https://briankardell.files.wordpress.com/2015/11/hcard1-1.png" alt="">Another two years later people were really starting to take notice of "HyperText" (and beginning to get a little over-generalized with the term - frequently this was really becoming "HyperMedia").  In 1987, an application called "<a href="https://www.youtube.com/watch?v=EMFscTOazS0">HyperCard</a>" was introduced and the authors convinced Apple to give it away free for all Mac users.  It was kind of a game changer.
+			</div>
+
+			<p>HyperCard was a lot like Guide in many ways but with a few important details we'll come back to.  The world of HyperCards was built of "decks" - each deck a stack of "cards" full of GUI: forms, animations, information and interactions which could be linked together and scripted to do all sorts of useful things.  Cards had an innate "order" and could link to and play other media which would - the state of things in a card/deck was achieved through scripting.  They were bitmap based in presentation and cleverly scalable.</p>
+
+			<hr style="visibility: hidden">
+
+			<div class="captioned-image p-attached p-attached-right">
+				<img class="" src="http://www.fentonia.com/bio/mmdir.gif" alt=""> Screenshot of VideoWorks and the "score"
+			</div>
+
+			<p>That same year, in 1987, a product called VideoWorks by a company named Macromind was released.  In fact, if you got a Mac, you saw it because it was used to create the interactive guided tour that shipped with it.   You could purchase it for your own authorship.</p>
+
+			<p>One interesting aspect of VideoWorks was its emphasis on time.  Time is kind of an important quality of non-static <em>media</em>, so if you're interested in the superset of hypermedia, you need the concept of time.  Thus, the makers of VideoWorks included a timeline upon which things were 'scored'.  With this HyperMedia, authors could allow a user to move back and forth in the score at will.  This was kind of slick, it made sense to a lot of people and it caught on.  Their product later became "Director" and it became a staple for producing high-end, wow'ing multimedia content on the desktop, CD-ROMs for kiosks and so on.</p>
+
+			<p>By the late 1980's, OWL's Guide had really come to focus on the PC version.  Hypercard was Free on the Mac and as it's creator Ian Ritchie would say later...</p>
+
+			<blockquote>You can compete on a lot of things, but it's hard to compete with free...</blockquote>
+
+
+			<section class="sectioning">
+				<contextual-heading role="heading" aria-level="4">The emergence of an increasingly fuzzy line...</contextual-heading>
+				<p>Note that most of these existing systems of this time actually dealt, in a way, with hyper<em>media </em>in the sense that they didn't draw so closely to this fundamental primitive idea based on paper.  <em>All of these could be scripted and and you might imagine: Applications were a natural outcropping.   </em>The smash game Myst was actually just a really nice and super advanced HyperCard stack!
+			</p>
+		</section>
+	</section>
+
+	<section class="sectioning">
+		<contextual-heading role="heading" aria-level="3">The Stage is Set...</contextual-heading>
+		<p>The Internet was there.  It was available - in use even, but it was pretty basic and kind of cumbersome.  Many people who used the internet perhaps didn't even realize what the internet really was - they were doing so through an online service like Compuserve or Prodigy.</p>
+
+		<p>But once again, as new doors were opened, some saw new promise.</p>
+
+		<section class="sectioning">
+			<contextual-heading role="heading" aria-level="4">The Early 1990s</contextual-heading>
+			<p>I've already mentioned that SGML had really nothing at first to do with HyperMedia, but here's where it comes back in.  The mindset around HyperCard was stacks and cards.  The mindset around VideoWorks/Director was Video.  The mindset of OWL was documents.  SGML was a mature thing and having something to do with SGML was kind of a business advantage.</p>
+
+			<p><em>Guide had SGML-based documents</em>.  More than that, it called these "Hypertext Documents" and their SGML definition was called "HyperText Markup Language" (which they abbreviated HML) and it could deliver them <em>over networks</em>.  Wow.  Just WOW, right?  Have you even <em>heard</em> the term "Web" yet?  No.</p>
+
+			<p>But wait - there's more!  Looking at what else was going on, OWL had much advanced Guide on the PC and by now it had integrated sound and video and advanced scripting ability too.  While it was "based" on documents, it was so much more.  What's more, while all of this was possible, it was hidden from the <em>average</em> author - it had a really nice GUI that allowed both creation and use. That it was SGML underneath was, to many, a minor point or even a mystery.</p>
+		</section>
+	</section>
+
+	<section class="sectioning">
+		<contextual-heading role="heading" aria-level="3">Web Conception</contextual-heading>
+		<p><em>This</em> is the world into which HTML was conceived.  I say conceived rather than "born" or "built" because Tim had been working out his idea for a few years and refining it.  He talked about it to anyone who would listen about a global, decentralized, read-write system that would really change the Internet.  He had worked out the idea of an identifier, a markup language and a protocol but that was about it.</p>
+
+		<p><em>And here's the really interesting bit:  He didn't really want to develop it, he wanted someone else to.</em>  As Tim has explained it several times...</p>
+
+		<p></p><blockquote>There were several commercial hypertext editors and I thought we could just add some internet code, so that the hypertext documents could then be sent over the internet. I thought the companies engaged in the then fringe field of hypertext would immediately grasp the possibilities of the web.</blockquote><p></p>
+
+		<div class="captioned-image p-attached p-attached-left" style="margin-top:0">
+			<img src="https://briankardell.files.wordpress.com/2015/11/screen-shot-2015-11-22-at-1-18-55-pm.png?w=300" alt="">Screenshot of OWL's Guide in 1990
+		</div>
+
+		<p>Remember OWL and Guide? Tim thought they would be the perfect vehicle, they were his first choice.  So, in November 1990, when Ian Ritchie took to a trade show in Versaille to <a href="https://www.youtube.com/watch?v=noOrW6u-JF4" target="_blank">show off Guide's HyperMedia</a>, Tim approached him and tried hard to convince him to make OWL the browser of the Web.  However, as Tim notes <em>"Unfortunately, their reaction was quite the opposite..."  </em></p>
+
+		<p>Note that nearly all of the applications discussed thus far, including OWL, were commercial endeavors.  In 1986, authors who wanted to use OWL to publish bought a license for about $500 and then viewers licensed readers for about $100.  To keep this in perspective, in adjusted dollars this is roughly $1,063 for writers and $204 for readers.  This is just how software was done, but it's kind of different from the open source ethos of the Internet.  A lot of people initially assumed that making browsers would be a profitable endeavor.  In fact, later Mark Andreeson <em>would</em> make a fortune on the name Netscape in part because there was an assumption that people would buy it.  It was, after all, a killer app.</p>
+
+		<p>It's pretty interesting to imagine where we would be now if Ritchie had been able to see it.  What would it have been like with OWL's capabilities as a <em>starting point, </em>and what impact the commercial nature of the product might have had on the Web's history and ability to catch on.   Hard to say.</p>
+
+		<p>However, with this rejection (and other's like it) , Tim realized</p>
+
+		<blockquote>...it seemed that explaining the vision of the web was exceedingly difficult without a web browser in hand, people had to be able to grasp the web in full, which meant imagining a whole world populated with websites and browsers. It was a lot to ask.</blockquote>
+
+		<p>He was going to have to build something in order to convince people.  Indeed, Ian Ritchie would later give a <a href="https://www.ted.com/talks/ian_ritchie_the_day_i_turned_down_tim_berners_lee?language=en" target="_blank">Ted Talk </a>about this in which he admits that two years later when he saw Mosaic he realized "yep, that's it" - he'd missed it.</p>
+	</section>
+	<section class="sectioning">
+		<contextual-heading role="heading" aria-level="3">A Final Sidebar...</contextual-heading>
+		<div class="captioned-image p-attached p-attached-left" style="margin-top:0">
+			<img src="https://briankardell.files.wordpress.com/2015/11/hqdefault-1.jpg?w=300" alt=""> PenPoint Tablet in 1991
+		</div>
+
+		<p>At very nearly the same time something that was neither HyperStuff nor SGML nor Internet related entered the picture.   It was called "PenPoint".  Chances are pretty good that you've never heard of it and it's probably going to be hard to see how, but it will play importantly into the story later.  PenPoint was, in 1991, a tablet computer with a stylus and gesture support and vector graphics.</p>
+
+		<p>Think about what you just read for a a moment and let it sink in.</p>
+
+		<p>If you've never seen PenPoint, you should check out <a href="https://www.youtube.com/watch?v=x0XE08BjQDQ" target="_blank">this video from 1991</a> because it's kind of amazing.   And here's what it has to do with our story: It failed.  It was awesomely ahead of its time and it just... failed.  <em>But not before an application was developed for it called "SmartSketch FutureSplash" (remember the name)</em> - a vector based drawing tool which would have been kind of sweet for that device in 1991.</p>
+
+		<p>I'll explain in Part II how this plays very importantly into the story.</p>
+	</section>
+
+	<p class="thanksTo">Many thanks to folks who slogged through and proofread this dry post for me: @mattur @simonstl and @sundress.</p>
+
+
+</section></article></main>
+
+  
+
+</body></html>
