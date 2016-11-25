@@ -316,7 +316,7 @@ America (art for sale)</a></li>
 				downloadImages();
 			}
 			if (save.checked) {
-				window.localStorage.downloadsPrefs = true;
+				window.localStorage.downloadsPrefs = all.checked;
 			}
 			document.querySelector('#downloadsPrefs').remove()
 		}
@@ -324,7 +324,7 @@ America (art for sale)</a></li>
 		var prefs = window.localStorage.downloadsPrefs;
 		if (typeof prefs !== 'undefined') {
 			console.log(prefs)
-			if (prefs === true) {
+			if (prefs === 'true') {
 				document.body.classList.add('prefers-images')
 				window.localStorage.downloadsPrefs = prefs
 				window.addEventListener('DOMContentLoaded', downloadImages)
