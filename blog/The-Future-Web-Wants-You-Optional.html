@@ -302,7 +302,8 @@ America (art for sale)</a></li>
 		'use strict'
 
 		function downloadImages () {
-			Array.from(document.querySelectorAll('.captioned-image>[data-src]')).forEach(function(media) {
+			var lazy = Array.prototype.slice.call(document.querySelectorAll('.captioned-image>[data-src]'));
+			lazy.forEach(function(media) {
 				media.src = media.getAttribute('data-src');
 				media.parentElement.classList.add('active');
 			})
