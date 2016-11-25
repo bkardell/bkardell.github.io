@@ -35,7 +35,7 @@ section > .captioned-image.p-attached {
 }
 
 
-.captioned-image img {
+.captioned-image img, .captioned-image video {
     display: block;
     max-width: 100%;
     margin: 0 auto 1em auto;
@@ -157,6 +157,33 @@ header .name {
 article>*:not(contextual-heading,a), section>*:not(contextual-heading,a) {
     margin-left: 0.45rem;
 }
+
+blockquote {
+  font-family: serif;
+  background: #f9f9f9;
+  border-left: 10px solid #ccc;
+  margin: 1.5em 10px;
+  padding: 0.5em 10px;
+}
+blockquote:before {
+  color: #ccc;
+  content: open-quote;
+  font-size: 2em;
+  line-height: 0.1em;
+  margin-right: 0.25em;
+  vertical-align: -0.4em;
+}
+
+blockquote:after {
+  color: #ccc;
+  content: close-quote;
+  font-size: 2em;
+  line-height: 0.1em;
+  margin-left: 0.25em;
+  vertical-align: -0.4em;
+}
+
+
 @media (max-width: 800px){
     body {
         flex-direction: column;
@@ -202,7 +229,9 @@ article>*:not(contextual-heading,a), section>*:not(contextual-heading,a) {
         width: 100%;
     }
     main li .source { display: block; }
+
 }</style>
+    <style>.thanksTo { font-style: italic; font-size: 0.8rem; }</style>
   </head>
   <body>
     <input id="aboutMeToggle" class="sr-only" type="checkbox" checked="">
@@ -246,8 +275,9 @@ America (art for sale)</a></li>
 	<contextual-heading role="heading" aria-level="1">The Future Web Wants You</contextual-heading>
 	<p class="segue">A few weeks ago I gave a talk in Pittsburgh, PA at Code and Supply. <a href="https://www.youtube.com/watch?v=rwWEQPc5GRE" target="_blank">It was recorded if you would rather watch the video </a>(the actual talk is ~40 minutes, the video captures some of the Q&amp;A afterward as well), but I'm more comfortable writing and I thought it might be worth a stab at a companion piece that tries to make the same points/arguments in blog-post-size, so - here it is.</p>
 
-	<div class="captioned-image p-attached p-attached-left">
-		<img src="https://briankardell.files.wordpress.com/2016/08/tumblr_nn65ziv7fr1s3y9slo1_500.gif" alt="A photo of me in the mid-1990's dreaming about standards."> A photo of me in the mid-1990's dreaming about standards.
+	<div class="captioned-image p-attached p-attached-left" aria-hidden="">
+		<video src="/media/me-in-early-90s-dreaming.mp4" autoplay=""></video>
+		Me in the mid-1990's dreaming about standards.
 	</div>
 
 	<p>In the mid-1990's, I didn't really know much about standards, but it seemed that they obviously existed.  So, when I heard that there was going to be a "standards organization" setup to bring together all sorts of powerful tech interests and that it would be led by Tim Berners-Lee (creator of the Web) himself, it didn't take much more to win my confidence.</p>
@@ -261,7 +291,8 @@ America (art for sale)</a></li>
 	<p>By around 2009, I guess you could say that my outlook had "matured".</p>
 
 	<div class="captioned-image">
-		<img class="alignnone size-full wp-image-4871" src="https://briankardell.files.wordpress.com/2016/08/tumblr_inline_n0ea3lrpjr1rhignx.gif" alt="An animation of Stephen Colbert losing his mind in anger"> Me, circa 2009 expressing my feelings on Web standards.
+		<video src="/media/colbert-freaking.mp4" autoplay="" alt="An animation of Stephen Colbert losing his mind in anger"></video>
+		Me, circa 2009 expressing my feelings on Web standards.
 	</div>
 
 	<p>I was jaded, yes.</p>
@@ -304,7 +335,7 @@ America (art for sale)</a></li>
 		<p>When virtually every major tech company on earth was focused on "how on earth can we imagine a new, better 'Web' based on XML?" - when billions of dollars in R&amp;D had been spent over a decade and everyone was desperately trying to figure it out, developers said "JSON: I choose you!".  Guess who carried the day?</p>
 
 		<div class="captioned-image">
-			<img src="https://briankardell.files.wordpress.com/2016/08/il001-_pokecc81mon_-_i_choose_you_03.png" alt="photo of Pokemon's Ash saying 'I choose you'!"> JSON: I choose you!
+			<img src="/media/i_choose_you_03.jpg" alt="photo of Pokemon's Ash saying 'I choose you'!"> JSON: I choose you!
 		</div>
 
 		<p>It's not that standards bodies are "bad" at making standards. The problem, at its core, is how we approach/view standards and how we set up the right economics.</p>
@@ -312,7 +343,7 @@ America (art for sale)</a></li>
 	<section class="sectioning">
 		<contextual-heading role="heading" aria-level="2">Fixing the economics</contextual-heading>
 		<div class="captioned-image p-attached p-attached-left">
-			<img src="https://briankardell.files.wordpress.com/2016/08/ewm-1.jpg" alt="The extensible web logo"> The Extensible Web Manifesto Logo by the great Bruce Lawson
+			<img src="/media/ewm-1.jpg" alt="The extensible web logo"> The Extensible Web Manifesto Logo by the great Bruce Lawson
 		</div>
 		<p>Around 2010, a lot of people began talking about what was wrong with Web Standards and how we might fix it. This led to, not a new standards body, but a joint statement of core principles by people involved at many levels: <a href="https://extensiblewebmanifesto.org/" target="_blank">The Extensible Web Manifesto</a>.</p>
 
