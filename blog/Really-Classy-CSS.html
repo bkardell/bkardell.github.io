@@ -35,7 +35,7 @@ section > .captioned-image.p-attached {
 }
 
 
-.captioned-image img {
+.captioned-image img, .captioned-image video {
     display: block;
     max-width: 100%;
     margin: 0 auto 1em auto;
@@ -157,6 +157,33 @@ header .name {
 article>*:not(contextual-heading,a), section>*:not(contextual-heading,a) {
     margin-left: 0.45rem;
 }
+
+blockquote {
+  font-family: serif;
+  background: #f9f9f9;
+  border-left: 10px solid #ccc;
+  margin: 1.5em 10px;
+  padding: 0.5em 10px;
+}
+blockquote:before {
+  color: #ccc;
+  content: open-quote;
+  font-size: 2em;
+  line-height: 0.1em;
+  margin-right: 0.25em;
+  vertical-align: -0.4em;
+}
+
+blockquote:after {
+  color: #ccc;
+  content: close-quote;
+  font-size: 2em;
+  line-height: 0.1em;
+  margin-left: 0.25em;
+  vertical-align: -0.4em;
+}
+
+
 @media (max-width: 800px){
     body {
         flex-direction: column;
@@ -202,7 +229,9 @@ article>*:not(contextual-heading,a), section>*:not(contextual-heading,a) {
         width: 100%;
     }
     main li .source { display: block; }
+
 }</style>
+    <style>.thanksTo { font-style: italic; font-size: 0.8rem; }</style>
   </head>
   <body>
     <input id="aboutMeToggle" class="sr-only" type="checkbox" checked="">
@@ -288,5 +317,14 @@ America (art for sale)</a></li>
 </article></main>
 
   
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-88027178-1', 'auto');
+    ga('send', 'pageview');
+  </script>
 
 </body></html>
