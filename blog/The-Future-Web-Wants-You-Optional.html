@@ -70,7 +70,12 @@ code-format {
 }
 [aria-level="4"] {
     color: #856363;
-    font-size: 1.15rem;
+    font-size: 1.2rem;
+}
+[aria-level="5"], [aria-level="6"] {
+    color: #667496;
+    font-size: 1.1rem;
+    font-weight: bolder;
 }
 .posted-on {
     font-style: italic;
@@ -273,16 +278,18 @@ America (art for sale)</a></li>
     <main>
     <div class="posted-on">Posted on 8/24/2016</div><article posted-on="8/24/2016" class="sectioning">
 	<style>
-		body:not(.prefers-images) > header { display: none; }
+		body:not(.preferences-set) > :not(main) { display: none; }
+		body:not(.preferences-set) {
+			background-color: #444;
+			color: white;
+		}
 		body:not(.prefers-images) .captioned-image:not(.active) { display: none; }
 		#downloadsPrefs {
 			position: absolute;
-			background-color: gray;
 			top: 0;
 			left: 0;
 			width: 100vw;
 			height: 100vh;
-			color: white;
 		}
 		#downloadsPrefs p {
 			margin: 10%;
@@ -292,48 +299,55 @@ America (art for sale)</a></li>
 		}
 	</style>
 	<div id="downloadsPrefs">
-		<p>I tend to use a number of images in my posts for visual flourish. Peronally, I like it that way.  For many people, I'd prefer for them to read it that way.  However, for users on a metered or slow connection, downloading unnecessary images is, well, unnecessary, potentially costly and kind of rude.  Just to be polite to my users, I offer the ability for you to opt out of this...
+		<p style="font-size: 1.5rem">Welcome note...</p>
+		<p>My posts frequently have a 'theme' and tend to use a number of images for visual flourish. Peronally, I like it that way, I find it more engaging and I prefer for people to read it that way.  However, for users on a metered or slow connection, downloading unnecessary images is, well, unnecessary, potentially costly and kind of rude.  Just to be polite to my users, I offer the ability for you to opt out of 'optional' images...
 		</p>
-		<p>Download all images? <input type="checkbox" id="download-all-images-pref" checked=""></p>
-		<p>Don't ask me again on this device <input type="checkbox" id="download-all-images-pref-save"></p>
-		<p><button onclick="setDownloadPrefs()">Take me to the content</button></p>
+		<p><label>Show me all the images when I read <input type="checkbox" id="download-all-images-pref" checked=""></label></p>
+		<p><label>Don't ask me again on this device <input type="checkbox" id="download-all-images-pref-save"></label></p>
+		<p><button id="setDownloadPrefs">Take me to the content</button></p>
 	</div>
 	<script>
 		'use strict'
-
-		function downloadImages () {
-			var lazy = Array.prototype.slice.call(document.querySelectorAll('.captioned-image>[data-src]'));
-			lazy.forEach(function(media) {
-				media.src = media.getAttribute('data-src');
-				media.parentElement.classList.add('active');
-			})
-		}
-		function setDownloadPrefs() {
-			var all = document.querySelector('#download-all-images-pref'),
-				save = document.querySelector('#download-all-images-pref-save'),
-				prefs = window.localStorage.downloadsPrefs
-
-			if (all.checked) {
-				downloadImages();
+		(function () {
+			var prefsButton = document.querySelector('#setDownloadPrefs'),
+				prefs = window.localStorage.downloadsPrefs;
+			function downloadImages () {
+				var lazy = Array.prototype.slice.call(document.querySelectorAll('.captioned-image>[data-src]'));
+				lazy.forEach(function(media) {
+					media.src = media.getAttribute('data-src');
+					media.parentElement.classList.add('active');
+				})
 			}
-			if (save.checked) {
-				window.localStorage.downloadsPrefs = all.checked;
+			function removeDownloadPrefsOverlay() {
+				document.body.classList.add('preferences-set')
+				document.querySelector('#downloadsPrefs').remove()
 			}
-			document.querySelector('#downloadsPrefs').remove()
-		}
 
-		var prefs = window.localStorage.downloadsPrefs;
-		if (typeof prefs !== 'undefined') {
-			console.log(prefs)
-			if (prefs === 'true') {
-				document.body.classList.add('prefers-images')
-				window.localStorage.downloadsPrefs = prefs
-				window.addEventListener('DOMContentLoaded', downloadImages)
+			prefsButton.addEventListener('click', function() {
+				var all = document.querySelector('#download-all-images-pref'),
+					save = document.querySelector('#download-all-images-pref-save'),
+					prefs = window.localStorage.downloadsPrefs
+
+				if (all.checked) {
+					downloadImages();
+				}
+				if (save.checked) {
+					window.localStorage.downloadsPrefs = all.checked;
+				}
+				removeDownloadPrefsOverlay()
+			});
+
+			if (typeof prefs !== 'undefined') {
+				console.log(prefs)
+				if (prefs === 'true') {
+					document.body.classList.add('prefers-images')
+					window.localStorage.downloadsPrefs = prefs
+					window.addEventListener('DOMContentLoaded', downloadImages)
+				}
+				removeDownloadPrefsOverlay()
 			}
-			document.querySelector('#downloadsPrefs').remove()
-		}
+		}())
 	</script>
-
 	<contextual-heading role="heading" aria-level="1">The Future Web Wants You</contextual-heading>
 	<p class="segue">A few weeks ago I gave a talk in Pittsburgh, PA at Code and Supply. <a href="https://www.youtube.com/watch?v=rwWEQPc5GRE" target="_blank">It was recorded if you would rather watch the video </a>(the actual talk is ~40 minutes, the video captures some of the Q&amp;A afterward as well), but I'm more comfortable writing and I thought it might be worth a stab at a companion piece that tries to make the same points/arguments in blog-post-size, so - here it is.</p>
 

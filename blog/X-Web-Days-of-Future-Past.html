@@ -70,7 +70,12 @@ code-format {
 }
 [aria-level="4"] {
     color: #856363;
-    font-size: 1.15rem;
+    font-size: 1.2rem;
+}
+[aria-level="5"], [aria-level="6"] {
+    color: #667496;
+    font-size: 1.1rem;
+    font-weight: bolder;
 }
 .posted-on {
     font-style: italic;
@@ -272,13 +277,84 @@ America (art for sale)</a></li>
 </header>
     <main>
     <div class="posted-on">Posted on 6/20/2016</div><article posted-on="6/20/2016" class="sectioning">
+	<style>
+		body:not(.preferences-set) > :not(main) { display: none; }
+		body:not(.preferences-set) {
+			background-color: #444;
+			color: white;
+		}
+		body:not(.prefers-images) .captioned-image:not(.active) { display: none; }
+		#downloadsPrefs {
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100vw;
+			height: 100vh;
+		}
+		#downloadsPrefs p {
+			margin: 10%;
+		}
+		#downloadsPrefs ~ * {
+			display: none;
+		}
+	</style>
+	<div id="downloadsPrefs">
+		<p style="font-size: 1.5rem">Welcome note...</p>
+		<p>My posts frequently have a 'theme' and tend to use a number of images for visual flourish. Peronally, I like it that way, I find it more engaging and I prefer for people to read it that way.  However, for users on a metered or slow connection, downloading unnecessary images is, well, unnecessary, potentially costly and kind of rude.  Just to be polite to my users, I offer the ability for you to opt out of 'optional' images...
+		</p>
+		<p><label>Show me all the images when I read <input type="checkbox" id="download-all-images-pref" checked=""></label></p>
+		<p><label>Don't ask me again on this device <input type="checkbox" id="download-all-images-pref-save"></label></p>
+		<p><button id="setDownloadPrefs">Take me to the content</button></p>
+	</div>
+	<script>
+		'use strict'
+		(function () {
+			var prefsButton = document.querySelector('#setDownloadPrefs'),
+				prefs = window.localStorage.downloadsPrefs;
+			function downloadImages () {
+				var lazy = Array.prototype.slice.call(document.querySelectorAll('.captioned-image>[data-src]'));
+				lazy.forEach(function(media) {
+					media.src = media.getAttribute('data-src');
+					media.parentElement.classList.add('active');
+				})
+			}
+			function removeDownloadPrefsOverlay() {
+				document.body.classList.add('preferences-set')
+				document.querySelector('#downloadsPrefs').remove()
+			}
+
+			prefsButton.addEventListener('click', function() {
+				var all = document.querySelector('#download-all-images-pref'),
+					save = document.querySelector('#download-all-images-pref-save'),
+					prefs = window.localStorage.downloadsPrefs
+
+				if (all.checked) {
+					downloadImages();
+				}
+				if (save.checked) {
+					window.localStorage.downloadsPrefs = all.checked;
+				}
+				removeDownloadPrefsOverlay()
+			});
+
+			if (typeof prefs !== 'undefined') {
+				console.log(prefs)
+				if (prefs === 'true') {
+					document.body.classList.add('prefers-images')
+					window.localStorage.downloadsPrefs = prefs
+					window.addEventListener('DOMContentLoaded', downloadImages)
+				}
+				removeDownloadPrefsOverlay()
+			}
+		}())
+	</script>
 	<contextual-heading role="heading" aria-level="1">X-Web: Days of Future Past</contextual-heading>
 	<p class="seque">If you're not a comic book nerd, or a comic movie nerd, I suppose an explanation is necessary: In the Marvel Universe, there is a genetic mutation in some humans called "the X-gene". This gene leads to development of an exotic protein which can radically affect other genes in unpredictable ways. The result is mutants with all sorts of different "super" abilities. This is the basis for the story lines in the X-Men comics. Some humans, without the X-gene, see mutants as freaks, there is prejudice against them. Others would like to recruit them as weapons. Still others are friends. The mutant community is divided too. One group of mutants believe that they are a new homo superior destined to become the dominant species and they're willing to earn this by fear and force. Another group of mutants, the X-Men, led by Professor Xavier, believe that mutants and non-mutants should live in harmony. Mutants powers can even aid humanity. They work very hard for the advancement of peace and tolerance. And then, there are quite a lot of people - both mutants and everydays humans who are torn back and forth somewhere in the middle on a lot of the subtleties that arise. One of the most amazing parts of the narrative is that the leaders of the two groups are actually best friends. They actually agree on much. Most of their followers are not similarly friendly. It's kind of a hot mess, and it reminds me a little of the Web community.</p>
 
 	<p>I don't think it should be controversial to say "we aren't really where we'd like to be" on the Web. For some reason there seems to be more division that we'd like. Some would like to paint the future, or even the present, as being dark and desolate...</p>
 
 	<div class="captioned-image">
-		<img src="https://briankardell.files.wordpress.com/2016/05/fsztzvwcr6kpsmzcbjx2.jpg" alt="A still from X-Men Days of Future Past in which the quote applies">
+		<img data-src="https://briankardell.files.wordpress.com/2016/05/fsztzvwcr6kpsmzcbjx2.jpg" alt="A still from X-Men Days of Future Past in which the quote applies">
 		The future: a dark, desolate world. A world of war, suffering, loss on both sides. Mutants, and the humans who dared to help them, fighting an enemy we cannot defeat. - Professor Xavier
 	</div>
 
@@ -332,7 +408,7 @@ America (art for sale)</a></li>
 		<contextual-heading role="heading" aria-level="2">If the Web had an "X-Gene" it would be JavaScript.</contextual-heading>
 		<p>Yes, the X-Gene can give you powers that are seriously abused. Yes, people might use their powers in not super ways. They might even do something like try to drop a stadium on the White House...</p>
 
-		<div class="captioned-image"><img src="https://briankardell.files.wordpress.com/2016/06/magneto20x20men20rfk.gif" alt="">Please, don't try to drop a stadium on the White House)</div>
+		<div class="captioned-image" aria-hidden="true"><video data-src="/media/magneto-lifting-stadium.mp4" autoplay="" loop=""></video>Please, don't try to drop a stadium on the White House)</div>
 
 		<p>But it can also give us powers to do good things, like, you know... Save the world. You might have noticed that there are a number of sites using the <code tag-esc="">video</code> element that are perfectly accessible when used with a modern browser, and styled when embedded as well. That's possible because of JavaScript. JavaScript made a solution that was more accessible possible. It's a nice thing to say "It should work in really old browsers, even without JavaScript enabled" but the truth is, that doesn't match where we are in a lot of cases. Saying "you don't have to use a modern browser or have JavaScript enabled... unless you are disabled" seems like... I don't know, kind of a dick move.</p>
 
@@ -342,7 +418,7 @@ America (art for sale)</a></li>
 		<section class="sectioning">
 			<contextual-heading role="heading" aria-level="3">Enter: Xavier's School for Gifted Youngsters</contextual-heading>
 			<div class="captioned-image p-attached p-attached-left">
-				<img src="https://briankardell.files.wordpress.com/2016/06/90812-x-men-first-class-xmen-first-class.jpg?w=2448" alt="Professor's Xavier's School For Gifted Youngsters Logo">
+				<img data-src="https://briankardell.files.wordpress.com/2016/06/90812-x-men-first-class-xmen-first-class.jpg?w=2448" alt="Professor's Xavier's School For Gifted Youngsters Logo">
 				X-Web: First class.
 			</div>
 
@@ -357,7 +433,7 @@ America (art for sale)</a></li>
 
 
 			<div class="captioned-image p-attached p-attached-right">
-				<img src="https://briankardell.files.wordpress.com/2016/05/x-men-days-of-future-past-storm-wallpaper.jpg" alt="">
+				<img data-src="https://briankardell.files.wordpress.com/2016/05/x-men-days-of-future-past-storm-wallpaper.jpg" alt="">
 			</div>
 
 			<p>Imagine then, that we could go back in time - low level features exposed and the ability to mint custom elements. Imagine, if you can, that this was part of the Web from Day One. It's a big ask of the imagination, I realize, but it requires no more suspension of belief than time travel or a genetic mutation that somehow grants its possessor control over the weather, and we find that entertaining, so try to follow along...</p>

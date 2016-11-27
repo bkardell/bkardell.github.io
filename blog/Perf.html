@@ -1,0 +1,427 @@
+<html lang="en" resource-type="blogpost"><head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Performance: Shame, Hope, Nuance and Interesting Problems</title>
+    <style>.captioned-image {
+    background-color: #eaeaea;
+    display: block;
+    overflow: hidden;
+    padding: 1rem;
+    text-align: center;
+    font-style: italic;
+}
+
+.captioned-image.p-attached {
+    width: 40%;
+    display: inline-block;
+    margin: 0 1rem 2rem 1rem;
+}
+
+section > .captioned-image.p-attached {
+    margin-top: 1.5rem; /* correct for heading size*/
+}
+
+.captioned-image.p-attached.p-attached-left {
+    float: left;
+}
+
+.captioned-image.p-attached.p-attached-right {
+    float: right;
+}
+
+.captioned-image.p-attached + * + * {
+    clear: both;
+    margin-top: 2rem;
+}
+
+
+.captioned-image img, .captioned-image video {
+    display: block;
+    max-width: 100%;
+    margin: 0 auto 1em auto;
+}
+.source {
+    font-style: italic;
+}
+body {
+    display: flex;
+    font: 1em "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-weight: 300;
+    line-height: 1.625;
+}
+h1 { margin: 0.5rem; }
+code-format {
+    border-left: 0.5rem solid rgba(123,115,209,0.35);
+    display: block;
+    padding: 0.5rem;
+    margin-bottom: 1rem;
+}
+[aria-level="1"] {
+    color: #43686b;
+    font-size: 1.45rem;
+}
+[aria-level="2"] {
+    color: #856363;
+    font-size: 1.35rem;
+}
+[aria-level="3"] {
+    color: #856363;
+    font-size: 1.25rem;
+}
+[aria-level="4"] {
+    color: #856363;
+    font-size: 1.2rem;
+}
+[aria-level="5"], [aria-level="6"] {
+    color: #667496;
+    font-size: 1.1rem;
+    font-weight: bolder;
+}
+.posted-on {
+    font-style: italic;
+    font-size: 0.8rem;
+    text-align: right;
+    margin-bottom: 1rem;
+}
+
+ul, li {
+    margin: 0.5rem;
+    text-align: left;
+}
+header {
+    padding-top: 1rem;
+    padding-right: 2rem;
+    background-color: #fbf5e9;
+}
+.tagline {
+    font-style: italic;
+    text-align: center;
+}
+
+[tag-esc] {
+    color: maroon;
+    font-family: Courier, "Lucida Console", monospace;
+}
+
+[tag-esc]::before {
+    content: '<';
+}
+
+[tag-esc]::after {
+    content: '>';
+}
+
+main {
+    min-width: 50%;
+    width: 80%;
+    padding: 1rem;
+}
+header .title {
+    background-color: rgba(123,115,209,0.35);
+    padding: 0.3rem;
+    padding-left: 0.25rem;
+    font-weight: bolder;
+    font-size: 0.9rem;
+    border-left: 1rem solid #999298;
+}
+
+header .profile {
+    width: 50%;
+    margin: 1rem 25%;
+}
+
+header .title + nav {
+    font-size: 0.9rem;
+}
+
+header .blurb {
+    font-size: 0.75rem;
+    text-align: center;
+}
+header .name {
+    text-align: center;
+    font-size: xx-large;
+}
+.segue {
+    font-style: italic;
+}
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  border: 0;
+}
+[for="aboutMeToggle"] {
+    display: none;
+}
+/* this needs rethinking, it wants a selector like 'not flow content' */
+article>*:not(contextual-heading,a), section>*:not(contextual-heading,a) {
+    margin-left: 0.45rem;
+}
+
+blockquote {
+  font-family: serif;
+  background: #f9f9f9;
+  border-left: 10px solid #ccc;
+  margin: 1.5em 10px;
+  padding: 0.5em 10px;
+}
+blockquote:before {
+  color: #ccc;
+  content: open-quote;
+  font-size: 2em;
+  line-height: 0.1em;
+  margin-right: 0.25em;
+  vertical-align: -0.4em;
+}
+
+blockquote:after {
+  color: #ccc;
+  content: close-quote;
+  font-size: 2em;
+  line-height: 0.1em;
+  margin-left: 0.25em;
+  vertical-align: -0.4em;
+}
+
+
+@media (max-width: 800px){
+    body {
+        flex-direction: column;
+    }
+    header {
+        border-bottom: 1px solid #afafff;
+    }
+
+    .captioned-image.p-attached {
+        width: 100%;
+        margin: 1rem 0;
+    }
+
+    .captioned-image.p-attached.p-attached-left,
+    .captioned-image.p-attached.p-attached-right {
+        float: none;
+    }
+
+    [for="aboutMeToggle"] {
+        background-color: #675e5e;
+        color: white;
+        padding: 0.25rem;
+        padding-left: 0.5rem;
+        display: block;
+        border-left: 1rem solid black;
+    }
+    #aboutMeToggle:focus + [for="aboutMeToggle"]{
+        outline: 4px solid #c6ddf2;
+    }
+
+    #aboutMeToggle:checked ~ header {
+        display: none;
+    }
+
+    header li { display: inline; margin-left: -0.5em; }
+    header .blurb li::after { content: '; '; }
+    header  nav li {
+        display: inline-block;
+        margin-left: 0.35rem;
+        margin-right: 0.35rem;
+    }
+    header .title {
+        width: 100%;
+    }
+    main li .source { display: block; }
+
+}</style>
+    <style>.thanksTo { font-style: italic; font-size: 0.8rem; }</style>
+  </head>
+  <body>
+    <input id="aboutMeToggle" class="sr-only" type="checkbox" checked="">
+<label for="aboutMeToggle">Toggle author information</label>
+<header>
+    <div class="name">
+        Brian Kardell
+    </div>
+    <img class="profile" src="/profile.jpg" alt="">
+    <div class="tagline"><a href="/">Betterifying the Web</a></div>
+    <div class="blurb">
+        <ul>
+            <li>Sr Front-End Engineer at Apollo Group, Inc</li>
+            <li>Original Co-author/Co-signer of The Extensible Web Manifesto</li>
+            <li>Co-Founder/Chair, W3C Extensible Web CG</li>
+            <li>Member, W3C (The JS Foundation)</li>
+            <li>Co-author of HitchJS</li>
+            <li>Blogger</li>
+            <li>Art, Science &amp; History Lover</li>
+            <li>Standards Geek</li>
+        </ul>
+    </div>
+    <div class="title">Follow Me On...</div>
+    <nav>
+        <ul>
+            <li><a rel="me" href="https://briankardell.wordpress.com">Wordpress</a></li>
+            <li><a rel="me" href="https://medium.com/@briankardell">Medium</a></li>
+            <li><a rel="me" href="https://twitter.com/briankardell">Twitter</a></li>
+            <li><a rel="me" href="https://github.com/bkardell/">Github</a></li>
+            <li><a rel="me" href="https://codepen.io/bkardell">Codepen</a></li>
+            <li><a rel="me" href="https://www.linkedin.com/in/brian-kardell-08a4264">LinkedIn</a></li>
+            <li><a rel="me" href="https://www.instagram.com/kardellbrian">Instagram (for
+art)</a></li>
+            <li><a rel="me" href="http://fineartamerica.com/profiles/brian-kardell?">Fine Art
+America (art for sale)</a></li>
+        </ul>
+    </nav>
+</header>
+    <main>
+    <div class="posted-on">Posted on 11/22/2015</div><article posted-on="11/22/2015" class="sectioning">
+	<contextual-heading role="heading" aria-level="1">Performance: Shame, Hope, Nuance and Interesting Problems</contextual-heading>
+	<p class="segue">My free account on Wordpress.com has served me pretty well over the years by most measures.  I didn't have to set anything up, I use it, people all over the world read it - and did I mention it was free?  What else is there really?  But I've always wanted more control, and ownership of your own content is a really good thing, so couple of weeks ago, I broke down and bought <a href="https://bkardell.com">bkardell.com</a>. Given a domain, I decided that now that moving lots of legacy content there would be an interesting and fun exercise. I'd like to tell you about some things it's made me think about...</p>
+
+	<p>Being a nerd with a new green field pet project with no deadline is fun, so when I decided to move my legacy posts to my new domain I decided not to just install some blogging software.  I'll take it slow, build it out from nothing - try to have no preconceived notions and re-experience pain (or not).  So, every morning for the past week, instead of reading twitter I while I drank my coffee, I worked on my site for half an hour.  I made some HTML and CSS and setup a home page.  Then I added a build so that I can generate pages from templates and a few other things.  Then, for most of the week, each morning I opened the wordpress editor and copied a post into my new little system, made a few tweaks, and moved on. For now, I'd just leave the image hosting to wordpress until I got the all content up, then maybe I'll write a little tool to download them all and update their URLs automatically.  That was the plan.  Fun.  Each day, I'd pat myself on the back and think "Well done Brian, well done."</p>
+
+	<section class="sectioning">
+		<contextual-heading role="heading" aria-level="2">And then I saw it</contextual-heading>
+		<p>Friday morning, after I had already closed the Wordpress editor containing the post that I was moving, I realized that I'd messed up a URL for an image during editing.  Instead of re-opening the editor, I just went to the post and opened devtools to grab it. Then I noticed it: <em>My simple blog post on wordpress.com had been making over a hundred HTTP requests and weighing in at 4.3Mb!</em></p>
+
+		<p>Wait.... What?  How???  I recoiled in horror.  How had they not taken away my nerd license??  My immediate reaction was to do some more analysis - just in order to properly deepen my feelings of shame.  I setup devtools to emulate 3g and a low end device and pulled the blog post up again.  It took almost 16 seconds to reach DOMContentLoaded and 48 seconds to reach Loaded. In reality, about 20 seconds before I had usefully readable content.  I fed it to <a href="https://www.webpagetest.org">https://www.webpagetest.org</a> - it choked before giving me a report, twice.</p>
+
+		<p>Clearly, this was terrible.</p>
+
+		<section class="sectioning">
+			<contextual-heading role="heading" aria-level="3">A timeout for nuance</contextual-heading>
+			<p>Apologies for this long caveat, but I feel like it is necessary in our industry... Look, everything has nuance. Lest someone take the observations this post out of context, I want to ask:  Is this really a catastrophic problem?</p>
+
+			<p>It feels bad to a developer to see this, for sure.  But it seems that it was not, in fact, a problem of epic proportions.  Many people, from all around the world read my blog. Not a single person ever commented on this.  Further, I frequently proof my own posts and even go back and find them when I'm in some distant location trying to remember something - and in all the years that I had it, I have never once noticed it to be a problem.  "Yes, but.." you think "you are tech guy in a wealthy country with unlimited speed - you wouldn't notice it".  Except that in this case that's not entirely true.</p>
+
+			<p>You see, I recently spent 2 years living with a very low-end Android phone that you can buy (not with a plan, brand new) for $20 retail.  I live in and regularly visit areas with some pretty terrible sketchy/show mobile service. Why?  Because I am a real person.  Real people run the gambit of situations and mine briefly made this a choice I was willing to live with for a time.  Even under these conditions, I never noticed.  You might wonder how that is possible, so I'll explain...</p>
+
+			<section class="sectioning">
+				<contextual-heading role="heading" aria-level="4">Real People, Real Cases</contextual-heading>
+				<p>How fast should your site load? How many bytes should it be? I believe the answer is not a number any more definititely quantifiable than the question "what kind of car should I buy?".  The answer is frequently circumstantial - it depends on what you need to do with it, how much you have to invest, the climate that you live in and so on.  This is no different.  Everything you view in a Web browser is not equal simply because it is in a Web browser, it's a negotiation of a lot of complex factors in real life for both you and your users.</p>
+
+				<p>When I'm on 3g, I know things are going to take longer.  When I'm on shitty hardware, I know my hardware is shitty. In these conditions, I won't leave your site in 2 seconds if it doesn't load.  Why?  Because nothing loads in 2 seconds in those conditions.  Literally nothing.  Opening twitter on that device could take, in some cases, 10 seconds.  I'm willing to wait, in fact, I don't even notice the wait time after a whole because I know that it is my situation.  It was my norm.  Further, in this case (the native Twitter app), I know that I am paying a startup cost and that once it's all loaded and primed it'll be absolutely fine.</p>
+
+				<p>I develop lots of apps that have all sorts of different concerns.  Sometimes they are on an internal network where we control the browsers and once logged in people are in it pretty much all day every day.  In those kinds of cases, I don't worry about these sorts of things so much.  Loading 2 or 3Mb isn't a huge concern in those cases, especially if you can heavily cache and reduce those payments to be very infrequent things.  Spending an inordinate amount of time and money catering to an audience we don't have would be wasteful.  Sure, we might save our company users a fraction of a second once a day, maybe even a whole second.  But... They're not going anywhere.</p>
+
+				<p>The time that influences the bounce rate for online banking is probably much much higher than it is for an article that you only kinda sorta wanted to read in the first place, and everything else lives on a scale somewhere in between.</p>
+
+				<p>So, please - read this all with nuance.  I am not making a hard-line argument that everything needs to be infinitely tweaked. How lean is lean enough? How fast is fast enough? It's debatable... Obviously, lighter and faster is always better, but there is a point of diminishing return that you'll have to decide for yourself.</p>
+
+			</section>
+		</section>
+
+
+
+		<section class="sectioning">
+			<contextual-heading role="heading" aria-level="3">For <em>me</em>, this is unacceptable</contextual-heading>
+			<p>All those caveats aside, this is still unacceptable to me and here's why:  As I said, articles are not special in any way.  I'm not going to get a lot of good will because a user really wants to or needs to read my post.  I'm not providing a service.  Users don't want to "spend time" with my blog.  We're not building relationships there or achieving tasks to our complete work.  For a number of people, it might be the only time they ever visit my site.  They're not playing a game or conferencing.  Maybe they just <em>kind of</em> want to read some fucking content. In my experience, this is precisely the kind of thing that I would give up on if it took too long.  Further, I really really <em>want</em> them to read my content.  For me, I have another concern:  Metered connections.  I have a whole lot of readers who travel internationally and have metered plans while traveling.  It's awfully nice if they read my post, but it feels a little thoughtless if I take a noticable hunk of their plan if I can avoid it.</p>
+
+			<section class="sectioning">
+				<contextual-heading role="heading" aria-level="4">So now what?</contextual-heading>
+				<p>Well, at least now I was in control and - I know that <em>I</em> did not require 100 HTTP requests, so I opened my new post to compare:</p>
+
+				<p><em>Number of requests</em>: 13.  Yes, much much better. <em>DOMContentLoaded</em> in milliseconds, not seconds.  Much better.  <em>Size?</em>  Still megabytes large.</p>
+
+				<p><em>Let me put this into perspective:  The HTML, CSS and even my avatar all combined weigh in at a whopping 20k.</em></p>
+
+				<p>So where were all these megabytes coming from?  JavaScript?  Nope, I didn't have any yet. None. The answer is images.  Another post was even worse - 13mb and mostly because of a single animated gif.</p>
+
+				<section class="sectioning">
+					<contextual-heading role="heading" aria-level="5">Enter: suprisingly interesting problem</contextual-heading>
+					<p>This raises an interesting challenge that I don't frequently get to spend a lot of time thinking about... The traditional CMS and "page oriented" web and content with graphics.</p>
+
+					<section class="sectioning">
+						<contextual-heading role="heading" aria-level="6">The scary thing</contextual-heading>
+						<p>On some level, the truly scary thing is how it got that way:  After all, I'm not the average Joe who you give a CMS to in order to create content.  I am savvy.  I do this for a living.  But CMS's have been around for a long, long time and there are lots of products and when it comes to a problem that is easily handled with a CMS, my attitude is often just "well, let's just use a CMS for that, there are more interesting problems to solve".  It's unlike me to just assume things, but I assumed that Wordpress.com was really doing a lot more for me than it was.  The brand, the interface, and the ease with which I could setup and publish content made me essentially 'forget' to really care about any of this stuff.  My first thought was that if I am writing huge pages as someone with skills, I wonder what happens to people who walk into this without any knowledge?  I'll bet there are some truly gnarly blog pages out there.</p>
+
+						<p>The good news is that simply optimizing even <em>some of</em> my images, turning some animated gifs into video and choosing better image formats for some things and the image weight went from megabytes to a few hundreds of kilobytes.  But, is that good enough?  Maybe.  At least it isn't blatantly disrespectful of their plans and bandwidth, but it led me to an interesting bit of thought...</p>
+
+
+						<p>I frequently write my blog posts with themes and images for no "real" reason than I happen to like that.  I spent some time finding an acceptable way to make the same images look good, size and layout well on any device. I find it more engaging.  I think that my readers usually do too.  I don't have data to back that up beyond that I continue to have readers and that often people comment in relation to that aspect as much as the content itself.  I'd really prefer not to change that.  It's my style.  So I'm left with an interesting choice:  Stop being me, or conceed that I'm unwilling to give you content without the images... Just serve the less engaging content to everyone.  Am I?  Sometimes perhaps?</p>
+					</section>
+
+					<section class="sectioning">
+						<contextual-heading role="heading" aria-level="6">Optional Images and a budget</contextual-heading>
+						<p>Here's why this is an interesting problem to me:  Images aren't new, we've had them since 1996 and this has kind of always been the case, but the truth is that our approach doesn't take a lot into account.  Whether I am willing to give you content without images or content with images or content with fewer images has a lot to do with the role of the image.  Sometimes, images are really important.  As an amature painter, I can tell you that I have posts in which the image _is_ the primary content. I have other cases where there's an important illustration and then I have a bunch of stuff that is less so.  Thus far, I haven't seen any realy interesting ways of dealing with this..</p>
+
+						<p>Every 6 months or so, someone floats an idea about being able to make media queries based on connection speed or whether your connection is metered or not, but these are always problematic and quickly shot down.  The browser just really has no excellent way of knowing - bandwidth fluctuates, there are privacy concerns, people tether and use all kinds of weird setups. Further, I'm not sure it should be my decision.  As I said earlier, what you're willing to read or wait for is a negotiation of sorts - but how can we negotiate this?</p>
+
+						<p>This has me thinking it might be worth running some experiments with UI.  I'm beginning to mark my images as essential or optional, I'm collecting the weight of optional images and setting up some rules around it in my build such that when I have scenarios that might be costly but are mostly due to my writing flare, I can ask you whether that's ok and give you the option of skipping them and saving that choice on that device so that I don't annoy you if you're never in that situation (or always are).  This approach should really limit the amount of time I spend pestering 99% of users to somewhere between 0 (if they never encounter a themed post with a size beyond my totally arbitrary limit of 200k for my own assets) and 1 (the first time they hit one).  Will this cause a big bounce rate increase and actually be counter productive?  I honestly don't know... Let's see.</p>
+
+						<p>Here are a smattering of results to illustrate...</p>
+
+						<table style="width: 100%; border-spacing: 2rem; font-size: 0.8rem">
+							<tbody><tr>
+								<th>Post</th>
+								<th>Wordpress</th>
+								<th>bkardell.com <br> (w/optional)</th>
+								<th>bkardell.com <br> (w/o optional)</th>
+							</tr>
+							<tr>
+								<td>X-Web Days of Future Past
+									<br>
+									<a href="https://briankardell.wordpress.com/2016/06/02/x-web-days-of-future-past/">old</a> |
+									<a href="/blog/X-Web-Days-of-Future-Past.html">new</a>
+								</td>
+								<td>102 requests / 21.4 MB</td>
+								<td>8 requests / 957k</td>
+								<td>4 requests / 45.3k</td>
+							</tr>
+							<tr>
+								<td>The Future Web Wants You
+								<br>
+									<a href="https://briankardell.wordpress.com/2016/08/24/the-future-web-wants-you/">old</a> |
+									<a href="/blog/The-Future-Web-Wants-You.html">new</a>
+								</td>
+								<td>109 requests / 4.3 MB</td>
+								<td>12 requests / 431k</td>
+								<td>4 requests / 49k</td>
+							</tr>
+							<tr>
+								<td>Prognostication and the Failure of the Web
+									<br>
+									<a href="https://briankardell.wordpress.com/2016/05/06/prognostication-the-failure-of-the-web/">old</a> |
+									<a href="/blog/Prognostication-And-The-Failure-Of-The-Web.html">new</a>
+								</td>
+								<td>117 requests / 966k</td>
+								<td>18 requests / 176k</td>
+								<td><em>Doesn't exceed 200k, no prefs applied</em></td>
+							</tr>
+							<tr>
+								<td>A Brief(ish) History of the Web Universe - Part I: The Pre-Web
+									<br>
+									<a href="https://briankardell.wordpress.com/2015/11/22/a-briefish-history-of-the-web-universe-part-i-the-pre-web/">old</a> |
+									<a href="/blog/Brief-ish-History-of-The-Web-Part-1.html">new</a>
+								</td>
+								<td>105 requests / 1.2Mb</td>
+								<td>9 requests / 194k</td>
+								<td><em>Doesn't exceed 200k, no prefs applied</em></td>
+							</tr>
+						</tbody></table>
+
+
+						<p>Is it a good idea? I don't know.  What are the right thresholds, how do I let you know, etc - these are things I'll continue to toy with as I collect data.  In the meantime, if you have thoughts, I'm interested to hear them.</p>
+				</section>
+			</section>
+
+		</section>
+
+
+
+</section></section></article></main>
+
+  
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-88027178-1', 'auto');
+    ga('send', 'pageview');
+  </script>
+
+</body></html>
