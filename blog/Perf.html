@@ -284,9 +284,9 @@ America (art for sale)</a></li>
 
 	<section class="sectioning">
 		<contextual-heading role="heading" aria-level="2">And then I saw it</contextual-heading>
-		<p>Friday morning, after I had already closed the Wordpress editor containing the post that I was moving, I realized that I'd messed up a URL for an image during editing.  Instead of re-opening the editor, I just went to the post and opened devtools to grab it. Then I noticed it: <em>My simple blog post on wordpress.com had been making over a hundred HTTP requests and weighing in at 4.3Mb!</em></p>
+		<p>Friday morning, after I had already closed the Wordpress editor containing the post that I was moving, I realized that I'd messed up a URL for an image during editing.  Instead of re-opening the editor, I just went to the post and opened devtools to grab it. Then I noticed it: <em>My simple blog post on wordpress.com had been making over a hundred HTTP requests and weighing in at 4.3Mb!</em> </p>
 
-		<p>Wait.... What?  How???  I recoiled in horror.  How had they not taken away my nerd license??  My immediate reaction was to do some more analysis - just in order to properly deepen my feelings of shame.  I setup devtools to emulate 3g and a low end device and pulled the blog post up again.  It took almost 16 seconds to reach DOMContentLoaded and 48 seconds to reach Loaded. In reality, about 20 seconds before I had usefully readable content.  I fed it to <a href="https://www.webpagetest.org">https://www.webpagetest.org</a> - it choked before giving me a report, twice.</p>
+		<p>Wait.... What?  How???  I recoiled in horror.  How had they not taken away my nerd license??  My immediate reaction was to do some more analysis - just in order to properly deepen my feelings of shame.  I setup devtools to emulate 3g and a low end device and pulled the blog post up again.  It took almost 16 seconds to reach DOMContentLoaded and 48 seconds to reach Loaded. In reality, about 20 seconds before I had usefully readable content.  I fed it to <a href="https://www.webpagetest.org">https://www.webpagetest.org</a> - it choked before giving me a report, twice. (There were a lot of accessibility issues too, but that's another post)</p>
 
 		<p>Clearly, this was terrible.</p>
 
