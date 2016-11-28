@@ -306,15 +306,31 @@ America (art for sale)</a></li>
 		<p><button id="setDownloadPrefs">Take me to the content</button></p>
 	</div>
 	<script>
-		'use strict'
+		'use strict';
 		(function () {
 			var prefsButton = document.querySelector('#setDownloadPrefs'),
 				prefs = window.localStorage.downloadsPrefs;
 			function downloadImages () {
 				var lazy = Array.prototype.slice.call(document.querySelectorAll('.captioned-image>[data-src]'));
+
 				lazy.forEach(function(media) {
-					media.src = media.getAttribute('data-src');
-					media.parentElement.classList.add('active');
+					let source = media.getAttribute('data-src'),
+						temp,
+						container = media.parentElement;
+
+					if (media.tagName === 'VIDEO') {
+						temp = document.createElement('video')
+						temp.setAttribute('autoplay','')
+						temp.setAttribute('controls','')
+						temp.setAttribute('loop','')
+						temp.innerHTML = '<source src="' + source + '.webm" type="video/webm">'
+										+ '<source src="' + source + '.mp4" type="video/mp4">';
+
+						media.parentElement.replaceChild(temp, media);
+					} else {
+						media.src = media.getAttribute('data-src');
+					}
+					container.classList.add('active');
 				})
 			}
 			function removeDownloadPrefsOverlay() {

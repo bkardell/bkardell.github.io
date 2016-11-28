@@ -306,15 +306,31 @@ America (art for sale)</a></li>
 		<p><button id="setDownloadPrefs">Take me to the content</button></p>
 	</div>
 	<script>
-		'use strict'
+		'use strict';
 		(function () {
 			var prefsButton = document.querySelector('#setDownloadPrefs'),
 				prefs = window.localStorage.downloadsPrefs;
 			function downloadImages () {
 				var lazy = Array.prototype.slice.call(document.querySelectorAll('.captioned-image>[data-src]'));
+
 				lazy.forEach(function(media) {
-					media.src = media.getAttribute('data-src');
-					media.parentElement.classList.add('active');
+					let source = media.getAttribute('data-src'),
+						temp,
+						container = media.parentElement;
+
+					if (media.tagName === 'VIDEO') {
+						temp = document.createElement('video')
+						temp.setAttribute('autoplay','')
+						temp.setAttribute('controls','')
+						temp.setAttribute('loop','')
+						temp.innerHTML = '<source src="' + source + '.webm" type="video/webm">'
+										+ '<source src="' + source + '.mp4" type="video/mp4">';
+
+						media.parentElement.replaceChild(temp, media);
+					} else {
+						media.src = media.getAttribute('data-src');
+					}
+					container.classList.add('active');
 				})
 			}
 			function removeDownloadPrefsOverlay() {
@@ -407,7 +423,11 @@ America (art for sale)</a></li>
 		<contextual-heading role="heading" aria-level="2">If the Web had an "X-Gene" it would be JavaScript.</contextual-heading>
 		<p>Yes, the X-Gene can give you powers that are seriously abused. Yes, people might use their powers in not super ways. They might even do something like try to drop a stadium on the White House...</p>
 
-		<div class="captioned-image" aria-hidden="true"><video data-src="/media/magneto-lifting-stadium.mp4" autoplay="" loop=""></video>Please, don't try to drop a stadium on the White House)</div>
+		<div class="captioned-image" id="s" aria-hidden="true">
+			<video autoplay="" loop="" controls="" data-src="/media/magneto-lifting-stadium">
+			</video>
+			Please, don't try to drop a stadium on the White House)
+		</div>
 
 		<p>But it can also give us powers to do good things, like, you know... Save the world. You might have noticed that there are a number of sites using the <code tag-esc="">video</code> element that are perfectly accessible when used with a modern browser, and styled when embedded as well. That's possible because of JavaScript. JavaScript made a solution that was more accessible possible. It's a nice thing to say "It should work in really old browsers, even without JavaScript enabled" but the truth is, that doesn't match where we are in a lot of cases. Saying "you don't have to use a modern browser or have JavaScript enabled... unless you are disabled" seems like... I don't know, kind of a dick move.</p>
 
