@@ -314,7 +314,7 @@ America (art for sale)</a></li>
 				var lazy = Array.prototype.slice.call(document.querySelectorAll('.captioned-image>[data-src]'));
 
 				lazy.forEach(function(media) {
-					let source = media.getAttribute('data-src'),
+					var source = media.getAttribute('data-src'),
 						temp,
 						container = media.parentElement;
 
