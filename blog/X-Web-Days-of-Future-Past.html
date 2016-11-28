@@ -321,11 +321,14 @@ America (art for sale)</a></li>
 					if (media.tagName === 'VIDEO') {
 						temp = document.createElement('video')
 						temp.setAttribute('autoplay','')
+						temp.setAttribute('controls','')
 						temp.setAttribute('loop','')
 						temp.innerHTML = '<source src="' + source + '.webm" type="video/webm">'
 										+ '<source src="' + source + '.mp4" type="video/mp4">';
-
 						media.parentElement.replaceChild(temp, media);
+						setTimeout(function () {
+							temp.play()
+						}, 0);
 					} else {
 						media.src = media.getAttribute('data-src');
 					}
