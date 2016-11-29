@@ -1,11 +1,10 @@
-
-        <?xml version="1.0"?>
+<?xml version="1.0"?>
         <rss version="2.0">
             <channel>
                 <title>bkardell.com rss feed</title>
                 <link>bkardell.com/</link>
                 <language>en-us</language>
-                <lastBuildDate>Tue Nov 29 2016 12:03:21 GMT-0500 (EST)</lastBuildDate>
+                <lastBuildDate>Tue Nov 29 2016 12:06:31 GMT-0500 (EST)</lastBuildDate>
                 <description>Just the bkardell.com rss feed</description>
         
                             <item>
@@ -44,17 +43,17 @@
                             </item>
                         
                             <item>
-                                <title>The Glory Days of the Web</title>
-                                <link>https://bkardell.com/blog/The-Glory-Days-Of-The-Web.html</link>
-                                <pubDate>10/5/2016</pubDate>
-                                
-                            </item>
-                        
-                            <item>
                                 <title>The Future Web Wants You</title>
                                 <link>https://bkardell.com/blog/The-Future-Web-Wants-You.html</link>
                                 <pubDate>8/24/2016</pubDate>
                                 <image>/media/join-the-rebellion.jpg</image>
+                            </item>
+                        
+                            <item>
+                                <title>The Glory Days of the Web</title>
+                                <link>https://bkardell.com/blog/The-Glory-Days-Of-The-Web.html</link>
+                                <pubDate>10/5/2016</pubDate>
+                                
                             </item>
                         
                             <item>
@@ -66,4 +65,3 @@
                         
                 </channel>
             </rss>
-          
