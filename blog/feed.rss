@@ -5,7 +5,7 @@
                 <title>bkardell.com rss feed</title>
                 <link>bkardell.com/</link>
                 <language>en-us</language>
-                <lastBuildDate>Tue Nov 29 2016 11:58:05 GMT-0500 (EST)</lastBuildDate>
+                <lastBuildDate>Tue Nov 29 2016 12:01:05 GMT-0500 (EST)</lastBuildDate>
                 <description>Just the bkardell.com rss feed</description>
         
                             <item>
@@ -39,15 +39,9 @@
                             </item>
                         
                             <item>
-                                <title>The Future Web Wants You</title>
-                                <link>https://bkardell.com/blog/The-Future-Web-Wants-You-Optional.html</link>
-                                
-                            </item>
-                        
-                            <item>
-                                <title>The Future Web Wants You</title>
-                                <link>https://bkardell.com/blog/The-Future-Web-Wants-You.html</link>
-                                <image>/media/join-the-rebellion.jpg</image>
+                                <title>X-Web: Days of Future Past</title>
+                                <link>https://bkardell.com/blog/X-Web-Days-of-Future-Past.html</link>
+                                <image>https://briankardell.files.wordpress.com/2016/06/90812-x-men-first-class-xmen-first-class.jpg?w=2448</image>
                             </item>
                         
                             <item>
@@ -57,9 +51,9 @@
                             </item>
                         
                             <item>
-                                <title>X-Web: Days of Future Past</title>
-                                <link>https://bkardell.com/blog/X-Web-Days-of-Future-Past.html</link>
-                                <image>https://briankardell.files.wordpress.com/2016/06/90812-x-men-first-class-xmen-first-class.jpg?w=2448</image>
+                                <title>The Future Web Wants You</title>
+                                <link>https://bkardell.com/blog/The-Future-Web-Wants-You.html</link>
+                                <image>/media/join-the-rebellion.jpg</image>
                             </item>
                         
                 </channel>
