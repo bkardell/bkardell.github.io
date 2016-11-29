@@ -5,55 +5,63 @@
                 <title>bkardell.com rss feed</title>
                 <link>bkardell.com/</link>
                 <language>en-us</language>
-                <lastBuildDate>Tue Nov 29 2016 12:01:05 GMT-0500 (EST)</lastBuildDate>
+                <lastBuildDate>Tue Nov 29 2016 12:03:21 GMT-0500 (EST)</lastBuildDate>
                 <description>Just the bkardell.com rss feed</description>
         
                             <item>
                                 <title>A Brief(ish) History of the Web Universe - Part I: The Pre-Web</title>
                                 <link>https://bkardell.com/blog/Brief-ish-History-of-The-Web-Part-1.html</link>
+                                <pubDate>11/22/2015</pubDate>
                                 <image>https://briankardell.files.wordpress.com/2015/11/102618640-03-01.jpg?w=300</image>
                             </item>
                         
                             <item>
                                 <title>Performance: Shame, Hope, Nuance and Interesting Problems</title>
                                 <link>https://bkardell.com/blog/Perf.html</link>
+                                <pubDate>11/22/2015</pubDate>
                                 
                             </item>
                         
                             <item>
                                 <title>Potentially Scattered Thoughts on Web Components and Frameworks</title>
                                 <link>https://bkardell.com/blog/Potentially-Scattered-Thoughts-On-Web-Components.html</link>
+                                <pubDate>9/26/2016</pubDate>
                                 
                             </item>
                         
                             <item>
                                 <title>Prognostication and the Failure of the Web</title>
                                 <link>https://bkardell.com/blog/Prognostication-And-The-Failure-Of-The-Web.html</link>
+                                <pubDate>5/6/2016</pubDate>
                                 <image>https://briankardell.files.wordpress.com/2016/05/fortune_teller_5_by_obliviate_stock-d4zkgb1.jpg</image>
                             </item>
                         
                             <item>
                                 <title>(Really) classy CSS</title>
                                 <link>https://bkardell.com/blog/Really-Classy-CSS.html</link>
+                                <pubDate>5/11/2012</pubDate>
                                 
-                            </item>
-                        
-                            <item>
-                                <title>X-Web: Days of Future Past</title>
-                                <link>https://bkardell.com/blog/X-Web-Days-of-Future-Past.html</link>
-                                <image>https://briankardell.files.wordpress.com/2016/06/90812-x-men-first-class-xmen-first-class.jpg?w=2448</image>
                             </item>
                         
                             <item>
                                 <title>The Glory Days of the Web</title>
                                 <link>https://bkardell.com/blog/The-Glory-Days-Of-The-Web.html</link>
+                                <pubDate>10/5/2016</pubDate>
                                 
                             </item>
                         
                             <item>
                                 <title>The Future Web Wants You</title>
                                 <link>https://bkardell.com/blog/The-Future-Web-Wants-You.html</link>
+                                <pubDate>8/24/2016</pubDate>
                                 <image>/media/join-the-rebellion.jpg</image>
+                            </item>
+                        
+                            <item>
+                                <title>X-Web: Days of Future Past</title>
+                                <link>https://bkardell.com/blog/X-Web-Days-of-Future-Past.html</link>
+                                <pubDate>6/20/2016</pubDate>
+                                <image>https://briankardell.files.wordpress.com/2016/06/90812-x-men-first-class-xmen-first-class.jpg?w=2448</image>
                             </item>
                         
                 </channel>
