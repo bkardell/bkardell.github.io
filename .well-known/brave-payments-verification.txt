@@ -1,4 +1,0 @@
-This is a Brave Payments publisher verification file.
-
-Domain: bkardell.com
-Token: 566f2cf7c3593c9ffea8cf89c6c13d30b8145f1261f65597515356eb11da0a09
