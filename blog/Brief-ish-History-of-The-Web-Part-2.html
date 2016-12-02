@@ -1,0 +1,414 @@
+<html lang="en" resource-type="blogpost"><head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <link rel="alternate" type="application/rss+xml" href="blog/feed.rss" title="bkardell.com/blog rss feed">
+    <title>A Brief(ish) History of the Web Universe - Part II: Time</title>
+    <style>.captioned-image {
+    background-color: #eaeaea;
+    display: block;
+    overflow: hidden;
+    padding: 1rem;
+    text-align: center;
+    font-style: italic;
+}
+
+.captioned-image.p-attached {
+    width: 40%;
+    display: inline-block;
+    margin: 0 1rem 2rem 1rem;
+}
+
+section > .captioned-image.p-attached {
+    margin-top: 1.5rem; /* correct for heading size*/
+}
+
+.captioned-image.p-attached.p-attached-left {
+    float: left;
+}
+
+.captioned-image.p-attached.p-attached-right {
+    float: right;
+}
+
+.captioned-image.p-attached + * + * {
+    clear: both;
+    margin-top: 2rem;
+}
+
+
+.captioned-image img, .captioned-image video {
+    display: block;
+    max-width: 100%;
+    margin: 0 auto 1em auto;
+}
+.source {
+    font-style: italic;
+}
+body {
+    display: flex;
+    font: 1em "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-weight: 300;
+    line-height: 1.625;
+}
+h1 { margin: 0.5rem; }
+code-format {
+    border-left: 0.5rem solid rgba(123,115,209,0.35);
+    display: block;
+    padding: 0.5rem;
+    margin-bottom: 1rem;
+}
+[aria-level="1"] {
+    color: #43686b;
+    font-size: 1.45rem;
+}
+[aria-level="2"] {
+    color: #856363;
+    font-size: 1.35rem;
+}
+[aria-level="3"] {
+    color: #856363;
+    font-size: 1.25rem;
+}
+[aria-level="4"] {
+    color: #856363;
+    font-size: 1.2rem;
+}
+[aria-level="5"], [aria-level="6"] {
+    color: #667496;
+    font-size: 1.1rem;
+    font-weight: bolder;
+}
+.posted-on {
+    font-style: italic;
+    font-size: 0.8rem;
+    text-align: right;
+    margin-bottom: 1rem;
+}
+
+ul, li {
+    margin: 0.5rem;
+    text-align: left;
+}
+header {
+    padding-top: 1rem;
+    padding-right: 2rem;
+    background-color: #fbf5e9;
+}
+.tagline {
+    font-style: italic;
+    text-align: center;
+}
+
+[tag-esc] {
+    color: maroon;
+    font-family: Courier, "Lucida Console", monospace;
+}
+
+[tag-esc]::before {
+    content: '<';
+}
+
+[tag-esc]::after {
+    content: '>';
+}
+
+main {
+    min-width: 50%;
+    width: 80%;
+    padding: 1rem;
+}
+header .title {
+    background-color: rgba(123,115,209,0.35);
+    padding: 0.3rem;
+    padding-left: 0.25rem;
+    font-weight: bolder;
+    font-size: 0.9rem;
+    border-left: 1rem solid #999298;
+}
+
+header .profile {
+    width: 50%;
+    margin: 1rem 25%;
+}
+
+header .title + nav {
+    font-size: 0.9rem;
+}
+
+header .blurb {
+    font-size: 0.75rem;
+    text-align: center;
+}
+header .name {
+    text-align: center;
+    font-size: xx-large;
+}
+.segue {
+    font-style: italic;
+}
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  border: 0;
+}
+[for="aboutMeToggle"] {
+    display: none;
+}
+/* this needs rethinking, it wants a selector like 'not flow content' */
+article>*:not(contextual-heading,a), section>*:not(contextual-heading,a) {
+    margin-left: 0.45rem;
+}
+
+blockquote {
+  font-family: serif;
+  background: #f9f9f9;
+  border-left: 10px solid #ccc;
+  margin: 1.5em 10px;
+  padding: 0.5em 10px;
+}
+blockquote:before {
+  color: #ccc;
+  content: open-quote;
+  font-size: 2em;
+  line-height: 0.1em;
+  margin-right: 0.25em;
+  vertical-align: -0.4em;
+}
+
+blockquote:after {
+  color: #ccc;
+  content: close-quote;
+  font-size: 2em;
+  line-height: 0.1em;
+  margin-left: 0.25em;
+  vertical-align: -0.4em;
+}
+
+
+@media (max-width: 800px){
+    body {
+        flex-direction: column;
+    }
+    header {
+        border-bottom: 1px solid #afafff;
+    }
+
+    .captioned-image.p-attached {
+        width: 100%;
+        margin: 1rem 0;
+    }
+
+    .captioned-image.p-attached.p-attached-left,
+    .captioned-image.p-attached.p-attached-right {
+        float: none;
+    }
+
+    [for="aboutMeToggle"] {
+        background-color: #675e5e;
+        color: white;
+        padding: 0.25rem;
+        padding-left: 0.5rem;
+        display: block;
+        border-left: 1rem solid black;
+    }
+    #aboutMeToggle:focus + [for="aboutMeToggle"]{
+        outline: 4px solid #c6ddf2;
+    }
+
+    #aboutMeToggle:checked ~ header {
+        display: none;
+    }
+
+    header li { display: inline; margin-left: -0.5em; }
+    header .blurb li::after { content: '; '; }
+    header  nav li {
+        display: inline-block;
+        margin-left: 0.35rem;
+        margin-right: 0.35rem;
+    }
+    header .title {
+        width: 100%;
+    }
+    main li .source { display: block; }
+
+}</style>
+    <style>.thanksTo { font-style: italic; font-size: 0.8rem; }</style>
+  </head>
+  <body>
+    <input id="aboutMeToggle" class="sr-only" type="checkbox" checked="">
+<label for="aboutMeToggle">Toggle author information</label>
+<header>
+    <div class="name">
+        Brian Kardell
+    </div>
+    <img class="profile" src="/profile.jpg" alt="">
+    <div class="tagline"><a href="/">Betterifying the Web</a></div>
+    <div class="blurb">
+        <ul>
+            <li>Sr Front-End Engineer at Apollo Group, Inc</li>
+            <li>Original Co-author/Co-signer of The Extensible Web Manifesto</li>
+            <li>Co-Founder/Chair, W3C Extensible Web CG</li>
+            <li>Member, W3C (The JS Foundation)</li>
+            <li>Co-author of HitchJS</li>
+            <li>Blogger</li>
+            <li>Art, Science &amp; History Lover</li>
+            <li>Standards Geek</li>
+        </ul>
+    </div>
+    <div class="title">Follow Me On...</div>
+    <nav>
+        <ul>
+            <li><a rel="me" href="https://briankardell.wordpress.com">Wordpress</a></li>
+            <li><a rel="me" href="https://medium.com/@briankardell">Medium</a></li>
+            <li><a rel="me" href="https://twitter.com/briankardell">Twitter</a></li>
+            <li><a rel="me" href="https://github.com/bkardell/">Github</a></li>
+            <li><a rel="me" href="https://codepen.io/bkardell">Codepen</a></li>
+            <li><a rel="me" href="https://www.linkedin.com/in/brian-kardell-08a4264">LinkedIn</a></li>
+            <li><a rel="me" href="https://www.instagram.com/kardellbrian">Instagram (for
+art)</a></li>
+            <li><a rel="me" href="http://fineartamerica.com/profiles/brian-kardell?">Fine Art
+America (art for sale)</a></li>
+        </ul>
+    </nav>
+</header>
+    <main><div class="posted-on">Posted on 12/7/2015</div><article posted-on="12/7/2015" class="sectioning">
+	<contextual-heading role="heading" aria-level="1">A Brief(ish) History of the Web Universe - Part II: Time</contextual-heading>
+	<p class="segue">
+	Part II of&nbsp;“A Brief(ish) History of the Web Universe” aka “The Boring Posts”. &nbsp;No themes, no punch, just history that I hope I can use to help explain where my own perspectives on a whole bunch of things draw from…</p>
+
+	<p>Tim Berners-Lee was working at CERN which was, by most measures, pretty large. Budgets and official policies were, as they are in many large organizations, pretty rigid and a little bureaucratic. &nbsp;CERN was about particle physics, not funding Tim's idea. &nbsp;More than that, many didn't recognize the value of lots of things which were actually necessary in some way.</p>
+
+	<blockquote>The paradox of the Web was that this very very hard problem to connect heterogenous information from heterogeneous computers on heterogenous networks all over the word -- a very very hard problem, was solved by a small, non-official, open approach by a team with no resources, or, practically none. - Ben Segal from CERN who brought in TCP/IP 'under the radar'</blockquote>
+
+
+	<p>In 1989, despite being actually&nbsp;<em>necessary </em>at this point&nbsp;for CERN to function, a memo went out reminding that it was "unsupported". &nbsp;A lot of the best things in history turn out to effectively have been people of good will working together outside the system to get things done that needed getting done.</p>
+
+	<p>So, in September 1990 Mike Sendall, Tim Berners-Lee's boss at CERN&nbsp;found a  way to&nbsp;give&nbsp;Tim the approval to to develop his idea in a way that many good bosses through history tend to: While no one wanted to fund development of "Tim's idea," there was some interest in Steve Jobs' new NeXT computer (which it appears was also brought in initially despite, rather than as part of CERN policy and plans). &nbsp;And so, under the guise of&nbsp;testing the capabilities/suitability of the NeXT computer for development at CERN in 1990 Tim&nbsp;would be able to create a prototype browser and server.</p>
+
+
+	<p>The&nbsp;NeXT had great tools for developing GUI applications and Tim was able to build a pretty nice prototype GUI with read-write facilities pretty quickly. &nbsp;It let him figure out precisely&nbsp;<em>what</em> he was proposing.</p>
+
+
+	<div class="captioned-image p-attached p-attached-left share-image" style="margin-top:0">
+		<img class="wp-image-1396 size-medium" src="https://briankardell.files.wordpress.com/2015/11/nexteditorbw.gif?w=300" alt="">
+		A screenshot of the NeXT browser from 1993, courtesy of CERN - it looked very similar in 1991.
+	</div>
+
+	<p>As explained in <a href="/blog/Brief-ish-History-of-The-Web-Part-1.html">Part I of this history</a>, there was already a lot going on, standardized or in place by then - for example SGML. &nbsp;Because of this, CERN somewhat unsurprisingly, already had a bunch of SGML documents in the form of a thing called "SGMLGuid" (sometimes just GUID). &nbsp;Unfortunately, the earliest capture of this&nbsp;I can find is from 1992 but here's&nbsp;<a href="http://www.w3.org/History/1992/nfs_dxcern_mirror/rpc/doc/User/rpcuser.sgml" target="_blank">what SGMLGuid&nbsp;looked like</a>.</p>
+
+	<p>SGML itself had gotten quite complex as it tackled ever more problems, and&nbsp;Tim&nbsp;didn't really <em>know</em> SGML. &nbsp;But he&nbsp;saw the clear value in having a language that was at least familiar l<em>ooking</em> for SGML authors, and of having some existing corpus of information. &nbsp;As he said later</p>
+
+	<blockquote>Who would bother to install a client if there wasn't already exciting information on the Web? Getting out of this chicken and egg situation was the task before us....</blockquote>
+
+	<p>Thus, he initially started with a kind of a subset of ~15 GUID tags (<em>plus the critical <code tag-esc="">a</code>  tag for expressing hyperlinks&nbsp;which is Tim's own creation and at the very core&nbsp;of the idea - an exact number is hard to say because the earliest document on this isn't until 1992)</em>. &nbsp;As explained on <a href="http://www.w3.org/2012/08/history-of-the-web/origins.htm" target="_blank">w3.org's origins</a> page:</p>
+
+	<blockquote>The initial HTML parser ignored tags which it did not understand, and ignored attributes which it did not understand from the CERN-SGML tags. As a result, existing SGML documents could be made HTML documents by changing the filename from<em class="code">xxx.sgml</em> to <em class="code">xxx.html</em>. The earliest known HTML document is dated 3 December 1990:</blockquote>
+
+	<code-format type="html"><pre>&lt;p class="code"&gt;&lt;h1&gt;Standardisation&lt;/h1&gt;
+There was not a lot of discussion of this at &lt;a href=Introduction.html&gt;ECHT90&lt;/a&gt;, but there seem to be two leads:
+&lt;ol&gt;
+&lt;li&gt;&lt;a href=People.html#newcombe&gt;Steve newcombe's&lt;/a&gt; and Goldfarber's "Hytime" committee
+looking into SGML, and
+&lt;li&gt;An ISO working group known as MHEG, "Multimedia/HyperText Expert Group".
+led by one Francis Kretz (Thompsa SA? Rennes?).
+&lt;/lo&gt;&lt;/p&gt;</pre></code-format>
+
+	<p>There's a lot of history hiding out in this first surviving HTML actually.</p>
+
+	<p>First, note that this and many others weren't "correct" documents by many counts we'd think of today: There was no doctype, no <code tag-esc="">html</code> element, no <code tag-esc="">head</code>, <code tag-esc="">title</code> or <code tag-esc="">body</code> etc. &nbsp;There actually <em>wasn't</em> an HTML standard yet at that point so at some level it's kind of amazing how recognizable it remains today - not just to humans, but to browsers. &nbsp;Your browser will display that page <em>just fine.&nbsp;</em>&nbsp;HTML, as it was being defined however, also wasn't valid <em>SGML </em>necessarily. &nbsp;The W3C site points out that the final closing tag is an error (it transposes the letters).</p>
+
+
+	<p>More interestingly still for purposes here, I'd like to note that the very first surviving HTML document was about quite literally about Hyper<em>Media.&nbsp;</em>It's part of notes from what they called the hypertext conference and, unsurprisingly, that is what everyone was talking about. &nbsp;To understand why I think this matters, let's rewind just a little and tie in some things from&nbsp;<a href="/blog/Brief-ish-History-of-The-Web-Part-1.html">Part I</a>&nbsp;with some things that weren't....</p>
+
+	<section class="sectioning">
+		<contextual-heading role="heading" aria-level="2">The Tim<em>ing</em> of the Web</contextual-heading>
+		<p>Remember VideoWorks/Director from <a href="/blog/Brief-ish-History-of-The-Web-Part-1.html">Part I</a>? &nbsp;It&nbsp;illustrated that perhaps&nbsp;the concept of Time was really important to&nbsp;hyper<em>media. &nbsp;</em>However,&nbsp;they weren't the only ones to see this.&nbsp;In fact, even as early as&nbsp;1984 people were already seeing a gap between <em>documents</em> and <em>hypermedia/multimedia</em> and talking about how to solve it. It&nbsp;turns out SGML, the reigning standard approach of the time for documents as markup actually wasn't quite suited to the task.&nbsp;It needed revision.</p>
+
+
+		<p>So, Goldfarb (original GML creator, presumably mistyped above) went back to the drawing board with&nbsp;some more&nbsp;people to figure out how to apply it to a musical score. What they came up with was called SMDL (Standard Music Description Language), an&nbsp;effort that was ANSI&nbsp;approved in late 1985. &nbsp;However, no practical demonstration of SMDL was completed until 1990 and as part of a Master's thesis rather than a product (this dissonance over what makes a "standard" appears and reappears over and over in standards history).</p>
+
+		<p>It's key though because&nbsp;you could definitely say that by the mid-late 80's,&nbsp;it was becoming obvious to many that the problem of time and linking objects in time was a more generalized problem. &nbsp;Video, for example, might have been a neat thing on the desktop but don't forget that in&nbsp;the 1980's, cable television was spreading along with computers and multimedia -- and much faster. By this time, a number of folks were beginning to imagine&nbsp;something like "interactive TV" as the potentially Next Really Big Thing (even before the Web). &nbsp;Sun Microsystems established a group, "Green" to figure out the next big thing, who&nbsp;thought it would be interactive consumer electronics (like interactive TVs).</p>
+
+		<p>And so in 1989, just about the time Tim was putting together his ideas on the Web, the grander problem of Time/SGML was moved out of SMDL into a new ANSI project known as "HyTime" (Hypermedia/Time-based Structuring Language" which had a lot of key players and support from major businesses.</p>
+
+		<p>It really looked like maybe it was going somewhere. &nbsp;Remember Ted Nelson from <a href="https://briankardell.wordpress.com/2015/11/22/a-briefish-history-of-the-web-universe-part-i-the-pre-web/" target="_blank">Part I</a>? &nbsp;In 1988, AutoDesk had decided to fund him directly and commercialize his ideas which had become known as Project Xanadu. An AutoDesk press release said:</p>
+
+		<blockquote>In 1964, Xanadu was a dream in a single mind. In 1980, it was the shared goal of a small group of brilliant technologists. By 1989, it will be a product. And by 1995 it will begin to change the world.</blockquote>
+
+		<p>Nelson/Autodesk were some of the big names on that HyTime committee. &nbsp;Ironically, I think they got the years pretty close, but the technology wrong.</p>
+
+
+		<p>At approximately the same time the MPEG (Moving Pictures Experts Group) and&nbsp;MHEG (Multimedia and Hypertext Experts Group - also mentioned in that initial post above) were established. &nbsp;MHEG's focus, like a lot of other things included hypermedia&nbsp;documents, but unlike SGML required an MHEG <em>engine - </em>basically, a VM. &nbsp;The files they'd trade would be compiled binary rather than text-based. While they were authorable as documents, they were documents about interactive <em>objects</em>.</p>
+
+		<p>And so&nbsp;<em>this&nbsp;</em>is what people were talking about at the conference which Tim was summarizing in that early surviving HTML document. &nbsp;Both HyTime and MHEG were already thinking about how to standardize&nbsp;<em>this</em> quality in part because there is a lot of <em>media. &nbsp;&nbsp;</em>An interesting thing about media is that people were building multimedia&nbsp;<em>applications.</em></p>
+
+
+		<section class="sectioning">
+			<contextual-heading role="heading" aria-level="3">Shipping</contextual-heading>
+			<p>So the world around him was moving forward and there were lots of interesting ideas on all fronts. Tim had a prototype in hand. &nbsp;HTML as&nbsp;understood by the NeXT&nbsp;had no forms, no tables, you couldn't even nest things - it was flat. &nbsp;Not only did it have no&nbsp;CSS but no colors (his screen was black and white). &nbsp;But, for the most part&nbsp;many of his tags&nbsp;<em>were</em>&nbsp;simple formatting. &nbsp;You can debate that an H1 <em>is&nbsp;</em>semantic, but&nbsp;in Tim's interface it was under styling. &nbsp;That is, as you could "style" things as an H1, more or less WYSIWYG style, and the editor&nbsp;would flattened it all out in serializing&nbsp;markup.</p>
+
+			<p>Tim&nbsp;imagined (and has repeated since) that the most important thing was the URI, then HTTP then stuff like HTML and later CSS. &nbsp;URIs, in theory, can work for anything as long as you have a concept of a file that is addressable. &nbsp;HTTP was built with a feature called 'content type negotiation' which allows the sender to say what it's prepared to handle and the server to give him back something appropriate. &nbsp; As Tim explains this feature in&nbsp;<em>Weaving the Web:</em></p>
+
+
+			<blockquote>In general&nbsp;... the client and server have to agree on the format of data they both will understand. &nbsp;If they both knew WordPerfect for example, they would swap WordPerfect documents directly. &nbsp;If not, they could try to translate to HTML as a default.</blockquote>
+
+
+			<p>So the weird intricacies of HTML or things above weren't drastically important at the time because Tim didn't imagine HTML&nbsp;would be for everything. In fact, help address his chicken and egg problem described above, Tim just made his browser give URIs and auto-translate some popular existing protocols like NNTP, Gopher and WAIS to the HTML. &nbsp;But perhaps even this is over-simplifying just a bit - as he also explained:</p>
+
+			<blockquote>I expected HTML to be the basic waft and weft of the Web but documents of all types: video, computer aided design, sound, animation and executable programs to be the colored threads that would contain much of the content. &nbsp;It would&nbsp;<em>turn out</em> that HTML would become amazingly popular for the content as well...</blockquote>
+		</section>
+
+		<section class="sectioning">
+			<contextual-heading role="heading" aria-level="3">It would turn out...</contextual-heading>
+			<p>One of the most interesting things&nbsp;about invention is the stuff that the inventor&nbsp;<em>didn't&nbsp;</em>expect people would do with it. &nbsp;It would&nbsp;<em>turn out</em> that HTML would become really popular for content for a number of reasons. &nbsp;One reason, undoubtedly, is that the simplest thing to do is simply to provide HTML in the first place with no alternatives. &nbsp;More importantly, perhaps, &nbsp;to re-iterate the point from part I:&nbsp;The line between documents and 'more than documents' was clearly fuzzy.</p>
+
+			<p>To illustrate:&nbsp;Even with the NeXT browser "in hand", it was very hard to show people value. Very few people had a NeXT, even at CERN - after all, it was a pilot&nbsp;for establishing whether the new-fangled machines&nbsp;would be useful. &nbsp;Lugging it around only went to far . &nbsp; There was a new project at CERN to provide a directory and&nbsp;Tim and early partners like Robert Cailliau&nbsp;convinced CERN to publish the directory via the Web.</p>
+
+			<div class="captioned-image p-attached p-attached-left share-image" style="margin-top:0">
+				<img class="wp-image-1396 size-medium" src="https://briankardell.files.wordpress.com/2015/12/251-2.jpg" alt="">
+				A screenshot of the Mac HyperCard address book application thanks to www.atarimagazines.com
+			</div>
+
+			<p>This is interesting because address book applications were something that a lot of the <em>modern&nbsp;</em>computers of the time had, but a phonebook was a bunch of printed <em>pages</em>. &nbsp;Who wouldn't have liked that <em>application? &nbsp;&nbsp;</em>It might have been potentially "easy" to create a nice HyperCard stack and auto-transform to HTML based on content type negotiation - but which part was document and which part was application? &nbsp;It was actually much easier to just deliver HTML which could be generated any number of ways - and with the current digital expectations of the day, on the machines they were using, that was just fine. &nbsp;Thus, the simple line mode browser that made the fewest assumptions possible was born as something that could be distributed to all the CERN machines (and all the world's machines - more on this below).</p>
+
+			<p>The line mode browser was, frankly, boring. &nbsp;It was wildly inferior to the NeXT interface which was itself&nbsp;wildly inferior to something like OWL's Guide. &nbsp; &nbsp;But it worked, and as usual, that matters. &nbsp;Let me repeat that: &nbsp;<em>Shipping something useful matters.</em></p>
+
+			<p>If you've never&nbsp;heard of Maslow's Hammer, you're probably at least familiar with the software version of it: &nbsp;We like to say "If the only tool you have is a hammer, everything looks like a nail". &nbsp;Usually when we say it we're trying to say "use the right tool for the job". &nbsp;However, there's a corollary there that is just as true and often goes unnoticed: &nbsp;If someone only has a butter knife<em> it would turn out that they</em> can suddenly screw in some kinds of screws.</p>
+
+			<p>It would also turn out that that's not entirely a bad thing: &nbsp;If you need to unclog something, a butter knife works. &nbsp;If you need a lever to lift something small in a tight spot, a butter knife works in a pinch. &nbsp;If you need a paperweight on a windy day, guess what turns out to work pretty well? Perhaps that wasn't the butter knife's original intent, but it is universally true. And guess what else turns out to be true? &nbsp;A butter knife and some other things were&nbsp;probably an "almost" approximation for some tool that didn't&nbsp;yet exist. &nbsp;What's more, having a few of those "almost" tools frequently&nbsp;helps&nbsp;inspire something better. &nbsp;Steven Johnson calls this "the adjacent possible" in his Ted Talk "<a href="http://www.ted.com/talks/steven_johnson_where_good_ideas_come_from?language=en" target="_blank">Where good ideas come from</a>" and I think it's as true of the Web as it is of anything.</p>
+		</section>
+
+		<section class="sectioning">
+			<contextual-heading role="heading" aria-level="3">Adjacent Possibles</contextual-heading>
+			<p>However it came about, it turns out as well that the line mode browser was kind of perfect in time for a number of reasons. &nbsp;To keep things in perspective, this was 1990. &nbsp;While computers were starting to catch on, in 1990 they were still very expensive. &nbsp;As such, as deployed, many of them didn't even have OS' with something remotely like what we would call graphical UIs as a norm yet. &nbsp;Of those that did, few even had modems. &nbsp;And of those with modems, many still connected at 1200 or 2400 baud. &nbsp;We weren't connected nor even completely GUI yet. &nbsp;Those who&nbsp;<em>were</em> connecting most frequently were often doing so through large, expensive and frequently&nbsp;outdated systems which had been a <em>really&nbsp;</em>big investment years before.</p>
+
+			<p>Because of this, what the line mode browser <em>definitely did&nbsp;</em>was to allow Tim and others to show the people who&nbsp;<em>would </em>start&nbsp;writing the modern browsers with GUIs and increasingly recognizable features in short order and keep a small but steady stream of new potential enthusiasts checking it out. &nbsp;Sadly perhaps, another thing it did was to omit the&nbsp;<em>authoring</em> piece that was present on the NeXT machine and set in motion a trend where people perceived&nbsp;the Web as a way to&nbsp;<em>consume</em> rather than publish and contribute and likely spurned a greater focus on authoring HTML. &nbsp;"Sadly Perhaps," but then again, perhaps that's precisely what was necessary in order for it to mature anyway. &nbsp;It's hard to say in retrospect.</p>
+
+			<p>With a few new enthusiasts,&nbsp;in 1991 he created&nbsp;a mailing list:&nbsp;<a href="http://ksi.cpsc.ucalgary.ca/archives/WWW-TALK/www-talk-1991.index.html" target="_blank">www-talk</a>.&nbsp;&nbsp;For&nbsp;a while a very, <em>very</em> small but steadily growing group of people discussed the early "Web" they were trying to build. &nbsp;As more people came into the group&nbsp;they wanted more and different&nbsp;things - it should be more like HyTime, links should really work differently, it should actually be SGML rather than just "inspired by" or "look like" it and so on.</p>
+
+			<p>What happened next just keeps getting more interesting. You can read about it in Part III...</p>
+		</section>
+	</section>
+
+	<p class="thanksTo">Many thanks to folks who slogged through and proofread this dry post for me: @mattur @simonstl and @sundress.</p>
+
+
+</article></main>
+
+  
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-88027178-1', 'auto');
+    ga('send', 'pageview');
+  </script>
+
+</body></html>
