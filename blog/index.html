@@ -246,6 +246,29 @@ blockquote:after {
 
 }</style>
     <style>.thanksTo { font-style: italic; font-size: 0.8rem; }</style>
+    <script>
+      var activateOptional = function (media) {
+        var source = media.getAttribute('data-src'),
+            temp,
+            container = media.parentElement;
+
+          if (media.tagName === 'VIDEO') {
+            temp = document.createElement('video')
+            temp.setAttribute('autoplay','')
+            temp.setAttribute('controls','')
+            temp.setAttribute('loop','')
+            temp.innerHTML = '<source src="' + source + '.webm" type="video/webm">'
+                    + '<source src="' + source + '.mp4" type="video/mp4">';
+            media.parentElement.replaceChild(temp, media);
+            setTimeout(function () {
+              temp.play()
+            }, 0);
+          } else {
+            media.src = media.getAttribute('data-src');
+          }
+          container.classList.add('active');
+      }
+    </script>
   </head>
   <body>
     <input id="aboutMeToggle" class="sr-only" type="checkbox" checked>
@@ -287,15 +310,16 @@ America (art for sale)</a></li>
     <main>
 						<contextual-heading aria-role="heading" aria-level="1">Recent Posts</contextual-heading>
 						<ul>
-<li><a href="/blog/The-Glory-Days-Of-The-Web.html">The Glory Days of the Web</a> (Wed Oct 05 2016)</li>
 <li><a href="/blog/Potentially-Scattered-Thoughts-On-Web-Components.html">Potentially Scattered Thoughts on Web Components and Frameworks</a> (Mon Sep 26 2016)</li>
-<li><a href="/blog/The-Future-Web-Wants-You.html">The Future Web Wants You</a> (Wed Aug 24 2016)</li>
 <li><a href="/blog/X-Web-Days-of-Future-Past.html">X-Web: Days of Future Past</a> (Mon Jun 20 2016)</li>
+<li><a href="/blog/The-Glory-Days-Of-The-Web.html">The Glory Days of the Web</a> (Wed Oct 05 2016)</li>
+<li><a href="/blog/The-Future-Web-Wants-You.html">The Future Web Wants You</a> (Wed Aug 24 2016)</li>
 <li><a href="/blog/Prognostication-And-The-Failure-Of-The-Web.html">Prognostication and the Failure of the Web</a> (Fri May 06 2016)</li>
 <li><a href="/blog/Brief-ish-History-of-The-Web-Part-3.html">A Brief(ish) History of the Web Universe - Part III: The Early Web</a> (Fri Feb 05 2016)</li>
+<li><a href="/blog/Brief-ish-History-of-The-Web-Part-4.html">A Brief(ish) History of the Web Universe - Part IV: New Hope(s)</a> (Fri Feb 05 2016)</li>
 <li><a href="/blog/Brief-ish-History-of-The-Web-Part-2.html">A Brief(ish) History of the Web Universe - Part II: Time</a> (Mon Dec 07 2015)</li>
-<li><a href="/blog/Brief-ish-History-of-The-Web-Part-1.html">A Brief(ish) History of the Web Universe - Part I: The Pre-Web</a> (Sun Nov 22 2015)</li>
 <li><a href="/blog/Perf.html">Performance: Shame, Hope, Nuance and Interesting Problems</a> (Sun Nov 22 2015)</li>
+<li><a href="/blog/Brief-ish-History-of-The-Web-Part-1.html">A Brief(ish) History of the Web Universe - Part I: The Pre-Web</a> (Sun Nov 22 2015)</li>
 <li><a href="/blog/Really-Classy-CSS.html">(Really) classy CSS</a> (Fri May 11 2012)</li>
 </ul></main>
 
@@ -308,5 +332,25 @@ America (art for sale)</a></li>
 
     ga('create', 'UA-88027178-1', 'auto');
     ga('send', 'pageview');
+  </script>
+  <script>
+    Array.prototype.slice.call(document.querySelectorAll('.optional [data-src]')).forEach(function (optional) {
+      var prefs = window.localStorage.downloadsPrefs,
+          clickToSee;
+      if (prefs === 'true') {
+        activateOptional(optional);
+      } else {
+        clickToSee = document.createElement('div');
+        clickToSee.innerHTML = '<button>Click to see media</button>';
+        clickToSee.style.textAlign = 'center';
+        clickToSee.style.border = 'none';
+        optional.parentElement.insertBefore(clickToSee, optional.nextSibling);
+        clickToSee.firstElementChild.addEventListener('click', function () {
+          activateOptional(optional);
+          clickToSee.parentElement.removeChild(clickToSee)
+        })
+      }
+
+    })
   </script>
 </html>

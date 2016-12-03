@@ -244,6 +244,29 @@ blockquote:after {
 
 }</style>
     <style>.thanksTo { font-style: italic; font-size: 0.8rem; }</style>
+    <script>
+      var activateOptional = function (media) {
+        var source = media.getAttribute('data-src'),
+            temp,
+            container = media.parentElement;
+
+          if (media.tagName === 'VIDEO') {
+            temp = document.createElement('video')
+            temp.setAttribute('autoplay','')
+            temp.setAttribute('controls','')
+            temp.setAttribute('loop','')
+            temp.innerHTML = '<source src="' + source + '.webm" type="video/webm">'
+                    + '<source src="' + source + '.mp4" type="video/mp4">';
+            media.parentElement.replaceChild(temp, media);
+            setTimeout(function () {
+              temp.play()
+            }, 0);
+          } else {
+            media.src = media.getAttribute('data-src');
+          }
+          container.classList.add('active');
+      }
+    </script>
   </head>
   <body>
     <input id="aboutMeToggle" class="sr-only" type="checkbox" checked="">
@@ -296,7 +319,7 @@ America (art for sale)</a></li>
 		<p>The word "computer" in anything resembling really modern terms wasn't even a thing until 1946.</p>
 
 		<div class="captioned-image p-attached p-attached-left share-image" style="margin-top:0">
-			<img class="wp-image-1396 size-medium" src="https://briankardell.files.wordpress.com/2015/11/102618640-03-01.jpg?w=300" alt=""> The First Digital Computer - ENIAC "For a decade, until a 1955 lightning strike, ENIAC may have run more calculations than all mankind had done up to that point." from computerhistory.org
+			<img src="https://briankardell.files.wordpress.com/2015/11/102618640-03-01.jpg?w=300" alt=""> The First Digital Computer - ENIAC "For a decade, until a 1955 lightning strike, ENIAC may have run more calculations than all mankind had done up to that point." from computerhistory.org
 		</div>
 
 		<p>In 1947 ISO, the International Standards Organization, was founded.  That same year, the transistor was invented at Bell Labs.  In the late 1940's the Berlin Airlift transported over 2.3 million tons of food, fuel and supplies by developing a "standard form" document could be transmitted over just about any medium - including, for example, by telegraph.  Later this basic technique would become "EDI" (<a href="https://en.wikipedia.org/wiki/Electronic_data_interchange" target="_blank">Electronic Data Interchange</a>) and become the standard for commercial shipping and trade at scale, but It required very tight agreement and coordination on standard business documents and processes.</p>
@@ -454,6 +477,26 @@ America (art for sale)</a></li>
 
     ga('create', 'UA-88027178-1', 'auto');
     ga('send', 'pageview');
+  </script>
+  <script>
+    Array.prototype.slice.call(document.querySelectorAll('.optional [data-src]')).forEach(function (optional) {
+      var prefs = window.localStorage.downloadsPrefs,
+          clickToSee;
+      if (prefs === 'true') {
+        activateOptional(optional);
+      } else {
+        clickToSee = document.createElement('div');
+        clickToSee.innerHTML = '<button>Click to see media</button>';
+        clickToSee.style.textAlign = 'center';
+        clickToSee.style.border = 'none';
+        optional.parentElement.insertBefore(clickToSee, optional.nextSibling);
+        clickToSee.firstElementChild.addEventListener('click', function () {
+          activateOptional(optional);
+          clickToSee.parentElement.removeChild(clickToSee)
+        })
+      }
+
+    })
   </script>
 
 </body></html>

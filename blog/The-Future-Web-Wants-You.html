@@ -244,6 +244,29 @@ blockquote:after {
 
 }</style>
     <style>.thanksTo { font-style: italic; font-size: 0.8rem; }</style>
+    <script>
+      var activateOptional = function (media) {
+        var source = media.getAttribute('data-src'),
+            temp,
+            container = media.parentElement;
+
+          if (media.tagName === 'VIDEO') {
+            temp = document.createElement('video')
+            temp.setAttribute('autoplay','')
+            temp.setAttribute('controls','')
+            temp.setAttribute('loop','')
+            temp.innerHTML = '<source src="' + source + '.webm" type="video/webm">'
+                    + '<source src="' + source + '.mp4" type="video/mp4">';
+            media.parentElement.replaceChild(temp, media);
+            setTimeout(function () {
+              temp.play()
+            }, 0);
+          } else {
+            media.src = media.getAttribute('data-src');
+          }
+          container.classList.add('active');
+      }
+    </script>
   </head>
   <body>
     <input id="aboutMeToggle" class="sr-only" type="checkbox" checked="">
@@ -321,27 +344,7 @@ America (art for sale)</a></li>
 			function downloadImages () {
 				var lazy = Array.prototype.slice.call(document.querySelectorAll('.captioned-image>[data-src]'));
 
-				lazy.forEach(function(media) {
-					var source = media.getAttribute('data-src'),
-						temp,
-						container = media.parentElement;
-
-					if (media.tagName === 'VIDEO') {
-						temp = document.createElement('video')
-						temp.setAttribute('autoplay','')
-						temp.setAttribute('controls','')
-						temp.setAttribute('loop','')
-						temp.innerHTML = '<source src="' + source + '.webm" type="video/webm">'
-										+ '<source src="' + source + '.mp4" type="video/mp4">';
-						media.parentElement.replaceChild(temp, media);
-						setTimeout(function () {
-							temp.play()
-						}, 0);
-					} else {
-						media.src = media.getAttribute('data-src');
-					}
-					container.classList.add('active');
-				})
+				lazy.forEach(activateOptional)
 			}
 			function removeDownloadPrefsOverlay() {
 				document.body.classList.add('preferences-set')
@@ -376,7 +379,7 @@ America (art for sale)</a></li>
 	<contextual-heading role="heading" aria-level="1">The Future Web Wants You</contextual-heading>
 	<p class="segue">A few weeks ago I gave a talk in Pittsburgh, PA at Code and Supply. <a href="https://www.youtube.com/watch?v=rwWEQPc5GRE" target="_blank">It was recorded if you would rather watch the video </a>(the actual talk is ~40 minutes, the video captures some of the Q&amp;A afterward as well), but I'm more comfortable writing and I thought it might be worth a stab at a companion piece that tries to make the same points/arguments in blog-post-size, so - here it is.</p>
 
-	<div class="captioned-image p-attached p-attached-left" aria-hidden="true">
+	<div class="captioned-image p-attached p-attached-left optional" aria-hidden="true">
 		<video data-src="/media/me-in-early-90s-dreaming" autoplay="" loop=""></video>
 		Me in the mid-1990's dreaming about standards.
 	</div>
@@ -385,13 +388,13 @@ America (art for sale)</a></li>
 
 	<p>I suppose I imagined something between Michelangelo's Creation panel on the Sistine Chapel Ceiling and Raphael's School of Athens. Somewhere, perhaps high in a tower in a proverbial Mount Olympus where the Gods of programming - wise and benevolent beings would debate and design - and the outcome would be an elegant, simple and beautiful solution. They would show us the One True Way. Specifications might have been handed down on tablets of stone as far as I imagined.  The future was bright. They would lead me to the promised land.</p>
 
-	<div class="captioned-image">
+	<div class="captioned-image optional">
 		<img data-src="/media/school-of-athens.jpg" alt="A painting of Raphael's School of Athens">My imagination of what a W3C meeting was like..
 	</div>
 
 	<p>By around 2009, I guess you could say that my outlook had "matured".</p>
 
-	<div class="captioned-image" aria-hidden="true">
+	<div class="captioned-image optional" aria-hidden="true">
 		<video data-src="/media/colbert-freaking" autoplay="" loop=""></video>
 		Me, circa 2009 expressing my feelings on Web standards.
 	</div>
@@ -413,7 +416,7 @@ America (art for sale)</a></li>
 	</ul>
 	<p>Along the way we've seen features that were disappointing (AppCache) things that aren't quite interoperable (IndexedDB/WebSQL), things that failed to materialize (native dialogs, the document outline) and battles over control of the "really official standard" as well as what that even means.  In late 2014, it reached W3C status that we might call 'standard' - however, there's still a lot that doesn't work in all browsers - HTML input types support, for example.  So it would be foolish to say that process really "worked well" in total either.</p>
 
-	<div class="captioned-image p-attached p-attached-right">
+	<div class="captioned-image p-attached p-attached-right optional">
 		<img data-src="https://briankardell.files.wordpress.com/2016/08/frabz-tis-blasphemy-cc135d.jpg?w=291" alt="A grizzled man meme pointing and saying 'tis blasphemy!" width="291" height="300"> It's not blasphemous to suggest that we can do better.
 	</div>
 
@@ -423,7 +426,7 @@ America (art for sale)</a></li>
 		<contextual-heading role="heading" aria-level="2">Lessons Learned</contextual-heading>
 		<p>In a nutshell: We've moved around a lot of variables a lot of times, trying to figure this out - but the one thing we haven't figured out how to tap into is developers.  This is strange because ultimately, it is developers who decide the fate of it all.  Over the years standards have come to say "we have businesses, we have academia, we have government."</p>
 
-		<div class="captioned-image p-attached p-attached-left">
+		<div class="captioned-image p-attached p-attached-left optional">
 			<img data-src="https://briankardell.files.wordpress.com/2016/08/a967331492c30ea8002d09b1ebed6bbf.jpg" alt="A captioned scene from The Avengers where Tony Stark says 'We have a Hulk'"> Bring your army, we have developers.
 		</div>
 
@@ -435,7 +438,7 @@ America (art for sale)</a></li>
 
 		<p>When virtually every major tech company on earth was focused on "how on earth can we imagine a new, better 'Web' based on XML?" - when billions of dollars in R&amp;D had been spent over a decade and everyone was desperately trying to figure it out, developers said "JSON: I choose you!".  Guess who carried the day?</p>
 
-		<div class="captioned-image">
+		<div class="captioned-image optional">
 			<img data-src="/media/i_choose_you_03.jpg" alt="photo of Pokemon's Ash saying 'I choose you'!"> JSON: I choose you!
 		</div>
 
@@ -443,7 +446,7 @@ America (art for sale)</a></li>
 	</section>
 	<section class="sectioning">
 		<contextual-heading role="heading" aria-level="2">Fixing the economics</contextual-heading>
-		<div class="captioned-image p-attached p-attached-left">
+		<div class="captioned-image p-attached p-attached-left optional">
 			<img data-src="/media/ewm-1.jpg" alt="The extensible web logo"> The Extensible Web Manifesto Logo by the great Bruce Lawson
 		</div>
 		<p>Around 2010, a lot of people began talking about what was wrong with Web Standards and how we might fix it. This led to, not a new standards body, but a joint statement of core principles by people involved at many levels: <a href="https://extensiblewebmanifesto.org/" target="_blank">The Extensible Web Manifesto</a>.</p>
@@ -452,7 +455,7 @@ America (art for sale)</a></li>
 
 		<p>The Extensible Web Manifesto is a short document, but it comes from considerably more detailed discussions and a bigger vision. It's a vision that says that the economics are broken.  Failure isn't avoidable, it's inevitable.  Experiments are necessary in order to get there from here.</p>
 
-		<div class="captioned-image p-attached p-attached-right">
+		<div class="captioned-image p-attached p-attached-right optional">
 			<img data-src="https://briankardell.files.wordpress.com/2016/08/capturew5.jpg" alt="A photo of an early fan with a lightbulb socket connecting cord" width="232" height="387">Early electrical appliances plugged into light sockets!
 		</div>
 
@@ -464,7 +467,7 @@ America (art for sale)</a></li>
 
 		<p>Some failure persists and only <em>looks</em> like failure for a time - the sum of the DNA however ultimately provide new possibilities far far beyond any of our plans.  If you were busy trying to "design" the perfect canine you'd never come up with a maned wolf.  Chances are you've never seen a maned wolf since they only evolved in a certain environment in South America.  But they are <em>amazing</em> and kind of a testiment to the power of evolution to create something that survives.  Ultimately, we need things that survive in all of the environments, even the ones we aren't thinking of - and to do that we need to be adaptable.</p>
 
-		<div class="captioned-image">
+		<div class="captioned-image optional">
 			<img data-src="https://briankardell.files.wordpress.com/2016/08/maned-wolf.jpg" alt="a photo of a maned wolf - it looks kind of like half deer, half fox"> The maned wolf is real, and it is awesome.
 		</div>
 
@@ -490,7 +493,7 @@ America (art for sale)</a></li>
 
 		<p>So what do you say?  Are you in?  The future Web wants you.</p>
 
-		<div class="captioned-image share-image">
+		<div class="captioned-image share-image optional">
 			<img data-src="/media/join-the-rebellion.jpg" alt="A Star Wars Poster with Leia in an Uncle Sam WWII style recuiting poster" width="284" height="432"> Don't be silent: Join the rebellion and help us organize a chapters.io near you.  Tweet interest to me @briankardell or <a href="https://github.com/jquery-foundation/standards/issues/48">open an issue like this</a> with the jQuery standards team and we'll see if we can help you get something started!  If you are in Pittsburgh, PA - <a href="http://www.meetup.com/Pittsburgh-Code-Supply/events/233600837/">join us</a>!
 		</div>
 
@@ -509,6 +512,26 @@ America (art for sale)</a></li>
 
     ga('create', 'UA-88027178-1', 'auto');
     ga('send', 'pageview');
+  </script>
+  <script>
+    Array.prototype.slice.call(document.querySelectorAll('.optional [data-src]')).forEach(function (optional) {
+      var prefs = window.localStorage.downloadsPrefs,
+          clickToSee;
+      if (prefs === 'true') {
+        activateOptional(optional);
+      } else {
+        clickToSee = document.createElement('div');
+        clickToSee.innerHTML = '<button>Click to see media</button>';
+        clickToSee.style.textAlign = 'center';
+        clickToSee.style.border = 'none';
+        optional.parentElement.insertBefore(clickToSee, optional.nextSibling);
+        clickToSee.firstElementChild.addEventListener('click', function () {
+          activateOptional(optional);
+          clickToSee.parentElement.removeChild(clickToSee)
+        })
+      }
+
+    })
   </script>
 
 </body></html>

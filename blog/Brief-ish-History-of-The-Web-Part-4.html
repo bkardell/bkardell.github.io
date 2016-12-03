@@ -1,0 +1,461 @@
+<html lang="en" resource-type="blogpost"><head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@briankardell">
+    <meta name="twitter:creator" content="@briankardell">
+    <meta name="twitter:title" content="A Brief(ish) History of the Web Universe - Part IV: New Hope(s)">
+    <meta name="twitter:description" content="It's early 1994. AT&amp;T has purchased Go and PenOS (see&nbsp;Part I: The Pre-Web) and now they are pulling the plug. &nbsp;SmartSketch FutureSplash (again, Part I) won't be released. Its maker">
+    <meta name="twitter:image" content="https://briankardell.files.wordpress.com/2017/04/first-ever-banner-ad.gif">
+    <link rel="alternate" type="application/rss+xml" href="blog/feed.rss" title="bkardell.com/blog rss feed">
+    <title>A Brief(ish) History of the Web Universe - Part IV: New Hope(s)</title>
+    <style>.captioned-image {
+    background-color: #eaeaea;
+    display: block;
+    overflow: hidden;
+    padding: 1rem;
+    text-align: center;
+    font-style: italic;
+}
+
+.captioned-image.p-attached {
+    width: 40%;
+    display: inline-block;
+    margin: 0 1rem 2rem 1rem;
+}
+
+section > .captioned-image.p-attached {
+    margin-top: 1.5rem; /* correct for heading size*/
+}
+
+.captioned-image.p-attached.p-attached-left {
+    float: left;
+}
+
+.captioned-image.p-attached.p-attached-right {
+    float: right;
+}
+
+.captioned-image.p-attached + * + * {
+    clear: both;
+    margin-top: 2rem;
+}
+
+
+.captioned-image img, .captioned-image video {
+    display: block;
+    max-width: 100%;
+    margin: 0 auto 1em auto;
+}
+.source {
+    font-style: italic;
+}
+body {
+    display: flex;
+    font: 1em "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-weight: 300;
+    line-height: 1.625;
+}
+h1 { margin: 0.5rem; }
+code-format {
+    border-left: 0.5rem solid rgba(123,115,209,0.35);
+    display: block;
+    padding: 0.5rem;
+    margin-bottom: 1rem;
+}
+[aria-level="1"] {
+    color: #43686b;
+    font-size: 1.45rem;
+}
+[aria-level="2"] {
+    color: #856363;
+    font-size: 1.35rem;
+}
+[aria-level="3"] {
+    color: #856363;
+    font-size: 1.25rem;
+}
+[aria-level="4"] {
+    color: #856363;
+    font-size: 1.2rem;
+}
+[aria-level="5"], [aria-level="6"] {
+    color: #667496;
+    font-size: 1.1rem;
+    font-weight: bolder;
+}
+.posted-on {
+    font-style: italic;
+    font-size: 0.8rem;
+    text-align: right;
+    margin-bottom: 1rem;
+}
+
+ul, li {
+    margin: 0.5rem;
+    text-align: left;
+}
+header {
+    padding-top: 1rem;
+    padding-right: 2rem;
+    background-color: #fbf5e9;
+}
+.tagline {
+    font-style: italic;
+    text-align: center;
+}
+
+[tag-esc] {
+    color: maroon;
+    font-family: Courier, "Lucida Console", monospace;
+}
+
+[tag-esc]::before {
+    content: '<';
+}
+
+[tag-esc]::after {
+    content: '>';
+}
+
+main {
+    min-width: 50%;
+    width: 80%;
+    padding: 1rem;
+}
+header .title {
+    background-color: rgba(123,115,209,0.35);
+    padding: 0.3rem;
+    padding-left: 0.25rem;
+    font-weight: bolder;
+    font-size: 0.9rem;
+    border-left: 1rem solid #999298;
+}
+
+header .profile {
+    width: 50%;
+    margin: 1rem 25%;
+}
+
+header .title + nav {
+    font-size: 0.9rem;
+}
+
+header .blurb {
+    font-size: 0.75rem;
+    text-align: center;
+}
+header .name {
+    text-align: center;
+    font-size: xx-large;
+}
+.segue {
+    font-style: italic;
+}
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  border: 0;
+}
+[for="aboutMeToggle"] {
+    display: none;
+}
+/* this needs rethinking, it wants a selector like 'not flow content' */
+article>*:not(contextual-heading,a), section>*:not(contextual-heading,a) {
+    margin-left: 0.45rem;
+}
+
+blockquote {
+  font-family: serif;
+  background: #f9f9f9;
+  border-left: 10px solid #ccc;
+  margin: 1.5em 10px;
+  padding: 0.5em 10px;
+}
+blockquote:before {
+  color: #ccc;
+  content: open-quote;
+  font-size: 2em;
+  line-height: 0.1em;
+  margin-right: 0.25em;
+  vertical-align: -0.4em;
+}
+
+blockquote:after {
+  color: #ccc;
+  content: close-quote;
+  font-size: 2em;
+  line-height: 0.1em;
+  margin-left: 0.25em;
+  vertical-align: -0.4em;
+}
+
+
+@media (max-width: 800px){
+    body {
+        flex-direction: column;
+    }
+    header {
+        border-bottom: 1px solid #afafff;
+    }
+
+    .captioned-image.p-attached {
+        width: 100%;
+        margin: 1rem 0;
+    }
+
+    .captioned-image.p-attached.p-attached-left,
+    .captioned-image.p-attached.p-attached-right {
+        float: none;
+    }
+
+    [for="aboutMeToggle"] {
+        background-color: #675e5e;
+        color: white;
+        padding: 0.25rem;
+        padding-left: 0.5rem;
+        display: block;
+        border-left: 1rem solid black;
+    }
+    #aboutMeToggle:focus + [for="aboutMeToggle"]{
+        outline: 4px solid #c6ddf2;
+    }
+
+    #aboutMeToggle:checked ~ header {
+        display: none;
+    }
+
+    header li { display: inline; margin-left: -0.5em; }
+    header .blurb li::after { content: '; '; }
+    header  nav li {
+        display: inline-block;
+        margin-left: 0.35rem;
+        margin-right: 0.35rem;
+    }
+    header .title {
+        width: 100%;
+    }
+    main li .source { display: block; }
+
+}</style>
+    <style>.thanksTo { font-style: italic; font-size: 0.8rem; }</style>
+    <script>
+      var activateOptional = function (media) {
+        var source = media.getAttribute('data-src'),
+            temp,
+            container = media.parentElement;
+
+          if (media.tagName === 'VIDEO') {
+            temp = document.createElement('video')
+            temp.setAttribute('autoplay','')
+            temp.setAttribute('controls','')
+            temp.setAttribute('loop','')
+            temp.innerHTML = '<source src="' + source + '.webm" type="video/webm">'
+                    + '<source src="' + source + '.mp4" type="video/mp4">';
+            media.parentElement.replaceChild(temp, media);
+            setTimeout(function () {
+              temp.play()
+            }, 0);
+          } else {
+            media.src = media.getAttribute('data-src');
+          }
+          container.classList.add('active');
+      }
+    </script>
+  </head>
+  <body>
+    <input id="aboutMeToggle" class="sr-only" type="checkbox" checked="">
+<label for="aboutMeToggle">Toggle author information</label>
+<header>
+    <div class="name">
+        Brian Kardell
+    </div>
+    <img class="profile" src="/profile.jpg" alt="">
+    <div class="tagline"><a href="/">Betterifying the Web</a></div>
+    <div class="blurb">
+        <ul>
+            <li>Sr Front-End Engineer at Apollo Group, Inc</li>
+            <li>Original Co-author/Co-signer of The Extensible Web Manifesto</li>
+            <li>Co-Founder/Chair, W3C Extensible Web CG</li>
+            <li>Member, W3C (The JS Foundation)</li>
+            <li>Co-author of HitchJS</li>
+            <li>Blogger</li>
+            <li>Art, Science &amp; History Lover</li>
+            <li>Standards Geek</li>
+        </ul>
+    </div>
+    <div class="title">Follow Me On...</div>
+    <nav>
+        <ul>
+            <li><a rel="me" href="https://briankardell.wordpress.com">Wordpress</a></li>
+            <li><a rel="me" href="https://medium.com/@briankardell">Medium</a></li>
+            <li><a rel="me" href="https://twitter.com/briankardell">Twitter</a></li>
+            <li><a rel="me" href="https://github.com/bkardell/">Github</a></li>
+            <li><a rel="me" href="https://codepen.io/bkardell">Codepen</a></li>
+            <li><a rel="me" href="https://www.linkedin.com/in/brian-kardell-08a4264">LinkedIn</a></li>
+            <li><a rel="me" href="https://www.instagram.com/kardellbrian">Instagram (for
+art)</a></li>
+            <li><a rel="me" href="http://fineartamerica.com/profiles/brian-kardell?">Fine Art
+America (art for sale)</a></li>
+        </ul>
+    </nav>
+</header>
+    <main><div class="posted-on">Posted on 2/5/2016</div><article posted-on="2/5/2016" class="sectioning">
+	<contextual-heading role="heading" aria-level="1">A Brief(ish) History of the Web Universe - Part IV: New Hope(s)</contextual-heading>
+	<p class="segue">
+		It's early 1994. AT&amp;T has purchased Go and PenOS (see&nbsp;<a href="/blog/Brief-ish-History-of-The-Web-Part-1.html">Part I: The Pre-Web</a>) and now they are pulling the plug. &nbsp;SmartSketch FutureSplash (again, Part I) won't be released. Its makers Jonathan Gay and Charlie Jackson briefly try porting to the desktop, but there they would have to compete with well-funded and mature products and that isn't practical. &nbsp;Keep them in the back of your mind, we'll come back to them.
+	</p>
+
+	<p>For the past few years, Tim Berners-Lee's "Web" concept has experienced increasing growth month over month thanks to a number of large number of contributing factors (see <a href="/blog/Brief-ish-History-of-The-Web-Part-3.html">Part III: The Early Web</a>). Still, its&nbsp;audience is comparatively almost microscopic by 2016 standards and mainly composed of academics and hard-core internet and markup enthusiasts. But, to put this into perspective: Just having a computer at home remains a pretty novel concept, even in America. Studies reveal that where they do exist they are frequently underused. While it's true that from 1984 to 1994 the percentage of homes with a PC tripled, it is still only 1 in 4 &nbsp;US homes that has a computer. Of those, many don't have modems or any kind of internet access. Only about 2% of Americans have access to the internet from home. Of this, only a small fraction are using the Web.</p>
+
+
+	<div class="captioned-image" style="margin-top:0">
+		<img src="/media/early-households-with-internet-chart.gif" alt="">
+	</div>
+
+	<p>Note carefully&nbsp;that that 2% represents <em>all internet access - not just the Web. &nbsp;</em>Very many people are getting on the "internet" through an online service. &nbsp;&nbsp;Just a few months ago, America Online began direct mailing disks to people encouraging them to get online. It now has advertisers and 1 million members, many of whom are not the same crowd as the Web right now. The world is confused about the Internet, online services like AOL and the Web, but this isn't all bad news for the Web. It introduces a whole lot of people to the idea of getting "online" and Moore's law continues to lessen the price of computers and more and more of them are coming with increasingly capable modems. &nbsp;Even now, however,&nbsp;t<em>he Web itself (including work and home) only accounts for only about 2.5% of Internet traffic.&nbsp;</em></p>
+
+
+	<p>Given the small size, the number of browsers that have sprung up is truly astonishing, and each has extended Tim's original definition of HTML with their own ideas. A few people, like Dan Connolly, have been actively working on trying to hammer down agreements and a base standard. Over the past year however a new dominant factor has emerged: <em>Mosaic</em>.</p>
+
+	<p>Of those that are using the Web at this point, estimates are as high as 97% of them are now using the Mosaic browser (see <a href="/blog/Brief-ish-History-of-The-Web-Part-3.html">Part III: The Early Web</a>) which is available on many platforms and comparatively easy to install thanks to the hard work of folks like Marc Andreessen, Eric Bina, Chris Wilson, Jon Mittelhauser and Aleks Totic. It's name has become so synonymous with using the Web that the line between the two has become blurred: Even people who are interested in the Web begin to ask if you're "on Mosaic" instead of "on the Web".</p>
+
+
+	<section class="sectioning">
+		<contextual-heading role="heading" aria-level="2">"Web Time..."</contextual-heading>
+		<p>The next few months is almost a blur, so much happened so fast. This pace would become known to some as "Web time".</p>
+
+		<div class="captioned-image p-attached p-attached-left" style="margin-top:0">
+			<img src="/media/netscape1994.jpg" alt="">
+			A screenshot of the Netscape home page from 1994 featuring an early "Mozilla" monster
+		</div>
+
+		<p>In March 1994, Silicon Graphics, Inc. (SGI) founder Jim Clark &nbsp;begins&nbsp;working on a business venture with Mosaic creator Marc Andreessen. They'll hire up a lot of talent from both SGI and NCSA and they're working on some server products and, more importantly a commercial browser built to kill Mosaic. &nbsp;Initially it is called "MCOM" (Mosaic Communications). &nbsp;Internally, the browser project is&nbsp;called "Mozilla" (a name given to it by another co-founder, Jamie Zawinski, who would go on to write much of the Unix version of their 1.0 browser) or "Mosaic-killer". &nbsp;As you might imagine, the MCOM name was a problem and so "Netscape" was born. &nbsp;Very early Netscape website (while still in the mcom.com domain) even featured a "Mozilla" character originally created by employee Dave Titus.</p>
+
+		<p>Two months later in May, NCSA hands off licensing of&nbsp;Mosaic to Spyglass, Inc. - a commercial offshoot of University of Illinois at Urbana-Champaign built to monetize research there. Spyglass would license the Mosaic product for modification and distribution. &nbsp;At least one of those licenses will come back and change things again very soon...</p>
+
+		<p>That same month, the first World Wide Web Conference is held. Attended by 380 people from around the world. &nbsp;Unsurprisingly, overwhelmingly made-up of technically enthusiastic academics. Thanks in large part to Dan Connolly's presentation entitled "Interoperability: Why Everyone Wins" it launched the first very serious efforts behind creating an HTML standard. However, by this point, just what the baseline should be is very fuzzy: Almost no-one stuck&nbsp;to Tim's original specifications to begin with and some aspects of it already seem defunct. &nbsp; HTML has been re-spec'ed into an actual implementation of SGML, except still not quite really... Some browsers (even Tim's now) have inline images thanks to hard-pulling/pioneering work by Marc Andreessen. Some have tables, some had forms. &nbsp;Dave Raggett has a proposal called HTML+ which contains a lot of this. &nbsp;Further adding to the challenge, Tim Berners-Lee has also begun talks of starting a consortium modeled after the x-consortium designed to help the Web remain open, competitive and interoperable.</p>
+
+		<p>Meanwhile, Sun Microsystem's Green Team (see <a href="/blog/Brief-ish-History-of-The-Web-Part-2.html">Part II: Time</a> and <a href="/blog/Brief-ish-History-of-The-Web-Part-3.html">Part III: The Early Web</a>) has been given a new lease on life by the success of Mosaic. They imagine a Web in which "write once, run anywhere" applications could be delivered regardless of the user's operating system because of their Oak VM (later "Java") - and their foot in the door will also be a Mosaic competitor: "WebRunner" (soon "HotJava") which the team is getting increasingly excited about.</p>
+
+		<p>The summer was abuzz with talks of styling too. &nbsp;With more authors creating content and finding new uses, a typewritten page seemed pretty insufficient. &nbsp;SGML didn't really have a single standard but it had helped create a small group of what appeared to be reasonably successful ideas and from these discussions there came&nbsp;<a href="https://www.w3.org/Style/History/Overview.html" target="_blank">a myriad of proposals</a>.</p>
+
+		<p>Two months later, in July 1994, Dan Connolly presents HTML 2.0 at an IETF meeting in Toronto, an IETF Working group is formed. &nbsp;But in October, two key factors emerged: First, an agreement to start the World Wide Web Consortium (W3C) is signed setting up the eventual future question of where the HTML standard will live and what the relevant roles will be. &nbsp;Second, <a href="https://www.w3.org/People/howcome/p/cascade.html" target="_blank">Hakon W Lie proposes "CSS"</a> which will become one of the first targets of the new W3C.</p>
+
+		<p>In November 1994, HTML finally received an IETF identifier: <a href="https://tools.ietf.org/html/rfc1866" target="_blank">RFC-1866</a>.</p>
+	</section>
+
+	<section class="sectioning">
+		<contextual-heading role="heading" aria-level="2">Money</contextual-heading>
+		There was a lot of speculation about how one might make money with the Web, but 1994 put some real ideas to the test.
+
+		<section class="sectioning">
+			<contextual-heading role="heading" aria-level="3">Ads</contextual-heading>
+			<p>On&nbsp;October 27, 1994, HotWired.com launched the first major banner ads, including a campaign that looked like this:</p>
+
+			<div class="captioned-image share-image" style="margin-top:0">
+				<img src="https://briankardell.files.wordpress.com/2017/04/first-ever-banner-ad.gif" alt="The first ever banner ad saying 'Have you ever clicked your mouse right here? You will.">
+				The first ever banner ad
+			</div>
+
+			<p>It was the first real, modern(ish) attempt to apply the advertising model that had worked for TV, newspapers, magazines, etc - to&nbsp;the Web. If you're using the Web in 2016 as you're reading this, you're probably aware that this is how the vast majority of Web content is funded, and it's pretty debatable whether the Web would still exist in anything remotely resembling its current form without ads. &nbsp;Why? &nbsp;Because the Web had no payment or compensation model. &nbsp;In fact, not only did it have&nbsp;no concept of how you could monetize, the insecure nature of HTTP, the protocol that made it possible, effectively made things like privacy, which are necessary for transactions,&nbsp;nearly impossible.</p>
+		</section>
+
+		<section class="sectioning">
+			<contextual-heading role="heading" aria-level="3">Licensing, Commerce and the Netscape Factor</contextual-heading>
+			<p>One&nbsp;could reasonably make the case that Netscape changed everything. &nbsp;It was about this same time (late 1994)&nbsp;that&nbsp;Netscape began&nbsp;releasing beta versions of Netscape Navigator. Within just a few months it overtook&nbsp;Mosaic as the dominant browser in 1.0. Very much like all browsers before it, Netscape innovated and added its own tags to HTML which are part of neither HTML 2.0 nor the new HTML 3.0 specifications (notably <code tag-esc="">font</code> and <code tag-esc="">center</code>). "What's that" you say, "3.0?! Where did that come from?!". As you might expect, history doesn't stand still - things that weren't included in the pending HTML 2.0 standard are being collated into a possible HTML 3.0 standard. As the now dominant force, however, and with the increasing growth of the community being introduced to HTML without past knowledge and theory - and this is critical: It actually&nbsp;made&nbsp;it possible to do things that everyone actually wanted. &nbsp;Regardless of how it accomplished it, these things made the Web a <em>lot</em> more interesting. &nbsp;<em>A hack that works and can get used, as it turns out, is of&nbsp;considerably more practical value than theoretical purity that doesn't. &nbsp;</em></p>
+
+			<p>As a commercial endeavor, Netscape realizes that they need to make e-commerce possible and the Web commercially viable. As plain-text, HTTP wasn't going to cut it. Netscape/Dr. Taher Elgamal's SSL is the result, but before version 1.0 can ship it's realized that there are serious concerns and so, a lot like it was with HTML, SSL 2.0 is the first one most people hear about. It is released in February 1995 and if you were there, it might have looked something like this:</p>
+
+			<div class="captioned-image optional" style="margin-top:0">
+				<iframe width="560" height="315" data-src="https://www.youtube.com/embed/Ojmng198Ni0" frameborder="0" allowfullscreen=""></iframe>
+				<div>A video of early Netscape in action</div>
+			</div>
+
+			<p>That same month the HTML 2.0 specifications are revised at IETF in hopes of actually getting something passed. Changes are mostly around MIME, encoding an improved DTD and simple formatting.</p>
+
+			<div class="captioned-image" style="margin-top:0">
+				<img src="https://briankardell.files.wordpress.com/2017/04/ae02.jpg" alt="">
+			</div>
+
+			<p>By March 1995 Sun was giving some demos to people outside and "Java" was&nbsp;starting to make news. &nbsp;The San Jose Mercury News ran a front-page piece entitled "<a href="https://web.archive.org/web/19961220215426/http://www.sjmercury.com/archives/hotjava.htm" target="_blank">Why Sun thinks Hot Java will give you a lift</a>". &nbsp;Sun released Java for public download&nbsp;and in short order Sun's T1 line were&nbsp;so saturated that developers weren't able to download. The piece explains that browsers are dumb (not to have, just not especially capable) and in the piece, Marc Andreessen is quoted giving it praise.</p>
+
+			<p>Thinking that a browser that viewed HTML was "dumb" wasn't new. &nbsp;As explained in <a href="/blog/Brief-ish-History-of-The-Web-Part-1.html">Part I: The Pre-Web</a>, there were plenty of more capable hypermedia systems <em>before</em> HTML. &nbsp;As explained in <a href="/blog/Brief-ish-History-of-The-Web-Part-2.html">Part II: Time</a>, Tim didn't <em>expect</em> HTML to be the whole thing he just thought that the "dumb" parts would be&nbsp;the ones that connected everything. &nbsp;As explained in <a href="/blog/Brief-ish-History-of-The-Web-Part-3.html">Part III: The Early Web</a>, others like Pei Wei had already shipped a browser capable of doing embedded programs very much like applets. And Midas, developed at Stanford, had sort of pioneered the idea of plugins (it could display postscript). &nbsp;Again, this wasn't shocking, but rather seemed exciting to Tim. &nbsp;So, unbeknownst to developers at Sun, but certainly unsurprisingly: &nbsp;Certain players at Netscape have <em>also</em> been thinking about the need for a&nbsp;less-dumb&nbsp;imperative language in the browser.</p>
+
+			<p>Netscape folks from SGI like Jim Clark and Kipp Hickman&nbsp;have been courting an enterprising engineer named Brendan Eich (also an SGI alumnus) with the lure of doing "Scheme in the browser". You might think that this means that Brendan was an advanced Scheme developer, but that's not the case at all. In fact, he had no practical professional experience with Scheme at all. Instead, Brendan was something of a language nerd and saw a lot of promising things in Scheme that were&nbsp;lacking in other languages and he was interested in seeing what he could do. Quietly, and without fanfare, he left&nbsp;MicroUnity for Netscape in April 1995. &nbsp;Netscape who was just releasing Navigator&nbsp;1.1 which, as noted in&nbsp;<em>Information&nbsp;Today,&nbsp;</em>contained what would be a new bit of DNA:</p>
+
+			<blockquote>Netscape Navigator 1.1 includes sophisticated new features such as the Netscape Client Application Programming Interface (NCAPI) for easy integration with third party applications, advanced layout capabilities for more visually compelling pages, dynamic document updating for changing information and enhanced security features.
+				<div> - <a href="https://www.questia.com/read/1G1-16926084/netscape-unveils-netscape-navigator-1-1" target="_blank">Information Today, April 1995</a></div>
+			</blockquote>
+
+			<p>The plugin architecture, developed in large part&nbsp;by John Giannandrea (now working on Search / Deep AI at Google) spurred&nbsp;a lot of excitement: A number of companies quickly got to work, including Macromedia - the maker of the popular Director software (see <a href="/blog/Brief-ish-History-of-The-Web-Part-I.html">Part I: The Pre-Web</a>), Real Networks and Sun.</p>
+
+			<p>Unfortunately, by the time Brendan started, Marc Andreessen has also begun talks with Sun to license their Java Virtual Machine (VM) for redistribution within the Navigator browser, for embedding applications. Given this and some unfortunate headcount issues, Brendan is initially placed on the <em>server</em> team.</p>
+
+			<p>It's May 1995 before Brendan is moved to the client team and begins work on a project code-named "Mocha". Certain factions within Netscape are scheming for a possible alternative to Java. If your first reaction is "why?" let me explain: People like Brendan and Andreessen realize Java is rather close to C++ and this is very unlike the Web so far which is pretty easy for amateurs and beginners to get started with. Writing code in Java requires a developer with an understanding of compilation, classes, data types, a main method, packages and so on. Microsoft is making a lot of headway in expanding the number of people who can program, by contrast with Visual Basic. "The Web needs something like that", they argued. For that kind of idea to really work, they decided that it would be necessary to be able to code right there in the page. It would have to be interpreted, not compiled. It would have to have simpler qualities. &nbsp;In order to keep the project alive, get funding and not destroy other potentially lucrative avenues with the Sun agreement, they realize that he will have to pretty quickly show that it is possible to do a language in the browser, show that it isn't redundant with Java.</p>
+
+			<p>While he hasn't started anything, Brendan has been quietly thinking about this since before he came on: What kind of language would work? &nbsp;Being a language buff, he knows the history of languages and bits about their theory. &nbsp;He is drawn particularly to languages like Self. &nbsp;Most programmers have heard references to Xerox-PARC's Smalltalk as being way ahead of its time and elegant, but certain people at Xerox-PARC went on to work on better&nbsp;models, among them,&nbsp;Self. &nbsp;David Ungar pioneered the idea of reducing the number of concepts and maximizing their utility. &nbsp;Self was prototypal and that was appealing. &nbsp;Brendan was also drawn to aspects of HyperTalk, the programming language available for the wildly successful HyperCard (see&nbsp;<a href="/blog/Brief-ish-History-of-The-Web-Part-I.html">Part I: The Pre-Web</a>) for inspiration on&nbsp;how you could put these things together in a way that amateurs could glue things together.</p>
+
+			<p>And so, in 10 days in May 1995, Brendan put together <em>just enough:</em> &nbsp;The core language parser, interpreter, decompiler, and minimal standard library core language. &nbsp;He integrated it via Lou Montulli's protocol handler (Lou Montelli was another Netscape founder who also co-authored the Lynx browser). &nbsp;Using these , Brendan created a demo in which you could use it&nbsp;as a protocol in the browser's URL bar. &nbsp;If you've ever done <code>javascript:alert('hello world')</code> or something you're using a similar idea. Here, however, typing the protocol <code>mocha:</code> would launch a primitive frameset based console.&nbsp; Using this Brendan was able to give a demo that would&nbsp;both generate&nbsp;enough interest and allay concerns of redundancy with Java. &nbsp;It wouldn't officially become "JavaScript" until Bill Joy of Sun signed the trademark license with Marc, Brendan and Rick Schell (Netscape VP of Engineering) later on December 4, 1995. &nbsp;For convenience, we'll still refer to it as JavaScript.</p>
+
+			<p>A few more challenges for JavaScript: &nbsp;First, the Netscape browser (nor really any browser save perhaps Viola) had been written to have an embedded scripting language intertwined in the mix. As a result, Brendan compared trying to shoehorn this in in a rush to juggling with chainsaws. &nbsp;Why the rush? &nbsp;well, that's the second challenge: &nbsp;It would have to ship in the same release as Java (Netscape 2). &nbsp; Here's why:&nbsp; Because while&nbsp;the tech world is abuzz about both Netscape and Sun,&nbsp;yesterday's talk about the rising power that was Microsoft has turned into speculation that Bill Gates has missed the boat. &nbsp;Everyone knows that it's just a matter of time before Microsoft leans in and attempts to stake claim, and the best way to prevent that is to be too good and too well entrenched by the time it arrives. &nbsp;People at&nbsp;Netscape realize that if they can't get a firm grasp on the market, Microsoft will just eat them up. &nbsp; That same month, Bill Gates&nbsp;sends a lengthy internal Memo titled "<a href="http://www.lettersofnote.com/2011/07/internet-tidal-wave.html" target="_blank">The Internet Tidal&nbsp;Wave</a>" setting precisely those priorities - and Microsoft licenses Mosaic from SpyGlass and "Internet Explorer" is conceived.</p>
+
+			<p>Netscape 2 also shipped with NPAPI - a plugin architecture that used the protocol handler to associate another, helper program for understanding, handling and (potentially) rendering other kinds of non-HTML content.</p>
+
+			<p>At the August SIGGRAPH (Special Interest Group on GRAPHics and Interactive Techniques) conference that year Steve Jobs gave the keynote. &nbsp;He&nbsp;had bought Pixar and they were&nbsp;doing incredibly interesting things - including working with Disney to produce the first full-length computer animated feature: Toy Story. &nbsp;But a lot of the talk was about the internet and the Web. &nbsp;James Gosling of Java fame sat on a panel called&nbsp;Set-Top Boxes - The Next Platform" in which he said:</p>
+
+			<blockquote>It's madness out there... My personal guess is that there will never be 'intelligent set top boxes'.
+			<div>-<a href="http://www.siggraph.org/s95/PANELS.PDF" target="_blank"> James Gosling SIGGRAPH 1995 (page 5)</a></div>
+			</blockquote>
+
+			<p>Another panel was called "Visualizing the Internet: Putting the User in the Driver’s Seat" and it really centered a lot on "Wow, this WWW thing is really taking off and it kind of looks like shit." &nbsp;Jonathan Gay who opened our piece was there too and heard a lot of people saying that the internet needed a really good vector based animation product. &nbsp;Netscape's NPAPI gave him the tool that he needed and his product was rebranded as "FutureSplash Animator" and the "FutureSplash plugin". &nbsp;Just start removing letters and you might sense where this is evolving before we get there in Part V. &nbsp;<em>Note: If you want to get a jump on it, it turns out that after posting I discovered that my friend Rick Waldron wrote<a href="http://www.flashmagazine.com/news/detail/the_flash_history/" target="_blank"> a whole piece on exactly this subject </a>about 16 years ago.</em></p>
+
+			<p>On August 9, 1995, Netscape made an initial public offering and the world, to put it mildly,<em> went nuts.</em></p>
+
+			<p><em>Special thanks to friends like Brendan Eich, Chris Wilson and Simon St Laurent for helping fill gaps, stay honest and fix typos. &nbsp;Especially Brendan, without whom this post would not have been possible on many levels.</em>
+
+		</p></section>
+
+
+	</section>
+
+
+</article></main>
+
+  
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-88027178-1', 'auto');
+    ga('send', 'pageview');
+  </script>
+  <script>
+    Array.prototype.slice.call(document.querySelectorAll('.optional [data-src]')).forEach(function (optional) {
+      var prefs = window.localStorage.downloadsPrefs,
+          clickToSee;
+      if (prefs === 'true') {
+        activateOptional(optional);
+      } else {
+        clickToSee = document.createElement('div');
+        clickToSee.innerHTML = '<button>Click to see media</button>';
+        clickToSee.style.textAlign = 'center';
+        clickToSee.style.border = 'none';
+        optional.parentElement.insertBefore(clickToSee, optional.nextSibling);
+        clickToSee.firstElementChild.addEventListener('click', function () {
+          activateOptional(optional);
+          clickToSee.parentElement.removeChild(clickToSee)
+        })
+      }
+
+    })
+  </script>
+
+</body></html>
