@@ -250,6 +250,10 @@ blockquote:after {
             temp,
             container = media.parentElement;
 
+          if (media.nextSibling.matches('.clickToSee')) {
+            media.parentElement.removeChild(media.nextSibling);
+          }
+
           if (media.tagName === 'VIDEO') {
             temp = document.createElement('video')
             temp.setAttribute('autoplay','')
@@ -264,6 +268,7 @@ blockquote:after {
           } else {
             media.src = media.getAttribute('data-src');
           }
+
           container.classList.add('active');
       }
     </script>
@@ -460,13 +465,13 @@ America (art for sale)</a></li>
         activateOptional(optional);
       } else {
         clickToSee = document.createElement('div');
+        clickToSee.classList.add('clickToSee')
         clickToSee.innerHTML = '<button>Click to see media</button>';
         clickToSee.style.textAlign = 'center';
         clickToSee.style.border = 'none';
         optional.parentElement.insertBefore(clickToSee, optional.nextSibling);
         clickToSee.firstElementChild.addEventListener('click', function () {
           activateOptional(optional);
-          clickToSee.parentElement.removeChild(clickToSee)
         })
       }
 

@@ -252,6 +252,10 @@ blockquote:after {
             temp,
             container = media.parentElement;
 
+          if (media.nextSibling.matches('.clickToSee')) {
+            media.parentElement.removeChild(media.nextSibling);
+          }
+
           if (media.tagName === 'VIDEO') {
             temp = document.createElement('video')
             temp.setAttribute('autoplay','')
@@ -266,6 +270,7 @@ blockquote:after {
           } else {
             media.src = media.getAttribute('data-src');
           }
+
           container.classList.add('active');
       }
     </script>
@@ -315,8 +320,8 @@ America (art for sale)</a></li>
 <li><a href="/blog/The-Glory-Days-Of-The-Web.html">The Glory Days of the Web</a> (Wed Oct 05 2016)</li>
 <li><a href="/blog/The-Future-Web-Wants-You.html">The Future Web Wants You</a> (Wed Aug 24 2016)</li>
 <li><a href="/blog/Prognostication-And-The-Failure-Of-The-Web.html">Prognostication and the Failure of the Web</a> (Fri May 06 2016)</li>
-<li><a href="/blog/Brief-ish-History-of-The-Web-Part-3.html">A Brief(ish) History of the Web Universe - Part III: The Early Web</a> (Fri Feb 05 2016)</li>
 <li><a href="/blog/Brief-ish-History-of-The-Web-Part-4.html">A Brief(ish) History of the Web Universe - Part IV: New Hope(s)</a> (Fri Feb 05 2016)</li>
+<li><a href="/blog/Brief-ish-History-of-The-Web-Part-3.html">A Brief(ish) History of the Web Universe - Part III: The Early Web</a> (Fri Feb 05 2016)</li>
 <li><a href="/blog/Brief-ish-History-of-The-Web-Part-2.html">A Brief(ish) History of the Web Universe - Part II: Time</a> (Mon Dec 07 2015)</li>
 <li><a href="/blog/Perf.html">Performance: Shame, Hope, Nuance and Interesting Problems</a> (Sun Nov 22 2015)</li>
 <li><a href="/blog/Brief-ish-History-of-The-Web-Part-1.html">A Brief(ish) History of the Web Universe - Part I: The Pre-Web</a> (Sun Nov 22 2015)</li>
@@ -341,13 +346,13 @@ America (art for sale)</a></li>
         activateOptional(optional);
       } else {
         clickToSee = document.createElement('div');
+        clickToSee.classList.add('clickToSee')
         clickToSee.innerHTML = '<button>Click to see media</button>';
         clickToSee.style.textAlign = 'center';
         clickToSee.style.border = 'none';
         optional.parentElement.insertBefore(clickToSee, optional.nextSibling);
         clickToSee.firstElementChild.addEventListener('click', function () {
           activateOptional(optional);
-          clickToSee.parentElement.removeChild(clickToSee)
         })
       }
 
