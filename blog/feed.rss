@@ -4,7 +4,7 @@
                     <title>bkardell.com rss feed</title>
                     <link>https://bkardell.com</link>
                     <language>en-us</language>
-                    <lastBuildDate>Sat, 03 Dec 2016 18:12:47 GMT</lastBuildDate>
+                    <lastBuildDate>Sat, 03 Dec 2016 20:06:32 GMT</lastBuildDate>
                     <description>Just the bkardell.com rss feed</description>
                     <atom:link href="https://bkardell.com/blog/feed.rss" rel="self" type="application/rss+xml" />
             
@@ -16,6 +16,13 @@
                                 </item>
                             
                                 <item>
+                                    <title>A Brief(ish) History of the Web Universe - Part III: The Early Web</title>
+                                    <link>https://bkardell.com/blog/Brief-ish-History-of-The-Web-Part-3.html</link>
+                                    <guid>https://bkardell.com/blog/Brief-ish-History-of-The-Web-Part-3.html</guid>
+                                    <pubDate>Fri, 05 Feb 2016 05:00:00 GMT</pubDate>
+                                </item>
+                            
+                                <item>
                                     <title>A Brief(ish) History of the Web Universe - Part II: Time</title>
                                     <link>https://bkardell.com/blog/Brief-ish-History-of-The-Web-Part-2.html</link>
                                     <guid>https://bkardell.com/blog/Brief-ish-History-of-The-Web-Part-2.html</guid>
@@ -23,9 +30,9 @@
                                 </item>
                             
                                 <item>
-                                    <title>A Brief(ish) History of the Web Universe - Part III: The Early Web</title>
-                                    <link>https://bkardell.com/blog/Brief-ish-History-of-The-Web-Part-3.html</link>
-                                    <guid>https://bkardell.com/blog/Brief-ish-History-of-The-Web-Part-3.html</guid>
+                                    <title>A Brief(ish) History of the Web Universe - Part IV: New Hope(s)</title>
+                                    <link>https://bkardell.com/blog/Brief-ish-History-of-The-Web-Part-4.html</link>
+                                    <guid>https://bkardell.com/blog/Brief-ish-History-of-The-Web-Part-4.html</guid>
                                     <pubDate>Fri, 05 Feb 2016 05:00:00 GMT</pubDate>
                                 </item>
                             
@@ -44,13 +51,6 @@
                                 </item>
                             
                                 <item>
-                                    <title>Prognostication and the Failure of the Web</title>
-                                    <link>https://bkardell.com/blog/Prognostication-And-The-Failure-Of-The-Web.html</link>
-                                    <guid>https://bkardell.com/blog/Prognostication-And-The-Failure-Of-The-Web.html</guid>
-                                    <pubDate>Fri, 06 May 2016 04:00:00 GMT</pubDate>
-                                </item>
-                            
-                                <item>
                                     <title>(Really) classy CSS</title>
                                     <link>https://bkardell.com/blog/Really-Classy-CSS.html</link>
                                     <guid>https://bkardell.com/blog/Really-Classy-CSS.html</guid>
@@ -58,10 +58,10 @@
                                 </item>
                             
                                 <item>
-                                    <title>The Glory Days of the Web</title>
-                                    <link>https://bkardell.com/blog/The-Glory-Days-Of-The-Web.html</link>
-                                    <guid>https://bkardell.com/blog/The-Glory-Days-Of-The-Web.html</guid>
-                                    <pubDate>Wed, 05 Oct 2016 04:00:00 GMT</pubDate>
+                                    <title>Prognostication and the Failure of the Web</title>
+                                    <link>https://bkardell.com/blog/Prognostication-And-The-Failure-Of-The-Web.html</link>
+                                    <guid>https://bkardell.com/blog/Prognostication-And-The-Failure-Of-The-Web.html</guid>
+                                    <pubDate>Fri, 06 May 2016 04:00:00 GMT</pubDate>
                                 </item>
                             
                                 <item>
@@ -69,6 +69,13 @@
                                     <link>https://bkardell.com/blog/The-Future-Web-Wants-You.html</link>
                                     <guid>https://bkardell.com/blog/The-Future-Web-Wants-You.html</guid>
                                     <pubDate>Wed, 24 Aug 2016 04:00:00 GMT</pubDate>
+                                </item>
+                            
+                                <item>
+                                    <title>The Glory Days of the Web</title>
+                                    <link>https://bkardell.com/blog/The-Glory-Days-Of-The-Web.html</link>
+                                    <guid>https://bkardell.com/blog/The-Glory-Days-Of-The-Web.html</guid>
+                                    <pubDate>Wed, 05 Oct 2016 04:00:00 GMT</pubDate>
                                 </item>
                             
                                 <item>
