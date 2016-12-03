@@ -4,7 +4,7 @@
                     <title>bkardell.com rss feed</title>
                     <link>https://bkardell.com</link>
                     <language>en-us</language>
-                    <lastBuildDate>Sat, 03 Dec 2016 17:29:33 GMT</lastBuildDate>
+                    <lastBuildDate>Sat, 03 Dec 2016 18:10:53 GMT</lastBuildDate>
                     <description>Just the bkardell.com rss feed</description>
                     <atom:link href="https://bkardell.com/blog/feed.rss" rel="self" type="application/rss+xml" />
             
@@ -30,10 +30,10 @@
                                 </item>
                             
                                 <item>
-                                    <title>Prognostication and the Failure of the Web</title>
-                                    <link>https://bkardell.com/blog/Prognostication-And-The-Failure-Of-The-Web.html</link>
-                                    <guid>https://bkardell.com/blog/Prognostication-And-The-Failure-Of-The-Web.html</guid>
-                                    <pubDate>Fri, 06 May 2016 04:00:00 GMT</pubDate>
+                                    <title>Performance: Shame, Hope, Nuance and Interesting Problems</title>
+                                    <link>https://bkardell.com/blog/Perf.html</link>
+                                    <guid>https://bkardell.com/blog/Perf.html</guid>
+                                    <pubDate>Sun, 22 Nov 2015 05:00:00 GMT</pubDate>
                                 </item>
                             
                                 <item>
@@ -44,10 +44,10 @@
                                 </item>
                             
                                 <item>
-                                    <title>Performance: Shame, Hope, Nuance and Interesting Problems</title>
-                                    <link>https://bkardell.com/blog/Perf.html</link>
-                                    <guid>https://bkardell.com/blog/Perf.html</guid>
-                                    <pubDate>Sun, 22 Nov 2015 05:00:00 GMT</pubDate>
+                                    <title>Prognostication and the Failure of the Web</title>
+                                    <link>https://bkardell.com/blog/Prognostication-And-The-Failure-Of-The-Web.html</link>
+                                    <guid>https://bkardell.com/blog/Prognostication-And-The-Failure-Of-The-Web.html</guid>
+                                    <pubDate>Fri, 06 May 2016 04:00:00 GMT</pubDate>
                                 </item>
                             
                                 <item>
