@@ -4,7 +4,7 @@
                     <title>bkardell.com rss feed</title>
                     <link>https://bkardell.com</link>
                     <language>en-us</language>
-                    <lastBuildDate>Sat, 03 Dec 2016 18:10:53 GMT</lastBuildDate>
+                    <lastBuildDate>Sat, 03 Dec 2016 18:12:47 GMT</lastBuildDate>
                     <description>Just the bkardell.com rss feed</description>
                     <atom:link href="https://bkardell.com/blog/feed.rss" rel="self" type="application/rss+xml" />
             
@@ -58,17 +58,17 @@
                                 </item>
                             
                                 <item>
-                                    <title>The Future Web Wants You</title>
-                                    <link>https://bkardell.com/blog/The-Future-Web-Wants-You.html</link>
-                                    <guid>https://bkardell.com/blog/The-Future-Web-Wants-You.html</guid>
-                                    <pubDate>Wed, 24 Aug 2016 04:00:00 GMT</pubDate>
-                                </item>
-                            
-                                <item>
                                     <title>The Glory Days of the Web</title>
                                     <link>https://bkardell.com/blog/The-Glory-Days-Of-The-Web.html</link>
                                     <guid>https://bkardell.com/blog/The-Glory-Days-Of-The-Web.html</guid>
                                     <pubDate>Wed, 05 Oct 2016 04:00:00 GMT</pubDate>
+                                </item>
+                            
+                                <item>
+                                    <title>The Future Web Wants You</title>
+                                    <link>https://bkardell.com/blog/The-Future-Web-Wants-You.html</link>
+                                    <guid>https://bkardell.com/blog/The-Future-Web-Wants-You.html</guid>
+                                    <pubDate>Wed, 24 Aug 2016 04:00:00 GMT</pubDate>
                                 </item>
                             
                                 <item>
