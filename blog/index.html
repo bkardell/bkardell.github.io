@@ -252,8 +252,10 @@ blockquote:after {
             temp,
             container = media.parentElement;
 
-          if (media.nextSibling.matches('.clickToSee')) {
-            media.parentElement.removeChild(media.nextSibling);
+          if (media.nextSibling && media.nextSibling.matches) {
+            if (media.nextSibling.matches('.clickToSee')) {
+              media.parentElement.removeChild(media.nextSibling);
+            }
           }
 
           if (media.tagName === 'VIDEO') {
