@@ -1,0 +1,386 @@
+<html lang="en" resource-type="blogpost"><head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <link rel="alternate" type="application/rss+xml" href="blog/feed.rss" title="bkardell.com/blog rss feed">
+    <title>A Brief(ish) History of the Web Universe - Part III: The Early Web</title>
+    <style>.captioned-image {
+    background-color: #eaeaea;
+    display: block;
+    overflow: hidden;
+    padding: 1rem;
+    text-align: center;
+    font-style: italic;
+}
+
+.captioned-image.p-attached {
+    width: 40%;
+    display: inline-block;
+    margin: 0 1rem 2rem 1rem;
+}
+
+section > .captioned-image.p-attached {
+    margin-top: 1.5rem; /* correct for heading size*/
+}
+
+.captioned-image.p-attached.p-attached-left {
+    float: left;
+}
+
+.captioned-image.p-attached.p-attached-right {
+    float: right;
+}
+
+.captioned-image.p-attached + * + * {
+    clear: both;
+    margin-top: 2rem;
+}
+
+
+.captioned-image img, .captioned-image video {
+    display: block;
+    max-width: 100%;
+    margin: 0 auto 1em auto;
+}
+.source {
+    font-style: italic;
+}
+body {
+    display: flex;
+    font: 1em "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-weight: 300;
+    line-height: 1.625;
+}
+h1 { margin: 0.5rem; }
+code-format {
+    border-left: 0.5rem solid rgba(123,115,209,0.35);
+    display: block;
+    padding: 0.5rem;
+    margin-bottom: 1rem;
+}
+[aria-level="1"] {
+    color: #43686b;
+    font-size: 1.45rem;
+}
+[aria-level="2"] {
+    color: #856363;
+    font-size: 1.35rem;
+}
+[aria-level="3"] {
+    color: #856363;
+    font-size: 1.25rem;
+}
+[aria-level="4"] {
+    color: #856363;
+    font-size: 1.2rem;
+}
+[aria-level="5"], [aria-level="6"] {
+    color: #667496;
+    font-size: 1.1rem;
+    font-weight: bolder;
+}
+.posted-on {
+    font-style: italic;
+    font-size: 0.8rem;
+    text-align: right;
+    margin-bottom: 1rem;
+}
+
+ul, li {
+    margin: 0.5rem;
+    text-align: left;
+}
+header {
+    padding-top: 1rem;
+    padding-right: 2rem;
+    background-color: #fbf5e9;
+}
+.tagline {
+    font-style: italic;
+    text-align: center;
+}
+
+[tag-esc] {
+    color: maroon;
+    font-family: Courier, "Lucida Console", monospace;
+}
+
+[tag-esc]::before {
+    content: '<';
+}
+
+[tag-esc]::after {
+    content: '>';
+}
+
+main {
+    min-width: 50%;
+    width: 80%;
+    padding: 1rem;
+}
+header .title {
+    background-color: rgba(123,115,209,0.35);
+    padding: 0.3rem;
+    padding-left: 0.25rem;
+    font-weight: bolder;
+    font-size: 0.9rem;
+    border-left: 1rem solid #999298;
+}
+
+header .profile {
+    width: 50%;
+    margin: 1rem 25%;
+}
+
+header .title + nav {
+    font-size: 0.9rem;
+}
+
+header .blurb {
+    font-size: 0.75rem;
+    text-align: center;
+}
+header .name {
+    text-align: center;
+    font-size: xx-large;
+}
+.segue {
+    font-style: italic;
+}
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  border: 0;
+}
+[for="aboutMeToggle"] {
+    display: none;
+}
+/* this needs rethinking, it wants a selector like 'not flow content' */
+article>*:not(contextual-heading,a), section>*:not(contextual-heading,a) {
+    margin-left: 0.45rem;
+}
+
+blockquote {
+  font-family: serif;
+  background: #f9f9f9;
+  border-left: 10px solid #ccc;
+  margin: 1.5em 10px;
+  padding: 0.5em 10px;
+}
+blockquote:before {
+  color: #ccc;
+  content: open-quote;
+  font-size: 2em;
+  line-height: 0.1em;
+  margin-right: 0.25em;
+  vertical-align: -0.4em;
+}
+
+blockquote:after {
+  color: #ccc;
+  content: close-quote;
+  font-size: 2em;
+  line-height: 0.1em;
+  margin-left: 0.25em;
+  vertical-align: -0.4em;
+}
+
+
+@media (max-width: 800px){
+    body {
+        flex-direction: column;
+    }
+    header {
+        border-bottom: 1px solid #afafff;
+    }
+
+    .captioned-image.p-attached {
+        width: 100%;
+        margin: 1rem 0;
+    }
+
+    .captioned-image.p-attached.p-attached-left,
+    .captioned-image.p-attached.p-attached-right {
+        float: none;
+    }
+
+    [for="aboutMeToggle"] {
+        background-color: #675e5e;
+        color: white;
+        padding: 0.25rem;
+        padding-left: 0.5rem;
+        display: block;
+        border-left: 1rem solid black;
+    }
+    #aboutMeToggle:focus + [for="aboutMeToggle"]{
+        outline: 4px solid #c6ddf2;
+    }
+
+    #aboutMeToggle:checked ~ header {
+        display: none;
+    }
+
+    header li { display: inline; margin-left: -0.5em; }
+    header .blurb li::after { content: '; '; }
+    header  nav li {
+        display: inline-block;
+        margin-left: 0.35rem;
+        margin-right: 0.35rem;
+    }
+    header .title {
+        width: 100%;
+    }
+    main li .source { display: block; }
+
+}</style>
+    <style>.thanksTo { font-style: italic; font-size: 0.8rem; }</style>
+  </head>
+  <body>
+    <input id="aboutMeToggle" class="sr-only" type="checkbox" checked="">
+<label for="aboutMeToggle">Toggle author information</label>
+<header>
+    <div class="name">
+        Brian Kardell
+    </div>
+    <img class="profile" src="/profile.jpg" alt="">
+    <div class="tagline"><a href="/">Betterifying the Web</a></div>
+    <div class="blurb">
+        <ul>
+            <li>Sr Front-End Engineer at Apollo Group, Inc</li>
+            <li>Original Co-author/Co-signer of The Extensible Web Manifesto</li>
+            <li>Co-Founder/Chair, W3C Extensible Web CG</li>
+            <li>Member, W3C (The JS Foundation)</li>
+            <li>Co-author of HitchJS</li>
+            <li>Blogger</li>
+            <li>Art, Science &amp; History Lover</li>
+            <li>Standards Geek</li>
+        </ul>
+    </div>
+    <div class="title">Follow Me On...</div>
+    <nav>
+        <ul>
+            <li><a rel="me" href="https://briankardell.wordpress.com">Wordpress</a></li>
+            <li><a rel="me" href="https://medium.com/@briankardell">Medium</a></li>
+            <li><a rel="me" href="https://twitter.com/briankardell">Twitter</a></li>
+            <li><a rel="me" href="https://github.com/bkardell/">Github</a></li>
+            <li><a rel="me" href="https://codepen.io/bkardell">Codepen</a></li>
+            <li><a rel="me" href="https://www.linkedin.com/in/brian-kardell-08a4264">LinkedIn</a></li>
+            <li><a rel="me" href="https://www.instagram.com/kardellbrian">Instagram (for
+art)</a></li>
+            <li><a rel="me" href="http://fineartamerica.com/profiles/brian-kardell?">Fine Art
+America (art for sale)</a></li>
+        </ul>
+    </nav>
+</header>
+    <main><div class="posted-on">Posted on 2/5/2016</div><article posted-on="2/5/2016" class="sectioning">
+	<contextual-heading role="heading" aria-level="1">A Brief(ish) History of the Web Universe - Part III: The Early Web</contextual-heading>
+	<p class="segue">
+	<a href="/blog/Brief-ish-History-of-The-Web-Part-1.html">Part I: The Pre-Web</a> and <a href="/blog/Brief-ish-History-of-The-Web-Part-2.html">Part II: Time</a> of this series attempt to set the creation of the Web, the first Web browser and early attempts to publicly share Sir Tim Berners-Lee’s idea of “the Web” into some historical context.  They attempt to illustrate that there were ideas and forks of ideas along the way, each  considering different aspects of different problems; and that each had varying degrees of success. Some were popular and increasingly mature desktop products, others created standards upon which many products would be built.  Some were technically interesting but completely failed to take off and some which were academically fascinating but were largely vapor.   All of these were still “in motion” at the time that the Web was being conceived and it’s important to realize that they didn’t stop just because Tim said “wait, I’ve got it.”.  Those posts also attempt to explain how Tim really wanted the Web to be read/write, wanted to tap into existing mature products and which bits he imagined were most and least important.  I described the landscape of deployed hardware and technology at the time – the world was close, but not yet “ready” to be wired in richer form/  We weren’t connected by and large – In fact, the entire amount of information sent across the Internet monthly at that time would easily fit on a single sub $100 (US) external USB hard-drive in 2016.    All of this led helped shape the Web.</p>
+
+	<p>It would be an understatement to say that early on, the vast majority of folks in the mature bits of the industry didn't really take the Web&nbsp;seriously yet. &nbsp;As explained in previous posts, the authors of mature hypertext products turned down early opportunities to integrate the Web outright. &nbsp;In 1992 Tim's&nbsp;talk proposal for&nbsp;the Hypertext Conference was actually rejected. &nbsp;Even in terms of new "Internet ideas" the Web didn't seem like the popular&nbsp;winner. SGML enthusiasts by and large shunned it as a crude interpretation of a much better idea with little hope of success. &nbsp;<a href="https://en.wikipedia.org/wiki/Gopher_(protocol)" target="_blank">Gopher</a>, which&nbsp;was created at almost exactly the same time, was gaining users far&nbsp;faster than this "World Wide Web". What did happen for the Web, however, is that a <em>huge percentage of the&nbsp;</em>small number of early enthusiasts involved started building browsers... Meanwhile,&nbsp;<em>existing ideas&nbsp;kept evolving independently</em>, and <em>new&nbsp;ideas started</em>&nbsp;emerging&nbsp;too and these would continue to help shape and inspire.</p>
+
+	<section class="sectioning">
+		<contextual-heading role="heading" aria-level="2">1992-1993: &nbsp;WWWWI</contextual-heading>
+		<p>1992 saw the birth of a <em>lot</em> of browsers and little actual hypertext. &nbsp;For perspective, by the end of 1992 there were&nbsp;<em>seven</em>&nbsp;web browsers which allowed users to surf the vast ocean of what was at the time <em>only 22 known Websites</em>. &nbsp;As each browser came online they built on Tim's original idea that the parser&nbsp;could just ignore tags it didn't understand and each attempted to "adjust" what we might call the political map of the Web's features. &nbsp;Each brought with it it's own ideas, innovations, bugs and so on. &nbsp;Effectively, this was the first "Browser War" or what I'll call "World Wide Web War I".</p>
+
+		<p>There is one in particular, worth calling&nbsp;out: &nbsp;ViolaWWW. It was created by a student named Pei Wei and it included innovations like stylesheets, tables, inline images, a scripting language and even the ability to <em>embed</em> small applications. &nbsp;Remember that nearly all the popular non-Web, desktop hypertext and hypermedia products of the time had many these features. &nbsp;What made ViolaWWW different was that it was so much more than text. &nbsp;Viola (not ViolaWWW)&nbsp;was&nbsp;an Object Oriented programming language and a bytecode VM. &nbsp; The ViolaWWW&nbsp;browser was&nbsp;a just VM application (though, it was the killer one that made most people care about it) - this made it possible to do all sorts of incredibly interesting things.</p>
+
+		<div class="captioned-image p-attached p-attached-left" style="margin-top:0">
+			<img src="https://briankardell.files.wordpress.com/2015/12/screen-shot-2015-12-07-at-9-22-28-pm.png" alt="Screenshots of ViolaWWW Browser"> Screenshots of the Viola Web Browser courtesy of <a href="http://www.viola.org/" target="_blank">viola.org</a>
+		</div>
+
+
+		<p>Some&nbsp;people reading this in 2016 (or later) are likely simultaneously impressed and a perhaps just a little horrified by the idea that attempts to "move away from"&nbsp;nice clean declarative, semantic markup with scripts and programs came so early on. &nbsp;Tim must have been absolutely horrified, right?</p>
+
+		<p>Well, no that doesn't seem to be quite accurate - at least from what I read from the record. &nbsp;History is a&nbsp;lot more nuanced than we frequently tend to present it. &nbsp;Ideas are complex. &nbsp;Understanding nuances can be hard, but I'd like to try.</p>
+
+		<p>As I described in Part II, Tim didn't imagine HTML would be "<em>the</em> solution" for content but rather</p>
+
+		<blockquote><em>I expected HTML to be the basic waft and weft of the Web but documents of all types: video, computer aided design, sound, animation and executable programs to be the colored threads that would contain much of the content. - Tim Berners-Lee in Weaving the Web</em></blockquote>
+
+
+		<p>In fact, regarding Pei and Viola, he spoke in generally glowing terms in&nbsp;<em>Weaving the Web, </em>and numerous interviews. &nbsp;In his address at CERN in 1998, upon accepting a fellowship, he said</p>
+
+
+		<blockquote>It's worth saying that I feel a little embarrassed accepting a fellowship when there are people like Pei Wei ...[who] read about the World Wide Web on a newsgroup somewhere and had some interesting software of his own; an interpreted language which could be moved across the NET and could talk to a screen.. in fact what he did was really ahead of his time.</blockquote>
+
+		<p>As questions came in related to similar ideas on the www-talk mailing list Tim&nbsp;answered and explained a number of related concepts. &nbsp;<a href="http://1997.webhistory.org/www.lists/www-talk.1992/0065.html" target="_blank">Here's one that <em>might</em> capture his feelings at the time from May 1992</a>&nbsp;(Tim's is the reply):</p>
+
+		<blockquote><i>&gt; I would like to know, whether anybody has extended WWW such, that it is possible</i><i>&nbsp;to start arbitrary programs by hitting a button in a WWW browser.
+		</i>
+		<div style="margin-top: 1.5rem;">Very good question. The problem is that of programming language. You need something really powerful, but at the same time ubiquitous. Remember a facet of the web is universal readership. There is no universal interptreted [sic] programming language. But there are some close tries. (lisp, sh). You also need something which can run in a very safe mode, to prevent virus attacks.... [It should be] public domain. A pre-compiled standard binary form would be cool too. &nbsp;It isn't here yet.</div></blockquote>
+
+		<p>While I don't know <em>precisely&nbsp;</em>what Tim was thinking in the early 1990's I do think it is worth&nbsp;noting the description, his the use of the words "<em>cool"&nbsp;</em> and "<em>yet"&nbsp;</em>as well as the absence of any sort of all caps/head exploding response. &nbsp;In fact, if you wade through the archives, it turns out that a lot of early talk and efforts in 1991-1992 were <em>already</em> specifically surrounding this weird line between documents and applications or HyperText and HyperMedia. &nbsp;Traditional desktop system makers had recognized the gap and early&nbsp;Web enthusiasts&nbsp;did too.</p>
+
+		<p>The point of this observation is simple:<em>&nbsp; "We" didn't really fully know what we were doing then, and in many ways we're still figuring it out today.</em>..&nbsp;and that's ok.</p>
+
+		<p>Even the inclusion of inline images brought new questions - MIME wasn't a given, content-negotiation was still kind of a rough dream and requests were very expensive.</p>
+
+		<p>Others were starting to add things like <code tag-esc="">input</code> and annotation and comment systems and variable 'slots' into the markup for some rough idea of 'templating' to help flesh out the problem that a whole lot of a sites, even then, would have to be concerned with repeating things.</p>
+
+		<p>Some people wanted to make servers really smart. &nbsp;They saw the investment in a server as a thing which could query databases, convert document types on the fly, run business logic, etc. &nbsp;These folks thought that modifying HTML would give them something akin to the IBM 3270 model which allowed the pushing of values and the pulling of page-based responses. &nbsp;Others, like Pei, wanted to make clients smarter, or at least the cooperation between the two. &nbsp;At some level, these are conversations nearly as old as computing itself and we're still having them today.</p>
+
+		<p>Tim continues in that same post above to say that:</p>
+
+		<blockquote>In reality, what we would be able to offer you real soon now with document format negotiation is the ability to return a document in some language for execution.</blockquote>
+
+		<p>Viola script by way of&nbsp;negotiation - which he explains would "cover <em>most</em> Unix systems". For Tim it seems (from my reading) that the <em>first</em> problem was that there wasn't a standard language, the <em>second</em> was that it might not be safe, the <em>third</em> was that if there was one it should be in the public domain. &nbsp;If you were on a Unix machine you'd be covered. &nbsp;If you had Viola, you'd be covered. &nbsp;If you had neither... well... it's complicated. &nbsp;But Viola had already begun tackling the safety issue too.</p>
+
+		<p>But even this early on - it&nbsp;didn't seem to be a question of&nbsp;<em>whether</em> applications should be part of the Web, but more like&nbsp;<em>how they should be. &nbsp;S</em>hould be&nbsp;<em>one&nbsp;</em>way or maybe a few?</p>
+
+		<p>There was so much innovation and variance in browsers themselves that in December 1992 Tim sent an email entitled "Let's keep the web together" simultaneously praising the wealth of ideas and innovations and stressing that they should work to begin the process of future standardization/alignment lest the Web fragment too far.</p>
+	</section>
+
+
+	<section class="sectioning">
+		<contextual-heading role="heading" aria-level="2">1993-1994: The Perfect Storm</contextual-heading>
+		<p>When Marc Andreessen, was shown <em>Viola</em> it helped inspire him to start an&nbsp;effort at NSCA - at least that's one story.</p>
+
+		<p>For all its value Viola had what turned out to be a critical flaw: &nbsp;It was hard to get it working. &nbsp;Despite all of its advantages, you had to install the runtime itself (the VM) and then run the browser in the runtime. Getting it setup and running proved problematic, even for a number of pretty technically savvy people. There were issues with permissions and bugs and Pei was kind of alone in building and maintaining it.</p>
+
+		<p>But this wasn't unique. &nbsp;Browsing the Web in 1993 was still a&nbsp;kind of&nbsp;painful endeavor to get going. The line mode browser was placed into the public domain in May 1993. There wasn't a terribly lot there to browse either - even by the end of that year&nbsp;there were only&nbsp;130 known websites. Setup was difficult and things were generally very slow. &nbsp;Even finding something on that small number of sites was hard - forget searching Google, even Yahoo wasn't a thing yet. Even if you <em>could</em> get something working with one browser, chances were pretty decent that you might come across something where it wasn't the <em>right</em> browser for you to get the whole experience.</p>
+
+		<p>Marc Andreessen was the first one to start treating the browser like a modern product -&nbsp;really taking in feedback and smoothing out the bumps. &nbsp;The team at NCSA quickly ported his UNIX work to Mac and PC, there was even one for the Commodore Amiga. &nbsp;Mosaic was a good browser, but feature-wise, it probably wasn't even the&nbsp;<em>best</em>. &nbsp;Aside from ViolaWWW's notable work, some browsers already had pioneered forms, for example, and Mosaic initially didn't support forms.&nbsp;&nbsp;But&nbsp;there was at least one thing they <em>nailed: &nbsp;&nbsp;</em>They created&nbsp;an <em>easy to install and setup</em> browser on many platforms and drove the barrier to entry way down.</p>
+
+		<p>Moore's Law had finally created faster and cheaper machines <em>with modems</em> entering a more mainstream market; some notable regulation changes happened; when the makers of Gopher announced that&nbsp;<em>maybe just possibly in some circumstances you might be charged a very small fee</em> Tim convinced CERN to make a statement that the Web wouldn't do that.</p>
+
+		<p>In other words:&nbsp;<em>When Mosaic was released publicly in late 1993 "free for non-commercial use" it was in the midst of the perfect storm.</em> &nbsp;Timing matters.</p>
+
+		<p>Suddenly the Web&nbsp;<em>really started</em> to hit and growth began to really explode. &nbsp;By 1994, there were an estimated 2800 sites. &nbsp;Regular People<sup>TM</sup> were being introduced to the Web for the first time and they were using Mosaic. &nbsp; After only&nbsp;roughly a year since&nbsp;being placed in the public domain, it is &nbsp;estimated that<em> less than 2% of Web users (still a comparatively small total by today's measures) were getting around&nbsp;using the line mode browser</em>. In April of that year, James Clark and Marc Andreessen established what would become Netscape.</p>
+
+		<p>Previous efforts to standardize didn't get there - It wasn't until November 28, 1994 that RFC-1886 was finally sent to the IETF to begin to create an HTML "standard" which we'll talk about in Part IV, but wouldn't ultimately arrive for another year and then in debatable form.</p>
+
+		<section class="sectioning">
+			<contextual-heading role="heading" aria-level="3">The VM</contextual-heading>
+			<p>Pei wasn't the only one thinking about a runtime VM, Sun Microsystems was too.&nbsp;&nbsp;As described in <a href="/blog/Brief-ish-History-of-The-Web-Part-2.html">Part II</a>,&nbsp;Project Green spawned Oak thinking they'd found the next big market in consumer devices with embedded systems. &nbsp;By&nbsp;1992 they had a working demo for set-top boxes which created a read/write interactive internet-<em>like</em> experience for television - MovieWood which they had hoped to sell to cable companies. &nbsp;But the cable companies didn't bite.</p>
+
+			<p>This confluence of timing and ideas left the Green Team at Sun wondering what to do with the rest of their&nbsp;lives and their ideas. &nbsp;Over the course of 3 days they discussed the success of Mosaic and decided their future.&nbsp; As James Gosling would later describe:</p>
+
+			<blockquote>Mosaic...&nbsp;revolutionized people's perceptions. The Internet was being transformed into exactly the network that we had been trying to convince the cable companies they ought to be building. All the stuff we had wanted to do, in generalities, fit perfectly with the way applications were written, delivered, and used on the Internet. It was just an incredible accident. And it was patently obvious that the Internet and Java were a match made in heaven.</blockquote>
+
+			<p>So the Sun team went back to the drawing board to build a browser like Mosaic - but in Java (which was a lot like Pei's approach) and in 1994 they had a demo called "WebRunner", which would later be renamed "HotJava<sup>TM</sup>. Within just a few months everyone, not just techies, were going crazy imagining the possibilities.</p>
+
+			<p>Nearly everyone seemed to think that this would change the world. As we'll see in Part IV, they might have been right, but not how they thought....</p>
+		</section>
+
+	</section>
+
+
+</article></main>
+
+  
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-88027178-1', 'auto');
+    ga('send', 'pageview');
+  </script>
+
+</body></html>
