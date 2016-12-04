@@ -1,0 +1,525 @@
+<html lang="en" resource-type="blogpost"><head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@briankardell">
+    <meta name="twitter:creator" content="@briankardell">
+    <meta name="twitter:title" content="What Would Bruce Lee Do? The Tao of the Extensible Web.">
+    <meta name="twitter:description" content="Recently I participated in a panel on The Standards Process and the Extensible Web Manifesto at Edge Conf. &nbsp;While ours was the very last session of the day (you can watch the video">
+    <meta name="twitter:image" content="https://bkardell.com/media/bruce-lee-absorb-useful.jpg">
+    <link rel="alternate" type="application/rss+xml" href="blog/feed.rss" title="bkardell.com/blog rss feed">
+    <title>What Would Bruce Lee Do? The Tao of the Extensible Web.</title>
+    <style>.captioned-image {
+    background-color: #eaeaea;
+    display: block;
+    overflow: hidden;
+    padding: 1rem;
+    text-align: center;
+    font-style: italic;
+}
+
+.captioned-image.p-attached {
+    width: 40%;
+    display: inline-block;
+    margin: 0 1rem 2rem 1rem;
+}
+
+section > .captioned-image.p-attached {
+    margin-top: 1.5rem; /* correct for heading size*/
+}
+
+.captioned-image.p-attached.p-attached-left {
+    float: left;
+}
+
+.captioned-image.p-attached.p-attached-right {
+    float: right;
+}
+
+.captioned-image.p-attached + * + * {
+    clear: both;
+    margin-top: 2rem;
+}
+
+
+.captioned-image img, .captioned-image video {
+    display: block;
+    max-width: 100%;
+    margin: 0 auto 1em auto;
+}
+.source {
+    font-style: italic;
+}
+body {
+    display: flex;
+    font: 1em "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-weight: 300;
+    line-height: 1.625;
+}
+h1 { margin: 0.5rem; }
+code-format {
+    border-left: 0.5rem solid rgba(123,115,209,0.35);
+    display: block;
+    padding: 0.5rem;
+    margin-bottom: 1rem;
+}
+[aria-level="1"] {
+    color: #43686b;
+    font-size: 1.45rem;
+}
+[aria-level="2"] {
+    color: #856363;
+    font-size: 1.35rem;
+}
+[aria-level="3"] {
+    color: #856363;
+    font-size: 1.25rem;
+}
+[aria-level="4"] {
+    color: #856363;
+    font-size: 1.2rem;
+}
+[aria-level="5"], [aria-level="6"] {
+    color: #667496;
+    font-size: 1.1rem;
+    font-weight: bolder;
+}
+.posted-on {
+    font-style: italic;
+    font-size: 0.8rem;
+    text-align: right;
+    margin-bottom: 1rem;
+}
+
+ul, li {
+    margin: 0.5rem;
+    text-align: left;
+}
+header {
+    padding-top: 1rem;
+    padding-right: 2rem;
+    background-color: #fbf5e9;
+}
+.tagline {
+    font-style: italic;
+    text-align: center;
+}
+
+[tag-esc] {
+    color: maroon;
+    font-family: Courier, "Lucida Console", monospace;
+}
+
+[tag-esc]::before {
+    content: '<';
+}
+
+[tag-esc]::after {
+    content: '>';
+}
+
+main {
+    min-width: 50%;
+    width: 80%;
+    padding: 1rem;
+}
+header .title {
+    background-color: rgba(123,115,209,0.35);
+    padding: 0.3rem;
+    padding-left: 0.25rem;
+    font-weight: bolder;
+    font-size: 0.9rem;
+    border-left: 1rem solid #999298;
+}
+
+header .profile {
+    width: 50%;
+    margin: 1rem 25%;
+}
+
+header .title + nav {
+    font-size: 0.9rem;
+}
+
+header .blurb {
+    font-size: 0.75rem;
+    text-align: center;
+}
+header .name {
+    text-align: center;
+    font-size: xx-large;
+}
+.segue {
+    font-style: italic;
+}
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  border: 0;
+}
+[for="aboutMeToggle"] {
+    display: none;
+}
+/* this needs rethinking, it wants a selector like 'not flow content' */
+article>*:not(contextual-heading,a), section>*:not(contextual-heading,a) {
+    margin-left: 0.45rem;
+}
+
+blockquote {
+  font-family: serif;
+  background: #f9f9f9;
+  border-left: 10px solid #ccc;
+  margin: 1.5em 10px;
+  padding: 0.5em 10px;
+}
+blockquote:before {
+  color: #ccc;
+  content: open-quote;
+  font-size: 2em;
+  line-height: 0.1em;
+  margin-right: 0.25em;
+  vertical-align: -0.4em;
+}
+
+blockquote:after {
+  color: #ccc;
+  content: close-quote;
+  font-size: 2em;
+  line-height: 0.1em;
+  margin-left: 0.25em;
+  vertical-align: -0.4em;
+}
+
+
+@media (max-width: 800px){
+    body {
+        flex-direction: column;
+    }
+    header {
+        border-bottom: 1px solid #afafff;
+    }
+
+    .captioned-image.p-attached {
+        width: 100%;
+        margin: 1rem 0;
+    }
+
+    .captioned-image.p-attached.p-attached-left,
+    .captioned-image.p-attached.p-attached-right {
+        float: none;
+    }
+
+    [for="aboutMeToggle"] {
+        background-color: #675e5e;
+        color: white;
+        padding: 0.25rem;
+        padding-left: 0.5rem;
+        display: block;
+        border-left: 1rem solid black;
+    }
+    #aboutMeToggle:focus + [for="aboutMeToggle"]{
+        outline: 4px solid #c6ddf2;
+    }
+
+    #aboutMeToggle:checked ~ header {
+        display: none;
+    }
+
+    header li { display: inline; margin-left: -0.5em; }
+    header .blurb li::after { content: '; '; }
+    header  nav li {
+        display: inline-block;
+        margin-left: 0.35rem;
+        margin-right: 0.35rem;
+    }
+    header .title {
+        width: 100%;
+    }
+    main li .source { display: block; }
+
+}</style>
+    <style>
+      .captioned-image { font-size: 0.9rem; }
+      .thanksTo { font-style: italic; font-size: 0.8rem; }
+    </style>
+    <script>
+      var activateOptional = function (media) {
+        var source = media.getAttribute('data-src'),
+            temp,
+            container = media.parentElement;
+
+          if (media.nextSibling && media.nextSibling.matches) {
+            if (media.nextSibling.matches('.clickToSee')) {
+              media.parentElement.removeChild(media.nextSibling);
+            }
+          }
+
+          if (media.tagName === 'VIDEO') {
+            temp = document.createElement('video')
+            temp.setAttribute('autoplay','')
+            temp.setAttribute('controls','')
+            temp.setAttribute('loop','')
+            temp.innerHTML = '<source src="' + source + '.webm" type="video/webm">'
+                    + '<source src="' + source + '.mp4" type="video/mp4">';
+            media.parentElement.replaceChild(temp, media);
+            setTimeout(function () {
+              temp.play()
+            }, 0);
+          } else {
+            media.src = media.getAttribute('data-src');
+          }
+
+          container.classList.add('active');
+      }
+    </script>
+  </head>
+  <body>
+    <input id="aboutMeToggle" class="sr-only" type="checkbox" checked="">
+<label for="aboutMeToggle">Toggle author information</label>
+<header>
+    <div class="name">
+        Brian Kardell
+    </div>
+    <img class="profile" src="/profile.jpg" alt="">
+    <div class="tagline"><a href="/">Betterifying the Web</a></div>
+    <div class="blurb">
+        <ul>
+            <li>Sr Front-End Engineer at Apollo Group, Inc</li>
+            <li>Original Co-author/Co-signer of The Extensible Web Manifesto</li>
+            <li>Co-Founder/Chair, W3C Extensible Web CG</li>
+            <li>Member, W3C (The JS Foundation)</li>
+            <li>Co-author of HitchJS</li>
+            <li>Blogger</li>
+            <li>Art, Science &amp; History Lover</li>
+            <li>Standards Geek</li>
+        </ul>
+    </div>
+    <div class="title">Follow Me On...</div>
+    <nav>
+        <ul>
+            <li><a rel="me" href="https://briankardell.wordpress.com">Wordpress</a></li>
+            <li><a rel="me" href="https://medium.com/@briankardell">Medium</a></li>
+            <li><a rel="me" href="https://twitter.com/briankardell">Twitter</a></li>
+            <li><a rel="me" href="https://github.com/bkardell/">Github</a></li>
+            <li><a rel="me" href="https://codepen.io/bkardell">Codepen</a></li>
+            <li><a rel="me" href="https://www.linkedin.com/in/brian-kardell-08a4264">LinkedIn</a></li>
+            <li><a rel="me" href="https://www.instagram.com/kardellbrian">Instagram (for
+art)</a></li>
+            <li><a rel="me" href="http://fineartamerica.com/profiles/brian-kardell?">Fine Art
+America (art for sale)</a></li>
+        </ul>
+    </nav>
+</header>
+    <main><div class="posted-on">Posted on 10/7/2014</div><article posted-on="10/7/2014" class="sectioning">
+	<style>
+        section { clear: both; }
+		.captioned-image {
+		  background-color: transparent;
+		}
+	</style>
+	<style>
+		/*body:not(.preferences-set) > :not(main) { display: none; }
+		body:not(.preferences-set) {
+			background-color: #444;
+			color: white;
+		}
+		*/
+		body:not(.prefers-images) .captioned-image:not(.active) > * { border: 1px dashed gray }
+
+		#downloadsPrefs {
+			font-size: 0.8rem;
+			background-color: #fcfcfc;
+			border: 1px dotted gray;
+			margin-bottom: 1rem;
+		}
+		#downloadsPrefs p {
+			margin: 2rem 10%;
+		}/*
+		#downloadsPrefs ~ * {
+			display: none;
+		}*/
+	</style>
+	<div id="downloadsPrefs">
+		<p style="font-size: 1.5rem">Note from the author...</p>
+		<p>My posts frequently (like this one) have a 'theme' and tend to use a number of images for visual flourish. Personally, I like it that way, I find it more engaging and I prefer for people to read it that way.  However, for users on a metered or slow connection, downloading unnecessary images is, well, unnecessary, potentially costly and kind of rude.  Just to be polite to my users, I offer the ability for you to opt out of 'optional' images if the total size of viewing the page would exceed a budget I have currently defined as 200k...
+		</p>
+		<p><label>Show me all the images when I read <input type="checkbox" id="download-all-images-pref" checked=""></label></p>
+		<p><label>Don't ask me again on this device <input type="checkbox" id="download-all-images-pref-save"></label></p>
+		<p><button id="setDownloadPrefs">Dismiss</button></p>
+	</div>
+	<script>
+		'use strict';
+		(function () {
+			var prefsButton = document.querySelector('#setDownloadPrefs'),
+				prefs = window.localStorage.downloadsPrefs;
+			function downloadImages () {
+				var lazy = Array.prototype.slice.call(document.querySelectorAll('.captioned-image>[data-src]'));
+
+				lazy.forEach(activateOptional)
+			}
+			function removeDownloadPrefsOverlay() {
+				document.body.classList.add('preferences-set')
+				document.querySelector('#downloadsPrefs').remove()
+			}
+
+			prefsButton.addEventListener('click', function() {
+				var all = document.querySelector('#download-all-images-pref'),
+					save = document.querySelector('#download-all-images-pref-save'),
+					prefs = window.localStorage.downloadsPrefs
+
+				if (all.checked) {
+					downloadImages();
+				}
+				if (save.checked) {
+					window.localStorage.downloadsPrefs = all.checked;
+				}
+				removeDownloadPrefsOverlay()
+			});
+
+			if (typeof prefs !== 'undefined') {
+				console.log(prefs)
+				if (prefs === 'true') {
+					document.body.classList.add('prefers-images')
+					window.localStorage.downloadsPrefs = prefs
+					window.addEventListener('DOMContentLoaded', downloadImages)
+				}
+				removeDownloadPrefsOverlay()
+			}
+		}())
+	</script>
+	<contextual-heading role="heading" aria-level="1">What Would Bruce Lee Do? The Tao of the Extensible Web.</contextual-heading>
+	<div class="captioned-image p-attached p-attached-right optional">
+		<img data-src="/media/bruce-lee-absorb-useful.jpg" alt="Absorb What is Useful, Reject what is useless - Bruce Lee">
+	</div>
+	<p class="segue">Recently I participated in a panel on The Standards Process and the Extensible Web Manifesto at <a href="http://edgeconf.com/" target="_blank">Edge Conf</a>. &nbsp;While ours was the very last session of the day (you can watch the video <a href="https://www.youtube.com/watch?v=vl4q0Q9ucIs" target="_blank">here</a>), nearly every topic that day called out some mention of the <a href="http://extensiblewebmanifesto.org/" target="_blank">Extensible Web Manifesto</a>. &nbsp;Privately,&nbsp;there were still&nbsp;plenty&nbsp;of people I met between sessions who privately said “So, what exactly is this Manifesto&nbsp;thing I keep hearing about, tell me more…”. &nbsp;and my day was filled with discussions at all levels about how exactly we should apply its words&nbsp;in practice or&nbsp;what exactly we meant by x - or specifically what we want to change about standards.  Given this, I thought&nbsp;it worth a post to share my own personal thoughts, and say some of the things I didn't have an opportunity to say on the panel. &nbsp; I'll begin in the obvious place: &nbsp;Bruce Lee.</p>
+
+	<hr style="margin: 1rem; visibility: hidden">
+	<div class="captioned-image optional p-attached p-attached-left">
+		<img data-src="/media/bruce-lee-wwbd.png" alt="">
+		What Would Bruce Lee Do? T-shirt from partyonshirts.com who totally agrees with me (I think, they didn't actually say it, but I suspect it).
+	</div>
+
+	<p>Let's&nbsp;talk about Bruce Lee. &nbsp;Chances are pretty good that you've heard of him from his film work and pop-culture status, but it's (slightly at least) less commonly known that he was more than just an exceptional martial artist: &nbsp;He was a trained philosopher and deep thinker - and he did something&nbsp;<em>really&nbsp;</em>new: &nbsp;He questioned the status quo of traditional martial arts. &nbsp;He published&nbsp;a book entitled "The Tao of Jeet Kune Do" and&nbsp;laid out an entirely new approach to fighting. &nbsp;He taught, trained and fought in a way unlike anyone before him.</p>
+
+
+	<p style="clear: right"><em>He kicked ass in precisely&nbsp;the same way that standards don't.</em>, and It started&nbsp;by being both intelligent and gutsy enough to make some observations...</p>
+
+	<section class="sectioning">
+		<contextual-heading role="heading" aria-level="2">There are values in principles, but nothing is too holy to be questioned...</contextual-heading>
+		<div class="captioned-image optional p-attached p-attached-right">
+			<img data-src="/media/bruce-lee-obey-principles.png" alt="Obey the principles without being bound by them - Bruce Lee">
+			You know, all I keep hearing is "the fight took too long," "too&nbsp;much tradition,&nbsp;too much&nbsp;classical mess, too many fixed positions and Wing Chun". You know everything that's wrong, so fix it.&nbsp;- Linda Lee's character to Bruce in "Dragon: The Bruce Lee Story" (a fictional, but inspiring scene)
+		</div>
+
+		<p>Ok, so we all agree that standards are painful to develop and have sometimes gone very wrong. &nbsp;From the outside they look, at times, almost comically inefficient, illogical or even self-defeating. &nbsp;Many comments in our panel were about this in some form: &nbsp;<em>Too much classical mess - too much Wing Chun</em>.</p>
+
+		<p style="clear: left">Bruce Lee saw through the strict rules of forms to what they were trying to accomplish, and he said "yeah, but that&nbsp;could be better- what about this instead"... and&nbsp;opponents fell.</p>
+
+		<p>Likewise, standards bodies and processes are not a religion. &nbsp;Sometimes process is just process - it can be in the way, unproductive - even&nbsp;harmful if it isn't serving its true&nbsp;purpose. &nbsp;There are no&nbsp;holy texts (including the Manifesto itself) and there should be no blind faith in them: &nbsp;We are thinking, rational people. &nbsp;The Manifesto lays out guiding principles, with what we hope is a well rationed incentive, not absolutes. &nbsp;<em>Ideological absolutes suck, if you ask me, and Bruce's approach makes me think he'd agree.</em></p>
+
+		<p>The Manifesto is pretty short though, it begs follow-on and one recurrent theme was that many people at the conference seemed interested in discussing what they perceived to be contradiction in that we have not redirected absolutely everything toward the absolute lowest primitives possible (and for others, a fear that we would). &nbsp;I'd like to explain my own perspective:</p>
+
+
+		<section class="sectioning">
+			<contextual-heading role="heading" aria-level="3">It is often more important to ask the question than it is to answer it perfectly.</contextual-heading>
+
+			<div class="captioned-image optional p-attached p-attached-left">
+				<img data-src="/media/bruce-lee-goal-not-always-meant-to-be-reached.jpeg" alt="A Goal is not always meant to be reached, it often serves simply as something to aim at - Bruce Lee">
+			</div>
+
+			<p>Again, the Manifesto&nbsp;lays&nbsp;out <em>principles to strive for, not laws</em>:&nbsp;Avoid large, deep sinks of high-level decisions which involve many new abstractions and eliminate the possibility of competition&nbsp;and innovation - we have finite resources and this is not a good use of them.&nbsp;Favor lower level APIs&nbsp;that <em>allow</em> these things to occur instead - they will, and try to help explain existing features. &nbsp;<em>Where to draw the line between pragmatism and perfection is debatable, and that's ok - we don't have to have all of the perfect answers right now, and that's good, because we don't.</em></p>
+
+			<div class="captioned-image optional p-attached p-attached-right">
+				<img data-src="/media/bruce-lee-too-much-time-thinking.png" alt="If you spend too much time thinking about a thing, you'll never get it done - Bruce Lee">
+			</div>
+
+
+			<p>Paralysis is bad. &nbsp;Perfect, as they say, can be&nbsp;the enemy of good: &nbsp;Progress matters and 'perfect' is actually a non-option because it's an optimization problem that involves many things, including an ever changing environment. &nbsp;Realize that&nbsp;there are many kinds of advantage that have historically trumped theoretical purity<em> every time</em>&nbsp;- the technically best answer has never, to the best of my knowledge 'won' - and shipping <em>something</em> is definitely way up there in terms of things you need to succeed. More importantly, do what we can to avoid bad.&nbsp;At some <em>very basic&nbsp;</em>level, all the Manifesto is really saying is: &nbsp;"Hey standards bodies -- Let's find ways to manage risk and complexity, to work efficiently and use data for the really big choices".</p>
+
+			<p>In my mind, the W3C TAG has done a great job of attempting to redirect spec authors, <em>without paralyzing progress,&nbsp;</em>toward asking the right questions: "Is this at an <em>appropriately</em> low level?", "If it isn't quite at the bottom, <em>does it look like we can get there from here</em> - or is it what's here too high-level and overly complicated with magic to be explained?", "Can we explain existing magic with this?" and, "Is it consistent in the platform so that authors can re-apply common lessons and reasoning"?</p>
+
+			<p>I'm sure the there are some who would disagree, but in the end, I think that&nbsp;<a href="https://dvcs.w3.org/hg/audio/raw-file/tip/webaudio/specification.html" target="_blank">Web Audio API</a>&nbsp;is a nice&nbsp;example of this kind of pragmatism at play. &nbsp;There are things that we know already: &nbsp;We've have an <code tag-esc="">audio</code> tag, for example, for a while. We have&nbsp;a collected&nbsp;cases which should be plausible, but currently aren't. &nbsp;The Web Audio API tries to address this at a considerably lower level, but <em>definitely</em> not the lowest one possible. &nbsp;<em>However...&nbsp;</em>It has been purposely planned and reviewed to make sure that it gives good answers to the above questions. &nbsp;While it's possible that this could lead to something unexpected beneath, we've done a lot to mitigate that risk and admitted that we don't have all of the information we need to make good choices there yet. &nbsp;It was built with the idea that it will have further low-level fleshing out and that we think we know enough about it to say that we can use it to explain the mechanics of the audio tag with it. &nbsp;We got the initial spec and now, nearly immediately, they've begun work on the next&nbsp;steps. &nbsp;This has the advantage of steady progress, drawing a boundary around the problem and gives a lot of developers new tools with which they'll help ask the right questions and through use, imagine new use cases which feed into a better process. &nbsp;It gives us tools that we need so that efforts&nbsp;like <a href="https://github.com/dglazkov/html-as-custom-elements" target="_blank">HTML as Custom Elements</a>&nbsp;can begin to contribute in helping to explain the higher level feature. &nbsp;The real danger is only in stopping the progressive work.</p>
+
+			<p>Similarly, it was asked&nbsp;by someone whether&nbsp;<a href="http://www.w3.org/TR/beacon/#sec-sendBeacon-method" target="_blank">Beacon</a><em>&nbsp;"</em>flies in the face of the Extensible Web Manifesto" because it could be described by still further low level primitives (it might be possible to implement with Service Workers, for example). &nbsp;Again, I'd like to argue that in fact, it doesn't. &nbsp;It's always been <em>plausible</em>, but prohibitively cumbersome to achieve roughly the same effect - this is why <a href="https://developers.whatwg.org/links.html#ping" target="_blank">HTML added a declarative&nbsp;<code>ping</code> attribute to links</a>: &nbsp;Simple use cases should be simple and declarative - the problem isn't that high-level, declarative things&nbsp;exist, we <em>want those - </em>the Manifesto is explicit about this --&nbsp;the problem is in how we go about identifying them. &nbsp;Because this is a really common case that's been around for a long time - we already <em>have</em> a lot of good data on that. &nbsp;As it happens, ping wasn't implemented by some browsers, but they were interested in sendBeacon, which - hooray - can actually be used to describe what ping does, and maybe polyfill it too! &nbsp;It's simple, constrained, concise - and it's getting implemented. &nbsp;It's enough for new experimentation and it's also different enough from what you typically do with other network level APIs that maybe it's fine that it have no further explanation. &nbsp;If you read my posts, you know that I like to make the analogy of evolution, and so I'll point to something similar in the natural world: &nbsp;This may simply be a case of convergent evolution - differently adapted&nbsp;DNA that has a similar-looking effect, but share none of the primitives you might think, and that too can actually be ok.</p>
+
+
+
+			<p>The important part isn't that we achieve perfection as much as that we ask the questions, avoid bad mistakes and make good progress that we can iterate on: <em>Everyone actually shipping something that serves real needs and isn't actively bad is actually a killer feature.</em></p>
+		</section>
+
+
+		<section class="sectioning">
+			<contextual-heading role="heading" aria-level="3">The Non-Option</contextual-heading>
+
+			<div class="captioned-image optional p-attached p-attached-left">
+				<img data-src="/media/bruce-lee-defeat-state-of-mind.jpg" alt="Defeat is a state of mind; no one is ever defeated until defeat has been accepted as a reality - Bruce Lee">
+			</div>
+
+			<p>Bruce had a lot excellent quotes about the pitfalls of aiming too low or defeating yourself.</p>
+
+			<p style="clear:right">It's easy to look at the very hard challenges ahead of us to distill the cumbersome sky-castles we've built into sensible layers and fundamentals and just say "too hard" or "we can't because explaining it locks out our ability to improve performance".</p>
+
+			<p>Simultaneously, one of the most urgent needs is that we fill the gaps - if the Web lacks features that exist in native, we're losing. Developers don't want to make that choice, but we force them to.</p>
+
+			<p>We're doing best when we are balancing both ends of this equation to move ever forward.</p>
+
+			<p>Don't give up. &nbsp;It's going to be hard but we can easily defeat ourselves before we ever get started if we're not careful. &nbsp;We can't accept that - we need to convince ourselves that it's a non-option, because it is. &nbsp;If we don't do the hard work, we won't adapt - and eventually this inability will be the downfall of the Web as a competitive platform.</p>
+		</section>
+
+		<section class="sectioning">
+			<contextual-heading role="heading" aria-level="3">Jump in the Fire</contextual-heading>
+			<p>Good things happen when we ship early and ship often while focusing this way. &nbsp;As we provide lower-level features we'll see co-evolution with what's happening in the developer community, this data can help us make intelligent choices - lots of hard choices have been made, we can see what's accepted, we can see new use cases.</p>
+
+			<p>Some have&nbsp;made the case - to me at least -&nbsp;that we shouldn't try applying any of this to standards until we&nbsp;have everything laid out with very precise rules about what to apply when and where. &nbsp;I disagree. &nbsp;Sometimes, the&nbsp;only way to figure some of it out is to jump in, have the discussions and do some work.</p>
+
+			<div class="captioned-image optional">
+				<img data-src="/media/bruce-lee-jump-in-water.jpg" alt="If you want to learn to swim, jump in the water. On dry land no frame of mind is ever going to help you." -="" bruce="" lee"="">
+			</div>
+
+			<p>Standards processes and even bodies themselves have evolved over time, and we should continue to adapt where we see things that aren't working. &nbsp;It won't be perfect - reality never is -- it's messy, and that's&nbsp;ok..</p>
+
+		</section>
+
+	</section>
+
+	<p class="thanksTo">Very special thanks to Brendan Eich and Bruce Lawson for kindly reviewing and providing useful thoughts, commentary and corrections ❤..</p>
+
+</article></main>
+
+  
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-88027178-1', 'auto');
+    ga('send', 'pageview');
+  </script>
+  <script>
+    Array.prototype.slice.call(document.querySelectorAll('.optional [data-src]')).forEach(function (optional) {
+      var prefs = window.localStorage.downloadsPrefs,
+          clickToSee;
+      if (prefs === 'true') {
+        activateOptional(optional);
+      } else {
+        clickToSee = document.createElement('div');
+        clickToSee.classList.add('clickToSee')
+        clickToSee.innerHTML = '<button>Click to see media</button>';
+        clickToSee.style.textAlign = 'center';
+        clickToSee.style.border = 'none';
+        optional.parentElement.insertBefore(clickToSee, optional.nextSibling);
+        clickToSee.firstElementChild.addEventListener('click', function () {
+          activateOptional(optional);
+        })
+      }
+
+    })
+  </script>
+
+</body></html>
