@@ -1,0 +1,462 @@
+<html lang="en" resource-type="blogpost"><head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@briankardell">
+    <meta name="twitter:creator" content="@briankardell">
+    <meta name="twitter:title" content="Off With Their Heads: Disband the W3C?">
+    <meta name="twitter:description" content="Just a few days ago, Matthew Butterick presented a talk entited &quot;The Bomb in the Garden&quot; at TYPO in San Francisco (poor title timing given recent events in Boston). In it, he concl">
+    <meta name="twitter:image" content="//upload.wikimedia.org/wikipedia/commons/thumb/d/de/Tenniel_red_queen_with_alice.jpg/256px-Tenniel_red_queen_with_alice.jpg">
+    <link rel="alternate" type="application/rss+xml" href="blog/feed.rss" title="bkardell.com/blog rss feed">
+    <title>Off With Their Heads: Disband the W3C?</title>
+    <style>.captioned-image {
+    background-color: #eaeaea;
+    display: block;
+    overflow: hidden;
+    padding: 1rem;
+    text-align: center;
+    font-style: italic;
+}
+
+.captioned-image.p-attached {
+    width: 40%;
+    display: inline-block;
+    margin: 0 1rem 2rem 1rem;
+}
+
+section > .captioned-image.p-attached {
+    margin-top: 1.5rem; /* correct for heading size*/
+}
+
+.captioned-image.p-attached.p-attached-left {
+    float: left;
+}
+
+.captioned-image.p-attached.p-attached-right {
+    float: right;
+}
+
+.captioned-image.p-attached + * + * {
+    clear: both;
+    margin-top: 2rem;
+}
+
+
+.captioned-image img, .captioned-image video {
+    display: block;
+    max-width: 100%;
+    margin: 0 auto 1em auto;
+}
+.source {
+    font-style: italic;
+}
+body {
+    display: flex;
+    font: 1em "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-weight: 300;
+    line-height: 1.625;
+}
+h1 { margin: 0.5rem; }
+code-format {
+    border-left: 0.5rem solid rgba(123,115,209,0.35);
+    display: block;
+    padding: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+contextual-heading {
+    display: block;
+    margin-top: 2rem;
+}
+
+[aria-level="1"] {
+    color: #43686b;
+    font-size: 1.45rem;
+}
+[aria-level="2"] {
+    color: #856363;
+    font-size: 1.35rem;
+}
+[aria-level="3"] {
+    color: #856363;
+    font-size: 1.25rem;
+}
+[aria-level="4"] {
+    color: #856363;
+    font-size: 1.2rem;
+}
+[aria-level="5"], [aria-level="6"] {
+    color: #667496;
+    font-size: 1.1rem;
+    font-weight: bolder;
+}
+.posted-on {
+    font-style: italic;
+    font-size: 0.8rem;
+    text-align: right;
+    margin-bottom: 1rem;
+}
+
+ul, li {
+    margin: 0.5rem;
+    text-align: left;
+}
+header {
+    padding-top: 1rem;
+    padding-right: 2rem;
+    background-color: #fbf5e9;
+}
+.tagline {
+    font-style: italic;
+    text-align: center;
+}
+
+[tag-esc] {
+    color: maroon;
+    font-family: Courier, "Lucida Console", monospace;
+}
+
+[tag-esc]::before {
+    content: '<';
+}
+
+[tag-esc]::after {
+    content: '>';
+}
+
+main {
+    min-width: 50%;
+    width: 80%;
+    padding: 1rem;
+}
+header .title {
+    background-color: rgba(123,115,209,0.35);
+    padding: 0.3rem;
+    padding-left: 0.25rem;
+    font-weight: bolder;
+    font-size: 0.9rem;
+    border-left: 1rem solid #999298;
+}
+
+header .profile {
+    width: 50%;
+    margin: 1rem 25%;
+}
+
+header .title + nav {
+    font-size: 0.9rem;
+}
+
+header .blurb {
+    font-size: 0.75rem;
+    text-align: center;
+}
+header .name {
+    text-align: center;
+    font-size: xx-large;
+}
+.segue {
+    font-style: italic;
+}
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  border: 0;
+}
+[for="aboutMeToggle"] {
+    display: none;
+}
+/* this needs rethinking, it wants a selector like 'not flow content' */
+article>*:not(contextual-heading,a), section>*:not(contextual-heading,a) {
+    margin-left: 0.45rem;
+}
+
+blockquote {
+  font-family: serif;
+  background: #f9f9f9;
+  border-left: 10px solid #ccc;
+  margin: 1.5em 10px;
+  padding: 0.5em 10px;
+}
+blockquote:before {
+  color: #ccc;
+  content: open-quote;
+  font-size: 2em;
+  line-height: 0.1em;
+  margin-right: 0.25em;
+  vertical-align: -0.4em;
+}
+
+blockquote:after {
+  color: #ccc;
+  content: close-quote;
+  font-size: 2em;
+  line-height: 0.1em;
+  margin-left: 0.25em;
+  vertical-align: -0.4em;
+}
+
+
+@media (max-width: 800px){
+    body {
+        flex-direction: column;
+    }
+    header {
+        border-bottom: 1px solid #afafff;
+    }
+
+    .captioned-image.p-attached {
+        width: 100%;
+        margin: 1rem 0;
+    }
+
+    .captioned-image.p-attached.p-attached-left,
+    .captioned-image.p-attached.p-attached-right {
+        float: none;
+    }
+
+    [for="aboutMeToggle"] {
+        background-color: #675e5e;
+        color: white;
+        padding: 0.25rem;
+        padding-left: 0.5rem;
+        display: block;
+        border-left: 1rem solid black;
+    }
+    #aboutMeToggle:focus + [for="aboutMeToggle"]{
+        outline: 4px solid #c6ddf2;
+    }
+
+    #aboutMeToggle:checked ~ header {
+        display: none;
+    }
+
+    header li { display: inline; margin-left: -0.5em; }
+    header .blurb li::after { content: '; '; }
+    header  nav li {
+        display: inline-block;
+        margin-left: 0.35rem;
+        margin-right: 0.35rem;
+    }
+    header .title {
+        width: 100%;
+    }
+    main li .source { display: block; }
+
+}</style>
+    <style>
+      .captioned-image { font-size: 0.9rem; }
+      .thanksTo { font-style: italic; font-size: 0.8rem; }
+    </style>
+    <script>
+      var activateOptional = function (media) {
+        var source = media.getAttribute('data-src'),
+            temp,
+            container = media.parentElement;
+
+          if (media.nextSibling && media.nextSibling.matches) {
+            if (media.nextSibling.matches('.clickToSee')) {
+              media.parentElement.removeChild(media.nextSibling);
+            }
+          }
+
+          if (media.tagName === 'VIDEO') {
+            temp = document.createElement('video')
+            temp.setAttribute('autoplay','')
+            temp.setAttribute('controls','')
+            temp.setAttribute('loop','')
+            temp.innerHTML = '<source src="' + source + '.webm" type="video/webm">'
+                    + '<source src="' + source + '.mp4" type="video/mp4">';
+            media.parentElement.replaceChild(temp, media);
+            setTimeout(function () {
+              temp.play()
+            }, 0);
+          } else {
+            media.src = media.getAttribute('data-src');
+          }
+
+          container.classList.add('active');
+      }
+    </script>
+  </head>
+  <body>
+    <input id="aboutMeToggle" class="sr-only" type="checkbox" checked="">
+<label for="aboutMeToggle">Toggle author information</label>
+<header>
+    <div class="name">
+        Brian Kardell
+    </div>
+    <img class="profile" src="/profile.jpg" alt="">
+    <div class="tagline"><a href="/">Betterifying the Web</a></div>
+    <div class="blurb">
+        <ul>
+            <li>Sr Front-End Engineer at Apollo Group, Inc</li>
+            <li>Original Co-author/Co-signer of The Extensible Web Manifesto</li>
+            <li>Co-Founder/Chair, W3C Extensible Web CG</li>
+            <li>Member, W3C (The JS Foundation)</li>
+            <li>Co-author of HitchJS</li>
+            <li>Blogger</li>
+            <li>Art, Science &amp; History Lover</li>
+            <li>Standards Geek</li>
+        </ul>
+    </div>
+    <div class="title">Follow Me On...</div>
+    <nav>
+        <ul>
+            <li><a rel="me" href="https://briankardell.wordpress.com">Wordpress</a></li>
+            <li><a rel="me" href="https://medium.com/@briankardell">Medium</a></li>
+            <li><a rel="me" href="https://twitter.com/briankardell">Twitter</a></li>
+            <li><a rel="me" href="https://github.com/bkardell/">Github</a></li>
+            <li><a rel="me" href="https://codepen.io/bkardell">Codepen</a></li>
+            <li><a rel="me" href="https://www.linkedin.com/in/brian-kardell-08a4264">LinkedIn</a></li>
+            <li><a rel="me" href="https://www.instagram.com/kardellbrian">Instagram (for
+art)</a></li>
+            <li><a rel="me" href="http://fineartamerica.com/profiles/brian-kardell?">Fine Art
+America (art for sale)</a></li>
+        </ul>
+    </nav>
+</header>
+    <main><div class="posted-on">Posted on 4/23/2013</div><article posted-on="4/23/2013" class="sectioning">
+	<style>
+        section { clear: both; }
+		.captioned-image {
+		  background-color: transparent;
+		}
+		.edit {
+			font-style: italic;
+		}
+		.alice {
+			font-family: Georgia, "Bitstream Charter", serif;
+			font-style: italic;
+			margin: 1rem auto;
+			padding: 1rem 3rem;
+			width: auto;
+			font-size: 0.9rem;
+			background-color: transparent;
+			border-left: none;
+		}
+		.alice::before, .alice::after {
+			content: '';
+		}
+	</style>
+	<contextual-heading role="heading" aria-level="1">Off With Their Heads: Disband the W3C?</contextual-heading>
+	<div class="captioned-image p-attached p-attached-left">
+		<img src="//upload.wikimedia.org/wikipedia/commons/thumb/d/de/Tenniel_red_queen_with_alice.jpg/256px-Tenniel_red_queen_with_alice.jpg" alt="Tenniel illustration of red queen with alice">
+	</div>
+	<p class="segue">Just a few days ago, Matthew Butterick presented a talk entited "<a href="http://unitscale.com/mb/bomb-in-the-garden/" target="_blank">The Bomb in the Garden</a>" at TYPO in San Francisco (poor title timing given recent events in Boston). In it, he concludes "<em>the misery exists because of the W3C—the World Wide Web Consortium... So, respectfully, but quite seriously, I suggest: let’s Disband the W3C</em>". Ultimately he suggests that ".<em>..the alternative is a web that’s organized entirely as a set of open-source software projects.</em></p>
+
+	<p style="font-weight: bolder;">In his recent talk/post, Matthew Butterick raises several points:</p>
+	<ul>
+		<li><span style="font-style:inherit;line-height:1.625;">It takes a really long time for standards to reach Recommendation Status ("the Web is 20 years old)</span></li>
+		<li>The W3C doesn't enforce standards</li>
+		<li>Browser vendors eventually implement the same standards differently</li>
+		<li>We fill pages with hacks and black magic to make it work</li>
+		<li>Ultimately, what we wind up with still isn't nearly good enough</li>
+		<li>There is no good revenue model</li>
+		<li>Newspaper and magazine sites all look roughly the same and are somewhat 'low design'.</li>
+	</ul>
+
+	<p>His presentation is definitely interesting and worth a read/view. In general, if you have been working on the Web a long time, you will probably experience at least some moments where you can completely relate to what he is saying.</p>
+
+	<p>Still, it seems a little Red Queen/over-the-top to me so I hope you'll humor a little Alice in Wonderland themed commentary...</p>
+
+	<section class="sectioning">
+		<contextual-heading role="heading" aria-level="2">Why is a Raven Like a Writing Desk?</contextual-heading>
+		<p>Michael Smith (@sideshowbarker to some) replied with some thoughts on it on the W3C Blog with a post entiteled "<a style="font-style:inherit;line-height:1.625;" href="http://www.w3.org/QA/2013/04/getting_agreements_is_hard_som.html" target="_blank">Getting agreements is hard (some thoughts on Matthew Butterick’s “The Bomb in the Garden” talk at TYPO San Francisco</a><span style="font-style:inherit;line-height:1.625;">)" in which he points out in short, bullet-list form, several problems with Butterick's statements about how W3C is misportrayed. The post is short enough and already bulleted so I won't summarize here, instead I encourage you to go have a read yourself. &nbsp;He&nbsp;closes up with the point that "Nowhere in Matthew Butterick’s talk is there a&nbsp;<em>real</em>&nbsp;proposal for how we could get agreements any quicker or easier or less painfully than we do now by following the current standards-development process." (emphasis mine).</span>
+		</p>
+
+		<p>Indeed, the open source projects mentioned by Butterick are about as much like standards as a raven is like a writing desk and, in my opinion, to replace a standards body with a vague "bunch of open source projects" would send us down a nasty rabbit hole (or through the looking glass) into a confusing and disorienting world: Curiouser and curiouser.</p>
+
+		<blockquote class="alice">“Would you tell me, please, which way I ought to go from here?"<br>
+"That depends a good deal on where you want to get to."<br>
+"I don't much care where –"<br>
+"Then it doesn't matter which way you go.”
+<div>―&nbsp;<a href="http://www.goodreads.com/author/show/8164.Lewis_Carroll">Lewis Carroll</a>,&nbsp;<em><a href="http://www.goodreads.com/work/quotes/2933712">Alice in Wonderland</a></em></div>
+		</blockquote>
+
+		<p>Still, I don't think Butterick really means it quite so literally. &nbsp;After all, &nbsp;he&nbsp;holds up PDF as an ISO standard that "just works" and ISO is anything but an open source project like Wordpres. &nbsp;In fact, PDF and ISO could have some of the same challenges laid against them. For example, from the ISO website:</p>
+
+		<blockquote>
+			<div style="font-weight: bolder;">Are ISO standards mandatory?</div>
+	ISO standards are voluntary. ISO is a non-governmental organization and it has no power to enforce the implementation of the standards it develops.
+		</blockquote>
+
+		<p>It seems to me that ISO and W3C have a whole lot more in common than they differ IMO: &nbsp;Standards are proposed by stakeholders, they go before technical committees, they have mailing lists and working groups, they have to reach&nbsp;consensus, etc. &nbsp;Most of this is stated in Michael's post. &nbsp;Additionally though, all PDF readers are not alike either: Different readers have different level of support for reflow and there is a separate thing called "PDF/A" which extends the standard (they aren't the only ones) and adds DRM (make it expensive?).&nbsp;&nbsp;Some readers/authors can accept links to places outside the file, some can't. &nbsp;Some can contain comments added by reviewers or markings, others can't. &nbsp; Etc.</p>
+	</section>
+
+	<section class="sectioning">
+		<contextual-heading role="heading" aria-level="2">You used to be much more..."muchier."</contextual-heading>
+		<p>I think that instead, Butterick is simply (over) expressing his frustration and loss of hope in the W3C: &nbsp;"They've lost their "muchness". &nbsp;You know what? &nbsp;It&nbsp;<em>really does <strong>suck</strong> that we have experienced all of this pain, a</em>nd to be honest, Butterick's technical examples aren't even scratching the surface. &nbsp;After 20 years, you really really think we'd be a little further along.</p>
+
+		<blockquote class="alice">“I can't go back to yesterday because I was a different person then.”
+<div>―&nbsp;<a href="http://www.goodreads.com/author/show/8164.Lewis_Carroll">Lewis Carroll</a>,&nbsp;<em><a href="http://www.goodreads.com/work/quotes/2933712">Alice in Wonderland</a></em></div></blockquote>
+
+		<p>A lot of the pain we've experienced has taken place due to really big detour in the history of Internet standards: The ones we really use and care about were basically sort of put on hold and efforts mostly put toward a "something else". &nbsp;Precisely which something else would have made the Web super awesome is a little fuzzy, but whatever it was you could bet that it would have contained at least one of the letters "x" "m" or "l" and have contained lots of "&lt;" and "&gt;"'s. &nbsp;The browser maker with the largest market share disbanded their team and another major one split up. &nbsp;It got so contentious at one point that the WHATWG was established to carry on the specs that the W3C were abandoning.</p>
+	</section>
+
+	<section class="sectioning">
+		<contextual-heading role="heading" aria-level="2">Re-muchifying...</contextual-heading>
+		<p>While we can't go back and fix that now, the question is: &nbsp;Can we prevent the problems from happening again and work together to make the Web a better place? &nbsp;I think we can.</p>
+
+		<blockquote class="alice">“Why, sometimes I've believed as many as six impossible things before breakfast.”
+<div>―&nbsp;<a href="http://www.goodreads.com/author/show/8164.Lewis_Carroll">Lewis Carroll</a>,&nbsp;<em><a href="http://www.goodreads.com/work/quotes/2933712">Alice in Wonderland</a></em></div></blockquote>
+
+		<p>A lot of the pain we've experienced has taken place due to really big detour in the history of Internet standards: The ones we really use and care about were basically sort of put on hold and efforts mostly put toward a "something else". &nbsp;Precisely which something else would have made the Web super awesome is a little fuzzy, but whatever it was you could bet that it would have contained at least one of the letters "x" "m" or "l" and have contained lots of "&lt;" and "&gt;"'s. &nbsp;The browser maker with the largest market share disbanded their team and another major one split up. &nbsp;It got so contentious at one point that the WHATWG was established to carry on the specs that the W3C were abandoning.</p>
+
+		<p>The W3C is an established standards body with a great infrastructure and all of the members you'd really need to make something happen. &nbsp;Mozilla CTO Brendan Eich had <a href="http://brendaneich.com/2004/06/the-non-world-non-wide-non-web/" target="_blank">some good advice in 2004</a>:</p>
+
+		<blockquote>What matters to web content authors is user agent market share. The way to crack that nut is not to encourage a few government and big company “easy marks” to go off on a new&nbsp;<em>de-jure</em>&nbsp;standards bender. That will only add to the mix of formats hiding behind firewalls and threatening to leak onto the Internet.</blockquote>
+
+		<p>More has happened to drive Web standards and browser development/interoperability forward in the past 2-3 years than happened in the 6-7 years combined and more is queued up than I can even wrap my head around. &nbsp;We have lots of new powers in HTML and lots of new APIs in the DOM and CSS. &nbsp;We have efforts like <a href="http://testthewebforward.org/" target="_blank">Test the Web Forward</a>&nbsp;uncovering problems with interoperability and nearly all browsers becoming&nbsp;<em>evergreen</em> - pushing out improvements and fixes all the time. &nbsp;We also managed to get some great reformers elected to the W3C Technical Architecture Group recently who are presenting some great ideas and partnership and cooperation between W3C and other standards bodies like ECMA/TC-39 (also making excellent progress) are beginning. &nbsp; I believe that we can all win with community&nbsp;participation&nbsp;and evolution through ideas like <strike><a href="http://www.prollyfill.org" target="_blank">prollyfill.org</a></strike> (<span class="edit">edit: unfortunately we lost that domain to a speculator, but <a href="https://extensiblewebmanifesto.org">The Extensble Web Manifesto</a> came out of this, and <a href="https://chapters.io">chapters.io</a> and <a href="https://wicg.io">wicg.io</a> now play the respective roles it was advocating</span>)&nbsp;which is trying to team up the community with standards groups and implementers to create a more nimble and natural process based on evolutionary and open ideas... Perhaps that might sound like a marriage of open source ideas and standards that Matthew Butterick would be more happy with... Maybe I should send him an email.</p>
+
+		<p>So what do you think?</p>
+
+		<blockquote class="alice">“Do you think I've gone round the bend?"<br>
+"I'm afraid so. You're mad, bonkers, completely off your head. But I'll tell you a secret. All the best people are.”
+		<div>―&nbsp;<a href="http://www.goodreads.com/author/show/8164.Lewis_Carroll">Lewis Carroll</a>,&nbsp;<em><a href="http://www.goodreads.com/work/quotes/2933712">Alice in Wonderland</a></em></div></blockquote>
+
+	</section>
+
+
+
+
+
+</article></main>
+
+  
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-88027178-1', 'auto');
+    ga('send', 'pageview');
+  </script>
+  <script>
+    Array.prototype.slice.call(document.querySelectorAll('.optional [data-src]')).forEach(function (optional) {
+      var prefs = window.localStorage.downloadsPrefs,
+          clickToSee;
+      if (prefs === 'true') {
+        activateOptional(optional);
+      } else {
+        clickToSee = document.createElement('div');
+        clickToSee.classList.add('clickToSee')
+        clickToSee.innerHTML = '<button>Click to see media</button>';
+        clickToSee.style.textAlign = 'center';
+        clickToSee.style.border = 'none';
+        optional.parentElement.insertBefore(clickToSee, optional.nextSibling);
+        clickToSee.firstElementChild.addEventListener('click', function () {
+          activateOptional(optional);
+        })
+      }
+
+    })
+  </script>
+
+</body></html>
