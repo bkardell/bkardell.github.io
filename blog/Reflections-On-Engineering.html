@@ -1,0 +1,449 @@
+<html lang="en" resource-type="blogpost"><head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@briankardell">
+    <meta name="twitter:creator" content="@briankardell">
+    <meta name="twitter:title" content="Reflections on Engineering">
+    <meta name="twitter:description" content="Very early in my career, I was lucky enough to stumble on Web development before it really became a “thing” and landed an apprenticeship (and later job) in a new, small experimenta">
+    
+    <link rel="alternate" type="application/rss+xml" href="blog/feed.rss" title="bkardell.com/blog rss feed">
+    <title>Reflections on Engineering</title>
+    <style>.captioned-image {
+    background-color: #eaeaea;
+    display: block;
+    overflow: hidden;
+    padding: 1rem;
+    text-align: center;
+    font-style: italic;
+}
+
+.captioned-image.p-attached {
+    width: 40%;
+    display: inline-block;
+    margin: 0 1rem 2rem 1rem;
+}
+
+section > .captioned-image.p-attached {
+    margin-top: 1.5rem; /* correct for heading size*/
+}
+
+.captioned-image.p-attached.p-attached-left {
+    float: left;
+}
+
+.captioned-image.p-attached.p-attached-right {
+    float: right;
+}
+
+.captioned-image.p-attached + * + * {
+    clear: both;
+    margin-top: 2rem;
+}
+
+
+.captioned-image img, .captioned-image video {
+    display: block;
+    max-width: 100%;
+    margin: 0 auto 1em auto;
+}
+.source {
+    font-style: italic;
+}
+body {
+    display: flex;
+    font: 1em "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-weight: 300;
+    line-height: 1.625;
+}
+h1 { margin: 0.5rem; }
+code-format {
+    border-left: 0.5rem solid rgba(123,115,209,0.35);
+    display: block;
+    padding: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+contextual-heading {
+    display: block;
+    margin-top: 2rem;
+}
+
+[aria-level="1"] {
+    color: #43686b;
+    font-size: 1.45rem;
+}
+[aria-level="2"] {
+    color: #856363;
+    font-size: 1.35rem;
+}
+[aria-level="3"] {
+    color: #856363;
+    font-size: 1.25rem;
+}
+[aria-level="4"] {
+    color: #856363;
+    font-size: 1.2rem;
+}
+[aria-level="5"], [aria-level="6"] {
+    color: #667496;
+    font-size: 1.1rem;
+    font-weight: bolder;
+}
+.posted-on {
+    font-style: italic;
+    font-size: 0.8rem;
+    text-align: right;
+    margin-bottom: 1rem;
+}
+
+ul, li {
+    margin: 0.5rem;
+    text-align: left;
+}
+header {
+    padding-top: 1rem;
+    padding-right: 2rem;
+    background-color: #fbf5e9;
+}
+.tagline {
+    font-style: italic;
+    text-align: center;
+}
+
+[tag-esc] {
+    color: maroon;
+    font-family: Courier, "Lucida Console", monospace;
+}
+
+[tag-esc]::before {
+    content: '<';
+}
+
+[tag-esc]::after {
+    content: '>';
+}
+
+main {
+    min-width: 50%;
+    width: 80%;
+    padding: 1rem;
+}
+header .title {
+    background-color: rgba(123,115,209,0.35);
+    padding: 0.3rem;
+    padding-left: 0.25rem;
+    font-weight: bolder;
+    font-size: 0.9rem;
+    border-left: 1rem solid #999298;
+}
+
+header .profile {
+    width: 50%;
+    margin: 1rem 25%;
+}
+
+header .title + nav {
+    font-size: 0.9rem;
+}
+
+header .blurb {
+    font-size: 0.75rem;
+    text-align: center;
+}
+header .name {
+    text-align: center;
+    font-size: xx-large;
+}
+.segue {
+    font-style: italic;
+}
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  border: 0;
+}
+[for="aboutMeToggle"] {
+    display: none;
+}
+/* this needs rethinking, it wants a selector like 'not flow content' */
+article>*:not(contextual-heading,a), section>*:not(contextual-heading,a) {
+    margin-left: 0.45rem;
+}
+
+blockquote {
+  font-family: serif;
+  background: #f9f9f9;
+  border-left: 10px solid #ccc;
+  margin: 1.5em 10px;
+  padding: 0.5em 10px;
+}
+blockquote:before {
+  color: #ccc;
+  content: open-quote;
+  font-size: 2em;
+  line-height: 0.1em;
+  margin-right: 0.25em;
+  vertical-align: -0.4em;
+}
+
+blockquote:after {
+  color: #ccc;
+  content: close-quote;
+  font-size: 2em;
+  line-height: 0.1em;
+  margin-left: 0.25em;
+  vertical-align: -0.4em;
+}
+
+
+@media (max-width: 800px){
+    body {
+        flex-direction: column;
+    }
+    header {
+        border-bottom: 1px solid #afafff;
+    }
+
+    .captioned-image.p-attached {
+        width: 100%;
+        margin: 1rem 0;
+    }
+
+    .captioned-image.p-attached.p-attached-left,
+    .captioned-image.p-attached.p-attached-right {
+        float: none;
+    }
+
+    [for="aboutMeToggle"] {
+        background-color: #675e5e;
+        color: white;
+        padding: 0.25rem;
+        padding-left: 0.5rem;
+        display: block;
+        border-left: 1rem solid black;
+    }
+    #aboutMeToggle:focus + [for="aboutMeToggle"]{
+        outline: 4px solid #c6ddf2;
+    }
+
+    #aboutMeToggle:checked ~ header {
+        display: none;
+    }
+
+    header li { display: inline; margin-left: -0.5em; }
+    header .blurb li::after { content: '; '; }
+    header  nav li {
+        display: inline-block;
+        margin-left: 0.35rem;
+        margin-right: 0.35rem;
+    }
+    header .title {
+        width: 100%;
+    }
+    main li .source { display: block; }
+
+}</style>
+    <style>
+      .captioned-image { font-size: 0.9rem; }
+      .thanksTo { font-style: italic; font-size: 0.8rem; }
+    </style>
+    <script>
+      var activateOptional = function (media) {
+        var source = media.getAttribute('data-src'),
+            temp,
+            container = media.parentElement;
+
+          if (media.nextSibling && media.nextSibling.matches) {
+            if (media.nextSibling.matches('.clickToSee')) {
+              media.parentElement.removeChild(media.nextSibling);
+            }
+          }
+
+          if (media.tagName === 'VIDEO') {
+            temp = document.createElement('video')
+            temp.setAttribute('autoplay','')
+            temp.setAttribute('controls','')
+            temp.setAttribute('loop','')
+            temp.innerHTML = '<source src="' + source + '.webm" type="video/webm">'
+                    + '<source src="' + source + '.mp4" type="video/mp4">';
+            media.parentElement.replaceChild(temp, media);
+            setTimeout(function () {
+              temp.play()
+            }, 0);
+          } else {
+            media.src = media.getAttribute('data-src');
+          }
+
+          container.classList.add('active');
+      }
+    </script>
+  </head>
+  <body>
+    <input id="aboutMeToggle" class="sr-only" type="checkbox" checked="">
+<label for="aboutMeToggle">Toggle author information</label>
+<header>
+    <div class="name">
+        Brian Kardell
+    </div>
+    <img class="profile" src="/profile.jpg" alt="">
+    <div class="tagline"><a href="/">Betterifying the Web</a></div>
+    <div class="blurb">
+        <ul>
+            <li>Sr Front-End Engineer at Apollo Group, Inc</li>
+            <li>Original Co-author/Co-signer of The Extensible Web Manifesto</li>
+            <li>Co-Founder/Chair, W3C Extensible Web CG</li>
+            <li>Member, W3C (The JS Foundation)</li>
+            <li>Co-author of HitchJS</li>
+            <li>Blogger</li>
+            <li>Art, Science &amp; History Lover</li>
+            <li>Standards Geek</li>
+        </ul>
+    </div>
+    <div class="title">Follow Me On...</div>
+    <nav>
+        <ul>
+            <li><a rel="me" href="https://briankardell.wordpress.com">Wordpress</a></li>
+            <li><a rel="me" href="https://medium.com/@briankardell">Medium</a></li>
+            <li><a rel="me" href="https://twitter.com/briankardell">Twitter</a></li>
+            <li><a rel="me" href="https://github.com/bkardell/">Github</a></li>
+            <li><a rel="me" href="https://codepen.io/bkardell">Codepen</a></li>
+            <li><a rel="me" href="https://www.linkedin.com/in/brian-kardell-08a4264">LinkedIn</a></li>
+            <li><a rel="me" href="https://www.instagram.com/kardellbrian">Instagram (for
+art)</a></li>
+            <li><a rel="me" href="http://fineartamerica.com/profiles/brian-kardell?">Fine Art
+America (art for sale)</a></li>
+        </ul>
+    </nav>
+</header>
+    <main><div class="posted-on">Posted on 6/20/2015</div><article posted-on="6/20/2015" class="sectioning">
+	<contextual-heading role="heading" aria-level="1">Reflections on Engineering</contextual-heading>
+	<p class="segue">Very early in my career, I was lucky enough to stumble on Web development before it really became a “thing” and landed an apprenticeship (and later job) in a new, small experimental arm of an established consulting firm which primarily worked on embedded systems. I was employee #2 of this new effort and we worked in an attic loft. Nearly all of my experience before this was from books and pure experimentation/willpower to accomplish something. I worked there for about a year, mostly by myself churning out code in somewhat typical fashion: Someone said “make it look like this picture” or “this stuff needs to come from a database” and that was pretty much it. I worked too hard, I was usually scared to death I'd never be able to figure out that one new technology that each project introduced me to and quite often it was just struggle to finish and make something work.</p>
+
+	<p>I was learning a lot about APIs and the languages I was working with, but very little about how to do my job. If this sounds confusing to you, you're not alone: I've been writing software professionally for about 20 years and I've worked on a lot of teams with a wide array of people and initially nearly all of them hold the position that that is my whole job. So, let me explain the counterpoint and how I came to hold this idea about what my job really is.</p>
+
+	<section class="sectioning">
+		<contextual-heading role="heading" aria-level="2">My First Lesson...</contextual-heading>
+		<p>About a year into my first job, an opportunity came up for a project that the boss didn't want to pass up: A former client with a startup who had gotten into some trouble with a deadline had heard we were doing this sort of thing now. Success would likely mean more work — but it was considerably over our heads. It dealt with some ideas for which there were only two books we could find and it seemed at the time like pretty high-end nerd stuff. We'd be working with the author of those books directly. The deadlines looked clearly impossible even if it were something we'd understood well. Still, the boss signed the contract on faith and almost immediately we lost the only other employee we had — it was just me.</p>
+
+		<p>So the boss negotiated with an old partner who had left the company to come back and help out. His name was George and, actually, he was the one that recommended me for the position in the first place. He was friendly and quiet — a lanky guy with beard and glasses, a seasoned engineer who was great with C but he knew nothing about the Web. He came back on one condition: He was running the team — no questions or pressure or status inquiries from the boss. It seemed strange to me coming from this quiet and very amiable guy.</p>
+
+		<p>On the first day, we had a meeting. I brought a thick printout of 4 .asp pages — each tens of thousands of lines of vbscript that represented 4 pages in their application that they had nearly completed. They said “use these as a guide and do these other 6 pages in the next 2 months — we'll do the rest”. They had a virtual army of people banging away on keyboards because in 2 months they had to ship something like 40 “pages” (their application) and in the past 3 months they had completed just the 4.</p>
+
+		<p>“Let’s go over these and I can explain what I've already figured out…” I said.</p>
+
+		<p>“No, tell me how a Web page works” he replied. I gave some quick explanation of HTML documents and elements and tried to move on.</p>
+
+		<p><em>“No, but tell me how it works.”</em></p>
+
+		<p>After much back and forth for a couple of hours I said “ok, are you ready to get started?” He cocked his head to the side, “What do you mean? We are started.”</p>
+
+		<p>Literally all day long we drew diagrams on the board and discussed urls, query strings, HTTP methods, their relation to pages and state and HTML elements, frames, JavaScript, .asp and on and on.</p>
+
+		<p>That night I didn’t sleep. I pondered over those printouts, I made notes. I edited code and tested my understanding of it (usually to ill effect). I did math involving the number of people typing, the lines of code, the work cut out for us and how much it cost us to have lost an entire day talking.</p>
+
+		<p>The next day I felt a little better: All I needed was some progress then surely I’d settle down. But that day too, we talked — we talked about OLAP and SQL and COM and how you'd use them with .asp and IIS and HTTP. How the server was communicating and what we painting on the screen. Where was the state and so on. Every so often the boss would peek in and look worried and George would quickly dismiss him.</p>
+
+		<p>On day 4 I had something of a meltdown: “<em>This is killing my career</em>,” I thought. I confronted him “George, I don't know what’s going on here. Maybe you can afford to do this, but I have to pay my rent — I work here day in and day out. That guy pays my salary and this contract will pay us both and give us more work. We've nothing to show and we're closing in on a significant fraction of the time we have which was already too short. By the end of next week, we have to have one of these done. The boss wants to see progress. The client wants to see progress. My job is to write this code, not to help you feel like you're learning or have interesting conversations. I don't know what happened between the two of you, but you need to get past it — I can't let some power trip or revenge take me down like this.”</p>
+
+
+		<p>George was quiet. </p>
+
+		<p>He took a deep breath through his nose and looked thoughtful about my comments. He reached out to the table and slowly opened a box of chocolate covered cherries that was sitting there, unwrapped it and popped it into his mouth and shook his head. He didn't look angry. He didn't look frustrated or guilty. Instead, he looked more the way a grandfather might look just before he passed down some sage wisdom — just trying to figure out how to explain. I’ll try to summarize some of the wisest words that ultimately came...</p>
+
+
+		<blockquote><p>Any monkey can write code, it doesn't always turn out well. Why do you think I am here? I’m not the only engineer in town — you have others right here. Your boss is a skilled engineer and just next door you could get two guys at half the price. I'll tell you why: I'm here because this project is in trouble. Coding as fast as you can won’t work, and your boss knows that I won’t do that. </p>
+		<p>Imagine that we did. Even if we didn't encounter problem after problem with code we didn't fully understand — working 15 hours a day odds are still about 99% that we'd fail. Who would that serve? We'd be battered and broken — not us. Would it make your boss happy that you came up short? Not likely. Would it make his client happy that he failed to ship? Would you get follow-on work? Not a chance.</p>
+		<p>That’s our job Brian — successfully shipping something that actually meets their needs. It involves programming — hopefully good programming — but the programming and the lines of code isn't what the client wants, it’s the end result. They have to ship. This is make or break for them. You think I'm somehow not taking it seriously but I am: I want them to succeed, that’s all I want. That’s what your boss understands, and why he had the faith to bring me on. So I'm asking you to trust me — we're going to get this done and give them what they really want — the thing they really need to be done. Trust me, the rest will take care of itself.</p></blockquote>
+
+		<p>Over the course of the next 2 weeks it was slow — we completed one page. It was a tiny fraction of the amount of code it had taken them. It seemed like a minor win, but I was still full of dread: We were behind. It took a week and a half to complete the next one, a lot of that was readjusting some earlier assumptions that turned out to be wrong, but the code actually got smaller. The last 4 fell like dominoes in just a few days and we were done — early. Each one was really easy to craft and hardly took any code at all.</p>
+
+		<p>When we synced up with the main team they confessed that they were way behind. They were impressed — despite having all of those people they'd completed only 10 and they were more than a little worried about their quality. Could we do a few more? In the end, in fact, the lion’s share of the total work was done by our team (mostly George too because as it turned out, I had planned a vacation thinking we were done) in an amazingly short time.</p>
+
+		<p>Everyone was happy. I learned an incredible amount of engineering which has continued to help me throughout the years. George was a great teacher. But the real value I took away was much bigger and more abstract than this.</p>
+
+		<p><em>The end goal is to help the client be successful.</em></p>
+
+		<p>George wasn't religiously following engineering practices because some study had shown that over time it would lower maintenance cost or something abstract. Of course, he employed good principles which helped with that, but — he wanted to ship. That’s what everyone wanted. He was simply using whatever powers he had at his disposal to solve the right problems rather than the wrong ones.</p>
+
+		<p>I, my boss, and even the client mistakenly understood the problem to be “how do we measure and knock down units of work to do variants of what someone clumsily hacked together before they really understood the problem” . George was able to see the greater issue. Originally, their product shipped on time with two completely different approaches inside — that’s not great engineering, in fact, it’s terrible. George never tried to tell them they should do otherwise — he simply showed them a better way, he delivered and optimized everyone’s happiness. If they had any sense, they went back and learned the right lessons.</p>
+
+		<section class="sectioning">
+			<contextual-heading role="heading" aria-level="3">On my own...</contextual-heading>
+			<p>Over the years I've frequently been in situations where I've had to apply these lessons. It’s not always easy and sometimes the hardest part is the fact that under a lot of pressure, no one can see the forest for the trees. No one wants to hear you — you can frequently be misunderstood as shooting for unaffordable perfection or just “difficult” even if that is pretty clearly not the case. But let me share just one of many stories about how this matters in a very real way — and why it’s worth caring and having the integrity to focus on the non-programming bits.</p>
+
+			<p>Several years ago I was contracted by a large company for 6 months to complete a simple task: They had a number of systems which were written in Java or .NET. After years of discussion and planning they had timetables and budgets and a directive to convert all of their existing .NET applications to Java. I was hired to do one. They practiced a waterfall methodology and had already spent tons in codifying the requirements and analysis of the existing system and so on. More or less a straight port. They wanted me to potentially suggest a few minor UI tweaks since I was pretty good with JavaScript and CSS, but otherwise straightforward. I spent my first two weeks reading requirements, looking at code, trying to get set up and run through the existing system and so on. At the end of all of this, I had a nagging problem: I still had no idea what this system was actually for and I couldn't even get it to do simple things without crashing — even the one in production.</p>
+
+			<p>At beginning of the third week I was really torn. I just didn't feel like I understood the problem. I could very easily “port” the NET code to Java more or less class for class, but how could I be sure I was doing it right — how could I test it? How could I suggest UI enhancements if I didn't understand what I was enhancing? I honestly couldn't afford to lose this job by pissing someone off, I'd just bought a house and my car died — things were going badly and I was stretched far beyond my limits. Part of me wanted to come to work, do the conversion and take the paycheck and hope. The other part of me won that day though as I remembered George’s words and I walked into my boss’ office and asked him for a moment of his time. I explained all this and asked if perhaps he could point me to some actual users of the system who could just let me observe how they used it for an hour or so so that I could actually understand the job I was trying to accomplish — not the programming, the actual thing the program was supposed to do: The intent. After a while, to his credit, he agreed and he sent a few of us, not just me.</p>
+
+			<p>Afterward, we met again to compare notes and, without fail the experience was universal: They don’t use it.</p>
+
+			<p><em>Wait...What?</em></p>
+
+			<p><em>Why?</em></p>
+
+			<p>It’s pretty simple actually: It doesn't work for what it is designed for — and it wasn't designed to do what they actually need. So instead, they do all these other crazy things with other systems… They each do it their own way — but they're all just solving the same problems on their own. What’s more, it’s not that involved — just clumsy.</p>
+
+			<p>So, in the end — the budget to convert a useless system from one language to another was applied toward the valuable task of just writing the (much, much simpler) system that they actually needed in the ‘right’ language in the first place. I'd helped them not just to be successful but to understand what success meant in the first place: The real problem wasn't just “we have an application written in a language we don't want to maintain anymore” it was “we have a useless application and we never actually solved the problems that needed solving in the first place”.</p>
+		</section>
+
+		<section class="sectioning">
+			<contextual-heading role="heading" aria-level="3">In short...</contextual-heading>
+			<p>
+				Many of us, and those we work with would frequently like to imagine that our job is just programming. It’s easy to forget that, and while yes, you have that rare skill — your real job is in making the project successful. It’s that same quality of solving problems that occasionally gives you an insight that others can’t have. What someone is asking you for is frequently abstract, it often lacks an understanding of the medium and that means various choices incur significantly more cost than others. It’s quite possible (at least in my experience) that with just a little cooperation and effort you can adjust expectations, correct problems with deadlines and budgets and just generally increase the overall happiness of everyone. It doesn't always work — sometimes people will misunderstand your position or even be frustrated by it. But, after ~20 years of doing this, I can honestly say that in the end my results have been overwhelmingly positive. In the end, people tend to come around and frequently those who most misunderstood initially have later come to be some of the best partners.
+			</p>
+
+			<p>
+				I think my friend Mark Nottingham summed it up well recently on Twitter. I’m not sure he meant precisely this, maybe I just see this as a nice summary because it’s on my mind, but I like it regardless…
+			</p>
+
+			<div style="width: 100%; margin-top: 3rem; ">
+				<div style="width: 50%; margin: auto">
+					<blockquote class="twitter-tweet" data-lang="en><p lang=" en"="" dir="ltr">Eventually, you figure out that the code itself doesn't matter for shit; its effect on the world around you is what matters.<p></p>— Mark Nottingham (@mnot) <a href="https://twitter.com/mnot/status/612084738988314624">June 20, 2015</a></blockquote>
+				</div>
+			</div>
+
+		<script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+		</section>
+
+
+
+</section></article></main>
+
+  
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-88027178-1', 'auto');
+    ga('send', 'pageview');
+  </script>
+  <script>
+    Array.prototype.slice.call(document.querySelectorAll('.optional [data-src]')).forEach(function (optional) {
+      var prefs = window.localStorage.downloadsPrefs,
+          clickToSee;
+      if (prefs === 'true') {
+        activateOptional(optional);
+      } else {
+        clickToSee = document.createElement('div');
+        clickToSee.classList.add('clickToSee')
+        clickToSee.innerHTML = '<button>Click to see media</button>';
+        clickToSee.style.textAlign = 'center';
+        clickToSee.style.border = 'none';
+        optional.parentElement.insertBefore(clickToSee, optional.nextSibling);
+        clickToSee.firstElementChild.addEventListener('click', function () {
+          activateOptional(optional);
+        })
+      }
+
+    })
+  </script>
+
+</body></html>

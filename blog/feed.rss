@@ -4,7 +4,7 @@
                     <title>bkardell.com rss feed</title>
                     <link>https://bkardell.com</link>
                     <language>en-us</language>
-                    <lastBuildDate>Mon, 05 Dec 2016 17:12:42 GMT</lastBuildDate>
+                    <lastBuildDate>Tue, 06 Dec 2016 17:22:02 GMT</lastBuildDate>
                     <description>Just the bkardell.com rss feed</description>
                     <atom:link href="https://bkardell.com/blog/feed.rss" rel="self" type="application/rss+xml" />
             
@@ -30,17 +30,17 @@
                                 </item>
                             
                                 <item>
-                                    <title>A Brief(ish) History of the Web Universe - Part IV: New Hope(s)</title>
-                                    <link>https://bkardell.com/blog/Brief-ish-History-of-The-Web-Part-4.html</link>
-                                    <guid>https://bkardell.com/blog/Brief-ish-History-of-The-Web-Part-4.html</guid>
-                                    <pubDate>Fri, 05 Feb 2016 05:00:00 GMT</pubDate>
-                                </item>
-                            
-                                <item>
                                     <title>Off With Their Heads: Disband the W3C?</title>
                                     <link>https://bkardell.com/blog/Off-With-Their-Heads.html</link>
                                     <guid>https://bkardell.com/blog/Off-With-Their-Heads.html</guid>
                                     <pubDate>Tue, 23 Apr 2013 04:00:00 GMT</pubDate>
+                                </item>
+                            
+                                <item>
+                                    <title>A Brief(ish) History of the Web Universe - Part IV: New Hope(s)</title>
+                                    <link>https://bkardell.com/blog/Brief-ish-History-of-The-Web-Part-4.html</link>
+                                    <guid>https://bkardell.com/blog/Brief-ish-History-of-The-Web-Part-4.html</guid>
+                                    <pubDate>Fri, 05 Feb 2016 05:00:00 GMT</pubDate>
                                 </item>
                             
                                 <item>
@@ -69,6 +69,13 @@
                                     <link>https://bkardell.com/blog/Really-Classy-CSS.html</link>
                                     <guid>https://bkardell.com/blog/Really-Classy-CSS.html</guid>
                                     <pubDate>Fri, 11 May 2012 04:00:00 GMT</pubDate>
+                                </item>
+                            
+                                <item>
+                                    <title>Reflections on Engineering</title>
+                                    <link>https://bkardell.com/blog/Reflections-On-Engineering.html</link>
+                                    <guid>https://bkardell.com/blog/Reflections-On-Engineering.html</guid>
+                                    <pubDate>Sat, 20 Jun 2015 04:00:00 GMT</pubDate>
                                 </item>
                             
                                 <item>
