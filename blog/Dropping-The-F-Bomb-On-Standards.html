@@ -1,0 +1,421 @@
+<html lang="en" resource-type="blogpost"><head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@briankardell">
+    <meta name="twitter:creator" content="@briankardell">
+    <meta name="twitter:title" content="Dropping the F-Bomb on Web Standards">
+    <meta name="twitter:description" content="In 2012, Mirriam-Webster's dictionary added a&nbsp;definition for the F-Bomb. &nbsp;Why? &nbsp;Because the elite Mirriam-Webster work
+d-wonk committee decided it was necessary to mint a &quot;steamy n">
+    <meta name="twitter:image" content="https://briankardell.files.wordpress.com/2013/05/small_57466134.jpg">
+    <link rel="alternate" type="application/rss+xml" href="blog/feed.rss" title="bkardell.com/blog rss feed">
+    <title>Dropping the F-Bomb on Web Standards</title>
+    <style>.captioned-image {
+    background-color: #eaeaea;
+    display: block;
+    overflow: hidden;
+    padding: 1rem;
+    text-align: center;
+    font-style: italic;
+}
+
+.captioned-image.p-attached {
+    width: 40%;
+    display: inline-block;
+    margin: 0 1rem 2rem 1rem;
+}
+
+section > .captioned-image.p-attached {
+    margin-top: 1.5rem; /* correct for heading size*/
+}
+
+.captioned-image.p-attached.p-attached-left {
+    float: left;
+}
+
+.captioned-image.p-attached.p-attached-right {
+    float: right;
+}
+
+.captioned-image.p-attached + * + * {
+    clear: both;
+    margin-top: 2rem;
+}
+
+
+.captioned-image img, .captioned-image video {
+    display: block;
+    max-width: 100%;
+    margin: 0 auto 1em auto;
+}
+.source {
+    font-style: italic;
+}
+body {
+    display: flex;
+    font: 1em "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-weight: 300;
+    line-height: 1.625;
+}
+h1 { margin: 0.5rem; }
+code-format {
+    border-left: 0.5rem solid rgba(123,115,209,0.35);
+    display: block;
+    padding: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+contextual-heading {
+    display: block;
+    margin-top: 2rem;
+}
+
+[aria-level="1"] {
+    color: #43686b;
+    font-size: 1.45rem;
+}
+[aria-level="2"] {
+    color: #856363;
+    font-size: 1.35rem;
+}
+[aria-level="3"] {
+    color: #856363;
+    font-size: 1.25rem;
+}
+[aria-level="4"] {
+    color: #856363;
+    font-size: 1.2rem;
+}
+[aria-level="5"], [aria-level="6"] {
+    color: #667496;
+    font-size: 1.1rem;
+    font-weight: bolder;
+}
+.posted-on {
+    font-style: italic;
+    font-size: 0.8rem;
+    text-align: right;
+    margin-bottom: 1rem;
+}
+
+ul, li {
+    margin: 0.5rem;
+    text-align: left;
+}
+header {
+    padding-top: 1rem;
+    padding-right: 2rem;
+    background-color: #fbf5e9;
+}
+.tagline {
+    font-style: italic;
+    text-align: center;
+}
+
+[tag-esc] {
+    color: maroon;
+    font-family: Courier, "Lucida Console", monospace;
+}
+
+[tag-esc]::before {
+    content: '<';
+}
+
+[tag-esc]::after {
+    content: '>';
+}
+
+main {
+    min-width: 50%;
+    width: 80%;
+    padding: 1rem;
+}
+header .title {
+    background-color: rgba(123,115,209,0.35);
+    padding: 0.3rem;
+    padding-left: 0.25rem;
+    font-weight: bolder;
+    font-size: 0.9rem;
+    border-left: 1rem solid #999298;
+}
+
+header .profile {
+    width: 50%;
+    margin: 1rem 25%;
+}
+
+header .title + nav {
+    font-size: 0.9rem;
+}
+
+header .blurb {
+    font-size: 0.75rem;
+    text-align: center;
+}
+header .name {
+    text-align: center;
+    font-size: xx-large;
+}
+.segue {
+    font-style: italic;
+}
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  border: 0;
+}
+[for="aboutMeToggle"] {
+    display: none;
+}
+/* this needs rethinking, it wants a selector like 'not flow content' */
+article>*:not(contextual-heading,a), section>*:not(contextual-heading,a) {
+    margin-left: 0.45rem;
+}
+
+blockquote {
+  font-family: serif;
+  background: #f9f9f9;
+  border-left: 10px solid #ccc;
+  margin: 1.5em 10px;
+  padding: 0.5em 10px;
+}
+blockquote:before {
+  color: #ccc;
+  content: open-quote;
+  font-size: 2em;
+  line-height: 0.1em;
+  margin-right: 0.25em;
+  vertical-align: -0.4em;
+}
+
+blockquote:after {
+  color: #ccc;
+  content: close-quote;
+  font-size: 2em;
+  line-height: 0.1em;
+  margin-left: 0.25em;
+  vertical-align: -0.4em;
+}
+
+
+@media (max-width: 800px){
+    body {
+        flex-direction: column;
+    }
+    header {
+        border-bottom: 1px solid #afafff;
+    }
+
+    .captioned-image.p-attached {
+        width: 100%;
+        margin: 1rem 0;
+    }
+
+    .captioned-image.p-attached.p-attached-left,
+    .captioned-image.p-attached.p-attached-right {
+        float: none;
+    }
+
+    [for="aboutMeToggle"] {
+        background-color: #675e5e;
+        color: white;
+        padding: 0.25rem;
+        padding-left: 0.5rem;
+        display: block;
+        border-left: 1rem solid black;
+    }
+    #aboutMeToggle:focus + [for="aboutMeToggle"]{
+        outline: 4px solid #c6ddf2;
+    }
+
+    #aboutMeToggle:checked ~ header {
+        display: none;
+    }
+
+    header li { display: inline; margin-left: -0.5em; }
+    header .blurb li::after { content: '; '; }
+    header  nav li {
+        display: inline-block;
+        margin-left: 0.35rem;
+        margin-right: 0.35rem;
+    }
+    header .title {
+        width: 100%;
+    }
+    main li .source { display: block; }
+
+}</style>
+    <style>
+      .captioned-image { font-size: 0.9rem; }
+      .thanksTo { font-style: italic; font-size: 0.8rem; }
+    </style>
+    <script>
+      var activateOptional = function (media) {
+        var source = media.getAttribute('data-src'),
+            temp,
+            container = media.parentElement;
+
+          if (media.nextSibling && media.nextSibling.matches) {
+            if (media.nextSibling.matches('.clickToSee')) {
+              media.parentElement.removeChild(media.nextSibling);
+            }
+          }
+
+          if (media.tagName === 'VIDEO') {
+            temp = document.createElement('video')
+            temp.setAttribute('autoplay','')
+            temp.setAttribute('controls','')
+            temp.setAttribute('loop','')
+            temp.innerHTML = '<source src="' + source + '.webm" type="video/webm">'
+                    + '<source src="' + source + '.mp4" type="video/mp4">';
+            media.parentElement.replaceChild(temp, media);
+            setTimeout(function () {
+              temp.play()
+            }, 0);
+          } else {
+            media.src = media.getAttribute('data-src');
+          }
+
+          container.classList.add('active');
+      }
+    </script>
+  </head>
+  <body>
+    <input id="aboutMeToggle" class="sr-only" type="checkbox" checked="">
+<label for="aboutMeToggle">Toggle author information</label>
+<header>
+    <div class="name">
+        Brian Kardell
+    </div>
+    <img class="profile" src="/profile.jpg" alt="">
+    <div class="tagline"><a href="/">Betterifying the Web</a></div>
+    <div class="blurb">
+        <ul>
+            <li>Sr Front-End Engineer at Apollo Group, Inc</li>
+            <li>Original Co-author/Co-signer of The Extensible Web Manifesto</li>
+            <li>Co-Founder/Chair, W3C Extensible Web CG</li>
+            <li>Member, W3C (The JS Foundation)</li>
+            <li>Co-author of HitchJS</li>
+            <li>Blogger</li>
+            <li>Art, Science &amp; History Lover</li>
+            <li>Standards Geek</li>
+        </ul>
+    </div>
+    <div class="title">Follow Me On...</div>
+    <nav>
+        <ul>
+            <li><a rel="me" href="https://briankardell.wordpress.com">Wordpress</a></li>
+            <li><a rel="me" href="https://medium.com/@briankardell">Medium</a></li>
+            <li><a rel="me" href="https://twitter.com/briankardell">Twitter</a></li>
+            <li><a rel="me" href="https://github.com/bkardell/">Github</a></li>
+            <li><a rel="me" href="https://codepen.io/bkardell">Codepen</a></li>
+            <li><a rel="me" href="https://www.linkedin.com/in/brian-kardell-08a4264">LinkedIn</a></li>
+            <li><a rel="me" href="https://www.instagram.com/kardellbrian">Instagram (for
+art)</a></li>
+            <li><a rel="me" href="http://fineartamerica.com/profiles/brian-kardell?">Fine Art
+America (art for sale)</a></li>
+        </ul>
+    </nav>
+</header>
+    <main><div class="posted-on">Posted on 5/17/2013</div><article posted-on="5/17/2013" class="sectioning">
+	<contextual-heading role="heading" aria-level="1">Dropping the F-Bomb on Web Standards</contextual-heading>
+	<div class="captioned-image p-attached p-attached-left" style="margin-top: 1rem;">
+		<img src="https://briankardell.files.wordpress.com/2013/05/small_57466134.jpg" alt="">
+		 <div>photo credit: <a href="http://www.flickr.com/photos/wiccked/57466134/">wiccked</a> via <a href="http://photopin.com">photopin</a> <a href="http://creativecommons.org/licenses/by-nc-nd/2.0/">cc</a></div>
+	</div>
+	<p class="segue">In 2012, Mirriam-Webster's dictionary added a&nbsp;<a href="http://www.merriam-webster.com/dictionary/f-bomb" target="_blank">definition for the F-Bomb</a>. &nbsp;Why? &nbsp;Because the elite Mirriam-Webster work
+d-wonk committee decided it was necessary to mint a "steamy new word"? &nbsp;No, rather, because it is a well-established part of the common vernacular of the English language. There are&nbsp;occurrences&nbsp;of it going all the way back to 1988. &nbsp;Not every slang term someone makes up will get into the dictionary. The Oxford English Dictionary has a&nbsp;<a href="http://www.telegraph.co.uk/news/newstopics/howaboutthat/7926646/Secret-vault-of-words-rejected-by-the-Oxford-English-Dictionary-uncovered.html" target="_blank">vault full of millions of words that currently do not make the cut</a>. &nbsp;Many never catch on. &nbsp;Some die out quickly and others change shape as they spread, that is what etymology is all about. &nbsp;Some stagnate and maintain distinct and valuable regional meanings, and that is fine, but they aren't part of the standard language. &nbsp;The ones that are ultimately widely understood and eventually become commonly used are accepted and codified into the dictionary. Some words even become extinct. &nbsp;In other words, the process of word standardization is&nbsp;<strong><em>evolutionary.</em></strong></p>
+
+	<section class="sectioning">
+		<contextual-heading role="heading" aria-level="2">What's this got to do with Web Standards?</contextual-heading>
+		<p>There are actually many similarities between a dictionary which codifies and specifies the English language and a Web standard, but today the two work in nearly opposite ways*.</p>
+
+		<p>I didn’t come up with the dictionary metaphor (I dont know who did first).  I first heard Alex Russell mention it in <a href="http://infrequently.org/11/fronteers/fronteers.html#1" target="_blank">2011 in a Fronteers talk</a> while I was trying my best to find a way to describe it succinctly myself and it really struck a chord with me.  It very simply illustrates in a way that is easily understood, not just the problem itself, but some excellent/proven solutions that we can use to solve them:  What we really need is a way to develop the slang of the Web and, as it catches on,  potentially mutates or dies, eventually have a way to recognize that, pick it up and codify it into the standards dictionary.</p>
+
+		<span style="font-size:x-small;">*&nbsp;Some attempts at seeing what people are doing outside of Web standards has happened, but for the most part, the real work of creation happens in a committee and the &nbsp; dominance or extinction happens by browser vendors (who also dominate the committees). &nbsp;This has, so far, left us with APIs that are often less than what we want, general slowness in rate of change and lots of other undesirable qualities for developers.</span>
+
+		<section class="sectioning">
+			<contextual-heading role="heading" aria-level="3">A Path for Natural Platform Evolution</contextual-heading>
+			<div class="captioned-image p-attached p-attached-left" style="margin-top: 1rem;">
+				<img src="http://briankardell.files.wordpress.com/2013/05/small_81671961.jpg" alt="a photo of a lego charles darwin">
+				 <div>photo credit: <a href="http://www.flickr.com/photos/wiccked/57466134/">wiccked</a> via <a href="http://photopin.com">photopin</a> <a href="http://creativecommons.org/licenses/by-nc-nd/2.0/">cc</a></div>
+			</div>
+
+			<p>Yehuda Katz and Alex Russell gave an excellent&nbsp;<a href="http://f.cl.ly/items/2L0a0B0R130G3u0k0b1y/Layering.pdf" target="_blank">presentation</a>&nbsp;on the importance of Layering at the first W3C Technical Architecture Group F2F recently. &nbsp;As you can see from the&nbsp;<a href="http://lists.w3.org/Archives/Public/www-tag/2013Apr/0026.html" target="_blank">minutes</a>, they returned on to this idea again with some positive/open responses from other member including questions and observations that further illustrate the language-link from Sir Tim Berners-Lee who seemed to express a lot of interest in parts.</p>
+
+			<p>It&nbsp;is critical to have competition/mutations and a population to evolve a platform - it is important to the long term health of the Web that we be<em>&nbsp;able&nbsp;to evolve the slang of the Web&nbsp;(not just specify and release)</em>. &nbsp;Yehuda called this a "Path for Natural Platform Evolution".</p>
+
+			<section class="sectioning">
+				<contextual-heading role="heading" aria-level="4">What's in it for me? &nbsp;What do I have to do?</contextual-heading>
+				<p>If you have ever participated in the open standards lists you know: &nbsp;Most people aren't&nbsp;<em>that</em>&nbsp;committed to bettering something that might make their lives easier years from now. &nbsp; They have a job to do. &nbsp; Within a month or two of following any list, you will begin to recognize the same small group of people who really contribute at that level. &nbsp;It's not that the general public is&nbsp;<em>unwilling</em>&nbsp;to contribute, it's just really difficult to do and they don't actually get anything out of it now. &nbsp;This is distinctly different from words in a language - it's&nbsp;<strong>very&nbsp;</strong>easy (and cheap) to pick up words that you find useful or descriptive and use them in your everyday parlance, on Facebook or Twitter. &nbsp;You get something out of it when you find something becomes much easier to describe or maybe even makes you sound a little smarter or hipper than you might be without them. &nbsp;Web standards on the other hand are kind of the opposite of that at the moment.</p>
+			</section>
+
+			<section class="sectioning">
+				<contextual-heading role="heading" aria-level="4">Cheap ways to help</contextual-heading>
+				<ol>
+					<li><strong>Collect the slang: &nbsp;</strong>One very cheap way that you can help if you have chrome is to install&nbsp;<a href="https://chrome.google.com/webstore/detail/meaningless/gmmhpelpfhlofjjolcegdddjadkmincn" target="_blank">Meaningless</a>&nbsp;and help collect anonymous statistics about the elements and approaches used in sites that you visit - this helps inform what slang is actually picking up and which is mostly just theory or fad. &nbsp;What benefit do you, personally, get out of it right now? &nbsp;Actually none, but it's so easy, why not help :)</li>
+
+					<li><span style="color:#000000;font-weight:bold;font-style:inherit;line-height:1.625;">Provide the environment, use the slang: &nbsp;</span><em>Prollyfills</em>&nbsp;(which I write about a lot) are to standards as slang is to words in the dictionary - they are essentially proposals that we hope catch on. &nbsp;Using them right now actually does<strong>&nbsp;</strong>deliver value and it can be pretty cheap to try them out and provide some feedback. &nbsp;If you're&nbsp;very<strong>&nbsp;</strong>interested, join the Extensible Web Community group (see prollyfills link above) and help out - it's open and you can do so in any way you like, and at your own pace. &nbsp;You can comment, show us examples/use cases, contribute new ideas, or help create tests - or just help promote some proposal you really like.</li>
+				</ol>
+			</section>
+
+			<section class="sectioning">
+				<contextual-heading role="heading" aria-level="4">Missing Links...</contextual-heading>
+				<p>
+					Unfortunately this will only take us so far with the Web platform as it is today. &nbsp;As Yehuda and Alex explained in their TAG presentation - it is hard to impossible to prollyfill some things in order for us to develop this slang in the real world: The platform doesn't contain the right layers for people to step in and tweak/develop just one piece. &nbsp;The only ones capable of doing this are browser vendors. &nbsp;The architecture is lacking.
+				</p>
+
+				<p>Thus, today, developers write increasingly complex JavaScript: Re-implementing in order to emulate things that are already natively implemented in the browser just to make a single piece work a little better.</p>
+
+				<p>In order to fix this problem, we need to fix the gaps in the platform. &nbsp;Some of this will take a while. &nbsp;Luckily we have some good people working on it. &nbsp;We've elected some good guys to the W3C Technical Architecture Group, both the membership and private encouragement we have gotten in the W3C Extensible Web Community Group have been encouraging &nbsp;and there are spec authors like Tab Atkins who are<a href="http://www.xanthir.com/b4N80" target="_blank"> helping to open new doors</a> to make things like this more possible in places where they are currently very hard.</p>
+			</section>
+		</section>
+	</section>
+	<section id="related-articles" class="sectioning">
+		<contextual-heading role="heading" aria-level="2">Related Articles</contextual-heading>
+		<ul>
+			<li><a href="https://extensiblewebmanifesto.org">The Extensible Web Manifesto</a></li>
+			<li><a href="http://infrequently.org/2012/04/bedrock/" target="_blank">Bedrock</a> (infrequently.org)</li>
+			<li><a href="http://infrequently.org/2012/04/hoisted-from-the-comments/">Hoisted from the Comments </a>(infrequently.org)</li>
+			<li><a href="http://smus.com/how-the-web-should-work/">How the Web Should Work</a> (smus.com)</li>
+		</ul>
+	</section>
+</article></main>
+
+  
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-88027178-1', 'auto');
+    ga('send', 'pageview');
+  </script>
+  <script>
+    Array.prototype.slice.call(document.querySelectorAll('.optional [data-src]')).forEach(function (optional) {
+      var prefs = window.localStorage.downloadsPrefs,
+          clickToSee;
+      if (prefs === 'true') {
+        activateOptional(optional);
+      } else {
+        clickToSee = document.createElement('div');
+        clickToSee.classList.add('clickToSee')
+        clickToSee.innerHTML = '<button>Click to see media</button>';
+        clickToSee.style.textAlign = 'center';
+        clickToSee.style.border = 'none';
+        optional.parentElement.insertBefore(clickToSee, optional.nextSibling);
+        clickToSee.firstElementChild.addEventListener('click', function () {
+          activateOptional(optional);
+        })
+      }
+
+    })
+  </script>
+
+</body></html>
