@@ -1,0 +1,427 @@
+<html lang="en" resource-type="blogpost"><head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@briankardell">
+    <meta name="twitter:creator" content="@briankardell">
+    <meta name="twitter:title" content="Incubate All the Things">
+    <meta name="twitter:description" content="There's a conversation going on right now on the mailing list public-w3process, it's exceptionally long and twisty at this point, it took me a few hours to get caught up and... Wai">
+    <meta name="twitter:image" content="https://bkardell.com/media/incubate_the_things.jpg">
+    <link rel="alternate" type="application/rss+xml" href="blog/feed.rss" title="bkardell.com/blog rss feed">
+    <title>Incubate All the Things</title>
+    <style>.captioned-image {
+    background-color: #eaeaea;
+    display: block;
+    overflow: hidden;
+    padding: 1rem;
+    text-align: center;
+    font-style: italic;
+}
+
+.captioned-image.p-attached {
+    width: 40%;
+    display: inline-block;
+    margin: 0 1rem 2rem 1rem;
+}
+
+section > .captioned-image.p-attached {
+    margin-top: 1.5rem; /* correct for heading size*/
+}
+
+ pre { overflow-x: auto }
+
+.captioned-image.p-attached.p-attached-left {
+    float: left;
+}
+
+.captioned-image.p-attached.p-attached-right {
+    float: right;
+}
+
+.captioned-image.p-attached + * + * {
+    clear: both;
+    margin-top: 2rem;
+}
+
+
+.captioned-image img, .captioned-image video {
+    display: block;
+    max-width: 100%;
+    margin: 0 auto 1em auto;
+}
+.source {
+    font-style: italic;
+}
+body {
+    display: flex;
+    font: 1em "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-weight: 300;
+    line-height: 1.625;
+}
+h1 { margin: 0.5rem; }
+code-format {
+    border-left: 0.5rem solid rgba(123,115,209,0.35);
+    display: block;
+    padding: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+contextual-heading {
+    display: block;
+    margin-top: 2rem;
+}
+
+[aria-level="1"] {
+    color: #43686b;
+    font-size: 1.45rem;
+}
+[aria-level="2"] {
+    color: #856363;
+    font-size: 1.35rem;
+}
+[aria-level="3"] {
+    color: #856363;
+    font-size: 1.25rem;
+}
+[aria-level="4"] {
+    color: #856363;
+    font-size: 1.2rem;
+}
+[aria-level="5"], [aria-level="6"] {
+    color: #667496;
+    font-size: 1.1rem;
+    font-weight: bolder;
+}
+.posted-on {
+    font-style: italic;
+    font-size: 0.8rem;
+    text-align: right;
+    margin-bottom: 1rem;
+}
+
+ul, li {
+    margin: 0.5rem;
+    text-align: left;
+}
+header {
+    padding-top: 1rem;
+    padding-right: 2rem;
+    background-color: #fbf5e9;
+}
+.tagline {
+    font-style: italic;
+    text-align: center;
+}
+
+[tag-esc] {
+    color: maroon;
+    font-family: Courier, "Lucida Console", monospace;
+}
+
+[tag-esc]::before {
+    content: '<';
+}
+
+[tag-esc]::after {
+    content: '>';
+}
+
+main {
+    min-width: 50%;
+    width: 80%;
+    padding: 1rem;
+}
+header .title {
+    background-color: rgba(123,115,209,0.35);
+    padding: 0.3rem;
+    padding-left: 0.25rem;
+    font-weight: bolder;
+    font-size: 0.9rem;
+    border-left: 1rem solid #999298;
+}
+
+header .profile {
+    width: 50%;
+    margin: 1rem 25%;
+}
+
+header .title + nav {
+    font-size: 0.9rem;
+}
+
+header .blurb {
+    font-size: 0.75rem;
+    text-align: center;
+}
+header .name {
+    text-align: center;
+    font-size: xx-large;
+}
+.segue {
+    font-style: italic;
+}
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  border: 0;
+}
+[for="aboutMeToggle"] {
+    display: none;
+}
+/* this needs rethinking, it wants a selector like 'not flow content' */
+article>*:not(contextual-heading,a), section>*:not(contextual-heading,a) {
+    margin-left: 0.45rem;
+}
+
+blockquote {
+  font-family: serif;
+  background: #f9f9f9;
+  border-left: 10px solid #ccc;
+  margin: 1.5em 10px;
+  padding: 0.5em 10px;
+}
+blockquote:before {
+  color: #ccc;
+  content: open-quote;
+  font-size: 2em;
+  line-height: 0.1em;
+  margin-right: 0.25em;
+  vertical-align: -0.4em;
+}
+
+blockquote:after {
+  color: #ccc;
+  content: close-quote;
+  font-size: 2em;
+  line-height: 0.1em;
+  margin-left: 0.25em;
+  vertical-align: -0.4em;
+}
+
+
+@media (max-width: 800px){
+    body {
+        flex-direction: column;
+    }
+    header {
+        border-bottom: 1px solid #afafff;
+    }
+
+    .captioned-image.p-attached {
+        width: 100%;
+        margin: 1rem 0;
+    }
+
+    .captioned-image.p-attached.p-attached-left,
+    .captioned-image.p-attached.p-attached-right {
+        float: none;
+    }
+
+    [for="aboutMeToggle"] {
+        background-color: #675e5e;
+        color: white;
+        padding: 0.25rem;
+        padding-left: 0.5rem;
+        display: block;
+        border-left: 1rem solid black;
+    }
+    #aboutMeToggle:focus + [for="aboutMeToggle"]{
+        outline: 4px solid #c6ddf2;
+    }
+
+    #aboutMeToggle:checked ~ header {
+        display: none;
+    }
+
+    header li { display: inline; margin-left: -0.5em; }
+    header .blurb li::after { content: '; '; }
+    header  nav li {
+        display: inline-block;
+        margin-left: 0.35rem;
+        margin-right: 0.35rem;
+    }
+    header .title {
+        width: 100%;
+    }
+    main li .source { display: block; }
+
+}</style>
+    <style>
+      .captioned-image { font-size: 0.9rem; }
+      .thanksTo { font-style: italic; font-size: 0.8rem; }
+    </style>
+    <script>
+      var activateOptional = function (media) {
+        var source = media.getAttribute('data-src'),
+            temp,
+            container = media.parentElement;
+
+          if (media.nextSibling && media.nextSibling.matches) {
+            if (media.nextSibling.matches('.clickToSee')) {
+              media.parentElement.removeChild(media.nextSibling);
+            }
+          }
+
+          if (media.tagName === 'VIDEO') {
+            temp = document.createElement('video')
+            temp.setAttribute('autoplay','')
+            temp.setAttribute('controls','')
+            temp.setAttribute('loop','')
+            temp.innerHTML = '<source src="' + source + '.webm" type="video/webm">'
+                    + '<source src="' + source + '.mp4" type="video/mp4">';
+            media.parentElement.replaceChild(temp, media);
+            setTimeout(function () {
+              temp.play()
+            }, 0);
+          } else {
+            media.src = media.getAttribute('data-src');
+          }
+
+          container.classList.add('active');
+      }
+    </script>
+  </head>
+  <body>
+    <input id="aboutMeToggle" class="sr-only" type="checkbox" checked="">
+<label for="aboutMeToggle">Toggle author information</label>
+<header>
+    <div class="name">
+        Brian Kardell
+    </div>
+    <img class="profile" src="/profile.jpg" alt="">
+    <div class="tagline"><a href="/">Betterifying the Web</a></div>
+    <div class="blurb">
+        <ul>
+            <li>Sr Front-End Engineer at Apollo Group, Inc</li>
+            <li>Original Co-author/Co-signer of The Extensible Web Manifesto</li>
+            <li>Co-Founder/Chair, W3C Extensible Web CG</li>
+            <li>Member, W3C (The JS Foundation)</li>
+            <li>Co-author of HitchJS</li>
+            <li>Blogger</li>
+            <li>Art, Science &amp; History Lover</li>
+            <li>Standards Geek</li>
+        </ul>
+    </div>
+    <div class="title">Follow Me On...</div>
+    <nav>
+        <ul>
+            <li><a rel="me" href="https://briankardell.wordpress.com">Wordpress</a></li>
+            <li><a rel="me" href="https://medium.com/@briankardell">Medium</a></li>
+            <li><a rel="me" href="https://twitter.com/briankardell">Twitter</a></li>
+            <li><a rel="me" href="https://github.com/bkardell/">Github</a></li>
+            <li><a rel="me" href="https://codepen.io/bkardell">Codepen</a></li>
+            <li><a rel="me" href="https://www.linkedin.com/in/brian-kardell-08a4264">LinkedIn</a></li>
+            <li><a rel="me" href="https://www.instagram.com/kardellbrian">Instagram (for
+art)</a></li>
+            <li><a rel="me" href="http://fineartamerica.com/profiles/brian-kardell?">Fine Art
+America (art for sale)</a></li>
+        </ul>
+    </nav>
+</header>
+    <main><div class="posted-on">Posted on null</div><article class="sectioning">
+	<contextual-heading role="heading" aria-level="1">Incubate All the Things</contextual-heading>
+	<p class="segue">There's a conversation going on right now on the mailing list public-w3process, it's exceptionally long and twisty at this point, it took me a few hours to get caught up and... Wait, what's that? You've never even heard of this mailing list?</p>
+
+
+
+	<p>So, there's a conversation right now on a W3C mailing list called <a href="https://lists.w3.org/Archives/Public/public-w3process/">public-w3process</a>. Chances are pretty good that you've never even heard of it.  It's a mailing list for a Community Group called Revising the W3C Process and it's dedicated toward discussion of, effectively, process changes at the W3C.  If you're not familliar with how the W3C works, it has a kind of "master document" that governs how everything works, and that's called "The Process".</p>
+
+	<p>It's a really important document.  If you want to change the way that the W3C actually <em>works</em>, then ultimately, you have to modify The Process document.   It's very, very, very (have I said very?) dull stuff full of spec'y sounding language about how the W3C operates that only a handfull of people will ever read or understand - kind of like most laws.  Generally speaking, the terrible, awful, horrible, no good, very bad job of maintaining this document is the domain of the Advisory Board (AB)... Kinda.  Except that they only formally <em>proposes</em> changes, advise member representatives about why the change is important, answer questions and then, ultimately it is the membership's representatives themselves who vote yes or no about whether to accept the changes.  It takes a long time and it is painful.</p>
+
+	<p>If you've read any of my posts and helped support/advocate for candidates I talked about for the Advisory Board on social media or via email or conversations - thank you, this is why we did that.</p>
+
+	<p>Traditionally, these changes and discussion about them had happened more or less behind closed doors until this list was started in 2011.  Kudos to the W3C for opening it up.  Pretty much anyone in the whole world can follow, read, join or participate in the discussion.  That said, if a process change occurs in the forrest... Well... In the 5 years or so that it's been open, only 43 brave souls on the entire planet have signed up.  Far fewer have actually participated at all and only a tiny few are involved more than a few times.  You might wonder why that is.  Let me answer by way of analogy:  If someone forced you to choose between following W3C process changes and eating drywall, I'd recommend getting a bib and a heaping helping of your favorite condoment because that is the lesser evil.</p>
+
+	<p>In any case, as I said, there is a conversation going on there right now which is 50+ replies deep spanning several threads now, most of the posts are about this size of this article and the topic is incubation. As you may or may not know, there is a movement in the W3C to embrace incubation as a part of the process.  I've mentioned aspects of this in blog posts since before there was an thing with a name we could point to, but I don't know that I've ever written about it and explained why I think it is so important on it's own.</p>
+
+	<section class="sectioning">
+		<contextual-heading role="heading" aria-level="2">Old Fiction</contextual-heading>
+		<p>If you ask "who writes the specs" the answer is inevitably "some standard development organization".  This often leads to the wrong mental image.  To paraphrase a friend who will remain nameless just incase they regret their particularly colorful choice of words:</p>
+
+		<blockquote>So many people come to standards work with stars in their eyes and say, "Well, I just have to get it in the standard and it will be real" and "we're doing R&amp;D here" and... I just want to find ways to kill those people [because] this is really about consolidation and building a platform that we can agree upon and then building value on top of that [and markets in which they can fail].</blockquote>
+
+		<p>That's a big problem historically with no easy seeming answers deployed so far.  Or, rather, it's <em>several</em> big problems.  Let me explain...</p>
+
+		<p>Once you're on a working group you can propose anything and very frequently it is difficult for the average developer to tell the difference between "Just some shit than Brian wants to do" and "Something that has a really good shot at being widely implemented soon". There's also no formal recognition of some very real realities.</p>
+
+		<p>First, that they operate generally by willing cooperation of interested parties and very few actually fund development of the software or control the codebases required to make these things a reality. We can say "that sucks" or "it shouldn't be that way" but, we're  lying if we simply continue to pretend that that "isn't so".  It is.  Second, each of those organizations that do fund or control a codebase have different interests and priorites.</p>
+
+		<p>This mix of things leads to, as you might imagine, a lot of contention in the working groups themselves between all parties.</p>
+
+		<p>Worse still was the idea that browsers would ship "experimental" support by simply prefixing it.  Developers didn't understand that these were experimental and that their intent was to have <em>some</em> way for people to actually use it and give feedback about how to make it better and then kill it off in favor of the "real" thing - so that actually couldn't happen.  Instead, this led to even more contention - accusations that vendors were trying to create a scenario where the only viable option was to use precisely what they'd proposed.</p>
+
+		<p>All of this, as you can probably guess, leads to it taking a very long time to get both concensus and interoperable implementations widely deployed to where the average developer can actually try to use them, because there is some promise of actually getting some work done with it.  That is, after all, the point.  It is also, all too often the case that very frequently initial enthusiasm is quickly dampened as developers come to find that it isn't quite what they were hoping for and a number of things that they wanted aren't there, and that getting that means going back to the drawing board.</p>
+
+		<p>This is frequently the stage where a number of people attempt to enter the process, now that we have mostly open mailing lists.  To do so, they have to find which arcane list to join and figure that out.  Once joining they are often met with a number of unfortunate side-effects - the realization that this is noisy and complicated and takes a really long time."Super-groups" like CSS have tons of proposals at various stages and covering a staggering variety of concerns.  It is nearly economically impossible for a developer to be involved in the real formation of a spec.  These incentives mean that an awful lot of conversation that happens in the working groups surrounds trying to "get it right" for developers: What will they prefer, what will they understand, what use cases will they have.  Which, of course, everyone has an opinion on.  As you might imagine, this makes things take even longer.</p>
+
+		<p>If all of this sounds kind of deeply intertwined and like it creates a kind of self-magnifying cascade of increasingly worse aspects, I agree.  Thus, the desire to change it and the proposal for ways we might do better.</p>
+	</section>
+
+	<section class="sectioning">
+		<contextual-heading role="heading" aria-level="2">Useful Speculation</contextual-heading>
+		<p>Put very simply, incubation is based on the idea that until a certain point, things are really just useful speculation and that finding better ways to identify it as such and work within that idea may be very advantageous.  If we're really fortunate, instead of the cascase of bad, we can build a virtuous cycle of good.</p>
+		<p>Instead of entering the conversation as a something that looks like more than it is in a working group then, ideas begin in incubation.  Incubation happens out in the open, and not on a mailing list where you have to subscribe to everything but in a forum where you can choose smaller, more focused topics to participate in and engage in those.  They are, just that: Ideas.  No more vendors shipping with a prefix - experiments are experimental, they can't leak out into the open by being confused with more than they are.</p>
+		<p>This lowers the barrier to entry and focuses the discussion.  Working group members too can benefit from this as it turns out that not even all members are really interested in all things.  Let's just move the noise in to an appropriately noisy place and be clear about what it is until we're reasonably certain that it stands a really good chance of becomming more.</p>
+		<p>Incubation goes hand in hand with the Extensible Web Manifesto.  For a lot of things, we can build <em>prollyfills</em>.  If you're unfamilliar with that term, there are some new efforts to re-brand those "speculative polyfills" - that is, something experimental which is intended to give you a very good idea what working with that standard will be like, but actually works today in all browers.  As you might imagine, the idea here is to short-circut the conversation allowing developers to weigh in themselves at a far earlier stage and with a better value proposition.</p>
+		<p>How much earlier?  Well, the "real lifetime" of a lot of ideas that have made it to "widely deployed standard" status is a decade or more.  People were talking about what would become flexbox, for example, in at least 2004 (very possibly earlier).  <em>Most</em> of the things in Selectors Level 4 (and some still not in 4) were already in a draft in 1998.  But you couldn't <em>use</em> any of them.  This meant that taking the time to follow the conversations and understand them and comment on them along the way was impractical very impractical.  It was intimidating too for anyone who wanted to discuss, and frustrating because chances are very good that there were long conversations and topics years ago that you really should have a look at before commenting, but how would you even know that.  The mailing lists make this hard.</p>
+		<p>By comparison, I have seen people turn around a functional approximation in incubation upon request in just a day or two.  Not all of them, of course, but it is frequently faster, the number of people who can contribute is much greater, and it is clearly nothing more than "potentially useful speculation" on a particular/limited topic.  Topics are much easier to deal with as topics than a collection of searchable emails.</p>
+	</section>
+
+	<section class="sectioning">
+		<contextual-heading role="heading" aria-level="2">Fears</contextual-heading>
+		<p>Change is difficult and make no mistake, including incubation as an even relatively formal concept in W3C is a change.  It's natural then that some people have fears. Working groups have been the exlusive way to work for a really long time. Why should something not happen in a working group if members of the working group think it should start there and www-style is a forum open to the public.  How doesn't this hollow out working groups and make them nothing more than paper-pushers as things move through the process?</p>
+		<p>The interesting thing is, it's actually a smaller change in practice than you might think.  Currently, the vast majority of specs have a single primary editor and sometimes two or three collaborators.  They work outside of any working group and answer most of the questions, and have deep discussion and come back with an answer.  It's only at this point that the rest of the working group often talks about it much at all.  There are also exceptionally noisy conversations along the way between other folks on IRC or slack or lots of other venues to help them hammer out ideas which they then bring back to wider audiences.  They move the noise, because that's just how information works.  In many cases then, what incubation provides is, realistically, mostly a move of the venue and the admission of how serious/likely it is to become a standard.</p>
+		<p>Working Groups and Incubation are not mutually exclusive ideas, they are complimentary ideas. The aim of incubation is simply to help setup healthier scenarios that provide checks and balances earlier on and allow ideas to succeed or to improve or fork in ways that working groups currently make confusing and difficult.  It's to help balance out the idea of 'powers' and recognize realities.  It's even to just let ideas fail and move on.</p>
+
+		<p>Is it the only way to achieve these goals?  Probably not, but I think it's the best start on an answer that we have so far.</p>
+	</section>
+
+	<p>So why do you care, and what am I asking of you?  Well, it's my opinion that this is your Web, as much as it is any W3C member orgs Web.  Ultimately, it is developers who have to live with this stuff.  It's developers who advocate and adopt and occasionally complain about or outright reject standards.  You are, in the end, a very important piece of the puzzle and I don't know that anyone is really specifically asking you what you think.  I don't think that you should have to wade through all of the discussions but, somehow, you should be heard.  Your voice matters.  So I'm asking you to start a public discussion and share your perspective. Here's my own:</p>
+
+
+	<div class="captioned-image">
+		<img src="/media/incubate_the_things.jpg" alt="Incubate All the Things">
+	</div>
+
+
+
+
+</article></main>
+
+  
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-88027178-1', 'auto');
+    ga('send', 'pageview');
+  </script>
+  <script>
+    Array.prototype.slice.call(document.querySelectorAll('.optional [data-src]')).forEach(function (optional) {
+      var prefs = window.localStorage.downloadsPrefs,
+          clickToSee;
+      if (prefs === 'true') {
+        activateOptional(optional);
+      } else {
+        clickToSee = document.createElement('div');
+        clickToSee.classList.add('clickToSee')
+        clickToSee.innerHTML = '<button>Click to see media</button>';
+        clickToSee.style.textAlign = 'center';
+        clickToSee.style.border = 'none';
+        optional.parentElement.insertBefore(clickToSee, optional.nextSibling);
+        clickToSee.firstElementChild.addEventListener('click', function () {
+          activateOptional(optional);
+        })
+      }
+
+    })
+  </script>
+
+</body></html>
