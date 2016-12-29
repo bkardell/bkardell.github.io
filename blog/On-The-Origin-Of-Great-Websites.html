@@ -1,8 +1,14 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta name='viewport' content='width=device-width; initial-scale=1.0;' />
-    <title>Brian Kardell: Introduction</title>
+<html lang="en" resource-type="blogpost"><head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@briankardell">
+    <meta name="twitter:creator" content="@briankardell">
+    <meta name="twitter:title" content="On the Origin of Great Websites">
+    <meta name="twitter:description" content="In the film Stranger Than Fiction, a butterfly effect occurs that directly links the tiny, casual act of a boring IRS agent setting his watch to his ultimate death. It's interestin">
+    
+    <link rel="alternate" type="application/rss+xml" href="blog/feed.rss" title="bkardell.com/blog rss feed">
+    <title>On the Origin of Great Websites</title>
     <style>.captioned-image {
     background-color: #eaeaea;
     display: block;
@@ -245,9 +251,43 @@ blockquote:after {
     main li .source { display: block; }
 
 }</style>
+    <style>
+      .captioned-image { font-size: 0.9rem; }
+      .thanksTo { font-style: italic; font-size: 0.8rem; }
+    </style>
+    <script>
+      var activateOptional = function (media) {
+        var source = media.getAttribute('data-src'),
+            temp,
+            container = media.parentElement;
+
+          if (media.nextSibling && media.nextSibling.matches) {
+            if (media.nextSibling.matches('.clickToSee')) {
+              media.parentElement.removeChild(media.nextSibling);
+            }
+          }
+
+          if (media.tagName === 'VIDEO') {
+            temp = document.createElement('video')
+            temp.setAttribute('autoplay','')
+            temp.setAttribute('controls','')
+            temp.setAttribute('loop','')
+            temp.innerHTML = '<source src="' + source + '.webm" type="video/webm">'
+                    + '<source src="' + source + '.mp4" type="video/mp4">';
+            media.parentElement.replaceChild(temp, media);
+            setTimeout(function () {
+              temp.play()
+            }, 0);
+          } else {
+            media.src = media.getAttribute('data-src');
+          }
+
+          container.classList.add('active');
+      }
+    </script>
   </head>
   <body>
-    <input id="aboutMeToggle" class="sr-only" type="checkbox" checked>
+    <input id="aboutMeToggle" class="sr-only" type="checkbox" checked="">
 <label for="aboutMeToggle">Toggle author information</label>
 <header>
     <div class="name">
@@ -283,107 +323,16 @@ America (art for sale)</a></li>
         </ul>
     </nav>
 </header>
-    <main>
-    	<style>
-    		section + section {
-    			margin-top: 2rem;
-    			margin-bottom: 2rem;
-    		}
-    	</style>
-        <contextual-heading role="heading" aria-level="1">Stuff about me...</contextual-heading>
-        <p>
-            I believe in the Web and its potential. I'd like to make it even better, and <a href="https://chapters.io">I'd like your help</a>.
-        </p>
-        <section>
-            <contextual-heading role="heading" aria-level="2">My blog...</contextual-heading>
-            <p>I'm in the process of making this domain the cannonical source for all my posts. Here are a few of my favorites/some popular ones, but you can find a <a href="/blog/">complete list</a> (of the ones I've moved) or subscribe to the <a href="/blog/feed.rss">rss feed</a> for updates.</p>
-            <ul>
-                <li><a href="blog/Dropping-The-F-Bomb-On-Standards.html">Dropping the F-Bomb on Web Standards</a></li>
-                <li><a href="blog/Perf.html">Performance: Shame, Hope, Nuance and Interesting Problems</a></li>
-                <li><a href="blog/Potentially-Scattered-Thoughts-On-Web-Components.html">Potentially Scattered Thoughts on Web Components</a></li>
-                <li><a href="blog/The-Future-Web-Wants-You.html">The Future Web Wants You</a></li>
-                <li><a href="blog/The-Glory-Days-Of-The-Web.html">The Glory Days of the Web</a></li>
-                <li><a href="blog/X-Web-Days-of-Future-Past.html">X-Web: Days of Future Past</a></li>
-                <li><a href="blog/Prognostication-And-The-Failure-Of-The-Web.html">Prognostication and the Failure of
-                the Web</a></li>
-                <li><a href="blog/Tao-Of-The-Extensible-Web.html">What Would Bruce Lee Do: The Tao of the Extensible Web</a></li>
-                <li><a href="blog/Off-With-Their-Heads.html">Off With Their Heads: Disband the W3C?</a></li>
-                <li>A Brief(ish) History of the Web Universe (series)<ul>
-                    <li><a href="blog/Brief-ish-History-of-The-Web-Part-1.html">Part I: The Pre-Web</a></li>
-                    <li><a href="blog/Brief-ish-History-of-The-Web-Part-2.html">Part II: Time</a></li>
-                    <li><a href="blog/Brief-ish-History-of-The-Web-Part-3.html">Part III: The Early Web</a></li>
-                    <li><a href="blog/Brief-ish-History-of-The-Web-Part-4.html">Part IV: New Hope(s)</a></li>
-                    </ul>
-                </li>
-            </ul>
-        </section>
-        <section>
-            <contextual-heading role="heading" aria-level="2">Authored/co-authored not on my own blogs</contextual-heading>
-            <ul>
-                <li><a href="https://extensiblewebmanifesto.org">The Extensible Web Manifesto</a></li>
-                <li>
-                    <a href="http://radar.oreilly.com/2015/03/pandoras-box-model.html">Pandora's Box Model</a>
-                    <span class="source">oreilly.com</span>
-                </li>
-                <li>
-                    <a href="https://www.oreilly.com/ideas/proposing-css-input-modality">Proposing CSS input modality</a>
-                    <span class="source">oreilly.com</span>
-                </li>
-                <li>
-                    <a href="https://blog.jquery.com/2016/07/27/the-jquery-foundation-and-standards-2/">The jQuery Foundation and Standards</a>
-                    <span class="source">The jQuery Blog</span>
-                </li>
-                <li>
-                    <a href="https://dev.opera.com/articles/houdini/">Sex, Houdini and the Extensible Web</a>
-                    <span class="source">dev.opera Blog</span>
-                </li>
-                <li>
-                    <a href="https://www.smashingmagazine.com/2013/11/laying-the-groundwork-for-extensibility/">Laying the Groundwork for Extensibility</a>
-                    <span class="source">Smashing Magazine</span>
-                </li>
-                <li>
-                    <a href="https://css-tricks.com/an-intro-to-hitch-js-and-the-extensible-web/">An Intro to HitchJS and the Extensible Web</a>
-                    <span class="source">CSS Tricks</span>
-                </li>
-                <li>
-                    <a>A Plea to Web Developers</a>
-                    <span class="source">net Magazine December 2016 (Issue 287)</span>
-                </li>
-                <li>
-                    <a href="http://codingstuff.org/brian-kardell/">How I Got Into Computers</a>
-                    <span class="source">For a series on codingstuff.org</span>
-                </li>
-            </ul>
-        </section>
-        <section>
-            <contextual-heading role="heading" aria-level="2">Some recorded talks, podcasts, etc</contextual-heading>
-            <ul>
-                <li>
-                    <a href="http://thewebplatformpodcast.com/101-browser-wars-standards-battles">Browser Wars and Standards Battles</a>
-                    <span class="source">The Web Platform Podcast (Eposide 101)</span>
-                </li>
-                <li>
-                    <a href="http://thewebplatformpodcast.com/106-aria-for-developers">ARIA for Developers</a>
-                    <span class="source">The Web Platform Podcast (Eposide 106)</span>
-                </li>
-                <li>
-                    <a href="https://www.youtube.com/watch?v=vl4q0Q9ucIs">Standards and the Extensible Web Manifesto</a>
-                    <span class="source">EdgeConf 4</span>
-                </li>
-                <li>
-                    <a href="https://www.youtube.com/watch?v=IRSdpQXDIAo">You say you want a (r)evolution: Embracing a living system</a>
-                    <span class="source">JSFest Oakland Extensible Web Summit</span>
-                </li>
-                <li>
-                    <a href="https://www.youtube.com/watch?v=rwWEQPc5GRE">Hitchhiker's Guide to Web Standards & Chapters.io</a>
-                    <span class="source">Code & Supply Pittsburgh</span>
-                </li>
+    <main><div class="posted-on">Posted on null</div><article class="sectioning">
+	<contextual-heading role="heading" aria-level="1">On the Origin of Great Websites</contextual-heading>
+	<p class="segue">In the film Stranger Than Fiction, a butterfly effect occurs that directly links the tiny, casual act of a boring IRS agent setting his watch to his ultimate death. It's interesting how much of actual history begins with a phrase like "little did he know" and I think there are some important lessons there for the Web, and the Web community...</p>
 
 
-            </ul>
-        </section>
-    </main>
-      <script>
+
+</article></main>
+
+  
+    <script>
     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
     (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
     m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
@@ -393,5 +342,25 @@ America (art for sale)</a></li>
     ga('send', 'pageview');
   </script>
 
-  </body>
-</html>
+  <script>
+    Array.prototype.slice.call(document.querySelectorAll('.optional [data-src]')).forEach(function (optional) {
+      var prefs = window.localStorage.downloadsPrefs,
+          clickToSee;
+      if (prefs === 'true') {
+        activateOptional(optional);
+      } else {
+        clickToSee = document.createElement('div');
+        clickToSee.classList.add('clickToSee')
+        clickToSee.innerHTML = '<button>Click to see media</button>';
+        clickToSee.style.textAlign = 'center';
+        clickToSee.style.border = 'none';
+        optional.parentElement.insertBefore(clickToSee, optional.nextSibling);
+        clickToSee.firstElementChild.addEventListener('click', function () {
+          activateOptional(optional);
+        })
+      }
+
+    })
+  </script>
+
+</body></html>
