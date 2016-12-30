@@ -4,7 +4,7 @@
                     <title>bkardell.com rss feed</title>
                     <link>https://bkardell.com</link>
                     <language>en-us</language>
-                    <lastBuildDate>Fri, 30 Dec 2016 15:51:27 GMT</lastBuildDate>
+                    <lastBuildDate>Fri, 30 Dec 2016 15:54:14 GMT</lastBuildDate>
                     <description>Just the bkardell.com rss feed</description>
                     <atom:link href="https://bkardell.com/blog/feed.rss" rel="self" type="application/rss+xml" />
             
@@ -18,21 +18,21 @@
                                     </item>
                                 
                                     <item>
-                                        <title>A Brief(ish) History of the Web Universe - Part II: Time</title>
-                                        <link>https://bkardell.com/blog/Brief-ish-History-of-The-Web-Part-2.html</link>
-                                        <description>
-	Part II of&nbsp;“A Brief(ish) History of the Web Universe” aka “The Boring Posts”. &nbsp;No themes, no punch, just history that I hope I can use to help explain where my own perspectives on a whole bunch of things draw from…</description>
-                                        <guid>https://bkardell.com/blog/Brief-ish-History-of-The-Web-Part-2.html</guid>
-                                        <pubDate>Mon, 07 Dec 2015 05:00:00 GMT</pubDate>
-                                    </item>
-                                
-                                    <item>
                                         <title>A Brief(ish) History of the Web Universe - Part III: The Early Web</title>
                                         <link>https://bkardell.com/blog/Brief-ish-History-of-The-Web-Part-3.html</link>
                                         <description>
 	<a href="/blog/Brief-ish-History-of-The-Web-Part-1.html">Part I: The Pre-Web</a> and <a href="/blog/Brief-ish-History-of-The-Web-Part-2.html">Part II: Time</a> of this series attempt to set the creation of the Web, the first Web browser and early attempts to publicly share Sir Tim Berners-Lee’s idea of “the Web” into some historical context.  They attempt to illustrate that there were ideas and forks of ideas along the way, each  considering different aspects of different problems; and that each had varying degrees of success. Some were popular and increasingly mature desktop products, others created standards upon which many products would be built.  Some were technically interesting but completely failed to take off and some which were academically fascinating but were largely vapor.   All of these were still “in motion” at the time that the Web was being conceived and it’s important to realize that they didn’t stop just because Tim said “wait, I’ve got it.”.  Those posts also attempt to explain how Tim really wanted the Web to be read/write, wanted to tap into existing mature products and which bits he imagined were most and least important.  I described the landscape of deployed hardware and technology at the time – the world was close, but not yet “ready” to be wired in richer form/  We weren’t connected by and large – In fact, the entire amount of information sent across the Internet monthly at that time would easily fit on a single sub $100 (US) external USB hard-drive in 2016.    All of this led helped shape the Web.</description>
                                         <guid>https://bkardell.com/blog/Brief-ish-History-of-The-Web-Part-3.html</guid>
                                         <pubDate>Fri, 05 Feb 2016 05:00:00 GMT</pubDate>
+                                    </item>
+                                
+                                    <item>
+                                        <title>A Brief(ish) History of the Web Universe - Part II: Time</title>
+                                        <link>https://bkardell.com/blog/Brief-ish-History-of-The-Web-Part-2.html</link>
+                                        <description>
+	Part II of&nbsp;"A Brief(ish) History of the Web Universe" aka "The Boring Posts". &nbsp;No themes, no punch, just history that I hope I can use to help explain where my own perspectives on a whole bunch of things draw from…</description>
+                                        <guid>https://bkardell.com/blog/Brief-ish-History-of-The-Web-Part-2.html</guid>
+                                        <pubDate>Mon, 07 Dec 2015 05:00:00 GMT</pubDate>
                                     </item>
                                 
                                     <item>
@@ -54,19 +54,19 @@
                                     </item>
                                 
                                     <item>
-                                        <title>Incubate All the Things</title>
-                                        <link>https://bkardell.com/blog/Incubate-All-The-Things.html</link>
-                                        <description>There's a conversation going on right now on the mailing list public-w3process, it's exceptionally long and twisty at this point, it took me a few hours to get caught up and... Wait, what's that? You've never even heard of this mailing list? No worries, I'll fill you in and tell you why this is important...</description>
-                                        <guid>https://bkardell.com/blog/Incubate-All-The-Things.html</guid>
-                                        <pubDate>Mon, 26 Dec 2016 05:00:00 GMT</pubDate>
-                                    </item>
-                                
-                                    <item>
                                         <title>Off With Their Heads: Disband the W3C?</title>
                                         <link>https://bkardell.com/blog/Off-With-Their-Heads.html</link>
                                         <description>Just a few days ago, Matthew Butterick presented a talk entited "<a href="http://unitscale.com/mb/bomb-in-the-garden/" target="_blank">The Bomb in the Garden</a>" at TYPO in San Francisco (poor title timing given recent events in Boston). In it, he concludes "<em>the misery exists because of the W3C—the World Wide Web Consortium... So, respectfully, but quite seriously, I suggest: let’s Disband the W3C</em>". Ultimately he suggests that ".<em>..the alternative is a web that’s organized entirely as a set of open-source software projects.</em></description>
                                         <guid>https://bkardell.com/blog/Off-With-Their-Heads.html</guid>
                                         <pubDate>Tue, 23 Apr 2013 04:00:00 GMT</pubDate>
+                                    </item>
+                                
+                                    <item>
+                                        <title>Incubate All the Things</title>
+                                        <link>https://bkardell.com/blog/Incubate-All-The-Things.html</link>
+                                        <description>There's a conversation going on right now on the mailing list public-w3process, it's exceptionally long and twisty at this point, it took me a few hours to get caught up and... Wait, what's that? You've never even heard of this mailing list? No worries, I'll fill you in and tell you why this is important...</description>
+                                        <guid>https://bkardell.com/blog/Incubate-All-The-Things.html</guid>
+                                        <pubDate>Mon, 26 Dec 2016 05:00:00 GMT</pubDate>
                                     </item>
                                 
                                     <item>
