@@ -4,7 +4,7 @@
                     <title>bkardell.com rss feed</title>
                     <link>https://bkardell.com</link>
                     <language>en-us</language>
-                    <lastBuildDate>Tue, 27 Dec 2016 16:19:11 GMT</lastBuildDate>
+                    <lastBuildDate>Thu, 29 Dec 2016 16:26:02 GMT</lastBuildDate>
                     <description>Just the bkardell.com rss feed</description>
                     <atom:link href="https://bkardell.com/blog/feed.rss" rel="self" type="application/rss+xml" />
             
@@ -37,20 +37,6 @@
                                     </item>
                                 
                                     <item>
-                                        <title>Incubate All the Things</title>
-                                        <link>https://bkardell.com/blog/Incubate-All-The-Things.html</link>
-                                        <guid>https://bkardell.com/blog/Incubate-All-The-Things.html</guid>
-                                        <pubDate>Mon, 26 Dec 2016 05:00:00 GMT</pubDate>
-                                    </item>
-                                
-                                    <item>
-                                        <title>Performance: Shame, Hope, Nuance and Interesting Problems</title>
-                                        <link>https://bkardell.com/blog/Perf.html</link>
-                                        <guid>https://bkardell.com/blog/Perf.html</guid>
-                                        <pubDate>Tue, 22 Nov 2016 05:00:00 GMT</pubDate>
-                                    </item>
-                                
-                                    <item>
                                         <title>Dropping the F-Bomb on Web Standards</title>
                                         <link>https://bkardell.com/blog/Dropping-The-F-Bomb-On-Standards.html</link>
                                         <guid>https://bkardell.com/blog/Dropping-The-F-Bomb-On-Standards.html</guid>
@@ -58,10 +44,24 @@
                                     </item>
                                 
                                     <item>
+                                        <title>Incubate All the Things</title>
+                                        <link>https://bkardell.com/blog/Incubate-All-The-Things.html</link>
+                                        <guid>https://bkardell.com/blog/Incubate-All-The-Things.html</guid>
+                                        <pubDate>Mon, 26 Dec 2016 05:00:00 GMT</pubDate>
+                                    </item>
+                                
+                                    <item>
                                         <title>Off With Their Heads: Disband the W3C?</title>
                                         <link>https://bkardell.com/blog/Off-With-Their-Heads.html</link>
                                         <guid>https://bkardell.com/blog/Off-With-Their-Heads.html</guid>
                                         <pubDate>Tue, 23 Apr 2013 04:00:00 GMT</pubDate>
+                                    </item>
+                                
+                                    <item>
+                                        <title>Performance: Shame, Hope, Nuance and Interesting Problems</title>
+                                        <link>https://bkardell.com/blog/Perf.html</link>
+                                        <guid>https://bkardell.com/blog/Perf.html</guid>
+                                        <pubDate>Tue, 22 Nov 2016 05:00:00 GMT</pubDate>
                                     </item>
                                 
                                     <item>
