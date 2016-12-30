@@ -4,13 +4,15 @@
                     <title>bkardell.com rss feed</title>
                     <link>https://bkardell.com</link>
                     <language>en-us</language>
-                    <lastBuildDate>Thu, 29 Dec 2016 16:26:02 GMT</lastBuildDate>
+                    <lastBuildDate>Fri, 30 Dec 2016 15:51:27 GMT</lastBuildDate>
                     <description>Just the bkardell.com rss feed</description>
                     <atom:link href="https://bkardell.com/blog/feed.rss" rel="self" type="application/rss+xml" />
             
                                     <item>
                                         <title>A Brief(ish) History of the Web Universe - Part I: The Pre-Web</title>
                                         <link>https://bkardell.com/blog/Brief-ish-History-of-The-Web-Part-1.html</link>
+                                        <description>
+	There are a couple of posts that I've been wanting to write, but in each of them I keep finding myself wanting to talk about historical context.  Explaining it in place turns out to be too hard and I've been unable to find a resource that unifies that bits I want to talk about.  I've decided, then, that it might be easier then to write this history separately, mostly so that I can refer back to it.  So here it is, "A Brief(ish) History of the Web Universe" aka "The Boring Posts" in a few parts.  No themes, no punch, just history that I hope I can use to help explain where my own perspectives on a whole bunch of things draw from...</description>
                                         <guid>https://bkardell.com/blog/Brief-ish-History-of-The-Web-Part-1.html</guid>
                                         <pubDate>Sun, 22 Nov 2015 05:00:00 GMT</pubDate>
                                     </item>
@@ -18,6 +20,8 @@
                                     <item>
                                         <title>A Brief(ish) History of the Web Universe - Part II: Time</title>
                                         <link>https://bkardell.com/blog/Brief-ish-History-of-The-Web-Part-2.html</link>
+                                        <description>
+	Part II of&nbsp;“A Brief(ish) History of the Web Universe” aka “The Boring Posts”. &nbsp;No themes, no punch, just history that I hope I can use to help explain where my own perspectives on a whole bunch of things draw from…</description>
                                         <guid>https://bkardell.com/blog/Brief-ish-History-of-The-Web-Part-2.html</guid>
                                         <pubDate>Mon, 07 Dec 2015 05:00:00 GMT</pubDate>
                                     </item>
@@ -25,6 +29,8 @@
                                     <item>
                                         <title>A Brief(ish) History of the Web Universe - Part III: The Early Web</title>
                                         <link>https://bkardell.com/blog/Brief-ish-History-of-The-Web-Part-3.html</link>
+                                        <description>
+	<a href="/blog/Brief-ish-History-of-The-Web-Part-1.html">Part I: The Pre-Web</a> and <a href="/blog/Brief-ish-History-of-The-Web-Part-2.html">Part II: Time</a> of this series attempt to set the creation of the Web, the first Web browser and early attempts to publicly share Sir Tim Berners-Lee’s idea of “the Web” into some historical context.  They attempt to illustrate that there were ideas and forks of ideas along the way, each  considering different aspects of different problems; and that each had varying degrees of success. Some were popular and increasingly mature desktop products, others created standards upon which many products would be built.  Some were technically interesting but completely failed to take off and some which were academically fascinating but were largely vapor.   All of these were still “in motion” at the time that the Web was being conceived and it’s important to realize that they didn’t stop just because Tim said “wait, I’ve got it.”.  Those posts also attempt to explain how Tim really wanted the Web to be read/write, wanted to tap into existing mature products and which bits he imagined were most and least important.  I described the landscape of deployed hardware and technology at the time – the world was close, but not yet “ready” to be wired in richer form/  We weren’t connected by and large – In fact, the entire amount of information sent across the Internet monthly at that time would easily fit on a single sub $100 (US) external USB hard-drive in 2016.    All of this led helped shape the Web.</description>
                                         <guid>https://bkardell.com/blog/Brief-ish-History-of-The-Web-Part-3.html</guid>
                                         <pubDate>Fri, 05 Feb 2016 05:00:00 GMT</pubDate>
                                     </item>
@@ -32,6 +38,9 @@
                                     <item>
                                         <title>A Brief(ish) History of the Web Universe - Part IV: New Hope(s)</title>
                                         <link>https://bkardell.com/blog/Brief-ish-History-of-The-Web-Part-4.html</link>
+                                        <description>
+		It's early 1994. AT&amp;T has purchased Go and PenOS (see&nbsp;<a href="/blog/Brief-ish-History-of-The-Web-Part-1.html">Part I: The Pre-Web</a>) and now they are pulling the plug. &nbsp;SmartSketch FutureSplash (again, Part I) won't be released. Its makers Jonathan Gay and Charlie Jackson briefly try porting to the desktop, but there they would have to compete with well-funded and mature products and that isn't practical. &nbsp;Keep them in the back of your mind, we'll come back to them.
+	</description>
                                         <guid>https://bkardell.com/blog/Brief-ish-History-of-The-Web-Part-4.html</guid>
                                         <pubDate>Fri, 05 Feb 2016 05:00:00 GMT</pubDate>
                                     </item>
@@ -39,6 +48,7 @@
                                     <item>
                                         <title>Dropping the F-Bomb on Web Standards</title>
                                         <link>https://bkardell.com/blog/Dropping-The-F-Bomb-On-Standards.html</link>
+                                        <description>In 2012, Mirriam-Webster's dictionary added a&nbsp;<a href="http://www.merriam-webster.com/dictionary/f-bomb" target="_blank">definition for the F-Bomb</a>. &nbsp;Why? &nbsp;Was it because some elite Mirriam-Webster working group d-wonk committee decided it was necessary to mint a "steamy new word"? &nbsp;No, rather, because it is a well-established part of the common vernacular of the English language. There are&nbsp;occurrences&nbsp;of it going all the way back to 1988. &nbsp;Not every slang term someone makes up will get into the dictionary. The Oxford English Dictionary has a&nbsp;<a href="http://www.telegraph.co.uk/news/newstopics/howaboutthat/7926646/Secret-vault-of-words-rejected-by-the-Oxford-English-Dictionary-uncovered.html" target="_blank">vault full of millions of words that currently do not make the cut</a>. &nbsp;Many never catch on. &nbsp;Some die out quickly and others change shape as they spread, that is what etymology is all about. &nbsp;Some stagnate and maintain distinct and valuable regional meanings, and that is fine, but they aren't part of the standard language. &nbsp;The ones that are ultimately widely understood and eventually become commonly used are accepted and codified into the dictionary. Some words even become extinct. &nbsp;In other words, the process of word standardization is&nbsp;<strong><em>evolutionary.</em></strong></description>
                                         <guid>https://bkardell.com/blog/Dropping-The-F-Bomb-On-Standards.html</guid>
                                         <pubDate>Fri, 17 May 2013 04:00:00 GMT</pubDate>
                                     </item>
@@ -46,6 +56,7 @@
                                     <item>
                                         <title>Incubate All the Things</title>
                                         <link>https://bkardell.com/blog/Incubate-All-The-Things.html</link>
+                                        <description>There's a conversation going on right now on the mailing list public-w3process, it's exceptionally long and twisty at this point, it took me a few hours to get caught up and... Wait, what's that? You've never even heard of this mailing list? No worries, I'll fill you in and tell you why this is important...</description>
                                         <guid>https://bkardell.com/blog/Incubate-All-The-Things.html</guid>
                                         <pubDate>Mon, 26 Dec 2016 05:00:00 GMT</pubDate>
                                     </item>
@@ -53,6 +64,7 @@
                                     <item>
                                         <title>Off With Their Heads: Disband the W3C?</title>
                                         <link>https://bkardell.com/blog/Off-With-Their-Heads.html</link>
+                                        <description>Just a few days ago, Matthew Butterick presented a talk entited "<a href="http://unitscale.com/mb/bomb-in-the-garden/" target="_blank">The Bomb in the Garden</a>" at TYPO in San Francisco (poor title timing given recent events in Boston). In it, he concludes "<em>the misery exists because of the W3C—the World Wide Web Consortium... So, respectfully, but quite seriously, I suggest: let’s Disband the W3C</em>". Ultimately he suggests that ".<em>..the alternative is a web that’s organized entirely as a set of open-source software projects.</em></description>
                                         <guid>https://bkardell.com/blog/Off-With-Their-Heads.html</guid>
                                         <pubDate>Tue, 23 Apr 2013 04:00:00 GMT</pubDate>
                                     </item>
@@ -60,6 +72,7 @@
                                     <item>
                                         <title>Performance: Shame, Hope, Nuance and Interesting Problems</title>
                                         <link>https://bkardell.com/blog/Perf.html</link>
+                                        <description>My free account on Wordpress.com has served me pretty well over the years by most measures.  I didn't have to set anything up, I use it, people all over the world read it - and did I mention it was free?  What else is there really?  But I've always wanted more control, and ownership of your own content is a really good thing, so couple of weeks ago, I broke down and bought <a href="https://bkardell.com">bkardell.com</a>. Given a domain, I decided that now that moving lots of legacy content there would be an interesting and fun exercise. I'd like to tell you about some things it's made me think about...</description>
                                         <guid>https://bkardell.com/blog/Perf.html</guid>
                                         <pubDate>Tue, 22 Nov 2016 05:00:00 GMT</pubDate>
                                     </item>
@@ -67,6 +80,7 @@
                                     <item>
                                         <title>Potentially Scattered Thoughts on Web Components and Frameworks</title>
                                         <link>https://bkardell.com/blog/Potentially-Scattered-Thoughts-On-Web-Components.html</link>
+                                        <description>Chances are pretty good that you've seen at least one of the many articles and tweets flying around lately about Web Components and Frameworks. For the past week I've watched as all sorts of arguments have been made by friends of mine on both sides and wanted to weigh in and share some thoughts, but my life hasn't been cooperating. Finally, I have a moment so I tried to put down some thoughts that have been banging around in my head... No guarantee they are coherent and I'm out of time, so here they are....</description>
                                         <guid>https://bkardell.com/blog/Potentially-Scattered-Thoughts-On-Web-Components.html</guid>
                                         <pubDate>Mon, 26 Sep 2016 04:00:00 GMT</pubDate>
                                     </item>
@@ -74,6 +88,7 @@
                                     <item>
                                         <title>Prognostication and the Failure of the Web</title>
                                         <link>https://bkardell.com/blog/Prognostication-And-The-Failure-Of-The-Web.html</link>
+                                        <description>For almost as long as there has been a Web to write about, people have been prognosticating the death of the Web.  Mine is a different kind of prediction, but as I look into my crystal ball, I'm absolutely certain of it:  The Web will <em>fail.</em> Let me tell you what I see through the glass...</description>
                                         <guid>https://bkardell.com/blog/Prognostication-And-The-Failure-Of-The-Web.html</guid>
                                         <pubDate>Fri, 06 May 2016 04:00:00 GMT</pubDate>
                                     </item>
@@ -81,6 +96,7 @@
                                     <item>
                                         <title>(Really) classy CSS</title>
                                         <link>https://bkardell.com/blog/Really-Classy-CSS.html</link>
+                                        <description>When CSS was conceived, the basic vision was that HTML should provide structure and semantics while CSS would providing styling via rules based on selectors describing (or selecting) what to style.  In an ideal world, Web pages could be authored by one group of people independently of the visual needs and then another group (designers) could go and write CSS to style it up.  The biggest problem in achieving this ideal was that HTML had such a small number of tags without any real obvious way to add enough semantics to actually accomplish this.  Thus, two things were added very early on:  The humble <code tag-esc="">div</code> and <code tag-esc="">span</code> tags in HTML and the .class in CSS  - the general idea being that the authors of a tree of markup could (quite independently of style concerns) build generic structures and pepper their markup with semantics via classes and ids.</description>
                                         <guid>https://bkardell.com/blog/Really-Classy-CSS.html</guid>
                                         <pubDate>Fri, 11 May 2012 04:00:00 GMT</pubDate>
                                     </item>
@@ -88,6 +104,7 @@
                                     <item>
                                         <title>Reflections on Engineering</title>
                                         <link>https://bkardell.com/blog/Reflections-On-Engineering.html</link>
+                                        <description>Very early in my career, I was lucky enough to stumble on Web development before it really became a “thing” and landed an apprenticeship (and later job) in a new, small experimental arm of an established consulting firm which primarily worked on embedded systems. I was employee #2 of this new effort and we worked in an attic loft. Nearly all of my experience before this was from books and pure experimentation/willpower to accomplish something. I worked there for about a year, mostly by myself churning out code in somewhat typical fashion: Someone said “make it look like this picture” or “this stuff needs to come from a database” and that was pretty much it. I worked too hard, I was usually scared to death I'd never be able to figure out that one new technology that each project introduced me to and quite often it was just struggle to finish and make something work.</description>
                                         <guid>https://bkardell.com/blog/Reflections-On-Engineering.html</guid>
                                         <pubDate>Sat, 20 Jun 2015 04:00:00 GMT</pubDate>
                                     </item>
@@ -95,6 +112,7 @@
                                     <item>
                                         <title>What Would Bruce Lee Do? The Tao of the Extensible Web.</title>
                                         <link>https://bkardell.com/blog/Tao-Of-The-Extensible-Web.html</link>
+                                        <description>Recently I participated in a panel on The Standards Process and the Extensible Web Manifesto at <a href="http://edgeconf.com/" target="_blank">Edge Conf</a>. &nbsp;While ours was the very last session of the day (you can watch the video <a href="https://www.youtube.com/watch?v=vl4q0Q9ucIs" target="_blank">here</a>), nearly every topic that day called out some mention of the <a href="http://extensiblewebmanifesto.org/" target="_blank">Extensible Web Manifesto</a>. &nbsp;Privately,&nbsp;there were still&nbsp;plenty&nbsp;of people I met between sessions who privately said “So, what exactly is this Manifesto&nbsp;thing I keep hearing about, tell me more…”. &nbsp;and my day was filled with discussions at all levels about how exactly we should apply its words&nbsp;in practice or&nbsp;what exactly we meant by x - or specifically what we want to change about standards.  Given this, I thought&nbsp;it worth a post to share my own personal thoughts, and say some of the things I didn't have an opportunity to say on the panel. &nbsp; I'll begin in the obvious place: &nbsp;Bruce Lee.</description>
                                         <guid>https://bkardell.com/blog/Tao-Of-The-Extensible-Web.html</guid>
                                         <pubDate>Tue, 07 Oct 2014 04:00:00 GMT</pubDate>
                                     </item>
@@ -102,6 +120,7 @@
                                     <item>
                                         <title>The Future Web Wants You</title>
                                         <link>https://bkardell.com/blog/The-Future-Web-Wants-You.html</link>
+                                        <description>A few weeks ago I gave a talk in Pittsburgh, PA at Code and Supply. <a href="https://www.youtube.com/watch?v=rwWEQPc5GRE" target="_blank">It was recorded if you would rather watch the video </a>(the actual talk is ~40 minutes, the video captures some of the Q&amp;A afterward as well), but I'm more comfortable writing and I thought it might be worth a stab at a companion piece that tries to make the same points/arguments in blog-post-size, so - here it is.</description>
                                         <guid>https://bkardell.com/blog/The-Future-Web-Wants-You.html</guid>
                                         <pubDate>Wed, 24 Aug 2016 04:00:00 GMT</pubDate>
                                     </item>
@@ -109,6 +128,7 @@
                                     <item>
                                         <title>The Glory Days of the Web</title>
                                         <link>https://bkardell.com/blog/The-Glory-Days-Of-The-Web.html</link>
+                                        <description>For the past couple of years, there have been a number of pieces lamenting the current state of Web development: It's gotten pretty complicated. Very recently a <a href="https://hackernoon.com/how-it-feels-to-learn-javascript-in-2016-d3a717dd577f#.m50p34qi8" rel="nofollow" target="_blank">satirical piece on this subject</a> really struck a chord and got a lot of attention. Dion Almaer <a href="https://medium.com/ben-and-dion/i-want-to-go-back-to-the-1950s-of-web-development-fa69d7fe357a#.bqj5a5ug1" target="_blank">wrote a piece in reply </a>in which he introduced what I thought was a really good analogy - the rose colored glasses that we often see the past through...</description>
                                         <guid>https://bkardell.com/blog/The-Glory-Days-Of-The-Web.html</guid>
                                         <pubDate>Wed, 05 Oct 2016 04:00:00 GMT</pubDate>
                                     </item>
@@ -116,6 +136,7 @@
                                     <item>
                                         <title>X-Web: Days of Future Past</title>
                                         <link>https://bkardell.com/blog/X-Web-Days-of-Future-Past.html</link>
+                                        <description>If you're not a comic book nerd, or a comic movie nerd, I suppose an explanation is necessary: In the Marvel Universe, there is a genetic mutation in some humans called "the X-gene". This gene leads to development of an exotic protein which can radically affect other genes in unpredictable ways. The result is mutants with all sorts of different "super" abilities. This is the basis for the story lines in the X-Men comics. Some humans, without the X-gene, see mutants as freaks, there is prejudice against them. Others would like to recruit them as weapons. Still others are friends. The mutant community is divided too. One group of mutants believe that they are a new homo superior destined to become the dominant species and they're willing to earn this by fear and force. Another group of mutants, the X-Men, led by Professor Xavier, believe that mutants and non-mutants should live in harmony. Mutants powers can even aid humanity. They work very hard for the advancement of peace and tolerance. And then, there are quite a lot of people - both mutants and everydays humans who are torn back and forth somewhere in the middle on a lot of the subtleties that arise. One of the most amazing parts of the narrative is that the leaders of the two groups are actually best friends. They actually agree on much. Most of their followers are not similarly friendly. It's kind of a hot mess, and it reminds me a little of the Web community.</description>
                                         <guid>https://bkardell.com/blog/X-Web-Days-of-Future-Past.html</guid>
                                         <pubDate>Mon, 20 Jun 2016 04:00:00 GMT</pubDate>
                                     </item>
