@@ -1,0 +1,470 @@
+<html lang="en" resource-type="blogpost"><head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@briankardell">
+    <meta name="twitter:creator" content="@briankardell">
+    <meta name="twitter:title" content="TokenLists: Missing Web DNA">
+    <meta name="twitter:description" content="As we move forward with the Web, it's important that we look down into the DNA and continue to find the missing connections - things that are fundamentally related in concept and m">
+    
+    <link rel="alternate" type="application/rss+xml" href="blog/feed.rss" title="bkardell.com/blog rss feed">
+    <title>TokenLists: Missing Web DNA</title>
+    <style>.captioned-image {
+    background-color: #eaeaea;
+    display: block;
+    overflow: hidden;
+    padding: 1rem;
+    text-align: center;
+    font-style: italic;
+}
+
+.captioned-image.p-attached {
+    width: 40%;
+    display: inline-block;
+    margin: 0 1rem 2rem 1rem;
+}
+
+section > .captioned-image.p-attached {
+    margin-top: 1.5rem; /* correct for heading size*/
+}
+
+ pre { overflow-x: auto }
+
+.captioned-image.p-attached.p-attached-left {
+    float: left;
+}
+
+.captioned-image.p-attached.p-attached-right {
+    float: right;
+}
+
+.captioned-image.p-attached + * + * {
+    clear: both;
+    margin-top: 2rem;
+}
+
+
+.captioned-image img, .captioned-image video {
+    display: block;
+    max-width: 100%;
+    margin: 0 auto 1em auto;
+}
+.source {
+    font-style: italic;
+}
+body {
+    display: flex;
+    font: 1em "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-weight: 300;
+    line-height: 1.625;
+}
+h1 { margin: 0.5rem; }
+code-format {
+    border-left: 0.5rem solid rgba(123,115,209,0.35);
+    display: block;
+    padding: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+contextual-heading {
+    display: block;
+    margin-top: 2rem;
+}
+
+[aria-level="1"] {
+    color: #43686b;
+    font-size: 1.45rem;
+}
+[aria-level="2"] {
+    color: #856363;
+    font-size: 1.35rem;
+}
+[aria-level="3"] {
+    color: #856363;
+    font-size: 1.25rem;
+}
+[aria-level="4"] {
+    color: #856363;
+    font-size: 1.2rem;
+}
+[aria-level="5"], [aria-level="6"] {
+    color: #667496;
+    font-size: 1.1rem;
+    font-weight: bolder;
+}
+.posted-on {
+    font-style: italic;
+    font-size: 0.8rem;
+    text-align: right;
+    margin-bottom: 1rem;
+}
+
+ul, li {
+    margin: 0.5rem;
+    text-align: left;
+}
+header {
+    padding-top: 1rem;
+    padding-right: 2rem;
+    background-color: #fbf5e9;
+}
+.tagline {
+    font-style: italic;
+    text-align: center;
+}
+
+[tag-esc] {
+    color: maroon;
+    font-family: Courier, "Lucida Console", monospace;
+}
+
+[tag-esc]::before {
+    content: '<';
+}
+
+[tag-esc]::after {
+    content: '>';
+}
+
+main {
+    min-width: 50%;
+    width: 80%;
+    padding: 1rem;
+}
+header .title {
+    background-color: rgba(123,115,209,0.35);
+    padding: 0.3rem;
+    padding-left: 0.25rem;
+    font-weight: bolder;
+    font-size: 0.9rem;
+    border-left: 1rem solid #999298;
+}
+
+header .profile {
+    width: 50%;
+    margin: 1rem 25%;
+}
+
+header .title + nav {
+    font-size: 0.9rem;
+}
+
+header .blurb {
+    font-size: 0.75rem;
+    text-align: center;
+}
+header .name {
+    text-align: center;
+    font-size: xx-large;
+}
+.segue {
+    font-style: italic;
+}
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  border: 0;
+}
+[for="aboutMeToggle"] {
+    display: none;
+}
+/* this needs rethinking, it wants a selector like 'not flow content' */
+article>*:not(contextual-heading,a), section>*:not(contextual-heading,a) {
+    margin-left: 0.45rem;
+}
+
+blockquote {
+  font-family: serif;
+  background: #f9f9f9;
+  border-left: 10px solid #ccc;
+  margin: 1.5em 10px;
+  padding: 0.5em 10px;
+}
+blockquote:before {
+  color: #ccc;
+  content: open-quote;
+  font-size: 2em;
+  line-height: 0.1em;
+  margin-right: 0.25em;
+  vertical-align: -0.4em;
+}
+
+blockquote:after {
+  color: #ccc;
+  content: close-quote;
+  font-size: 2em;
+  line-height: 0.1em;
+  margin-left: 0.25em;
+  vertical-align: -0.4em;
+}
+
+
+@media (max-width: 800px){
+    body {
+        flex-direction: column;
+    }
+    header {
+        border-bottom: 1px solid #afafff;
+    }
+
+    .captioned-image.p-attached {
+        width: 100%;
+        margin: 1rem 0;
+    }
+
+    .captioned-image.p-attached.p-attached-left,
+    .captioned-image.p-attached.p-attached-right {
+        float: none;
+    }
+
+    [for="aboutMeToggle"] {
+        background-color: #675e5e;
+        color: white;
+        padding: 0.25rem;
+        padding-left: 0.5rem;
+        display: block;
+        border-left: 1rem solid black;
+    }
+    #aboutMeToggle:focus + [for="aboutMeToggle"]{
+        outline: 4px solid #c6ddf2;
+    }
+
+    #aboutMeToggle:checked ~ header {
+        display: none;
+    }
+
+    header li { display: inline; margin-left: -0.5em; }
+    header .blurb li::after { content: '; '; }
+    header  nav li {
+        display: inline-block;
+        margin-left: 0.35rem;
+        margin-right: 0.35rem;
+    }
+    header .title {
+        width: 100%;
+    }
+    main li .source { display: block; }
+
+}</style>
+    <style>
+      .captioned-image { font-size: 0.9rem; }
+      .thanksTo { font-style: italic; font-size: 0.8rem; }
+    </style>
+    <script>
+      var activateOptional = function (media) {
+        var source = media.getAttribute('data-src'),
+            temp,
+            container = media.parentElement;
+
+          if (media.nextSibling && media.nextSibling.matches) {
+            if (media.nextSibling.matches('.clickToSee')) {
+              media.parentElement.removeChild(media.nextSibling);
+            }
+          }
+
+          if (media.tagName === 'VIDEO') {
+            temp = document.createElement('video')
+            temp.setAttribute('autoplay','')
+            temp.setAttribute('controls','')
+            temp.setAttribute('loop','')
+            temp.innerHTML = '<source src="' + source + '.webm" type="video/webm">'
+                    + '<source src="' + source + '.mp4" type="video/mp4">';
+            media.parentElement.replaceChild(temp, media);
+            setTimeout(function () {
+              temp.play()
+            }, 0);
+          } else {
+            media.src = media.getAttribute('data-src');
+          }
+
+          container.classList.add('active');
+      }
+    </script>
+  </head>
+  <body>
+    <input id="aboutMeToggle" class="sr-only" type="checkbox" checked="">
+<label for="aboutMeToggle">Toggle author information</label>
+<header>
+    <div class="name">
+        Brian Kardell
+    </div>
+    <img class="profile" src="/profile.jpg" alt="">
+    <div class="tagline"><a href="/">Betterifying the Web</a></div>
+    <div class="blurb">
+        <ul>
+            <li>Sr Front-End Engineer at Apollo Group, Inc</li>
+            <li>Original Co-author/Co-signer of The Extensible Web Manifesto</li>
+            <li>Co-Founder/Chair, W3C Extensible Web CG</li>
+            <li>Member, W3C (The JS Foundation)</li>
+            <li>Co-author of HitchJS</li>
+            <li>Blogger</li>
+            <li>Art, Science &amp; History Lover</li>
+            <li>Standards Geek</li>
+        </ul>
+    </div>
+    <div class="title">Follow Me On...</div>
+    <nav>
+        <ul>
+            <li><a rel="me" href="https://briankardell.wordpress.com">Wordpress</a></li>
+            <li><a rel="me" href="https://medium.com/@briankardell">Medium</a></li>
+            <li><a rel="me" href="https://twitter.com/briankardell">Twitter</a></li>
+            <li><a rel="me" href="https://github.com/bkardell/">Github</a></li>
+            <li><a rel="me" href="https://codepen.io/bkardell">Codepen</a></li>
+            <li><a rel="me" href="https://www.linkedin.com/in/brian-kardell-08a4264">LinkedIn</a></li>
+            <li><a rel="me" href="https://www.instagram.com/kardellbrian">Instagram (for
+art)</a></li>
+            <li><a rel="me" href="http://fineartamerica.com/profiles/brian-kardell?">Fine Art
+America (art for sale)</a></li>
+        </ul>
+    </nav>
+</header>
+    <main><div class="posted-on">Posted on 3/29/2016</div><article posted-on="3/29/2016" class="sectioning">
+	<contextual-heading role="heading" aria-level="1">TokenLists: Missing Web DNA</contextual-heading>
+	<p class="segue">As we move forward with the Web, it's important that we look down into the DNA and continue to find the missing connections - things that are fundamentally related in concept and managed so by the browser, but not exposed to developers in similar fashion.  I'd like to talk about one of those I recently uncovered...</p>
+
+	<p>A long long time ago, in a browser far far away, Brendan Eich introduced what would become known as "DOM Level 0" - basically: Simple reflective properties that allowed you to access useful bits of what would later become "DOM" and twiddle with them. &nbsp;It looked something like this...</p>
+
+	<code-format type="javascript">
+		<pre>document.forms[0].firstName.value = "Brian";</pre>
+	</code-format>
+
+	<p>
+		However, there is a long, complex and twisted history that led us to where we are today (see my&nbsp;<a href="/blog/Brief-ish-History-of-The-Web-Part-1.html">A Brief(-ish) History of the Web Universe</a>&nbsp;series of posts). &nbsp;To sum up some key bits: CSS and the actual DOM were conceived of separately from thoughts of DOM0 and JavaScript. &nbsp;Unlike its predecessor, the "real" DOM was intended to be generic.  Part of this was just trying to bring a lot of people together and "fix" the Web.  At the time of its conception, there was a lot of focus on trying to address the problems of SGML that made HTML so appealing in the first place - so we got DTDs for HTML and work began on all things XML.
+	</p>
+
+	<p>
+		The "real" DOM, then, was intended to serve all masters, and as such it&nbsp;dealt with basic attributes in a tree which could be serialized, manipulated and parsed and rewritten in any language with a common interface.  This&nbsp;meant that authors would use <code>getAttribute(attributeName)</code> and <code>setAttribute(attributeName, value)</code> to get and set attribute values respectively. &nbsp;It seemed to those spec writers, then&nbsp;absolutely logical to create an attribute called "<code>class</code>" and allow a user to type:
+	</p>
+
+	<code-format type="javascript">
+		<pre>element.setAttribute("class", "intro")</pre>
+	</code-format>
+
+	<p>Which would be serializable or parsable as something like</p>
+	<code-format type="javascript">
+		<pre>&lt;div class="intro"&gt;</pre>
+	</code-format>
+
+
+	<p>This was problematic in the browser though because DOM Level 0 was not only&nbsp;more well known, but far more&nbsp;terse/convenient.  Most authors really just wanted to deal with reflective properties and type something like:</p>
+
+	<code-format type="javascript">
+		<pre>element.class = "intro";</pre>
+	</code-format>
+
+	<p>In CSS, the <code>class</code> attribute has special meaning, surely it deserved some sugar.  But the above wouldn't have worked because at the time, using property names that were JavaScript reserved words just wouldn't work.  To resolve all these issues, we got the <code>.className</code> property&nbsp;which was reflective on the <code>class</code> attribute. &nbsp;Problem solved... Except, not.</p>
+
+	<section class="sectioning">
+		<contextual-heading role="heading" aria-level="2">Not Simple Enough</contextual-heading>
+		<p>CSS says that any element can specify&nbsp;0...N classes, not 0 or 1.  These are provided in a space separated list. &nbsp;In SGML/XML terms these were "<code>NMTokens</code>". &nbsp;It sounds quite simple - a space separated list of values with some simple constraints should work everywhere, and it does... kind of.</p>
+
+		<p>In the browser world, however, where we were messing with&nbsp;classes at runtime all over the place that needed to be reflected back (CSS wasn't based on&nbsp;runtime properties, it was based on&nbsp;attributes) we began facing issues. &nbsp;Someone would come along and write code like the above example, which assumed that it was a single value:</p>
+
+		<code-format type="javascript">
+			<pre>element.className = "intro";</pre>
+		</code-format>
+
+		<p>The net result being that any existing class names at the time of execution were replaced with just one. &nbsp;Some other person would assume they wanted to toggle a value and write something like:</p>
+
+		<code-format type="javascript">
+			<pre>// Toggle the 'selected' class
+element.className = (element.className === "selected") ? "" : "selected";</pre>
+		</code-format>
+
+		<p>The problem being two-fold: &nbsp;First, it assumes it could === a single value, the second being that it can overwrite all the others. &nbsp;We had problems removing classes, adding them, removing them, toggling them, finding out if it contained something. &nbsp;It sounds trivial but it turns out that it wasn't: Each time you wanted to touch the className you had to deal with deserializing the string, doing your work and re-serializing it without stepping on any of a number of landmines. &nbsp;The net result was, as one might expect, we came up with libraries to help with this - however, they varied in quality and assumptions. It was still a mess.</p>
+
+		<section class="sectioning">
+			<contextual-heading role="heading" aria-level="3">Problem Solved.</contextual-heading>
+
+			<p>When jQuery joined the W3C after becoming the most widely used solution, they lobbied to improve this situation (disclaimer, I represent jQuery in several W3C groups). &nbsp;It wasn't long before we had the <code>.classList</code> interface. &nbsp;The world is much better with <code>.classList</code> at our disposal - finally we can be rid of the above problem. &nbsp;Now users can write:</p>
+
+			<code-format type="javascript">
+				<p>element.classList.add("intro");</p>
+			</code-format>
+
+			<p>It's the missing interface developers&nbsp;always&nbsp;needed.</p>
+		</section>
+	</section>
+
+	<section class="sectioning">
+		<contextual-heading role="heading" aria-level="2">Wait... Problem Solved?</contextual-heading>
+		<p>Sadly, I think still not quite. &nbsp;While it's a major improvement, the trouble is that the <code>NMTokens</code> issue does not solely affect the <code>class</code> attribute, or even just in JavaScript, but we only exposed it through <code>.classList</code>.</p>
+
+		<p>It's quite possible that you are thinking "Well, this probably isn't something I need to worry about because I've never come across it". &nbsp;However, I think you will, and that's the problem.</p>
+
+		<p>There are other <code>NMTokens</code> issues that you've probably not thought about before but eventually will have to. &nbsp;Accessibility is a good example of where this pops up a lot, and if you've not thought about accessibility in the past, it's very possible you've never run into it for that reason alone.</p>
+
+		<p>The <code>aria-describedby</code> attribute is just one example.  A control can be described by multiple elements for different purposes. &nbsp;For example, an <code tag-esc="">input</code> element may have associated helpful advice that appears in a tooltip popup&nbsp;<em>and&nbsp;</em>associated constraint validation errors. &nbsp;Further, it works a lot like the <code>class</code> attribute and has similar challenge&nbsp;in JavaScript in that it frequently has to be actively maintained, not just written in markup, and that's deceptively hard. &nbsp;For example, an author should not associate an input with an errors collection until there are actually errors.</p>
+
+		<p>This sucks. &nbsp;ARIA is hard enough without re-facing remedial seeming sorts of challenges that are indentical to once we've already solved.</p>
+	</section>
+
+	<section class="sectioning">
+		<contextual-heading role="heading" aria-level="2">Good News and Bad</contextual-heading>
+		<p>The good news is that standards makers had the foresight to create an interface for this type of problem called <code>DOMTokenList</code> with all the useful methods and properties that <code>.classList</code> exposes. &nbsp;The <code>.classList</code> property holds a <code>DOMTokenList</code>.</p>
+
+		<p>The bad news is that it's pretty much locked away and there's no way to easily re-apply it to new things as they emerge. &nbsp;We could continue to identify spec properties and create new things&nbsp;like <code>.classList</code> each time we find them. &nbsp;For example, we could expose <code>.ariaDescribedByList</code> - and we might want to occasionally do that - but it's not great. &nbsp;It's just additive. &nbsp;Each time we do, the API of things to learn gets bigger, it also doesn't expose these abilities to custom elements, and it doesn't help with anything that isn't specifically HTML (if you care about that sort of thing).</p>
+
+		<p>Alternatively, however, <em>we could define a single new foundational DOM method to expose <strong>any</strong> attribute this way</em></p>
+
+		<section class="sectioning">
+			<contextual-heading role="heading" aria-level="3">Can you show me?</contextual-heading>
+			<p>
+				Yes!  The good news is that this is actually pretty easy to do, minimal new API to learn and should reasonably work for everyone. &nbsp;Jonathan Neal and I are providing a <a href="https://github.com/bkardell/tokenListFor/blob/master/_tokenListFor.js" target="_blank">prollyfill</a>, or a "speculative polyfill", for this (public domain).  This allows people to ask for an attribute as a <code>DOMTokenList</code>&nbsp;and deal with it the same as they would <code>.classList</code>. &nbsp;Because it's a proposal, and should a standard ultimately arrive it may differ, we've underscored the method name to keep it future safe, but here's an example of its use...
+			</p>
+
+			<code-format type="javascript">
+				<pre>element._tokenListFor("aria-describedby").add("foo-help-text");</pre>
+			</code-format>
+
+			<p>
+			In <a href="https://extensiblewebmanifesto.org" target="_blank">Extensible Web</a>&nbsp;terms, this isn't asking for new additive functionality at all - it is explaining existing magic that already exists, but lies mostly dormant and unexposed in the bowels of the platform. &nbsp;Given this interface, the <code>.classList</code> property, for example, is then merely legacy sugar for its equivalent <code>.asTokenList(attr)</code> accessor&nbsp;(which doesn't require 'name' distinction either and deals with dasherized attributes just fine too):</p>
+
+			<code-format type="javascript">
+				<pre>element._tokenListFor("class").add("intro");</pre>
+			</code-format>
+		</section>
+
+		<p class="thanksTo">Thanks to the many people who proofread, looked at demos, discussed or&nbsp;gave thoughts on this as it developed, including Jonathan Neal, Bruce Lawson, Mathias Bynens,&nbsp;Simon St Laurent, Jake Archibald, and Alice Boxhall.</p>
+	</section>
+
+</article></main>
+
+  
+    <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-88027178-1', 'auto');
+    ga('send', 'pageview');
+  </script>
+
+  <script>
+    Array.prototype.slice.call(document.querySelectorAll('.optional [data-src]')).forEach(function (optional) {
+      var prefs = window.localStorage.downloadsPrefs,
+          clickToSee;
+      if (prefs === 'true') {
+        activateOptional(optional);
+      } else {
+        clickToSee = document.createElement('div');
+        clickToSee.classList.add('clickToSee')
+        clickToSee.innerHTML = '<button>Click to see media</button>';
+        clickToSee.style.textAlign = 'center';
+        clickToSee.style.border = 'none';
+        optional.parentElement.insertBefore(clickToSee, optional.nextSibling);
+        clickToSee.firstElementChild.addEventListener('click', function () {
+          activateOptional(optional);
+        })
+      }
+
+    })
+  </script>
+
+</body></html>

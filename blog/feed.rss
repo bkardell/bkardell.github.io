@@ -4,7 +4,7 @@
                 <title>bkardell.com rss feed</title>
                 <link>https://bkardell.com</link>
                 <language>en-us</language>
-                <lastBuildDate>Mon, 02 Jan 2017 17:17:50 GMT</lastBuildDate>
+                <lastBuildDate>Mon, 02 Jan 2017 18:36:40 GMT</lastBuildDate>
                 <description>Just the bkardell.com rss feed</description>
                 <atom:link href="https://bkardell.com/blog/feed.rss" rel="self" type="application/rss+xml" />
     
@@ -72,6 +72,14 @@
 	</description>
                 <guid>https://bkardell.com/blog/Brief-ish-History-of-The-Web-Part-4.html</guid>
                 <pubDate>Sun, 10 Apr 2016 04:00:00 GMT</pubDate>
+            </item>
+        
+            <item>
+                <title>TokenLists: Missing Web DNA</title>
+                <link>https://bkardell.com/blog/TokenLists-Missing-DNA.html</link>
+                <description>As we move forward with the Web, it's important that we look down into the DNA and continue to find the missing connections - things that are fundamentally related in concept and managed so by the browser, but not exposed to developers in similar fashion.  I'd like to talk about one of those I recently uncovered...</description>
+                <guid>https://bkardell.com/blog/TokenLists-Missing-DNA.html</guid>
+                <pubDate>Tue, 29 Mar 2016 04:00:00 GMT</pubDate>
             </item>
         
             <item>
