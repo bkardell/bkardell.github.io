@@ -4,7 +4,7 @@
                 <title>bkardell.com rss feed</title>
                 <link>https://bkardell.com</link>
                 <language>en-us</language>
-                <lastBuildDate>Mon, 02 Jan 2017 18:36:40 GMT</lastBuildDate>
+                <lastBuildDate>Thu, 05 Jan 2017 01:54:49 GMT</lastBuildDate>
                 <description>Just the bkardell.com rss feed</description>
                 <atom:link href="https://bkardell.com/blog/feed.rss" rel="self" type="application/rss+xml" />
     
@@ -123,6 +123,14 @@
                 <description>Recently I participated in a panel on The Standards Process and the Extensible Web Manifesto at Edge Conf. &nbsp;While ours was the very last session of the day (you can watch the video here), nearly every topic that day called out some mention of the Extensible Web Manifesto. &nbsp;Privately,&nbsp;there were still&nbsp;plenty&nbsp;of people I met between sessions who privately said “So, what exactly is this Manifesto&nbsp;thing I keep hearing about, tell me more…”. &nbsp;and my day was filled with discussions at all levels about how exactly we should apply its words&nbsp;in practice or&nbsp;what exactly we meant by x - or specifically what we want to change about standards.  Given this, I thought&nbsp;it worth a post to share my own personal thoughts, and say some of the things I didn't have an opportunity to say on the panel. &nbsp; I'll begin in the obvious place: &nbsp;Bruce Lee.</description>
                 <guid>https://bkardell.com/blog/Tao-Of-The-Extensible-Web.html</guid>
                 <pubDate>Tue, 07 Oct 2014 04:00:00 GMT</pubDate>
+            </item>
+        
+            <item>
+                <title>A Web for the Next Century</title>
+                <link>https://bkardell.com/blog/A-Web-For-The-Next-Century.html</link>
+                <description>If you've read any of the numerous articles about The Extensible Web or heard about it in conference presentations, or seen The Extensible Web Manifesto you've likely seen (or heard) three phrases repeated: "Explain the magic," "fundamental primitives" and "evolution of the platform". I thought it might be worth (another) piece explaining why&nbsp;I think&nbsp;these are at the heart of it all...</description>
+                <guid>https://bkardell.com/blog/A-Web-For-The-Next-Century.html</guid>
+                <pubDate>Tue, 08 Oct 2013 04:00:00 GMT</pubDate>
             </item>
         
             <item>
