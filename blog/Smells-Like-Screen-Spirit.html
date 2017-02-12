@@ -1,0 +1,473 @@
+<html lang="en" resource-type="blogpost"><head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@briankardell">
+    <meta name="twitter:creator" content="@briankardell">
+    <meta name="twitter:title" content="Smells Like Screen Spirit">
+    <meta name="twitter:description" content="This is the first paragraph of this blog post.  I don't think that anyone would question that.  It seems quite obvious and almost stupid to verbalize.  But is it?  I'm going to exp">
+    <meta name="twitter:image" content="https://bkardell.com/media/weird-radios.png">
+    <link rel="alternate" type="application/rss+xml" href="blog/feed.rss" title="bkardell.com/blog rss feed">
+    <title>Smells Like Screen Spirit</title>
+    <style>.captioned-image {
+    background-color: #eaeaea;
+    display: block;
+    overflow: hidden;
+    padding: 1rem;
+    text-align: center;
+    font-style: italic;
+}
+
+.captioned-image.p-attached {
+    width: 40%;
+    display: inline-block;
+    margin: 0 1rem 2rem 1rem;
+}
+
+section > .captioned-image.p-attached {
+    margin-top: 1.5rem; /* correct for heading size*/
+}
+
+ pre { overflow-x: auto }
+
+.captioned-image.p-attached.p-attached-left {
+    float: left;
+}
+
+.captioned-image.p-attached.p-attached-right {
+    float: right;
+}
+
+.captioned-image.p-attached + * + * {
+    clear: both;
+    margin-top: 2rem;
+}
+
+
+.captioned-image img, .captioned-image video {
+    display: block;
+    max-width: 100%;
+    margin: 0 auto 1em auto;
+}
+.source {
+    font-style: italic;
+}
+body {
+    display: flex;
+    font: 1em "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-weight: 300;
+    line-height: 1.625;
+}
+h1 { margin: 0.5rem; }
+code-format {
+    border-left: 0.5rem solid rgba(123,115,209,0.35);
+    display: block;
+    padding: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+contextual-heading {
+    display: block;
+    margin-top: 2rem;
+}
+
+[aria-level="1"] {
+    color: #43686b;
+    font-size: 1.45rem;
+}
+[aria-level="2"] {
+    color: #856363;
+    font-size: 1.35rem;
+}
+[aria-level="3"] {
+    color: #856363;
+    font-size: 1.25rem;
+}
+[aria-level="4"] {
+    color: #856363;
+    font-size: 1.2rem;
+}
+[aria-level="5"], [aria-level="6"] {
+    color: #667496;
+    font-size: 1.1rem;
+    font-weight: bolder;
+}
+.posted-on {
+    font-style: italic;
+    font-size: 0.8rem;
+    text-align: right;
+    margin-bottom: 1rem;
+}
+
+ul, li {
+    margin: 0.5rem;
+    text-align: left;
+}
+header {
+    padding-top: 1rem;
+    padding-right: 2rem;
+    background-color: #fbf5e9;
+}
+.tagline {
+    font-style: italic;
+    text-align: center;
+}
+
+[tag-esc] {
+    color: maroon;
+    font-family: Courier, "Lucida Console", monospace;
+}
+
+[tag-esc]::before {
+    content: '<';
+}
+
+[tag-esc]::after {
+    content: '>';
+}
+
+main {
+    min-width: 50%;
+    width: 80%;
+    padding: 1rem;
+}
+header .title {
+    background-color: rgba(123,115,209,0.35);
+    padding: 0.3rem;
+    padding-left: 0.25rem;
+    font-weight: bolder;
+    font-size: 0.9rem;
+    border-left: 1rem solid #999298;
+}
+
+header .profile {
+    width: 50%;
+    margin: 1rem 25%;
+}
+
+header .title + nav {
+    font-size: 0.9rem;
+}
+
+header .blurb {
+    font-size: 0.75rem;
+    text-align: center;
+}
+header .name {
+    text-align: center;
+    font-size: xx-large;
+}
+.segue {
+    font-style: italic;
+}
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  border: 0;
+}
+[for="aboutMeToggle"] {
+    display: none;
+}
+/* this needs rethinking, it wants a selector like 'not flow content' */
+article>*:not(contextual-heading,a), section>*:not(contextual-heading,a) {
+    margin-left: 0.45rem;
+}
+
+blockquote {
+  font-family: serif;
+  background: #f9f9f9;
+  border-left: 10px solid #ccc;
+  margin: 1.5em 10px;
+  padding: 0.5em 10px;
+}
+blockquote:before {
+  color: #ccc;
+  content: open-quote;
+  font-size: 2em;
+  line-height: 0.1em;
+  margin-right: 0.25em;
+  vertical-align: -0.4em;
+}
+
+blockquote:after {
+  color: #ccc;
+  content: close-quote;
+  font-size: 2em;
+  line-height: 0.1em;
+  margin-left: 0.25em;
+  vertical-align: -0.4em;
+}
+
+
+@media (max-width: 800px){
+    body {
+        flex-direction: column;
+    }
+    header {
+        border-bottom: 1px solid #afafff;
+    }
+
+    .captioned-image.p-attached {
+        width: 100%;
+        margin: 1rem 0;
+    }
+
+    .captioned-image.p-attached.p-attached-left,
+    .captioned-image.p-attached.p-attached-right {
+        float: none;
+    }
+
+    [for="aboutMeToggle"] {
+        background-color: #675e5e;
+        color: white;
+        padding: 0.25rem;
+        padding-left: 0.5rem;
+        display: block;
+        border-left: 1rem solid black;
+    }
+    #aboutMeToggle:focus + [for="aboutMeToggle"]{
+        outline: 4px solid #c6ddf2;
+    }
+
+    #aboutMeToggle:checked ~ header {
+        display: none;
+    }
+
+    header li { display: inline; margin-left: -0.5em; }
+    header .blurb li::after { content: '; '; }
+    header  nav li {
+        display: inline-block;
+        margin-left: 0.35rem;
+        margin-right: 0.35rem;
+    }
+    header .title {
+        width: 100%;
+    }
+    main li .source { display: block; }
+
+}</style>
+    <style>
+      .captioned-image { font-size: 0.9rem; }
+      .thanksTo { font-style: italic; font-size: 0.8rem; }
+    </style>
+    <script>
+      var activateOptional = function (media) {
+        var source = media.getAttribute('data-src'),
+            temp,
+            container = media.parentElement;
+
+          if (media.nextSibling && media.nextSibling.matches) {
+            if (media.nextSibling.matches('.clickToSee')) {
+              media.parentElement.removeChild(media.nextSibling);
+            }
+          }
+
+          if (media.tagName === 'VIDEO') {
+            temp = document.createElement('video')
+            temp.setAttribute('autoplay','')
+            temp.setAttribute('controls','')
+            temp.setAttribute('loop','')
+            temp.innerHTML = '<source src="' + source + '.webm" type="video/webm">'
+                    + '<source src="' + source + '.mp4" type="video/mp4">';
+            media.parentElement.replaceChild(temp, media);
+            setTimeout(function () {
+              temp.play()
+            }, 0);
+          } else {
+            media.src = media.getAttribute('data-src');
+          }
+
+          container.classList.add('active');
+      }
+    </script>
+  </head>
+  <body>
+    <input id="aboutMeToggle" class="sr-only" type="checkbox" checked="">
+<label for="aboutMeToggle">Toggle author information</label>
+<header>
+    <div class="name">
+        Brian Kardell
+    </div>
+    <img class="profile" src="/profile.jpg" alt="">
+    <div class="tagline"><a href="/">Betterifying the Web</a></div>
+    <div class="blurb">
+        <ul>
+            <li>Sr Front-End Engineer at Apollo Group, Inc</li>
+            <li>Original Co-author/Co-signer of The Extensible Web Manifesto</li>
+            <li>Co-Founder/Chair, W3C Extensible Web CG</li>
+            <li>Member, W3C (The JS Foundation)</li>
+            <li>Co-author of HitchJS</li>
+            <li>Blogger</li>
+            <li>Art, Science &amp; History Lover</li>
+            <li>Standards Geek</li>
+        </ul>
+    </div>
+    <div class="title">Follow Me On...</div>
+    <nav>
+        <ul>
+            <li><a rel="me" href="https://briankardell.wordpress.com">Wordpress</a></li>
+            <li><a rel="me" href="https://medium.com/@briankardell">Medium</a></li>
+            <li><a rel="me" href="https://twitter.com/briankardell">Twitter</a></li>
+            <li><a rel="me" href="https://github.com/bkardell/">Github</a></li>
+            <li><a rel="me" href="https://codepen.io/bkardell">Codepen</a></li>
+            <li><a rel="me" href="https://www.linkedin.com/in/brian-kardell-08a4264">LinkedIn</a></li>
+            <li><a rel="me" href="https://www.instagram.com/kardellbrian">Instagram (for
+art)</a></li>
+            <li><a rel="me" href="http://fineartamerica.com/profiles/brian-kardell?">Fine Art
+America (art for sale)</a></li>
+        </ul>
+    </nav>
+</header>
+    <main><div class="posted-on">Posted on null</div><article class="sectioning">
+	<contextual-heading role="heading" aria-level="1">Smells Like Screen Spirit</contextual-heading>
+	<p class="segue">This is the first paragraph of this blog post.  I don't think that anyone would question that.  It seems quite obvious and almost stupid to verbalize.  But is it?  I'm going to explain why it isn't as obvious or silly as you might think and why that matters a lot.</p>
+
+	<div style="color: #856363; font-size: 1.35rem; display: block; margin-top: 2rem;">Paragraphs have visual semantics</div>
+
+    <p>This is the next paragraph, there should be no confusion. I'm trying to illustrate something, so try to stick with me.  <span style="display:block; margin: 1rem 0">Surely, then, we would all agree that this is the next paragraph, right?  Clearly too, I am about to make some point about "visual semantics" as it is under the heading "Paragraphs have visual semantics".
+    I mean, it's unquestionable, right?  What could be clearer or more straightforward?  However, in fact, this 'paragraph' is not a paragraph at all - just ask anything <em>other than your eyes</em>.  In reality, it is just a span <em>inside</em> another paragraph with CSS display and margin values to match.  Similarly, the "Paragraphs have visual semantics" is not a heading either, nor is it a paragraph.  It is, in fact, a <code tag-esc="">div</code> that is wedged between actual paragraphs. For many, the distinction doesn't matter much at all, and we would be none-the-wiser.</span></p>
+
+    <p>However, it does matter, and it matters a lot if you wanted to tell someone or (some thing, we'll get to that) to 'read the third paragraph of this post' or 'read everything under the heading 'Paragraphs have visual semantics'.  To them, these are non-existant things.</p>
+
+	<section class="sectioning">
+    	<contextual-heading role="heading" aria-level="2">The real trouble with "kind of"</contextual-heading>
+    	<p>Things like paragraphs and headings are simple markers or containers. They aren't the real problem in a lot of ways.  Even if I removed all visual formatting, sighted folks could at least read the content.  It would be really hard, you wouldn't want to give users that and you wouldn't want to be a user given that - but users could at least read it.  It's similar for users of AT (Accessibility Technology - we'll get to that).</p>
+
+    	<p>The really huge problem is that the Web contains interactive interfaces and we make the same <em>kinds</em> of mistakes in how we look at them.  I'll explain how this causes problems and how I think we're not doing a great job at addressing them.
+    	</p>
+
+    	<section class="sectioning">
+	    	<contextual-heading role="heading" aria-level="3">Screen Readers: Canaries in the Coal Mine</contextual-heading>
+	        <p>This is a problem that I run into repeatedly when talking to people about the Web and it's unintuitive for them to grasp at first.  The early examples are really simple, but they are full of interesting implications worth discussing.  However, very frequently the point we make is "that will be confusing for someone using a screen reader".  Here's the problem:  I think that is kind of hurting us.  Screen readers have become our "go to" way to explain a lot of problems that aren't just problems for the blind.  Screen readers aren't the problem, they're just the obvious "canary in the coal mine" pointing most readily to the poison.</p>
+
+	        <p>Imagine that as an executive you didn't understand reports of dead canaries to mean "the air is frequently poisoned and that is both very dangrous to the miners and very expensive to deal with" but instead simply understood "a lot of canaries are dying in these mines".  Nobody probably <em>wants</em> to kill canaries, but I think that most people would, in fact, appreciate those two statements very differently.</p>
+
+	        <p>I feel like I am walking a delicate line here - so let me be explicit: It's really not my intent to compare anyone to a bird - I feel a little dirty for even using that analogy to get across my point.  Canaries are canaries, people are people, let's not lose sight of that.
+			What I am trying to say is simply "we're not providing clear understanding of the impact" and because of that "it will be understood very differently than it should".  I feel like, unfortunately, often in the process of fighting for accessibility, we reinforce rather than correct the assumption that it costs us a ton of extra money to make something work for a very few people.  Spending much money on a few people is something businesses have a natural tendency against regardless of what is right or wrong.</p>
+
+			<p><em>Please</em> don't misundertand: We should the necessary fights.  We should do what we have to do on behalf of people. But what we shouldn't do, I think, is paint a picture in ways that make it unnecessarily harder than it is.  By painting a more accurate picture we can probably help a lot more happen.  We can probably help correct attitudes and impressions that shouldn't even exist.</p>
+
+	        <p>I think that what we should be explaining - what we need to get better at articulating - is that there is a much greater "whole cost" here than most currently appreciate.  What many people think of as "problems created by a very few users of screen readers" is a really inaccurate view of the world.</p>
+
+	        <section class="sectioning">
+	        	<contextual-heading role="heading" aria-level="4">Explaining problems and costs</contextual-heading>
+
+				<p>What we frequently fail to understand is that the aim, at all stages is actually communication, and not understanding this incurs incredible costs unnecessarily.  Let's talk about the end of the cycle for a moment.  Rather than thinking about a screen reader - maybe it helps to think instead about voice assistance.</p>
+
+				<p>Increasingly, people talk to their devices.  The thing is, devices don't understand visuals.  They can't explain them to you and we don't talk to them in those terms either.  We don't say, for example, "move the mouse 30px to the right".  If we want to do this, we are just using a different kind of AT (accessibility technology) - a sort of simplified screenreader with voice control.  When you use a search engine, you are effectively using another kind of AT - something that looks at the meaning of it rather than the visual. If you use a gamepad or remote control, you are being plugged into something which has to understand the control.  If you use a cell phone, your cell phone will <em>understand</em> the sort of interaction required by a <code tag-esc="">select</code> element and provide you a nice and easily thumb-usable interface to achieve that.  Older phones could use something like the gamepad/remote metaphor. There are many, many examples of ways that things want to actually <em>understand</em> your interface in non-visual ways.</p>
+
+				<p>So, if you aren't explaining your UI and UX in terms that can be understood, then <em>none of these things can work</em> and you are cutting yourself off from (or at least postponing) your ability to serve any of them.  But, this is just one part of the story.  All along the lifecycle, you are communicating with each other, or trying to at least, and we're not great at it.  That's what ultimately leads to this problem, and I can assure you that it winds up costing a lot for, really no good reason.</p>
+
+				<section class="sectioning">
+					<contextual-heading role="heading" aria-level="5">Let's look at an example</contextual-heading>
+					<p>Imagine a team is tasked to design an interface and, for whatever reason they hit upon an interface like this:</p>
+
+					<div class="captioned-image">
+					<img src="/media/weird-radios.png" alt="an image showing what appear to be three buttons wedged together into a control labeled 'only i can see this', 'my friends can see this' and 'anyone can see this'">
+					It's not unusual to see a design construct like this on paper or with a early HTML prototype focused on visuals.
+					</div>
+
+					<p>This isn't at all uncommon or unfamilliar seeming.  Surely you've seen something like this.  Most sighted developers with a mouse or touch screen would easily intuit from the visual how to interact with it with a mouse.  They would probably understand that these three 'buttons' are a kind of three-state toggle of mutually exclusive options.  So the design is "done" and approved based on a picture or something that approximates the experience visually and with a mouse.  Good work, let's have a celebratory lunch.</p>
+
+					<p>Then, at some point, someone will have to implement this for real.  There are literally hundreds of ways to implement something that "looks like" this in which there are a series of three mutually exclusive choices that also "act like this" from the perpective that they change their visual state when clicked and convey that to some program. We can turn this around in very short order with just some CSS, some divs and programming and show it off.  People can click, it seems to function correctly and everyone seems happy.  Great work development team, drinks are on me.</p>
+
+					<p>We wash, rinse and repeat on this theme with borrowed metaphors that we understand at this level.  But then the trouble comes.</p>
+
+					<p>It's frequently only at the end - maybe even after we have already shipped a product that we find that it is inaccessible.  At worst, it's totally invisible - non-existant. In many cases, it's just random words that suddenly appear for some unexplainable reason and are not interactive at all.</p>
+
+					<p>At this point though, we've already spent the pain of development, we've already celebrated our success.  Deep down, nobody wants to start over.  We want a quick fix for this so we start patching:  Here's a bug that says it isn't keyboard focusable - so we add <code tag-esc="">tabindex="0"</code> to all of our div 'choices'.  Here's a bug that says it isn't announced properly, so we add <code tag-esc="">role="button"</code> to each of them.  We send it back for review, and, if it's a good review we find it's still not right or there's some debate about how it really <em>should</em> operate or announce.</p>
+
+					<p>Wait... do we not know?  How can you be this far along and not really know the answers to these questions?  The simple answer is: Nobody thought about it or communicated it along the way.</p>
+
+					<p>In my experience, this can get quite painful.  It can take a long time, be very costly and, by the time you reach the end, it's gotten really complex and unmanageable.  It's a frankenstein monster of patchwork and bailing wire that you've taken as far as you can and compromises that ultimately have to live with.</p>
+
+					<p>Again, unfortunately, the takeaway is frequently simply "Accessibility is a real pain in the ass."
+					</p>
+
+					<p>Again though, let's think about our voice assistant.  	What you'd really like is probably something that would ask you "who would you like this to be visible to" and tell you that the options are "just me", "just my friends" or "everyone".  To be able to do that, a voice assistant would have to understand <em>what</em> the control is intended to do.</p>
+
+					<p>The thing with communicating what it is intended to do, rather than a simplified view of "what it looks like and generally acts with a mouse" is that you have to start thinking about it.  For example, how should a keyboard work - or a keyboard-like UI (remotes and gamepads are in many ways more keyboard-like than mouse like).</p>
+
+					<p>In our example, it's important to indicate that these are attached to some kind of 'question' for which there are 3 valid choices.  Those are not 3 controls, but one.  The control 'receives' the focus and then the keyboard or something else manages within differently - but always with common and well understood metaphors -- just like what visuals and clicking do for you.  For example, the arrow keys move between selections when the control has focus.</p>
+
+					<p>If, in the end, you built a really decent version of this, you would probably find that you have effectively recreated something very like a <code tag-esc="">fieldset</code> which contained a <code tag-esc="">legend</code> and <code tag-esc="">input type="radio"</code>.</p>
+
+					<p>In fact, if you just used those there wouldn't be anything more to do.  That would have been a good discussion to have very early.  Perhaps there are a few details and questions to sweep up about styling and communication about whether this matters - but if we had those conversations up front and knew what we were really talking about going into it we would inevitably know both what we were building and any kind of AT would know exactly how to understand it. This would be faster, cheaper and ultimately better.</p>
+
+					<section class="sectioning">
+						<contextual-heading role="heading" aria-level="6">Catalogs</contextual-heading>
+						<p>Component libraries are very helpful here if you can find a really accessible one.  The problem is, that's hard.  Many of these, even many popular ones have also followed a similar lifecycle.  But, they aren't a 'solution' to your problem, merely an aid.</p>
+
+						<p>In any case, knowing what your assets are in terms of very well defined interactions going into it is a giant asset because if we acknowledge that these ideas are important, we can begin to name interactions in much the same way that native controls do.  We can use the language and examples to discuss interactions and clearly communicate our boundaries.  <code tag-esc="">select</code> works like a select, there are boundaries it cannot exceed.  It's not a stifle to creativity, of course we <em>can</em> always create things that are outside of those boundaries.  We <em>can</em> create and catalog new interactions but we must recognise that each time we do, we have to pay down these costs - and we should do it upfront.</p>
+					</section>
+
+
+					<section class="sectioning">
+						<contextual-heading role="heading" aria-level="6">Simple vs Composite</contextual-heading>
+						<p>There's one more thing worth mentioning and I think that it's critical.  Simple things are not complex things.  We have to be careful that our 'catalog' isn't misused by simply assembling lots of primitive components in random fashion.</p>
+						<p>It's all too easy to mix low-level interaction metaphors that might make sense visually and with a mouse but defy easy explanation in these sorts of terms and the longer in the lifecycle we wait to begin to realize and address things, the more likely that becomes. We create intractably hard problems downstream.</p>
+
+						<p>We all think we know what a 'tooltip' is, for example, or a 'popover'.  Except, I would posit that we don't and this often isn't an something you simply add to an interaction catalog willy-nilly.  What it is and how it is activated or dismissed are frequently not the same thing.</p>
+
+						<p>Infact, these are comparatively low-level constructs that frequently have to be assembled into higer-level interactions in order to make sense - and if we're not careful with it we can create a real mess. It's important that we create higher-level interaction patterns. Libraries often have to provide a partial answer here because there are lots of potential high level answers you might stitch together.  That's not their fault, but we often make the mistake of not realizing this.</p>
+
+						<p>Frequently, for example, I see an indicator for help next to a field which lauches a tooltip when focus is on the the field. This gets implemented without a hitch.  Later designs think "well, we know how to do tooltips" and then create the same indicator next to a button or a link.  However, buttons and links are activatable - so on a touch device you can't really set the focus without pushing the button.  Nobody's thought through the whole - so the interface is inconsistent.  They are slightly different problems, so we have to revist earlier 'definitions' to fix that.  Still later designs have tooltips which contain interactive content like a link or form elements.  Again, we're back to square one as we discover that this creates a new series of problems.</p>
+
+						<p>However, if we define higher level 'help' interactions early we can place boundaries around it.  If we begin to ask the quesiton "What in the heck <em>is</em> this interactive construct and how does it work?" we can begin to know the answers. If 'help' popovers were well defined, cataloged and explained we might avoid differences that begin to make them wonky and confusing.  If, during a design meeting, someone suggested that we put a form in the popover, someone might simply say "that isn't an option with our existing catalog of interactive controls and adding it has cost - let's see if we can think of something else".</p>
+
+						<p>This is, in fact, something some companies do well and is recommended by many accessibility experts.  If your company does this well, my hat is off to you - I think you are ahead of the game.  Unfortunately I don't think enough people hear the message.  I hope this is helpful to get people thinking.</p>
+
+						<p>I'd like to see us, as a community, begin to provide more well defined and high-quality sharable catalogs of higher level interactions that help lower the cost of getting started too by making the boundaries clearer and less wobbly.</p>
+
+					</section>
+
+				</section>
+
+
+	        </section>
+	    </section>
+    </section>
+
+
+
+
+</article></main>
+
+  
+    <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-88027178-1', 'auto');
+    ga('send', 'pageview');
+  </script>
+
+  <script>
+    Array.prototype.slice.call(document.querySelectorAll('.optional [data-src]')).forEach(function (optional) {
+      var prefs = window.localStorage.downloadsPrefs,
+          clickToSee;
+      if (prefs === 'true') {
+        activateOptional(optional);
+      } else {
+        clickToSee = document.createElement('div');
+        clickToSee.classList.add('clickToSee')
+        clickToSee.innerHTML = '<button>Click to see media</button>';
+        clickToSee.style.textAlign = 'center';
+        clickToSee.style.border = 'none';
+        optional.parentElement.insertBefore(clickToSee, optional.nextSibling);
+        clickToSee.firstElementChild.addEventListener('click', function () {
+          activateOptional(optional);
+        })
+      }
+
+    })
+  </script>
+
+</body></html>
