@@ -1,0 +1,450 @@
+<html lang="en" resource-type="blogpost"><head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@briankardell">
+    <meta name="twitter:creator" content="@briankardell">
+    <meta name="twitter:title" content="Headings and the Seinfeld Pitch">
+    <meta name="twitter:description" content="Because of it's origins, HTML has a number of things which are, in retrospect not to great.  I'd like to explain why I think this is and what we should do about it.">
+    
+    <link rel="alternate" type="application/rss+xml" href="blog/feed.rss" title="bkardell.com/blog rss feed">
+    <title>Headings and the Seinfeld Pitch</title>
+    <style>.captioned-image {
+    background-color: #eaeaea;
+    display: block;
+    overflow: hidden;
+    padding: 1rem;
+    text-align: center;
+    font-style: italic;
+}
+
+.captioned-image.p-attached {
+    width: 40%;
+    display: inline-block;
+    margin: 0 1rem 2rem 1rem;
+}
+
+section > .captioned-image.p-attached {
+    margin-top: 1.5rem; /* correct for heading size*/
+}
+
+ pre { overflow-x: auto }
+
+.captioned-image.p-attached.p-attached-left {
+    float: left;
+}
+
+.captioned-image.p-attached.p-attached-right {
+    float: right;
+}
+
+.captioned-image.p-attached + * + * {
+    clear: both;
+    margin-top: 2rem;
+}
+
+
+.captioned-image img, .captioned-image video {
+    display: block;
+    max-width: 100%;
+    margin: 0 auto 1em auto;
+}
+.source {
+    font-style: italic;
+}
+body {
+    display: flex;
+    font: 1em "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-weight: 300;
+    line-height: 1.625;
+}
+h1 { margin: 0.5rem; }
+code-format {
+    border-left: 0.5rem solid rgba(123,115,209,0.35);
+    display: block;
+    padding: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+contextual-heading {
+    display: block;
+    margin-top: 2rem;
+}
+
+[aria-level="1"] {
+    color: #43686b;
+    font-size: 1.45rem;
+}
+[aria-level="2"] {
+    color: #856363;
+    font-size: 1.35rem;
+}
+[aria-level="3"] {
+    color: #856363;
+    font-size: 1.25rem;
+}
+[aria-level="4"] {
+    color: #856363;
+    font-size: 1.2rem;
+}
+[aria-level="5"], [aria-level="6"] {
+    color: #667496;
+    font-size: 1.1rem;
+    font-weight: bolder;
+}
+.posted-on {
+    font-style: italic;
+    font-size: 0.8rem;
+    text-align: right;
+    margin-bottom: 1rem;
+}
+
+ul, li {
+    margin: 0.5rem;
+    text-align: left;
+}
+header {
+    padding-top: 1rem;
+    padding-right: 2rem;
+    background-color: #fbf5e9;
+}
+.tagline {
+    font-style: italic;
+    text-align: center;
+}
+
+[tag-esc] {
+    color: maroon;
+    font-family: Courier, "Lucida Console", monospace;
+}
+
+[tag-esc]::before {
+    content: '<';
+}
+
+[tag-esc]::after {
+    content: '>';
+}
+
+main {
+    min-width: 50%;
+    width: 80%;
+    padding: 1rem;
+}
+header .title {
+    background-color: rgba(123,115,209,0.35);
+    padding: 0.3rem;
+    padding-left: 0.25rem;
+    font-weight: bolder;
+    font-size: 0.9rem;
+    border-left: 1rem solid #999298;
+}
+
+header .profile {
+    width: 50%;
+    margin: 1rem 25%;
+}
+
+header .title + nav {
+    font-size: 0.9rem;
+}
+
+header .blurb {
+    font-size: 0.75rem;
+    text-align: center;
+}
+header .name {
+    text-align: center;
+    font-size: xx-large;
+}
+.segue {
+    font-style: italic;
+}
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  border: 0;
+}
+[for="aboutMeToggle"] {
+    display: none;
+}
+/* this needs rethinking, it wants a selector like 'not flow content' */
+article>*:not(contextual-heading,a), section>*:not(contextual-heading,a) {
+    margin-left: 0.45rem;
+}
+
+blockquote {
+  font-family: serif;
+  background: #f9f9f9;
+  border-left: 10px solid #ccc;
+  margin: 1.5em 10px;
+  padding: 0.5em 10px;
+}
+blockquote:before {
+  color: #ccc;
+  content: open-quote;
+  font-size: 2em;
+  line-height: 0.1em;
+  margin-right: 0.25em;
+  vertical-align: -0.4em;
+}
+
+blockquote:after {
+  color: #ccc;
+  content: close-quote;
+  font-size: 2em;
+  line-height: 0.1em;
+  margin-left: 0.25em;
+  vertical-align: -0.4em;
+}
+
+
+@media (max-width: 800px){
+    body {
+        flex-direction: column;
+    }
+    header {
+        border-bottom: 1px solid #afafff;
+    }
+
+    .captioned-image.p-attached {
+        width: 100%;
+        margin: 1rem 0;
+    }
+
+    .captioned-image.p-attached.p-attached-left,
+    .captioned-image.p-attached.p-attached-right {
+        float: none;
+    }
+
+    [for="aboutMeToggle"] {
+        background-color: #675e5e;
+        color: white;
+        padding: 0.25rem;
+        padding-left: 0.5rem;
+        display: block;
+        border-left: 1rem solid black;
+    }
+    #aboutMeToggle:focus + [for="aboutMeToggle"]{
+        outline: 4px solid #c6ddf2;
+    }
+
+    #aboutMeToggle:checked ~ header {
+        display: none;
+    }
+
+    header li { display: inline; margin-left: -0.5em; }
+    header .blurb li::after { content: '; '; }
+    header  nav li {
+        display: inline-block;
+        margin-left: 0.35rem;
+        margin-right: 0.35rem;
+    }
+    header .title {
+        width: 100%;
+    }
+    main li .source { display: block; }
+
+}</style>
+    <style>
+      .captioned-image { font-size: 0.9rem; }
+      .thanksTo { font-style: italic; font-size: 0.8rem; }
+    </style>
+    <script>
+      var activateOptional = function (media) {
+        var source = media.getAttribute('data-src'),
+            temp,
+            container = media.parentElement;
+
+          if (media.nextSibling && media.nextSibling.matches) {
+            if (media.nextSibling.matches('.clickToSee')) {
+              media.parentElement.removeChild(media.nextSibling);
+            }
+          }
+
+          if (media.tagName === 'VIDEO') {
+            temp = document.createElement('video')
+            temp.setAttribute('autoplay','')
+            temp.setAttribute('controls','')
+            temp.setAttribute('loop','')
+            temp.innerHTML = '<source src="' + source + '.webm" type="video/webm">'
+                    + '<source src="' + source + '.mp4" type="video/mp4">';
+            media.parentElement.replaceChild(temp, media);
+            setTimeout(function () {
+              temp.play()
+            }, 0);
+          } else {
+            media.src = media.getAttribute('data-src');
+          }
+
+          container.classList.add('active');
+      }
+    </script>
+  </head>
+  <body>
+    <input id="aboutMeToggle" class="sr-only" type="checkbox" checked="">
+<label for="aboutMeToggle">Toggle author information</label>
+<header>
+    <div class="name">
+        Brian Kardell
+    </div>
+    <img class="profile" src="/profile.jpg" alt="">
+    <div class="tagline"><a href="/">Betterifying the Web</a></div>
+    <div class="blurb">
+        <ul>
+            <li>Sr Front-End Engineer at Apollo Group, Inc</li>
+            <li>Original Co-author/Co-signer of The Extensible Web Manifesto</li>
+            <li>Co-Founder/Chair, W3C Extensible Web CG</li>
+            <li>Member, W3C (The JS Foundation)</li>
+            <li>Co-author of HitchJS</li>
+            <li>Blogger</li>
+            <li>Art, Science &amp; History Lover</li>
+            <li>Standards Geek</li>
+        </ul>
+    </div>
+    <div class="title">Follow Me On...</div>
+    <nav>
+        <ul>
+            <li><a rel="me" href="https://briankardell.wordpress.com">Wordpress</a></li>
+            <li><a rel="me" href="https://medium.com/@briankardell">Medium</a></li>
+            <li><a rel="me" href="https://twitter.com/briankardell">Twitter</a></li>
+            <li><a rel="me" href="https://github.com/bkardell/">Github</a></li>
+            <li><a rel="me" href="https://codepen.io/bkardell">Codepen</a></li>
+            <li><a rel="me" href="https://www.linkedin.com/in/brian-kardell-08a4264">LinkedIn</a></li>
+            <li><a rel="me" href="https://www.instagram.com/kardellbrian">Instagram (for
+art)</a></li>
+            <li><a rel="me" href="http://fineartamerica.com/profiles/brian-kardell?">Fine Art
+America (art for sale)</a></li>
+        </ul>
+    </nav>
+</header>
+    <main><div class="posted-on">Posted on null</div><article class="sectioning">
+	<contextual-heading role="heading" aria-level="1">Headings and the Seinfeld Pitch</contextual-heading>
+	<p class="segue">Because of it's origins, HTML has a number of things which are, in retrospect not to great.  I'd like to explain why I think this is and what we should do about it.</p>
+
+	<p>Let's talk about paragraphs.  You can't get much more basic than a paragraph. If I say "paragraph" pretty much everyone will know what mean immediately.  While some of us might stumble a bit if pressed to describe it abstractly, most of us will, like the US Supreme Court surely "know it when I see it". <span style="display:block; margin: 1rem 0 0">Most people reading this, for example, will recognize immediately that this sentence is in its own paragraph.</span></p>
+
+	<section class="sectioning">
+		<contextual-heading role="heading" aria-level="2">If it walks like a duck</contextual-heading>
+
+		<p>Except that the above sentence isn't its own paragraph.  Kind of.  Stick with me, I'll explain.  You see, the interesting thing about a paragraph is that we've had the concept for hundreds of years and it's entire history has been to <em>visually</em> convey the start of something. It's meaning winds up coming from the visual.  The sentences above <em>look</em> like a paragraph on the screen or on the printed page.</p>
+
+	    <p>Some of you may have seen a mark like this before: ¶.  If not, that's ok - it's an editor's mark called a "pilcrow".  It <em>means</em> "mark the start of a new paragraph".  Interestingly enough, the reason that paragraphs were historically indented in print comes from the fact that scribes began the habit of just starting a new line and leaving space to come back and draw the pilcrow later.  Once you have the new line and space, you have an easy visual semantic and the pilcrow becomes just noise.</p>
+
+	    <p>What's worth noting about this is that you just needed to mark the start.  Starting a new paragraph implied, logically, that you are ending the previous one in this model.</p>
+
+	    <p>Flash forward a few hundred years to when we were just beginning to use computers.  This is why GML borrowed the concept in the 1960s.  No "closing tag" were required for some things (like a paragraph) and why that carried years later into SGML.  When Tim Berners-Lee created the original 'HTML' he did so by grepping a large dataset of documents that already existed at CERN in much the same way a dictionary editor/committee looks for words that are very commonly used and then attempts to formalize them.  These documents were SGML, so we got the same: The 'void' tags which don't need closing.</p>
+	</section>
+
+    <section class="sectioning">
+    	<contextual-heading role="heading" aria-level="2">Flat Earth Markup</contextual-heading>
+    	<p>HTML was originally "flat".  It included only the simplest and most basic concepts from print. But modern documents aren't flat, and they haven't been for a long time.  HTML originally was intended to be written with an editor in your browser and it was very limited.  It would have been impossible to create a "non-paragraph" that looked like a paragraph as above.  CSS let's us do this and create some wonky and interesting constructs.  The above is a <code tag-esc="">span</code> <em>inside</em> of the previous paragraph.  This matters for a host of reasons that I will explain elsewhere, but the gist is: Lots of systems that don't understand visual semantics may want to understand or reference your document and fi they can't... well... they can't.</p>
+
+    	<p>The concept of anything remotely like a discussion of "paragraph inside a paragraph" is non-sensical and would have blown the mind of an editor 100 years ago, and yet, there it is... kind of.</p>
+
+    	<p>In a "flat earth" document world, Goldfarb (the inventor of GML) reasoned that headings always apply to "the stuff that follows" in the same manner that a paragraph is "the stuff that follows" a pilcrow.  Similarly, a new heading implied either a new subsection or the end of this one.  Thus, he created the concepts that became <code tag-esc="">h1</code>...<code tag-esc="">h6</code>.</p>
+
+    	<p>The, sort of terrible thing here is that because HTML doesn't "check" anything and because tags like these have default formatting, authors very frequently used them for side-effects rather than actually as intended.  We used them for styling and decided that <code tag-esc="">h2</code> is too big here, let's use an <code tag-esc="">h3</code> instead.  Because search engines deduced that these must be really important, SEO "experts" try to use them for that and create other nonsense.</p>
+
+    	<p>However, it's worse than just "we made a mess by misusing them". Reasoning about things in this fashion is very, very wonky in a structured world of rich things.  In this world - the real, round one - it is possible to create things  that are <em>between</em> sections, or subsections that end and allow the parent section to continue and there is simply no way to "imply" these given only a start.</p>
+
+    	<p>And it's not just that either.  Yikes.  Today we mash things together.  We have CMS' that allow authors to drag some pre-fabricated 'section' into documents in lots of ways and places.  There is no way to know ahead of time which level heading is actually approrpriate!</p>
+
+    	<p>And here's the really shitty part: <em>We kind of seem to have known this as early as 1993</em> (I'll come back to that).  Let that sink in.  Not two years into the Web - before there was a W3C, before there was a Netscape, there was already a lot of talk scratching around the idea that "flat" doesn't work here.</p>
+
+    	<p>The above idea sort of "made a comeback" in terms of the "HTML5 Document Outline" which no one ever implemented.  Personally, I think this is "ok" as I don't think it really "fixed" the problems at their core. Effectively they would have made new use of old tags and done so in a way that I think would have continued all of the sorts of confusion we've always had, and in the interim, maybe been worse.
+    	</p>
+    </section>
+
+    <section class="sectioning">
+    	<contextual-heading role="heading" aria-level="2">The Earth is Round</contextual-heading>
+    	<p>So yeah - the earth is round, documents are structured.</p>
+
+    	<p>In June 2014, Steve Faulkner posted a kind of speculative polyfill (aka prollyfill) for an <code tag-esc="">h</code> element which was implemented in Polymer and tried to stride the line that the Document Outline did.  Then, just recently, Jonathan Neal reopened the discussion with a "not exactly custom element" speculative polyfill (it uses Mutation Observers to achieve that effect).  Jon and I consulted a bit on this and on some things ultimately agreed to disagree.  That's fine, in fact, it's great that we can throw different ideas out there.  To be entirely clear - I don't think I am mis-stating to say that both Jon and I believe that any movement in this area is probably considerably better than the status quo. That said, I'd like to explain my take on it.</p>
+
+    	<p>You see, Jon's implementation also seems to kind of stride the flat earth line - it can be based on implication of starts rather than clear marks.  However, even back in those discussions in 1993, some people were trying to explain that you <em>needed</em> some kind of whole region markers to make sense of this and on the www-talk mailing list because this flat earth view can't work. Here's <a href="http://1997.webhistory.org/www.lists/www-talk.1993q3/0553.html">an example of one such exchange</a>.
+
+    	</p><p>In short, I think that the ideas of <code tag-esc="">h1</code>...<code tag-esc="">h6</code> flat earth are just fundamentally broken and failed at their core that I think that no apologist-style blending of ideas can really make "part of these tags work".  Effectively, it's how I felt about the document outline too.  They're just the wrong idea and continuing anything about them really could poison the well if we try.  I think it's time make the new, round world so appealing that no one even wants to those that old flat-earth idea anymore.</p>
+    </section>
+
+    <section class="sectioning">
+
+    	<contextual-heading role="heading" aria-level="2">The Seinfeld Pitch</contextual-heading>
+    	<p>So, here's my great idea about how we fix this problem.  What's the <code tag-esc="">h</code> tag about?  Nothing.</p>
+
+		<p>Ok, let me explain.  The proposal is actually very simple - HTML defines certain things as "sectioning content" - aria also has roles that indicate sectioning.  These are things with actual meaning.  Inside any section, you can include a <code tag-esc="">h</code> element.  One.  That's it. Oh, were you trying to make this a level below that?  Well, what you are describing is a subsection.  You need another bit of sectioning content which can contain, you guessed it, one <code tag-esc="">h</code>.  We already have a large number of elements in HTML in which you can do this - if you need an example <code tag-esc="">summary</code> and <code tag-esc="">details</code> have this relationship.</p>
+
+		<p>Ah, but what if an author tries to use it in the old, flat-earth style - or what if they don't create a subsetion, or if they nest them?  That's where the Nothing comes in.</p>
+
+
+    	<p>Let's pretend that you just open an editor and start typing HTML today and you use an <code tag-esc="">h</code> tag.  You know what it means?  Nothing.  You know what it looks like?  Again, Nothing.  Its insides match its outsides.  Now, if you style an <code tag-esc="">h</code> to look like an <code tag-esc="">h1</code>, then visually it means <code tag-esc="">h1</code> - just like our opening example.  But guess what it means to everything else?  Nothing.  I would wager that if anyone suggested that we simply add this rule to the default UA stylesheet, everyone would have the same reaction "you will confuse authors - because it <em>means Nothing</em>".  By the same token, in those scenarios where you wrote funky markup, your tree will today mean Nothing - or, well, it will mean something really screwed up and you might not immediately realize it.  Most of us can't just look at a rendered page and say "oh, that's an <code tag-esc="">h3</code>, it should be an <code tag-esc="">h4</code> - plus, we use CSS so it's even worse.</p>
+
+    	<p>But imagine that we wrote that such that only a "good" tag would take on any meaning at all, and the rest would be explictly Nothing.  Then, our insides would match our outsides again.  Not only do I think that this will require simple, clean markup that follows good patterns - I think it will encourage authors to write it.</p>
+
+    	<section class="sectioning">
+    		<contextual-heading role="heading" aria-level="3">New Rules</contextual-heading>
+    		<p>So here's the idea, what I propose. A "section" is pretty meaningless without a heading in terms of outlining - it has to have an accessible name and it has to be sectioning content - otherwise, it just stays "Nothing."  Therefore - here are the rules that more or less exist today...</p>
+    		<p>Todo: finish this up and link to a _very_ incomplete and limited demo with explaination... <a href="http://codepen.io/bkardell/pen/vgbgBp?editors=1100">limited demo</a></p>
+    	<ul>
+	  		<li>Any sectioning content without a header means Nothing visually.</li>
+    		<li>A header only 'becomes' a header (and thus becomes more than Nothing visually) if it is a child of a sectioning content as identified by its being any of the elements:
+    			<ul>
+    				<li><code tag-esc="">body</code> (implied)</li>
+    				<li><code tag-esc="">main</code> (implied)</li>
+    				<li><code tag-esc="">article</code></li>
+    				<li><code tag-esc="">aside</code></li>
+    				<li><code tag-esc="">nav</code></li>
+    				<li><code tag-esc="">section</code></li>
+    			</ul>
+    			Or by being a child of an element with one of the following aria roles:
+    			<ul>
+    				<li>landmark</li>
+    				<li>main</li>
+    				<li>navigation</li>
+    				<li>region</li>
+    			</ul>
+    		</li>
+    	</ul>
+
+    </section>
+
+</section></article></main>
+
+  
+    <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-88027178-1', 'auto');
+    ga('send', 'pageview');
+  </script>
+
+  <script>
+    Array.prototype.slice.call(document.querySelectorAll('.optional [data-src]')).forEach(function (optional) {
+      var prefs = window.localStorage.downloadsPrefs,
+          clickToSee;
+      if (prefs === 'true') {
+        activateOptional(optional);
+      } else {
+        clickToSee = document.createElement('div');
+        clickToSee.classList.add('clickToSee')
+        clickToSee.innerHTML = '<button>Click to see media</button>';
+        clickToSee.style.textAlign = 'center';
+        clickToSee.style.border = 'none';
+        optional.parentElement.insertBefore(clickToSee, optional.nextSibling);
+        clickToSee.firstElementChild.addEventListener('click', function () {
+          activateOptional(optional);
+        })
+      }
+
+    })
+  </script>
+
+</body></html>
