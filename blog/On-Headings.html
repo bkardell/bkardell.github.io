@@ -6,7 +6,7 @@
     <meta name="twitter:creator" content="@briankardell">
     <meta name="twitter:title" content="Headings and the Seinfeld Pitch">
     <meta name="twitter:description" content="Because of it's origins, HTML has a number of elements and concepts which are, in retrospect, probably not so great.  Headings being the way they are has caused seemingly no end of">
-    
+    <meta name="twitter:image" content="https://bkardell.com/media/angry-sea.jpg">
     <link rel="alternate" type="application/rss+xml" href="blog/feed.rss" title="bkardell.com/blog rss feed">
     <title>Headings and the Seinfeld Pitch</title>
     <style>.captioned-image {
@@ -324,40 +324,134 @@ America (art for sale)</a></li>
     </nav>
 </header>
     <main><div class="posted-on">Posted on null</div><article class="sectioning">
+	<style>
+		/*body:not(.preferences-set) > :not(main) { display: none; }
+		body:not(.preferences-set) {
+			background-color: #444;
+			color: white;
+		}
+		*/
+		body:not(.prefers-images) .captioned-image:not(.active) > * { border: 1px dashed gray }
+
+		#downloadsPrefs {
+			font-size: 0.8rem;
+			background-color: #fcfcfc;
+			border: 1px dotted gray;
+			margin-bottom: 1rem;
+		}
+		#downloadsPrefs p {
+			margin: 2rem 10%;
+		}/*
+		#downloadsPrefs ~ * {
+			display: none;
+		}*/
+	</style>
+	<div id="downloadsPrefs">
+		<p style="font-size: 1.5rem">Note from the author...</p>
+		<p>My posts frequently (like this one) have a 'theme' and tend to use a number of images for visual flourish. Personally, I like it that way, I find it more engaging and I prefer for people to read it that way.  However, for users on a metered or slow connection, downloading unnecessary images is, well, unnecessary, potentially costly and kind of rude.  Just to be polite to my users, I offer the ability for you to opt out of 'optional' images if the total size of viewing the page would exceed a budget I have currently defined as 200k...
+		</p>
+		<p><label>Show me all the images when I read <input type="checkbox" id="download-all-images-pref" checked=""></label></p>
+		<p><label>Don't ask me again on this device <input type="checkbox" id="download-all-images-pref-save"></label></p>
+		<p><button id="setDownloadPrefs">Dismiss</button></p>
+	</div>
+	<script>
+		'use strict';
+		(function () {
+			var prefsButton = document.querySelector('#setDownloadPrefs'),
+				prefs = window.localStorage.downloadsPrefs;
+			function downloadImages () {
+				var lazy = Array.prototype.slice.call(document.querySelectorAll('.captioned-image>[data-src]'));
+
+				lazy.forEach(activateOptional)
+			}
+			function removeDownloadPrefsOverlay() {
+				document.body.classList.add('preferences-set')
+				document.querySelector('#downloadsPrefs').remove()
+			}
+
+			prefsButton.addEventListener('click', function() {
+				var all = document.querySelector('#download-all-images-pref'),
+					save = document.querySelector('#download-all-images-pref-save'),
+					prefs = window.localStorage.downloadsPrefs
+
+				if (all.checked) {
+					downloadImages();
+				}
+				if (save.checked) {
+					window.localStorage.downloadsPrefs = all.checked;
+				}
+				removeDownloadPrefsOverlay()
+			});
+
+			if (typeof prefs !== 'undefined') {
+				console.log(prefs)
+				if (prefs === 'true') {
+					document.body.classList.add('prefers-images')
+					window.localStorage.downloadsPrefs = prefs
+					window.addEventListener('DOMContentLoaded', downloadImages)
+				}
+				removeDownloadPrefsOverlay()
+			}
+		}())
+	</script>
 	<contextual-heading role="heading" aria-level="1">Headings and the Seinfeld Pitch</contextual-heading>
 	<p class="segue">Because of it's origins, HTML has a number of elements and concepts which are, in retrospect, probably not so great.  Headings being the way they are has caused seemingly no end of discussion, for example.  I'd like to explain why I think this is, as well as what we should do about it.</p>
 
 	<p>Let's talk about paragraphs.  You can't get much more basic than a paragraph. If I say "paragraph" pretty much everyone will know what mean immediately.  While some of us might stumble a bit if pressed to describe it abstractly, most of us will, like the US Supreme Court surely "know it when I see it". <span style="display:block; margin: 1rem 0 0">Most people reading this, for example, will recognize immediately that this sentence is in its own paragraph.</span></p>
 
 	<section class="sectioning">
-		<contextual-heading role="heading" aria-level="2">If it walks like a duck</contextual-heading>
+		<contextual-heading role="heading" aria-level="2">If it walks like a duck...</contextual-heading>
 
-		<p>Except that the above sentence isn't its own paragraph.  Kind of.  Stick with me, I'll explain.  You see, the interesting thing about a paragraph is that we've had the concept for hundreds of years and it's entire history has been to <em>visually</em> convey the start of something. It's meaning winds up coming from the visual.  The sentence above <em>looks</em> like a paragraph on the screen or on the printed page, so, in effect it is.  Except that it isn't really.</p>
+		<p>Except that the above sentence isn't its own paragraph. Kind of.  Stick with me, I'll explain.  Let me tell you a story...</p>
+
+		<div style="margin-top: 0" class="captioned-image p-attached p-attached-left optional">
+			<img data-src="/media/angry-sea.jpg" alt="George Costanza 'The sea was angry that day my friends'">
+		</div>
+
+		<p>You see, the interesting thing about a paragraph is that we've had the concept for hundreds of years and it's entire history has been to <em>visually</em> convey the start of something. It's meaning winds up coming from the visual.  The sentence above <em>looks</em> like a paragraph on the screen or on the printed page, so, in effect it is.  Except that it isn't really.  But we'll get to that.</p>
 
 	    <p>Some of you may have seen a mark like this before: ¶.  If not, that's ok - it's an editor's mark called a "pilcrow".  It <em>means</em> "mark the start of a new paragraph".  Interestingly enough, the reason that paragraphs were historically indented in print comes from the fact that scribes began the habit of just starting a new line and leaving space to come back and draw the pilcrow later.  Once you have the new line and space, you have an easy visual semantic and the pilcrow becomes just noise.</p>
 
-	    <p>What's worth noting about this is that you just needed to mark the start.  Starting a new paragraph implied, logically, that you are ending the previous one in this model.</p>
+	    <p>What's worth noting about this is that you just needed to mark the start.  Starting a new paragraph implied, logically, that you are ending the previous one in this model - so all you needed was a <em>marker</em>.</p>
 
 	    <p>Flash forward a few hundred years to when we were just beginning to use computers.  This is why GML borrowed the concept in the 1960s and no "closing tag" was required for some things and why that carried years later into SGML.  Given enough 'markers', you could deduce the rest.  When Tim Berners-Lee created the original 'HTML' he did so by grepping a large dataset of documents that already existed at CERN in much the same way a dictionary editor/committee looks for words that are very commonly used and then attempts to formalize them.  These documents were SGML, so we got the same: The 'void' tags which don't need closing and 'marker' elements.</p>
 	</section>
 
     <section class="sectioning">
     	<contextual-heading role="heading" aria-level="2">Flat Earth Markup</contextual-heading>
-    	<p>HTML was originally "flat".  It included only the simplest and most basic concepts from print.  But modern documents aren't flat, and they haven't been for a long time - they are increasingly rich and structured.  HTML originally was intended to be written with a simple rich text style editor in your browser and it was very limited.  It worked very well with simple "markers" whose main meaning was to convey semantics from print, which are inherently largely visual.</p>
+    	<p>HTML was originally "flat".  It included only the simplest and most basic concepts from print.  But modern documents aren't flat, and they haven't been for a long time - they are increasingly rich and structured.  HTML originally was intended to be written with a simple rich text style editor in your browser and it was very limited.  It worked very well with these sorts of simple "markers" whose main meaning was to convey semantics from print, which are inherently largely visual.</p>
 
-    	<p>Remember the example above that I said "wasn't a paragraph?"  It would have been impossible in this model to create a "non-paragraph" that looked like a paragraph as in the example as above, but CSS let's us do this and create some wonky and interesting constructs.  In fact, CSS has the sole responsibility, but we'll come back to that.  In fact, the above is a just <code tag-esc="">span</code> <em>inside</em> of the previous paragraph.  This matters for a host of reasons that I will explain elsewhere, but the gist is: Lots of systems that don't understand visual semantics may want to understand or reference your document and if they can't... well... they can't.</p>
+    	<p>Remember the example above that I said "wasn't a paragraph?"  It would have been impossible in this model to create a "non-paragraph" that looked like a paragraph as in the example as above, but CSS let's us do this and create some wonky and interesting constructs.  In fact, CSS has the sole responsibility, but we'll come back to that.  In fact, the above is a just <code tag-esc="">span</code> <em>inside</em> of the previous paragraph.  This matters for a host of reasons that I will explain elsewhere, but the gist is: Lots of systems that don't understand visual semantics may want to understand or reference your document and if they can't... well... they can't.  And there's the rub.</p>
+
 
     	<p>The concept of anything remotely like a discussion of "paragraph inside a paragraph" is non-sensical and would have blown the mind of an editor 100 years ago, and yet, there it is... kind of.  What we've done there is created mud.</p>
+
+    	 <div style="margin-top: 0" class="captioned-image p-attached p-attached-right optional">
+			<img data-src="/media/always-a-problem.jpg" alt="George Costanza 'Why must there always be a problem?'">
+		</div>
 
     	<p>In a "flat earth" document world, Goldfarb (the inventor of GML) reasoned that headings always apply to "the stuff that follows" in the same manner that a paragraph is "the stuff that follows" a pilcrow.  Similarly, a new heading implied either a new subsection or the end of this one.  Thus, he created the concepts that became <code tag-esc="">h1</code>...<code tag-esc="">h6</code>.  But in a lot of markup, it isn't even this simple and it's often not at all clear what we are trying to communicate structurally - it's only with the added visual clues that it kind of makes sense.</p>
 
     	<p>The, sort of terrible thing here is that because HTML doesn't "check" anything and because tags like these have default formatting, authors very frequently use them for side-effects rather than actually as intended.  We used them for styling and decided that "<code tag-esc="">h2</code> is too big here, let's use an <code tag-esc="">h3</code> instead".  Because search engines deduced that these must be really important, SEO "experts" try to use them for that and create other nonsense.  Again, it's just nonsensical mud.</p>
 
+ 		<div style="margin-top: 0" class="captioned-image p-attached p-attached-left optional">
+			<img data-src="/media/whatever-you-want-it-to.jpg
+" alt="">
+			Some people seem to think "it means whatever the hell you want it to mean".  It doesn't.
+		</div>
+
     	<p>However, it's worse than just "we made a mess by misusing them". I would go so far as to say that reasoning about things in this fashion (flat/markers) is very, very wonky in a structured world of rich things.  In this world - the very real, round one - it is possible to create things  that are <em>between</em> sections, or subsections that end and allow the parent section to continue and there is simply no way to "imply" these given only a start.  It is possible to create a mess of confusion though.</p>
 
-    	<p>And it's not just that either.  Yikes.  Today we mash things together.  We have CMS' that allow authors to drag some pre-fabricated 'section' into documents in lots of ways and places.  There is no way to know ahead of time which level heading is actually approrpriate!</p>
+
+    	<p>A lot of people might think <em>who cares</em>.  Well, anyone using accessibility technology (AT).  Still not conviced?  If you ever wanted to auto-generate a table of contents, you very possibly just couldn't.  That's bad, no?  Maybe still not sold?  What if I told you that you may wind up using AT, in ways you don't even realize.  For example, as people increasingly use voice assistants, they are, effectively relying on a kind of AT.   If you wanted to ask your voice assistant "read me the section titled 'history' - it's really possible that it just couldn't.  There are a hundred ways this matters, and many of them are not necessarily super obvious.</p>
+
+    	<p>And it's not just that either.  Yikes.  Today we mash things together.  We have CMS' that allow authors to drag some pre-fabricated 'section' into documents in lots of ways and places.  There is no way to know ahead of time which level heading is actually approrpriate!  Huge problem, if we care.</p>
 
     	<p>And here's the really shitty part: <em>We kind of seem to have known this as early as 1993</em> (I'll come back to that).  Let that sink in.  Not two years into the Web - before there was a W3C, before there was a Netscape, there was already a lot of talk scratching around the idea that "flat" doesn't work here.</p>
+
+    	 <div class="captioned-image optional">
+			<img data-src="/media/serenity-now.jpg" alt="Frank Costanza yelling 'Serenity now!'">
+		</div>
 
     	<p>The above idea sort of "made a comeback" in terms of the "HTML5 Document Outline" which no one ever implemented.  Personally, I think this is "ok" as I don't think it really "fixed" the problems at their core. Effectively they would have made new use of old tags and done so in a way that I think would have continued all of the sorts of confusion we've always had, and in the interim, maybe been worse.
     	</p>
@@ -367,21 +461,33 @@ America (art for sale)</a></li>
     	<contextual-heading role="heading" aria-level="2">Round Earth Headings</contextual-heading>
     	<p>So yeah - the earth is round, documents are structured, and we should fix this problem with headings.</p>
 
-    	<p>In June 2014, Steve Faulkner posted a kind of speculative polyfill (aka prollyfill) for an <code tag-esc="">h</code> element which was implemented in Polymer and tried to stride the line that the Document Outline did.  Then, just recently, Jonathan Neal reopened the discussion with a "not exactly custom element" speculative polyfill (it uses Mutation Observers to achieve that effect).  Jon and I consulted a bit on this and, really, I felt like I was having a hard time articulating my thoughts.  On a few things, we currently don't agree, so I thought that I would sit down and try to explain what I'd like to see (and not) and why.</p>
+    	<p>In June 2014, Steve Faulkner posted a kind of speculative polyfill (aka prollyfill) for an <code tag-esc="">h</code> element which was implemented in Polymer and tried to stride the line that the Document Outline did.  Then, just recently, Jonathan Neal reopened the discussion with a "not exactly custom element" speculative polyfill (it uses Mutation Observers to achieve that effect).  That's great.  Jon and I consulted a bit on this and, on a few things, we  didn't agree.  But really, I felt like I was having a hard time articulating my thoughts so I wrote this.  Now, we're working on it to see what we can incorporate.  So here's what I'd like to see (and not) and what we're currently discussing.</p>
 
-    	<p>You see, a lot of proposals and implementations so far seem to kind of stride the flat earth line.  They carry on some degree of the idea that it can be based on implication of starts rather than clear marks, or that 'level' is seperable somehow from structure.   However, even back in those discussions in 1993, some people were trying to explain that you <em>needed</em> some kind of whole region markers to make sense of this and on the www-talk mailing list because this flat earth view can't work. Here's <a href="http://1997.webhistory.org/www.lists/www-talk.1993q3/0553.html">an example of one such exchange</a>.
+    	<div style="margin-top: 0" class="captioned-image p-attached p-attached-left optional">
+			<img data-src="/media/what-did-you-want-to-be.jpg" alt="">
+			What did headings want to be? How did we want an outline to work? I don't remember... but it certainly wasn't this.
+		</div>
+		<div>
+    	<p>You see, a lot of proposals and implementations so far seem to kind of stride the flat earth line.  They carry on some degree of the idea that it can be based on implication of starts rather than clear marks, or that 'level' is seperable somehow from structure.   However, even back in those discussions in 1993, some people were trying to explain that you <em>needed</em> some kind of whole region markers to make sense of this and on the www-talk mailing list because this flat earth view can't work. Here's <a href="http://1997.webhistory.org/www.lists/www-talk.1993q3/0553.html">an example of one such exchange</a>.</p>
 
-    	</p><p>In short, I think that the ideas of <code tag-esc="">h1</code>...<code tag-esc="">h6</code> as markers are just kind of fundamentally broken and failed at their core.  I think that no apologist-blending of ideas can really make "part of these tags work", the model is just flawed.  Effectively, it's how I felt about the document outline too.  They're just the wrong idea and I worry that continuing anything about them really could poison the well if we try.  I think it's time make the new, round world so appealing that no one even wants to those that old flat-earth ideas anymore.  So here's what I think is missing.</p>
+    	<p>In short, I think that the ideas of <code tag-esc="">h1</code>...<code tag-esc="">h6</code> as markers are just kind of fundamentally broken and failed at their core.  A lot of efforts feel kind of like there is some apologist-blending of ideas really trying to make "part of these tags work", but the model is just flawed.  It's like you wind up thinking "how did we wind up here?"" by the end. Effectively, it's how I felt about the document outline too.  They're just the wrong idea and I worry that continuing anything about them really could poison the well if we try.  I think it's time make the new, round world so appealing that no one even wants to those that old flat-earth ideas anymore.  So here's what I think is missing.</p>
+    	</div>
     </section>
 
-    <section class="sectioning">
+    <section style="clear:both" class="sectioning">
 
     	<contextual-heading role="heading" aria-level="2">The Seinfeld Pitch</contextual-heading>
     	<p>So, here's my great idea about how we fix this problem.  What's the <code tag-esc="">h</code> tag about?  Nothing.</p>
 
-		<p>Ok, let me explain.  The proposal is actually very simpleL HTML defines certain things as "sectioning content" - aria also has roles that indicate sectioning.  These are things with actual meaning.  Inside any section, you can include a <code tag-esc="">h</code> element.  One.  That's it. Oh, were you trying to make this a level below that?  Well, what you are describing is a subsection.  You need another bit of sectioning content which can contain, you guessed it, one <code tag-esc="">h</code>.  We already have a large number of elements in HTML in which you can do this - if you need an example <code tag-esc="">summary</code> and <code tag-esc="">details</code> have this relationship.</p>
+
+		<p>Ok, let me explain.  The gist of the proposal is actually very simple: HTML defines certain things as "sectioning content" - aria also has roles that indicate sectioning.  These are things with actual meaning.  Inside any section, you can include a <code tag-esc="">h</code> element.  One.  That's it. Oh, were you trying to make this a level below that?  Well, what you are describing is a subsection.  You need another bit of sectioning content which can contain, you guessed it, one <code tag-esc="">h</code>.  We already have a large number of elements in HTML in which you can do this - if you need an example <code tag-esc="">summary</code> and <code tag-esc="">details</code> have this relationship.</p>
 
 		<p>Ah, but what if an author tries to use it in the old, flat-earth style - or what if they don't create a subsetion, or if they nest them?  That's where the Nothing comes in.</p>
+
+		<div class="captioned-image optional">
+			<img data-src="/media/well_do_nothing.jpg" alt="">
+			Everyone is doing something.  We'll do nothing.
+		</div>
 
     	<p>Let's pretend that you just open an editor and start typing HTML today and you use an <code tag-esc="">h</code> tag.  You can, you always could  You know what it means?  Nothing.  You know what it looks like?  Again, Nothing.  Its insides match its outsides.</p>
 
