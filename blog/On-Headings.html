@@ -6,7 +6,7 @@
     <meta name="twitter:creator" content="@briankardell">
     <meta name="twitter:title" content="Headings and the Seinfeld Pitch">
     <meta name="twitter:description" content="Because of it's origins, HTML has a number of elements and concepts which are, in retrospect, probably not so great.  Headings being the way they are, for example, has caused seemi">
-    <meta name="twitter:image" content="https://bkardell.com/media/angry-sea.jpg">
+    <meta name="twitter:image" content="https://bkardell.com/media/well_do_nothing.jpg">
     <link rel="alternate" type="application/rss+xml" href="blog/feed.rss" title="bkardell.com/blog rss feed">
     <title>Headings and the Seinfeld Pitch</title>
     <style>.captioned-image {
@@ -323,7 +323,7 @@ America (art for sale)</a></li>
         </ul>
     </nav>
 </header>
-    <main><div class="posted-on">Posted on null</div><article class="sectioning">
+    <main><div class="posted-on">Posted on 02/17/2017</div><article posted-on="02/17/2017" class="sectioning">
 	<style>
 		/*body:not(.preferences-set) > :not(main) { display: none; }
 		body:not(.preferences-set) {
@@ -397,12 +397,12 @@ America (art for sale)</a></li>
 	<contextual-heading role="heading" aria-level="1">Headings and the Seinfeld Pitch</contextual-heading>
 	<p class="segue">Because of it's origins, HTML has a number of elements and concepts which are, in retrospect, probably not so great.  Headings being the way they are, for example, has caused seemingly no end of discussion.  I'd like to explain why I think this is, as well as what we should do about it.</p>
 
-	<p>Let's talk about paragraphs.  You can't get much more basic than a paragraph. If I say "paragraph" pretty much everyone will know what mean immediately.  While some of us might stumble a bit if pressed to describe it abstractly, most of us will, like the US Supreme Court surely "know it when I see it". <span style="display:block; margin: 1rem 0 0">Most people reading this, for example, will recognize immediately that this sentence is in its own paragraph.</span></p>
+	<p>Let's talk about paragraphs.  You can't get much more basic than a paragraph. When I say "paragraph" pretty much everyone will know immediately what I mean.  While some of us might stumble a bit if pressed to describe it abstractly, most of us will, like the US Supreme Court surely "know it when I see it". <span style="display:block; margin: 1rem 0 0">Most people reading this, for example, will recognize immediately that this sentence is in its own paragraph.</span></p>
 
 	<section class="sectioning">
 		<contextual-heading role="heading" aria-level="2">If it walks like a duck...</contextual-heading>
 
-		<p>Except that the above sentence isn't its own paragraph. Kind of.  Let me tell you a story that will help explain the issue/disconnect here...</p>
+		<p>Except that the above sentence isn't its own paragraph. Kind of.  Let me tell you a story that will help explain the disconnect...</p>
 
 		<div style="margin-top: 0" class="captioned-image p-attached p-attached-left optional">
 			<img data-src="/media/angry-sea.jpg" alt="George Costanza 'The sea was angry that day my friends'">
@@ -410,7 +410,7 @@ America (art for sale)</a></li>
 
 		<p>You see, the interesting thing about a paragraph is that we've had the concept for hundreds of years and it's entire history has been to <em>visually</em> convey the start of something. It's meaning winds up coming from the visual.  The sentence above <em>looks</em> like a paragraph on the screen or on the printed page, so, in effect it is.  Except that it isn't really.  But we'll get to that.</p>
 
-	    <p>Some of you may have seen a mark like this before: ¶.  If not, that's ok - it's an editor's mark called a "pilcrow".  It <em>means</em> "mark the start of a new paragraph".  Interestingly enough, the reason that paragraphs were historically indented in print comes from the fact that scribes began the habit of just starting a new line and leaving space to come back and draw the pilcrow later.  Once you have the new line and space, you have an easy visual semantic and the pilcrow becomes just noise.</p>
+	    <p>Some of you may have seen a mark like this before: ¶.  If not, that's ok - it's an editor's mark called a "pilcrow".  It <em>means</em> "mark the start of a new paragraph".  Interestingly enough, the reason that paragraphs were historically indented in print comes from the fact that scribes began the habit of just starting a new line and leaving space to come back and draw the pilcrow later.  Once you had the new line and space, you had an easy visual semantic already - the pilcrow becomes just noise.  Editors (or teachers) will sometimes draw ths mark between sentences to convey the same: "You should start a new paragraph here".</p>
 
 	    <p>The thing worth noting in this story is that a pilcow (or newline+indet) were <em>visual markers</em> that implied, logically, that you were not just beginning a paragraph, you were inherently ending the previous one.</p>
 
@@ -418,9 +418,9 @@ America (art for sale)</a></li>
 
     <section class="sectioning">
     	<contextual-heading role="heading" aria-level="2">Flat Earth Markup</contextual-heading>
-    	<p>Flash forward a few hundred years to when we were just beginning to use computers.  GML borrowed the concept of editors marks like the pilcrow in the 1960s.  Thus, they reasoned about things the same way: No "closing tag" was required for many things.  That carried years later into SGML and HTML's vocabulary, as you may know came from grepping a lot of SGML at CERN.</p>
+    	<p>Flash forward a few hundred years to when we were just beginning to use computers.  GML borrowed the concept of editors marks like the pilcrow in the 1960s.  Thus, they reasoned about things the same way: No "closing tag" was required for many things.  These traditions carried on years later in SGML, and years laters still in HTML.  As you may know, the original vocabulary of HTML was based on a lot of SGML at CERN.</p>
 
-    	<p>Given this history, HTML originally (unsuprisingly) contained only the simplest and most basic concepts from print. It was originally was intended to be written with a simple rich text style editor in your browser, in a more or less "flat" fashion - visually. Thus, something like this might be an example of a really common "original" document back in the day:</p>
+    	<p>Given this history, HTML originally (unsuprisingly) contained only the simplest and most basic concepts from print. It was originally intended to be written with a simple rich text style editor in your browser, in a more or less "flat" fashion - visually. Thus, something like this might be an example of a really common "original" document back in the day:</p>
 
     	<code-format type="html"><pre>&lt;h1&gt;This marks the top level heading
 &lt;p&gt;You can know that this is a paragraph and not heading,
@@ -455,7 +455,7 @@ another h1 yet.
     	<p>Ok, so why are we so bad at this?  First, I think it is because we are by and large such visual creatures.  If the visual semantics "seem right" we just kind of assume they are - even when they are total mud.  While "default visual styling" was supposed to be a side-effect of getting it right, it seems to have played the opposite role since it is so easy to muck up everything else and still get the visuals right.  You can put a heading in any old place - like as the only child of a meaningless element.  What is that a heading for? When does that "section" start and stop?  It's hard to definitively know.  Likewise, search engines making use of headings intelligently was supposed to be a side effect of getting it right too.  Given all this, we seem to have always stressed the side-effects and forgot the meaning.</p>
 
 
-    	<p>However, it's not just that "we made a mess by misusing them" - the truth is, they are kind of unusable.  It's implausible to imagine reasoning about things with flat markers anymore.   Modern documents aren't flat, not remotely.  They are increasingly rich and structured and highly stylized.  Today we have complex sections and articles and navs and things <em>between</em> those and so on.  Hell, modern documents frequently contain a lot of markup that exists purely as something to hang CSS on.   We cannot just cannot reason about "markers" in the same way.  We can create one hell of a mess though thinking that it actually "means" what it seems to clearly mean visually.</p>
+    	<p>However, it's not just that "we made a mess by misusing them" - the truth is, they are kind of unusable.  It's implausible to imagine reasoning about things with flat markers anymore.   Modern documents aren't flat, not remotely.  They are increasingly rich and structured and highly stylized.  Today we have complex sections and articles and navs and things <em>between</em> those and so on.  Hell, modern documents frequently contain a lot of markup that exists purely as something to hang CSS on.   We just cannot reason about "markers" in the same way.  We can create one hell of a mess though thinking that it actually "means" what it seems to clearly mean visually.</p>
 
  		<div style="margin-top: 0" class="captioned-image optional">
 			<img data-src="/media/whatever-you-want-it-to.jpg
@@ -492,14 +492,14 @@ another h1 yet.
 
 		<p>It is possible to create a fairly simple receipe in which you <em>can</em> express meaningful outlines with an <code tag-esc="">h</code> tag.  If you use it this way, we can derive meaning.  If you don't - for example, if an author tries to flat-earth them, or nest them, or do some other crazy shit - we can't.  That's where the Nothing comes in.</p>
 
-		<div class="captioned-image optional">
+		<div class="captioned-image share-image optional">
 			<img data-src="/media/well_do_nothing.jpg" alt="">
 			Everyone is doing something.  We'll do nothing.
 		</div>
 
     	<p>Let's pretend that you just open an editor and start typing HTML today and you use an <code tag-esc="">foo</code> tag.  You can, you always could  You know what it means?  Nothing.  You know what it looks like?  Again, Nothing.  Its insides match its outsides.  That seems... good?</p>
 
-    	<p>Let's imagine something else: Take your <code tag-esc="">foo</code> to look like an <code tag-esc="">h1</code>.  Visually it means <code tag-esc="">h1</code> - just like our opening example.  But guess what it means to everything else?  Nothing.</p>
+    	<p>Now, let's imagine something else: Take your <code tag-esc="">foo</code> and style it to look like an <code tag-esc="">h1</code>.  Visually it means <code tag-esc="">h1</code> - just like our opening example.  But guess what it means to everything else?  Nothing.</p>
 
     	<p>I would wager that if anyone suggested that we simply add this rule to the default UA stylesheet and the problem would be solved, everyone would have the same reaction "you will confuse authors - because it <em>means Nothing</em>".  And they'd be right - but that's kind of what we've been doing with headings all these years.  In those scenarios where authors wrote funky markup, the visual looks great, but the tree is whack.  It means "nothing" (or at least it is misleading enough to not have real meaning). That seems... bad?</p>
 
@@ -507,7 +507,7 @@ another h1 yet.
 
     	<p>Imagine instead that we wrote that such that only a "good" tag would take on any meaning at all - even visually.  The rest would be explictly Nothing.  Then, our insides would match our outsides again.  It would be a really good incentive to learn "the right way to convey meaning" and to apply it.</p>
 
-    	<p>A really incomplete visualization/explantion of this can be seen in <a href="http://codepen.io/bkardell/pen/vgbgBp?editors=1100">this codepen</a> and I've opened an issue in Jon's repo to discuss it.</p>
+    	<p>A really incomplete visualization/explantion of this can be seen in <a href="http://codepen.io/bkardell/pen/vgbgBp?editors=1100">this codepen</a> and I've opened <a href="https://github.com/jonathantneal/hfill/issues/3">an issue in Jon's repo</a> to discuss it.</p>
 
 
     </section>
