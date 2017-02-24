@@ -1,0 +1,458 @@
+<html lang="en" resource-type="blogpost"><head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@briankardell">
+    <meta name="twitter:creator" content="@briankardell">
+    <meta name="twitter:title" content="The Document Outline...What's the Deal with that?">
+    <meta name="twitter:description" content="Last week there was a blur of activity surrounding &quot;headings&quot; or - more accurately around discussions about the &quot;document outline&quot;. It started with Jon Neal (re)opening an issue.  ">
+    
+    <link rel="alternate" type="application/rss+xml" href="blog/feed.rss" title="bkardell.com/blog rss feed">
+    <title>The Document Outline...What's the Deal with that?</title>
+    <style>.captioned-image {
+    background-color: #eaeaea;
+    display: block;
+    overflow: hidden;
+    padding: 1rem;
+    text-align: center;
+    font-style: italic;
+}
+
+.captioned-image.p-attached {
+    width: 40%;
+    display: inline-block;
+    margin: 0 1rem 2rem 1rem;
+}
+
+section > .captioned-image.p-attached {
+    margin-top: 1.5rem; /* correct for heading size*/
+}
+
+ pre { overflow-x: auto }
+
+.captioned-image.p-attached.p-attached-left {
+    float: left;
+}
+
+.captioned-image.p-attached.p-attached-right {
+    float: right;
+}
+
+.captioned-image.p-attached + * + * {
+    clear: both;
+    margin-top: 2rem;
+}
+
+
+.captioned-image img, .captioned-image video {
+    display: block;
+    max-width: 100%;
+    margin: 0 auto 1em auto;
+}
+.source {
+    font-style: italic;
+}
+body {
+    display: flex;
+    font: 1em "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-weight: 300;
+    line-height: 1.625;
+}
+h1 { margin: 0.5rem; }
+code-format {
+    border-left: 0.5rem solid rgba(123,115,209,0.35);
+    display: block;
+    padding: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+contextual-heading {
+    display: block;
+    margin-top: 2rem;
+}
+
+[aria-level="1"] {
+    color: #43686b;
+    font-size: 1.45rem;
+}
+[aria-level="2"] {
+    color: #856363;
+    font-size: 1.35rem;
+}
+[aria-level="3"] {
+    color: #856363;
+    font-size: 1.25rem;
+}
+[aria-level="4"] {
+    color: #856363;
+    font-size: 1.2rem;
+}
+[aria-level="5"], [aria-level="6"] {
+    color: #667496;
+    font-size: 1.1rem;
+    font-weight: bolder;
+}
+.posted-on {
+    font-style: italic;
+    font-size: 0.8rem;
+    text-align: right;
+    margin-bottom: 1rem;
+}
+
+ul, li {
+    margin: 0.5rem;
+    text-align: left;
+}
+header {
+    padding-top: 1rem;
+    padding-right: 2rem;
+    background-color: #fbf5e9;
+}
+.tagline {
+    font-style: italic;
+    text-align: center;
+}
+
+[tag-esc] {
+    color: maroon;
+    font-family: Courier, "Lucida Console", monospace;
+}
+
+[tag-esc]::before {
+    content: '<';
+}
+
+[tag-esc]::after {
+    content: '>';
+}
+
+main {
+    min-width: 50%;
+    width: 80%;
+    padding: 1rem;
+}
+header .title {
+    background-color: rgba(123,115,209,0.35);
+    padding: 0.3rem;
+    padding-left: 0.25rem;
+    font-weight: bolder;
+    font-size: 0.9rem;
+    border-left: 1rem solid #999298;
+}
+
+header .profile {
+    width: 50%;
+    margin: 1rem 25%;
+}
+
+header .title + nav {
+    font-size: 0.9rem;
+}
+
+header .blurb {
+    font-size: 0.75rem;
+    text-align: center;
+}
+header .name {
+    text-align: center;
+    font-size: xx-large;
+}
+.segue {
+    font-style: italic;
+}
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  border: 0;
+}
+[for="aboutMeToggle"] {
+    display: none;
+}
+/* this needs rethinking, it wants a selector like 'not flow content' */
+article>*:not(contextual-heading,a), section>*:not(contextual-heading,a) {
+    margin-left: 0.45rem;
+}
+
+blockquote {
+  font-family: serif;
+  background: #f9f9f9;
+  border-left: 10px solid #ccc;
+  margin: 1.5em 10px;
+  padding: 0.5em 10px;
+}
+blockquote:before {
+  color: #ccc;
+  content: open-quote;
+  font-size: 2em;
+  line-height: 0.1em;
+  margin-right: 0.25em;
+  vertical-align: -0.4em;
+}
+
+blockquote:after {
+  color: #ccc;
+  content: close-quote;
+  font-size: 2em;
+  line-height: 0.1em;
+  margin-left: 0.25em;
+  vertical-align: -0.4em;
+}
+
+
+@media (max-width: 800px){
+    body {
+        flex-direction: column;
+    }
+    header {
+        border-bottom: 1px solid #afafff;
+    }
+
+    .captioned-image.p-attached {
+        width: 100%;
+        margin: 1rem 0;
+    }
+
+    .captioned-image.p-attached.p-attached-left,
+    .captioned-image.p-attached.p-attached-right {
+        float: none;
+    }
+
+    [for="aboutMeToggle"] {
+        background-color: #675e5e;
+        color: white;
+        padding: 0.25rem;
+        padding-left: 0.5rem;
+        display: block;
+        border-left: 1rem solid black;
+    }
+    #aboutMeToggle:focus + [for="aboutMeToggle"]{
+        outline: 4px solid #c6ddf2;
+    }
+
+    #aboutMeToggle:checked ~ header {
+        display: none;
+    }
+
+    header li { display: inline; margin-left: -0.5em; }
+    header .blurb li::after { content: '; '; }
+    header  nav li {
+        display: inline-block;
+        margin-left: 0.35rem;
+        margin-right: 0.35rem;
+    }
+    header .title {
+        width: 100%;
+    }
+    main li .source { display: block; }
+
+}</style>
+    <style>
+      .captioned-image { font-size: 0.9rem; }
+      .thanksTo { font-style: italic; font-size: 0.8rem; }
+    </style>
+    <script>
+      var activateOptional = function (media) {
+        var source = media.getAttribute('data-src'),
+            temp,
+            container = media.parentElement;
+
+          if (media.nextSibling && media.nextSibling.matches) {
+            if (media.nextSibling.matches('.clickToSee')) {
+              media.parentElement.removeChild(media.nextSibling);
+            }
+          }
+
+          if (media.tagName === 'VIDEO') {
+            temp = document.createElement('video')
+            temp.setAttribute('autoplay','')
+            temp.setAttribute('controls','')
+            temp.setAttribute('loop','')
+            temp.innerHTML = '<source src="' + source + '.webm" type="video/webm">'
+                    + '<source src="' + source + '.mp4" type="video/mp4">';
+            media.parentElement.replaceChild(temp, media);
+            setTimeout(function () {
+              temp.play()
+            }, 0);
+          } else {
+            media.src = media.getAttribute('data-src');
+          }
+
+          container.classList.add('active');
+      }
+    </script>
+  </head>
+  <body>
+    <input id="aboutMeToggle" class="sr-only" type="checkbox" checked="">
+<label for="aboutMeToggle">Toggle author information</label>
+<header>
+    <div class="name">
+        Brian Kardell
+    </div>
+    <img class="profile" src="/profile.jpg" alt="">
+    <div class="tagline"><a href="/">Betterifying the Web</a></div>
+    <div class="blurb">
+        <ul>
+            <li>Sr Front-End Engineer at Apollo Group, Inc</li>
+            <li>Original Co-author/Co-signer of The Extensible Web Manifesto</li>
+            <li>Co-Founder/Chair, W3C Extensible Web CG</li>
+            <li>Member, W3C (The JS Foundation)</li>
+            <li>Co-author of HitchJS</li>
+            <li>Blogger</li>
+            <li>Art, Science &amp; History Lover</li>
+            <li>Standards Geek</li>
+        </ul>
+    </div>
+    <div class="title">Follow Me On...</div>
+    <nav>
+        <ul>
+            <li><a rel="me" href="https://briankardell.wordpress.com">Wordpress</a></li>
+            <li><a rel="me" href="https://medium.com/@briankardell">Medium</a></li>
+            <li><a rel="me" href="https://twitter.com/briankardell">Twitter</a></li>
+            <li><a rel="me" href="https://github.com/bkardell/">Github</a></li>
+            <li><a rel="me" href="https://codepen.io/bkardell">Codepen</a></li>
+            <li><a rel="me" href="https://www.linkedin.com/in/brian-kardell-08a4264">LinkedIn</a></li>
+            <li><a rel="me" href="https://www.instagram.com/kardellbrian">Instagram (for
+art)</a></li>
+            <li><a rel="me" href="http://fineartamerica.com/profiles/brian-kardell?">Fine Art
+America (art for sale)</a></li>
+        </ul>
+    </nav>
+</header>
+    <main><div class="posted-on">Posted on null</div><article class="sectioning">
+	<contextual-heading role="heading" aria-level="1">The Document Outline...What's the Deal with that?</contextual-heading>
+	<p class="segue">Last week there was a blur of activity surrounding "headings" or - more accurately around discussions about the "document outline". It started with Jon Neal <a href="https://github.com/w3c/html/issues/774">(re)opening an issue</a>.  This issue <em>seems</em> to be about a new element - but it's not entirely.  There were lots of comments and there was lots of discussion on lots of github issues in lots of repos.  I wrote <a href="https://bkardell.com/blog/On-Headings.html">a piece</a> about my own complex thoughts about this issue.  It <em>seems</em> to suggest I am arguing that we start something brand new.  My friend Jake Archibald <a href="https://jakearchibald.com/2017/do-we-need-a-new-heading-element/">wrote a piece too</a> which <em>seems</em> really different than the other two.  Trying to keep them all straight and read through comments, one would think that there is a lot of disagreement... But here's the thing: I don't think there really is.  I think it's just really complicated to follow.  To this end - I've asked a few people if this is a fair summary and the answer seems to be pretty much "yes"... So, if you're looking to understand in fairly straightforward terms what the discussions are, here it is...</p>
+
+	<style>
+		dt { font-weight: bold; margin: 2rem 1rem 0.5rem; }
+	</style>
+
+	<section class="sectioning">
+		<contextual-heading role="heading" aria-level="2">FAQ</contextual-heading>
+
+		<dl id="faq">
+			<dt>What would happen if we could flip a switch?</dt>
+			<dd>If there were a switch that we could flip tomorrow that would enable the document outline as described to be switched on on the existing web, in some cases, the heading levels communicated on existing websites would change in screen readers.</dd>
+
+			<dt>That's it?</dt>
+			<dd>Yes.  It could potentially enable development of new affordances which could be better, but that happens in the future, if it happens.</dd>
+
+
+			<dt>Would this be better for existing content, or worse?</dt>
+			<dd>Very hard to say universally since we haven't actually tested "it".  In theory, the feeling from the accesibility community is "generally better".</dd>
+
+			<dt>"In Theory?"  "It?"</dt>
+			<dd>Yes, there are a few problems here... First, there's not exactly an "it" we can flip on.  There are a lot of words in a lot of places and a few implementations (polyfills and tools, not browsers) that don't exactly match any of those words. </dd>
+
+			<dt>Wait... why don't they match?</dt>
+			<dd>In practice it was difficult and confusing to match the words.  There was occasionally some feeling that what it was producing was not entirely great.  So, there are a few variant interpretations.</dd>
+
+			<dt>Why?!</dt>
+			<dd>In practice it was difficult and confusing to match the whole of any of the words.  There was occasionally some feeling that what it was producing was not entirely great.  So, there are a few variant interpretations.</dd>
+
+
+			<dt>Wow!  Why haven't we sorted this out?</dt>
+			<dd>Mostly, it's just been really hard to do so far.  There is a lot of speculation as to why, but we need to collect more data on that.</dd>
+
+			<dt>We should do that, right?</dt>
+			<dd>Collect the data?  Yes.</dd>
+
+			<dt>No, but shouldn't we work to switch something very like "it" on?</dt>
+			<dd>Maybe.  Probably.  It's hard to say, we don't even know why it hasn't been done yet... and not everyone agrees on the "it". _We need data, and we need experiments_.  It may be the easiest path from a standardization/paperwork standpoint to modify one of the existing sets of words in a spec.  But then, effectively we are redefining it again so I'm slightly wary of calling it an existing "it". Hard to say.</dd>
+
+			<dt>What's the challenge?</dt>
+			<dd>
+				<p>Well, aside from we don't have a perfect "it" to discuss, first there is a correlary problem that not all change happens simultaneously IRL.  What really happens is that for some time there is ragged support.</p>
+
+				<p>The second is that each "it" encourages some amount of "new advice" on how to write to really take advantage.  If you write code <em>that way</em> then in some cases there is general concensus that in many cases the result will be worse on the unsupporting browsers than if you had done nothing "new" and just kept doing the same old same old.</p>
+
+				<p>The third is that having an outline enables new possibilities for anything that uses AT, where "AT" can be thought of as anything that consumes content non-visually (and that is a big/increasing bunch of stuff) that go beyond "some heading levels change".</p>
+
+				<p>So, in at least some sense, it's about managing all that.</p>
+			</dd>
+
+			<dt>Ok, so what can we do?</dt>
+			<dd>We can work on figuring out what "it" should actually do in practice.</dd>
+
+			<dt>Ok, so what can we do?</dt>
+			<dd>
+				<p>We can work on figuring out what "it" should actually do in practice.
+				</p>
+				<p>We can speculatively polyfill and test the variations of "it" to produce document outlines such that if you include the polyfill you can go ahead and write "the new way" and everyone will get the same levels and we can use this to discuss/test any "it".  The "existing web" will remain unaffected until we have a clear "it" and some browser implements it.</p>
+			</dd>
+
+			<dt>Seems good?</dt>
+			<dd>Yes.</dd>
+
+			<dt>Should we do that?</dt>
+			<dd>Yes.</dd>
+
+
+			<dt>Have we?</dt>
+			<dd>Kind of, but not really.  We have various levels of approximations of existing and new "it" ideas.  We need to work better on collecting together existing data and using experimentation to improve the main idea.</dd>
+
+			<dt>So it 'it' a new tag?</dt>
+			<dd>In most of the existing specs/words it is not.  Some custom elements exist which do some reasonable approximation of a subset, and they use a new tag.</dd>
+
+			<dt>Are you suggesting that 'it' should be a new tag?</dt>
+			<dd>The simple answer is: No not necessarily. Personally, I would rather see that if given the choice.  I explain in some detail why in my post.  I recognize this is my personal choice and it could be wrong.  We need some time and data to know, in my opinion.</dd>
+
+			 <dt>Can we just polyfill exactly as in the spec, not as a new tag?</dt>
+			 <dd>Yes! And we should!  As soon as we figure out which spec and why - or are we going to change the spec to match one of the tools implemntation's approximations because they are more reasonable?</dd>
+
+			 <dt>Hmm... Can we try both (as a new tag and not)?</dt>
+			 <dd>Yes, and that is what I am suggesting is worth doing.</dd>
+
+			 <dt>Well... Which one will we standardize?</dt>
+			 <dd>Who knows?  Maybe neither.  Maybe both.  It's not an argument for or against.... More importantly - does it matter?</dd>
+
+			 <dt>Wait, what? </dt>
+
+			<dd>
+				<p>What I mean to say is: Until we have an actual standard, guessing is actually not a great reason to use them.  Don't let this hang you up.  This is a source of a lot of frustration historically in the Web community - we think we are promised things and then don't come.  We believe too much in words that are written down.  When one browser implements it, pay attention.  When two browsers do, it's more likely.  And so on.  We're just not there yet and we don't know what's going to happen. </p>
+
+				<p>In the meantime: Here is a thing.  You can use it if you want because it may be useful.  Or don't.  Here is another.  One may be more paletteable than the other or something.  For you, maybe one has really important features.  Using h1...h6 oriented polyfill will 'degrade' to a flat bunch of h1s without JS - but a lot of other ARIA isn't going to work well for you since a bunch of it requires JS.  </p>
+
+				<p>The truth is:  <em>We just don't know</em>.  What we know is that you have a problem and one of these might help you solve it.  If not, how come?  If so, well done.  That's the job, right?  Get shit done.  Go spend some time with it.  Come back and tell us what you think and that will be helpful information.</p>
+			</dd>
+		</dl>
+	</section>
+</article></main>
+
+  
+    <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-88027178-1', 'auto');
+    ga('send', 'pageview');
+  </script>
+
+  <script>
+    Array.prototype.slice.call(document.querySelectorAll('.optional [data-src]')).forEach(function (optional) {
+      var prefs = window.localStorage.downloadsPrefs,
+          clickToSee;
+      if (prefs === 'true') {
+        activateOptional(optional);
+      } else {
+        clickToSee = document.createElement('div');
+        clickToSee.classList.add('clickToSee')
+        clickToSee.innerHTML = '<button>Click to see media</button>';
+        clickToSee.style.textAlign = 'center';
+        clickToSee.style.border = 'none';
+        optional.parentElement.insertBefore(clickToSee, optional.nextSibling);
+        clickToSee.firstElementChild.addEventListener('click', function () {
+          activateOptional(optional);
+        })
+      }
+
+    })
+  </script>
+
+</body></html>
