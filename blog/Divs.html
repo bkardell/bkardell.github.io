@@ -366,13 +366,18 @@ America (art for sale)</a></li>
 			<div>The humble <code tag-esc="">button</code> is focusable, clickable, touchable and smartly integrated with DOM events, by default looks 'buttony', has the potential to integrate with form/HTTP automatically, has an accessible role and label and has <a href="https://www.oreilly.com/ideas/proposing-css-input-modality">quite a lot of smarts about how focus rings work</a> and more - all "built in".</div>
 	</div>
 
-	<p>However, all too frequently, once a project is already completed I find something like this instead <code tag-esc="">div class="btn btn-primary</code>.</p>
+	<p>However, all too frequently, once a project is already completed I find something like this instead <code tag-esc="">div class="btn btn-primary</code>.  Look, semantics are weird. Sometimes this can lead to you asking weird philosophical questions about which element you really should use and there isn't always a clear answer.  But that tweet and this observation aren't a slam on <code tag-esc="">div</code>s either: They're a perfectly useful 'container' structure.  You can use them to build structures that you can reason about more easily in your CSS and JavaScript. You should use them. I do. They just have absolutely no "meaning" at all - and in this particular case, it isn't really an especially philospocal question.  Point to the thing on the screen and say "this thing" and immediately most people will say "the button?".  It's a button.</p>
 
-	<p>When you use a <code tag-esc="">div</code> instead of a <code tag-esc="">button</code>, all of those things go out the window.  You've got a lot of problems.</p>
+	<p>When you use a <code tag-esc="">div</code> instead of a <code tag-esc="">button</code>, all of those things sketched above go out the window.  You've got a lot of problems.  It might "appear to work in a demo with the CEO" but there's lots of issues that are harder to demonstrate and explain and that's a terrible situation to be in.</p>
 
-	<p>At that point though, it's frequently spread like a cancer.  Buttons are one of the most fundamental building blocks of UI.  You can't throw a stone without hitting a button, so remediating this late means touching your code in lots and lots of places. It might sound like a simple search/replace will fix you right up, but actually, those are quite different elements.  Subtle differences chase you, and you'll be suprised at how many bugs will keep coming back from your QA department if they're doing their job well.</p>
+	<p>Frequently, this isn't noticed until it's spread like a cancer.  Buttons are one of the most fundamental building blocks of UI.  You can't throw a stone without hitting a button, so remediating this late means touching your code in lots and lots of places. It might sound like a simple search/replace will fix you right up, but actually, those are quite different elements.  Subtle differences chase you, and you'll be suprised at how many bugs will keep coming back from your QA department if they're doing their job well.</p>
 
-	<p>So, in the posts I'm currently failing to write I'm pondering the things that enable/reinforce us getting into these types of situations and how to avoid them.  It seems pretty obvious that the fact that "it appears to work in a demo" is very easy to appreciate whereas demonstrating all of the little things that buttons do would be quite hard and seem subtle/less important to most of the same people.  What isn't clear is why so many developers I see turn to a <code tag-esc="">div</code> in the first place instead of defaulting to using a <code tag-esc="">button</code>?  That's kind of a mystery, all I can do is speculate.</p>
+	<p>So, in the posts I'm currently failing to write I'm pondering the things that enable/reinforce us getting into these types of situations and why they are so terrible to find yourself in... and how to avoid them.  It seems pretty evident to me that the gap is in large part about presentation and the power of 'demonstration' to shape things - but that's for those other posts....</p>
+
+	<p>What isn't clear to me at all is why so many developers seem to turn to a <code tag-esc="">div</code> in the first place instead of defaulting to using a <code tag-esc="">button</code>?</p>
+
+
+	<p>That's kind of a mystery, and all I can do is speculate.</p>
 
 	<p>One possibility is that perhaps if you think they "seem equivant" - one is shorter and looks less redundant?</p>
 
