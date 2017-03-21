@@ -4,10 +4,34 @@
                 <title>bkardell.com rss feed</title>
                 <link>https://bkardell.com</link>
                 <language>en-us</language>
-                <lastBuildDate>Thu, 05 Jan 2017 01:54:49 GMT</lastBuildDate>
+                <lastBuildDate>Tue, 21 Mar 2017 17:00:50 GMT</lastBuildDate>
                 <description>Just the bkardell.com rss feed</description>
                 <atom:link href="https://bkardell.com/blog/feed.rss" rel="self" type="application/rss+xml" />
     
+            <item>
+                <title>Divs</title>
+                <link>https://bkardell.com/blog/Divs.html</link>
+                <description>I've been utterly failing to complete a couple of blog posts that I've been working on recently.  As sometimes happens when I am writing, I have a semi-random but kind of related thought that doesn't really fit in the post and I tweet it instead.  As it got some little attention/discussion, I'd like to expand on it here and offer a little more explanation/context.</description>
+                <guid>https://bkardell.com/blog/Divs.html</guid>
+                <pubDate>Tue, 21 Mar 2017 04:00:00 GMT</pubDate>
+            </item>
+        
+            <item>
+                <title>The Document Outline...What's the Deal with that?</title>
+                <link>https://bkardell.com/blog/Whats-The-Deal-With-That.html</link>
+                <description>Last week there was a blur of activity surrounding "headings" or - more accurately around discussions about the "document outline". It started with Jon Neal (re)opening an issue.  This issue seems to be about a new element - but it's not entirely.  There were lots of comments and there was lots of discussion on lots of github issues in lots of repos.  I wrote a piece about my own complex thoughts about this issue.  It seems to suggest I am arguing that we start something brand new.  My friend Jake Archibald wrote a piece too which seems really different than the other two.  Trying to keep them all straight and read through comments, one would think that there is a lot of disagreement... But here's the thing: I don't think there really is.  I think it's just really complicated to follow.  To this end - I've asked a few people if this is a fair summary and the answer seems to be pretty much "yes"... So, if you're looking to understand in fairly straightforward terms what the discussions are, here it is...</description>
+                <guid>https://bkardell.com/blog/Whats-The-Deal-With-That.html</guid>
+                <pubDate>Fri, 24 Feb 2017 05:00:00 GMT</pubDate>
+            </item>
+        
+            <item>
+                <title>Headings and the Seinfeld Pitch</title>
+                <link>https://bkardell.com/blog/On-Headings.html</link>
+                <description>Because of its origins, HTML has a number of elements and concepts which are, in retrospect, probably not so great.  Headings being the way they are, for example, has caused seemingly no end of discussion.  I'd like to explain why I think this is, as well as what we should do about it.</description>
+                <guid>https://bkardell.com/blog/On-Headings.html</guid>
+                <pubDate>Fri, 17 Feb 2017 05:00:00 GMT</pubDate>
+            </item>
+        
             <item>
                 <title>Incubate All the Things</title>
                 <link>https://bkardell.com/blog/Incubate-All-The-Things.html</link>
