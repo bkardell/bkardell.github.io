@@ -1,0 +1,415 @@
+<html lang="en" resource-type="blogpost"><head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@briankardell">
+    <meta name="twitter:creator" content="@briankardell">
+    <meta name="twitter:title" content="Divs">
+    <meta name="twitter:description" content="I've been utterly failing to complete a couple of blog posts that I've been working on recently.  As sometimes happens when I am writing, I have a semi-random but kind of related t">
+    <meta name="twitter:image" content="https://bkardell.com/media/button-1.png">
+    <link rel="alternate" type="application/rss+xml" href="blog/feed.rss" title="bkardell.com/blog rss feed">
+    <title>Divs</title>
+    <style>.captioned-image {
+    background-color: #eaeaea;
+    display: block;
+    overflow: hidden;
+    padding: 1rem;
+    text-align: center;
+    font-style: italic;
+}
+
+.captioned-image.p-attached {
+    width: 40%;
+    display: inline-block;
+    margin: 0 1rem 2rem 1rem;
+}
+
+section > .captioned-image.p-attached {
+    margin-top: 1.5rem; /* correct for heading size*/
+}
+
+ pre { overflow-x: auto }
+
+.captioned-image.p-attached.p-attached-left {
+    float: left;
+}
+
+.captioned-image.p-attached.p-attached-right {
+    float: right;
+}
+
+.captioned-image.p-attached + * + * {
+    clear: both;
+    margin-top: 2rem;
+}
+
+
+.captioned-image img, .captioned-image video {
+    display: block;
+    max-width: 100%;
+    margin: 0 auto 1em auto;
+}
+.source {
+    font-style: italic;
+}
+body {
+    display: flex;
+    font: 1em "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-weight: 300;
+    line-height: 1.625;
+}
+h1 { margin: 0.5rem; }
+code-format {
+    border-left: 0.5rem solid rgba(123,115,209,0.35);
+    display: block;
+    padding: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+contextual-heading {
+    display: block;
+    margin-top: 2rem;
+}
+
+[aria-level="1"] {
+    color: #43686b;
+    font-size: 1.45rem;
+}
+[aria-level="2"] {
+    color: #856363;
+    font-size: 1.35rem;
+}
+[aria-level="3"] {
+    color: #856363;
+    font-size: 1.25rem;
+}
+[aria-level="4"] {
+    color: #856363;
+    font-size: 1.2rem;
+}
+[aria-level="5"], [aria-level="6"] {
+    color: #667496;
+    font-size: 1.1rem;
+    font-weight: bolder;
+}
+.posted-on {
+    font-style: italic;
+    font-size: 0.8rem;
+    text-align: right;
+    margin-bottom: 1rem;
+}
+
+ul, li {
+    margin: 0.5rem;
+    text-align: left;
+}
+header {
+    padding-top: 1rem;
+    padding-right: 2rem;
+    background-color: #fbf5e9;
+}
+.tagline {
+    font-style: italic;
+    text-align: center;
+}
+
+[tag-esc] {
+    color: maroon;
+    font-family: Courier, "Lucida Console", monospace;
+}
+
+[tag-esc]::before {
+    content: '<';
+}
+
+[tag-esc]::after {
+    content: '>';
+}
+
+main {
+    min-width: 50%;
+    width: 80%;
+    padding: 1rem;
+}
+header .title {
+    background-color: rgba(123,115,209,0.35);
+    padding: 0.3rem;
+    padding-left: 0.25rem;
+    font-weight: bolder;
+    font-size: 0.9rem;
+    border-left: 1rem solid #999298;
+}
+
+header .profile {
+    width: 50%;
+    margin: 1rem 25%;
+}
+
+header .title + nav {
+    font-size: 0.9rem;
+}
+
+header .blurb {
+    font-size: 0.75rem;
+    text-align: center;
+}
+header .name {
+    text-align: center;
+    font-size: xx-large;
+}
+.segue {
+    font-style: italic;
+}
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  border: 0;
+}
+[for="aboutMeToggle"] {
+    display: none;
+}
+/* this needs rethinking, it wants a selector like 'not flow content' */
+article>*:not(contextual-heading,a), section>*:not(contextual-heading,a) {
+    margin-left: 0.45rem;
+}
+
+blockquote {
+  font-family: serif;
+  background: #f9f9f9;
+  border-left: 10px solid #ccc;
+  margin: 1.5em 10px;
+  padding: 0.5em 10px;
+}
+blockquote:before {
+  color: #ccc;
+  content: open-quote;
+  font-size: 2em;
+  line-height: 0.1em;
+  margin-right: 0.25em;
+  vertical-align: -0.4em;
+}
+
+blockquote:after {
+  color: #ccc;
+  content: close-quote;
+  font-size: 2em;
+  line-height: 0.1em;
+  margin-left: 0.25em;
+  vertical-align: -0.4em;
+}
+
+
+@media (max-width: 800px){
+    body {
+        flex-direction: column;
+    }
+    header {
+        border-bottom: 1px solid #afafff;
+    }
+
+    .captioned-image.p-attached {
+        width: 100%;
+        margin: 1rem 0;
+    }
+
+    .captioned-image.p-attached.p-attached-left,
+    .captioned-image.p-attached.p-attached-right {
+        float: none;
+    }
+
+    [for="aboutMeToggle"] {
+        background-color: #675e5e;
+        color: white;
+        padding: 0.25rem;
+        padding-left: 0.5rem;
+        display: block;
+        border-left: 1rem solid black;
+    }
+    #aboutMeToggle:focus + [for="aboutMeToggle"]{
+        outline: 4px solid #c6ddf2;
+    }
+
+    #aboutMeToggle:checked ~ header {
+        display: none;
+    }
+
+    header li { display: inline; margin-left: -0.5em; }
+    header .blurb li::after { content: '; '; }
+    header  nav li {
+        display: inline-block;
+        margin-left: 0.35rem;
+        margin-right: 0.35rem;
+    }
+    header .title {
+        width: 100%;
+    }
+    main li .source { display: block; }
+
+}</style>
+    <style>
+      .captioned-image { font-size: 0.9rem; }
+      .thanksTo { font-style: italic; font-size: 0.8rem; }
+    </style>
+    <script>
+      var activateOptional = function (media) {
+        var source = media.getAttribute('data-src'),
+            temp,
+            container = media.parentElement;
+
+          if (media.nextSibling && media.nextSibling.matches) {
+            if (media.nextSibling.matches('.clickToSee')) {
+              media.parentElement.removeChild(media.nextSibling);
+            }
+          }
+
+          if (media.tagName === 'VIDEO') {
+            temp = document.createElement('video')
+            temp.setAttribute('autoplay','')
+            temp.setAttribute('controls','')
+            temp.setAttribute('loop','')
+            temp.innerHTML = '<source src="' + source + '.webm" type="video/webm">'
+                    + '<source src="' + source + '.mp4" type="video/mp4">';
+            media.parentElement.replaceChild(temp, media);
+            setTimeout(function () {
+              temp.play()
+            }, 0);
+          } else {
+            media.src = media.getAttribute('data-src');
+          }
+
+          container.classList.add('active');
+      }
+    </script>
+  </head>
+  <body>
+    <input id="aboutMeToggle" class="sr-only" type="checkbox" checked="">
+<label for="aboutMeToggle">Toggle author information</label>
+<header>
+    <div class="name">
+        Brian Kardell
+    </div>
+    <img class="profile" src="/profile.jpg" alt="">
+    <div class="tagline"><a href="/">Betterifying the Web</a></div>
+    <div class="blurb">
+        <ul>
+            <li>Sr Front-End Engineer at Apollo Group, Inc</li>
+            <li>Original Co-author/Co-signer of The Extensible Web Manifesto</li>
+            <li>Co-Founder/Chair, W3C Extensible Web CG</li>
+            <li>Member, W3C (The JS Foundation)</li>
+            <li>Co-author of HitchJS</li>
+            <li>Blogger</li>
+            <li>Art, Science &amp; History Lover</li>
+            <li>Standards Geek</li>
+        </ul>
+    </div>
+    <div class="title">Follow Me On...</div>
+    <nav>
+        <ul>
+            <li><a rel="me" href="https://briankardell.wordpress.com">Wordpress</a></li>
+            <li><a rel="me" href="https://medium.com/@briankardell">Medium</a></li>
+            <li><a rel="me" href="https://twitter.com/briankardell">Twitter</a></li>
+            <li><a rel="me" href="https://github.com/bkardell/">Github</a></li>
+            <li><a rel="me" href="https://codepen.io/bkardell">Codepen</a></li>
+            <li><a rel="me" href="https://www.linkedin.com/in/brian-kardell-08a4264">LinkedIn</a></li>
+            <li><a rel="me" href="https://www.instagram.com/kardellbrian">Instagram (for
+art)</a></li>
+            <li><a rel="me" href="http://fineartamerica.com/profiles/brian-kardell?">Fine Art
+America (art for sale)</a></li>
+        </ul>
+    </nav>
+</header>
+    <main><div class="posted-on">Posted on null</div><article class="sectioning">
+	<contextual-heading role="heading" aria-level="1">Divs</contextual-heading>
+	<p class="segue">I've been utterly failing to complete a couple of blog posts that I've been working on recently.  As sometimes happens when I am writing, I have a semi-random but kind of related thought that doesn't really fit in the post and I tweet it instead.  As it got some little attention/discussion, I'd like to expand on it here and offer a little more explanation/context.</p>
+
+	<p>Yesterday I tweeted a tweet about divs...</p>
+
+	<blockquote class="twitter-tweet" data-lang="en"><p lang="en" dir="ltr">I wonder, seriously, if it was a mistake to make the meaningless element &lt;div&gt; only 3 characters long. Would we abuse it less if it was long</p>— вкαя∂εℓℓ (@briankardell) <a href="https://twitter.com/briankardell/status/843917216533925888">March 20, 2017</a></blockquote>
+	<script async="" src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+	<p>I'd like to share some context on that.</p>
+
+
+	<p>Let's imagine that you have a small contract to create a website whose whole aim is just to collect data.  It's really just a few simple forms.  If you wrote vanilla HTML without CSS for that and showed it to your client your client would probably immediately begin the search for your replacement.</p>
+
+
+	<p>It looks abysmal really.  Unprofessional even.</p>
+
+	<p>And it's not just potentially complicated things like layout - even simple things like buttons look pretty terrible "out-of-the-box" by today's standards.  From what I observe in practice it seems that a lot of people have decided that the default UA stylesheet is just kind of a terrible starting point for lots of things that we do.</p>
+
+	<p>So we turn to something like Bootstrap.  Include Bootstrap's CSS and it immediately looks better.</p>
+
+	<p>Surpringly to many at first though is that it doesn't look <em>that much</em> better.  Your buttons, for example, don't look like those fancy Bootstrap buttons.</p>
+
+	<p>That's because those "buttons" are actually painted based on classes.  If you want your <code tag-esc="">button</code> element to look like a Bootstrap button you have to add classes ala <code tag-esc="">button class="btn"</code>.</p>
+
+	<p>Now, before I talk about any more of this I want to stress something:  <em>Bootstrap is a tool.</em>  Tools want to be generally purposed - able to be used to solve many problems.  Tools and parts kind of don't care what you do with them, they just are.  Sparkplugs, batteries, wires and gasoline are all perfectly wonderful tools and parts and with them you can build lawnmowers and tractors and go carts and semi-trucks and - well, all sorts of useful things.  You could also plug those things together directly and blow yourself up.</p>
+
+	<p>Bootstrap is a perfectly useful tool that you can use to build wonderful things.  I'm not against it.</p>
+
+	<p>In fact, a great thing about something like Bootstrap is that it comes with some pre-defined and useful vernaular that doesn't exist in native HTML.  The concept of a <em>primary</em> button for example. UIs frequently have a concept of a "primary" action. In our forms, "submit" or "next" is probably the primary action.  In an email client or chat client "send" is primary.</p>
+
+	<p>The promise of CSS is really dependent on having more than just tags to work with. Part of the problem is that the standard vocabulary is quite limited and left to our own devices we'll just be all over the map.  Many of us won't even think about the idea of "primary".  The advantage of having some common "slang" with some good meanings like this is clear - people get in the habit of thinking about and identifying the "primary" action and marking it up as such.  Just like the default UA stylesheet, Bootstrap gives it some kind of visual treatment "out-of-the-box".  You can see how people appreciate this and how that isn't a bad thing at all.</p>
+
+	<p>Where I have seen this really bite us is when those things aren't entirely clear and we combine that with an over-dependence on tools.  Bootstrap enables people who don't know much about HTML or CSS to build a pretty nice <em>looking</em> sites and it's easy to take that a little too far.</p>
+
+	<p>So, the thing is: Bootstrap will let you attach those button classes to absolutely anything.  Most of the time, the right answer is probably <code tag-esc="">button class="btn btn-primary"</code>.</p>
+
+	<p>Here's why:  The <code tag-esc="">button</code> element is suprisingly full featured:</p>
+	<div class="captioned-image" style="margin-top: 1rem;">
+			<img src="/media/button-1.png" alt="">
+			<div>The humble <code tag-esc="">button</code> is focusable, clickable, touchable and smartly integrated with DOM events, by default looks 'buttony', has the potential to integrate with form/HTTP automatically, has an accessible role and label and has <a href="https://www.oreilly.com/ideas/proposing-css-input-modality">quite a lot of smarts about how focus rings work</a> and more - all "built in".</div>
+	</div>
+
+	<p>However, all too frequently, once a project is already completed I find something like this instead <code tag-esc="">div class="btn btn-primary</code>.</p>
+
+	<p>When you use a <code tag-esc="">div</code> instead of a <code tag-esc="">button</code>, all of those things go out the window.  You've got a lot of problems.</p>
+
+	<p>At that point though, it's frequently spread like a cancer.  Buttons are one of the most fundamental building blocks of UI.  You can't throw a stone without hitting a button, so remediating this late means touching your code in lots and lots of places. It might sound like a simple search/replace will fix you right up, but actually, those are quite different elements.  Subtle differences chase you, and you'll be suprised at how many bugs will keep coming back from your QA department if they're doing their job well.</p>
+
+	<p>So, in the posts I'm currently failing to write I'm pondering the things that enable/reinforce us getting into these types of situations and how to avoid them.  It seems pretty obvious that the fact that "it appears to work in a demo" is very easy to appreciate whereas demonstrating all of the little things that buttons do would be quite hard and seem subtle/less important to most of the same people.  What isn't clear is why so many developers I see turn to a <code tag-esc="">div</code> in the first place instead of defaulting to using a <code tag-esc="">button</code>?  That's kind of a mystery, all I can do is speculate.</p>
+
+	<p>One possibility is that perhaps if you think they "seem equivant" - one is shorter and looks less redundant?</p>
+
+
+
+</article></main>
+
+  
+    <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-88027178-1', 'auto');
+    ga('send', 'pageview');
+  </script>
+
+  <script>
+    Array.prototype.slice.call(document.querySelectorAll('.optional [data-src]')).forEach(function (optional) {
+      var prefs = window.localStorage.downloadsPrefs,
+          clickToSee;
+      if (prefs === 'true') {
+        activateOptional(optional);
+      } else {
+        clickToSee = document.createElement('div');
+        clickToSee.classList.add('clickToSee')
+        clickToSee.innerHTML = '<button>Click to see media</button>';
+        clickToSee.style.textAlign = 'center';
+        clickToSee.style.border = 'none';
+        optional.parentElement.insertBefore(clickToSee, optional.nextSibling);
+        clickToSee.firstElementChild.addEventListener('click', function () {
+          activateOptional(optional);
+        })
+      }
+
+    })
+  </script>
+
+</body></html>
