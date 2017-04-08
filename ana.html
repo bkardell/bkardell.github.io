@@ -334,7 +334,7 @@ if (NP) {
 
 		for (var j = 0; j < cs.cssRules.length; j++) {
 			var sel = cs.cssRules[j].selectorText;
-			sel = sel.replace(/polygon/g, '[fillet]')
+			sel = sel.replace(/polygon|polyline/g, '[fillet]')
 			cs.cssRules[j].selectorText = sel;
 		}
 	}
