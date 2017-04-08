@@ -1,0 +1,352 @@
+
+
+<!DOCTYPE html>
+<html >
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="shortcut icon" type="image/x-icon" href="https://production-assets.codepen.io/assets/favicon/favicon-8ea04875e70c4b0bb41da869e81236e54394d63638a1ef12fa558a4a835f1164.ico" />
+  <link rel="mask-icon" type="" href="https://production-assets.codepen.io/assets/favicon/logo-pin-f2d2b6d2c61838f7e76325261b7195c27224080bc099486ddd6dccb469b8e8e6.svg" color="#111" />
+  <meta name="robots" content="noindex">
+  <title>CodePen - [NMAR] round poly(gon|line) corners - fillet step #21</title>
+
+
+
+
+      <style>
+      body {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
+  margin: 0;
+  height: 100vh;
+}
+
+svg {
+  width: 50vh;
+}
+
+* {
+  fill: none;
+  stroke-width: 3px;
+  vector-effect: non-scaling-stroke;
+}
+
+polygon, polyline {
+  opacity: .35;
+  stroke: #99a;
+}
+
+path {
+  stroke: #ef9134;
+}
+
+#choochoo {
+  stroke: crimson;
+}
+
+    </style>
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js"></script>
+
+
+
+</head>
+
+<body translate="no" >
+
+  <svg viewBox='-50 -50 100 100'>
+	<polygon points='7,-47 -43,-35 -38,26 -9,7 23,32 26,13 41,28 46,-47 21,-35 20,3 -27,-5 -25,-27 -3,-29'
+					 r='14'
+					 stroke-dasharray='5'/>
+	<path d='M-30 45h79v-45'/>
+</svg>
+<svg viewBox='-50 -50 100 100'>
+	<polyline points='26,4 16,-9 26,-37 0,-8 -28,-21 -11,-1 -30,13 -3,9 2,34 19,19' id="choochoo"
+					 r='14'/>
+	<polygon points='50,0 30,-50 30,50'/>
+</svg>
+
+
+    <script>
+    'use strict';
+
+var CA = .25 /* cutoff angle */
+,
+    HF = ['cos', 'sin'] /* harmonic functions */
+,
+    NS_URI = 'http://www.w3.org/2000/svg',
+
+/* polygonal chains whose corners we round */
+_P = document.querySelectorAll('[points][r]'),
+    NP = _P.length /* no of poly chains to round */;
+
+function fillet(_poly) {
+	var /* threshold error = cosine of cutoff angle */
+	TE = Math.cos((_poly.hasAttribute('daca-ca') ? _poly.getAttribute('daca-ca') : CA) * Math.PI / 180),
+
+	/* read the rounding radius */
+	R = +_poly.getAttribute('r');
+
+	var v = undefined,
+	    n = undefined,
+	    τ = undefined,
+	    ne = undefined,
+	    d = undefined,
+	    l = undefined,
+	    α = [],
+	    f = undefined,
+	    ρ = undefined,
+	    γ = undefined,
+	    δ = undefined,
+	    s = undefined,
+	    e = undefined,
+	    na = undefined,
+	    pd = undefined,
+	    _path = undefined,
+	    _up = undefined,
+	    k = undefined,
+	    m = undefined,
+	    ra = undefined;
+
+	/*
+  * check that rounding radius r is
+  * a finite, positive number
+  */
+	if (!isFinite(R) || R <= 0) return;
+
+	/*
+  * extract coordinates from points
+  * attribute, no matter its format
+  */
+	v = _poly.getAttribute('points').replace(/(\d)\-/g, '$1 -').split(/\s*,\s*|\s+/g).map(function (c) {
+		return +c;
+	});
+
+	/*
+  * check we have enough coords for
+  * a triangle at least
+  */
+	n = v.length;
+	if (.5 * n < 3) return;
+	n -= n % 2;
+
+	/*
+  * check that all useful coordinates
+  * are finite numbers
+  */
+	for (var i = 0; i < n; i++) {
+		if (!isFinite(v[i])) return;
+	} /*
+    * compact 1D array into 2D array
+    * for example, [5, 6, 1, 7, 3, 2, 8]
+    * becomes [[5, 6], [1, 7], [3, 2]]
+    */
+	v = v.reduce(function (a, c, i) {
+		return i % 2 ? a.concat([[v[i - 1], c]]) : a;
+	}, []);
+
+	n = v.length;
+
+	/*
+  * the shape type:
+  * 0 for polygon, 1 for polyline
+  */
+	τ = +(_poly.localName !== 'polygon');
+
+	/* the number of edges */
+	ne = n - τ;
+
+	/*
+  * compute coordinate differences between
+  * edge endpoints
+  */
+	d = v.slice(0, ne).map(function (c, i) {
+		var nxt = v[(i + 1) % n]; /* next vertex coords */
+
+		return [nxt[0] - c[0] /* x difference dx */
+		, nxt[1] - c[1] /* y difference dy */
+		];
+	});
+
+	/* compute edge lengths */
+	l = d.map(function (c) {
+		var _Math;
+
+		return (_Math = Math).hypot.apply(_Math, c);
+	});
+
+	/*
+  * get polygonal chain angles,
+  * perform collinearity checks and, if needed,
+  * remove vertices and
+  * replace coordinate differences and edge lengths
+  */
+	for (var i = τ; i < ne; i++) {
+		var j = (i - 1 + n) % n /* first edge index */
+		,
+		    _k = (i + 1) % n /* second edge index */
+		,
+		    /* third edge endpoint coord differences */
+		dx = v[j][0] - v[_k][0],
+		    dy = v[j][1] - v[_k][1],
+		    c = Math.hypot(dx, dy) /* third edge */
+		,
+		    /* cosine of current angle from law of cosines */
+		h = (l[i] * l[i] + l[j] * l[j] - c * c) / (2 * l[i] * l[j]);
+
+		/* if current cosine greater than cutoff value */
+		if (Math.abs(h) > TE) {
+			/* remove middle vertex */
+			v.splice(i, 1);
+			/* update number of vertices
+    * and check we still have at least 3 */
+			if (--n < 3) return;
+
+			/* remove coord diffs related to removed vertex,
+    * introduce those between adjacent vertices */
+			d.splice(j, 2, [dx, dy]);
+			/* remove edges connected to removed vertex
+    * introduce shortcircuiting segment */
+			l.splice(j, 2, c);
+			ne--; /* update number of edges */
+
+			/* if we have a polygon & removed vertex is last */
+			if (!τ && i === ne) {
+				dx = v[i - 1][0] - v[_k][0];
+				dy = v[i - 1][1] - v[_k][1];
+				c = Math.hypot(dx, dy);
+				h = (l[i - 1] * l[i - 1] + l[0] * l[0] - c * c) / (2 * l[i - 1] * l[0]);
+				α[0] = Math.acos(h);
+			}
+
+			/* decrement index */
+			i = Math.max(i - 2, τ - 1);
+			/* to fix previous angle */
+			α.pop();
+		} else α.push(Math.acos(h));
+	}
+
+	na = n - 2 * τ;
+
+	/* get the angle k constants */
+	k = α.map(function (c) {
+		return 1 / Math.tan(.5 * c);
+	});
+
+	/* get the limit radii for each edge */
+	m = l.map(function (c, i) {
+		return c / ((i >= τ) * k[(i - τ + na) % na] + (ne - 1 - i >= τ) * k[(i - τ + 1) % na]);
+	});
+
+	/* get the actual radii used for each arc */
+	ra = m.slice(0, na).map(function (c, i) {
+		return Math.min(R, m[(i + τ - 1 + ne) % ne], m[i + τ]);
+	});
+
+	/* get the sweep flags */
+	f = d.slice(τ).map(function (c, i) {
+		/* coord diffs corresp to previous edge */
+		var prv = d[(i + ne - 1 + τ) % ne];
+
+		return .5 * (Math.sign(prv[0] * c[1] - c[0] * prv[1]) + 1);
+	});
+
+	/*
+  * get segments coonecting replaced vertices
+  * to start/ end points of arcs replacing them
+  */
+	ρ = α.map(function (c, i) {
+		return ra[i] / Math.tan(.5 * c);
+	});
+
+	/*
+  * get edge angles with respect to the horizontal
+  */
+	γ = d.map(function (c) {
+		var _Math2;
+
+		return (_Math2 = Math).atan2.apply(_Math2, c.reverse());
+	});
+	δ = d.map(function (c) {
+		var _Math3;
+
+		return (_Math3 = Math).atan2.apply(_Math3, c.map(function (c) {
+			return -c;
+		}));
+	});
+
+	/*
+  * get coordinates of arc start points
+  */
+	s = ρ.map(function (c, i) {
+		return v[i + τ].map(function (k, j) {
+			return k + c * Math[HF[j]](δ[(i - 1 + τ + ne) % ne]);
+		});
+	});
+
+	/*
+  * get coordinates of arc end points
+  */
+	e = ρ.map(function (c, i) {
+		return v[i + τ].map(function (k, j) {
+			return k + c * Math[HF[j]](γ[(i + τ + ne) % ne]);
+		});
+	});
+
+	/*
+  * generate path data
+  */
+	pd = 'M' + (τ ? v[0] + 'L' : '');
+
+	for (var i = 0; i < na; i++) {
+		pd += (i ? 'L' : '') + s[i].map(function (c) {
+			return +c.toFixed(2);
+		}) + 'A' + [ra[i].toFixed(2), ra[i].toFixed(2), 0, 0, f[i]].concat(e[i].map(function (c) {
+			return +c.toFixed(2);
+		}));
+	}pd += τ ? 'L' + v[n - 1] : 'z';
+
+	/*
+  * create equiv path element, set its path data
+  * and add it to document
+  */
+	_path = document.createElementNS(NS_URI, 'path');
+	_path.setAttribute('d', pd);
+
+	_path.setAttribute('fillet', 'out');
+	for (var i = 0; i < _poly.attributes.length; i++) {
+		var attr = _poly.attributes[i];
+		_path.setAttribute(attr.name, attr.value);
+	}
+
+	_poly.setAttribute('fillet', 'in');
+
+	_up = _poly.parentNode;
+	_up.insertBefore(_path, _poly);
+};
+
+if (NP) {
+	for (var i = 0; i < document.styleSheets.length; i++) {
+		var cs = document.styleSheets[i];
+
+		for (var j = 0; j < cs.cssRules.length; j++) {
+			var sel = cs.cssRules[j].selectorText;
+			sel = sel.replace(/polygon/g, '[fillet]')
+			cs.cssRules[j].selectorText = sel;
+		}
+	}
+}
+
+for (var i = 0; i < NP; i++) {
+	fillet(_P[i]);
+}
+  </script>
+
+
+
+
+</body>
+</html>
