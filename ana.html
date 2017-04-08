@@ -341,7 +341,7 @@ if (NP) {
 	//original = ".foo polygon, .bar:not(polygon, polyline)"
 	let rewriteSelector = function (original) {
 		let cpy = original,
-			matches = cpy.match(/\W?polygon\W|\Wpolyline\W?/g);
+			matches = cpy.match(/\W?polygon\W?|\W?polyline\W?/g);
 
 		if (matches) {
 			matches.forEach((tok) => {
