@@ -58,6 +58,10 @@ path {
 <body translate="no" >
 
   <svg viewBox='-50 -50 100 100'>
+
+   </svg>
+
+  <svg viewBox='-50 -50 100 100'>
 	<polygon points='7,-47 -43,-35 -38,26 -9,7 23,32 26,13 41,28 46,-47 21,-35 20,3 -27,-5 -25,-27 -3,-29'
 					 r='14'
 					 stroke-dasharray='5'/>
@@ -66,6 +70,11 @@ path {
 <svg viewBox='-50 -50 100 100'>
 	<polyline points='26,4 16,-9 26,-37 0,-8 -28,-21 -11,-1 -30,13 -3,9 2,34 19,19' id="choochoo"
 					 r='14'/>
+	<polygon points='50,0 30,-50 30,50'/>
+</svg>
+
+<svg viewBox='-50 -50 100 100'>
+	<polyline points='26,4 16,-9 26,-37 0,-8 -28,-21 -11,-1 -30,13 -3,9 2,34 19,19' id="oops" />
 	<polygon points='50,0 30,-50 30,50'/>
 </svg>
 
@@ -329,13 +338,27 @@ function fillet(_poly) {
 };
 
 if (NP) {
+	//original = ".foo polygon, .bar:not(polygon, polyline)"
+	let rewriteSelector = function (original) {
+		let cpy = original,
+			matches = cpy.match(/\W?polygon\W|\Wpolyline\W?/g);
+
+		if (matches) {
+			matches.forEach((tok) => {
+			  let x = tok.replace(/\w.*(\w)/g, '[fillet]');
+			  cpy = cpy.replace(tok, x);
+			})
+	    	return [original, cpy].join(',');
+		}
+		return original;
+	}
+
 	for (var i = 0; i < document.styleSheets.length; i++) {
 		var cs = document.styleSheets[i];
 
 		for (var j = 0; j < cs.cssRules.length; j++) {
 			var sel = cs.cssRules[j].selectorText;
-			sel = sel.replace(/polygon|polyline/g, '[fillet]')
-			cs.cssRules[j].selectorText = sel;
+			cs.cssRules[j].selectorText = rewriteSelector(sel);
 		}
 	}
 }
