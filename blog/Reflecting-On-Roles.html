@@ -1,16 +1,14 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
+<html lang="en" resource-type="blogpost"><head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:site" content="@briankardell">
     <meta name="twitter:creator" content="@briankardell">
-    <meta name="twitter:title" content="">
-    <meta name="twitter:description" content="">
-    <meta name="twitter:image" content="">
+    <meta name="twitter:title" content="Reflecting on Roles">
+    <meta name="twitter:description" content="Just a silly little experiment based on an observation...">
+    
     <link rel="alternate" type="application/rss+xml" href="blog/feed.rss" title="bkardell.com/blog rss feed">
-    <title></title>
+    <title>Reflecting on Roles</title>
     <style>.captioned-image {
     background-color: #eaeaea;
     display: block;
@@ -289,7 +287,7 @@ blockquote:after {
     </script>
   </head>
   <body>
-    <input id="aboutMeToggle" class="sr-only" type="checkbox" checked>
+    <input id="aboutMeToggle" class="sr-only" type="checkbox" checked="">
 <label for="aboutMeToggle">Toggle author information</label>
 <header>
     <div class="name">
@@ -325,34 +323,120 @@ America (art for sale)</a></li>
         </ul>
     </nav>
 </header>
-    <main>
-        <contextual-heading aria-role="heading" aria-level="1">Recent Posts</contextual-heading>
-    <ul>
-<li><a href="https://bkardell.com/blog/Reflecting-On-Roles.html">Reflecting on Roles</a> (Tue Apr 25 2017)</li>
-<li><a href="https://bkardell.com/blog/Divs.html">Divs</a> (Tue Mar 21 2017)</li>
-<li><a href="https://bkardell.com/blog/Whats-The-Deal-With-That.html">The Document Outline...What's the Deal with that?</a> (Fri Feb 24 2017)</li>
-<li><a href="https://bkardell.com/blog/On-Headings.html">Headings and the Seinfeld Pitch</a> (Fri Feb 17 2017)</li>
-<li><a href="https://bkardell.com/blog/Incubate-All-The-Things.html">Incubate All the Things</a> (Mon Dec 26 2016)</li>
-<li><a href="https://bkardell.com/blog/Perf.html">Performance: Shame, Hope, Nuance and Interesting Problems</a> (Tue Nov 22 2016)</li>
-<li><a href="https://bkardell.com/blog/The-Glory-Days-Of-The-Web.html">The Glory Days of the Web</a> (Wed Oct 05 2016)</li>
-<li><a href="https://bkardell.com/blog/Potentially-Scattered-Thoughts-On-Web-Components.html">Potentially Scattered Thoughts on Web Components and Frameworks</a> (Mon Sep 26 2016)</li>
-<li><a href="https://bkardell.com/blog/The-Future-Web-Wants-You.html">The Future Web Wants You</a> (Wed Aug 24 2016)</li>
-<li><a href="https://bkardell.com/blog/X-Web-Days-of-Future-Past.html">X-Web: Days of Future Past</a> (Mon Jun 20 2016)</li>
-<li><a href="https://bkardell.com/blog/Prognostication-And-The-Failure-Of-The-Web.html">Prognostication and the Failure of the Web</a> (Fri May 06 2016)</li>
-<li><a href="https://bkardell.com/blog/Brief-ish-History-of-The-Web-Part-4.html">A Brief(ish) History of the Web Universe - Part IV: New Hope(s)</a> (Sun Apr 10 2016)</li>
-<li><a href="https://bkardell.com/blog/TokenLists-Missing-DNA.html">TokenLists: Missing Web DNA</a> (Tue Mar 29 2016)</li>
-<li><a href="https://bkardell.com/blog/Brief-ish-History-of-The-Web-Part-3.html">A Brief(ish) History of the Web Universe - Part III: The Early Web</a> (Fri Feb 05 2016)</li>
-<li><a href="https://bkardell.com/blog/Brief-ish-History-of-The-Web-Part-2.html">A Brief(ish) History of the Web Universe - Part II: Time</a> (Mon Dec 07 2015)</li>
-<li><a href="https://bkardell.com/blog/Brief-ish-History-of-The-Web-Part-1.html">A Brief(ish) History of the Web Universe - Part I: The Pre-Web</a> (Sun Nov 22 2015)</li>
-<li><a href="https://bkardell.com/blog/Reflections-On-Engineering.html">Reflections on Engineering</a> (Sat Jun 20 2015)</li>
-<li><a href="https://bkardell.com/blog/Tao-Of-The-Extensible-Web.html">What Would Bruce Lee Do? The Tao of the Extensible Web.</a> (Tue Oct 07 2014)</li>
-<li><a href="https://bkardell.com/blog/A-Web-For-The-Next-Century.html">A Web for the Next Century</a> (Tue Oct 08 2013)</li>
-<li><a href="https://bkardell.com/blog/Dropping-The-F-Bomb-On-Standards.html">Dropping the F-Bomb on Web Standards</a> (Fri May 17 2013)</li>
-<li><a href="https://bkardell.com/blog/Off-With-Their-Heads.html">Off With Their Heads: Disband the W3C?</a> (Tue Apr 23 2013)</li>
-<li><a href="https://bkardell.com/blog/Really-Classy-CSS.html">(Really) classy CSS</a> (Fri May 11 2012)</li>
-</ul></main>
+    <main><div class="posted-on">Posted on 04/25/2017</div><article posted-on="04/25/2017" class="sectioning">
+    <script src="../role-reflect.js"></script>
+    <style>
+      	article { font-size: 1.1rem; }
+		pre {
+		  margin-left: 2rem;
+		}
 
-  </body>
+		[role=heading] {
+		  color: rebeccapurple;
+		}
+
+		[role=button] {
+		  background-color: #ccccff;
+		  border-color: blue;
+		  border-radius: 0.25rem;
+		  display: inline;
+		  border: 1px;
+		  margin: 0.25rem;
+		  padding: 0.5rem;
+		  font-size: 0.8rem;
+		  font-family: sans-serif;
+		}
+
+		[role=heading] + p::first-letter {
+		  font-size: 2rem;
+		}
+
+
+    </style>
+	<contextual-heading role="heading" aria-level="1">Reflecting on Roles</contextual-heading>
+	<p class="segue">Just a silly little experiment based on an observation...</p>
+
+	<p>So much of what we write is trying to classify and identify things so that we can 'talk about them'. This is true in designs and meetings as well as practically in code: CSS Selectors can be used by DOM, programatically, and by CSS declaratively to 'talk
+	  about' something in terms of function or style.</p>
+
+	<p>ARIA provides a way for you to explain to the browser that a thing <em>is</em> or <em>behaves as</em> something it can understand. For example, an element can have a <code>role=heading</code> or <code>role=button</code> and the browser will expose that
+	  to AT appropriately. This works because native elements have <em>implicit roles</em> as defined <a href="https://www.w3.org/TR/html-aria/">ARIA in HTML</a> and ARIA defines a rich taxonomy for explaining these.</p>
+
+	<p>Now, however, let's say we want to talk about headings, or buttons. For us, verbally, that's trivial. For AT, that's trivial. But in terms of CSS selectors, it's kind of a pain in the ass. Let's say that you want to style "the first letter of any paragraph
+	  immediately following a heading" and you've got a number of approaches across your site(s). Traditionally, to write this, you'd have to write:
+
+	  <code></code></p><pre><code>h1 + p::first-letter,
+	h2 + p::first-letter,
+	h3 + p::first-letter,
+	h4 + p::first-letter,
+	h5 + p::first-letter,
+	h6 + p::first-letter,
+	[role=heading] + p::first-letter { ... }</code></pre>
+
+	  <p>Eventually, we'll be able to use the <code>:matches</code> to make this a little better: </p>
+
+	  <code><pre>:matches(h1,h2,h3,h4,h5,h6,[role=heading]) + p::first-letter { ... }</pre></code>
+
+	  <p>But.. that still isn't super great and that's kind of a trivial thing to want to express. The thing is, the browser <em>already knows</em> they're all headings, it's just invisible to us for many practical purposes. If they were exposed to us somehow,
+	    we could write a simple rule like. </p>
+
+	  <code><pre>[role=heading] + p::first-letter { ... }
+	</pre></code>
+
+	  <p><em>Note, the syntax there is debatable - practically speaking it would probably make more sense to use a pseudo-class like <code>:role(heading)</code> for this purpose.</em></p>
+
+	  <p>It's not limited to headings either - the taxonomy is useful in a lot of ways. Take buttons for example. If you wanted to generically talk about the style of "things that are buttons" - traditionally you would have to write something like:</p>
+
+	  <code><pre>button,
+	input[type=button],
+	input[type=submit],
+	input[type=reset],
+	summary,
+	[role="button"] { ... }</pre></code>
+
+	  <p>But, again, the browser already knows that these are all "button", so it seems almost tragic that you can't just write something like:</p>
+
+
+	  <code><pre>[role=button] {
+	  background-color: #ccccff;
+	  border-color: blue;
+	  border-radius: 0.25rem;
+	  display: inline;
+	  border: 1px;
+	  margin: 0.25rem;
+	  padding: 0.5rem;
+	  font-size: 0.8rem;
+	  font-family: sans-serif;
+	}</pre></code>
+
+	  <p>and that would apply to.. you know.. all the buttons. And for buttons, we do a lot - we style the hover state and the focus state and so on.</p>
+
+	  <p>Now... I think that maybe this matters more than just "it feels nicer to write" because the simple fact is that without something like this, the data seems to show that we resort to workarounds.  For example, the Bootstrap <code>.btn</code> class, which ultimately leads to lots of things that are not accessible, and <a href="https://bkardell.com/blog/Divs.html">ultimately just 'less'</a> in pursuit of something that is pretty easy for authors to express.</p>
+
+	  <section>
+	    <h2>So here's a thing...</h2>
+	    <p>This is <a href="../role-reflect.js">a little script</a> written using mutation observers that you can include in the head of your document and it will expose the implicit roles defined <a href="https://www.w3.org/TR/html-aria/">ARIA in HTML</a>      (if there isn't a role already). While you might think that is 'heavy', it simply looking at the tag name, doing a lookup and potentially setting an attribute - not really terrible at all.</p>
+
+	    <p>The point isn't "we should use this" it is simply to give authors kind of enough to play with things and see if it's totally nuts or potentially really helpful <em>for authors</em>. If not, then maybe a way to begin to discuss what that might mean
+	      in terms of a real solution.</p>
+
+	    <section>
+	      <div role="heading" aria-level="3" style="font-size: 1.4rem;">Demo..</div>
+	      <p>This page is, itself a demo. You can see lots of buttony things styled with a rule about buttons and headings all styled purple with rules just like the above...</p>
+	      <button>Test button</button>
+	      <input value="Test input" type="button">
+	      <input type="submit">
+	      <input type="reset">
+	      <div role="button">Test ARIA Btn</div>
+	    </section>
+
+	  </section>
+
+
+
+</article></main>
+
+  
     <script>
     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
     (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -383,4 +467,5 @@ America (art for sale)</a></li>
 
     })
   </script>
-</html>
+
+</body></html>

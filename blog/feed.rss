@@ -4,10 +4,18 @@
                 <title>bkardell.com rss feed</title>
                 <link>https://bkardell.com</link>
                 <language>en-us</language>
-                <lastBuildDate>Tue, 21 Mar 2017 17:00:50 GMT</lastBuildDate>
+                <lastBuildDate>Tue, 25 Apr 2017 21:29:30 GMT</lastBuildDate>
                 <description>Just the bkardell.com rss feed</description>
                 <atom:link href="https://bkardell.com/blog/feed.rss" rel="self" type="application/rss+xml" />
     
+            <item>
+                <title>Reflecting on Roles</title>
+                <link>https://bkardell.com/blog/Reflecting-On-Roles.html</link>
+                <description>Just a silly little experiment based on an observation...</description>
+                <guid>https://bkardell.com/blog/Reflecting-On-Roles.html</guid>
+                <pubDate>Tue, 25 Apr 2017 04:00:00 GMT</pubDate>
+            </item>
+        
             <item>
                 <title>Divs</title>
                 <link>https://bkardell.com/blog/Divs.html</link>
