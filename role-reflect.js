@@ -32,7 +32,7 @@
     'HEADER': (el) => {
       return !el.closest(sectioningSelector) ? 'banner' : 'undefined'
     },
-    'HR': 'seperator',
+    'HR': 'separator',
     'IMG': (el) => {
       return (el.getAtttribute("alt") !== '') ? 'img': 'undefined'
     },
