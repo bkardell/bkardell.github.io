@@ -329,6 +329,7 @@ America (art for sale)</a></li>
       	article { font-size: 1.1rem; }
 		pre {
 		  margin-left: 2rem;
+		  white-space: pre;
 		}
 
 		[role=heading] {
@@ -366,12 +367,12 @@ America (art for sale)</a></li>
 	  immediately following a heading" and you've got a number of approaches across your site(s). Traditionally, to write this, you'd have to write:
 
 	  <code></code></p><pre><code>h1 + p::first-letter,
-	h2 + p::first-letter,
-	h3 + p::first-letter,
-	h4 + p::first-letter,
-	h5 + p::first-letter,
-	h6 + p::first-letter,
-	[role=heading] + p::first-letter { ... }</code></pre>
+h2 + p::first-letter,
+h3 + p::first-letter,
+h4 + p::first-letter,
+h5 + p::first-letter,
+h6 + p::first-letter,
+[role=heading] + p::first-letter { ... }</code></pre>
 
 	  <p>Eventually, we'll be able to use the <code>:matches</code> to make this a little better: </p>
 
@@ -388,26 +389,26 @@ America (art for sale)</a></li>
 	  <p>It's not limited to headings either - the taxonomy is useful in a lot of ways. Take buttons for example. If you wanted to generically talk about the style of "things that are buttons" - traditionally you would have to write something like:</p>
 
 	  <code><pre>button,
-	input[type=button],
-	input[type=submit],
-	input[type=reset],
-	summary,
-	[role="button"] { ... }</pre></code>
+input[type=button],
+input[type=submit],
+input[type=reset],
+summary,
+[role="button"] { ... }</pre></code>
 
 	  <p>But, again, the browser already knows that these are all "button", so it seems almost tragic that you can't just write something like:</p>
 
 
 	  <code><pre>[role=button] {
-	  background-color: #ccccff;
-	  border-color: blue;
-	  border-radius: 0.25rem;
-	  display: inline;
-	  border: 1px;
-	  margin: 0.25rem;
-	  padding: 0.5rem;
-	  font-size: 0.8rem;
-	  font-family: sans-serif;
-	}</pre></code>
+  background-color: #ccccff;
+  border-color: blue;
+  border-radius: 0.25rem;
+  display: inline;
+  border: 1px;
+  margin: 0.25rem;
+  padding: 0.5rem;
+  font-size: 0.8rem;
+  font-family: sans-serif;
+}</pre></code>
 
 	  <p>and that would apply to.. you know.. all the buttons. And for buttons, we do a lot - we style the hover state and the focus state and so on.</p>
 
