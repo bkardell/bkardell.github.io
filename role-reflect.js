@@ -10,7 +10,7 @@
       return el.hasAttribute('href') ? 'link' : undefined
     },
     'ARTICLE': 'article',
-    'ASIDE': 'complimentary',
+    'ASIDE': 'complementary',
     'BUTTON': 'button',
     'DATALIST': 'listbox',
     'DD': 'definition',
