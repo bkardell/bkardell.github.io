@@ -4,10 +4,18 @@
                 <title>bkardell.com rss feed</title>
                 <link>https://bkardell.com</link>
                 <language>en-us</language>
-                <lastBuildDate>Tue, 25 Apr 2017 21:29:30 GMT</lastBuildDate>
+                <lastBuildDate>Mon, 15 May 2017 14:25:20 GMT</lastBuildDate>
                 <description>Just the bkardell.com rss feed</description>
                 <atom:link href="https://bkardell.com/blog/feed.rss" rel="self" type="application/rss+xml" />
     
+            <item>
+                <title>Contact Your W3C Congress Person</title>
+                <link>https://bkardell.com/blog/W3C-Congress.html</link>
+                <description>The W3C is one of the primary standards bodies that works on Web standards.  Founded in 1994 along with the inventor of the Web Sir Tim Berners-Lee, it is a member based consortium originally modeled after the X-Consortium, with the stated aim of helping to "lead the Web to its full potential".  Its 465 "member orgs" are various types of organizations, foundations[1], academia and companies.   In late 2011 a movement in Web Standards began to take shape - seeking to help reform the things that many of us thought were broken.  This meant creating a common/shared vision across several standards bodies, changing ideas about where successful and lasting standards come from and how they are made and really stressing the importance of Web developers (who weren't themselves members) to that equation.  Lots and lots of positive change has happened at many levels, and lots more progress toward change has been set into motion but isn't yet complete and - if you'd like to see it continue, we could use your help.</description>
+                <guid>https://bkardell.com/blog/W3C-Congress.html</guid>
+                <pubDate>Mon, 15 May 2017 04:00:00 GMT</pubDate>
+            </item>
+        
             <item>
                 <title>Reflecting on Roles</title>
                 <link>https://bkardell.com/blog/Reflecting-On-Roles.html</link>
