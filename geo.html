@@ -28,13 +28,13 @@
 `
 			}
 
-			function geo_error() {
-			  alert("Sorry, no position available.");
+			function geo_error(e) {
+			  alert(`Sorry, no position available.\n ${e.message}`);
 			}
 
 			var geo_options = {
 			  enableHighAccuracy: true,
-			  maximumAge        : 0,
+			  maximumAge        : 3000,
 			  timeout           : 27000
 			};
 
