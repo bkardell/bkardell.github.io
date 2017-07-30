@@ -4,7 +4,7 @@ class SceneElement extends StoryItemElement {
         return this.querySelector('x-items')
     }
 
-    enter () {
+    enter (exit = null) {
         if (!this.isVisited) {
             let evt = new Event('sceneFirstEntered', {
                 scene: this,
@@ -16,10 +16,12 @@ class SceneElement extends StoryItemElement {
         }
 
         let evt = new Event('sceneEntered', {
-            scene: this,
             bubbles: true,
             cancelable: true
         })
+        evt.scene = this
+        evt.fromExit = exit
+
         this.dispatchEvent(evt)
     }
 
@@ -75,6 +77,9 @@ class SceneElement extends StoryItemElement {
 
         this.addEventListener('sceneEntered', (evt) => {
             this.parentElement.currentLocation = evt.target
+            if (evt.fromExit) {
+                this.exits.findReverseExit(evt.fromExit).hasBeenFollowed = true
+            }
             this.story.queue(this.getAttribute('name') + ".")
             this.story.queue(this.exits.announcement)
             this.story.queue(this.npcs.announcement)

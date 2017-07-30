@@ -51,12 +51,12 @@ class StoryElement extends HTMLElement {
                         let dict = [],
                             match
                         dict.push(matcher("(sorry|don't understand)", "sorry"))
-
+                        dict.push(matcher("(go to|enter) (.*)", "roomCommand", "name"))
                         dict.push(matcher("(go|walk|proceed).*(north|south|east|west|up|down)", "go", "direction"))
                         dict.push(matcher(`(attack|fight|kill).*(${this.area.currentLocation.npcsMatcher||'thingr'})`, "attack", "which"))
                         dict.push(matcher(`(${this.area.currentLocation.actionsMatcher}).*(${this.area.currentLocation.itemsMatcher||'thingr'})`, "evt", "which"))
                         dict.push(matcher(`(equip|wield).*(${this.player.inventory.itemsMatcher})`, "playerevt", "which"))
-                         dict.push(matcher(`(look|describe|explain).*(exits|doors)`, "descibeExits"))
+                        dict.push(matcher(`(look|describe|explain).*(exits|doors)`, "descibeExits"))
                         dict.push(matcher(`(look|describe|explain).*(scene|room|area|around)`, "look", "which"))
                         dict.push(matcher(`(look|describe|explain).*(scene|room|area|around)`, "look", "which"))
                         dict.push(matcher(`(list|tell).*(inventory|carrying)`, "listInventory", "listInventory"))
@@ -79,6 +79,8 @@ class StoryElement extends HTMLElement {
                                 this.player.attack(
                                     this.area.currentLocation.findNpc(match.which)
                                 )
+                            } else if (match.roomCommand) {
+                                this.area.getScene(match.name).enter()
                             } else if (match.descibeExits) {
                                 this.queue(this.area.currentLocation.exits.announcement)
                             } else if (match.look) {

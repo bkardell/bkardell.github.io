@@ -100,8 +100,15 @@
             chooseRoomType = () => {
                 return random.itemIn(['room', 'hovel', 'corridor',  'tomb', 'hall', 'library', 'store room', 'utility room', 'chamber', 'anteroom', 'armory'])
             },
+            numMap = {'1': 'one', '2': 'to', '3': 'three', '4': 'four', '5': 'five', '6': 'six', '7': 'seven', '8': 'eight', '9': 'nine'}
             chooseRoomName = (type = null) => {
-                return `room ${idCounter++}`
+                let name = []
+                idCounter++
+                (idCounter + '').split('').forEach((dstr) => {
+                    name.push(numMap[dstr])
+                })
+
+                return `room ${name.join(' ')}`
             },
             reverseDir = {
                 'north': 'south',
@@ -114,7 +121,7 @@
             createExit = (dir, leadsTo) => {
                 let el = document.createElement('x-exit')
                 el.setAttribute('dir', dir)
-                if (/up|down/.test(dir)) {
+                if (dir == 'up' || dir == 'down') {
                     el.setAttribute('type', 'stairs')
                 }
                 el.setAttribute('leads-to', leadsTo)
@@ -144,12 +151,13 @@
 
                     // if we're connecting from, then the opposite of that way has to be linked/excluded
                     if (connectingExit) {
-                        possibleExitDirections = dirs.filter((dir) => { return dir !== reverseDir[connectingExit.getAttribute(dir)] })
-                        exitDir = random.removeItemIn(possibleExitDirections)
+                        exitDir = reverseDir[connectingExit.getAttribute("dir")]
+                        possibleExitDirections = dirs.filter((dir) => { return dir !== exitDir })
+
                         exits.appendChild(
                             createExit(
                                 exitDir,
-                                chooseRoomName()
+                                connectingExit.closest('x-scene').getAttribute('name')
                             )
                         )
                     }
@@ -200,11 +208,13 @@
                 } else {
                     let newExit = document.createElement('x-exit'),
                         newExitDir = random.itemIn(possibleExits),
-                        newSceneName = chooseRoomName()
+                        newSceneName = chooseRoomName(),
+                        reverseDirType = ''
 
                     newExit.setAttribute('dir', newExitDir)
-                    if (/up|down/.test(newExitDir)) {
+                    if (/(up|down)/.test(newExitDir)) {
                         newExit.setAttribute('type', 'stairs')
+                        reverseDirType = ' type="stairs" '
                     }
                     newExit.setAttribute('leads-to', newSceneName)
 
@@ -214,7 +224,7 @@
                     newScene.setAttribute("name", newSceneName)
                     newScene.innerHTML = `
                         <x-exits>
-                            <x-exit dir="${reverseDir[newExitDir]}" leads-to="${scene.getAttribute('name')}"></x-exit>
+                            <x-exit dir="${reverseDir[newExitDir]}" ${reverseDirType} leads-to="${scene.getAttribute('name')}"></x-exit>
                         </x-exits>
                     `
                     area.appendChild(newScene)

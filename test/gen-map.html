@@ -1,474 +1,430 @@
 <x-area>
-    <x-scene type="chamber" name="room 0">
+    <x-scene type="library" name="room one">
         <x-exits>
-            <x-exit dir="north" leads-to="room 1"></x-exit>
-            <x-exit dir="down" type="stairs" leads-to="room 43"></x-exit>
-        </x-exits>
-        <x-when action="look">
-            <x-say>Corpses and pieces of corpses hang from hooks that dangle from chains attached to thick iron rings. Most appear humanoid but a few of the body parts appear more monstrous. You don't see any heads, hands, or feet -- all seem to have been chopped or torn off. Neither do you see any guts in the horrible array, but several thick leather sacks hang from hooks in the walls, and they are suspiciously wet and the leather looks extremely taut -- as if it' under great strain.</x-say>
-        </x-when>
-    </x-scene>
-    <x-scene type="room" name="room 1">
-        <x-exits>
-            <x-exit dir="east" leads-to="room 2"></x-exit>
-            <x-exit dir="up" type="stairs" leads-to="room 3"></x-exit>
-            <x-exit dir="north" leads-to="room 21"></x-exit>
-            <x-exit dir="west" leads-to="room 53"></x-exit>
-        </x-exits>
-        <x-when action="look">
-            <x-say>A pit yawns open before you just on the other side of the door's threshold. The entire floor of the room has fallen into a second room beneath it. Across the way you can spy a door in the wall now 15 feet off the rubble-strewn floor, and near
-                the center of the room stands a thick column of mortared stone that appears to hold the spiral staircase that leads down to what was the lower level.</x-say>
-        </x-when>
-    </x-scene>
-    <x-scene type="chamber" name="room 3">
-        <x-exits>
-            <x-exit dir="south" leads-to="room 4"></x-exit>
-            <x-exit dir="north" leads-to="room 5"></x-exit>
-            <x-exit dir="down" type="stairs" leads-to="room 20"></x-exit>
-        </x-exits>
-        <x-when action="look">
-            <x-say>You inhale a briny smell like the sea as you crack open the door to this chamber. Within you spy the source of the scent: a dark and still pool of brackish water within a low circular wall. Above it stands a strange statue of a lobster-headed
-                and clawed woman. The statue is nearly 15 feet tall and holds the lobster claws crossed over its naked breasts.</x-say>
-        </x-when>
-    </x-scene>
-    <x-scene type="store room" name="room 5">
-        <x-exits>
-            <x-exit dir="up" type="stairs" leads-to="room 6"></x-exit>
-            <x-exit dir="north" leads-to="room 7"></x-exit>
-            <x-exit dir="down" type="stairs" leads-to="room 25"></x-exit>
-            <x-exit dir="south" leads-to="room 36"></x-exit>
-            <x-exit dir="west" leads-to="room 39"></x-exit>
-        </x-exits>
-        <x-when action="look">
-            <x-say>It's a well lit store room. The floor is dirt. a large spider scurry across the floor</x-say>
-        </x-when>
-    </x-scene>
-    <x-scene type="tomb" name="room 7">
-        <x-exits>
-            <x-exit dir="south" leads-to="room 8"></x-exit>
-            <x-exit dir="up" type="stairs" leads-to="room 9"></x-exit>
-            <x-exit dir="down" type="stairs" leads-to="room 38"></x-exit>
-            <x-exit dir="east" leads-to="room 66"></x-exit>
-        </x-exits>
-        <x-npcs>
-            <x-npc character-race="elf" character-class="magic user" character-level="1" character-health="8" character-strength="10" character-speed="15" character-defense="13" character-intelligence="24" character-mana="18"></x-npc>
-        </x-npcs>
-        <x-when action="look">
-            <x-say>It's a tomb. The air is musty. The walls are brick. The floor is well-worn wooden planks</x-say>
-        </x-when>
-    </x-scene>
-    <x-scene type="store room" name="room 9">
-        <x-exits>
-            <x-exit dir="south" leads-to="room 10"></x-exit>
-            <x-exit dir="north" leads-to="room 11"></x-exit>
-            <x-exit dir="down" type="stairs" leads-to="room 23"></x-exit>
-            <x-exit dir="east" leads-to="room 28"></x-exit>
-            <x-exit dir="west" leads-to="room 46"></x-exit>
+            <x-exit dir="up" type="stairs" leads-to="room to"></x-exit>
+            <x-exit dir="east" leads-to="room one four"></x-exit>
         </x-exits>
         <x-item name="gold" class="treasure">
             <x-when action="take">
-                <x-modify what="%stat" name="gold" modifier="26"></x-modify>
+                <x-modify what="%stat" name="gold" modifier="5"></x-modify>
             </x-when>
         </x-item>
         <x-when action="look">
-            <x-say>It's a well lit store room. The walls are brick. Shelves line the west wall.</x-say>
+            <x-say>It's a well lit library. The air is damp, hot. The floor is wet. Shelves line the east wall.</x-say>
         </x-when>
     </x-scene>
-    <x-scene type="utility room" name="room 11">
+    <x-scene type="store room" name="room to">
         <x-exits>
-            <x-exit dir="south" leads-to="room 12"></x-exit>
-            <x-exit dir="north" leads-to="room 13"></x-exit>
-            <x-exit dir="down" type="stairs" leads-to="room 24"></x-exit>
-            <x-exit dir="up" type="stairs" leads-to="room 27"></x-exit>
-            <x-exit dir="east" leads-to="room 50"></x-exit>
+            <x-exit dir="down" type="stairs" leads-to="room one"></x-exit>
+            <x-exit dir="north" leads-to="room three"></x-exit>
+            <x-exit dir="south" leads-to="room four five"></x-exit>
         </x-exits>
         <x-when action="look">
-            <x-say>It's a utility room. The air is musty. The walls are moss covered. a group of mice scurry across the floor</x-say>
+            <x-say>It's a store room. Shelves line the south wall.</x-say>
         </x-when>
     </x-scene>
-    <x-scene type="utility room" name="room 13">
+    <x-scene type="hall" name="room three">
         <x-exits>
-            <x-exit dir="north" leads-to="room 14"></x-exit>
-            <x-exit dir="up" type="stairs" leads-to="room 15"></x-exit>
-            <x-exit dir="west" leads-to="room 68"></x-exit>
+            <x-exit dir="south" leads-to="room to"></x-exit>
+            <x-exit dir="west" leads-to="room four"></x-exit>
+            <x-exit dir="north" leads-to="room one to"></x-exit>
+            <x-exit dir="east" leads-to="room one nine"></x-exit>
+            <x-exit dir="up" type="stairs" leads-to="room to four"></x-exit>
+            <x-exit dir="down" type="stairs" leads-to="room three nine"></x-exit>
         </x-exits>
         <x-when action="look">
-            <x-say>It's a well lit utility room. The air is damp, hot. The walls are rough hewn stone. The floor is wet. several spiders scurry across the floor</x-say>
+            <x-say>It's a dark hall. The air is misty. Shelves line the south wall.. Scattered shards of pottery lie about the shelves.</x-say>
         </x-when>
     </x-scene>
-    <x-scene type="anteroom" name="room 15">
+    <x-scene type="hovel" name="room four">
         <x-exits>
-            <x-exit dir="down" type="stairs" leads-to="room 16"></x-exit>
-            <x-exit dir="up" type="stairs" leads-to="room 17"></x-exit>
-            <x-exit dir="south" leads-to="room 44"></x-exit>
-            <x-exit dir="east" leads-to="room 45"></x-exit>
+            <x-exit dir="east" leads-to="room three"></x-exit>
+            <x-exit dir="north" leads-to="room five"></x-exit>
+            <x-exit dir="up" type="stairs" leads-to="room three eight"></x-exit>
+        </x-exits>
+        <x-when action="look">
+            <x-say>It's a hovel. The air is musty. Shelves line the east wall.. a large spider scurry across the floor</x-say>
+        </x-when>
+    </x-scene>
+    <x-scene type="utility room" name="room five">
+        <x-exits>
+            <x-exit dir="south" leads-to="room four"></x-exit>
+            <x-exit dir="up" type="stairs" leads-to="room six"></x-exit>
+            <x-exit dir="north" leads-to="room one three"></x-exit>
+            <x-exit dir="down" type="stairs" leads-to="room to eight"></x-exit>
+        </x-exits>
+        <x-when action="look">
+            <x-say>It's a dark utility room. The air is misty</x-say>
+        </x-when>
+    </x-scene>
+    <x-scene type="hall" name="room six">
+        <x-exits>
+            <x-exit dir="down" type="stairs" leads-to="room five"></x-exit>
+            <x-exit dir="up" type="stairs" leads-to="room seven"></x-exit>
+            <x-exit dir="south" leads-to="room one six"></x-exit>
+            <x-exit dir="east" leads-to="room one eight"></x-exit>
+            <x-exit dir="west" leads-to="room to "></x-exit>
+            <x-exit dir="north" leads-to="room three three"></x-exit>
+        </x-exits>
+        <x-when action="look">
+            <x-say>Many small desks with high-backed chairs stand in three long rows in this room. Each desk has an inkwell, book stand, and a partially melted candle in a rusting tin candleholder. Everything is covered with dust. </x-say>
+        </x-when>
+    </x-scene>
+    <x-scene type="armory" name="room seven">
+        <x-exits>
+            <x-exit dir="down" type="stairs" leads-to="room six"></x-exit>
+            <x-exit dir="north" leads-to="room eight"></x-exit>
+            <x-exit dir="south" leads-to="room four four"></x-exit>
+        </x-exits>
+        <x-when action="look">
+            <x-say>It's a dark armory. The air is musty. The floor is well-worn wooden planks. a family of rats scurry across the floor</x-say>
+        </x-when>
+    </x-scene>
+    <x-scene type="anteroom" name="room eight">
+        <x-exits>
+            <x-exit dir="south" leads-to="room seven"></x-exit>
+            <x-exit dir="down" type="stairs" leads-to="room nine"></x-exit>
+            <x-exit dir="east" leads-to="room to six"></x-exit>
+        </x-exits>
+        <x-when action="look">
+            <x-say>It's a anteroom. The air is misty. The walls are brick. The floor is well-worn wooden planks</x-say>
+        </x-when>
+    </x-scene>
+    <x-scene type="library" name="room nine">
+        <x-exits>
+            <x-exit dir="up" type="stairs" leads-to="room eight"></x-exit>
+            <x-exit dir="west" leads-to="room one "></x-exit>
+            <x-exit dir="south" leads-to="room to one"></x-exit>
+        </x-exits>
+        <x-when action="look">
+            <x-say>Several tapestries decorate the walls of this room. Although they may once have been brilliant in hue, they now hang in graying tatters. Despite the damage of time and neglect, you can perceive once-grand images of wizards' towers, magical
+                beasts, and symbols of spellcasting. </x-say>
+        </x-when>
+    </x-scene>
+    <x-scene type="anteroom" name="room one ">
+        <x-exits>
+            <x-exit dir="east" leads-to="room nine"></x-exit>
+            <x-exit dir="south" leads-to="room one one"></x-exit>
+            <x-exit dir="down" type="stairs" leads-to="room to five"></x-exit>
+        </x-exits>
+        <x-when action="look">
+            <x-say>It's a dark anteroom. The air is misty. The walls are rough hewn stone</x-say>
+        </x-when>
+    </x-scene>
+    <x-scene name="room one to">
+        <x-exits>
+            <x-exit dir="south" leads-to="room three"></x-exit>
+            <x-exit dir="down" type="stairs" leads-to="room one five"></x-exit>
+        </x-exits>
+        <x-when action="look">
+            <x-say>It's a room. The air is misty. The walls are stained reddish-brown. The floor is well-worn wooden planks. Shelves line the west wall.. a family of rats nests in the corner</x-say>
+        </x-when>
+    </x-scene>
+    <x-scene name="room one three">
+        <x-exits>
+            <x-exit dir="south" leads-to="room five"></x-exit>
         </x-exits>
         <x-item name="gold" class="treasure">
             <x-when action="take">
-                <x-modify what="%stat" name="gold" modifier="31"></x-modify>
+                <x-modify what="%stat" name="gold" modifier="80"></x-modify>
             </x-when>
         </x-item>
         <x-when action="look">
-            <x-say>It's a anteroom. The air is misty. The walls are wood paneled. The floor is stone. a group of mice nests in the corner</x-say>
+            <x-say>It's a dark room. The air is musty. The walls are rough hewn stone</x-say>
         </x-when>
     </x-scene>
-    <x-scene type="utility room" name="room 17">
+    <x-scene name="room one four">
         <x-exits>
-            <x-exit dir="west" leads-to="room 18"></x-exit>
-            <x-exit dir="north" leads-to="room 19"></x-exit>
-            <x-exit dir="south" leads-to="room 26"></x-exit>
-            <x-exit dir="east" leads-to="room 29"></x-exit>
-            <x-exit dir="up" type="stairs" leads-to="room 33"></x-exit>
+            <x-exit dir="west" leads-to="room one"></x-exit>
+            <x-exit dir="north" leads-to="room three six"></x-exit>
+            <x-exit dir="up" type="stairs" leads-to="room five one"></x-exit>
         </x-exits>
-        <x-when action="look">
-            <x-say>It's a well lit utility room. Shelves line the east wall.. Scattered shards of pottery lie about the shelves.</x-say>
-        </x-when>
-    </x-scene>
-    <x-scene name="room 20">
-        <x-exits>
-            <x-exit dir="up" leads-to="room 3"></x-exit>
-            <x-exit dir="west" leads-to="room 32"></x-exit>
-        </x-exits>
-        <x-when action="look">
-            <x-say>It's a room. The air is misty. The walls are stained reddish-brown. The floor is wet. a large rat dart out of sight</x-say>
-        </x-when>
-    </x-scene>
-    <x-scene name="room 21">
-        <x-exits>
-            <x-exit dir="south" leads-to="room 1"></x-exit>
-            <x-exit dir="down" type="stairs" leads-to="room 22"></x-exit>
-            <x-exit dir="up" type="stairs" leads-to="room 34"></x-exit>
-        </x-exits>
-        <x-when action="look">
-            <x-say>It's a room. The air is damp, hot. The walls are stained reddish-brown. The floor is stone. Shelves line the west wall.. Scattered books lie about the shelves.</x-say>
-        </x-when>
-    </x-scene>
-    <x-scene name="room 22">
-        <x-exits>
-            <x-exit dir="up" leads-to="room 21"></x-exit>
-            <x-exit dir="east" leads-to="room 40"></x-exit>
-        </x-exits>
-        <x-npcs>
-            <x-npc character-race="human" character-class="magic user" character-level="1" character-health="11" character-strength="13" character-speed="14" character-defense="10" character-intelligence="21" character-mana="16"></x-npc>
-        </x-npcs>
-        <x-when action="look">
-            <x-say>It's a well lit room. The floor is dirt. Shelves line the east wall.. a family of rats dart out of sight</x-say>
-        </x-when>
-    </x-scene>
-    <x-scene name="room 23">
-        <x-exits>
-            <x-exit dir="up" leads-to="room 9"></x-exit>
-        </x-exits>
-        <x-when action="look">
-            <x-say>It's a dark room. The walls are brick. The floor is dirt. Shelves line the south wall.. Scattered rodent excrement lie about the shelves.</x-say>
-        </x-when>
-    </x-scene>
-    <x-scene name="room 24">
-        <x-exits>
-            <x-exit dir="up" leads-to="room 11"></x-exit>
-            <x-exit dir="down" type="stairs" leads-to="room 31"></x-exit>
-            <x-exit dir="south" leads-to="room 61"></x-exit>
-        </x-exits>
-        <x-npcs>
-            <x-npc character-race="human" character-class="thief" character-level="1" character-health="13" character-strength="11" character-speed="15" character-defense="12" character-intelligence="22" character-mana="12"></x-npc>
-        </x-npcs>
-        <x-item name="iron dagger" class="weapon">
-            <x-when action="equip">
-                <x-modify what="%stat" name="strength" modifier="2"></x-modify>
+        <x-item name="gold" class="treasure">
+            <x-when action="take">
+                <x-modify what="%stat" name="gold" modifier="56"></x-modify>
             </x-when>
         </x-item>
         <x-when action="look">
-            <x-say>It's a well lit room. The air is misty. The walls are stained reddish-brown. Shelves line the east wall.. a large rat scurry across the floor</x-say>
+            <x-say>It's a room. The air is musty. The walls are damp and slimey. Shelves line the north wall.. a family of rats scurry across the floor</x-say>
         </x-when>
     </x-scene>
-    <x-scene name="room 25">
+    <x-scene name="room one five">
         <x-exits>
-            <x-exit dir="up" leads-to="room 5"></x-exit>
-            <x-exit dir="south" leads-to="room 35"></x-exit>
-            <x-exit dir="north" leads-to="room 41"></x-exit>
-            <x-exit dir="down" type="stairs" leads-to="room 63"></x-exit>
+            <x-exit dir="up" type="stairs" leads-to="room one to"></x-exit>
         </x-exits>
         <x-when action="look">
-            <x-say>It's a well lit room. The floor is wet. Shelves line the west wall.. Scattered broken vials lie about the shelves.</x-say>
+            <x-say>It's a room. Shelves line the south wall.</x-say>
         </x-when>
     </x-scene>
-    <x-scene name="room 26">
+    <x-scene name="room one six">
         <x-exits>
-            <x-exit dir="north" leads-to="room 17"></x-exit>
-            <x-exit dir="west" leads-to="room 56"></x-exit>
-            <x-exit dir="south" leads-to="room 62"></x-exit>
+            <x-exit dir="north" leads-to="room six"></x-exit>
+            <x-exit dir="down" type="stairs" leads-to="room one seven"></x-exit>
         </x-exits>
         <x-when action="look">
-            <x-say>It's a room. Shelves line the south wall.. a few cockroaches dart out of sight</x-say>
+            <x-say>It's a room. Shelves line the west wall.. a large spider dart out of sight</x-say>
         </x-when>
     </x-scene>
-    <x-scene name="room 27">
+    <x-scene name="room one seven">
         <x-exits>
-            <x-exit dir="down" leads-to="room 11"></x-exit>
-            <x-exit dir="east" leads-to="room 57"></x-exit>
+            <x-exit dir="up" type="stairs" leads-to="room one six"></x-exit>
+            <x-exit dir="down" type="stairs" leads-to="room to to"></x-exit>
+            <x-exit dir="east" leads-to="room three seven"></x-exit>
+            <x-exit dir="north" leads-to="room five to"></x-exit>
+        </x-exits>
+        <x-when action="look">
+            <x-say>It's a room. Shelves line the north wall.. Scattered shards of pottery lie about the shelves.</x-say>
+        </x-when>
+    </x-scene>
+    <x-scene name="room one eight">
+        <x-exits>
+            <x-exit dir="west" leads-to="room six"></x-exit>
+        </x-exits>
+        <x-when action="look">
+            <x-say>It's a dark room. The air is musty. The walls are moss covered</x-say>
+        </x-when>
+    </x-scene>
+    <x-scene name="room one nine">
+        <x-exits>
+            <x-exit dir="west" leads-to="room three"></x-exit>
+            <x-exit dir="up" type="stairs" leads-to="room three "></x-exit>
+            <x-exit dir="east" leads-to="room three one"></x-exit>
+            <x-exit dir="down" type="stairs" leads-to="room three five"></x-exit>
+        </x-exits>
+        <x-npcs>
+            <x-npc character-race="elf" character-class="thief" character-level="1" character-health="12" character-strength="10" character-speed="21" character-defense="10" character-intelligence="18" character-mana="11"></x-npc>
+        </x-npcs>
+        <x-when action="look">
+            <x-say>It's a room. The air is musty</x-say>
+        </x-when>
+    </x-scene>
+    <x-scene name="room to ">
+        <x-exits>
+            <x-exit dir="east" leads-to="room six"></x-exit>
+        </x-exits>
+        <x-npcs>
+            <x-npc character-race="elf" character-class="magic user" character-level="1" character-health="9" character-strength="13" character-speed="19" character-defense="10" character-intelligence="20" character-mana="18"></x-npc>
+        </x-npcs>
+        <x-when action="look">
+            <x-say>It's a dark room. The walls are damp and slimey. a few cockroaches dart out of sight</x-say>
+        </x-when>
+    </x-scene>
+    <x-scene name="room to one">
+        <x-exits>
+            <x-exit dir="north" leads-to="room nine"></x-exit>
+            <x-exit dir="west" leads-to="room to three"></x-exit>
+            <x-exit dir="east" leads-to="room five five"></x-exit>
+        </x-exits>
+        <x-when action="look">
+            <x-say>It's a room. The walls are wood paneled. a large spider dart out of sight</x-say>
+        </x-when>
+    </x-scene>
+    <x-scene name="room to to">
+        <x-exits>
+            <x-exit dir="up" type="stairs" leads-to="room one seven"></x-exit>
+            <x-exit dir="down" type="stairs" leads-to="room four three"></x-exit>
+            <x-exit dir="east" leads-to="room four seven"></x-exit>
+        </x-exits>
+        <x-when action="look">
+            <x-say>It's a dark room. The walls are brick. a few cockroaches scurry across the floor</x-say>
+        </x-when>
+    </x-scene>
+    <x-scene name="room to three">
+        <x-exits>
+            <x-exit dir="east" leads-to="room to one"></x-exit>
+            <x-exit dir="south" leads-to="room three to"></x-exit>
+        </x-exits>
+        <x-when action="look">
+            <x-say>It's a room. The floor is well-worn wooden planks. several spiders dart out of sight</x-say>
+        </x-when>
+    </x-scene>
+    <x-scene name="room to four">
+        <x-exits>
+            <x-exit dir="down" type="stairs" leads-to="room three"></x-exit>
+            <x-exit dir="east" leads-to="room to seven"></x-exit>
+        </x-exits>
+        <x-when action="look">
+            <x-say>It's a well lit room. The walls are brick. The floor is dirt. Shelves line the north wall.. Scattered broken vials lie about the shelves.. a group of mice dart out of sight</x-say>
+        </x-when>
+    </x-scene>
+    <x-scene name="room to five">
+        <x-exits>
+            <x-exit dir="up" type="stairs" leads-to="room one "></x-exit>
+            <x-exit dir="west" leads-to="room to nine"></x-exit>
+            <x-exit dir="north" leads-to="room five eight"></x-exit>
+        </x-exits>
+        <x-item name="gold" class="treasure">
+            <x-when action="take">
+                <x-modify what="%stat" name="gold" modifier="33"></x-modify>
+            </x-when>
+        </x-item>
+        <x-when action="look">
+            <x-say>It's a well lit room. The walls are damp and slimey. The floor is stone. a large spider scurry across the floor</x-say>
+        </x-when>
+    </x-scene>
+    <x-scene name="room to six">
+        <x-exits>
+            <x-exit dir="west" leads-to="room eight"></x-exit>
+            <x-exit dir="north" leads-to="room four "></x-exit>
+        </x-exits>
+        <x-when action="look">
+            <x-say>It's a well lit room. The air is damp, hot. The walls are wood paneled. a large spider dart out of sight</x-say>
+        </x-when>
+    </x-scene>
+    <x-scene name="room to seven">
+        <x-exits>
+            <x-exit dir="west" leads-to="room to four"></x-exit>
+            <x-exit dir="north" leads-to="room four six"></x-exit>
+        </x-exits>
+        <x-when action="look">
+            <x-say>It's a room. The walls are damp and slimey. Shelves line the west wall.. Scattered well burned candles lie about the shelves.</x-say>
+        </x-when>
+    </x-scene>
+    <x-scene name="room to eight">
+        <x-exits>
+            <x-exit dir="up" type="stairs" leads-to="room five"></x-exit>
+        </x-exits>
+        <x-when action="look">
+            <x-say>It's a room. The floor is stone. Shelves line the north wall.. Scattered books lie about the shelves.</x-say>
+        </x-when>
+    </x-scene>
+    <x-scene name="room to nine">
+        <x-exits>
+            <x-exit dir="east" leads-to="room to five"></x-exit>
+        </x-exits>
+        <x-when action="look">
+            <x-say>It's a room. The air is damp, hot</x-say>
+        </x-when>
+    </x-scene>
+    <x-scene name="room three ">
+        <x-exits>
+            <x-exit dir="down" type="stairs" leads-to="room one nine"></x-exit>
+        </x-exits>
+        <x-when action="look">
+            <x-say>It's a room. The floor is stone. Shelves line the east wall.</x-say>
+        </x-when>
+    </x-scene>
+    <x-scene name="room three one">
+        <x-exits>
+            <x-exit dir="west" leads-to="room one nine"></x-exit>
+            <x-exit dir="north" leads-to="room four one"></x-exit>
+        </x-exits>
+        <x-when action="look">
+            <x-say>It's a room. The air is damp, hot. The walls are wood paneled. Shelves line the west wall.</x-say>
+        </x-when>
+    </x-scene>
+    <x-scene name="room three to">
+        <x-exits>
+            <x-exit dir="north" leads-to="room to three"></x-exit>
+            <x-exit dir="up" type="stairs" leads-to="room four to"></x-exit>
+            <x-exit dir="east" leads-to="room five four"></x-exit>
+        </x-exits>
+        <x-when action="look">
+            <x-say>It's a well lit room</x-say>
+        </x-when>
+    </x-scene>
+    <x-scene name="room three three">
+        <x-exits>
+            <x-exit dir="south" leads-to="room six"></x-exit>
+            <x-exit dir="north" leads-to="room three four"></x-exit>
+            <x-exit dir="down" type="stairs" leads-to="room four eight"></x-exit>
+            <x-exit dir="up" type="stairs" leads-to="room five "></x-exit>
+        </x-exits>
+        <x-when action="look">
+            <x-say>It's a room. The air is misty</x-say>
+        </x-when>
+    </x-scene>
+    <x-scene name="room three four">
+        <x-exits>
+            <x-exit dir="south" leads-to="room three three"></x-exit>
+        </x-exits>
+        <x-when action="look">
+            <x-say>It's a dark room. The air is musty. The walls are moss covered. Shelves line the east wall.. several spiders nests in the corner</x-say>
+        </x-when>
+    </x-scene>
+    <x-scene name="room three five">
+        <x-exits>
+            <x-exit dir="up" type="stairs" leads-to="room one nine"></x-exit>
+        </x-exits>
+        <x-when action="look">
+            <x-say>It's a well lit room. The walls are wood paneled</x-say>
+        </x-when>
+    </x-scene>
+    <x-scene name="room three six">
+        <x-exits>
+            <x-exit dir="south" leads-to="room one four"></x-exit>
+        </x-exits>
+        <x-when action="look">
+            <x-say>It's a dark room</x-say>
+        </x-when>
+    </x-scene>
+    <x-scene name="room three seven">
+        <x-exits>
+            <x-exit dir="west" leads-to="room one seven"></x-exit>
+        </x-exits>
+        <x-when action="look">
+            <x-say>It's a well lit room. The air is misty. The walls are damp and slimey. The floor is wet. Shelves line the south wall.</x-say>
+        </x-when>
+    </x-scene>
+    <x-scene name="room three eight">
+        <x-exits>
+            <x-exit dir="down" type="stairs" leads-to="room four"></x-exit>
+        </x-exits>
+        <x-when action="look">
+            <x-say>It's a dark room. Shelves line the west wall.. Scattered well burned candles lie about the shelves.. a group of mice scurry across the floor</x-say>
+        </x-when>
+    </x-scene>
+    <x-scene name="room three nine">
+        <x-exits>
+            <x-exit dir="up" type="stairs" leads-to="room three"></x-exit>
+            <x-exit dir="east" leads-to="room four nine"></x-exit>
         </x-exits>
         <x-when action="look">
             <x-say>It's a room. The air is damp, hot. The floor is wet</x-say>
         </x-when>
     </x-scene>
-    <x-scene name="room 28">
+    <x-scene name="room four ">
         <x-exits>
-            <x-exit dir="west" leads-to="room 9"></x-exit>
-            <x-exit dir="up" type="stairs" leads-to="room 58"></x-exit>
+            <x-exit dir="south" leads-to="room to six"></x-exit>
+            <x-exit dir="north" leads-to="room five six"></x-exit>
         </x-exits>
-        <x-when action="look">
-            <x-say>It's a well lit room. The walls are brick. Shelves line the north wall.</x-say>
-        </x-when>
-    </x-scene>
-    <x-scene name="room 29">
-        <x-exits>
-            <x-exit dir="west" leads-to="room 17"></x-exit>
-            <x-exit dir="up" type="stairs" leads-to="room 30"></x-exit>
-            <x-exit dir="down" type="stairs" leads-to="room 49"></x-exit>
-        </x-exits>
-        <x-when action="look">
-            <x-say>It's a room. The air is musty. The walls are wood paneled. The floor is well-worn wooden planks</x-say>
-        </x-when>
-    </x-scene>
-    <x-scene name="room 30">
-        <x-exits>
-            <x-exit dir="down" leads-to="room 29"></x-exit>
-            <x-exit dir="south" leads-to="room 47"></x-exit>
-        </x-exits>
-        <x-when action="look">
-            <x-say>It's a room. The walls are moss covered. The floor is dirt. Shelves line the east wall.. Scattered books lie about the shelves.</x-say>
-        </x-when>
-    </x-scene>
-    <x-scene name="room 31">
-        <x-exits>
-            <x-exit dir="up" leads-to="room 24"></x-exit>
-        </x-exits>
-        <x-when action="look">
-            <x-say>It's a room. The air is musty. The floor is stone. Shelves line the west wall.. Scattered broken vials lie about the shelves.</x-say>
-        </x-when>
-    </x-scene>
-    <x-scene name="room 32">
-        <x-exits>
-            <x-exit dir="east" leads-to="room 20"></x-exit>
-            <x-exit dir="north" leads-to="room 37"></x-exit>
-            <x-exit dir="down" type="stairs" leads-to="room 60"></x-exit>
-            <x-exit dir="west" leads-to="room 67"></x-exit>
-        </x-exits>
-        <x-when action="look">
-            <x-say>It's a well lit room. a group of mice dart out of sight</x-say>
-        </x-when>
-    </x-scene>
-    <x-scene name="room 33">
-        <x-exits>
-            <x-exit dir="down" leads-to="room 17"></x-exit>
-        </x-exits>
-        <x-when action="look">
-            <x-say>It's a dark room. a few cockroaches nests in the corner</x-say>
-        </x-when>
-    </x-scene>
-    <x-scene name="room 34">
-        <x-exits>
-            <x-exit dir="down" leads-to="room 21"></x-exit>
-            <x-exit dir="up" type="stairs" leads-to="room 52"></x-exit>
-        </x-exits>
-        <x-item name="gold" class="treasure">
-            <x-when action="take">
-                <x-modify what="%stat" name="gold" modifier="28"></x-modify>
-            </x-when>
-        </x-item>
-        <x-when action="look">
-            <x-say>It's a well lit room. The air is musty. The floor is well-worn wooden planks. a group of mice nests in the corner</x-say>
-        </x-when>
-    </x-scene>
-    <x-scene name="room 35">
-        <x-exits>
-            <x-exit dir="north" leads-to="room 25"></x-exit>
-        </x-exits>
-        <x-when action="look">
-            <x-say>It's a dark room. The air is damp, hot</x-say>
-        </x-when>
-    </x-scene>
-    <x-scene name="room 36">
-        <x-exits>
-            <x-exit dir="north" leads-to="room 5"></x-exit>
-            <x-exit dir="east" leads-to="room 48"></x-exit>
-        </x-exits>
-        <x-item name="gold" class="treasure">
-            <x-when action="take">
-                <x-modify what="%stat" name="gold" modifier="27"></x-modify>
-            </x-when>
-        </x-item>
-        <x-when action="look">
-            <x-say>It's a room. Shelves line the north wall.. a family of rats scurry across the floor</x-say>
-        </x-when>
-    </x-scene>
-    <x-scene name="room 37">
-        <x-exits>
-            <x-exit dir="south" leads-to="room 32"></x-exit>
-            <x-exit dir="down" type="stairs" leads-to="room 42"></x-exit>
-        </x-exits>
-        <x-when action="look">
-            <x-say>It's a dark room. The air is musty. a large rat scurry across the floor</x-say>
-        </x-when>
-    </x-scene>
-    <x-scene name="room 38">
-        <x-exits>
-            <x-exit dir="up" leads-to="room 7"></x-exit>
-        </x-exits>
-        <x-item name="iron short sword" class="weapon">
+        <x-item name="iron dagger" class="weapon">
             <x-when action="equip">
-                <x-modify what="%stat" name="strength" modifier="4"></x-modify>
+                <x-modify what="%stat" name="strength" modifier="2"></x-modify>
             </x-when>
         </x-item>
-        <x-when action="look">
-            <x-say>It's a room. The floor is wet. Shelves line the west wall.. a large spider scurry across the floor</x-say>
-        </x-when>
-    </x-scene>
-    <x-scene name="room 39">
-        <x-exits>
-            <x-exit dir="east" leads-to="room 5"></x-exit>
-        </x-exits>
-        <x-when action="look">
-            <x-say>It's a room. The air is damp, hot. The walls are moss covered</x-say>
-        </x-when>
-    </x-scene>
-    <x-scene name="room 40">
-        <x-exits>
-            <x-exit dir="west" leads-to="room 22"></x-exit>
-        </x-exits>
-        <x-npcs>
-            <x-npc character-race="elf" character-class="magic user" character-level="1" character-health="9" character-strength="10" character-speed="16" character-defense="11" character-intelligence="23" character-mana="15"></x-npc>
-        </x-npcs>
-        <x-when action="look">
-            <x-say>It's a dark room. The floor is dirt. Shelves line the north wall.. Scattered well burned candles lie about the shelves.. a large rat dart out of sight</x-say>
-        </x-when>
-    </x-scene>
-    <x-scene name="room 41">
-        <x-exits>
-            <x-exit dir="south" leads-to="room 25"></x-exit>
-        </x-exits>
-        <x-npcs>
-            <x-npc character-race="elf" character-class="thief" character-level="1" character-health="9" character-strength="13" character-speed="20" character-defense="11" character-intelligence="19" character-mana="12"></x-npc>
-        </x-npcs>
-        <x-when action="look">
-            <x-say>It's a dark room. The air is musty</x-say>
-        </x-when>
-    </x-scene>
-    <x-scene name="room 42">
-        <x-exits>
-            <x-exit dir="up" leads-to="room 37"></x-exit>
-        </x-exits>
-        <x-when action="look">
-            <x-say>It's a well lit room. The floor is dirt. Shelves line the east wall.</x-say>
-        </x-when>
-    </x-scene>
-    <x-scene name="room 43">
-        <x-exits>
-            <x-exit dir="up" leads-to="room 0"></x-exit>
-        </x-exits>
         <x-item name="gold" class="treasure">
             <x-when action="take">
-                <x-modify what="%stat" name="gold" modifier="40"></x-modify>
+                <x-modify what="%stat" name="gold" modifier="78"></x-modify>
             </x-when>
         </x-item>
         <x-when action="look">
-            <x-say>It's a room. The walls are rough hewn stone. The floor is stone. Shelves line the north wall.. Scattered rodent excrement lie about the shelves.. a large spider nests in the corner</x-say>
+            <x-say>It's a room. Shelves line the south wall.. a family of rats nests in the corner</x-say>
         </x-when>
     </x-scene>
-    <x-scene name="room 44">
+    <x-scene name="room four one">
         <x-exits>
-            <x-exit dir="north" leads-to="room 15"></x-exit>
-            <x-exit dir="up" type="stairs" leads-to="room 64"></x-exit>
+            <x-exit dir="south" leads-to="room three one"></x-exit>
         </x-exits>
         <x-when action="look">
-            <x-say>It's a room. The air is misty. The floor is stone. Shelves line the east wall.. a few cockroaches scurry across the floor</x-say>
+            <x-say>It's a room. The air is damp, hot. Shelves line the south wall.. a group of mice scurry across the floor</x-say>
         </x-when>
     </x-scene>
-    <x-scene name="room 45">
+    <x-scene name="room four to">
         <x-exits>
-            <x-exit dir="west" leads-to="room 15"></x-exit>
-        </x-exits>
-        <x-when action="look">
-            <x-say>It's a well lit room. a large rat scurry across the floor</x-say>
-        </x-when>
-    </x-scene>
-    <x-scene name="room 46">
-        <x-exits>
-            <x-exit dir="east" leads-to="room 9"></x-exit>
-        </x-exits>
-        <x-item name="gold" class="treasure">
-            <x-when action="take">
-                <x-modify what="%stat" name="gold" modifier="39"></x-modify>
-            </x-when>
-        </x-item>
-        <x-when action="look">
-            <x-say>It's a room. The air is misty. The walls are stained reddish-brown. The floor is dirt. Shelves line the west wall.</x-say>
-        </x-when>
-    </x-scene>
-    <x-scene name="room 47">
-        <x-exits>
-            <x-exit dir="north" leads-to="room 30"></x-exit>
-            <x-exit dir="east" leads-to="room 55"></x-exit>
-        </x-exits>
-        <x-when action="look">
-            <x-say>It's a room. The air is damp, hot. Shelves line the east wall.</x-say>
-        </x-when>
-    </x-scene>
-    <x-scene name="room 48">
-        <x-exits>
-            <x-exit dir="west" leads-to="room 36"></x-exit>
-            <x-exit dir="down" type="stairs" leads-to="room 51"></x-exit>
+            <x-exit dir="down" type="stairs" leads-to="room three to"></x-exit>
         </x-exits>
         <x-npcs>
-            <x-npc character-race="orc" character-class="magic user" character-level="1" character-health="19" character-strength="17" character-speed="12" character-defense="10" character-intelligence="10" character-mana="16"></x-npc>
+            <x-npc character-race="human" character-class="thief" character-level="1" character-health="11" character-strength="12" character-speed="16" character-defense="10" character-intelligence="19" character-mana="10"></x-npc>
         </x-npcs>
         <x-when action="look">
-            <x-say>It's a room. The floor is well-worn wooden planks</x-say>
+            <x-say>It's a dark room. The air is musty. The walls are brick</x-say>
         </x-when>
     </x-scene>
-    <x-scene name="room 49">
+    <x-scene name="room four three">
         <x-exits>
-            <x-exit dir="up" leads-to="room 29"></x-exit>
-        </x-exits>
-        <x-npcs>
-            <x-npc character-race="human" character-class="magic user" character-level="1" character-health="13" character-strength="11" character-speed="10" character-defense="11" character-intelligence="20" character-mana="19"></x-npc>
-        </x-npcs>
-        <x-when action="look">
-            <x-say>It's a dark room. The walls are stained reddish-brown. The floor is well-worn wooden planks</x-say>
-        </x-when>
-    </x-scene>
-    <x-scene name="room 50">
-        <x-exits>
-            <x-exit dir="west" leads-to="room 11"></x-exit>
-        </x-exits>
-        <x-npcs>
-            <x-npc character-race="orc" character-class="fighter" character-level="1" character-health="17" character-strength="18" character-speed="10" character-defense="13" character-intelligence="6" character-mana="13"></x-npc>
-        </x-npcs>
-        <x-when action="look">
-            <x-say>It's a room. The air is damp, hot. The floor is wet. a family of rats dart out of sight</x-say>
-        </x-when>
-    </x-scene>
-    <x-scene name="room 51">
-        <x-exits>
-            <x-exit dir="up" leads-to="room 48"></x-exit>
-        </x-exits>
-        <x-when action="look">
-            <x-say>It's a well lit room. The walls are moss covered</x-say>
-        </x-when>
-    </x-scene>
-    <x-scene name="room 52">
-        <x-exits>
-            <x-exit dir="down" leads-to="room 34"></x-exit>
-            <x-exit dir="south" leads-to="room 54"></x-exit>
-        </x-exits>
-        <x-when action="look">
-            <x-say>It's a well lit room. The air is damp, hot. Shelves line the east wall.</x-say>
-        </x-when>
-    </x-scene>
-    <x-scene name="room 53">
-        <x-exits>
-            <x-exit dir="east" leads-to="room 1"></x-exit>
-            <x-exit dir="up" type="stairs" leads-to="room 59"></x-exit>
+            <x-exit dir="up" type="stairs" leads-to="room to to"></x-exit>
+            <x-exit dir="north" leads-to="room five seven"></x-exit>
         </x-exits>
         <x-item name="wooden short sword" class="weapon">
             <x-when action="equip">
@@ -476,15 +432,89 @@
             </x-when>
         </x-item>
         <x-when action="look">
-            <x-say>It's a room. The air is misty. a family of rats scurry across the floor</x-say>
+            <x-say>It's a dark room. The air is musty. The walls are stained reddish-brown. The floor is well-worn wooden planks</x-say>
         </x-when>
     </x-scene>
-    <x-scene name="room 54">
+    <x-scene name="room four four">
         <x-exits>
-            <x-exit dir="north" leads-to="room 52"></x-exit>
+            <x-exit dir="north" leads-to="room seven"></x-exit>
         </x-exits>
         <x-npcs>
-            <x-npc character-race="elf" character-class="magic user" character-level="1" character-health="10" character-strength="14" character-speed="19" character-defense="10" character-intelligence="24" character-mana="19"></x-npc>
+            <x-npc character-race="human" character-class="thief" character-level="1" character-health="11" character-strength="11" character-speed="19" character-defense="10" character-intelligence="22" character-mana="13"></x-npc>
+        </x-npcs>
+        <x-item name="gold" class="treasure">
+            <x-when action="take">
+                <x-modify what="%stat" name="gold" modifier="10"></x-modify>
+            </x-when>
+        </x-item>
+        <x-when action="look">
+            <x-say>It's a room. The walls are wood paneled</x-say>
+        </x-when>
+    </x-scene>
+    <x-scene name="room four five">
+        <x-exits>
+            <x-exit dir="north" leads-to="room to"></x-exit>
+        </x-exits>
+        <x-when action="look">
+            <x-say>It's a well lit room. The air is damp, hot. The walls are stained reddish-brown. Shelves line the north wall.. Scattered books lie about the shelves.</x-say>
+        </x-when>
+    </x-scene>
+    <x-scene name="room four six">
+        <x-exits>
+            <x-exit dir="south" leads-to="room to seven"></x-exit>
+        </x-exits>
+        <x-item name="iron short sword" class="weapon">
+            <x-when action="equip">
+                <x-modify what="%stat" name="strength" modifier="4"></x-modify>
+            </x-when>
+        </x-item>
+        <x-when action="look">
+            <x-say>It's a room. The air is misty. Shelves line the north wall.. Scattered shards of pottery lie about the shelves.. several spiders nests in the corner</x-say>
+        </x-when>
+    </x-scene>
+    <x-scene name="room four seven">
+        <x-exits>
+            <x-exit dir="west" leads-to="room to to"></x-exit>
+        </x-exits>
+        <x-when action="look">
+            <x-say>It's a room. The air is misty. The walls are brick</x-say>
+        </x-when>
+    </x-scene>
+    <x-scene name="room four eight">
+        <x-exits>
+            <x-exit dir="up" type="stairs" leads-to="room three three"></x-exit>
+            <x-exit dir="south" leads-to="room five three"></x-exit>
+        </x-exits>
+        <x-when action="look">
+            <x-say>It's a well lit room. The walls are rough hewn stone</x-say>
+        </x-when>
+    </x-scene>
+    <x-scene name="room four nine">
+        <x-exits>
+            <x-exit dir="west" leads-to="room three nine"></x-exit>
+        </x-exits>
+        <x-when action="look">
+            <x-say>It's a room. The air is musty. The walls are wood paneled. The floor is well-worn wooden planks. a group of mice scurry across the floor</x-say>
+        </x-when>
+    </x-scene>
+    <x-scene name="room five ">
+        <x-exits>
+            <x-exit dir="down" type="stairs" leads-to="room three three"></x-exit>
+        </x-exits>
+        <x-npcs>
+            <x-npc character-race="human" character-class="thief" character-level="1" character-health="11" character-strength="10" character-speed="18" character-defense="14" character-intelligence="21" character-mana="14"></x-npc>
+            <x-npc character-race="human" character-class="fighter" character-level="1" character-health="13" character-strength="16" character-speed="10" character-defense="14" character-intelligence="15" character-mana="12"></x-npc>
+        </x-npcs>
+        <x-when action="look">
+            <x-say>It's a room. The floor is well-worn wooden planks. Shelves line the north wall.. Scattered well burned candles lie about the shelves.. a large spider scurry across the floor</x-say>
+        </x-when>
+    </x-scene>
+    <x-scene name="room five one">
+        <x-exits>
+            <x-exit dir="down" type="stairs" leads-to="room one four"></x-exit>
+        </x-exits>
+        <x-npcs>
+            <x-npc character-race="orc" character-class="magic user" character-level="1" character-health="17" character-strength="15" character-speed="14" character-defense="10" character-intelligence="12" character-mana="19"></x-npc>
         </x-npcs>
         <x-item name="wooden dagger" class="weapon">
             <x-when action="equip">
@@ -493,151 +523,100 @@
         </x-item>
         <x-item name="gold" class="treasure">
             <x-when action="take">
-                <x-modify what="%stat" name="gold" modifier="73"></x-modify>
+                <x-modify what="%stat" name="gold" modifier="52"></x-modify>
             </x-when>
         </x-item>
         <x-when action="look">
-            <x-say>It's a room. The walls are stained reddish-brown. The floor is stone. Shelves line the south wall.. Scattered rodent excrement lie about the shelves.. a family of rats nests in the corner</x-say>
+            <x-say>It's a room. The walls are rough hewn stone. Shelves line the south wall.. Scattered books lie about the shelves.. several spiders scurry across the floor</x-say>
         </x-when>
     </x-scene>
-    <x-scene name="room 55">
+    <x-scene name="room five to">
         <x-exits>
-            <x-exit dir="west" leads-to="room 47"></x-exit>
-        </x-exits>
-        <x-when action="look">
-            <x-say>It's a dark room. The floor is stone</x-say>
-        </x-when>
-    </x-scene>
-    <x-scene name="room 56">
-        <x-exits>
-            <x-exit dir="east" leads-to="room 26"></x-exit>
-        </x-exits>
-        <x-when action="look">
-            <x-say>It's a room. The air is musty. The walls are rough hewn stone. The floor is dirt</x-say>
-        </x-when>
-    </x-scene>
-    <x-scene name="room 57">
-        <x-exits>
-            <x-exit dir="west" leads-to="room 27"></x-exit>
-        </x-exits>
-        <x-when action="look">
-            <x-say>It's a room. The air is misty. The walls are brick. Shelves line the north wall.. Scattered well burned candles lie about the shelves.</x-say>
-        </x-when>
-    </x-scene>
-    <x-scene name="room 58">
-        <x-exits>
-            <x-exit dir="down" leads-to="room 28"></x-exit>
-        </x-exits>
-        <x-when action="look">
-            <x-say>It's a room. The air is musty. a large rat scurry across the floor</x-say>
-        </x-when>
-    </x-scene>
-    <x-scene name="room 59">
-        <x-exits>
-            <x-exit dir="down" leads-to="room 53"></x-exit>
-        </x-exits>
-        <x-when action="look">
-            <x-say>It's a well lit room. The air is misty. The floor is dirt. Shelves line the south wall.. Scattered books lie about the shelves.</x-say>
-        </x-when>
-    </x-scene>
-    <x-scene name="room 60">
-        <x-exits>
-            <x-exit dir="up" leads-to="room 32"></x-exit>
-            <x-exit dir="south" leads-to="room 69"></x-exit>
-        </x-exits>
-        <x-when action="look">
-            <x-say>It's a well lit room. The air is misty. The floor is stone. a family of rats scurry across the floor</x-say>
-        </x-when>
-    </x-scene>
-    <x-scene name="room 61">
-        <x-exits>
-            <x-exit dir="north" leads-to="room 24"></x-exit>
-        </x-exits>
-        <x-when action="look">
-            <x-say>It's a well lit room. The walls are brick. Shelves line the north wall.</x-say>
-        </x-when>
-    </x-scene>
-    <x-scene name="room 62">
-        <x-exits>
-            <x-exit dir="north" leads-to="room 26"></x-exit>
-        </x-exits>
-        <x-when action="look">
-            <x-say>It's a dark room. The air is musty. The walls are wood paneled. a group of mice nests in the corner</x-say>
-        </x-when>
-    </x-scene>
-    <x-scene name="room 63">
-        <x-exits>
-            <x-exit dir="up" leads-to="room 25"></x-exit>
-            <x-exit dir="south" leads-to="room 65"></x-exit>
-        </x-exits>
-        <x-item name="gold" class="treasure">
-            <x-when action="take">
-                <x-modify what="%stat" name="gold" modifier="86"></x-modify>
-            </x-when>
-        </x-item>
-        <x-when action="look">
-            <x-say>It's a room. The air is musty. The floor is wet. Shelves line the north wall.. Scattered shards of pottery lie about the shelves.</x-say>
-        </x-when>
-    </x-scene>
-    <x-scene name="room 64">
-        <x-exits>
-            <x-exit dir="down" leads-to="room 44"></x-exit>
+            <x-exit dir="south" leads-to="room one seven"></x-exit>
         </x-exits>
         <x-npcs>
-            <x-npc character-race="human" character-class="magic user" character-level="1" character-health="14" character-strength="10" character-speed="14" character-defense="14" character-intelligence="21" character-mana="17"></x-npc>
+            <x-npc character-race="human" character-class="fighter" character-level="1" character-health="13" character-strength="14" character-speed="10" character-defense="12" character-intelligence="18" character-mana="12"></x-npc>
         </x-npcs>
         <x-when action="look">
-            <x-say>It's a well lit room. The floor is dirt. a large rat dart out of sight</x-say>
+            <x-say>It's a room. The air is musty. The walls are brick. The floor is wet. Shelves line the north wall.. a few cockroaches dart out of sight</x-say>
         </x-when>
     </x-scene>
-    <x-scene name="room 65">
+    <x-scene name="room five three">
         <x-exits>
-            <x-exit dir="north" leads-to="room 63"></x-exit>
+            <x-exit dir="north" leads-to="room four eight"></x-exit>
         </x-exits>
         <x-when action="look">
-            <x-say>It's a room. The air is damp, hot. The walls are stained reddish-brown. The floor is dirt. a few cockroaches scurry across the floor</x-say>
+            <x-say>It's a well lit room. The air is musty. The walls are moss covered. The floor is dirt. Shelves line the east wall.. Scattered rodent excrement lie about the shelves.</x-say>
         </x-when>
     </x-scene>
-    <x-scene name="room 66">
+    <x-scene name="room five four">
         <x-exits>
-            <x-exit dir="west" leads-to="room 7"></x-exit>
-        </x-exits>
-        <x-when action="look">
-            <x-say>It's a room. The walls are stained reddish-brown</x-say>
-        </x-when>
-    </x-scene>
-    <x-scene name="room 67">
-        <x-exits>
-            <x-exit dir="east" leads-to="room 32"></x-exit>
+            <x-exit dir="west" leads-to="room three to"></x-exit>
+            <x-exit dir="south" leads-to="room five nine"></x-exit>
         </x-exits>
         <x-item name="gold" class="treasure">
             <x-when action="take">
-                <x-modify what="%stat" name="gold" modifier="40"></x-modify>
+                <x-modify what="%stat" name="gold" modifier="65"></x-modify>
             </x-when>
         </x-item>
         <x-when action="look">
-            <x-say>It's a room. The air is damp, hot. a group of mice dart out of sight</x-say>
+            <x-say>It's a room. The air is misty. The walls are stained reddish-brown. The floor is wet. several spiders scurry across the floor</x-say>
         </x-when>
     </x-scene>
-    <x-scene name="room 68">
+    <x-scene name="room five five">
         <x-exits>
-            <x-exit dir="east" leads-to="room 13"></x-exit>
+            <x-exit dir="west" leads-to="room to one"></x-exit>
         </x-exits>
         <x-item name="gold" class="treasure">
             <x-when action="take">
-                <x-modify what="%stat" name="gold" modifier="73"></x-modify>
+                <x-modify what="%stat" name="gold" modifier="69"></x-modify>
             </x-when>
         </x-item>
         <x-when action="look">
-            <x-say>It's a room. The air is musty. Shelves line the west wall.. Scattered well burned candles lie about the shelves.</x-say>
+            <x-say>It's a dark room. The air is misty. The walls are rough hewn stone. several spiders dart out of sight</x-say>
         </x-when>
     </x-scene>
-    <x-scene name="room 69">
+    <x-scene name="room five six">
         <x-exits>
-            <x-exit dir="north" leads-to="room 60"></x-exit>
+            <x-exit dir="south" leads-to="room four "></x-exit>
         </x-exits>
         <x-when action="look">
-            <x-say>It's a room. The air is damp, hot. The floor is dirt</x-say>
+            <x-say>It's a room. The air is misty. The floor is wet. Shelves line the east wall.. several spiders nests in the corner</x-say>
+        </x-when>
+    </x-scene>
+    <x-scene name="room five seven">
+        <x-exits>
+            <x-exit dir="south" leads-to="room four three"></x-exit>
+        </x-exits>
+        <x-when action="look">
+            <x-say>It's a dark room. The air is musty. The floor is stone. several spiders dart out of sight</x-say>
+        </x-when>
+    </x-scene>
+    <x-scene name="room five eight">
+        <x-exits>
+            <x-exit dir="south" leads-to="room to five"></x-exit>
+        </x-exits>
+        <x-npcs>
+            <x-npc character-race="human" character-class="fighter" character-level="1" character-health="11" character-strength="16" character-speed="12" character-defense="12" character-intelligence="15" character-mana="14"></x-npc>
+        </x-npcs>
+        <x-when action="look">
+            <x-say>It's a room. The air is musty. a group of mice scurry across the floor</x-say>
+        </x-when>
+    </x-scene>
+    <x-scene name="room five nine">
+        <x-exits>
+            <x-exit dir="north" leads-to="room five four"></x-exit>
+        </x-exits>
+        <x-npcs>
+            <x-npc character-race="human" character-class="thief" character-level="1" character-health="12" character-strength="11" character-speed="15" character-defense="11" character-intelligence="19" character-mana="13"></x-npc>
+        </x-npcs>
+        <x-item name="gold" class="treasure">
+            <x-when action="take">
+                <x-modify what="%stat" name="gold" modifier="89"></x-modify>
+            </x-when>
+        </x-item>
+        <x-when action="look">
+            <x-say>It's a dark room. The walls are wood paneled</x-say>
         </x-when>
     </x-scene>
 </x-area>

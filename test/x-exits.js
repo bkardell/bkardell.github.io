@@ -1,4 +1,14 @@
 class ExitsElement extends StoryItemElement {
+    static reverse (dir) {
+        return {
+                'north': 'south',
+                'south': 'north',
+                'east': 'west',
+                'west': 'east',
+                'up': 'down',
+                'down': 'up'
+            }[dir]
+    }
 
     get announcement () {
         let first = true,
@@ -29,6 +39,10 @@ class ExitsElement extends StoryItemElement {
 
     findExit (dir) {
         return this.querySelector(`x-exit[dir="${dir}"]`)
+    }
+
+    findReverseExit (element) {
+        return this.findExit(ExitsElement.reverse(element.direction))
     }
 
     eachExit (fn) {
@@ -63,20 +77,33 @@ class ExitElement extends StoryItemElement {
         return this.querySelectorAll('x-exit:not([hidden]')
     }
 
+    get hasBeenFollowed () {
+        return this.hasAttribute('hasBeenFollowed')
+    }
+
+    set hasBeenFollowed (b = true) {
+        return this.setAttribute('hasBeenFollowed', '')
+    }
+
     get announcement () {
         if (!this.isHidden) {
-            if (this.type == 'door') {
-                return `a door to the ${this.direction}`
-            } else if (this.type == 'stairs') {
-               return `stairs going ${this.direction}`
-            } else {
-                return `an exit to the ${this.direction}`
+            if (!this.isHidden) {
+                let announceable = (this.hasBeenFollowed) ? ` leading to ${this.leadsTo} ` : ''
+
+                if (this.type == 'door') {
+                    return `a door to the ${this.direction} ${announceable}`
+                } else if (this.type == 'stairs' || this.type == 'steps') {
+                   return `stairs going ${this.direction} ${announceable}`
+                } else {
+                    return `an exit to the ${this.direction} ${announceable}`
+                }
             }
         }
     }
 
     followExit () {
-        this.area.getScene(this.leadsTo).enter()
+        this.hasBeenFollowed = true
+        this.area.getScene(this.leadsTo).enter(this)
     }
 
     connectedCallback () {
