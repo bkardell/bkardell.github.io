@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Grrblivion REMIX: The Audio Scrolls</title>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/seedrandom/2.3.10/seedrandom.min.js"></script>
+        <script src="../core.js"></script>
+        <script src="../characters.js"></script>
+        <script src="../story-item.js"></script>
+        <script src="../x-npc.js"></script>
+        <script src="make.js"></script>
+        <script src="https://cdn.rawgit.com/beautify-web/js-beautify/v1.6.14/js/lib/beautify-html.js"></script>
+        <style>x-inventory { display: none; }
+            #out {
+                display: block;
+                width: 95vw;
+                height: 100vh;
+                border: none;
+                margin-top: 1rem;
+            }
+            body > *:not(#out) { display: none; }
+
+        </style>
+    </head>
+    <body>
+        <room-descriptions>
+            <x-desc type="chamber">
+            The manacles set into the walls of this room give you the distinct impression that it was used as a prison and torture chamber, although you can see no evidence of torture devices. One particularly large set of manacles -- big enough for an ogre -- have been broken open.</x-desc>
+            <x-desc>A crack in the ceiling above the middle of the one wall allows a trickle of water to flow down to the floor. The water pools near the base of the wall, and a rivulet runs along the wall an out into the hall. The water smells fresh.</x-desc>
+            <x-desc type="chamber">This chamber was clearly smaller at one time, but something knocked down the wall that separated it from an adjacent room. Looking into that space, you see signs of another wall knocked over. It doesn't appear that anyone made an effort to clean up the rubble, but some paths through see more usage than others.</x-desc>
+
+            <x-desc type="room">In the center of this large room lies a 30-foot-wide round pit, its edges lined with rusting iron spikes. About 5 feet away from the pit's edge stand several stone semicircular benches. The scent of sweat and blood lingers, which makes the pit's resemblance to a fighting pit or gladiatorial arena even stronger.</x-desc>
+
+            <x-desc type="room">A pit yawns open before you just on the other side of the door's threshold. The entire floor of the room has fallen into a second room beneath it. Across the way you can spy a door in the wall now 15 feet off the rubble-strewn floor, and near the center of the room stands a thick column of mortared stone that appears to hold the spiral staircase that leads down to what was the lower level.</x-desc>
+
+            <x-desc type="chamber">Corpses and pieces of corpses hang from hooks that dangle from chains attached to thick iron rings. Most appear humanoid but a few of the body parts appear more monstrous. You don't see any heads, hands, or feet -- all seem to have been chopped or torn off. Neither do you see any guts in the horrible array, but several thick leather sacks hang from hooks in the walls, and they are suspiciously wet and the leather looks extremely taut -- as if it' under great strain.</x-desc>
+
+            <x-desc type="chamber">The chamber walls have been disguised by wood paneling, and the stone ceiling and floor are hidden by bright marble tiles. Several large and well-stuffed chairs are arranged about the room along with some small reading tables.</x-desc>
+
+            <x-desc type="tomb">This room is a tomb. Stone sarcophagi stand in five rows of three, each carved with the visage of a warrior lying in state. In their center, one sarcophagus stands taller than the rest. Held up by six squat pillars, its stone bears the carving of a beautiful woman who seems more asleep than dead. The carving of the warriors is skillful but seems perfunctory compared to the love a sculptor must have lavished upon the lifelike carving of the woman.</x-desc>
+
+            <x-desc type="hall">Many small desks with high-backed chairs stand in three long rows in this room. Each desk has an inkwell, book stand, and a partially melted candle in a rusting tin candleholder. Everything is covered with dust. </x-desc>
+
+            <x-desc type="chamber">You inhale a briny smell like the sea as you crack open the door to this chamber. Within you spy the source of the scent: a dark and still pool of brackish water within a low circular wall. Above it stands a strange statue of a lobster-headed and clawed woman. The statue is nearly 15 feet tall and holds the lobster claws crossed over its naked breasts.</x-desc>
+
+            <x-desc type="hovel">Fire crackles and pops in a small cooking fire set in the center of the room. The smoke from a burning rat on a spit curls up through a hole in the ceiling. Around the fire lie several fur blankets and a bag. It looks like someone camped here until not long ago, but then left in a hurry.</x-desc>
+
+            <x-desc type="room">The white orb of a skull lies on the floor. Suddenly a stone falls from the ceiling and smashes the skull to pieces. An instant later, another stone from the ceiling drops to strike the floor and shatter. You hear a low rumbling and cracking noise. </x-desc>
+
+            <x-desc type="armory">Rough fighting circles are scratched into the surface of the floor. Wooden fighting dummies stand waiting for someone to attack them. A few punching bags hang from the ceiling. There's something peculiar about it all though. Every dummy is stocky and each has a bedraggled piece of leather hanging from its head that could be a long mask or a beard.</x-desc>
+
+            <x-desc type="hall">This hall stinks with the wet, pungent scent of mildew. Black mold grows in tangled veins across the walls and parts of the floor. Despite the smell, it looks like it might be safe to travel through. A path of stone clean of mold wends its way through the hallway.</x-desc>
+
+            <x-desc type="chamber">Neither light nor darkvision can penetrate the gloom in this chamber. An unnatural shade fills it, and the room's farthest reaches are barely visible. Near the room's center, you can just barely perceive a lump about the size of a human lying on the floor. </x-desc>
+
+            <x-desc type="utility room">This small room is lined with benchlike seats on all the walls. The seats all have holes in their top, like a privy. Facing stones on the front of the benches prevent you from seeing how deep the holes go. It looks like a communal bathroom. </x-desc>
+
+            <x-desc type="store room">The strong, sour-sweet scent of vinegar assaults your nose as you enter this room. Sundered casks and broken bottle glass line the walls of this room. Clearly this was someone's wine cellar for a time. The shards of glass are somewhat dusty, and the spilled wine is nothing more than a sticky residue in some places.</x-desc>
+
+            <x-desc type="corridor">A flurry of bats suddenly flaps through the doorway, their screeching barely audible as they careen past your heads. They flap past you into the rooms and halls beyond.</x-desc>
+
+            <x-desc type="library">Several tapestries decorate the walls of this room. Although they may once have been brilliant in hue, they now hang in graying tatters. Despite the damage of time and neglect, you can perceive once-grand images of wizards' towers, magical beasts, and symbols of spellcasting. </x-desc>
+
+            <x-desc type="library">Unlike the flagstone common throughout the dungeon, this room is walled and floored with black marble veined with white. The ceiling is similarly marbled, but the thick pillars that hold it up are white. A brown stain drips down one side of a nearby pillar.</x-desc>
+
+        </room-descriptions>
+        <items-catalog>
+            <x-item name="wooden dagger" class="weapon">
+                <x-when action="equip">
+                    <x-modify what="%stat" name="strength" modifier="1"></x-modify>
+                </x-when>
+            </x-item>
+            <x-item name="wooden short sword" class="weapon">
+                <x-when action="equip">
+                    <x-modify what="%stat" name="strength" modifier="2"></x-modify>
+                </x-when>
+            </x-item>
+            <x-item name="iron dagger" class="weapon">
+                <x-when action="equip">
+                    <x-modify what="%stat" name="strength" modifier="2"></x-modify>
+                </x-when>
+            </x-item>
+            <x-item name="iron short sword" class="weapon">
+                <x-when action="equip">
+                    <x-modify what="%stat" name="strength" modifier="4"></x-modify>
+                </x-when>
+            </x-item>
+        </items-catalog>
+        <textarea id="out">Generating...</textarea>
+
+        <script>
+
+
+        let area = document.createElement('x-area'),
+            numScenes = 10,
+            numNoiseScenes = 50,
+            numScenesWithEncounters = 10,
+            numTreasures = 10,
+            idCounter = 0,
+            dirs = ['north', 'south', 'east', 'west', 'up', 'down'],
+            chooseRoomType = () => {
+                return random.itemIn(['room', 'hovel', 'corridor',  'tomb', 'hall', 'library', 'store room', 'utility room', 'chamber', 'anteroom', 'armory'])
+            },
+            chooseRoomName = (type = null) => {
+                return `room ${idCounter++}`
+            },
+            reverseDir = {
+                'north': 'south',
+                'south': 'north',
+                'east': 'west',
+                'west': 'east',
+                'up': 'down',
+                'down': 'up'
+            },
+            createExit = (dir, leadsTo) => {
+                let el = document.createElement('x-exit')
+                el.setAttribute('dir', dir)
+                if (/up|down/.test(dir)) {
+                    el.setAttribute('type', 'stairs')
+                }
+                el.setAttribute('leads-to', leadsTo)
+                return el
+            },
+            createScene = (connectingExit = null, terminal = false) => {
+                    // we're always gonna create a scene
+                let scene = document.createElement('x-scene'),
+
+                    // we're always gonna choose a 'type' for this scene
+                    roomType = chooseRoomType(),
+
+                    // the newly created room always gets an exits child so make that
+                    exits = document.createElement('x-exits'),
+
+                    // the room needs a name
+                    roomName = (connectingExit) ? connectingExit.getAttribute('leads-to') : chooseRoomName(roomType),
+
+                    // all exits are possible places we could make an exit to
+                    possibleExitDirections = dirs.slice(0),
+
+                    // we'll pick a default here
+                    exitDir = random.itemIn(possibleExitDirections),
+
+                    ret = {}
+
+
+                    // if we're connecting from, then the opposite of that way has to be linked/excluded
+                    if (connectingExit) {
+                        possibleExitDirections = dirs.filter((dir) => { return dir !== reverseDir[connectingExit.getAttribute(dir)] })
+                        exitDir = random.removeItemIn(possibleExitDirections)
+                        exits.appendChild(
+                            createExit(
+                                exitDir,
+                                chooseRoomName()
+                            )
+                        )
+                    }
+
+                    if (!terminal) {
+                        ret.exit = createExit(
+                            random.removeItemIn(possibleExitDirections),
+                            chooseRoomName()
+                        )
+                        exits.appendChild(ret.exit)
+                    }
+
+                    scene.setAttribute('type', roomType)
+                    scene.setAttribute('name', roomName)
+                    scene.appendChild(exits)
+                    ret.scene = scene
+
+                    return ret
+            }
+            lastDir = '',
+            entersFrom = '',
+            newLeadsTo = null
+
+            random.randomScene = () => {
+                return random.itemIn(area.querySelectorAll('x-scene'))
+            }
+
+            let lastSceneInfo = {}
+
+            // this creates the 'happy path trail'
+            for (let i=0; i < numScenes; i++) {
+                lastSceneInfo = createScene(lastSceneInfo.exit, i == numScenes.length-1)
+                area.appendChild(lastSceneInfo.scene)
+            }
+
+            for (let i=0; i < numNoiseScenes; i++) {
+                let scene = random.randomScene(),
+                    possibleExits = dirs.slice(0)
+
+                scene.querySelectorAll('x-exit').forEach((exit) => {
+                    let foundI = possibleExits.indexOf(exit.getAttribute('dir'))
+                    possibleExits.splice(foundI, 1)
+                })
+
+
+                if (possibleExits.length === 0) {
+                    // hmm
+                } else {
+                    let newExit = document.createElement('x-exit'),
+                        newExitDir = random.itemIn(possibleExits),
+                        newSceneName = chooseRoomName()
+
+                    newExit.setAttribute('dir', newExitDir)
+                    if (/up|down/.test(newExitDir)) {
+                        newExit.setAttribute('type', 'stairs')
+                    }
+                    newExit.setAttribute('leads-to', newSceneName)
+
+                    scene.querySelector('x-exits').appendChild(newExit)
+
+                    let newScene = document.createElement('x-scene')
+                    newScene.setAttribute("name", newSceneName)
+                    newScene.innerHTML = `
+                        <x-exits>
+                            <x-exit dir="${reverseDir[newExitDir]}" leads-to="${scene.getAttribute('name')}"></x-exit>
+                        </x-exits>
+                    `
+                    area.appendChild(newScene)
+                }
+
+            }
+
+            for (let i=0; i < numScenesWithEncounters; i++) {
+                let scene = random.randomScene(),
+                    npcsEl = scene.querySelector('x-npcs')
+
+                if (!npcsEl) {
+                    npcsEl = document.createElement('x-npcs')
+                    scene.appendChild(npcsEl)
+                }
+
+                npcsEl.appendChild(document.createElement("x-npc"))
+            }
+
+            let itemCatalogEl = document.querySelector('items-catalog')
+
+            for (let i=0; i < numTreasures; i++) {
+                let temp = document.createElement('div')
+                temp.innerHTML = `
+                    <x-item name="gold" class="treasure">
+                        <x-when action="take">
+                            <x-modify what="%stat" name="gold" modifier="${random.intBetween(1,100)}"></x-modify>
+                        </x-when>
+                    </x-item>
+                `
+                itemCatalogEl.appendChild(temp.firstElementChild)
+
+
+            }
+
+
+            document.querySelectorAll('items-catalog>x-item').forEach((item) => {
+                let scenes = area.querySelectorAll('x-scene'),
+                    scene = scenes[random.intBetween(0, scenes.length)]
+
+                scene.appendChild(item)
+            })
+
+            random.shuffle(area.querySelectorAll('x-scene')).forEach((scene) => {
+
+                    let whenEl = document.createElement('x-when'),
+                        sceneType = scene.getAttribute('type'),
+                        descs =  random.shuffle(document.querySelectorAll(`x-desc[type="${sceneType}"]`))
+
+                    if (descs.length > 1) {
+                        let desc = descs.pop()
+
+                        whenEl.setAttribute('action', 'look')
+
+                        whenEl.innerHTML = `
+                            <x-say>${desc.innerHTML}</x-say>
+                        `
+                        scene.appendChild(whenEl)
+                        desc.parentElement.removeChild(desc)
+                    } else {
+                        whenEl.setAttribute('action', 'look')
+                        whenEl.innerHTML = `
+                            <x-say>It's ${createDesc(sceneType || 'room')}</x-say>
+                        `
+                        scene.appendChild(whenEl)
+                    }
+                })
+
+
+
+            // 0 is the start, last is the goal
+
+            document.body.appendChild(area)
+
+        </script>
+        <script>
+            setTimeout(() => {
+                let outEl = document.querySelector('#out')
+
+                outEl.innerHTML = html_beautify(document.querySelector('x-area').outerHTML)
+
+            },1000)
+
+        </script>
+
+    </body>
+</html>

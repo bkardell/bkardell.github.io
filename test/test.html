@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Grrblivion: The Audio Scrolls</title>
+        <script src="core.js"></script>
+        <script src="characters.js"></script>
+        <script src="listen2.js"></script>
+        <script src="elements.js"></script>
+        <script src="x-exits.js"></script>
+        <script src="x-items.js"></script>
+        <script src="x-when.js"></script>
+        <style>x-inventory { display: none; }
+            #out {
+                display: block;
+                width: 95vw;
+                height: 50vh;
+                border: none;
+                margin-top: 1rem;
+            }
+        </style>
+    </head>
+    <body>
+        <label>Now what?
+            <input id="in">
+        </label>
+        <textarea id="out"></textarea>
+        <x-player health="10">
+            <x-inventory id="player-inventory"></x-inventory>
+        </x-player>
+
+        <script>
+            let area = null,
+                areaPromise
+
+            //todo: need a generic when handler
+
+            const outEl = document.querySelector('#out'),
+                  inEl = document.querySelector('#in'),
+                  maxInParty = 1,
+                  playerEl = document.querySelector('x-player'),
+                  inventoryEl = document.querySelector('#player-inventory'),
+                  Jarvis = new VActor(/UK.*Male/, ''),
+                  matcher = (pattern, ...names) => {
+                    let re = new RegExp(pattern)
+                    return {
+                        match: (str) => {
+                            let result = str.match(re)
+
+                            if (!result) {
+                              return []
+                            }
+
+                            let ret = { text: str }
+                            result.forEach((match, i) => {
+                                 if (i > 0) {
+                                    ret[names[i-1]] = match
+                                 }
+                              })
+                              return ret;
+                        }
+                    }
+                  },
+                  setOut = (output) => {
+                    outEl.value = output.replace(/^\s*|\t*/gm, '')
+                    inEl.disabled = true
+                    Jarvis.say(output).then(() => {
+                        console.log('........')
+                        inEl.disabled = false
+                        inEl.focus()
+                    })
+                  },
+                  tryApplyModifiers = (el, reverse = false) => {
+                    let buff = []
+                    el.querySelectorAll('[modifier]').forEach((statEl) => {
+                        let statName = statEl.getAttribute('name'),
+                            currentVal = parseInt(playerEl.getAttribute(statName) || "0", 10),
+                            modifier = parseInt(statEl.getAttribute("modifier"),10)
+
+                        if (reverse) {
+                            modifier = modifier * -1
+                        }
+
+                        buff.push(`Your ${statName} ${(modifier > 0) ? 'increases' : 'decreases'} by ${modifier}`)
+                        playerEl.setAttribute(statName, currentVal + modifier)
+                    })
+                    return buff.join('\n')
+                  },
+                  story = (function () {
+                    let currentLocation = null,
+                        turnsSinceLastEncouter = 0,
+                        oppositeDirs = {
+                            'north': 'south',
+                            'east': 'west',
+                            'south': 'north',
+                            'west': 'east',
+                            'up': 'down',
+                            'down': 'up'
+                        },
+                        setCharacterAttrs = (characterEl, character) => {
+                            characterEl.setAttribute('character-class', character.characterClass)
+                            characterEl.setAttribute('character-race', character.race)
+                            characterEl.setAttribute('character-level', character.level)
+                        },
+                        npcsForRoom = (roomEl) => {
+                            var npcEls = currentLocation.querySelectorAll('x-npc')
+                            npcEls.forEach((npcEl) => {
+                                if (!npcEl.npc) {
+                                    // TODO: allow you to specify something about it
+                                    npcEl.npc = randoCharacter(1, 0.5)
+                                    setCharacterAttrs(npcEl, npcEl.npc)
+                                }
+                            })
+                            return npcEls
+                        },
+                        onFirstEnterRoom = (roomEl) => {
+                            let turnsModifier = ((5 - turnsSinceLastEncouter) > 1) ? (5 - turnsSinceLastEncouter) : 1
+                            if (random.intBetween(0, turnsModifier) == 0) {
+                                let npcsEl = roomEl.querySelector('x-npcs')
+                                if (!npcsEl) {
+                                    npcsEl = document.createElement('x-npcs')
+                                    roomEl.appendChild(npcsEl)
+                                }
+
+                                for (let i=1; i < maxInParty; i++) {
+                                    let npcEl = document.createElement('x-npc')
+                                    npcsEl.appendChild(npcEl)
+                                }
+                                turnsSinceLastEncouter = 0
+                            } else {
+                                turnsSinceLastEncouter++
+                            }
+                            let firstEnterEl = roomEl.querySelector('[current-location]>[event="first-entered"]:not([visited])')
+                            if (firstEnterEl) {
+                                roomEl.announceQueue = roomEl.announceQueue || []
+                                let whatToOutput = firstEnterEl.getAttribute('say')
+                                if ( whatToOutput === '' ) {
+                                    whatToOutput = firstEnterEl.innerText
+                                }
+                                roomEl.announceQueue.push(whatToOutput)
+                            }
+                            roomEl.setAttribute('visited', '')
+                        },
+                        enterRoom = (newRoom) => {
+                            if (currentLocation) {
+                                currentLocation.removeAttribute('currentLocation')
+                                newRoom.setAttribute('currentLocation', '')
+                            }
+                            if (!newRoom.hasAttribute('visited')) {
+                                onFirstEnterRoom(newRoom)
+                            }
+                            currentLocation = newRoom
+                            _story.announceScene(newRoom)
+                        }
+                        followExit = (connectionEl) => {
+                            let newRoom = area.querySelector(`x-scene[name="${connectionEl.getAttribute('leads-to')}"]`)
+                            enterRoom(newRoom)
+                        },
+                        getSayText = (el, name) => {
+                            if (!el) {
+                                return (`I don't see a '${name}'.`)
+                            } else {
+                                let whatToOutput = el.getAttribute('say')
+                                if ( whatToOutput === '' ) {
+                                    whatToOutput = el.innerText
+                                }
+                                return (`${whatToOutput}`)
+                            }
+                        },
+                        getOrCreateLocationItemsEl = () => {
+                            let items = currentLocation.querySelector('x-items')
+                            if (!items) {
+                                return currentLocation.appendChild(document.createElement('x-items'))
+                            }
+                            return items
+                        },
+                        getExitsText = (room) => {
+                            let first = true,
+                                inventoryEl,
+                                buff = [],
+                                intro = 'There is '
+
+                            room.querySelectorAll('x-exit').forEach((exitEl) => {
+                                if (exitEl.getAttribute('type') == 'door') {
+                                    buff.push(`${intro} a door to the ${exitEl.getAttribute('dir')}`)
+                                } else if (exitEl.getAttribute('type') == 'stairs') {
+                                    if (first) {
+                                        intro = 'There are'
+                                    }
+                                    buff.push(`${intro} stairs going ${exitEl.getAttribute('dir')}`)
+                                } else {
+                                    buff.push(`${intro} an exit to the ${exitEl.getAttribute('dir')}`)
+                                }
+                                if (first) {
+                                    first = false
+                                    intro = ', '
+                                }
+                            })
+                            if (buff.length > 1) {
+                                temp = buff.pop()
+                                buff.push(' and ')
+                                buff.push(temp)
+                            }
+                            return buff.join(' ')
+                        }
+                        _story = {
+                            announceScene: (sel) => {
+                                let npcs = npcsForRoom(currentLocation),
+                                    npcsBuff = [],
+                                    npc
+
+
+                                if (npcs.length > 1) {
+                                    //TODO need to figure out multiple npcs
+                                } else if (npcs.length == 1) {
+                                    npc = npcs[0].npc
+                                    npcsBuff.push(`There is a level ${npc.level} ${npc.race} ${npc.characterClass} here.`)
+                                }
+                                setOut(
+                                    `You're standing in ${currentLocation.getAttribute('name')}.
+                                    ${(currentLocation.announceQueue || []).join('\n')}
+                                    ${npcsBuff.join(' ')}`)
+
+                                //TODO: this needs to be just basic pattern, set out is really wrong
+                                // we should be queing
+                               delete currentLocation.announceQueue
+                            },
+                            attack: (what) => {
+                                // for now we'll keep it basic and just assume there is one and attack means them
+                                const npc = npcsForRoom()[0].npc
+                                playerEl.player.attack(npc, (result) => {
+                                    if (result.isDead) {
+                                        whatToSay = `The enemy has been vanquished. Their lifeless form lies at your feet.`
+                                    } else {
+                                        if (result.type == 'hit') {
+                                            if (result.damage > 0) {
+                                                whatToSay = `The enemy has been hit, dealing ${result.damage} damage.`
+                                            } else {
+                                                whatToSay += `Your attack grazes harmlessly dealing no real damage`
+                                            }
+                                        } else {
+                                            whatToSay = `You've missed entirely.`
+                                        }
+                                        whatToSay += ".... Their turn. "
+                                        npc.attack(playerEl.player, (result) => {
+                                            if (result.isDead) {
+                                                whatToSay = `You have been killed. R.I.P.`
+                                            } else {
+                                                if (result.type == 'hit') {
+                                                    if (result.damage > 0) {
+                                                        whatToSay += `Ouch. Shit. The enemy's blow deals ${result.damage} damage.`
+                                                    } else {
+                                                        whatToSay += `The enemy's blow grazes harmlessly dealing no damage`
+                                                    }
+                                                } else {
+                                                    whatToSay += `Their attack misses entirely.`
+                                                }
+                                            }
+                                        })
+                                    }
+                                })
+                                setOut(whatToSay)
+                            },
+                            go: (dir) => {
+                                let exit = currentLocation.querySelector(`x-exit[dir=${dir}]`)
+                                if (exit) {
+                                    let state = exit.getAttribute('state')
+                                    if (exit.hasAttribute('openable') &&  state !== 'open') {
+                                        setOut(`The ${exit.getAttribute('type')} is ${state}`)
+                                    } else {
+                                        followExit(exit)
+                                    }
+                                } else {
+                                    setOut(`There is no exit to the ${dir}`)
+                                }
+                            },
+                            look: (atWhat) => {
+                                let el,
+                                    temp,
+                                    buff = []
+
+                                if (atWhat && atWhat !== "around") {
+                                    let atWhatEl = currentLocation.querySelector(`x-item[name*="${atWhat}"]`)
+
+                                    if (atWhatEl && !atWhatEl.querySelector(`[say]`)) {
+                                        setOut(`There's not really anything interesting about it, it's just a ${atWhat}`)
+                                    } else {
+                                        setOut(
+                                            getSayText(
+                                                currentLocation.querySelector(
+                                                    `x-item[name*="${atWhat}"] x-when[action="look"][say]`
+                                                )
+                                                ,
+                                                atWhat
+                                            )
+                                        )
+                                    }
+                                } else {
+                                    el = currentLocation.querySelector('x-when[action="look"][say]')
+                                    buff.push(getSayText(el, atWhat))
+                                    if (el.parentElement.matches('x-scene')) {
+                                        buff.push(`\n ${getExitsText(el.parentElement)}`)
+                                    }
+                                    setOut(buff.join(` `))
+                                }
+                            },
+                            open: (what) => {
+                                let openable = currentLocation.querySelector(`[openable][type=${what}]`)
+                                if (openable) {
+                                    let leadsTo = openable.getAttribute('leads-to')
+
+                                     openable.setAttribute('state', 'open')
+                                     if (leadsTo) {
+                                        let dir = openable.getAttribute('dir')
+                                        leadsTo = area.querySelector(`x-scene[name="${leadsTo}"] x-exit[dir="${oppositeDirs[dir]}"]`)
+                                        leadsTo.setAttribute('state', 'open')
+                                    }
+                                    setOut(`You open the ${what}`)
+                                } else {
+                                    setOut(`There's no ${what} here`)
+                                }
+                            },
+                            compare: (what) => {
+                                // naievely assuming the only things to compare are you and a single npc for now
+                                let ourIndex = what.indexOf('our'),
+                                    startIndex = (ourIndex>=0) ? ourIndex + 3 : 0,
+                                    it = what.substring(startIndex, what.length).replace('stats', '').replace('statistics', '').trim(),
+                                    player = playerEl.player,
+                                    npc
+
+                                let npcEls = npcsForRoom()
+                                if (npcEls.length == 0 && player[it]) {
+                                    setOut(`There is no one here to compare to, but you have ${player[it]} ${it}`)
+                                    return
+                                }
+                                npc = npcEls[0].npc
+                                if (player[it]) {
+                                    setOut(`You have ${player[it]} ${it}. The ${npc.race} has ${npc[it]}.`)
+                                } else {
+                                    setOut(`${it} is not a statistic I understand`)
+                                }
+                            },
+                            take: (what) => {
+                                let thingEl = currentLocation.querySelector(`x-item [name*="${what}"],x-item[name*="${what}"]`)
+                                if (thingEl) {
+                                    if (!thingEl.hasAttribute(`untakeable-because`)) {
+                                        inventoryEl.appendChild(thingEl)
+                                        thingEl.removeAttribute('relationship')
+
+                                        setOut(`
+                                            Ok, you take the ${what}.
+                                            ${tryApplyModifiers(thingEl.querySelector('[action="take"]'))}`)
+                                    } else {
+                                        setOut(`You can't, ${thingEl.getAttribute('untakeable-because')}`)
+                                    }
+                                } else {
+                                    setOut(`I don't see a ${what} here.`)
+                                }
+
+                            },
+                            drop: (what) => {
+                                let thingEl = inventoryEl.querySelector(`x-item [name*="${what}"],x-item[name*="${what}"]`)
+                                if (thingEl) {
+                                    getOrCreateLocationItemsEl().appendChild(thingEl)
+
+                                    setOut(`
+                                            Ok, you drop the ${what}.
+                                            ${tryApplyModifiers(thingEl.querySelector('[action="take"]'), true)}`)
+
+                                } else {
+                                    setOut(`You're not carrying a ${what}.`)
+                                }
+
+                            },
+                            read: (what) => {
+                                let thingEl = currentLocation.querySelector(`x-item [name*="${what}"] [action="read"]`) ||
+                                              inventoryEl.querySelector(`x-item [name*="${what}"] [action="read"]`)
+
+                                if (thingEl) {
+                                    setOut(getSayText(thingEl, what))
+                                } else {
+                                    setOut(`There isn't a ${what} to read.`)
+                                }
+                            },
+                            describe: (what) => {
+                                if (/exits/.test(what)) {
+                                    setOut(getExitsText(currentLocation))
+                                } else {
+                                    setOut(`I don't know how to describe ${what}`)
+                                }
+
+                            },
+                            alias: (method, methodName) => {
+                                story[methodName] = method
+                            }
+                        }
+                    playerEl.player = randoCharacter()
+                    setCharacterAttrs(playerEl, playerEl.player)
+
+                    areaPromise = fetch('map.html').then((resp) => {
+                        return resp.text().then((source) => {
+                            let temp = document.createElement('x-story')
+                            temp.innerHTML = source
+                            area = temp.firstElementChild
+                            window.xarea = area
+                            document.head.appendChild(temp)
+                        }).catch((e ) => {
+                            console.error(e)
+                        })
+                    })
+
+                    Jarvis.whenReady(() => {
+                        areaPromise.then(() => {
+                            enterRoom(area.querySelector('x-area > x-scene[current-location]'))
+                            Jarvis.whenYouHear('.*', (heard) => {
+                                inEl.value = heard
+                                inEl.onchange()
+                            })
+                        })
+
+                    })
+                    return _story
+                }())
+
+                // we need this to build itself dynamically so like maybe
+                // (${story.room.listObjects}) and (${story.room.listCharacters})
+                // or maybe this should be tree-like so that there is only a single test for 'take'?
+                let dict = [
+                  matcher("(attack).*(orc|fighter|enemy|character|npc)", "action", "identifier"),
+                  matcher("(talk).*(orc|fighter|enemy|character|npc)", "action", "identifier"),
+                  matcher("(take).*(note|paper|sword)", "action", "identifier"),
+                  matcher("(go|walk|proceed).*(north|south|east|west|up|down)", "action", "direction")
+                ]
+
+                let parseIn = (str) => {
+                  var result
+                  dict.find((toTest) => {
+                    result = toTest.match(str)
+                    return result.text
+                  })
+                  return result
+                }
+
+                /*
+                    {
+                       when: matcher("go.*"),
+                       then: (story, inps) => {
+                           story.go(inps.direction)
+                       }
+
+                    }
+                */
+
+                inEl.onchange = (evt) => {
+                    const op = inEl.value.split(' ')[0].toLowerCase()
+
+                    console.log(parseIn(inEl.value))
+                    // ok, let's flush out mapping/routing
+
+                    let method = story[op]
+
+                    if (!method) {
+                        method = story[inEl.value.trim()]
+                    }
+
+                    if (method) {
+
+                        let atWhat = inEl.value.replace(new RegExp(Object.keys(story).join("|"), 'i'), '').replace(/at|the/g, '').trim()
+
+                        method(atWhat)
+                    } else {
+                        setOut(`I don't understand ${inEl.value}`)
+                    }
+
+                    inEl.value = ""
+                }
+
+                /* TODO: stop listening when this isn't the active tab
+                document.addEventListener('visibilitychange', (evt) => {
+                    if (document[hidden]) {
+                        visibilitychangecb = new Promise(resolve, reject) {
+
+                        }
+                    }
+                })
+                */
+
+
+
+
+        </script>
+    </body>
+</html>
