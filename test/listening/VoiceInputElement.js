@@ -57,8 +57,10 @@ class XVoiceInputElement extends HTMLElement {
 			    let target = this.referenceElement
 			   	let trimmedWhat = (what) ? what.trim() : ''
 			    if (target && trimmedWhat) {
-			    	target.value = what
-	            	target.dispatchEvent(new InputEvent('change'))
+			    	let evt = document.createEvent("HTMLEvents");
+				    evt.initEvent("change", false, true);
+				    target.value = what
+	            	target.dispatchEvent(evt)
 			    }
 			})
 
