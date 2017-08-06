@@ -54,6 +54,7 @@ class BasicVoiceSpeaker {
 	              utterThis.voice = voice
 	              if (voice.voiceURI) {
 	              	utterThis.voiceURI = voice.voiceURI
+	              	utterThis.lang = voice.lang
 	              }
 	              console.log(`promising `, shortText)
 	              utterThis.onend = () => {
