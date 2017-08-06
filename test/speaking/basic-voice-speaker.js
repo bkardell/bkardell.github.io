@@ -52,6 +52,9 @@ class BasicVoiceSpeaker {
 	              utterThis.pitch = 1
 	              utterThis.rate = 1.2
 	              utterThis.voice = voice
+	              if (voice.voiceURI) {
+	              	utterThis.voiceURI = voice.voiceURI
+	              }
 	              console.log(`promising `, shortText)
 	              utterThis.onend = () => {
 	                  console.log(`done speaking, resolving..`, shortText)
