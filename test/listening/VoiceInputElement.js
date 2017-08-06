@@ -42,6 +42,7 @@ class XVoiceInputElement extends HTMLElement {
 
 			shadowRoot.querySelector('.toggler')
 					.addEventListener('click', (evt) => {
+
 						if (this.isListening()) {
 							this.stopListening()
 						} else {

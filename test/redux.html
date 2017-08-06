@@ -48,38 +48,56 @@
     </head>
     <body>
         <h1>Grrblivion</h1>
-        <x-voice-listener autostart>
-            <input type="text">
-        </x-voice-listener>
+        <template id="thegame">
+            <div>
+                <x-voice-listener autostart>
+                    <input type="text">
+                </x-voice-listener>
 
-        <x-speaker voice=".*UK.*Male">
-        </x-speaker>
+                <x-speaker voice=".*UK.*Male">
+                </x-speaker>
 
-        <script>
-           let inputElement = document.querySelector('input'),
-                outputElement = document.querySelector('x-speaker'),
-                story = document.querySelector('x-story'),
-                mainRules = new TextRules()
+                <script>
+                   let inputElement = document.querySelector('input'),
+                        outputElement = document.querySelector('x-speaker'),
+                        story = document.querySelector('x-story'),
+                        mainRules = new TextRules()
 
-           inputElement.addEventListener('change', () => {
-                let input = inputElement.value.trim()
+                   inputElement.addEventListener('change', () => {
+                        let input = inputElement.value.trim()
 
-                // to echo
-                //outputElement.innerHTML = input
-                inputElement.value = ''
+                        // to echo
+                        //outputElement.innerHTML = input
 
-                story.interpret(input).then((out) => {
-                    //if (typeof out === 'string') {
+
+                        inputElement.disabled = true
+                        story.interpret(input).then((out) => {
+                            outputElement.innerHTML = story.flush()
+                        })
+                   })
+
+                   outputElement.addEventListener('finished-speaking', () => {
+                        inputElement.disabled = false
+                        inputElement.value = ''
+                        inputElement.focus()
+                   })
+
+                   setTimeout(() => {
                         outputElement.innerHTML = story.flush()
-                    //}
-                })
-           })
-
-           setTimeout(() => {
-                outputElement.innerHTML = story.flush()
-           }, 1000)
+                   }, 1000)
 
 
+                </script>
+            </div>
+        </template>
+        <button id="letsplay">Let's play</button>
+        <script>
+            let playBtn = document.querySelector('#letsplay'),
+                gameTemplate = document.querySelector('#thegame')
+
+            playBtn.onclick = () => {
+                playBtn.parentElement.replaceChild(gameTemplate.content,playBtn)
+            }
         </script>
     </body>
 </html>
