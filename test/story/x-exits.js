@@ -13,27 +13,30 @@ class ExitsElement extends StoryItemElement {
     get announcement () {
         let first = true,
             buff = [],
-            intro = 'There is '
+            intro = '<p>There is</p><ul>'
 
         this.eachExit((exitEl) => {
             let str = exitEl.announcement
             if (str) {
                 if (first && !/^a|an/.test(str)) {
-                    intro = 'There are '
+                    intro = '<p>There are</p><ul>'
                 }
-                buff.push(`${intro} ${str}`)
+                buff.push(`${intro} <li>${str}</li>`)
                 if (first) {
                     first = false
-                    intro = ', '
+                    intro = ''
                 }
             }
         })
         first = false
         if (buff.length > 1) {
-            let temp = buff.pop()
-            buff.push(' and ')
-            buff.push(temp)
+
+            buff[buff.length-1] = buff[buff.length-1].replace(`<li>`, `<li>and `)
+            //let temp = buff.pop()
+            //buff.push(' and ')
+            //buff.push(temp)
         }
+        buff.push('</ul>')
         return buff.join(' ')
     }
 
@@ -50,7 +53,7 @@ class ExitsElement extends StoryItemElement {
     }
 
     connectedCallback() {
-       console.log('fired')
+       //console.log('fired')
     }
 
 

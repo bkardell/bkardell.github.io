@@ -5,7 +5,8 @@ class SceneElement extends StoryItemElement {
     }
 
     enter (exit = null) {
-        if (!this.isVisited) {
+        let isFirstVisit = !this.isVisited
+        if (isFirstVisit) {
             let evt = new Event('sceneFirstEntered', {
                 scene: this,
                 bubbles: true,
@@ -21,6 +22,7 @@ class SceneElement extends StoryItemElement {
         })
         evt.scene = this
         evt.fromExit = exit
+        evt.isFirstVisit = isFirstVisit
 
         this.dispatchEvent(evt)
     }
@@ -31,6 +33,7 @@ class SceneElement extends StoryItemElement {
         this.querySelectorAll('x-npc').forEach((npcEl) => {
             set.add(npcEl.character.class)
             set.add(npcEl.character.race)
+            set.add(npcEl.name)
         })
         return Array.from(set).join('|')
     }
@@ -62,7 +65,7 @@ class SceneElement extends StoryItemElement {
     }
 
     get isVisited() {
-        return this.querySelector('[visited]')
+        return this.matches('[visited]')
     }
 
     findNpc (which) {
@@ -74,15 +77,20 @@ class SceneElement extends StoryItemElement {
             this.appendChild(new NPCListElement())
         }
 
-
         this.addEventListener('sceneEntered', (evt) => {
             this.parentElement.currentLocation = evt.target
             if (evt.fromExit) {
                 this.exits.findReverseExit(evt.fromExit).hasBeenFollowed = true
             }
-            this.story.queue(this.getAttribute('name') + ".")
-            this.story.queue(this.exits.announcement)
-            this.story.queue(this.npcs.announcement)
+            if (evt.isFirstVisit) {
+                this.story.queue(`<h2 class="roomName">${this.getAttribute('name')}.</h2>`)
+                this.fire('look')
+            } else {
+
+                this.story.queue(`<h2 class="roomName">${this.getAttribute('name')}.</h2>`)
+                this.story.queue(this.exits.announcement)
+                this.story.queue(this.npcs.announcement)
+            }
         })
     }
 }

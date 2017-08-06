@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Grrblivion REDUX</title>
+        <!-- script src="https://rawgit.com/systemjs/systemjs/master/dist/system.js"></script-->
+
+        <!-- storage stuff -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/localforage/1.5.0/localforage.min.js"></script>
+
+        <!-- polyfills/prolly stuff -->
+        <script src="util/document-state-polys.js"></script>
+        <script src="util/selectors.js"></script>
+
+        <!-- speech stuff -->
+        <script src="listening/basic-voice-listener.js"></script>
+        <script src="listening/pausable-voice-listener.js"></script>
+        <script src="speaking/basic-voice-speaker.js"></script>
+        <script src="speaking/listener-pausing-speaker.js"></script>
+        <script src="speaking/SpeakerElement.js"></script>
+        <script src="listening/VoiceInputElement.js"></script>
+
+
+        <!-- core game engine stuff -->
+        <script src="util/text-processing.js"></script>
+        <script src="util/core.js"></script>
+        <script src="util/characters.js"></script>
+
+
+        <script src="story/x-story-redux.js"></script>
+        <script src="story/story-item.js"></script>
+        <script src="story/x-area.js"></script>
+        <script src="story/x-scene.js"></script>
+        <script src="story/x-exits.js"></script>
+        <script src="story/x-items.js"></script>
+        <script src="story/x-when.js"></script>
+        <script src="story/x-player.js"></script>
+        <script src="story/x-npc.js"></script>
+        <style>x-inventory { display: none; }
+            x-speaker {
+                display: block;
+                width: 95vw;
+                height: 50vh;
+                border: none;
+                margin-top: 1rem;
+            }
+        </style>
+        <x-story current-area="gen-map.html"></x-story>
+    </head>
+    <body>
+        <h1>Grrblivion</h1>
+        <x-voice-listener autostart>
+            <input type="text">
+        </x-voice-listener>
+
+        <x-speaker voice=".*UK.*Male">
+        </x-speaker>
+
+        <script>
+           let inputElement = document.querySelector('input'),
+                outputElement = document.querySelector('x-speaker'),
+                story = document.querySelector('x-story'),
+                mainRules = new TextRules()
+
+           inputElement.addEventListener('change', () => {
+                let input = inputElement.value.trim()
+
+                // to echo
+                //outputElement.innerHTML = input
+                inputElement.value = ''
+
+                story.interpret(input).then((out) => {
+                    //if (typeof out === 'string') {
+                        outputElement.innerHTML = story.flush()
+                    //}
+                })
+           })
+
+           setTimeout(() => {
+                outputElement.innerHTML = story.flush()
+           }, 1000)
+
+
+        </script>
+    </body>
+</html>

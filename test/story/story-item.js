@@ -12,12 +12,13 @@ class StoryItemElement extends HTMLElement {
         return this.hasAttribute('hidden')
     }
 
-    fire (name) {
+    fire (name, then) {
         let evt = new Event(name, {
             scene: this,
             bubbles: true,
             cancelable: true
         })
+        evt.then = then
         this.dispatchEvent(evt)
     }
 

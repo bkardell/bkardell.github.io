@@ -5,6 +5,7 @@
 */
 
 class PlayerElement extends StoryItemElement {
+
 	static create () {
 		let player = document.createElement('x-player')
 		player.character = randoCharacter()
@@ -18,6 +19,25 @@ class PlayerElement extends StoryItemElement {
 		return player
 	}
 
+    constructor() {
+        super()
+        let rules = this.rules = new TextRules()
+        rules.on(/stats/, () => {
+            let it = this.statsAnnouncement
+            this.story.queue(it)
+            return it
+        })
+        rules.on({
+          expression: '(.*)',
+          captures: ['stat']
+        }, (captured) => {
+            let it = this.getStat(captured.stat)
+            this.story.queue(it)
+            return it
+        })
+
+    }
+
     go (dir) {
     	let exit = this.story.area.currentLocation.exits.findExit(dir)
     	if (exit) {
@@ -26,6 +46,24 @@ class PlayerElement extends StoryItemElement {
     		this.story.queue(`I see no exit ${dir}`)
     	}
 
+    }
+
+    getStat (stat) {
+        return `You have ${this.getAttribute('character-' + stat)} ${stat}`
+    }
+
+    get statsAnnouncement () {
+        let buff = [`<p>
+            You are a Level ${this.getAttribute('character-level')} ${this.getAttribute('character-race')} ${this.getAttribute('character-class')}.
+            You have: </p><ul>`
+        ]
+        Array.from(this.attributes).forEach((attr) => {
+            if (!/character-level|character-race|character-class/.test(attr.name)) {
+                buff.push(`<li>${attr.value} ${attr.name.replace('character-', '')}</li>`)
+            }
+        })
+        buff.push(`</ul>`)
+        return buff.join('\n')
     }
 
     attack (npcEl) {
@@ -43,7 +81,7 @@ class PlayerElement extends StoryItemElement {
                         whatToSay += `Your attack grazes harmlessly dealing no real damage`
                     }
                 } else {
-                    whatToSay = `You've missed entirely.`
+                    whatToSay = `You've missed ${random.itemIn(['entirely', 'completely', ''])}.`
                 }
                 whatToSay += ".... Their turn. "
                 npc.attack(player, (result) => {
@@ -52,12 +90,12 @@ class PlayerElement extends StoryItemElement {
                     } else {
                         if (result.type == 'hit') {
                             if (result.damage > 0) {
-                                whatToSay += `Ouch. Shit. The enemy's blow deals ${result.damage} damage.`
+                                whatToSay += `Ouch. Shite! The enemy's blow deals ${result.damage} damage.`
                             } else {
                                 whatToSay += `The enemy's blow grazes harmlessly dealing no damage`
                             }
                         } else {
-                            whatToSay += `Their attack misses entirely.`
+                            whatToSay += `Their attack misses ${random.itemIn(['entirely', 'completely', ''])}.`
                         }
                     }
                 })

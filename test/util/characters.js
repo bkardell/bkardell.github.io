@@ -39,6 +39,7 @@ let characterRaces = [ {
 							race: characterRace,
 							class: characterClass,
 							level: level,
+							experience: 0,
 							health: random.intBetween(10, 15, generalModifier),
 							strength: random.intBetween(10, 15, generalModifier),
 							speed: random.intBetween(10, 15, generalModifier),
@@ -46,14 +47,14 @@ let characterRaces = [ {
 							intelligence: random.intBetween(10, 15, generalModifier) ,
 							mana: random.intBetween(10, 15, generalModifier),
 							attack: (otherChar, onResult) => {
-								let c = 50 + ((attrs.speed / otherChar.speed) * 10),
+								let c = 60 + ((attrs.speed / otherChar.speed) * 10),
 								    hit = random.chance(c, 100)
 
 								if (hit) {
 									// need to know how hard now..
 									let strengthOfHit = random.intBetween(0, attrs.strength),
 									    protection = Math.floor(otherChar.defense/2),
-									    damage = strengthOfHit - protection
+									    damage = strengthOfHit - protection + (random.intBetween(0,2)) // help
 
 									damage = (damage >= 0) ? damage : 0
 									otherChar.health -= damage

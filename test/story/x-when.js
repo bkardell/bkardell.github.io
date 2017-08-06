@@ -10,21 +10,26 @@ customElements.define('x-say', SayElement)
 class ModifyElement extends StoryItemElement {
 	do () {
 		let attrToRemove = this.getAttribute('removeAttribute'),
-			target = (this.getAttribute('what'))
+			target = (this.getAttribute('what')),
+			attName = this.getAttribute('name'),
+			modifier = this.getAttribute('modifier')
 
 		if (target == '%stat') {
-
-			let statName = this.getAttribute('name'),
-				modifier = this.getAttribute('modifier'),
-				verb = (modifier.trim().charAt(0) == "-") ? 'decreased' : 'increased'
+			let verb = (modifier.trim().charAt(0) == "-") ? 'decreased' : 'increased'
 
 			// TODO: get the player and actually modify something
-			this.story.queue(`Your ${statName} is ${verb} by ${modifier}`)
+
+			this.story.queue(`Your ${attName} is ${verb} by ${modifier}`)
 		} else {
 			let toMod = this.story.querySelectorAll(target)
 			toMod.forEach((el) => {
 				if (attrToRemove) {
 					el.removeAttribute(attrToRemove)
+				}
+
+				if (modifier) {
+					let oldValue =  parseInt(el.getAttribute(attName) || 0, 10)
+					el.setAttribute(attName, oldValue + parseInt(modifier, 10))
 				}
 			})
 		}
@@ -68,23 +73,35 @@ class RuleElement extends StoryItemElement {
 	    	let story = this.story,
 	    		children = Array.from(this.children),
 	    		action = this.getAttribute('action') || this.getAttribute('event'),
-	    		closestAttachable = this.parentElement.closest('x-item,x-scene,x-player')
+	    		closestAttachable = this.parentElement.closest('x-item,x-scene,x-player,x-npc'),
+	    		test = () => {
+	    			let filter = this.getAttribute('filter')
+	    			if (filter) {
+	    				return this.story._querySelector(filter)
+	    			}
+	    			return true
+	    		}
 
-	    	console.log('added event listener to ', closestAttachable, action)
+	    	//console.log('added event listener to ', closestAttachable, action)
 	    	closestAttachable.addEventListener(
 	    		action,
 	    		(evt) => {
 	    			if (this.isPropagationStoppingAction(action)) {
 	    				evt.stopPropagation()
 	    			}
-	    			children.forEach((doable) => {
-	    				if (doable.do) {
-	    					doable.do()
-	    				}
-	    			})
-	    			if (action == 'look') {
-	   		     		story.queue(story.area.currentLocation.exits.announcement)
-	    			}
+
+	    			if (test()) {
+		    			children.forEach((doable) => {
+		    				if (doable.do) {
+		    					doable.do()
+		    				}
+		    			})
+		    			if (action == 'look') {
+		    				// this should probably be a method somewhere, it's also in scene
+		   		     		story.queue(story.area.currentLocation.exits.announcement)
+		   		     		story.queue(story.area.currentLocation.npcs.announcement)
+		    			}
+		    		}
 	    		}
 	    	)
 	    }
