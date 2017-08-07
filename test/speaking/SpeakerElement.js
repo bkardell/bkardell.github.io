@@ -46,7 +46,7 @@ class XSpeakerElement extends HTMLElement {
 
     connectedCallback() {
         let voice = this.getAttribute('voice') || 'UK.*Female',
-            speakerRegExp = new RegExp(voice),
+            speakerRegExp = new RegExp(voice, 'i'),
             shadowRoot = this.attachShadow({
                 mode: 'open'
             })
