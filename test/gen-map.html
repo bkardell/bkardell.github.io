@@ -1,7 +1,35 @@
 <x-area>
     <x-scene type="utility room" name="room one">
         <x-items>
-            <x-item name="shelves" untakeable-because="they are attached"></x-item>
+            <x-item name="shelves" untakeable-because="they are attached">
+                <x-when action="look">
+                    <x-say>On the shelves you find two potions of healing labelled 'weak potion' and 'strong potion'.</x-say>
+                </x-when>
+                 <x-item name="weak potion" id="potion123" relationship="on">
+                    <x-when action="look">
+                        <x-say>It's an amazing thing to behold.</x-say>
+                    </x-when>
+                    <x-when action="drink" filter="#potion123[used]">
+                        <x-say>You already drank it.</x-say>
+                    </x-when>
+                    <x-when action="drink" filter="#potion123:not([used])">
+                        <x-say>You feel a little better.</x-say>
+                         <x-modify what="%stat" name="health" modifier="1"></x-modify>
+                         <x-modify what="#potion123" name="used" modifier="1"></x-modify>
+                    </x-when>
+                </x-item>
+                <x-item name="strong potion" id="potion234" relationship="on" usable-times="1">
+                    <x-when action="look">
+                        <x-say>It's like the weak potion... But... more.</x-say>
+                    </x-when>
+                    <x-when action="use">
+                         <x-say>You feel a lot better.</x-say>
+                         <x-modify what="%stat" name="health" modifier="10"></x-modify>
+                         <x-modify what="#potion234" name="used" modifier="1"></x-modify>
+                    </x-when>
+                </x-item>
+            </x-item>
+
         </x-items>
         <x-exits>
             <x-exit dir="east" leads-to="room to"></x-exit>

@@ -52,6 +52,16 @@ class PlayerElement extends StoryItemElement {
         return `You have ${this.getAttribute('character-' + stat)} ${stat}`
     }
 
+
+    get actionsMatcher () {
+        let set = new Set()
+
+        this.querySelectorAll('x-when').forEach((item) => {
+            set.add(item.action)
+        })
+        return Array.from(set).join('|')
+    }
+
     get statsAnnouncement () {
         let buff = [`<p>
             You are a Level ${this.getAttribute('character-level')} ${this.getAttribute('character-race')} ${this.getAttribute('character-class')}.
@@ -137,6 +147,7 @@ class InventoryElement extends StoryItemElement {
 		}
 		this.story.queue(`You are carrying: \n${buff.join(".\n")}`)
 	}
+
 
 	get itemsMatcher () {
         let set = new Set()

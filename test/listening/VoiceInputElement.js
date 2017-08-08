@@ -9,17 +9,18 @@ class XVoiceInputElement extends HTMLElement {
 	}
 
 	stopListening () {
-		this._voiceListener.pause()
+		//this._voiceListener.pause()
 		this._voiceListener.stop()
 		this.removeAttribute('listening')
 		this.shadowRoot.querySelector('.toggler').innerHTML = `Listen`
 	}
 
 	startListening () {
-		this._voiceListener.unpause()
-		this._voiceListener.start()
-		this.setAttribute('listening', '')
-		this.shadowRoot.querySelector('.toggler').innerHTML = `Don't Listen`
+		if (!this._voiceListener.isPaused) {
+			this._voiceListener.start()
+			this.setAttribute('listening', '')
+			this.shadowRoot.querySelector('.toggler').innerHTML = `Don't Listen`
+		}
 	}
 
 	constructor() {
@@ -28,8 +29,11 @@ class XVoiceInputElement extends HTMLElement {
 
 	connectedCallback() {
 		let checkAutoStart = () => {
-				if (this.hasAttribute('autostart') && this.referenceElement) {
+				let hasAttribute = this.hasAttribute('autostart')
+				if (hasAttribute && this.referenceElement) {
 					this.startListening()
+				} else if (!hasAttribute){
+					this._voiceListener.isPaused = true
 				}
 			},
 			observer = new MutationObserver((mutations) => {
@@ -38,21 +42,23 @@ class XVoiceInputElement extends HTMLElement {
 			shadowRoot = this.attachShadow({mode: 'open'})
 			shadowRoot.innerHTML = `
 				<slot></slot>
-				<button class="toggler" aria-label="toggle recognition"></button>`
+				<button class="toggler" aria-label="toggle recognition">Listen</button>`
 
 			shadowRoot.querySelector('.toggler')
 					.addEventListener('click', (evt) => {
 
 						if (this.isListening()) {
+							this._voiceListener.pause()
 							this.stopListening()
 						} else {
+							this._voiceListener.unpause()
 							this.startListening()
 						}
 						console.log(evt, this)
 					})
 
 
-			this._voiceListener = window._voiceListener //new BasicVoiceListener()
+			this._voiceListener = window._voiceListener
 			this._voiceListener.addEventListener('heard', (what) => {
 			    let target = this.referenceElement
 			   	let trimmedWhat = (what) ? what.trim() : ''

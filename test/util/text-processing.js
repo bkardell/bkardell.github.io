@@ -151,6 +151,7 @@ class TextRules {
           cb
         })
       }
+      return this
     }
 
     process (textInput) {

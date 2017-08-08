@@ -64,6 +64,18 @@ class ItemElement extends StoryItemElement {
                 whenEl.innerHTML = `<x-say>You cannot, ${untakeable}</x-say>`
                 this.appendChild(whenEl)
             } else {
+                this.addEventListener('use', (evt) => {
+                    let timesLeft = this.getNumericAttribute('usable-times')
+                    if((timesLeft-1) < 0) {
+                        this.story.queue(`You've already used the ${this.announcement}. There's nothing left.`)
+                    } else {
+                        this.story.queue(`Ok. You use the ${this.announcement}.`)
+                        setTimeout(() => {
+                            this.modifyNumericAttribute('usable-times', -1)
+                        })
+                    }
+                    evt.stopPropagation()
+                })
                 this.addEventListener('take', (evt) => {
                     this.removeAttribute('relationship')
                     this.story.queue(`Ok. You take the ${this.announcement}.`)

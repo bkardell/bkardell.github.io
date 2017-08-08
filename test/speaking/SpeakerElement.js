@@ -36,7 +36,7 @@ class XSpeakerElement extends HTMLElement {
                             self.dispatchEvent(evt)
                         })
                     } else {
-                    	self.dispatchEvent('finished-speaking')
+                    	self.dispatchEvent(evt)
                     }
                 }, 250)
             })
@@ -50,11 +50,14 @@ class XSpeakerElement extends HTMLElement {
             shadowRoot = this.attachShadow({
                 mode: 'open'
             })
+
+
+        this.shouldSpeak = this.hasAttribute('autostart')
+
         shadowRoot.innerHTML = `
 			<div style="width: 85%; float: left; border: 1px solid red"><slot></slot></div>
-			<button class="toggler" aria-label="toggle speech">Don't Speak!</button>`
+			<button class="toggler" aria-label="toggle speech">${ (this.shouldSpeak) ? `Don't` : ``} Speak!</button>`
 
-        this.shouldSpeak = true
         shadowRoot.querySelector('.toggler')
             .addEventListener('click', (evt) => {
                 if (this.shouldSpeak) {

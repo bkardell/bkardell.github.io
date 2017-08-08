@@ -14,10 +14,14 @@ class ModifyElement extends StoryItemElement {
 			attName = this.getAttribute('name'),
 			modifier = this.getAttribute('modifier')
 
+	   	// TODO: rewrite using modify on story item element
 		if (target == '%stat') {
 			let verb = (modifier.trim().charAt(0) == "-") ? 'decreased' : 'increased'
 
-			// TODO: get the player and actually modify something
+			let player = this.story.player,
+				oldValue =  parseInt(player.getAttribute(`character-${attName}`) || 0, 10)
+
+			player.setAttribute(`character-${attName}`, oldValue + parseInt(modifier, 10))
 
 			this.story.queue(`Your ${attName} is ${verb} by ${modifier}`)
 		} else {
@@ -75,7 +79,12 @@ class RuleElement extends StoryItemElement {
 	    		action = this.getAttribute('action') || this.getAttribute('event'),
 	    		closestAttachable = this.parentElement.closest('x-item,x-scene,x-player,x-npc'),
 	    		test = () => {
-	    			let filter = this.getAttribute('filter')
+	    			let filter = this.getAttribute('filter'),
+	    				isConsumable = closestAttachable.hasAttribute('usable-times')
+
+					if (isConsumable && closestAttachable.getNumericAttribute('usable-times') <= 0) {
+						return false
+					}
 	    			if (filter) {
 	    				return this.story._querySelector(filter)
 	    			}

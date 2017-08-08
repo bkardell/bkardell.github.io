@@ -86,7 +86,6 @@ class SceneElement extends StoryItemElement {
                 this.story.queue(`<h2 class="roomName">${this.getAttribute('name')}.</h2>`)
                 this.fire('look')
             } else {
-
                 this.story.queue(`<h2 class="roomName">${this.getAttribute('name')}.</h2>`)
                 this.story.queue(this.exits.announcement)
                 this.story.queue(this.npcs.announcement)

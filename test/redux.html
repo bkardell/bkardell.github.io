@@ -51,7 +51,7 @@
         <!-- E 79 1004 -->
         <template id="thegame">
             <div>
-                <x-voice-listener autostart>
+                <x-voice-listener>
                     <input type="text">
                 </x-voice-listener>
 
@@ -74,6 +74,8 @@
                         inputElement.disabled = true
                         story.interpret(input).then((out) => {
                             outputElement.innerHTML = story.flush()
+                        }).catch((e) => {
+                            outputElement.innerHTML = `Sorry, I didn't understand that.`
                         })
                    })
 
@@ -91,13 +93,33 @@
                 </script>
             </div>
         </template>
-        <button id="letsplay">Let's play</button>
+        <div id="letsplay">
+            <style>
+                #letsplay { padding: 2rem; }
+                #letsplay label { display: block; }
+                #letsplay button { margin-top: 1rem; }
+            </style>
+            <label id="setup-listen">Let me speak to the game by default <input type="checkbox"></label>
+            <label id="setup-speak">Speak to me default <input type="checkbox" ></label>
+            <button>Let's play</button>
+        </div>
         <script>
-            let playBtn = document.querySelector('#letsplay'),
+            let intro = document.querySelector('#letsplay'),
+                playBtn = intro.querySelector('button'),
                 gameTemplate = document.querySelector('#thegame')
 
             playBtn.onclick = () => {
-                playBtn.parentElement.replaceChild(gameTemplate.content,playBtn)
+
+                let listenPref = intro.querySelector('#setup-listen input').checked,
+                    speakPref = intro.querySelector('#setup-speak input').checked
+
+                if (listenPref) {
+                    gameTemplate.content.querySelector('x-voice-listener').setAttribute('autostart', '')
+                }
+                if (speakPref) {
+                    gameTemplate.content.querySelector('x-speaker').setAttribute('autostart', '')
+                }
+                intro.parentElement.replaceChild(gameTemplate.content,intro)
             }
         </script>
     </body>
