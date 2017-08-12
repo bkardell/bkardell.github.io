@@ -1,0 +1,955 @@
+<html lang="en" resource-type="blogpost"><head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@briankardell">
+    <meta name="twitter:creator" content="@briankardell">
+    <meta name="twitter:title" content="Greetings, Professor Falken: Web Speech APIs Part I">
+    <meta name="twitter:description" content="There's a long, rich history of humans figuring out how to make computers talk and listen, and nearly as long as there has been a W3C there have been efforts to get 'speech' into t">
+    
+    <link rel="alternate" type="application/rss+xml" href="blog/feed.rss" title="bkardell.com/blog rss feed">
+    <title>Greetings, Professor Falken: Web Speech APIs Part I</title>
+    <style>.captioned-image {
+    background-color: #eaeaea;
+    display: block;
+    overflow: hidden;
+    padding: 1rem;
+    text-align: center;
+    font-style: italic;
+}
+
+.captioned-image.p-attached {
+    width: 40%;
+    display: inline-block;
+    margin: 0 1rem 2rem 1rem;
+}
+
+section > .captioned-image.p-attached {
+    margin-top: 1.5rem; /* correct for heading size*/
+}
+
+ pre { overflow-x: auto }
+
+.captioned-image.p-attached.p-attached-left {
+    float: left;
+}
+
+.captioned-image.p-attached.p-attached-right {
+    float: right;
+}
+
+.captioned-image.p-attached + * + * {
+    clear: both;
+    margin-top: 2rem;
+}
+
+
+.captioned-image img, .captioned-image video {
+    display: block;
+    max-width: 100%;
+    margin: 0 auto 1em auto;
+}
+.source {
+    font-style: italic;
+}
+body {
+    display: flex;
+    font: 1em "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-weight: 300;
+    line-height: 1.625;
+}
+h1 { margin: 0.5rem; }
+code-format {
+    border-left: 0.5rem solid rgba(123,115,209,0.35);
+    display: block;
+    padding: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+contextual-heading {
+    display: block;
+    margin-top: 2rem;
+}
+
+[aria-level="1"] {
+    color: #43686b;
+    font-size: 1.45rem;
+}
+[aria-level="2"] {
+    color: #856363;
+    font-size: 1.35rem;
+}
+[aria-level="3"] {
+    color: #856363;
+    font-size: 1.25rem;
+}
+[aria-level="4"] {
+    color: #856363;
+    font-size: 1.2rem;
+}
+[aria-level="5"], [aria-level="6"] {
+    color: #667496;
+    font-size: 1.1rem;
+    font-weight: bolder;
+}
+.posted-on {
+    font-style: italic;
+    font-size: 0.8rem;
+    text-align: right;
+    margin-bottom: 1rem;
+}
+
+ul, li {
+    margin: 0.5rem;
+    text-align: left;
+}
+header {
+    padding-top: 1rem;
+    padding-right: 2rem;
+    background-color: #fbf5e9;
+}
+.tagline {
+    font-style: italic;
+    text-align: center;
+}
+
+[tag-esc] {
+    color: maroon;
+    font-family: Courier, "Lucida Console", monospace;
+}
+
+[tag-esc]::before {
+    content: '<';
+}
+
+[tag-esc]::after {
+    content: '>';
+}
+
+main {
+    min-width: 50%;
+    width: 80%;
+    padding: 1rem;
+}
+header .title {
+    background-color: rgba(123,115,209,0.35);
+    padding: 0.3rem;
+    padding-left: 0.25rem;
+    font-weight: bolder;
+    font-size: 0.9rem;
+    border-left: 1rem solid #999298;
+}
+
+header .profile {
+    width: 50%;
+    margin: 1rem 25%;
+}
+
+header .title + nav {
+    font-size: 0.9rem;
+}
+
+header .blurb {
+    font-size: 0.75rem;
+    text-align: center;
+}
+header .name {
+    text-align: center;
+    font-size: xx-large;
+}
+.segue {
+    font-style: italic;
+}
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  border: 0;
+}
+[for="aboutMeToggle"] {
+    display: none;
+}
+/* this needs rethinking, it wants a selector like 'not flow content' */
+article>*:not(contextual-heading,a), section>*:not(contextual-heading,a) {
+    margin-left: 0.45rem;
+}
+
+blockquote {
+  font-family: serif;
+  background: #f9f9f9;
+  border-left: 10px solid #ccc;
+  margin: 1.5em 10px;
+  padding: 0.5em 10px;
+}
+blockquote:before {
+  color: #ccc;
+  content: open-quote;
+  font-size: 2em;
+  line-height: 0.1em;
+  margin-right: 0.25em;
+  vertical-align: -0.4em;
+}
+
+blockquote:after {
+  color: #ccc;
+  content: close-quote;
+  font-size: 2em;
+  line-height: 0.1em;
+  margin-left: 0.25em;
+  vertical-align: -0.4em;
+}
+
+
+@media (max-width: 800px){
+    body {
+        flex-direction: column;
+    }
+    header {
+        border-bottom: 1px solid #afafff;
+    }
+
+    .captioned-image.p-attached {
+        width: 100%;
+        margin: 1rem 0;
+    }
+
+    .captioned-image.p-attached.p-attached-left,
+    .captioned-image.p-attached.p-attached-right {
+        float: none;
+    }
+
+    [for="aboutMeToggle"] {
+        background-color: #675e5e;
+        color: white;
+        padding: 0.25rem;
+        padding-left: 0.5rem;
+        display: block;
+        border-left: 1rem solid black;
+    }
+    #aboutMeToggle:focus + [for="aboutMeToggle"]{
+        outline: 4px solid #c6ddf2;
+    }
+
+    #aboutMeToggle:checked ~ header {
+        display: none;
+    }
+
+    header li { display: inline; margin-left: -0.5em; }
+    header .blurb li::after { content: '; '; }
+    header  nav li {
+        display: inline-block;
+        margin-left: 0.35rem;
+        margin-right: 0.35rem;
+    }
+    header .title {
+        width: 100%;
+    }
+    main li .source { display: block; }
+
+}</style>
+    <style>
+      .captioned-image { font-size: 0.9rem; }
+      .thanksTo { font-style: italic; font-size: 0.8rem; }
+    </style>
+    <script>
+      var activateOptional = function (media) {
+        var source = media.getAttribute('data-src'),
+            temp,
+            container = media.parentElement;
+
+          if (media.nextSibling && media.nextSibling.matches) {
+            if (media.nextSibling.matches('.clickToSee')) {
+              media.parentElement.removeChild(media.nextSibling);
+            }
+          }
+
+          if (media.tagName === 'VIDEO') {
+            temp = document.createElement('video')
+            temp.setAttribute('autoplay','')
+            temp.setAttribute('controls','')
+            temp.setAttribute('loop','')
+            temp.innerHTML = '<source src="' + source + '.webm" type="video/webm">'
+                    + '<source src="' + source + '.mp4" type="video/mp4">';
+            media.parentElement.replaceChild(temp, media);
+            setTimeout(function () {
+              temp.play()
+            }, 0);
+          } else {
+            media.src = media.getAttribute('data-src');
+          }
+
+          container.classList.add('active');
+      }
+    </script>
+  </head>
+  <body>
+    <input id="aboutMeToggle" class="sr-only" type="checkbox" checked="">
+<label for="aboutMeToggle">Toggle author information</label>
+<header>
+    <div class="name">
+        Brian Kardell
+    </div>
+    <img class="profile" src="/profile.jpg" alt="">
+    <div class="tagline"><a href="/">Betterifying the Web</a></div>
+    <div class="blurb">
+        <ul>
+            <li>Sr Front-End Engineer at Apollo Group, Inc</li>
+            <li>Original Co-author/Co-signer of The Extensible Web Manifesto</li>
+            <li>Co-Founder/Chair, W3C Extensible Web CG</li>
+            <li>Member, W3C (The JS Foundation)</li>
+            <li>Co-author of HitchJS</li>
+            <li>Blogger</li>
+            <li>Art, Science &amp; History Lover</li>
+            <li>Standards Geek</li>
+        </ul>
+    </div>
+    <div class="title">Follow Me On...</div>
+    <nav>
+        <ul>
+            <li><a rel="me" href="https://briankardell.wordpress.com">Wordpress</a></li>
+            <li><a rel="me" href="https://medium.com/@briankardell">Medium</a></li>
+            <li><a rel="me" href="https://twitter.com/briankardell">Twitter</a></li>
+            <li><a rel="me" href="https://github.com/bkardell/">Github</a></li>
+            <li><a rel="me" href="https://codepen.io/bkardell">Codepen</a></li>
+            <li><a rel="me" href="https://www.linkedin.com/in/brian-kardell-08a4264">LinkedIn</a></li>
+            <li><a rel="me" href="https://www.instagram.com/kardellbrian">Instagram (for
+art)</a></li>
+            <li><a rel="me" href="http://fineartamerica.com/profiles/brian-kardell?">Fine Art
+America (art for sale)</a></li>
+        </ul>
+    </nav>
+</header>
+    <main><div class="posted-on">Posted on null</div><article class="sectioning">
+    <contextual-heading role="heading" aria-level="1">Greetings, Professor Falken: Web Speech APIs Part I</contextual-heading>
+    <p class="segue">There's a long, rich history of humans figuring out how to make computers talk and listen, and nearly as long as there has been a W3C there have been efforts to get 'speech' into the browser.  It's too complicated to recount here, that's <a href="http://bkardell.com/blog/The-History-Of-Speech.html">a post of it's own</a>.  Suffice it to say that it's been fits and starts, steps forward and back and where we are right now is... muddy, but it works. Pull up a chair and let me tell you all about it...</p>
+    <script src="../prism.js"></script>
+    <link rel="stylesheet" href="../prism.css">
+    <style>
+    .note {
+        background-color: rgba(255,255,0,0.24);
+        padding: 1rem;
+        font-style: italic;
+    }
+    .note::before {
+        content: 'Note';
+        font-size: 0.8rem;
+        background-color: black;
+        color: white;
+        padding: 0.25rem;
+        margin-right: 0.5rem;
+    }
+    .output {
+        margin-left: 1rem;
+        font-family: "Courier New", Courier, monospace
+    }
+    .spec-quote {
+        display: block;
+        margin: 1rem;
+    }
+    </style>
+    <script>
+        document.body.addEventListener('click', function (evt) {
+            if (evt.target.classList.contains('run')) {
+                let clone = document.importNode(evt.target.previousElementSibling.content, true)
+                document.body.appendChild(clone)
+            }
+        })
+    </script>
+    <section class="sectioning">
+        <contextual-heading role="heading" aria-level="2">The Current State of things</contextual-heading>
+        <p>The bad news first:  There have been several "official standards" that aren't ultimately giving us speech in browsers.  There is no Speech API for the browser currently on any standards track.</p>
+
+        <p>The good news: There have been and unofficial proposals and experiments that give us some degree of speech in all modern browsers. </p>
+
+        <p>In 2012, Google shipped an implementation of an <a href="https://dvcs.w3.org/hg/speech-api/raw-file/tip/speechapi.html">unofficial API proposal</a> developed in a community group.  Other vendors have since shipped parts of mostly the same API despite it not being on a formal standards track.</p>
+
+        <p>The draft contains a number of errata and the implementations don't all agree entirely.  Since it's unofficial and a Note, they aren't really updating the draft and making it better isn't exactly the highest priority.</p>
+
+        <p>There's some more good news in that this is a fairly low-level interface, allowing us to experiment atop it and inform standards, <a href="https://extensiblewebmanifesto.org/">The Extensible Web Manifesto</a> style.  If we can renew interest, perhaps we can get it on a legitimate a standards track and work out the kinks.</p>
+    </section>
+
+    <section class="sectioning">
+        <contextual-heading role="heading" aria-level="2">Utterly Basic</contextual-heading>
+        <p>Probably the simplest thing you might want to do is have your page say something.  You do this by creating a <code>SpeechSynthesisUtterance</code> for those words and handing that to the <code>speechSynthesis.speak(...)</code> method.</p>
+
+        <pre><code class="language-javascript">// I'll explain later why I'm misspelling Falken
+speechSynthesis.speak(
+  new SpeechSynthesisUtterance(
+    'Greetings, Professor Faulken'
+  )
+)</code></pre>
+        <template><script>
+            (function () {
+                speechSynthesis.speak(
+                  new SpeechSynthesisUtterance(
+                    'Greetings, Professor Faulken'
+                  )
+                )
+            }())
+        </script></template>
+        <button class="run">Run this</button>
+
+        <p>On this, everyone agrees and yay that is pretty easy! Congraulations, we have easily achieved 1983 <em>War Games</em> speech technology!</p>
+
+        <p class="note">From here on, I'll just refer to <code>SpeechSynthesisUtterance</code> as an 'utterance', because that is a lot easier on the eyeballs.</p>
+
+        <p>Once you have constructed an utterance, you can mess with several properties before passing it off to be spoken.  What we've seen here is just using defaults, and the defaults will vary from machine to machine.  All you can <em>really</em> say for sure is that that will be said (well... almost for sure, but we'll come back to that).</p>
+
+        <section class="sectioning">
+            <contextual-heading role="heading" aria-level="3">Pitch, rate and volume</contextual-heading>
+            <p>The most basic properties are:</p>
+                <ul>
+                    <li><code>.pitch</code> (a float from 0 to 2, defaults to 1)</li>
+                    <li><code>.rate</code>  (a float from 0.1 to 10, defaults to 1)</li>
+                    <li><code>.volume</code> (a float from 0 to 1, defaults to 1).</li>
+                </ul>
+
+            <p class="note">If these ranges seem unnecessarily arbitrary and confusing to you, all I can say is: same.</p>
+
+            <p>Let's try varying it a little and pay tribute to Freddie Mercury...</p>
+
+            <pre><code class="language-javascript">let one = new SpeechSynthesisUtterance(
+    `My money, that's all you wanna talk about.`
+)
+one.pitch = 2
+speechSynthesis.speak(one)
+
+let two = new SpeechSynthesisUtterance(`
+    But I'm no fool`
+)
+two.pitch = 1.5
+speechSynthesis.speak(two)
+
+
+let three = new SpeechSynthesisUtterance(
+    `It's in the lap of the Gods`
+)
+three.pitch = 0.25
+three.rate = 0.5
+speechSynthesis.speak(three)
+            </code></pre>
+            <template>
+                <script>
+                    (function () {
+                        let one = new SpeechSynthesisUtterance(
+                            `My money, that's all you wanna talk about.`
+                        )
+                        one.pitch = 2
+                        speechSynthesis.speak(one)
+
+                        let two = new SpeechSynthesisUtterance(`
+                            But I'm no fool`
+                        )
+                        two.pitch = 1.5
+                        speechSynthesis.speak(two)
+
+
+                        let three = new SpeechSynthesisUtterance(
+                            `It's in the lap of the Gods`
+                        )
+                        three.pitch = 0.25
+                        three.rate = 0.5
+                        speechSynthesis.speak(three)
+                    }())
+                </script>
+            </template>
+            <button class="run">Run this</button>
+
+        <section class="sectioning">
+            <contextual-heading role="heading" aria-level="4">Queueing</contextual-heading>
+
+            The <code>speak(...)</code> method is asynchronous.  It returns immediately and <code>speechSynthesis</code> manages a queue of utterances that are intended to be spoken.<p></p>
+
+
+        <p><code>speechSynthesis</code> is responsible for the queue and exposes some queue related methods (like <code>.pause()</code> <code>.resume()</code> and <code>.cancel()</code> (which clears the queue), all of which are async.  Now, this can get a little confusing if you don't understand what's happening, especially since it's a little buggy.</p>
+
+        <p>According to the draft:
+
+        <span class="spec-quote">
+            [on .speak()'ing an utterance] The SpeechSynthesis object takes exclusive ownership of the SpeechSynthesisUtterance object. Passing it as a speak() argument to another SpeechSynthesis object should throw an exception.
+        </span>
+
+         In practice though, no one seems to have implemented this, and it doesn't throw.  What this means is that at until <em>some point</em>  you can still modify (certain) properties of the utterance in the queue as long as you have a reference to it, but what happens depends on whether it's been processed at all yet.
+        </p>
+
+        <p>Let's look at at a kind of circuitous example with some Neil Young lyrics that illustrates how this can get confusing...</p>
+
+        <pre><code class="language-javascript">
+let utteranceOne = new SpeechSynthesisUtterance(
+      `My My, Hey Hey`
+    ),
+    utteranceTwo = new SpeechSynthesisUtterance(
+      `Rock and Roll is here to stay`
+    ),
+    utteranceThree = new SpeechSynthesisUtterance(
+      `It's better to burn out`
+    ),
+    utteranceFour = new SpeechSynthesisUtterance(
+      `Than to fade away`
+    )
+
+speechSynthesis.speak(utteranceOne)
+
+/* Changing what we've asked to be
+  spoken after queueing.. It should
+  throw, but it doesn't.  Will
+  it be higher pitched? */
+utteranceOne.pitch = 2
+
+speechSynthesis.speak(utteranceTwo)
+
+/* Changing this one too, will it? */
+utteranceTwo.pitch = 2
+
+speechSynthesis.speak(utteranceThree)
+speechSynthesis.speak(utteranceFour)
+
+console.log(
+  `this will log immediately
+   before anything is spoken
+   because it's async`)
+
+/* pause will actually happen before
+  anything can be spoken */
+speechSynthesis.pause()
+
+setTimeout(() =&gt; {
+    // this will begin processing again
+    // in ~ 2 secons..
+    // but what will the rate of each be?
+    speechSynthesis.resume()
+}, 2000)
+        </code></pre>
+        <template>
+            <script>(function () {
+                let utteranceOne = new SpeechSynthesisUtterance(
+                      `My My, Hey Hey`
+                    ),
+                    utteranceTwo = new SpeechSynthesisUtterance(
+                      `Rock and Roll is here to stay`
+                    ),
+                    utteranceThree = new SpeechSynthesisUtterance(
+                      `It's better to burn out`
+                    ),
+                    utteranceFour = new SpeechSynthesisUtterance(
+                      `Than to fade away`
+                    )
+
+                speechSynthesis.speak(utteranceOne)
+
+                /* Changing what we've asked to be
+                  spoken after queueing.. It should
+                  throw, but it doesn't.  Will
+                  it be higher pitched? */
+                utteranceOne.pitch = 2
+
+                speechSynthesis.speak(utteranceTwo)
+
+                /* Changing this one too, will it? */
+                utteranceTwo.pitch = 2
+
+                speechSynthesis.speak(utteranceThree)
+                speechSynthesis.speak(utteranceFour)
+
+                console.log(
+                  `this will log immediately
+                   before anything is spoken
+                   because it's async`)
+
+                /* pause will actually happen before
+                  anything can be spoken */
+                speechSynthesis.pause()
+
+                setTimeout(() => {
+                    // this will begin processing again
+                    // in ~ 2 secons..
+                    // but what will the rate of each be?
+                    speechSynthesis.resume()
+                }, 2000)
+            }())</script>
+        </template>
+        <button class="run">Run this (it will take time to speak)</button>
+
+        <p class="note">There's also a <code>.text</code> property which can be used to provide the text to speak.  Don't let any of this confuse you into not creating separate utterances. For reasons explained above, you just won't be able to predict what will happen and you should just consider the utterance immutable from your perspective once you hand it off to <code>.speak(...)</code>.</p>
+
+        <p class="note">In Chrome (desktop, mac) at the time of this writing the <code>speechSynthesis</code> queue appears to be effectively shared at a very low level, meaning that it translates between requests and across domains.  If anyone has called <code>speechSynthesis.pause()</code>, whatever you add to the queue won't get spoken until it is unpaused, and then it is subject to coming after whatever is already in the queue, no matter where it came from. I'm not going to demo this as it's likely to only cause confusion, but if something suddenly isn't working and your browser supports speech, try running <code>speechSynthesis.resume()</code> in the console and see what happens.</p>
+
+        <section class="sectioning">
+            <contextual-heading role="heading" aria-level="5">Utterance Events</contextual-heading>
+            <p>
+                Because everything is async, if you wanted to do something like sync up some UI
+                with spoken text, you'll need to know when things happen by watching for events
+                on the utterance.  Utterances have several events: The ones you probably most care
+                about are:
+                </p><ul>
+                    <li><code>onstart</code> "Fired when this utterance has begun to be spoken"</li>
+                    <li><code>onend</code> "Fired when this utterance has completed being spoken.  If this event fires, the error event must not be fired for this utterance."</li>
+                    <li><code>onerror</code> "Fired if there was an error that prevented successful speaking of this utterance. If this event fires, the end event must not be fired for this utterance" We'll come back to this one...</li>
+                </ul>
+            <p></p>
+
+            <p>Let's try it out...</p>
+            <pre><code class="language-javascript">
+let utteranceOne = new SpeechSynthesisUtterance(
+      `We come from the land of the ice and snow`
+  ),
+  utteranceTwo = new SpeechSynthesisUtterance(
+      `From the midnight sun where the hot springs flow`
+  ),
+  syncUIHandler = (event) =&gt; {
+    // There is an event.utterance in chrome,
+    // but that seems to be non-standard,
+    // you want event.target which is the
+    // utterance object (though it should be read-only)
+    document.querySelector('#zepplin-out').innerText = event.target.text
+  }
+
+  utteranceOne.onstart = syncUIHandler
+  utteranceTwo.onstart = syncUIHandler
+
+  utteranceTwo.onend = () =&gt; {
+    console.log('done')
+  }
+
+speechSynthesis.speak(utteranceOne)
+speechSynthesis.speak(utteranceTwo)
+        </code></pre>
+        <template><script>
+            (function () {
+                let utteranceOne = new SpeechSynthesisUtterance(
+                      `We come from the land of the ice and snow`
+                  ),
+                  utteranceTwo = new SpeechSynthesisUtterance(
+                      `From the midnight sun where the hot springs flow`
+                  ),
+                  syncUIHandler = (event) => {
+                    // event.utterance in chrome, event.target
+                    document.querySelector('#zepplin-out').innerText = event.target.text
+                  }
+
+                  utteranceOne.onstart = syncUIHandler
+                  utteranceTwo.onstart = syncUIHandler
+
+                  utteranceTwo.onend = () => {
+                    console.log('done')
+                  }
+
+                speechSynthesis.speak(utteranceOne)
+                speechSynthesis.speak(utteranceTwo)
+            }())
+        </script></template>
+        <button class="run">Run this</button><span class="output" id="zepplin-out">You'll see some output here</span>
+
+        <p>Assuming that that worked for you:  Yay!  Couldn't be simpler, right?  Got your head well around that?  Good... Ok, now let me explain why you probably don't.</p>
+
+        <p>I think that most people would associate the words "when this utterance has begun to be spoken" with "some kind of sound has begun to flow out of the speakers" but this isn't the case.  If we added a <code>speechSynthesis.pause()</code> to the end of that code sample, the first utterance's <code>.onstart</code> would be called, and the words would appear on the screen, but no sound would play.  This is universal in all the browsers.  Luckily, there ares are also <code>.onpause</code> and <code>.onresume</code> events.</p>
+
+        <pre><code class="language-javascript">
+let utteranceOne = new SpeechSynthesisUtterance(
+      `We come from the land of the ice and snow`
+  ),
+  utteranceTwo = new SpeechSynthesisUtterance(
+      `From the midnight sun where the hot springs flow`
+  ),
+  syncUIHandler = (event) =&gt; {
+    let el = document.querySelector('#zepplin-out-1')
+
+    if (event.type == 'pause') {
+      el.innerText = 'Paused'
+    } else {
+      // Chrome has an event.utterance object,
+      // but other browsers don't
+      el.innerText = event.target.text
+    }
+  }
+
+  utteranceOne.onpause = syncUIHandler
+  utteranceOne.onstart = syncUIHandler
+  utteranceOne.onresume = syncUIHandler
+  utteranceTwo.onstart = syncUIHandler
+  utteranceTwo.onpause = syncUIHandler
+  utteranceTwo.onresume = syncUIHandler
+
+speechSynthesis.speak(utteranceOne)
+speechSynthesis.speak(utteranceTwo)
+speechSynthesis.pause()
+
+setTimeout(() =&gt; {
+    speechSynthesis.resume()
+}, 2000)
+        </code></pre>
+        <template><script>
+            (function () {
+                let utteranceOne = new SpeechSynthesisUtterance(
+                          `We come from the land of the ice and snow`
+                      ),
+                      utteranceTwo = new SpeechSynthesisUtterance(
+                          `From the midnight sun where the hot springs flow`
+                      ),
+                      syncUIHandler = (event) => {
+                        let el = document.querySelector('#zepplin-out-1')
+                        if (event.type == 'pause') {
+                            el.innerText = 'Paused'
+                        } else {
+                            // Chrome has an event.utterance object,
+                            // but other browsers don't
+                            el.innerText = event.target.text
+                        }
+                      }
+
+                      utteranceOne.onpause = syncUIHandler
+                      utteranceOne.onstart = syncUIHandler
+                      utteranceOne.onresume = syncUIHandler
+                      utteranceTwo.onstart = syncUIHandler
+                      utteranceTwo.onpause = syncUIHandler
+                      utteranceTwo.onresume = syncUIHandler
+
+                    speechSynthesis.speak(utteranceOne)
+                    speechSynthesis.speak(utteranceTwo)
+                    speechSynthesis.pause()
+
+                    setTimeout(() => {
+                        speechSynthesis.resume()
+                    }, 2000)
+                }())
+        </script></template>
+        <button class="run">Run this (it will take time to speak)</button><span class="output" id="zepplin-out-1">You'll see some output here</span>
+        <p class="note">Now some bad news... at least in Chrome and especially on Android it appears to be very easy to create situations where callbacks are not called, despite it being blatantly obvious that they happened. There have been a couple of bugs opened about this.  In my experience, this seems to be closely related to either the 'shared queue' note above or garbage collection causing utterance objects to be cleaned up before they are really fired because of longer text.  I'll come back to this...</p>
+        </section>
+
+
+        <section class="sectioning">
+            <contextual-heading role="heading" aria-level="5">Expressiveness</contextual-heading>
+            <p>Speech is complicated if you want it to seem natural. In my <a href="https://bkardell.com/blog/The-History-Of-Speech.html">History of Speech</a> I link to a recording of Bell Lab's Voder in the 1940s demonstrating the many ways one might intone the phrase "she saw me".  Similarly, since we're just using strings of text, we're theoretically subject to all of the sorts of potential problems about ambigious strings. For example given the string "12/4 = 3" we'd probably like that to be pronounced "twelve divided by four equals three" whereas we might like "12/12/2012" to be pronounced like "December twelfth, twenty twelve".</p>
+
+            <p>The first bit of good news is that all of the speech synthesis implementations I've tried actually do a <em>pretty good job</em> using punctuation to inflect and pause and frequently can deal with a lot of those problems automatically... For example, all of the below pronouce sensibly for me without further effort:
+
+                        </p><pre><code class="language-javascript">speechSynthesis.speak(
+  new SpeechSynthesisUtterance(`
+    1. Pi is about 3.14
+    2. We loaded the 4x4
+    3. Please meet me at 3.14pm EST
+    4. My birthday is 2/17/1974
+  `)
+)
+            </code></pre>
+            <template><script>
+                (function () {
+                    speechSynthesis.speak(
+                      new SpeechSynthesisUtterance(`
+                        1. Pi is about 3.14
+                        2. We loaded the 4x4
+                        3. Please meet me at 3.14pm EST
+                        4. My birthday is 2/17/1974
+                      `)
+                    )
+                }())
+            </script></template>
+            <button class="run">Run this</button>
+
+            <p>But it's not bullet proof and it's automatic, not consistent.  To some, this is unacceptable.  The first example in this document purposely misspelled the name of Professor <em>Falken</em> from <em>War Games</em> because the best guess sounds like an expletive.  To wit, in my history article I also point to several "official" standards that were developed in the W3C to deal with just these sorts of problems.  I'm mentioning this here because the Speech API says that the text provided to an utterance can be one of these: A well-formed <a href="https://www.w3.org/TR/speech-synthesis/">SSML (Speech Synthesis Markup Language) document</a>.  SSML lets you express all kinds of stuff.  This would allow you to create a single utterance which varied all sorts of things throughout and let you express how you wanted each bit to be said.  The spec gives implementations a way out saying that if the implementation doesn't support SSML, they have to just take the text content.  That's a pretty elegant, progressive compromise I suppose.  <em>Well done standards!</em></p>
+
+            <p>It also completely doesn't work that way.  All the implementations I've looked at will actually try to pronounce all the markup.  That's bad.  I suggest you just avoid that.</p>
+
+            <p>The really good news though is that you can actually achieve a lot of the same amount of control by doing your own processing/creation of utterances.</p>
+        </section>
+
+        <section class="sectioning">
+            <contextual-heading role="heading" aria-level="5">Language</contextual-heading>
+            <p>Utterances also have a <code>.lang</code> property which you can set.  It has to be a string representing a <a href="http://www.rfc-editor.org/rfc/bcp/bcp47.txt">BCP 47 language tag</a> (like en-US). If you don't set it, it will by default be the language of the document.  This can give hints to pronounciation. Let's try an example from <em>The Godfather</em>:</p>
+            <pre><code class="language-javascript">let apollonia = new SpeechSynthesisUtterance(
+   `io so l'inglese:
+      Monday Tuesday Thursday Wednesday
+      Friday Sunday Saturday
+    `
+  )
+apollonia.pitch = 1.1
+apollonia.lang = 'it-US'
+speechSynthesis.speak(apollonia)</code></pre>
+            <template id="apollonia"><script>
+                (function () {
+                    let apollonia = new SpeechSynthesisUtterance(
+                          `io so l'inglese:
+                          Monday Tuesday Thursday
+                          Wednesday Friday Sunday Saturday`
+                      )
+                    apollonia.pitch = 1.1
+                    apollonia.lang = 'it-US'
+                    speechSynthesis.speak(apollonia)
+                }())
+            </script></template>
+            <button class="run">Run this</button>
+        </section>
+
+        <section class="sectioning">
+            <contextual-heading role="heading" aria-level="5">A million voices cried out</contextual-heading>
+            <p>Let's talk about the most painful part of this: voices. You might have noticed that the example above from <em>The Godfather</em> sounded quite a lot different - it was using a different <code>SpeechSynthesisVoice</code>, automatically.</p>
+            <p class="note">From here out, I'm going to refer to <code>SpeechSynthesisVoice</code> as simply "voice" because, well, that's a mouthful.</p>
+            <p>You can also set the voice yourself, but there are a number of gotchas here...</p>
+            <section class="sectioning">
+                <contextual-heading role="heading" aria-level="6">.getVoices(...)</contextual-heading>
+                <p>You have to get the list of voices supported by your particular
+                <code>speechSyntheis</code> by calling <code>speechSynthesis.getVoices()</code>.  The bad news is that as this page was loaded I detected the length of the array returned from <code>speechSynthesis.getVoices()</code> and placed it here -&gt; <span id="immediate-voices" style="border: 1px dotted gray;"></span>.</p>
+
+
+                <script>
+                    document.querySelector('#immediate-voices').innerText = speechSynthesis.getVoices().length
+                </script>
+
+                <p>Odds are that you see a <span style="border: 1px dotted gray;">0</span> above.  That's because it's populated asynchronously and you have to wait for the <code>voiceschanged</code> event to ask for the list of voices.  Here's a contrived example that <em>should</em> set the content of an element next to the Run button below to the name of each voice (the result you'd see would be the last one in the <code>Array</code>.</p>
+
+                <pre><code class="language-javascript">
+(function () {
+    speechSynthesis.onvoiceschanged = function () {
+       let el = document.querySelector('#voices-changed-1')
+       // Hey, at least it's a real Array! (despite the spec)
+       speechSynthesis.getVoices().forEach((voice) =&gt; {
+          el.innerHTML = voice.name
+       })
+    }
+}())
+                </code></pre>
+                <template>
+                    <script>
+                        (function () {
+                            speechSynthesis.onvoiceschanged = function () {
+                               let el = document.querySelector('#voices-changed-1')
+                               // Hey, at least it's a real Array! (despite the spec)
+                               speechSynthesis.getVoices().forEach((voice) => {
+                                  el.innerHTML = voice.name
+                               })
+                            }
+                        }())
+                    </script>
+                </template>
+                <button class="run">Run me, I'll wait...</button><span class="output" id="voices-changed-1">Output will come here if that method is called</span>
+
+                <p>Very, very likely nothing is happening for you no matter how many times you click that.  Why? Because it's a race, as near as I can tell: The voices are already loaded by the time you ran that, so you missed the event - so it's up to you to manage that.</p>
+            </section>
+            <section class="sectioning">
+                <contextual-heading role="heading" aria-level="6"><code>SpeechSynthesisVoice</code> objects</contextual-heading>
+                <p>Assuming that you manage to get the array of voice objects, each has several properties:</p>
+                <ul>
+                    <li><code>.default</code> (a boolean indicating if this is the default voice currently being used)</li>
+                    <li><code>.localService </code> (a boolean indicating basically whether this uses the network to produce speech or works locally)</li>
+                    <li><code>.name</code> (a humanly readable string name identifier)</li>
+                    <li><code>.voiceURI</code> (a URI reference string)</li>
+                </ul>
+                <p>According to the draft, you can set the <code>.voice</code> attribute of an utterance to any of these voices and that should cause the utterance to be spoken in that voice.  The idea is that you could find a voice in the set and use it to make it sound nifty.. Let's look at an example using a voice called "Bubbles" to speak the lyrics of a song by Jack Johnson:</p>
+
+                <pre><code class="language-javascript">
+let voice = speechSynthesis.getVoices().find((voice) =&gt; {
+    return voice.name == 'Bubbles'
+  }),
+  lyrics = new SpeechSynthesisUtterance(
+      `It's as simple as something that nobody knows
+       That her eyes are as big as her bubbly toes`
+  )
+  lyrics.voice = voice
+  speechSynthesis.speak(lyrics)
+                </code></pre>
+                <template><script>
+let voice = speechSynthesis.getVoices().find((voice) => {
+    return voice.name == 'Bubbles'
+  }),
+  lyrics = new SpeechSynthesisUtterance(
+      `It's as simple as something that nobody knows
+       That her eyes are as big as her bubbly toes`
+  )
+  lyrics.voice = voice
+  speechSynthesis.speak(lyrics)
+                </script></template>
+                <button class="run">Run this</button>
+
+                <p>Did it work for you?  Hard to know because, here's the bad news: The list of voices you get back will vary depending on the browser and OS pretty wildly.  On my mac I get a list of 60 voices in Safari v7 (don't ask), 43 voices in Chrome v60, and 24 voices in my Firefox Developer Edition.</p>
+            </section>
+        </section>
+    </section>
+<!--
+Here's the bad news:  The list of voices you get back will vary depending on the browser and OS pretty wildly.
+Let's talk about the <code>.voiceURI</code> for a minute.  "Bob" is a valid <code>URI</code> reference.  A <code>URL</code> is a kind of <code>URI</code>.  So, basically what I am saying is: It could be pretty wildly variant.
+  utteranceOne.onboundary = (event) => {
+    /*
+        the event has:
+          .name: 'word',
+          .type: 'boundary',
+          .charIndex: (index in the string),
+          .utterance: (which has .text to get the string)
+          .elapsedTime: (spec bug, says 'seconds' it isn't)
+    */
+  } -->
+        <section class="sectioning">
+            <contextual-heading role="heading" aria-level="4">Some sugar</contextual-heading>
+            <p>Given that the most common case involves only creating an utterance in order to configure it immediately and then pass it to 'speak' and then throwing it away, I feel like I just want a function like this...</p>
+
+        <pre><code class="language-javascript">window.__say = (text, options = {}) =&gt; {
+  let utterance = new SpeechSynthesisUtterance(text)
+  utterance.text = options.text || utterance.text
+  utterance.pitch = options.pitch || utterance.pitch
+  utterance.rate = options.rate || utterance.rate
+  utterance.volume = options.volume || utterance.volume
+  speechSynthesis.speak(utterance)
+}</code></pre>
+
+        <p>This lets me be pretty expressive and, I think, clearer:</p>
+
+        <pre><code class="language-javascript">
+// Wouldn't this be simpler?
+__say(
+    `My money, that's all you wanna talk about`,
+    {pitch: 2}
+)
+__say(
+    `But I'm no fool`,
+    {pitch: 1.5}
+)
+__say(
+    `It's in the lap of the Gods`,
+    {pitch: 0.25, rate: 0.5}
+)
+        </code></pre>
+    </section>
+
+
+
+
+
+</section></section></article></main>
+
+  
+    <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-88027178-1', 'auto');
+    ga('send', 'pageview');
+  </script>
+
+  <script>
+    Array.prototype.slice.call(document.querySelectorAll('.optional [data-src]')).forEach(function (optional) {
+      var prefs = window.localStorage.downloadsPrefs,
+          clickToSee;
+      if (prefs === 'true') {
+        activateOptional(optional);
+      } else {
+        clickToSee = document.createElement('div');
+        clickToSee.classList.add('clickToSee')
+        clickToSee.innerHTML = '<button>Click to see media</button>';
+        clickToSee.style.textAlign = 'center';
+        clickToSee.style.border = 'none';
+        optional.parentElement.insertBefore(clickToSee, optional.nextSibling);
+        clickToSee.firstElementChild.addEventListener('click', function () {
+          activateOptional(optional);
+        })
+      }
+
+    })
+  </script>
+
+</body></html>
