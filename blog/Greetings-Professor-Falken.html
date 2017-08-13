@@ -561,6 +561,9 @@ setTimeout(() =&gt; {
                    before anything is spoken
                    because it's async`)
 
+                if (window.enableDebug) {
+                    debugger;
+                }
                 /* pause will actually happen before
                   anything can be spoken */
                 speechSynthesis.pause()
