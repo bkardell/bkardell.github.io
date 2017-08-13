@@ -579,7 +579,7 @@ setTimeout(() =&gt; {
         </template>
         <button class="run">Run this (it will take time to speak)</button>
         <p>Did it work?  If you're on Chrome on Android, probably not - and worse yet, your queue is now
-        completely screwed.  Go back, run the first example, it won't work either.  Don't panic, just <button></button>Click this button</p>
+        completely screwed.  Go back, run the first example, it won't work either.  Don't panic, just <button class="cancel">Click this button</button></p>
 
         <p class="note">There's also a <code>.text</code> property which can be used to provide the text to speak.  Don't let any of this confuse you into not creating separate utterances. For reasons explained above, you just won't be able to predict what will happen and you should just consider the utterance immutable from your perspective once you hand it off to <code>.speak(...)</code>.</p>
 
