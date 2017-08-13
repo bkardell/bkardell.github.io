@@ -578,12 +578,11 @@ setTimeout(() =&gt; {
             }())</script>
         </template>
         <button class="run">Run this (it will take time to speak)</button>
-        <p>Did it work?  If you're on Chrome on Android, probably not - and worse yet, your queue is now
-        completely screwed.  Go back, run the first example, it won't work either.  Don't panic, just <button class="cancel">Click this button</button></p>
-
-        <p class="note">There's also a <code>.text</code> property which can be used to provide the text to speak.  Don't let any of this confuse you into not creating separate utterances. For reasons explained above, you just won't be able to predict what will happen and you should just consider the utterance immutable from your perspective once you hand it off to <code>.speak(...)</code>.</p>
+        <p>Did it work? Hard to say, see the notes below. Don't let any of this confuse you into trying to change an utterance once you've sent it to speak, just consider it immutable from your perspective and your life will be a lot happier.</p>
 
         <p class="note">In Chrome (desktop, mac) at the time of this writing the <code>speechSynthesis</code> queue appears to be effectively shared at a very low level, meaning that it translates between requests and across domains.  If anyone has called <code>speechSynthesis.pause()</code>, whatever you add to the queue won't get spoken until it is unpaused, and then it is subject to coming after whatever is already in the queue, no matter where it came from. I'm not going to demo this as it's likely to only cause confusion, but if something suddenly isn't working and your browser supports speech, try running <code>speechSynthesis.resume()</code> in the console and see what happens.</p>
+
+        <p class="note" id="pause-on-android">If you're on Chrome on Android, this probably didn't work, worse - if you go back, run the first example, it won't work either.  <code>.resume()</code> doesn't actually seem to work.  Don't panic, just click this button to <button class="cancel">restore normalcy</button>.  How did I do this?  <code>speechSynthesis.cancel()</code> to clear the queue.  Unfortunately, I swear I have seen cancel actually resume and speak out stuff that was queued, but I can't find a case that illustrates it.</p>
 
         <section class="sectioning">
             <contextual-heading role="heading" aria-level="5">Utterance Events</contextual-heading>
@@ -653,17 +652,17 @@ speechSynthesis.speak(utteranceTwo)
 
         <p>Assuming that that worked for you:  Yay!  Couldn't be simpler, right?  Got your head well around that?  Good... Ok, now let me explain why you probably don't.</p>
 
-        <p>I think that most people would associate the words "when this utterance has begun to be spoken" with "some kind of sound has begun to flow out of the speakers" but this isn't the case.  If we added a <code>speechSynthesis.pause()</code> to the end of that code sample, the first utterance's <code>.onstart</code> would be called, and the words would appear on the screen, but no sound would play.  This is universal in all the browsers.  Luckily, there ares are also <code>.onpause</code> and <code>.onresume</code> events.</p>
+        <p>I think that most people would associate the words "when this utterance has begun to be spoken" with "some kind of sound has begun to flow out of the speakers" but this isn't the case.  If we added a <code>speechSynthesis.pause()</code> to the end of that code sample, the first utterance's <code>.onstart</code> would be called, and the words would appear on the screen, but no sound would play.  This is universal in all the browsers.  Luckily, there ares are also <code>.onpause</code> and <code>.onresume</code> events (but recall, if <code>pause</code> didn't work for you above, this one won't either).  Let's see...</p>
 
         <pre><code class="language-javascript">
 let utteranceOne = new SpeechSynthesisUtterance(
-      `We come from the land of the ice and snow`
+      `Maybe it's not too late`
   ),
   utteranceTwo = new SpeechSynthesisUtterance(
-      `From the midnight sun where the hot springs flow`
+      `To learn how to love, and forget how to hate`
   ),
   syncUIHandler = (event) =&gt; {
-    let el = document.querySelector('#zepplin-out-1')
+    let el = document.querySelector('#ozzy-out')
 
     if (event.type == 'pause') {
       el.innerText = 'Paused'
@@ -692,13 +691,13 @@ setTimeout(() =&gt; {
         <template><script>
             (function () {
                 let utteranceOne = new SpeechSynthesisUtterance(
-                          `We come from the land of the ice and snow`
+                          `Maybe it's not too late`
                       ),
                       utteranceTwo = new SpeechSynthesisUtterance(
-                          `From the midnight sun where the hot springs flow`
+                          `To learn how to love, and forget how to hate`
                       ),
                       syncUIHandler = (event) => {
-                        let el = document.querySelector('#zepplin-out-1')
+                        let el = document.querySelector('#ozzy-out')
                         if (event.type == 'pause') {
                             el.innerText = 'Paused'
                         } else {
@@ -724,8 +723,10 @@ setTimeout(() =&gt; {
                     }, 2000)
                 }())
         </script></template>
-        <button class="run">Run this (it will take time to speak)</button><span class="output" id="zepplin-out-1">You'll see some output here</span>
-        <p class="note">Now some bad news... at least in Chrome and especially on Android it appears to be very easy to create situations where callbacks are not called, despite it being blatantly obvious that they happened. There have been a couple of bugs opened about this.  In my experience, this seems to be closely related to either the 'shared queue' note above or garbage collection causing utterance objects to be cleaned up before they are really fired because of longer text, so you've got to deal with all that yourself.</p>
+        <button class="run">Run this (it will take time to speak, if it does)</button><span class="output" id="ozzy-out">You'll see some output here</span>
+        <p>Did it work?  Here's some bad news... there are a lot of notes here:</p>
+        <p class="note">If you're on Android and nothing is happening, you might have missed <a href="#pause-on-android">the note about <code>.pause</code> not working right there.</a> and you should click this button to clear the queue and <button class="cancel">restore normalcy</button> (don't you wish that button worked on the whole world).</p>
+        <p class="note">At least in Chrome (that's just the one I use most) it appears to be very easy to create situations where callbacks are not called, despite it being blatantly obvious that they happened. There have been a couple of bugs opened about this.  In my experience, this seems to be closely related to either the 'shared queue' note above or garbage collection causing utterance objects to be cleaned up before they are really fired because of longer text, so you've got to deal with all that yourself.</p>
         <p class="note">One more thing... If <code>.onError</code> is called, the event it raises will have an <code>.error</code> attribute (or, it's supposed to) which should be an error code indicating why.  The draft lists <a href="https://dvcs.w3.org/hg/speech-api/raw-file/tip/webspeechapi.html#speechsynthesiserrorevent">11 'kinds' of problems</a> and they are both informatice to the kinds of things you should be thinking about.</p>
         </section>
 
