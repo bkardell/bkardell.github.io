@@ -5,7 +5,7 @@
     <meta name="twitter:site" content="@briankardell">
     <meta name="twitter:creator" content="@briankardell">
     <meta name="twitter:title" content="Greetings, Professor Falken: Web Speech APIs Part I">
-    <meta name="twitter:description" content="There's a long, rich history of humans figuring out how to make computers talk and listen, and nearly as long as there has been a W3C there have been efforts to get 'speech' into t">
+    <meta name="twitter:description" content="There's a long, rich history of humans figuring out how to make machines talk and listen, and nearly as long as there has been a W3C there have been efforts to get these features i">
     
     <link rel="alternate" type="application/rss+xml" href="blog/feed.rss" title="bkardell.com/blog rss feed">
     <title>Greetings, Professor Falken: Web Speech APIs Part I</title>
@@ -325,7 +325,7 @@ America (art for sale)</a></li>
 </header>
     <main><div class="posted-on">Posted on null</div><article class="sectioning">
     <contextual-heading role="heading" aria-level="1">Greetings, Professor Falken: Web Speech APIs Part I</contextual-heading>
-    <p class="segue">There's a long, rich history of humans figuring out how to make computers talk and listen, and nearly as long as there has been a W3C there have been efforts to get 'speech' into the browser.  It's too complicated to recount here, that's <a href="http://bkardell.com/blog/The-History-Of-Speech.html">a post of it's own</a>.  Suffice it to say that it's been fits and starts, steps forward and back and where we are right now is... muddy, but it works. Pull up a chair and let me tell you all about it...</p>
+    <p class="segue">There's a long, rich history of humans figuring out how to make machines talk and listen, and nearly as long as there has been a W3C there have been efforts to get these features into the browser.  It's too complicated to recount here, that's <a href="http://bkardell.com/blog/The-History-Of-Speech.html">a whole post of it's own</a>.  Suffice it to say that it's been fits and starts, steps forward and back and where we are right now is... muddy, but it works... sort of.  In this series of posts, I'll tell you all about it...</p>
     <script src="../prism.js"></script>
     <link rel="stylesheet" href="../prism.css">
     <style>
@@ -361,9 +361,9 @@ America (art for sale)</a></li>
     </script>
     <section class="sectioning">
         <contextual-heading role="heading" aria-level="2">The Current State of things</contextual-heading>
-        <p>The bad news first:  There have been several "official standards" that aren't ultimately giving us speech in browsers.  There is no Speech API for the browser currently on any standards track.</p>
+        <p>The bad news first:  There <em>have</em> been several "official standards" that aren't ultimately giving us speech in browsers.  There is no Speech API for the browser currently on any standards track.</p>
 
-        <p>The good news: There have been and unofficial proposals and experiments that give us some degree of speech in all modern browsers. </p>
+        <p>The good news: There have been and unofficial proposals and experiments that give us some (not insignifiant) degree of speech in all modern browsers and <em>together, we can change the 'unofficial' part if we want that</em>. </p>
 
         <p>In 2012, Google shipped an implementation of an <a href="https://dvcs.w3.org/hg/speech-api/raw-file/tip/speechapi.html">unofficial API proposal</a> developed in a community group.  Other vendors have since shipped parts of mostly the same API despite it not being on a formal standards track.</p>
 
@@ -465,7 +465,7 @@ speechSynthesis.speak(three)
             The <code>speak(...)</code> method is asynchronous.  It returns immediately and <code>speechSynthesis</code> manages a queue of utterances that are intended to be spoken.<p></p>
 
 
-        <p><code>speechSynthesis</code> is responsible for the queue and exposes some queue related methods (like <code>.pause()</code> <code>.resume()</code> and <code>.cancel()</code> (which clears the queue), all of which are async.  Now, this can get a little confusing if you don't understand what's happening, especially since it's a little buggy.</p>
+        <p><code>speechSynthesis</code> is responsible for the queue and exposes some queue related methods (like <code>.pause()</code> <code>.resume()</code> and <code>.cancel()</code> (which clears the queue), all of which are async.  Now, this can get a little confusing if you don't understand what's happening, especially since it's a little buggy (a lot in some cases).</p>
 
         <p>According to the draft:
 
@@ -561,9 +561,6 @@ setTimeout(() =&gt; {
                    before anything is spoken
                    because it's async`)
 
-                if (window.enableDebug) {
-                    debugger;
-                }
                 /* pause will actually happen before
                   anything can be spoken */
                 speechSynthesis.pause()
@@ -574,10 +571,13 @@ setTimeout(() =&gt; {
                     // but what will the rate of each be?
                     console.log(`resuming...`)
                     speechSynthesis.resume()
+                    alert(`resumed`)
                 }, 2000)
             }())</script>
         </template>
         <button class="run">Run this (it will take time to speak)</button>
+        <p>Did it work?  If you're on Chrome on Android, probably not - and worse yet, your queue is now
+        completely screwed.  Go back, run the first example, it won't work either.</p>
 
         <p class="note">There's also a <code>.text</code> property which can be used to provide the text to speak.  Don't let any of this confuse you into not creating separate utterances. For reasons explained above, you just won't be able to predict what will happen and you should just consider the utterance immutable from your perspective once you hand it off to <code>.speak(...)</code>.</p>
 
