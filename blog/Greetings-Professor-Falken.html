@@ -879,10 +879,10 @@ let voice = speechSynthesis.getVoices().find((voice) => {
                 <p class="note"><em>Worse still though</em> the shared <code>speechSynthesis</code> on Android means that
                 it's going to speak in whatever voice was last chosen - pretty much anywhere.  If you ran <em>The Godfather</em> example just before this on Android, it probably just spoke those lyrics in an Italian accent.  Sweet.</p>
 
-                <p class="note">Setting the <code>.voice</code> attribute on the utterance might be what's documented, and it might even be what we just (probably?) successfully ran, but what you've got to set if you want it to work in Android  is the <code>voiceURI</code> attribute on the utterance, which isn't even listed in the list of attributes in the draft or most documentation I've read.  Sadly, neither seems to work for me univerally, so set both if you're choosing a voice... And... good luck finding a way to select a good voice.
+                <p class="note">Setting the <code>.voice</code> attribute on the utterance might be what's documented, and it might even be what we just (probably?) successfully ran, but what you've got to set if you want it to work in Android  is the <code>voiceURI</code> attribute on the utterance, which isn't even listed in the list of attributes in the draft or most documentation I've read.  Sadly, neither seems to work for me univerally, so set both if you're choosing a voice... And... good luck finding a way to select a good voice. Finally, not all voices support modification of things like rate and pitch.
                 </p>
 
-                <p>Another quick note about the <code>.voiceURI</code>: "Bob" is a valid <code>URI</code> reference. So is the empty string.  A <code>URL</code> is a kind of <code>URI</code>.  So, basically what I am saying is: It could be pretty wildly variant, and it is, even for voices with the same name.</p>
+                <p class="note">Another quick note about the <code>.voiceURI</code>: "Bob" is a valid <code>URI</code> reference. So is the empty string.  A <code>URL</code> is a kind of <code>URI</code>.  So, basically what I am saying is: It could be pretty wildly variant, and it is, even for voices with the same name.</p>
 
             </section>
         </section>

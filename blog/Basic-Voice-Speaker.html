@@ -1,0 +1,679 @@
+<html lang="en" resource-type="blogpost"><head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@briankardell">
+    <meta name="twitter:creator" content="@briankardell">
+    <meta name="twitter:title" content="You Don't Say: Web Speech APIs Part II">
+    <meta name="twitter:description" content="This is part of a series about making the browser speak and listen to speech.  In my last post Greetings, Professor Falken: Web Speech APIs Part I, I talked about the existing APIs">
+    
+    <link rel="alternate" type="application/rss+xml" href="blog/feed.rss" title="bkardell.com/blog rss feed">
+    <title>You Don't Say: Web Speech APIs Part II</title>
+    <style>.captioned-image {
+    background-color: #eaeaea;
+    display: block;
+    overflow: hidden;
+    padding: 1rem;
+    text-align: center;
+    font-style: italic;
+}
+
+.captioned-image.p-attached {
+    width: 40%;
+    display: inline-block;
+    margin: 0 1rem 2rem 1rem;
+}
+
+section > .captioned-image.p-attached {
+    margin-top: 1.5rem; /* correct for heading size*/
+}
+
+ pre { overflow-x: auto }
+
+.captioned-image.p-attached.p-attached-left {
+    float: left;
+}
+
+.captioned-image.p-attached.p-attached-right {
+    float: right;
+}
+
+.captioned-image.p-attached + * + * {
+    clear: both;
+    margin-top: 2rem;
+}
+
+
+.captioned-image img, .captioned-image video {
+    display: block;
+    max-width: 100%;
+    margin: 0 auto 1em auto;
+}
+.source {
+    font-style: italic;
+}
+body {
+    display: flex;
+    font: 1em "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-weight: 300;
+    line-height: 1.625;
+}
+h1 { margin: 0.5rem; }
+code-format {
+    border-left: 0.5rem solid rgba(123,115,209,0.35);
+    display: block;
+    padding: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+contextual-heading {
+    display: block;
+    margin-top: 2rem;
+}
+
+[aria-level="1"] {
+    color: #43686b;
+    font-size: 1.45rem;
+}
+[aria-level="2"] {
+    color: #856363;
+    font-size: 1.35rem;
+}
+[aria-level="3"] {
+    color: #856363;
+    font-size: 1.25rem;
+}
+[aria-level="4"] {
+    color: #856363;
+    font-size: 1.2rem;
+}
+[aria-level="5"], [aria-level="6"] {
+    color: #667496;
+    font-size: 1.1rem;
+    font-weight: bolder;
+}
+.posted-on {
+    font-style: italic;
+    font-size: 0.8rem;
+    text-align: right;
+    margin-bottom: 1rem;
+}
+
+ul, li {
+    margin: 0.5rem;
+    text-align: left;
+}
+header {
+    padding-top: 1rem;
+    padding-right: 2rem;
+    background-color: #fbf5e9;
+}
+.tagline {
+    font-style: italic;
+    text-align: center;
+}
+
+[tag-esc] {
+    color: maroon;
+    font-family: Courier, "Lucida Console", monospace;
+}
+
+[tag-esc]::before {
+    content: '<';
+}
+
+[tag-esc]::after {
+    content: '>';
+}
+
+main {
+    min-width: 50%;
+    width: 80%;
+    padding: 1rem;
+}
+header .title {
+    background-color: rgba(123,115,209,0.35);
+    padding: 0.3rem;
+    padding-left: 0.25rem;
+    font-weight: bolder;
+    font-size: 0.9rem;
+    border-left: 1rem solid #999298;
+}
+
+header .profile {
+    width: 50%;
+    margin: 1rem 25%;
+}
+
+header .title + nav {
+    font-size: 0.9rem;
+}
+
+header .blurb {
+    font-size: 0.75rem;
+    text-align: center;
+}
+header .name {
+    text-align: center;
+    font-size: xx-large;
+}
+.segue {
+    font-style: italic;
+}
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  border: 0;
+}
+[for="aboutMeToggle"] {
+    display: none;
+}
+/* this needs rethinking, it wants a selector like 'not flow content' */
+article>*:not(contextual-heading,a), section>*:not(contextual-heading,a) {
+    margin-left: 0.45rem;
+}
+
+blockquote {
+  font-family: serif;
+  background: #f9f9f9;
+  border-left: 10px solid #ccc;
+  margin: 1.5em 10px;
+  padding: 0.5em 10px;
+}
+blockquote:before {
+  color: #ccc;
+  content: open-quote;
+  font-size: 2em;
+  line-height: 0.1em;
+  margin-right: 0.25em;
+  vertical-align: -0.4em;
+}
+
+blockquote:after {
+  color: #ccc;
+  content: close-quote;
+  font-size: 2em;
+  line-height: 0.1em;
+  margin-left: 0.25em;
+  vertical-align: -0.4em;
+}
+
+
+@media (max-width: 800px){
+    body {
+        flex-direction: column;
+    }
+    header {
+        border-bottom: 1px solid #afafff;
+    }
+
+    .captioned-image.p-attached {
+        width: 100%;
+        margin: 1rem 0;
+    }
+
+    .captioned-image.p-attached.p-attached-left,
+    .captioned-image.p-attached.p-attached-right {
+        float: none;
+    }
+
+    [for="aboutMeToggle"] {
+        background-color: #675e5e;
+        color: white;
+        padding: 0.25rem;
+        padding-left: 0.5rem;
+        display: block;
+        border-left: 1rem solid black;
+    }
+    #aboutMeToggle:focus + [for="aboutMeToggle"]{
+        outline: 4px solid #c6ddf2;
+    }
+
+    #aboutMeToggle:checked ~ header {
+        display: none;
+    }
+
+    header li { display: inline; margin-left: -0.5em; }
+    header .blurb li::after { content: '; '; }
+    header  nav li {
+        display: inline-block;
+        margin-left: 0.35rem;
+        margin-right: 0.35rem;
+    }
+    header .title {
+        width: 100%;
+    }
+    main li .source { display: block; }
+
+}</style>
+    <style>
+      .captioned-image { font-size: 0.9rem; }
+      .thanksTo { font-style: italic; font-size: 0.8rem; }
+    </style>
+    <script>
+      var activateOptional = function (media) {
+        var source = media.getAttribute('data-src'),
+            temp,
+            container = media.parentElement;
+
+          if (media.nextSibling && media.nextSibling.matches) {
+            if (media.nextSibling.matches('.clickToSee')) {
+              media.parentElement.removeChild(media.nextSibling);
+            }
+          }
+
+          if (media.tagName === 'VIDEO') {
+            temp = document.createElement('video')
+            temp.setAttribute('autoplay','')
+            temp.setAttribute('controls','')
+            temp.setAttribute('loop','')
+            temp.innerHTML = '<source src="' + source + '.webm" type="video/webm">'
+                    + '<source src="' + source + '.mp4" type="video/mp4">';
+            media.parentElement.replaceChild(temp, media);
+            setTimeout(function () {
+              temp.play()
+            }, 0);
+          } else {
+            media.src = media.getAttribute('data-src');
+          }
+
+          container.classList.add('active');
+      }
+    </script>
+  </head>
+  <body>
+    <input id="aboutMeToggle" class="sr-only" type="checkbox" checked="">
+<label for="aboutMeToggle">Toggle author information</label>
+<header>
+    <div class="name">
+        Brian Kardell
+    </div>
+    <img class="profile" src="/profile.jpg" alt="">
+    <div class="tagline"><a href="/">Betterifying the Web</a></div>
+    <div class="blurb">
+        <ul>
+            <li>Sr Front-End Engineer at Apollo Group, Inc</li>
+            <li>Original Co-author/Co-signer of The Extensible Web Manifesto</li>
+            <li>Co-Founder/Chair, W3C Extensible Web CG</li>
+            <li>Member, W3C (The JS Foundation)</li>
+            <li>Co-author of HitchJS</li>
+            <li>Blogger</li>
+            <li>Art, Science &amp; History Lover</li>
+            <li>Standards Geek</li>
+        </ul>
+    </div>
+    <div class="title">Follow Me On...</div>
+    <nav>
+        <ul>
+            <li><a rel="me" href="https://briankardell.wordpress.com">Wordpress</a></li>
+            <li><a rel="me" href="https://medium.com/@briankardell">Medium</a></li>
+            <li><a rel="me" href="https://twitter.com/briankardell">Twitter</a></li>
+            <li><a rel="me" href="https://github.com/bkardell/">Github</a></li>
+            <li><a rel="me" href="https://codepen.io/bkardell">Codepen</a></li>
+            <li><a rel="me" href="https://www.linkedin.com/in/brian-kardell-08a4264">LinkedIn</a></li>
+            <li><a rel="me" href="https://www.instagram.com/kardellbrian">Instagram (for
+art)</a></li>
+            <li><a rel="me" href="http://fineartamerica.com/profiles/brian-kardell?">Fine Art
+America (art for sale)</a></li>
+        </ul>
+    </nav>
+</header>
+    <main><div class="posted-on">Posted on null</div><article class="sectioning">
+    <contextual-heading role="heading" aria-level="1">You Don't Say: Web Speech APIs Part II</contextual-heading>
+    <p class="segue">This is part of a series about making the browser speak and listen to speech.  In my last post <a href="https://bkardell.com/blog/Greetings-Professor-Falken.html">Greetings, Professor Falken: Web Speech APIs Part I</a>, I talked about the existing APIs we "have" for speaking (as well as why the air quotes) and all the many ways that they are wonky today.  In this post I'll share some of my own opinions on that API, as well as how I'm dealing with the <em>speaking</em> part IRL.</p>
+
+    <script src="../prism.js"></script>
+    <link rel="stylesheet" href="../prism.css">
+    <script src="../test/speaking/basic-voice-speaker-ii.js"></script>
+    <style>
+    .note {
+        background-color: rgba(255,255,0,0.24);
+        padding: 1rem;
+        font-style: italic;
+    }
+    .note::before {
+        content: 'Note';
+        font-size: 0.8rem;
+        background-color: black;
+        color: white;
+        padding: 0.25rem;
+        margin-right: 0.5rem;
+    }
+    .output {
+        margin-left: 1rem;
+        font-family: "Courier New", Courier, monospace
+    }
+    .spec-quote {
+        display: block;
+        margin: 1rem;
+    }
+    </style>
+    <script>
+        document.body.addEventListener('click', function (evt) {
+            if (evt.target.classList.contains('run')) {
+                let clone = document.importNode(evt.target.previousElementSibling.content, true)
+                document.body.appendChild(clone)
+            } else if (evt.target.classList.contains('cancel')) {
+                speechSynthesis.cancel()
+                speechSynthesis.speak(new SpeechSynthesisUtterance('normalcy should be restored'))
+            }
+        })
+    </script>
+
+    <p>So, we have these wonky APIs implemented inconsistently in a lot of browsers.  We know how to deal with that, we've done it before.  I'd like to review our options to explain how I think it makes sense to approach this:</p>
+
+    <ul>
+        <li>We could just monkeypatch something which makes these precise APIs (or at least some subset) actually work consistently in all browsers.  It's way too early to consider doing this in my opinion and probably does more harm than good as we begin to eliminate options for real implementations/standards.  Let's not do that.</li>
+        <li>We could develop an alternately named polyfill which does just that - instead of dealing with <code>speechSynthesis</code> for example, you'd deal with <code>_speechSynthesis</code>.  That could be interesting, but I'm not sure the API is actually that great to begin with as I'll explain below, so maybe that's not a great option at this stage either.</li>
+        <li>We could develop a new proposal with its own "speculative polyfill" or "prollyfill" following <a href="https://www.w3.org/2001/tag/doc/polyfills/#advice-for-polyfill-authors">excellent advice by the W3C TAG</a> in how we do that and <a href="https://extensiblewebmanifesto.org">#extendthewebforward</a>. This seems very plausible, but I think we're getting kind of ahead of ourselves even there.</li>
+        <li>We could make some libraries following the same advice that hope to become proposals after initiating a lot of discussion and showing that they are, in fact, pretty well thought out and handy.  This is where I think we are.</li>
+    </ul>
+
+    <section class="sectioning">
+        <contextual-heading role="heading" aria-level="2">What's wrong with the current API?</contextual-heading>
+        <p><em>Note: These are just my personal opinions after using it a lot for the past couple of months.</em></p>
+        <p>Let's assume that the API worked consistently, as advertised by the existing draft, across browsers and devices.  Would it be what we really want or need.  I think that, actually, the answer is no.  </p>
+
+        <section class="sectioning">
+            <contextual-heading role="heading" aria-level="3">How low can you go?</contextual-heading>
+            <p>On the one hand, it's intending to be a low level API, but here I feel like it still falls a little short.  Speech is sound, and yet it's not clear to me how this really fits into the audio architecture.  There was very brief disussion of this, but to not seems like a failure to me.  For example, here's a nifty demo from MDN that allows you to <a href="https://mdn.github.io/voice-change-o-matic/">add effects to your voice with input from the mic</a> by connecting it to an audio stream which gets processed to add things like reverb.  However, the draft nor implementation seem to have no way to intercept the audio stream generated by <code>speechSynthesis</code>.  This seems like a shame because the set of things that you could do there is nearly unbounded, whereas the set of things you can do with the existing levers is exceptionally finite.  In my own use cases, I really wanted those abilitites.  Similarly, the most handy of them (pitch, rate, volume) overlap.  Surely there is something 'down there' that deserves explanation.  If these were done 'in post' there's no reason that any voice shouldn't support those.  So, I think we need more there.</p>
+
+            <p>It seems to me there could easily be an 'audiocreated' callback or something which gave you a chance to deal with the audio itself instead of just piping it to the speakers.</p>
+        </section>
+
+        <section class="sectioning">
+            <contextual-heading role="heading" aria-level="3">Off to the races</contextual-heading>
+            <p>Ok, so it's not the low-level API I'd like it to be, but there's a lot of room for improvement at higher levels too...</p>
+            <p>As I explained, <code>.getVoices</code> is weird.  It's kind of typical Web weird in that listeners for events like <code>DOMContentLoaded</code> are also historically racey.  The rationale, I believe, is that remote voices may or may not be available and that can actually change through the duration of your program.  If you've ever used Google Maps Navigation you might have heard the speech change - I beleive that's what's going on there.  But it feels like we should be past this as we have had <code>Promises</code> for some time and the two can co-exist.  Most of the time what we really want to know is "have some voices loaded or not" and managing and guarding against that seems unnecessarily complicated.  You can't put something into the queue with <code>speechSynthesis.speak()</code> until you have an utterance.  You can't create an utterance until you have voices.  You can't simply grab voices because they might not be loaded yet, you can't listen for voices to change if they <em>are</em> already loaded and, in theory, even once something is queued you could lose it before it is actually processed.</p>
+            <p>This is a lot to ask the average author to understand how to get right in my opinion.</p>
+            <p>It seems to me that since we can't 'speak' without a voice, whatever logic you are going to use to choose a voice from the available set should be available to the queue itself so that it can choose at the moment just before creating the audio.  This would solve a whole lot.  It also seems to me that <code>speechSynthesis.speak()</code> should return a promise representing completion or failure of the whole transaction (basically, end or error).  For many common cases, this is all we really care about and is kind of analogus to the fact that XHR contains many 'shades of gray' status changes, but the most successful AJAX abstractions had a simpler pass/fail promise on the entire transaction.</p>
+        </section>
+
+        <section class="sectioning">
+            <contextual-heading role="heading" aria-level="3">Immutable?</contextual-heading>
+            <p>The fact that you create an instance of an utterance and then set properties seems to lead to a lot of confusion, it's kind of hard to read too.  It definitely seems to me that it would be very handy for it to take an options/config object like <code>MutationObserver</code> and then be immutable properties. Generally speaking, I'm not sure what you would hope to 'do' with an utterance once it has been created except put it in the queue or take it out of the queue and having it present you with an API that throws at some times and not others seems to be begging for classes of problems we don't really neeed.</p>
+        </section>
+
+        <section class="sectioning">
+            <contextual-heading role="heading" aria-level="3">Reuse</contextual-heading>
+            <p>Think for a moment of the choice of voice, the pitch, rate and volume as a "speaker".  In my own
+            uses I found that I wanted to reuse these - either to have a single speaker I used all the time, or
+            a few speakers that I wanted to variously "say" things. In the current incarnation, this was kind of more painful than I would like because I had to build up things aware of all the quirks above.</p>
+        </section>
+
+        <section class="sectioning">
+            <contextual-heading role="heading" aria-level="3">What I did</contextual-heading>
+            <p>So, for me, I ended up building something very close to the above that allows me to do simple things simply... Here are some examples.
+            </p>
+
+            <section class="sectioning">
+                <contextual-heading role="heading" aria-level="4">Look, just say something...</contextual-heading>
+                <p>The simplest case is that you just want to say something and you don't care about anything else.  To be honest, that was pretty simple before too, unless you wanted to say something long, because there were problems with that.. but here's what it looks like for me, and it works with long text by chopping it up at hopefully sensible points and chaining them together.</p>
+                <pre><code class="language-javascript">
+new BasicVoiceSpeaker().say(`
+    To be, or not to be, that is the question:
+    Whether 'tis nobler in the mind to suffer
+    The slings and arrows of outrageous fortune,
+    Or to take Arms against a Sea of troubles,
+    And by opposing end them: to die, to sleep
+    No more; and by a sleep, to say we end
+    the heart-ache, and the thousand natural shocks
+    that Flesh is heir to? 'Tis a consummation
+    devoutly to be wished. To die, to sleep,
+    To sleep, perchance to Dream; aye, there's the rub.
+`)
+                </code></pre>
+                <template>
+                    <script>new BasicVoiceSpeaker().say(`
+    To be, or not to be, that is the question:
+    Whether 'tis nobler in the mind to suffer
+    The slings and arrows of outrageous fortune,
+    Or to take Arms against a Sea of troubles,
+    And by opposing end them: to die, to sleep
+    No more; and by a sleep, to say we end
+    the heart-ache, and the thousand natural shocks
+    that Flesh is heir to? 'Tis a consummation
+    devoutly to be wished. To die, to sleep,
+    To sleep, perchance to Dream; aye, there's the rub.
+`)</script>
+                </template>
+                <button class="run">Run this</button>
+            </section>
+
+            <section class="sectioning">
+                <contextual-heading role="heading" aria-level="4">Can you take me higher?</contextual-heading>
+                <p>But I can configure my speaker as described above, and reuse it.  They queue in order.</p>
+                <pre><code class="language-javascript">
+let speaker = new BasicVoiceSpeaker({
+    rate: 0.8,
+    pitch: 1.2
+})
+speaker.say(`Greetings, Professor Faulken.`)
+speaker.say(`Would you like to play a game?`)
+                </code></pre>
+                <template>
+                    <script>let speaker = new BasicVoiceSpeaker({
+    rate: 0.8,
+    pitch: 1.2
+})
+speaker.say(`Greetings, Professor Faulken.`)
+speaker.say(`Would you like to play a game?`)
+</script>
+                </template>
+                <button class="run">Run this</button>
+            </section>
+        </section>
+
+        <section class="sectioning">
+            <contextual-heading role="heading" aria-level="3">Voices</contextual-heading>
+            <p>Of course, all the crap with loading the voices/finding one
+            are what you really want to be easier, so there is a <code>.filter</code>
+            property that passes you the voices at the right time and lets you
+            use whatever means you like to find one and return the one you want.
+            If it doesn't return anything, it'll just use the first voice in voices.</p>
+            <pre><code class="language-javascript">let joshua = new BasicVoiceSpeaker({
+    rate: 0.8,
+    pitch: 1.2,
+    filter: (voices) =&gt; {
+        // keeping this overly simple for the example
+        return voices.find((v) =&gt; { return /vox/.test(v.name) })
+    }
+})
+joshua.say('A strange game.')
+joshua.say('The only winning move is not to play...')
+joshua.say('How about a nice game of chess?')
+</code></pre>
+            <template>
+                <script>(function () {
+                    let joshua = new BasicVoiceSpeaker({
+                        rate: 0.8,
+                        pitch: 1.2,
+                        filter: (voices) => {
+                            // In here you can do whatever complex stuff you like
+                            // to find the voice you're going to use... I'm
+                            // keeping it simple here for the example.  If this
+                            // voice isn't found, it will just use the first voice
+                            // in voices
+                            return voices.find((v) => { return /vox/.test(v.name) })
+                        }
+                    })
+                    joshua.say('A strange game.')
+                    joshua.say('The only winning move is not to play...')
+                    joshua.say('How about a nice game of chess?')
+
+                    }())</script>
+            </template>
+            <button class="run">Run this</button>
+
+
+            <p>For what it's worth though, I found that most of the time what I really want
+                 to do is test against a number of regexps in preferential order searching
+                 for something and it's verbose and redundant... To be honest, I'm not
+                 really sure what else you <em>could do</em>.  Because of this, I added some
+                 sugar where you can pass an array of objects with critera about
+                 which property (name or lang) you want to check and a regular expressions.
+                 It uses these to search, in order and just avoids all that redundant/potentially
+                 complicated/verbose function writing. What I'd really
+                 write, most of the time, is something more like this..</p>
+                 <pre><code class="language-javascript">
+let speaker = new BasicVoiceSpeaker({
+    // Here are several options, in order
+    filter: [{name: /vox/}, {name: /noids/}, {name: /en-us/i}],
+    pitch: 1.2
+})
+speaker.say(`D.O.D. pension files indicate current mailing as:`)
+speaker.say(`Dr. Robert Hume, a.k.a. Stephen W. Falken, 5 Tall Cedar Road, Goose Island, Oregon 97`)
+                </code></pre>
+                <template>
+                    <script>let speaker = new BasicVoiceSpeaker({
+    // Here are several options, in order
+    filter: [{name: /vox/}, {name: /noids/}, {name: /en-us/i}],
+    pitch: 1.2
+})
+speaker.say(`D.O.D. pension files indicate current mailing as:`)
+speaker.say(`Dr. Robert Hume, a.k.a. Stephen W. Falken, 5 Tall Cedar Road, Goose Island, Oregon 97`)
+                    </script>
+                </template>
+                <button class="run">Run this</button>
+
+        </section>
+
+        <section class="sectioning">
+            <contextual-heading role="heading" aria-level="3">Queing and Promises</contextual-heading>
+            <p>Each call to <code>.say(..)</code> also returns a promise, which is
+            resolved when the entire text is spoken (even if it had to be chopped up),
+            so you can kind of mostly have a synchronous looking block of calls that
+            do what you expect them to do, but do it async, and you can still
+            then do whatever larger coordination with those promises too...</p>
+
+              <pre><code class="language-javascript">
+// Just a simple conversation back and forth between
+// two actors: An en-US person and one I've given
+// several acceptable voices to search for, in order
+
+let englishSpeaker = new BasicVoiceSpeaker({
+    filter: [{ lang: /en-US/ })
+})
+
+let italianSpeaker = new BasicVoiceSpeaker({
+    filter: [
+        {lang: /it/},
+        {name: /victoria/},
+        {name: /vicki/},
+        {name: /female/}
+    ]
+})
+
+Promise.all([
+    englishSpeaker.say(`How do you say "Good evening" in Italian?`),
+    italianSpeaker.say(`We say "Buonasera"`),
+    englishSpeaker.say(`Baynostera?`),
+    italianSpeaker.say(`No, "Buonasera", try again.`),
+    englishSpeaker.say(`Bwohnah sehrah?`),
+    italianSpeaker.say(`si!! Molto bene!! Very good!!`)
+]).then(() =&gt; {
+    document.querySelector('#convo-sample-out').innerText = 'All done speaking'
+})
+              </code></pre>
+              <template><script>
+                (function () {
+                    let englishSpeaker = new BasicVoiceSpeaker({
+                        filter: (voices) => {
+                            // this one just has to be en-US
+                            return voices.find((v) => { return /en-US/.test(v.lang) })
+                        }
+                    })
+                    let italianSpeaker = new BasicVoiceSpeaker({
+                        filter: (voices) => {
+                            // Mostly, I just want an italian voice
+                            let italianVoice = voices.find((v) => {
+                                return /it/.test(v.lang)
+                            })
+                            // If I can't have that, here are some fallbacks..
+                            if (!italianVoice) {
+                                italianVoice = voices.find((v) => {
+                                    return /vicki|victoria|female/i.test(v.name)
+                                })
+                            }
+                            return italianVoice
+                        }
+                    })
+                    Promise.all([
+                        englishSpeaker.say(`How do you say "Good evening" in Italian?`),
+                        italianSpeaker.say(`We say "Buonasera"`),
+                        englishSpeaker.say(`Baynostera?`),
+                        italianSpeaker.say(`No, "Buonasera", try again.`),
+                        englishSpeaker.say(`Bwohnah sehrah?`),
+                        italianSpeaker.say(`si!! Molto bene!! Very good!!`)
+                    ]).then(() => {
+                        document.querySelector('#convo-sample-out').innerText = 'All done speaking'
+                    })
+
+                }())
+              </script></template>
+              <button class="run">Run this</button><span class="output" id="convo-sample-out">Some output should show here</span>
+
+        </section>
+
+        <section class="sectioning">
+            <contextual-heading role="heading" aria-level="3">Wrapping up</contextual-heading>
+            <p>So, this is 'at the bottom' of what I'm using and why.
+            It still doesn't even attempt to deal with the
+            whole audio stream thing. I'm not sure how to deal with that, but one thing I considered
+            through all this is that you could probably record from the mic and then also offer the
+            ability to capture that as bits you could then write out and save and then reload
+            as simple sound.  This might have uses if you have a tight script and really want to
+            guarantee the voices are what you want them to be and even have the ability to
+            mix or post process them, but... meh.</p>
+
+            <p>More importantly, I'm just trying to start a conversation and get people thinking and
+            talking about speech again.  In my next post I'll start dissussing the more complex
+            end of all this, <em>listening</em> and how that actually also potentially complicates this
+            problem in intersting way.</p>
+
+
+        </section>
+
+    </section>
+
+
+</article></main>
+
+  
+    <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-88027178-1', 'auto');
+    ga('send', 'pageview');
+  </script>
+
+  <script>
+    Array.prototype.slice.call(document.querySelectorAll('.optional [data-src]')).forEach(function (optional) {
+      var prefs = window.localStorage.downloadsPrefs,
+          clickToSee;
+      if (prefs === 'true') {
+        activateOptional(optional);
+      } else {
+        clickToSee = document.createElement('div');
+        clickToSee.classList.add('clickToSee')
+        clickToSee.innerHTML = '<button>Click to see media</button>';
+        clickToSee.style.textAlign = 'center';
+        clickToSee.style.border = 'none';
+        optional.parentElement.insertBefore(clickToSee, optional.nextSibling);
+        clickToSee.firstElementChild.addEventListener('click', function () {
+          activateOptional(optional);
+        })
+      }
+
+    })
+  </script>
+
+</body></html>
