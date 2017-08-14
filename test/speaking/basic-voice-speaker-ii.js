@@ -70,7 +70,9 @@ class BasicVoiceSpeaker {
 	              	  voices = speechSynthesis.getVoices(),
 	              	  //choose voice at the moment of queing, unfortunately
 	              	  // we can't currently do better than this
-	                  voice = options.filter(voices) || voices[0]
+	                  voice = options.filter(voices) || voices.find((v) => {
+	                  	return v.lang.indexOf(document.documentElement.lang) === 0
+	                  }) || voices[0]
 
 	              utterThis.pitch = options.pitch
 	              utterThis.rate = options.rate
