@@ -325,7 +325,7 @@ America (art for sale)</a></li>
 </header>
     <main><div class="posted-on">Posted on null</div><article class="sectioning">
 	<contextual-heading role="heading" aria-level="1">The History and State of Speech</contextual-heading>
-	<p class="segue">One apocryphal legend says that when the great sculptor Michelangelo carved his statue of Moses, it was so life-like that as he struck his final blow to the left knee he demanded "Now, speak".  Sadly, it wasn't that easy.  But we've been working hard to figure it out pretty much ever since and, ultimately bring that to the Web.  As often happens, I find myself so interested in understanding how we got here and where we are that it winds up being a whole piece on it's own.  So, in this piece I'll tell you about the history and current state of affairs of Speech on the Web...</p>
+	<p class="segue">One apocryphal legend says that when the great sculptor Michelangelo carved his statue of Moses, it was so life-like that as he struck his final blow to the left knee he demanded "Now, speak".  Sadly, it wasn't that easy.  But we've been working hard to figure it out pretty much ever since and, ultimately bring speech to the Web.  As often happens, I find myself so interested in understanding how we got here and where we are that it winds up being a whole piece on it's own.  So, in this piece I'll tell you about the history and at a high level current state of affairs of Speech on the Web, subsequent posts in this series will be more technical...</p>
 
 	<section class="sectioning">
 		<contextual-heading role="heading" aria-level="2">The History of Speech Machines</contextual-heading>
@@ -456,9 +456,12 @@ No, Fuck you.
 
 	<section class="sectioning">
 		<contextual-heading role="heading" aria-level="2">"The Modern Era"</contextual-heading>
-		<p>So, we still didn't have a way in the browser to do this.  Then, one day in 2010, a W3C Community Group called the "Speech XG Incubator Group" was started with a developer from Google saying "some of us at google have been working on extending HTML elements for speech".</p>
+		<div class="captioned-image p-attached p-attached-left">
+			<img src="https://upload.wikimedia.org/wikipedia/en/d/dc/Applessiri.jpg" alt="">
+		</div>
+		<p>So, we still didn't have a way in the browser to do this.  Then, one day in 2010, a W3C Community Group called the "Speech XG Incubator Group" was started with a developer from Google saying "some of us at google have been working on extending HTML elements for speech".  It was right around this time that Siri was introduced to the wider world and a new era of digital assistants began to flourish and evolve. </p>
 
-		<p>What followed was... mostly boring.  It was requirements gathering.  Lots of people saying "I think it should X" or "It has to Y" and "No, I disagree because Z".  That's... unfortunately how standards in committees work.</p>
+		<p>But, what followed was... mostly boring.  It was requirements gathering.  Lots of people saying "I think it should X" or "It has to Y" and "No, I disagree because Z".  That's... unfortunately how standards in committees work.  ,</p>
 
 		<p>But quickly, and I mean <em>very</em> quickly Google submitted a <a href="https://lists.w3.org/Archives/Public/public-xg-htmlspeech/2011Feb/att-0020/api-draft.html">proposed draft</a>.  Through all of the discussion, they also got <a href="https://lists.w3.org/Archives/Public/public-xg-htmlspeech/2011Feb/att-0023/speechrequest.xml.html">a proposal from Mozilla</a>, <a href="https://lists.w3.org/Archives/Public/public-xg-htmlspeech/2011Mar/att-0003/htmlspeech_tropo.html">another from a company called Voxeo</a> and, finally <a href="https://lists.w3.org/Archives/Public/www-archive/2011Mar/att-0001/microsoft-api-draft-final.html">one from Microsoft</a>.  It's worth noting that none of these is 'an official proposal' by W3C terms.  But, in the end, the result of this Community Group was a <a href="https://www.w3.org/2005/Incubator/htmlspeech/live/NOTE-htmlspeech.html#proposals">Note</a>, effectively, "Here's what we found".</p>
 
@@ -466,18 +469,23 @@ No, Fuck you.
 
 		<p>What did happen, was the creation of another Community Group led by Google and the statement on April 3, 2012, "<a href="http://www.w3.org/community/groups/proposed/#speech-api">Google plans to supply an implementation</a>"</p>
 
-	</section>
-
-	<section class="sectioning">
-		<contextual-heading role="heading" aria-level="2">What even is a standard?</contextual-heading>
 		<p>Google <em>did</em>, in fact, supply an implementation and wrote an article talking about "HTML5 Speech APIs".  This raised some ire because, in fact, it is not part of HTML5, nor was it even on a standards track, it was technically still "just some stuff everyone was discussing very seriously" in the Community Group.</p>
 
 		<p>There were people from smaller orgs, and just general folk -  at least one or two people from Microsoft and Mozilla, but the conversation on the mailing-list was really mostly dominated by people working at Google.</p>
 
 		<p>In the end though, the product was a <a href="https://dvcs.w3.org/hg/speech-api/raw-file/9a0075d25326/speechapi.html">Final Report which laid out another API, which is, again not on any standards track.</a></p>
+		<p>One might think that the rise in popularity and utility of digital assistants would really spurn the interest in standards bodies to move this forward, but instead it seems to have largely "stalled", which is kind of a shame because the web <em>kind of is</em> the ultimate digital assistant in many respects already... We just have to get it there.</p>
 
-		<p>Nevertheless, there are bits of implementation of the unofficial proposal in every modern browser. None of them follow it exactly, and there is lots of errata.  It's kind of wonky even across different OSes for the same browser.  It's very much like DOM/CSS support in 1998 or 1999.  Also, because it's unofficial, addressing issues is typically pretty low priority. I'll explain a lot more details about these gotchas and bits in the piece I set out to write initially...</p>
+	</section>
 
+	<section class="sectioning">
+		<contextual-heading role="heading" aria-level="2">What even is a standard?</contextual-heading>
+
+		<p>Now, when I said it stalled - that doesn't mean nothing has happened.  Despite all this history, there are nevertheless, bits of implementation of the unofficial proposal in <em>every modern browser</em> and much of it isn't even behind a flag or prefix!!  In fairness, none of them follow it exactly, and to an extent it's hard to say what "it" even is since the spec, out of band errata and implementation shipped by Google don't entirely match.  Further, it's kind of wonky even across different OSes for the same browser and whether you're connected to the interwebs or not.  It's very much like DOM/CSS support in 1998 or 1999.  But, because it's unofficial, addressing issues is typically pretty low priority.</p>
+
+		<p>In some sense though, which is the more valuable 'standard' - the unofficial stuff everyone has implemented or the official ones written down that aren't?</p>
+
+		<p>I'll explain a lot more details, including gotchas and bits I find problematic in the pieces I set out to write initially.  I feel like it is very much in the interest of the Web to work together to drive "this" forward, and by "this" I mean simply let's experiment and figure out what's missing and work get speech into the Web "offically".</p>
 	</section>
 
 </article></main>
