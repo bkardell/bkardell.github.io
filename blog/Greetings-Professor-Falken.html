@@ -877,7 +877,7 @@ let voice = speechSynthesis.getVoices().find((voice) => {
                 <p>Did it work for you?  Hard to know because, here's the bad news: The list of voices you get back will vary depending on the browser and OS pretty wildly.  On my mac I get a list of 60 voices in Safari v7 (don't ask), 43 voices in Chrome v60, and 24 voices in my Firefox Developer Edition.  This voice doesn't exist on my current Chrome on Android.</p>
 
                 <p class="note"><em>Worse still though</em> the shared <code>speechSynthesis</code> on Android means that
-                it's going to speak in whatever voice was last chosen - pretty much anywhere.  If you ran <em>The Godfather</em> example just before this on Android, it probably just spoke those lyrics in an Italian accent.  Sweet.</p>
+                it's going to speak in whatever voice was last chosen - pretty much anywhere.  If you ran <em>The Godfather</em> example just before this on Android, it probably just spoke those lyrics in an Italian accent.  Sweet.  Just kidding, this is terrible and caused me many many problems.</p>
 
                 <p class="note">Setting the <code>.voice</code> attribute on the utterance might be what's documented, and it might even be what we just (probably?) successfully ran, but what you've got to set if you want it to work in Android  is the <code>voiceURI</code> attribute on the utterance, which isn't even listed in the list of attributes in the draft or most documentation I've read.  Sadly, neither seems to work for me univerally, so set both if you're choosing a voice... And... good luck finding a way to select a good voice. Finally, not all voices support modification of things like rate and pitch.
                 </p>

@@ -413,7 +413,8 @@ America (art for sale)</a></li>
 
             <section class="sectioning">
                 <contextual-heading role="heading" aria-level="4">Look, just say something...</contextual-heading>
-                <p>The simplest case is that you just want to say something and you don't care about anything else.  To be honest, that was pretty simple before too, unless you wanted to say something long, because there were problems with that.. but here's what it looks like for me, and it works with long text by chopping it up at hopefully sensible points and chaining them together.</p>
+                <p>The simplest case is that you just want to say something and you don't care about anything else.  To be honest, that was pretty simple before too, unless you wanted to say something long, because there were problems with that, or you cared that it might be defaulting you to some voice that wasn't even in the right language.. but here's what it looks like for me, and it works with long text by chopping it up at hopefully sensible points and chaining them together, selecting
+                a voice by default that is at least in the same major language as the document.</p>
                 <pre><code class="language-javascript">
 new BasicVoiceSpeaker().say(`
     To be, or not to be, that is the question:
@@ -475,7 +476,9 @@ speaker.say(`Would you like to play a game?`)
             are what you really want to be easier, so there is a <code>.filter</code>
             property that passes you the voices at the right time and lets you
             use whatever means you like to find one and return the one you want.
-            If it doesn't return anything, it'll just use the first voice in voices.</p>
+            If it doesn't return anything, it'll just use the first voice in voices that
+            matches the preferred language of the document. If it can't find even that,
+            It'll just pick the first voice.</p>
             <pre><code class="language-javascript">let joshua = new BasicVoiceSpeaker({
     rate: 0.8,
     pitch: 1.2,
