@@ -71,7 +71,8 @@ class BasicVoiceSpeaker {
 	              	  //choose voice at the moment of queing, unfortunately
 	              	  // we can't currently do better than this
 	                  voice = options.filter(voices) || voices.find((v) => {
-	                  	return document.documentElement.lang.indexOf(v.lang) === 0
+	                  	let docLang = document.documentElement.lang || 'en'
+	                  	return docLang == (v.lang.split(/-|_/)[0])
 	                  }) || voices[0]
 
 	              utterThis.pitch = options.pitch
