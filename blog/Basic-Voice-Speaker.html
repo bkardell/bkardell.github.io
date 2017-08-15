@@ -329,7 +329,7 @@ America (art for sale)</a></li>
 
     <script src="../prism.js"></script>
     <link rel="stylesheet" href="../prism.css">
-    <script src="../test/speaking/basic-voice-speaker-transpiled.js"></script>
+    <script src="../test/speaking/basic-voice-speaker-ii.js"></script>
     <style>
     .note {
         background-color: rgba(255,255,0,0.24);
@@ -356,10 +356,8 @@ America (art for sale)</a></li>
     <script>
         document.body.addEventListener('click', function (evt) {
             if (evt.target.classList.contains('run')) {
-                let temp = new Function(
-                    evt.target.previousElementSibling.innerHTML
-                )
-                temp()
+                let clone = document.importNode(evt.target.previousElementSibling.content, true)
+                document.body.appendChild(clone)
             } else if (evt.target.classList.contains('cancel')) {
                 speechSynthesis.cancel()
                 speechSynthesis.speak(new SpeechSynthesisUtterance('normalcy should be restored'))
@@ -459,14 +457,15 @@ let speaker = new BasicVoiceSpeaker({
 speaker.say(`Greetings, Professor Faulken.`)
 speaker.say(`Would you like to play a game?`)
                 </code></pre>
-                <script type="ready-code">
-let speaker = new BasicVoiceSpeaker({
+                <template>
+                    <script>let speaker = new BasicVoiceSpeaker({
     rate: 0.8,
     pitch: 1.2
 })
 speaker.say(`Greetings, Professor Faulken.`)
 speaker.say(`Would you like to play a game?`)
 </script>
+                </template>
                 <button class="run">Run this</button>
             </section>
         </section>
@@ -644,7 +643,6 @@ Promise.all([
         </section>
 
     </section>
-
     <p class="thanksTo">Special thanks to my friend, the great Chris Wilson for proofing/commenting on pieces in this series.</p>
 
 </article></main>
