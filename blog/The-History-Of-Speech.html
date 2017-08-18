@@ -6,7 +6,7 @@
     <meta name="twitter:creator" content="@briankardell">
     <meta name="twitter:title" content="The History and State of Speech">
     <meta name="twitter:description" content="One apocryphal legend says that when the great sculptor Michelangelo carved his statue of Moses, it was so life-like that as he struck his final blow to the left knee he demanded &quot;">
-    <meta name="twitter:image" content="http://www.1939nyworldsfair.com/worlds_fair/wf_tour/zone-4/images/VODER.jpg">
+    <meta name="twitter:image" content="../media/VODER.jpg">
     <link rel="alternate" type="application/rss+xml" href="blog/feed.rss" title="bkardell.com/blog rss feed">
     <title>The History and State of Speech</title>
     <style>.captioned-image {
@@ -324,13 +324,83 @@ America (art for sale)</a></li>
     </nav>
 </header>
     <main><div class="posted-on">Posted on 8/18/2017</div><article posted-on="8/18/2017" class="sectioning">
+	<style>
+		/*body:not(.preferences-set) > :not(main) { display: none; }
+		body:not(.preferences-set) {
+			background-color: #444;
+			color: white;
+		}
+		*/
+		body:not(.prefers-images) .captioned-image:not(.active) > * { border: 1px dashed gray }
+
+		#downloadsPrefs {
+			font-size: 0.8rem;
+			background-color: #fcfcfc;
+			border: 1px dotted gray;
+			margin-bottom: 1rem;
+		}
+		#downloadsPrefs p {
+			margin: 2rem 10%;
+		}/*
+		#downloadsPrefs ~ * {
+			display: none;
+		}*/
+	</style>
+	<div id="downloadsPrefs">
+		<p style="font-size: 1.5rem">Note from the author...</p>
+		<p>My posts frequently (like this one) have a 'theme' and tend to use a number of images for visual flourish. Personally, I like it that way, I find it more engaging and I prefer for people to read it that way.  However, for users on a metered or slow connection, downloading unnecessary images is, well, unnecessary, potentially costly and kind of rude.  Just to be polite to my users, I offer the ability for you to opt out of 'optional' images if the total size of viewing the page would exceed a budget I have currently defined as 200k...
+		</p>
+		<p><label>Show me all the images when I read <input type="checkbox" id="download-all-images-pref" checked=""></label></p>
+		<p><label>Don't ask me again on this device <input type="checkbox" id="download-all-images-pref-save"></label></p>
+		<p><button id="setDownloadPrefs">Dismiss</button></p>
+	</div>
+	<script>
+		'use strict';
+		(function () {
+			var prefsButton = document.querySelector('#setDownloadPrefs'),
+				prefs = window.localStorage.downloadsPrefs;
+			function downloadImages () {
+				var lazy = Array.prototype.slice.call(document.querySelectorAll('.captioned-image>[data-src]'));
+
+				lazy.forEach(activateOptional)
+			}
+			function removeDownloadPrefsOverlay() {
+				document.body.classList.add('preferences-set')
+				document.querySelector('#downloadsPrefs').remove()
+			}
+
+			prefsButton.addEventListener('click', function() {
+				var all = document.querySelector('#download-all-images-pref'),
+					save = document.querySelector('#download-all-images-pref-save'),
+					prefs = window.localStorage.downloadsPrefs
+
+				if (all.checked) {
+					downloadImages();
+				}
+				if (save.checked) {
+					window.localStorage.downloadsPrefs = all.checked;
+				}
+				removeDownloadPrefsOverlay()
+			});
+
+			if (typeof prefs !== 'undefined') {
+				console.log(prefs)
+				if (prefs === 'true') {
+					document.body.classList.add('prefers-images')
+					window.localStorage.downloadsPrefs = prefs
+					window.addEventListener('DOMContentLoaded', downloadImages)
+				}
+				removeDownloadPrefsOverlay()
+			}
+		}())
+	</script>
 	<contextual-heading role="heading" aria-level="1">The History and State of Speech</contextual-heading>
 	<p class="segue">One apocryphal legend says that when the great sculptor Michelangelo carved his statue of Moses, it was so life-like that as he struck his final blow to the left knee he demanded "Now, speak".  Sadly, it wasn't that easy.  But we've been working hard to figure it out pretty much ever since and, ultimately bring speech to the Web.  As often happens, I find myself so interested in understanding how we got here and where we are that it winds up being a whole piece on it's own.  So, in this piece I'll tell you about the history and at a high level current state of affairs of Speech on the Web, subsequent posts in this series will be more technical...</p>
 
 	<section class="sectioning">
 		<contextual-heading role="heading" aria-level="2">The History of Speech Machines</contextual-heading>
-		<div class="captioned-image p-attached p-attached-right" style="margin-top:0">
-			<img src="http://www.1939nyworldsfair.com/worlds_fair/wf_tour/zone-4/images/VODER.jpg">
+		<div class="captioned-image optional p-attached p-attached-right" style="margin-top:0">
+			<img data-src="../media/VODER.jpg">
 			The Voder machine at the 1939 Worlds fair.
 		</div>
 
@@ -344,14 +414,14 @@ America (art for sale)</a></li>
 		<p>When I was born, to most people, computers were mostly the realm of seemingly far-future science fiction movies.  Actual life was pretty analog.</p>
 
 		<div class="captioned-image" style="margin-top:0; clear: both;">
-			<img src="http://www.boxcarcabin.com/rca-xl100-console-tv.jpg">
+			<img data-src="http://www.boxcarcabin.com/rca-xl100-console-tv.jpg">
 			Here's what my television looked like when I was 4
 		</div>
 
 		<p>Back then, you had to get up and walk across the room to change the channel, and you'd do it by physically turning a dial or two and maybe manually moving around an antenna. The year I was born they started selling consoles like Atari Pong. But those were still weird clunky things that you controlled with dials and analog buttons, just like the television.</p>
 
-		<div class="captioned-image p-attached p-attached-right" style="margin-top:0">
-			<img src="../media/TeleGames-Atari-Pong.jpg">
+		<div class="captioned-image optional p-attached p-attached-right" style="margin-top:0">
+			<img data-src="../media/TeleGames-Atari-Pong.jpg">
 		</div>
 
 		<p>By the time I was old enough to remember anything, a number of 'toys' were beginning to put together some really interesting things: Texas Instruments had the <a href="https://www.youtube.com/watch?v=GvPAS6W3q78">Speak And Spell</a> released in 1978.  The same year, Mego Toy Corp released the <a href="https://www.youtube.com/watch?v=icqHuRDjGRU">2-XL</a>.</p>
@@ -445,7 +515,7 @@ No, Fuck you.
 		<p>In March 1999 AT&amp;T, IBM, Lucent, and Motorola formed the VoiceXML Forum to create a kind of 'HTML, but for speech'.  One year later they took VoiceXML to the W3C and a whole bunch of other organizations got involved.  Most of them did not make a Web browser.</p>
 
 		<div class="captioned-image" style="margin-top:0">
-			<img src="https://www.w3.org/TR/voice-intro/voice-intro-fig1.gif" alt="">
+			<img data-src="https://www.w3.org/TR/voice-intro/voice-intro-fig1.gif" alt="">
 		</div>
 
 		<p>What resulted was not just a codified VoiceXML, but the W3C Speech Interface Framework composed of: Voice XML 2.0, Natural Language Semantics Markup Language, Speech Synthesis Markup Language, Speech Recognition Grammar Markup Language, and N-gram Grammar Markup Language.  Ever heard of any of them?</p>
@@ -456,8 +526,8 @@ No, Fuck you.
 
 	<section class="sectioning">
 		<contextual-heading role="heading" aria-level="2">"The Modern Era"</contextual-heading>
-		<div class="captioned-image p-attached p-attached-left">
-			<img src="https://upload.wikimedia.org/wikipedia/en/d/dc/Applessiri.jpg" alt="">
+		<div class="captioned-image optional p-attached p-attached-left">
+			<img data-src="https://upload.wikimedia.org/wikipedia/en/d/dc/Applessiri.jpg" alt="">
 		</div>
 		<p>So, we still didn't have a way in the browser to do this.  Then, one day in 2010, a W3C Community Group called the "Speech XG Incubator Group" was started with a developer from Google saying "some of us at google have been working on extending HTML elements for speech".  It was right around this time that Siri was introduced to the wider world and a new era of digital assistants began to flourish and evolve. </p>
 
