@@ -323,7 +323,7 @@ America (art for sale)</a></li>
         </ul>
     </nav>
 </header>
-    <main><div class="posted-on">Posted on null</div><article class="sectioning">
+    <main><div class="posted-on">Posted on 08/23/2017</div><article posted-on="08/23/2017" class="sectioning">
     <contextual-heading role="heading" aria-level="1">Greetings, Professor Falken: Web Speech APIs Part I</contextual-heading>
     <p class="segue">There's a long, rich history of humans figuring out how to make machines talk and listen, and nearly as long as there has been a W3C there have been efforts to get these features into the browser.  It's too complicated to recount here, that's <a href="http://bkardell.com/blog/The-History-Of-Speech.html">a whole post of it's own</a>.  Suffice it to say that it's been fits and starts, steps forward and back and where we are right now is... muddy, but it works... sort of.  In this series of posts, I'll tell you all about it...</p>
     <script src="../prism.js"></script>
@@ -727,7 +727,7 @@ setTimeout(() =&gt; {
         <p>Did it work?  Here's some bad news... there are a lot of notes here:</p>
         <p class="note">If you're on Android and nothing is happening, you might have missed <a href="#pause-on-android">the note about <code>.pause</code> not working right there.</a> and you should click this button to clear the queue and <button class="cancel">restore normalcy</button> (don't you wish that button worked on the whole world).</p>
         <p class="note">At least in Chrome (that's just the one I use most) it appears to be very easy to create situations where callbacks are not called, despite it being blatantly obvious that they happened. There have been a couple of bugs opened about this.  In my experience, this seems to be closely related to either the 'shared queue' note above or garbage collection causing utterance objects to be cleaned up before they are really fired because of longer text, so you've got to deal with all that yourself.</p>
-        <p class="note">One more thing... If <code>.onError</code> is called, the event it raises will have an <code>.error</code> attribute (or, it's supposed to) which should be an error code indicating why.  The draft lists <a href="https://dvcs.w3.org/hg/speech-api/raw-file/tip/webspeechapi.html#speechsynthesiserrorevent">11 'kinds' of problems</a> and they are both informatice to the kinds of things you should be thinking about.</p>
+        <p class="note">One more thing... If <code>.onError</code> is called, the event it raises will have an <code>.error</code> attribute (or, it's supposed to) which should be an error code indicating why.  The draft lists <a href="https://dvcs.w3.org/hg/speech-api/raw-file/tip/webspeechapi.html#speechsynthesiserrorevent">11 'kinds' of problems</a> and they are both informatice to the kinds of things you should be thinking about, but some of these don't seem to happen IRL and leave undefined spec behavior gaps.</p>
         </section>
 
 
@@ -792,6 +792,8 @@ speechSynthesis.speak(apollonia)</code></pre>
                 }())
             </script></template>
             <button class="run">Run this</button>
+            <p class="note">If you set the <code>.lang</code> to an invalid language, say, for example "Hobbit"
+            or "Vulcan" it will simply use the default. I couldn't find that in the spec somewhere, but that seems to be the behavior in Chrome.</p>
         </section>
 
         <section class="sectioning">
@@ -891,6 +893,7 @@ let voice = speechSynthesis.getVoices().find((voice) => {
         <contextual-heading role="heading" aria-level="4">Wrapping up</contextual-heading>
         <p>So... It's pretty cool stuff, but it's a little like writing anything during the browser wars.  You'll want abstractions to paper over the warts and help you deal with all the quirks, and probably just to make it not hellish to write with.  There's a bunch of stuff I didn't cover, for example, there are 'boundary' callbacks and a few other things, but I think this gives you a lot.  In my next piece I'll talk a little about papering over some of the warts, and then we will get into <em>listening</em> to speech.</p>
     </section>
+    <p class="thanksTo">Special thanks to my friend, the great Chris Wilson for proofing/commenting on pieces in this series.</p>
 </section></section></article></main>
 
   
