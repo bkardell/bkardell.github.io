@@ -1,17 +1,5 @@
 
-/* Here's the thing... there's only one speechSynthesis object
-   and lots of buggy or weird stuff to deal with here...
-	1) Which voice it speaks in comes from a list accessed by .getVoices()
-	2) The list isn't available immediately on all platforms and
-	   until they are ready, you'll always get an empty list/the default voice
-	3) What the default voice is varies wildly. On android it seems to be
-	   the last voice anyone used anywhere
-	4) What voices are called varies wildly
-	5) The specs aren't updated/contain errata on much of this
-
-	To this end, I find it simpler to use an abstraction..
-*/
-
+/* Why? see http://bkardell.com/blog/Greetings-Professor-Falken.html */
 class BasicVoiceSpeaker {
 
 	/*
@@ -21,22 +9,33 @@ class BasicVoiceSpeaker {
 	*/
 	constructor(test = /.*/) {
 		const synth = window.speechSynthesis
-		let voice = null
+		let voice = null,
+			tester = test
+
+		if (test instanceof RegExp) {
+			tester = function (v) {
+				return test.test(v.name)
+			}
+		}
+
 
 		// We only ever need get the list of voices once, so
 		// let's just expose a promise for that
 		BasicVoiceSpeaker.voicesReady = BasicVoiceSpeaker.voicesReady || new Promise((resolve) => {
-			synth.onvoiceschanged = () => {
-				resolve(synth.getVoices())
+			let voices = synth.getVoices()
+			if (voices.length ===0 ) {
+				synth.onvoiceschanged = () => {
+					resolve(synth.getVoices())
+				}
+			} else {
+				resolve(voices)
 			}
-			synth.getVoices()
+
 		})
 
 		this.ready = new Promise((resolve, reject) => {
 			return BasicVoiceSpeaker.voicesReady.then((voices) => {
-				voice = voices.find((v) => {
-	              return test.test(v.name)
-	            })
+				voice = voices.find(tester)
 	            console.log('voices should be ready')
 		        resolve()
 			})
@@ -62,23 +61,8 @@ class BasicVoiceSpeaker {
 	                  resolve()
 	              }
 	              utterThis.onerror = () => {
-	                  console.log(`...uhm..`)
 	                  resolve()
 	              }
-	              utterThis.onmark = () => {
-	                  console.log(`...uhm mark?..`)
-	                  resolve()
-	              }
-	              utterThis.onpause = () => {
-	                  console.log(`...uhm pause?..`)
-	                  resolve()
-	              }
-	              utterThis.onstart = () => {
-	              	console.log(`...uhm start?..`)
-	              }
-	              utterThis.addEventListener('error', () => {
-	              	console.log('ended')
-	              })
 	              setTimeout(() => {
 	              	window.__utterance = utterThis
 	                synth.speak(utterThis)
@@ -108,12 +92,12 @@ class BasicVoiceSpeaker {
   		return this.__sayNext(queue).then(() => {
   			console.log('all my speaking should be done now')
   		})
-  		/*return Promise.all(queue).then(() => {
-  			console.log('all my speaking should be done now')
-  		})*/
 	}
 }
 
-//new BasicVoiceSpeaker(/UK.*Female/).say('female speaker all ready')
+new BasicVoiceSpeaker((voice) => {
+   return /ubbles/.test(voice.name) || /emale/.test(voice.name)
+}).say('bubbles or female speaker all ready')
 
-//new BasicVoiceSpeaker(/UK.*Male/).say('Male speaker all ready')
+new BasicVoiceSpeaker(/UK.*Female/).say('female speaker all ready')
+new BasicVoiceSpeaker(/UK.*Male/).say('Male speaker all ready')
