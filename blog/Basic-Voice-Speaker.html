@@ -533,14 +533,16 @@ speaker.say(`D.O.D. pension files indicate current mailing as:`)
 speaker.say(`Dr. Robert Hume, a.k.a. Stephen W. Falken, 5 Tall Cedar Road, Goose Island, Oregon 97`)
                 </code></pre>
                 <template>
-                    <script>let speaker = new BasicVoiceSpeaker({
+                    <script>(function () {
+let speaker = new BasicVoiceSpeaker({
     // Here are several options, in order
     filter: [{name: /vox/}, {name: /noids/}, {name: /en-us/i}],
     pitch: 1.2
 })
 speaker.say(`D.O.D. pension files indicate current mailing as:`)
 speaker.say(`Dr. Robert Hume, a.k.a. Stephen W. Falken, 5 Tall Cedar Road, Goose Island, Oregon 97`)
-                    </script>
+}())
+                   </script>
                 </template>
                 <button class="run">Run this</button>
 
