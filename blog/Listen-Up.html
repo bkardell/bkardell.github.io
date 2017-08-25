@@ -463,7 +463,7 @@ const recognition = new webkitSpeechRecognition();
 
       <section class="sectioning">
         <contextual-heading role="heading" aria-level="3">Starting up</contextual-heading>
-        <p>Before we set up an example, it's worth explaining that this feature is is "different". <em>Playing</em> some media is something that has been a part of the Web for a really long time, it's not something that requires a special permission. But
+        <p>Before we set up an example, it's worth explaining that this feature is "different". <em>Playing</em> some media is something that has been a part of the Web for a really long time, it's not something that requires a special permission. But
           <em>listening to your microphone</em> is different, as it should be. That's something that the user has to explicitly give permission for and be made aware when it's happening. As such, when you call <code>.start()</code> Chrome will ask the
           user if it's ok for this website to use the mic. Keep in mind, they could well say "no" so you'll want to prepare for that eventuality - it will call the error handler with the <code>event.error</code> property of <code>not-allowed</code>.</p>
 
