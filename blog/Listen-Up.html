@@ -1,0 +1,714 @@
+<html lang="en" resource-type="blogpost"><head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@briankardell">
+    <meta name="twitter:creator" content="@briankardell">
+    <meta name="twitter:title" content="Listen up: Web Speech APIs Part III">
+    <meta name="twitter:description" content="This is part of a series about making the browser speak and listen to speech. In my last post You Don't Say: Web Speech APIs Part II, I talked about how I'm personally papering ove">
+    <meta name="twitter:image" content="../media/mic-permission-granted.png">
+    <link rel="alternate" type="application/rss+xml" href="blog/feed.rss" title="bkardell.com/blog rss feed">
+    <title>Listen up: Web Speech APIs Part III</title>
+    <style>.captioned-image {
+    background-color: #eaeaea;
+    display: block;
+    overflow: hidden;
+    padding: 1rem;
+    text-align: center;
+    font-style: italic;
+}
+
+.captioned-image.p-attached {
+    width: 40%;
+    display: inline-block;
+    margin: 0 1rem 2rem 1rem;
+}
+
+section > .captioned-image.p-attached {
+    margin-top: 1.5rem; /* correct for heading size*/
+}
+
+ pre { overflow-x: auto }
+
+.captioned-image.p-attached.p-attached-left {
+    float: left;
+}
+
+.captioned-image.p-attached.p-attached-right {
+    float: right;
+}
+
+.captioned-image.p-attached + * + * {
+    clear: both;
+    margin-top: 2rem;
+}
+
+
+.captioned-image img, .captioned-image video {
+    display: block;
+    max-width: 100%;
+    margin: 0 auto 1em auto;
+}
+.source {
+    font-style: italic;
+}
+body {
+    display: flex;
+    font: 1em "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-weight: 300;
+    line-height: 1.625;
+}
+h1 { margin: 0.5rem; }
+code-format {
+    border-left: 0.5rem solid rgba(123,115,209,0.35);
+    display: block;
+    padding: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+contextual-heading {
+    display: block;
+    margin-top: 2rem;
+}
+
+[aria-level="1"] {
+    color: #43686b;
+    font-size: 1.45rem;
+}
+[aria-level="2"] {
+    color: #856363;
+    font-size: 1.35rem;
+}
+[aria-level="3"] {
+    color: #856363;
+    font-size: 1.25rem;
+}
+[aria-level="4"] {
+    color: #856363;
+    font-size: 1.2rem;
+}
+[aria-level="5"], [aria-level="6"] {
+    color: #667496;
+    font-size: 1.1rem;
+    font-weight: bolder;
+}
+.posted-on {
+    font-style: italic;
+    font-size: 0.8rem;
+    text-align: right;
+    margin-bottom: 1rem;
+}
+
+ul, li {
+    margin: 0.5rem;
+    text-align: left;
+}
+header {
+    padding-top: 1rem;
+    padding-right: 2rem;
+    background-color: #fbf5e9;
+}
+.tagline {
+    font-style: italic;
+    text-align: center;
+}
+
+[tag-esc] {
+    color: maroon;
+    font-family: Courier, "Lucida Console", monospace;
+}
+
+[tag-esc]::before {
+    content: '<';
+}
+
+[tag-esc]::after {
+    content: '>';
+}
+
+main {
+    min-width: 50%;
+    width: 80%;
+    padding: 1rem;
+}
+header .title {
+    background-color: rgba(123,115,209,0.35);
+    padding: 0.3rem;
+    padding-left: 0.25rem;
+    font-weight: bolder;
+    font-size: 0.9rem;
+    border-left: 1rem solid #999298;
+}
+
+header .profile {
+    width: 50%;
+    margin: 1rem 25%;
+}
+
+header .title + nav {
+    font-size: 0.9rem;
+}
+
+header .blurb {
+    font-size: 0.75rem;
+    text-align: center;
+}
+header .name {
+    text-align: center;
+    font-size: xx-large;
+}
+.segue {
+    font-style: italic;
+}
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  border: 0;
+}
+[for="aboutMeToggle"] {
+    display: none;
+}
+/* this needs rethinking, it wants a selector like 'not flow content' */
+article>*:not(contextual-heading,a), section>*:not(contextual-heading,a) {
+    margin-left: 0.45rem;
+}
+
+blockquote {
+  font-family: serif;
+  background: #f9f9f9;
+  border-left: 10px solid #ccc;
+  margin: 1.5em 10px;
+  padding: 0.5em 10px;
+}
+blockquote:before {
+  color: #ccc;
+  content: open-quote;
+  font-size: 2em;
+  line-height: 0.1em;
+  margin-right: 0.25em;
+  vertical-align: -0.4em;
+}
+
+blockquote:after {
+  color: #ccc;
+  content: close-quote;
+  font-size: 2em;
+  line-height: 0.1em;
+  margin-left: 0.25em;
+  vertical-align: -0.4em;
+}
+
+
+@media (max-width: 800px){
+    body {
+        flex-direction: column;
+    }
+    header {
+        border-bottom: 1px solid #afafff;
+    }
+
+    .captioned-image.p-attached {
+        width: 100%;
+        margin: 1rem 0;
+    }
+
+    .captioned-image.p-attached.p-attached-left,
+    .captioned-image.p-attached.p-attached-right {
+        float: none;
+    }
+
+    [for="aboutMeToggle"] {
+        background-color: #675e5e;
+        color: white;
+        padding: 0.25rem;
+        padding-left: 0.5rem;
+        display: block;
+        border-left: 1rem solid black;
+    }
+    #aboutMeToggle:focus + [for="aboutMeToggle"]{
+        outline: 4px solid #c6ddf2;
+    }
+
+    #aboutMeToggle:checked ~ header {
+        display: none;
+    }
+
+    header li { display: inline; margin-left: -0.5em; }
+    header .blurb li::after { content: '; '; }
+    header  nav li {
+        display: inline-block;
+        margin-left: 0.35rem;
+        margin-right: 0.35rem;
+    }
+    header .title {
+        width: 100%;
+    }
+    main li .source { display: block; }
+
+}</style>
+    <style>
+      .captioned-image { font-size: 0.9rem; }
+      .thanksTo { font-style: italic; font-size: 0.8rem; }
+    </style>
+    <script>
+      var activateOptional = function (media) {
+        var source = media.getAttribute('data-src'),
+            temp,
+            container = media.parentElement;
+
+          if (media.nextSibling && media.nextSibling.matches) {
+            if (media.nextSibling.matches('.clickToSee')) {
+              media.parentElement.removeChild(media.nextSibling);
+            }
+          }
+
+          if (media.tagName === 'VIDEO') {
+            temp = document.createElement('video')
+            temp.setAttribute('autoplay','')
+            temp.setAttribute('controls','')
+            temp.setAttribute('loop','')
+            temp.innerHTML = '<source src="' + source + '.webm" type="video/webm">'
+                    + '<source src="' + source + '.mp4" type="video/mp4">';
+            media.parentElement.replaceChild(temp, media);
+            setTimeout(function () {
+              temp.play()
+            }, 0);
+          } else {
+            media.src = media.getAttribute('data-src');
+          }
+
+          container.classList.add('active');
+      }
+    </script>
+  </head>
+  <body>
+    <input id="aboutMeToggle" class="sr-only" type="checkbox" checked="">
+<label for="aboutMeToggle">Toggle author information</label>
+<header>
+    <div class="name">
+        Brian Kardell
+    </div>
+    <img class="profile" src="/profile.jpg" alt="">
+    <div class="tagline"><a href="/">Betterifying the Web</a></div>
+    <div class="blurb">
+        <ul>
+            <li>Sr Front-End Engineer at Apollo Group, Inc</li>
+            <li>Original Co-author/Co-signer of The Extensible Web Manifesto</li>
+            <li>Co-Founder/Chair, W3C Extensible Web CG</li>
+            <li>Member, W3C (The JS Foundation)</li>
+            <li>Co-author of HitchJS</li>
+            <li>Blogger</li>
+            <li>Art, Science &amp; History Lover</li>
+            <li>Standards Geek</li>
+        </ul>
+    </div>
+    <div class="title">Follow Me On...</div>
+    <nav>
+        <ul>
+            <li><a rel="me" href="https://briankardell.wordpress.com">Wordpress</a></li>
+            <li><a rel="me" href="https://medium.com/@briankardell">Medium</a></li>
+            <li><a rel="me" href="https://twitter.com/briankardell">Twitter</a></li>
+            <li><a rel="me" href="https://github.com/bkardell/">Github</a></li>
+            <li><a rel="me" href="https://codepen.io/bkardell">Codepen</a></li>
+            <li><a rel="me" href="https://www.linkedin.com/in/brian-kardell-08a4264">LinkedIn</a></li>
+            <li><a rel="me" href="https://www.instagram.com/kardellbrian">Instagram (for
+art)</a></li>
+            <li><a rel="me" href="http://fineartamerica.com/profiles/brian-kardell?">Fine Art
+America (art for sale)</a></li>
+        </ul>
+    </nav>
+</header>
+    <main><div class="posted-on">Posted on 08/25/2017</div><article posted-on="08/25/2017" class="sectioning">
+  <contextual-heading role="heading" aria-level="1">Listen up: Web Speech APIs Part III</contextual-heading>
+  <p class="segue">This is part of a series about making the browser speak and listen to speech. In my last post <a href="https://bkardell.com/blog/Basic-Voice-speaker.html">You Don't Say: Web Speech APIs Part II</a>, I talked about how I'm personally papering over what
+    we "have" today with regard to making the browser "talk" and why. In this post I'll talk about the other end of that: <em>listening</em> or <em>speech-to-text</em>.</p>
+
+  <script src="../prism.js"></script>
+  <link rel="stylesheet" href="../prism.css">
+  <script src="../test/speaking/basic-voice-speaker-ii.js"></script>
+  <style>
+    .note {
+      background-color: rgba(255, 255, 0, 0.24);
+      padding: 1rem;
+      font-style: italic;
+    }
+    .note::before {
+      content: 'Note';
+      font-size: 0.8rem;
+      background-color: black;
+      color: white;
+      padding: 0.25rem;
+      margin-right: 0.5rem;
+    }
+    .output {
+      margin-left: 1rem;
+      font-family: "Courier New", Courier, monospace;
+    }
+    pre code.output {
+      font-size: 0.7rem;
+      border-left: 1px dotted gray;
+      padding-left: 1rem;
+      display: block;
+    }
+
+    .spec-quote {
+      display: block;
+      margin: 1rem;
+    }
+  </style>
+  <script>
+    document.body.addEventListener("click", function(evt) {
+      if (evt.target.classList.contains("run")) {
+        let clone = document.importNode(
+          evt.target.previousElementSibling.content,
+          true
+        );
+        document.body.appendChild(clone);
+      } else if (evt.target.classList.contains("cancel")) {
+        speechSynthesis.cancel();
+        speechSynthesis.speak(
+          new SpeechSynthesisUtterance("normalcy should be restored")
+        );
+      }
+    });
+  </script>
+
+  <p>So far we've been talking about the unoffical Web Speech APIs in terms of speech as <em>output</em>, or text-to-speech. As I've said, this is actually supported to some degree in all modern browsers. But now we're going to talk about the other end of
+    things: Speech as input or "voice recognition" or, if you prefer "speech-to-text". This is currently <em>not</em> widely supported - in fact, only Chrome has a "working" implementation popularly deployed, but it is available in FirefoxOS and available
+    behind a flag while they work out some permissions issues and reportedly under development in Edge as well. It's a much harder problem in general, and there are a lot of gotchas here too. In this piece, I'll cover a lot of them.</p>
+
+
+  <section class="sectioning">
+    <contextual-heading role="heading" aria-level="2">Let's get started</contextual-heading>
+    <p>Ok, so first things first: <code>webkitSpeechRecognition</code>. This is the thing that makes recognition possible. There are a number of really good articles that will tell you that you should have a line that looks something like this:
+    </p>
+
+    <pre><code class="language-javascript">
+const SpeechRecognition = window.SpeechRecognition || window.mozSpeechRecognition || window.msSpeechRecognition || window.webkitSpeechRecognition;
+const recognition = new SpeechRecognition();
+            </code></pre>
+
+    <p>I'm going to recommend, however, that you don't and here's why: Because we're just not far enough along to pretend we know what a compatible and standard <code>SpeechRecognition</code> will look like or that there ever will be any of those others.
+      This is an approach that used to common, but that has changed and at one point we thought it was a really keen idea. Unfortunately, this interface arrived in Chrome just about the time that we began to admit to ourselves what a problem this creates.
+      You'll note that nobody likes to ship vendor prefixed stuff anymore in the release channel, and here's part of the reason why: When everyone writes code like the example, it assumes that they aren't experiments or that they must be identical. Purposely,
+      the original idea was that you could have a <code>webkitThingy</code> and a
+      <code>msThingy</code> and a <code>mozThingy</code> and those were <em>experimental</em>. That is they might be totally different, competing experiments or simply be used to write tests and practice in order to inform what the real standard would
+      be. However, in practice, the use of such patterns as the above tended to actually cause that to not be the case at all. There were 'first mover' advantages and 'market share' problems. Once we get even a couple reasonably popular uses of this API,
+      the experiment now wags the standards dog because there's lots of code depending on it matching things it wasn't intended to. Both ECMA and W3C TAG have had much discussion on this problem.</p>
+
+    <p>So, let's just be honest with ourselves and err on the side of caution and say: It's the <code>webkitSpeechRecognition</code> API at this point, and that's all we can say with absolute certainty. If we get truly interoperable implementations, how
+      hard will it then be to go back and change that one line? Pretty easy, I expect.</p>
+
+    <p>Ok so, with this in mind, we could re-write the above as:</p>
+
+    <pre><code class="language-javascript">
+const recognition = new webkitSpeechRecognition();
+            </code></pre>
+    <p>
+      But this is just creating an interface for you, it's not <em>actually doing</em> anything yet.
+
+      </p><section class="sectioning">
+        <contextual-heading role="heading" aria-level="3">Events</contextual-heading>
+        <p>In order to actually do anything with it, we're going to want to tell this recognizer what we actually want from it via attaching some listeners to it. There are a lot of events that we can plug into, as you will see below but in practice I haven't
+          personally required many of them.</p>
+
+        <ul>
+          <li><code>audiostart</code> "Fired when the user agent has started to capture audio."</li>
+          <li><code>soundstart</code> "Fired when some sound, possibly speech, has been detected."</li>
+          <li><code>speechstart</code> "Fired when the speech that will be used for speech recognition has started."</li>
+          <li><code>speechend</code> "Fired when the speech that will be used for speech recognition has ended."</li>
+          <li><code>soundend</code> "Fired when some sound is no longer detected."</li>
+          <li><code>audioend</code> "Fired when the user agent has finished capturing audio."</li>
+          <li><code>result</code> "Fired when the speech recognizer returns a result." </li>
+          <li><code>nomatch</code> Don't worry about this one for now, we'll come back to it.</li>
+          <li><code>error</code> "Fired when a speech recognition error occurs."</li>
+          <li><code>start</code> "Fired when the recognition service has begun to listen to the audio with the intention of recognizing"</li>
+          <li><code>end</code> "Fired when the service has disconnected"</li>
+        </ul>
+
+        <p>A few of these are self explanatory in terms of their lifecycle: Starts have to occur before their corresponding ends. However, one could be forgiven for wondering, for example, "which happens first according to these descriptions? audio start
+          or sound start?" To answer your question, let me just quote the spec:
+
+          <span class="spec-quote">Unless specified below, the ordering of the different events is undefined. For example, some implementations may fire audioend before speechstart or speechend if the audio detector is client-side and the speech detector is server-side.</span>
+        </p>
+
+        <p class="note">If you're thinking to yourself: "Wow, that seems potentially really confusing and hard to work with," same.</p>
+      </section>
+
+
+      <section class="sectioning">
+        <contextual-heading role="heading" aria-level="3">Methods</contextual-heading>
+        <p>
+          The recognition object also has 3 methods in charge of whether it is actively listening and feeding things to the above events:
+        </p>
+
+        <ul>
+          <li><code>start</code></li>
+          <li><code>stop</code></li>
+          <li><code>abort</code></li>
+        </ul>
+
+        <p>
+          If you're wondering what the difference between <em>stop</em> and <em>abort</em> is, it's actually pretty simple.: Stop means stop listening, but not stop processing and feeding any pending events to its listeners. Abort is a hard disconnect
+          of all the things.
+        </p>
+      </section>
+
+      <p>So, at it's most basic: You create a recognizer, add some listeners and call <code>.start()</code> and you should get some results until they are again disconnected (we'll come back to that in a moment)</p>
+
+      <section class="sectioning">
+        <contextual-heading role="heading" aria-level="3">Starting up</contextual-heading>
+        <p>Before we set up an example, it's worth explaining that this feature is is "different". <em>Playing</em> some media is something that has been a part of the Web for a really long time, it's not something that requires a special permission. But
+          <em>listening to your microphone</em> is different, as it should be. That's something that the user has to explicitly give permission for and be made aware when it's happening. As such, when you call <code>.start()</code> Chrome will ask the
+          user if it's ok for this website to use the mic. Keep in mind, they could well say "no" so you'll want to prepare for that eventuality - it will call the error handler with the <code>event.error</code> property of <code>not-allowed</code>.</p>
+
+        <p>Even this, however, is incomplete. "Ok to access the mic" is a pretty 'simple' answer, but it's far reaching. If I want to be able to click a field and speak into it (like Google search on Android), does that mean I am also giving permission to
+          listen to the conversations in the room at all other times as long as there's a tab open? That sounds terrible in most use cases, but there are use cases that are kind of almost that. This is tricky to manage, as you can imagine, so the draft
+          and implementation say that the UA (browser) has to indicate to the user when it is and isn't actually listening and it has to stop when the tab is no longer active. This can take a few different forms, and we'll come back to that - but generally
+          speaking, Chrome on the desktop will (currently) give a user two indicators that distinguish the difference between these two things.</p>
+
+        <div class="captioned-image" style="background-color: inherit;">
+          <img src="../media/mic-permission-granted.png" alt=""> Once the user has given permission, in the right of the address bar, it will say it is accessing the mic. That doesn't mean actively listening for speech.<p></p>
+    </div>
+
+    <div class="captioned-image" style="background-color: inherit;">
+      <img src="../media/actively-listening-to-mic.png" alt=""> Once we actively start listening, in the tab itself, it will show a red "recording" dot. This dot will disappear when we stop.<p></p>
+    </div>
+
+    <p class="note">I personally have trouble believing that the average user will really understand the difference without some training which could happen the first time the mic permission is granted or something, but I've never seen. I'm also not entirely sure how
+      this translates for someone who can't actually see the screen, for example. This is interesting, because that is actually the default assumption on mobile so, on Android it will play audible listening/done listening tones. I'll come back to why
+      this too is currently imperfect, but let's move one.</p>
+    </section>
+
+    <section class="sectioning">
+      <contextual-heading role="heading" aria-level="3">The most basic example</contextual-heading>
+      <p>Alright, so now you know what to expect, as a user and we know basically what the API looks like, let's talk about code.</p>
+
+      <pre><code class="language-javascript">
+const recognition = new webkitSpeechRecognition(),
+      basicExampleOut = document.querySelector('#basicExampleOut')
+
+recognition.onerror = (evt) =&gt; {
+    if (evt.error == 'not-allowed') {
+        basicExampleOut.innerText =
+            `I can't listen if you don't grant me permission :(`
+    } else {
+        basicExampleOut.innerText =
+            `Whoops I got an ${evt.error} error`
+    }
+}
+
+recognition.onresult = (evt) =&gt; {
+    // What is this crazy thing?! Don't worry, we'll get to it.
+    let whatIHeard = evt.results[0][0].transcript
+    basicExampleOut.innerText = whatIHeard
+}
+
+recognition.start()
+                </code></pre>
+      <template>
+                    <script>
+                    (function () {
+                        const recognition = new webkitSpeechRecognition(),
+                              basicExampleOut = document.querySelector('#basicExampleOut')
+
+                        recognition.onerror = (evt) => {
+                            if (evt.error == 'not-allowed') {
+                                basicExampleOut.innerText =
+                                    `I can't listen if you don't grant me permission :(`
+                            } else {
+                                basicExampleOut.innerText =
+                                    `Whoops I got an ${evt.error} error`
+                            }
+                        }
+
+                        recognition.onresult = (evt) => {
+                            // What is this crazy thing?! Don't worry, we'll get to it.
+                            let whatIHeard = evt.results[0][0].transcript
+                            basicExampleOut.innerText = whatIHeard
+                        }
+
+                        recognition.start()
+                    }())
+                    </script>
+                </template>
+      <button class="run">Run this and say something</button><span class="output" id="basicExampleOut">Some output will come here</span>
+
+      <p>Note that once you got a result, it stopped listening for more results automatically. By default, this is how it works. Now let's talk about that crazy <code>evt.results[0][0].transcript</code> thing.</p>
+
+      <section class="sectioning">
+        <contextual-heading role="heading" aria-level="4"><code>evt.results</code></contextual-heading>
+        <p><code>evt.results</code> is, as you might have guessed a collection. Unfortunately, it is not a true <code>Array</code> (very sadly since other things in the TTS portions covered in previous articles are) but another weird array-like thing called
+          a <code>SpeechRecognitionResults</code>. By default, it will have exactly one item. It contains, in turn, individial <code>SpeechRecognitionResult</code> objects.</p>
+
+        <p>So just what is a <code>SpeechRecognitionResult</code>? <em>By default, its basically also an array-like with just one item</em> called a <code>SpeechRecognitionAlternative</code>. Wait what? I know, it seems weird, but stick with me...</p>
+
+        <p><code>SpeechRecognitionAlternative</code> is really the 'thing' that you want and <code>.transcript</code> is the text it transcribed from what it heard on the mic. This object also has property called <code>confidence</code> which is a numeric
+          value between 0 and 1 representing how confident the recogntion system is that it got that right.</p>
+
+        <p>You are undoubtedly thinking "Wow, why all the complexity?!" To understand this, you need to note that several times above I said "by default". That's because the draft also provides for other use cases and we really need go no further than this
+          next property/example to see why..</p>
+
+        <section class="sectioning">
+            <contextual-heading role="heading" aria-level="5">Max Alternatives</contextual-heading>
+
+            <p>The recognizer we set up has a property called <code>maxAlternatives</code> which is a numeric value indicating how many alternatives we're willing to receive. Let's take the following example:</p>
+
+            <pre><code class="language-javascript">
+var recog = new webkitSpeechRecognition()
+recog.maxAlternatives = 10
+recog.onerror = (evt) =&gt; {
+   debugger
+}
+recog.onresult = (evt) =&gt; {
+   let alternatives = Array.from(evt.results[0])
+   alternatives.forEach((result) =&gt; {
+      console.log(
+        `
+        confidence: ${result.confidence}
+        transcript: "${result.transcript}"
+        `)
+   })
+}
+recog.start()
+            </code></pre>
+
+            <p>If I run this in Chrome, on my desktop mac, and then say "Tutu" it will log something <em>like</em> this:</p>
+            <pre><code class="output">confidence: 0.7706348896026611
+transcript: "tutu"
+
+confidence: 0.9056409001350403
+transcript: "two two"
+
+confidence: 0.9139654040336609
+transcript: "to to"
+
+confidence: 0.9311671257019043
+transcript: "2 2"
+
+confidence: 0.933784008026123
+transcript: "- 2"
+
+confidence: 0.9352703094482422
+transcript: "too too"
+
+confidence: 0.9483599662780762
+transcript: "22"
+
+confidence: 0.9183915853500366
+transcript: "TuTiTu"
+
+confidence: 0.9120156168937683
+transcript: "to 2"
+
+confidence: 0.9352703094482422
+transcript: "tu tu"</code></pre>
+
+                <p>If, however, I run the same code and say "Desmond Tutu", I get only a single result:</p>
+                <pre><code class="output">confidence: 0.9614496827125549
+        transcript: "Desmond Tutu"</code></pre>
+                <p>So, as you can see, speech can be ambiguous and depending on the quality of the implementation of the thing transcribing speech and the amount of context you hand them, the quality of the mic and the voice/pronounciation/accent of the speaker, they may be able to, or want to give you alternatives if they can't be very sure.  And - well - if you're into that sort of thing and prepared to deal with that yourself, that's pretty cool.</p>
+
+                <p>Ok, but what about that <code>SpeechRecognitionResults</code> thing... Why is <em>that</em> an array-like??  Why do we still grab the first one in that last example?  Hang in there...</p>
+            </section>
+
+            <section class="sectioning">
+                <contextual-heading role="heading" aria-level="5"><code>.continuous</code></contextual-heading>
+                <p>The recognizer you create also has a <code>.continuous</code> property which, by default is false.  The idea is that there are use cases (like dictation) in which once the user has indicated that they want the program to start listening, we do not actually want it to stop (or miss anything) until it's told to. That's "continuous mode".</p>
+
+                <p>If the "continuous mode" flag is set then <code>evt.results</code> will have one more item each time and you'll want the <code>evt.results[evt.results.length-1]</code> to get 'this one'.</p>
+
+                <p class="note">Chrome on the desktop's implementation is buggy and shows it still
+                recording after page refresh despite the fact that you have no way to now tell it to stop
+                or to get the results it's grabbing anymore.  Basically, you have to kill the tab to
+                get it to stop as far as I can tell, which seems awful.</p>
+
+
+                <p class="note">Firefox doesn't support this.  They say you can have the handling of one
+                result just start listening again.  That is indeed much simpler, probably much easier on
+                the memory and very nearly approximate - except on mobile where start/stop listening
+                is accompanied by audible tones.</p>
+
+            </section>
+        </section>
+
+
+        <section class="sectioning">
+            <contextual-heading role="heading" aria-level="4">"Other" bits</contextual-heading>
+            <p><code>SpeechRecognition</code> (the recognizer object you create) has some 'other bits' too...</p>
+
+
+            <p>There's a <code>.lang</code> property.  Like speech, it defaults to the document language and can be a string representing a <a href="http://www.rfc-editor.org/rfc/bcp/bcp47.txt">BCP 47 language tag</a> (like en-US) which changes the dictionaries it's recognizing against.  So, setting it to <code>it</code>, will make it recognize Italian, but not English or Japanese.</p>
+
+            <p class="note">As it was with utterances, setting this to something invalid, like for example,
+            "Pittsburghese" will simply cause it to use the default.</p>
+
+            <p>There's a <code>.serviceURI</code> property which is supposed to let you
+            choose which recognition service to use if not the default one.
+            In theory, being a <code>URI</code> it can be either a
+            local service or a remote URL. </p>
+
+            <p class="note"> In theory, it would also "work" - but it seems to be ignored
+            entirely in Chrome and so I see little point in saying much more about it here.</p>
+
+            <p>There's a <code>.grammars</code> property which is another array-like called a <code>SpeechGrammarList</code> with two methods for modifying it: <code>.addFromURI(in DOMString src,
+                        optional float weight)</code> and <code>.addFromString(in DOMString string,
+                        optional float weight)</code>.  The idea here is to allow you to express
+                        domain specific grammars as a kind of weighted rule-set.</p>
+            <p class="note">As near as I can tell, here's what the draft as to say about what grammars are supported: <code style="font-style: normal" aria-hidden="true">¯\_(ツ)_/¯</code><span class="sr-only">shrug</span>.
+            You'll see some examples (for example on MDN) that show these using, for example, JSGF (Java Speech Grammar Format).  Note, that's not really a 'standard' as far as I can tell either, there's a W3C note about it. In any case, it's unspecified currently how it will work <em>without</em> a grammar or entirely how those should work and <em>in practice</em> in Chrome I was unable to find any difference at all whether you set it or not, so again, little point in saying more about it here and now beyond that.</p>
+
+        </section>
+
+    </section>
+
+    <section class="sectioning">
+      <contextual-heading role="heading" aria-level="3">Wrapping up</contextual-heading>
+      <p>So, it's interesting.  It works experimentally, if you can use only the parts that work.  It isn't nearly as far along 'in practice' as the text-to-speech APIs and even the limited implementations we have have some wonky bits... In my next post, I'll talk about how I am dealing with the wonky bits of this,
+      and putting together some interesting things you can do with it.
+      </p>
+    </section>
+
+  </section>
+  <p class="thanksTo">Special thanks to my friend, the great Chris Wilson for proofing/commenting on pieces in this series.</p>
+
+</article></main>
+
+  
+    <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-88027178-1', 'auto');
+    ga('send', 'pageview');
+  </script>
+
+  <script>
+    Array.prototype.slice.call(document.querySelectorAll('.optional [data-src]')).forEach(function (optional) {
+      var prefs = window.localStorage.downloadsPrefs,
+          clickToSee;
+      if (prefs === 'true') {
+        activateOptional(optional);
+      } else {
+        clickToSee = document.createElement('div');
+        clickToSee.classList.add('clickToSee')
+        clickToSee.innerHTML = '<button>Click to see media</button>';
+        clickToSee.style.textAlign = 'center';
+        clickToSee.style.border = 'none';
+        optional.parentElement.insertBefore(clickToSee, optional.nextSibling);
+        clickToSee.firstElementChild.addEventListener('click', function () {
+          activateOptional(optional);
+        })
+      }
+
+    })
+  </script>
+
+</body></html>
