@@ -546,10 +546,30 @@ recognition.start()
         <p><code>evt.results</code> is, as you might have guessed a collection. Unfortunately, it is not a true <code>Array</code> (very sadly since other things in the TTS portions covered in previous articles are) but another weird array-like thing called
           a <code>SpeechRecognitionResults</code>. By default, it will have exactly one item. It contains, in turn, individial <code>SpeechRecognitionResult</code> objects.</p>
 
+
         <p>So just what is a <code>SpeechRecognitionResult</code>? <em>By default, its basically also an array-like with just one item</em> called a <code>SpeechRecognitionAlternative</code>. Wait what? I know, it seems weird, but stick with me...</p>
 
         <p><code>SpeechRecognitionAlternative</code> is really the 'thing' that you want and <code>.transcript</code> is the text it transcribed from what it heard on the mic. This object also has property called <code>confidence</code> which is a numeric
           value between 0 and 1 representing how confident the recogntion system is that it got that right.</p>
+
+            <pre><code class="language-javascript">
+recognition.onresult = (evt) =&gt; {
+        // evt.results is an array-like collection of
+        // SpeechRecognitionResult objects
+    let speecRecognitionResults = evt.results,
+
+        // it's a collection of exactly one by default (see below),
+        // but that is also array-like
+        speechReognitionAlternatives = speechRecognitionResults[0]
+
+        // but that also contains by default exactly one
+        alternative = speechRecognitionAlternatives[0]
+
+        // and _that_ thing has all the properties
+        console.log(alternative.transcript)
+
+}
+                            </code></pre>
 
         <p>You are undoubtedly thinking "Wow, why all the complexity?!" To understand this, you need to note that several times above I said "by default". That's because the draft also provides for other use cases and we really need go no further than this
           next property/example to see why..</p>
