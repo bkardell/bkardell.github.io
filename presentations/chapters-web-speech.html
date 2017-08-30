@@ -508,6 +508,7 @@ let voice = voices[9],
             </section>
 
 			<section data-id="a58cb3ea2c9b15adb6bf11ddfb97d94f">
+               <div style="font-size: 0.6rem; position:absolute;top: 1rem; z-index: 100; right: -1rem">Today -78 years!</div>
                <div class="sl-block" data-block-type="text" style="width: 686px; left: 3px; top: 90px; height: auto;" data-block-id="a54ce8bc60ef141dcfddbf003d7f86bf">
                   <div class="sl-block-style" style="z-index: 11;">
                      <div class="sl-block-content" data-placeholder-tag="h1" data-placeholder-text="Title Text" style="z-index: 11;" dir="ui">
@@ -526,6 +527,42 @@ let voice = voices[9],
                </div>
                <div class="sl-block" data-block-type="image" style="min-width: 30px; min-height: 30px; width: 222px; height: 300px; left: 689px; top: 161px;" data-block-id="40e7e12e8d87992077dda130f66982d6">
                   <div class="sl-block-content" style="z-index: 12;"><img data-natural-width="300" data-natural-height="406" style="" data-lazy-loaded="" data-src="http://www.1939nyworldsfair.com/worlds_fair/wf_tour/zone-4/images/VODER.jpg"></div>
+               </div>
+            </section>
+
+
+			<section data-id="a58cb3asdvdsea2cfg9b15adb6bf11ddfb97d94f">
+
+               <div class="sl-block" data-block-type="text" style="width: 90%; left: 5%; top: 90px; height: auto;" data-block-id="a58cb3asdvdsea2cfg9b15adb6bf11ddfb97d94f">
+                  <div class="sl-block-style" style="z-index: 11;">
+                     <div class="sl-block-content" style="z-index: 11;" dir="ui">
+                        <p style="margin-top: 2rem;">.lang</p>
+
+                        <pre><code class="language-javascript">let apollonia = new SpeechSynthesisUtterance(
+   `io so l'inglese:
+      Monday Tuesday Thursday Wednesday
+      Friday Sunday Saturday
+    `
+  )
+apollonia.pitch = 1.1
+apollonia.lang = 'it-US'
+speechSynthesis.speak(apollonia)</code></pre>
+            <template id="apollonia"><script>
+                (function () {
+                    let apollonia = new SpeechSynthesisUtterance(
+                          `io so l'inglese:
+                          Monday Tuesday Thursday
+                          Wednesday Friday Sunday Saturday`
+                      )
+                    apollonia.pitch = 1.1
+                    apollonia.lang = 'it-US'
+                    speechSynthesis.speak(apollonia)
+                }())
+            </script></template>
+            <button class="run">Run this</button>
+
+                     </div>
+                  </div>
                </div>
             </section>
 
@@ -623,8 +660,6 @@ speechSynthesis.cancel()
             </section>
 
 
-
-
             <section data-id="e1eb9b60f63cd31c39cd4bf367ff14d9">
                <div class="sl-block" data-block-type="text" style="width: 806px; left: 172px; top: 50px; height: auto;" data-block-id="bce0eaad952507b91dc19c11b4a869f0">
                   <div class="sl-block-content" data-placeholder-tag="h1" data-placeholder-text="Title Text" style="z-index: 11;">
@@ -642,7 +677,7 @@ speechSynthesis.cancel()
                      <ul>
                         <li style="color:rgb(255, 255, 255); text-align:left"><a href="http://bkardell.com/blog/Greetings-Professor-Falken.html" target="_blank">Part I: Greetings, Professor Falken</a></li>
                         <li style="color:rgb(255, 255, 255); text-align:left"><a href="http://bkardell.com/blog//Basic-Voice-Speaker.html" target="_blank">Part II: You Don't Say</a></li>
-                        <li style="color:rgb(255, 255, 255); text-align:left"><a href="http://bkardell.com/blog/Listen-Up.html" target="_blank">Part III: Listen up</a></li>
+                        <li style="color:rgb(255, 255, 255); text-align:left"><a href="http://bkardell.com/blog/Listen-Up.html" target="_blank">Part III: Listen up (Speech to Text)</a></li>
                      </ul>
                   </div>
                </div>
