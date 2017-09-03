@@ -367,7 +367,7 @@ America (art for sale)</a></li>
 
     <p>So, we have these wonky APIs implemented inconsistently in a lot of browsers.  We know how to deal with that, we've done it before.  I'd like to review our options to explain how I think it makes sense to approach this:</p>
 
-    <ul>
+    <ul id="options">
         <li>We could just monkeypatch something which makes these precise APIs (or at least some subset) actually work consistently in all browsers.  It's way too early to consider doing this in my opinion and probably does more harm than good as we begin to eliminate options for real implementations/standards.  Let's not do that.</li>
         <li>We could develop an alternately named polyfill which does just that - instead of dealing with <code>speechSynthesis</code> for example, you'd deal with <code>_speechSynthesis</code>.  That could be interesting, but I'm not sure the API is actually that great to begin with as I'll explain below, so maybe that's not a great option at this stage either.</li>
         <li>We could develop a new proposal with its own "speculative polyfill" or "prollyfill" following <a href="https://www.w3.org/2001/tag/doc/polyfills/#advice-for-polyfill-authors">excellent advice by the W3C TAG</a> in how we do that and <a href="https://extensiblewebmanifesto.org">#extendthewebforward</a>. This seems very plausible, but I think we're getting kind of ahead of ourselves even there.</li>

@@ -1,0 +1,646 @@
+<html lang="en" resource-type="blogpost"><head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@briankardell">
+    <meta name="twitter:creator" content="@briankardell">
+    <meta name="twitter:title" content="Basic Conversation: Web Speech APIs Part IV">
+    <meta name="twitter:description" content="This is part of a series about making the browser speak and listen to speech. In my last post You Don't Say: Web Speech APIs Part III, I talked about the recognition interfaces: li">
+    
+    <link rel="alternate" type="application/rss+xml" href="blog/feed.rss" title="bkardell.com/blog rss feed">
+    <title>Basic Conversation: Web Speech APIs Part IV</title>
+    <style>.captioned-image {
+    background-color: #eaeaea;
+    display: block;
+    overflow: hidden;
+    padding: 1rem;
+    text-align: center;
+    font-style: italic;
+}
+
+.captioned-image.p-attached {
+    width: 40%;
+    display: inline-block;
+    margin: 0 1rem 2rem 1rem;
+}
+
+section > .captioned-image.p-attached {
+    margin-top: 1.5rem; /* correct for heading size*/
+}
+
+ pre { overflow-x: auto }
+
+.captioned-image.p-attached.p-attached-left {
+    float: left;
+}
+
+.captioned-image.p-attached.p-attached-right {
+    float: right;
+}
+
+.captioned-image.p-attached + * + * {
+    clear: both;
+    margin-top: 2rem;
+}
+
+
+.captioned-image img, .captioned-image video {
+    display: block;
+    max-width: 100%;
+    margin: 0 auto 1em auto;
+}
+.source {
+    font-style: italic;
+}
+body {
+    display: flex;
+    font: 1em "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-weight: 300;
+    line-height: 1.625;
+}
+h1 { margin: 0.5rem; }
+code-format {
+    border-left: 0.5rem solid rgba(123,115,209,0.35);
+    display: block;
+    padding: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+contextual-heading {
+    display: block;
+    margin-top: 2rem;
+}
+
+[aria-level="1"] {
+    color: #43686b;
+    font-size: 1.45rem;
+}
+[aria-level="2"] {
+    color: #856363;
+    font-size: 1.35rem;
+}
+[aria-level="3"] {
+    color: #856363;
+    font-size: 1.25rem;
+}
+[aria-level="4"] {
+    color: #856363;
+    font-size: 1.2rem;
+}
+[aria-level="5"], [aria-level="6"] {
+    color: #667496;
+    font-size: 1.1rem;
+    font-weight: bolder;
+}
+.posted-on {
+    font-style: italic;
+    font-size: 0.8rem;
+    text-align: right;
+    margin-bottom: 1rem;
+}
+
+ul, li {
+    margin: 0.5rem;
+    text-align: left;
+}
+header {
+    padding-top: 1rem;
+    padding-right: 2rem;
+    background-color: #fbf5e9;
+}
+.tagline {
+    font-style: italic;
+    text-align: center;
+}
+
+[tag-esc] {
+    color: maroon;
+    font-family: Courier, "Lucida Console", monospace;
+}
+
+[tag-esc]::before {
+    content: '<';
+}
+
+[tag-esc]::after {
+    content: '>';
+}
+
+main {
+    min-width: 50%;
+    width: 80%;
+    padding: 1rem;
+}
+header .title {
+    background-color: rgba(123,115,209,0.35);
+    padding: 0.3rem;
+    padding-left: 0.25rem;
+    font-weight: bolder;
+    font-size: 0.9rem;
+    border-left: 1rem solid #999298;
+}
+
+header .profile {
+    width: 50%;
+    margin: 1rem 25%;
+}
+
+header .title + nav {
+    font-size: 0.9rem;
+}
+
+header .blurb {
+    font-size: 0.75rem;
+    text-align: center;
+}
+header .name {
+    text-align: center;
+    font-size: xx-large;
+}
+.segue {
+    font-style: italic;
+}
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  border: 0;
+}
+[for="aboutMeToggle"] {
+    display: none;
+}
+/* this needs rethinking, it wants a selector like 'not flow content' */
+article>*:not(contextual-heading,a), section>*:not(contextual-heading,a) {
+    margin-left: 0.45rem;
+}
+
+blockquote {
+  font-family: serif;
+  background: #f9f9f9;
+  border-left: 10px solid #ccc;
+  margin: 1.5em 10px;
+  padding: 0.5em 10px;
+}
+blockquote:before {
+  color: #ccc;
+  content: open-quote;
+  font-size: 2em;
+  line-height: 0.1em;
+  margin-right: 0.25em;
+  vertical-align: -0.4em;
+}
+
+blockquote:after {
+  color: #ccc;
+  content: close-quote;
+  font-size: 2em;
+  line-height: 0.1em;
+  margin-left: 0.25em;
+  vertical-align: -0.4em;
+}
+
+
+@media (max-width: 800px){
+    body {
+        flex-direction: column;
+    }
+    header {
+        border-bottom: 1px solid #afafff;
+    }
+
+    .captioned-image.p-attached {
+        width: 100%;
+        margin: 1rem 0;
+    }
+
+    .captioned-image.p-attached.p-attached-left,
+    .captioned-image.p-attached.p-attached-right {
+        float: none;
+    }
+
+    [for="aboutMeToggle"] {
+        background-color: #675e5e;
+        color: white;
+        padding: 0.25rem;
+        padding-left: 0.5rem;
+        display: block;
+        border-left: 1rem solid black;
+    }
+    #aboutMeToggle:focus + [for="aboutMeToggle"]{
+        outline: 4px solid #c6ddf2;
+    }
+
+    #aboutMeToggle:checked ~ header {
+        display: none;
+    }
+
+    header li { display: inline; margin-left: -0.5em; }
+    header .blurb li::after { content: '; '; }
+    header  nav li {
+        display: inline-block;
+        margin-left: 0.35rem;
+        margin-right: 0.35rem;
+    }
+    header .title {
+        width: 100%;
+    }
+    main li .source { display: block; }
+
+}</style>
+    <style>
+      .captioned-image { font-size: 0.9rem; }
+      .thanksTo { font-style: italic; font-size: 0.8rem; }
+    </style>
+    <script>
+      var activateOptional = function (media) {
+        var source = media.getAttribute('data-src'),
+            temp,
+            container = media.parentElement;
+
+          if (media.nextSibling && media.nextSibling.matches) {
+            if (media.nextSibling.matches('.clickToSee')) {
+              media.parentElement.removeChild(media.nextSibling);
+            }
+          }
+
+          if (media.tagName === 'VIDEO') {
+            temp = document.createElement('video')
+            temp.setAttribute('autoplay','')
+            temp.setAttribute('controls','')
+            temp.setAttribute('loop','')
+            temp.innerHTML = '<source src="' + source + '.webm" type="video/webm">'
+                    + '<source src="' + source + '.mp4" type="video/mp4">';
+            media.parentElement.replaceChild(temp, media);
+            setTimeout(function () {
+              temp.play()
+            }, 0);
+          } else {
+            media.src = media.getAttribute('data-src');
+          }
+
+          container.classList.add('active');
+      }
+    </script>
+  </head>
+  <body>
+    <input id="aboutMeToggle" class="sr-only" type="checkbox" checked="">
+<label for="aboutMeToggle">Toggle author information</label>
+<header>
+    <div class="name">
+        Brian Kardell
+    </div>
+    <img class="profile" src="/profile.jpg" alt="">
+    <div class="tagline"><a href="/">Betterifying the Web</a></div>
+    <div class="blurb">
+        <ul>
+            <li>Sr Front-End Engineer at Apollo Group, Inc</li>
+            <li>Original Co-author/Co-signer of The Extensible Web Manifesto</li>
+            <li>Co-Founder/Chair, W3C Extensible Web CG</li>
+            <li>Member, W3C (The JS Foundation)</li>
+            <li>Co-author of HitchJS</li>
+            <li>Blogger</li>
+            <li>Art, Science &amp; History Lover</li>
+            <li>Standards Geek</li>
+        </ul>
+    </div>
+    <div class="title">Follow Me On...</div>
+    <nav>
+        <ul>
+            <li><a rel="me" href="https://briankardell.wordpress.com">Wordpress</a></li>
+            <li><a rel="me" href="https://medium.com/@briankardell">Medium</a></li>
+            <li><a rel="me" href="https://twitter.com/briankardell">Twitter</a></li>
+            <li><a rel="me" href="https://github.com/bkardell/">Github</a></li>
+            <li><a rel="me" href="https://codepen.io/bkardell">Codepen</a></li>
+            <li><a rel="me" href="https://www.linkedin.com/in/brian-kardell-08a4264">LinkedIn</a></li>
+            <li><a rel="me" href="https://www.instagram.com/kardellbrian">Instagram (for
+art)</a></li>
+            <li><a rel="me" href="http://fineartamerica.com/profiles/brian-kardell?">Fine Art
+America (art for sale)</a></li>
+        </ul>
+    </nav>
+</header>
+    <main><div class="posted-on">Posted on null</div><article class="sectioning">
+  <contextual-heading role="heading" aria-level="1">Basic Conversation: Web Speech APIs Part IV</contextual-heading>
+  <p class="segue">This is part of a series about making the browser speak and listen to speech. In my last post <a href="https://bkardell.com/blog/Listen-Up.html">You Don't Say: Web Speech APIs Part III</a>, I talked about the recognition interfaces: <em>listening</em> or <em>speech-to-text</em>.</p>
+
+  <script src="../prism.js"></script>
+  <link rel="stylesheet" href="../prism.css">
+  <style data-id="AIzaSyBcqG9hwjurgnXOQy8yGYahRICNl2TUbuI">
+
+    .note {
+      background-color: rgba(255, 255, 0, 0.24);
+      padding: 1rem;
+      font-style: italic;
+    }
+    .note::before {
+      content: 'Note';
+      font-size: 0.8rem;
+      background-color: black;
+      color: white;
+      padding: 0.25rem;
+      margin-right: 0.5rem;
+    }
+    .output {
+      margin-left: 1rem;
+      font-family: "Courier New", Courier, monospace;
+    }
+    pre code.output {
+      font-size: 0.7rem;
+      border-left: 1px dotted gray;
+      padding-left: 1rem;
+      display: block;
+    }
+
+    .spec-quote {
+      display: block;
+      margin: 1rem;
+    }
+  </style>
+  <script>
+    document.body.addEventListener("click", function(evt) {
+      if (evt.target.classList.contains("run")) {
+        let clone = document.importNode(
+          evt.target.previousElementSibling.content,
+          true
+        );
+        document.body.appendChild(clone);
+      } else if (evt.target.classList.contains("cancel")) {
+        speechSynthesis.cancel();
+        speechSynthesis.speak(
+          new SpeechSynthesisUtterance("normalcy should be restored")
+        );
+      }
+    });
+  </script>
+
+  <p>To sum up the state of things with recognition:</p>
+
+  <ol>
+    <li>It's <em>much</em> less widely implemented and deployed than Text-To-Speech (TTS).</li>
+    <li>Like TTS, it is not an 'official' standard. Browsers are working on it, but not much work seems to be happening 'together' on this anymore.</li>
+    <li>It requires special privilidges</li>
+    <li>It's API is very confusing</li>
+  </ol>
+
+  <p>This can seem a little disheartening, but, in fact, it's not that bad.  Since it's implemented on Chrome and Android, you have a lot of 0's in the number of your base you can experiment with and, as with a lot of features on the Web, you probably want to use progressive enhancement.  We <em>can</em> actually do a lot to experiment here and as it's not leaked out into public releases of enough other browsers, it probably means there's some room to do some rethinking.  Because of the state of this API, I think we're even more significantly in the boat <a href="https://bkardell.com/blog/Basic-Voice-Speaker.html#options">I describe in Part II</a> with regard to where we should go from here.  Far more than TTS, we don't want to add to the problem by making assumptions and the interfaces described might not be exactly ideal.</p>
+
+  <p class="note">I do want to make a note that recognition is far and away a harder class of problem
+  than turning text into speech and there are far more use cases.</p>
+
+  <section class="sectioning">
+    <contextual-heading role="heading" aria-level="2">What's wrong with the current APIs</contextual-heading>
+    <p class="note">These are just my personal opinions after using it a lot for the past couple of months.
+    Sometimes eating the dogfood gives you new perspectives and nothing in this should be taken as a
+    criticism of the brave souls that worked hard to bring us what we have.  It's easy to forget that we're standing on their shoulders. Hats off to them.</p>
+
+    <p>Let's assume that the API worked consistently, as advertised by the existing draft, across browsers and devices. Would it be what we really want or need? Again, I think that, actually, the answer is no.  More so, in fact than I did with speech synthesis.  Here, I'll talk about why..
+    </p>
+
+
+      <section class="sectioning">
+        <contextual-heading role="heading" aria-level="3">Explaining the Magic</contextual-heading>
+        <p>Since the advent of <a href="https://extensiblewebmanifesto.org">The Extensible Web Manifesto</a> (EWM), we've worked very hard to help "explain the magic" burried in the platform and minimize the creation of new "magic".  Things like Web audio, media devices, fetch and streams are all tools in our standards bag of tricks now that we can use to commonly explain how things work across the platform.  As these specs predate that document and much of the subsequent work, it's not a surprise that these are not factors taken into account in the design of the APIs.  But we could fix that - there's a lot of unexplained magic here that seems not entirely difficult to resolve.</p>
+
+        <p><code>navigator.mediaDevices</code> for example explains that there are lots of possible sources of <code>Streams</code>, only one of which is 'the mic'.  You can
+        access these with <code>navigator.mediaDevices.getUserMedia(...)</code>.  This works
+        to give the developer access to streams and tracks and so on.  <em>At a minimum</em> then, we should expect this API to explain where/how it is choosing its access to the particular input device and then getting a stream in terms of these sorts of common concepts and primitives.</p>
+
+        <p class="note">In fact, the authors of the spec did recognize some of this and there are notes in the spec and errata that link to, for example <a href="https://lists.w3.org/Archives/Public/public-speech-api/2012Sep/0072.html">this observation</a> with the thought that perhaps it was too late for this draft, as it is actually a 'final report' and not an official spec.  I hope we have room to revisit this.</p>
+
+        <p>In fact, there's lots of stuff in this API in that general vein: It's not introducing something new so
+        much as packaging up some sugar over a particularly common pattern.  It's not that that's inherently bad, but there is measurably more value in describing the systems and interactions and considering first: <em>what are the features that this API provides that no other API in the stack does?  What are the fundamental primitives that this introduces and how can they be exposed in a flexible way such that they can be plugged together in interesting ways?</em></p>
+
+
+        <section class="sectioning">
+          <contextual-heading role="heading" aria-level="4">Missed value</contextual-heading>
+          <p>That the API is hard bound only to 'the mic' immediately eliminates the possibility of implementing a large number of use cases.  Why, for example, it is unreasonable to think that someone might need to grab sound from really anywhere and transcribe that?  Imagine a podcast or meeting software with multiple inputs (or, depending on where it's running, some of those might be potential outputs bound for the speakers):  If you can identify them and send those streams to something to be transcribed, rough minutes for a meeting or podcast transcripts that accurately identify speakers is suddenly very easy.</p>
+
+          <p>Similarly, imagine being able to give some audio files to a such a service and convert them to text.  You might use this to, for example, index them for searchablity, or enter a work queue for
+          further processing/approval as captions.  There are a ton of possibilities that I can imagine that go way beyond just "grab <em>the mic</em> and use the sound from that".</p>
+
+          <p>So far as I can tell, really the only thing in here that is fundamentally new is the idea of a service interface for transcibing audio of speech into text.  If you think about it, we've effectively got all the parts of everything else today.  Most of the events and errors in the proposed interface deal with things like grabbing the mic, starting to listen and so on. We've got those already for the most part.</p>
+
+          <p>A few, like <code>.onsoundstart</code> and <code>.onsoundend</code> seem like they are about responding to chunking up as actual sounds that pass some criteria come in.  I'm not sure we have this, but I'm pretty sure we could build it with existing APIs and that if we did, it too could be generally useful in all sorts of contexts, not just this one.  Similarly, <code>.onspeechstart</code> or <code>.onspeechend</code> are just a special sort of criteria of the above where the criteria is based on
+        trying to detect <em>speech</em> in the sounds. I don't think we have anything like this formalized
+        today, but again, I think we do have the parts we need to build it and explain.</p>
+
+        <p>No, I think <em>the big, missing bit is simply a speech transcription API</em>...</p>
+      </section>
+
+      <section class="sectioning">
+        <contextual-heading role="heading" aria-level="4">A transcription interface</contextual-heading>
+        <p>At the end of the day, transcription of words from sound seems like a service API.  In fact,
+        it is a service.  Even the existing draft uses the word service. So, at it's most basc, let's imagine that we started with that idea: A service that given some text, gives you back an audio stream.
+        That service wouldn't require any permissions, in fact, you could write it today with remote services.
+        What you don't have is a consistent, standard, portable interface for dealing with conforming
+        service implementations.... So let's imagine that...</p>
+
+        <p>On the web we tend to think about services as async and transactional, pass/fail things that we deal with with promises... It would be nice to think about it that way... perhaps something like:</p>
+
+        <pre><code class="language-javascript">
+  let service = new FictionalTranscriptionService()
+
+  service.transcribe(someAudioStream).then((response) =&gt; {
+    // we'll talk more about his
+  })
+        </code></pre>
+
+        <p>That's pretty straightfoward I think. A service error is handled with the promise's <code>.catch</code>method.</p>
+
+        <section class="sectioning">
+          <contextual-heading role="heading" aria-level="5">Results</contextual-heading>
+          <p>In the current interface you get these wonky array-likes which default to having exactly one
+          item in them.  Let's kind of work backwards... Imagine that your service response itself contains
+          the properties <code>.transcript</code> and <code>.confidence</code> (from the existing APIs).  Then the default 'just give me your best guess' case is as simple as:</p>
+
+          <pre><code class="language-javascript">
+  let service = new FictionalTranscriptionService()
+
+  service.transcribe(someAudioStream).then((response) =&gt; {
+    console.log(`
+      I am ${response.confidence}% confident
+      that I heard "${response.transcript}".
+    `)
+  })
+        </code></pre>
+
+          <p>The existing APIs contain a separate event called <code>onnomatch</code> that is
+          different from <code>onerror</code> in that it's more about the service receiving
+          something and processing it but not being able to confidently enough
+          deterimine what was said. It seems that what we mean to say is "we recognized nothing" or
+          "we heard something but what it was is undefined".  In both cases these have
+          programming concepts for these: The null string ("") or, in JavaScript we also have <code>undefined</code>.  In JavaScript are falsey - so I think we can get rid of that extra event
+          entirely with something as simple as saying that that is a possiblility...</p>
+
+
+        <pre><code class="language-javascript">
+  let service = new FictionalTranscriptionService()
+
+  service.transcribe(someAudioStream).then((response) =&gt; {
+    // if we didn't match anything sufficiently
+    if (!response.transcript) {
+       console.log(`Sorry, I didn't catch that`)
+    } else {
+      console.log(`
+        I am ${response.confidence}% confident
+        that I heard "${response.transcript}".
+      `)
+    }
+
+  })
+        </code></pre>
+
+
+          <section class="sectioning">
+            <contextual-heading role="heading" aria-level="6">Alternatives</contextual-heading>
+            <p>This model could also allow our response to contain an <code>.alternatives</code> array
+          beyond our best guess transcript.  This seems to actually
+          match the meaning of the word "alternative" better anyway IMO.
+          By default, it would be empty because there are no alternatives. Asking, for them,
+          again, seems like simply part of the service.</p>
+
+          <pre><code class="language-javascript">
+let service = new FictionalTranscriptionService({maxAlternatives: 10})
+
+service.transcribe(someAudioStream).then((response) =&gt; {
+  console.log(`
+    I am ${response.confidence}% confident
+    that I heard "${response.transcript}".
+  `)
+
+  if (response.alternatives) {
+    console.log(`But here are ${evt.alternatives} alternatives... `)
+    response.alternatives.forEach((alternative) =&gt; {
+      console.log(`
+        I am ${alternative.confidence}% sure it could
+        have been "${alternative.transcript}"
+      `)
+    })
+  }
+
+})
+          </code></pre>
+          </section>
+
+          <section class="sectioning">
+            <contextual-heading role="heading" aria-level="6">Local and Remote</contextual-heading>
+            <p>Sometimes we expose a local service implementation, and sometimes people may want to use an alternative service.  I believe all that's necessary here is to allow the setting of
+            a config property that can intercept and delegate.  Think of it like a template/command pattern
+            in which the default implementation can be local.  To implement one, all that would be necessary is to create the adapter,
+            and then even your over-the-wire service protocol could vary significantly..
+            </p>
+
+            <pre><code class="language-javascript">
+export default class FictionalGoogleCloudTranscriptionService
+  extends FictionalTranscriptionService {
+    // override
+    request: (audio) =&gt; {
+      // return some promise that meets the expected API
+      return fetch(....).then(...)
+    }
+}
+          </code></pre>
+
+          <p>While this seems like it isn't giving you 'much', the adoption of this simple pattern would make services implementations conforming to a common client API as easy distributable as jQuery plugins and allow competition of protocols: All we have to agree on is what the client interface looks like.</p>
+
+
+          <p>This also fits very nicely with the remaining ideas (seemingly unimplemented) in the APIs (like <em>grammars</em>) and provides room for growth and even perhaps standardization of a simple, common
+          network API protocol.  Should we ever reach such a day, then for example, these just become new inputs
+          to the service constructor, something like..</p>
+
+          <pre><code class="language-javascript">
+let service = new FictionalTranscriptionService({
+  serviceURI: 'blah',
+  grammars: whateverThisIs
+})
+
+service.transcribe(someAudioStream).then((response) =&gt; {
+  console.log(`
+    I am ${response.confidence}% confident
+    that I heard "${response.transcript}".
+  `)
+})
+    </code></pre>
+          </section>
+        </section>
+        </section>
+
+
+
+        <p>Further, I belive this also entirely removes any need for a 'continous mode' at this stage.  Given
+        the informtation that you need you can build transactional/conversational or turn oriented
+        systems.  This is suprisingly useful as the current APIs mix so much and have so much aync nature that creating a conversational interface which might both sometimes speak and sometimes listen is tremendously difficult.  It's very easy to find yourself in a loop where the system hears some or all of what it itself said and attempts to process it again and again. Worse still, on mobile devices both the start and
+        stop of listening is accompanied by an audible tone and isn't instantaneous.  Simply being
+        able to say "now I care to process" and "now I don't" based on the state of one or two
+        references seems very, very handy and flexible.
+        </p>
+      </section>
+
+
+      </section>
+
+
+
+      <section class="sectioning">
+        <contextual-heading role="heading" aria-level="2">So now what?</contextual-heading>
+
+        <p>I think this would be pretty good, but unfortunately, these are all
+        pretty low level asks that are currently pretty difficult to fill in with the native
+        implementations themselves because they don't provide adequate explanations
+        or hooks.  For my own use cases, the native APIs are
+        'adequate' to paper over with a simpler interface that simply avoids all
+        of the array and event weirdness that can occur, so that's
+        what I am currently choosing to do.</p>
+
+        <p>It is plausbile, however, to make this API today using a
+        remote service.  Such services that transcribe sounds of speech to
+        text are plentiful - Google's Cloud Platform and Amazon both
+        provide APIs capable of achieving this which would be free enough
+        to experiment with and prove out, and fairly low cost beyond that.
+        I'll probably be building a proof of concept API at some point,
+        and if you're interested in helping out with that, let me know.</p>
+      </section>
+
+  
+
+  <!-- p class="thanksTo">Special thanks to my friend, the great Chris Wilson for proofing/commenting on pieces in this series.</p-->
+
+</article></main>
+
+  
+    <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-88027178-1', 'auto');
+    ga('send', 'pageview');
+  </script>
+
+  <script>
+    Array.prototype.slice.call(document.querySelectorAll('.optional [data-src]')).forEach(function (optional) {
+      var prefs = window.localStorage.downloadsPrefs,
+          clickToSee;
+      if (prefs === 'true') {
+        activateOptional(optional);
+      } else {
+        clickToSee = document.createElement('div');
+        clickToSee.classList.add('clickToSee')
+        clickToSee.innerHTML = '<button>Click to see media</button>';
+        clickToSee.style.textAlign = 'center';
+        clickToSee.style.border = 'none';
+        optional.parentElement.insertBefore(clickToSee, optional.nextSibling);
+        clickToSee.firstElementChild.addEventListener('click', function () {
+          activateOptional(optional);
+        })
+      }
+
+    })
+  </script>
+
+</body></html>
