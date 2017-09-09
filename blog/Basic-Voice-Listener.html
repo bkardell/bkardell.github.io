@@ -583,6 +583,10 @@ service.transcribe(someAudioStream).then((response) =&gt; {
     </code></pre>
 
             <p>Importantly though, this means we don't have to wait for that day and we can be part of the solution in figuring out what it should be.</p>
+
+            <p>Interestingly, there was <a href="https://docs.google.com/document/d/1QRajFwBdV82aTnPCQNKOfL2ZGkyfG9X9ZfCYgK2xstk/edit" target="_blank">another proposal</a>, also from someone at Google
+        more recently that is considerably closer to this idea.  However, that idea
+        seems to have not gone far.</p>
           </section>
         </section>
         </section>
@@ -599,7 +603,9 @@ service.transcribe(someAudioStream).then((response) =&gt; {
         <p>I think this would be pretty good, but unfortunately, these are all
         pretty low level asks that are currently pretty difficult to fill in with the native
         implementations themselves because they don't provide adequate explanations
-        or hooks.  For my own use cases, the native APIs are
+        or hooks. </p>
+
+        <p>For my own use cases, the native APIs are
         'adequate' to paper over with a simpler interface that simply avoids all
         of the array and event weirdness that can occur, so that's
         what I am currently choosing to do in most of my use cases.</p>
