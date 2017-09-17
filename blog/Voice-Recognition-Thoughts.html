@@ -4,11 +4,11 @@
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:site" content="@briankardell">
     <meta name="twitter:creator" content="@briankardell">
-    <meta name="twitter:title" content="Basic Conversation: Web Speech APIs Part IV">
+    <meta name="twitter:title" content="Thoughts on Voice Recognition: Web Speech APIs Part IV">
     <meta name="twitter:description" content="This is part of a series about making the browser speak and listen to speech. In my last post You Don't Say: Web Speech APIs Part III, I talked about the recognition interfaces: li">
     
     <link rel="alternate" type="application/rss+xml" href="blog/feed.rss" title="bkardell.com/blog rss feed">
-    <title>Basic Conversation: Web Speech APIs Part IV</title>
+    <title>Thoughts on Voice Recognition: Web Speech APIs Part IV</title>
     <style>.captioned-image {
     background-color: #eaeaea;
     display: block;
@@ -324,10 +324,13 @@ America (art for sale)</a></li>
     </nav>
 </header>
     <main><div class="posted-on">Posted on null</div><article class="sectioning">
-  <contextual-heading role="heading" aria-level="1">Basic Conversation: Web Speech APIs Part IV</contextual-heading>
+  <contextual-heading role="heading" aria-level="1">Thoughts on Voice Recognition: Web Speech APIs Part IV</contextual-heading>
   <p class="segue">This is part of a series about making the browser speak and listen to speech. In my last post <a href="https://bkardell.com/blog/Listen-Up.html">You Don't Say: Web Speech APIs Part III</a>, I talked about the recognition interfaces: <em>listening</em> or <em>speech-to-text</em>.</p>
 
   <script src="../prism.js"></script>
+  <script src="../test/listening/basic-voice-listener.js"></script>
+  <script src="../test/listening/pausable-voice-listener.js"></script>
+  <script src="../test/listening/VoiceInputElement.js"></script>
   <link rel="stylesheet" href="../prism.css">
   <style data-id="AIzaSyBcqG9hwjurgnXOQy8yGYahRICNl2TUbuI">
 
@@ -383,10 +386,8 @@ America (art for sale)</a></li>
     <li>It's <em>much</em> less widely implemented and deployed than Text-To-Speech (TTS).</li>
     <li>Like TTS, it is not an 'official' standard. Browsers are working on it, but not much work seems to be happening 'together' on this anymore.</li>
     <li>It requires special privileges</li>
-    <li>Its API is very confusing</li>
+    <li>Its API is kind of confusing</li>
   </ol>
-
-  <p>This can seem a little disheartening, but, in fact, it's not that bad.  Since it's implemented on Chrome and Android, you have a lot of 0's in the number of your base you can experiment with and, as with a lot of features on the Web, you probably want to use progressive enhancement.  We <em>can</em> actually do a lot to experiment here and as it's not leaked out into public releases of enough other browsers, it probably means there's some room to do some rethinking.  Because of the state of this API, I think we're even more significantly in the boat <a href="https://bkardell.com/blog/Basic-Voice-Speaker.html#options">I describe in Part II</a> with regard to where we should go from here.  Far more than TTS, we don't want to add to the problem by making assumptions and the interfaces described might not be exactly ideal.</p>
 
   <section class="sectioning">
     <contextual-heading role="heading" aria-level="2">What's wrong with the current APIs</contextual-heading>
@@ -394,97 +395,65 @@ America (art for sale)</a></li>
     Sometimes eating the dogfood gives you new perspectives and nothing in this should be taken as a
     criticism of the brave souls that worked hard to bring us what we have.  It's easy to forget that we're standing on their shoulders. Hats off to them.</p>
 
-    <p>Let's assume that the API worked consistently, as advertised by the existing draft, across browsers and devices. Would it be what we really want or need? Again, I think that, actually, the answer is no.  More so, in fact than I did with speech synthesis.  Here, I'll talk about why..
+    <p>Let's assume that the API worked consistently, as advertised by the existing draft, across browsers and on all devices. The trouble with is that I see is mostly just that it doesn't "fit" in the Web platform today.  It's not really a high level API, nor is it quite the low level we probably need.
     </p>
 
-
-      <section class="sectioning">
-        <contextual-heading role="heading" aria-level="3">Explaining the Magic</contextual-heading>
-        <p>Since the advent of <a href="https://extensiblewebmanifesto.org">The Extensible Web Manifesto</a> (EWM), we've worked very hard to help "explain the magic" already burried in features of the platform and to minimize the creation of new "magic".  Things like promises, web audio, media devices, fetch and streams are all tools in our standards bag of tricks now that we can use to commonly explain how several things work across the platform.  As the Speech API draft predates that document and much of the subsequent work based on it, it's not really any surprise that these are not factors taken into account in the design of the APIs.  But we could fix that - there's a lot here that seems not entirely difficult to resolve.</p>
-
-        <p class="note">In fact, the authors of the spec did recognize some of this and there are notes in the spec and errata that link to, for example <a href="https://lists.w3.org/Archives/Public/public-speech-api/2012Sep/0072.html">this observation</a> with the thought that perhaps it was too late for this draft, as it is actually a 'final report' and not an official spec.  I hope we have room to revisit this.</p>
-
-        <p>Today, the API does a lot: It gets permission and access to 'the microphone', and then upon start 'listens' for a 'chunk of sound' followed by a pause, disengages that mic, sends that for translation, pumps related events and so on.  Much of this is now explainable by underlying features in the platform, and it should be.</p>
-
-        <p><code>navigator.mediaDevices</code>, for example, now explains that there are lots of possible sources of audio channels carrying <code>Streams</code>, only one of which is 'the mic'.  You can
-        access these with <code>navigator.mediaDevices.getUserMedia(...)</code>.  This works
-        to give the developer access to streams and tracks and so on.  <em>At a minimum</em> then, we should expect this API to explain itself in terms of these sorts of now established common concepts and primitives.  The aim should ultimately not just be to document this, but <em>expose</em> the layers for extensibility.</p>
-
-        <p>Perhaps most importantly though, the first step should be to begin by identifying and creating the truly unique features that aren't currently easily explained.  Here's why...</p>
-
-        <section class="sectioning">
-          <contextual-heading role="heading" aria-level="4">Our ability to anticipate is limited</contextual-heading>
-          <p>While the API currently graciously attempts to provide a higher level, "easier" way to package up some sugar over what the group aniticipated were a few particularly common patterns - they could be wrong... And history shows that as a rule, we usually are.  We repeatedly come up short. </p>
-
-
-          <p>That shouldn't surprise either.  The group of minds thinking about the problems is just too small.  In fact, it <em>can't</em> get big enough in the traditional model.  Standards in the traditional model are seemingly endless discussion and debate in terribly techincal terms.  They're words.  Lots of words.  Lots of dry, boring technical words.  More simply: For a long time, most of them don't work <em>anywhere</em> and chances are pretty good that they never will.  Frequently they die before they get a single implementation in the wild.  A <em>fast</em> standard goes from idea to widely deployed in several <em>years</em>, and it's only at this point that a lot of people really can afford to start paying attention.  When you look at it this way: Why <em>would</em> developers get involved? </p>
-
-          <p>As long as it's limited to words, we're destined to have this problem.  Speculating with words is a very different beast than being able to touch code.  This is true no matter how hard we try.  It's not infrequent that I can convince myself that something seems good on paper: This covers all the use cases eleoquently.  But when I code it up and then spend an increasingly long timewith it, I eventually inevitably find out that I've fallen short and need to iterate.  And that's just me and a really limited amount of time.  How much more does this affect the model of stanards on paper?  Having 0 implementations or even just one behind a flag that can't be emulated just really limits the imagination, and the number of people who can afford to imagine.</p>
-
-
-          <p>However, if we instead focusing on giving very basic powers to developers, we are doing two things:  First, it's a smaller ask.  It's targeted.  We can get it done and widely deployed faster.  Second, this allows a significantly wider community brainstorm in <em>practice</em>.  They can to string together not just one but several ideas far beyond what a few people in a group might otherwise imagine. They can find the shortcomings. They can find new ways around the shortcomings.</p>
-        </section>
-
-        <section class="sectioning">
-          <contextual-heading role="heading" aria-level="4">Missed value</contextual-heading>
-          <p>So, this is all well and good in theory, but what about in practice?  Sure, I can say the API is wonky, but "wonky" is a lot different than "can't meet use cases" or "misses important value".  I can say "it doesn't expose its patterns in an extensible way" but as I explain in <a href="http://bkardell.com/blog/Tao-Of-The-Extensible-Web.html">What Would Bruce Lee Do? The Tao of the Extensible Web</a>, in some cases we can back into that - we can come back and expose details of the black box if we're careful about it.  So, the real question is: If we had these APIs today, <em>would I find myself unable to do things I'd like to do because of this?</em> The answer, I think, is yes.</p>
-
-          <p>When I hear "voice recognition" or "speech to text", this implies to me that I can take a sound,
-          analyze it and turn it into a transcipt of text.  I watch a demo and I see someone speak into the mic and words come out.  I get excited and begin thinking of the possibilities. Yes, I want that.  Think of all the things I could do!
+    <section class="sectioning">
+      <contextual-heading role="heading" aria-level="3">Imagine...</contextual-heading>
+      <p>When I hear "voice recognition" or "speech to text", this implies to me that I can take a sound,
+          analyze it and turn it into a transcipt of text.  When I watch a demo and I see someone speak into the mic and words come out on the screen, I have the same impression.  I get excited and begin thinking of the possibilities. Yes, I want that.  Think of all the things I could do with the ability to turn sounds of spoken word into text - I begin to imagine...
           </p>
 
-          <p>I have a thing that downloads podcasts and talks that I might want to listen to in the future.  These have... wait for it... <em>sounds of voices</em>.  If I could turn those into text, I could do lots of interesting things - skim them for example to see if I want to listen.  Better still, I can index them and hyperlink so that I can search for things that were discussed without trying to remember what was said about Web Components in ..some a podcast? with Jeremy Keith I think? Last year maybe? In fact, I don't even have to watch it to know that.  Doesn't google do that? Sure, to some extent, but that doesn't allow me optimize for things like the collection of stuff I've already got.  You can't do that with this API.</p>
+          <ul>
+            <li>I turn the directory of podcasts I've downloaded into text. I could do lots of interesting things with that, skim them for example to see if I want to listen.  Better still, I can index them and hyperlink them.. I can make a word cloud... I can search for things that were discussed without trying to remember what was said about Web Components in .. hmm some a podcast? or was it a talk? It was Jeremy Keith... I think? Last year maybe? In fact, I don't even have to have watched it to know that.</li>
 
-          <p>Speaking of podcasts, I've been thinking of doing one.  Imagine I'm in a studio with 4 other people all with their own mics.  It'd be super neat to identify them by name and capture their transcribed text in a simple transcript.  Hey, that's kind of like meetings.  I attend a lot of meetings that aren't minuted.  We could fix that.  But, well, not with this API.</p>
+            <li>Speaking of podcasts, I've been thinking of doing one.  Imagine I'm in a studio with 4 other people all with their own mics.  It'd be super neat to identify them by name and capture their transcribed text in a simple transcript.  Hey, that's kind of like meetings.  I attend a lot of meetings that aren't minuted.  We could fix that.</li>
 
-          <p>I also have a thing that lets me upload a video to a website I maintain... I know that for accessibility sake I need captions of this video and that has to be in Timed Text Markup Language (TTML).  Wow, that's a pain in the ass to write from scratch.  I could write a thing to take the audio track, turns chunks of it into text, inserts that into TTML and uploads me a draft in my workflow that I can then simply proof, correct,  approve and publish.  We can't do that with this API either.</p>
+            <li>I have a thing that lets me upload a video to a website I maintain... I know that for accessibility sake I need captions of this video and that has to be in Timed Text Markup Language (TTML).  Wow, that's a pain in the ass to write from scratch.  I could write a thing to take the audio track, turns chunks of it into text, inserts that into TTML and uploads me a draft in my workflow that I can then simply proof, correct,  approve and publish.  We can't do that with this API either.</li>
 
-          <p>I also had an idea for simplistic, hands-free conversational interface for while I am driving.  The current coupling with the microphone without a convenient API actually made this very difficult as it was very easy to have it hear itself responding and get stuck in a loop.  What I'd really like is a simple circuit breaker kind of ability on the lines themselves.  While I did seem to work around this eventually, the current design made this very hard.</p>
+            <li>I also had an idea for simplistic, hands-free conversational assistant for while I am driving - kind of my own simplified Jarvis.</li>
+          </ul>
 
-          <p>These are just a few of the things I very quickly came up with but was disappointed I could not accomplish.  Given actual powers you'd probably be astonished at what we can imagine.  I've <a href="http://bkardell.com/blog/Prognostication-And-The-Failure-Of-The-Web.html">written about this before</a>, but it's astonishing how many creations that are fundamental things today turned out to <em>not</em> be what their inventors even thought they would be. Houses were originally wired for artifical lighting  - there were no plugs, because there was nothing to plug in.  While we were busy standardizing bulbs, an astonishing flourishing of inventions and whole new industries were created by the simple fact that we gave people electricity.</p>
+          <p>But there's the rub, none of these are actually easily accomplishable with the current API for various reasons, and mostly simply because it is kind of hard-wired toward that sound coming from the mic without really exposing that.</p>
 
-          <p>So, let's find the missing powers and give those to developers.  As far as I can tell, really the only thing in these APIs that is fundamentally new is the idea of an interface for transcibing audio of speech into text.  If you think about it, we've effectively got all the parts of everything else today.  Most of the events and errors in the proposed interface deal with things like grabbing the mic, starting to listen and so on. We've got those already for the most part.</p>
+          <p>This is a shame because since <a href="https://extensiblewebmanifesto.org">The Extensible Web Manifesto</a> (EWM), we've worked very hard to help "explain the magic" already burried in features of the platform and focus our initial efforts on the powers that are fundamentally new. As far as I can tell, really the only thing in these APIs that is fundamentally new is the idea of an interface for transcibing audio of speech into text.  Things like promises, web audio, media devices, fetch and streams are all things we've worked on and that can potentially be used to help explain just about everything else in this API.  As the speech draft predates all this, it's no suprise that none of that is taken into account, but it's not too late.</p>
 
-          <p>A few, like <code>.onsoundstart</code> and <code>.onsoundend</code> seem like they are about responding to chunking up as actual sounds that pass some criteria come in.  I'm not sure we have this, but I'm pretty sure we could build it with existing APIs and that if we did, it too could be generally useful in all sorts of contexts, not just this one.  Similarly, <code>.onspeechstart</code> or <code>.onspeechend</code> are just a special sort of criteria of the above where the criteria is based on
-        trying to detect <em>speech</em> in the sounds. I don't think we have anything like this formalized
-        today, but again, I think we do have the parts we need to build it and explain.</p>
+          <p class="note">In fact, the authors of the spec did recognize some of this and there are notes in the spec and errata that link to, for example <a href="https://lists.w3.org/Archives/Public/public-speech-api/2012Sep/0072.html">this observation</a> with the thought that perhaps it was too late for this draft, as it is actually a 'final report' and not an official spec.  I hope we have room to revisit this.</p>
 
-        <p>No, I think <em>the big, missing bit is simply a speech transcription API</em>...</p>
+          <p>Let's use this as an exersize to start low and build up the concepts we want, as each level affords new opportunities for people to dream up things we weren't even considering.
+          I've <a href="http://bkardell.com/blog/Prognostication-And-The-Failure-Of-The-Web.html">written about this before</a>, but it's astonishing how many creations that are fundamental things today turned out to <em>not</em> be what their inventors even thought they would be. Houses were originally wired for artifical lighting  - there were no plugs, because there was nothing to plug in.  While we were busy standardizing bulbs, an astonishing flourishing of inventions and whole new industries were created by the simple fact that we gave people electricity.
+          </p>
       </section>
 
+
       <section class="sectioning">
-        <contextual-heading role="heading" aria-level="4">A transcription interface</contextual-heading>
-        <p>At the end of the day, transcription of words seems like what we want, so let's imagine that we started with that idea: An API that given some audio, gives you back the transcribed text.  Accessing your filesystem or your mic are things that requires permission, but what we're talking about here doesn't itself do that, so we don't have to deal with any of that.  We can follow the common model of being simple async and transactional, pass/fail things that we deal with via promises - perhaps something like:</p>
+        <contextual-heading role="heading" aria-level="3">A 'low-level' transcription interface</contextual-heading>
+        <p>Let's imagine that we started simply with the idea of an API that gave us just the fundamentally new part: Something that takes some audio and gives you back the transcribed text.  Accessing your filesystem or your mic are things that require permission, but what we're talking about here doesn't itself do that, so that's not even something we need to worry about.  Actually, asking for analysis of something could be modeled after the HTTP request/response model, and that seems kind of fitting because there's potentially some variance in the response.  For example, different implementations can definitely have different interpretations of the same sounds.  So, let's start with the common model of being simple async and transactional, pass/fail things that we deal with via promises and resolve some kind of response...something like:</p>
 
-        <pre><code class="language-javascript">
-  // let's save bikeshedding a name for another day...
-  let transcriber = new FictionalTranscriber()
+        <pre><code class="language-javascript">// let's save bikeshedding a name for another day...
+let transcriber = new FictionalTranscriber()
 
-  transcriber.transcribe(someAudioStream).then((response) =&gt; {
-    // we'll talk more about this
-  })
-        </code></pre>
+transcriber.transcribe(someAudioStream).then((response) =&gt; {
+  // we'll talk more about this
+})</code></pre>
 
         <p>That's pretty straightfoward I think. A transcriber has a <code>response</code> and an error is handled with the promise's <code>.catch</code> method.</p>
 
         <section class="sectioning">
-          <contextual-heading role="heading" aria-level="5">Results</contextual-heading>
-          <p>In the current interface you get these wonky array-likes which default to having exactly one
-          item in them.  Let's kind of work backwards... Imagine that your service response itself contains
-          the properties <code>.transcript</code> and <code>.confidence</code> (from the existing APIs).  Then the default 'just give me your best guess' case is as simple as:</p>
+          <contextual-heading role="heading" aria-level="4">Results</contextual-heading>
+          <p>While the current interface you get these wonky array-likes which default to having exactly one
+          item in them, but let's kind of work backwards and see if we can avoid this.. Imagine that the response itself simply contains the properties <code>.transcript</code> and <code>.confidence</code> (from the existing APIs).  Then the default 'just give me your best guess' case is as simple as:</p>
 
-          <pre><code class="language-javascript">
-  let service = new FictionalTranscriber()
+          <pre><code class="language-javascript">let service = new FictionalTranscriber()
 
-  transcriber.transcribe(someAudioStream).then((response) =&gt; {
-    console.log(`
-      I am ${response.confidence}% confident
-      that I heard "${response.transcript}".
-    `)
-  })
-        </code></pre>
+transcriber.transcribe(someAudioStream).then((response) =&gt; {
+  console.log(`
+    I am ${response.confidence}% confident
+    that I heard "${response.transcript}".
+  `)
+})</code></pre>
 
-          <p>The existing APIs contain a separate event called <code>onnomatch</code> that is
+          <p>The existing APIs also contain a separate event called <code>onnomatch</code> that is
           different from <code>onerror</code> in that it's more about it receiving
           something and processing it but not being able to confidently enough
           deterimine what was said. It seems that what we mean to say is "we recognized nothing" or
@@ -493,36 +462,29 @@ America (art for sale)</a></li>
           entirely with something as simple as saying that that is a possiblility...</p>
 
 
-        <pre><code class="language-javascript">
-  let transcriber = new FictionalTranscriber()
+        <pre><code class="language-javascript">let transcriber = new FictionalTranscriber()
 
-  transcriber.transcribe(someAudioStream).then((response) =&gt; {
-    // if we didn't match anything sufficiently
-    if (!response.transcript) {
-       console.log(`Sorry, I didn't catch that`)
-    } else {
-      console.log(`
-        I am ${response.confidence}% confident
-        that I heard "${response.transcript}".
-      `)
-    }
+transcriber.transcribe(someAudioStream).then((response) =&gt; {
+  // if we didn't match anything sufficiently
+  if (!response.transcript) {
+     console.log(`Sorry, I didn't catch that`)
+  } else {
+    console.log(`
+      I am ${response.confidence}% confident
+      that I heard "${response.transcript}".
+    `)
+  }
 
-  })
-        </code></pre>
+})</code></pre>
 
 
           <section class="sectioning">
-            <contextual-heading role="heading" aria-level="6">Alternatives</contextual-heading>
-            <p>This model could also allow our response to contain an <code>.alternatives</code> array
-          beyond our best guess transcript.  This seems to actually
-          match the meaning of the word "alternative" better anyway IMO.
-          By default, it would be empty because there are no alternatives. Asking, for them,
-          again, seems like simply part of the service.</p>
+            <contextual-heading role="heading" aria-level="5">Alternatives</contextual-heading>
+            <p>"Ah," you're thinking, "but those arrays are meaningful... One of them contains N possible 'alternatives'".   True, but alternative to what even?  This seems like a strange use of the word anyway.  Conversely, our model could also allow our response to contain an <code>.alternatives</code> array beyond our best guess transcript.  By default, it would be empty because there are no alternatives. This seems to actually match the meaning of the word "alternative" better anyway. Asking, for them seems like it could simply be an optional configuration...</p>
 
-          <pre><code class="language-javascript">
-let service = new FictionalTranscriptionService({maxAlternatives: 10})
+          <pre><code class="language-javascript">let transcriber = new FictionalTranscriber({maxAlternatives: 10})
 
-service.transcribe(someAudioStream).then((response) =&gt; {
+transcriber.transcribe(someAudioStream).then((response) =&gt; {
   console.log(`
     I am ${response.confidence}% confident
     that I heard "${response.transcript}".
@@ -538,12 +500,14 @@ service.transcribe(someAudioStream).then((response) =&gt; {
     })
   }
 
-})
-          </code></pre>
+})</code></pre>
           </section>
 
           <section class="sectioning">
-            <contextual-heading role="heading" aria-level="6">Implementation Flexibility and Black Boxing</contextual-heading>
+            <contextual-heading role="heading" aria-level="5">Implementation Flexibility and Black Boxing</contextual-heading>
+            <p>The existing API designs seem to want to allow you to specify a serviceURI and that sort of thing,
+            but it seems unimplemented and there seems to be some kind of hand-waving on just how that would work, because there are competing ideas.</p>
+
             <p>One of the extra handy things about this kind of design, I think, is that it also neatly sidesteps a number of problems that are impossibly difficult to resolve at this stage by boxing those problems at an appropriate place where there is easier to reach value and yet room for experimentation.  Let me explain...</p>
 
             <p>What we are providing what is, effectively, a service interface.  We're not saying how the actual
@@ -553,34 +517,30 @@ service.transcribe(someAudioStream).then((response) =&gt; {
 
             <p>There are some other practical upshots to this too.  The first is that we can also make that extensible by defining basic API lifecycle methods and allow competition and variance to play itself out very easily and employ lines of thinking we can't easily consider in a standards body.  Imagine, for example, that Google's cloud platform could release a subclass:</p>
 
-            <pre><code class="language-javascript">
-export default class FictionalGoogleCloudTranscriptionService
-  extends FictionalTranscriptionService {
+            <pre><code class="language-javascript">export default class FictionalGoogleCloudTranscriber
+  extends FictionalTranscriber {
     // override
     request: (audio) =&gt; {
       // return some promise that meets the expected API
       return fetch(....).then(...)
     }
-}
-          </code></pre>
+}</code></pre>
 
           <p>The only thing that changes is which one you instantiate - they all work, at the API level, the same way.  This means that these adapters are then as easily distributable as jQuery plugins and Amazon can compete with Google and Microsoft and Mozilla and... well... anyone while we figure out </p>
 
           <p>This also fits very nicely with allowing us to experiment with the remaining (seemingly unimplemented) ideas in the APIs (like <em>grammars</em>) and provides room for us to work things out.  Eventually, perhaps we can derive a higher level protocol allowing us to express things as simply as:</p>
 
-          <pre><code class="language-javascript">
-let service = new FictionalTranscriptionService({
+          <pre><code class="language-javascript">let transcriber = new FictionalTranscriber({
   serviceURI: 'blah',
   grammars: whateverThisIs
 })
 
-service.transcribe(someAudioStream).then((response) =&gt; {
+transcriber.transcribe(someAudioStream).then((response) =&gt; {
   console.log(`
     I am ${response.confidence}% confident
     that I heard "${response.transcript}".
   `)
-})
-    </code></pre>
+})</code></pre>
 
             <p>Importantly though, this means we don't have to wait for that day and we can be part of the solution in figuring out what it should be.</p>
 
@@ -593,32 +553,89 @@ service.transcribe(someAudioStream).then((response) =&gt; {
       </section>
 
 
-      </section>
+        <section class="sectioning">
+          <contextual-heading role="heading" aria-level="2">Low Level <em>First</em>, Not Exclusively</contextual-heading>
+          <p>The idea isn't ever to stop at the low level APIs.  It's not even that we
+          absolutely positively have to have the low level APIs entirely in place.
+          As I explain in <a href="https://bkardell.com/blog/Tao-Of-The-Extensible-Web.html">What Would Bruce Lee Do? The Tao of the Extensible Web</a>, in some cases we can come back and expose details of a carefully designed black box after the fact.  At a minimum, describing the API in common platform terms and the thought exercise of what a suitable low level API would look like allows us to design the boxes and
+          layers carefully.</p>
 
+          <p>For example, given such an API as described above, it <em>would</em> make sense to add a
+          higher level API which made use of it and exposed it... A pattern which explained
+          the common lifecycle of grabbing a device, getting permission, listening to a channel, chunking that input, sending it to the transcriber and ultimately pumping out transcripts.  Perhaps something like..
+          </p>
+
+          <pre><code class="language-javascript">// Here we create an object not entirely unlike what
+// the API already had - it defaults to being initialized
+// with the audio context/primary mic, sends a chunk
+// of sound to our transcriber and relays the promise
+// results or errors to events
+let speechRecognizer = new FictionalSpeechRecognizer()
+
+
+// event based methods relay promise results
+speechRecognizer.onresult = (evt) =&gt; { /* evt.response.transcript */ }
+speechRecognizer.onerror = (evt) =&gt; { /* evt.error */ }
+
+// the audioContext is exposed: You can control it
+speechRecognizer.audioContext.start()
+speechRecognizer.audioContext.stop()</code></pre>
+
+        <p>The general idea being that we can answer the questions "what's under there?"
+        by saying "it has an audio context and a transcriber" and we can expose those
+        for extensibility... For example, we could allow you to swap out the transcriber
+        implementation without forcing you to reimagine any other part in the system..</p>
+
+         <pre><code class="language-javascript">let speechRecognizer = new FictionalSpeechRecognizer({
+  transcriber: new FictionalGoogleCloudTranscriber()
+})</code></pre>
+
+        <p>Or if you can get an audio context another way (say, one of N line inputs, or from a file),
+        you can swap that out easily without forcing you to reimagine anything else either..</p>
+
+        <pre><code class="language-javascript">let speechRecognizer = new FictionalSpeechRecognizer({
+  audioContext: someAudioContext
+})</code></pre>
+
+        <p>Given such an explanation, we could easily experiment with further layers, floating ideas as
+        custom elements.  For example: An <code tag-esc="">input</code> decorator that could progressively
+        enhance an textual form controls to allow you to populate them with speech.  All you'd need
+        to say is 'they have one of those speech recognizer things and provide a toggle that pipes
+        voice to it and the output back into the field'.. Something like this.. </p>
+
+        <pre><code class="language-html">
+&lt;x-voice-listener&gt;
+  &lt;input name="input"&gt;
+&lt;/x-voice-listener&gt;
+        </code></pre>
+        <x-voice-listener>
+            <input placeholder="How can I help?">
+        </x-voice-listener>
+
+        <p>That's kind of interesting because there were <a href="https://web.archive.org/web/20090308033937/http://www.voicexml.org/specs/multimodal/x+v/12/spec.html">specs trying to do something like that
+          back to the early 2000's</a> and it seems to be where Google restarted the converstaion in 2012 as well.  We could figure that out, and do it with real world experimentation and testing!
+        </p>
+        </section>
+      
 
 
       <section class="sectioning">
         <contextual-heading role="heading" aria-level="2">So now what?</contextual-heading>
+        <p>Since there's something implemented on Chrome and Android, you have a lot of
+        0's in the number of machines that actually support the existing API.  As with
+        a lot of 'new' features on the Web, you'll probably want think about how you can use
+        progressive enhancement for a lot of use cases... In some cases, the API is
+        good enough that you can paper over its kinks and that might be 'good enough'.</p>
 
-        <p>I think this would be pretty good, but unfortunately, these are all
-        pretty low level asks that are currently pretty difficult to fill in with the native
-        implementations themselves because they don't provide adequate explanations
-        or hooks. </p>
-
-        <p>For my own use cases, the native APIs are
-        'adequate' to paper over with a simpler interface that simply avoids all
-        of the array and event weirdness that can occur, so that's
-        what I am currently choosing to do in most of my use cases.</p>
-
-        <p>It is plausbile, however, to make this API real today using a
-        remote service that conforms to this.  Such services that transcribe
+        <p>Unfortunately, the low-level API sketched out in this document isn't possible
+        to achieve <em>using the existing Speech APIs</em> because they don't provide adequate explanations
+        or hooks. Fortunately, however, it is entirely plausbile to make this API real
+        today using a remote service that conforms to a design like this.  Such services that transcribe
         sounds of speech to text are plentiful - Google's Cloud Platform and Amazon both
         provide APIs capable of achieving this for limited purposes would be free enough
         to experiment with and prove out, and fairly low cost beyond that.</p>
 
-        <p>I have a kind of rough POC that I'll be building out,
-        for purposes of demonstrating ideas to limited groups, but wide publicly
-        sharable demonstration is potentially cost prohibitive (unless some vendor
+        <p>I have a kind of rough POC that I'll be building out, for purposes of demonstrating ideas to limited groups, but wide publicly sharable demonstration is potentially cost prohibitive (unless some vendor
         wants to donate free time).  However, if you have a business use for this,
         perhaps it's worthwhile.  If you're interested in helping out with that,
         or hearing more, let me know.</p>
@@ -627,8 +644,6 @@ service.transcribe(someAudioStream).then((response) =&gt; {
   
 
   <p class="thanksTo">Special thanks to my friend, the great Chris Wilson for proofing/commenting on pieces in this series.</p>
-
-  <!-- script src="https://rawgit.com/mattdiamond/Recorderjs/master/dist/recorder.js"></script -->
 
 </article></main>
 
