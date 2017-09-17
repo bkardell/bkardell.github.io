@@ -323,7 +323,7 @@ America (art for sale)</a></li>
         </ul>
     </nav>
 </header>
-    <main><div class="posted-on">Posted on null</div><article class="sectioning">
+    <main><div class="posted-on">Posted on 09/17/2017</div><article posted-on="09/17/2017" class="sectioning">
   <contextual-heading role="heading" aria-level="1">Thoughts on Voice Recognition: Web Speech APIs Part IV</contextual-heading>
   <p class="segue">This is part of a series about making the browser speak and listen to speech. In my last post <a href="https://bkardell.com/blog/Listen-Up.html">You Don't Say: Web Speech APIs Part III</a>, I talked about the recognition interfaces: <em>listening</em> or <em>speech-to-text</em>.</p>
 
@@ -613,7 +613,9 @@ speechRecognizer.audioContext.stop()</code></pre>
         </x-voice-listener>
 
         <p>That's kind of interesting because there were <a href="https://web.archive.org/web/20090308033937/http://www.voicexml.org/specs/multimodal/x+v/12/spec.html">specs trying to do something like that
-          back to the early 2000's</a> and it seems to be where Google restarted the converstaion in 2012 as well.  We could figure that out, and do it with real world experimentation and testing!
+          back to the early 2000's</a> and it seems to be where Google restarted the converstaion in 2012 as well.  We could figure that out, and do it with real world experimentation and testing! As you can
+          see from this super rough demo, there's a lot to think about.. Should there be an attribute to
+          autostart? Should it automatically stop?  Should other attributes be present? <code>paused</code>, for example? I don't know, but we could try a lot of things and see what works.
         </p>
         </section>
       
