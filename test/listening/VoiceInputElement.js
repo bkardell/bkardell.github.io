@@ -41,6 +41,12 @@ class XVoiceInputElement extends HTMLElement {
 			}),
 			shadowRoot = this.attachShadow({mode: 'open'})
 			shadowRoot.innerHTML = `
+				<style>
+					button {
+						background-color: var(--listen-btn-color, buttonface);
+						display: var(--listen-btn-display)
+					}
+				</style>
 				<slot></slot>
 				<button class="toggler" aria-label="toggle recognition">Listen</button>`
 
@@ -58,7 +64,7 @@ class XVoiceInputElement extends HTMLElement {
 					})
 
 
-			this._voiceListener = window._voiceListener
+			this._voiceListener = window._voiceListener || new PauseableVoiceListener()
 			this._voiceListener.addEventListener('heard', (what) => {
 			    let target = this.referenceElement
 			   	let trimmedWhat = (what) ? what.trim() : ''
