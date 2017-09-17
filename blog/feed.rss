@@ -4,10 +4,51 @@
                 <title>bkardell.com rss feed</title>
                 <link>https://bkardell.com</link>
                 <language>en-us</language>
-                <lastBuildDate>Fri, 18 Aug 2017 13:18:53 GMT</lastBuildDate>
+                <lastBuildDate>Sun, 17 Sep 2017 14:51:05 GMT</lastBuildDate>
                 <description>Just the bkardell.com rss feed</description>
                 <atom:link href="https://bkardell.com/blog/feed.rss" rel="self" type="application/rss+xml" />
     
+            <item>
+                <title>Thoughts on Voice Recognition: Web Speech APIs Part IV</title>
+                <link>https://bkardell.com/blog/Voice-Recognition-Thoughts.html</link>
+                <description>This is part of a series about making the browser speak and listen to speech. In my last post You Don't Say: Web Speech APIs Part III, I talked about the recognition interfaces: listening or speech-to-text.</description>
+                <guid>https://bkardell.com/blog/Voice-Recognition-Thoughts.html</guid>
+                <pubDate>Sun, 17 Sep 2017 04:00:00 GMT</pubDate>
+            </item>
+        
+            <item>
+                <title>Listen up: Web Speech APIs Part III</title>
+                <link>https://bkardell.com/blog/Listen-Up.html</link>
+                <description>This is part of a series about making the browser speak and listen to speech. In my last post You Don't Say: Web Speech APIs Part II, I talked about how I'm personally papering over what
+    we "have" today with regard to making the browser "talk" and why. In this post I'll talk about the other end of that: listening or speech-to-text.</description>
+                <guid>https://bkardell.com/blog/Listen-Up.html</guid>
+                <pubDate>Fri, 25 Aug 2017 04:00:00 GMT</pubDate>
+            </item>
+        
+            <item>
+                <title>You Don't Say: Web Speech APIs Part II</title>
+                <link>https://bkardell.com/blog/Basic-Voice-Speaker.html</link>
+                <description>This is part of a series about making the browser speak and listen to speech.  In my last post Greetings, Professor Falken: Web Speech APIs Part I, I talked about the existing APIs we "have" for speaking (as well as why the air quotes) and all the many ways that they are wonky today.  In this post I'll share some of my own opinions on that API, as well as how I'm dealing with the speaking part IRL.</description>
+                <guid>https://bkardell.com/blog/Basic-Voice-Speaker.html</guid>
+                <pubDate>Thu, 24 Aug 2017 04:00:00 GMT</pubDate>
+            </item>
+        
+            <item>
+                <title>You Don't Say: Web Speech APIs Part II</title>
+                <link>https://bkardell.com/blog/High-Level-Voice.html</link>
+                <description>This is part of a series about making the browser speak and listen to speech.  In my last post Greetings, Professor Falken: Web Speech APIs Part I, I talked about the existing APIs we "have" for speaking (as well as why the air quotes) and all the many ways that they are wonky today.  In this post I'll share some of my own opinions on that API, as well as how I'm dealing with the speaking part IRL.</description>
+                <guid>https://bkardell.com/blog/High-Level-Voice.html</guid>
+                <pubDate>Thu, 24 Aug 2017 04:00:00 GMT</pubDate>
+            </item>
+        
+            <item>
+                <title>Greetings, Professor Falken: Web Speech APIs Part I</title>
+                <link>https://bkardell.com/blog/Greetings-Professor-Falken.html</link>
+                <description>There's a long, rich history of humans figuring out how to make machines talk and listen, and nearly as long as there has been a W3C there have been efforts to get these features into the browser.  It's too complicated to recount here, that's a whole post of it's own.  Suffice it to say that it's been fits and starts, steps forward and back and where we are right now is... muddy, but it works... sort of.  In this series of posts, I'll tell you all about it...</description>
+                <guid>https://bkardell.com/blog/Greetings-Professor-Falken.html</guid>
+                <pubDate>Wed, 23 Aug 2017 04:00:00 GMT</pubDate>
+            </item>
+        
             <item>
                 <title>The History and State of Speech</title>
                 <link>https://bkardell.com/blog/The-History-Of-Speech.html</link>
