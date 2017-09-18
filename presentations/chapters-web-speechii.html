@@ -38,16 +38,16 @@ The Web Speech APIS Part Deux</span></h1>
 
 <p><span style="color:#FFFFFF">Speech Recognition</span></p>
 </div></div></section><section data-background-color="#1c4587" data-id="85f1a330ce9be9952500c78ccc1344b2"><div class="sl-block" data-block-type="text" style="width: 806px; left: 80px; top: 60px; height: auto;" data-block-id="8f5207887da665f6f8d032daa25b9be0"><div class="sl-block-content" data-placeholder-tag="h1" data-placeholder-text="Title Text" style="z-index: 10;">
-<h1><span style="color:#FFFFFF">Stuff we discussed</span></h1>
+<h1><a href="https://bkardell.com/presentations/chapters-web-speech.html#/"><span style="color:goldenrod;text-decoration: underline;">Previously on Chapters...</span></a></h1>
 </div></div>
-<div class="sl-block" data-block-type="text" style="width: 806px; left: 80px; top: 232px; height: auto;" data-block-id="077baaa2a181aa04700d603a38d10a9d"><div class="sl-block-content" data-placeholder-tag="h1" data-placeholder-text="Title Text" style="z-index: 12;">
-<ul>
-	<li><span style="color:#FFFFFF">Long history, lots of fails trying to standardize</span></li>
-	<li><span style="color:#FFFFFF">Windy path, but we wound up with<br>
+<div class="sl-block" data-block-type="text" style="width: 806px; left: 80px; top: 282px; height: auto;" data-block-id="077baaa2a181aa04700d603a38d10a9d"><div class="sl-block-content" data-placeholder-tag="h1" data-placeholder-text="Title Text" style="z-index: 12;">
+<ul style="color:#ffffff">
+	<li style="margin-top: 1rem"><span style="color:#FFFFFF">Long history, lots of fails trying to standardize</span></li>
+	<li style="margin-top: 1rem"><span style="color:#FFFFFF">Windy path, but we wound up with<br>
 	(buggy/imperfect) TTS support in all modern<br>
 	browsers</span></li>
-	<li>
-<span style="color:#FFFFFF">That isn't a standard, it's from an unofficial<br>
+	<li style="margin-top: 1rem">
+<span style="color:#FFFFFF">...it isn't a standard, it's from an unofficial<br>
 	draft that contained stuff about voice<br>
 	recognition too...</span><br>
 	 </li>
@@ -68,28 +68,72 @@ The Web Speech APIS Part Deux</span></h1>
 <div class="sl-block" data-block-type="image" data-block-id="e8e0a2ee456392a4e77b67ec877b0b78" style="min-width: 30px; min-height: 30px; width: 500px; height: 235px; left: 230px; top: 233px;"><div class="sl-block-content" style="z-index: 13;"><img data-natural-width="500" data-natural-height="235" style="" data-lazy-loaded="" data-src="https://latinaish.files.wordpress.com/2014/11/wont-hear-it.gif?w=630"></div></div>
 <div class="sl-block" data-block-type="text" style="width: 891px; left: 32px; top: 527px; height: auto;" data-block-id="8ac0ee17f87c64d64c4906825ce13881"><div class="sl-block-content" data-placeholder-tag="h1" data-placeholder-text="Title Text" style="z-index: 14;">
 <p><span style="color:#FFFFFF">and you don't know if it ever will.</span></p>
-</div></div></section><section data-background-color="#1c4587" data-id="0c5f6929e05a1aea2bb1cea8b2b7871b"><div class="sl-block" data-block-type="text" style="width: 886px; left: 52px; top: 171px; height: auto;" data-block-id="ae78f9dc9622612e937183fd09602926"><div class="sl-block-content" data-placeholder-tag="h1" data-placeholder-text="Title Text" style="z-index: 10;">
-<p><span style="color:#FFFFFF">You have to ask for permission</span></p>
-</div></div>
-<div class="sl-block" data-block-type="image" style="width: 498px; height: 255px; left: 232px; top: 248px;" data-block-id="cc02797e25cdde6eaf68bd733bda7634"><div class="sl-block-content" style="z-index: 11;"><img data-natural-width="498" data-natural-height="255" style="" data-lazy-loaded="" data-src="https://media.tenor.com/images/51f904d3b8789dd5131ce97cc4be8249/tenor.gif"></div></div></section><section data-background-color="#1c4587" data-id="99a48e7cfc8226a1525501e2be36b70e"><div class="sl-block" data-block-type="text" style="width: 886px; left: 52px; top: 171px; height: auto;" data-block-id="8b37a2b7a853dc537d71c8ddf7fcb146"><div class="sl-block-content" data-placeholder-tag="h1" data-placeholder-text="Title Text" style="z-index: 10;">
-<p><span style="color:#FFFFFF">Watch it, Fokker...</span></p>
-</div></div>
-<div class="sl-block" data-block-type="image" style="width: 480px; height: 270px; left: 241px; top: 241px;" data-block-id="6305a8d70d9a67553cfc861f368d59ab"><div class="sl-block-content" style="z-index: 11;"><img data-natural-width="480" data-natural-height="270" style="" data-lazy-loaded="" data-src="https://i.imgur.com/TLNXruN.gif"></div></div></section><section data-background-color="#1c4587" data-id="cb36b41305bb61c537e11d24fc6e50d9"><div class="sl-block" data-block-type="text" style="width: 652px; left: 160px; top: 157px; height: auto;" data-block-id="86b02a13413931015642531cd214e4d9"><div class="sl-block-content" data-placeholder-tag="h1" data-placeholder-text="Title Text" style="z-index: 11;">
+</div></div></section>
+
+
+<section data-background-color="#1c4587" data-id="cb36b41305bb61c537e11d24fc6e50d9"><div class="sl-block" data-block-type="text" style="width: 652px; left: 160px; top: 157px; height: auto;" data-block-id="86b02a13413931015642531cd214e4d9"><div class="sl-block-content" data-placeholder-tag="h1" data-placeholder-text="Title Text" style="z-index: 11;">
 <pre><font color="#ffffff">voiceRecognition.start()</font></pre>
 </div></div>
-<div class="sl-block" data-block-type="image" data-block-id="26b14dc4a2a22b01165190002b577400" style="min-width: 30px; min-height: 30px; width: 498px; height: 278px; left: 231px; top: 236px;"><div class="sl-block-content" style="z-index: 12;"><img data-natural-width="498" data-natural-height="278" style="" data-lazy-loaded="" data-src="https://media.tenor.com/images/ed01b021cf1e4b22915215b5d73a4684/tenor.gif"></div></div></section><section data-background-color="#1c4587" data-id="6634b52c9cf657b2dcb33aa52a3c587b"><div class="sl-block" data-block-type="text" style="width: 886px; left: 52px; top: 280px; height: auto;" data-block-id="b3649c5710104d35e3d210c49a8b555f"><div class="sl-block-content" data-placeholder-tag="h1" data-placeholder-text="Title Text" style="z-index: 10;">
-<p><span style="color:#FFFFFF">The draft says at this point it needs to check...<br>
+<div class="sl-block" data-block-type="image" data-block-id="26b14dc4a2a22b01165190002b577400" style="min-width: 30px; min-height: 30px; width: 498px; height: 278px; left: 231px; top: 236px;"><div class="sl-block-content" style="z-index: 12;"><img data-natural-width="498" data-natural-height="278" style="" data-lazy-loaded="" data-src="https://media.tenor.com/images/ed01b021cf1e4b22915215b5d73a4684/tenor.gif"></div></div></section>
+
+
+<section data-background-color="#1c4587" data-id="6634b52c9cf657b2dcb33aa52a3c587b"><div class="sl-block" data-block-type="text" style="width: 886px; left: 52px; top: 280px; height: auto;" data-block-id="b3649c5710104d35e3d210c49a8b555f"><div class="sl-block-content" data-placeholder-tag="h1" data-placeholder-text="Title Text" style="z-index: 10;">
+<p><span style="color:#FFFFFF">The draft says before <code>.start()'ing</code> it needs to check...<br>
  <em>do you have permission?</em></span></p>
-</div></div></section><section data-background-color="#1c4587" data-id="4b8c1c7624ebcb0b19c8f503e863c283"><div class="sl-block" data-block-type="text" style="width: 806px; left: 80px; top: 102px; height: auto;" data-block-id="c7a4eee34fc0971f329c0739e60a6fd0"><div class="sl-block-content" data-placeholder-tag="h1" data-placeholder-text="Title Text" style="z-index: 11;">
-<p><span style="color:#FFFFFF">The draft says that the browser has to tell you</span></p>
+</div></div></section>
 
-<p><span style="color:#FFFFFF">when it's listening...</span></p>
 
+<section data-background-color="#1c4587" data-id="b272e042c76c9e8e0a078acf31685e24"><div class="sl-block" data-block-type="text" style="width: 806px; left: 80px; top: 247px; height: auto;" data-block-id="a59db3a20719e962376420bb758f1c59"><div class="sl-block-content" data-placeholder-tag="h1" data-placeholder-text="Title Text" style="z-index: 10; color: rgb(255, 255, 255);">
+<p>A brief(-ish) sidebar on <em>User</em>-Agent/powerful features</p>
+
+<p>Standards and browsers are very sensitive to this.</p>
+</div></div></section>
+
+
+<section data-background-color="#1c4587" data-id="99a48e7cfc8226a1525501e2be36b70e"><div class="sl-block" data-block-type="text" style="width: 886px; left: 52px; top: 171px; height: auto;" data-block-id="8b37a2b7a853dc537d71c8ddf7fcb146"><div class="sl-block-content" data-placeholder-tag="h1" data-placeholder-text="Title Text" style="z-index: 10;">
+<p><span style="color:#FFFFFF">Watch it, Fokker...</span></p>
 </div></div>
-<div class="sl-block" data-block-type="image" style="width: 498px; height: 111px; left: 231px; top: 320px;" data-block-id="6ed349f818fbc4a544d98094e459b525"><div class="sl-block-content" style="z-index: 12;"><img data-natural-width="817" data-natural-height="182" style="" data-lazy-loaded="" data-src="https://bkardell.com/media/mic-permission-granted.png"></div></div>
+<div class="sl-block" data-block-type="image" style="width: 480px; height: 270px; left: 241px; top: 241px;" data-block-id="6305a8d70d9a67553cfc861f368d59ab"><div class="sl-block-content" style="z-index: 11;"><img data-natural-width="480" data-natural-height="270" style="" data-lazy-loaded="" data-src="https://i.imgur.com/TLNXruN.gif"></div></div></section>
+
+
+
+<section data-background-color="#1c4587" data-id="8d56f268183e6dd80af03fec36b8c96b"><div class="sl-block" data-block-type="text" style="width: 886px; left: 54px; top: 304px; height: auto;" data-block-id="9841040fa6646dea05f26498c7e985a0"><div class="sl-block-content" data-placeholder-tag="h1" data-placeholder-text="Title Text" style="z-index: 10;">
+<p><span style="color:#FFFFFF">Tough problem.<br>
+YMMV.<br>Most of this is specified in only very lose terms.</span></p>
+</div></div></section>
+
+
+<section data-background-color="#1c4587" data-id="0c5f6929e05a1aea2bb1cea8b2b7871b"><div class="sl-block" data-block-type="text" style="width: 886px; left: 52px; top: 171px; height: auto;" data-block-id="ae78f9dc9622612e937183fd09602926"><div class="sl-block-content" data-placeholder-tag="h1" data-placeholder-text="Title Text" style="z-index: 10;">
+<p><span style="color:#FFFFFF">Sites have to ask for permission</span></p>
+</div></div>
+<div class="sl-block" data-block-type="image" style="width: 498px; height: 255px; left: 232px; top: 248px;" data-block-id="cc02797e25cdde6eaf68bd733bda7634"><div class="sl-block-content" style="z-index: 11;"><img data-natural-width="498" data-natural-height="255" style="" data-lazy-loaded="" data-src="https://media.tenor.com/images/51f904d3b8789dd5131ce97cc4be8249/tenor.gif"></div></div></section>
+
+
+<section data-background-color="#1c4587" data-id="4b8c1c7624ebcb0b19c8f503e863c283"><div class="sl-block" data-block-type="text" style="width: 806px; left: 80px; top: 102px; height: auto;" data-block-id="c7a4eee34fc0971f329c0739e60a6fd0"><div class="sl-block-content" data-placeholder-tag="h1" data-placeholder-text="Title Text" style="z-index: 11;">
+<p><span style="color:#FFFFFF">This is not listening (or watching). It has <em>permission to</em>...</span></p>
+</div></div>
+<div class="sl-block" data-block-type="image" style="width: 498px; height: 111px; left: 231px; top: 270px;" data-block-id="6ed349f818fbc4a544d98094e459b525"><div class="sl-block-content" style="z-index: 12;"><img data-natural-width="817" data-natural-height="182" style="" data-lazy-loaded="" data-src="https://bkardell.com/media/mic-permission-granted.png"></div></div>
 <div class="sl-block" data-block-type="text" data-block-id="e2c078001d259f1dcb6525b0a4075d0b" style="height: auto; min-width: 30px; min-height: 30px; width: 600px; left: 180px; top: 501px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 13;">
-<p><span style="color:#FFFFFF">It's not listening (or watching).</span></p>
-</div></div></section><section data-background-color="#1c4587" data-id="998b4d258031a543a5a1b8b9584c4862"><div class="sl-block" data-block-type="text" style="width: 806px; left: 80px; top: 154px; height: auto;" data-block-id="da025860ad915029153cf37e84199125"><div class="sl-block-content" data-placeholder-tag="h1" data-placeholder-text="Title Text" style="z-index: 11;" dir="ui">
+<p><span style="color:#FFFFFF">(we'll come back to the distinction)</span></p>
+</div></div></section>
+
+<section data-background-color="#1c4587" data-id="c7408ea0194039a75875066964800a46"><div class="sl-block" data-block-type="text" style="width: 806px; left: 80px; top: 154px; height: auto;" data-block-id="db8599ea8a45df00fffe0aef13bca780"><div class="sl-block-content" data-placeholder-tag="h1" data-placeholder-text="Title Text" style="z-index: 11;">
+<p><font color="#ffffff">You have to be able to revoke/manage that easily.</font></p>
+</div></div>
+<div class="sl-block" data-block-type="image" data-block-id="cfc4e29a24def71b078c935f98f7ddd5" style="min-width: 30px; min-height: 30px; width: 806px; height: 169px; left: 77px; top: 266px;"><div class="sl-block-content" style="z-index: 12;"><img data-natural-width="2008" data-natural-height="422" style="" data-lazy-loaded="" data-src="https://s3.amazonaws.com/media-p.slid.es/uploads/186389/images/4123433/Screen_Shot_2017-09-13_at_7.34.22_PM.png"></div></div></section>
+
+
+<section data-background-color="#1c4587" data-id="bc8745b13e97f21142f6bed32daee7e3"><div class="sl-block" data-block-type="text" style="width: 806px; left: 86px; top: 83px; height: auto;" data-block-id="abb401a0fd78f6af2492973b909222ff"><div class="sl-block-content" data-placeholder-tag="h1" data-placeholder-text="Title Text" style="z-index: 10; color: rgb(255, 255, 255);">
+<p>In fact, you have to be able to revoke/manage <em>all</em> permissions easily.</p>
+</div></div>
+<div class="sl-block" data-block-type="image" style="width: 198px; height: 410px; left: 381px; top: 183px;" data-block-id="49f6f9555f29077ceb6d40eed2868393"><div class="sl-block-content" style="z-index: 11;"><img data-natural-width="630" data-natural-height="1302" style="" data-lazy-loaded="" data-src="https://s3.amazonaws.com/media-p.slid.es/uploads/186389/images/4123434/Screen_Shot_2017-09-13_at_7.42.51_PM.png"></div></div></section>
+
+<section data-background-color="#1c4587" data-id="e5eebd2c9fb8d4daa4b530f5886e4ac8"><div class="sl-block" data-block-type="text" style="width: 806px; left: 77px; top: 311px; height: auto;" data-block-id="4062f0110bb9a6b6b677378a01b85fa4"><div class="sl-block-content" data-placeholder-tag="h1" data-placeholder-text="Title Text" style="z-index: 10; color: rgb(255, 255, 255);">
+<p>&lt;/sidebar&gt;</p>
+</div></div></section>
+
+
+<section data-background-color="#1c4587" data-id="998b4d258031a543a5a1b8b9584c4862"><div class="sl-block" data-block-type="text" style="width: 806px; left: 80px; top: 154px; height: auto;" data-block-id="da025860ad915029153cf37e84199125"><div class="sl-block-content" data-placeholder-tag="h1" data-placeholder-text="Title Text" style="z-index: 11;" dir="ui">
 <p><span style="color:#FFFFFF">The draft says that the browser has to tell you</span></p>
 
 <p><span style="color:#FFFFFF">when it's <em>actually</em> listening</span></p>
@@ -100,40 +144,21 @@ The Web Speech APIS Part Deux</span></h1>
 </div></div></section><section data-background-color="#1c4587" data-id="acd324532fab411044806c1a1fbd7b42"><div class="sl-block" data-block-type="text" style="width: 806px; left: 80px; top: 186px; height: auto;" data-block-id="ca3d53786adc3dc58c4df70d7a24f084"><div class="sl-block-content" data-placeholder-tag="h1" data-placeholder-text="Title Text" style="z-index: 10; color: rgb(255, 255, 255);">
 <p>Except.. Sometimes people can't see.</p>
 
-<p>For example: You, when you're in the car.<br>
-<br>
-It <em>still </em>has to let you know it's listening, and when it stops.<br>
-<br>
-<a href="http://graphemica.com/%F0%9F%8E%B6" target="_blank"><span style="color:#FFFFFF">🎶</span></a><span style="color:#FFFFFF"> </span>ding</p>
+<p>For example: You, when you're in the car.</p>
+<p style="margin-top: 2rem;"><a href="http://graphemica.com/%F0%9F%8E%B6" target="_blank"><span style="color:#FFFFFF">🎶</span></a><span style="color:#FFFFFF"> </span>ding</p>
 
 <p>bleep <a href="http://graphemica.com/%F0%9F%8E%B6" target="_blank">🎶</a></p>
-</div></div></section><section data-background-color="#1c4587" data-id="c7408ea0194039a75875066964800a46"><div class="sl-block" data-block-type="text" style="width: 806px; left: 80px; top: 154px; height: auto;" data-block-id="db8599ea8a45df00fffe0aef13bca780"><div class="sl-block-content" data-placeholder-tag="h1" data-placeholder-text="Title Text" style="z-index: 11;">
-<p><font color="#ffffff">You have to be able to revoke/manage that easily.</font></p>
-</div></div>
-<div class="sl-block" data-block-type="image" data-block-id="cfc4e29a24def71b078c935f98f7ddd5" style="min-width: 30px; min-height: 30px; width: 806px; height: 169px; left: 77px; top: 266px;"><div class="sl-block-content" style="z-index: 12;"><img data-natural-width="2008" data-natural-height="422" style="" data-lazy-loaded="" data-src="https://s3.amazonaws.com/media-p.slid.es/uploads/186389/images/4123433/Screen_Shot_2017-09-13_at_7.34.22_PM.png"></div></div></section><section data-background-color="#1c4587" data-id="bc8745b13e97f21142f6bed32daee7e3"><div class="sl-block" data-block-type="text" style="width: 806px; left: 86px; top: 83px; height: auto;" data-block-id="abb401a0fd78f6af2492973b909222ff"><div class="sl-block-content" data-placeholder-tag="h1" data-placeholder-text="Title Text" style="z-index: 10; color: rgb(255, 255, 255);">
-<p>In fact, you have to be able to revoke/manage <em>all</em> permissions easily.</p>
-</div></div>
-<div class="sl-block" data-block-type="image" style="width: 198px; height: 410px; left: 381px; top: 183px;" data-block-id="49f6f9555f29077ceb6d40eed2868393"><div class="sl-block-content" style="z-index: 11;"><img data-natural-width="630" data-natural-height="1302" style="" data-lazy-loaded="" data-src="https://s3.amazonaws.com/media-p.slid.es/uploads/186389/images/4123434/Screen_Shot_2017-09-13_at_7.42.51_PM.png"></div></div></section><section data-background-color="#1c4587" data-id="8d56f268183e6dd80af03fec36b8c96b"><div class="sl-block" data-block-type="text" style="width: 886px; left: 54px; top: 304px; height: auto;" data-block-id="9841040fa6646dea05f26498c7e985a0"><div class="sl-block-content" data-placeholder-tag="h1" data-placeholder-text="Title Text" style="z-index: 10;">
-<p><span style="color:#FFFFFF">Tough problem.<br>
-YMMV.</span></p>
-</div></div></section><section data-background-color="#1c4587" data-id="b272e042c76c9e8e0a078acf31685e24"><div class="sl-block" data-block-type="text" style="width: 806px; left: 80px; top: 247px; height: auto;" data-block-id="a59db3a20719e962376420bb758f1c59"><div class="sl-block-content" data-placeholder-tag="h1" data-placeholder-text="Title Text" style="z-index: 10; color: rgb(255, 255, 255);">
-<p><em>User</em>-Agent</p>
+</div></div></section>
 
-<p> </p>
-
-<p>Standards and browsers are very sensitive to this.</p>
-</div></div></section><section data-background-color="#1c4587" data-id="e5eebd2c9fb8d4daa4b530f5886e4ac8"><div class="sl-block" data-block-type="text" style="width: 806px; left: 77px; top: 311px; height: auto;" data-block-id="4062f0110bb9a6b6b677378a01b85fa4"><div class="sl-block-content" data-placeholder-tag="h1" data-placeholder-text="Title Text" style="z-index: 10; color: rgb(255, 255, 255);">
-<p><em>Let's get back on track..</em></p>
-</div></div></section><section data-background-color="#1c4587" data-id="c6aa142378367de67abb0c352ef6ad28"><div class="sl-block" data-block-type="text" style="width: 806px; left: 77px; top: 222px; height: auto;" data-block-id="c362626ff21a1603ed22f98a98256d67"><div class="sl-block-content" data-placeholder-tag="h1" data-placeholder-text="Title Text" style="z-index: 10; color: rgb(255, 255, 255);">
+<section data-background-color="#1c4587" data-id="c6aa142378367de67abb0c352ef6ad28"><div class="sl-block" data-block-type="text" style="width: 806px; left: 77px; top: 222px; height: auto;" data-block-id="c362626ff21a1603ed22f98a98256d67"><div class="sl-block-content" data-placeholder-tag="h1" data-placeholder-text="Title Text" style="z-index: 10; color: rgb(255, 255, 255);">
 <p><em>Assuming you have permission, after </em></p>
 
 <p><em>.start() it is listening.<br>
 <br>
 Now what?</em></p>
 </div></div></section><section data-background-color="#1c4587" data-id="6fcf245cb54fbb4dda17386bf43d4b26"><div class="sl-block" data-block-type="text" style="width: 806px; left: 80px; top: 272px; height: auto;" data-block-id="9a6966df11354b5460df76bcbda7d2cd"><div class="sl-block-content" data-placeholder-tag="h1" data-placeholder-text="Title Text" style="z-index: 10; color: rgb(255, 255, 255);">
-<p>The voiceRecognition object pumps <em>lots</em> of events,<br>
-let's start with these..<br>
- </p>
+<p>The voiceRecognition object pumps <em>lots</em> of events.</p>
+<p>These three are the really useful ones...</p>
 
 <pre style="text-align:left"> </pre>
 </div></div></section><section data-background-color="#1c4587" data-id="7e57f1bc7acb3b96c833d97cd9fbb857"><div class="sl-block" data-block-type="text" style="width: 806px; left: 80px; top: 339px; height: auto;" data-block-id="d33e89437c53d1c5e6c78b94f55f1100"><div class="sl-block-content" data-placeholder-tag="h1" data-placeholder-text="Title Text" style="z-index: 11; color: rgb(255, 255, 255);">
@@ -179,7 +204,9 @@ let's start with these..<br>
 <br>
 So.. how do I get the text transcript<br>
 of the sound?  Is it the event?</span></p>
-</div></div></section><section data-background-color="#1c4587" data-id="26a2f1375ec69ec7e08d4f240b22063b"><div class="sl-block" data-block-type="image" style="width: 500px; height: 168px; left: 231px; top: 223px;" data-block-id="4c2d2c350e3a3e5447a0b45b68ed9cba"><div class="sl-block-style" style="z-index: 11;"><div class="sl-block-content" style="z-index: 11;"><img data-natural-width="500" data-natural-height="168" style="" data-lazy-loaded="" data-src="https://m.popkey.co/1087e9/O9DQL.gif"></div></div></div></section><section data-background-color="#1c4587" data-id="8ed4934da6eb5489bc0fc8cf42181117"><div class="sl-block" data-block-type="text" data-block-id="f843952d887851a1545f97f9de8cd43e" style="height: auto; min-width: 30px; min-height: 30px; width: 908px; left: 32px; top: 172px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11;">
+</div></div></section>
+
+<section data-background-color="#1c4587" data-id="26a2f1375ec69ec7e08d4f240b22063b"><div class="sl-block" data-block-type="image" style="width: 500px; height: 168px; left: 231px; top: 223px;" data-block-id="4c2d2c350e3a3e5447a0b45b68ed9cba"><div class="sl-block-style" style="z-index: 11;"><div class="sl-block-content" style="z-index: 11;"><img data-natural-width="500" data-natural-height="168" style="" data-lazy-loaded="" data-src="https://m.popkey.co/1087e9/O9DQL.gif"></div></div></div></section><section data-background-color="#1c4587" data-id="8ed4934da6eb5489bc0fc8cf42181117"><div class="sl-block" data-block-type="text" data-block-id="f843952d887851a1545f97f9de8cd43e" style="height: auto; min-width: 30px; min-height: 30px; width: 908px; left: 32px; top: 172px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11;">
 
 
 <pre style="color:rgb(255, 255, 255)"><code class="language-javascript">voiceRecognition.onresult = ( evt ) => {
@@ -205,8 +232,8 @@ of the sound?  Is it the event?</span></p>
  </p>
 </div></div></section>
 
-<section data-background-color="#1c4587" data-id="74a2f3124795fdf5b9438598391166de"><div class="sl-block" data-block-type="text" style="height: auto; width: 217px; left: 372px; top: 265px;" data-block-id="f8674680f80d11cf776c48939c1015d3"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11;">
-<pre style="color:white">Array-<em>likes.</em>
+<section data-background-color="#1c4587" data-id="74a2f3124795fdf5b9438598391166de"><div class="sl-block" data-block-type="text" style="height: auto; width: 400px; left: 302px; top: 265px;" data-block-id="f8674680f80d11cf776c48939c1015d3"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11;">
+<pre style="color:white">lol, not even...<br>They're Array-<em>likes.</em>
 
 
 </pre>
@@ -218,28 +245,35 @@ there will only be one in each collection,<br>
 and you want the 0'th one.</p>
 
 <p> </p>
-</div></div></section><section data-background-color="#1c4587" data-id="2c9e3f8afd7059d008e912890c33815d"><div class="sl-block" data-block-type="text" style="height: auto; width: 908px; left: 9px; top: 140px;" data-block-id="acfda9a711f62c9278c3a00f3ea146ac"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11;">
+</div></div></section><section data-background-color="#1c4587" data-id="2c9e3f8afd7059d008e912890c33815d"><div class="sl-block" data-block-type="text" style="height: auto; width: 908px; left: 9px; top: 80px;" data-block-id="acfda9a711f62c9278c3a00f3ea146ac"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11;">
 <p style="color:white">Here's why the first one is an array...
  </p>
 </div></div>
-<div class="sl-block" data-block-type="text" data-block-id="783f4ed794c3da66fd91bedd9af2f6f2" style="height: auto; min-width: 30px; min-height: 30px; width: 768px; left: 96px; top: 218px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 12;">
-<pre><code class="language-javascript">​voiceRecognition.continuous = true;
+<div class="sl-block" data-block-type="text" data-block-id="783f4ed794c3da66fd91bedd9af2f6f2" style="height: auto; min-width: 30px; min-height: 30px; width: 768px; left: 96px; top: 158px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 12;">
+<pre><code class="language-javascript">​// by default, the .continous
+// property is false.
+// Once a result is received,
+// it stops listening... But...
+voiceRecognition.continuous = true;
+
 voiceRecognition.onresult = (evt) =&gt; {
 
-   // evt.results.length is one greater
-   // with each recognition in
-   // continuous mode.
+   // Now it doesn't stop automatically
+   // and evt.results.length is one
+   // greater with each new recognition
 
 }</code></pre>
-</div></div></section><section data-background-color="#1c4587" data-id="241d53d4f2f5d28083aeefd08ac99190"><div class="sl-block" data-block-type="text" style="height: auto; width: 768px; left: 80px; top: 280px;" data-block-id="8f0a7038b28448592119b51852bbc89d"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11; text-align: center;">
+</div></div></section>
+
+<section data-background-color="#1c4587" data-id="241d53d4f2f5d28083aeefd08ac99190"><div class="sl-block" data-block-type="text" style="height: auto; width: 768px; left: 80px; top: 280px;" data-block-id="8f0a7038b28448592119b51852bbc89d"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11; text-align: center;">
 <pre style="text-align:center"><span style="color:#FFFFFF">Implementations buggy, possibly contentious.</span></pre>
-</div></div></section><section data-background-color="#1c4587" data-id="97ce062d54107122e87c1192eba2201b"><div class="sl-block" data-block-type="text" style="height: auto; width: 768px; left: 80px; top: 234px;" data-block-id="9b819061b082bbf3822a11396380c5fe"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 10; text-align: center;">
-<pre style="text-align:center"><span style="color:#FFFFFF">Since it defaults to false, <code>voiceRecognition</code> will <em>stop listening </em>after some recognition occurs.</span></pre>
+</div></div></section>
 
-<p> </p>
+<section data-background-color="#1c4587" data-id="97ce062d54107122e87c1192eba2201b"><div class="sl-block" data-block-type="text" style="height: auto; width: 768px; left: 80px; top: 234px;" data-block-id="9b819061b082bbf3822a11396380c5fe"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 10; text-align: center;">
+<p><span style="color:#FFFFFF">"You just can restart it again."</span></p>
+</div></div></section>
 
-<p><span style="color:#FFFFFF">Of course, you can restart it again.</span></p>
-</div></div></section><section data-background-color="#1c4587" data-id="d527cf46adb7a6def923b77cffc7c51a"><div class="sl-block" data-block-type="text" style="height: auto; width: 768px; left: 96px; top: 233px;" data-block-id="c07b96810c06d4faedf8235cd4f9999e"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11; text-align: center;" dir="ui">
+<section data-background-color="#1c4587" data-id="d527cf46adb7a6def923b77cffc7c51a"><div class="sl-block" data-block-type="text" style="height: auto; width: 768px; left: 96px; top: 233px;" data-block-id="c07b96810c06d4faedf8235cd4f9999e"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11; text-align: center;" dir="ui">
 <p style="text-align:center"><span style="color:#FFFFFF"><span style="font-size:0.5em">♬ <em>ding</em><br>
 You: It was the best of times, it was the worst of times, <em>bleep</em> ♬<br>
 it was ♬ <em>ding</em></span></span> <span style="color:#FFFFFF"><span style="font-size:0.5em">the age of wisdom, it was the age of foolishness, <em>bleep</em> ♬<br>
@@ -277,7 +311,7 @@ it was </span></span><span style="color:#FFFFFF"><span style="font-size:0.5em">t
 
 </div></div>
 <div class="sl-block" data-block-type="text" data-block-id="97e4cfc43943f1eb5c4e5715976a4e95" style="height: auto; min-width: 30px; min-height: 30px; width: 600px; left: 160px; top: 171px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 12;">
-<p><span style="color:#FFFFFF">Ok... Let's talk about this thing..</span></p>
+<p><span style="color:#FFFFFF">Ok... So there's really just one 'result'</span></p>
 </div></div></section><section data-background-color="#1c4587" data-id="b4f7147f92fce9e10c473e0694e13c1d"><div class="sl-block" data-block-type="text" style="height: auto; width: 850px; left: 80px; top: 138px;" data-block-id="ad2eab9dcad4e06ac3085f838cf1312c"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 10; text-align: center;" dir="ui">
 
 <pre style="color:white"><code class="language-javascript">voiceRecognition.maxAlternatives = 10</span>
@@ -293,8 +327,68 @@ voiceRecognition.onresult = (evt) =&gt; {
 </div></div>
 </section>
 
+<section data-background-color="#1c4587" data-id="97ce062d54107122e87c1192eba2201b"><div class="sl-block" data-block-type="text" style="height: auto; width: 768px; left: 80px; top: 184px;" data-block-id="9b819061b082bbf3822a11396380c5fe"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 10; text-align: center;">
+<p><span style="color:#FFFFFF">Let's illustrate all this with a game.</span></p>
+</div></div></section>
+
+<section data-background-color="#1c4587" data-id="97ce062d54107122e87c1192eba2201b"><div class="sl-block" data-block-type="text" style="height: auto; width: 768px; left: 80px; top: 34px;font-size: 1rem" data-block-id="9b819061b082bbf3822a11396380c5fe"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 10; text-align: center;">
+<p><span style="color:#FFFFFF">Each question will show you something and ask you to describe it...</span></p>
+<pre style="margin-top:2rem"><code class="language-html">
+&lt;div id="q-1"&gt;
+	&lt;div class="prompt"&gt;...&lt;/div&gt;
+	&lt;img src="something"&gt;
+	&lt;button class="listen"&gt;...&lt;/button&gt;
+	&lt;pre class="out"&gt;...&lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+<p  style="margin-top:2rem;color:white">All but the last will use a pattern like this to listen and output...</p>
+<pre style="margin-top:2rem"><code class="language-javascript">
+let question = document.querySelector('#q-5'),
+    outputEl = question.querySelector('.out'),
+    listenBtn = question.querySelector('.listen'),
+    recog0 = new webkitSpeechRecognition()
+
+recog0.onresult = (evt) => {
+	outputEl.innerHTML =
+		`I heard you say:
+		${evt.results[0][0].transcript}`
+}
+recog0.onerror = (evt) => {
+	alert('whoops')
+}
+
+listenBtn.addEventListener('click', () => {
+	recog0.start()
+})
+</code></pre>
+</div></div></section>
+
+<section data-background-color="#1c4587" data-id="97ce062d54107122e87c1192eba2201b"><div class="sl-block" data-block-type="text" style="height: auto; width: 768px; left: 80px; top: 34px;font-size: 1rem" data-block-id="9b819061b082bbf3822a11396380c5fe"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 10; text-align: center;">
+<p  style="margin-top:2rem;color:white">In the last one we'll use .maxAlternatives...</p>
+<pre style="margin-top:2rem"><code class="language-javascript">
+let question = document.querySelector('#q-1'),
+    outputEl = question.querySelector('.out'),
+    listenBtn = question.querySelector('.listen'),
+    recog0 = new webkitSpeechRecognition(),
+    dumpAlternatives = (results) => { /* loop, concat, return a string */ }
+
+recog0.onresult = (evt) => {
+    outputEl.innerHTML =
+		`I heard you say:
+		${dumpAlternatives(evt.results)}`
+}
+recog0.onerror = (evt) => {
+	alert('whoops')
+}
+
+listenBtn.addEventListener('click', () => {
+	recog0.start()
+})
+</code></pre>
+</div></div></section>
+
+
 <section data-background-color="#1c4587" data-id="49ae93130a4b53baf912ac0a25f002af"><div class="sl-block" data-block-type="text" style="height: auto; width: 800px; left: 80px; top: 20px;" data-block-id="323f5a81ecbdd2d03750a63f0586ce6d"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11;">
-<p><span style="color:#FFFFFF">Let's explain with a game....</p>
 	<img style="margin: 3rem;" src="https://assets.awwwards.com/awards/images/2015/11/bruce-lawson-awwwards-conf-thumbnail.png">
 	<p style="color:#FFFFFF">Say hello to my friend Bruce Lawson...</p>
 <!-- p><br>
@@ -309,6 +403,33 @@ voiceRecognition.onresult = (evt) =&gt; {
 <iframe style="width: 100%; height: 100%" src="https://whats-bruce-wearing-today.tumblr.com/"></iframe>
 </div></div></section>
 
+<section data-background-color="#1c4587" data-id="sdasdasdasf425346q2"><div class="sl-block" data-block-type="image" data-block-id="756f5dc47d19fbc4121f15ba5f990805asd" style="min-width: 30px; min-height: 30px; width: 352px; height: 469px; left: 80px; top: 131px;"><div class="sl-block-content" style="z-index: 11;"><img data-natural-width="1280" data-natural-height="1707" style="" data-lazy-loaded="" data-src="http://68.media.tumblr.com/d30e313bc11ce97f2c45b0a932cc23f5/tumblr_o6vgayQswT1s4mev1o1_1280.jpg"></div></div>
+<div class="sl-block" data-block-type="text" data-block-id="4b964bf7e35187ea3366a3bd9c5956ab" style="height: auto; min-width: 30px; min-height: 30px; width: 600px; left: 80px; top: 83px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 12;">
+</div>
+
+</div>
+	<div class="whats-bruce-wearing-0" style="font-size: 1.2rem; position: absolute;height: 300px;top: 80px;width: 50%;right: 1%;">
+		<button class="btn" style="color: white;background-color: #555555; border: 1px solid #cfcfcf; border-radius: 1rem;padding: 1rem;">Click and say what Bruce is Wearing</button>
+		<pre class="out" style="color: goldenrod; padding: 1rem;">Best guess translation will appear here</pre>
+
+		<script>
+			let recog0 = new webkitSpeechRecognition()
+			recog0.onresult = (evt) => {
+				document.querySelector('.whats-bruce-wearing-0 .out').innerHTML =
+					`I heard you say that Bruce is wearing:
+					${evt.results[0][0].transcript}`
+			}
+			recog0.onerror = (evt) => {
+				alert('whoops')
+			}
+
+			document.querySelector('.whats-bruce-wearing-0 button').addEventListener('click', () => {
+				recog0.start()
+			})
+		</script>
+	</div>
+	</section>
+
 <section data-background-color="#1c4587" data-id="9d0f9563de1f24ee5768b6cf1e133e07"><div class="sl-block" data-block-type="image" data-block-id="756f5dc47d19fbc4121f15ba5f990805" style="min-width: 30px; min-height: 30px; width: 352px; height: 469px; left: 80px; top: 131px;"><div class="sl-block-content" style="z-index: 11;"><img data-natural-width="1280" data-natural-height="1707" style="" data-lazy-loaded="" data-src="http://68.media.tumblr.com/0d80a109fe0ef3ccaf4dd3821fb74446/tumblr_o7jc4vyXRC1s4mev1o1_1280.jpg"></div></div>
 <div class="sl-block" data-block-type="text" data-block-id="4b964bf7e35187ea3366a3bd9c5956ab" style="height: auto; min-width: 30px; min-height: 30px; width: 600px; left: 80px; top: 83px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 12;">
 </div>
@@ -316,7 +437,7 @@ voiceRecognition.onresult = (evt) =&gt; {
 </div>
 	<div class="whats-bruce-wearing-1" style="font-size: 1.2rem; position: absolute;height: 300px;top: 80px;width: 50%;right: 1%;">
 		<button class="btn" style="color: white;background-color: #555555; border: 1px solid #cfcfcf; border-radius: 1rem;padding: 1rem;">Click and say what Bruce is Wearing</button>
-		<pre class="out" style="color: goldenrod; padding: 1rem;">I'll tell you what I heard here</pre>
+		<pre class="out" style="color: goldenrod; padding: 1rem;">Best guess translation will appear here</pre>
 
 		<script>
 			let recog1 = new webkitSpeechRecognition()
@@ -340,10 +461,10 @@ voiceRecognition.onresult = (evt) =&gt; {
 </div></div>
 <div class="sl-block" data-block-type="text" data-block-id="cdfb7e712959d9674bbf9c2b18673a53" style="height: auto; min-width: 30px; min-height: 30px; width: 600px; left: 180px; top: 121px;"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 12;">
 <p><span style="color:#FFFFFF">recognition hears something like...</span></p>
-</div></div></section --><section data-background-color="#1c4587" data-id="8622af4d3774240082772c19d6e3ccf0"><div class="sl-block" data-block-type="image" style="width: 352px; height: 469px; left: 84px; top: 140px;" data-block-id="f63a67807298faf3a2b36fb76cf31339"><div class="sl-block-content" style="z-index: 10;"><img data-natural-width="960" data-natural-height="1280" style="" data-lazy-loaded="" data-src="http://68.media.tumblr.com/7b45de6efa1b08b04c199fd83aa7f3e1/tumblr_o1ntd8B3P91s4mev1o1_1280.jpg"></div></div>
+</div></div></section --><section data-background-color="#1c4587" data-id="8622af4d3774240082772c19d6e3ccf0"><div class="sl-block" data-block-type="image" style="width: 450px; left: 24px; top: 140px;" data-block-id="f63a67807298faf3a2b36fb76cf31339"><div class="sl-block-content" style="z-index: 10;"><img data-natural-width="960" data-natural-height="1280" style="" data-lazy-loaded="" data-src="http://68.media.tumblr.com/cc12dae48bc637d3409b30bf89f31784/tumblr_oqmf4jla4V1s4mev1o1_1280.jpg"></div></div>
 <div class="whats-bruce-wearing-2" style="font-size: 1.2rem; position: absolute;height: 300px;top: 80px;width: 50%;right: 1%;">
-		<button class="btn" style="color: white;background-color: #555555; border: 1px solid #cfcfcf; border-radius: 1rem;padding: 1rem;">Click and say what Bruce is Wearing</button>
-		<pre class="out" style="color: goldenrod; padding: 1rem;">I'll tell you what I heard here</pre>
+		<button class="btn" style="color: white;background-color: #555555; border: 1px solid #cfcfcf; border-radius: 1rem;padding: 1rem;">Bruce is dressed as...</button>
+		<pre class="out" style="color: goldenrod; padding: 1rem;margin-left: 2rem; ">Best guess translation will appear here</pre>
 
 		<script>
 			let recog2 = new webkitSpeechRecognition()
@@ -370,7 +491,7 @@ voiceRecognition.onresult = (evt) =&gt; {
 <div class="sl-block" data-block-type="text" style="height: auto; width: 600px; left: 180px; top: 82px;" data-block-id="384253735f8e78642a1f34795859d772"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11;">
 <div class="whats-bruce-wearing-3" style="font-size: 1.2rem; position: absolute;height: 300px;top: 80px;width: 50%;right: 1%;">
 		<button class="btn" style="color: white;background-color: #555555; border: 1px solid #cfcfcf; border-radius: 1rem;padding: 1rem;">Click and say what Bruce is Wearing</button>
-		<pre class="out" style="color: goldenrod; padding: 1rem;">I'll tell you what I heard here</pre>
+		<pre class="out" style="color: goldenrod; padding: 1rem;">Best guess translation will appear here</pre>
 
 		<script>
 			let recog3 = new webkitSpeechRecognition()
@@ -388,19 +509,60 @@ voiceRecognition.onresult = (evt) =&gt; {
 			})
 		</script>
 	</div>
-</div></div></section><!--section data-background-color="#1c4587" data-id="22bf5800061240f7df7976a6fab698bf"><div class="sl-block" data-block-type="text" style="height: auto; width: 600px; left: 180px; top: 280px;" data-block-id="a917189fd81454aab9480d04cfe4f568"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 10;" dir="ui">
+</div></div></section>
+
+<!--section data-background-color="#1c4587" data-id="22bf5800061240f7df7976a6fab698bf"><div class="sl-block" data-block-type="text" style="height: auto; width: 600px; left: 180px; top: 280px;" data-block-id="a917189fd81454aab9480d04cfe4f568"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 10;" dir="ui">
 <p><span style="color:#FFFFFF">A unicorn costume</span></p>
 </div></div>
 <div class="sl-block" data-block-type="text" style="height: auto; width: 600px; left: 180px; top: 121px;" data-block-id="b3eb68e2c0cc06de9a7c27b46606a79d"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11;">
 <p><span style="color:#FFFFFF">recognition hears something like...</span></p>
 </div></div></section --><section data-background-color="#1c4587" data-id="5beaa2769989487a1a7bc3674559ab30">
-<div class="sl-block" data-block-type="text" style="height: auto; width: 600px; left: 180px; top: 51px;" data-block-id="2f29ae0470c077d3427eabf07fef72a6"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11;">
+<div class="sl-block" data-block-type="text" style="height: auto; width: 600px; left: 40px; top: 51px;" data-block-id="2f29ae0470c077d3427eabf07fef72a6"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11;">
 <p><span style="color:#FFFFFF">Bruce is wearing a  ________</span></p>
 <div class="sl-block" data-block-type="image" data-block-id="5e1e7293eefe6abbd0bd961bf334e598" style="min-width: 30px; min-height: 30px; width: 650px; height: auto; left: 118px; top: 120px;"><div class="sl-block-content" style="z-index: 12;"><img style="" data-natural-width="1800" data-natural-height="1350" data-src="https://s3.amazonaws.com/media-p.slid.es/uploads/186389/images/4130950/OQTNtq07.jpg"></div></div>
-</section><section data-background-color="#1c4587" data-id="aaa2818caa70444a262a8b63bc6e4371"><div class="sl-block" data-block-type="text" style="height: auto; width: 600px; left: 250px; top: 243px;" data-block-id="4c3c26c4f1bb8e7413909b952dba1da6"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 10;" dir="ui">
-<p><span style="font-size:1.0em"><span style="color:#FFFFFF"><span style="text-align:start">822?</span></span></span><br></p>
-<p><span style="font-size:1.0em"><span style="color:#FFFFFF"><span style="text-align:start">Ate two too?</span></span></span><br></p>
-<p><span style="font-size:1.0em"><span style="color:#FFFFFF"><span style="text-align:start">A two two?</span></span></span><br></p>
+</section><section data-background-color="#1c4587" data-id="aaa2818caa70444a262a8b63bc6e4371"><div class="sl-block" data-block-type="text" style="height: auto; width: 600px; left: 250px; top: 80px;" data-block-id="4c3c26c4f1bb8e7413909b952dba1da6"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 10;" dir="ui">
+
+<!-- position: absolute;height: 300px;top: 80px;width: 50%;right: 1%; -->
+<div class="whats-bruce-wearing-4" style="font-size: 1.2rem;">
+		<button class="btn" style="color: white;background-color: #555555; border: 1px solid #cfcfcf; border-radius: 1rem;padding: 1rem;">Click and say what Bruce is Wearing</button>
+		<pre class="out" style="color: goldenrod; padding: 1rem;">I'll tell you what I heard here</pre>
+
+		<script>
+			let recog4 = new webkitSpeechRecognition()
+
+			recog4.maxAlternatives = 10
+
+			recog4.onresult = (evt) => {
+				let buff = [],
+					alternatives = Array.from(evt.results[0])
+					alternatives.sort((a,b) => {
+						if (a.confidence > b.confidence) {
+							return -1
+						} else if (a.confidence < b.confidence) {
+							return 1
+						}
+						return 0
+					})
+
+					alternatives.forEach((alt, i) => {
+						buff.push(`${1 + i}: "${alt.transcript}" (${alt.confidence})`)
+					})
+				document.querySelector('.whats-bruce-wearing-4 .out').innerHTML =
+					`I heard you say that Bruce is wearing:
+						${buff.join('\n')}
+					`
+			}
+			recog4.onerror = (evt) => {
+				alert('whoops')
+			}
+
+			document.querySelector('.whats-bruce-wearing-4 button').addEventListener('click', () => {
+				recog4.start()
+			})
+		</script>
+	</div>
+
+
 </div></div>
 <div class="sl-block" data-block-type="text" style="height: auto; width: 600px; left: 180px; top: 121px;" data-block-id="e9ffb88f307cfa80efbf133f73940e81"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11;">
 </div></div></section><section data-background-color="#1c4587" data-id="b1fa015c10cec7d72954931d85347df8"><div class="sl-block" data-block-type="text" style="height: auto; width: 620px; left: 170px; top: 107px;" data-block-id="e35ea6cbdfce900d8b63b085993eb59e"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11;">
