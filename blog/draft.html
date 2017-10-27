@@ -1,0 +1,588 @@
+<html lang="en" resource-type="blogpost"><head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@briankardell">
+    <meta name="twitter:creator" content="@briankardell">
+    <meta name="twitter:title" content="The Walrus and the Custom Element">
+    <meta name="twitter:description" content="Here's the thing about walruses and custom elements...">
+    <meta name="twitter:image" content="http://www.jabberwocky.com/carroll/pics/glass21.gif">
+    <link rel="alternate" type="application/rss+xml" href="blog/feed.rss" title="bkardell.com/blog rss feed">
+    <title>The Walrus and the Custom Element</title>
+    <style>.captioned-image {
+    background-color: #eaeaea;
+    display: block;
+    overflow: hidden;
+    padding: 1rem;
+    text-align: center;
+    font-style: italic;
+}
+
+.captioned-image.p-attached {
+    width: 40%;
+    display: inline-block;
+    margin: 0 1rem 2rem 1rem;
+}
+
+section > .captioned-image.p-attached {
+    margin-top: 1.5rem; /* correct for heading size*/
+}
+
+ pre { overflow-x: auto }
+
+.captioned-image.p-attached.p-attached-left {
+    float: left;
+}
+
+.captioned-image.p-attached.p-attached-right {
+    float: right;
+}
+
+.captioned-image.p-attached + * + * {
+    clear: both;
+    margin-top: 2rem;
+}
+
+
+.captioned-image img, .captioned-image video {
+    display: block;
+    max-width: 100%;
+    margin: 0 auto 1em auto;
+}
+.source {
+    font-style: italic;
+}
+body {
+    display: flex;
+    font: 1em "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-weight: 300;
+    line-height: 1.625;
+}
+h1 { margin: 0.5rem; }
+code-format {
+    border-left: 0.5rem solid rgba(123,115,209,0.35);
+    display: block;
+    padding: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+contextual-heading {
+    display: block;
+    margin-top: 2rem;
+}
+
+[aria-level="1"] {
+    color: #43686b;
+    font-size: 1.45rem;
+}
+[aria-level="2"] {
+    color: #856363;
+    font-size: 1.35rem;
+}
+[aria-level="3"] {
+    color: #856363;
+    font-size: 1.25rem;
+}
+[aria-level="4"] {
+    color: #856363;
+    font-size: 1.2rem;
+}
+[aria-level="5"], [aria-level="6"] {
+    color: #667496;
+    font-size: 1.1rem;
+    font-weight: bolder;
+}
+.posted-on {
+    font-style: italic;
+    font-size: 0.8rem;
+    text-align: right;
+    margin-bottom: 1rem;
+}
+
+ul, li {
+    margin: 0.5rem;
+    text-align: left;
+}
+header {
+    padding-top: 1rem;
+    padding-right: 2rem;
+    background-color: #fbf5e9;
+}
+.tagline {
+    font-style: italic;
+    text-align: center;
+}
+
+[tag-esc] {
+    color: maroon;
+    font-family: Courier, "Lucida Console", monospace;
+}
+
+[tag-esc]::before {
+    content: '<';
+}
+
+[tag-esc]::after {
+    content: '>';
+}
+
+main {
+    min-width: 50%;
+    width: 80%;
+    padding: 1rem;
+}
+header .title {
+    background-color: rgba(123,115,209,0.35);
+    padding: 0.3rem;
+    padding-left: 0.25rem;
+    font-weight: bolder;
+    font-size: 0.9rem;
+    border-left: 1rem solid #999298;
+}
+
+header .profile {
+    width: 50%;
+    margin: 1rem 25%;
+}
+
+header .title + nav {
+    font-size: 0.9rem;
+}
+
+header .blurb {
+    font-size: 0.75rem;
+    text-align: center;
+}
+header .name {
+    text-align: center;
+    font-size: xx-large;
+}
+.segue {
+    font-style: italic;
+}
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  border: 0;
+}
+[for="aboutMeToggle"] {
+    display: none;
+}
+/* this needs rethinking, it wants a selector like 'not flow content' */
+article>*:not(contextual-heading,a), section>*:not(contextual-heading,a) {
+    margin-left: 0.45rem;
+}
+
+blockquote {
+  font-family: serif;
+  background: #f9f9f9;
+  border-left: 10px solid #ccc;
+  margin: 1.5em 10px;
+  padding: 0.5em 10px;
+}
+blockquote:before {
+  color: #ccc;
+  content: open-quote;
+  font-size: 2em;
+  line-height: 0.1em;
+  margin-right: 0.25em;
+  vertical-align: -0.4em;
+}
+
+blockquote:after {
+  color: #ccc;
+  content: close-quote;
+  font-size: 2em;
+  line-height: 0.1em;
+  margin-left: 0.25em;
+  vertical-align: -0.4em;
+}
+
+
+@media (max-width: 800px){
+    body {
+        flex-direction: column;
+    }
+    header {
+        border-bottom: 1px solid #afafff;
+    }
+
+    .captioned-image.p-attached {
+        width: 100%;
+        margin: 1rem 0;
+    }
+
+    .captioned-image.p-attached.p-attached-left,
+    .captioned-image.p-attached.p-attached-right {
+        float: none;
+    }
+
+    [for="aboutMeToggle"] {
+        background-color: #675e5e;
+        color: white;
+        padding: 0.25rem;
+        padding-left: 0.5rem;
+        display: block;
+        border-left: 1rem solid black;
+    }
+    #aboutMeToggle:focus + [for="aboutMeToggle"]{
+        outline: 4px solid #c6ddf2;
+    }
+
+    #aboutMeToggle:checked ~ header {
+        display: none;
+    }
+
+    header li { display: inline; margin-left: -0.5em; }
+    header .blurb li::after { content: '; '; }
+    header  nav li {
+        display: inline-block;
+        margin-left: 0.35rem;
+        margin-right: 0.35rem;
+    }
+    header .title {
+        width: 100%;
+    }
+    main li .source { display: block; }
+
+}</style>
+    <style>
+      .captioned-image { font-size: 0.9rem; }
+      .thanksTo { font-style: italic; font-size: 0.8rem; }
+    </style>
+    <script>
+      var activateOptional = function (media) {
+        var source = media.getAttribute('data-src'),
+            temp,
+            container = media.parentElement;
+
+          if (media.nextSibling && media.nextSibling.matches) {
+            if (media.nextSibling.matches('.clickToSee')) {
+              media.parentElement.removeChild(media.nextSibling);
+            }
+          }
+
+          if (media.tagName === 'VIDEO') {
+            temp = document.createElement('video')
+            temp.setAttribute('autoplay','')
+            temp.setAttribute('controls','')
+            temp.setAttribute('loop','')
+            temp.innerHTML = '<source src="' + source + '.webm" type="video/webm">'
+                    + '<source src="' + source + '.mp4" type="video/mp4">';
+            media.parentElement.replaceChild(temp, media);
+            setTimeout(function () {
+              temp.play()
+            }, 0);
+          } else {
+            media.src = media.getAttribute('data-src');
+          }
+
+          container.classList.add('active');
+      }
+    </script>
+  </head>
+  <body>
+    <input id="aboutMeToggle" class="sr-only" type="checkbox" checked="">
+<label for="aboutMeToggle">Toggle author information</label>
+<header>
+    <div class="name">
+        Brian Kardell
+    </div>
+    <img class="profile" src="/profile.jpg" alt="">
+    <div class="tagline"><a href="/">Betterifying the Web</a></div>
+    <div class="blurb">
+        <ul>
+            <li>Sr Front-End Engineer at Apollo Group, Inc</li>
+            <li>Original Co-author/Co-signer of The Extensible Web Manifesto</li>
+            <li>Co-Founder/Chair, W3C Extensible Web CG</li>
+            <li>Member, W3C (The JS Foundation)</li>
+            <li>Co-author of HitchJS</li>
+            <li>Blogger</li>
+            <li>Art, Science &amp; History Lover</li>
+            <li>Standards Geek</li>
+        </ul>
+    </div>
+    <div class="title">Follow Me On...</div>
+    <nav>
+        <ul>
+            <li><a rel="me" href="https://briankardell.wordpress.com">Wordpress</a></li>
+            <li><a rel="me" href="https://medium.com/@briankardell">Medium</a></li>
+            <li><a rel="me" href="https://twitter.com/briankardell">Twitter</a></li>
+            <li><a rel="me" href="https://github.com/bkardell/">Github</a></li>
+            <li><a rel="me" href="https://codepen.io/bkardell">Codepen</a></li>
+            <li><a rel="me" href="https://www.linkedin.com/in/brian-kardell-08a4264">LinkedIn</a></li>
+            <li><a rel="me" href="https://www.instagram.com/kardellbrian">Instagram (for
+art)</a></li>
+            <li><a rel="me" href="http://fineartamerica.com/profiles/brian-kardell?">Fine Art
+America (art for sale)</a></li>
+        </ul>
+    </nav>
+</header>
+    <main><div class="posted-on">Posted on null</div><article class="sectioning">
+	<style>
+		/*body:not(.preferences-set) > :not(main) { display: none; }
+		body:not(.preferences-set) {
+			background-color: #444;
+			color: white;
+		}
+		*/
+		body:not(.prefers-images) .captioned-image:not(.active) > * { border: 1px dashed gray }
+
+		#downloadsPrefs {
+			font-size: 0.8rem;
+			background-color: #fcfcfc;
+			border: 1px dotted gray;
+			margin-bottom: 1rem;
+		}
+		#downloadsPrefs p {
+			margin: 2rem 10%;
+		}/*
+		#downloadsPrefs ~ * {
+			display: none;
+		}*/
+	</style>
+	<div id="downloadsPrefs">
+		<p style="font-size: 1.5rem">Note from the author...</p>
+		<p>My posts frequently (like this one) have a 'theme' and tend to use a number of images for visual flourish. Personally, I like it that way, I find it more engaging and I prefer for people to read it that way.  However, for users on a metered or slow connection, downloading unnecessary images is, well, unnecessary, potentially costly and kind of rude.  Just to be polite to my users, I offer the ability for you to opt out of 'optional' images if the total size of viewing the page would exceed a budget I have currently defined as 200k...
+		</p>
+		<p><label>Show me all the images when I read <input type="checkbox" id="download-all-images-pref" checked=""></label></p>
+		<p><label>Don't ask me again on this device <input type="checkbox" id="download-all-images-pref-save"></label></p>
+		<p><button id="setDownloadPrefs">Dismiss</button></p>
+	</div>
+	<script>
+		'use strict';
+		(function () {
+			var prefsButton = document.querySelector('#setDownloadPrefs'),
+				prefs = window.localStorage.downloadsPrefs;
+			function downloadImages () {
+				var lazy = Array.prototype.slice.call(document.querySelectorAll('.captioned-image>[data-src]'));
+
+				lazy.forEach(activateOptional)
+			}
+			function removeDownloadPrefsOverlay() {
+				document.body.classList.add('preferences-set')
+				document.querySelector('#downloadsPrefs').remove()
+			}
+
+			prefsButton.addEventListener('click', function() {
+				var all = document.querySelector('#download-all-images-pref'),
+					save = document.querySelector('#download-all-images-pref-save'),
+					prefs = window.localStorage.downloadsPrefs
+
+				if (all.checked) {
+					downloadImages();
+				}
+				if (save.checked) {
+					window.localStorage.downloadsPrefs = all.checked;
+				}
+				removeDownloadPrefsOverlay()
+			});
+
+			if (typeof prefs !== 'undefined') {
+				console.log(prefs)
+				if (prefs === 'true') {
+					document.body.classList.add('prefers-images')
+					window.localStorage.downloadsPrefs = prefs
+					window.addEventListener('DOMContentLoaded', downloadImages)
+				}
+				removeDownloadPrefsOverlay()
+			}
+		}())
+	</script>
+	<style>
+		.tldr em {
+			display: none; color: rebeccapurple;
+		}
+	</style>
+  	<script src="../prism.js"></script>
+  	<link rel="stylesheet" href="../prism.css">
+	<contextual-heading role="heading" aria-level="1">The Walrus and the Custom Element</contextual-heading>
+	<p class="segue">Here's the thing about walruses and custom elements...</p>
+<!--
+	<div class="captioned-image optional p-attached p-attached-right">
+		<img data-src="/media/john-imagine.jpg" alt="john lennon imagine poster">
+	</div>
+	<p>In 1971, John Lennon asked us to imagine a world at peace.  He sang that <em>"You may say I'm a dreamer, but I'm not the only one.  I hope some day you'll join us, and the world will be as one"</em>.  It's inspirational as hell, I love John, he was a poet.  I too dream of world peace, but I also recognize that these are words of inspiration and not really a statement that "this is really easy" that can be accomplsihed overnight.  There's the reality of where we are now, and the dream of where we'd like to be and there's a huge chasm in between.  If we close that chasm a bit, I celebrate that fact but also keep trying to close it some more.</p>
+
+-->
+
+	<div class="captioned-image optional p-attached p-attached-right">
+		<img data-src="http://www.jabberwocky.com/carroll/pics/glass21.gif" alt="">
+			"The time has come," the Walrus said,<br>
+			"To talk of many things:<br>
+			Of shoes--and ships--and sealing-wax--<br>
+			Of cabbages--and kings--<br>
+			And why the sea is boiling hot--<br>
+			And whether pigs have wings."
+	</div>
+
+	<p>It's become a fairly regular occurence for me to encounter someone on social media expressing some kind of frustration with Custom Elements. I genuinely want to understand where the pain points are.  As one of the folks involved in many discussions during the evolution and a user of them myself, I know that they aren't perfect and I really want them to be better, and so I ask questions.  The complaints are always slightly different, but all they seem to kind of play into common themes: Custom Elements currently require JavaScript.  They don't currently allow us avoid all the hard work that is historically necessary (without Custom Elements) for making "improvements" to existing native elements by just saying <em>is="..."</em>.</p>
+
+	<p>This seems doubly frustrating as a number of folk have pointed to already written drafts or specs that would seem like they'd really help their concerns if only browser vendors would get their shit together and implement it that way then things would be Super Great™.</p>
+
+	<p>I don't share this belief, but I'm willing to admit that there might be things that I don't "see" yet.  If there are, I'm very keen to learn about them.  However, I'd like to suggest that perhaps there is some larger general confusion here that currently prevents us from having some really valuable conversation.  In this piece, I'll attempt to explain why that discrepancy exists, what exactly is "the hold up" with implementing those things and, I hope, why I don't feel precisely this way.</p>
+
+	<section class="sectioning">
+		<contextual-heading role="heading" aria-level="2">Something to drive the conversation</contextual-heading>
+
+		<p>Let's imagine a hypothetical situation that I will call "Hypothetical Problem #1".  In this, what my design team really wanted was something like a shiny, modern looking and feeling rating component.  They'd like it to have a small initial amount of real estate showing the average number of stars, and then expand to reveal a very small set of predefined discrete choices in a group with stars (1-5) that a user can choose from to express their own rating.  That data is ultimately sent back to a service to record and become part of the average.</p>
+
+		<p>Someone will point out that radio buttons seem very similar in a lot of ways.  They'll say that 20 years ago, that's just what we would have done.  It would have worked for everyone and been pretty accessible too because it was native HTML 'out of the box'.  Today, even with custom elements, they'd say this is still non-trivial.  This is all true.</p>
+
+		<p>Further, they'll say we shouldn't have to recreate the magic of radio buttons in order to make this if we simply want to tweak the existing one a little bit. Also, true.</p>
+
+		<p>However, then there's a leap.  For example: If we had <code>is="..."</code> we could simply write the radio button version and say <code>is="ratings-star"</code> or something and then it would be easy and compelling to write good, progressively enhanced components that just "tweak" the edges of existing ones. Unless we have that, Web Components are really no good.  This, I think is not true.</p>
+	</section>
+
+
+  	<section class="sectioning">
+  		<contextual-heading role="heading" aria-level="2">"Automatic Accessibility"</contextual-heading>
+
+  		<p>There seems to be an increasingly popular belief that if we were to extend a built-in element that it would be "automatically accessible" by way of simple inheritance from the native element. This sounds like a great reason to want it, however, it's just not untrue.  I don't mean "this isn't always true" I mean "this is almost never true".</p>
+
+  		<p>You can read the specs, or try it yourself (get an older version of Chrome or possibly <a href="https://github.com/WebReflection/document-register-element" target="_blank">Andrea Giammarchi's polyfill</a>), or simply simply look to demos done during the time we thought this might ship by someone like my friend Alice Boxhall at Google which illustrated pretty much exactly what I am about to tell you:</p>
+
+		<p>There's just not a lot of great reasons to want to change a native element that don't impact the DOM. We'll have to create some new DOM and CSS to make our shitty looking radio buttons look like this great interface and as soon as you do: Viola, you've lost all that yummy accessible goodness.  It's inextricably wound up in the DOM you just changed.  To fix the accessibility issues that you've just created with that assumption, you'd need to add keyboard handling, click handling, focusability and so on.  In fact, you'll wind up dealing with just about every accessibility feature that you would have if you'd simply extended the default <code>HTMLElement</code> in the first place.</p>
+
+		<p>So, there's no automatic magic accessibility bullet to be had here through extension as specified right now.  But at least there is progressive enhancement.</p>
+	</section>
+
+	<section class="sectioning">
+		<contextual-heading role="heading" aria-level="2">Progressive Enhancement</contextual-heading>
+		<p>Alright, let's talk about progressive enhancement and <em>is="..."</em>.</p>
+
+		<p>Consider the original cannonical problem description for progressive enhancement: Our design calls for a nice button that simply says "Click to print".  Now consider that once upon a time not all browsers understood the button element and not all browsers supported the print function, or even JavaScript at all.  If you simply wrote the HTML and JavaScript that you actually wanted, some users would be presented with a very confusing interface:  Perhaps some non-button looking text in the page that says "Click to print" or a perhaps button that won't actually do anything at all. That would be Very Bad™</p>
+
+		<p>"Graceful degradation" was a thing we used to do which meant "when you can't give them that, at least don't leave them in a complete lurch".  At least explain why it's fucked up or how to remedy it or something."  Often this simply involved using a <code tag-esc="">noscript</code> tag.  Sometimesit involved the idea of 'falling back' by arranging code a certain way so that if your browser didn't understand some tag, the tag inside it would instead do something lesser.</p>
+
+		<p>The difference between progressive enhancement and the latter sort of degradation is mostly mental and a lot of people get really hung on terminology, but really, it simply suggests that you invert the menal model: start with something basic and widely supported that accomodates more users and work up instead of start with your ideal and work down.</p>
+
+		<p>In this case, perhaps start with a paragraph saying "you can print this for your records".  Everyone's browser since Day 1 has been able to render a paragraph and most people can then figure out how to print.  Conditionally then, determine if they can do more and, perhaps replace the paragraph with the nice "Click to print" button that you really wanted instead.</p>
+
+		<p>So why go through this recap?  Well, really simply so I can point out something I think is non-immediately obvious: This has never been an <em>is-a</em> relationship (extension) either.  It's always been a "here's a thing you can definitely do and, if you can do more, here's what that is (usually through JavaScript)".  It either began as a paragraph <em>containing</em> some text and became a paragraph <em>containing</em> a functional button, or it began as a paragraph and became a functional print button.  The "ness" of that thing never changed.</p>
+
+		<p>We wouldn't expect to say <code tag-esc="">p is="button"</code>, because that is of course nonsense: We know that however we spell it out, these two things are just way too different.  Note that the simple fact that an author <em>could</em> express that though means introducing a whole lot of new things we have to account for.</p>
+
+		<section class="sectioning">
+			<contextual-heading role="heading" aria-level="3">is="it tho"?</contextual-heading>
+			<p>I mention the above here to simply say that this is <em>frequently</em> actually what we are asking for without realizing it.  This is the case because because what we want actually involves new DOM.  It's not, in terms available to us today, actually just a specialized version of something, it's really often a different kind of relationship</p>
+
+			<p>In 1987 Barbara Liskov presented a keynote address called "Data abstraction and hierarchy" which talks about how we model things and our desire to organize things into heirarchies that <em>extend</em> and <em>inherit</em>.  She then goes on to illustrate how that tends to cause numerous sorts of problems.  More importantly, she begins to explain how we might avoid those problems and the basic concept she describes is sometimes known as the "Liskov substitution principle" or "LSP" or even just "substitutionality".  In a way, what this says is that metaphor is shitty.  Your mind can trip you up and make you model something poorly.  If you do, then rather than being helpful, the system will fight you.</p>
+
+			<p>Fortunately 'is-a' isn't the only kind of relationship we have for modeling problems.  The often cited Gang of Four <em>Design Patterns</em> reiterates on Liskov's work and provides the simple observation "composition over inheritance".  That is: Composing features through a <em>has-a</em> relationship is often a better way to go.</p>
+
+			<p>The really interesting thing about that is that that's kind of where we are today: Absolutely nothing new is required in order to follow the self-same progressive enhancement patterns that we've been using all along and gain pretty much the same values we would with <code>is="..."</code> through composition rather than inheritance.</p>
+
+			<pre><code class="language-html">&lt;!-- instead of writing this --&gt;
+&lt;input type="radio" is="x-radio"&gt;
+
+&lt;!-- you write this --&gt;
+&lt;x-radio&gt;
+    &lt;input type="radio"&gt;
+&lt;/x-radio&gt;</code></pre>
+
+			<p>Functionally, they are equivalent in pretty much every useful way: Form serialization, validation, etc - and you have to change and proxy precisely as much in either model for the sake of accessibility, depending on just what DOM what you change.  But we need nothing new to do it, and it opens no significantly complex new challenges for us to answer.</p>
+		</section>
+
+		<section class="sectioning">
+			<contextual-heading role="heading" aria-level="3">But I don't see people doing that... Why?</contextual-heading>
+			<p>Well, part of it may be that people just aren't thinking about it that way.  For example, I have developed several custom elements that work precisely like this.  But that's definitely not the entire story.  The truth is because it's actually harder than most of our contrived examples would like to admit and it is tough to strike a good balance.</p>
+
+			<p>Let's go back to our "Hypothetical Problem #1" again and look at it "in real life".  We've been discussing a lot about extending a radio button, but that is, in fact, kind of a red herring.  This component is, more realistically, a form.  A form is the thing you'd likely have to <em>is="..."</em> and that would require the form to wire up whatever it needed to be a good accessible native interface, including a fieldset with a legend and several labels linked to radio buttons that share the same name, etc.  As I said, we can do the same with composition and that would look something like:</p>
+
+			<pre><code class="language-html">&lt;my-ratings&gt;
+  &lt;form action="submitRating" method="POST"&gt;
+    &lt;p class="average-rating"&gt;Average Rating: 4/5 stars&lt;/p&gt;
+      &lt;fieldset&gt;
+        &lt;legend&gt;How many stars would you rate this as?&lt;/legend&gt;
+        &lt;label&gt;
+          &lt;input type="radio" value="1" name="my-rating-1"&gt;
+            1 star
+        &lt;/label&gt;
+
+        &lt;label&gt;
+          &lt;input type="radio" value="2" name="my-rating-1"&gt;
+            2 stars
+        &lt;/label&gt;
+
+        &lt;label&gt;
+          &lt;input type="radio" value="3" name="my-rating-1"&gt;
+          3 stars
+        &lt;/label&gt;
+
+        &lt;label&gt;
+            &lt;input type="radio" value="4" name="my-rating-1"&gt;
+            4 stars
+        &lt;/label&gt;
+        &lt;label&gt;
+            &lt;input type="radio" value="5" name="my-rating-1"&gt;
+            5 stars
+        &lt;/label&gt;
+    &lt;/fieldset&gt;
+  &lt;/form&gt;
+&lt;/my-ratings&gt;</code></pre>
+
+	<p>Alternatively, what you see frequently instead is something like:</p>
+	<pre><code class="language-html">&lt;my-ratings&gt;&lt;/my-ratings&gt;</code></pre>
+
+	<p>You can be unhappy about that, but the honest truth is, there are a lot of legitimate tradeoffs to consider there and the value proposition just always isn't there.  Which do you think that authors are more likely to want to actually adopt? Which are they less to get wrong? Which accomplishes other important engineering goals of abstraction/ecapsulation?  Having stability and the ability to centralize some of this stuff (like complex DOM formulas and difficult UX and accessibility challenges) is a pretty big win.  The "cost" is that that ratings component will be 'nothing' unless there's JavaScript, but - is that always bad?</p>
+
+	<p>I don't think it is, for a number of reasons.  The first is, I don't think anything is too holy to question and the important thing is that we're asking good questions.  So why is it that you feel this really matters so much.  If the idea is "it's declarative and therefore analyzable and fault tolerant" well, this ticks that box.  By using an actual element rather than selectors or something and having a way to trace that back to implementations, we gain a way to analyze pages for common usages far beyond what we had before.  By drawing the line where it does, this also won't blow up your app, that particular thing will just cease to be there.  But guess what? Worse is true of partially loaded CSS and that happens too: But we're ok with that.  Finally, this doesn't have to be an all or nothing answer.  Some aspects of my application are kind of mission critical - in those, perhaps I am willing to take more pains in this approach.  A ratings widget, well, maybe it isn't so much.  I have to weigh the cost benefit of taking that approach.  It's costly to authors, it's costly for maintenance, it's frequently more costly across the wire, it frequently means I need multiple approaches: SSR, the ability to accept form encoding where I may have a JSON based RESTful service already in place and so on.  And also, guess what?  Even some native elements in some browsers are actually not accessible.  To address that, you'll need JavaScript.  Saying "I'm doing it this way so that it works for everyone" seems disingenuous to me if that leaves people out of the everyone.  At the end of the day, I have to justify: Why I am doing this and what does everyone gain?  It's not always simple nor black and white. Most of us, in fact, actually agree with that as a sentiment at some level: <a href="https://adactio.com/journal/4437">It depends</a>.</p>
+
+	<section class="sectioning">
+		<contextual-heading role="heading" aria-level="4">We can do better</contextual-heading>
+		<p>Now, you may say that this seems like an unfortunate set of choices.  Yeah, probably.  You may say it shouldn't be as hard as it is to make good choices.  Agree!  You may say it would be nice if we didn't have to do all that proxying. Sure! Confirm.  The question is simply:  How do we get there?  And all I'm really offering is: It really doesn't seem like extension, as currently specified, anwser most of those questions any better than what Custom Elements is already shipping uniformly with. I'm suggesting that if you would have liked that, it kind of seems like you should like this.  If, after reading this, you still don't, I'd like to understand why.  What is the "thing" it gives you that is really super great and how does it not create a host of new problems along the way?</p>
+
+		<p>So what <em>would solve those problem</em>? Yeah, that's why I'm asking the questions: <em>I don't know</em>.  What qualities should those answers have? <em>I'm kind of unsure</em>.  These are the conversations I'd like to have.</p>
+
+		<p>One thing that definitely seems to come up a lot is: Why in the name of all that is holy are there so many toolkits with specialized things that seem a lot like native components and why are most of them so complicated and inaccessible: How can we fix that?</p>
+
+		<p>Well, some people point to limits in styling.  Is that something we should tackle?  I kind of think so, but a lot of vendors are really hesitant to go too deply into that for a number of not actually bad reasons.  For example: Not all components render the same on all devices <em>on purpose</em> and this will continue.  If we box ourselves in too much, we limit our ability to adapt and experiement.  But this isn't even the whole problem perhaps because in a lot of cases it seems people want something only <em>kind of</em> like a native element and our ability to map it cleanly is really the problem.  In fact, this is a huge problem in the Web Platform.  The bolt-on nature of ARIA and it's ability to express way more unclear nonsense than correctness and only really mostly in terms of well known components is kind of really kind of problematic.  This isn't blasphemy, it's been a common and noted critique about why accessibility is still so problematic.  Should we deal with this?  Yes.  How? I don't know.  One really nifty solution to a number of these problems is a thing called AOM, or the Accessibility Object Model.  But you know what it requires?  JavaScript.  Is that OK with you?  It works for me, but our sensibilities may really differ and I'd like you to say something <em>now</em> before we've invested a few years into that if that's going to concern a lot of people.  If not that, what?  I don't know, I'm not sure how we solve these problems.</p>
+
+
+		</section>
+
+
+
+	</section>
+
+</section></article></main>
+
+  
+    <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-88027178-1', 'auto');
+    ga('send', 'pageview');
+  </script>
+
+  <script>
+    Array.prototype.slice.call(document.querySelectorAll('.optional [data-src]')).forEach(function (optional) {
+      var prefs = window.localStorage.downloadsPrefs,
+          clickToSee;
+      if (prefs === 'true') {
+        activateOptional(optional);
+      } else {
+        clickToSee = document.createElement('div');
+        clickToSee.classList.add('clickToSee')
+        clickToSee.innerHTML = '<button>Click to see media</button>';
+        clickToSee.style.textAlign = 'center';
+        clickToSee.style.border = 'none';
+        optional.parentElement.insertBefore(clickToSee, optional.nextSibling);
+        clickToSee.firstElementChild.addEventListener('click', function () {
+          activateOptional(optional);
+        })
+      }
+
+    })
+  </script>
+
+</body></html>
