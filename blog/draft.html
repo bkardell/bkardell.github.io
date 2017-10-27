@@ -4,11 +4,11 @@
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:site" content="@briankardell">
     <meta name="twitter:creator" content="@briankardell">
-    <meta name="twitter:title" content="The Walrus and the Custom Element">
-    <meta name="twitter:description" content="Here's the thing about walruses and custom elements...">
-    <meta name="twitter:image" content="http://www.jabberwocky.com/carroll/pics/glass21.gif">
+    <meta name="twitter:title" content="TBD">
+    <meta name="twitter:description" content="TBD SEGUE">
+    
     <link rel="alternate" type="application/rss+xml" href="blog/feed.rss" title="bkardell.com/blog rss feed">
-    <title>The Walrus and the Custom Element</title>
+    <title>TBD</title>
     <style>.captioned-image {
     background-color: #eaeaea;
     display: block;
@@ -324,76 +324,7 @@ America (art for sale)</a></li>
     </nav>
 </header>
     <main><div class="posted-on">Posted on null</div><article class="sectioning">
-	<style>
-		/*body:not(.preferences-set) > :not(main) { display: none; }
-		body:not(.preferences-set) {
-			background-color: #444;
-			color: white;
-		}
-		*/
-		body:not(.prefers-images) .captioned-image:not(.active) > * { border: 1px dashed gray }
-
-		#downloadsPrefs {
-			font-size: 0.8rem;
-			background-color: #fcfcfc;
-			border: 1px dotted gray;
-			margin-bottom: 1rem;
-		}
-		#downloadsPrefs p {
-			margin: 2rem 10%;
-		}/*
-		#downloadsPrefs ~ * {
-			display: none;
-		}*/
-	</style>
-	<div id="downloadsPrefs">
-		<p style="font-size: 1.5rem">Note from the author...</p>
-		<p>My posts frequently (like this one) have a 'theme' and tend to use a number of images for visual flourish. Personally, I like it that way, I find it more engaging and I prefer for people to read it that way.  However, for users on a metered or slow connection, downloading unnecessary images is, well, unnecessary, potentially costly and kind of rude.  Just to be polite to my users, I offer the ability for you to opt out of 'optional' images if the total size of viewing the page would exceed a budget I have currently defined as 200k...
-		</p>
-		<p><label>Show me all the images when I read <input type="checkbox" id="download-all-images-pref" checked=""></label></p>
-		<p><label>Don't ask me again on this device <input type="checkbox" id="download-all-images-pref-save"></label></p>
-		<p><button id="setDownloadPrefs">Dismiss</button></p>
-	</div>
-	<script>
-		'use strict';
-		(function () {
-			var prefsButton = document.querySelector('#setDownloadPrefs'),
-				prefs = window.localStorage.downloadsPrefs;
-			function downloadImages () {
-				var lazy = Array.prototype.slice.call(document.querySelectorAll('.captioned-image>[data-src]'));
-
-				lazy.forEach(activateOptional)
-			}
-			function removeDownloadPrefsOverlay() {
-				document.body.classList.add('preferences-set')
-				document.querySelector('#downloadsPrefs').remove()
-			}
-
-			prefsButton.addEventListener('click', function() {
-				var all = document.querySelector('#download-all-images-pref'),
-					save = document.querySelector('#download-all-images-pref-save'),
-					prefs = window.localStorage.downloadsPrefs
-
-				if (all.checked) {
-					downloadImages();
-				}
-				if (save.checked) {
-					window.localStorage.downloadsPrefs = all.checked;
-				}
-				removeDownloadPrefsOverlay()
-			});
-
-			if (typeof prefs !== 'undefined') {
-				console.log(prefs)
-				if (prefs === 'true') {
-					document.body.classList.add('prefers-images')
-					window.localStorage.downloadsPrefs = prefs
-					window.addEventListener('DOMContentLoaded', downloadImages)
-				}
-				removeDownloadPrefsOverlay()
-			}
-		}())
-	</script>
+	<!-- bkardell-prefs></bkardell-prefs -->
 	<style>
 		.tldr em {
 			display: none; color: rebeccapurple;
@@ -401,17 +332,10 @@ America (art for sale)</a></li>
 	</style>
   	<script src="../prism.js"></script>
   	<link rel="stylesheet" href="../prism.css">
-	<contextual-heading role="heading" aria-level="1">The Walrus and the Custom Element</contextual-heading>
-	<p class="segue">Here's the thing about walruses and custom elements...</p>
-<!--
-	<div class="captioned-image optional p-attached p-attached-right">
-		<img data-src="/media/john-imagine.jpg" alt="john lennon imagine poster">
-	</div>
-	<p>In 1971, John Lennon asked us to imagine a world at peace.  He sang that <em>"You may say I'm a dreamer, but I'm not the only one.  I hope some day you'll join us, and the world will be as one"</em>.  It's inspirational as hell, I love John, he was a poet.  I too dream of world peace, but I also recognize that these are words of inspiration and not really a statement that "this is really easy" that can be accomplsihed overnight.  There's the reality of where we are now, and the dream of where we'd like to be and there's a huge chasm in between.  If we close that chasm a bit, I celebrate that fact but also keep trying to close it some more.</p>
+	<contextual-heading role="heading" aria-level="1">TBD</contextual-heading>
+	<p class="segue">TBD SEGUE</p>
 
--->
-
-	<div class="captioned-image optional p-attached p-attached-right">
+	<!-- div class="captioned-image optional p-attached p-attached-right">
 		<img data-src="http://www.jabberwocky.com/carroll/pics/glass21.gif" alt="">
 			"The time has come," the Walrus said,<br>
 			"To talk of many things:<br>
@@ -419,7 +343,7 @@ America (art for sale)</a></li>
 			Of cabbages--and kings--<br>
 			And why the sea is boiling hot--<br>
 			And whether pigs have wings."
-	</div>
+	</div -->
 
 	<p>It's become a fairly regular occurence for me to encounter someone on social media expressing some kind of frustration with Custom Elements. I genuinely want to understand where the pain points are.  As one of the folks involved in many discussions during the evolution and a user of them myself, I know that they aren't perfect and I really want them to be better, and so I ask questions.  The complaints are always slightly different, but all they seem to kind of play into common themes: Custom Elements currently require JavaScript.  They don't currently allow us avoid all the hard work that is historically necessary (without Custom Elements) for making "improvements" to existing native elements by just saying <em>is="..."</em>.</p>
 
