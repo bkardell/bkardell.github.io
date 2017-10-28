@@ -354,41 +354,60 @@ America (art for sale)</a></li>
 	<section class="sectioning">
 		<contextual-heading role="heading" aria-level="2">Something to drive the conversation</contextual-heading>
 
-		<p>Let's imagine a hypothetical situation that I will call "Hypothetical Problem #1".  In this, what my design team really wanted was something like a shiny, modern looking and feeling rating component.  They'd like it to have a small initial amount of real estate showing the average number of stars, and then expand to reveal a very small set of predefined discrete choices in a group with stars (1-5) that a user can choose from to express their own rating.  That data is ultimately sent back to a service to record and become part of the average.</p>
+		<p>Very frequently I see a hypothetical example framed that goes something like this:  My design team created shiny, modern ux for a 'stars' oriented rating component for attaching to items.  It shows N stars, and they are initially 'hollow'.  The user can choose to record a rating by selecting 1-N stars.  There is a little UX on hover that lights up stars as you mouse over them and once selected, the stars are filled with a fill color (for example, gold) indicating my recorded rating.</p>
 
-		<p>Someone will point out that radio buttons seem very similar in a lot of ways.  They'll say that 20 years ago, that's just what we would have done.  It would have worked for everyone and been pretty accessible too because it was native HTML 'out of the box'.  Today, even with custom elements, they'd say this is still non-trivial.  This is all true.</p>
 
-		<p>Further, they'll say we shouldn't have to recreate the magic of radio buttons in order to make this if we simply want to tweak the existing one a little bit. Also, true.</p>
+		<p>As the example continues, it will point out that radio buttons seem very similar in a lot of ways.  In fact, 20 years ago, that's just what we would have done.  It would have worked for everyone and been pretty accessible too because it was native HTML 'out of the box'.  They'll then point out that that <em>means</em> something, and it works for everyone.  On the other hand, they'll hold up that the following code with custom elements</p>
 
-		<p>However, then there's a leap.  For example: If we had <code>is="..."</code> we could simply write the radio button version and say <code>is="ratings-star"</code> or something and then it would be easy and compelling to write good, progressively enhanced components that just "tweak" the edges of existing ones. Unless we have that, Web Components are really no good.  This, I think is not true.</p>
-	</section>
+		<pre><code class="language-html">&lt;my-ratings"&gt;&lt;/my-ratings"&gt;</code>
+
+		<p>means nothing, unless you run some JavaScript. This is absolutely true.</p>
+
+		<p>Further, they may point out that the creator of the component has to 're-invent' all of the accessibility features that came 'out of the box' with native radio buttons: Keyboard handling, label click handling and so on.  This is also completely true.</p>
+
+		<p>They might say "we shouldn't have to recreate the magic of radio buttons in order to make this if we simply want to tweak the existing one a little bit". Also, I think, not controversial in any way.</p>
+
+		<p>However, then there's kind of a leap in the reasoning:  For example: If we had the ability to say a radio button <code>is="ratings-star"</code> or something "as in the specification" and then it would be easy and compelling to write good, progressively enhanced components that just "tweak" the edges of existing ones.  Some take it further still and say that untilwe have that, Web Components are really no good, potentially this even demonstrates that they are bad and should be actively avoided.</p>
+
+		<p>This, I think is entirely not true and I'll explain why.</p>
+	</pre></section>
 
 
   	<section class="sectioning">
   		<contextual-heading role="heading" aria-level="2">"Automatic Accessibility"</contextual-heading>
 
-  		<p>There seems to be an increasingly popular belief that if we were to extend a built-in element that it would be "automatically accessible" by way of simple inheritance from the native element. This sounds like a great reason to want it, however, it's just not untrue.  I don't mean "this isn't always true" I mean "this is almost never true".</p>
+  		<p>There seems to be an increasingly popular belief that if we were to extend a built-in element that it would be "automatically accessible" by way of simple inheritance from the native element. However, this just isn't true.  And, I don't mean "this isn't always true" I mean "as far as I can tell, this is <em>almost never</em> true".</p>
 
-  		<p>You can read the specs, or try it yourself (get an older version of Chrome or possibly <a href="https://github.com/WebReflection/document-register-element" target="_blank">Andrea Giammarchi's polyfill</a>), or simply simply look to demos done during the time we thought this might ship by someone like my friend Alice Boxhall at Google which illustrated pretty much exactly what I am about to tell you:</p>
+  		<p>But, you shouldn't take my word for this:  You can read the specs, or even try it for yourself (get an older version of Chrome or possibly <a href="https://github.com/WebReflection/document-register-element" target="_blank">Andrea Giammarchi's polyfill</a>).  Or, you could simply look to demos done during the time when we thought this might actually ship.  My friend Alice Boxhall at Google did a few which seem to illustrate pretty much exactly what I am about to tell you:</p>
 
-		<p>There's just not a lot of great reasons to want to change a native element that don't impact the DOM. We'll have to create some new DOM and CSS to make our shitty looking radio buttons look like this great interface and as soon as you do: Viola, you've lost all that yummy accessible goodness.  It's inextricably wound up in the DOM you just changed.  To fix the accessibility issues that you've just created with that assumption, you'd need to add keyboard handling, click handling, focusability and so on.  In fact, you'll wind up dealing with just about every accessibility feature that you would have if you'd simply extended the default <code>HTMLElement</code> in the first place.</p>
+		<p>There's just not a lot of great reasons to want to change a native element that don't impact the DOM.  To change the user experience, we'll almost certainly have to create some new DOM and CSS to make our shitty looking radio buttons look like something new.  If not, why are you even using a custom element instead of the native element itself?  As soon as you do: Viola, you've lost all that yummy accessible goodness.  To fix the accessibility issues that you've just created with that assumption, you'd need to add keyboard handling, click handling, focusability and so on.  In fact, you'll wind up dealing with just about every accessibility feature that you would have if you'd simply extended the default <code>HTMLElement</code> in the first place.</p>
+
+		<p>Why?  Because currently, it's inextricably wound up in the DOM you just entirely changed.</p>
 
 		<p>So, there's no automatic magic accessibility bullet to be had here through extension as specified right now.  But at least there is progressive enhancement.</p>
 	</section>
 
 	<section class="sectioning">
 		<contextual-heading role="heading" aria-level="2">Progressive Enhancement</contextual-heading>
-		<p>Alright, let's talk about progressive enhancement and <em>is="..."</em>.</p>
+		<p>Alright, let's talk about progressive enhancement.</p>
 
-		<p>Consider the original cannonical problem description for progressive enhancement: Our design calls for a nice button that simply says "Click to print".  Now consider that once upon a time not all browsers understood the button element and not all browsers supported the print function, or even JavaScript at all.  If you simply wrote the HTML and JavaScript that you actually wanted, some users would be presented with a very confusing interface:  Perhaps some non-button looking text in the page that says "Click to print" or a perhaps button that won't actually do anything at all. That would be Very Bad™</p>
+		<p>Consider the original cannonical problem description for progressive enhancement: Our design calls for a nice button that simply says "Click to print".  Once upon a time not all browsers understood the button element and not all browsers supported the print function, or even JavaScript at all.  If you simply wrote the HTML and JavaScript that you actually wanted, some users would be presented with a very confusing interface:  Perhaps some non-button looking text in the page that says "Click to print" or a perhaps button that won't actually do anything at all. That would be Very Bad™</p>
 
-		<p>"Graceful degradation" was a thing we used to do which meant "when you can't give them that, at least don't leave them in a complete lurch".  At least explain why it's fucked up or how to remedy it or something."  Often this simply involved using a <code tag-esc="">noscript</code> tag.  Sometimesit involved the idea of 'falling back' by arranging code a certain way so that if your browser didn't understand some tag, the tag inside it would instead do something lesser.</p>
+		<p>The way we dealt with this at one point in time was called "Graceful degradation".  One way to think about this is:
 
-		<p>The difference between progressive enhancement and the latter sort of degradation is mostly mental and a lot of people get really hung on terminology, but really, it simply suggests that you invert the menal model: start with something basic and widely supported that accomodates more users and work up instead of start with your ideal and work down.</p>
+		</p><p><em>When you can't give them what I really wanted to, at least don't leave them in a complete lurch.  At least explain why it's fucked up or how to remedy it or something.</em></p>
 
-		<p>In this case, perhaps start with a paragraph saying "you can print this for your records".  Everyone's browser since Day 1 has been able to render a paragraph and most people can then figure out how to print.  Conditionally then, determine if they can do more and, perhaps replace the paragraph with the nice "Click to print" button that you really wanted instead.</p>
+		<p>Now, often this meant something very simple indeed: using a <code tag-esc="">noscript</code> tag that said "this interface requires a JavaScript enabled browser and you should download one of those if you really expect it to work... Everyone else can just accept that some things will be f'ed because of you, not because of me."</p>
 
-		<p>So why go through this recap?  Well, really simply so I can point out something I think is non-immediately obvious: This has never been an <em>is-a</em> relationship (extension) either.  It's always been a "here's a thing you can definitely do and, if you can do more, here's what that is (usually through JavaScript)".  It either began as a paragraph <em>containing</em> some text and became a paragraph <em>containing</em> a functional button, or it began as a paragraph and became a functional print button.  The "ness" of that thing never changed.</p>
+		<p>However, sometimes it instead involved the idea carefully arranging HTML code a certain way so that if your browser didn't understand some outer tag, the tag inside it would instead do something lesser.</p>
+
+		<p>Progressive enhancement simply suggested that we invert that mental model. Instead of starting with our ideal design and working "down", start with something basic and widely supported and work "up".</p>
+
+		<p>So, in the case of the cannonical example, progressive enhancement would suggest that we start with something basic.  Perhaps start instead with a simple paragraph saying "you can print this for your records".  From day 1, everyone's browser has been able to render a paragraph.  Given that text, most people can then figure out how to print.  Conditionally then, determine if they can do more and then do.  Perhaps you might replace the paragraph with the nice "Click to print" button that you really wanted instead, or perhaps you could empty the paragraph and have it contain our functional button instead of the text.</p>
+
+		<p>So why go through this recap?  Well, really simply so I can point out two things that appear to be non-immediately obvious.  First, the fact that some people used the "fall back" approach in the days of "graceful degradation," seems to have led many people associate code that looks like it "falls back" as being not progressive enhancement, but rather something "Bad".  This, however, is incorrect really.  Progressively enhancing through declarative forms looks identical and is entirely in keeping with our aims - the only really difference is in the mindset of approaching the problem.</p>
+
+		<p>The second reason to recap is to point out that this has never been an <em>is-a</em> relationship (extension) either.  It's always been a "here's a thing you can definitely do and, if you can do more, here's what that is (usually through JavaScript)".  It either began as a paragraph <em>containing</em> some text and became a paragraph <em>containing</em> a functional button, or it began as a paragraph and became a functional print button.  The "ness" of that thing never changed.</p>
 
 		<p>We wouldn't expect to say <code tag-esc="">p is="button"</code>, because that is of course nonsense: We know that however we spell it out, these two things are just way too different.  Note that the simple fact that an author <em>could</em> express that though means introducing a whole lot of new things we have to account for.</p>
 
