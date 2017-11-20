@@ -324,7 +324,7 @@ America (art for sale)</a></li>
     </nav>
 </header>
     <main><div class="posted-on">Posted on null</div><article class="sectioning">
-	<style>
+    <style>
 		/*body:not(.preferences-set) > :not(main) { display: none; }
 		body:not(.preferences-set) {
 			background-color: #444;
@@ -394,135 +394,153 @@ America (art for sale)</a></li>
 			}
 		}())
 	</script>
-	<style>
-		.tldr em {
-			display: none; color: rebeccapurple;
-		}
-	</style>
-  	<script src="../prism.js"></script>
-  	<link rel="stylesheet" href="../prism.css">
-	<contextual-heading role="heading" aria-level="1"><code tag-esc="">i is="the walrus"</code></contextual-heading>
-	<p class="segue">
-		It's become a fairly regular occurence for me to encounter someone on social media expressing some kind of frustration with Custom Elements.  As both an avid user of them myself and someone involved in many discussions during their creation and evolution, I really want them to be better too.  As I speak to the folks who are frustrated, however, I find that there is so much there that it's difficult to discuss.  So, I thought perhaps it would be worth sitting down and writing about it.  That, and walruses.
-	</p>
+    <style>
+        .tldr em {
+            display: none; color: rebeccapurple;
+        }
+    </style>
+    <script src="../prism.js"></script>
+    <link rel="stylesheet" href="../prism.css">
+    <contextual-heading role="heading" aria-level="1"><code tag-esc="">i is="the walrus"</code></contextual-heading>
+    <p class="segue">
+        It's become a fairly regular occurence for me to encounter someone on social media expressing some kind of frustration with Custom Elements.  As both an avid user of them myself and someone involved in many discussions during their creation and evolution, I really want them to be better too.  As I speak to the folks who are frustrated, however, I find that there is so much there that it's difficult to discuss.  So, I thought perhaps it would be worth sitting down and writing about it.  That, and walruses.
+    </p>
 
 
-	<section class="sectioning">
-		<contextual-heading role="heading" aria-level="2">The time has come...</contextual-heading>
-		<div class="captioned-image optional p-attached p-attached-right">
-			<img data-src="http://www.jabberwocky.com/carroll/pics/glass21.gif" alt="">
-				"The time has come," the Walrus said,<br>
-				"To talk of many things:<br>
-				Of shoes--and ships--and sealing-wax--<br>
-				Of cabbages--and kings--<br>
-				And why the sea is boiling hot--<br>
-				And whether pigs have wings."
-		</div>
+    <section class="sectioning">
+        <contextual-heading role="heading" aria-level="2">The time has come...</contextual-heading>
+        <div class="captioned-image optional p-attached p-attached-right">
+            <img data-src="http://www.jabberwocky.com/carroll/pics/glass21.gif" alt="">
+                "The time has come," the Walrus said,<br>
+                "To talk of many things:<br>
+                Of shoes--and ships--and sealing-wax--<br>
+                Of cabbages--and kings--<br>
+                And why the sea is boiling hot--<br>
+                And whether pigs have wings."
+        </div>
 
-		<p style="clear: none">
-			Over the last few years, a several observations and criticisms seem to have sprouted up about Custom Elements.  It began (I think) with someone pointing out that there's an ability that is spec'ed today: The ability to extend native elements with the <code>is="…"</code> attribute, which they thought that we desparately needed for accessibility sake.  Yet, for some reason, it remains unimplemented.  This generated a lot of discussion, mostly about who was to blame for holding the Web back and making custom elements less valuable.  Given this premise, further arguments have been made as to how this would be good for so many additional reasons: Given X, then Y. Given Y, then Z.  In concert, all of these simple observations and arguments really do appear to lead inexorably toward a very simple and well-justified "overall solution" that would be really grand...If browsers would just get their shit together and implment the thing in the spec.  It's pretty frustrating to a lot of people.  I can appreciate that.
-		</p>
+        <p style="clear: none">
+            Over the last few years, I've watched several observations and criticisms sprout up about Custom Elements.  It began (I think) with someone pointing out that there's an ability that is spec'ed today: The ability to extend native elements with the <code>is="…"</code> attribute.  Extension, the argument goes, is desparately needed for accessibility sake.  Yet, for some reason, it remains unimplemented.  This has generated a lot of discussion, frequently about who was to blame for holding the Web back and making custom elements less valuable.  Given this core premise, further arguments have been made as to how this would be good for so many additional reasons: Given X, then Y. Given Y, then Z.  In concert, all of these simple observations and arguments really do appear to lead inexorably toward a very simple and well-justified "overall solution" that would be really grand...If browsers would just get their shit together and implment the thing in the spec.  It's pretty frustrating to a lot of people.  I can appreciate that.
+        </p>
 
-		<!-- p style="clear: none">
-			It's unsuprising that the what we have available to us today feels incomplete: Web Components aren't finished yet.  This is a statement that absolutely everyone involved in their creation agrees upon.  They are imperfect.  Challenges remain.  Many things are still under very active discussion.  Just last week, in fact, Web Components-related topics dominated an entire day of Working Group meetings at W3C's annual meetings, and realistically they could have easily used more.
-		</p -->
-
-		<p style="clear: none">
-			I'd like to take some time and unpack a lot of this...
-		</p>
+        <p style="clear: none">
+            I'd like to take some time and unpack a lot of this though...
+        </p>
 
 
-  	<section class="sectioning">
-  		<contextual-heading role="heading" aria-level="3">Accessibility Magic</contextual-heading>
-  		<div class="captioned-image optional p-attached p-attached-left">
-  			<img data-src="/media/walricorn.jpg" alt="walricorn t-shirt">
-  			<p>You can, and probably should, buy this amazing walricorn t-shirt on Amazon.</p>
-  		</div>
-  		<p>
-  			Let's start here: The popular understanding that if we were to extend a built-in element it would be "automatically accessible" by the simple virtue of inheritance.  This is very nearly entirely incorrect.  Sadly, the magical walricorn won't actually magically bring all of the good little elements who used <code>is="…"</code> free accessibility on International Walrus Day (November 24th).
-  		</p>
+        <section class="sectioning">
+            <contextual-heading role="heading" aria-level="3">Accessibility Magic</contextual-heading>
+            <div class="captioned-image optional p-attached p-attached-left">
+                <img data-src="/media/walricorn.jpg" alt="walricorn t-shirt">
+                <p>You can, and probably should, buy this amazing walricorn t-shirt on Amazon.</p>
+            </div>
 
-		<p style="clear: none;">
-			Here's why: <em>Currently, all that accessibility goodness that we desire is inextricably wound up in the native DOM</em>. Sadly, the vast majority of use cases for "improving" a native element is actually about improving the DOM itself, and this creates a real mismatch.  In reality (not an opinion), as soon as we create a new shadow root or hide the existing element or something, all of that accessibility goodness largely just vanishes.
-		</p>
+            <p>
+                Let's start here: The popular understanding that if we were to extend a built-in element it would be "automatically accessible" by the simple virtue of inheritance.  I think it's important to explan that this is very nearly entirely untrue.  Sadly, the magical walricorn won't actually magically bring all of the good little elements who used <code>is="…"</code> free accessibility on International Walrus Day (November 24th).
+            </p>
 
-		<p style="clear: none">
-			I say this is "almost entirely untrue" because there are some small set of problems that involve no new DOM at all.  However, in terms of accessibility, most of these  also have similarly trivial solutions already available today and/or there are other proposals under discussion that help solve  those problems better.
-		</p>
+            <p style="clear: none;">
+                Here's why: <em>Currently, all that accessibility goodness that we desire is inextricably wound up in the native DOM</em>. Sadly, the vast majority of use cases for "improving" a native element is actually about improving the DOM itself, and this creates a substantial mismatch.  In reality (not an opinion), as soon as we create a new shadow root or hide the existing element or do just about anything really useful to the user experience, all of that accessibility goodness largely just vanishes.
+            </p>
 
-  		<p style="clear: none">
-  			Any concept that <code>is="…"</code> will make lots of components more accessible is, sadly, misleading: There's just no magical affordance in extension to map "whatever random shit I just made up" to "the thing with all of the good accessibility characteristics".
-  		</p>
+            <p style="clear: none">
+                Note: I say <em>almost</em> entirely untrue because there, in fact, are some small set of problems that involve no new DOM at all.  However, in terms of accessibility, many of these  also have similarly trivial solutions already available today and/or there are other proposals under discussion that help solve these problems better.
+            </p>
 
-  		<p>
-  			What's more, this isn't really a controverial statement in standards land.  Hats off to Google for actually trying really hard to solve a lot of problems. For a brief instant, some people were very hopeful in <code>is="…"</code>, others saw too many problems and too little benefit.  That moment seems to have passed and, instead, counter-proposals were born and, currently I think, have more support and value.  Will we revisit and potentially modify <code>is="…"</code> at some point?
-  		</p>
+            <p style="clear: none">
+                Any concept that <code>is="…"</code> will make lots of components more accessible is, sadly, just misleading. There's no magical affordance in extension that allows it to map "whatever random shit I just made up" to "the thing with all of the good accessibility characteristics".  You've still got to do a lot of work.
+            </p>
 
-	</section>
+            <p>
+                What's more, this isn't really a controverial statement in standards land.  Hats off to Google for actually trying really hard to solve a lot of problems. For a brief instant, some people were very hopeful in the idea of <code>is="…"</code>.  Others saw too many problems and too little benefit.  That moment seems to have passed though and, realistically, no one seems to actively believe that  <code>is="…"</code> holds a lot of answers.  Since that time, counter-proposals have been fermentingand, currently, appear to have wide conceptual support (I'll mention some of that later).  Will we revisit and potentially modify <code>is="…"</code> at some point?  It's not entirely off the table, but it's also likely that if we do it could have to change.
+            </p>
 
-	<section class="sectioning">
-		<contextual-heading role="heading" aria-level="3">Progressive Enhancement</contextual-heading>
-		<div class="captioned-image optional p-attached p-attached-right">
-			<img data-src="https://www.exploringnature.org/graphics/mammals/walrus_diagram.jpg" alt="an illustrated diagram of some walrus features">
-			Walrus extends Animal.
-		</div>
-		<p>
-		While accessibility is commonly cited, I think that for a lot of people, the Progressive Enhancement (PE) that appears to be afforded by <code>is="…"</code> seems to be the real lynchpin feature that really makes them latch on.  I can entirely appreciate this: It sounds so good.  Sadly, I think this is misleading as well.</p>
+        </section>
 
-		<p style="clear: none">However, here's something subtle to think about:  Is <code>is="…"</code> really PE in the traditional sense?  Well, no.</p>
+        <section class="sectioning">
+            <contextual-heading role="heading" aria-level="3">Progressive Enhancement</contextual-heading>
+            <div class="captioned-image optional p-attached p-attached-right">
+                <img data-src="https://www.exploringnature.org/graphics/mammals/walrus_diagram.jpg" alt="an illustrated diagram of some walrus features">
+                Walrus extends Animal.
+            </div>
+            <p>
+            While accessibility is commonly cited, I think that for a lot of people, the Progressive Enhancement (PE) that appears to be afforded by <code>is="…"</code> seems to be the real lynchpin feature that really makes so many people latch on.  I can entirely appreciate this: It sounds so good.  Unfortunately, I think this is misleading as well.</p>
 
-		<p style="clear: none">I know what you're thinking: "WAT?!".  Let me explain: It sort of can't be "in the traditional sense" since the ability to extend has never existed before. PE has traditionally never been an <em>is-a</em> relationship.  I said it was a subtle observation, but stick with me...   </p>
+            <p style="clear: none">Here's something subtle to think about:  Is <code>is="…"</code> really PE in the traditional sense?  Well, no.  Not exactly.</p>
 
-		<p style="clear: none; margin-top: inherit;">Consider a common example used to explain PE: Our designs include a button that say "click to print" which should call <code>window.print()</code> when clicked.  PE says start basic with something that works for everyone.  In this case, it might be a paragraph saying "Print this page for your records".  Every browser is capable of doing that. Users can then often figure out how to print in their particular environment.  Then, if a user's browsers meets the requesite criteria (it knows what a button is, it supports JavaScript and <code>window.print()</code> is defined), then it <em>enhances</em>.  Seems good.</p>
+            <p style="clear: none">I know what you're thinking: "WAT?!".  Let me explain: It sort of can't be "in the traditional sense" since the ability to extend has never existed before. PE has traditionally never been an <em>is-a</em> relationship.  I said it was a subtle observation, but stick with me...   </p>
 
-		<p>
-			But now consider the details: It might become a paragraph <em>containing</em> a functional button, or it might actually <em>become instead</em> a functional print button. Is that the same thing?
-		</p>
+            <p style="clear: none; margin-top: inherit;">Consider a common example used to explain PE: Our designs include a button that say "click to print" which should call <code>window.print()</code> when clicked.  PE says start basic with something that works for everyone.  In this case, it might be a paragraph saying "Print this page for your records".  Every browser is capable of doing that. Users can then often figure out how to print in their particular environment.  Then, if a user's browsers meets the requesite criteria (it knows what a button is, it supports JavaScript and <code>window.print()</code> is defined), then it <em>enhances</em>.  Seems good.</p>
 
-		<div style="margin-top: 0" class="captioned-image optional p-attached p-attached-left">
-			<img style="width: 300px" data-src="https://vignette.wikia.nocookie.net/marveldatabase/images/d/db/Hubert_Carpenter_%28Earth-616%29.png/revision/latest?cb=20110609023559" alt="A photo of Marvel's Walrus Man villian">
-			<code tag-esc="">man is="walrus"</code>
-		</div>
-		<p>
-			I'd like to offer the observation that neither <em>turning something into something else</em>, nor <em>changing your composition</em> are really the same thing as <em>extension</em>. Traditionally, the "ness" of that element instance never changed. In no case was the same thing both paragraph <em>and</em> button at the same time.  That's why you can't write <code tag-esc="">p is="button"</code> either - it's nonsense.  However, the mere fact that <code>is="…"</code> would <em>allow</em> an author to express such a desire that meant introducing a whole lot of new plumbing and cases that had to be accounted for.
-		</p>
+            <p>
+                But now consider the details: It might become a paragraph <em>containing</em> a functional button, or it might actually <em>become instead</em> a functional print button. Is that the same thing?
+            </p>
 
-		<p style="clear: none">
-			However we spell it out, a paragraph and a button are two things that are just entirely different things in terms of heirarchy and that's the important thing, here's why...</p>
-	</section>
+            <div style="margin-top: 0" class="captioned-image optional p-attached p-attached-left">
+                <img style="width: 300px" data-src="https://vignette.wikia.nocookie.net/marveldatabase/images/d/db/Hubert_Carpenter_%28Earth-616%29.png/revision/latest?cb=20110609023559" alt="A photo of Marvel's Walrus Man villian">
+                <code tag-esc="">man is="walrus"</code>
+            </div>
+            <p>
+                I'd like to offer the observation that neither <em>turning one thing into something else</em>, nor <em>changing the composition of something</em> are really the same thing as <em>extension</em>. Traditionally, the "ness" of that element instance never changed.  In no case traditionally was the same thing both paragraph <em>and</em> button at the same time.  That's why you can't write <code tag-esc="">p is="button"</code> for example - it's nonsense.  However, the mere fact that <code>is="…"</code> would <em>allow</em> an author to express such a desire (meaning, someone can and will type that) that meant introducing a whole lot of new plumbing and complexity for new cases that had to now be accounted for.
+            </p>
 
-	<section style="clear: both" class="sectioning">
-		<contextual-heading role="heading" aria-level="3">Metaphorical Walruses</contextual-heading>
-		<p>While you may think that something like <code tag-esc="">p is="button"</code> seems "really different from what you're asking for" and is merely a contrived example aimed to convince you of something irrelevant, it isn't.  This is actually <em>precisely</em> what we are frequently asking for without even realizing it.  Why?  Well, again, that's because what we want actually usually involves new DOM.  It's not, <em>in terms available to us today</em>, actually just a specialized version of something, it's really often a different kind of relationship.  <em>is-a</em> is very specifically about <em>extension</em>. It's about heirarcies, like, in the Linnean sense.</p>
+            <p style="clear: none">
+                However we spell it out, a paragraph and a button are two things that are just entirely different things in terms of heirarchy and that's the important thing, here's why...</p>
+        </section>
 
-		<p>Understanding the basic ideas of Linnean Taxonomy is <em>obviously</em> very important to understand if you want to get a job as say, a marine biologist or a paelentologist, but ut what most people don't realize is that unlike some of the other frivolus things they made you learn in school, for example, algebra - understanding <em>this</em> can also come in extremely handy in everyday adult life.  For example, if you needed to help my friend Sarah Drasner win a bar bet about whether people know what it is...</p>
+        <section style="clear: both" class="sectioning">
+            <contextual-heading role="heading" aria-level="3">Metaphorical Walruses</contextual-heading>
+            <p>
+                While you may think that the above "paragraph that is a button" example above seems "really different from what you're asking for" and is merely my contrived example aimed to convince you of something irrelevant, it isn't.  I would suggest that <em>currently</em> this is actually <em>precisely</em> what we are frequently asking for without even realizing it.  Why?  Well, again, that's because what we want actually usually involves new DOM.  It's not, <em>in terms available to us today</em>, actually just a specialized version of something. Really often, what we're describing is a different, and more complex kind of relationship.  <em>is-a</em> is very specifically about <em>extension</em>, and extension is about describing a taxonomy, like, in the Linnean sense.
+            </p>
 
-		<center style="margin: 2rem 0"><blockquote class="twitter-tweet" data-lang="en"><p lang="en" dir="ltr">Alright, please help us nerds settle a drinking bet. Do you know what the Linnaean System of Classification is? (No googling)</p>— Sarah Drasner (@sarah_edo) <a href="https://twitter.com/sarah_edo/status/911462225491116032?ref_src=twsrc%5Etfw">September 23, 2017</a></blockquote>
-		<script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script></center>
+            <p>
+                Understanding the basic ideas of Linnean Taxonomy is <em>obviously</em> very important to understand if you want to get a job as say, a marine biologist or a paelentologist, but ut what most people don't realize is that unlike some of the other frivolus things they made you learn in school, for example, algebra - understanding <em>this</em> can also come in extremely handy in everyday adult life.  For example, if you needed to help my friend Sarah Drasner win a bar bet about whether people know what it is...
+            </p>
 
-		<p>Or, maybe more practically, if you are doing software modeling, as we are here.  So, let's talk about that for a minute.</p>
+            <center style="margin: 2rem 0"><blockquote class="twitter-tweet" data-lang="en"><p lang="en" dir="ltr">Alright, please help us nerds settle a drinking bet. Do you know what the Linnaean System of Classification is? (No googling)</p>— Sarah Drasner (@sarah_edo) <a href="https://twitter.com/sarah_edo/status/911462225491116032?ref_src=twsrc%5Etfw">September 23, 2017</a></blockquote>
+        <script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script></center>
 
-		<div style="margin-top: 0rem" class="captioned-image optional p-attached p-attached-left">
-			<img data-src="https://cdn.vox-cdn.com/thumbor/E9-lw3BD0Ama-3cUSOXA_J5l_d0=/0x0:404x303/1400x1050/cdn.vox-cdn.com/uploads/chorus_image/image/51386351/d200908311113466240.0.jpg" alt="Photo of Barbara Liskov">
-		</div>
-		<p>In 1987 Barbara Liskov presented a keynote address called "Data abstraction and hierarchy" which talks about how we model things and our desire to organize things into heirarchies that <em>extend</em> and <em>inherit</em>. Liskov goes on to illustrate how that tends to cause numerous sorts of problems.  More importantly, she begins to explain how we might avoid those problems and the basic concept she describes is sometimes known as the "Liskov substitution principle" or "LSP" or even just "substitutionality".  In 2008 she won the Turing Award for her work.</p>
+            <p>
+                Or, maybe more practically, if you are doing software modeling, as we are here.  So, let's talk about that for a minute.
+            </p>
 
-		<p>In a way, what she's saying is: Metaphor makes for shitty modeling.  Our <em>minds</em> are actually perfectly fine handling all sorts of wild linkages, comparisons and semantics that are more metaphorical than literal - in fact, they're kind of built to find patterns and relationships even when they don't exit.</p>
+            <div style="margin-top: 0rem" class="captioned-image optional p-attached p-attached-left">
+                <img data-src="https://cdn.vox-cdn.com/thumbor/E9-lw3BD0Ama-3cUSOXA_J5l_d0=/0x0:404x303/1400x1050/cdn.vox-cdn.com/uploads/chorus_image/image/51386351/d200908311113466240.0.jpg" alt="Photo of Barbara Liskov">
+            </div>
 
-		<div style="margin-top: 0rem" class="captioned-image optional">
-			<img data-src="https://c1.staticflickr.com/3/2247/2132183480_83fa3f9c40_b.jpg" alt="Clouds that kinda sorta look like a walrus">
-			Photo credit to <a href="https://www.flickr.com/photos/lostmycat/" target="_blank">Janie</a>.
-		</div>
+            <p>
+                In 1987 Barbara Liskov presented a keynote address called "Data abstraction and hierarchy" which talks about how we model things and our desire to organize things into heirarchies that <em>extend</em> and <em>inherit</em>. Liskov goes on to illustrate how that tends to cause numerous sorts of problems.  More importantly, she begins to explain how we might avoid those problems and the basic concept she describes is sometimes known as the "Liskov substitution principle" or "LSP" or even just "substitutionality".  In 2008 she won the Turing Award for her work.
+            </p>
 
-		<p>Programming languages, on the other hand, tend to take things pretty literally.  Because of this, our minds can trip us up and make us model something poorly.  If we do, then rather than being helpful, we'll find that the system will fight us.  In fact, a really significant amount of western thought has centered around trying to divide up the world like this into kind of fragile and abritrary taxonomies. Sidenote: Author David Weinberger has written a lot about this tendency/history, his <a href="https://www.youtube.com/watch?v=43DZEy_J694">Everything is Miscellaneous</a> is a really enjoyable and non-technical talk that is worth watching some time.</p>
+            <p>
+                In a way, what she's saying is: Metaphor makes for shitty modeling.  Our <em>minds</em> are actually perfectly fine handling all sorts of wild linkages, comparisons and semantics that are more metaphorical than literal - in fact, they're kind of built to find patterns and relationships even when they don't exit.
+            </p>
 
-		<p>But, happily, 'is-a' isn't the only kind of relationship we have identified for modeling problems.  The often cited Gang of Four <em>Design Patterns</em> provides the simple observation "composition over inheritance" based on Liskov's work.  That is: Composing features through a <em>has-a</em> relationship is often a better way to go in the long run.</p>
+            <div style="margin-top: 0rem" class="captioned-image optional">
+                <img data-src="https://c1.staticflickr.com/3/2247/2132183480_83fa3f9c40_b.jpg" alt="Clouds that kinda sorta look like a walrus">
+                Photo credit to <a href="https://www.flickr.com/photos/lostmycat/" target="_blank">Janie</a>.
+            </div>
 
-		<section class="sectioning">
-			<contextual-heading role="heading" aria-level="4">Happily, we already <em>has-a</em> way to do this</contextual-heading>
-			<p>The really interesting part is that absolutely nothing new is required to both follow the self-same progressive enhancement patterns that we've been using all along and gain pretty much all ofthe same values we would with <code>is="…"</code> without adding any new complexity to the platform itself... How?  Through composition rather than inheritance. In concrete terms:</p>
+            <p>
+                Programming languages, on the other hand, tend to take things pretty literally.  Because of this, our minds can trip us up and make us model something poorly.  If we do, then rather than being helpful, we'll find that the system will fight us.  In fact, a really significant amount of western thought has centered around trying to divide up the world like this into kind of fragile and abritrary taxonomies. Sidenote: Author David Weinberger has written a lot about this tendency/history, his <a href="https://www.youtube.com/watch?v=43DZEy_J694">Everything is Miscellaneous</a> is a really enjoyable and non-technical talk that is worth watching some time.
+            </p>
 
-			<pre><code class="language-html">&lt;!-- instead of writing this --&gt;
+            <p>
+                So the trouble, again <em>currently</em> is all that "stuff" that we want is bound up pretty tightly in DOM and that means a lot of times when we're thinking "is-a" it's unfortunately more metaphaorical than literal.  <em>This is something that a lot of people are interested in sorting out.</em>
+            </p>
+
+            <p>
+                Happily, in the meantime, 'is-a' isn't the only kind of relationship we have identified for modeling problems.  The often cited Gang of Four <em>Design Patterns</em> provides the simple observation "composition over inheritance" based on Liskov's work.  That is: Composing features through a <em>has-a</em> relationship is often a better way to go in the long run anyway.
+            </p>
+
+            <section class="sectioning">
+                <contextual-heading role="heading" aria-level="4">Happily, we already <em>has-a</em> way to do this</contextual-heading>
+                <p>
+                    The really interesting part is that absolutely nothing new is required to both follow the self-same progressive enhancement patterns that we've been using all along and gain pretty much all ofthe same values we would with <code>is="…"</code> without adding any new complexity to the platform itself... How?  Through composition rather than inheritance. In concrete terms:
+                </p>
+
+                <pre><code class="language-html">&lt;!-- instead of writing this --&gt;
 &lt;input type="radio" is="x-radio"&gt;
 
 &lt;!-- you write this --&gt;
@@ -530,56 +548,61 @@ America (art for sale)</a></li>
     &lt;input type="radio"&gt;
 &lt;/x-radio&gt;</code></pre>
 
-			<p>Functionally, they are equivalent in pretty much every useful way: Form serialization, validation, etc - and you have to change and proxy precisely as much in either model for the sake of accessibility, depending on just what DOM what you change.</p>
+                <p>
+                    Functionally, they are equivalent in pretty much every useful way: Form serialization, validation, etc - and you have to change and proxy precisely as much in either model for the sake of accessibility, depending on just what DOM what you change.
+                </p>
+            </section>
 
 
-		</section>
+            <section class="sectioning">
+                <contextual-heading role="heading" aria-level="4">Objections</contextual-heading>
+                <p>
+                    The reason I'm writing this all down in the first place is that I have many of these same conversations a lot.  In these conversations, frequently after having explained all this, there are a number of common objections and comments that I hear frequently. Let me address a few....
+                </p>
 
+                <section class="sectioning">
+                    <contextual-heading role="heading" aria-level="5">This is too hard/Doesn't solve all our problems</contextual-heading>
 
-		<section class="sectioning">
-			<contextual-heading role="heading" aria-level="4">Objections</contextual-heading>
-			<p>The reason I'm writing this all down in the first place is that I have these same conversations a lot.  In these conversations, frequently after having explained all this, there are a number of common objections and comments that I hear frequently. Let me address a few....
+                    <p>
+                        I totally agree. So does everyone involved. Web Components aren't remotely done.  Read this piece as simply attempting to explain:  Here are some of the reasons why we're not actively chasing <code tag-esc="">is="…"</code> so much anymore.  Even a lot of early proponents have come around to "alright, this isn't a great solution to a lot, so what is?".  Several efforts are underway.  For example, many agree that we'd like to see how much of this we can solve by breaking up the nest of things that create these problems in the first place.  Mixins are a popular candidate, AOM will help some, some new proposals about declarative simple elements will solve the really basic cases well, etc.
+                    </p>
 
-			</p><section class="sectioning">
-				<contextual-heading role="heading" aria-level="5">This is too hard/Doesn't solve all our problems</contextual-heading>
-				<p>
-					I totally agree. So does everyone involved. Web Components aren't remotely done.  Read this piece as simply:  Here are some of the reasons why we're not actively chasing <code tag-esc="">is="…"</code> so much anymore.  Even a lot of early proponents have come around to "alright, this isn't a great solution to a lot, so what is?".  Several efforts are underway.  For example, many agree that we'd like to see how much of this we can solve by breaking up the nest of things that create these problems in the first place.  Mixins are a popular candidate, AOM will help some, some new proposals about declarative simple elements will solve the really basic cases well, etc.
-				</p>
+                    <p>
+                        My hope is that by explaining the problems with <code tag-esc="">is="…"</code> and the benefits of the composition pattern, I can both show you practical a way forward and more easily explain why I think that if you don't like this answer, it seems like a pretty safe bet that you probably wouldn't like <code tag-esc="">is="…"</code> (as specified today) very much either.
+                    </p>
+                </section>
 
-				<p>
-					My hope is that by explaining the problems with <code tag-esc="">is="…"</code> and the benefits of the composition pattern, I can both show you practical a way forward and more easily explain why I think that if you don't like this answer, it seems like a pretty safe bet that you probably wouldn't like <code tag-esc="">is="…"</code> very much either.
-				</p>
-			</section>
+            <section class="sectioning">
+                <contextual-heading role="heading" aria-level="5">But...That's graceful degradation, not PE</contextual-heading>
+                <p>
+                    It isn't. Or more accurately, it is entirely moot on the subject:  PE is fundamentally about an approach to looking at the problem space.  Both philosophies can ultimately land you on what, in markup, look like the same technical solution.  These days, thanks to polyfills and less wild variation in browsers, there frequently isn't a need for quite so many "transitional forms".  The real difference is that PE, as a philosophy, is more likely to lead you toward solutions that look and work better in more browsers.  In this sense, PE is kind of like "mobile first".
+                </p>
 
-			<section class="sectioning">
-				<contextual-heading role="heading" aria-level="5">But...That's graceful degradation, not PE</contextual-heading>
-				<p>
-					It isn't. PE is merely an approach to looking at the problem space.  As here, both philosophies can ultimately land you on what, in markup, look like the same technical solution.  These days, thanks to polyfills, there frequently isn't a need for quite so many "transitional forms".  The real difference is that PE, as a philosophy, is more likely to lead you toward solutions that look and work better in more browsers.  In this sense, PE is kind of like "mobile first".
-				</p>
+                <p>
+                    So... Given a browser without JavaScript, the above will work.  You absolutely can consider starting there and progressively create any number of intermediates along the way for support between there and your 'ideal'.  That is exactly PE, and, as I explained, more so than <code>is="…"</code> in the tradtional sense.  Or you can not, and whatever is inside the element serves as a fallback.
+                </p>
+            </section>
 
-				<p>
-					So... Given a browser without JavaScript, the above will work.  You absolutely <em>should</em> consider starting there.  You <em>can</em> create any number of intermediates along the way for support between there and your 'ideal'.  That is exactly PE, and, as I explained, more so than <code>is="…"</code> in the tradtional sense.
-				</p>
-			</section>
+            <section class="sectioning">
+                <contextual-heading role="heading" aria-level="5">Ok, but I don't see people doing that... Why?</contextual-heading>
+                <p>
+                    Well, part of it is likely that people simply aren't thinking about it that way yet.  I have developed several custom elements that work precisely like this.  But that's definitely not the entire story as I've also developed several that don't.  Here's why:  It is actually harder to strike a good balance of many things than most of our contrived examples would like to admit.
+                </p>
 
-			<section class="sectioning">
-				<contextual-heading role="heading" aria-level="5">Ok, but I don't see people doing that... Why?</contextual-heading>
-				<p>Well, part of it is that people just aren't thinking about it that way yet.  I have developed several custom elements that work precisely like this.  But that's definitely not the entire story as I've also developed several that don't.  Here's why:  It is actually harder to strike a good balance of many things than most of our contrived examples would like to admit.</p>
+                <p>
+                    For example: I've seen people talk about something like a star ratings component and how, really they are a lot like radio buttons.  "If you could just extend a radio button things would be so much easier" they might say, "because the author would write HTML that would just work anywhere and then use <code>is="…"</code>. However, the reality is that that example is very much over-simplified.  We've simply Jedi Mind Trick'ed ourselves into thinking it's that simple.
+                </p>
 
-				<p>For example: I've seen people talk about something like a star ratings component and how, really they are a lot like radio buttons.  "If you could just extend a radio button things would be so much easier" they might say, "because the author would write HTML that would just work anywhere and then use <code>is="…"</code>. However, the reality is that that example is very much over-simplified.  We've simply Jedi Mind Trick'ed ourselves into thinking it's that simple.</p>
+                <div class="captioned-image optional">
+                    <img data-src="https://qph.ec.quoracdn.net/main-qimg-64e5d202273a39e07cdc7a27361b12e3-c" alt="Obi Wan Kenobi using the Jedi Mind Trick in Star Wars">
+                    "A <code tag-esc="">geo-map</code> is really just a <code tag-esc="">select</code>.  These are not the droids you're looking for."</div>
+                
 
-				<div class="captioned-image optional">
-					<img data-src="https://qph.ec.quoracdn.net/main-qimg-64e5d202273a39e07cdc7a27361b12e3-c" alt="Obi Wan Kenobi using the Jedi Mind Trick in Star Wars">
-					"A <code tag-esc="">geo-map</code> is really just a <code tag-esc="">select</code>.  These are not the droids you're looking for."</div>
-				
+                <p>
+                    To actually be useful to many people, it's just not that simple.  A star ratings component is, more realistically, a probably something more like <code tag-esc="">form</code> than a radio button.  By this I mean that it would have to wire up whatever it needed to be a good accessible native interface, probably including a <code tag-esc="">fieldset</code> with a <code tag-esc="">legend</code>, <code tag-esc="">label</code>s linked to <code tag-esc="">input type="radio"</code> buttons that share the same <code tag-esc="">name="…"</code>, etc. This ends up meaning that to PE this in this fashion, an author would have to start with something like this:
+                </p>
 
-				<p>
-
-				</p>
-
-				<p>To actually be useful to many people, it's just not that simple.  A star ratings component is, more realistically, a probably something more like <code tag-esc="">form</code> than a radio button.  By this I mean that it would have to wire up whatever it needed to be a good accessible native interface, probably including a <code tag-esc="">fieldset</code> with a <code tag-esc="">legend</code>, <code tag-esc="">label</code>s linked to <code tag-esc="">input type="radio"</code> buttons that share the same <code tag-esc="">name="…"</code>, etc. This ends up meaning that to PE this in this fashion, an author would have to supply something like this:</p>
-
-			<pre><code class="language-html">&lt;!--
+                <pre><code class="language-html">&lt;!--
 note: is="" would change nothing about this problem
 --&gt;
 &lt;my-ratings&gt;
@@ -614,38 +637,79 @@ note: is="" would change nothing about this problem
   &lt;/form&gt;
 &lt;/my-ratings&gt;</code></pre>
 
-	<p>There's technically no problem with that, you can totally do it.  As we've seen, there are good arguments <em>to</em> do it.  Alternatively, what we see frequently instead is something like:</p>
+                <p>
+                    There's technically no problem with that, you can totally do it.  As we've seen, there are good arguments <em>to</em> do it.  Alternatively, what we see frequently instead is something like:
+                </p>
 
-	<pre><code class="language-html">&lt;my-ratings&gt;&lt;/my-ratings&gt;</code></pre>
+                <pre><code class="language-html">&lt;my-ratings&gt;&lt;/my-ratings&gt;</code></pre>
 
-	<p>This upsets a lot of people.  However, we can simply be unhappy about that because it seems to betray everything, or we could consider that there are, in fact, a lot of legitimate tradeoffs to consider and that's not <em>necessarily</em> as terrible as some see it at first blush.</p>
+                <p>
+                    This upsets a lot of people.  Note that what we are talking about here is what is <em>required</em> in order to get a functional star ratings widget working.  In both cases, you can write the verbose/complex thing
 
-	<p>For example: Which do you think that authors are more likely to want to actually adopt? Which are they less to get wrong? Which accomplishes other important goals of abstraction/ecapsulation that make it possible to build and maintain systems in better ways than today?  The simple tag is far and away the clear winner on all of these counts.</p>
+                    However, we can simply be unhappy about that because it seems to betray everything, or we could consider that there are, in fact, a lot of legitimate tradeoffs to consider and that's not <em>necessarily</em> as terrible as some see it at first blush.
+                </p>
 
-	<p>"Yes but, the cost!""  Well... The "cost" thanks to polyfills is that that ratings component will be 'nothing' unless there's JavaScript.  Entirely true.  But, is that always bad?</p>
+                <p>
+                    For example: Which do you think that authors are more likely to want to actually adopt? Which are they less to get wrong? Which accomplishes other important goals of abstraction/ecapsulation that make it possible to build and maintain systems in better ways than today?  The simple tag is far and away the clear winner on all of these counts.
+                </p>
 
-	<section class="sectioning">
-		<contextual-heading role="heading" aria-level="6">But you get nothing!</contextual-heading>
-		<p>
-			Yes, it means that if you don't have JavaScript, you will see nothing in that spot.  If seeing that component not uplifted in the event that there's no JavaScript really upsets you in every case, let me ask you this: why? Especially in this example.
-		</p>
+                <p>
+                    "Yes but, the cost!"  Well... The "cost" thanks to polyfills is that that ratings component will be 'nothing' unless there's JavaScript.  Entirely true.  But, is that always bad?
+                </p>
 
-		<p>
-			I think everyone agrees that star ratings are almost never core functionality.  PE advocates have always stresed "core" vs "less important".  Maybe you think "but we <em>can</em>".  Sure, no argument here.  However "therefore we should", sorry, but that doesn't necessarily follow.  The beauty of software is that we theoretically <em>can</em> do almost anything. The reality of software is that we <em>have to</em> make tradeoffs.  One size doesn't fit all. As Jeremy Keith says, "It depends".
-		</p>
+                <section class="sectioning">
+                    <contextual-heading role="heading" aria-level="6">But you get nothing!</contextual-heading>
+                    <p>
+                        Yes, it means that if you don't have JavaScript, you will see nothing in that spot.  If seeing that component not uplifted in the event that there's no JavaScript really upsets you in every case, let me ask you this: why? Especially in this example.
+                    </p>
 
-		<p>
-			Also, because we live in a world of polyfills, the single line you're talking about crossing is really: Well formed JavaScript is delivered.  Despite things you might have read, this is actually an pretty low bar that also applies to both HTML and CSS (again, despite what you might have read).  In fact, I'll go so far as to say that JavaScript is a Really Good Thing and that the declarative decoupling and breakdown of elements is a real boon that increases our ability to do this safely and sanely.
-		</p>
+                    <p>
+                        I think everyone agrees that star ratings are almost never core functionality.  PE advocates have always stresed "core functionality" and, in some cases, this isn't it, so why stress?  Maybe you think "but we <em>can</em>".  Sure, no argument here.  However "therefore we should", sorry, but that doesn't necessarily follow.  The beauty of software is that we theoretically <em>can</em> do almost anything. The reality of software is that we <em>have to</em> make tradeoffs.  One size doesn't fit all.
+                    </p>
 
-	</section>
-</section>
+                    <p>
+                        Also, because we live in a world of polyfills, the single line you're talking about crossing is really: Well formed JavaScript is delivered.  Despite things you might have read, this is actually an pretty low bar that also applies to both HTML and CSS (again, despite what you might have read).  In fact, I'll go so far as to say that JavaScript is a Really Good Thing and that the declarative decoupling and breakdown of elements is a real boon that increases our ability to do this safely and sanely.
+                    </p>
 
-		</section>
+                </section>
 
+            </section>
+            <section class="sectioning">
+                <contextual-heading role="heading" aria-level="5">But I want to improve an existing standard</contextual-heading>
+                <p>
+                    This one seems really common: The idea that if we could use <em>is="…"</em> to express some specialized customization of, say an input element, that this would make standardizing such a thing more plausible.  This isn't really the case though for a few reasons...
 
+                </p><p>
+                    In the abstract, one of the major wins of custom elements isn't even techincal:  By simply in defining a common declarative model for expressing elements, we make paving paths much much easier.  In days past, paving the cow paths was really hard because we had attributes and classes playing many roles.  Getting and analyzing the data about what was working and what wasn't was impossibly hard.  However, when we use a tag we know there's a 'thing' there that we can analyze - even if that isn't actually a custom element (for example, it could be an angular directive). Once we have them, finding their implementations is also much easier.
+                </p>
 
-	</section>
+                <p>
+                    In more concrete terms, it's again back to model mismatch problems: Most of how <code tag-esc="">input</code> was done is largely seen as problematic by implementers today.  The easiest way to understand why, I think, is by listening to <a href="https://vimeo.com/176453149" target="_blank">this talk by Monica Dinculescu</a>.  In any case, folks don't want to make this problem worse and selling a new type of input is pretty tough.  Also interesting to note:  All types of input are actually the same HTML class, there is no extension there.  Adding a new type that has a new class is, again, not really the same thing either.  Again, today, you can wrap a native input with your custom element tag and get very far on all of these same points.
+                </p>
+            </section>
+
+        </section>
+
+        <section class="sectioning">
+            <contextual-heading role="heading" aria-level="4">So now what?</contextual-heading>
+            <p>
+                Having said all this, please don't mistake what I'm saying as "just stop your complaining, things are just peachy as they are".  They aren't peachy.  They are more adequate than a lot of people realize, perhaps, but they are still incomplete.  We have much more to do and there are lots of active discussions.  Mixins seem promising - in fact, a lot of what people seem to want with is-a oriented extension would potentially be solved by mixins, but they're still abstract and there's a lot of work needed to decouple to intertwined "stuff".  Some recent proposals also seem promising for offering simple "style oriented" components or plugging together accessibility features more easily.  These are all ideas I think we should be chasing, they're all things that interest me greatly.
+            </p>
+
+            <p>
+                Am I still interested in seeing a great use of <em>is="…"</em>  if you have one: For sure!  Just, please, don't let it be a button.  I encourage you to build it (Andrea Giammarchi's polyfill supports extension), use it.  Think about it and make sure you actually get non-theoretical the benefit you think you do.  Compare it with the composition based one and consider the things laid out here.  If you have a really good one, <em>please share it with me</em>, this kind of thing is really important for informing good answers.
+            </p>
+
+            <p>
+               I'm not interested in simply shutting down debate... Should we still talk about extension? Yeah, I think so.  Some kind of standard extension seems potentially really valuable - I just don't really think we have that figured out yet and I don't want to give the impression that I do.  Given all this, I would rather invest my time into the things that will make such a thing really valuable than trying to convince anyone that it's critically important to ship <em>is="…"</em> as currently defined.  I'd love to encourage more people to get involed in <em>those</em> conversations and helping figure that stuff out.
+            </p>
+
+            <div class="captioned-image optional p-attached p-attached-left">
+                <img data-src="/media/sax-walrus.jpg" alt="a cool looking walrus playing the saxophone">
+                Hat tip to my pal Bruce Lawson for this, you can also <a href="https://youtu.be/0tmHaR0rCJ4" target="_blank">watch the video of this actual event involving a groovy walrus playing a saxophone</a>
+            </div>
+        </section>
+    </section>
 
 </section></article></main>
 
