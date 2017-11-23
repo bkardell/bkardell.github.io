@@ -546,7 +546,14 @@ America (art for sale)</a></li>
             </p><p>
 
             </p><p>
-                Once again, that's just what happens here: <em>Currently</em> all that "good stuff" that we want is bound up pretty tightly in DOM and therefore a lot of times when we're thinking "is-a" it's unfortunately more metaphaorical than literal.  <em>In terms currently available to us today</em>, it just isn't.  This mismatch is increasingly widely recogonized as a real problem that needs solving.  In the <a href="https://extensiblewebmanifesto.org">Extensible Web</a> sense, there's a lot more magic woven into the DOM that needs explaining in order for us to accomplish many of the sorts of things people are actually trying to describe.  There are a number of discussions underway that are aimed at helping us do just this, and none of them involve <code>is="…"</code>.  Just what those are is another piece, but this leaves us with a very real problem:  Until then, where does that leave us?
+                Once again, that's just what happens here: <em>Currently</em> all that "good stuff" that we want is bound up pretty tightly in DOM and therefore a lot of times when we're thinking "is-a" it's unfortunately more metaphaorical than literal.  <em>In terms currently available to us today</em>, it just isn't.
+            </p>
+            <p>
+                Being able to extend input "like HTML did" is one of the most cited use case examples that I hear for extension.  However, even in the platform itself, where extension was technically possible, there is no extension at play here today. There is only input.  It's worth noting that most of how <code tag-esc="">input</code> was done is largely seen as <em>considerably problematic</em> by implementers today.  Why? Well, the easiest way to begin to understand, I think, is by listening to <a href="https://vimeo.com/176453149" target="_blank">this talk by Monica Dinculescu</a>.  In short though, it's really created by the model mismatch we've been talking about.  Instead of being really helpful, the model fights us.
+            </p>
+
+            <p>
+                This mismatch is increasingly widely recogonized as a real problem that needs solving.  In the <a href="https://extensiblewebmanifesto.org">Extensible Web</a> sense, there's a lot more magic woven into the DOM that needs explaining.  Simple inheritance not only won't save us, it will create a lot of new problems.  In order for us to actually accomplish many of the sorts of things people are actually trying to describe, we need to break down the model further.  We need to decouple the powers.  There are a number of discussions underway that are aimed at helping us do precisely that, and none of them involve <code>is="…"</code> as currently specified.  I'll write about those in another piece, but this leaves us with a very real problem:  Until then, where does that leave us?
             </p>
 
             <p>
@@ -577,167 +584,10 @@ America (art for sale)</a></li>
                 </p>
 
                 <p>
-                    In future pieces I'll talk some more about the sorts of frustrations I've heard with these observations as well as what sorts of things <em>are</em> actively being chased down to solve these problems instead.
+                    In near future pieces I'll talk some more about the sorts of frustrations I've heard with these observations as well as what sorts of things <em>are</em> actively being chased down to solve these problems instead.
                 </p>
 
             </section>
-
-
-            <!-- section>
-                <contextual-heading>Objections</contextual-heading>
-                <p>
-                    The reason I'm writing this all down in the first place is that I have many of these same conversations a lot.  In these conversations, frequently after having explained all this, there are a number of common objections and comments that I hear frequently. Let me address a few....
-                </p>
-
-                <section>
-                    <contextual-heading>This is too hard/Doesn't solve all our problems</contextual-heading>
-
-                    <p>
-                        I totally agree. So does everyone involved. Web Components aren't remotely done.  Read this piece as simply attempting to explain:  Here are some of the reasons why we're not actively chasing <code tag-esc>is="&hellip;"</code> so much anymore.  Even a lot of early proponents have come around to "alright, this isn't a great solution to a lot, so what is?".  Several efforts are underway.  For example, many agree that we'd like to see how much of this we can solve by breaking up the nest of things that create these problems in the first place.  Mixins are a popular candidate, AOM will help some, some new proposals about declarative simple elements will solve the really basic cases well, etc.
-                    </p>
-
-                    <p>
-                        My hope is that by explaining the problems with <code tag-esc>is="&hellip;"</code> and the benefits of the composition pattern, I can both show you practical a way forward and more easily explain why I think that if you don't like this answer, it seems like a pretty safe bet that you probably wouldn't like <code tag-esc>is="&hellip;"</code> (as specified today) very much either.
-                    </p>
-                </section>
-
-            <section>
-                <contextual-heading>But...That's graceful degradation, not PE</contextual-heading>
-                <p>
-                    It isn't. Or more accurately, it is entirely moot on the subject:  PE is fundamentally about an approach to looking at the problem space.  Both philosophies can ultimately land you on what, in markup, look like the same technical solution.  These days, thanks to polyfills and less wild variation in browsers, there frequently isn't a need for quite so many "transitional forms".  The real difference is that PE, as a philosophy, is more likely to lead you toward solutions that look and work better in more browsers.  In this sense, PE is kind of like "mobile first".
-                </p>
-
-                <p>
-                    So... Given a browser without JavaScript, the above will work.  You absolutely can consider starting there and progressively create any number of intermediates along the way for support between there and your 'ideal'.  That is exactly PE, and, as I explained, more so than <code>is="&hellip;"</code> in the tradtional sense.  Or you can not, and whatever is inside the element serves as a fallback.
-                </p>
-            </section>
-
-            <section>
-                <contextual-heading>Ok, but I don't see people doing that... Why?</contextual-heading>
-                <p>
-                    Well, part of it is likely that people simply aren't thinking about it that way yet.  I have developed several custom elements that work precisely like this.  But that's definitely not the entire story as I've also developed several that don't.  Here's why:  It is actually harder to strike a good balance of many things than most of our contrived examples would like to admit.
-                </p>
-
-                <p>
-                    For example: I've seen people talk about something like a star ratings component and how, really they are a lot like radio buttons.  "If you could just extend a radio button things would be so much easier" they might say, "because the author would write HTML that would just work anywhere and then use <code>is="&hellip;"</code>. However, the reality is that that example is very much over-simplified.  We've simply Jedi Mind Trick'ed ourselves into thinking it's that simple.
-                </p>
-
-                <div class="captioned-image optional">
-                    <img data-src="https://qph.ec.quoracdn.net/main-qimg-64e5d202273a39e07cdc7a27361b12e3-c" alt="Obi Wan Kenobi using the Jedi Mind Trick in Star Wars">
-                    "A <code tag-esc>geo-map</code> is really just a <code tag-esc>select</code>.  These are not the droids you're looking for."</div>
-                </div>
-
-                <p>
-                    To actually be useful to many people, it's just not that simple.  A star ratings component is, more realistically, a probably something more like <code tag-esc>form</code> than a radio button.  By this I mean that it would have to wire up whatever it needed to be a good accessible native interface, probably including a <code tag-esc>fieldset</code> with a <code tag-esc>legend</code>, <code tag-esc>label</code>s linked to <code tag-esc>input type="radio"</code> buttons that share the same <code tag-esc>name="&hellip;"</code>, etc. This ends up meaning that to PE this in this fashion, an author would have to start with something like this:
-                </p>
-
-                <pre><code class="language-html">&lt;!--
-note: is="" would change nothing about this problem
---&gt;
-&lt;my-ratings&gt;
-  &lt;form action="submitRating" method="POST"&gt;
-    &lt;p class="average-rating"&gt;Average Rating: 4/5 stars&lt;/p&gt;
-      &lt;fieldset&gt;
-        &lt;legend&gt;How many stars would you rate this as?&lt;/legend&gt;
-        &lt;label&gt;
-          &lt;input type="radio" value="1" name="my-rating-1"&gt;
-            1 star
-        &lt;/label&gt;
-
-        &lt;label&gt;
-          &lt;input type="radio" value="2" name="my-rating-1"&gt;
-            2 stars
-        &lt;/label&gt;
-
-        &lt;label&gt;
-          &lt;input type="radio" value="3" name="my-rating-1"&gt;
-          3 stars
-        &lt;/label&gt;
-
-        &lt;label&gt;
-            &lt;input type="radio" value="4" name="my-rating-1"&gt;
-            4 stars
-        &lt;/label&gt;
-        &lt;label&gt;
-            &lt;input type="radio" value="5" name="my-rating-1"&gt;
-            5 stars
-        &lt;/label&gt;
-    &lt;/fieldset&gt;
-  &lt;/form&gt;
-&lt;/my-ratings&gt;</code></pre>
-
-                <p>
-                    There's technically no problem with that, you can totally do it.  As we've seen, there are good arguments <em>to</em> do it.  Alternatively, what we see frequently instead is something like:
-                </p>
-
-                <pre><code class="language-html">&lt;my-ratings&gt;&lt;/my-ratings&gt;</code></pre>
-
-                <p>
-                    This upsets a lot of people.  Note that what we are talking about here is what is <em>required</em> in order to get a functional star ratings widget working.  In both cases, you can write the verbose/complex thing
-
-                    However, we can simply be unhappy about that because it seems to betray everything, or we could consider that there are, in fact, a lot of legitimate tradeoffs to consider and that's not <em>necessarily</em> as terrible as some see it at first blush.
-                </p>
-
-                <p>
-                    For example: Which do you think that authors are more likely to want to actually adopt? Which are they less to get wrong? Which accomplishes other important goals of abstraction/ecapsulation that make it possible to build and maintain systems in better ways than today?  The simple tag is far and away the clear winner on all of these counts.
-                </p>
-
-                <p>
-                    "Yes but, the cost!"  Well... The "cost" thanks to polyfills is that that ratings component will be 'nothing' unless there's JavaScript.  Entirely true.  But, is that always bad?
-                </p>
-
-                <section>
-                    <contextual-heading>But you get nothing!</contextual-heading>
-                    <p>
-                        Yes, it means that if you don't have JavaScript, you will see nothing in that spot.  If seeing that component not uplifted in the event that there's no JavaScript really upsets you in every case, let me ask you this: why? Especially in this example.
-                    </p>
-
-                    <p>
-                        I think everyone agrees that star ratings are almost never core functionality.  PE advocates have always stresed "core functionality" and, in some cases, this isn't it, so why stress?  Maybe you think "but we <em>can</em>".  Sure, no argument here.  However "therefore we should", sorry, but that doesn't necessarily follow.  The beauty of software is that we theoretically <em>can</em> do almost anything. The reality of software is that we <em>have to</em> make tradeoffs.  One size doesn't fit all.
-                    </p>
-
-                    <p>
-                        Also, because we live in a world of polyfills, the single line you're talking about crossing is really: Well formed JavaScript is delivered.  Despite things you might have read, this is actually an pretty low bar that also applies to both HTML and CSS (again, despite what you might have read).  In fact, I'll go so far as to say that JavaScript is a Really Good Thing and that the declarative decoupling and breakdown of elements is a real boon that increases our ability to do this safely and sanely.
-                    </p>
-
-                </section>
-
-            </section>
-            <section>
-                <contextual-heading>But I want to improve an existing standard</contextual-heading>
-                <p>
-                    This one seems really common: The idea that if we could use <em>is="&hellip;"</em> to express some specialized customization of, say an input element, that this would make standardizing such a thing more plausible.  This isn't really the case though for a few reasons...
-
-                <p>
-                    In the abstract, one of the major wins of custom elements isn't even techincal:  By simply in defining a common declarative model for expressing elements, we make paving paths much much easier.  In days past, paving the cow paths was really hard because we had attributes and classes playing many roles.  Getting and analyzing the data about what was working and what wasn't was impossibly hard.  However, when we use a tag we know there's a 'thing' there that we can analyze - even if that isn't actually a custom element (for example, it could be an angular directive). Once we have them, finding their implementations is also much easier.
-                </p>
-
-                <p>
-                    In more concrete terms, it's again back to model mismatch problems: Most of how <code tag-esc>input</code> was done is largely seen as problematic by implementers today.  The easiest way to understand why, I think, is by listening to <a href="https://vimeo.com/176453149" target="_blank">this talk by Monica Dinculescu</a>.  In any case, folks don't want to make this problem worse and selling a new type of input is pretty tough.  Also interesting to note:  All types of input are actually the same HTML class, there is no extension there.  Adding a new type that has a new class is, again, not really the same thing either.  Again, today, you can wrap a native input with your custom element tag and get very far on all of these same points.
-                </p>
-            </section>
-
-        </section>
-
-        <section>
-            <contextual-heading>So now what?</contextual-heading>
-            <p>
-                Having said all this, please don't mistake what I'm saying as "just stop your complaining, things are just peachy as they are".  They aren't peachy.  They are more adequate than a lot of people realize, perhaps, but they are still incomplete.  We have much more to do and there are lots of active discussions.  Mixins seem promising - in fact, a lot of what people seem to want with is-a oriented extension would potentially be solved by mixins, but they're still abstract and there's a lot of work needed to decouple to intertwined "stuff".  Some recent proposals also seem promising for offering simple "style oriented" components or plugging together accessibility features more easily.  These are all ideas I think we should be chasing, they're all things that interest me greatly.
-            </p>
-
-            <p>
-                Am I still interested in seeing a great use of <em>is="&hellip;"</em>  if you have one: For sure!  Just, please, don't let it be a button.  I encourage you to build it (Andrea Giammarchi's polyfill supports extension), use it.  Think about it and make sure you actually get non-theoretical the benefit you think you do.  Compare it with the composition based one and consider the things laid out here.  If you have a really good one, <em>please share it with me</em>, this kind of thing is really important for informing good answers.
-            </p>
-
-            <p>
-               I'm not interested in simply shutting down debate... Should we still talk about extension? Yeah, I think so.  Some kind of standard extension seems potentially really valuable - I just don't really think we have that figured out yet and I don't want to give the impression that I do.  Given all this, I would rather invest my time into the things that will make such a thing really valuable than trying to convince anyone that it's critically important to ship <em>is="&hellip;"</em> as currently defined.  I'd love to encourage more people to get involed in <em>those</em> conversations and helping figure that stuff out.
-            </p>
-
-            <div class="captioned-image optional p-attached p-attached-left">
-                <img data-src="/media/sax-walrus.jpg" alt="a cool looking walrus playing the saxophone">
-                Hat tip to my pal Bruce Lawson for this, you can also <a href="https://youtu.be/0tmHaR0rCJ4" target="_blank">watch the video of this actual event involving a groovy walrus playing a saxophone</a>
-            </div>
-        </section -->
     </section>
 
 </section></article></main>
