@@ -4,10 +4,30 @@
                 <title>bkardell.com rss feed</title>
                 <link>https://bkardell.com</link>
                 <language>en-us</language>
-                <lastBuildDate>Sun, 17 Sep 2017 14:51:05 GMT</lastBuildDate>
+                <lastBuildDate>Tue, 05 Dec 2017 19:30:34 GMT</lastBuildDate>
                 <description>Just the bkardell.com rss feed</description>
                 <atom:link href="https://bkardell.com/blog/feed.rss" rel="self" type="application/rss+xml" />
     
+            <item>
+                <title>A Brief W3C Primer for Busy People</title>
+                <link>https://bkardell.com/blog/W3CPrimer.html</link>
+                <description>
+        Every few months, I find it necessary for some reason, to describe something about how the various W3C roles/terms work together at a high level.  It takes about 400 words and, rather than continue to type them over and over, I thought I'd simply create a linkable thing that I can just point to instead. Hooray for links!
+    </description>
+                <guid>https://bkardell.com/blog/W3CPrimer.html</guid>
+                <pubDate>Tue, 05 Dec 2017 05:00:00 GMT</pubDate>
+            </item>
+        
+            <item>
+                <title>i is="the walrus"</title>
+                <link>https://bkardell.com/blog/TheWalrus.html</link>
+                <description>
+        It's become a fairly regular occurence for me to encounter someone on social media expressing some kind of frustration with Custom Elements.  As both an avid user of them myself and someone involved in many discussions during their creation and evolution, I really want them to be better too.  As I speak to the folks who are frustrated, however, I find that there is so much there that it's difficult to discuss.  So, I thought perhaps it would be worth sitting down and writing about it.  That, and walruses.
+    </description>
+                <guid>https://bkardell.com/blog/TheWalrus.html</guid>
+                <pubDate>Thu, 23 Nov 2017 05:00:00 GMT</pubDate>
+            </item>
+        
             <item>
                 <title>Thoughts on Voice Recognition: Web Speech APIs Part IV</title>
                 <link>https://bkardell.com/blog/Voice-Recognition-Thoughts.html</link>
