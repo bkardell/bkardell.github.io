@@ -339,55 +339,52 @@ America (art for sale)</a></li>
         </p>
     </section>
     <section class="sectioning">
+        <contextual-heading role="heading" aria-level="2">The Change</contextual-heading>
+        <p>
+            Until recently, the W3C used a simple plurality voting system to elect for TAG and AB.  Each member could cast one vote per available open seat and then they'd simply count up the votes for each candidate and the ones with the highest totals win.  If you live in a country (like the US) that uses a similar form then you are well aware of the unfortunate mental game that plays out in your head:  Imagine that there are 3 candidates A, B and C.  You really, really like Candidate A, and you really, really <em>dislike</em> Candidate C.  Your "honest" vote should be for Candidate A.  However, because this system is so simple, it's also very easy to see the bad outcome that's possible.
+            If you aren't entirely sure that Candidate A can win, then a vote for them actually <em>helps</em> Candidate C by not increasing the competitive count of Candidate B.  Real honesty can "spoil" the vote, leading toward your least desirable outcome because the system itself doesn't allow you to clearly describe your intent or preference.
+        </p>
+        <p>
+            There are many other voting systems that aim to allow votes to be more expressive, and that's generally a good thing.  The W3C recently changed how voting works to use one of these forms.  Again, this seems generally like a positive idea.  However, there are many variants and many implications.  Given what seem to be basically the same inputs different systems and wind up with very different results. This voting system is pretty complicated, but I'm embedding a pretty good video here that is pretty short and makes the general concept clear..
+        </p>
+
+        <div class="captioned-image">
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/Ac9070OIMUg" frameborder="0" gesture="media" allow="encrypted-media" allowfullscreen=""></iframe>
+        </div>
+    </section>
+    <section class="sectioning">
         <contextual-heading role="heading" aria-level="2">The New Problem</contextual-heading>
         <p>
-            The W3C recently changed how voting works to use a form of preferential voting.  If you live in a country (like the US) that doesn't have preferential voting then you know the mental game that plays out in your head:  Imagine that there are 3 candidates A, B and C.  You really, really like Candidate A, and you really, really <em>dislike</em> Candidate C.  In "simple" systems like this, voting is like putting a coin in a jar and you just count them up.  If you aren't entirely sure that Candidate A can win, then a vote for them actually <em>helps</em> Candidate C by not increasing the competitive count of Candidate B.  Unfortunately, you just can't express your actual preference somehow.
+            Well, really there are two problems:  First, the W3Cs current implementation doesn't support same-weight ordering and this creates a new problem of lost expression. This is probably the biggest problem as I will explain, but bad outcomes can be exacerbated by the fact that voters are probably not fully aware of what their vote actually <em>means</em> in terms of outcomes.  So, let's talk about why this matters...
         </p>
         <p>
-            Preferential voting systems aim to allow votes to be more expressive, and that's generally a good thing.  However, there are many variants and many implications.  Unfortunately, what is in place currently at the W3C has, what I (and several others) have expressed as an unfortunate side-effect.
-        </p>
-        <p>
-            In this election, for example I have a strong preference for both Andrew and David.  If you asked me "how much do you support them in this particular election" the answer is "fully".  Another candidate's (Reto) statement makes me actively worry that adding them to the TAG would potentially undo some of what I see as valuable progress.  I'm sure his work is excellent, but for this reason, if you asked how much I support him in this particular election, the answer is "I don't".  The fourth candidate (Lukasz) is somewhere in between those two postions.  I would be sad to see either David or Andrew not reelected, but I don't inherently worry that it might derail.  In fact, I just don't know a lot about them compared to our current sitting members so in this particular election, all I can say really is I support them "considerably less than fully, but more than 0".
+            In this election, for example I have a very strong preference for both Andrew and David.  If you asked me "how much do you support them in this particular election" the answer is "fully".  Another candidate's (Reto) statement makes me actively worry that adding them to the TAG would potentially undo some of what I see as valuable progress.  I'm sure his work is excellent, but for this reason, if you asked how much I support him in this particular election, the answer is "I don't".  The fourth candidate (Lukasz) is somewhere in between those two postions.  I would be sad to see either David or Andrew not reelected, but I don't inherently worry that it might derail.  In fact, I just don't know a lot about them compared to our current sitting members so in this particular election, all I can say really is I support them "considerably less than fully, but more than 0".
         </p>
 
         <p>
-            In my opinion, my intentions to express my preferences of how I would like my votes to be counted are clear.  Unfortunately, in practice, if 60% of people agreed with exactly this, but 30% of people believed strongly supported our least favorite candidate (the remaining 10% have entirely different opinions), there's still a significant chance that the least favorite candidate of the 60% gets one of the two open seats.  Wait... What? How?
+            In my opinion, my intentions are clear: I would very much prefer to see both Andrew and David re-elected.  It's pretty hard to choose between them, they are both very strong.  If pressed, sure, I could choose one (it might vary depending on the election) but the delta of support is small.  The delta of my support between then and Lukasz is much larger.  However, currently, the W3C system forces me to place them in 1,2,3 order.  In this system, in this election, the quota means that in each pass, all you have to do is pass the threshhold to win the seat.
         </p>
 
-        <section class="sectioning">
-            <contextual-heading role="heading" aria-level="3">The dodginess in the system</contextual-heading>
-            <p>
-                Under the current (new) system  ACs are simply be asked to rank candidates in preferential order.  If, like me, you very strongly prefer both David and Andrew, you still have to rank <em>one</em> as "first".  While it may seem like not that big a deal because, perhaps infact you do <em>very slightly</em> prefer one to the other, here's why it really matters:  "First preference" carries significant weight in the vote counting.  In CSS saying that that "an ID selector is worth more than a class selector" is similar.  One first rank vote turns out to be worth <em>way</em> more than a second preference vote.
-            </p>
+        <p>
+            Imagine if 65% of people agreed with my 1,2,3 and 'no other candidate' order, but 35% of people felt precisely the opposite.  Those 35% of people think TAG is going in a really bad direction and so they prefer Reto as their first choice and, in order to block anyone who is currently sitting, they cast their second for Lukaz.  The result: 35% of first choice votes puts Reto over the threshold and it's a fight to see which of the two candidates that 65% of people <em>intended</em> to get both seats actually gets the other.  Which actually received the most 'first votes' could be affected significantly by something as simple as the fact that candidate statements are presented in a fixed order.
+        </p>
+        <p>
+            Without 'same rank' ability, this system effectively heavily favors the expression supplied by a minority of very passionate supporters by preventing accurate recording of intended preferences.
+        </p>
+    </section>
+    <section class="sectioning">
+        <contextual-heading role="heading" aria-level="2">So what can we do?</contextual-heading>
+        <p>
+            Without the ability to express 'same rank' I think the best thing to do is to turn out the vote in a big, big way that prevents an automatic first round win for a least favorite candidate and transfers enough remaining votes to make the difference.  We need to make sure that people use the "no other candidate" option to express 0 support if that's what they really mean, otherwise, votes can wind up transferring. There's an argument to be made that the distribution of 'first votes' between the two preferred candidates matters too and it's been suggested that the best way to do this is for each voter who supports two 'first choice' candidates roughly equally to flip a coin to determine which gets first and which gets second. I know, I can't believe that I just wrote that either.  However, it can make a differnce and so, it's worth knowing.  That said, what this seems to impact most is which of our two preferences winds up with the "other" seat.
+        </p>
 
-            <p>
-                So, consider this: The statements linked above are displayed alphabetically by last name. David Baron appears first.  Let's imagine that when ACs go to vote, they look to those.  If they feel precisely the way I have described, something as simple as the order of statements can strongly bias them toward placing him David first and Andrew second.  Despite having conceptually 60% "strong support", Andrew winds up with, in all, less than 30% of the "first preference" votes (order of statement biasing makes the split break more toward David, so Andrew gets less than half of those).  Contrarily, if you are a semantic web person or someone who thinks TAG is currently going in the <em>wrong</em> direction with practices like spec reviews and outreach, then Reto seems like your natural your first choice all the time.  That gives him 30% of the "first preference" votes and he wins.
-            </p>
-            <p>
-                So, despite a clear majority strongly preferring two candidates, only one of them gets elected.
-            </p>
-        </section>
+        <p>
+            The most important thing is to help make sure that ACs know about this effect and how to deal with it.  If you're an AC who hasn't voted in the past, please, please vote. If you <em>know</em> an AC (even if you are one yourself), please share this with them.  If you are anyone else -- please share it on social media.  Believe it or not, we're all wildly connected and you'd be suprised at how easy it is to bump into a connection who either is an AC or at least knows someone who knows one.  Just, basically, help get the word out.
+        </p>
 
-        <section class="sectioning">
-            <contextual-heading role="heading" aria-level="3">One weird trick</contextual-heading>
-            <p>
-                Of course, turning out more votes to shift the percentages further helps, but that alone is a really significant uphill battle toward simply having the meaning of existing votes counted with respect to their intent when they were cast.    So how can help deal with this problem?  Our best bet for this election? Go out of our way to make ACs aware of this problem and ask ACs to flip a coin for their first preference.
-            </p>
-            <p>
-                I know, I can't believe that I just wrote that either. Still, stick with me, because it makes sense.  If a large pool of people "very strongly support" two candidates and they all do this, it means that their breakdown will be roughly even.  We can guarantee that, in the example above, they both have roughly equal "first choice" votes.  In the event of a 30% 3 way tie, they'll also have a nice pile of second votes too.  Our desired outcomes are much more likely.
-            </p>
-        </section>
-
-        <section class="sectioning">
-            <contextual-heading role="heading" aria-level="3">What can I do?</contextual-heading>
-            <p>
-                First, I think the most important thing is to help make sure that ACs know about this effect and how to deal with it. To help with that, if you know an AC, please share this with them. If you don't please share it on social media because, believe it or not, we're all wildly connected and you'd be suprised at how easy it is to bump into a connection who does.  Just, basically, help get the word out.  Seriously: Be aware of this and flip a coin if that's how you feel.
-            </p>
-            <p>
-                While you're at it, you might tell them who you as a developer would like to see elected.  Again, in the past, when a number of people have publicly supported candidates, enough ACs have listened to help get them elected.  I do hope very much that you agree with me that David Baron and Andrew Betts should be re-elected, but either way, I want your voice to be heard.
-            </p>
-        </section>
-
+        <p>
+            Finally, if this seems bad to you, let's stress the importance of getting this fixed.
+        </p>
     </section>
 </article></main>
 
