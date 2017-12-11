@@ -1,0 +1,480 @@
+<html lang="en" resource-type="blogpost"><head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@briankardell">
+    <meta name="twitter:creator" content="@briankardell">
+    <meta name="twitter:title" content="W3C Elections Just Got A Whole Lot Harder">
+    <meta name="twitter:description" content="There's a new element to W3C politics and... it kind of worries me.  I'd like to make sure that people understand it and talk about what we can do about it.">
+    
+    <link rel="alternate" type="application/rss+xml" href="blog/feed.rss" title="bkardell.com/blog rss feed">
+    <title>W3C Elections Just Got A Whole Lot Harder</title>
+    <style>.captioned-image {
+    background-color: #eaeaea;
+    display: block;
+    overflow: hidden;
+    padding: 1rem;
+    text-align: center;
+    font-style: italic;
+}
+
+.captioned-image.p-attached {
+    width: 40%;
+    display: inline-block;
+    margin: 0 1rem 2rem 1rem;
+}
+
+section > .captioned-image.p-attached {
+    margin-top: 1.5rem; /* correct for heading size*/
+}
+
+ pre { overflow-x: auto }
+
+.captioned-image.p-attached.p-attached-left {
+    float: left;
+}
+
+.captioned-image.p-attached.p-attached-right {
+    float: right;
+}
+
+.captioned-image.p-attached + * + * {
+    clear: both;
+    margin-top: 2rem;
+}
+
+
+.captioned-image img, .captioned-image video {
+    display: block;
+    max-width: 100%;
+    margin: 0 auto 1em auto;
+}
+.source {
+    font-style: italic;
+}
+body {
+    display: flex;
+    font: 1em "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-weight: 300;
+    line-height: 1.625;
+}
+h1 { margin: 0.5rem; }
+code-format {
+    border-left: 0.5rem solid rgba(123,115,209,0.35);
+    display: block;
+    padding: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+contextual-heading {
+    display: block;
+    margin-top: 2rem;
+}
+
+[aria-level="1"] {
+    color: #43686b;
+    font-size: 1.45rem;
+}
+[aria-level="2"] {
+    color: #856363;
+    font-size: 1.35rem;
+}
+[aria-level="3"] {
+    color: #856363;
+    font-size: 1.25rem;
+}
+[aria-level="4"] {
+    color: #856363;
+    font-size: 1.2rem;
+}
+[aria-level="5"], [aria-level="6"] {
+    color: #667496;
+    font-size: 1.1rem;
+    font-weight: bolder;
+}
+.posted-on {
+    font-style: italic;
+    font-size: 0.8rem;
+    text-align: right;
+    margin-bottom: 1rem;
+}
+
+ul, li {
+    margin: 0.5rem;
+    text-align: left;
+}
+header {
+    padding-top: 1rem;
+    padding-right: 2rem;
+    background-color: #fbf5e9;
+}
+.tagline {
+    font-style: italic;
+    text-align: center;
+}
+
+[tag-esc] {
+    color: maroon;
+    font-family: Courier, "Lucida Console", monospace;
+}
+
+[tag-esc]::before {
+    content: '<';
+}
+
+[tag-esc]::after {
+    content: '>';
+}
+
+main {
+    min-width: 50%;
+    width: 80%;
+    padding: 1rem;
+}
+header .title {
+    background-color: rgba(123,115,209,0.35);
+    padding: 0.3rem;
+    padding-left: 0.25rem;
+    font-weight: bolder;
+    font-size: 0.9rem;
+    border-left: 1rem solid #999298;
+}
+
+header .profile {
+    width: 50%;
+    margin: 1rem 25%;
+}
+
+header .title + nav {
+    font-size: 0.9rem;
+}
+
+header .blurb {
+    font-size: 0.75rem;
+    text-align: center;
+}
+header .name {
+    text-align: center;
+    font-size: xx-large;
+}
+.segue {
+    font-style: italic;
+}
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  border: 0;
+}
+[for="aboutMeToggle"] {
+    display: none;
+}
+/* this needs rethinking, it wants a selector like 'not flow content' */
+article>*:not(contextual-heading,a), section>*:not(contextual-heading,a) {
+    margin-left: 0.45rem;
+}
+
+blockquote {
+  font-family: serif;
+  background: #f9f9f9;
+  border-left: 10px solid #ccc;
+  margin: 1.5em 10px;
+  padding: 0.5em 10px;
+}
+blockquote:before {
+  color: #ccc;
+  content: open-quote;
+  font-size: 2em;
+  line-height: 0.1em;
+  margin-right: 0.25em;
+  vertical-align: -0.4em;
+}
+
+blockquote:after {
+  color: #ccc;
+  content: close-quote;
+  font-size: 2em;
+  line-height: 0.1em;
+  margin-left: 0.25em;
+  vertical-align: -0.4em;
+}
+
+
+@media (max-width: 800px){
+    body {
+        flex-direction: column;
+    }
+    header {
+        border-bottom: 1px solid #afafff;
+    }
+
+    .captioned-image.p-attached {
+        width: 100%;
+        margin: 1rem 0;
+    }
+
+    .captioned-image.p-attached.p-attached-left,
+    .captioned-image.p-attached.p-attached-right {
+        float: none;
+    }
+
+    [for="aboutMeToggle"] {
+        background-color: #675e5e;
+        color: white;
+        padding: 0.25rem;
+        padding-left: 0.5rem;
+        display: block;
+        border-left: 1rem solid black;
+    }
+    #aboutMeToggle:focus + [for="aboutMeToggle"]{
+        outline: 4px solid #c6ddf2;
+    }
+
+    #aboutMeToggle:checked ~ header {
+        display: none;
+    }
+
+    header li { display: inline; margin-left: -0.5em; }
+    header .blurb li::after { content: '; '; }
+    header  nav li {
+        display: inline-block;
+        margin-left: 0.35rem;
+        margin-right: 0.35rem;
+    }
+    header .title {
+        width: 100%;
+    }
+    main li .source { display: block; }
+
+}</style>
+    <style>
+      .captioned-image { font-size: 0.9rem; }
+      .thanksTo { font-style: italic; font-size: 0.8rem; }
+    </style>
+    <script>
+      var activateOptional = function (media) {
+        var source = media.getAttribute('data-src'),
+            temp,
+            container = media.parentElement;
+
+          if (media.nextSibling && media.nextSibling.matches) {
+            if (media.nextSibling.matches('.clickToSee')) {
+              media.parentElement.removeChild(media.nextSibling);
+            }
+          }
+
+          if (media.tagName === 'VIDEO') {
+            temp = document.createElement('video')
+            temp.setAttribute('autoplay','')
+            temp.setAttribute('controls','')
+            temp.setAttribute('loop','')
+            temp.innerHTML = '<source src="' + source + '.webm" type="video/webm">'
+                    + '<source src="' + source + '.mp4" type="video/mp4">';
+            media.parentElement.replaceChild(temp, media);
+            setTimeout(function () {
+              temp.play()
+            }, 0);
+          } else {
+            media.src = media.getAttribute('data-src');
+          }
+
+          container.classList.add('active');
+      }
+    </script>
+  </head>
+  <body>
+    <input id="aboutMeToggle" class="sr-only" type="checkbox" checked="">
+<label for="aboutMeToggle">Toggle author information</label>
+<header>
+    <div class="name">
+        Brian Kardell
+    </div>
+    <img class="profile" src="/profile.jpg" alt="">
+    <div class="tagline"><a href="/">Betterifying the Web</a></div>
+    <div class="blurb">
+        <ul>
+            <li>Sr Front-End Engineer at Apollo Group, Inc</li>
+            <li>Original Co-author/Co-signer of The Extensible Web Manifesto</li>
+            <li>Co-Founder/Chair, W3C Extensible Web CG</li>
+            <li>Member, W3C (The JS Foundation)</li>
+            <li>Co-author of HitchJS</li>
+            <li>Blogger</li>
+            <li>Art, Science &amp; History Lover</li>
+            <li>Standards Geek</li>
+        </ul>
+    </div>
+    <div class="title">Follow Me On...</div>
+    <nav>
+        <ul>
+            <li><a rel="me" href="https://briankardell.wordpress.com">Wordpress</a></li>
+            <li><a rel="me" href="https://medium.com/@briankardell">Medium</a></li>
+            <li><a rel="me" href="https://twitter.com/briankardell">Twitter</a></li>
+            <li><a rel="me" href="https://github.com/bkardell/">Github</a></li>
+            <li><a rel="me" href="https://codepen.io/bkardell">Codepen</a></li>
+            <li><a rel="me" href="https://www.linkedin.com/in/brian-kardell-08a4264">LinkedIn</a></li>
+            <li><a rel="me" href="https://www.instagram.com/kardellbrian">Instagram (for
+art)</a></li>
+            <li><a rel="me" href="http://fineartamerica.com/profiles/brian-kardell?">Fine Art
+America (art for sale)</a></li>
+        </ul>
+    </nav>
+</header>
+    <main><div class="posted-on">Posted on 12/11/2017</div><article posted-on="12/11/2017" class="sectioning">
+    <contextual-heading role="heading" aria-level="1">W3C Elections Just Got A Whole Lot Harder</contextual-heading>
+    <p class="segue">
+        There's a new element to W3C politics and... it kind of worries me.  I'd like to make sure that people understand it and talk about what we can do about it.
+    </p>
+    <section class="sectioning">
+        <contextual-heading role="heading" aria-level="2">Some basics...</contextual-heading>
+        <p>
+            So, let's just get the simple stuff out of the way:  There are 2 seats up for reelction in the W3C TAG.  If you're not familliar with how the W3C Works or what the TAG is or why it matters, fear not, there's a ~400 word <a href="https://bkardell.com/blog/W3CPrimer.html">Primer for Busy People</a>.  There are 4 nominations for these seats, 2 of them are incumbents.  You can read <a href="https://www.w3.org/2017/12/01-tag-nominations">their statements</a> for yourself if you like.
+        </p>
+
+        <p>
+            In this election, I have a very strong preference for both Andrew and David.  If you asked me "how much do you support them in this particular election" the answer is "I support them both fully and enthusiastically".  I thought they were good candidates when they ran the first time, neither of been there particularly long and the record shows that they're both doing good work.
+        </p>
+        <p>
+            Another candidate's (Reto) statement makes me actively worry that adding them to the TAG would potentially undo some of what I see as valuable progress.  I'm sure his work is excellent, but for this reason, if you asked how much I support him in this particular election, the answer is "I think that would  be an <em>undesirable</em> outcome".
+        </p>
+        <p>
+            The fourth candidate (Lukasz) is somewhere in between those two postions:  While I would be sad to see either David or Andrew not be reelected, I don't inherently worry that electing Lukasz might derail or anything.  In truth, I just don't know a lot about Lukasz compared to current, sitting members.  They are "proven" and "known".  But there are things I like about this candidate's statement.  So in this particular election, all I can say really is I support them "considerably less than fully, but more than 0".
+        </p>
+    </section>
+
+    <section class="sectioning">
+        <contextual-heading role="heading" aria-level="2">The Old Ways</contextual-heading>
+        <p>
+            Until recently, the W3C used a simple plurality voting system to elect for TAG and AB.  In the old model, each member could cast <em>one vote per available open seat</em>: They'd simply, for example, vote for Andrew and David.  When voting closed, they'd simply count up the votes for each candidate and the ones with the highest totals win the seats.  Simple enough.
+        </p>
+
+        <p>
+            Plurality systems are not without well known flaws.  They aren't expressive.  Given an election with 3 candidates (A, B and C).  You might really, really like Candidate A, and might you really, really <em>dislike</em> the idea of Candidate C being elected, and your feelings about Candidate B could be anywhere in between the two extremes.  Plurality elections are, ultimately, won by the difference.  This means that in a 3 way race you have to guess whether your preferred candidate is actually "electable" becauseby not increasing the competitive count of Candidate B (as you would have if Candidate A weren't an option), Candidate C gains.  This is unfortunate.  It is, however, at least very easy to understand.
+        </p>
+
+        <p>
+            One of the key problems with plurality voting is that it just isn't very expressive and also therefore encourages less than perfectly "honest" voting.  It doesn't capture the true intents of the voter.  Perhaps a lot of "spoilers" are actually far more widely acceptable than we think, for example, and if people could safely just express that then maybe we'd have outcomes that more people were more happy with.
+        </p>
+
+        <p>
+            To this end, there are <em>lots</em> of other forms of voting that aim to do better and, recently, the W3C has switched the one they use.  <em>Who</em> to for vote for isn't the only question anymore - it's now also <em>how</em> to vote and <em>what does my vote mean?</em>  This is new and, I am worried likely to confuse.  In fact, I am not at all confident that W3C membership at large actually understood the implications when this was approved, so, let me explain the implications...
+        </p>
+    </section>
+    <section class="sectioning">
+        <contextual-heading role="heading" aria-level="2">Implications</contextual-heading>
+        <p>
+            I want to state very clearly that I am generally supportive of a more expressive voting system that allows true intents to be recorded and considered more accurately.  What's important to realize, however, is that given the same pool of voters, the same information, and the same candidates - different systems will have different outcomes.  There is no inherently "right" answer, there are simply outcomes and the ability for us to judge collectively whether those are good or bad.  So, let's do that...
+        </p>
+
+        <p>
+            Let's imagine, hypothetically, that 65% of people felt approximately the way that I do: The <em>least desirable outcome</em> is to give Reto one of the available seats.  All of those people agree that both seats should go to either David, Andrew or Lukasz.  What we disagree on, to lesser degrees is how strongly we feel about each one.  But 35% of people feel precisely the opposite: Reto is their first choice.  They think that the TAG has taken a wrong turn in recent years.  Perhaps they read his statement and they think he'll bring more semantic web stuff and more 'conceptual innovation' back to TAG.  The least desirable outcome to <em>them</em> is that both incumbents get relected.
+        </p>
+
+        <p>
+            So, given this information: What should happen?  Well, here are my own feelings:
+        </p>
+            <ul>
+                <li>Ideally the candidate who is least acceptable to 65% of people would not be elected, and it wouldn't require strategy to acheive that aim.</li>
+                <li>Ideally, the 2 candidates with the widest support should get the seats.</li>
+                <li>Ideally the system helps deal with the "but they probably can't win" bias by letting people accuratey express their honest preferences, thereby giving candidates with actual potential (instead of just perceived potential) a real shot.</li>
+            </ul>
+        <p></p>
+
+        <p>
+            However, given this hyptothetical scenario, this is not actually what happens with the system recently adopted.  What would happen in that system is that the candidate who is the least acceptable to 65% of people is interpreted as the best choice and is pretty much guaranteed a seat.
+        </p>
+
+        <p>
+            To me, this feels like a bug - but it is actually a design <em>feature</em> of the system that's been chosen.  As I said, there isn't a right or wrong answer to "how should it work". There are only inputs and outputs that we can discuss and weigh.  There are reasons that it is designed this way and proponents view this as precisely what should happen.  But this particular implication seems less than ideal to me.
+        </p>
+    </section>
+    <section class="sectioning">
+        <contextual-heading role="heading" aria-level="2">Wait... How can that be?</contextual-heading>
+
+        <p>Well, this system is pretty complicated but below is a video summary of how it "works"...</p>
+
+
+        <div class="captioned-image">
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/Ac9070OIMUg" frameborder="0" gesture="media" allow="encrypted-media" allowfullscreen=""></iframe>
+        </div>
+
+        <p>
+            The key point to "realize" is that in the old, plurality model, you cast <em>one vote per seat</em> and each vote is counted.  Voters are expressing preferences for <em>both seats</em>.  In this new model you express a bunch of stuff but only <em>one of your votes is actually counted</em> regardless of the number of seats.  That's the 'feature' designed to increase kinds of representation.
+        </p>
+
+        <p>
+            Concretely, this means that there's a calculated threshold and a particular means of counting in order to pass that threshold.  In this model, voters provide an order of support.  65% of voters will distribute their "first choice" vote among 3 candidates in our hypothetical <em>because they have to not because this accurately reflects what they would state is their preference in terms of all the seats</em>.  Alternatively, 35% will cast their first choice vote for the same person.  In a 2 seat race with 4 candidates, the threshold is 34%.  The only thing that is certain after the first round of counting is that the least desirable outcome for 65% of people has reached it and receives a seat.  There's no counting or transfer of second or third choices or surplus votes involved in that case:  All they had to do was turn out 34% for a single candidate people are passionate about.
+        </p>
+
+        <p>
+            When you look at it in this light, the whole "electability" question isn't actually resolved either.  You're actually much more likely to prevent worse outcomes by ranking candidates that you think have a chance of passing the threshold but prefer to your least desired by ranking them artifically higher than your honest preference.  Why?  Because only one vote actually <em>counts</em> and it only counts in the sense of moving someone toward the threshold.  In the end, most of those "expressed preferences" don't actually wind up really mattering.
+        </p>
+
+    </section>
+    <section class="sectioning">
+        <contextual-heading role="heading" aria-level="2">So what can we do?</contextual-heading>
+        <p>
+            Well, two things: First, help me make sure that W3C membership really understands this.  Ultimately, how the W3C works rests on their shoulders.  If they want to see that changed, that can happen.  Either way, understanding how your votes are interpreted really matters.
+        </p>
+
+
+        <p>
+            I guess this is the part that actively worries me: While I understand the good intents, this actually seems like an awfully low bar to have outsized impact.  Perhaps I am simply overly sensitive to this based on events that I observe happening in the world around me, or biased based on the systems I am used to.  I'm willing to admit that that's a possibility.
+        </p>
+
+        <p>
+            But, if you share my general opinion of least desirable outcome and also think that both of the 2 seats should really be filled by 2 of the other 3 candidates - what can you do?  Well, the  <em>most important</em> thing is to help turn out the vote.  Turnout is generally very low, and "out of the box" the default liklihood is that passionate supporters with 1 candidate are more likely to show up than people who see that 3 out of 4 candidates seem acceptable.  Thus, 34% is not a hard target.  But, the bigger the turnout, the more <em>actually reflective</em> a vote will be, and, I expect the harder it will be for a candidate with small, but strong support to reach the 34% threshold.  Even reducing this support by few percent has a radical impact on the results of the hypothetical above. This is entirely achievable.
+        </p>
+
+        <p>
+            If you're an AC <em>vote</em>.  Whether or not you've voted in the past, please, please vote:  Every company's votes are counted equally - the 1 person shop that joined W3C gets the same voting power as Google, Microsoft, Intel, IBM and other really big companies.  Each of you gets 1 vote that will be counted.  Make it count.  If you do, be sure to use the "no other candidate" option rather than implying any degree of support for a least desirable outcome so that when votes transfer they don't poorly impact.  Even if this doesn't ultimately wind up impacting the results, it helps inform the AB and system whether this result is desirable.
+        </p>
+
+        <p>
+            If you <em>know</em> an AC (even if you are one yourself), please share this with them.  Make sure they see it.
+        </p>
+
+        <p>
+            If you are anyone else -- please share it on social media. Believe it or not, we're all wildly connected and you'd be suprised at how easy it is to bump into a connection who either is an AC or at least knows someone who knows one. Just, basically, help get the word out.  If you have an opinion, share it.  In the past few years, people with the power to vote have listened to what you've had to say and there's no reason to think we can't make them listen again.
+        </p>
+    </section>
+
+    <p class="thanksTo">Special thanks to my friend, Chris Wilson for spending a <em>substantial</em> amount of time helping me understand the details of this voting system.</p>
+</article></main>
+
+  
+    <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-88027178-1', 'auto');
+    ga('send', 'pageview');
+  </script>
+
+  <script>
+    Array.prototype.slice.call(document.querySelectorAll('.optional [data-src]')).forEach(function (optional) {
+      var prefs = window.localStorage.downloadsPrefs,
+          clickToSee;
+      if (prefs === 'true') {
+        activateOptional(optional);
+      } else {
+        clickToSee = document.createElement('div');
+        clickToSee.classList.add('clickToSee')
+        clickToSee.innerHTML = '<button>Click to see media</button>';
+        clickToSee.style.textAlign = 'center';
+        clickToSee.style.border = 'none';
+        optional.parentElement.insertBefore(clickToSee, optional.nextSibling);
+        clickToSee.firstElementChild.addEventListener('click', function () {
+          activateOptional(optional);
+        })
+      }
+
+    })
+  </script>
+
+</body></html>

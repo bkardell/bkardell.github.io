@@ -4,10 +4,20 @@
                 <title>bkardell.com rss feed</title>
                 <link>https://bkardell.com</link>
                 <language>en-us</language>
-                <lastBuildDate>Tue, 05 Dec 2017 19:30:34 GMT</lastBuildDate>
+                <lastBuildDate>Mon, 11 Dec 2017 06:47:11 GMT</lastBuildDate>
                 <description>Just the bkardell.com rss feed</description>
                 <atom:link href="https://bkardell.com/blog/feed.rss" rel="self" type="application/rss+xml" />
     
+            <item>
+                <title>W3C Elections Just Got A Whole Lot Harder</title>
+                <link>https://bkardell.com/blog/W3CTAGElectionChange.html</link>
+                <description>
+        There's a new element to W3C politics and... it kind of worries me.  I'd like to make sure that people understand it and talk about what we can do about it.
+    </description>
+                <guid>https://bkardell.com/blog/W3CTAGElectionChange.html</guid>
+                <pubDate>Mon, 11 Dec 2017 05:00:00 GMT</pubDate>
+            </item>
+        
             <item>
                 <title>A Brief W3C Primer for Busy People</title>
                 <link>https://bkardell.com/blog/W3CPrimer.html</link>
@@ -47,17 +57,17 @@
         
             <item>
                 <title>You Don't Say: Web Speech APIs Part II</title>
-                <link>https://bkardell.com/blog/Basic-Voice-Speaker.html</link>
+                <link>https://bkardell.com/blog/High-Level-Voice.html</link>
                 <description>This is part of a series about making the browser speak and listen to speech.  In my last post Greetings, Professor Falken: Web Speech APIs Part I, I talked about the existing APIs we "have" for speaking (as well as why the air quotes) and all the many ways that they are wonky today.  In this post I'll share some of my own opinions on that API, as well as how I'm dealing with the speaking part IRL.</description>
-                <guid>https://bkardell.com/blog/Basic-Voice-Speaker.html</guid>
+                <guid>https://bkardell.com/blog/High-Level-Voice.html</guid>
                 <pubDate>Thu, 24 Aug 2017 04:00:00 GMT</pubDate>
             </item>
         
             <item>
                 <title>You Don't Say: Web Speech APIs Part II</title>
-                <link>https://bkardell.com/blog/High-Level-Voice.html</link>
+                <link>https://bkardell.com/blog/Basic-Voice-Speaker.html</link>
                 <description>This is part of a series about making the browser speak and listen to speech.  In my last post Greetings, Professor Falken: Web Speech APIs Part I, I talked about the existing APIs we "have" for speaking (as well as why the air quotes) and all the many ways that they are wonky today.  In this post I'll share some of my own opinions on that API, as well as how I'm dealing with the speaking part IRL.</description>
-                <guid>https://bkardell.com/blog/High-Level-Voice.html</guid>
+                <guid>https://bkardell.com/blog/Basic-Voice-Speaker.html</guid>
                 <pubDate>Thu, 24 Aug 2017 04:00:00 GMT</pubDate>
             </item>
         
