@@ -1,28 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
-<rss version="2.0" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom">
-    <channel>
-        <title>bkardell.com rss feed</title>
-        <link>http://bkardell.com/</link>
-        <description>Just the bkardell.com rss feed</description>
-        <lastBuildDate>Sat, 27 Jan 2018 20:09:03 GMT</lastBuildDate>
-        <docs>http://blogs.law.harvard.edu/tech/rss</docs>
-        <generator>awesome mix</generator>
-        <image>
-            <title>bkardell.com rss feed</title>
-            <url>http://bkardell.com/profile.jpg</url>
-            <link>http://bkardell.com/</link>
-        </image>
-        <copyright>All rights reserved 2018, Brian Kardell</copyright>
-        <atom:link href="https://bardell.com/blog/feed.atom" rel="self" type="application/rss+xml"/>
-        <item>
-            <title><![CDATA[W3C Elections Just Got A Whole Lot Harder]]></title>
-            <link>https://bkardell.com/blog/W3CTAGElectionChange.html</link>
-            <guid>https://bkardell.com/blog/W3CTAGElectionChange.html</guid>
-            <pubDate>Mon, 11 Dec 2017 05:00:00 GMT</pubDate>
-            <description><![CDATA[
+<feed xmlns="http://www.w3.org/2005/Atom">
+    <id>https://bkardell.com/</id>
+    <title>bkardell.com rss feed</title>
+    <updated>2018-01-27T20:09:03Z</updated>
+    <generator>awesome mix</generator>
+    <author>
+        <name>Brian Kardell</name>
+        <email>bkardell@gmail.com</email>
+        <uri>https://bkardell.com</uri>
+    </author>
+    <link rel="alternate" href="http://bkardell.com/"/>
+    <link rel="self" href="https://bardell.com/blog/feed.atom"/>
+    <subtitle>Just the bkardell.com rss feed</subtitle>
+    <logo>http://bkardell.com/profile.jpg</logo>
+    <rights>All rights reserved 2018, Brian Kardell</rights>
+    <entry>
+        <title type="html"><![CDATA[W3C Elections Just Got A Whole Lot Harder]]></title>
+        <id>https://bkardell.com/blog/W3CTAGElectionChange.html</id>
+        <link href="https://bkardell.com/blog/W3CTAGElectionChange.html">
+        </link>
+        <updated>2017-12-11T05:00:00Z</updated>
+        <summary type="html"><![CDATA[
         There's a new element to W3C politics and... it kind of worries me.  I'd like to make sure that people understand it and talk about what we can do about it.
-    ]]></description>
-            <content:encoded><![CDATA[.captioned-image {
+    ]]></summary>
+        <content type="html"><![CDATA[.captioned-image {
     background-color: #eaeaea;
     display: block;
     overflow: hidden;
@@ -383,17 +384,18 @@ blockquote:after {
     </section>
 
     <p class="thanksTo">Special thanks to my friend, Chris Wilson for spending a <em>substantial</em> amount of time helping me understand the details of this voting system.</p>
-]]></content:encoded>
-        </item>
-        <item>
-            <title><![CDATA[A Brief W3C Primer for Busy People]]></title>
-            <link>https://bkardell.com/blog/W3CPrimer.html</link>
-            <guid>https://bkardell.com/blog/W3CPrimer.html</guid>
-            <pubDate>Tue, 05 Dec 2017 05:00:00 GMT</pubDate>
-            <description><![CDATA[
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[A Brief W3C Primer for Busy People]]></title>
+        <id>https://bkardell.com/blog/W3CPrimer.html</id>
+        <link href="https://bkardell.com/blog/W3CPrimer.html">
+        </link>
+        <updated>2017-12-05T05:00:00Z</updated>
+        <summary type="html"><![CDATA[
         Every few months, I find it necessary for some reason, to describe something about how the various W3C roles/terms work together at a high level.  It takes about 400 words and, rather than continue to type them over and over, I thought I'd simply create a linkable thing that I can just point to instead. Hooray for links!
-    ]]></description>
-            <content:encoded><![CDATA[.captioned-image {
+    ]]></summary>
+        <content type="html"><![CDATA[.captioned-image {
     background-color: #eaeaea;
     display: block;
     overflow: hidden;
@@ -662,17 +664,18 @@ blockquote:after {
             Each of these groups are a very small number of people nominated and chosen by the AC members themselves to hold these roles by election to serve for two years.
         </p>
     </section>
-]]></content:encoded>
-        </item>
-        <item>
-            <title><![CDATA[i is="the walrus"]]></title>
-            <link>https://bkardell.com/blog/TheWalrus.html</link>
-            <guid>https://bkardell.com/blog/TheWalrus.html</guid>
-            <pubDate>Thu, 23 Nov 2017 05:00:00 GMT</pubDate>
-            <description><![CDATA[
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[i is="the walrus"]]></title>
+        <id>https://bkardell.com/blog/TheWalrus.html</id>
+        <link href="https://bkardell.com/blog/TheWalrus.html">
+        </link>
+        <updated>2017-11-23T05:00:00Z</updated>
+        <summary type="html"><![CDATA[
         It's become a fairly regular occurence for me to encounter someone on social media expressing some kind of frustration with Custom Elements.  As both an avid user of them myself and someone involved in many discussions during their creation and evolution, I really want them to be better too.  As I speak to the folks who are frustrated, however, I find that there is so much there that it's difficult to discuss.  So, I thought perhaps it would be worth sitting down and writing about it.  That, and walruses.
-    ]]></description>
-            <content:encoded><![CDATA[.captioned-image {
+    ]]></summary>
+        <content type="html"><![CDATA[.captioned-image {
     background-color: #eaeaea;
     display: block;
     overflow: hidden;
@@ -1148,15 +1151,16 @@ blockquote:after {
     <p class="thanksTo">
         Special thanks to my friends, Alex Russell and Peter Rushforth for proofing/commenting on early drafts of this piece and helping them be shorter and less confusing.
     </p>
-</section>]]></content:encoded>
-        </item>
-        <item>
-            <title><![CDATA[Thoughts on Voice Recognition: Web Speech APIs Part IV]]></title>
-            <link>https://bkardell.com/blog/Voice-Recognition-Thoughts.html</link>
-            <guid>https://bkardell.com/blog/Voice-Recognition-Thoughts.html</guid>
-            <pubDate>Sun, 17 Sep 2017 04:00:00 GMT</pubDate>
-            <description><![CDATA[This is part of a series about making the browser speak and listen to speech. In my last post You Don't Say: Web Speech APIs Part III, I talked about the recognition interfaces: listening or speech-to-text.]]></description>
-            <content:encoded><![CDATA[.captioned-image {
+</section>]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Thoughts on Voice Recognition: Web Speech APIs Part IV]]></title>
+        <id>https://bkardell.com/blog/Voice-Recognition-Thoughts.html</id>
+        <link href="https://bkardell.com/blog/Voice-Recognition-Thoughts.html">
+        </link>
+        <updated>2017-09-17T04:00:00Z</updated>
+        <summary type="html"><![CDATA[This is part of a series about making the browser speak and listen to speech. In my last post You Don't Say: Web Speech APIs Part III, I talked about the recognition interfaces: listening or speech-to-text.]]></summary>
+        <content type="html"><![CDATA[.captioned-image {
     background-color: #eaeaea;
     display: block;
     overflow: hidden;
@@ -1706,16 +1710,17 @@ speechRecognizer.audioContext.stop()</code></pre>
 
   <p class="thanksTo">Special thanks to my friend, the great Chris Wilson for proofing/commenting on pieces in this series.</p>
 
-]]></content:encoded>
-        </item>
-        <item>
-            <title><![CDATA[Listen up: Web Speech APIs Part III]]></title>
-            <link>https://bkardell.com/blog/Listen-Up.html</link>
-            <guid>https://bkardell.com/blog/Listen-Up.html</guid>
-            <pubDate>Fri, 25 Aug 2017 04:00:00 GMT</pubDate>
-            <description><![CDATA[This is part of a series about making the browser speak and listen to speech. In my last post You Don't Say: Web Speech APIs Part II, I talked about how I'm personally papering over what
-    we "have" today with regard to making the browser "talk" and why. In this post I'll talk about the other end of that: listening or speech-to-text.]]></description>
-            <content:encoded><![CDATA[.captioned-image {
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Listen up: Web Speech APIs Part III]]></title>
+        <id>https://bkardell.com/blog/Listen-Up.html</id>
+        <link href="https://bkardell.com/blog/Listen-Up.html">
+        </link>
+        <updated>2017-08-25T04:00:00Z</updated>
+        <summary type="html"><![CDATA[This is part of a series about making the browser speak and listen to speech. In my last post You Don't Say: Web Speech APIs Part II, I talked about how I'm personally papering over what
+    we "have" today with regard to making the browser "talk" and why. In this post I'll talk about the other end of that: listening or speech-to-text.]]></summary>
+        <content type="html"><![CDATA[.captioned-image {
     background-color: #eaeaea;
     display: block;
     overflow: hidden;
@@ -2315,15 +2320,16 @@ transcript: "tu tu"</code></pre>
   </section>
   <p class="thanksTo">Special thanks to my friend, the great Chris Wilson for proofing/commenting on pieces in this series.</p>
 
-]]></content:encoded>
-        </item>
-        <item>
-            <title><![CDATA[You Don't Say: Web Speech APIs Part II]]></title>
-            <link>https://bkardell.com/blog/Basic-Voice-Speaker.html</link>
-            <guid>https://bkardell.com/blog/Basic-Voice-Speaker.html</guid>
-            <pubDate>Thu, 24 Aug 2017 04:00:00 GMT</pubDate>
-            <description><![CDATA[This is part of a series about making the browser speak and listen to speech.  In my last post Greetings, Professor Falken: Web Speech APIs Part I, I talked about the existing APIs we "have" for speaking (as well as why the air quotes) and all the many ways that they are wonky today.  In this post I'll share some of my own opinions on that API, as well as how I'm dealing with the speaking part IRL.]]></description>
-            <content:encoded><![CDATA[.captioned-image {
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[You Don't Say: Web Speech APIs Part II]]></title>
+        <id>https://bkardell.com/blog/Basic-Voice-Speaker.html</id>
+        <link href="https://bkardell.com/blog/Basic-Voice-Speaker.html">
+        </link>
+        <updated>2017-08-24T04:00:00Z</updated>
+        <summary type="html"><![CDATA[This is part of a series about making the browser speak and listen to speech.  In my last post Greetings, Professor Falken: Web Speech APIs Part I, I talked about the existing APIs we "have" for speaking (as well as why the air quotes) and all the many ways that they are wonky today.  In this post I'll share some of my own opinions on that API, as well as how I'm dealing with the speaking part IRL.]]></summary>
+        <content type="html"><![CDATA[.captioned-image {
     background-color: #eaeaea;
     display: block;
     overflow: hidden;
@@ -2878,15 +2884,16 @@ Promise.all([
     </section>
     <p class="thanksTo">Special thanks to my friend, the great Chris Wilson for proofing/commenting on pieces in this series.</p>
 
-]]></content:encoded>
-        </item>
-        <item>
-            <title><![CDATA[You Don't Say: Web Speech APIs Part II]]></title>
-            <link>https://bkardell.com/blog/High-Level-Voice.html</link>
-            <guid>https://bkardell.com/blog/High-Level-Voice.html</guid>
-            <pubDate>Thu, 24 Aug 2017 04:00:00 GMT</pubDate>
-            <description><![CDATA[This is part of a series about making the browser speak and listen to speech.  In my last post Greetings, Professor Falken: Web Speech APIs Part I, I talked about the existing APIs we "have" for speaking (as well as why the air quotes) and all the many ways that they are wonky today.  In this post I'll share some of my own opinions on that API, as well as how I'm dealing with the speaking part IRL.]]></description>
-            <content:encoded><![CDATA[.captioned-image {
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[You Don't Say: Web Speech APIs Part II]]></title>
+        <id>https://bkardell.com/blog/High-Level-Voice.html</id>
+        <link href="https://bkardell.com/blog/High-Level-Voice.html">
+        </link>
+        <updated>2017-08-24T04:00:00Z</updated>
+        <summary type="html"><![CDATA[This is part of a series about making the browser speak and listen to speech.  In my last post Greetings, Professor Falken: Web Speech APIs Part I, I talked about the existing APIs we "have" for speaking (as well as why the air quotes) and all the many ways that they are wonky today.  In this post I'll share some of my own opinions on that API, as well as how I'm dealing with the speaking part IRL.]]></summary>
+        <content type="html"><![CDATA[.captioned-image {
     background-color: #eaeaea;
     display: block;
     overflow: hidden;
@@ -3220,15 +3227,16 @@ blockquote:after {
 
     <!-- p class="thanksTo">Special thanks to my friend, the great Chris Wilson for proofing/commenting on pieces in this series.</p -->
 
-</section>]]></content:encoded>
-        </item>
-        <item>
-            <title><![CDATA[Greetings, Professor Falken: Web Speech APIs Part I]]></title>
-            <link>https://bkardell.com/blog/Greetings-Professor-Falken.html</link>
-            <guid>https://bkardell.com/blog/Greetings-Professor-Falken.html</guid>
-            <pubDate>Wed, 23 Aug 2017 04:00:00 GMT</pubDate>
-            <description><![CDATA[There's a long, rich history of humans figuring out how to make machines talk and listen, and nearly as long as there has been a W3C there have been efforts to get these features into the browser.  It's too complicated to recount here, that's a whole post of it's own.  Suffice it to say that it's been fits and starts, steps forward and back and where we are right now is... muddy, but it works... sort of.  In this series of posts, I'll tell you all about it...]]></description>
-            <content:encoded><![CDATA[.captioned-image {
+</section>]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Greetings, Professor Falken: Web Speech APIs Part I]]></title>
+        <id>https://bkardell.com/blog/Greetings-Professor-Falken.html</id>
+        <link href="https://bkardell.com/blog/Greetings-Professor-Falken.html">
+        </link>
+        <updated>2017-08-23T04:00:00Z</updated>
+        <summary type="html"><![CDATA[There's a long, rich history of humans figuring out how to make machines talk and listen, and nearly as long as there has been a W3C there have been efforts to get these features into the browser.  It's too complicated to recount here, that's a whole post of it's own.  Suffice it to say that it's been fits and starts, steps forward and back and where we are right now is... muddy, but it works... sort of.  In this series of posts, I'll tell you all about it...]]></summary>
+        <content type="html"><![CDATA[.captioned-image {
     background-color: #eaeaea;
     display: block;
     overflow: hidden;
@@ -4028,15 +4036,16 @@ let voice = speechSynthesis.getVoices().find((voice) => {
         <p>So... It's pretty cool stuff, but it's a little like writing anything during the browser wars.  You'll want abstractions to paper over the warts and help you deal with all the quirks, and probably just to make it not hellish to write with.  There's a bunch of stuff I didn't cover, for example, there are 'boundary' callbacks and a few other things, but I think this gives you a lot.  In <a href="https://bkardell.com/blog/Basic-Voice-Speaker.html">my next piece</a> I'll talk a little about papering over some of the warts, and then we will get into <em>listening</em> to speech.</p>
     </section>
     <p class="thanksTo">Special thanks to my friend, the great Chris Wilson for proofing/commenting on pieces in this series.</p>
-</section></section>]]></content:encoded>
-        </item>
-        <item>
-            <title><![CDATA[The History and State of Speech]]></title>
-            <link>https://bkardell.com/blog/The-History-Of-Speech.html</link>
-            <guid>https://bkardell.com/blog/The-History-Of-Speech.html</guid>
-            <pubDate>Fri, 18 Aug 2017 04:00:00 GMT</pubDate>
-            <description><![CDATA[One apocryphal legend says that when the great sculptor Michelangelo carved his statue of Moses, it was so life-like that as he struck his final blow to the left knee he demanded "Now, speak".  Sadly, it wasn't that easy.  But we've been working hard to figure it out pretty much ever since and, ultimately bring speech to the Web.  As often happens, I find myself so interested in understanding how we got here and where we are that it winds up being a whole piece on it's own.  So, in this piece I'll tell you about the history and at a high level current state of affairs of Speech on the Web, subsequent posts in this series will be more technical...]]></description>
-            <content:encoded><![CDATA[.captioned-image {
+</section></section>]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[The History and State of Speech]]></title>
+        <id>https://bkardell.com/blog/The-History-Of-Speech.html</id>
+        <link href="https://bkardell.com/blog/The-History-Of-Speech.html">
+        </link>
+        <updated>2017-08-18T04:00:00Z</updated>
+        <summary type="html"><![CDATA[One apocryphal legend says that when the great sculptor Michelangelo carved his statue of Moses, it was so life-like that as he struck his final blow to the left knee he demanded "Now, speak".  Sadly, it wasn't that easy.  But we've been working hard to figure it out pretty much ever since and, ultimately bring speech to the Web.  As often happens, I find myself so interested in understanding how we got here and where we are that it winds up being a whole piece on it's own.  So, in this piece I'll tell you about the history and at a high level current state of affairs of Speech on the Web, subsequent posts in this series will be more technical...]]></summary>
+        <content type="html"><![CDATA[.captioned-image {
     background-color: #eaeaea;
     display: block;
     overflow: hidden;
@@ -4474,17 +4483,16 @@ No, Fuck you.
 	</section>
 
 	<p class="thanksTo">Special thanks to my friend, the great Chris Wilson for proofing/commenting on pieces in this series.</p>
-]]></content:encoded>
-            <enclosure url="https://bkardell.com/media/VODER.jpg">
-            </enclosure>
-        </item>
-        <item>
-            <title><![CDATA[Contact Your W3C Congress Person]]></title>
-            <link>https://bkardell.com/blog/W3C-Congress.html</link>
-            <guid>https://bkardell.com/blog/W3C-Congress.html</guid>
-            <pubDate>Mon, 15 May 2017 04:00:00 GMT</pubDate>
-            <description><![CDATA[The W3C is one of the primary standards bodies that works on Web standards.  Founded in 1994 along with the inventor of the Web Sir Tim Berners-Lee, it is a member based consortium originally modeled after the X-Consortium, with the stated aim of helping to "lead the Web to its full potential".  Its 465 "member orgs" are various types of organizations, foundations[1], academia and companies.   In late 2011 a movement in Web Standards began to take shape - seeking to help reform the things that many of us thought were broken.  This meant creating a common/shared vision across several standards bodies, changing ideas about where successful and lasting standards come from and how they are made and really stressing the importance of Web developers (who weren't themselves members) to that equation.  Lots and lots of positive change has happened at many levels, and lots more progress toward change has been set into motion but isn't yet complete and - if you'd like to see it continue, we could use your help.]]></description>
-            <content:encoded><![CDATA[.captioned-image {
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Contact Your W3C Congress Person]]></title>
+        <id>https://bkardell.com/blog/W3C-Congress.html</id>
+        <link href="https://bkardell.com/blog/W3C-Congress.html">
+        </link>
+        <updated>2017-05-15T04:00:00Z</updated>
+        <summary type="html"><![CDATA[The W3C is one of the primary standards bodies that works on Web standards.  Founded in 1994 along with the inventor of the Web Sir Tim Berners-Lee, it is a member based consortium originally modeled after the X-Consortium, with the stated aim of helping to "lead the Web to its full potential".  Its 465 "member orgs" are various types of organizations, foundations[1], academia and companies.   In late 2011 a movement in Web Standards began to take shape - seeking to help reform the things that many of us thought were broken.  This meant creating a common/shared vision across several standards bodies, changing ideas about where successful and lasting standards come from and how they are made and really stressing the importance of Web developers (who weren't themselves members) to that equation.  Lots and lots of positive change has happened at many levels, and lots more progress toward change has been set into motion but isn't yet complete and - if you'd like to see it continue, we could use your help.]]></summary>
+        <content type="html"><![CDATA[.captioned-image {
     background-color: #eaeaea;
     display: block;
     overflow: hidden;
@@ -4791,15 +4799,16 @@ blockquote:after {
 	<div class="footnote" id="footnote1">
 		<sup>1</sup> Full disclosure, I am a member representing the JS Foundation on some working groups, but the words and thoughts expressed here are my own and should not be taken to represent anyone else's stated positions.
 	</div>
-]]></content:encoded>
-        </item>
-        <item>
-            <title><![CDATA[Reflecting on Roles]]></title>
-            <link>https://bkardell.com/blog/Reflecting-On-Roles.html</link>
-            <guid>https://bkardell.com/blog/Reflecting-On-Roles.html</guid>
-            <pubDate>Tue, 25 Apr 2017 04:00:00 GMT</pubDate>
-            <description><![CDATA[Just a silly little experiment based on an observation...]]></description>
-            <content:encoded><![CDATA[.captioned-image {
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Reflecting on Roles]]></title>
+        <id>https://bkardell.com/blog/Reflecting-On-Roles.html</id>
+        <link href="https://bkardell.com/blog/Reflecting-On-Roles.html">
+        </link>
+        <updated>2017-04-25T04:00:00Z</updated>
+        <summary type="html"><![CDATA[Just a silly little experiment based on an observation...]]></summary>
+        <content type="html"><![CDATA[.captioned-image {
     background-color: #eaeaea;
     display: block;
     overflow: hidden;
@@ -5158,15 +5167,16 @@ summary,
 
 
 
-]]></content:encoded>
-        </item>
-        <item>
-            <title><![CDATA[Divs]]></title>
-            <link>https://bkardell.com/blog/Divs.html</link>
-            <guid>https://bkardell.com/blog/Divs.html</guid>
-            <pubDate>Tue, 21 Mar 2017 04:00:00 GMT</pubDate>
-            <description><![CDATA[I've been utterly failing to complete a couple of blog posts that I've been working on recently.  As sometimes happens when I am writing, I have a semi-random but kind of related thought that doesn't really fit in the post and I tweet it instead.  As it got some little attention/discussion, I'd like to expand on it here and offer a little more explanation/context.]]></description>
-            <content:encoded><![CDATA[.captioned-image {
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Divs]]></title>
+        <id>https://bkardell.com/blog/Divs.html</id>
+        <link href="https://bkardell.com/blog/Divs.html">
+        </link>
+        <updated>2017-03-21T04:00:00Z</updated>
+        <summary type="html"><![CDATA[I've been utterly failing to complete a couple of blog posts that I've been working on recently.  As sometimes happens when I am writing, I have a semi-random but kind of related thought that doesn't really fit in the post and I tweet it instead.  As it got some little attention/discussion, I'd like to expand on it here and offer a little more explanation/context.]]></summary>
+        <content type="html"><![CDATA[.captioned-image {
     background-color: #eaeaea;
     display: block;
     overflow: hidden;
@@ -5467,15 +5477,16 @@ blockquote:after {
 
 
 
-]]></content:encoded>
-        </item>
-        <item>
-            <title><![CDATA[The Document Outline...What's the Deal with that?]]></title>
-            <link>https://bkardell.com/blog/Whats-The-Deal-With-That.html</link>
-            <guid>https://bkardell.com/blog/Whats-The-Deal-With-That.html</guid>
-            <pubDate>Fri, 24 Feb 2017 05:00:00 GMT</pubDate>
-            <description><![CDATA[Last week there was a blur of activity surrounding "headings" or - more accurately around discussions about the "document outline". It started with Jon Neal (re)opening an issue.  This issue seems to be about a new element - but it's not entirely.  There were lots of comments and there was lots of discussion on lots of github issues in lots of repos.  I wrote a piece about my own complex thoughts about this issue.  It seems to suggest I am arguing that we start something brand new.  My friend Jake Archibald wrote a piece too which seems really different than the other two.  Trying to keep them all straight and read through comments, one would think that there is a lot of disagreement... But here's the thing: I don't think there really is.  I think it's just really complicated to follow.  To this end - I've asked a few people if this is a fair summary and the answer seems to be pretty much "yes"... So, if you're looking to understand in fairly straightforward terms what the discussions are, here it is...]]></description>
-            <content:encoded><![CDATA[.captioned-image {
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[The Document Outline...What's the Deal with that?]]></title>
+        <id>https://bkardell.com/blog/Whats-The-Deal-With-That.html</id>
+        <link href="https://bkardell.com/blog/Whats-The-Deal-With-That.html">
+        </link>
+        <updated>2017-02-24T05:00:00Z</updated>
+        <summary type="html"><![CDATA[Last week there was a blur of activity surrounding "headings" or - more accurately around discussions about the "document outline". It started with Jon Neal (re)opening an issue.  This issue seems to be about a new element - but it's not entirely.  There were lots of comments and there was lots of discussion on lots of github issues in lots of repos.  I wrote a piece about my own complex thoughts about this issue.  It seems to suggest I am arguing that we start something brand new.  My friend Jake Archibald wrote a piece too which seems really different than the other two.  Trying to keep them all straight and read through comments, one would think that there is a lot of disagreement... But here's the thing: I don't think there really is.  I think it's just really complicated to follow.  To this end - I've asked a few people if this is a fair summary and the answer seems to be pretty much "yes"... So, if you're looking to understand in fairly straightforward terms what the discussions are, here it is...]]></summary>
+        <content type="html"><![CDATA[.captioned-image {
     background-color: #eaeaea;
     display: block;
     overflow: hidden;
@@ -5808,15 +5819,16 @@ blockquote:after {
 			</dd>
 		</dl>
 	</section>
-]]></content:encoded>
-        </item>
-        <item>
-            <title><![CDATA[Headings and the Seinfeld Pitch]]></title>
-            <link>https://bkardell.com/blog/On-Headings.html</link>
-            <guid>https://bkardell.com/blog/On-Headings.html</guid>
-            <pubDate>Fri, 17 Feb 2017 05:00:00 GMT</pubDate>
-            <description><![CDATA[Because of its origins, HTML has a number of elements and concepts which are, in retrospect, probably not so great.  Headings being the way they are, for example, has caused seemingly no end of discussion.  I'd like to explain why I think this is, as well as what we should do about it.]]></description>
-            <content:encoded><![CDATA[.captioned-image {
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Headings and the Seinfeld Pitch]]></title>
+        <id>https://bkardell.com/blog/On-Headings.html</id>
+        <link href="https://bkardell.com/blog/On-Headings.html">
+        </link>
+        <updated>2017-02-17T05:00:00Z</updated>
+        <summary type="html"><![CDATA[Because of its origins, HTML has a number of elements and concepts which are, in retrospect, probably not so great.  Headings being the way they are, for example, has caused seemingly no end of discussion.  I'd like to explain why I think this is, as well as what we should do about it.]]></summary>
+        <content type="html"><![CDATA[.captioned-image {
     background-color: #eaeaea;
     display: block;
     overflow: hidden;
@@ -6209,17 +6221,16 @@ another h1 yet.
 
     <p class="thanksTo">Very special thanks to Jeremy Keith for locating the email I was looking for originally from www-talk but had been unable to find.  This article originally contained a reference a year and a half later.</p>
 
-]]></content:encoded>
-            <enclosure url="/media/well_do_nothing.jpg">
-            </enclosure>
-        </item>
-        <item>
-            <title><![CDATA[Incubate All the Things]]></title>
-            <link>https://bkardell.com/blog/Incubate-All-The-Things.html</link>
-            <guid>https://bkardell.com/blog/Incubate-All-The-Things.html</guid>
-            <pubDate>Mon, 26 Dec 2016 05:00:00 GMT</pubDate>
-            <description><![CDATA[There's a conversation going on right now on the mailing list public-w3process, it's exceptionally long and twisty at this point, it took me a few hours to get caught up and... Wait, what's that? You've never even heard of this mailing list? No worries, I'll fill you in and tell you why this is important...]]></description>
-            <content:encoded><![CDATA[.captioned-image {
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Incubate All the Things]]></title>
+        <id>https://bkardell.com/blog/Incubate-All-The-Things.html</id>
+        <link href="https://bkardell.com/blog/Incubate-All-The-Things.html">
+        </link>
+        <updated>2016-12-26T05:00:00Z</updated>
+        <summary type="html"><![CDATA[There's a conversation going on right now on the mailing list public-w3process, it's exceptionally long and twisty at this point, it took me a few hours to get caught up and... Wait, what's that? You've never even heard of this mailing list? No worries, I'll fill you in and tell you why this is important...]]></summary>
+        <content type="html"><![CDATA[.captioned-image {
     background-color: #eaeaea;
     display: block;
     overflow: hidden;
@@ -6542,15 +6553,16 @@ blockquote:after {
 		</div>
 	</section>
 
-]]></content:encoded>
-        </item>
-        <item>
-            <title><![CDATA[Performance: Shame, Hope, Nuance and Interesting Problems]]></title>
-            <link>https://bkardell.com/blog/Perf.html</link>
-            <guid>https://bkardell.com/blog/Perf.html</guid>
-            <pubDate>Tue, 22 Nov 2016 05:00:00 GMT</pubDate>
-            <description><![CDATA[My free account on Wordpress.com has served me pretty well over the years by most measures.  I didn't have to set anything up, I use it, people all over the world read it - and did I mention it was free?  What else is there really?  But I've always wanted more control, and ownership of your own content is a really good thing, so couple of weeks ago, I broke down and bought bkardell.com. Given a domain, I decided that now that moving lots of legacy content there would be an interesting and fun exercise. I'd like to tell you about some things it's made me think about...]]></description>
-            <content:encoded><![CDATA[.captioned-image {
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Performance: Shame, Hope, Nuance and Interesting Problems]]></title>
+        <id>https://bkardell.com/blog/Perf.html</id>
+        <link href="https://bkardell.com/blog/Perf.html">
+        </link>
+        <updated>2016-11-22T05:00:00Z</updated>
+        <summary type="html"><![CDATA[My free account on Wordpress.com has served me pretty well over the years by most measures.  I didn't have to set anything up, I use it, people all over the world read it - and did I mention it was free?  What else is there really?  But I've always wanted more control, and ownership of your own content is a really good thing, so couple of weeks ago, I broke down and bought bkardell.com. Given a domain, I decided that now that moving lots of legacy content there would be an interesting and fun exercise. I'd like to tell you about some things it's made me think about...]]></summary>
+        <content type="html"><![CDATA[.captioned-image {
     background-color: #eaeaea;
     display: block;
     overflow: hidden;
@@ -6926,15 +6938,16 @@ blockquote:after {
 
 
 
-</section></section>]]></content:encoded>
-        </item>
-        <item>
-            <title><![CDATA[The Glory Days of the Web]]></title>
-            <link>https://bkardell.com/blog/The-Glory-Days-Of-The-Web.html</link>
-            <guid>https://bkardell.com/blog/The-Glory-Days-Of-The-Web.html</guid>
-            <pubDate>Wed, 05 Oct 2016 04:00:00 GMT</pubDate>
-            <description><![CDATA[For the past couple of years, there have been a number of pieces lamenting the current state of Web development: It's gotten pretty complicated. Very recently a satirical piece on this subject really struck a chord and got a lot of attention. Dion Almaer wrote a piece in reply in which he introduced what I thought was a really good analogy - the rose colored glasses that we often see the past through...]]></description>
-            <content:encoded><![CDATA[.captioned-image {
+</section></section>]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[The Glory Days of the Web]]></title>
+        <id>https://bkardell.com/blog/The-Glory-Days-Of-The-Web.html</id>
+        <link href="https://bkardell.com/blog/The-Glory-Days-Of-The-Web.html">
+        </link>
+        <updated>2016-10-05T04:00:00Z</updated>
+        <summary type="html"><![CDATA[For the past couple of years, there have been a number of pieces lamenting the current state of Web development: It's gotten pretty complicated. Very recently a satirical piece on this subject really struck a chord and got a lot of attention. Dion Almaer wrote a piece in reply in which he introduced what I thought was a really good analogy - the rose colored glasses that we often see the past through...]]></summary>
+        <content type="html"><![CDATA[.captioned-image {
     background-color: #eaeaea;
     display: block;
     overflow: hidden;
@@ -7221,15 +7234,16 @@ blockquote:after {
 
 		<p>But let's also try to remain realistic in how we compare the present to the Glory Days.</p>
 	</section>
-]]></content:encoded>
-        </item>
-        <item>
-            <title><![CDATA[Potentially Scattered Thoughts on Web Components and Frameworks]]></title>
-            <link>https://bkardell.com/blog/Potentially-Scattered-Thoughts-On-Web-Components.html</link>
-            <guid>https://bkardell.com/blog/Potentially-Scattered-Thoughts-On-Web-Components.html</guid>
-            <pubDate>Mon, 26 Sep 2016 04:00:00 GMT</pubDate>
-            <description><![CDATA[Chances are pretty good that you've seen at least one of the many articles and tweets flying around lately about Web Components and Frameworks. For the past week I've watched as all sorts of arguments have been made by friends of mine on both sides and wanted to weigh in and share some thoughts, but my life hasn't been cooperating. Finally, I have a moment so I tried to put down some thoughts that have been banging around in my head... No guarantee they are coherent and I'm out of time, so here they are....]]></description>
-            <content:encoded><![CDATA[.captioned-image {
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Potentially Scattered Thoughts on Web Components and Frameworks]]></title>
+        <id>https://bkardell.com/blog/Potentially-Scattered-Thoughts-On-Web-Components.html</id>
+        <link href="https://bkardell.com/blog/Potentially-Scattered-Thoughts-On-Web-Components.html">
+        </link>
+        <updated>2016-09-26T04:00:00Z</updated>
+        <summary type="html"><![CDATA[Chances are pretty good that you've seen at least one of the many articles and tweets flying around lately about Web Components and Frameworks. For the past week I've watched as all sorts of arguments have been made by friends of mine on both sides and wanted to weigh in and share some thoughts, but my life hasn't been cooperating. Finally, I have a moment so I tried to put down some thoughts that have been banging around in my head... No guarantee they are coherent and I'm out of time, so here they are....]]></summary>
+        <content type="html"><![CDATA[.captioned-image {
     background-color: #eaeaea;
     display: block;
     overflow: hidden;
@@ -7554,15 +7568,16 @@ blockquote:after {
 
 		<p>Will it be as pretty as it might be if we started over?  Probably not, but, I think it'll actually get done this way.  If we make some progress, we inch the impossible destination ever closer.</p>
 	</section>
-]]></content:encoded>
-        </item>
-        <item>
-            <title><![CDATA[The Future Web Wants You]]></title>
-            <link>https://bkardell.com/blog/The-Future-Web-Wants-You.html</link>
-            <guid>https://bkardell.com/blog/The-Future-Web-Wants-You.html</guid>
-            <pubDate>Wed, 24 Aug 2016 04:00:00 GMT</pubDate>
-            <description><![CDATA[A few weeks ago I gave a talk in Pittsburgh, PA at Code and Supply. It was recorded if you would rather watch the video (the actual talk is ~40 minutes, the video captures some of the Q&amp;A afterward as well), but I'm more comfortable writing and I thought it might be worth a stab at a companion piece that tries to make the same points/arguments in blog-post-size, so - here it is.]]></description>
-            <content:encoded><![CDATA[.captioned-image {
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[The Future Web Wants You]]></title>
+        <id>https://bkardell.com/blog/The-Future-Web-Wants-You.html</id>
+        <link href="https://bkardell.com/blog/The-Future-Web-Wants-You.html">
+        </link>
+        <updated>2016-08-24T04:00:00Z</updated>
+        <summary type="html"><![CDATA[A few weeks ago I gave a talk in Pittsburgh, PA at Code and Supply. It was recorded if you would rather watch the video (the actual talk is ~40 minutes, the video captures some of the Q&amp;A afterward as well), but I'm more comfortable writing and I thought it might be worth a stab at a companion piece that tries to make the same points/arguments in blog-post-size, so - here it is.]]></summary>
+        <content type="html"><![CDATA[.captioned-image {
     background-color: #eaeaea;
     display: block;
     overflow: hidden;
@@ -7960,17 +7975,16 @@ blockquote:after {
 	<p class="thanksTo">
 		<em>Very special thanks to my friends the great <a href="https://twitter.com/brucel">Bruce Lawson</a> and (the also great) <a href="https://twitter.com/garazi">Greg Rewis</a> for proofreading this piece.</em>
 	</p>
-]]></content:encoded>
-            <enclosure url="/media/join-the-rebellion.jpg">
-            </enclosure>
-        </item>
-        <item>
-            <title><![CDATA[X-Web: Days of Future Past]]></title>
-            <link>https://bkardell.com/blog/X-Web-Days-of-Future-Past.html</link>
-            <guid>https://bkardell.com/blog/X-Web-Days-of-Future-Past.html</guid>
-            <pubDate>Mon, 20 Jun 2016 04:00:00 GMT</pubDate>
-            <description><![CDATA[If you're not a comic book nerd, or a comic movie nerd, I suppose an explanation is necessary: In the Marvel Universe, there is a genetic mutation in some humans called "the X-gene". This gene leads to development of an exotic protein which can radically affect other genes in unpredictable ways. The result is mutants with all sorts of different "super" abilities. This is the basis for the story lines in the X-Men comics. Some humans, without the X-gene, see mutants as freaks, there is prejudice against them. Others would like to recruit them as weapons. Still others are friends. The mutant community is divided too. One group of mutants believe that they are a new homo superior destined to become the dominant species and they're willing to earn this by fear and force. Another group of mutants, the X-Men, led by Professor Xavier, believe that mutants and non-mutants should live in harmony. Mutants powers can even aid humanity. They work very hard for the advancement of peace and tolerance. And then, there are quite a lot of people - both mutants and everydays humans who are torn back and forth somewhere in the middle on a lot of the subtleties that arise. One of the most amazing parts of the narrative is that the leaders of the two groups are actually best friends. They actually agree on much. Most of their followers are not similarly friendly. It's kind of a hot mess, and it reminds me a little of the Web community.]]></description>
-            <content:encoded><![CDATA[.captioned-image {
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[X-Web: Days of Future Past]]></title>
+        <id>https://bkardell.com/blog/X-Web-Days-of-Future-Past.html</id>
+        <link href="https://bkardell.com/blog/X-Web-Days-of-Future-Past.html">
+        </link>
+        <updated>2016-06-20T04:00:00Z</updated>
+        <summary type="html"><![CDATA[If you're not a comic book nerd, or a comic movie nerd, I suppose an explanation is necessary: In the Marvel Universe, there is a genetic mutation in some humans called "the X-gene". This gene leads to development of an exotic protein which can radically affect other genes in unpredictable ways. The result is mutants with all sorts of different "super" abilities. This is the basis for the story lines in the X-Men comics. Some humans, without the X-gene, see mutants as freaks, there is prejudice against them. Others would like to recruit them as weapons. Still others are friends. The mutant community is divided too. One group of mutants believe that they are a new homo superior destined to become the dominant species and they're willing to earn this by fear and force. Another group of mutants, the X-Men, led by Professor Xavier, believe that mutants and non-mutants should live in harmony. Mutants powers can even aid humanity. They work very hard for the advancement of peace and tolerance. And then, there are quite a lot of people - both mutants and everydays humans who are torn back and forth somewhere in the middle on a lot of the subtleties that arise. One of the most amazing parts of the narrative is that the leaders of the two groups are actually best friends. They actually agree on much. Most of their followers are not similarly friendly. It's kind of a hot mess, and it reminds me a little of the Web community.]]></summary>
+        <content type="html"><![CDATA[.captioned-image {
     background-color: #eaeaea;
     display: block;
     overflow: hidden;
@@ -8360,17 +8374,16 @@ blockquote:after {
 	</section>
 
 
-]]></content:encoded>
-            <enclosure url="/media/x-web-first-class.jpg">
-            </enclosure>
-        </item>
-        <item>
-            <title><![CDATA[Prognostication and the Failure of the Web]]></title>
-            <link>https://bkardell.com/blog/Prognostication-And-The-Failure-Of-The-Web.html</link>
-            <guid>https://bkardell.com/blog/Prognostication-And-The-Failure-Of-The-Web.html</guid>
-            <pubDate>Fri, 06 May 2016 04:00:00 GMT</pubDate>
-            <description><![CDATA[For almost as long as there has been a Web to write about, people have been prognosticating the death of the Web.  Mine is a different kind of prediction, but as I look into my crystal ball, I'm absolutely certain of it:  The Web will fail. Let me tell you what I see through the glass...]]></description>
-            <content:encoded><![CDATA[.captioned-image {
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Prognostication and the Failure of the Web]]></title>
+        <id>https://bkardell.com/blog/Prognostication-And-The-Failure-Of-The-Web.html</id>
+        <link href="https://bkardell.com/blog/Prognostication-And-The-Failure-Of-The-Web.html">
+        </link>
+        <updated>2016-05-06T04:00:00Z</updated>
+        <summary type="html"><![CDATA[For almost as long as there has been a Web to write about, people have been prognosticating the death of the Web.  Mine is a different kind of prediction, but as I look into my crystal ball, I'm absolutely certain of it:  The Web will fail. Let me tell you what I see through the glass...]]></summary>
+        <content type="html"><![CDATA[.captioned-image {
     background-color: #eaeaea;
     display: block;
     overflow: hidden;
@@ -8668,19 +8681,18 @@ blockquote:after {
 
 	<p class="thanksTo"><em>Note, if you enjoyed the stories of failure in this piece, I'd highly recommend <a href="http://www.amazon.com/How-We-Got-Now-Innovations/dp/1594632960">"</a></em><a href="http://www.amazon.com/How-We-Got-Now-Innovations/dp/1594632960"><span id="productTitle" class="a-size-extra-large">How We Got to Now: Six Innovations That Made the Modern World" by Steven Johnson.</span></a></p>
 
-]]></content:encoded>
-            <enclosure url="file:///media/fortune-teller.jpg">
-            </enclosure>
-        </item>
-        <item>
-            <title><![CDATA[A Brief(ish) History of the Web Universe - Part IV: New Hope(s)]]></title>
-            <link>https://bkardell.com/blog/Brief-ish-History-of-The-Web-Part-4.html</link>
-            <guid>https://bkardell.com/blog/Brief-ish-History-of-The-Web-Part-4.html</guid>
-            <pubDate>Sun, 10 Apr 2016 04:00:00 GMT</pubDate>
-            <description><![CDATA[
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[A Brief(ish) History of the Web Universe - Part IV: New Hope(s)]]></title>
+        <id>https://bkardell.com/blog/Brief-ish-History-of-The-Web-Part-4.html</id>
+        <link href="https://bkardell.com/blog/Brief-ish-History-of-The-Web-Part-4.html">
+        </link>
+        <updated>2016-04-10T04:00:00Z</updated>
+        <summary type="html"><![CDATA[
 		It's early 1994. AT&amp;T has purchased Go and PenOS (see&nbsp;Part I: The Pre-Web) and now they are pulling the plug. &nbsp;SmartSketch FutureSplash (again, Part I) won't be released. Its makers Jonathan Gay and Charlie Jackson briefly try porting to the desktop, but there they would have to compete with well-funded and mature products and that isn't practical. &nbsp;Keep them in the back of your mind, we'll come back to them.
-	]]></description>
-            <content:encoded><![CDATA[.captioned-image {
+	]]></summary>
+        <content type="html"><![CDATA[.captioned-image {
     background-color: #eaeaea;
     display: block;
     overflow: hidden;
@@ -9041,17 +9053,16 @@ blockquote:after {
 	</section>
 
 
-]]></content:encoded>
-            <enclosure url="https://briankardell.files.wordpress.com/2017/04/first-ever-banner-ad.gif">
-            </enclosure>
-        </item>
-        <item>
-            <title><![CDATA[TokenLists: Missing Web DNA]]></title>
-            <link>https://bkardell.com/blog/TokenLists-Missing-DNA.html</link>
-            <guid>https://bkardell.com/blog/TokenLists-Missing-DNA.html</guid>
-            <pubDate>Tue, 29 Mar 2016 04:00:00 GMT</pubDate>
-            <description><![CDATA[As we move forward with the Web, it's important that we look down into the DNA and continue to find the missing connections - things that are fundamentally related in concept and managed so by the browser, but not exposed to developers in similar fashion.  I'd like to talk about one of those I recently uncovered...]]></description>
-            <content:encoded><![CDATA[.captioned-image {
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[TokenLists: Missing Web DNA]]></title>
+        <id>https://bkardell.com/blog/TokenLists-Missing-DNA.html</id>
+        <link href="https://bkardell.com/blog/TokenLists-Missing-DNA.html">
+        </link>
+        <updated>2016-03-29T04:00:00Z</updated>
+        <summary type="html"><![CDATA[As we move forward with the Web, it's important that we look down into the DNA and continue to find the missing connections - things that are fundamentally related in concept and managed so by the browser, but not exposed to developers in similar fashion.  I'd like to talk about one of those I recently uncovered...]]></summary>
+        <content type="html"><![CDATA[.captioned-image {
     background-color: #eaeaea;
     display: block;
     overflow: hidden;
@@ -9402,16 +9413,17 @@ element.className = (element.className === "selected") ? "" : "selected";</pre>
 		<p class="thanksTo">Thanks to the many people who proofread, looked at demos, discussed or&nbsp;gave thoughts on this as it developed, including Jonathan Neal, Bruce Lawson, Mathias Bynens,&nbsp;Simon St Laurent, Jake Archibald, and Alice Boxhall.</p>
 	</section>
 
-]]></content:encoded>
-        </item>
-        <item>
-            <title><![CDATA[A Brief(ish) History of the Web Universe - Part III: The Early Web]]></title>
-            <link>https://bkardell.com/blog/Brief-ish-History-of-The-Web-Part-3.html</link>
-            <guid>https://bkardell.com/blog/Brief-ish-History-of-The-Web-Part-3.html</guid>
-            <pubDate>Fri, 05 Feb 2016 05:00:00 GMT</pubDate>
-            <description><![CDATA[
-	Part I: The Pre-Web and Part II: Time of this series attempt to set the creation of the Web, the first Web browser and early attempts to publicly share Sir Tim Berners-Lee’s idea of “the Web” into some historical context.  They attempt to illustrate that there were ideas and forks of ideas along the way, each  considering different aspects of different problems; and that each had varying degrees of success. Some were popular and increasingly mature desktop products, others created standards upon which many products would be built.  Some were technically interesting but completely failed to take off and some which were academically fascinating but were largely vapor.   All of these were still “in motion” at the time that the Web was being conceived and it’s important to realize that they didn’t stop just because Tim said “wait, I’ve got it.”.  Those posts also attempt to explain how Tim really wanted the Web to be read/write, wanted to tap into existing mature products and which bits he imagined were most and least important.  I described the landscape of deployed hardware and technology at the time – the world was close, but not yet “ready” to be wired in richer form/  We weren’t connected by and large – In fact, the entire amount of information sent across the Internet monthly at that time would easily fit on a single sub $100 (US) external USB hard-drive in 2016.    All of this led helped shape the Web.]]></description>
-            <content:encoded><![CDATA[.captioned-image {
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[A Brief(ish) History of the Web Universe - Part III: The Early Web]]></title>
+        <id>https://bkardell.com/blog/Brief-ish-History-of-The-Web-Part-3.html</id>
+        <link href="https://bkardell.com/blog/Brief-ish-History-of-The-Web-Part-3.html">
+        </link>
+        <updated>2016-02-05T05:00:00Z</updated>
+        <summary type="html"><![CDATA[
+	Part I: The Pre-Web and Part II: Time of this series attempt to set the creation of the Web, the first Web browser and early attempts to publicly share Sir Tim Berners-Lee’s idea of “the Web” into some historical context.  They attempt to illustrate that there were ideas and forks of ideas along the way, each  considering different aspects of different problems; and that each had varying degrees of success. Some were popular and increasingly mature desktop products, others created standards upon which many products would be built.  Some were technically interesting but completely failed to take off and some which were academically fascinating but were largely vapor.   All of these were still “in motion” at the time that the Web was being conceived and it’s important to realize that they didn’t stop just because Tim said “wait, I’ve got it.”.  Those posts also attempt to explain how Tim really wanted the Web to be read/write, wanted to tap into existing mature products and which bits he imagined were most and least important.  I described the landscape of deployed hardware and technology at the time – the world was close, but not yet “ready” to be wired in richer form/  We weren’t connected by and large – In fact, the entire amount of information sent across the Internet monthly at that time would easily fit on a single sub $100 (US) external USB hard-drive in 2016.    All of this led helped shape the Web.]]></summary>
+        <content type="html"><![CDATA[.captioned-image {
     background-color: #eaeaea;
     display: block;
     overflow: hidden;
@@ -9746,16 +9758,17 @@ blockquote:after {
 	</section>
 
 
-]]></content:encoded>
-        </item>
-        <item>
-            <title><![CDATA[A Brief(ish) History of the Web Universe - Part II: Time]]></title>
-            <link>https://bkardell.com/blog/Brief-ish-History-of-The-Web-Part-2.html</link>
-            <guid>https://bkardell.com/blog/Brief-ish-History-of-The-Web-Part-2.html</guid>
-            <pubDate>Mon, 07 Dec 2015 05:00:00 GMT</pubDate>
-            <description><![CDATA[
-	Part II of&nbsp;"A Brief(ish) History of the Web Universe" aka "The Boring Posts". &nbsp;No themes, no punch, just history that I hope I can use to help explain where my own perspectives on a whole bunch of things draw from…]]></description>
-            <content:encoded><![CDATA[.captioned-image {
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[A Brief(ish) History of the Web Universe - Part II: Time]]></title>
+        <id>https://bkardell.com/blog/Brief-ish-History-of-The-Web-Part-2.html</id>
+        <link href="https://bkardell.com/blog/Brief-ish-History-of-The-Web-Part-2.html">
+        </link>
+        <updated>2015-12-07T05:00:00Z</updated>
+        <summary type="html"><![CDATA[
+	Part II of&nbsp;"A Brief(ish) History of the Web Universe" aka "The Boring Posts". &nbsp;No themes, no punch, just history that I hope I can use to help explain where my own perspectives on a whole bunch of things draw from…]]></summary>
+        <content type="html"><![CDATA[.captioned-image {
     background-color: #eaeaea;
     display: block;
     overflow: hidden;
@@ -10118,18 +10131,17 @@ led by one Francis Kretz (Thompsa SA? Rennes?).
 	<p class="thanksTo">Many thanks to folks who slogged through and proofread this dry post for me: @mattur @simonstl and @sundress.</p>
 
 
-]]></content:encoded>
-            <enclosure url="file:///media/tims-next-editor-bw.gif">
-            </enclosure>
-        </item>
-        <item>
-            <title><![CDATA[A Brief(ish) History of the Web Universe - Part I: The Pre-Web]]></title>
-            <link>https://bkardell.com/blog/Brief-ish-History-of-The-Web-Part-1.html</link>
-            <guid>https://bkardell.com/blog/Brief-ish-History-of-The-Web-Part-1.html</guid>
-            <pubDate>Sun, 22 Nov 2015 05:00:00 GMT</pubDate>
-            <description><![CDATA[
-	There are a couple of posts that I've been wanting to write, but in each of them I keep finding myself wanting to talk about historical context.  Explaining it in place turns out to be too hard and I've been unable to find a resource that unifies that bits I want to talk about.  I've decided, then, that it might be easier then to write this history separately, mostly so that I can refer back to it.  So here it is, "A Brief(ish) History of the Web Universe" aka "The Boring Posts" in a few parts.  No themes, no punch, just history that I hope I can use to help explain where my own perspectives on a whole bunch of things draw from...]]></description>
-            <content:encoded><![CDATA[.captioned-image {
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[A Brief(ish) History of the Web Universe - Part I: The Pre-Web]]></title>
+        <id>https://bkardell.com/blog/Brief-ish-History-of-The-Web-Part-1.html</id>
+        <link href="https://bkardell.com/blog/Brief-ish-History-of-The-Web-Part-1.html">
+        </link>
+        <updated>2015-11-22T05:00:00Z</updated>
+        <summary type="html"><![CDATA[
+	There are a couple of posts that I've been wanting to write, but in each of them I keep finding myself wanting to talk about historical context.  Explaining it in place turns out to be too hard and I've been unable to find a resource that unifies that bits I want to talk about.  I've decided, then, that it might be easier then to write this history separately, mostly so that I can refer back to it.  So here it is, "A Brief(ish) History of the Web Universe" aka "The Boring Posts" in a few parts.  No themes, no punch, just history that I hope I can use to help explain where my own perspectives on a whole bunch of things draw from...]]></summary>
+        <content type="html"><![CDATA[.captioned-image {
     background-color: #eaeaea;
     display: block;
     overflow: hidden;
@@ -10531,17 +10543,16 @@ blockquote:after {
 	<p class="thanksTo">Many thanks to folks who slogged through and proofread this dry post for me: @mattur @simonstl and @sundress.</p>
 
 
-</section>]]></content:encoded>
-            <enclosure url="https://briankardell.files.wordpress.com/2015/11/102618640-03-01.jpg?w=300">
-            </enclosure>
-        </item>
-        <item>
-            <title><![CDATA[Reflections on Engineering]]></title>
-            <link>https://bkardell.com/blog/Reflections-On-Engineering.html</link>
-            <guid>https://bkardell.com/blog/Reflections-On-Engineering.html</guid>
-            <pubDate>Sat, 20 Jun 2015 04:00:00 GMT</pubDate>
-            <description><![CDATA[Very early in my career, I was lucky enough to stumble on Web development before it really became a “thing” and landed an apprenticeship (and later job) in a new, small experimental arm of an established consulting firm which primarily worked on embedded systems. I was employee #2 of this new effort and we worked in an attic loft. Nearly all of my experience before this was from books and pure experimentation/willpower to accomplish something. I worked there for about a year, mostly by myself churning out code in somewhat typical fashion: Someone said “make it look like this picture” or “this stuff needs to come from a database” and that was pretty much it. I worked too hard, I was usually scared to death I'd never be able to figure out that one new technology that each project introduced me to and quite often it was just struggle to finish and make something work.]]></description>
-            <content:encoded><![CDATA[.captioned-image {
+</section>]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Reflections on Engineering]]></title>
+        <id>https://bkardell.com/blog/Reflections-On-Engineering.html</id>
+        <link href="https://bkardell.com/blog/Reflections-On-Engineering.html">
+        </link>
+        <updated>2015-06-20T04:00:00Z</updated>
+        <summary type="html"><![CDATA[Very early in my career, I was lucky enough to stumble on Web development before it really became a “thing” and landed an apprenticeship (and later job) in a new, small experimental arm of an established consulting firm which primarily worked on embedded systems. I was employee #2 of this new effort and we worked in an attic loft. Nearly all of my experience before this was from books and pure experimentation/willpower to accomplish something. I worked there for about a year, mostly by myself churning out code in somewhat typical fashion: Someone said “make it look like this picture” or “this stuff needs to come from a database” and that was pretty much it. I worked too hard, I was usually scared to death I'd never be able to figure out that one new technology that each project introduced me to and quite often it was just struggle to finish and make something work.]]></summary>
+        <content type="html"><![CDATA[.captioned-image {
     background-color: #eaeaea;
     display: block;
     overflow: hidden;
@@ -10874,15 +10885,16 @@ blockquote:after {
 
 
 
-</section>]]></content:encoded>
-        </item>
-        <item>
-            <title><![CDATA[What Would Bruce Lee Do? The Tao of the Extensible Web.]]></title>
-            <link>https://bkardell.com/blog/Tao-Of-The-Extensible-Web.html</link>
-            <guid>https://bkardell.com/blog/Tao-Of-The-Extensible-Web.html</guid>
-            <pubDate>Tue, 07 Oct 2014 04:00:00 GMT</pubDate>
-            <description><![CDATA[Recently I participated in a panel on The Standards Process and the Extensible Web Manifesto at Edge Conf. &nbsp;While ours was the very last session of the day (you can watch the video here), nearly every topic that day called out some mention of the Extensible Web Manifesto. &nbsp;Privately,&nbsp;there were still&nbsp;plenty&nbsp;of people I met between sessions who privately said “So, what exactly is this Manifesto&nbsp;thing I keep hearing about, tell me more…”. &nbsp;and my day was filled with discussions at all levels about how exactly we should apply its words&nbsp;in practice or&nbsp;what exactly we meant by x - or specifically what we want to change about standards.  Given this, I thought&nbsp;it worth a post to share my own personal thoughts, and say some of the things I didn't have an opportunity to say on the panel. &nbsp; I'll begin in the obvious place: &nbsp;Bruce Lee.]]></description>
-            <content:encoded><![CDATA[.captioned-image {
+</section>]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[What Would Bruce Lee Do? The Tao of the Extensible Web.]]></title>
+        <id>https://bkardell.com/blog/Tao-Of-The-Extensible-Web.html</id>
+        <link href="https://bkardell.com/blog/Tao-Of-The-Extensible-Web.html">
+        </link>
+        <updated>2014-10-07T04:00:00Z</updated>
+        <summary type="html"><![CDATA[Recently I participated in a panel on The Standards Process and the Extensible Web Manifesto at Edge Conf. &nbsp;While ours was the very last session of the day (you can watch the video here), nearly every topic that day called out some mention of the Extensible Web Manifesto. &nbsp;Privately,&nbsp;there were still&nbsp;plenty&nbsp;of people I met between sessions who privately said “So, what exactly is this Manifesto&nbsp;thing I keep hearing about, tell me more…”. &nbsp;and my day was filled with discussions at all levels about how exactly we should apply its words&nbsp;in practice or&nbsp;what exactly we meant by x - or specifically what we want to change about standards.  Given this, I thought&nbsp;it worth a post to share my own personal thoughts, and say some of the things I didn't have an opportunity to say on the panel. &nbsp; I'll begin in the obvious place: &nbsp;Bruce Lee.]]></summary>
+        <content type="html"><![CDATA[.captioned-image {
     background-color: #eaeaea;
     display: block;
     overflow: hidden;
@@ -11258,17 +11270,16 @@ blockquote:after {
 
 	<p class="thanksTo">Very special thanks to Brendan Eich and Bruce Lawson for kindly reviewing and providing useful thoughts, commentary and corrections ❤..</p>
 
-]]></content:encoded>
-            <enclosure url="/media/bruce-lee-obey-principles.jpg">
-            </enclosure>
-        </item>
-        <item>
-            <title><![CDATA[A Web for the Next Century]]></title>
-            <link>https://bkardell.com/blog/A-Web-For-The-Next-Century.html</link>
-            <guid>https://bkardell.com/blog/A-Web-For-The-Next-Century.html</guid>
-            <pubDate>Tue, 08 Oct 2013 04:00:00 GMT</pubDate>
-            <description><![CDATA[If you've read any of the numerous articles about The Extensible Web or heard about it in conference presentations, or seen The Extensible Web Manifesto you've likely seen (or heard) three phrases repeated: "Explain the magic," "fundamental primitives" and "evolution of the platform". I thought it might be worth (another) piece explaining why&nbsp;I think&nbsp;these are at the heart of it all...]]></description>
-            <content:encoded><![CDATA[.captioned-image {
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[A Web for the Next Century]]></title>
+        <id>https://bkardell.com/blog/A-Web-For-The-Next-Century.html</id>
+        <link href="https://bkardell.com/blog/A-Web-For-The-Next-Century.html">
+        </link>
+        <updated>2013-10-08T04:00:00Z</updated>
+        <summary type="html"><![CDATA[If you've read any of the numerous articles about The Extensible Web or heard about it in conference presentations, or seen The Extensible Web Manifesto you've likely seen (or heard) three phrases repeated: "Explain the magic," "fundamental primitives" and "evolution of the platform". I thought it might be worth (another) piece explaining why&nbsp;I think&nbsp;these are at the heart of it all...]]></summary>
+        <content type="html"><![CDATA[.captioned-image {
     background-color: #eaeaea;
     display: block;
     overflow: hidden;
@@ -11588,15 +11599,16 @@ blockquote:after {
 
 		<p>All of this allows for small&nbsp;<em>mutations - new things which can compete for a niche in the very real world -</em>&nbsp;and unlike academic and closed committees can&nbsp;help create new, high-level abstractions based on real, verified shared need and acceptance and shared understanding. &nbsp;In other words, we will have a Platform which, like life itself, is highly adaptive and able to survive complex changes in pressures and last beyond any of our lifetimes.</p>
 	</section>
-]]></content:encoded>
-        </item>
-        <item>
-            <title><![CDATA[Dropping the F-Bomb on Web Standards]]></title>
-            <link>https://bkardell.com/blog/Dropping-The-F-Bomb-On-Standards.html</link>
-            <guid>https://bkardell.com/blog/Dropping-The-F-Bomb-On-Standards.html</guid>
-            <pubDate>Fri, 17 May 2013 04:00:00 GMT</pubDate>
-            <description><![CDATA[In 2012, Mirriam-Webster's dictionary added a&nbsp;definition for the F-Bomb. &nbsp;Why? &nbsp;Was it because some elite Mirriam-Webster working group d-wonk committee decided it was necessary to mint a "steamy new word"? &nbsp;No, rather, because it is a well-established part of the common vernacular of the English language. There are&nbsp;occurrences&nbsp;of it going all the way back to 1988. &nbsp;Not every slang term someone makes up will get into the dictionary. The Oxford English Dictionary has a&nbsp;vault full of millions of words that currently do not make the cut. &nbsp;Many never catch on. &nbsp;Some die out quickly and others change shape as they spread, that is what etymology is all about. &nbsp;Some stagnate and maintain distinct and valuable regional meanings, and that is fine, but they aren't part of the standard language. &nbsp;The ones that are ultimately widely understood and eventually become commonly used are accepted and codified into the dictionary. Some words even become extinct. &nbsp;In other words, the process of word standardization is&nbsp;evolutionary.]]></description>
-            <content:encoded><![CDATA[.captioned-image {
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Dropping the F-Bomb on Web Standards]]></title>
+        <id>https://bkardell.com/blog/Dropping-The-F-Bomb-On-Standards.html</id>
+        <link href="https://bkardell.com/blog/Dropping-The-F-Bomb-On-Standards.html">
+        </link>
+        <updated>2013-05-17T04:00:00Z</updated>
+        <summary type="html"><![CDATA[In 2012, Mirriam-Webster's dictionary added a&nbsp;definition for the F-Bomb. &nbsp;Why? &nbsp;Was it because some elite Mirriam-Webster working group d-wonk committee decided it was necessary to mint a "steamy new word"? &nbsp;No, rather, because it is a well-established part of the common vernacular of the English language. There are&nbsp;occurrences&nbsp;of it going all the way back to 1988. &nbsp;Not every slang term someone makes up will get into the dictionary. The Oxford English Dictionary has a&nbsp;vault full of millions of words that currently do not make the cut. &nbsp;Many never catch on. &nbsp;Some die out quickly and others change shape as they spread, that is what etymology is all about. &nbsp;Some stagnate and maintain distinct and valuable regional meanings, and that is fine, but they aren't part of the standard language. &nbsp;The ones that are ultimately widely understood and eventually become commonly used are accepted and codified into the dictionary. Some words even become extinct. &nbsp;In other words, the process of word standardization is&nbsp;evolutionary.]]></summary>
+        <content type="html"><![CDATA[.captioned-image {
     background-color: #eaeaea;
     display: block;
     overflow: hidden;
@@ -11899,15 +11911,16 @@ blockquote:after {
 			<li><a href="http://smus.com/how-the-web-should-work/">How the Web Should Work</a> (smus.com)</li>
 		</ul>
 	</section>
-]]></content:encoded>
-        </item>
-        <item>
-            <title><![CDATA[Off With Their Heads: Disband the W3C?]]></title>
-            <link>https://bkardell.com/blog/Off-With-Their-Heads.html</link>
-            <guid>https://bkardell.com/blog/Off-With-Their-Heads.html</guid>
-            <pubDate>Tue, 23 Apr 2013 04:00:00 GMT</pubDate>
-            <description><![CDATA[Just a few days ago, Matthew Butterick presented a talk entited "The Bomb in the Garden" at TYPO in San Francisco (poor title timing given recent events in Boston). In it, he concludes "the misery exists because of the W3C—the World Wide Web Consortium... So, respectfully, but quite seriously, I suggest: let’s Disband the W3C". Ultimately he suggests that "...the alternative is a web that’s organized entirely as a set of open-source software projects.]]></description>
-            <content:encoded><![CDATA[.captioned-image {
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Off With Their Heads: Disband the W3C?]]></title>
+        <id>https://bkardell.com/blog/Off-With-Their-Heads.html</id>
+        <link href="https://bkardell.com/blog/Off-With-Their-Heads.html">
+        </link>
+        <updated>2013-04-23T04:00:00Z</updated>
+        <summary type="html"><![CDATA[Just a few days ago, Matthew Butterick presented a talk entited "The Bomb in the Garden" at TYPO in San Francisco (poor title timing given recent events in Boston). In it, he concludes "the misery exists because of the W3C—the World Wide Web Consortium... So, respectfully, but quite seriously, I suggest: let’s Disband the W3C". Ultimately he suggests that "...the alternative is a web that’s organized entirely as a set of open-source software projects.]]></summary>
+        <content type="html"><![CDATA[.captioned-image {
     background-color: #eaeaea;
     display: block;
     overflow: hidden;
@@ -12251,15 +12264,16 @@ blockquote:after {
 
 
 
-]]></content:encoded>
-        </item>
-        <item>
-            <title><![CDATA[(Really) classy CSS]]></title>
-            <link>https://bkardell.com/blog/Really-Classy-CSS.html</link>
-            <guid>https://bkardell.com/blog/Really-Classy-CSS.html</guid>
-            <pubDate>Fri, 11 May 2012 04:00:00 GMT</pubDate>
-            <description><![CDATA[When CSS was conceived, the basic vision was that HTML should provide structure and semantics while CSS would providing styling via rules based on selectors describing (or selecting) what to style.  In an ideal world, Web pages could be authored by one group of people independently of the visual needs and then another group (designers) could go and write CSS to style it up.  The biggest problem in achieving this ideal was that HTML had such a small number of tags without any real obvious way to add enough semantics to actually accomplish this.  Thus, two things were added very early on:  The humble div and span tags in HTML and the .class in CSS  - the general idea being that the authors of a tree of markup could (quite independently of style concerns) build generic structures and pepper their markup with semantics via classes and ids.]]></description>
-            <content:encoded><![CDATA[.captioned-image {
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[(Really) classy CSS]]></title>
+        <id>https://bkardell.com/blog/Really-Classy-CSS.html</id>
+        <link href="https://bkardell.com/blog/Really-Classy-CSS.html">
+        </link>
+        <updated>2012-05-11T04:00:00Z</updated>
+        <summary type="html"><![CDATA[When CSS was conceived, the basic vision was that HTML should provide structure and semantics while CSS would providing styling via rules based on selectors describing (or selecting) what to style.  In an ideal world, Web pages could be authored by one group of people independently of the visual needs and then another group (designers) could go and write CSS to style it up.  The biggest problem in achieving this ideal was that HTML had such a small number of tags without any real obvious way to add enough semantics to actually accomplish this.  Thus, two things were added very early on:  The humble div and span tags in HTML and the .class in CSS  - the general idea being that the authors of a tree of markup could (quite independently of style concerns) build generic structures and pepper their markup with semantics via classes and ids.]]></summary>
+        <content type="html"><![CDATA[.captioned-image {
     background-color: #eaeaea;
     display: block;
     overflow: hidden;
@@ -12543,7 +12557,6 @@ blockquote:after {
 	    <p>Hitch is a new, open source project <a href="https://github.com/bkardell/Hitch/" target="_blank">hosted on github</a> which we think has a lot of potential.  Check out <a href="http://www.hitchjs.com">http://www.hitchjs.com</a> and the articles on the <a href="https://hitchjs.wordpress.com/">Hitch Blog</a>...  Let us know what you think and share your comments, we'd love to hear from you and have a conversation.</p>
 
 	</section>
-]]></content:encoded>
-        </item>
-    </channel>
-</rss>
+]]></content>
+    </entry>
+</feed>
