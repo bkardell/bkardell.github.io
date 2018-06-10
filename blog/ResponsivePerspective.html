@@ -354,17 +354,21 @@ America (art for sale)</a></li>
         </p>
 
         <p>
-            But.. You just can't.  We don't control the layouts or CSS in any of those systems, all we can do is give them a thing to integrate.  These systems run the gambit of variance, some of them have core HTML and CSS tht is a decade old, others are in active development now.  This isn't a new problem, so I turn to look at how they have solved similar problems.
+            But.. You just can't.  We don't control the layouts or CSS in any of those systems, all we can do is give them a thing to integrate.  These systems run the gambit of variance: Some of them have core HTML and CSS thatt is a decade old while others are modern and in active development now.  Of course, this isn't a new problem - as I said, we deliver components all the time.  So I turn to look at how they have solved similar problems.
         </p>
         <p>
-            A I can think, as I do so is "<em>What fresh hell is this?</em>"  I am struck with a new appreciation of the scale of problem.  Each site has to re-figure out the responsive breakpoints for this element with regard to all possible layouts that it can occur in.  Neither side can really change anything without causing a domino effect in which all the things need to be redone.  Realistically, this is precisely the <em>kind</em> of problem I want to solve.
+            And... As I do, all I can think is "<em>What fresh hell is this?</em>"  I am struck with a new appreciation of the scale of problem.  Each site has to re-figure out the responsive breakpoints for this element with regard to all possible layouts that it can occur in.  They shouldn't even know that.  Further, neither side can really change anything without causing a domino effect in which all the things need to be redone.
+        </p>
+
+        <p>
+            So... realistically, this isn't some minor inconveience at all - <em>it's precisely the kind of problem I should've been wanting to solve</em>.  Solving this lifts all boats.
         </p>
     </section>
 
     <section class="sectioning">
         <contextual-heading role="heading" aria-level="2">So...Where do we stand?</contextual-heading>
         <p>
-            Given my new perspective, I am thankful that other people have been working on this problem.  Perhaps there's something that could us.  I knew we've got <code>ResizeObserver</code> coming, and that it's even shipping in Chrome. Perhaps I could use them to help make this better.  So, I spend the afternoon reading.  Very quickly, I realize that.. <em>Wow, there's still way too many things to solve here</em>.
+            Given my new perspective, I was thankful that other people have been working on this problem.  Perhaps there's something there that could help us.  I knew we've got <code>ResizeObserver</code> coming, and that it's even shipping in Chrome. Perhaps I could use that to help make things better!  So, I spend the afternoon reading.  Very quickly, I realize that.. <em>Wow, there's still way too many things to solve here</em>.
         </p>
 
         <p>
@@ -372,10 +376,10 @@ America (art for sale)</a></li>
         </p>
 
         <p>
-            Don't get me wrong, ResizeObservers are excellent, and ultimately will be an important aspect of the ultimate solution.  They will explain the observation magic involved in whatever we ultimately introduce so that the platform itself makes sense.
+            Don't get me wrong, ResizeObservers are excellent.  They will be an important aspect of whatever the ultimate solution:  They will explain the observation magic so that the platform itself makes sense.  That's wonderful.
         </p>
         <p>
-            Sadly though, even if we had them everywhere, they don't do anything to help with the other very hard problems.  <em>How do you express and collect which breakpoints apply to which things?  How do you know which elements to watch?  How do you keep stylistic things in actual CSS?</em>.
+            Sadly though, even if we had them everywhere today, they don't do anything to help with the other very hard problems.  <em>How do you express and collect which breakpoints apply to which things?  How do you know which elements to watch?  How do you keep stylistic things in actual CSS?</em>.
         </p>
         <p>
             Fixing these problems involves a lot more primitives, or a lot more tooling, or both.  Further, in some ways, <em>those</em> might actually be harder problems.</p>
