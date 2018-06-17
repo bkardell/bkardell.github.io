@@ -42,9 +42,9 @@
       },
       setContainerSize = function setContainerSize(el, dim) {
         var dim = (typeof dim !== 'undefined') ? dim : el.getBoundingClientRect()
-        console.log('evaluateBreakpoints on ', el)
+        //console.log('evaluateBreakpoints on ', el)
         evaluateBreakpoints(el, breakpoints.width, 'width', dim)
-        //evaluateBreakpoints(el, breakpoints.height, 'height', dim)
+        evaluateBreakpoints(el, breakpoints.height, 'height', dim)
       },
       setContainerSizes = function setContainerSizes() {
         xSizeEls.forEach(function(el) {
