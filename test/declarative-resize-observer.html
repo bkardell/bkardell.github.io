@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<head>
+
+    <style>
+
+
+[available-width*="x-small"] {
+  background-color: red;
+  color: white;
+}
+
+[available-width="small"],[available-width*="medium"] {
+  background-color: blue;
+  color: white;
+}
+
+[available-width*="large"] {
+  background-color: green;
+  color: white;
+}
+  .layout {
+    border: 1px solid gray;
+    display: block;
+  }
+
+  [resize-observer] {
+    margin: 1rem 0;
+  }
+
+  #convoluted[available-width*="medium"] {
+    background-color: blue;
+    color: white;
+    width: 1000px;
+  }
+
+  #convoluted[available-width*="large"] {
+    background-color: green;
+    color: white;
+    width: 500px;
+  }
+
+  #ro-one {
+    width: 100%;
+  }
+
+  #ro-two {
+    width: 75%;
+  }
+
+  #ro-three {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  #ro-three p {
+    display: block;
+    padding: 1rem;
+  }
+
+  /* what if I 'blow it out'*/
+  #ro-two p {
+    max-height: 100px;
+    width: 200rem;
+  }
+
+  table {
+      margin: 2rem auto;
+      min-width: 50%;
+      max-width: 70%;
+      border-collapse: collapse;
+  }
+  th:nth-child(1),
+  td:nth-child(1) {
+      text-align: left;
+      width: 10rem;
+      border: 1px solid gray;
+      padding: 0.5rem;
+
+  }
+
+  th:nth-child(2),
+  th:nth-child(3),
+  td:nth-child(2),
+  td:nth-child(3) {
+      text-align: right;
+      border: 1px solid gray;
+      padding: 0.5rem;
+  }
+    </style>
+    <script>
+"use strict";
+
+(function () {
+    var xSizeEls = [],
+        custom = {
+          width: {},
+          height: {}
+        },
+        breakpoints = {
+          width: {
+            "x-small": 468,
+            "small": 568,
+            "small-medium": 668,
+            "medium": 768,
+            "medium-large": 868,
+            "large": 968,
+            "x-large": 1068,
+            "xx-large": 1168
+          },
+          height: {
+            "x-small": 100,
+            "small": 200,
+            "small-medium": 300,
+            "medium": 400,
+            "medium-large": 500,
+            "large": 600,
+            "x-large": 700,
+            "xx-large": 800
+          }
+        },
+        hasResizeObserver = typeof ResizeObserver === 'function',
+        evaluateBreakpoints = function (el, bps, dir, dim) {
+          var sizebreakpoint = 'xx-small',
+              dim = (typeof dim !== 'undefined') ? dim : el.getBoundingClientRect()
+
+          Object.keys(bps).forEach(function(sizeName) {
+            if (dim[dir] > bps[sizeName]) {
+              sizebreakpoint = sizeName
+            }
+          })
+          el.setAttribute('available-' + dir, sizebreakpoint)
+        },
+        setContainerSize = function setContainerSize(el, dim) {
+          var dim = (typeof dim !== 'undefined') ? dim : el.getBoundingClientRect()
+          console.log('evaluateBreakpoints on ', el)
+          evaluateBreakpoints(el, breakpoints.width, 'width', dim)
+          //evaluateBreakpoints(el, breakpoints.height, 'height', dim)
+        },
+        setContainerSizes = function setContainerSizes() {
+          xSizeEls.forEach(function(el) {
+            setContainerSize(el)
+          });
+        },
+        collector = function collector(mutations) {
+          mo.disconnect();
+          setContainerSizes();
+          observe();
+        },
+        observe = function observe() {
+          mo.observe(document.documentElement, {
+            subtree: true,
+            attributes: true
+          })
+        },
+        isApplying = false,
+        mo = new MutationObserver(collector),
+        rObserver = function() {
+          if (hasResizeObserver) {
+            return new ResizeObserver(function(entries) {
+              if (!isApplying) {
+                isApplying = true
+                entries.forEach(function(entry) {
+                  setContainerSize(entry.target, entry.contentRect);
+                })
+                setTimeout(() => {
+                  isApplying = false
+                },10)
+              }
+            })
+          }
+        }(),
+        throttleId = false,
+        queueSet = function queueSet() {
+            if (throttleId) {
+              clearTimeout(throttleId);
+            }
+            mo.disconnect()
+            throttleId = setTimeout(function() {
+              setContainerSizes()
+              observe();
+            }, 10);
+        },
+        observeEl = function observeEl(el) {
+          if (isMatch(el)) {
+            if (hasResizeObserver) {
+                rObserver.observe(el)
+            } else {
+                xSizeEls.push(el)
+            }
+          }
+        },
+        unobserveEl = function unobserveEl(el) {
+            if (isMatch(el)) {
+              if (hasResizeObserver) {
+                  rObserver.unobserve(el)
+              } else {
+                  xSizeEls = xSizeEls.filter(function(el) {
+                     return el !== undefined;
+                  }, el);
+              }
+            }
+            el.removeAttribute('available-width')
+        };
+
+    observe();
+
+    var temp = document.createElement('style')
+    temp.innerHTML = "[resize-observer] { display: inherit; }[resize-observer] > * { display: contents; width: auto !important; height: auto !important;}"
+    document.head.insertBefore(temp, document.head.firstElementChild)
+
+    var isMatch = function isMatch(node) {
+        return node.nodeType === 1 && node.matches('[resize-observer]')
+    };
+    var po = new MutationObserver(function(mutations) {
+        mutations.forEach(function(mutation) {
+            if (mutation.type==='attributes') {
+              let target = mutation.target
+              if (isMatch(target)) {
+                observeEl(target)
+                setContainerSize(target)
+              } else {
+                unobserveEl(target)
+              }
+            } else {
+              Array.prototype.slice.call(mutation.addedNodes).forEach(observeEl)
+              Array.prototype.slice.call(mutation.removedNodes).forEach(unobserveEl)
+            }
+        });
+        if (!hasResizeObserver) {
+            window.addEventListener('resize', queueSet)
+            queueSet()
+        }
+    });
+    po.observe(document.documentElement, {
+        subtree: true,
+        childList: true,
+        attributeFilter: ['resize-observer']
+    })
+}())
+    </script>
+</head>
+<body>
+
+  <main>
+    <h1>Declarative Resize Observers</h1>
+    <p>
+      The idea is pretty simple:
+    </p>
+    <ol>
+      <li>A <code>ResizeObserver</code> is instatiated.</li>
+      <li>A stylesheet is injected which specifies that children of a resize observer are <code>display: contents</code> by default.  This prevents children from affecting the size of the thing being observed.</li>
+      <li>When an element gains or loses (including in the initial parse) a <code>resize-observer</code> attribute, a call is made to either <code>observe</code> or <code>unobserve</code> that element, respectively.</li>
+      <li>When a resize occurs, the observer gives us records for each of the things we're observing, giving us dimensions of each.  We loop over the dimensions and, for each one we compare their size with a series of named breakpoints, attaching attributes reflecting the applicable breakpoint in <code>available-height</code> and <code>available-width</code> DOM attributes.</li>
+      <li>CSS does it's thing.</li>
+    </ol>
+    <section>
+      <h1>Adding a declarative resize observer</h1>
+      <p>
+          There's really not much to say, you simply add a <code>resize-observer</code> attribute to any element.
+      </p>
+      <pre><code class="language-html">&lt;div resize-observer&gt;
+  ...whatever inside
+&lt;/div&gt;
+      </code></pre>
+
+      <p>This causes it to be observed and maintain the attributes <code>available-width</code> and <code>available-height</code>.  The values of those attributes are reflective of whichever named breakpoints apply.  Note that this is measure reflects the size of the element being, thus, the space available to children to lay out in.  If the size of the element doesn't change, these value will not change either.</p>
+    </section>
+
+    <section>
+      <h1>Named Breakpoints</h1>
+
+      <p>
+        There are 9 named breakpoints that increase slowly and provide a decent idea of how much space is available.
+      </p>
+
+      <table>
+          <thead>
+              <tr>
+                  <th>
+                      Name
+                  </th>
+                  <th>
+                      available-width
+                  </th>
+                  <th>
+                      available-height
+                  </th>
+              </tr>
+          </thead>
+          <tbody>
+              <tr>
+                  <td>xx-small</td>
+                  <td>0</td>
+                  <td>0</td>
+              </tr>
+              <tr>
+                  <td>x-small</td>
+                  <td>468px</td>
+                  <td>100px</td>
+              </tr>
+              <tr>
+                  <td>small</td>
+                  <td>568px</td>
+                  <td>200px</td>
+              </tr>
+              <tr>
+                  <td>small-medium</td>
+                  <td>668px</td>
+                  <td>300px</td>
+              </tr>
+              <tr>
+                  <td>medium</td>
+                  <td>768px</td>
+                  <td>400px</td>
+              </tr>
+              <tr>
+                  <td>medium-large</td>
+                  <td>868px</td>
+                  <td>500px</td>
+              </tr>
+              <tr>
+                  <td>large</td>
+                  <td>1200px</td>
+                  <td>600px</td>
+              </tr>
+              <tr>
+                  <td>x-large</td>
+                  <td>1068px</td>
+                  <td>700px</td>
+              </tr>
+              <tr>
+                  <td>xx-large</td>
+                  <td>1168px</td>
+                  <td>800px</td>
+              </tr>
+          </tbody>
+      </table>
+    </section>
+
+    <section>
+      <h1>Styling with named breakpoints</h1>
+      <p>
+        The practical upshot of this is that you can just use these attributes in your CSS selectors and you have something very closely approximating Container Queries.  While CSS attribute selectors cannot express mathematical relationships, they <em>can</em> use partial string based matching to achieve something similar... There is plenty of expressive power here.  Examples:
+      </p>
+
+
+      <pre><code class="language-css">/*
+  any .foo child
+  of an observed element
+  with less than 668px
+  of available space
+*/
+[available-width*="small"] > .foo {
+  background-color: red;
+  color: white;
+}
+
+/*
+  any .bar child
+  of an observed element
+  with between 568px and 668px
+  of available space
+*/
+[available-width^="small"] > .bar {
+  background-color: red;
+  color: white;
+}
+
+/*
+  any .foo child
+  of an observed element
+  with between 668px and 868px
+  of available space
+*/
+[available-width*="medium"] > .foo {
+  background-color: blue;
+  color: white;
+}
+
+/*
+  any .foo child
+  of an observed element
+  with over than 1004px
+  of available space
+*/
+[available-width*="large"] > .foo {
+  background-color: green;
+  color: white;
+}
+
+/* ... and so on ... */
+      </code></pre>
+    </section>
+
+
+    <section>
+      <h1>Demonstration</h1>
+      <p>
+        This page includes the following CSS:
+      </p>
+      <pre><code class="language-css">[available-width*="x-small"] {
+  background-color: red;
+  color: white;
+}
+
+[available-width="small"],[available-width*="medium"] {
+  background-color: blue;
+  color: white;
+}
+
+[available-width*="large"] {
+  background-color: green;
+  color: white;
+}</code></pre>
+      <p>
+        Thus, observed things will, by default, show a red background.  Things with between 568px and 868px of available space for their children to lay out in will show a blue background, and things with more space will show a green background.
+      </p>
+      <div id="ro-one" resize-observer>
+        This element is a resize observer
+      </div>
+      <div resize-observer class="layout" style="width: 45%;">
+        <p>This element is a resize observer with 45% width</p>
+      </div>
+      <div id="tiny" class="layout" style="width: 25%;">
+        <p>This element is 25% width, click it to add attr after the fact.</p>
+      </div>
+
+      <section>
+        <h1>display: contents</h1>
+        <p>Because children of an observed element are styled as <code>display:contents</code> by default, whatever fixed sizes they might have don't generate boxes for purposes of this measurement, so you can't 'blowup' the measurement by putting too much content in there.</p>
+
+        <div id="ro-two" resize-observer class="layout">
+            <p>
+              This paragraph, for example, is in a 75% width container with styles that suggest that it's <code>max-height:100px</code> and it's <code>width: 200rem;</code>. Its width would cause <em>it</em> to impact things, normally, because it has considerably more content than will fit on pretty much any monitor (75% will be smaller than 200rem).  However, because of <code>display:contents</code>, it will remain the size of its container.
+            </p>
+            <p>
+              This paragraph follows the same rules.  If you override the <code>display</code> property of these elements to be block or something, the display will get weird.  Don't do that... Most of the time.
+            </p>
+        </div>
+
+        <p>
+          "But hey," you're thinking, "part of what I want to do is lay out these children... how am I supposed to do that".  Well, if for example, the element you are observing has 'display: grid' and uses relative units, you'll be fine, then just set the display of the children appropritately ala:
+
+<pre><code class="language-css"> #ro-three {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+#ro-three p {
+  display: block;
+  padding: 1rem;
+}
+</code></pre>
+
+        </p>
+        <div id="ro-three" resize-observer class="layout">
+            <p>
+              This is inside <code>#ro-three</code>. We've got a two column grid.
+            </p>
+            <p>
+              And the size observer should tell us the truth too.
+            </p>
+        </div>
+
+      </section>
+
+
+      <section>
+        <h1>What about cycles?</h1>
+        <p>Given this, the question becomes, what happens if you write some code like this:</p>
+        <pre><code class="language-css">[available-width*="small"]#convoluted {
+  width: 1000px;
+}
+:not([available-width="small"])#convoluted {
+  width: 300px;
+}
+        </code></pre>
+
+        <p>
+          Doesn't that create a cycle in which becomming small makes it big, and then becomming big in turn makes it small and so on, forever and ever?
+        </p>
+
+        <p>
+          No, here's what happens:  When the observed thing is evaluated, it is measured, the observer briefly disconnects paying attention and updates the attribute.  The next measure caused by this resizing is ignored.  At that point, it is a fixed size and will no longer pump resize events.  Here's one such example:
+        </p>
+
+        <p id="convoluted" resize-observer>Why this may appear to have the wrong color is explained in this section.</p>
+
+        <p>
+          This means that it is possible then (as above) for a thing's available space to get "big" or "small" and for its attributes to appear to be lying.  Well... That's because you asked for nonsense.  If you ask it to reflect variable size, and then fix the size, you've removed the variable size aspect of the equation.  Just...  don't do that.
+        </p>
+
+      </section>
+    </section>
+
+  </main>
+  <script>
+    let tinyEl = document.querySelector('#tiny')
+
+    tinyEl.addEventListener('click', () => {
+      if (tinyEl.hasAttribute('resize-observer')) {
+        tinyEl.removeAttribute('resize-observer')
+      } else {
+        tinyEl.setAttribute('resize-observer', '')
+      }
+    })
+  </script>
+
+
+</body>
