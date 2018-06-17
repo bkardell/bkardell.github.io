@@ -109,7 +109,9 @@
                 }, el);
             }
           }
-          el.removeAttribute('available-width')
+          if (el.removeAttribute) {
+            el.removeAttribute('available-width')
+          }
       };
 
   observe();
