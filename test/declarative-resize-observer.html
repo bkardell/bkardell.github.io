@@ -5,6 +5,19 @@
     <link rel="stylesheet" href="https://bkardell.com/prism.css"></link>
 
     <style>
+    @media only screen
+      and (min-width: 868px) {
+        body { width: 90%; margin: 1rem auto; }
+    }
+
+      span.token.comment {
+          word-wrap: normal;
+          white-space: pre-wrap;
+          display: unset;
+      }
+
+    </style>
+    <style>
 
 
 [available-width*="x-small"] {
@@ -21,6 +34,22 @@
   background-color: green;
   color: white;
 }
+
+
+.code-sample[resize-observer]{
+  display: grid;
+  background-color: black;
+  padding: 1rem;
+}
+
+
+.code-sample[available-width*="large"] pre {
+  width: 75%;
+  display: block;
+  margin: 1rem auto;
+}
+
+
   .layout {
     border: 1px solid gray;
     display: block;
@@ -65,7 +94,7 @@
     padding: 1rem;
   }
 
-  [available-width*=large]#ro-three {
+  #ro-three:not([available-width*=x-small]) {
     grid-template-columns: 1fr 1fr;
   }
 
@@ -101,41 +130,42 @@
       padding: 0.5rem;
   }
     </style>
-    <script src="https://bkardell.com/test/declarative-resize-observer/declarative-resize-observer.js"></script>
+    <script src="declarative-resize-observer/declarative-resize-observer.js"></script>
 </head>
 <body>
 
   <main>
     <h1>Declarative Resize Observers</h1>
     <p>
-      The idea is pretty simple:
+      The idea, at a high level, is pretty simple: You can add a <code>resize-observer</code> attribute to any element, at any time, causing a <code>ResizeObsever</code> to either <code>observe</code> that element and reflect relevant meta information into <code>available-height</code> and <code>available-width</code> DOM attributes. Using this, you can simply write CSS using features that we have today in order to create designs that can respond their available size.
     </p>
-    <ol>
-      <li>A <code>ResizeObserver</code> is instatiated.</li>
-      <li>A stylesheet is injected which specifies that children of a resize observer are <code>display: contents</code> by default.  This prevents children from affecting the size of the thing being observed.</li>
-      <li>When an element gains or loses (including in the initial parse) a <code>resize-observer</code> attribute, a call is made to either <code>observe</code> or <code>unobserve</code> that element, respectively.</li>
-      <li>When a resize occurs, the observer gives us records for each of the things we're observing, giving us dimensions of each.  We loop over the dimensions and, for each one we compare their size with a series of named breakpoints, attaching attributes reflecting the applicable breakpoint in <code>available-height</code> and <code>available-width</code> DOM attributes.</li>
-      <li>You write CSS.</li>
-      <li>CSS does it's thing.</li>
-    </ol>
+
+    <section>
+      <h1>Adding support</h1>
+      <p>This is a progressively enhanced solution, so begin by designing your element to work on the smallest screen possible - just like you would with <code>@media</code> rules today.  </p>
+      <p><a href="https://bkardell.com/test/declarative-resize-observer/declarative-resize-observer.js">Add the script</a> that provides the plumbing (&lt;1k minified/gzipped).</p>
+    </section>
     <section>
       <h1>Adding a declarative resize observer</h1>
       <p>
-          There's really not much to say, you simply add a <code>resize-observer</code> attribute to any element.
+          Simply add a <code>resize-observer</code> attribute to any element.
       </p>
-      <pre><code class="language-html">&lt;div resize-observer&gt;
+      <div class="code-sample" resize-observer>
+        <pre><code class="language-html">&lt;div resize-observer&gt;
   ...whatever inside
 &lt;/div&gt;
       </code></pre>
+      </div>
 
-      <p>This causes it to be observed and maintain the attributes <code>available-width</code> and <code>available-height</code>.  The values of those attributes are reflective of whichever named breakpoints apply.  Note that this is measure reflects the size of the element being, thus, the space available to children to lay out in.  If the size of the element doesn't change, these value will not change either.</p>
+      <p>
+        This causes it to be observed.  As resizes (of the element) occur, this will maintain the attributes <code>available-width</code> and <code>available-height</code> on the element, indicating how much space is available for its children.  The values of those attributes are names, derived from consulting the <code>NamedBreakpoints</code> object.
+      </p>
     </section>
 
     <section>
       <h1>Named Breakpoints</h1>
-
       <p>
-        There are 9 named breakpoints that increase slowly and provide a decent idea of how much space is available.
+        There are (by default) 9 named breakpoints that increase slowly and provide a decent idea of how much space is available.
       </p>
 
       <table>
@@ -209,52 +239,33 @@
       </p>
 
 
-      <pre><code class="language-css">/*
-  any .foo child
-  of an observed element
-  with less than 668px
-  of available space
-*/
+      <div class="code-sample" resize-observer>
+        <pre><code class="language-css">/* any .foo child of an observed element with less than 668px of available space */
 [available-width*="small"] > .foo {
-  background-color: red;
+  background-color: orange;
   color: white;
 }
 
-/*
-  any .bar child
-  of an observed element
-  with between 568px and 668px
-  of available space
-*/
+/* any .bar child of an observed element with between 568px and 668px of available space */
 [available-width^="small"] > .bar {
   background-color: red;
   color: white;
 }
 
-/*
-  any .foo child
-  of an observed element
-  with between 668px and 868px
-  of available space
-*/
+/* any .foo child of an observed element with between 668px and 868px of available space */
 [available-width*="medium"] > .foo {
   background-color: blue;
   color: white;
 }
 
-/*
-  any .foo child
-  of an observed element
-  with over than 1004px
-  of available space
-*/
+/* any .foo child of an observed element with over than 1004px of available space */
 [available-width*="large"] > .foo {
   background-color: green;
   color: white;
 }
 
-/* ... and so on ... */
-      </code></pre>
+/* ... and so on ... */</code></pre>
+      </div>
     </section>
 
 
@@ -263,7 +274,8 @@
       <p>
         This page includes the following CSS:
       </p>
-      <pre><code class="language-css">[available-width*="x-small"] {
+      <div class="code-sample" resize-observer>
+        <pre><code class="language-css">[available-width*="x-small"] {
   background-color: red;
   color: white;
 }
@@ -277,6 +289,7 @@
   background-color: green;
   color: white;
 }</code></pre>
+      </div>
       <p>
         Thus, observed things will, by default, show a red background.  Things with between 568px and 868px of available space for their children to lay out in will show a blue background, and things with more space will show a green background.
       </p>
@@ -290,9 +303,16 @@
         <p>This element is 25% width, click it to add attr after the fact.</p>
       </div>
 
+      <p>The code samples also use declarative resize-observers to re-size/style effectively based on available space</p>
+
+      <p class="note">
+        Note: This demonstration styles the background colors of the image being observed itself.  Normally the use of
+        a resize observer will be to style <em>children</em> of the observed element based on available space. The rest of this document explains in more detail.
+      </p>
+
       <section>
-        <h1>display: contents</h1>
-        <p>Because children of an observed element are styled as <code>display:contents</code> by default, whatever fixed sizes they might have don't generate boxes for purposes of this measurement, so you can't 'blowup' the measurement by putting too much content in there.</p>
+        <h1><code>display: contents</code> by default</h1>
+        <p>Because children of an observed element are styled as <code>display:contents</code> by default.  This means that whatever fixed sizes they might have don't generate boxes for purposes of this measurement, so you can't 'blowup' the measurement by putting too much content in there.</p>
 
         <div id="ro-two" resize-observer class="layout">
             <p>
@@ -302,11 +322,20 @@
               This paragraph follows the same rules.  If you override the <code>display</code> property of these elements to be block or something, the display will get weird.  Don't do that... Most of the time.
             </p>
         </div>
-
+      </section>
+      <section>
+        <h1>Laying out children</h1>
         <p>
-          "But hey," you're thinking, "part of what I want to do is lay out these children... how am I supposed to do that".  Well, if for example, the element you are observing has 'display: grid' and uses relative units, you'll be fine, then just set the display of the children appropritately ala:
+          "But hey," you're thinking, "part of what I want to do is lay out these children... how am I supposed to do that".  Well, if for example, the element you are observing has 'display: grid' and uses relative units, you'll be fine, then just set the display of the children appropritately.  Here is an example which sets up a scenario in which the next container is inside a media query and has 80% width.  When that means available space is &lt;468px, I'd like that to be displayed in a single column, otherwise I would like it to be set in two equal columns...</p>
 
-<pre><code class="language-css">[available-width]#ro-three {
+        <div class="code-sample" resize-observer>
+<pre><code class="language-css">[#ro-three] {
+    width: 80%;
+    display: grid;
+    margin: 1rem auto;
+  }
+
+  [available-width]#ro-three {
     grid-template-columns: 1fr;
   }
 
@@ -315,12 +344,11 @@
     padding: 1rem;
   }
 
-  [available-width*=large]#ro-three {
+  #ro-three:not([available-width*=x-small]) {
     grid-template-columns: 1fr 1fr;
   }
 </code></pre>
-
-        </p>
+        </div>
         <div id="ro-three" resize-observer class="layout">
             <p>
               This is inside <code>#ro-three</code>. We've got a grid that responds to available space.
@@ -336,13 +364,15 @@
       <section>
         <h1>What about cycles?</h1>
         <p>Given this, the question becomes, what happens if you write some code like this:</p>
-        <pre><code class="language-css">[available-width*="small"]#convoluted {
+        <div class="code-sample" resize-observer>
+          <pre><code class="language-css">[available-width*="small"]#convoluted {
   width: 1000px;
 }
 :not([available-width="small"])#convoluted {
   width: 300px;
 }
-        </code></pre>
+          </code></pre>
+        </div>
 
         <p>
           Doesn't that create a cycle in which becomming small makes it big, and then becomming big in turn makes it small and so on, forever and ever?

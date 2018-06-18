@@ -117,7 +117,7 @@
   observe();
 
   var temp = document.createElement('style')
-  temp.innerHTML = "[resize-observer] { display: inherit; }[resize-observer] > * { display: contents; width: auto !important; height: auto !important;}"
+  temp.innerHTML = "[resize-observer] { display: inherit; }[resize-observer] > * { display: contents; width: auto; height: auto;}"
   document.head.insertBefore(temp, document.head.firstElementChild)
 
   var isMatch = function isMatch(node) {
