@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <head>
+    <meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no">
     <title>Declarative Resize Observer</title>
     <script src="https://bkardell.com/prism.js"></script>
     <link rel="stylesheet" href="https://bkardell.com/prism.css"></link>
@@ -47,6 +48,10 @@
   width: 75%;
   display: block;
   margin: 1rem auto;
+}
+
+pre code {
+  font-size: 0.5rem;
 }
 
 
@@ -337,8 +342,9 @@
           "But hey," you're thinking, "part of what I want to do is lay out these children... how am I supposed to do that".  Well, if for example, the element you are observing has 'display: grid' and uses relative units, you'll be fine, then just set the display of the children appropritately.  Here is an example which sets up a scenario in which the next container is inside a media query and has 80% width.  When that means available space is &lt;468px, I'd like that to be displayed in a single column, otherwise I would like it to be set in two equal columns...</p>
 
         <div class="code-sample" resize-observer>
-<pre><code class="language-css">[#ro-three] {
-    width: 80%;
+<pre><code class="language-css">
+  #ro-three {
+    width: 90%;
     display: grid;
     margin: 1rem auto;
   }
@@ -352,10 +358,9 @@
     padding: 1rem;
   }
 
-  #ro-three:not([available-width*=x-small]) {
+  #ro-three:not([available-width*="xxx-small"]) {
     grid-template-columns: 1fr 1fr;
-  }
-</code></pre>
+  }</code></pre>
         </div>
         <div id="ro-three" resize-observer class="layout">
             <p>

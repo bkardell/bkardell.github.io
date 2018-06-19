@@ -34,7 +34,7 @@
       evaluateBreakpoints = function (el, bps, dir, dim) {
         var sizebreakpoint = 'xxxx-small',
             dim = (typeof dim !== 'undefined') ? dim : el.getBoundingClientRect(),
-            screenCssPixelRatio = (window.outerWidth) / window.innerWidth
+            screenCssPixelRatio = 1 //(window.outerWidth) / window.innerWidth
 
         Object.keys(bps).forEach(function(sizeName) {
           if ((dim[dir] * screenCssPixelRatio) > bps[sizeName]) {
