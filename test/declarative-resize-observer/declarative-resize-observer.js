@@ -8,6 +8,8 @@
       },
       breakpoints = {
         width: {
+          "xxx-small": 268,
+          "xx-small": 368,
           "x-small": 468,
           "small": 568,
           "small-medium": 668,
@@ -30,11 +32,12 @@
       },
       hasResizeObserver = typeof ResizeObserver === 'function',
       evaluateBreakpoints = function (el, bps, dir, dim) {
-        var sizebreakpoint = 'xx-small',
-            dim = (typeof dim !== 'undefined') ? dim : el.getBoundingClientRect()
+        var sizebreakpoint = 'xxxx-small',
+            dim = (typeof dim !== 'undefined') ? dim : el.getBoundingClientRect(),
+            screenCssPixelRatio = (window.outerWidth) / window.innerWidth
 
         Object.keys(bps).forEach(function(sizeName) {
-          if (dim[dir] > bps[sizeName]) {
+          if ((dim[dir] * screenCssPixelRatio) > bps[sizeName]) {
             sizebreakpoint = sizeName
           }
         })

@@ -80,7 +80,7 @@
   }
 
   #ro-three {
-    width: 80%;
+    width: 100%;
     display: grid;
     margin: 1rem auto;
   }
@@ -94,7 +94,7 @@
     padding: 1rem;
   }
 
-  #ro-three:not([available-width*=x-small]) {
+  #ro-three:not([available-width*="xxx-small"]) {
     grid-template-columns: 1fr 1fr;
   }
 
@@ -137,7 +137,11 @@
   <main>
     <h1>Declarative Resize Observers</h1>
     <p>
-      The idea, at a high level, is pretty simple: You can add a <code>resize-observer</code> attribute to any element, at any time, causing a <code>ResizeObsever</code> to either <code>observe</code> that element and reflect relevant meta information into <code>available-height</code> and <code>available-width</code> DOM attributes. Using this, you can simply write CSS using features that we have today in order to create designs that can respond their available size.
+      The idea, at a high level, is pretty simple: You can add a <code>resize-observer</code> attribute to any element, at any time, causing a <code>ResizeObsever</code> to either <code>observe</code> that element and reflect relevant meta information into <code>available-height</code> and <code>available-width</code> DOM attributes. Using this, you can simply write CSS using features that we have today in order to create designs that can respond their available size.  No pre-processors or build tools or dependencies, and it's PE based.
+    </p>
+
+    <p>
+      There are a lot of things you could layer atop this, for example, add a pre-processor to make the CSS you write 'feel' better or clever conditional loading of a resize observer polyfill to better suit your needs, etc - but this provides all the plumbing, which, I think, is ultimately the important bit.
     </p>
 
     <section>
@@ -235,7 +239,7 @@
     <section>
       <h1>Styling with named breakpoints</h1>
       <p>
-        The practical upshot of this is that you can just use these attributes in your CSS selectors and you have something very closely approximating Container Queries.  While CSS attribute selectors cannot express mathematical relationships, they <em>can</em> use partial string based matching to achieve something similar... There is plenty of expressive power here.  Examples:
+        The practical upshot of this is that you can just use these attributes in your CSS selectors and you have something very closely approximating Container Queries.  While CSS attribute selectors cannot express mathematical relationships, they <em>can</em> use partial string based matching to achieve something similar... Examples:
       </p>
 
 
@@ -266,6 +270,10 @@
 
 /* ... and so on ... */</code></pre>
       </div>
+
+      <p>
+        By using named rather than arbitrary values, we kind of greatly simplify the problem.  By increasing at about 100px a shot, there is a goodly amount of expressive power here regardless of what you're trying to design.
+      </p>
     </section>
 
 
