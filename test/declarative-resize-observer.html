@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<html pseudo-observe-fallback>
 <head>
     <meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no">
     <title>Declarative Resize Observer</title>
@@ -99,7 +100,7 @@ pre code {
     padding: 1rem;
   }
 
-  #ro-three:not([available-width*="xxx-small"]) {
+  #ro-three:not([available-width*="small"]) {
     grid-template-columns: 1fr 1fr;
   }
 
@@ -174,7 +175,7 @@ pre code {
     <section>
       <h1>Named Breakpoints</h1>
       <p>
-        There are (by default) 9 named breakpoints that increase slowly and provide a decent idea of how much space is available.
+        There are (by default) 11 named breakpoints that increase slowly and provide a decent idea of how much space is available.
       </p>
 
       <table>
@@ -193,14 +194,24 @@ pre code {
           </thead>
           <tbody>
               <tr>
-                  <td>xx-small</td>
+                  <td>xxxx-small</td>
                   <td>0</td>
                   <td>0</td>
               </tr>
               <tr>
+                  <td>xxx-small</td>
+                  <td>268px</td>
+                  <td>50px</td>
+              </tr>
+              <tr>
+                  <td>xx-small</td>
+                  <td>368px</td>
+                  <td>100px</td>
+              </tr>
+              <tr>
                   <td>x-small</td>
                   <td>468px</td>
-                  <td>100px</td>
+                  <td>150px</td>
               </tr>
               <tr>
                   <td>small</td>
@@ -210,22 +221,22 @@ pre code {
               <tr>
                   <td>small-medium</td>
                   <td>668px</td>
-                  <td>300px</td>
+                  <td>250px</td>
               </tr>
               <tr>
                   <td>medium</td>
                   <td>768px</td>
-                  <td>400px</td>
+                  <td>300px</td>
               </tr>
               <tr>
                   <td>medium-large</td>
                   <td>868px</td>
-                  <td>500px</td>
+                  <td>400px</td>
               </tr>
               <tr>
                   <td>large</td>
                   <td>1200px</td>
-                  <td>600px</td>
+                  <td>500px</td>
               </tr>
               <tr>
                   <td>x-large</td>
@@ -243,6 +254,7 @@ pre code {
 
     <section>
       <h1>Styling with named breakpoints</h1>
+
       <p>
         The practical upshot of this is that you can just use these attributes in your CSS selectors and you have something very closely approximating Container Queries.  While CSS attribute selectors cannot express mathematical relationships, they <em>can</em> use partial string based matching to achieve something similar... Examples:
       </p>
@@ -342,9 +354,8 @@ pre code {
           "But hey," you're thinking, "part of what I want to do is lay out these children... how am I supposed to do that".  Well, if for example, the element you are observing has 'display: grid' and uses relative units, you'll be fine, then just set the display of the children appropritately.  Here is an example which sets up a scenario in which the next container is inside a media query and has 80% width.  When that means available space is &lt;468px, I'd like that to be displayed in a single column, otherwise I would like it to be set in two equal columns...</p>
 
         <div class="code-sample" resize-observer>
-<pre><code class="language-css">
-  #ro-three {
-    width: 90%;
+<pre><code class="language-css">#ro-three {
+    width: 100%;
     display: grid;
     margin: 1rem auto;
   }
@@ -358,7 +369,7 @@ pre code {
     padding: 1rem;
   }
 
-  #ro-three:not([available-width*="xxx-small"]) {
+  #ro-three:not([available-width*="small"]) {
     grid-template-columns: 1fr 1fr;
   }</code></pre>
         </div>
@@ -392,15 +403,36 @@ pre code {
         </p>
 
         <p>
-          No, here's what happens:  When the observed thing is evaluated, it is measured, the observer briefly disconnects paying attention and updates the attribute.  The next measure caused by this resizing is ignored.  At that point, it is a fixed size and will no longer pump resize events.  Here's one such example:
+          No
+        </p>
+
+        <p>
+          Here's what happens:  When the observed thing is evaluated, it is measured, the observer briefly disconnects paying attention and updates the attribute.  (In theory, this should happen "automatically" with a resize observer but for some reason it doesn't seem to work quite right).  The next measure caused by this resizing is ignored.  At that point, the element is a fixed size and will no longer pump resize events.  Here's one such example:
         </p>
 
         <p id="convoluted" resize-observer>Why this may appear to have the wrong color is explained in this section.</p>
 
         <p>
-          This means that it is possible then (as above) for a thing's available space to get "big" or "small" and for its attributes to appear to be lying.  Well... That's because you asked for nonsense.  If you ask it to reflect variable size, and then fix the size, you've removed the variable size aspect of the equation.  Just...  don't do that.
+          Yes, that looks wrong.  But there is no "right" because we asked for nonsense.  If we ask it to reflect variable size, and then fix the size, we've removed the variable size aspect of the equation and this seems a reasonable thing to do.  Just...  don't do that.  But, at least if you mess up, you wont bring send things burning to the ground.
         </p>
 
+      </section>
+
+      <section>
+        <conextual-help>My implmentation: PE, polyfill and approximation</conextual-help>
+        <p>
+          As I said, this uses a PE approach and your site should be totally usable whether through a browser that supports <code>ResizeObserver</code> or not.  But, let's be honest, right now, that means Chrome. Since we're talking about smaller pieces here (you should still use media queries for your main layouts), it is entirely possible that you're ok with just 1 design that works everywhere for that media object, but feels so much better in Chrome.  But, it's also possible that you're not.
+        </p>
+        <p>
+          If you are not, there are some <a href="https://github.com/WICG/ResizeObserver/issues/3">polyfills you can find through WICG</a>.  If you like, you can use one of those to greatly improve the number of people who will see your improved, responsive designs.  <a href="https://github.com/que-etc/resize-observer-polyfill">This one is probably the most popular</a>.
+
+        </p>
+        <p>
+          However, this gets kind of tricky.  Minified and gzipped the polyfills can be a few times the size of my plumbing.  For a large number of sites, a lot of the handling provided is unnecessary.  As such, I've included a very small, very basic approximation that you can try out (included in the code) by simply including the attribute <code>pseudo-observe-fallback</code> on your HTML element.  This makes it easy to play with it and test it out and, for a number of sites, will be entirely enough.
+        </p>
+        <p>
+          Only you can really determine what's best for your use cases, but I hope I've made it easier for more people to experiment.
+        </p>
       </section>
     </section>
 
@@ -417,5 +449,5 @@ pre code {
     })
   </script>
 
-
 </body>
+</html>

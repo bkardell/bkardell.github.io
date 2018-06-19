@@ -4,11 +4,11 @@
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:site" content="@briankardell">
     <meta name="twitter:creator" content="@briankardell">
-    <meta name="twitter:title" content="W3C Elections Just Got A Whole Lot Harder">
-    <meta name="twitter:description" content="There's a new element to W3C politics and... it kind of worries me.  Here's what we can do about it.">
+    <meta name="twitter:title" content="Responsive Plumbing">
+    <meta name="twitter:description" content="So, you're designing some kind of 'component'.  It might be interactive, it might not.  It might be a Custom Element, or it might just be a thing that you intend to use in several ">
     
     <link rel="alternate" type="application/rss+xml" href="blog/feed.rss" title="bkardell.com/blog rss feed">
-    <title>W3C Elections Just Got A Whole Lot Harder</title>
+    <title>Responsive Plumbing</title>
     <style>.captioned-image {
     background-color: #eaeaea;
     display: block;
@@ -324,115 +324,280 @@ America (art for sale)</a></li>
     </nav>
 </header>
     <main><div class="posted-on">Posted on null</div><article class="sectioning">
-    <contextual-heading role="heading" aria-level="1">W3C Elections Just Got A Whole Lot Harder</contextual-heading>
+    <contextual-heading role="heading" aria-level="1">Responsive Plumbing</contextual-heading>
+    <script src="../prism.js"></script>
+    <link rel="stylesheet" href="../prism.css">
+    <style>
+    .note {
+        background-color: rgba(255,255,0,0.24);
+        padding: 1rem;
+        font-style: italic;
+    }
+    .note::before {
+        content: 'Note';
+        font-size: 0.8rem;
+        background-color: black;
+        color: white;
+        padding: 0.25rem;
+        margin-right: 0.5rem;
+    }
+    .output {
+        margin-left: 1rem;
+        font-family: "Courier New", Courier, monospace
+    }
+    .spec-quote {
+        display: block;
+        margin: 1rem;
+    }
+    section {
+        margin-left: 0.5rem;
+    }
+    ul {
+        font-style: italic;
+    }
+    table {
+        margin: 1rem auto;
+        width: 80%;
+    }
+    th:nth-child(1),
+    td:nth-child(1) {
+        text-align: left;
+    }
+    th:nth-child(2),
+    td:nth-child(2) {
+        text-align: right;
+        font-style: italic;
+    }
+    </style>
     <p class="segue">
-        There's a new element to W3C politics and... it kind of worries me.  Here's what we can do about it.
+        So, you're designing some kind of 'component'.  It might be interactive, it might not.  It might be a Custom Element, or it might just be a thing that you intend to use in several places.  How wonderful would it be if you could just design it responsively and then never worry about it again.  Sadly, today, you really can't.  A lot has been written about this under the banner "Container Queries" or "Element Queries", but, I have some thoughts and observations.
     </p>
+
+    <p>
+        Sometimes, the lack of ability to simply design a responsive 'thing' (the general problem described by Container Queries proposals) is simply kind of an inconvenience.  Yes, it takes a bit more work.  Yes, it couples two pieces of code together in an unfortunate way, but - you do it, you ship it, and then you move on.  If the problem is localized and specific (like your own website, perhaps), this isn't that big a deal.
+    </p>
+    <p>
+        However, the costs and impacts of this increase non-linearly the less localized and specific it is.  For example, imagine that you have a team that designs things for use by many applications.  This isn't uncommon, it is a really good way to centralize certain kinds of costs and aspects of experiences (accessibility, for example).  Now imagine that the many applications that will integrate and use this operate largely independently otherwise.  They have different layout structures, use different coding approaches and so on.  In order to make that 'thing' responsive, every team has to understand all of the assumptions and re-figure out the same problems in their own context.  Over time, something will change, and then they have to chase all the people to do it all again.
+    </p>
+
+    <p>
+        I was recently thrust into a situation in which I was made keenly aware of the incredible cost that this would incur.  Really, it was too much.  It seemed like we just couldn't afford the cost.  However, there wasn't a good alternative either.  We couldn't afford to do it, and we couldn't afford not to do it.
+    </p>
+    <p>
+        And so I sat down to think of a way to circle this square.  Surprisingly, I came up with an answer I'm actually fairly happy with.  It's got a lot of good qualities:
+    </p>
+    <ul>
+        <li>
+            It allows me to design 'things' responsively, without requiring careful coordination with the layouts that they are used in
+        </li>
+        <li>
+            Author express their stylistic designs in real CSS, whereever that lives
+        </li>
+        <li>
+            It doesn't have to be re-parsed, processed or transformed in any way.  It doesn't require any build tools, or putting those styles into a &lt;style&gt; element or &lt;script&gt; block or anything.
+        </li>
+        <li>
+            It is a 'live' solution.  That is, it doesn't matter how an element got into the DOM or when or why something's style is suddenly affected.
+        </li>
+        <li>
+            There's no JavaScript for users to write in order to wire it up
+        </li>
+        <li>
+            It is a PE oriented solution
+        </li>
+        <li>
+            The JavaScript that enables it is &lt;1k minified and gzipped.
+        </li>
+    </ul>
     <section class="sectioning">
-        <contextual-heading role="heading" aria-level="2">Some basics...</contextual-heading>
+        <contextual-heading role="heading" aria-level="2">Declarative Resize Observer</contextual-heading>
         <p>
-            So, let's just get the simple stuff out of the way:  There are 2 seats up for reelction in the W3C TAG.  If you're not familliar with how the W3C Works or what the TAG is or why it matters, fear not, there's a ~400 word <a href="https://bkardell.com/blog/W3CPrimer.html">Primer for Busy People</a>.  There are 4 nominations for these seats, 2 of them are incumbents.  You can read <a href="https://www.w3.org/2017/12/01-tag-nominations">their statements</a> for yourself if you like.
-        </p>
-
-        <p>
-            In this election, I have a very strong preference for both Andrew and David.  If you asked me "how much do you support them in this particular election" the answer is "I support them both fully and enthusiastically".  I thought they were good candidates when they ran the first time, neither of been there particularly long and the record shows that they're both doing good work.
+            What I arrived at is a <a href="https://bkardell.com/test/declarative-resize-observer.html">Declarative Resize Observer</a>.  While it is entirely useful, you might note that it doesn't look at all like current proposals for Container Queries.
         </p>
         <p>
-            Another candidate's (Reto) statement makes me actively worry that adding them to the TAG would potentially undo some of what I see as valuable progress.  I'm sure his work is excellent, but for this reason, if you asked how much I support him in this particular election, the answer is "I think that would  be an <em>undesirable</em> outcome".
+            Once I got it put together, I discovered that I am not remotely the only one who landed on a solution that "looks" more similar to what I arrived at than it does current proposals.
         </p>
         <p>
-            The fourth candidate (Lukasz) is somewhere in between those two postions:  While I would be sad to see either David or Andrew not be reelected, I don't inherently worry that electing Lukasz might derail or anything.  In truth, I just don't know a lot about Lukasz compared to current, sitting members.  They are "proven" and "known".  But there are things I like about this candidate's statement.  So in this particular election, all I can say really is I support them "considerably less than fully, but more than 0".
+            Philip Walton, for example, <a href="philipwalton.com/articles/responsive-components-a-solution-to-the-container-queries-problem/">arrived at something <em>very</em> similar</a>.  He and I have since had some very good talks, discussing the pros and cons of various details.  More importantly, perhaps, we talked about why that happened in the first place.
         </p>
-    </section>
-
-    <section class="sectioning">
-        <contextual-heading role="heading" aria-level="2">The Old Ways</contextual-heading>
         <p>
-            Until recently, the W3C used a simple plurality voting system to elect for TAG and AB.  In the old model, each member could cast <em>one vote per available open seat</em>: They'd simply, for example, vote for Andrew and David.  When voting closed, they'd simply count up the votes for each candidate and the ones with the highest totals win the seats.  Simple enough.
-        </p>
-
-        <p>
-            Plurality systems are not without well known flaws.  They aren't expressive.  Given an election with 3 candidates (A, B and C).  You might really, really like Candidate A, and might you really, really <em>dislike</em> the idea of Candidate C being elected, and your feelings about Candidate B could be anywhere in between the two extremes.  But at the end of the day, you only get to cast one vote.  Plurality elections are, ultimately, won by the difference.  This means that in a 3 way race you have to guess whether your preferred candidate is actually "electable" becauseby not increasing the competitive count of Candidate B (as you would have if Candidate A weren't an option), Candidate C gains.  This is unfortunate.  It is, however, at least very easy to understand.
-        </p>
-
-        <p>
-            One of the key problems with plurality voting is that it just isn't very expressive and also therefore encourages less than perfectly "honest" voting.  It doesn't capture the true intents of the voter.  Perhaps a lot of "spoilers" are actually far more widely acceptable than we think, for example, and if people could safely just express that then maybe we'd have outcomes that more people were more happy with.
-        </p>
-
-        <p>
-            To this end, there are <em>lots</em> of other forms of voting that aim to do better and, recently, the W3C has switched the one they use.  <em>Who</em> to for vote for isn't the only question anymore - it's now also <em>how</em> to vote and <em>what does my vote mean?</em>  This is new and, I am worried likely to confuse.  In fact, I am not at all confident that W3C membership at large actually understood the implications when this was approved, so, let me explain the implications...
-        </p>
-    </section>
-    <section class="sectioning">
-        <contextual-heading role="heading" aria-level="2">Implications</contextual-heading>
-        <p>
-            I want to state very clearly that I am generally supportive of a more expressive voting system that allows true intents to be recorded and considered more accurately.  What's important to realize, however, is that given the same pool of voters, the same information, and the same candidates - different systems will have different outcomes.  There is no inherently "right" answer, there are simply outcomes and the ability for us to judge collectively whether those are good or bad.  So, let's do that...
-        </p>
-
-        <p>
-            Let's imagine, hypothetically, that 65% of people felt approximately the way that I do: The <em>least desirable outcome</em> is to give Reto one of the available seats.  All of those people agree that both seats should go to either David, Andrew or Lukasz.  What we disagree on, to lesser degrees is how strongly we feel about each one.  But 35% of people feel precisely the opposite: Reto is their first choice.  They think that the TAG has taken a wrong turn in recent years.  Perhaps they read his statement and they think he'll bring more semantic web stuff and more 'conceptual innovation' back to TAG.  The least desirable outcome to <em>them</em> is that both incumbents get relected.
-        </p>
-
-        <p>
-            So, given this information: What should happen?  Well, here are my own feelings:
-        </p>
-            <ul>
-                <li>Ideally the candidate who is least acceptable to 65% of people would not be elected, and it wouldn't require strategy to acheive that aim.</li>
-                <li>Ideally, the 2 candidates with the widest support should get the seats.</li>
-                <li>Ideally the system helps deal with the "but they probably can't win" bias by letting people accuratey express their honest preferences, thereby giving candidates with actual potential (instead of just perceived potential) a real shot.</li>
-            </ul>
-        <p></p>
-
-        <p>
-            However, given this hyptothetical scenario, this is not actually what happens with the system recently adopted.  What would happen in that system is that the candidate who is the least acceptable to 65% of people is interpreted as the best choice and is pretty much guaranteed a seat.
-        </p>
-
-        <p>
-            To me, this feels like a bug - but it is actually a design <em>feature</em> of the system that's been chosen.  As I said, there isn't a right or wrong answer to "how should it work" - but this seems less than ideal to me. It seems like a feature I don't personally want.
+            I'd like to propose that perhaps understanding this could be potentially useful or informative for existing standardization efforts.  I kind of think it is, so I'll explain below.
         </p>
     </section>
     <section class="sectioning">
-        <contextual-heading role="heading" aria-level="2">Wait... How can that be?</contextual-heading>
-
-        <p>Well, this system is pretty complicated but below is a video summary of how it "works"...</p>
-
-
-        <div class="captioned-image">
-            <iframe width="560" height="315" src="https://www.youtube.com/embed/Ac9070OIMUg" frameborder="0" gesture="media" allow="encrypted-media" allowfullscreen=""></iframe>
-        </div>
-
+        <contextual-heading role="heading" aria-level="2">Where to start</contextual-heading>
         <p>
-            The key point to note is that it really hinges on the idea of a calculated threshold and a particular means of counting in order to pass that threshold.  In this model, voters have to provide an order of support.  65% of voters will distribute their "first choice" vote among 3 candidates in our hypothetical <em>because they have to not because this accurately reflects what they would state is their preference</em>.  Alternatively, 35% will cast their first choice vote for the same person.  In a 2 seat race with 4 candidates, the threshold is 34%.  The only thing that is certain after the first round of counting is that the least desirable outcome for 65% of people has reached it and receives a seat.  There's no counting or transfer of second or third choices involved in that case.
+            Most proposals begin by attempting to propose something via pseudo-code that looks something like one of these:
+        </p>
+        <pre><code class="language-css">/* one example, from Mat Marquis */
+.mod:media( min-width: 425px ) img {
+    …
+}
+
+/* another example, from Ethan Marcotte */
+.recirc-container:(min-width: 20em) {
+    .ranked-list li,
+    .ranked-list li:nth-child( n ) { … }
+    .ranked-list li:nth-child( 2n ) { … }
+    .ranked-list li:nth-child( 2n+1 ) { … }
+}
+
+/* another example, from Tommy Hodgins */
+@element 'nav label, nav .label' and (max-width: 150px) {
+  $this {
+    padding-right: 0;
+  }
+}
+</code></pre>
+        <p>
+            Each of the above proposals observes that: a) CSS has selectors that allow us to identify things - and b) CSS has MediaQueries with <em>min-height</em> and <em>min-width</em> that allow us to express something about 'size' through various units.  It seems as if CSS "almost does this".  All you need to do, it seems, is smash those two things together somehow.
+        </p>
+        <p>
+            However, this is kind of misleading.  From a functional standpoint this is a significantly different application of both of those existing features than what CSS does today which will require fundamentally new plumbing.
         </p>
 
         <p>
-            When you look at it in this light, the whole "electability" question isn't actually resolved either.  You're actually much more likely to prevent worse outcomes by ranking candidates that you think have a chance of passing the threshold but prefer to your least desired by ranking them artifically higher than your honest preference.  Why?  Because in the old system, you cast <em>one vote per available seat</em>, but in this system you get <em>one vote counted</em> and that may transfer in some circumstances.
+            The reason I think that I and others land in an entirely different place is that we focused primarily on the plumbing.  We looked at this not a single problem of 'how to express what we mean', but rather a series of problems about missing machinery that would allow us to think about where such a solution would really fit in.  Here's the general thought process...
         </p>
-
     </section>
     <section class="sectioning">
-        <contextual-heading role="heading" aria-level="2">So what can we do?</contextual-heading>
+        <contextual-heading role="heading" aria-level="2">Minimum Viable  Machinery</contextual-heading>
         <p>
-            Well, two things: First, help me make sure that W3C membership really understands this.  Ultimately, how the W3C works rests on their shoulders.  If they want to see that changed, that can happen.  Either way, understanding how your votes are interpreted really matters.
+            So what are the fundamental, major moving parts that we would need for a reasonable, minimum viable soltion to designing responsive 'bits'?
         </p>
+        <section class="sectioning">
+            <contextual-heading role="heading" aria-level="3">Observing Size of an Element</contextual-heading>
+            <p>
+                The first, most basic issue is that we need some way to observe size changes to an element.
+            </p>
+            <p>
+                This is the one we're closest to answering today.  <code>ResizeObserver</code> is shipping in Chrome, and there are even half decent ways if less efficient ways to approximate this pretty well in non-supporting browsers.  Regardless of what solutions we ultimately arrive at, <code>ResizeObserver</code> will explain this bit of magic, and that's wonderful.
+            </p>
+            <p>
+                As great as it is, that's the extent of what this primitive offers.  It doesn't do anything to help the system identify which things it should and shouldn't monitor, nor when it starts and stops monitoring them, nor what a 'breakpoint' is or what to do about it.
+            </p>
+        </section>
 
-        <p>
-            Second, if you share my general opinion of least desirable outcome and also think that both of the 2 seats should really be filled by 2 of the other 3 candidates - what can you do?  Well, the absolute most important thing is to help turn out the vote.  The bigger the turnout, the harder it will be for a candidate with small, but strong support to reach the 34% threshold.  Even reducing this support by 2% has a radical impact on the results of the hypothetical above. This is entirely achievable.</p>
+        <section class="sectioning">
+            <contextual-heading role="heading" aria-level="3">Identifing which elements to observe</contextual-heading><p>
+                The second part of the problem is that we need some way to identify which elements we want to observe in the first place.  We also know that, this means tying certain, 'special' elements to a <code>ResizeObserver</code>.
+            </p>
+            <p>
+                We can greatly simplify the probem by specifying a common, rather than arbitary way to indicate what should be observed.  For example, we can provide a declarative way to express that relationship, perhaps via an attribute:
+            </p>
 
-        <p>
-            If you're an AC <em>vote</em>.  Whether you've voted in the past, please, please vote.  Every company's votes are counted equally - the 1 person shop that joined W3C gets the same voting power as Google, Microsoft, Intel, IBM and other really big companies.  If you do, be sure to use the "no other candidate" option rather than implying any degree of support for a least desirable outcome so that when votes transfer they don't poorly impact.
-        </p>
+            <pre><code class="language-javascript">&lt;div resize-observer&gt;<br>
+   ...<br>
+&lt;/div&gt;</code></pre>
 
-        <p>
-            If you <em>know</em> an AC (even if you are one yourself), please share this with them.  Make sure they see it.
-        </p>
+            <p class="note">
+                Note that this doesn't mean that that has to be a final solution, it simply separates the "someone will have to provide this connective tissue" and creates a particular part of the problem as something that may be fairly  easy to explain or approximate in terms of things that do exist in the platform already - via, for example, <code>MutationObserver</code>.
+            </p>
+            <p>
+                Splitting the problem allows us to think about what needs to happen, where and when.
+            </p>
+            <p>
+                Let's skip the "when" for now and talk about <em>what</em> happens.  Well, this is where an element is measured and some new thing is consulted:  Upon the reaching of some threshold a certain rule or rules can become relevant, or made irrelevant.
+            </p>
+        </section>
+        <section class="sectioning">
+            <contextual-heading role="heading" aria-level="3">Threshold Mapping</contextual-heading>
+            <p>
+                Current proposals are based on the idea that this should be expressed in the same sorts of ways that we express <code>@media</code> queries today.  It's entirely possible that that is, ultimately, a perfectly valid idea.
+            </p>
+            <p>
+                However, it is also true that this is not strictly necessary in order to describe the system - nor to present an answer that allows us to do very good things.
+            </p>
+            <p>
+                I'd like you to consider the following: While <code>@media</code> queries allow us to express an almost infinite number of designs ideally suited to any arbitrary size, measured by any valid CSS unit, we don't.
+            </p>
+            <p>
+                This isn't just one observation, it's several.
+            </p>
+            <section class="sectioning">
+                <contextual-heading role="heading" aria-level="4">How many designs?</contextual-heading>
+                <p>"Mobile First Responsive Design" laid out the philosophy that you design initially for the smallest available space.  Small designs scale up better than big ones scale down (it also helps us think about the document more linearly which is helpful for accessibility).  It reasons that, at some point, you will have more space to play with and can lay out more ideally.</p>
+                <p>For a lot of use cases, this means two designs: One small, one large enough to do more.  In rare cases you might find a third, fourth or even fifth, but the number of designs is, for the most part, actually generally quite small.
+                </p>
+            </section>
+             <section class="sectioning">
+                <contextual-heading role="heading" aria-level="4">Which breakpoints?</contextual-heading>
+                <p>
+                    This is, I believe, one of the key things to think about, for a few reasons.
+                </p>
+                <p>
+                    First, realize that many teams do not create media queries with arbitrary breakpoint, by any arbitrary unit of measure.  Many designers that I know don't even know what their breakpoints are - that's because they rely on some system which provides them a number of canned breakpoint by which they can talk about them in more generalized terms, like t-shirt sizes.
+                </p>
 
-        <p>
-            If you are anyone else -- please share it on social media. Believe it or not, we're all wildly connected and you'd be suprised at how easy it is to bump into a connection who either is an AC or at least knows someone who knows one. Just, basically, help get the word out.  If you have an opinion, share it.  In the past few years, people with the power to vote have listened to what you've had to say and there's no reason to think we can't make them listen again.
-        </p>
+                <p>
+                    The second is that I think that, to some extent, this is a thing that we continue to struggle with.  Good responsive design is as much about ceding control as it is gaining it.  Today's rules about which breakpoints tend to translate to which designs on which popular devices is good for precisely that, and nothing more.  This isn't suggesting that you shouldn't think about that at all, but rather to underscore that the web demands fluidity.  If you're stressing about whether you should 'flip' your design when there are 765 pixels available rather than 768, you'll never sleep.
+                </p>
+                <p>
+                    "Ranges" or "buckets" that increase at a "small enough rate" work pretty well for this - and they solve another problem that we have right now too: We're a little unsure what to actually measure: Is it the content box? the border box? both? Keeping things less granular helps me think more generally, for now.
+                </p>
+            </section>
+            <p>
+                As the resize observer measures the element that it is listening to,
+                breakpoints will trigger "something" to flip.  In current proposals those things are invisible - the mechanisms of media queries.  However, to begin with, we can make them visible - simply reflect them into the DOM as attributes, something like this:
+            </p>
+            <pre><code class="language-html">&lt;div resize-observer
+    available-width="small"
+    available-height="large"&gt;
+    ...<br>
+&lt;/div&gt;</code></pre>
+            <p>
+                Because attributes are a thing CSS already undertands, and already optimizes via clever tricks like bloom filters, and because attribute selectors are powerfully expressive, this gives us the ability to approximate all of the moving parts today.
+            </p>
+            <pre><code class="language-css">/*
+  Styles for
+  .myResponsiveElement .foo
+  which apply when there is
+  medium-large, large, x-large
+  or xx-large available space
+*/
+[available-width*="large"].myResponsiveElement.foo {
+    ...<br>
+}
+
+/*
+  Styles for
+  .myResponsiveElement .foo
+  which apply  when there is
+  small-medium, medium
+  or large available space
+*/
+[available-width*="medium"].myResponsiveElement .foo {
+    ...<br>
+}
+
+
+/*
+  Styles for
+  .anotherThing .bar
+  which apply when there is
+  x-large or xx-large
+  available space
+*/
+[available-width*="x-large"].anotherThing .bar {
+    ...<br>
+}
+
+/* ... you get the idea ...*/</code></pre>
+
+            <p>
+                This solution more closely approximates a breakpoint oriented pseudo-class, if we assume that those would operate more or less 'as they do today'.  "At-Rules" on the other hand insert or remove entire stylesheets at once.  Ultimately, this will matter in terms of optimizing a final solution as much as possible, but the difference will often be negligible, so it doesn't make too much sense to get too hung up on that.
+            </p>
 
     </section>
-</article></main>
+
+    <section class="sectioning">
+        <contextual-heading role="heading" aria-level="3"></contextual-heading>
+        <p class="note">
+                It could also be argued that the design and lifecycle methods of <code>Custom Elements</code> provide a more efficient/straightforward way to "plug in" here.  This is the approach used by Philip Walton in his piece <a href="https://philipwalton.com/articles/responsive-components-a-solution-to-the-container-queries-problem/">Responsive Components: a Solution to the Container Queries Problem</a>, and, in truth is the solution that I initially landed on independently as well.  However, after more thought, I believe that an element is a less close 'approximation' and certainly less paletable to many people.  Still, if your site is built with custom elements, you can follow an implementation where all other things here are equal and I think that that is still a very valid way to prove out these ideas.
+            </p>
+        </section>
+    <!-- p class="thanksTo"></p -->
+</section></article></main>
 
   
     <script>

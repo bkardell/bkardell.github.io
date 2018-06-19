@@ -20,21 +20,24 @@
           "xx-large": 1168
         },
         height: {
-          "x-small": 100,
+          "xxx-small": 50,
+          "xx-small": 100,
+          "x-small": 150,
           "small": 200,
-          "small-medium": 300,
-          "medium": 400,
-          "medium-large": 500,
-          "large": 600,
+          "small-medium": 250,
+          "medium": 300,
+          "medium-large": 400,
+          "large": 500,
           "x-large": 700,
           "xx-large": 800
         }
       },
       hasResizeObserver = typeof ResizeObserver === 'function',
+      useFallbackObserver = document.documentElement.hasAttribute('pseudo-observe-fallback'),
       evaluateBreakpoints = function (el, bps, dir, dim) {
         var sizebreakpoint = 'xxxx-small',
             dim = (typeof dim !== 'undefined') ? dim : el.getBoundingClientRect(),
-            screenCssPixelRatio = 1 //(window.outerWidth) / window.innerWidth
+            screenCssPixelRatio = 1
 
         Object.keys(bps).forEach(function(sizeName) {
           if ((dim[dir] * screenCssPixelRatio) > bps[sizeName]) {
@@ -114,14 +117,12 @@
           }
           if (el.removeAttribute) {
             el.removeAttribute('available-width')
+            el.removeAttribute('available-height')
           }
       };
 
   observe();
 
-  var temp = document.createElement('style')
-  temp.innerHTML = "[resize-observer] { display: inherit; }[resize-observer] > * { display: contents; width: auto; height: auto;}"
-  document.head.insertBefore(temp, document.head.firstElementChild)
 
   var isMatch = function isMatch(node) {
       return node.nodeType === 1 && node.matches('[resize-observer]')
@@ -141,14 +142,20 @@
             Array.prototype.slice.call(mutation.removedNodes).forEach(unobserveEl)
           }
       });
-      if (!hasResizeObserver) {
+      if (!hasResizeObserver && useFallbackObserver) {
           window.addEventListener('resize', queueSet)
           queueSet()
       }
   });
-  po.observe(document.documentElement, {
-      subtree: true,
-      childList: true,
-      attributeFilter: ['resize-observer']
-  })
+  if (hasResizeObserver || useFallbackObserver) {
+    var temp = document.createElement('style')
+    temp.innerHTML = "[resize-observer] { display: inherit; }[resize-observer] > * { display: contents; width: auto; height: auto;}"
+    document.head.insertBefore(temp, document.head.firstElementChild)
+
+    po.observe(document.documentElement, {
+        subtree: true,
+        childList: true,
+        attributeFilter: ['resize-observer']
+    })
+  }
 }())
