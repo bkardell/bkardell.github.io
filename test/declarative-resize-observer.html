@@ -41,7 +41,7 @@
 .code-sample[resize-observer]{
   display: grid;
   background-color: black;
-  padding: 1rem;
+  padding: 0.8rem;
 }
 
 
@@ -51,8 +51,8 @@
   margin: 1rem auto;
 }
 
-pre code {
-  font-size: 0.5rem;
+.code-sample pre code {
+  font-size: 1rem;
 }
 
 
@@ -355,23 +355,23 @@ pre code {
 
         <div class="code-sample" resize-observer>
 <pre><code class="language-css">#ro-three {
-    width: 100%;
-    display: grid;
-    margin: 1rem auto;
-  }
+  width: 100%;
+  display: grid;
+  margin: 1rem auto;
+}
 
-  [available-width]#ro-three {
-    grid-template-columns: 1fr;
-  }
+[available-width]#ro-three {
+  grid-template-columns: 1fr;
+}
 
-  [available-width]#ro-three > * {
-    display: block;
-    padding: 1rem;
-  }
+[available-width]#ro-three > * {
+  display: block;
+  padding: 1rem;
+}
 
-  #ro-three:not([available-width*="small"]) {
-    grid-template-columns: 1fr 1fr;
-  }</code></pre>
+#ro-three:not([available-width*="small"]) {
+  grid-template-columns: 1fr 1fr;
+}</code></pre>
         </div>
         <div id="ro-three" resize-observer class="layout">
             <p>
