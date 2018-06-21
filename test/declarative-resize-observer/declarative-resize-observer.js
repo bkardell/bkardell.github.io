@@ -36,11 +36,10 @@
       useFallbackObserver = document.documentElement.hasAttribute('pseudo-observe-fallback'),
       evaluateBreakpoints = function (el, bps, dir, dim) {
         var sizebreakpoint = 'xxxx-small',
-            dim = (typeof dim !== 'undefined') ? dim : el.getBoundingClientRect(),
-            screenCssPixelRatio = 1
+            dim = (typeof dim !== 'undefined') ? dim : el.getBoundingClientRect()
 
         Object.keys(bps).forEach(function(sizeName) {
-          if ((dim[dir] * screenCssPixelRatio) > bps[sizeName]) {
+          if (dim[dir] > bps[sizeName]) {
             sizebreakpoint = sizeName
           }
         })
@@ -49,8 +48,11 @@
       setContainerSize = function setContainerSize(el, dim) {
         var dim = (typeof dim !== 'undefined') ? dim : el.getBoundingClientRect()
         //console.log('evaluateBreakpoints on ', el)
-        evaluateBreakpoints(el, breakpoints.width, 'width', dim)
-        evaluateBreakpoints(el, breakpoints.height, 'height', dim)
+        if (el.getAttribute('resize-observer') == 'height') {
+          evaluateBreakpoints(el, breakpoints.height, 'height', dim)
+        } else {
+          evaluateBreakpoints(el, breakpoints.width, 'width', dim)
+        }
       },
       setContainerSizes = function setContainerSizes() {
         xSizeEls.forEach(function(el) {
@@ -68,20 +70,24 @@
           attributes: true
         })
       },
-      isApplying = false,
+      modThreshold = 100,
       mo = new MutationObserver(collector),
       rObserver = function() {
         if (hasResizeObserver) {
           return new ResizeObserver(function(entries) {
-            if (!isApplying) {
-              isApplying = true
+              var now = Date.now()
               entries.forEach(function(entry) {
-                setContainerSize(entry.target, entry.contentRect);
+                entry.target.consecutiveSkips = entry.target.consecutiveSkips || 0
+                if (!entry.target._lastMod || (now - entry.target._lastMod) > modThreshold) {
+                  console.log('updating ', entry.target, (now - entry.target._lastMod))
+                  setContainerSize(entry.target, entry.contentRect)
+                } else {
+                  //unobserveEl(entry.target)
+                  console.log('skipping update on ', entry.target, (now - entry.target._lastMod))
+                }
+                entry.target._lastMod = now
               })
-              setTimeout(() => {
-                isApplying = false
-              },10)
-            }
+
           })
         }
       }(),
@@ -116,6 +122,7 @@
             }
           }
           if (el.removeAttribute) {
+            el.removeAttribute('resize-observer')
             el.removeAttribute('available-width')
             el.removeAttribute('available-height')
           }
@@ -149,7 +156,8 @@
   });
   if (hasResizeObserver || useFallbackObserver) {
     var temp = document.createElement('style')
-    temp.innerHTML = "[resize-observer] { display: inherit; }[resize-observer] > * { display: contents; width: auto; height: auto;}"
+    temp.innerHTML = '[resize-observer] { display: inherit; overflow-x: hidden; overflow-y: visible; width: auto; height: auto;}'
+                     + '[resize-observer="height"] { overflow-x: visible; overflow-y: hidden; }'
     document.head.insertBefore(temp, document.head.firstElementChild)
 
     po.observe(document.documentElement, {

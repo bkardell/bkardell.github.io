@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html pseudo-observe-fallback>
+<head>
+    <meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no">
+    <title>Declarative Resize Observer</title>
+    <script src="https://bkardell.com/prism.js"></script>
+    <link rel="stylesheet" href="https://bkardell.com/prism.css"></link>
+
+    <style>
+
+    .one {
+      width: 95%;
+      padding: 1rem;
+      transition-property: width;
+      transition-duration: 2s;
+      background-color: yellow;
+      overflow: auto;
+    }
+    .one::before {
+      content: 'default';
+    }
+
+    @media only screen
+      and (min-width: 868px) {
+        body { width: 90%; margin: 1rem auto; }
+
+        .one {
+          width: 50%;
+        }
+        .one::before {
+          content: 'big';
+          font-weight: bold;
+        }
+    }
+
+    .one[resize-observer][available-width*=xx-small] {
+      width: 95%;
+    }
+
+    .one[resize-observer]:not([available-width*=xx-small]) {
+      width: 20%;
+    }
+
+    </style>
+    <style>
+
+.code-sample[available-width*="large"] pre {
+  width: 75%;
+  display: block;
+  margin: 1rem auto;
+}
+
+.code-sample pre code {
+  font-size: 1rem;
+}
+
+
+    </style>
+    <script src="declarative-resize-observer/declarative-resize-observer.js"></script>
+</head>
+<body>
+
+  <main>
+    <section>
+      <h1>Container size width that changes via breakpoint/animates</h1>
+      <div class="one">
+        <p>
+          This container is a <code>.one</code> and has no <code>resizeObserver</code>.  My stylesheet includes the rules below, and so if the viewport is < 868px, the block will use 90% of the screen, but if it is bigger it will switch to use only 50% of the available real estate, but it will do so via a transition lasting 2 seconds.
+        </p>
+        <pre><code class="language-javascript">.one {
+  width: 95%;
+  padding: 1rem;
+  transition-property: width;
+  transition-duration: 2s;
+  background-color: yellow;
+  overflow: auto;
+}
+.one::before {
+  content: 'default';
+}
+
+@media only screen
+  and (min-width: 868px) {
+    body { width: 90%; margin: 1rem auto; }
+
+    .one {
+      width: 50%;
+    }
+    .one::before {
+      content: 'big';
+      font-weight: bold;
+    }
+}
+</code></pre>
+      </div>
+    </section>
+
+    <section>
+      <h1><code>.one</code> with a foul <code>resize-observer</code> rule</h1>
+      <div class="one" >
+        <p>
+          This is one of the more complicated cases I can think of.. This container is also a <code>one</code> but I'd added some non-sense rules that would cause cycles.
+        </p>
+        <pre><code class="language-css">.one[resize-observer]:not([available-width*=xx-small]) {
+  width: 20%;
+}
+.one[resize-observer][available-width*=xx-small] {
+  width: 95%;
+}
+</code></pre>
+        <p>So, this is saying "when it isn't small, make it small" and then "when it is big, make it small". This is kind of nonsense and it's unclear what should happen.  Because it is kind of complex to explain, I've added a button below to attach the resize observer after the fact and see what happens.
+        </p>
+        <button>click</button>
+        <script>
+          document.addEventListener('click', function(evt) {
+            if (evt.target.matches('.one button')) {
+                evt.target.parentElement.setAttribute('resize-observer','')
+            }
+          })
+        </script>
+        <p>
+          This is tricky because it involves not only conflicing rules but also changes that will happen during an animation on the element that you are observing.  You'll note though that it doesn't
+          freak out or start flashing like crazy or send things into an infinte loop.  Sometimes you get a hiccup in which it appears to change its mind about which arbitrary answer is 'correct'.  I think that's fine enough.  We can't send things crashing and burning, but I see no reason that it has to arrive at a perfect answer to something which clearly has no perfect answer either.
+        </p>
+        <p>
+          How it works is like this:  When resizes happen, if they happen to pass a breakpoint (roughly in 100px increments) this causes an attribute to be updated. We record when that was last updated and, if it happens again within a certain (tiny) threshold, we just ignore it.
+        </p>
+      </div>
+
+    </section>
+
+    <section>
+      <h1><code>.two</code> : Simple case, just plain wrong</h1>
+      <div class="two" resize-observer>
+      <p>Here's a simpler case, but it's different - there's no animation or anything, there's just a thing that says by default make it big and red, if it gets too big make it small and orange.  What's the right answer?  Who knows, but again, it won't set your browser on fire or start flashing in an infinte loop or anything.</p>
+      <style>
+.two[resize-observer] {
+  background-color: red;
+  width: 200%;
+}
+
+.two[resize-observer]:not([available-width*="small"]) {
+  background-color: orange;
+  width: 50%;
+}
+</style>
+      <pre><code class="language-css">.two[resize-observer] {
+  background-color: red;
+  width: 200%;
+}
+
+.two[resize-observer]:not([available-width*="small"]) {
+  background-color: orange;
+  width: 50%;
+}</code></pre>
+    </section>
+
+  </main>
+
+
+
+</body>
+</html>
