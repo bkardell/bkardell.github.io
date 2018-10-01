@@ -4,11 +4,11 @@
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:site" content="@briankardell">
     <meta name="twitter:creator" content="@briankardell">
-    <meta name="twitter:title" content="Responsive Plumbing">
-    <meta name="twitter:description" content="So, you're designing some kind of 'component'.  It might be interactive, it might not.  It might be a Custom Element, or it might just be a thing that you intend to use in several ">
+    <meta name="twitter:title" content="Glass half :empty">
+    <meta name="twitter:description" content="Standards are hard.  Recently, the CSS Working Group has been discussing some related things about selectors dealing with &quot;emptiness&quot;.  I have no concrete opinions but a lot of tho">
     
     <link rel="alternate" type="application/rss+xml" href="blog/feed.rss" title="bkardell.com/blog rss feed">
-    <title>Responsive Plumbing</title>
+    <title>Glass half :empty</title>
     <style>.captioned-image {
     background-color: #eaeaea;
     display: block;
@@ -324,7 +324,7 @@ America (art for sale)</a></li>
     </nav>
 </header>
     <main><div class="posted-on">Posted on null</div><article class="sectioning">
-    <contextual-heading role="heading" aria-level="1">Responsive Plumbing</contextual-heading>
+    <contextual-heading role="heading" aria-level="1">Glass half :empty</contextual-heading>
     <script src="../prism.js"></script>
     <link rel="stylesheet" href="../prism.css">
     <style>
@@ -370,234 +370,226 @@ America (art for sale)</a></li>
     }
     </style>
     <p class="segue">
-        So, you're designing some kind of 'component'.  It might be interactive, it might not.  It might be a Custom Element, or it might just be a thing that you intend to use in several places.  How wonderful would it be if you could just design it responsively and then never worry about it again.  Sadly, today, you really can't.  A lot has been written about this under the banner "Container Queries" or "Element Queries", but, I have some thoughts and observations.
+        Standards are hard.  Recently, the CSS Working Group has been discussing some related things about selectors dealing with "emptiness".  I have no concrete opinions but a lot of thoughts and feedback I think it might be helpful to write down - and I'd like to hear yours after reading this as well...
+    </p>
+    <p>
+        CSS includes a pseudo class <code>:empty</code>, it has for some time.  Firefox 3.5, Safari 3.2, Chrome 4 all had support according to caniuse.  IE 6, 7, 8 didn't support it, but other than that, the full caniuse table is basically an entire wall of green.  jQuery definitely, also, has supported it forever because it was in the early CSS draft from the late 90's upon which jQuery based its selector support.  Yet, when you look at data in the wild, this selector is effectively unused and lots of people who use CSS all the time have not heard of it.
+    </p>
+    <p>
+        Interesting, right?  Why is that?  It's hard to say for sure, but here is a story that I have heard many times:  A developer has an actual problem that they are trying to solve.  They think to themselves "wow, you know, this seems like probably a really common thing - I wonder if there is a selector that I could use here that I just don't know about" and so they turn to the spec (or some more developer friendly version of the same information) and scan through.  They see the <code>:empty</code> pseudo-class and briefly feel a rush of relief - perfect!  A few moments later, however, they find that this isn't what they thought it was - it won't solve their problem.  These were not the droids they were looking for.
     </p>
 
     <p>
-        Sometimes, the lack of ability to simply design a responsive 'thing' (the general problem described by Container Queries proposals) is simply kind of an inconvenience.  Yes, it takes a bit more work.  Yes, it couples two pieces of code together in an unfortunate way, but - you do it, you ship it, and then you move on.  If the problem is localized and specific (like your own website, perhaps), this isn't that big a deal.
+        This is, of course, entirely anecdotal and biased by whom I talk to.  Maybe I'm just 'lucky' in that I have heard this many times.  However, other people write blog posts and still others send mail the mailing list, and some of them open issues on github, and others have recounted similar conversations.  Also, as I say, real world usage data that shows after almost a decade of support, this feature is nearly unused.
     </p>
     <p>
-        However, the costs and impacts of this increase non-linearly the less localized and specific it is.  For example, imagine that you have a team that designs things for use by many applications.  This isn't uncommon, it is a really good way to centralize certain kinds of costs and aspects of experiences (accessibility, for example).  Now imagine that the many applications that will integrate and use this operate largely independently otherwise.  They have different layout structures, use different coding approaches and so on.  In order to make that 'thing' responsive, every team has to understand all of the assumptions and re-figure out the same problems in their own context.  Over time, something will change, and then they have to chase all the people to do it all again.
+        In light of all of this, it seems safe to say that there would appear to be a gap in terms of what CSS selectors actually can do in this space and what developers would really want them to be able to do do.  However, note carefully that I said CSS selectors <em>in this space generally</em>, and not what <code>:empty</code> means specifically - here's why...
     </p>
 
-    <p>
-        I was recently thrust into a situation in which I was made keenly aware of the incredible cost that this would incur.  Really, it was too much.  It seemed like we just couldn't afford the cost.  However, there wasn't a good alternative either.  We couldn't afford to do it, and we couldn't afford not to do it.
-    </p>
-    <p>
-        And so I sat down to think of a way to circle this square.  Surprisingly, I came up with an answer I'm actually fairly happy with.  It's got a lot of good qualities:
-    </p>
-    <ul>
-        <li>
-            It allows me to design 'things' responsively, without requiring careful coordination with the layouts that they are used in
-        </li>
-        <li>
-            Author express their stylistic designs in real CSS, whereever that lives
-        </li>
-        <li>
-            It doesn't have to be re-parsed, processed or transformed in any way.  It doesn't require any build tools, or putting those styles into a &lt;style&gt; element or &lt;script&gt; block or anything.
-        </li>
-        <li>
-            It is a 'live' solution.  That is, it doesn't matter how an element got into the DOM or when or why something's style is suddenly affected.
-        </li>
-        <li>
-            There's no JavaScript for users to write in order to wire it up
-        </li>
-        <li>
-            It is a PE oriented solution
-        </li>
-        <li>
-            The JavaScript that enables it is &lt;1k minified and gzipped.
-        </li>
-    </ul>
     <section class="sectioning">
-        <contextual-heading role="heading" aria-level="2">Declarative Resize Observer</contextual-heading>
+        <contextual-heading role="heading" aria-level="2">WDYM Empty?</contextual-heading>
         <p>
-            What I arrived at is a <a href="https://bkardell.com/test/declarative-resize-observer.html">Declarative Resize Observer</a>.  While it is entirely useful, you might note that it doesn't look at all like current proposals for Container Queries.
+            When people turn to the spec and find that <code>:empty</code> doesn't mean what they think it means, it would be helpful to know what they <em>expected</em> it to mean, and why.  I have asked this question to a number of people and there seem to be a whole lot different expectations, wants, and rationales.  What's more, when I listen to them - many of them sound like fairly reasonable interpretations.  In retrospect, it's kind of not suprising since we have so many words for subtle variations of "not something":  0, null, void, undefined, empty, etc.
         </p>
         <p>
-            Once I got it put together, I discovered that I am not remotely the only one who landed on a solution that "looks" more similar to what I arrived at than it does current proposals.
-        </p>
-        <p>
-            Philip Walton, for example, <a href="philipwalton.com/articles/responsive-components-a-solution-to-the-container-queries-problem/">arrived at something <em>very</em> similar</a>.  He and I have since had some very good talks, discussing the pros and cons of various details.  More importantly, perhaps, we talked about why that happened in the first place.
-        </p>
-        <p>
-            I'd like to propose that perhaps understanding this could be potentially useful or informative for existing standardization efforts.  I kind of think it is, so I'll explain below.
-        </p>
-    </section>
-    <section class="sectioning">
-        <contextual-heading role="heading" aria-level="2">Where to start</contextual-heading>
-        <p>
-            Most proposals begin by attempting to propose something via pseudo-code that looks something like one of these:
-        </p>
-        <pre><code class="language-css">/* one example, from Mat Marquis */
-.mod:media( min-width: 425px ) img {
-    …
-}
-
-/* another example, from Ethan Marcotte */
-.recirc-container:(min-width: 20em) {
-    .ranked-list li,
-    .ranked-list li:nth-child( n ) { … }
-    .ranked-list li:nth-child( 2n ) { … }
-    .ranked-list li:nth-child( 2n+1 ) { … }
-}
-
-/* another example, from Tommy Hodgins */
-@element 'nav label, nav .label' and (max-width: 150px) {
-  $this {
-    padding-right: 0;
-  }
-}
-</code></pre>
-        <p>
-            Each of the above proposals observes that: a) CSS has selectors that allow us to identify things - and b) CSS has MediaQueries with <em>min-height</em> and <em>min-width</em> that allow us to express something about 'size' through various units.  It seems as if CSS "almost does this".  All you need to do, it seems, is smash those two things together somehow.
-        </p>
-        <p>
-            However, this is kind of misleading.  From a functional standpoint this is a significantly different application of both of those existing features than what CSS does today which will require fundamentally new plumbing.
-        </p>
-
-        <p>
-            The reason I think that I and others land in an entirely different place is that we focused primarily on the plumbing.  We looked at this not a single problem of 'how to express what we mean', but rather a series of problems about missing machinery that would allow us to think about where such a solution would really fit in.  Here's the general thought process...
-        </p>
-    </section>
-    <section class="sectioning">
-        <contextual-heading role="heading" aria-level="2">Minimum Viable  Machinery</contextual-heading>
-        <p>
-            So what are the fundamental, major moving parts that we would need for a reasonable, minimum viable soltion to designing responsive 'bits'?
+            I'm not arguing that <code>:empty</code> itself should or should not mean anything in particular, but the sections below catalog the various answers, asks, rationales and discussions that I've had or heard.
         </p>
         <section class="sectioning">
-            <contextual-heading role="heading" aria-level="3">Observing Size of an Element</contextual-heading>
+            <contextual-heading role="heading" aria-level="3"><strike>No Child Nodes at All</strike></contextual-heading>
             <p>
-                The first, most basic issue is that we need some way to observe size changes to an element.
+                Let's start with one of the strictest possible definitions I can imagine: If the thing actually has no child nodes at all.  The only thing that could match is things like this:
+            </p>
+            <pre><code class="language-html">&lt;p&gt;&lt;/p&gt;</code></pre>
+            <p>
+                This seems, initially, like an entirely reasonable interpretation.  If the concept of emptiness that you are thinking of has anything to do with 'stuff <em>inside the element</em>', this is the one case that everyone agrees should definitely be 'empty'.
             </p>
             <p>
-                This is the one we're closest to answering today.  <code>ResizeObserver</code> is shipping in Chrome, and there are even half decent ways if less efficient ways to approximate this pretty well in non-supporting browsers.  Regardless of what solutions we ultimately arrive at, <code>ResizeObserver</code> will explain this bit of magic, and that's wonderful.
+                Note, however, that it's crossed out above, however, because this is <em>more strict</em> than the current specification and implementations which we have already discussed have nearly 0 uptake and lots of complaints that even that isn't what people want.  As you read more, hopefully it comes clear why, practically speaking, this is probably not an especially useful definition (at least not if we only get one).
+        </p></section>
+
+        <section class="sectioning">
+            <contextual-heading role="heading" aria-level="3"><strike>Currently Matching <code>:empty</code> Perspective</strike></contextual-heading>
+            <p>
+                Cut to what has been actually implemented all of these years.  Under that definition, the following is considered <code>:empty</code> too:
+            </p>
+            <pre><code class="language-html">&lt;p&gt;&lt;!-- still empty --&gt;&lt;/p&gt;</code></pre>
+            <p>
+                If it surprises you that this is a thing that would actually even have to be called out separately, that I think is part of the issue: We're not all sharing a common mental model to begin with.  A lot of people think 'that is not a child, it's just a comment and it isn't parsed into anything'.  But, strictly speaking, that's not true.  It is not an <em>element</em> child, but it is definitely a <em>node</em> child.  <code>thatParagraph.childNodes.length</code> is 1.
             </p>
             <p>
-                As great as it is, that's the extent of what this primitive offers.  It doesn't do anything to help the system identify which things it should and shouldn't monitor, nor when it starts and stops monitoring them, nor what a 'breakpoint' is or what to do about it.
+                The CSS Working Group saw that this would trip people up and maybe reduce the usefulness of it as well and so, from day one, defined that comment nodes and processing instruction nodes, for example, didn't 'count' toward measuring emptiness.
+        </p></section>
+
+        <section class="sectioning">
+            <contextual-heading role="heading" aria-level="3">The "Insignificant Whitespace"  Perspective</contextual-heading>
+            <p>
+                One of the easiest ways to foul up what currently exists is like this..
+            </p>
+             <pre><code class="language-html">&lt;p&gt;&nbsp;&lt;/p&gt;</code></pre>
+            <p>
+                This surprises a number of people because they think "whitespace is insignificant in HTML and it is just parsed out".  But that is kind of an overstatement of what <em>insignificant whitespace</em> means.  That doesn't mean it isn't parsed, it means it shouldn't be <em>displayed</em>. Go ahead and ask that node how many <code>.childNodes</code> it has, and it will happily reply that the answer is <em>1</em>, not <em>0</em>.  That child is a <code>TextNode</code> holding the data <code>" "</code>.
+            </p>
+            <p>
+                This trips up a lot of authors for several reasons.  First, I think because their mental model is built around <em>elements</em> and a view of the DOM based on dev tools in which a text node doesn't 'look' like an element node.  Some of this, I think, is just a mental block because if you ask most of the same people whether the following is empty..
+            </p>
+
+             <pre><code class="language-html">&lt;p&gt;what about this&lt;/p&gt;</code></pre>
+
+             <p>... they would answer "of course not", and so it seems a given that a least a portion of this is requires modifying our current understanding.</p>
+             <p>
+                 That said, even if you understand this, the question of whether 'insignificant whitespace' should be considered goes beyond just strict theory.  A feature isn't valuable because it is strictly correct, it is valuable because it can be used and, it appears that way too many things rely on "insignificant whitespace" working out to be, well, insignificant in determining emptiness... It's just too easy and common to create that particular situation and frequently, those are things that desparately want a concept of emptiness too (a CMS that allows you to drag in and then populate things somewhat visually, for example).
+             </p>
+             <p>
+                 This too, seems to me a reasonable interpretation: If the text node contains only <em>insignificant whitespace</em> that is still considered 'empty'.
+             </p>
+        </section>
+
+
+        <section class="sectioning">
+            <contextual-heading role="heading" aria-level="3"><strike>The "Insignificant Whitespace Including Generated Content"  Perspective</strike></contextual-heading>
+            <p>
+                I'm going to list this one here because it seems to come up a lot and it is a non-starter, but also I think has some interesting observations that go along with it that either raise or help answer a number of other questions...</p>
+
+            <p>
+                A number of people seem to think that the following <code tag-esc="">p</code> should <em>not</em> be considered <code>:empty</code>.
+            </p>
+             <pre><code class="language-html">&lt;p id="one"&gt;&lt;/p&gt;
+&lt;style&gt;
+    #one::before {
+        content: 'empty?';
+    }
+&lt;/style&gt;
+             </code></pre>
+            <p>
+                As I said, while this may "feel" intuitive at first, this is a non-starter for reasons which will probably appear obvious in retrospect:  CSS selectors cannot rely on the application of CSS.  This would itself create circularity which, in CSS is a deal breaker.  For example, that would make it possible to write:
+            </p>
+            <pre><code class="language-html">&lt;p id="one"&gt;&lt;/p&gt;
+&lt;style&gt;
+    #one:empty::before {
+        content: 'empty?';
+    }
+&lt;/style&gt;</code></pre>
+             <p>
+                 The DOM is empty, which causes CSS to match a rule which says it is not, which cause the rule to no longer apply, and so on.  There are probably ways to build in resilience to this very specific example, but still, it violates fundamental principles of CSS.
+             </p>
+             <p>
+                 As I said though, I think it is interesting to point out not just for clarity but because it points to/allows us to stress two kind of important things:  First, CSS selectors operate on the DOM tree. Second, children in the DOM tree are not the only way that users "get" some kind of content.  There is no DOM node created in this case - but there is a <em>box</em> containing actual text drawn on the screen and there is a node created in the <em>accessibility tree</em>.  Our measure of 'emptiness' can't really include <em>exactly</em> what content is actually presented to an end user visually or acceesibly which leads me to the next one...
+             </p>
+        </section>
+
+        <section class="sectioning">
+            <contextual-heading role="heading" aria-level="3"><strike>From the End-User's Perspective Empty</strike></contextual-heading>
+            <p>
+                This is really just a correlary to the above one, but a lot of people would like to define emptiness in terms of what is shown to end-users of some kind (whether through the screen or accessibility tree) - so, for example, they'd like this to match:
+            </p>
+
+            <pre><code class="language-html">&lt;p id="two"&gt;
+    &lt;span style="display:none;"&gt;error&lt;/span&gt;
+&lt;/p&gt;</code></pre>
+
+            <p>
+                While that totally makes sense to me as some kind of a <em>want</em>, it too is a non-starter for the same reasons listed in the section above.
+            </p>
+        </section>
+
+
+        <section class="sectioning">
+            <contextual-heading role="heading" aria-level="3">The Does "Insignifice" Actually Matter Perspective</contextual-heading>
+            <p>
+                So, if we intentially omit 'insignificant whitespace' I guess a part of the question is how and why. Examples would help
+            </p>
+             <pre><code class="language-html">&lt;p&gt;&amp;nbsp;&lt;/p&gt;
+&lt;p&gt;&amp;#160;&lt;/p&gt;
+&lt;p&gt;&amp;#160;&lt;/p&gt;
+&lt;p&gt;&amp;Tab;&lt;/p&gt;
+&lt;p&gt;&amp;#x00009;&lt;/p&gt;
+&lt;p&gt;&amp;#9;&lt;/p&gt;
+&lt;p&gt;&amp;NewLine;&lt;/p&gt;
+&lt;p&gt;&amp;#x0000A;&lt;/p&gt;
+&lt;p&gt;&amp;#10;&lt;/p&gt;</code></pre>
+            <p>All of the above express paragraph that contains only whitespace and, for example the <code>nodeType</code> and <code>.data</code> property of the two is actually pretty much  indisinguishable in browsers regardless of whether those were expressed as entities or not.  Further, what about elements like <code tag-esc="">pre</code> for example?  In these, the same 'insigniciance' suddenly <em>becomes</em> significant. Maybe it is actually that "significant whitespace" isn't what we're after at all... Maybe that is just a thing we currently observe because we all expect that very particular one to work for that reason.  Maybe.</p>
+            <p>A lot of the use cases that determine that a strict definition of empty sans insignificant whitespace is inadequate, it seems, can also create, effectively, entity issues like this as well.  Most notably, WYSIWG editors in which the 'intent' becomes  disconnected and where it is unclear which of those is always appropriate.
+            </p>
+            <p>Because of these points, I think (again, currently) that one <em>could</em> (I am not attempting to do so specifically) make a rational case that "insignificance" isn't the problem and that "intentionality of whitespace" shouldn't really be considered here either.  That, perhaps a mechanism allowing us to consider those as empty would be useful.  The same one? A different one? Again, I dont know and I'm not making a case, I am simply attempting to catalog the debates, rationales and discussions without leaning too hard in any very specific direction.</p>
+        </section>
+
+        <section class="sectioning">
+            <contextual-heading role="heading" aria-level="3">The Does "Elementness" Actually Matter Perspective</contextual-heading>
+            <p>
+                Depending on where you fall down on the item above, it's not always clear what to do with this:
+            </p>
+             <pre><code class="language-html">&lt;div&gt;&lt;br&gt;&lt;/div&gt;</code></pre>
+            <p>The <code tag-esc="">br</code> element is a legacy concept that predates the W3C and, well, it's werid.  Pretty much everyone recognizes this as an element which <em>means</em> a character... about whitespace.</p>
+            <p>
+                If whitespace "as meaning" rather than "as style" is based on the tree and based on all of the things in all the previous points (how they are styled is irrelevant) and that WYSIWG editors disconnect, and so on - I (again, currently) believe here too one could make a fairly reasonable argument that a <code tag-esc="">br</code> child should be treated the same as a <code tag-esc="">br</code> entity, or at least having a way to consider that similarly empty as well.
             </p>
         </section>
 
         <section class="sectioning">
-            <contextual-heading role="heading" aria-level="3">Identifing which elements to observe</contextual-heading><p>
-                The second part of the problem is that we need some way to identify which elements we want to observe in the first place.  We also know that, this means tying certain, 'special' elements to a <code>ResizeObserver</code>.
+            <contextual-heading role="heading" aria-level="3">Is it about the content model or characterness?</contextual-heading>
+            <p>
+                Oh my... I know this might sound a little off to some at first, but what about an <code tag-esc="">hr</code>?  While we probably like to think of it as a "horizontal rule", that is at least to some extent about <em>rendering</em>.  According to the (current) specification it actually <em>represents</em> a 'paragraph-level thematic break' which is very similar in nature to <code tag-esc="">br</code>:  It is an element which can't itself contain content and implies "break-ed-ness" but it doesn't map cleanly to entity-like 'character-ness'.
             </p>
             <p>
-                We can greatly simplify the probem by specifying a common, rather than arbitary way to indicate what should be observed.  For example, we can provide a declarative way to express that relationship, perhaps via an attribute:
-            </p>
-
-            <pre><code class="language-javascript">&lt;div resize-observer&gt;<br>
-   ...<br>
-&lt;/div&gt;</code></pre>
-
-            <p class="note">
-                Note that this doesn't mean that that has to be a final solution, it simply separates the "someone will have to provide this connective tissue" and creates a particular part of the problem as something that may be fairly  easy to explain or approximate in terms of things that do exist in the platform already - via, for example, <code>MutationObserver</code>.
-            </p>
-            <p>
-                Splitting the problem allows us to think about what needs to happen, where and when.
-            </p>
-            <p>
-                Let's skip the "when" for now and talk about <em>what</em> happens.  Well, this is where an element is measured and some new thing is consulted:  Upon the reaching of some threshold a certain rule or rules can become relevant, or made irrelevant.
+                Is it empty? I don't know - this feels like a stretch (to me), but I see the argument: If your definition really relies on containing some kind of 'character content' then, I kind of get it... maybe.
             </p>
         </section>
+
+
         <section class="sectioning">
-            <contextual-heading role="heading" aria-level="3">Threshold Mapping</contextual-heading>
+            <contextual-heading role="heading" aria-level="3">Elements That <em>Kinda Mean</em> They Should Themselves Not Contain Stuff</contextual-heading>
             <p>
-                Current proposals are based on the idea that this should be expressed in the same sorts of ways that we express <code>@media</code> queries today.  It's entirely possible that that is, ultimately, a perfectly valid idea.
+                There are some things that <em>seem</em> like the above, but there is a case to be made that they are different.  For example
             </p>
-            <p>
-                However, it is also true that this is not strictly necessary in order to describe the system - nor to present an answer that allows us to do very good things.
-            </p>
-            <p>
-                I'd like you to consider the following: While <code>@media</code> queries allow us to express an almost infinite number of designs ideally suited to any arbitrary size, measured by any valid CSS unit, we don't.
-            </p>
-            <p>
-                This isn't just one observation, it's several.
-            </p>
-            <section class="sectioning">
-                <contextual-heading role="heading" aria-level="4">How many designs?</contextual-heading>
-                <p>"Mobile First Responsive Design" laid out the philosophy that you design initially for the smallest available space.  Small designs scale up better than big ones scale down (it also helps us think about the document more linearly which is helpful for accessibility).  It reasons that, at some point, you will have more space to play with and can lay out more ideally.</p>
-                <p>For a lot of use cases, this means two designs: One small, one large enough to do more.  In rare cases you might find a third, fourth or even fifth, but the number of designs is, for the most part, actually generally quite small.
-                </p>
-            </section>
-             <section class="sectioning">
-                <contextual-heading role="heading" aria-level="4">Which breakpoints?</contextual-heading>
-                <p>
-                    This is, I believe, one of the key things to think about, for a few reasons.
-                </p>
-                <p>
-                    First, realize that many teams do not create media queries with arbitrary breakpoint, by any arbitrary unit of measure.  Many designers that I know don't even know what their breakpoints are - that's because they rely on some system which provides them a number of canned breakpoint by which they can talk about them in more generalized terms, like t-shirt sizes.
-                </p>
 
-                <p>
-                    The second is that I think that, to some extent, this is a thing that we continue to struggle with.  Good responsive design is as much about ceding control as it is gaining it.  Today's rules about which breakpoints tend to translate to which designs on which popular devices is good for precisely that, and nothing more.  This isn't suggesting that you shouldn't think about that at all, but rather to underscore that the web demands fluidity.  If you're stressing about whether you should 'flip' your design when there are 765 pixels available rather than 768, you'll never sleep.
-                </p>
-                <p>
-                    "Ranges" or "buckets" that increase at a "small enough rate" work pretty well for this - and they solve another problem that we have right now too: We're a little unsure what to actually measure: Is it the content box? the border box? both? Keeping things less granular helps me think more generally, for now.
-                </p>
-            </section>
-            <p>
-                As the resize observer measures the element that it is listening to,
-                breakpoints will trigger "something" to flip.  In current proposals those things are invisible - the mechanisms of media queries.  However, to begin with, we can make them visible - simply reflect them into the DOM as attributes, something like this:
-            </p>
-            <pre><code class="language-html">&lt;div resize-observer
-    available-width="small"
-    available-height="large"&gt;
-    ...<br>
-&lt;/div&gt;</code></pre>
-            <p>
-                Because attributes are a thing CSS already undertands, and already optimizes via clever tricks like bloom filters, and because attribute selectors are powerfully expressive, this gives us the ability to approximate all of the moving parts today.
-            </p>
-            <pre><code class="language-css">/*
-  Styles for
-  .myResponsiveElement .foo
-  which apply when there is
-  medium-large, large, x-large
-  or xx-large available space
-*/
-[available-width*="large"].myResponsiveElement.foo {
-    ...<br>
-}
-
-/*
-  Styles for
-  .myResponsiveElement .foo
-  which apply  when there is
-  small-medium, medium
-  or large available space
-*/
-[available-width*="medium"].myResponsiveElement .foo {
-    ...<br>
-}
-
-
-/*
-  Styles for
-  .anotherThing .bar
-  which apply when there is
-  x-large or xx-large
-  available space
-*/
-[available-width*="x-large"].anotherThing .bar {
-    ...<br>
-}
-
-/* ... you get the idea ...*/</code></pre>
+            <pre><code class="language-html">&lt;p id="three"&gt;&lt;span hidden&gt;error&lt;/span&gt;&lt;/p&gt;</code></pre>
 
             <p>
-                This solution more closely approximates a breakpoint oriented pseudo-class, if we assume that those would operate more or less 'as they do today'.  "At-Rules" on the other hand insert or remove entire stylesheets at once.  Ultimately, this will matter in terms of optimizing a final solution as much as possible, but the difference will often be negligible, so it doesn't make too much sense to get too hung up on that.
+                While this seems similar to the <code>style="display:none;"</code> one above  and many would undoubtedly make the case that authors can override the meaning of hidden with CSS so that it not, in fact, actually 'hidden' - that's about styling, not meaning.  To do so violates the meaning.  Because of this, one could make what I think (currently at least) seems like a rational case that this is actually quite different from the above - almost the inverse in that it stresses the importance and meaning of the tree only.  Acording to the <em>meaning</em> of the DOM tree and not considering CSS, this is defined as something which should not be displayed and is <em>irrelevant</em>, much like insignificant white space.
             </p>
+
+            <p>
+                In fact, depending on your view of this one, a number of elements could not count against a measure of emptiness.  Any void tag or thing with a content model of none...  <code tag-esc="">template</code> for example, or <code tag-esc="">link</code>.  Could they be displayed?  Sure, but that doesn't change their meaning and by definition they can't contain characters, so if your definition is somehow about characters, I can definitely see the use in something that says "no point in counting these".
+            </p>
+        </section>
+
+        <section class="sectioning">
+            <contextual-heading role="heading" aria-level="3">The "Other Kinds of Empty" Perspective</contextual-heading>
+            <p>
+                Let's take a detour and talk about something a little different. So far we've been talking about things in terms of whether something has childNodes of some kind and which kinds count.  But, in the last section, I mentioned 'void tags'.  Most form elements are <code tag-esc="">input</code>s which are, themselves, void and can't "contain" text in the way we've been talking about so far and would therefore seem to fit in with whatever rationale one accepts for the section above.... Except, maybe not.
+            </p>
+            <p>
+                Why?   Because they obviously do  "contain" text at some point - that is their whole point in being.  But they "contain" it in an entirely different sense.
+            </p>
+            <p>
+               Form elements already have other relevant pseudo-classes <code>:valid</code>, <code>:invalid</code> and <code>:indeterminate</code> for example.  Used together these still leave a gap in most people's mind in creating a good UI.  We don't generally want a form loading and looking as if it contains a bunch of errors.  Technically speaking, it totally does - but that isn't what users expect or developers want and so it seems reasonable to expect that there would be a way to omit that state.   Many people, it seems, turn to the spec when they are thinking about form elements, looking for this concept of emptiness too, and that doesn't exist either.
+            </p>
+            <p>
+                This one is unique enough that currently the CSS working group has agreed to take this up under the working name <code>:blank</code>, instead of trying to solve it with <code>:empty</code>.  Is that the right move? I don't know. I do think it helps illustrate just how diverse the things that need some concept of "emptiness" are though.
+            </p>
+            <p>
+                I think the important thing here is that the concept of emptiness here has to do with a property rather than children... and... it might not be the only one.  For example, while void elements can't contain text content inside (or any childNode of any kind really) - it can have other content-oriented properties.  An image, for example, can have alt text - or just about anything could have an <code>aria-label</code>. Do we care? Does it change things?  Again, I don't know.  Maybe? Sometimes?
+            </p>
+        </section>
+
+        <section class="sectioning">
+            <contextual-heading role="heading" aria-level="3">The Nothingness Within</contextual-heading>
+            <p>Of course, most of what we are stressing about in most of the above things are about some kind of debate about "what we should and shouldn't consider about some kind of childNode" - but realistically, at least some of this is because that is how we are thinking about it, or accustomed to thinking about it.</p>
+            <p>Many authors, it seems, really want something conceptually similar - not just about children, but about descendants.  If you want to know if a form element contains nothing - you very probably want to be able to say 'an element that contains one of those'.  If you want to know if something 'contains' something text node related, you probably don't care whether it is wrapped in a paragraph or a strong inside a span inside a paragraph.</p>
+            <p>This is tricky because in CSS selectors, historically, we don't do that: The thing that you can style is always the last thing in a selector. Except that we have wanted to since at least 1998 when <code>:has</code> was discussed.  We still don't hav <code>:has</code> because no one can figure out a way to keep CSS performant if we add that ability.  But we <em>do</em> have some things like <code>:focus-within</code> that is a very specific kind of <code>:has</code> that we can make work.  Is it possible that we could somehow optimize a thing about containing text nodes?  Maybe.  Is that a good idea?  I don't really know.</p>
+
+        </section>
 
     </section>
 
+
     <section class="sectioning">
-        <contextual-heading role="heading" aria-level="3"></contextual-heading>
-        <p class="note">
-                It could also be argued that the design and lifecycle methods of <code>Custom Elements</code> provide a more efficient/straightforward way to "plug in" here.  This is the approach used by Philip Walton in his piece <a href="https://philipwalton.com/articles/responsive-components-a-solution-to-the-container-queries-problem/">Responsive Components: a Solution to the Container Queries Problem</a>, and, in truth is the solution that I initially landed on independently as well.  However, after more thought, I believe that an element is a less close 'approximation' and certainly less paletable to many people.  Still, if your site is built with custom elements, you can follow an implementation where all other things here are equal and I think that that is still a very valid way to prove out these ideas.
-            </p>
-        </section>
+        <contextual-heading role="heading" aria-level="2">So...</contextual-heading>
+        <p>So.  These are all of the things that I have heard, so far.  If you have some other thing that isn't documented here, please share it with me (all of my contact info is in the bar on this page).  As I say, many of these desires don't sound unreasonable, but they also don't sound like they can be accomodated under a single name with no arguments or anything.  What I'd really like is for CSS to give us the reasonable powers authors need, but I'm still not really sure what they are yet.</p>
+    </section>
+
     <!-- p class="thanksTo"></p -->
-</section></article></main>
+</article></main>
 
   
     <script>
