@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://bkardell.com/</id>
     <title>bkardell.com rss feed</title>
-    <updated>2018-01-27T20:09:03Z</updated>
+    <updated>2018-11-05T15:09:48Z</updated>
     <generator>awesome mix</generator>
     <author>
         <name>Brian Kardell</name>
@@ -15,11 +15,312 @@
     <logo>http://bkardell.com/profile.jpg</logo>
     <rights>All rights reserved 2018, Brian Kardell</rights>
     <entry>
+        <title type="html"><![CDATA[Onward]]></title>
+        <id>https://bkardell.com/blog/Onward.html</id>
+        <link href="https://bkardell.com/blog/Onward.html">
+        </link>
+        <updated>2018-11-05T00:00:00Z</updated>
+        <summary type="html"><![CDATA[
+		So, it's time for something new... 
+	]]></summary>
+        <content type="html"><![CDATA[.captioned-image {
+    background-color: #eaeaea;
+    display: block;
+    overflow: hidden;
+    padding: 1rem;
+    text-align: center;
+    font-style: italic;
+}
+
+.captioned-image.p-attached {
+    width: 40%;
+    display: inline-block;
+    margin: 0 1rem 2rem 1rem;
+}
+
+section > .captioned-image.p-attached {
+    margin-top: 1.5rem; /* correct for heading size*/
+}
+
+ pre { overflow-x: auto }
+
+.captioned-image.p-attached.p-attached-left {
+    float: left;
+}
+
+.captioned-image.p-attached.p-attached-right {
+    float: right;
+}
+
+.captioned-image.p-attached + * + * {
+    clear: both;
+    margin-top: 2rem;
+}
+
+
+.captioned-image img, .captioned-image video {
+    display: block;
+    max-width: 100%;
+    margin: 0 auto 1em auto;
+}
+.source {
+    font-style: italic;
+}
+body {
+    display: flex;
+    font: 1em "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-weight: 300;
+    line-height: 1.625;
+}
+h1 { margin: 0.5rem; }
+code-format {
+    border-left: 0.5rem solid rgba(123,115,209,0.35);
+    display: block;
+    padding: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+contextual-heading {
+    display: block;
+    margin-top: 2rem;
+}
+
+[aria-level="1"] {
+    color: #43686b;
+    font-size: 1.45rem;
+}
+[aria-level="2"] {
+    color: #856363;
+    font-size: 1.35rem;
+}
+[aria-level="3"] {
+    color: #856363;
+    font-size: 1.25rem;
+}
+[aria-level="4"] {
+    color: #856363;
+    font-size: 1.2rem;
+}
+[aria-level="5"], [aria-level="6"] {
+    color: #667496;
+    font-size: 1.1rem;
+    font-weight: bolder;
+}
+.posted-on {
+    font-style: italic;
+    font-size: 0.8rem;
+    text-align: right;
+    margin-bottom: 1rem;
+}
+
+ul, li {
+    margin: 0.5rem;
+    text-align: left;
+}
+header {
+    padding-top: 1rem;
+    padding-right: 2rem;
+    background-color: #fbf5e9;
+}
+.tagline {
+    font-style: italic;
+    text-align: center;
+}
+
+[tag-esc] {
+    color: maroon;
+    font-family: Courier, "Lucida Console", monospace;
+}
+
+[tag-esc]::before {
+    content: '<';
+}
+
+[tag-esc]::after {
+    content: '>';
+}
+
+main {
+    min-width: 50%;
+    width: 80%;
+    padding: 1rem;
+}
+header .title {
+    background-color: rgba(123,115,209,0.35);
+    padding: 0.3rem;
+    padding-left: 0.25rem;
+    font-weight: bolder;
+    font-size: 0.9rem;
+    border-left: 1rem solid #999298;
+}
+
+header .profile {
+    width: 50%;
+    margin: 1rem 25%;
+}
+
+header .title + nav {
+    font-size: 0.9rem;
+}
+
+header .blurb {
+    font-size: 0.75rem;
+    text-align: center;
+}
+header .name {
+    text-align: center;
+    font-size: xx-large;
+}
+.segue {
+    font-style: italic;
+}
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  border: 0;
+}
+[for="aboutMeToggle"] {
+    display: none;
+}
+/* this needs rethinking, it wants a selector like 'not flow content' */
+article>*:not(contextual-heading,a), section>*:not(contextual-heading,a) {
+    margin-left: 0.45rem;
+}
+
+blockquote {
+  font-family: serif;
+  background: #f9f9f9;
+  border-left: 10px solid #ccc;
+  margin: 1.5em 10px;
+  padding: 0.5em 10px;
+}
+blockquote:before {
+  color: #ccc;
+  content: open-quote;
+  font-size: 2em;
+  line-height: 0.1em;
+  margin-right: 0.25em;
+  vertical-align: -0.4em;
+}
+
+blockquote:after {
+  color: #ccc;
+  content: close-quote;
+  font-size: 2em;
+  line-height: 0.1em;
+  margin-left: 0.25em;
+  vertical-align: -0.4em;
+}
+
+
+@media (max-width: 800px){
+    body {
+        flex-direction: column;
+    }
+    header {
+        border-bottom: 1px solid #afafff;
+    }
+
+    .captioned-image.p-attached {
+        width: 100%;
+        margin: 1rem 0;
+    }
+
+    .captioned-image.p-attached.p-attached-left,
+    .captioned-image.p-attached.p-attached-right {
+        float: none;
+    }
+
+    [for="aboutMeToggle"] {
+        background-color: #675e5e;
+        color: white;
+        padding: 0.25rem;
+        padding-left: 0.5rem;
+        display: block;
+        border-left: 1rem solid black;
+    }
+    #aboutMeToggle:focus + [for="aboutMeToggle"]{
+        outline: 4px solid #c6ddf2;
+    }
+
+    #aboutMeToggle:checked ~ header {
+        display: none;
+    }
+
+    header li { display: inline; margin-left: -0.5em; }
+    header .blurb li::after { content: '; '; }
+    header  nav li {
+        display: inline-block;
+        margin-left: 0.35rem;
+        margin-right: 0.35rem;
+    }
+    header .title {
+        width: 100%;
+    }
+    main li .source { display: block; }
+
+}
+	<contextual-heading role="heading" aria-level="1">Onward</contextual-heading>
+	<p class="segue">
+		So, it's time for something new... 
+	</p>  
+	<p>
+		13 years ago, while finishing up a short contract for JBoss, I interviewed with the Apollo Education Group.  I was interviewed by 5 people at the same time and... it was a suprisingly tough interview.  At the same time, I had no real pressure on me because I had another offer on the table already.  I wound up doing pretty well and, more importantly, actually asking a lot of questions myself.
+	</p>
+
+	<p>
+		I'll never forget that interview, not because of how challenging it was but because I was able to just talk to them, and I immediately <em>liked</em> this team.  We had a connection.  They were smart, friendly, articulate and excited.  The work they were doing was interesting.  Further, the basic idea of expanding available higher ed and lifelong learning was a thing that I could feel good about in ways that I couldn't about a lot of other jobs I had interviewed for.  And so, when they made me an offer, despite the fact that it paid less than the one I already had in hand, I happily went off to work with them instead.
+	</p>
+
+	<p>
+		Over the years, the precise aspects and focus of my job itself have evolved a number of times as things have shifted around but, it's almost always been around something "core" and generally closer to users than to say crunching numbers and processing data or machine learning.  Nearly all of my work has been in larger efforts, working on central projects.  Over the years, this has afforded me many unique challenges and the opportunity to work with a lot of teams and people on a lot of projects with very different needs, skills and legacy. As such, I feel like I was afforded the opportunity to see a lot that many never get to, and to try to help make things better.
+	</p>
+	<p>
+	  This, in turn led me to actually get <em>involved</em> with Web standards instead of just following them and then to talk to even more people about the things that matter to us all and ultimately to try to improve how we approach standards themselves.  At this, I feel that I have been reasonably successful.  There are many and complex reasons why I stayed at the same place for so long, but no small part of that was I have always felt a real <em>connection</em> with a number of the people there.  The aims and visions expressed and established in that initial interview really stuck with me.
+	</p>
+
+	<section class="sectioning">
+		<contextual-heading role="heading" aria-level="2">The End of an Era</contextual-heading>
+		<p>
+
+			But all of this is prologue.  A week ago, my (former) company had a Reduction in Force, (aka layoffs) and I was affected.  It happens.  So, it's with somewhat mixed emotions that I move on.  On the one hand, it will be hard to say goodbye to a lot of friends and let go.  On the other hand, moving on and finding new opportunities can also be good.  When word came to me, I was with a number of friends in the industry.  Each of them were kind and sympathetic and I'm extremely glad to have been in their company at the time.  Many offered to connect me with someone, but all had the same question:  
+			"So, what are you looking for?  What do you <em>want</em> to do?"
+		</p>
+		<p>  
+			The funny thing is that it forced me to realize rather suddenly that it's been a minute since anyone has really <em>asked</em> me this question.  As I look around the industry I see that many of my friends careers have gone down slightly different and interesting paths that sound very intersing to me and that I think I might be interested in.  It's kind of exciting to be able to consider something slightly different.  Advocacy and relations, for example, are pretty different from what my day job has been, but they could be interesting!  Or, there are a ton of ways to skin accessibility challenges that could be really interesting:  Working on an accessibility project, or working with a CMS vendor to embrace modern standards and find ways to improve things like offline, performance or accessibility could be fun too.  But those are just some examples - I kind of feel like there are many things that I could do and manage to bring something interesting to the table, and to be happy... So, I'm thinking about it.
+		</p>
+
+		</section>
+
+		<section class="sectioning">
+			<contextual-heading role="heading" aria-level="2">So... Now What?</contextual-heading>
+		<p> 
+			Well, I've begun making a list of things that are kind of important to me...
+		</p>
+		<ul>
+			<li>Remain remote.  I have been a fully remote employee since 2009.</li>
+			<li>Continue in standards work with some kind of support, even if very limited.  That is, at a minimum it can't be actively opposed to the idea and ideally would not require my only involvement to be through nights, weekends and vacations.</li> 
+			<li>Interact with other developers.  One of my favorite things to do is talk with other developers.  I like to share and to have people share with me - to find what pain they experience or thoughts they have about something people are talking about.</li>
+			<li>Do good.  This can take many forms, but ultimately it is what compells me to work on standards, it is what compells me to be interested in accessibility, and so on.  I'd like, at the end of the day, to feel like there is some value in what I do that goes beyond a simple bottom line.  I would love to be able to advocate.</li>
+			<li>Be intellectually stimulated and work on interesting but not entirely foreign problems.  That is, I'd like to keep it about the Web, but the Web is a big topic with lots of interesting areas.  I'm interested in the possibility of perhaps working from perspectives that I haven't before.  </li>
+		</ul>
+		<p>
+			So, that's it... Luckily I have a little breathing room to take a beat and hopefully find something I love.  I'd love to hear your thoughts if you have them:  If you know of some place that has a need that you feel like I might be good at, let me know.   If you hear of something you think I would particularly like, I'd love to hear about it. If you know of a company that ticks some of my boxes,  I'm all ears.  If you would like to connect, here's my <a href="https://www.linkedin.com/in/brian-kardell-08a4264">LinkedIn Profile</a>. If you're looking for a resume, I'll try to keep some links here updated and filling in.  For now, here's a (work in progress) <a href="https://bkardell.com/Resume.pdf">resume in .pdf form</a>.  
+		</p>
+
+</section>]]></content>
+    </entry>
+    <entry>
         <title type="html"><![CDATA[W3C Elections Just Got A Whole Lot Harder]]></title>
         <id>https://bkardell.com/blog/W3CTAGElectionChange.html</id>
         <link href="https://bkardell.com/blog/W3CTAGElectionChange.html">
         </link>
-        <updated>2017-12-11T05:00:00Z</updated>
+        <updated>2017-12-11T00:00:00Z</updated>
         <summary type="html"><![CDATA[
         There's a new element to W3C politics and... it kind of worries me.  I'd like to make sure that people understand it and talk about what we can do about it.
     ]]></summary>
@@ -391,7 +692,7 @@ blockquote:after {
         <id>https://bkardell.com/blog/W3CPrimer.html</id>
         <link href="https://bkardell.com/blog/W3CPrimer.html">
         </link>
-        <updated>2017-12-05T05:00:00Z</updated>
+        <updated>2017-12-05T00:00:00Z</updated>
         <summary type="html"><![CDATA[
         Every few months, I find it necessary for some reason, to describe something about how the various W3C roles/terms work together at a high level.  It takes about 400 words and, rather than continue to type them over and over, I thought I'd simply create a linkable thing that I can just point to instead. Hooray for links!
     ]]></summary>
@@ -671,7 +972,7 @@ blockquote:after {
         <id>https://bkardell.com/blog/TheWalrus.html</id>
         <link href="https://bkardell.com/blog/TheWalrus.html">
         </link>
-        <updated>2017-11-23T05:00:00Z</updated>
+        <updated>2017-11-23T00:00:00Z</updated>
         <summary type="html"><![CDATA[
         It's become a fairly regular occurence for me to encounter someone on social media expressing some kind of frustration with Custom Elements.  As both an avid user of them myself and someone involved in many discussions during their creation and evolution, I really want them to be better too.  As I speak to the folks who are frustrated, however, I find that there is so much there that it's difficult to discuss.  So, I thought perhaps it would be worth sitting down and writing about it.  That, and walruses.
     ]]></summary>
@@ -1158,7 +1459,7 @@ blockquote:after {
         <id>https://bkardell.com/blog/Voice-Recognition-Thoughts.html</id>
         <link href="https://bkardell.com/blog/Voice-Recognition-Thoughts.html">
         </link>
-        <updated>2017-09-17T04:00:00Z</updated>
+        <updated>2017-09-17T00:00:00Z</updated>
         <summary type="html"><![CDATA[This is part of a series about making the browser speak and listen to speech. In my last post You Don't Say: Web Speech APIs Part III, I talked about the recognition interfaces: listening or speech-to-text.]]></summary>
         <content type="html"><![CDATA[.captioned-image {
     background-color: #eaeaea;
@@ -1717,7 +2018,7 @@ speechRecognizer.audioContext.stop()</code></pre>
         <id>https://bkardell.com/blog/Listen-Up.html</id>
         <link href="https://bkardell.com/blog/Listen-Up.html">
         </link>
-        <updated>2017-08-25T04:00:00Z</updated>
+        <updated>2017-08-25T00:00:00Z</updated>
         <summary type="html"><![CDATA[This is part of a series about making the browser speak and listen to speech. In my last post You Don't Say: Web Speech APIs Part II, I talked about how I'm personally papering over what
     we "have" today with regard to making the browser "talk" and why. In this post I'll talk about the other end of that: listening or speech-to-text.]]></summary>
         <content type="html"><![CDATA[.captioned-image {
@@ -2327,7 +2628,7 @@ transcript: "tu tu"</code></pre>
         <id>https://bkardell.com/blog/Basic-Voice-Speaker.html</id>
         <link href="https://bkardell.com/blog/Basic-Voice-Speaker.html">
         </link>
-        <updated>2017-08-24T04:00:00Z</updated>
+        <updated>2017-08-24T00:00:00Z</updated>
         <summary type="html"><![CDATA[This is part of a series about making the browser speak and listen to speech.  In my last post Greetings, Professor Falken: Web Speech APIs Part I, I talked about the existing APIs we "have" for speaking (as well as why the air quotes) and all the many ways that they are wonky today.  In this post I'll share some of my own opinions on that API, as well as how I'm dealing with the speaking part IRL.]]></summary>
         <content type="html"><![CDATA[.captioned-image {
     background-color: #eaeaea;
@@ -2887,354 +3188,11 @@ Promise.all([
 ]]></content>
     </entry>
     <entry>
-        <title type="html"><![CDATA[You Don't Say: Web Speech APIs Part II]]></title>
-        <id>https://bkardell.com/blog/High-Level-Voice.html</id>
-        <link href="https://bkardell.com/blog/High-Level-Voice.html">
-        </link>
-        <updated>2017-08-24T04:00:00Z</updated>
-        <summary type="html"><![CDATA[This is part of a series about making the browser speak and listen to speech.  In my last post Greetings, Professor Falken: Web Speech APIs Part I, I talked about the existing APIs we "have" for speaking (as well as why the air quotes) and all the many ways that they are wonky today.  In this post I'll share some of my own opinions on that API, as well as how I'm dealing with the speaking part IRL.]]></summary>
-        <content type="html"><![CDATA[.captioned-image {
-    background-color: #eaeaea;
-    display: block;
-    overflow: hidden;
-    padding: 1rem;
-    text-align: center;
-    font-style: italic;
-}
-
-.captioned-image.p-attached {
-    width: 40%;
-    display: inline-block;
-    margin: 0 1rem 2rem 1rem;
-}
-
-section > .captioned-image.p-attached {
-    margin-top: 1.5rem; /* correct for heading size*/
-}
-
- pre { overflow-x: auto }
-
-.captioned-image.p-attached.p-attached-left {
-    float: left;
-}
-
-.captioned-image.p-attached.p-attached-right {
-    float: right;
-}
-
-.captioned-image.p-attached + * + * {
-    clear: both;
-    margin-top: 2rem;
-}
-
-
-.captioned-image img, .captioned-image video {
-    display: block;
-    max-width: 100%;
-    margin: 0 auto 1em auto;
-}
-.source {
-    font-style: italic;
-}
-body {
-    display: flex;
-    font: 1em "Helvetica Neue", Helvetica, Arial, sans-serif;
-    font-weight: 300;
-    line-height: 1.625;
-}
-h1 { margin: 0.5rem; }
-code-format {
-    border-left: 0.5rem solid rgba(123,115,209,0.35);
-    display: block;
-    padding: 0.5rem;
-    margin-bottom: 1rem;
-}
-
-contextual-heading {
-    display: block;
-    margin-top: 2rem;
-}
-
-[aria-level="1"] {
-    color: #43686b;
-    font-size: 1.45rem;
-}
-[aria-level="2"] {
-    color: #856363;
-    font-size: 1.35rem;
-}
-[aria-level="3"] {
-    color: #856363;
-    font-size: 1.25rem;
-}
-[aria-level="4"] {
-    color: #856363;
-    font-size: 1.2rem;
-}
-[aria-level="5"], [aria-level="6"] {
-    color: #667496;
-    font-size: 1.1rem;
-    font-weight: bolder;
-}
-.posted-on {
-    font-style: italic;
-    font-size: 0.8rem;
-    text-align: right;
-    margin-bottom: 1rem;
-}
-
-ul, li {
-    margin: 0.5rem;
-    text-align: left;
-}
-header {
-    padding-top: 1rem;
-    padding-right: 2rem;
-    background-color: #fbf5e9;
-}
-.tagline {
-    font-style: italic;
-    text-align: center;
-}
-
-[tag-esc] {
-    color: maroon;
-    font-family: Courier, "Lucida Console", monospace;
-}
-
-[tag-esc]::before {
-    content: '<';
-}
-
-[tag-esc]::after {
-    content: '>';
-}
-
-main {
-    min-width: 50%;
-    width: 80%;
-    padding: 1rem;
-}
-header .title {
-    background-color: rgba(123,115,209,0.35);
-    padding: 0.3rem;
-    padding-left: 0.25rem;
-    font-weight: bolder;
-    font-size: 0.9rem;
-    border-left: 1rem solid #999298;
-}
-
-header .profile {
-    width: 50%;
-    margin: 1rem 25%;
-}
-
-header .title + nav {
-    font-size: 0.9rem;
-}
-
-header .blurb {
-    font-size: 0.75rem;
-    text-align: center;
-}
-header .name {
-    text-align: center;
-    font-size: xx-large;
-}
-.segue {
-    font-style: italic;
-}
-.sr-only {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0,0,0,0);
-  border: 0;
-}
-[for="aboutMeToggle"] {
-    display: none;
-}
-/* this needs rethinking, it wants a selector like 'not flow content' */
-article>*:not(contextual-heading,a), section>*:not(contextual-heading,a) {
-    margin-left: 0.45rem;
-}
-
-blockquote {
-  font-family: serif;
-  background: #f9f9f9;
-  border-left: 10px solid #ccc;
-  margin: 1.5em 10px;
-  padding: 0.5em 10px;
-}
-blockquote:before {
-  color: #ccc;
-  content: open-quote;
-  font-size: 2em;
-  line-height: 0.1em;
-  margin-right: 0.25em;
-  vertical-align: -0.4em;
-}
-
-blockquote:after {
-  color: #ccc;
-  content: close-quote;
-  font-size: 2em;
-  line-height: 0.1em;
-  margin-left: 0.25em;
-  vertical-align: -0.4em;
-}
-
-
-@media (max-width: 800px){
-    body {
-        flex-direction: column;
-    }
-    header {
-        border-bottom: 1px solid #afafff;
-    }
-
-    .captioned-image.p-attached {
-        width: 100%;
-        margin: 1rem 0;
-    }
-
-    .captioned-image.p-attached.p-attached-left,
-    .captioned-image.p-attached.p-attached-right {
-        float: none;
-    }
-
-    [for="aboutMeToggle"] {
-        background-color: #675e5e;
-        color: white;
-        padding: 0.25rem;
-        padding-left: 0.5rem;
-        display: block;
-        border-left: 1rem solid black;
-    }
-    #aboutMeToggle:focus + [for="aboutMeToggle"]{
-        outline: 4px solid #c6ddf2;
-    }
-
-    #aboutMeToggle:checked ~ header {
-        display: none;
-    }
-
-    header li { display: inline; margin-left: -0.5em; }
-    header .blurb li::after { content: '; '; }
-    header  nav li {
-        display: inline-block;
-        margin-left: 0.35rem;
-        margin-right: 0.35rem;
-    }
-    header .title {
-        width: 100%;
-    }
-    main li .source { display: block; }
-
-}
-    <contextual-heading role="heading" aria-level="1">You Don't Say: Web Speech APIs Part II</contextual-heading>
-    <p class="segue">This is part of a series about making the browser speak and listen to speech.  In my last post <a href="https://bkardell.com/blog/Greetings-Professor-Falken.html">Greetings, Professor Falken: Web Speech APIs Part I</a>, I talked about the existing APIs we "have" for speaking (as well as why the air quotes) and all the many ways that they are wonky today.  In this post I'll share some of my own opinions on that API, as well as how I'm dealing with the <em>speaking</em> part IRL.</p>
-
-    
-    <link rel="stylesheet" href="../prism.css">
-    
-    
-    
-    <style>
-    .note {
-        background-color: rgba(255,255,0,0.24);
-        padding: 1rem;
-        font-style: italic;
-    }
-    .note::before {
-        content: 'Note';
-        font-size: 0.8rem;
-        background-color: black;
-        color: white;
-        padding: 0.25rem;
-        margin-right: 0.5rem;
-    }
-    .output {
-        margin-left: 1rem;
-        font-family: "Courier New", Courier, monospace
-    }
-    .spec-quote {
-        display: block;
-        margin: 1rem;
-    }
-    </style>
-    
-
-        <section class="sectioning">
-            <contextual-heading role="heading" aria-level="2">What I did</contextual-heading>
-            <p>While I think we need to drill down, I do believe there is room for high level features
-            that are super easy to use for various cases.  The original proposals from Google talked about
-            declarative ways to integrate TTS and Voice Recognition into HTML.  That's kind of interesting
-            and fortunately, Custom Elements allows us to experiment in that arena.
-            </p>
-
-            <section class="sectioning">
-                <contextual-heading role="heading" aria-level="3">Simple input...</contextual-heading>
-                <p></p>
-                <pre><code class="language-html">
-&lt;x-voice-listener&gt;
-    &lt;input name="input"&gt;
-&lt;/x-voice-listener&gt;
-                </code></pre>
-                <x-voice-listener>
-                    <input placeholder="How can I help?">
-                </x-voice-listener>
-
-                <p>That's pretty easy.  It uses the concept of progressive enhancement to say
-                that the <code tag-esc="">input</code> element is the target of listening, if
-                it happens to be listening and, in the Shadow DOM provides an accessible button
-                for toggling that.  The element isn't itself an input, but rather a decoration
-                around one.</p>
-
-                <p></p>
-
-
-                <p>The element has a <code>._voiceListener</code> property which exposes
-                an API about how it works. In this case, the API is called a
-                <code>PauseableVoiceListener</code> which has methods <code>.pause()</code>
-                <code>.unpause()</code> and <code>.pauseWhile(<em>Promise</em>)</code></p>
-
-            </section>
-
-
-
-
-
-            <section class="one sectioning">
-                <contextual-heading role="heading" aria-level="3">What about </contextual-heading>
-                <p></p>
-                <pre><code class="language-html">
-&lt;x-voice-listener&gt;&lt;input name="input" &gt;&lt;/x-voice-listener&gt;
-                </code></pre>
-                <style>
-                    .one {
-                        --listen-btn-color: blue;
-                        --listen-btn-display: none;
-                    }
-                </style>
-                <x-voice-listener>
-                    <input>
-                </x-voice-listener>
-            </section>
-
-    <!-- p class="thanksTo">Special thanks to my friend, the great Chris Wilson for proofing/commenting on pieces in this series.</p -->
-
-</section>]]></content>
-    </entry>
-    <entry>
         <title type="html"><![CDATA[Greetings, Professor Falken: Web Speech APIs Part I]]></title>
         <id>https://bkardell.com/blog/Greetings-Professor-Falken.html</id>
         <link href="https://bkardell.com/blog/Greetings-Professor-Falken.html">
         </link>
-        <updated>2017-08-23T04:00:00Z</updated>
+        <updated>2017-08-23T00:00:00Z</updated>
         <summary type="html"><![CDATA[There's a long, rich history of humans figuring out how to make machines talk and listen, and nearly as long as there has been a W3C there have been efforts to get these features into the browser.  It's too complicated to recount here, that's a whole post of it's own.  Suffice it to say that it's been fits and starts, steps forward and back and where we are right now is... muddy, but it works... sort of.  In this series of posts, I'll tell you all about it...]]></summary>
         <content type="html"><![CDATA[.captioned-image {
     background-color: #eaeaea;
@@ -4043,7 +4001,7 @@ let voice = speechSynthesis.getVoices().find((voice) => {
         <id>https://bkardell.com/blog/The-History-Of-Speech.html</id>
         <link href="https://bkardell.com/blog/The-History-Of-Speech.html">
         </link>
-        <updated>2017-08-18T04:00:00Z</updated>
+        <updated>2017-08-18T00:00:00Z</updated>
         <summary type="html"><![CDATA[One apocryphal legend says that when the great sculptor Michelangelo carved his statue of Moses, it was so life-like that as he struck his final blow to the left knee he demanded "Now, speak".  Sadly, it wasn't that easy.  But we've been working hard to figure it out pretty much ever since and, ultimately bring speech to the Web.  As often happens, I find myself so interested in understanding how we got here and where we are that it winds up being a whole piece on it's own.  So, in this piece I'll tell you about the history and at a high level current state of affairs of Speech on the Web, subsequent posts in this series will be more technical...]]></summary>
         <content type="html"><![CDATA[.captioned-image {
     background-color: #eaeaea;
@@ -4451,7 +4409,7 @@ No, Fuck you.
 	<section class="sectioning">
 		<contextual-heading role="heading" aria-level="2">"The Modern Era"</contextual-heading>
 		<div class="captioned-image optional p-attached p-attached-left">
-			<img data-src="https://upload.wikimedia.org/wikipedia/en/d/dc/Applessiri.jpg" alt="">
+			<img data-src="https://upload.wikimedia.org/wikipedia/commons/c/c9/Siri_for_macOS_Sierra_Demo.png" alt="">
 		</div>
 		<p>So, we still didn't have a way in the browser to do this.  Then, one day in 2010, a W3C Community Group called the "Speech XG Incubator Group" was started with a developer from Google saying "some of us at google have been working on extending HTML elements for speech".  It was right around this time that Siri was introduced to the wider world and a new era of digital assistants began to flourish and evolve. </p>
 
@@ -4479,7 +4437,7 @@ No, Fuck you.
 
 		<p>In some sense though, which is the more valuable 'standard' - the unofficial stuff everyone has implemented or the official ones written down that aren't?</p>
 
-		<p>I'll explain a lot more details, including gotchas and bits I find problematic in the <a href="https://bkardell.com/blog/bkardell.com/blog/Greetings-Professor-Falken.html">pieces I set out to write initially</a>.  I feel like it is very much in the interest of the Web to work together to drive "this" forward, and by "this" I mean simply let's experiment and figure out what's missing and work get speech into the Web "offically".</p>
+		<p>I'll explain a lot more details, including gotchas and bits I find problematic in the <a href="https://bkardell.com/blog/Greetings-Professor-Falken.html">pieces I set out to write initially</a>.  I feel like it is very much in the interest of the Web to work together to drive "this" forward, and by "this" I mean simply let's experiment and figure out what's missing and work get speech into the Web "offically".</p>
 	</section>
 
 	<p class="thanksTo">Special thanks to my friend, the great Chris Wilson for proofing/commenting on pieces in this series.</p>
@@ -4490,7 +4448,7 @@ No, Fuck you.
         <id>https://bkardell.com/blog/W3C-Congress.html</id>
         <link href="https://bkardell.com/blog/W3C-Congress.html">
         </link>
-        <updated>2017-05-15T04:00:00Z</updated>
+        <updated>2017-05-15T00:00:00Z</updated>
         <summary type="html"><![CDATA[The W3C is one of the primary standards bodies that works on Web standards.  Founded in 1994 along with the inventor of the Web Sir Tim Berners-Lee, it is a member based consortium originally modeled after the X-Consortium, with the stated aim of helping to "lead the Web to its full potential".  Its 465 "member orgs" are various types of organizations, foundations[1], academia and companies.   In late 2011 a movement in Web Standards began to take shape - seeking to help reform the things that many of us thought were broken.  This meant creating a common/shared vision across several standards bodies, changing ideas about where successful and lasting standards come from and how they are made and really stressing the importance of Web developers (who weren't themselves members) to that equation.  Lots and lots of positive change has happened at many levels, and lots more progress toward change has been set into motion but isn't yet complete and - if you'd like to see it continue, we could use your help.]]></summary>
         <content type="html"><![CDATA[.captioned-image {
     background-color: #eaeaea;
@@ -4806,7 +4764,7 @@ blockquote:after {
         <id>https://bkardell.com/blog/Reflecting-On-Roles.html</id>
         <link href="https://bkardell.com/blog/Reflecting-On-Roles.html">
         </link>
-        <updated>2017-04-25T04:00:00Z</updated>
+        <updated>2017-04-25T00:00:00Z</updated>
         <summary type="html"><![CDATA[Just a silly little experiment based on an observation...]]></summary>
         <content type="html"><![CDATA[.captioned-image {
     background-color: #eaeaea;
@@ -5174,7 +5132,7 @@ summary,
         <id>https://bkardell.com/blog/Divs.html</id>
         <link href="https://bkardell.com/blog/Divs.html">
         </link>
-        <updated>2017-03-21T04:00:00Z</updated>
+        <updated>2017-03-21T00:00:00Z</updated>
         <summary type="html"><![CDATA[I've been utterly failing to complete a couple of blog posts that I've been working on recently.  As sometimes happens when I am writing, I have a semi-random but kind of related thought that doesn't really fit in the post and I tweet it instead.  As it got some little attention/discussion, I'd like to expand on it here and offer a little more explanation/context.]]></summary>
         <content type="html"><![CDATA[.captioned-image {
     background-color: #eaeaea;
@@ -5484,7 +5442,7 @@ blockquote:after {
         <id>https://bkardell.com/blog/Whats-The-Deal-With-That.html</id>
         <link href="https://bkardell.com/blog/Whats-The-Deal-With-That.html">
         </link>
-        <updated>2017-02-24T05:00:00Z</updated>
+        <updated>2017-02-24T00:00:00Z</updated>
         <summary type="html"><![CDATA[Last week there was a blur of activity surrounding "headings" or - more accurately around discussions about the "document outline". It started with Jon Neal (re)opening an issue.  This issue seems to be about a new element - but it's not entirely.  There were lots of comments and there was lots of discussion on lots of github issues in lots of repos.  I wrote a piece about my own complex thoughts about this issue.  It seems to suggest I am arguing that we start something brand new.  My friend Jake Archibald wrote a piece too which seems really different than the other two.  Trying to keep them all straight and read through comments, one would think that there is a lot of disagreement... But here's the thing: I don't think there really is.  I think it's just really complicated to follow.  To this end - I've asked a few people if this is a fair summary and the answer seems to be pretty much "yes"... So, if you're looking to understand in fairly straightforward terms what the discussions are, here it is...]]></summary>
         <content type="html"><![CDATA[.captioned-image {
     background-color: #eaeaea;
@@ -5826,7 +5784,7 @@ blockquote:after {
         <id>https://bkardell.com/blog/On-Headings.html</id>
         <link href="https://bkardell.com/blog/On-Headings.html">
         </link>
-        <updated>2017-02-17T05:00:00Z</updated>
+        <updated>2017-02-17T00:00:00Z</updated>
         <summary type="html"><![CDATA[Because of its origins, HTML has a number of elements and concepts which are, in retrospect, probably not so great.  Headings being the way they are, for example, has caused seemingly no end of discussion.  I'd like to explain why I think this is, as well as what we should do about it.]]></summary>
         <content type="html"><![CDATA[.captioned-image {
     background-color: #eaeaea;
@@ -6228,7 +6186,7 @@ another h1 yet.
         <id>https://bkardell.com/blog/Incubate-All-The-Things.html</id>
         <link href="https://bkardell.com/blog/Incubate-All-The-Things.html">
         </link>
-        <updated>2016-12-26T05:00:00Z</updated>
+        <updated>2016-12-26T00:00:00Z</updated>
         <summary type="html"><![CDATA[There's a conversation going on right now on the mailing list public-w3process, it's exceptionally long and twisty at this point, it took me a few hours to get caught up and... Wait, what's that? You've never even heard of this mailing list? No worries, I'll fill you in and tell you why this is important...]]></summary>
         <content type="html"><![CDATA[.captioned-image {
     background-color: #eaeaea;
@@ -6560,7 +6518,7 @@ blockquote:after {
         <id>https://bkardell.com/blog/Perf.html</id>
         <link href="https://bkardell.com/blog/Perf.html">
         </link>
-        <updated>2016-11-22T05:00:00Z</updated>
+        <updated>2016-11-22T00:00:00Z</updated>
         <summary type="html"><![CDATA[My free account on Wordpress.com has served me pretty well over the years by most measures.  I didn't have to set anything up, I use it, people all over the world read it - and did I mention it was free?  What else is there really?  But I've always wanted more control, and ownership of your own content is a really good thing, so couple of weeks ago, I broke down and bought bkardell.com. Given a domain, I decided that now that moving lots of legacy content there would be an interesting and fun exercise. I'd like to tell you about some things it's made me think about...]]></summary>
         <content type="html"><![CDATA[.captioned-image {
     background-color: #eaeaea;
@@ -6945,7 +6903,7 @@ blockquote:after {
         <id>https://bkardell.com/blog/The-Glory-Days-Of-The-Web.html</id>
         <link href="https://bkardell.com/blog/The-Glory-Days-Of-The-Web.html">
         </link>
-        <updated>2016-10-05T04:00:00Z</updated>
+        <updated>2016-10-05T00:00:00Z</updated>
         <summary type="html"><![CDATA[For the past couple of years, there have been a number of pieces lamenting the current state of Web development: It's gotten pretty complicated. Very recently a satirical piece on this subject really struck a chord and got a lot of attention. Dion Almaer wrote a piece in reply in which he introduced what I thought was a really good analogy - the rose colored glasses that we often see the past through...]]></summary>
         <content type="html"><![CDATA[.captioned-image {
     background-color: #eaeaea;
@@ -7241,7 +7199,7 @@ blockquote:after {
         <id>https://bkardell.com/blog/Potentially-Scattered-Thoughts-On-Web-Components.html</id>
         <link href="https://bkardell.com/blog/Potentially-Scattered-Thoughts-On-Web-Components.html">
         </link>
-        <updated>2016-09-26T04:00:00Z</updated>
+        <updated>2016-09-26T00:00:00Z</updated>
         <summary type="html"><![CDATA[Chances are pretty good that you've seen at least one of the many articles and tweets flying around lately about Web Components and Frameworks. For the past week I've watched as all sorts of arguments have been made by friends of mine on both sides and wanted to weigh in and share some thoughts, but my life hasn't been cooperating. Finally, I have a moment so I tried to put down some thoughts that have been banging around in my head... No guarantee they are coherent and I'm out of time, so here they are....]]></summary>
         <content type="html"><![CDATA[.captioned-image {
     background-color: #eaeaea;
@@ -7575,7 +7533,7 @@ blockquote:after {
         <id>https://bkardell.com/blog/The-Future-Web-Wants-You.html</id>
         <link href="https://bkardell.com/blog/The-Future-Web-Wants-You.html">
         </link>
-        <updated>2016-08-24T04:00:00Z</updated>
+        <updated>2016-08-24T00:00:00Z</updated>
         <summary type="html"><![CDATA[A few weeks ago I gave a talk in Pittsburgh, PA at Code and Supply. It was recorded if you would rather watch the video (the actual talk is ~40 minutes, the video captures some of the Q&amp;A afterward as well), but I'm more comfortable writing and I thought it might be worth a stab at a companion piece that tries to make the same points/arguments in blog-post-size, so - here it is.]]></summary>
         <content type="html"><![CDATA[.captioned-image {
     background-color: #eaeaea;
@@ -7982,7 +7940,7 @@ blockquote:after {
         <id>https://bkardell.com/blog/X-Web-Days-of-Future-Past.html</id>
         <link href="https://bkardell.com/blog/X-Web-Days-of-Future-Past.html">
         </link>
-        <updated>2016-06-20T04:00:00Z</updated>
+        <updated>2016-06-20T00:00:00Z</updated>
         <summary type="html"><![CDATA[If you're not a comic book nerd, or a comic movie nerd, I suppose an explanation is necessary: In the Marvel Universe, there is a genetic mutation in some humans called "the X-gene". This gene leads to development of an exotic protein which can radically affect other genes in unpredictable ways. The result is mutants with all sorts of different "super" abilities. This is the basis for the story lines in the X-Men comics. Some humans, without the X-gene, see mutants as freaks, there is prejudice against them. Others would like to recruit them as weapons. Still others are friends. The mutant community is divided too. One group of mutants believe that they are a new homo superior destined to become the dominant species and they're willing to earn this by fear and force. Another group of mutants, the X-Men, led by Professor Xavier, believe that mutants and non-mutants should live in harmony. Mutants powers can even aid humanity. They work very hard for the advancement of peace and tolerance. And then, there are quite a lot of people - both mutants and everydays humans who are torn back and forth somewhere in the middle on a lot of the subtleties that arise. One of the most amazing parts of the narrative is that the leaders of the two groups are actually best friends. They actually agree on much. Most of their followers are not similarly friendly. It's kind of a hot mess, and it reminds me a little of the Web community.]]></summary>
         <content type="html"><![CDATA[.captioned-image {
     background-color: #eaeaea;
@@ -8381,7 +8339,7 @@ blockquote:after {
         <id>https://bkardell.com/blog/Prognostication-And-The-Failure-Of-The-Web.html</id>
         <link href="https://bkardell.com/blog/Prognostication-And-The-Failure-Of-The-Web.html">
         </link>
-        <updated>2016-05-06T04:00:00Z</updated>
+        <updated>2016-05-06T00:00:00Z</updated>
         <summary type="html"><![CDATA[For almost as long as there has been a Web to write about, people have been prognosticating the death of the Web.  Mine is a different kind of prediction, but as I look into my crystal ball, I'm absolutely certain of it:  The Web will fail. Let me tell you what I see through the glass...]]></summary>
         <content type="html"><![CDATA[.captioned-image {
     background-color: #eaeaea;
@@ -8688,7 +8646,7 @@ blockquote:after {
         <id>https://bkardell.com/blog/Brief-ish-History-of-The-Web-Part-4.html</id>
         <link href="https://bkardell.com/blog/Brief-ish-History-of-The-Web-Part-4.html">
         </link>
-        <updated>2016-04-10T04:00:00Z</updated>
+        <updated>2016-04-10T00:00:00Z</updated>
         <summary type="html"><![CDATA[
 		It's early 1994. AT&amp;T has purchased Go and PenOS (see&nbsp;Part I: The Pre-Web) and now they are pulling the plug. &nbsp;SmartSketch FutureSplash (again, Part I) won't be released. Its makers Jonathan Gay and Charlie Jackson briefly try porting to the desktop, but there they would have to compete with well-funded and mature products and that isn't practical. &nbsp;Keep them in the back of your mind, we'll come back to them.
 	]]></summary>
@@ -9060,7 +9018,7 @@ blockquote:after {
         <id>https://bkardell.com/blog/TokenLists-Missing-DNA.html</id>
         <link href="https://bkardell.com/blog/TokenLists-Missing-DNA.html">
         </link>
-        <updated>2016-03-29T04:00:00Z</updated>
+        <updated>2016-03-29T00:00:00Z</updated>
         <summary type="html"><![CDATA[As we move forward with the Web, it's important that we look down into the DNA and continue to find the missing connections - things that are fundamentally related in concept and managed so by the browser, but not exposed to developers in similar fashion.  I'd like to talk about one of those I recently uncovered...]]></summary>
         <content type="html"><![CDATA[.captioned-image {
     background-color: #eaeaea;
@@ -9420,7 +9378,7 @@ element.className = (element.className === "selected") ? "" : "selected";</pre>
         <id>https://bkardell.com/blog/Brief-ish-History-of-The-Web-Part-3.html</id>
         <link href="https://bkardell.com/blog/Brief-ish-History-of-The-Web-Part-3.html">
         </link>
-        <updated>2016-02-05T05:00:00Z</updated>
+        <updated>2016-02-05T00:00:00Z</updated>
         <summary type="html"><![CDATA[
 	Part I: The Pre-Web and Part II: Time of this series attempt to set the creation of the Web, the first Web browser and early attempts to publicly share Sir Tim Berners-Lee’s idea of “the Web” into some historical context.  They attempt to illustrate that there were ideas and forks of ideas along the way, each  considering different aspects of different problems; and that each had varying degrees of success. Some were popular and increasingly mature desktop products, others created standards upon which many products would be built.  Some were technically interesting but completely failed to take off and some which were academically fascinating but were largely vapor.   All of these were still “in motion” at the time that the Web was being conceived and it’s important to realize that they didn’t stop just because Tim said “wait, I’ve got it.”.  Those posts also attempt to explain how Tim really wanted the Web to be read/write, wanted to tap into existing mature products and which bits he imagined were most and least important.  I described the landscape of deployed hardware and technology at the time – the world was close, but not yet “ready” to be wired in richer form/  We weren’t connected by and large – In fact, the entire amount of information sent across the Internet monthly at that time would easily fit on a single sub $100 (US) external USB hard-drive in 2016.    All of this led helped shape the Web.]]></summary>
         <content type="html"><![CDATA[.captioned-image {
@@ -9765,7 +9723,7 @@ blockquote:after {
         <id>https://bkardell.com/blog/Brief-ish-History-of-The-Web-Part-2.html</id>
         <link href="https://bkardell.com/blog/Brief-ish-History-of-The-Web-Part-2.html">
         </link>
-        <updated>2015-12-07T05:00:00Z</updated>
+        <updated>2015-12-07T00:00:00Z</updated>
         <summary type="html"><![CDATA[
 	Part II of&nbsp;"A Brief(ish) History of the Web Universe" aka "The Boring Posts". &nbsp;No themes, no punch, just history that I hope I can use to help explain where my own perspectives on a whole bunch of things draw from…]]></summary>
         <content type="html"><![CDATA[.captioned-image {
@@ -10138,7 +10096,7 @@ led by one Francis Kretz (Thompsa SA? Rennes?).
         <id>https://bkardell.com/blog/Brief-ish-History-of-The-Web-Part-1.html</id>
         <link href="https://bkardell.com/blog/Brief-ish-History-of-The-Web-Part-1.html">
         </link>
-        <updated>2015-11-22T05:00:00Z</updated>
+        <updated>2015-11-22T00:00:00Z</updated>
         <summary type="html"><![CDATA[
 	There are a couple of posts that I've been wanting to write, but in each of them I keep finding myself wanting to talk about historical context.  Explaining it in place turns out to be too hard and I've been unable to find a resource that unifies that bits I want to talk about.  I've decided, then, that it might be easier then to write this history separately, mostly so that I can refer back to it.  So here it is, "A Brief(ish) History of the Web Universe" aka "The Boring Posts" in a few parts.  No themes, no punch, just history that I hope I can use to help explain where my own perspectives on a whole bunch of things draw from...]]></summary>
         <content type="html"><![CDATA[.captioned-image {
@@ -10550,7 +10508,7 @@ blockquote:after {
         <id>https://bkardell.com/blog/Reflections-On-Engineering.html</id>
         <link href="https://bkardell.com/blog/Reflections-On-Engineering.html">
         </link>
-        <updated>2015-06-20T04:00:00Z</updated>
+        <updated>2015-06-20T00:00:00Z</updated>
         <summary type="html"><![CDATA[Very early in my career, I was lucky enough to stumble on Web development before it really became a “thing” and landed an apprenticeship (and later job) in a new, small experimental arm of an established consulting firm which primarily worked on embedded systems. I was employee #2 of this new effort and we worked in an attic loft. Nearly all of my experience before this was from books and pure experimentation/willpower to accomplish something. I worked there for about a year, mostly by myself churning out code in somewhat typical fashion: Someone said “make it look like this picture” or “this stuff needs to come from a database” and that was pretty much it. I worked too hard, I was usually scared to death I'd never be able to figure out that one new technology that each project introduced me to and quite often it was just struggle to finish and make something work.]]></summary>
         <content type="html"><![CDATA[.captioned-image {
     background-color: #eaeaea;
@@ -10892,7 +10850,7 @@ blockquote:after {
         <id>https://bkardell.com/blog/Tao-Of-The-Extensible-Web.html</id>
         <link href="https://bkardell.com/blog/Tao-Of-The-Extensible-Web.html">
         </link>
-        <updated>2014-10-07T04:00:00Z</updated>
+        <updated>2014-10-07T00:00:00Z</updated>
         <summary type="html"><![CDATA[Recently I participated in a panel on The Standards Process and the Extensible Web Manifesto at Edge Conf. &nbsp;While ours was the very last session of the day (you can watch the video here), nearly every topic that day called out some mention of the Extensible Web Manifesto. &nbsp;Privately,&nbsp;there were still&nbsp;plenty&nbsp;of people I met between sessions who privately said “So, what exactly is this Manifesto&nbsp;thing I keep hearing about, tell me more…”. &nbsp;and my day was filled with discussions at all levels about how exactly we should apply its words&nbsp;in practice or&nbsp;what exactly we meant by x - or specifically what we want to change about standards.  Given this, I thought&nbsp;it worth a post to share my own personal thoughts, and say some of the things I didn't have an opportunity to say on the panel. &nbsp; I'll begin in the obvious place: &nbsp;Bruce Lee.]]></summary>
         <content type="html"><![CDATA[.captioned-image {
     background-color: #eaeaea;
@@ -11277,7 +11235,7 @@ blockquote:after {
         <id>https://bkardell.com/blog/A-Web-For-The-Next-Century.html</id>
         <link href="https://bkardell.com/blog/A-Web-For-The-Next-Century.html">
         </link>
-        <updated>2013-10-08T04:00:00Z</updated>
+        <updated>2013-10-08T00:00:00Z</updated>
         <summary type="html"><![CDATA[If you've read any of the numerous articles about The Extensible Web or heard about it in conference presentations, or seen The Extensible Web Manifesto you've likely seen (or heard) three phrases repeated: "Explain the magic," "fundamental primitives" and "evolution of the platform". I thought it might be worth (another) piece explaining why&nbsp;I think&nbsp;these are at the heart of it all...]]></summary>
         <content type="html"><![CDATA[.captioned-image {
     background-color: #eaeaea;
@@ -11606,7 +11564,7 @@ blockquote:after {
         <id>https://bkardell.com/blog/Dropping-The-F-Bomb-On-Standards.html</id>
         <link href="https://bkardell.com/blog/Dropping-The-F-Bomb-On-Standards.html">
         </link>
-        <updated>2013-05-17T04:00:00Z</updated>
+        <updated>2013-05-17T00:00:00Z</updated>
         <summary type="html"><![CDATA[In 2012, Mirriam-Webster's dictionary added a&nbsp;definition for the F-Bomb. &nbsp;Why? &nbsp;Was it because some elite Mirriam-Webster working group d-wonk committee decided it was necessary to mint a "steamy new word"? &nbsp;No, rather, because it is a well-established part of the common vernacular of the English language. There are&nbsp;occurrences&nbsp;of it going all the way back to 1988. &nbsp;Not every slang term someone makes up will get into the dictionary. The Oxford English Dictionary has a&nbsp;vault full of millions of words that currently do not make the cut. &nbsp;Many never catch on. &nbsp;Some die out quickly and others change shape as they spread, that is what etymology is all about. &nbsp;Some stagnate and maintain distinct and valuable regional meanings, and that is fine, but they aren't part of the standard language. &nbsp;The ones that are ultimately widely understood and eventually become commonly used are accepted and codified into the dictionary. Some words even become extinct. &nbsp;In other words, the process of word standardization is&nbsp;evolutionary.]]></summary>
         <content type="html"><![CDATA[.captioned-image {
     background-color: #eaeaea;
@@ -11918,7 +11876,7 @@ blockquote:after {
         <id>https://bkardell.com/blog/Off-With-Their-Heads.html</id>
         <link href="https://bkardell.com/blog/Off-With-Their-Heads.html">
         </link>
-        <updated>2013-04-23T04:00:00Z</updated>
+        <updated>2013-04-23T00:00:00Z</updated>
         <summary type="html"><![CDATA[Just a few days ago, Matthew Butterick presented a talk entited "The Bomb in the Garden" at TYPO in San Francisco (poor title timing given recent events in Boston). In it, he concludes "the misery exists because of the W3C—the World Wide Web Consortium... So, respectfully, but quite seriously, I suggest: let’s Disband the W3C". Ultimately he suggests that "...the alternative is a web that’s organized entirely as a set of open-source software projects.]]></summary>
         <content type="html"><![CDATA[.captioned-image {
     background-color: #eaeaea;
@@ -12271,7 +12229,7 @@ blockquote:after {
         <id>https://bkardell.com/blog/Really-Classy-CSS.html</id>
         <link href="https://bkardell.com/blog/Really-Classy-CSS.html">
         </link>
-        <updated>2012-05-11T04:00:00Z</updated>
+        <updated>2012-05-11T00:00:00Z</updated>
         <summary type="html"><![CDATA[When CSS was conceived, the basic vision was that HTML should provide structure and semantics while CSS would providing styling via rules based on selectors describing (or selecting) what to style.  In an ideal world, Web pages could be authored by one group of people independently of the visual needs and then another group (designers) could go and write CSS to style it up.  The biggest problem in achieving this ideal was that HTML had such a small number of tags without any real obvious way to add enough semantics to actually accomplish this.  Thus, two things were added very early on:  The humble div and span tags in HTML and the .class in CSS  - the general idea being that the authors of a tree of markup could (quite independently of style concerns) build generic structures and pepper their markup with semantics via classes and ids.]]></summary>
         <content type="html"><![CDATA[.captioned-image {
     background-color: #eaeaea;
