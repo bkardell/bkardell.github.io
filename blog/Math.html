@@ -1,0 +1,541 @@
+<html lang="en" resource-type="blogpost"><head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@briankardell">
+    <meta name="twitter:creator" content="@briankardell">
+    <meta name="twitter:title" content="The Curious Case of MathML, and Why You Should Care">
+    <meta name="twitter:description" content="I'm probably not the first person that you would expect to be writing something about MathML, but, surprise, here we are.  What I have to say might be suprising, so let's dig in...">
+    <meta name="twitter:image" content="https://www.w3.org/MarkUp/htmlplus_paper/math2.gif">
+    <link rel="alternate" type="application/rss+xml" href="blog/feed.rss" title="bkardell.com/blog rss feed">
+    <title>The Curious Case of MathML, and Why You Should Care</title>
+    <style>.captioned-image {
+    background-color: #eaeaea;
+    display: block;
+    overflow: hidden;
+    padding: 1rem;
+    text-align: center;
+    font-style: italic;
+}
+
+.captioned-image.p-attached {
+    width: 40%;
+    display: inline-block;
+    margin: 0 1rem 2rem 1rem;
+}
+
+section > .captioned-image.p-attached {
+    margin-top: 1.5rem; /* correct for heading size*/
+}
+
+ pre { overflow-x: auto }
+
+.captioned-image.p-attached.p-attached-left {
+    float: left;
+}
+
+.captioned-image.p-attached.p-attached-right {
+    float: right;
+}
+
+.captioned-image.p-attached + * + * {
+    clear: both;
+    margin-top: 2rem;
+}
+
+
+.captioned-image img, .captioned-image video {
+    display: block;
+    max-width: 100%;
+    margin: 0 auto 1em auto;
+}
+.source {
+    font-style: italic;
+}
+body {
+    display: flex;
+    font: 1em "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-weight: 300;
+    line-height: 1.625;
+}
+h1 { margin: 0.5rem; }
+code-format {
+    border-left: 0.5rem solid rgba(123,115,209,0.35);
+    display: block;
+    padding: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+contextual-heading {
+    display: block;
+    margin-top: 2rem;
+}
+
+[aria-level="1"] {
+    color: #43686b;
+    font-size: 1.45rem;
+}
+[aria-level="2"] {
+    color: #856363;
+    font-size: 1.35rem;
+}
+[aria-level="3"] {
+    color: #856363;
+    font-size: 1.25rem;
+}
+[aria-level="4"] {
+    color: #856363;
+    font-size: 1.2rem;
+}
+[aria-level="5"], [aria-level="6"] {
+    color: #667496;
+    font-size: 1.1rem;
+    font-weight: bolder;
+}
+.posted-on {
+    font-style: italic;
+    font-size: 0.8rem;
+    text-align: right;
+    margin-bottom: 1rem;
+}
+
+ul, li {
+    margin: 0.5rem;
+    text-align: left;
+}
+header {
+    padding-top: 1rem;
+    padding-right: 2rem;
+    background-color: #fbf5e9;
+}
+.tagline {
+    font-style: italic;
+    text-align: center;
+}
+
+[tag-esc] {
+    color: maroon;
+    font-family: Courier, "Lucida Console", monospace;
+}
+
+[tag-esc]::before {
+    content: '<';
+}
+
+[tag-esc]::after {
+    content: '>';
+}
+
+main {
+    min-width: 50%;
+    width: 80%;
+    padding: 1rem;
+}
+header .title {
+    background-color: rgba(123,115,209,0.35);
+    padding: 0.3rem;
+    padding-left: 0.25rem;
+    font-weight: bolder;
+    font-size: 0.9rem;
+    border-left: 1rem solid #999298;
+}
+
+header .profile {
+    width: 50%;
+    margin: 1rem 25%;
+}
+
+header .title + nav {
+    font-size: 0.9rem;
+}
+
+header .blurb {
+    font-size: 0.75rem;
+    text-align: center;
+}
+header .name {
+    text-align: center;
+    font-size: xx-large;
+}
+.segue {
+    font-style: italic;
+}
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  border: 0;
+}
+[for="aboutMeToggle"] {
+    display: none;
+}
+/* this needs rethinking, it wants a selector like 'not flow content' */
+article>*:not(contextual-heading,a), section>*:not(contextual-heading,a) {
+    margin-left: 0.45rem;
+}
+
+blockquote {
+  font-family: serif;
+  background: #f9f9f9;
+  border-left: 10px solid #ccc;
+  margin: 1.5em 10px;
+  padding: 0.5em 10px;
+}
+blockquote:before {
+  color: #ccc;
+  content: open-quote;
+  font-size: 2em;
+  line-height: 0.1em;
+  margin-right: 0.25em;
+  vertical-align: -0.4em;
+}
+
+blockquote:after {
+  color: #ccc;
+  content: close-quote;
+  font-size: 2em;
+  line-height: 0.1em;
+  margin-left: 0.25em;
+  vertical-align: -0.4em;
+}
+
+
+@media (max-width: 800px){
+    body {
+        flex-direction: column;
+    }
+    header {
+        border-bottom: 1px solid #afafff;
+    }
+
+    .captioned-image.p-attached {
+        width: 100%;
+        margin: 1rem 0;
+    }
+
+    .captioned-image.p-attached.p-attached-left,
+    .captioned-image.p-attached.p-attached-right {
+        float: none;
+    }
+
+    [for="aboutMeToggle"] {
+        background-color: #675e5e;
+        color: white;
+        padding: 0.25rem;
+        padding-left: 0.5rem;
+        display: block;
+        border-left: 1rem solid black;
+    }
+    #aboutMeToggle:focus + [for="aboutMeToggle"]{
+        outline: 4px solid #c6ddf2;
+    }
+
+    #aboutMeToggle:checked ~ header {
+        display: none;
+    }
+
+    header li { display: inline; margin-left: -0.5em; }
+    header .blurb li::after { content: '; '; }
+    header  nav li {
+        display: inline-block;
+        margin-left: 0.35rem;
+        margin-right: 0.35rem;
+    }
+    header .title {
+        width: 100%;
+    }
+    main li .source { display: block; }
+
+}</style>
+    <style>
+      .captioned-image { font-size: 0.9rem; }
+      .thanksTo { font-style: italic; font-size: 0.8rem; }
+    </style>
+    <script>
+      var activateOptional = function (media) {
+        var source = media.getAttribute('data-src'),
+            temp,
+            container = media.parentElement;
+
+          if (media.nextSibling && media.nextSibling.matches) {
+            if (media.nextSibling.matches('.clickToSee')) {
+              media.parentElement.removeChild(media.nextSibling);
+            }
+          }
+
+          if (media.tagName === 'VIDEO') {
+            temp = document.createElement('video')
+            temp.setAttribute('autoplay','')
+            temp.setAttribute('controls','')
+            temp.setAttribute('loop','')
+            temp.innerHTML = '<source src="' + source + '.webm" type="video/webm">'
+                    + '<source src="' + source + '.mp4" type="video/mp4">';
+            media.parentElement.replaceChild(temp, media);
+            setTimeout(function () {
+              temp.play()
+            }, 0);
+          } else {
+            media.src = media.getAttribute('data-src');
+          }
+
+          container.classList.add('active');
+      }
+    </script>
+  </head>
+  <body>
+    <input id="aboutMeToggle" class="sr-only" type="checkbox" checked="">
+<label for="aboutMeToggle">Toggle author information</label>
+<header>
+    <div class="name">
+        Brian Kardell
+    </div>
+    <img class="profile" src="/profile.jpg" alt="">
+    <div class="tagline"><a href="/">Betterifying the Web</a></div>
+    <div class="blurb">
+        <ul>
+            <li>Sr Front-End Engineer at Apollo Group, Inc</li>
+            <li>Original Co-author/Co-signer of The Extensible Web Manifesto</li>
+            <li>Co-Founder/Chair, W3C Extensible Web CG</li>
+            <li>Member, W3C (The JS Foundation)</li>
+            <li>Co-author of HitchJS</li>
+            <li>Blogger</li>
+            <li>Art, Science &amp; History Lover</li>
+            <li>Standards Geek</li>
+        </ul>
+    </div>
+    <div class="title">Follow Me On...</div>
+    <nav>
+        <ul>
+            <li><a rel="me" href="https://briankardell.wordpress.com">Wordpress</a></li>
+            <li><a rel="me" href="https://medium.com/@briankardell">Medium</a></li>
+            <li><a rel="me" href="https://twitter.com/briankardell">Twitter</a></li>
+            <li><a rel="me" href="https://github.com/bkardell/">Github</a></li>
+            <li><a rel="me" href="https://codepen.io/bkardell">Codepen</a></li>
+            <li><a rel="me" href="https://www.linkedin.com/in/brian-kardell-08a4264">LinkedIn</a></li>
+            <li><a rel="me" href="https://www.instagram.com/kardellbrian">Instagram (for
+art)</a></li>
+            <li><a rel="me" href="http://fineartamerica.com/profiles/brian-kardell?">Fine Art
+America (art for sale)</a></li>
+        </ul>
+    </nav>
+</header>
+    <main><div class="posted-on">Posted on null</div><article class="sectioning">
+	<contextual-heading role="heading" aria-level="1">The Curious Case of MathML, and Why You Should Care</contextual-heading>
+	<p class="segue">
+		I'm probably not the first person that you would expect to be writing something about MathML, but, surprise, here we are.  What I have to say might be suprising, so let's dig in...
+	</p>  
+
+	<p>
+		The corpus of documents at CERN that Tim drew the subset that would define HTML from probably had <em>many</em> more elements than the 15 or so that Tim chose.  SGML had 30 years worth of debate and thought around ways to deal with this.  There were ways to say "This is a document about an invoice" and for that to have different elements than, say, a book of poetry. Tim picked the most <em>common</em> ones as the original set, which also have the distinction of largely being the oldest, and least specifically semantic.
+	</p>
+	<p>
+		Given this, it is perhaps not surprising that there has been a lot of desire and debate over the years about adding elements to HTML.  How do we provide the right "stuff" to support all of the use cases that wanted to use the Web.
+	</p>
+
+	<section class="sectioning">
+		<contextual-heading role="heading" aria-level="2">A Tale of Two Contents</contextual-heading>
+		<p>
+			From the very first year, early adopters and enthusiasts of the Web began discussing the needs for two things in HTML which would keep coming up over and over: graphics and math. Within a very short window of time, Dave Ragget had assemebled a number of ideas for what he called "HTML+" which took (believe it or not) only a fraction of those ideas and would have created roughly five times as many elements as Tim's original browser supported.
+		</p>
+
+		<p>
+			Notably among those proposals, <a href="https://www.w3.org/MarkUp/HTMLPlus/htmlplus_45.html">section 12 included a math element</a> and they had experimental browser support at CERN.
+		</p>
+
+		<div class="captioned-image">
+			<img src="https://www.w3.org/MarkUp/htmlplus_paper/math2.gif" alt="">
+			A screenshot of the experimental browser at CERN rendering the proposed <code tag-esc="">math</code> element in 1993.
+		</div>
+
+
+		<p>
+			That proposal wasn't accepted, but it wasn't the end of the conversation. Details around math and graphics would wind up being figured out outside of HTML.
+		</p>
+
+		<p>
+			By the time the "HTML5 era" rolled along, there was some degree of maturity and the new standard included at least some degree of answer for these two asks through <a href="https://html.spec.whatwg.org/multipage/embedded-content-other.html">its secion on "other" Embedded Content</a> which mentions only two specifically: SVG and MathML.
+		</p>
+	</section>
+	<section class="sectioning">
+		<contextual-heading role="heading" aria-level="2">Present Day</contextual-heading>
+		<p>
+			While SVG now has broad support, MathML has a bumpier story.   Firefox was the first to ship some kind of MathML support - as early as 2006. For a time there were at implementations being worked on (sometimes off hours as a labor of love) or already shipped in Firefox, Webkit (Chrome and Apple at the time), and Opera (Presto).  But then, Chrome decided to remove support and recommend use of a polyfill of sorts called MathJax.  
+		</p>
+
+		<p>
+			Because Chrome has such market share, this means that MathML is, after all this time, now supported to some degree by only about 23% of global browsers in use today (going by caniuse for this statistic), and so things are in a weird place if you need math.
+		</p>
+	</section>
+	<p>
+		So, why is it intresting to me and what's it got to do with this whole Extensible Web thing? 
+	</p>
+
+<!--
+	<p>
+		Now... Before I go any further, here's a thing you should know about me: I am probably the least mathy person you will ever meet.  While many engineers have a reasonably strong mathematical background, I don't.  I understand things that I really need to, and I've been known to use math to explain the occasional point about performance, but the truth is that math has always kind of made my head spin.  Because of this, I haven't followed the development or support of MathML too closely, but, it's very interesting and I believe occupies a unique place in the platform and history that is a little challenging.
+	</p>
+-->
+
+	<section class="sectioning">
+		<contextual-heading role="heading" aria-level="2">A Unique Place in History</contextual-heading>
+		<p>
+			Today, the potential path to standardization of new elements lies in experimentation with Custom Elements.  This allows ideas to compete and, importantly, to fail and evolve.  By proving their success and popularization, we can demonstrate that we have understood the problems adequately and provided a good solution that developers can actually understand and use.  That is, I believe, a really good thing.
+		</p>
+		<p>
+			However, I'd like to make the case that MathML is among a very small group of things that occupy a unique place in Web history and deserve a special kind of attention and consideration, and that even among these, MathML is specifically unique.  
+		</p>
+
+		<p>
+			The EWM accepts the "current" Web Platform as our imperfect starting point and treats 'existing' things differently from 'proposed things'.  Existing things are just the reality of where we are.  On these things it encourages not wholesale high-level replacement efforts, but rather excavation and explaining of magic upon which such new efforts can occur.  
+		</p>
+ 
+ 		<p>
+ 			But MathML did experiment, and they had multiple browser implementations which wildly predate this shift.   It's       in a weird, unclear place, so how should we think about this?  Here's what I think...
+ 		</p>
+	</section>
+
+	<section class="sectioning">
+		<contextual-heading role="heading" aria-level="2">The 'spirit' of it all</contextual-heading>
+	<p>
+		From the very beginning - nearly three decades now, a not insigificant number of people have done a remarkable degree of what we would ask of them if they were starting today.  The technology is, of course, a bit different - but in principle they have shown the willingness to work hard, solve problems, experiment, prove and come to agreements.
+	</p>  
+
+	<p>
+		In fact, they have not only experimented with ideas and implementations, they've built an infrastrucure of tools and integrations and even things built on those things (I'll touch on that more later).  They have convinced multiple browsers (sometimes out of pure good will of developers) to invest in creating and proving demonstrable implementations.  They have shown that a number of organizations have [funded development of polyfills](https://www.mathjax.org/#sponsors) through MathJax and made efforts to [fund actual browser development in Chrome through Igalia](https://mathml.igalia.com/), and, as I will argue, proved usage.
+	</p>
+
+	<section class="sectioning">
+		<contextual-heading role="heading" aria-level="3">Have they shown need, use and success?</contextual-heading>
+
+		<p>
+			Some will argue that the HTTP Archive Reports of element use seem to indicate that use use of math is exceptionally low and that since Chrome removed support and the world didn't explode, maybe we can safely ignore it. It's easy to see how a lot of people can feel little pressure because it's quite possible (maybe even 'normal') to build pages for decades without ever "needing" <code tag-esc="">math</code>. 
+		</p>
+
+		<p>
+			But all of that feels tremendously misleading. People in parts of STEM are, and always have been, the people needing this.  It has been stated by the community that  there are millions of pages already in existence that use MathML, and with some investigation - that actually seems very believable. It really matters what we measure here.
+		</p>
+
+		<p>
+			Most means of reporting we tend to look at say nothing of things behind a paywall or requiring login.  But that's precisely the case for many education and research materials, so this can really obscure our view of the problem.
+		</p>
+
+		<p>
+			There are many ways of attempting to "deal" with lack of support in Chrome and Edge this that check various boxes of "good" and would make this plausible.  Many sites in this category, for example, actually _can_ realistically tell users to use (or not) a particular browser. That's the simplest way, but it's also kind of a terrible thing for the Web.  
+		</p>
+
+		<p>
+			JavaScript is another way, and there are multiple possible solutions.  We do have some kind of indicators there.  builtwith.com, for example, lists nearly 70k _sites_ that use MathJax, specifically.  It's worth noting that MathJax is not the only client-side way and that MathJax supports more than just MathML, so it's a little hard to get an exact read.  Note carefully, however, that that's not 70k instances of <code tag-esc="">math</code> tags, or even 70k pages with one or more <code tag-esc="">math</code> tags.  That's 70k <em>sites</em>  using one specific popular polyfill. So, I think it is safe to say that it has use.
+		</p>
+
+		<p>
+			Further, if you look at which sites show up in even the free report - they aren't the gmails and twitters and facebooks - they are things like <em>cancer research, the National Science Foundation and higher education</em>.
+		</p>
+
+		<p>
+			Look, I'm all for cool tech stuff and social media, but to me, that feels pretty damned significant stuff that makes me care about it.
+		</p>
+
+		<p>
+			Significantly, I think: Because of what much of that content is, I expect there is probably a lot of historical content that will not be rewritten any time soon, if ever.
+		</p>
+		<p>  
+			So, yeah... It's out there and this problem isn't going away.
+		</p>
+	</section>
+
+	<section class="sectioning">
+		<contextual-heading role="heading" aria-level="3">A case study</contextual-heading>
+
+		<p>
+			In other words, while it is impossible to go back in time and have them use Custom Elements or prioritize identifying gaps in the platform as a first step - it seems to me that they have actually done a remarkably good job at following the spirit of it all.
+		</p>
+ 
+		<p>  
+			Therefore, for me, it kind of begs the question: If there isn't hope for getting MathML implemented despite years of experimentation, proven use, creation of an ecosystem, convincing multiple implementers to implement, a willingness to fund development and, now legacy content... Why?  What is the path?  Is it a thing we can even begin to articulate?
+		</p>
+
+	</section>
+	<section class="sectioning">
+		<contextual-heading role="heading" aria-level="3">Unique challenges</contextual-heading>
+		<p>
+			
+		</p><p>
+			I'm quite thankful that we have the polyfill, at least it's something.  I'm thankful to the people who invested in it and continue to, but it's very difficult to see how the polyfill is ultimately a good long term solution. 
+		</p>
+
+		<p>
+			It's 'special' in that the space itself is full of uniquely hard problems that the platform was unprepared to deal with when they began dealing with them - gaps, missing layers and primitives, etc. and therefore the polyfill has to try to deal with them too.
+		</p>
+		<p> 
+			It has to render math, which is non-trivial on its own - but to do so you need a way.  Currently this means a dance of dependencies, JavaScript which once loaded loads CSS and other JavaScript which once loaded load fonts.
+		</p>
+		
+		<div class="captioned-image">
+			<img src="/media/mathjax-waterfall.png" alt="">
+			Devtools waterfall of loading the polyfill.
+		</div>
+
+		<p>  
+			This alone is hard enough for a polyfill but it's not remotely the whole story. 
+		</p>
+		<p>
+			Your sites should be accessible, I hope that much is clear.  But many of the 'kinds' of sites that would use MathML also carry a legal <em>requirement</em> for accessibility.  That means that MathJax has to not only know how to render MathML which is hard enough, but also to to try make it accessible.  Because of what we have to work with today, this is considerably hard.
+		</p>
+		<p>
+			In order to approach this today, they math into a focusable, interactive which includes an accessible menu.  The menu system is not without it's own set of isssues but through this menu they handle accessibility through self-voicing with the (not offically standardized) Web Speech APIs.
+		</p>
+		<p>
+			This means that that users have to understand things about MathJax - how and when to manually toggle between the actual 'screen reader' and the simulated 'self voicing accessibility' and how that plays in with the menuing and so on.  It is far, far less than ideal and not easy.
+		</p>
+	</section>
+
+	<section class="sectioning">
+		<contextual-heading role="heading" aria-level="3">Summing up</contextual-heading>
+		<p>
+			But because it followed similar "spirits" it can definitely be useful to ask questions of standards using MathML as a case study.  How <em>do</em> we deal with one custom element becomming very mature and getting widely used within a subset community?  Should be ways short of "it becomes part of HTML" that are more complete than "Here's a JS file and CSS and fonts and... etc"?  And can we find a way to lower the runtime taxes that that implies?  That's a general topic I've been interested in discussing for many years.  
+		</p>
+		<p>
+			More importantly, how <em>does</em> something cross a bar and become a widely implemented standard?  It's hard to imagine doing more work or having more history and success than the MathML community. If not this, I believe it warrants a real good explanation.
+		</p>
+		<p>
+			As for myself, I believe that all of this warrants us simply accepting MathML as our imperfect, but still valuable starting point beginning from there to continue to drill down and expose new opportunities for increasingly better answers to emerge.  I really hope that the community's efforts to move browser support forward through Igalia pay off.
+	</p></section>
+</section></article></main>
+
+  
+    <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-88027178-1', 'auto');
+    ga('send', 'pageview');
+  </script>
+
+  <script>
+    Array.prototype.slice.call(document.querySelectorAll('.optional [data-src]')).forEach(function (optional) {
+      var prefs = window.localStorage.downloadsPrefs,
+          clickToSee;
+      if (prefs === 'true') {
+        activateOptional(optional);
+      } else {
+        clickToSee = document.createElement('div');
+        clickToSee.classList.add('clickToSee')
+        clickToSee.innerHTML = '<button>Click to see media</button>';
+        clickToSee.style.textAlign = 'center';
+        clickToSee.style.border = 'none';
+        optional.parentElement.insertBefore(clickToSee, optional.nextSibling);
+        clickToSee.firstElementChild.addEventListener('click', function () {
+          activateOptional(optional);
+        })
+      }
+
+    })
+  </script>
+
+</body></html>
