@@ -5,7 +5,7 @@
     <meta name="twitter:site" content="@briankardell">
     <meta name="twitter:creator" content="@briankardell">
     <meta name="twitter:title" content="The Curious Case of MathML, and Why You Should Care">
-    <meta name="twitter:description" content="I'm probably not the first person that you would expect to be writing something about MathML, but, surprise, here we are.  What I have to say might be suprising, so let's dig in...">
+    <meta name="twitter:description" content="MathML is among a very small group of things that occupy a unique place in Web history. Recently there's been some discussion in the W3C Technical Architecture Group (TAG) about it">
     <meta name="twitter:image" content="https://www.w3.org/MarkUp/htmlplus_paper/math2.gif">
     <link rel="alternate" type="application/rss+xml" href="blog/feed.rss" title="bkardell.com/blog rss feed">
     <title>The Curious Case of MathML, and Why You Should Care</title>
@@ -324,203 +324,181 @@ America (art for sale)</a></li>
     </nav>
 </header>
     <main><div class="posted-on">Posted on null</div><article class="sectioning">
-	<contextual-heading role="heading" aria-level="1">The Curious Case of MathML, and Why You Should Care</contextual-heading>
+	<contextual-heading posted-on="02/11/2018" role="heading" aria-level="1">The Curious Case of MathML, and Why You Should Care</contextual-heading>
 	<p class="segue">
-		I'm probably not the first person that you would expect to be writing something about MathML, but, surprise, here we are.  What I have to say might be suprising, so let's dig in...
-	</p>  
+		MathML is among a very small group of things that occupy a unique place in Web history. Recently there's been some <a href="https://github.com/w3ctag/design-reviews/issues/313">discussion in the W3C Technical Architecture Group (TAG) about it</a> and I'd like to share my thoughts.</p>  
+	<p></p>  
 
 	<p>
-		The corpus of documents at CERN that Tim drew the subset that would define HTML from probably had <em>many</em> more elements than the 15 or so that Tim chose.  SGML had 30 years worth of debate and thought around ways to deal with this.  There were ways to say "This is a document about an invoice" and for that to have different elements than, say, a book of poetry. Tim picked the most <em>common</em> ones as the original set, which also have the distinction of largely being the oldest, and least specifically semantic.
-	</p>
-	<p>
-		Given this, it is perhaps not surprising that there has been a lot of desire and debate over the years about adding elements to HTML.  How do we provide the right "stuff" to support all of the use cases that wanted to use the Web.
-	</p>
-
-	<section class="sectioning">
-		<contextual-heading role="heading" aria-level="2">A Tale of Two Contents</contextual-heading>
-		<p>
-			From the very first year, early adopters and enthusiasts of the Web began discussing the needs for two things in HTML which would keep coming up over and over: graphics and math. Within a very short window of time, Dave Ragget had assemebled a number of ideas for what he called "HTML+" which took (believe it or not) only a fraction of those ideas and would have created roughly five times as many elements as Tim's original browser supported.
-		</p>
-
-		<p>
-			Notably among those proposals, <a href="https://www.w3.org/MarkUp/HTMLPlus/htmlplus_45.html">section 12 included a math element</a> and they had experimental browser support at CERN.
-		</p>
-
-		<div class="captioned-image">
-			<img src="https://www.w3.org/MarkUp/htmlplus_paper/math2.gif" alt="">
-			A screenshot of the experimental browser at CERN rendering the proposed <code tag-esc="">math</code> element in 1993.
-		</div>
-
-
-		<p>
-			That proposal wasn't accepted, but it wasn't the end of the conversation. Details around math and graphics would wind up being figured out outside of HTML.
-		</p>
-
-		<p>
-			By the time the "HTML5 era" rolled along, there was some degree of maturity and the new standard included at least some degree of answer for these two asks through <a href="https://html.spec.whatwg.org/multipage/embedded-content-other.html">its secion on "other" Embedded Content</a> which mentions only two specifically: SVG and MathML.
-		</p>
-	</section>
-	<section class="sectioning">
-		<contextual-heading role="heading" aria-level="2">Present Day</contextual-heading>
-		<p>
-			While SVG now has broad support, MathML has a bumpier story...
-		</p>
-		<p>   
-			Firefox was the first to ship some kind of MathML support - as early as 2006. For a time there were at implementations being worked on (sometimes off hours as a labor of love) or already shipped in Firefox, Webkit (Chrome and Apple at the time), and Opera (Presto).
-		</p>
-		<p>  
-			But along the way, Google created the new Blink engine and in reviewing found implmentation issues and saw a lot of complexity, and that the feature had no long-term owner, so so decided to remove support and instead recommend use of a polyfill of sorts called MathJax. 
-		</p>
-		<p>
-			I'm not ascribing any kind of ill intent to this decision. Making a browser is full of tough choices and each team has to manage a lot of difficult priorities.  Nevertheless, the real world effect have been pretty complex, and bad for MathML... 
-		</p>
-
-		<div class="captioned-image">
-			<img src="/media/fixed-it.gif" alt="">
-		</div>
-
-		<p>
-			Opera, for example, retired Presto to be build on Blink too.  And, because Blink has such a huge market share, this also reduces pressure on Microsoft to implement.  What this means is that MathML is, after all this time, now only supported to some degree by about 23% of global browsers in use today (going by caniuse for this statistic).
-		</p>
-
-		<p>
-			Recently there's been some <a href="https://github.com/w3ctag/design-reviews/issues/313">discussion in the W3C Technical Architecture Group (TAG) about where this leaves us.</a> 
-		</p>
-	</section>
-
-	<p>
-		Let's talk about why this is particularly intresting to me at a few different levels, and why I think you should care too...
+		Here's why MathML this is particularly intresting to me on a few different levels, and why I think you should care too: The purpose, use, and unique challenges and history here - as well as what I think this says about the platform moving forward.
 	</p> 
 
 	<section class="sectioning">
-		<contextual-heading role="heading" aria-level="2">A Unique Place in History</contextual-heading>
+		<contextual-heading role="heading" aria-level="2">Purpose</contextual-heading>
 		<p>
-			Today, the potential path to standardization of new elements lies in experimentation with Custom Elements.  This allows ideas to compete and, importantly, to fail and evolve.  By proving their success and popularization, we can demonstrate that we have understood the problems adequately and provided a good solution that developers can actually understand and use.  That is, I believe, a really good thing.
+			What it is <em>for</em> matters to me quite a lot.  The sites that most require formule might not be the Gmails, Twitters, Facebooks, news or marketing sites of the world.  But they <em>are</em> things like <em>cancer research, the National Science Foundation and higher education</em>.  Aside from the very plain fact that these are especially worthy things to care about, these are also kind of literally the folk the Web was originally conceived of as being very useful to.
 		</p>
 		<p>
-			However, I'd like to make the case that MathML is among a very small group of things that occupy a unique place in Web history and deserve a special kind of attention and consideration, and that even among these, MathML is specifically unique.  
-		</p>
-
-		<p>
-			The Extensible Web Manifesto accepted the "current" Web Platform as our imperfect starting point and treated "pre-existing" things differently from "proposed things"'".  Existing things were just the reality of where we were.  Regarding these, it encourages not wholesale high-level replacement efforts, but rather excavation and explaining of magic upon which such new speculative efforts can occur.  
-		</p>
- 
- 		<p>
- 			But MathML had multiple browser implementations which wildly predate this shift in how we look at standards.   This leaves it in a uniquely weird, unclear space: How should we think about this?  Here's what I think...
- 		</p>
-	</section>
-
-	<section class="sectioning">
-		<contextual-heading role="heading" aria-level="2">The 'spirit' of it all</contextual-heading>
-	<p>
-		From the very beginning, nearly three decades now, a not insigificant number of people have been working on this and seem to me to have done a remarkable degree of what we would ask of them if they were starting today.  The technology is, of course, a bit different - but in principle they have shown the willingness to work hard, solve problems, experiment, prove and come to agreements.
-	</p>  
- 
-	<p>
-		In fact, they have not only experimented with ideas and implementations better than many things in the past - they built an infrastrucure of tools and integrations and even things built on those things (I'll touch on that more later).  They have convinced multiple browsers (sometimes out of pure good will of developers) to invest in creating and proving demonstrable implementations.  They have shown that a number of organizations have <a href="https://www.mathjax.org/#sponsors">funded development of polyfills</a> through MathJax and <a href="https://mathml.igalia.com/">continue to make efforts to fund actual browser development in Chrome through Igalia</a>, and, as I will argue, proved usage.
-	</p>
-
-	<section class="sectioning">
-		<contextual-heading role="heading" aria-level="3">Have they shown need, use and success?</contextual-heading>
-
-		<p>
-			Some will argue that the HTTP Archive Reports of element use seem to indicate that use use of math is exceptionally low and that since Chrome removed support and the world didn't explode, maybe we can safely ignore it. It's easy to see how a lot of people can feel little pressure because it's quite possible (maybe even 'normal') to build pages for decades without ever "needing" <code tag-esc="">math</code>. 
-		</p>
-
-		<p>
-			But all of that feels tremendously misleading. People in parts of STEM are, and always have been, the people needing this.  It has been stated by the community that  there are millions of pages already in existence that use MathML, and with some investigation - that actually seems very believable. It really matters what we measure here.
-		</p>
-
-		<p>
-			Most means of reporting we tend to look at say nothing of things behind a paywall or requiring login.  But that's precisely the case for many education and research materials, so this can really obscure our view of the problem.
-		</p>
-
-		<p>
-			There are many ways of attempting to "deal" with lack of support in Chrome and Edge this that check various boxes of "good" and would make this plausible.  Many sites in this category, for example, actually _can_ realistically tell users to use (or not) a particular browser. That's the simplest way, but it's also kind of a terrible thing for the Web.  
-		</p>
-
-		<p>
-			JavaScript is another way, and there are multiple possible solutions.  We do have some kind of indicators there.  builtwith.com, for example, lists nearly 70k _sites_ that use MathJax, specifically.  It's worth noting that MathJax is not the only client-side way and that MathJax supports more than just MathML, so it's a little hard to get an exact read.  Note carefully, however, that that's not 70k instances of <code tag-esc="">math</code> tags, or even 70k pages with one or more <code tag-esc="">math</code> tags.  That's 70k <em>sites</em>  using one specific popular polyfill. So, I think it is safe to say that it has use.
-		</p>
-
-		<p>
-			Further, if you look at which sites show up in even the free report - they aren't the gmails and twitters and facebooks - they are things like <em>cancer research, the National Science Foundation and higher education</em>.
-		</p>
-
-		<p>
-			I'm all for cool tech stuff and social media, but to me, that feels pretty damned significant stuff that makes me feel like we should really care about it.
-		</p>
-
-		<p>
-			Significantly, I think: Because of what much of that content is, I expect there is probably a lot of historical content that will not be rewritten any time soon, if ever.
-		</p>
-		<p>  
-			So, yeah... It's out there and this problem isn't going away.
+			When those sorts of concerns come along and say "we need this" I feel like it's important for us to sit up and listen.  Doubly so since this is among the oldest problems on the Web.
 		</p>
 	</section>
-
 	<section class="sectioning">
-		<contextual-heading role="heading" aria-level="3">A path to success?</contextual-heading>
-
+		<contextual-heading role="heading" aria-level="2">Oldest Web Problems</contextual-heading>
 		<p>
-			In other words, while it is impossible to go back in time and have them use Custom Elements or prioritize identifying gaps in the platform as a first step - it seems to me that they have actually done a remarkably good job at following the spirit of it all.
+			The corpus of documents at CERN that Tim drew the subset that would define HTML from probably had <em>many</em> more elements than the 15 or so that Tim chose.  SGML had 30 years worth of debate and thought around ways to deal with this.  There were ways to say "This is a document about an invoice" and for that to have different elements than, say, a book of poetry. Tim picked the most <em>common</em> ones as the original set, which also have the distinction of largely being the oldest, and least specifically semantic.
 		</p>
- 
-		<p>  
-			Therefore, for me, it kind of begs the question: If there isn't hope for getting MathML implemented despite years of experimentation, proven use, creation of an ecosystem, convincing multiple implementers to implement, a willingness to fund development and, now legacy content... Why?  What is the path to success?  Is there one?  Is it a thing we can even begin to articulate?
+		<p>
+			Given this, it is perhaps not surprising that there has been a lot of desire and debate over the years about adding elements to HTML.  How do we provide the right "stuff" to support all of the use cases that wanted to use the Web.
 		</p>
 
-	</section>
-	<section class="sectioning">
-		<contextual-heading role="heading" aria-level="3">Unique challenges</contextual-heading>
-		<p>
-			
-		</p><p>
-			I'm quite thankful that we have the polyfill, at least it's something.  I'm thankful to the people who invested in it and continue to, but it's very difficult to see how the polyfill is ultimately a good long term solution. It's not great for accessibility, offline or performance. 
-		</p>
+		<section class="sectioning">
+			<contextual-heading role="heading" aria-level="3">An important history</contextual-heading>
+			<p>
+				From the very first year (nearly 30 years ago now), early adopters and enthusiasts of the Web began discussing the needs for two things in HTML which would keep coming up over and over: graphics and math. Within a very short window of time, Dave Ragget had assemebled a number of ideas for what he called "HTML+" which took (believe it or not) only a fraction of those ideas and would have created roughly five times as many elements as Tim's original browser supported.
+			</p>
 
-		<p>
-			It's 'special' in that the space itself is full of uniquely hard problems that the platform was unprepared to deal with when they began dealing with them - gaps, missing layers and primitives, etc. and therefore the polyfill has to try to deal with them too.
-		</p>
-		<p> 
-			It has to render math, which is non-trivial on its own - but to do so you need a way.  Currently this means a dance of dependencies, JavaScript which once loaded loads CSS and other JavaScript which once loaded load fonts.
-		</p>
+			<p>
+				Notably among those proposals, <a href="https://www.w3.org/MarkUp/HTMLPlus/htmlplus_45.html">section 12 included a math element</a> and they had experimental browser support at CERN.
+			</p>
+
+			<div class="captioned-image">
+				<img src="https://www.w3.org/MarkUp/htmlplus_paper/math2.gif" alt="">
+				A screenshot of the experimental browser at CERN rendering the proposed <code tag-esc="">math</code> element in 1993.
+			</div>
+
+
+			<p>
+				That proposal wasn't accepted, but it wasn't the end of the conversation. Details around math and graphics would wind up being figured out outside of HTML.
+			</p>
+
+			<p>
+				By the time the "HTML5 era" rolled along, there was some degree of maturity and the new standard included at least some degree of answer for these two asks through <a href="https://html.spec.whatwg.org/multipage/embedded-content-other.html">its secion on "other" Embedded Content</a> which mentions only two specifically: SVG and MathML.
+			</p>
+
+			<section class="sectioning">
+				<contextual-heading role="heading" aria-level="4">A Uniquely Tragic Twist</contextual-heading>
+				<p>
+					While SVG now has broad support, MathML has a bumpier story...
+				</p>
+				<p>   
+					Firefox shipped some kind of MathML support as early as 2006. For a time just about every browser - Firefox, Webkit (Chrome and Apple at the time), and Opera (Presto) - had <em>someone</em> either working on implmentations or already shipped.
+				</p>
+				<p>  
+					But along the way there was an unfortunate turn.  When Google created the new Blink engine, they decided to remove support and instead recommend use of a polyfill of sorts called MathJax. 
+				</p>
+				<p>
+					Now, I think it would be a mistake to read too much into this.  I do not intend to ascribe any kind of ill intent to this decision:  Making a browser is full of tough choices and each team has to manage a lot of difficult priorities.  Blink did a lot of reviewing and refactoring and found that the newly landed contribution had a lot of complexity, issues, and even a security flaw.  Further, the feature had no long-term owner, so, they decided to take it out for the time being.
+				</p>
+
+				<p>
+					So, any kind of judgement aside, this nevertheless had real world effects that have been pretty complex and bad for MathML... 
+				</p>
+
+				<div class="captioned-image">
+					<img src="/media/fixed-it.gif" alt="">
+				</div>
+		 
+				<p>
+					Opera, for example, retired Presto to be built on Blink too.  So now there were two less browsers it looked like had support.  Because Blink has such a huge market share, this has also served to reduce pressure on the other implemeter (Microsoft).  What this means is that MathML is, after all this time, now only supported to some degree by about 23% of global browsers in use today (going by caniuse for this statistic).
+				</p>
+			</section>
+
+			<section class="sectioning">
+				<contextual-heading role="heading" aria-level="4">Dedication</contextual-heading>
+				Over the years, a number of organizations have shown tremendous dedication, developing code, contributing open-source project, <a href="https://www.mathjax.org/#sponsors">funded development of polyfills</a> through MathJax and <a href="https://mathml.igalia.com/"> sponsoring efforts to get it widely implmented hrough Igalia</a>..
+			</section>
+					
+			<section class="sectioning">
+				<contextual-heading role="heading" aria-level="4">A measure of success</contextual-heading>
+				<p>
+					Measuing the 'uptake' of MathML is a little tricky precisely because of what it is.  Most means of measuring use that we have we tend to look at, for example, depend on a dataset of popular sites.  However, the sites that need MathML are, by their nature, unlikely to have comparatively broad audiences.
+				</p>
+				<p>
+				  	Even 'heavy users'  probably spend quite a lot less time looking at formulae than they do any of the myriad of other things on the Web.
+				</p>
+				<p>
+					The most frequent uses are also often behind something requiring login or user actions in order to get pages with <code tag-esc="">math</code> in them, thereby making them unavailable in a number of datasets that come from crawling.
+				</p>
+				<p>
+				  Finally, because of what these sites are, they might ultimately  recommend a browser that <em>does</em> support MathML. That would be bad for the Web, but it would also keep those uses out of browser collected datasets.  I'll explain why they might do that below in the "Other kinds of success" section. 
+				</p>
+				<p>
+					So, there are a spectrum of imperfect ways to measure a few different things.
+				</p>
+				<section class="sectioning">
+					<contextual-heading role="heading" aria-level="5">Is there use?</contextual-heading>
+					<p>
+						So, whether a site loads JavaScript for MathML is one way, but there are multiple possible JavaScript solutions here.  Still, we can glean some kind of indicators.  builtwith.com, for example, lists nearly 70k _sites_ that use MathJax, specifically.  Now, MathJax supports more than just MathML, so that number could be artificially high.  Still, note carefully that that's not 70k instances of <code tag-esc="">math</code> tags, or even 70k pages with one or more <code tag-esc="">math</code> tags.  That's 70k <em>sites</em>  using one specific popular polyfill on what count as heavily trafficed sites.
+					</p>
+					<p>
+					 	So, I think it is safe to say that it has use.  In fact, according to the community, there are millions of pages that rely on MathML.
+					</p>
+				</section>
+				<section class="sectioning">
+					<contextual-heading role="heading" aria-level="5">Other kinds of success</contextual-heading>
+
+					<p> 
+						But, are we successful if we have to load a polyfill for this forever?  I think not for several reasons.
+					</p>
+
+					<p>
+						First, in this specific case there are a dance of dependencies.  First, some JavaScript to test whether you need the polyfill - then if you do, a JavaScript dependency which once loaded loads CSS and other JavaScript which once loaded load fonts.  Here's what that looks like in devtools.
+					</p>
 		
-		<div class="captioned-image">
-			<img src="/media/mathjax-waterfall.png" alt="">
-			Devtools waterfall of loading the polyfill.
-		</div>
+					<div class="captioned-image">
+						<img src="/media/mathjax-waterfall.png" alt="">
+						Devtools waterfall of loading the polyfill.
+					</div>
 
+					<p>  
+						So, that's pretty terrible all on its own.  However, your site should be accessible too and many of the sites that need math also carry a legal <em>requirement</em> for accessibility.  But, because of where we are in history, and how this all played out, that's really tricky.
+					</p>
+					<p>
+						MathJax tries valiantly to make it accessible, but it's a lot of work and complexity and I think not great for users.  
+					</p>
+					<p>
+						In order to approach this today, they math into a focusable, interactive which includes an accessible menu.  The menu system is, of course, not native and not without it's own set of isssues, but through this menu they handle accessibility through self-voicing with the (not offically standardized) Web Speech APIs.
+					</p>
+					<p>
+						This means that that users have to understand things about MathJax - how and when to manually toggle between the actual 'screen reader' and the simulated 'self voicing accessibility' and how that plays in with the menuing and so on.  It is far, far less than ideal and not easy.
+					</p>
+				</section>
+			</section>
+		</section>
+	</section>
+
+
+	<section class="sectioning">
+		<contextual-heading role="heading" aria-level="2">How do we move forward?</contextual-heading>
+		<p>
+			There's a final aspect that makes this especially interesting to me, what does it say about the Web Platform moving forward?
+		</p>
 		<p>  
-			This alone is hard enough for a polyfill but it's not remotely the whole story. 
+			Today, we say that the potential path to standardization of new elements lies in experimentation with Custom Elements to encourage communities to work together, experiment, compete, and prove that there is valuable 'slang' to be standardized.
+		</p>
+
+		<p>
+			While Custom Elements didn't exist when the MathML community was doing there work, they did effectively do all of this and more.  Not only did they do all of that in terms of the Web alone, they built useful things atop those things in a rich ecosystem.  They also found  implmenter interest and even funding.  
 		</p>
 		<p>
-			Your sites should be accessible, I hope that much is clear.  But many of the 'kinds' of sites that would use MathML also carry a legal <em>requirement</em> for accessibility.  That means that MathJax has to not only know how to render MathML which is hard enough, but also to to try make it accessible.  Because of what we have to work with today, this is considerably hard.
-		</p>
+			So, if MathML doesn't reach the bar - why? And what would?  What are our plans for things like this?  Do we have to treat MathML a little "specially" in this, and why?  Can we begin to articulate some of this?
+		</p> 
+
 		<p>
-			In order to approach this today, they math into a focusable, interactive which includes an accessible menu.  The menu system is not without it's own set of isssues but through this menu they handle accessibility through self-voicing with the (not offically standardized) Web Speech APIs.
-		</p>
-		<p>
-			This means that that users have to understand things about MathJax - how and when to manually toggle between the actual 'screen reader' and the simulated 'self voicing accessibility' and how that plays in with the menuing and so on.  It is far, far less than ideal and not easy.
+			How <em>do</em> we deal with one custom element (or in this very special case, speculative, non-dasherized element) becomming very mature and getting widely used within a subset community?  Should be ways short of "it becomes part of HTML" that are more complete than "Here's a JS file and CSS and fonts and... etc"?  And can we find a way to lower the runtime taxes that that implies?  That's a general topic I've been interested in discussing for many years.  
 		</p>
 	</section>
 
 	<section class="sectioning">
-		<contextual-heading role="heading" aria-level="3">Summing up</contextual-heading>
+		<contextual-heading role="heading" aria-level="2">Summing Up..</contextual-heading>
 		<p>
-			But because it followed similar "spirits" it can definitely be useful to ask questions of standards using MathML as a case study:  How <em>do</em> we deal with one custom element becomming very mature and getting widely used within a subset community?  Should be ways short of "it becomes part of HTML" that are more complete than "Here's a JS file and CSS and fonts and... etc"?  And can we find a way to lower the runtime taxes that that implies?  That's a general topic I've been interested in discussing for many years.  
+			As for myself, I believe that all of this warrants us accepting existing MathML as our imperfect, but still valuable starting point and getting it implmented.  I realize what a big ask this is: It's a very significant effort and means effectively 'admitting' there is additional complexity in the platform that may make it harder for browsers to to do things like refactoring.  It means we'll have to work on explaining that new magic too so that we create new opportunites for inceasingly better answers to emerge.  It's a lot.
 		</p>
 		<p>
-			More importantly, how <em>does</em> something cross a bar and become a widely implemented standard?  It's hard to imagine doing more work or having more history and success than the MathML community. If not this, I believe it warrants a real good explanation.
-		</p>
-		<p>
-			As for myself, I believe that all of this warrants us ultimately accepting MathML as our imperfect, but still valuable starting point and getting it implmented.  From there, I think we should continue to drill down and expose new opportunities for increasingly better answers to emerge.  
-		</p>
-		<p>
-			This is a big ask, to be clear.  At the same time, it's a very unique situation with strong rationale.  I really hope that the community can continue efforts to move this forward.  If you think think this is a valuable and worthwhile effort, be sure to speak up.  If you work for someone who thinks this is important, ask them to <a href="https://mathml.igalia.com/">help fund the efforts</a>.
+			Still, this is a <em>very</em> unique situation with what I think is a strong rationale and I really hope that the community continues its efforts to move this forward.  If you think think this is a valuable and worthwhile effort, be sure to speak up.  If you work for someone who thinks this is important, ask them to <a href="https://mathml.igalia.com/">help fund the efforts</a>.
 		</p>
 	</section>
-</section></article></main>
+</article></main>
 
   
     <script>
