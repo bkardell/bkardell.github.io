@@ -1,0 +1,712 @@
+<html lang="en" resource-type="blogpost"><head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@briankardell">
+    <meta name="twitter:creator" content="@briankardell">
+    <meta name="twitter:title" content="Standards Crisis on Earth-1">
+    <meta name="twitter:description" content="This week, not for the first time, some folks (here's one link) suggested that our inability to standardize really common things has had some negative impacts - and discussion abou">
+    <meta name="twitter:image" content="https://camo.githubusercontent.com/854b00b15e506d510675ee20d2cafc2d2c7b8952/68747470733a2f2f696d672e63696e656d61626c656e642e636f6d2f63622f612f352f642f382f622f362f613564386236316565316233303932393136633262643238343266303532643535306161666536623534356239383562623737613062376361373265383961332e6a7067">
+    <link rel="alternate" type="application/rss+xml" href="blog/feed.rss" title="bkardell.com/blog rss feed">
+    <title>Standards Crisis on Earth-1</title>
+    <style>.captioned-image {
+    background-color: #eaeaea;
+    display: block;
+    overflow: hidden;
+    padding: 1rem;
+    text-align: center;
+    font-style: italic;
+}
+
+.captioned-image.p-attached {
+    width: 40%;
+    display: inline-block;
+    margin: 0 1rem 2rem 1rem;
+}
+
+section > .captioned-image.p-attached {
+    margin-top: 1.5rem; /* correct for heading size*/
+}
+
+ pre { overflow-x: auto }
+
+.captioned-image.p-attached.p-attached-left {
+    float: left;
+}
+
+.captioned-image.p-attached.p-attached-right {
+    float: right;
+}
+
+.captioned-image.p-attached + * + * {
+    clear: both;
+    margin-top: 2rem;
+}
+
+
+.captioned-image img, .captioned-image video {
+    display: block;
+    max-width: 100%;
+    margin: 0 auto 1em auto;
+}
+.source {
+    font-style: italic;
+}
+body {
+    display: flex;
+    font: 1em "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-weight: 300;
+    line-height: 1.625;
+}
+h1 { margin: 0.5rem; }
+code-format {
+    border-left: 0.5rem solid rgba(123,115,209,0.35);
+    display: block;
+    padding: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+contextual-heading {
+    display: block;
+    margin-top: 2rem;
+}
+
+[aria-level="1"] {
+    color: #43686b;
+    font-size: 1.45rem;
+}
+[aria-level="2"] {
+    color: #856363;
+    font-size: 1.35rem;
+}
+[aria-level="3"] {
+    color: #856363;
+    font-size: 1.25rem;
+}
+[aria-level="4"] {
+    color: #856363;
+    font-size: 1.2rem;
+}
+[aria-level="5"], [aria-level="6"] {
+    color: #667496;
+    font-size: 1.1rem;
+    font-weight: bolder;
+}
+.posted-on {
+    font-style: italic;
+    font-size: 0.8rem;
+    text-align: right;
+    margin-bottom: 1rem;
+}
+
+ul, li {
+    margin: 0.5rem;
+    text-align: left;
+}
+header {
+    padding-top: 1rem;
+    padding-right: 2rem;
+    background-color: #fbf5e9;
+}
+.tagline {
+    font-style: italic;
+    text-align: center;
+}
+
+[tag-esc] {
+    color: maroon;
+    font-family: Courier, "Lucida Console", monospace;
+}
+
+[tag-esc]::before {
+    content: '<';
+}
+
+[tag-esc]::after {
+    content: '>';
+}
+
+main {
+    min-width: 50%;
+    width: 80%;
+    padding: 1rem;
+}
+header .title {
+    background-color: rgba(123,115,209,0.35);
+    padding: 0.3rem;
+    padding-left: 0.25rem;
+    font-weight: bolder;
+    font-size: 0.9rem;
+    border-left: 1rem solid #999298;
+}
+
+header .profile {
+    width: 50%;
+    margin: 1rem 25%;
+}
+
+header .title + nav {
+    font-size: 0.9rem;
+}
+
+header .blurb {
+    font-size: 0.75rem;
+    text-align: center;
+}
+header .name {
+    text-align: center;
+    font-size: xx-large;
+}
+.segue {
+    font-style: italic;
+}
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  border: 0;
+}
+[for="aboutMeToggle"] {
+    display: none;
+}
+/* this needs rethinking, it wants a selector like 'not flow content' */
+article>*:not(contextual-heading,a), section>*:not(contextual-heading,a) {
+    margin-left: 0.45rem;
+}
+
+blockquote {
+  font-family: serif;
+  background: #f9f9f9;
+  border-left: 10px solid #ccc;
+  margin: 1.5em 10px;
+  padding: 0.5em 10px;
+}
+blockquote:before {
+  color: #ccc;
+  content: open-quote;
+  font-size: 2em;
+  line-height: 0.1em;
+  margin-right: 0.25em;
+  vertical-align: -0.4em;
+}
+
+blockquote:after {
+  color: #ccc;
+  content: close-quote;
+  font-size: 2em;
+  line-height: 0.1em;
+  margin-left: 0.25em;
+  vertical-align: -0.4em;
+}
+
+
+@media (max-width: 800px){
+    body {
+        flex-direction: column;
+    }
+    header {
+        border-bottom: 1px solid #afafff;
+    }
+
+    .captioned-image.p-attached {
+        width: 100%;
+        margin: 1rem 0;
+    }
+
+    .captioned-image.p-attached.p-attached-left,
+    .captioned-image.p-attached.p-attached-right {
+        float: none;
+    }
+
+    [for="aboutMeToggle"] {
+        background-color: #675e5e;
+        color: white;
+        padding: 0.25rem;
+        padding-left: 0.5rem;
+        display: block;
+        border-left: 1rem solid black;
+    }
+    #aboutMeToggle:focus + [for="aboutMeToggle"]{
+        outline: 4px solid #c6ddf2;
+    }
+
+    #aboutMeToggle:checked ~ header {
+        display: none;
+    }
+
+    header li { display: inline; margin-left: -0.5em; }
+    header .blurb li::after { content: '; '; }
+    header  nav li {
+        display: inline-block;
+        margin-left: 0.35rem;
+        margin-right: 0.35rem;
+    }
+    header .title {
+        width: 100%;
+    }
+    main li .source { display: block; }
+
+}</style>
+    <style>
+      .captioned-image { font-size: 0.9rem; }
+      .thanksTo { font-style: italic; font-size: 0.8rem; }
+    </style>
+    <script>
+      var activateOptional = function (media) {
+        var source = media.getAttribute('data-src'),
+            temp,
+            container = media.parentElement;
+
+          if (media.nextSibling && media.nextSibling.matches) {
+            if (media.nextSibling.matches('.clickToSee')) {
+              media.parentElement.removeChild(media.nextSibling);
+            }
+          }
+
+          if (media.tagName === 'VIDEO') {
+            temp = document.createElement('video')
+            temp.setAttribute('autoplay','')
+            temp.setAttribute('controls','')
+            temp.setAttribute('loop','')
+            temp.innerHTML = '<source src="' + source + '.webm" type="video/webm">'
+                    + '<source src="' + source + '.mp4" type="video/mp4">';
+            media.parentElement.replaceChild(temp, media);
+            setTimeout(function () {
+              temp.play()
+            }, 0);
+          } else {
+            media.src = media.getAttribute('data-src');
+          }
+
+          container.classList.add('active');
+      }
+    </script>
+  </head>
+  <body>
+    <input id="aboutMeToggle" class="sr-only" type="checkbox" checked="">
+<label for="aboutMeToggle">Toggle author information</label>
+<header>
+    <div class="name">
+        Brian Kardell
+    </div>
+    <img class="profile" src="/profile.jpg" alt="">
+    <div class="tagline"><a href="/">Betterifying the Web</a></div>
+    <div class="blurb">
+        <ul>
+            <li>Sr Front-End Engineer at Apollo Group, Inc</li>
+            <li>Original Co-author/Co-signer of The Extensible Web Manifesto</li>
+            <li>Co-Founder/Chair, W3C Extensible Web CG</li>
+            <li>Member, W3C (The JS Foundation)</li>
+            <li>Co-author of HitchJS</li>
+            <li>Blogger</li>
+            <li>Art, Science &amp; History Lover</li>
+            <li>Standards Geek</li>
+        </ul>
+    </div>
+    <div class="title">Follow Me On...</div>
+    <nav>
+        <ul>
+            <li><a rel="me" href="https://briankardell.wordpress.com">Wordpress</a></li>
+            <li><a rel="me" href="https://medium.com/@briankardell">Medium</a></li>
+            <li><a rel="me" href="https://twitter.com/briankardell">Twitter</a></li>
+            <li><a rel="me" href="https://github.com/bkardell/">Github</a></li>
+            <li><a rel="me" href="https://codepen.io/bkardell">Codepen</a></li>
+            <li><a rel="me" href="https://www.linkedin.com/in/brian-kardell-08a4264">LinkedIn</a></li>
+            <li><a rel="me" href="https://www.instagram.com/kardellbrian">Instagram (for
+art)</a></li>
+            <li><a rel="me" href="http://fineartamerica.com/profiles/brian-kardell?">Fine Art
+America (art for sale)</a></li>
+        </ul>
+    </nav>
+</header>
+    <main><div class="posted-on">Posted on null</div><article class="sectioning">
+	<style>
+		/*body:not(.preferences-set) > :not(main) { display: none; }
+		body:not(.preferences-set) {
+			background-color: #444;
+			color: white;
+		}
+		*/
+		body:not(.prefers-images) .captioned-image:not(.active) > * { border: 1px dashed gray }
+
+		#downloadsPrefs {
+			font-size: 0.8rem;
+			background-color: #fcfcfc;
+			border: 1px dotted gray;
+			margin-bottom: 1rem;
+		}
+		#downloadsPrefs p {
+			margin: 2rem 10%;
+		}/*
+		#downloadsPrefs ~ * {
+			display: none;
+		}*/
+	</style>
+	<div id="downloadsPrefs">
+		<p style="font-size: 1.5rem">Note from the author...</p>
+		<p>My posts frequently (like this one) have a 'theme' and tend to use a number of images for visual flourish. Personally, I like it that way, I find it more engaging and I prefer for people to read it that way.  However, for users on a metered or slow connection, downloading unnecessary images is, well, unnecessary, potentially costly and kind of rude.  Just to be polite to my users, I offer the ability for you to opt out of 'optional' images if the total size of viewing the page would exceed a budget I have currently defined as 200k...
+		</p>
+		<p><label>Show me all the images when I read <input type="checkbox" id="download-all-images-pref" checked=""></label></p>
+		<p><label>Don't ask me again on this device <input type="checkbox" id="download-all-images-pref-save"></label></p>
+		<p><button id="setDownloadPrefs">Dismiss</button></p>
+	</div>
+	<script>
+		'use strict';
+		(function () {
+			var prefsButton = document.querySelector('#setDownloadPrefs'),
+				prefs = window.localStorage.downloadsPrefs;
+			function downloadImages () {
+				var lazy = Array.prototype.slice.call(document.querySelectorAll('.captioned-image>[data-src]'));
+
+				lazy.forEach(activateOptional)
+			}
+			function removeDownloadPrefsOverlay() {
+				document.body.classList.add('preferences-set')
+				document.querySelector('#downloadsPrefs').remove()
+			}
+
+			prefsButton.addEventListener('click', function() {
+				var all = document.querySelector('#download-all-images-pref'),
+					save = document.querySelector('#download-all-images-pref-save'),
+					prefs = window.localStorage.downloadsPrefs
+
+				if (all.checked) {
+					downloadImages();
+				}
+				if (save.checked) {
+					window.localStorage.downloadsPrefs = all.checked;
+				}
+				removeDownloadPrefsOverlay()
+			});
+
+			if (typeof prefs !== 'undefined') {
+				console.log(prefs)
+				if (prefs === 'true') {
+					document.body.classList.add('prefers-images')
+					window.localStorage.downloadsPrefs = prefs
+					window.addEventListener('DOMContentLoaded', downloadImages)
+				}
+				removeDownloadPrefsOverlay()
+			}
+		}())
+	</script>
+	<contextual-heading role="heading" aria-level="1">Standards Crisis on Earth-1</contextual-heading>
+    <script src="../prism.js"></script>
+    <link rel="stylesheet" href="../prism.css">
+	<style>
+	.note {
+        background-color: rgba(255,255,0,0.24);
+        padding: 1rem;
+        font-style: italic;
+    }
+    .note::before {
+        content: 'Note';
+        font-size: 0.8rem;
+        background-color: black;
+        color: white;
+        padding: 0.25rem;
+        margin-right: 0.5rem;
+    }
+
+    th {
+    	background-color: black;
+    	color: white;
+    }
+
+    table, td {
+    	border: 1px solid gray;
+    	border-collapse: collapse;
+    	padding: 0.5rem;
+    }
+
+	</style>
+	<p class="segue">
+	This week, not for the first time, some folks (here's one link) suggested that our inability to standardize really common things has had some negative impacts - and discussion about how to fix that. I have complex thoughts on this that have been brewing for some time in the form of half finished blog posts... So, I'll try to write those here and, hopefully, not make it too boring.
+	</p>
+
+	<section class="sectioning">
+		<contextual-heading role="heading" aria-level="2">Introduction: A thought experiment setup</contextual-heading>
+
+
+		<div class="captioned-image optional">
+			<img data-src="https://camo.githubusercontent.com/854b00b15e506d510675ee20d2cafc2d2c7b8952/68747470733a2f2f696d672e63696e656d61626c656e642e636f6d2f63622f612f352f642f382f622f362f613564386236316565316233303932393136633262643238343266303532643535306161666536623534356239383562623737613062376361373265383961332e6a7067" alt="mysterious strange" data-canonical-src="https://img.cinemablend.com/cb/a/5/d/8/b/6/a5d8b61ee1b3092916c2bd2842f052d550aafe6b545b985bb77a0b7ca72e89a3.jpg">
+		</div>
+		<p>Imagine that one day, during a small meeting of Web standards folks, a curiously dressed stranger arrives.  "This earth's Web standards are in danger," he says.  <em>This earth?</em></p>
+
+		<p>Through him, we learn about the existence of a multiverse in which an infinite number of "earths" exist and play out differently.  If you're not familliar with this, here'a a clip from CW's show The Flash <a href="https://www.youtube.com/watch?v=hUhtLzw9Z68&amp;t=1m6s" rel="nofollow">briefly explaining the multiverse</a> (it should jump you right to the part 1:06 into it, but you'll have to stop it yourself).</p>
+
+
+		<aside class="captioned-image optional">
+			<img data-src="https://camo.githubusercontent.com/0679906287ca35c6fd0e4704cd42fbbc7204b2e4/68747470733a2f2f69322e77702e636f6d2f7777772e746f722e636f6d2f77702d636f6e74656e742f75706c6f6164732f323031352f31302f576f6e6465722d576f6d616e2d4d756c746976657273652d506172616c6c656c2d4561727468732e6a70673f6669743d313033372532432b393939392663726f703d30253243302532433130302532433130302673736c3d31" alt="">
+			"Earth must have a twin world existing simultaneously alongside it! But developing differently! And everyone on it is a double of everyone on Earth!" - "Wonder Woman's Evil Twin" 1953
+		</aside>
+
+		<p>So, we can think about our own reality as "Earth-1" and his as "Earth-2".  As he explains, his earth's Web (Earth-2's, that is) has a different timeline than ours, and whiteboards a table for us roughly illustrating how they differ, with some vey key elements called out.</p>
+
+		<table>
+			<thead>
+				<tr>
+					<th>-</th>
+					<th>Earth-1 (our reality)</th>
+					<th>Earth-2</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>1991</td>
+					<td><strong>TimBL creates "the Web" at CERN.  HTML has 13 elements.</strong></td>
+					<td>** Harrison Wells creates the web at Star Labs. HTML has 80 elements (almost the identical set which will make up the Earth-1 HTML 4.01 specification).**</td>
+				</tr>
+				<tr>
+					<td>1993</td>
+					<td>"we should have way more tags" browsers support different subsets and supersets of Tim's originals.  HTML+?</td>
+					<td>People are pretty happily using HTML</td>
+				</tr>
+				<tr>
+					<td>1994 - 1996</td>
+					<td>Netscape!  Ads!  Java and JavaScript - DOM0! HTML sent to IETF (RFC-1886) for standardization. HTML2? W3C!</td>
+					<td>Netscape! Ads! Java and JavaScript - DOM0!  W3C!</td>
+				</tr>
+				<tr>
+					<td>1996</td>
+					<td>Whoa, IE supports a new "CSS" thing.  HTML 3!</td>
+					<td>Whoa, IE supports a new "CSS" thing.</td>
+				</tr>
+				<tr>
+					<td>1997</td>
+					<td>Whoops no... HTML 3.2</td>
+					<td>People happily make websites</td>
+				</tr>
+				<tr>
+					<td>1998</td>
+					<td>HTML 4, CSS 2...Whoops, no wait, 4.01.</td>
+					<td>CSS 2</td>
+				</tr>
+					<tr>
+					<td>2000 - 2008</td>
+					<td>XML ALL THE THINGS! Further CSS/JS development</td>
+					<td>XML ALL THE THINGS! further CSS/JS development</td>
+				</tr>
+				<tr>
+					<td>2008 - 2010</td>
+					<td><strong>WHATWG, "HTML5".  Does hard interop work.  Adds new input types.  Adds appcache and some other APIs.  Adds many new elements</strong></td>
+					<td><strong>WHATWG, "HTML Living Standard".  Does hard interop work.  Adds new input types.  Defines principles of the Extensible Web Manifesto and explains the platform, creates missing primitves, pioneers things like custom elements. It is possible at the end of this to implment just about all HTML elements as custom elements with very good parity</strong></td>
+				</tr>
+				<tr>
+					<td>2010 - 2014</td>
+					<td>People are using parts of HTML5 with polyfills.</td>
+					<td><strong>People are beginning to make custom elements.</strong></td>
+				</tr>
+				<tr>
+					<td>2014</td>
+					<td>Extensible Web Manifeto, Custom Elements "v0" work developing</td>
+					<td><strong>People have, suprisingly, created <em>identical</em> custom element dopplegangers for every "Earth-1" HTML5 counterpart</strong></td>
+				</tr>
+				<tr>
+					<td>2014-2018</td>
+					<td>People are still just starting to scratch custom elements (v1) and things like shadow DOM which arent quite "there" yet, but get continually closer.</td>
+					<td>The doppleganger custom element equivalents have <em>exact</em> usage parity with their native Earth-1 counterparts.  That is, every line of Earth-1 code that says <code tag-esc="">section</code> simply says <code tag-esc="">x-section</code> on Earth-2, and so on</td>
+				</tr>
+			</tbody>
+		</table>
+
+		<p>"A rift," he explains, "was opened between universes and I have been trapped here for 6 months learning the differences between our worlds.  They're actually very nearly identical in many ways, but I believe that my own earth provides some interesting lessons for yours."</p>
+
+	</section>
+
+
+	<section class="sectioning">
+		<contextual-heading role="heading" aria-level="2">Why?</contextual-heading>
+
+		<p>For the last four or five years we've (in reality) made a lot of progress, on a lot of fronts with regard to reforming "standardization".  We widely agree on a lot of foundational "bits" even across numerous standards bodies.  But, there are still a lot of unanswered questions about how to make this really "click". While the basic challenges are largely similar across standards bodies, HTML is especially interesting because it adds additional complexities...</p>
+
+		<p>We all agree that standardization should be based on "science" and that it should involve developers and experimentation "in the wild". "The path to standardization leads through custom elements" is the refrain in both universes.  The idea that <a href="https://bkardell.com/blog/Dropping-The-F-Bomb-On-Standards.html" rel="nofollow">standards bodies should work more like dictionary editors</a> is a pretty well accepted "concept" all around.</p>
+
+		<p>But, "<em>how</em>, specifically, do we do those things?" is as yet unanswered and, it seems quite difficult to get people to discuss details in our own universe.  Why?  Because custom elements are young and it's very hard to speculate about hyptothetical elements and futures.  It very quickly gets into all kinds of weeds and gets details.</p>
+
+		<aside class="captioned-image optional">
+			<img data-src="https://camo.githubusercontent.com/1da616f43eddb5cd64131fbbb1c31635440d34ee/68747470733a2f2f692e737461636b2e696d6775722e636f6d2f6c33515a672e6a7067" alt="Batman and Robin doing science">
+		</aside>
+ 
+		<p>So, that's the idea with the multiverse: Perhaps by imagining a universe in which all of the HTML-5 elements arose in this fashion is, in a way, easier.  We don't have to get people to accept that some kind of "section" element "might be useful" or "might get popular".  We can simply say "it did" in precise parallel with our universe.  It's easier to imagine.  It allows us to get to the "... then what?" and focus on the actual questions.</p>
+		<p>Also, I think it is more fun.</p>
+	</section>
+
+	<section class="sectioning">
+		<contextual-heading role="heading" aria-level="2">"Data" initial handwaving</contextual-heading>
+
+		<p>So, we've said that data <em>exists</em> on Earth-2, but that doesn't mean we have it.  In fact, that's job #1:  Any kind of "science" is going to inevitably involve measuring.  But who measures? How? And what do we accept that those measurements actually mean? What do we do with that information?</p>
+
+		<p>Who measures and how is a potentially more complex topic than it seems on its face, so I'd like to just handwave over for a moment and come back to it later. For now, let's imagine that that "something like" The HTTP Archive report on element use, will do for initial discussion.</p>
+
+		<aside class="captioned-image optional">
+			<img data-src="https://camo.githubusercontent.com/2c4625d4473e356c27fe31e8fb2fdbfc7a1e96e5/687474703a2f2f342e62702e626c6f6773706f742e636f6d2f2d6b327a4a2d4d47553075632f5662746f777933634263492f4141414141414141414a732f305f697372636d586d77382f73313630302f4f722532354333253235413163756c6f2e6a7067" alt="Comic image of Arrow's Felicity Smoake hacking some data">
+			<p>Let's just imagine, "I'm in".</p>
+		</aside>
+
+		<p>Ah ha... This is probably the first thing we can learn: That report is not currently capturing custom elements at all. In theory though, I think that is pretty easy to remedy, so let's just pretend that we can actuallly get an Earth-2 report identical to the one linked, except that all of the "HTML5 elements" in that table are custom element dopplegangers like x-section, x-aside or x-progress instead.</p>
+	</section>
+
+	<section class="sectioning">
+		<contextual-heading role="heading" aria-level="2">Usage and Languages</contextual-heading>
+		<p>If we look at that information (measuring use on unique URLs to feather out some local biases in which a few authors use it really a lot) as a chart, it would look like this.
+		</p>
+		<aside class="captioned-image optional">
+			<img data-src="https://camo.githubusercontent.com/6d67a581785415fec403ca0b58f80533849a82b8/68747470733a2f2f626b617264656c6c2e636f6d2f6d656469612f7468656f7265746963616c2d656c656d656e742d7573652e706e673f617364" alt="simply visualization of data from the linked HTTP Archive report illustrating a curve with a dramatically increasing drop off">
+		</aside>
+
+		<p>One thing that you'll notice is just how quickly usage "falls off". There are lots of ways to attempt to rationalize the falloff there, but the truth is that this seems to be true of all languages. Fascinatingly, it seems that no matter what dataset you look at, about 20% of words account for 80% of word occurances and you wind up with a similar kind of drop off and curve.</p>
+
+		<p>80% of pages counted here contain the elements <code tag-esc="">html</code>, <code tag-esc="">head</code>, <code tag-esc="">body</code>, <code tag-esc="">meta</code>, <code tag-esc="">title</code>, <code tag-esc="">script</code>, <code tag-esc="">div</code>, <code tag-esc="">link</code>, <code tag-esc="">a</code>, <code tag-esc="">img</code>, <code tag-esc="">span</code>, <code tag-esc="">li</code>, <code tag-esc="">ul</code> and <code tag-esc="">p</code>, but then things begin to drop off and they seem to do so kind of precipitously. 
+		</p>
+
+		<p>But even simple, mature and common tags like <code tag-esc="">em</code>, <code tag-esc="">strong</code>, <code tag-esc="">u</code>, <code tag-esc="">b</code> and <code tag-esc="">i</code> which are easy to use regardless of how you even create your content are used far less. <code tag-esc="">i</code> has even been popularly overloaded for use as an icon (no comment), increasing its chances of use. But none of these, not a single one, is in the "Top 20". Even with all of those advantages, <code tag-esc="">i</code> appears on less than 40% of URLs and <code tag-esc="">em</code> on less than 14%.
+		</p>
+
+		<p>In fact, of this list of 135 elements that are actually part of some Earth-1 standard, almost 40% of them have less than 1% use. This is again, interesting as nearly half of all word use across any corpus is the same core 50-100 words, and nearly the other half will be words that appear in that same corpus only once. What's more, it's kind of hard to communicate using only those core words.
+		</p>
+
+		<p>So what's the point? Well, simply that we should probably expect elements to follow "similar rules" of distribution and occurence, and that this should probably inform what we accept these measures to mean. It might seem at first like 1% (or even 5%) is "basically useless compared to this other thing" but that's not actually at all the case.</p>
+	</section>
+
+	<section class="sectioning">
+		<contextual-heading role="heading" aria-level="2">"Dictionary Research"</contextual-heading>
+
+		<p>Ideally, someone (or something) would be "watching" data that probably looks a lot like the above and looking for slang that is getting popular enough to warrant further review. Ideally they would have some kind of rule.</p>
+
+		<aside class="captioned-image optional">
+			<img data-src="https://vignette.wikia.nocookie.net/marvel_dc/images/2/20/Batcomputer_001.jpg/revision/latest/scale-to-width-down/1000?cb=20160410030752">
+		</aside>
+
+		<p>Then, in terms of a language, like English, once some slang triggers the metaphorical batcomputer and "has their attention" research have to review really a lot of actual uses to see if there is an accepted definition of this word. It seems we would need that too. We need to know not just that those tags appear, but whether they mean the same thing, and are used consistently enough to draw a definition from. It may well be the case that a lot of people are simply using a common word for very different and totally incompatible purposes.
+		</p>
+
+		<p>What specific rule(s) would work to trigger such review is certainly debatable, but I think we can probably come up with at least initial ideas and even elimiate some as "probably unreasonable" by thinking through this exersize a little more.</p>
+
+		<p>For example, practically speaking the more use it has, the harder this would be. I think that we can probably agree that reviewing uses of Earth-2's <code tag-esc="">x-section</code> would be pretty hard, because it's used on nearly 1/3 of all URLs in that report. Worse, as I will argue later, it's probably much worse than that.</p>
+
+		<p>So, combined with what we know about languages and word occurence, this seems to argue that we need to a rule that catch more, earlier. Even a rule like "any element that appears in the Top 100 occurences of a report like that" will miss important things, and maybe be too late. Anything considerably more stringent than that seems (like, Top 40 or Top 50) is almost certainly not going to work. Or, perhaps it is a report that only shows the top N custom elements by occurence.</p>
+
+		<p>In any case, we can safely imagine that <code tag-esc="">x-section</code> use grabs attention, and that after some herculean review we agree that there is a common use/definition... Now what?</p>
+	</section>
+
+	<section class="sectioning">
+		<contextual-heading role="heading" aria-level="2">Dictionary, or Dictionaries?</contextual-heading>
+
+		<p>Well, now it gets even a little fuzzier. The most straightforward way of understanding "standardization" here is that elements become part of HTML. I think that at a minimum, everyone in all universes would agree that HTML should contain the "core words", but what are those? "section" is almost certainly one, but it's unclear what the "core words" really should be. Further, even in spoken languages real communication usualy requires more than core words. It seems very likely to me that HTML should have (and arguably does on Earth-1 already) at least some "more specific" words too. But, I'm not sure where we draw the line, or that we're discussing what that even means.</p>
+
+		<p>On Earth-1, for example, before "HTML5" one could definitely argue that HTML itself was about really general things whose semantics were about basic text. Earth-2's version of 'core words' still has that characteristic. But our HTML now includes elements like progress, which, in practice, does not really seem like that. Unless you really, really squint at it and imagine use cases that don't actually exist, progress really only has meaning with dynamic state - for something more "applicationy". It is undeniable that people build applications with the Web - but, the question of whether HTML itself should include tags about "application stuff" was very real: Many converations took place in the early-mid 2000s. We decided "yes" and put them into HTML5 - but if things developed the way described on Earth-2 where HTML didn't include that sort of thing natively... Would we, add it to HTML itself? I'm honestly not sure.</p>
+
+		<p>What I do know is that we will have to draw lines: Not everything useful, even useful to significant numbers of people, can probably 'fit' in HTML. What do we do with those? Do we just pretend they don't exist? Are they simply relegated to life as custom elements and everything that currently entails?</p>
+
+		<aside class="captioned-image optional">
+			<img data-src="https://camo.githubusercontent.com/07b9009073d042ee8ebbd11d8f39b0ddb697cbfc/687474703a2f2f6661726d352e7374617469632e666c69636b722e636f6d2f343036312f343532343636303633385f323134316363383736352e6a7067" alt="photo of a DC characters 'dictionary' for kids containing ~4000 words.">
+		</aside>
+
+		<p>If so, this seems like kind of a pity for a lot of reasons. First, the "price" of doing otherwise expands as very popular ideas build on one another. Second, some kind of standardization is still probably helpful, even if that is outside of HTML itself, and it seems that encouraging and incentivizing that for things that can find an audience would be helpful. Is it possible that there is some kind of thing inbetween "It's part of HTML" and "It's just a custom element like any other" which has some advatages and incentives that help encourage good things to happen?</p>
+
+		<p>Some idea around helping optimize or virtualy eliminate loading times, for example, would be a big deal. Perhaps if dictionary researchers idenitifed something like this we could provide a way to expose a 'universal cache' registry or something that effectively registered a hash with the browser itself that developers could lean on to avoid 99% of loading for that definition... or something? Perhaps those could also use WebAssembly to further reduce parse? I don't know, honestly, I'm just describing vague ideas about what be possible 'advantage' characterstics of an 'inbetween' soution.</p>
+
+		<p>The closest thing I have seen to discussions like this are <a href="https://github.com/drufball/layered-apis">layered APIs</a> but I'm not quite sure that that's really the same thing, or is "it." I'd like us to think this through a lot more.</p> 
+
+	</section>
+	<section class="sectioning">
+		<contextual-heading role="heading" aria-level="2">Codifying vs Similar Solutioning</contextual-heading>
+
+		<p>Another thing that I think plays into this thinking about the story of how we go from custom element to native HTML.</p>
+
+		<p>Again, considering that Earth-2's data suggests unequivocably that there should be a standard "section"... What does that actually mean in it's final state, and, probably as importantly - how do we arrive there along the way?
+		</p>
+		<p>Let's imagine that, they decide to just make a native section tag now. As always happens, a browser or two actually does the work and starts shipping that. An Earth-2 developer starting a new a new project is faced with a 'new' kind of problem that I think we'e never faced before: They can choose between a popular custom element or it's native doppleganger, but they are written differently. Ideally, they would start using the "native" one and optionally load the custom element definition as a polyfill -- but how? As far as I have seen there is no staightforward path, advice or pattern here about how to span this gap.</p>
+		<p>A developer could, perhaps skip loading the actual definition, but they have to keep using the custom element markup and registry... For example, perhaps they could write something like:</p>
+
+		<pre><code class="language-javascript">if (customElements.get('x-section')) {
+    customElements.define('x-section', HTMLSectionElement)
+} else {
+    // load polyfill
+}</code></pre> 
+		<p>But... If I think about it - that's kind of screwed up and makes it seem harder to "dig out of" that situation. Until all browsers ship it, people are extremely unlikely to use it because so many already have a custom element solution that works everywhere. Until people use it, browsers are unlikely to priotitize its shipping, even if we can agree it is good. Even once everyone has shipped, there is legacy - and the bigger that legacy gets, the harder this problem is. This approach seems like it would cause the 'legacy' to considerably expand rather than contract.</p>
+
+		<p>That's kind of interesting because it's both a new problem for us (again, as far as I can see) and a problem that language dictionary editors don't have. They don't mint a similar solution and attempt to coin a new word that means the same thing as something in popular parlance.  They just say "yeah, that's officially a word".</p>
+
+		<aside class="captioned-image optional">
+			<img data-src="https://camo.githubusercontent.com/64d3df4a18d02969f52686bda299568146343649/68747470733a2f2f65787465726e616c2d707265766965772e726564642e69742f4d3761393257573574325a736c472d743749643865773970496e36347246694853336956446367383776592e6a70673f77696474683d363335266175746f3d7765627026733d39656230396536346239323439613431626236613430336164313631343133626537633665643231" alt="depiction of many 'similar' but not 'same' earth flashes in TV and comics. Only the concept of 'speedster flash' is standard.">
+		</aside>
+
+		<p>Perhaps instead an 'inbetween' solution could be helpful in many of these cases too. Allowing that x-foo could actually be a standard and making it easy to opt-into a more official and 'advantaged one' would actually be a lot closer to what language dictionary editor's do, and maybe that is important in maybe useful ways?</p>
+
+		<p>Again, I don't know. These are things I would like to see more discussion on.</p>
+
+	</section>
+
+	<section class="sectioning">
+		<contextual-heading role="heading" aria-level="2"><em>Actually</em> Measuring and Researching</contextual-heading>
+
+
+		<p>Thusfar we have simply imagined that the data from the HTTP Archive is our data set. But, as I said, I think that getting the "real" data that we actually need is probably going to be trickier than that.</p>
+
+		<p>To illustrate, let's turn back the <code tag-esc="">progress</code> (or <code tag-esc="">x-progress</code>) example. Is that really an accurate read on it's use? I would wager, very probably not. Why? Well, I think that it's because of what we're measing there, and how.</p>
+
+		<p>While the HTTP Archive has a really a lot of data, it's actually not even the tip of the iceberg that is the real "Web" (ie, all the things you view in a Web browser). As great as it is, it is neither unbiased (not in an intentional or negative sense) nor complete.</p>
+
+		<p><code tag-esc="">x-progress</code> is an example of something that I would fully expect to under-report on the HTTP Archive report. It is freqently only inserted into a document termporarily, and based upon some significant user interaction. It's considerably more likely to be used in things that are more "appy". These are kind of problems for the HTTP Archive to get it even if they are "public" but those sorts of things also are frequently "behind" something that makes it even harder -- requiring a login, or a coprporate intranet, for example. So, that really skews what is going to show up here and, if we are looking at occurences and ranks as our 'trigger' or how we go back and do the research - that's going to make whole classes of very useful elements substantially disavantaged.</p>
+
+		<p>What's more, as I said, it includes a lot of sites, but it's still limited not only by the above, but also based on some measure of 'popularity'. Depending on what you are talking about this can have a really big impact and, I think, lead us astray. Eating food, for example, is critical - but I spend far more time doing all sorts of other innane things. It's less popular by that measure than, say, playing Playstation. But... idk... it feels important.</p>
+
+		<p>Another, probably better, way to measure might be browser telemetry. But, afaik, browser telemetry doesn't give us back URLs or a good way to reach and research those things either.</p>
+
+		<p>Further, we'd have to be careful to somehow collect and coalese this data seamlessly too to avoid other kinds of hiccups though. For example, there are sites/apps which are keenly important and widely used for specific purposes who, for various reasons, people avoid certain browsers. This is bad for the Web, but it isn't always for equally bad reasons: Telemetry data for Firefox, for example, would have for a long time seriously under-reported how important video was for me, saying it was near 0. That would have been entirely untrue though, I almost always have videos playing. Rather, most of us quickly learned that Firefox wouldn't play a lot of videos and consciously would view sites with videos in Chrome.</p>
+
+		<p>Similarly, I have seen other very particular but not rare use cases in which specific browsers are recommended not to use for something kind of specific because of issues with thirdparty software. Businesses and developers frequently have to play a very delicate balancing act and, it would be terrible if, for example a browser were to claim that their own low use didn't need to be specially reconicled somehow with another browser's much higher numbers because that may well indicate such a gap.</p>
+	</section>
+
+	<section class="sectioning">
+		<contextual-heading role="heading" aria-level="2">So, where do we go from here?</contextual-heading>
+		<p>Again, I honestly don't know entirely, but I think that these are all conversations I would like to see us be having. I think they are already more relevant than we even realize, but that's another post. I think that if we don't start, we can't finish. I think that if we don't explain the plan better, we are setting developers up for a lot of frustration and disillusionment. I worry that if that happens then and this "experiment" will probably fail and we'll fall back to what we did before.</p>
+
+		<p>
+		It seems like, somehow, we're going to start figuring out how we really science the shit out of this, and then get right on that, or our hypothetical visitor from another earth might be right: Our standards might be in trouble.</p>
+
+		<aside class="captioned-image optional">
+			<img data-src="https://camo.githubusercontent.com/4d3c1db71053d8ffddd2de05633bc7c67bc3735f/68747470733a2f2f692e70696e696d672e636f6d2f6f726967696e616c732f66332f65382f34332f66336538343332383634363430646366633134383864386334633533636361642e6a7067">
+		</aside>
+	</section>
+</article></main>
+
+  
+    <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-88027178-1', 'auto');
+    ga('send', 'pageview');
+  </script>
+
+  <script>
+    Array.prototype.slice.call(document.querySelectorAll('.optional [data-src]')).forEach(function (optional) {
+      var prefs = window.localStorage.downloadsPrefs,
+          clickToSee;
+      if (prefs === 'true') {
+        activateOptional(optional);
+      } else {
+        clickToSee = document.createElement('div');
+        clickToSee.classList.add('clickToSee')
+        clickToSee.innerHTML = '<button>Click to see media</button>';
+        clickToSee.style.textAlign = 'center';
+        clickToSee.style.border = 'none';
+        optional.parentElement.insertBefore(clickToSee, optional.nextSibling);
+        clickToSee.firstElementChild.addEventListener('click', function () {
+          activateOptional(optional);
+        })
+      }
+
+    })
+  </script>
+
+</body></html>
