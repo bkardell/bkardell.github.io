@@ -398,13 +398,16 @@ America (art for sale)</a></li>
     <script src="../prism.js"></script>
     <link rel="stylesheet" href="../prism.css">
 	<style>
+	.captioned-image {
+	  background-color: transparent;
+	}
 	.note {
         background-color: rgba(255,255,0,0.24);
         padding: 1rem;
         font-style: italic;
     }
     .note::before {
-        content: 'Note';
+        content: 'Note'; 
         font-size: 0.8rem;
         background-color: black;
         color: white;
@@ -526,7 +529,7 @@ America (art for sale)</a></li>
 
 		<p>We all agree that standardization should be based on "science" and that it should involve developers and experimentation "in the wild". "The path to standardization leads through custom elements" is the refrain in both universes.  The idea that <a href="https://bkardell.com/blog/Dropping-The-F-Bomb-On-Standards.html" rel="nofollow">standards bodies should work more like dictionary editors</a> is a pretty well accepted "concept" all around.</p>
 
-		<p>But, "<em>how</em>, specifically, do we do those things?" is as yet unanswered and, it seems quite difficult to get people to discuss details in our own universe.  Why?  Because custom elements are young and it's very hard to speculate about hyptothetical elements and futures.  It very quickly gets into all kinds of weeds and gets details.</p>
+		<p>But, "<em>how</em>, specifically, do we do those things?" is as yet unanswered and, it seems quite difficult to get people to discuss details in our own universe.  Why?  Because custom elements are young and it's very hard to speculate about hyptothetical elements and futures.  It very quickly gets into all kinds of weeds and sputters out.</p>
 
 		<aside class="captioned-image optional">
 			<img data-src="/media/batman-robin-science.jpeg" alt="Batman and Robin doing science">
@@ -591,6 +594,8 @@ America (art for sale)</a></li>
 		<p>For example, practically speaking the more use it has, the harder this would be. I think that we can probably agree that reviewing uses of Earth-2's <code tag-esc="">x-section</code> would be pretty hard, because it's used on nearly 1/3 of all URLs in that report. Worse, as I will argue later, it's probably much worse than that.</p>
 
 		<p>So, combined with what we know about languages and word occurence, this seems to argue that we need to a rule that catch more, earlier. Even a rule like "any element that appears in the Top 100 occurences of a report like that" will miss important things, and maybe be too late. Anything considerably more stringent than that seems (like, Top 40 or Top 50) is almost certainly not going to work. Or, perhaps it is a report that only shows the top N custom elements by occurence.</p>
+
+		<p>But, I think that it's more than just 'when do we review' - I think in many cases we want to proactively work more closely with at least some developers, very early on. There are several attempts at this sort of thing, but currently at least, we've not figured our exactly how to do this or how it fits into standarization.</p>
 
 		<p>In any case, we can safely imagine that <code tag-esc="">x-section</code> use grabs attention, and that after some herculean review we agree that there is a common use/definition... Now what?</p>
 	</section>
@@ -669,15 +674,20 @@ America (art for sale)</a></li>
 	</section>
 
 	<section class="sectioning">
-		<contextual-heading role="heading" aria-level="2">So, where do we go from here?</contextual-heading>
-		<p>Again, I honestly don't know entirely, but I think that these are all conversations I would like to see us be having. I think they are already more relevant than we even realize, but that's another post. I think that if we don't start, we can't finish. I think that if we don't explain the plan better, we are setting developers up for a lot of frustration and disillusionment. I worry that if that happens then and this "experiment" will probably fail and we'll fall back to what we did before.</p>
-
+		<contextual-heading role="heading" aria-level="2">So....?</contextual-heading>
 		<p>
-		It seems like, somehow, we're going to start figuring out how we really science the shit out of this, and then get right on that, or our hypothetical visitor from another earth might be right: Our standards might be in trouble.</p>
+			So, it seems like, somehow, we're going to start figuring out how we really science the shit out of this. How do we do it? How do we answer all of these questions and setup processes (and maybe new roles?) to make this really hum?
+		</p>
 
 		<aside class="captioned-image optional">
 			<img data-src="/media/science-the-shit.jpeg">
 		</aside>
+		<p>
+			We want developers to play a big role here, but without answers, developers speculate about the future.  I've seen this already and I worry that this could be disillusioning if that speculation winds up being far from reality.  I don't want people to feel misled or disullusioned.  If this goes badly, our hypothetical visitor from another earth might be right: Our standards might be in trouble.  In fact, I think that this might even already more relevant and pressing than we realize... but I'll save that argument for another post.
+		</p>
+		<p>
+			It's entirely possible that there are some fairly complete and mature thought around some of these issues that I've just not yet heard articulated.   I'm fairly certain though that even if there are, there are still many additional discussions to be had, changes to try and so on before we've really figured it out - so I would love to have (or hear) more of those conversations.  It definitely seems to me like there is a lot of value in having some open conversations on these topics. 
+		</p>
 	</section>
 </article></main>
 
