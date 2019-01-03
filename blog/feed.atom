@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://bkardell.com/</id>
     <title>bkardell.com rss feed</title>
-    <updated>2018-12-24T02:05:03Z</updated>
+    <updated>2019-01-02T23:50:05Z</updated>
     <generator>awesome mix</generator>
     <author>
         <name>Brian Kardell</name>
@@ -14,6 +14,331 @@
     <subtitle>Just the bkardell.com rss feed</subtitle>
     <logo>http://bkardell.com/profile.jpg</logo>
     <rights>All rights reserved 2018, Brian Kardell</rights>
+    <entry>
+        <title type="html"><![CDATA[I Heart Glitch]]></title>
+        <id>https://bkardell.com/blog/Glitch.html</id>
+        <link href="https://bkardell.com/blog/Glitch.html">
+        </link>
+        <updated>2019-01-02T00:00:00Z</updated>
+        <summary type="html"><![CDATA[
+		I am excited about Glitch, and I'd like to tell you why.
+	]]></summary>
+        <content type="html"><![CDATA[.captioned-image {
+    background-color: #eaeaea;
+    display: block;
+    overflow: hidden;
+    padding: 1rem;
+    text-align: center;
+    font-style: italic;
+}
+
+.captioned-image.p-attached {
+    width: 40%;
+    display: inline-block;
+    margin: 0 1rem 2rem 1rem;
+}
+
+section > .captioned-image.p-attached {
+    margin-top: 1.5rem; /* correct for heading size*/
+}
+
+ pre { overflow-x: auto }
+
+.captioned-image.p-attached.p-attached-left {
+    float: left;
+}
+
+.captioned-image.p-attached.p-attached-right {
+    float: right;
+}
+
+.captioned-image.p-attached + * + * {
+    clear: both;
+    margin-top: 2rem;
+}
+
+
+.captioned-image img, .captioned-image video {
+    display: block;
+    max-width: 100%;
+    margin: 0 auto 1em auto;
+}
+.source {
+    font-style: italic;
+}
+body {
+    display: flex;
+    font: 1em "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-weight: 300;
+    line-height: 1.625;
+}
+h1 { margin: 0.5rem; }
+code-format {
+    border-left: 0.5rem solid rgba(123,115,209,0.35);
+    display: block;
+    padding: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+contextual-heading {
+    display: block;
+    margin-top: 2rem;
+}
+
+[aria-level="1"] {
+    color: #43686b;
+    font-size: 1.45rem;
+}
+[aria-level="2"] {
+    color: #856363;
+    font-size: 1.35rem;
+}
+[aria-level="3"] {
+    color: #856363;
+    font-size: 1.25rem;
+}
+[aria-level="4"] {
+    color: #856363;
+    font-size: 1.2rem;
+}
+[aria-level="5"], [aria-level="6"] {
+    color: #667496;
+    font-size: 1.1rem;
+    font-weight: bolder;
+}
+.posted-on {
+    font-style: italic;
+    font-size: 0.8rem;
+    text-align: right;
+    margin-bottom: 1rem;
+}
+
+ul, li {
+    margin: 0.5rem;
+    text-align: left;
+}
+header {
+    padding-top: 1rem;
+    padding-right: 2rem;
+    background-color: #fbf5e9;
+}
+.tagline {
+    font-style: italic;
+    text-align: center;
+}
+
+[tag-esc] {
+    color: maroon;
+    font-family: Courier, "Lucida Console", monospace;
+}
+
+[tag-esc]::before {
+    content: '<';
+}
+
+[tag-esc]::after {
+    content: '>';
+}
+
+main {
+    min-width: 50%;
+    width: 80%;
+    padding: 1rem;
+}
+header .title {
+    background-color: rgba(123,115,209,0.35);
+    padding: 0.3rem;
+    padding-left: 0.25rem;
+    font-weight: bolder;
+    font-size: 0.9rem;
+    border-left: 1rem solid #999298;
+}
+
+header .profile {
+    width: 50%;
+    margin: 1rem 25%;
+}
+
+header .title + nav {
+    font-size: 0.9rem;
+}
+
+header .blurb {
+    font-size: 0.75rem;
+    text-align: center;
+}
+header .name {
+    text-align: center;
+    font-size: xx-large;
+}
+.segue {
+    font-style: italic;
+}
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  border: 0;
+}
+[for="aboutMeToggle"] {
+    display: none;
+}
+/* this needs rethinking, it wants a selector like 'not flow content' */
+article>*:not(contextual-heading,a), section>*:not(contextual-heading,a) {
+    margin-left: 0.45rem;
+}
+
+blockquote {
+  font-family: serif;
+  background: #f9f9f9;
+  border-left: 10px solid #ccc;
+  margin: 1.5em 10px;
+  padding: 0.5em 10px;
+}
+blockquote:before {
+  color: #ccc;
+  content: open-quote;
+  font-size: 2em;
+  line-height: 0.1em;
+  margin-right: 0.25em;
+  vertical-align: -0.4em;
+}
+
+blockquote:after {
+  color: #ccc;
+  content: close-quote;
+  font-size: 2em;
+  line-height: 0.1em;
+  margin-left: 0.25em;
+  vertical-align: -0.4em;
+}
+
+
+@media (max-width: 800px){
+    body {
+        flex-direction: column;
+    }
+    header {
+        border-bottom: 1px solid #afafff;
+    }
+
+    .captioned-image.p-attached {
+        width: 100%;
+        margin: 1rem 0;
+    }
+
+    .captioned-image.p-attached.p-attached-left,
+    .captioned-image.p-attached.p-attached-right {
+        float: none;
+    }
+
+    [for="aboutMeToggle"] {
+        background-color: #675e5e;
+        color: white;
+        padding: 0.25rem;
+        padding-left: 0.5rem;
+        display: block;
+        border-left: 1rem solid black;
+    }
+    #aboutMeToggle:focus + [for="aboutMeToggle"]{
+        outline: 4px solid #c6ddf2;
+    }
+
+    #aboutMeToggle:checked ~ header {
+        display: none;
+    }
+
+    header li { display: inline; margin-left: -0.5em; }
+    header .blurb li::after { content: '; '; }
+    header  nav li {
+        display: inline-block;
+        margin-left: 0.35rem;
+        margin-right: 0.35rem;
+    }
+    header .title {
+        width: 100%;
+    }
+    main li .source { display: block; }
+
+}
+	<contextual-heading role="heading" aria-level="1">I Heart Glitch</contextual-heading>
+	<p class="segue">
+		I am excited about Glitch, and I'd like to tell you why.
+	</p>
+
+	<p>I want to say up front that this piece about <a href="https://bkardell.com/blog/The-Glory-Days-Of-The-Web.html" rel="nofollow">pining for glory days that I don't actally remember existing</a> when all you needed to know was HTML and CSS.  If that was all you needed then, it's all you need now too.  The truth though is that even in the early days of the Web, it often wasn't: We wanted to do things  with the Web that would have made hand-authoring pages an untenable solution.  In fact, the first real, practical use of HTML at CERN by Sir Tim-Berners Lee and team generated that HTML by way of C and database services.  Perhaps there has been a decrease in the number of sites that could even be realistically hand authored without more than that because of increased expectations or something, but by and large, it seems to me that complexity in delievering a website isn't so much "new" as it is "shifted".</p>
+
+	<p>Along the way there were a ton of complex things, and each was rooted in whole different languages:  Java frameworks and .NET frameworks and PHP and so on.  Because of that, each of those had their own build systems (sometimes a few), application servers, package managers and so on.  So, the idea that we could do these things in the same language (JavaScript) and protocols seems like actually a really good thing to me.</p>
+
+	<p>So... This isn't just "Things sure have gotten complicated.  Remember when they were simpler?  Pepperidge Farm Remembers."  What it is about may, at times, read a little like that, but the point I am trying to make is subtler - it is about how we <em>manage</em> that, and how it makes us feel.</p>
+
+	<section class="sectioning">
+		<contextual-heading role="heading" aria-level="2">Time for play</contextual-heading>
+
+		<p>I don't really know how to describe the period from about 1994-1998 other than to say that it kind of felt like play.  Occasionally frustrating and confusing play to be sure, but each challenge was semi-contained and full of exicting little rewards that drove you on.  It was like climbing a series of hills to find inceasingly beautiful views from the top of each one, pressing you on to tackle the next.  There was something so engaging about it that I, and many others, spent <em>way</em> too much time just playing with it.</p>
+
+		<p>If there is a thing that I feel a loss of, it's kind of that.</p>
+
+		<p>A lot of information flows past our eyeballs - far faster than we have time to actually learn about.  That's ok.  It's natural to have a spectrum of knowledge about things that can range from "I've kind of heard about it and sort of vaguely understand the concept", all the way to "I really understand this thing, very well, and can really use it".  The further you want to move something along that spectrum, the more time investment it takes.</p>
+
+		<p>For me, often this means that allocating time to sit down and actually try to get to know something remotely significant in practice, needs to align with some a real-life need, at least vaguely.  However, sometimes, by the time you get there, you can find that there are a whole bunch of <em>dependent</em> things that you also haven't learned yet, in the way obscuring your ability to actually do so.</p>
+
+		<p>I have occasionally spent hours shaving not one, but several yacks... with a spoon... only to eventually not get to spend much time with the thing I sat down to try in the first place. That can feel really bad and kind of overwhelming, and it really can kind of pile up on you.</p>
+
+	</section>
+	<section class="sectioning">
+		<contextual-heading role="heading" aria-level="2">Tools</contextual-heading>
+		<p>Perhaps because of this, I love tools like CodePen for their simple ability to get out of my way and let me focus on something.  They are where I have 'played' the most for the last couple of years.  I don't generally make things there to show off, rather, they're where I think and explore. There, I can very easily use the most basic/common sorts of tools to focus on HTML, CSS and JavaScript - including preprocessors without worrying about all the rest of it.  You don't need to know how to setup Webpack or Babel, or organize your project, or setup a server or a bunch of other things to use tools like those, and that's all  great.</p>
+
+		<p>On the other hand, looking back, I've probably occasionally used these great tools poorly, making <em>that</em> particular problem a little worse.  My 'playground' was pretty far removed from my 'real' space and managing both ends of that requires some careful planning and extra hoop jumping.  Eventually the time always comes when I need something those tools don't have, or have to take those nice little experiments from their playground and send them into the real world and figure all of that stuff out - and then, sometimes, the things I haven't learned are all piled up.  Again, that's not on the tools, that's on me.</p>
+	</section>
+	<section class="sectioning">
+		<contextual-heading role="heading" aria-level="2">Then, Glitch</contextual-heading>
+		<p>When I first heard about Glitch, I kind of thought it was a REPL kind of tool, or something along the lines of a CodePen or many other things "in that vein".  I sort of chalked it up as "like other stuff I already am familliar with and probably not that exciting".  I poked the site briefly and, I'm sad to say, didn't "get it".  It didn't look as slick as some of the things I was already familliar with and, after just a few minutes, I just made a mental note to "maybe look at it again someday" and moved on to invest my time elsewhere.</p>
+
+		<p>But then, suddenly, I expectedly had some free time to catch up and decided to go back and look again. One month later I can honestly say:</p>
+
+		<p><em>I don't think that I have ever loved a bit of tech as much as this.</em></p>
+
+		<p>For the first time in a long time, I feel like this is something really different and exciting.</p>
+
+		<section class="sectioning">
+			<contextual-heading role="heading" aria-level="3">So many things I love</contextual-heading>
+
+			<p>I guess I can see how it is potentially easy to miss just how great it is the first time around.  Click the 'remix' button and think "well... I guess that's cool?" The editor doesn't look like much at first.  Is it kind of like CodePen, I guess?  But social somehow? Don't we already have tools and archetypes and templates and things that help you get started? </p>
+
+			<p>If this is your initial take -- give it a minute:  It is full of so many nice surprises.  With Glitch, the more I use it, the more I dicover, and the more I discover, the more I love it.   Some of them are small and just 'pleasant' and others are shockingly great.  I'll start with the former...</p>
+
+			<section class="sectioning">
+				<contextual-heading role="heading" aria-level="4">Small, but enjoyable surprises</contextual-heading>
+			
+				<p>First, the editor has more than you think at first glance. It's actually pretty nice.  You can move, copy and rename files pretty easily.  It has code collapsing and 'as you type' linting and inline error reporting, and it has a dark mode that is actually pretty easy on the eyes.  It's also 'type aware' and has diffrent integrations.  Images and media, for example have a little asset management thing and get hosted on a CDN without you having to deal with that - and your package.json, if that's your thing, has an NPM integration that let's you just search for packages and click 'add'.  So nice.</p>
+			</section>
+			<section class="sectioning">
+				<contextual-heading role="heading" aria-level="4">More importantly: It's all real.</contextual-heading>
+
+				<p>But really, the big surprise is how much is all just <em>there</em>.  Every time I think that's as far as this is going to go and I'm going to have to get into 'the real thing', it just keeps giving because it <em>is all real</em>.  It's not just 'here is a local server and project layout that you can start with in a semi-fake way', it's <em>real stuff</em>.</p>
+				<p>For example, that's not just some things that kind of look like files on the left - those are <em>actual files</em> that exist on an <em>actual</em> VM that you didn't have to setup with docker or something.</p>
+				<p>You can access a terminal into your VM by simply clicking a button.  You don't have to ssh into it or something, you just click.  It's almost just like it exists right there on your computer -- but it is real.  You can click the 'log' button and see the server logs.</p>
+				<p>Your server will have HTTPS and be in a legit subdomain, right away, where you can get started with lots of powerful features.  Service Workers work here, right away, in exactly the way they will in real life.  Your site's local storage is your local storage, not everyone elses.  Your site's permissions are your permissions, not someone else's.  It's all 'real'.</p>
+				<p>Further, it's yours - you can just say "give me the git" and you've got it. But you don't even have to in order to use some of the features you'd love.  There is a <em>rewind</em> button that you can use to undo time.  Wow.  So great!  You can also use a .gitignore to hide files from the editor, and store secrets with things like service account information in a place that only you can see.</p>
+
+				<p>You can <em>lock</em> your project and then it's kind of private, people won't stumble across it and be able to remix it....You can feel safe exploring all over the place - this is where I've spent most of my time - just having fun and growing ideas that I'm not sure I want to share yet...</p>
+				<p>
+				But you can also <em>invite</em> people, even to the locked projects.  You can create <em>teams</em> and even collaboratively edit as if it were Google docs or a shared etherpad or something.  So. Great.</p>
+
+				<p>Oh hey, are you having a problem with your server - click 'debug' and you can connect a debugger right to it... Waaat?</p>
+				<p>Need more help?  There is community support where people can help you get unstuck.</p>
+				<p>Really, I started playing with some personal projects.mostly not public yet a month ago and just exploring.  I haven't been able to put it down since.  I just want to keep playing.  Really, it's the most fun I have had in so long, and because of that I have probably learned and accomplished more in that time than any time in recent memory.  Give it a try.  It's <em>so great.</em></p>
+			</section>
+		</section>
+	</section>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[Alice 2019]]></title>
         <id>https://bkardell.com/blog/Alice-2019.html</id>
