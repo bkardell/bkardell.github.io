@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://bkardell.com/</id>
     <title>bkardell.com rss feed</title>
-    <updated>2019-01-02T23:50:05Z</updated>
+    <updated>2019-01-03T00:28:37Z</updated>
     <generator>awesome mix</generator>
     <author>
         <name>Brian Kardell</name>
@@ -21,7 +21,7 @@
         </link>
         <updated>2019-01-02T00:00:00Z</updated>
         <summary type="html"><![CDATA[
-		I am excited about Glitch, and I'd like to tell you why.
+		Today marks exactly one month since I started playing with Glitch, and I'd like to tell you about why I love it and can't stop playing with it.
 	]]></summary>
         <content type="html"><![CDATA[.captioned-image {
     background-color: #eaeaea;
@@ -267,7 +267,7 @@ blockquote:after {
 }
 	<contextual-heading role="heading" aria-level="1">I Heart Glitch</contextual-heading>
 	<p class="segue">
-		I am excited about Glitch, and I'd like to tell you why.
+		Today marks exactly one month since I started playing with Glitch, and I'd like to tell you about why I love it and can't stop playing with it.
 	</p>
 
 	<p>I want to say up front that this piece about <a href="https://bkardell.com/blog/The-Glory-Days-Of-The-Web.html" rel="nofollow">pining for glory days that I don't actally remember existing</a> when all you needed to know was HTML and CSS.  If that was all you needed then, it's all you need now too.  The truth though is that even in the early days of the Web, it often wasn't: We wanted to do things  with the Web that would have made hand-authoring pages an untenable solution.  In fact, the first real, practical use of HTML at CERN by Sir Tim-Berners Lee and team generated that HTML by way of C and database services.  Perhaps there has been a decrease in the number of sites that could even be realistically hand authored without more than that because of increased expectations or something, but by and large, it seems to me that complexity in delievering a website isn't so much "new" as it is "shifted".</p>
@@ -321,11 +321,15 @@ blockquote:after {
 			<section class="sectioning">
 				<contextual-heading role="heading" aria-level="4">More importantly: It's all real.</contextual-heading>
 
-				<p>But really, the big surprise is how much is all just <em>there</em>.  Every time I think that's as far as this is going to go and I'm going to have to get into 'the real thing', it just keeps giving because it <em>is all real</em>.  It's not just 'here is a local server and project layout that you can start with in a semi-fake way', it's <em>real stuff</em>.</p>
-				<p>For example, that's not just some things that kind of look like files on the left - those are <em>actual files</em> that exist on an <em>actual</em> VM that you didn't have to setup with docker or something.</p>
-				<p>You can access a terminal into your VM by simply clicking a button.  You don't have to ssh into it or something, you just click.  It's almost just like it exists right there on your computer -- but it is real.  You can click the 'log' button and see the server logs.</p>
+				<p>Remixing is fun, and actualy surpsingly helpful as a way to learn and get started and begin to explore.  That is considerably more valuable than I realied and helps a ton with the problem I described above about there being so many things.  But it's also only part of the allure for me.  Another part is that it isn't <em>separate</em>, it's <em>real</em>, and there is so much <em>there</em>. Together, these feel like a powerful combination that re-ignites a spark for me.  It's been so delightful to increasingly realize.</p>
+
+				<p> 
+					Every time I think that's as far as this is going to go and I'm going to have to get into 'the real thing', it just keeps giving because it <em>is all real</em>.  It's not just 'here is a local server and project layout that you can start with in a semi-fake way', it's <em>real stuff</em>.  You can tackle real things, and just keep growing it.</p>
+
+				<p>For example, that's not just some things that kind of look like files on the left - those are <em>actual files</em> that exist on an <em>actual</em> container - and you didn't have to learn how to use docker or something, it just is.</p>
+				<p>You can access a terminal window by simply clicking a button.  You don't have to ssh into it or something, you just click.  It's almost just like it exists right there on your computer -- but it is real.  You can click the 'log' button and see the server logs.</p>
 				<p>Your server will have HTTPS and be in a legit subdomain, right away, where you can get started with lots of powerful features.  Service Workers work here, right away, in exactly the way they will in real life.  Your site's local storage is your local storage, not everyone elses.  Your site's permissions are your permissions, not someone else's.  It's all 'real'.</p>
-				<p>Further, it's yours - you can just say "give me the git" and you've got it. But you don't even have to in order to use some of the features you'd love.  There is a <em>rewind</em> button that you can use to undo time.  Wow.  So great!  You can also use a .gitignore to hide files from the editor, and store secrets with things like service account information in a place that only you can see.</p>
+				<p>Further, it's yours - you can just say "give me the git" and you've got it. But you don't even have to in order to use some of the features you'd love.  There is a <em>rewind</em> button that you can use to undo time.  Wow.  So great!  You can also use a .gitignore to hide files from the editor, and store secrets with things like service account information in a place that only you can see.</p> 
 
 				<p>You can <em>lock</em> your project and then it's kind of private, people won't stumble across it and be able to remix it....You can feel safe exploring all over the place - this is where I've spent most of my time - just having fun and growing ideas that I'm not sure I want to share yet...</p>
 				<p>
