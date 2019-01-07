@@ -325,6 +325,8 @@ America (art for sale)</a></li>
 </header>
     <main><div class="posted-on">Posted on null</div><article class="sectioning">
 	<contextual-heading role="heading" aria-level="1">Harold Crick and the Web Platform</contextual-heading>
+	<script src="../prism.js"></script>
+    <link rel="stylesheet" href="../prism.css">
 	<style>
 	.note {
         background-color: rgba(255,255,0,0.24);
@@ -393,6 +395,37 @@ America (art for sale)</a></li>
 		<p>   
 			Little by little, bit by bit, they made progress.  By the time the WHATWG/HTML5 era rolled along, there was some degree of maturity and the new standard would come to include at least some degree of answer for both of these asks by reference to the work that these communities did.  Its section on <a href="https://html.spec.whatwg.org/multipage/embedded-content-other.html">Other Embedded Content</a> mentions only two - these two, specifically.
 		</p>
+
+		<p>
+			If you are unfamilliar with MathML, it looks something like this.
+		</p>
+		 <pre><code class="language-html">&lt;math xmlns="http://www.w3.org/1998/Math/MathML" display="block"&gt;
+  &lt;mi&gt;x&lt;/mi&gt; &lt;mo&gt;=&lt;/mo&gt;
+  &lt;mrow&gt;
+    &lt;mfrac&gt;
+      &lt;mrow&gt;
+        &lt;mo&gt;−&lt;/mo&gt;
+        &lt;mi&gt;b&lt;/mi&gt;
+        &lt;mo&gt;±&lt;/mo&gt;
+        &lt;msqrt&gt;
+          &lt;msup&gt;&lt;mi&gt;b&lt;/mi&gt;&lt;mn&gt;2&lt;/mn&gt;&lt;/msup&gt;
+          &lt;mo&gt;−&lt;/mo&gt;
+          &lt;mn&gt;4&lt;/mn&gt;&lt;mi&gt;a&lt;/mi&gt;&lt;mi&gt;c&lt;/mi&gt;
+        &lt;/msqrt&gt;
+      &lt;/mrow&gt;
+      &lt;mrow&gt; &lt;mn&gt;2&lt;/mn&gt;&lt;mi&gt;a&lt;/mi&gt; &lt;/mrow&gt;
+    &lt;/mfrac&gt;
+  &lt;/mrow&gt;
+&lt;/math&gt;</code></pre>
+
+		<p>Like HTML itself, its semantics are fairly weak - but also like HTML itself, it turns out that you can do quite a lot with that.  Given the markup above, your browser would render something like this:</p> 
+
+		<figure class="captioned-image" style="margin-top:0">
+			<img src="/media/math-out.png" alt="">
+			<figcaption>Screenshot showing MathML visual rendering output</figcaption>
+		</figure>
+
+		<p>And so, it looked like we had an answer for this, at last.</p> 
 
 		<blockquote>Narrator: That was, of course, before Wednesday.<br>
 		(pause.)<br>
@@ -472,8 +505,9 @@ America (art for sale)</a></li>
 			Along the way we began trying to collectively find new ways to think about how we go about evolving the whole <em>platform</em> in healtier ways than the past and explaining how we deal with where we are, and how we move forward - but this has actually not been great for MathML.
 		</p>
 		<p>
-			While we generally accept the starting point of existing standards, because of the above, MathML doesn't fit neatly into this camp in the minds of some.
+			While we generally accept the starting point of existing standards, because of the above, MathML doesn't fit neatly into this camp in the minds of some. 
 		</p>
+
 		<p>
 			While we say that the potential path to standardization of <em>new</em> elements lies in experimentation and proving need and use via Custom Elements, MathML predates custom elements by a long time.
 		</p>
@@ -528,10 +562,10 @@ America (art for sale)</a></li>
 		<p>
 			As for myself, I believe that any suggestion of 'starting over' here is problematic.  It's not that there might not be 'better', but we need a starting point and to not largely accept the one that has this much success and investment already seems really bad.  I believe we have to find a "standard way" to ship MathML in some way that is better than the situation today. The polyfills are better than nothing, but they introduce many new challenges from performance to accessibility.
 		</p>
-
+		<p><em>Enter Igalia</em></p>
 		<p>
 			I believe that the best hope is through current work being done by Igalia.
-			If you aren't familliar with Igalia, they're very interesting and unique.  Most organizations involved in standards fit neatly into are either "are a browser vendor", or "doesn't write browser implementations".  The latter are at something of a disadvantage.  Each vendor already has their own priorities and budgets and so on and that frequently can gum things up for reasons that sometimes wind up being a lot more practical than we imagine them to be.  But Igalia provides a bridge.  They don't make a browser, but they do contribute code and work to browser codebases, and have developed relationships and trust at both ends.
+			If you aren't familliar with them, <a href="https://www.igalia.com/">Igalia</a> is  very interesting and unique.  Most organizations involved in standards fit neatly into are either "are a browser vendor", or "doesn't write browser implementations".  The latter are sometimes at something of a practical disadvantage.  Each vendor already has their own priorities and budgets and so on and that frequently can gum otherwise positive things up for reasons that sometimes wind up being a lot more practical than we actually imagine them to be.  But Igalia provides a bridge between these two worlds.  They don't make a browser themselves, but they do contribute code and work to browser codebases, and have developed and maintain good relationships and trust at both ends.
 		</p>
 		<p> 
 			Efforts are being funded by communities who really need MathML and current proposals involve using some new underlying primitives to help not only get MathML implmented in blink, but also to do so in a way that introduces no or minimal "new magic", but rather is well explained by common foundations.
