@@ -4,7 +4,7 @@
         <title>bkardell.com rss feed</title>
         <link>http://bkardell.com/</link>
         <description>Just the bkardell.com rss feed</description>
-        <lastBuildDate>Thu, 03 Jan 2019 00:28:37 GMT</lastBuildDate>
+        <lastBuildDate>Wed, 09 Jan 2019 14:44:57 GMT</lastBuildDate>
         <docs>http://blogs.law.harvard.edu/tech/rss</docs>
         <generator>awesome mix</generator>
         <image>
@@ -14,6 +14,510 @@
         </image>
         <copyright>All rights reserved 2018, Brian Kardell</copyright>
         <atom:link href="https://bardell.com/blog/feed.atom" rel="self" type="application/rss+xml"/>
+        <item>
+            <title><![CDATA[Harold Crick and the Web Platform]]></title>
+            <link>https://bkardell.com/blog/Math.html</link>
+            <guid>https://bkardell.com/blog/Math.html</guid>
+            <pubDate>Wed, 09 Jan 2019 00:00:00 GMT</pubDate>
+            <description><![CDATA[
+		In this piece I'll talk about MathML and why I think that it is especially unique, intersting, and stranger than fiction - as well as what we can/should do with it.  (note: Stranger than Fiction is a movie about a very competant and number-obsessed  accountant named Harold Crick who suddenly begins to hear his life being narrated, and learns that a seemingly innocuous event one Wednesday will ultimately change his life and lead to his demise, and what happens next).
+	]]></description>
+            <content:encoded><![CDATA[.captioned-image {
+    background-color: #eaeaea;
+    display: block;
+    overflow: hidden;
+    padding: 1rem;
+    text-align: center;
+    font-style: italic;
+}
+
+.captioned-image.p-attached {
+    width: 40%;
+    display: inline-block;
+    margin: 0 1rem 2rem 1rem;
+}
+
+section > .captioned-image.p-attached {
+    margin-top: 1.5rem; /* correct for heading size*/
+}
+
+ pre { overflow-x: auto }
+
+.captioned-image.p-attached.p-attached-left {
+    float: left;
+}
+
+.captioned-image.p-attached.p-attached-right {
+    float: right;
+}
+
+.captioned-image.p-attached + * + * {
+    clear: both;
+    margin-top: 2rem;
+}
+
+
+.captioned-image img, .captioned-image video {
+    display: block;
+    max-width: 100%;
+    margin: 0 auto 1em auto;
+}
+.source {
+    font-style: italic;
+}
+body {
+    display: flex;
+    font: 1em "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-weight: 300;
+    line-height: 1.625;
+}
+h1 { margin: 0.5rem; }
+code-format {
+    border-left: 0.5rem solid rgba(123,115,209,0.35);
+    display: block;
+    padding: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+contextual-heading {
+    display: block;
+    margin-top: 2rem;
+}
+
+[aria-level="1"] {
+    color: #43686b;
+    font-size: 1.45rem;
+}
+[aria-level="2"] {
+    color: #856363;
+    font-size: 1.35rem;
+}
+[aria-level="3"] {
+    color: #856363;
+    font-size: 1.25rem;
+}
+[aria-level="4"] {
+    color: #856363;
+    font-size: 1.2rem;
+}
+[aria-level="5"], [aria-level="6"] {
+    color: #667496;
+    font-size: 1.1rem;
+    font-weight: bolder;
+}
+.posted-on {
+    font-style: italic;
+    font-size: 0.8rem;
+    text-align: right;
+    margin-bottom: 1rem;
+}
+
+ul, li {
+    margin: 0.5rem;
+    text-align: left;
+}
+header {
+    padding-top: 1rem;
+    padding-right: 2rem;
+    background-color: #fbf5e9;
+}
+.tagline {
+    font-style: italic;
+    text-align: center;
+}
+
+[tag-esc] {
+    color: maroon;
+    font-family: Courier, "Lucida Console", monospace;
+}
+
+[tag-esc]::before {
+    content: '<';
+}
+
+[tag-esc]::after {
+    content: '>';
+}
+
+main {
+    min-width: 50%;
+    width: 80%;
+    padding: 1rem;
+}
+header .title {
+    background-color: rgba(123,115,209,0.35);
+    padding: 0.3rem;
+    padding-left: 0.25rem;
+    font-weight: bolder;
+    font-size: 0.9rem;
+    border-left: 1rem solid #999298;
+}
+
+header .profile {
+    width: 50%;
+    margin: 1rem 25%;
+}
+
+header .title + nav {
+    font-size: 0.9rem;
+}
+
+header .blurb {
+    font-size: 0.75rem;
+    text-align: center;
+}
+header .name {
+    text-align: center;
+    font-size: xx-large;
+}
+.segue {
+    font-style: italic;
+}
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  border: 0;
+}
+[for="aboutMeToggle"] {
+    display: none;
+}
+/* this needs rethinking, it wants a selector like 'not flow content' */
+article>*:not(contextual-heading,a), section>*:not(contextual-heading,a) {
+    margin-left: 0.45rem;
+}
+
+blockquote {
+  font-family: serif;
+  background: #f9f9f9;
+  border-left: 10px solid #ccc;
+  margin: 1.5em 10px;
+  padding: 0.5em 10px;
+}
+blockquote:before {
+  color: #ccc;
+  content: open-quote;
+  font-size: 2em;
+  line-height: 0.1em;
+  margin-right: 0.25em;
+  vertical-align: -0.4em;
+}
+
+blockquote:after {
+  color: #ccc;
+  content: close-quote;
+  font-size: 2em;
+  line-height: 0.1em;
+  margin-left: 0.25em;
+  vertical-align: -0.4em;
+}
+
+
+@media (max-width: 800px){
+    body {
+        flex-direction: column;
+    }
+    header {
+        border-bottom: 1px solid #afafff;
+    }
+
+    .captioned-image.p-attached {
+        width: 100%;
+        margin: 1rem 0;
+    }
+
+    .captioned-image.p-attached.p-attached-left,
+    .captioned-image.p-attached.p-attached-right {
+        float: none;
+    }
+
+    [for="aboutMeToggle"] {
+        background-color: #675e5e;
+        color: white;
+        padding: 0.25rem;
+        padding-left: 0.5rem;
+        display: block;
+        border-left: 1rem solid black;
+    }
+    #aboutMeToggle:focus + [for="aboutMeToggle"]{
+        outline: 4px solid #c6ddf2;
+    }
+
+    #aboutMeToggle:checked ~ header {
+        display: none;
+    }
+
+    header li { display: inline; margin-left: -0.5em; }
+    header .blurb li::after { content: '; '; }
+    header  nav li {
+        display: inline-block;
+        margin-left: 0.35rem;
+        margin-right: 0.35rem;
+    }
+    header .title {
+        width: 100%;
+    }
+    main li .source { display: block; }
+
+}
+	<contextual-heading role="heading" aria-level="1">Harold Crick and the Web Platform</contextual-heading>
+	
+    <link rel="stylesheet" href="../prism.css">
+	<style>
+	.note { 
+        background-color: rgba(255,255,0,0.24);
+        padding: 1rem;
+        font-style: italic;
+    }
+    .note::before {
+        content: 'Note';
+        font-size: 0.8rem;
+        background-color: black;
+        color: white;
+        padding: 0.25rem;
+        margin-right: 0.5rem;
+    }
+    blockquote {
+	    font-family: serif;
+	    background: white;
+	    border-left: none;
+	    margin: 1.5em 10%;
+	    padding: 0.5em 10px;
+	}
+	</style>
+	<p class="segue">
+		In this piece I'll talk about MathML and why I think that it is especially unique, intersting, and stranger than fiction - as well as what we can/should do with it.  (note: <a href="https://www.imdb.com/title/tt0420223/">Stranger than Fiction</a> is a movie about a very competant and number-obsessed  accountant named Harold Crick who suddenly begins to hear his life being narrated, and learns that a seemingly innocuous event one Wednesday will ultimately change his life and lead to his demise, and what happens next).
+	</p>
+
+	<blockquote>
+		<em>Narrator:</em>  This is the story of <strike>Harold Crick</strike> MathML... 
+	</blockquote>
+
+	<p>
+		When Tim Berners-Lee created HTML, he drew the original elements from the corpus of SGML documents on hand at CERN. Tim picked the most <em>common</em> ones that he found as the original set.  They are, effectively, semantics about text itself - and even in that, not necessarily especially good ones.
+	</p>
+	<p>
+		Given this, it is perhaps not surprising that almost immediately after its creation, discussions began arguing about what <em>other</em> tags should become part of HTML.
+	</p>
+	<p> 
+		Since the Web was originally pitched as an idea about sharing information among researchers, particularly at CERN, it is probably also not surprising that two gaps that came up very quickly were "graphics" and "math":  Researchers frequently need both.
+	</p>
+
+	<p>
+		Within a very short window of time, Dave Ragget had assemebled a number of ideas for what he called "HTML+" which took (believe it or not) only a fraction of those ideas and <em>would have created roughly five times as many elements as Tim's original browser supported.</em>
+	</p>
+
+	<p>
+		Notably among those, <a href="https://www.w3.org/MarkUp/HTMLPlus/htmlplus_45.html">Section 12 of HTML+  included a <code tag-esc="">math</code> element</a> and they had experimental browser support at CERN.
+	</p>
+
+	<div class="captioned-image">
+		<img src="https://www.w3.org/MarkUp/htmlplus_paper/math2.gif" alt="">
+		A screenshot of the experimental browser at CERN rendering the proposed <code tag-esc="">math</code> element in 1993.
+	</div>
+	<p>
+		That proposal wasn't accepted.  But it wasn't the end of the conversation, or the need, either.
+	</p>
+
+	<section class="sectioning">
+		<contextual-heading role="heading" aria-level="2">For many years</contextual-heading>
+
+		<p>
+		  And so, for many years, two communities continued to work on these problems outside of HTML itself: In the case of graphics this would become SVG, and in the case of formulae, MathML.  
+		</p> 
+
+		<blockquote>Narrator: <strike>Harold Crick was a man</strike> MathML was a markup of infinite numbers, endless calculations, and remarkably few words. </blockquote>
+
+		<p>   
+			Little by little, bit by bit, they made progress.  By the time the WHATWG/HTML5 era rolled along, there was some degree of maturity and the new standard would come to include at least some degree of answer for both of these asks by reference to the work that these communities did.  HTML's section on <a href="https://html.spec.whatwg.org/multipage/embedded-content-other.html">Other Embedded Content</a> mentions only two - these two, specifically.
+		</p>
+
+		<p>
+			If you are unfamilliar with MathML, it looks something like this.
+		</p>
+		 <pre><code class="language-html">&lt;math xmlns="http://www.w3.org/1998/Math/MathML" display="block"&gt;
+  &lt;mi&gt;x&lt;/mi&gt; &lt;mo&gt;=&lt;/mo&gt;
+  &lt;mrow&gt;
+    &lt;mfrac&gt;
+      &lt;mrow&gt;
+        &lt;mo&gt;−&lt;/mo&gt;
+        &lt;mi&gt;b&lt;/mi&gt;
+        &lt;mo&gt;±&lt;/mo&gt;
+        &lt;msqrt&gt;
+          &lt;msup&gt;&lt;mi&gt;b&lt;/mi&gt;&lt;mn&gt;2&lt;/mn&gt;&lt;/msup&gt;
+          &lt;mo&gt;−&lt;/mo&gt;
+          &lt;mn&gt;4&lt;/mn&gt;&lt;mi&gt;a&lt;/mi&gt;&lt;mi&gt;c&lt;/mi&gt;
+        &lt;/msqrt&gt;
+      &lt;/mrow&gt;
+      &lt;mrow&gt; &lt;mn&gt;2&lt;/mn&gt;&lt;mi&gt;a&lt;/mi&gt; &lt;/mrow&gt;
+    &lt;/mfrac&gt;
+  &lt;/mrow&gt;
+&lt;/math&gt;</code></pre>
+
+		<p>Like HTML itself, its semantics are fairly weak - but also like HTML itself, it turns out that you can do quite a lot with that.  Given the markup above, your browser would render something like this:</p> 
+
+		<figure class="captioned-image" style="margin-top:0">
+			<img src="/media/math-out.png" alt="">
+			<figcaption>Screenshot showing MathML visual rendering output</figcaption>
+		</figure>
+
+		<p>And so, it looked like we had an answer for this, at last.</p> 
+
+		<blockquote>Narrator: That was, of course, before Wednesday.<br>
+		(pause.)<br>
+		On Wednesday, <strike>Harold's wristwatch</strike> Chrome changed everything.</blockquote>
+
+		<p>
+			Work continued and Firefox shipped some kind of MathML support as early as 2006 and, for a time just about every browser had <em>someone</em> either working on implmentations or already shipped.  IE was sort of the last major holdout.
+		</p>
+
+		<blockquote>Narrator: If one had asked Harold, he would have said that this Wednesday was exactly like all the Wednesdays prior.  And he began it the same way he--</blockquote>
+
+		<p>
+			By 2013, all in all, things were looking pretty good for the MathML community.  
+		</p>
+
+
+		<blockquote>Harold: Hello?... Hello? Is someone there?</blockquote>
+
+		<p>
+			Then, there was something of a shakeup in terms of browser engines: That February, Opera retired Presto and joined Google and Safari as "WebKit" browsers. Some worried about the loss of diversity in browser enginers.  Then, a few months later, Google announced that it would fork WebKit and create "Blink" and, very quickly, Opera announced it would use Blink too.
+		</p>
+
+		<blockquote>Narrator: Little did he know that this simple, seemingly innocuous act would result in his imminent death.<br>
+ 
+		Harold Crick: What? What? Hey! HELLOOO! What? Why? Why MY death? HELLO? Excuse me? WHEN?</blockquote>
+		
+
+	</section>
+
+			
+	<section class="sectioning">
+		<contextual-heading role="heading" aria-level="2">Little did he know</contextual-heading>		
+		<p>
+			In the process of forking, the Blink teams intent was to do a lot of refactoring and really focus on performance.  Along the way, they reviewed code and found that the newly landed contribution of MathML had a lot of complexity.  They found that it had several issues, including a security flaw.  It had no long-term owner on the team and would make refactoring a lot harder, so, they debated what to do with it.</p>
+
+
+		<blockquote>Professor Hilbert: I've written papers on "Little did he know." I've taught classes on "Little did he know." I once gave an entire seminar based upon "Little did he know." Sonofabitch, Harold... "Little did he know." That means there's something he doesn't know, which means there's something you don't know... Did you know that?</blockquote>
+
+		<p>
+			 On Wednesday, October 30, 2013, Google announced their decision: They would remove support for it in Blink, for now at least, and instead recommend use of a polyfill of sorts called MathJax.  
+		</p>
+			
+		<p>
+			I think that it would be a mistake to read too much into this.  I don't think that Google was as much unified in a desire to kill <strike>Harold Crick</strike> MathML as they were in having to make a move and thinking that perhaps that was a reasonable choice at the time.   
+		</p>
+
+		<p>
+			 Judgements about the quality of that choice aside,this meant that by 2013 estimates, the  projected native support of MathML was suddenly around <em>a billion users less than it had been just a day before.</em> 
+		</p>
+
+		<blockquote>
+			Karen Eiffel: I went out... to buy cigarettes and I figured out how to kill Harold Crick.
+		</blockquote>
+
+
+<!--
+		<div class="captioned-image">
+			<img src="/media/fixed-it.gif" alt="">
+		</div>
+-->
+		<p>
+			This has had some pretty complex effects on the status of MathML: It is left as one of a very small group of things in the platform which are in a very strange place in history. This situation has even been the <a href="https://github.com/w3ctag/design-reviews/issues/313">topic of some discussion in the W3C Technical Architecture Group (TAG) recently</a> (and elsewhere).  Like Harold Crick, we're unsure quite which kind of story they are in.
+		</p>  
+
+
+		<blockquote>
+		Professor Hilbert: ..The only way to find out what story you're in is to determine what stories you're not in. Odd as it may seem, I've just ruled out half of Greek literature, seven fairy tales, ten Chinese fables, and determined conclusively that you are not King Hamlet, Scout Finch, Miss Marple, Frankenstein's monster, or a golem. Hmm? Aren't you relieved to know you're not a golem?
+		</blockquote>
+
+
+	</section>
+
+
+	<section class="sectioning">
+		<contextual-heading role="heading" aria-level="2">Aren't you relieved to know you're not a golem?</contextual-heading>
+		<p>
+			Along the way we began trying to collectively find new ways to think about how we go about evolving the whole <em>platform</em> in healtier ways than the past and explaining how we deal with where we are, and how we move forward - but this has actually not been great for MathML.
+		</p>
+		<p>
+			While we generally accept the starting point of existing standards, because of the above, MathML doesn't fit neatly into this camp in the minds of some. 
+		</p>
+
+		<p>
+			While we say that the potential path to standardization of <em>new</em> elements lies in experimentation and proving need and use via Custom Elements, MathML predates custom elements by a long time.
+		</p>
+		<p>
+			Where does this leave MathML?  Asking that  community to be relieved that we now have custom elements seems a bit like asking them to be relieved that they aren't a golem.  
+		</p>
+
+		<blockquote>Harold: You have to understand that this isn't a philosophy or a literary theory or a story to me. It's my life.</blockquote>
+
+		<p>
+			So, now what?
+		</p>
+
+		<section class="sectioning">
+			<contextual-heading role="heading" aria-level="3">Earned Credits</contextual-heading>
+			<p>
+				As I explained earlier, because of where it fit in history, I think MathML is an exceptional case.  I would argue that we should 'credit' MathML as if they'd used Custom Elements all along and just shortcut that whole aspect of the conversation.  But, then what?
+			</p>
+
+			<p>
+				Thinking through this is part of what led me to write <a href="https://bkardell.com/blog/Crisis.html">Standards Crisis on Earth-1</a> and propose a thought excersize about experimentation and data and ask "then what"?  Because, in this light, I have to wonder what kind of message we are sending with how we choose to deal with it.
+			</p>
+		
+
+		<p>Imagine another universe in which a community works for 30 years.  They experiment.  After a while, they come up with a solution.  It's imperfect, like all solutions, but they manage to build a base.  It is included in <a href="https://www.iso.org/standard/58439.html">ISO/IEC</a>, HTML, <a href="http://idpf.org/epub/30">ebook</a> and <a href="http://www.oasis-open.org/committees/download.php/12572/OpenDocument-v1.0-os.pdf">office</a> formats. They build an ecosystem around it.  They even manage to get major native implementations.  Despite lack of native support from two major vendors, or even a super clear way to go from 'here' to 'there', their base manages to expand to millions of documents.  
+		</p>  
+		
+		<p>That is an <em>exceptionally</em> high bar, which I think we cannot expect of another community again, probably ever.  But imagine it did, because it's pretty close to reality here... Then what?  How do we standardize it, or why don't we?  Why?
+		</p>
+		
+		<blockquote>
+		Professor Hilbert: Harold, if you want to stay alive, you have to try something else.
+		Harold: What?
+		Professor Hilbert: Nothing.
+		</blockquote>
+	
+	</section>
+
+
+
+	<section class="sectioning">
+		<contextual-heading role="heading" aria-level="3">I Can't Kill Harold Crick</contextual-heading>
+		<p>
+			But, it's not just a general feeling of "we have a duty to any community who did that much to give them some answers" that is bothering me. It's  pressed further by who these groups are.  The groups who have invested in and continue to need MathML have names like the "<em>National Science Foundation</em>".  They serve altruitistic purposes like Higher Education and cancer research.  They aren't just important - they are literally among the very group of folks that the Web proposed to help from the very beginning.
+			</p>
+			<p>
+				Given this, it feels almost fundamental to the spirit of the Web — and good for us all — that we make some extra effort to help close an important gap after nearly three decades.
+			</p>
+	</section>
+	<section class="sectioning">
+		<contextual-heading role="heading" aria-level="3">Solutions</contextual-heading>
+		<p>
+			As for myself, I believe that any suggestion of 'starting over' here is problematic.  It's not that there might not be 'better', but we need a starting point and to not largely accept the one that has this much success and investment already seems really bad.  I believe we have to find a "standard way" to ship MathML in some way that is better than the situation today. The polyfills are better than nothing, but they introduce many new challenges from performance to accessibility which are unfortunate and non-trivial.
+		</p>
+		<p><em>Enter Igalia</em></p>
+		<p> 
+			I believe that the best hope is through current work being done by Igalia.
+			If you aren't familliar with them, <a href="https://www.igalia.com/">Igalia</a> is  very interesting and unique.  Most organizations involved in standards fit neatly into are either "are a browser vendor", or "doesn't write browser implementations".  The latter are sometimes at something of a disadvantage for reasons more practical, and less political, than we often imagine them to be.  Each vendor already has their own priorities, budgets, challenges and so on.  But Igalia provides a bridge between these two worlds.  They don't make a browser themselves, but they do contribute code and work to browser codebases, and have developed and maintain good relationships and trust at both ends.
+		</p>
+		<p> 
+			Efforts are being funded by communities who really need MathML and current proposals involve using some new underlying primitives (some through Houdini) to help not only get MathML implmented in blink, but also to do so in a way that introduces no or minimal "new magic", but rather is well explained by common foundations.  This seems as good an outcome as I can imagine and I really hope that it succeeds.
+		</p>
+		<p>
+			If you think think this is a valuable and worthwhile effort, be sure to speak up.  If you work for someone who might think that this is important, tell them about it.  <a href="https://mathml.igalia.com/">We can help fund these efforts too</a>. 
+		</p>
+	</section>
+
+	<p class="thanksTo">Special thanks to many friends, Bruce Lawson, Michiel Bijil, Alice Boxhall, Daniel Ehrenberg and Lajja Shah for thoughtful discussions and insight on the topic along the way, or proofreading one of many developing evolutions of drafts of this piece.  Their name listed here is not intended as an endorsement of my thoughts, merely to express that I am ever greatful for their friendship and willingness to discuss these topics with me.</p>
+</section>]]></content:encoded>
+        </item>
         <item>
             <title><![CDATA[I Heart Glitch]]></title>
             <link>https://bkardell.com/blog/Glitch.html</link>
@@ -591,12 +1095,12 @@ blockquote:after {
 
 }
 	<contextual-heading role="heading" aria-level="1">Alice 2019</contextual-heading>
-	<p class="segue">I began blogging about W3C politics and elections in 2012.  If you've read my pieces before or are otherwise already familliar with the W3C Technical Architecture Group, you can skip ahead to "<a href="#alright-tell-me-about-this-election">Alright, tell me about this election</a>".  If, however, you find youself thinking "Elections in W3C? Politics?" then let me fill you in.</p>
+	<p class="segue">I began blogging about W3C politics and elections in 2012.  If you've read my pieces before or are otherwise already familliar with the W3C Technical Architecture Group, you can skip ahead to "<a href="#alright-tell-me-about-this-election">Alright, tell me about this election</a>".  If, however, you find youself thinking "Elections in W3C? Politics?" then let me fill you in.</p> 
 
 	<section class="sectioning">
 		<contextual-heading role="heading" aria-level="2"><span id="user-content-elections-w3c-politics">Elections? W3C Politics?</span></contextual-heading>
 
-		<p>Yes.   I wrote a brief (~400 word) "<a href="">Primer for Busy People</a>" on the general "parts" of the W3C and introducing the two elected bodies, and if you find any of these terms confusing, pop over and give that a read.</p>
+		<p>Yes.   I wrote a brief (~400 word) "<a href="https://bkardell.com/blog/W3CPrimer.html">Primer for Busy People</a>" on the general "parts" of the W3C and introducing the two elected bodies, and if you find any of these terms confusing, pop over and give that a read.</p>
 
 		<p>While working groups (like the CSS Working Group, for example) are unbounded in size and composed through 'appointment', the Technical Architecture Group (TAG) is kind of different.  It is chaired by "The Director" (still currently Sir Tim Berners-Lee) and composed of a very small number of "seats", a little over half of those are filled through an election process.</p>
 

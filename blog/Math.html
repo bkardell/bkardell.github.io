@@ -323,12 +323,12 @@ America (art for sale)</a></li>
         </ul>
     </nav>
 </header>
-    <main><div class="posted-on">Posted on null</div><article class="sectioning">
+    <main><div class="posted-on">Posted on 01/09/2019</div><article posted-on="01/09/2019" class="sectioning">
 	<contextual-heading role="heading" aria-level="1">Harold Crick and the Web Platform</contextual-heading>
 	<script src="../prism.js"></script>
     <link rel="stylesheet" href="../prism.css">
 	<style>
-	.note {
+	.note { 
         background-color: rgba(255,255,0,0.24);
         padding: 1rem;
         font-style: italic;
@@ -361,9 +361,9 @@ America (art for sale)</a></li>
 		When Tim Berners-Lee created HTML, he drew the original elements from the corpus of SGML documents on hand at CERN. Tim picked the most <em>common</em> ones that he found as the original set.  They are, effectively, semantics about text itself - and even in that, not necessarily especially good ones.
 	</p>
 	<p>
-		Given this, it is perhaps not surprising that almost immediately after it's creation, discussions began arguing about what <em>other</em> tags should become part of HTML.
+		Given this, it is perhaps not surprising that almost immediately after its creation, discussions began arguing about what <em>other</em> tags should become part of HTML.
 	</p>
-	<p>
+	<p> 
 		Since the Web was originally pitched as an idea about sharing information among researchers, particularly at CERN, it is probably also not surprising that two gaps that came up very quickly were "graphics" and "math":  Researchers frequently need both.
 	</p>
 
@@ -393,7 +393,7 @@ America (art for sale)</a></li>
 		<blockquote>Narrator: <strike>Harold Crick was a man</strike> MathML was a markup of infinite numbers, endless calculations, and remarkably few words. </blockquote>
 
 		<p>   
-			Little by little, bit by bit, they made progress.  By the time the WHATWG/HTML5 era rolled along, there was some degree of maturity and the new standard would come to include at least some degree of answer for both of these asks by reference to the work that these communities did.  Its section on <a href="https://html.spec.whatwg.org/multipage/embedded-content-other.html">Other Embedded Content</a> mentions only two - these two, specifically.
+			Little by little, bit by bit, they made progress.  By the time the WHATWG/HTML5 era rolled along, there was some degree of maturity and the new standard would come to include at least some degree of answer for both of these asks by reference to the work that these communities did.  HTML's section on <a href="https://html.spec.whatwg.org/multipage/embedded-content-other.html">Other Embedded Content</a> mentions only two - these two, specifically.
 		</p>
 
 		<p>
@@ -532,10 +532,10 @@ America (art for sale)</a></li>
 			</p>
 		
 
-		<p>Imagine another universe in which a community works for 30 years.  They experiment.  After a while, they come up with a solution.  It's imperfect, like all solutions, but they manage to build a base.  They build an ecosystem around it.  They even manage to get some native implementation.  Despite lack of widespread native support, or even a super clear way to go from 'here' to 'there', their base has managed to expand to millions of documents.  
+		<p>Imagine another universe in which a community works for 30 years.  They experiment.  After a while, they come up with a solution.  It's imperfect, like all solutions, but they manage to build a base.  It is included in <a href="https://www.iso.org/standard/58439.html">ISO/IEC</a>, HTML, <a href="http://idpf.org/epub/30">ebook</a> and <a href="http://www.oasis-open.org/committees/download.php/12572/OpenDocument-v1.0-os.pdf">office</a> formats. They build an ecosystem around it.  They even manage to get major native implementations.  Despite lack of native support from two major vendors, or even a super clear way to go from 'here' to 'there', their base manages to expand to millions of documents.  
 		</p>  
 		
-		<p>That is an <em>exceptionally</em> high bar that I think we cannot expect of another community again.  But imagine that's what happened, because it's pretty close to reality here... Then what?  How do we standardize it, or why don't we?  Why?
+		<p>That is an <em>exceptionally</em> high bar, which I think we cannot expect of another community again, probably ever.  But imagine it did, because it's pretty close to reality here... Then what?  How do we standardize it, or why don't we?  Why?
 		</p>
 		
 		<blockquote>
@@ -551,30 +551,31 @@ America (art for sale)</a></li>
 	<section class="sectioning">
 		<contextual-heading role="heading" aria-level="3">I Can't Kill Harold Crick</contextual-heading>
 		<p>
-			But, it's not just a general feeling of "we have a duty to any community who did that much to give them some answers" that is bothering me. It's  pressed further by who these groups are.  The groups who have invested in and continue to need MathML have names like the "<em>National Science Foundation</em>".  They serve alruitistic purposes like Higher Education and cancer research.  They aren't just important - they are literally among the very group of folks that the Web proposed to help from the very beginning.
+			But, it's not just a general feeling of "we have a duty to any community who did that much to give them some answers" that is bothering me. It's  pressed further by who these groups are.  The groups who have invested in and continue to need MathML have names like the "<em>National Science Foundation</em>".  They serve altruitistic purposes like Higher Education and cancer research.  They aren't just important - they are literally among the very group of folks that the Web proposed to help from the very beginning.
 			</p>
 			<p>
-				Given this, it feels almost  fundamental to the spirit of the Web, and good for us all, that we make some extra effort here to help close an important gap after nearly three decades.
+				Given this, it feels almost fundamental to the spirit of the Web — and good for us all — that we make some extra effort to help close an important gap after nearly three decades.
 			</p>
 	</section>
 	<section class="sectioning">
 		<contextual-heading role="heading" aria-level="3">Solutions</contextual-heading>
 		<p>
-			As for myself, I believe that any suggestion of 'starting over' here is problematic.  It's not that there might not be 'better', but we need a starting point and to not largely accept the one that has this much success and investment already seems really bad.  I believe we have to find a "standard way" to ship MathML in some way that is better than the situation today. The polyfills are better than nothing, but they introduce many new challenges from performance to accessibility.
+			As for myself, I believe that any suggestion of 'starting over' here is problematic.  It's not that there might not be 'better', but we need a starting point and to not largely accept the one that has this much success and investment already seems really bad.  I believe we have to find a "standard way" to ship MathML in some way that is better than the situation today. The polyfills are better than nothing, but they introduce many new challenges from performance to accessibility which are unfortunate and non-trivial.
 		</p>
 		<p><em>Enter Igalia</em></p>
-		<p>
+		<p> 
 			I believe that the best hope is through current work being done by Igalia.
-			If you aren't familliar with them, <a href="https://www.igalia.com/">Igalia</a> is  very interesting and unique.  Most organizations involved in standards fit neatly into are either "are a browser vendor", or "doesn't write browser implementations".  The latter are sometimes at something of a practical disadvantage.  Each vendor already has their own priorities and budgets and so on and that frequently can gum otherwise positive things up for reasons that sometimes wind up being a lot more practical than we actually imagine them to be.  But Igalia provides a bridge between these two worlds.  They don't make a browser themselves, but they do contribute code and work to browser codebases, and have developed and maintain good relationships and trust at both ends.
+			If you aren't familliar with them, <a href="https://www.igalia.com/">Igalia</a> is  very interesting and unique.  Most organizations involved in standards fit neatly into are either "are a browser vendor", or "doesn't write browser implementations".  The latter are sometimes at something of a disadvantage for reasons more practical, and less political, than we often imagine them to be.  Each vendor already has their own priorities, budgets, challenges and so on.  But Igalia provides a bridge between these two worlds.  They don't make a browser themselves, but they do contribute code and work to browser codebases, and have developed and maintain good relationships and trust at both ends.
 		</p>
 		<p> 
-			Efforts are being funded by communities who really need MathML and current proposals involve using some new underlying primitives to help not only get MathML implmented in blink, but also to do so in a way that introduces no or minimal "new magic", but rather is well explained by common foundations.
-			This really seems like just about as good an outcome to me as I can imagine and I really hope it succeeeds.
+			Efforts are being funded by communities who really need MathML and current proposals involve using some new underlying primitives (some through Houdini) to help not only get MathML implmented in blink, but also to do so in a way that introduces no or minimal "new magic", but rather is well explained by common foundations.  This seems as good an outcome as I can imagine and I really hope that it succeeds.
 		</p>
 		<p>
-			If you think think this is a valuable and worthwhile effort, be sure to speak up.  If you work for someone who might think that this is important, tell them about it.  <a href="https://mathml.igalia.com/">You can help fund the efforts too</a>. 
+			If you think think this is a valuable and worthwhile effort, be sure to speak up.  If you work for someone who might think that this is important, tell them about it.  <a href="https://mathml.igalia.com/">We can help fund these efforts too</a>. 
 		</p>
 	</section>
+
+	<p class="thanksTo">Special thanks to many friends, Bruce Lawson, Michiel Bijil, Alice Boxhall, Daniel Ehrenberg and Lajja Shah for thoughtful discussions and insight on the topic along the way, or proofreading one of many developing evolutions of drafts of this piece.  Their name listed here is not intended as an endorsement of my thoughts, merely to express that I am ever greatful for their friendship and willingness to discuss these topics with me.</p>
 </section></article></main>
 
   
