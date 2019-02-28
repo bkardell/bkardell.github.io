@@ -1,0 +1,447 @@
+<html lang="en" resource-type="blogpost"><head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@briankardell">
+    <meta name="twitter:creator" content="@briankardell">
+    <meta name="twitter:title" content="Stringy CSS, Developers and Standards Challenges">
+    <meta name="twitter:description" content="This week the W3C CSS Working Group had face to face meetings.  Face to face meetings are “concentrated time” where the working group gets together and has several days of day-long">
+    
+    <link rel="alternate" type="application/rss+xml" href="blog/feed.rss" title="bkardell.com/blog rss feed">
+    <title>Stringy CSS, Developers and Standards Challenges</title>
+    <style>.captioned-image {
+    background-color: #eaeaea;
+    display: block;
+    overflow: hidden;
+    padding: 1rem;
+    text-align: center;
+    font-style: italic;
+}
+
+.captioned-image.p-attached {
+    width: 40%;
+    display: inline-block;
+    margin: 0 1rem 2rem 1rem;
+}
+
+section > .captioned-image.p-attached {
+    margin-top: 1.5rem; /* correct for heading size*/
+}
+
+ pre { overflow-x: auto }
+
+.captioned-image.p-attached.p-attached-left {
+    float: left;
+}
+
+.captioned-image.p-attached.p-attached-right {
+    float: right;
+}
+
+.captioned-image.p-attached + * + * {
+    clear: both;
+    margin-top: 2rem;
+}
+
+
+.captioned-image img, .captioned-image video {
+    display: block;
+    max-width: 100%;
+    margin: 0 auto 1em auto;
+}
+.source {
+    font-style: italic;
+}
+body {
+    display: flex;
+    font: 1em "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-weight: 300;
+    line-height: 1.625;
+}
+h1 { margin: 0.5rem; }
+code-format {
+    border-left: 0.5rem solid rgba(123,115,209,0.35);
+    display: block;
+    padding: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+contextual-heading {
+    display: block;
+    margin-top: 2rem;
+}
+
+[aria-level="1"] {
+    color: #43686b;
+    font-size: 1.45rem;
+}
+[aria-level="2"] {
+    color: #856363;
+    font-size: 1.35rem;
+}
+[aria-level="3"] {
+    color: #856363;
+    font-size: 1.25rem;
+}
+[aria-level="4"] {
+    color: #856363;
+    font-size: 1.2rem;
+}
+[aria-level="5"], [aria-level="6"] {
+    color: #667496;
+    font-size: 1.1rem;
+    font-weight: bolder;
+}
+.posted-on {
+    font-style: italic;
+    font-size: 0.8rem;
+    text-align: right;
+    margin-bottom: 1rem;
+}
+
+ul, li {
+    margin: 0.5rem;
+    text-align: left;
+}
+header {
+    padding-top: 1rem;
+    padding-right: 2rem;
+    background-color: #fbf5e9;
+}
+.tagline {
+    font-style: italic;
+    text-align: center;
+}
+
+[tag-esc] {
+    color: maroon;
+    font-family: Courier, "Lucida Console", monospace;
+}
+
+[tag-esc]::before {
+    content: '<';
+}
+
+[tag-esc]::after {
+    content: '>';
+}
+
+main {
+    min-width: 50%;
+    width: 80%;
+    padding: 1rem;
+}
+header .title {
+    background-color: rgba(123,115,209,0.35);
+    padding: 0.3rem;
+    padding-left: 0.25rem;
+    font-weight: bolder;
+    font-size: 0.9rem;
+    border-left: 1rem solid #999298;
+}
+
+header .profile {
+    width: 50%;
+    margin: 1rem 25%;
+}
+
+header .title + nav {
+    font-size: 0.9rem;
+}
+
+header .blurb {
+    font-size: 0.75rem;
+    text-align: center;
+}
+header .name {
+    text-align: center;
+    font-size: xx-large;
+}
+.segue {
+    font-style: italic;
+}
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  border: 0;
+}
+[for="aboutMeToggle"] {
+    display: none;
+}
+/* this needs rethinking, it wants a selector like 'not flow content' */
+article>*:not(contextual-heading,a), section>*:not(contextual-heading,a) {
+    margin-left: 0.45rem;
+}
+
+blockquote {
+  font-family: serif;
+  background: #f9f9f9;
+  border-left: 10px solid #ccc;
+  margin: 1.5em 10px;
+  padding: 0.5em 10px;
+}
+blockquote:before {
+  color: #ccc;
+  content: open-quote;
+  font-size: 2em;
+  line-height: 0.1em;
+  margin-right: 0.25em;
+  vertical-align: -0.4em;
+}
+
+blockquote:after {
+  color: #ccc;
+  content: close-quote;
+  font-size: 2em;
+  line-height: 0.1em;
+  margin-left: 0.25em;
+  vertical-align: -0.4em;
+}
+
+
+@media (max-width: 800px){
+    body {
+        flex-direction: column;
+    }
+    header {
+        border-bottom: 1px solid #afafff;
+    }
+
+    .captioned-image.p-attached {
+        width: 100%;
+        margin: 1rem 0;
+    }
+
+    .captioned-image.p-attached.p-attached-left,
+    .captioned-image.p-attached.p-attached-right {
+        float: none;
+    }
+
+    [for="aboutMeToggle"] {
+        background-color: #675e5e;
+        color: white;
+        padding: 0.25rem;
+        padding-left: 0.5rem;
+        display: block;
+        border-left: 1rem solid black;
+    }
+    #aboutMeToggle:focus + [for="aboutMeToggle"]{
+        outline: 4px solid #c6ddf2;
+    }
+
+    #aboutMeToggle:checked ~ header {
+        display: none;
+    }
+
+    header li { display: inline; margin-left: -0.5em; }
+    header .blurb li::after { content: '; '; }
+    header  nav li {
+        display: inline-block;
+        margin-left: 0.35rem;
+        margin-right: 0.35rem;
+    }
+    header .title {
+        width: 100%;
+    }
+    main li .source { display: block; }
+
+}</style>
+    <style>
+      .captioned-image { font-size: 0.9rem; }
+      .thanksTo { font-style: italic; font-size: 0.8rem; }
+    </style>
+    <script>
+      var activateOptional = function (media) {
+        var source = media.getAttribute('data-src'),
+            temp,
+            container = media.parentElement;
+
+          if (media.nextSibling && media.nextSibling.matches) {
+            if (media.nextSibling.matches('.clickToSee')) {
+              media.parentElement.removeChild(media.nextSibling);
+            }
+          }
+
+          if (media.tagName === 'VIDEO') {
+            temp = document.createElement('video')
+            temp.setAttribute('autoplay','')
+            temp.setAttribute('controls','')
+            temp.setAttribute('loop','')
+            temp.innerHTML = '<source src="' + source + '.webm" type="video/webm">'
+                    + '<source src="' + source + '.mp4" type="video/mp4">';
+            media.parentElement.replaceChild(temp, media);
+            setTimeout(function () {
+              temp.play()
+            }, 0);
+          } else {
+            media.src = media.getAttribute('data-src');
+          }
+
+          container.classList.add('active');
+      }
+    </script>
+  </head>
+  <body>
+    <input id="aboutMeToggle" class="sr-only" type="checkbox" checked="">
+<label for="aboutMeToggle">Toggle author information</label>
+<header>
+    <div class="name">
+        Brian Kardell
+    </div>
+    <img class="profile" src="/profile.jpg" alt="">
+    <div class="tagline"><a href="/">Betterifying the Web</a></div>
+    <div class="blurb">
+        <ul>
+            <li>Sr Front-End Engineer at Apollo Group, Inc</li>
+            <li>Original Co-author/Co-signer of The Extensible Web Manifesto</li>
+            <li>Co-Founder/Chair, W3C Extensible Web CG</li>
+            <li>Member, W3C (The JS Foundation)</li>
+            <li>Co-author of HitchJS</li>
+            <li>Blogger</li>
+            <li>Art, Science &amp; History Lover</li>
+            <li>Standards Geek</li>
+        </ul>
+    </div>
+    <div class="title">Follow Me On...</div>
+    <nav>
+        <ul>
+            <li><a rel="me" href="https://briankardell.wordpress.com">Wordpress</a></li>
+            <li><a rel="me" href="https://medium.com/@briankardell">Medium</a></li>
+            <li><a rel="me" href="https://twitter.com/briankardell">Twitter</a></li>
+            <li><a rel="me" href="https://github.com/bkardell/">Github</a></li>
+            <li><a rel="me" href="https://codepen.io/bkardell">Codepen</a></li>
+            <li><a rel="me" href="https://www.linkedin.com/in/brian-kardell-08a4264">LinkedIn</a></li>
+            <li><a rel="me" href="https://www.instagram.com/kardellbrian">Instagram (for
+art)</a></li>
+            <li><a rel="me" href="http://fineartamerica.com/profiles/brian-kardell?">Fine Art
+America (art for sale)</a></li>
+        </ul>
+    </nav>
+</header>
+    <main><div class="posted-on">Posted on null</div><article class="sectioning">
+	<contextual-heading role="heading" aria-level="1">Stringy CSS, Developers and Standards Challenges</contextual-heading>
+	<p class="segue">This week the W3C CSS Working Group had face to face meetings.  Face to face meetings are “concentrated time” where the working group gets together and has several days of day-long meetings to work through issues and have discussions.  In this piece I’ll talk about one particular challenge, some new work, the context, just generally ramble for a bit and finally ask for thoughts on “how can we do this better?”</p>
+
+<p>Standardization is hard. It takes a long time. It involves much debate and compromise.  And in the end, if we’re lucky, we finally get something:  One thing that works everywhere and actually helps people accomplish something in a universal, open way.</p>
+<p>In this, part of the idea is to discus and understand what the hard to appreciate impacts are and why that impacts willingness to consider certain kinds of things or not, and then finally, how to make something intuitive within those constraints that meets all the use cases.</p>
+
+<section class="sectioning">
+	<contextual-heading role="heading" aria-level="2">The Intuition Bikeshed</contextual-heading>
+
+	<p>Really a lot of time in standards can be spent talking about what is and isn’t “intuitive”.  These talks involve people with very different vocabularies, primary languages, perspectives and backgrounds.  They are all smart people, and they all really want to create something intuitive… but they don’t agree what that is.</p>
+
+	<p>We all seem to tend to kind of think that other people will probably see it more like us.  It’s really hard to do otherwise.</p>
+
+	<p>Worse, in the end, there is no perfect answer.  Users, just like the people debating, come from all sorts of background and points of view - in fact - more so.  And worse still, over time, even our own opinions can change, but at some point, the standards we write can’t.</p>
+	</section>
+	<section class="sectioning">
+		<contextual-heading role="heading" aria-level="2">Optimization Problem Problems</contextual-heading>
+		<p>So, standards are kind of an optimization problem.  I believe that it is impossible to optimize something like “intuitiveness” without input from developers themselves, and, as I have argued before, I also believe that we haven’t figured out how to do that well yet.</p>
+		
+		<p>In order to give good input, any of us require <em>at least</em> a good framing of context. Probably you need the ability to ask some questions or something.  But, even then: It is impossibly difficult to really weigh vapor.</p>
+
+		<p>That is, until we really sit down to use things, get some actual experience with it, try to apply it, stretch it, pull it, live with it a while and so on… it’s just… really hard to say.  This is part of why I have advocated for the Extensible Web and Houdini work, and, why I argue that it is important to:</p>
+		<ul>
+			<li><a href="https://extensiblewebmanifesto.org">Be able to fail, adapt and remix ideas along the way</a></li>
+			<li><a href="https://medium.com/@briankardell/web-standards-we-want-part-i-chapters-ca71985bf914">Improve the economics</a> of this feedback loop and participation for developers so that there is more immediate value in their participation</li>
+			<li><a href="https://bkardell.com/blog/Crisis.html">Figure out how to incorporate all of this into the standards process in a really healthy way.</a></li>
+		</ul>
+
+		<p>I feel like we’re making progress on all of these fronts, but I think we still have a very long way to go.  I am very happy to say (and will probably write about) the fact that Houdini had some really good discussion in these meetings. To some extent, CSS Custom Fuctions or something could possibly avoid some of this, for example, if we got it all right so that there was a clearish path to pave... If we could get all of those things right.</p>
+
+		<p>But, we are where we are right now, and standards move forward while we try so let me catch you up…</p>
+
+		<contextual-heading role="heading" aria-level="2">The long and stringy road</contextual-heading>
+		<p>CSS doesn’t (currently) really do string concatenation, despite it having constructs like CSS Custom Properties make this very desirable. Based on use cases for generating content that included variables, <a href="https://github.com/w3c/csswg-drafts/issues/542">an issue was opened in late 2016 by Lea Verou</a> to consider how to make that work.  This seems to many of us like a really long time for such a small, basic thing, but in standards time, that is nothing.  The CSS Working Group has hundreds of issues of all shapes and sizes and doesn’t get to actually prioritize anyone’s actual time.  And so, discussions progressed about what use cases and constraints there were around a way to say “smash these two things together” as strings.  Because CSS has a forward compatible grammar and history of precedents, this most logically would be achieved through a function.  There at least seemed to be agreement on that much.</p>
+
+		<p>But what would that be called, what would it look like and how would it work to achieve which use cases?</p>
+
+		<p>One of the early names proposed for this was “string()”.  Sure, makes sense to me as a programmer.   But, it turns out that another spec CSS Generated Content for Paged Media Module (GCPM) has already defined this function and it is something very different than this indeed.  GCPM itself has a many years long history of conversation and development.</p>
+
+		<p>It was pointed out that no browser has implemented this spec, so… maybe we could just change that?  Surely this is a better use of string()?  But… CSS is used by more than just Web browsers.  CSS is applied to many things in many ways and, as the GCPM module is very relevant to things we typically call “publishing” (print materials, pdfs, eReaders, etc, etc), and many of those that even helped define this standard have had working implementations for a long time.  And so, there were concerns about removing or renaming the existing function and breaking the meaning of long working content.  There was also a non-desire to strictly indicate that browsers will __never implement this as there are increasing goals to find increasing ways to unify the two worlds.</p>
+
+		<p>And so it was that in the meetings yesterday, there were discussions on this in the face to face meaning.  In this context, it seemed we had pretty general agreement on the use cases and how it would work, and that picking a name other than “string()” was probably ultimately the best we could do.</p>
+
+		<p>There were a few ‘finalist’ names.  String came up again, but was quickly passed on for reasons above.  It seemed that the really serious contenders were “concat()” and “text()”.</p>
+
+		<p>At one point, people were trying to move on, and the chair asked “Any objections to text()?” I felt strongly enough to offer, on the record, “I don’t have a better suggestion, but text() is not very clear to me… There are so many ways that I could interpret “text” in the context of CSS”.</p>
+
+		<p>It wasn’t a formal objection, it just seemed very unclear to me and I wanted to see if anyone felt similarly.</p>
+
+		<p>To be clear:   I don’t think that the universe would collapse if we called it text(), and stated that I would celebrate us getting this power interoperably implemented regardless of the name, as did people who offered text().</p>
+
+		<p>Still, there was then more discussion a few other suggestions (some minuted, some not, some serious, some not).  One idea that seemed to be perhaps popular was something “like string, but not exactly string”.  Any of these felt kind of more intuitive to me - again, I am a programmer.  Still wondered whether that’s what other people would feel, or not.  Perhaps more different was actually potentially less confusing to potential future developers?  I don’t know, honestly.</p>
+
+		<p>The trouble is, very intelligent people are offering various fairly solid rationales and seem pretty sure that other people would surely find their way intuitive and others not.</p>
+
+		<p>But, really, at some level, it’s all just speculation.</p>
+	</section>
+	<section class="sectioning">
+		<contextual-heading role="heading" aria-level="2">The Poll</contextual-heading>
+		<p>So, ultimately, it was agreed to do a poll with the two ‘leading’ options plus some ‘string’ like one which just wasn’t exactly ‘string’. The purpose, really, was just to get a read and try to feather out how much of our speculation about what might and might not be intuitive or not appeared to have any grounding in reality.</p>
+
+		<p>As of this writing, the poll is still open <a href="https://twitter.com/tabatkins/status/1100838423248551936">https://twitter.com/tabatkins/status/1100838423248551936</a> and it includes the options:  text(), concat() and to-string().  If you haven't voted, you should.</p>
+
+		<p>Unfortunately, it didn’t include any background about GCPM or discussions about that and so a number of replies actually said “string()”.  But, if it had included a lot of background, people probably by and large wouldn't have read it anyways, because, the economics of our time is hard</p>
+
+		<p>So… where does this leave us and why am I writing? Well, a few things….</p>
+
+		<p>First, it's just to again underscore the complexity and challenges and that we should continue to strive to find ways to address those three points.</p>
+
+		<p>The poll's sample size is small, unscientific and non-binding, so we shouldn’t read too much into it.  But, it's interesting to me which one got the overwhelming votes.  I am not sad to have brought it up.</p>
+
+		<p>It’s unclear how to count all of the variants of ‘to-string’ and ‘other’ and replies that argue for string() itself, or even how many of those people are willing to accept background explanations and choose an alterantive from the set. It does seem interesting to me tho that if I try to count all of the ‘string’ oriented variants as one answer, currently they are… only about as popular as text().  That’s surprising to me.   concat() seems to have really a lot of positive support.</p>
+
+	</section>
+	<section class="sectioning">
+		<contextual-heading role="heading" aria-level="2">How to involve, advocate and “do better”</contextual-heading>
+		<p>While I question whether the data is good, I am actually entirely willing to accept that that is a possibility and that concat() is actually the optimal choice for being the most intuitive to the most people <em>and</em> not breaking things.</p>
+
+		<p>But, there is another interesting thing here to think about.  In this debate, a number of people seemed to feel very strongly indeed and made a case that perhaps CSS WG’s constraints were wrong.  Perhaps we should go ahead and try to work out something that sort of “split” CSS.  For example, we could have the same string() function mean radically differently things depending on the media - doing this in the browser, but something completely different in existing applications which are largely (perhaps exclusively) in publishing. Perhaps simply granting that web browsers will never implement GCPM and just be able to use that spec as is.</p>
+
+		<p>As string() doesn’t seem to be the clear winner I imagined it might, I don’t think it would be easy to go back and make a case that there is potentially something worth re-considering here… but what if it was? I’m not sure. I mean, I would advocate for listening to the feedback, sure... But then what?</p>
+
+		<p>In the end, how do we do better about getting feedback and then making sure that we explain decisions in ways that maybe as much as 50% of people who think that is not what they’d do can at least kind of understand and feel ok with decisions, or feel good about pushing back and asking hard questions where they feel strongly?</p>
+
+		<p>How can we manage all of this better? Is there more we could do?</p>
+	</section>
+</article></main>
+
+  
+    <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-88027178-1', 'auto');
+    ga('send', 'pageview');
+  </script>
+
+  <script>
+    Array.prototype.slice.call(document.querySelectorAll('.optional [data-src]')).forEach(function (optional) {
+      var prefs = window.localStorage.downloadsPrefs,
+          clickToSee;
+      if (prefs === 'true') {
+        activateOptional(optional);
+      } else {
+        clickToSee = document.createElement('div');
+        clickToSee.classList.add('clickToSee')
+        clickToSee.innerHTML = '<button>Click to see media</button>';
+        clickToSee.style.textAlign = 'center';
+        clickToSee.style.border = 'none';
+        optional.parentElement.insertBefore(clickToSee, optional.nextSibling);
+        clickToSee.firstElementChild.addEventListener('click', function () {
+          activateOptional(optional);
+        })
+      }
+
+    })
+  </script>
+
+</body></html>
