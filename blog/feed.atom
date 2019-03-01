@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://bkardell.com/</id>
     <title>bkardell.com rss feed</title>
-    <updated>2019-03-01T20:48:08Z</updated>
+    <updated>2019-03-01T21:45:59Z</updated>
     <generator>awesome mix</generator>
     <author>
         <name>Brian Kardell</name>
@@ -361,7 +361,7 @@ blockquote:after {
 		</p>
 
 		<p>
-			The ideas and work of GCPM, like a lot in CSS, have a long  history.  Bert Boss (one of the creators of CSS) made the <a href="https://lists.w3.org/Archives/Public/www-style/2006Jun/0042.html">announcement on the mailing list</a> of its first working draft with that title in 2006.  In it, he said:
+			The ideas and work of GCPM, like a lot in CSS, have a long  history.  Bert Bos (one of the creators of CSS) made the <a href="https://lists.w3.org/Archives/Public/www-style/2006Jun/0042.html">announcement on the mailing list</a> of its first working draft with that title in 2006.  In it, he said:
 
 		</p><blockquote>It describes features typically only used when printing: running headers 
 and footers, footnotes, references to page numbers, floats to the top 
@@ -500,7 +500,7 @@ hyperlink, opening a pop-up.)
 		</p>
 		
 		<p>
-			In order to give good input, any of us require <em>at least</em> a good framing of context. That's hard because, often there is a lot and it's hard to know what matters and what doesn't.  The higher the "tax" of participating, the less likely it is that we will even get a good sampling of average users. Iur time is just pulled in too many directions.  It takes 2 seconds to read the poll and vote, many minutes to read this post.
+			In order to give good input, any of us require <em>at least</em> a good framing of context. That's hard because, often there is a lot and it's hard to know what matters and what doesn't.  The higher the "tax" of participating, the less likely it is that we will even get a good sampling of average users. Our time is just pulled in too many directions.  It takes 2 seconds to read the poll and vote, many minutes to read this post.
 		</p>
 
 		<p>
@@ -521,6 +521,7 @@ hyperlink, opening a pop-up.)
 
 		<p>So... that's where we are, how we got there and some of the problems... How can we manage all of this better? Is there more we could do?</p>
 	</section>
+	<p class="thanksTo">Thanks to my friends Amelia Bellamy-Royds and Jon Neal for their talks and helpful comments in reviewing some iteration of this piece.</p>
 ]]></content>
     </entry>
     <entry>
