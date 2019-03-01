@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://bkardell.com/</id>
     <title>bkardell.com rss feed</title>
-    <updated>2019-03-01T20:24:53Z</updated>
+    <updated>2019-03-01T20:48:08Z</updated>
     <generator>awesome mix</generator>
     <author>
         <name>Brian Kardell</name>
@@ -327,14 +327,14 @@ blockquote:after {
 </code></pre>		
 
 		<p>
-			Great.  She suggests that perhaps for a few other "stringy" properties, we should just do that - just make it able to smash those things together into one string.  That would be "best" for authors - less "Lispy" and easier to read.
+			Great.  She suggests that perhaps for a few other "stringy" properties, we should just do that - just make it able to smash those things together into one string.  That would be "best" for authors - less "Lispy" and easier to read (the <a href="https://en.wikipedia.org/wiki/Lisp_(programming_language)">Lisp family of languages</a> are somewhat famous for its use of lots of parenthesis and how it is read)
 		</p>
 		<p> 
 			But... authors want this ability in a lot of contexts where it isn't so simple or obvious.  Having a general thing which gets authors more power, in more places, sooner, also seems good for authors.  So, let's start there - powers first, maybe sugar later.
 		</p>
 
 		<p>
-			So... without going any further, I'd like to point out that this is a decision - a weighing of values of outcomes.  It means that if/when these powers ship, they will be kinda "Lispy".  Some authors, lacking the context as to why might that decision was made, might just think that this was a bad decision.  Even <em>with</em> that context, some authors would disagree with the choice.
+			Without going any further, I'd like to point out that this is a decision - a weighing of values of outcomes.  It means that if/when these powers ship, they will be kinda "Lispy".  Some authors, lacking the context as to why might that decision was made, might just think that this was a bad decision.  Even <em>with</em> that context, some authors would disagree with the choice.
 		</p>
 
 		<p>
@@ -353,7 +353,7 @@ blockquote:after {
 		</p>
 
 		<p>
-			Now... a lot of us (yes, me too) are sort of like "Yo wait... what?  what's that spec?  No browser seems to implement it -maybe we could just change that?  Surely this is a better use of string()?  Seems last updated in 2014, and if no one has implemented it, it's probably dead.  This is like... clearly a string, it feels bad that we can't use string for dumb reasons.""
+			Still, a lot of us (yes, me too) are sort of like "Yo wait... what?  what's that spec?  No browser seems to implement it -maybe we could just change that?  Surely this is a better use of string()?  Seems last updated in 2014, and if no one has implemented it, it's probably dead.  This is like... clearly a string, it feels bad that we can't use string for dumb reasons.""
 		</p>
 
 		<p>
@@ -387,7 +387,7 @@ hyperlink, opening a pop-up.)
 		</p>
 
 		<p>
-			So... still... Brian... This is all stuff doesn't work in <em>browsers</em>. It's for <em>print</em> and it seems almost like Bert was suggesting it might be kinda good to split them?  Let's just split them because this is <em>obviously</em> a string!
+			But, Brian... This is all stuff doesn't work in <em>browsers</em>. It's for <em>print</em> and it seems almost like Bert was suggesting it might be kinda good to split them?  Let's just split them because this is <em>obviously</em> a string!
 		</p>
 
 		<p>
@@ -398,11 +398,11 @@ hyperlink, opening a pop-up.)
 			In between the birth of CSS and now, we've also increasingly popularized this "not print really" but also "not currently web browsers" uncanny valley that are things like PDFs or EBooks.
 		</p>
 		<p>
-			These have to work on various ... screens. With different sizes and orientations and now can even be interactive.  You know, kind of like a web browser.
+			These have to work on various... er... screens. With different sizes and orientations and now can even be interactive.  You know, kind of like a web browser.
 		</p>
 		<p>
 			At the same time, Web browsers have evolved too: 
-			Ideas like Web Packaging address, in a more general way, ideas in publishing around, for example, distributing an ebook.  Ideas like ServiceWorkers make it possible to now take that offline... You know, kind of like an ebook.
+			Ideas like Web Packaging address, in a more general way, ideas in publishing around, for example, distributing an ebook.  Ideas like ServiceWorkers make it possible to now take that offline. You know, kind of like an ebook.
 		</p>
 
 		<p>  
@@ -416,7 +416,7 @@ hyperlink, opening a pop-up.)
 			CSS has never (to the best of my knowledge) overloaded an existing function with a radically different signature/meaning depending on the media.  To do so would certainly mean just agreeing that we would never adopt this, which, meh, I don't know?  In any case, for at least <em>some</em> authors who have to deal with both it might be really confusing... None of that seems "great" if it is all easily avoided.
 		</p>
 		<p>
-			Except... dammit, I am going to be honest: this really feels like a <code>string()</code> to me.  How can it not be?  That is definitely the best one.
+			Except, dammit, I am going to be honest: this really feels like a <code>string()</code> to me.  How can it not be?  That is definitely the best one.
 		</p>
 	</section>
 	<section class="sectioning">
@@ -440,7 +440,7 @@ hyperlink, opening a pop-up.)
 		</p>
 
 		<p> 
-			I really don't want to be "keep the dumb bikeshed going guy".  I was at this point entirely willing to accept "not <code>string()</code>" but I just found text actually confusing and thought that most of the same problems of "looks good in this light... as well as many others" might apply here... But, you know... maybe that's just me?  Should I say something?
+			There I really don't want to be "keep the dumb bikeshed going guy" (if you are not familliar with the term, here's <a href="https://en.wikipedia.org/wiki/Law_of_triviality#Argument">an explanation of bikeshedding</a>).  I was at this point entirely willing to accept "not <code>string()</code>" but I just found text actually confusing and thought that most of the same problems of "looks good in this light... as well as many others" might apply here... But, you know... maybe that's just me?  Should I say something?
 		</p>
 
 		<p>
@@ -462,7 +462,7 @@ hyperlink, opening a pop-up.)
 			There was some more discussion.  There were a few other suggestions made (some minuted, some not, some serious, some not).  One idea that seemed to be perhaps popular was something vaguely “like string, but not exactly string”.  Any of these felt kind of more intuitive to me - but again, that's <em>just</em> me.  I could imagine even that perhaps "more different" was actually potentially less confusing to potential future developers?  I don’t know, honestly.
 		</p>
 		<p>
-		  	But... deep down, I just kind of secretly wish it could be <code>string()</code> because that's the one I just know everyone would get.  Dammit.
+		  	But, deep down, I just kind of secretly wish it could be <code>string()</code> because that's the one I just know everyone would get.  Dammit.
 		</p>
 
 		<p>
