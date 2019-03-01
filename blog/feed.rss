@@ -4,7 +4,7 @@
         <title>bkardell.com rss feed</title>
         <link>http://bkardell.com/</link>
         <description>Just the bkardell.com rss feed</description>
-        <lastBuildDate>Fri, 01 Mar 2019 20:17:10 GMT</lastBuildDate>
+        <lastBuildDate>Fri, 01 Mar 2019 20:24:53 GMT</lastBuildDate>
         <docs>http://blogs.law.harvard.edu/tech/rss</docs>
         <generator>awesome mix</generator>
         <image>
@@ -14,6 +14,514 @@
         </image>
         <copyright>All rights reserved 2018, Brian Kardell</copyright>
         <atom:link href="https://bardell.com/blog/feed.atom" rel="self" type="application/rss+xml"/>
+        <item>
+            <title><![CDATA[Intuition Bikeshed and Standards Challenges]]></title>
+            <link>https://bkardell.com/blog/StringyCSS.html</link>
+            <guid>https://bkardell.com/blog/StringyCSS.html</guid>
+            <pubDate>Fri, 01 Mar 2019 00:00:00 GMT</pubDate>
+            <description><![CDATA[One thing that's been on my mind quite a lot for the last few years is how we can better communicate both in and out of standards bodies. This past week some things happened which I think make for an interesting review and some thought about whether we did the right things, and how we can do better.  
+	]]></description>
+            <content:encoded><![CDATA[.captioned-image {
+    background-color: #eaeaea;
+    display: block;
+    overflow: hidden;
+    padding: 1rem;
+    text-align: center;
+    font-style: italic;
+}
+
+.captioned-image.p-attached {
+    width: 40%;
+    display: inline-block;
+    margin: 0 1rem 2rem 1rem;
+}
+
+section > .captioned-image.p-attached {
+    margin-top: 1.5rem; /* correct for heading size*/
+}
+
+ pre { overflow-x: auto }
+
+.captioned-image.p-attached.p-attached-left {
+    float: left;
+}
+
+.captioned-image.p-attached.p-attached-right {
+    float: right;
+}
+
+.captioned-image.p-attached + * + * {
+    clear: both;
+    margin-top: 2rem;
+}
+
+
+.captioned-image img, .captioned-image video {
+    display: block;
+    max-width: 100%;
+    margin: 0 auto 1em auto;
+}
+.source {
+    font-style: italic;
+}
+body {
+    display: flex;
+    font: 1em "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-weight: 300;
+    line-height: 1.625;
+}
+h1 { margin: 0.5rem; }
+code-format {
+    border-left: 0.5rem solid rgba(123,115,209,0.35);
+    display: block;
+    padding: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+contextual-heading {
+    display: block;
+    margin-top: 2rem;
+}
+
+[aria-level="1"] {
+    color: #43686b;
+    font-size: 1.45rem;
+}
+[aria-level="2"] {
+    color: #856363;
+    font-size: 1.35rem;
+}
+[aria-level="3"] {
+    color: #856363;
+    font-size: 1.25rem;
+}
+[aria-level="4"] {
+    color: #856363;
+    font-size: 1.2rem;
+}
+[aria-level="5"], [aria-level="6"] {
+    color: #667496;
+    font-size: 1.1rem;
+    font-weight: bolder;
+}
+.posted-on {
+    font-style: italic;
+    font-size: 0.8rem;
+    text-align: right;
+    margin-bottom: 1rem;
+}
+
+ul, li {
+    margin: 0.5rem;
+    text-align: left;
+}
+header {
+    padding-top: 1rem;
+    padding-right: 2rem;
+    background-color: #fbf5e9;
+}
+.tagline {
+    font-style: italic;
+    text-align: center;
+}
+
+[tag-esc] {
+    color: maroon;
+    font-family: Courier, "Lucida Console", monospace;
+}
+
+[tag-esc]::before {
+    content: '<';
+}
+
+[tag-esc]::after {
+    content: '>';
+}
+
+main {
+    min-width: 50%;
+    width: 80%;
+    padding: 1rem;
+}
+header .title {
+    background-color: rgba(123,115,209,0.35);
+    padding: 0.3rem;
+    padding-left: 0.25rem;
+    font-weight: bolder;
+    font-size: 0.9rem;
+    border-left: 1rem solid #999298;
+}
+
+header .profile {
+    width: 50%;
+    margin: 1rem 25%;
+}
+
+header .title + nav {
+    font-size: 0.9rem;
+}
+
+header .blurb {
+    font-size: 0.75rem;
+    text-align: center;
+}
+header .name {
+    text-align: center;
+    font-size: xx-large;
+}
+.segue {
+    font-style: italic;
+}
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  border: 0;
+}
+[for="aboutMeToggle"] {
+    display: none;
+}
+/* this needs rethinking, it wants a selector like 'not flow content' */
+article>*:not(contextual-heading,a), section>*:not(contextual-heading,a) {
+    margin-left: 0.45rem;
+}
+
+blockquote {
+  font-family: serif;
+  background: #f9f9f9;
+  border-left: 10px solid #ccc;
+  margin: 1.5em 10px;
+  padding: 0.5em 10px;
+}
+blockquote:before {
+  color: #ccc;
+  content: open-quote;
+  font-size: 2em;
+  line-height: 0.1em;
+  margin-right: 0.25em;
+  vertical-align: -0.4em;
+}
+
+blockquote:after {
+  color: #ccc;
+  content: close-quote;
+  font-size: 2em;
+  line-height: 0.1em;
+  margin-left: 0.25em;
+  vertical-align: -0.4em;
+}
+
+
+@media (max-width: 800px){
+    body {
+        flex-direction: column;
+    }
+    header {
+        border-bottom: 1px solid #afafff;
+    }
+
+    .captioned-image.p-attached {
+        width: 100%;
+        margin: 1rem 0;
+    }
+
+    .captioned-image.p-attached.p-attached-left,
+    .captioned-image.p-attached.p-attached-right {
+        float: none;
+    }
+
+    [for="aboutMeToggle"] {
+        background-color: #675e5e;
+        color: white;
+        padding: 0.25rem;
+        padding-left: 0.5rem;
+        display: block;
+        border-left: 1rem solid black;
+    }
+    #aboutMeToggle:focus + [for="aboutMeToggle"]{
+        outline: 4px solid #c6ddf2;
+    }
+
+    #aboutMeToggle:checked ~ header {
+        display: none;
+    }
+
+    header li { display: inline; margin-left: -0.5em; }
+    header .blurb li::after { content: '; '; }
+    header  nav li {
+        display: inline-block;
+        margin-left: 0.35rem;
+        margin-right: 0.35rem;
+    }
+    header .title {
+        width: 100%;
+    }
+    main li .source { display: block; }
+
+} 
+	<contextual-heading role="heading" aria-level="1">Intuition Bikeshed and Standards Challenges</contextual-heading>
+	<p class="segue">One thing that's been on my mind quite a lot for the last few years is how we can better communicate both in and out of standards bodies. This past week some things happened which I think make for an interesting review and some thought about whether we did the right things, and how we can do better.  
+	</p>
+	
+    <link rel="stylesheet" href="../prism.css">
+   
+	<style>
+    .note {
+        background-color: rgba(255,255,0,0.24);
+        padding: 1rem;
+        font-style: italic;
+    }
+    .note::before {
+        content: 'Note';
+        font-size: 0.8rem;
+        background-color: black;
+        color: white;
+        padding: 0.25rem;
+        margin-right: 0.5rem;
+    }
+	</style>
+
+	<p>
+		This week, the CSS Working Group tweeted an informal Twitter poll that looked like this (below) - if you haven't voted or replied to it yet, I would ask that you read this before you do:
+	</p>
+
+	<blockquote class="twitter-tweet" data-lang="en"><p lang="en" dir="ltr">Poll about naming a new CSS function that coerces/concatenates strings:<br><br>.bar-graph {<br> --size: 50%;<br> height: var(--size);<br> content: NAME(var(--size));<br>}<br>.icon {<br> --icon-id: 23;<br> background: url(NAME("/assets/icon-", var(--icon-id), ".svg"));<br>}<br><br>NAME = ?</p>— 💖Taudry Hepburn💖 (@tabatkins) <a href="https://twitter.com/tabatkins/status/1100838423248551936?ref_src=twsrc%5Etfw">February 27, 2019</a></blockquote>
+
+
+	<p> 
+		It includes two examples attempting to show a couple of hypothetical uses of a new function in CSS that coerces/concatenates strings and asks what authors what they expect it would be called, offering the following choices in the poll:
+	</p>
+
+	<ul>
+		<li><code>text()</code></li>
+		<li><code>concat()</code></li>
+		<li><code>to-string()</code></li>
+		<li><code>Other (respond in thread)</code></li>
+	</ul>
+
+	<p>
+		A not insignificant number of folks, some friends and standards people themselves were kind of appalled that <code>string()</code> wasn't in the list.  I mean... Of course it should be <code>string()</code>, right?  Hurriedly, some of us tried to provide some context but I feel like it really deserves some more words and it has me thinking more about how we can do better (and what that would even mean). 
+	</p>
+
+	<section class="sectioning">
+		<contextual-heading role="heading" aria-level="2">Backstory</contextual-heading>
+		<p>
+			CSS doesn’t (currently) really "do" string concatenation "generally".  However, it now has constructs like CSS Custom Properties which seem to make this sort of thing very desirable. Based on some feedback and discussions <a href="https://github.com/w3c/csswg-drafts/issues/542">an issue was opened in late 2016 by Lea Verou</a> to consider how to make that work. 
+		</p>
+
+		<p class="note">
+			Note: Yes, it is now 2019 and while this seems to many of us like a really long time for such a small, basic thing, in standards time, that is nothing.  The CSS Working Group has hundreds of issues of all shapes and sizes and doesn’t get to actually prioritize anyone’s actual time (some priorities are set by the company that employs you, and some of us do this in our "spare" time), and... sometimes there are non-immediately obvious complexities.  More on all that later.
+		</p> 
+		<p>
+			 In it, she points out that <code>content:</code> currently does a fairly simple form of concatination.  If you are unfamilliar with this, allow me to use Lea's Prism to illustrate it with an example from MDN below:
+		</p>
+
+		<pre><code class="language-css">a::after {
+  content: " (" attr(id) ")";
+}
+</code></pre>		
+
+		<p>
+			Great.  She suggests that perhaps for a few other "stringy" properties, we should just do that - just make it able to smash those things together into one string.  That would be "best" for authors - less "Lispy" and easier to read.
+		</p>
+		<p> 
+			But... authors want this ability in a lot of contexts where it isn't so simple or obvious.  Having a general thing which gets authors more power, in more places, sooner, also seems good for authors.  So, let's start there - powers first, maybe sugar later.
+		</p>
+
+		<p>
+			So... without going any further, I'd like to point out that this is a decision - a weighing of values of outcomes.  It means that if/when these powers ship, they will be kinda "Lispy".  Some authors, lacking the context as to why might that decision was made, might just think that this was a bad decision.  Even <em>with</em> that context, some authors would disagree with the choice.
+		</p>
+
+		<p>
+			Anywho.. Discussions progressed about which use cases and constraints there were around a way to say “smash these two things together” as strings and one of the early names proposed for this was “string()”.
+		</p>
+
+		<p>  
+			Sure, makes sense to me. Don't all programmers know string?  Seems pretty universal.  What else would it be even?  <em>Obviously</em> it should be string.
+		</p>
+		<p>
+			Well, here too, it seems that context matters a lot, in more ways than one.
+		</p>
+
+		<p>
+			It turns out that another spec <a href="https://www.w3.org/TR/css-gcpm-3/#using-named-strings">CSS Generated Content for Paged Media Module (GCPM)</a> has already defined a function called <code>string()</code> and does... not this.
+		</p>
+
+		<p>
+			Now... a lot of us (yes, me too) are sort of like "Yo wait... what?  what's that spec?  No browser seems to implement it -maybe we could just change that?  Surely this is a better use of string()?  Seems last updated in 2014, and if no one has implemented it, it's probably dead.  This is like... clearly a string, it feels bad that we can't use string for dumb reasons.""
+		</p>
+
+		<p>
+			Yes, all of that is mostly true, and... these things are also true:
+		</p>
+
+		<p>
+			The ideas and work of GCPM, like a lot in CSS, have a long  history.  Bert Boss (one of the creators of CSS) made the <a href="https://lists.w3.org/Archives/Public/www-style/2006Jun/0042.html">announcement on the mailing list</a> of its first working draft with that title in 2006.  In it, he said:
+
+		</p><blockquote>It describes features typically only used when printing: running headers 
+and footers, footnotes, references to page numbers, floats to the top 
+and bottom of a page, etc.
+
+Indeed, we may define explicitly that these features *don't* work in 
+interactive media. (Although I already heard people ask for footnotes 
+to work interactively as well, possibly as a light-weight form of 
+hyperlink, opening a pop-up.)
+		</blockquote>
+
+
+		<p>
+			In fact, in many ways the ideas of both markup documents and stylesheets originated with print, not screens and a lot of people continued to see that potential of stylesheets to be important way beyond Web browsers.  The editor of that spec was Håkon Wium Lie, the other creator of CSS.
+		</p>
+
+		<p>
+			So, part of that is to point out that in the context of framing this, they wanted this concept of, well, kind of named strings and then a way to refer to and use those strings.  Strings, strings, strings, and so, well, <code>string()</code> seemed like a perfectly rational name.  I mean... Obviously it is a string.
+		</p>
+
+		<p>
+			Then, as you might expect, people from those industries began implementing non-browser implementations.  Several supported string, some "forever" by the time this 2014 spec was published.
+		</p>
+
+		<p>
+			So... still... Brian... This is all stuff doesn't work in <em>browsers</em>. It's for <em>print</em> and it seems almost like Bert was suggesting it might be kinda good to split them?  Let's just split them because this is <em>obviously</em> a string!
+		</p>
+
+		<p>
+			Maybe... but there is also this:
+		</p>
+
+		<p>
+			In between the birth of CSS and now, we've also increasingly popularized this "not print really" but also "not currently web browsers" uncanny valley that are things like PDFs or EBooks.
+		</p>
+		<p>
+			These have to work on various ... screens. With different sizes and orientations and now can even be interactive.  You know, kind of like a web browser.
+		</p>
+		<p>
+			At the same time, Web browsers have evolved too: 
+			Ideas like Web Packaging address, in a more general way, ideas in publishing around, for example, distributing an ebook.  Ideas like ServiceWorkers make it possible to now take that offline... You know, kind of like an ebook.
+		</p>
+
+		<p>  
+			And so on.
+		</p>
+		<p>
+			And so, as much as possible, to common ends, we are all try to work together within the W3C, and especially in CSS.
+		</p>
+
+		<p>  
+			CSS has never (to the best of my knowledge) overloaded an existing function with a radically different signature/meaning depending on the media.  To do so would certainly mean just agreeing that we would never adopt this, which, meh, I don't know?  In any case, for at least <em>some</em> authors who have to deal with both it might be really confusing... None of that seems "great" if it is all easily avoided.
+		</p>
+		<p>
+			Except... dammit, I am going to be honest: this really feels like a <code>string()</code> to me.  How can it not be?  That is definitely the best one.
+		</p>
+	</section>
+	<section class="sectioning">
+		<contextual-heading role="heading" aria-level="2">Resolving and Bikesheds</contextual-heading>
+		<p>
+			And so, all that back story set: There were discussions on this in the face to face meaning.  In this context, it seemed we had pretty general agreement on the use cases and how it would work, but we didn't have a name.
+		</p>
+		<p>
+			However, there were a few ‘finalist’ suggestions and cogent arguments about why some other names were actually <em>better</em> than <code>string()</code>.  Hmm... maybe?
+		</p>
+		<p>
+		 	In the end, weighing all of the things, I think that we just decided it was probably best to just take <code>string()</code> off the table if there was something else that could work -- and people were even making compelling arguments that not only would they work - they were actually <em>better</em>.  Meh. I dunno. 
+		</p>
+
+		<p>
+			It seemed that the really serious contenders were “concat()” and “text()” and at some point I think people were just trying to move on and it seemed to be settling around <code>text()</code>.  The chair asked “Any objections to <code>text()</code>?” 
+		</p>
+
+		<p>
+			I squirmed. 
+		</p>
+
+		<p> 
+			I really don't want to be "keep the dumb bikeshed going guy".  I was at this point entirely willing to accept "not <code>string()</code>" but I just found text actually confusing and thought that most of the same problems of "looks good in this light... as well as many others" might apply here... But, you know... maybe that's just me?  Should I say something?
+		</p>
+
+		<p>
+			So I finally chimed in and offered simply “I don’t have a better suggestion, but text() is not very clear to me… There are so many ways that I could interpret “text” in the context of CSS” and "sorry".  
+		</p>
+
+		<p>
+			It wasn’t a formal objection, I just wanted to see if maybe others felt the similarly.  And, well... some did.  And... some didn't.
+		</p>
+		<p>
+			 Everyone, including me, seemed pretty sure that other people would surely find a thing either more intuitive, or actively unintuitive and we didn't agree on what those were.
+		</p>
+
+		<p> 
+			This is a hard problem, because I think we all sometimes think that other people will surely see it 'like us'.  It's very hard to do otherwise.  But, people are diverse. CSS is used by people from many backgrounds, with many perspectives, different primary languages, cultures and so on and, really, it's just very hard to know.
+		</p>
+
+		<p>
+			There was some more discussion.  There were a few other suggestions made (some minuted, some not, some serious, some not).  One idea that seemed to be perhaps popular was something vaguely “like string, but not exactly string”.  Any of these felt kind of more intuitive to me - but again, that's <em>just</em> me.  I could imagine even that perhaps "more different" was actually potentially less confusing to potential future developers?  I don’t know, honestly.
+		</p>
+		<p>
+		  	But... deep down, I just kind of secretly wish it could be <code>string()</code> because that's the one I just know everyone would get.  Dammit.
+		</p>
+
+		<p>
+			All this said, I would like to put this in some actual perspective:  No one was remotely cross about any of this.  It was not a heated argument.  Everyone was perfectly aimiable and all of the rationales were, I believe, entirely 'teachable'.  I believe that all parties agreed that we would celebrate getting this power interoperably implemented regardless of which one it wound up being.  
+		</p>
+		<p>
+			Unfortunately this meant that all we could agree to regarding the name was that we couldn't decide today.  Yeah, idk, maybe that's on me.  I'm honestly not sure how I feel about it.
+		</p>
+		<p>
+			Regardless, because there were good points and different perspectives all around, and because developers have even broader perspectives than the folks in that room - we thought that perhaps <em>asking</em> developers for input would help us clarify our thoughts, so Tab put together a poll.
+		</p>
+	</section>
+	<section class="sectioning">
+		<contextual-heading role="heading" aria-level="2">Optimization Problem Problems</contextual-heading>
+		<p>
+			The thing is, the most interesting thing in this poll to me is just how many actual users of CSS thought <code>concat()</code> was actually the best one, even without all of this context, and how few chose all of the others.
+		</p>
+		<p>  
+			Realistically, text() is the only 100% clear, readable, requires no context alternative in that poll and yet, as it currently stands, a mere 1 in 5 people chose it. 
+		</p>
+		<p>
+			Unfortunately <code>to-string()</code> was just one of several possible 'almost strings' and several people who chose other also said something string or string-like -- but... even still - it's not that many actually.  My manual efforts to tally them up as well as I can still seem to indicate that <code>concat()</code> has still way more support than all of the others combined.
+		</p>
+
+		<p>
+			It honestly wouldn't have been my guess going into all this.   But... really, the more I look at it... maybe that <em>is</em> better, even without all the context.  That is exactly what this function does. 
+		</p> 
+
+		<p>
+			Anyways.. I think that it is impossible to optimize something like “intuitiveness” without actual input from developers themselves and the really tough thing here is that there is that at best it is still merely optimization.  There is no clearly defined 'perfect' that will make everyone happy, especially without context or being heard.
+		</p>
+
+		<p>
+			As I have argued before, I also believe that we really haven’t figured out how to do that well yet.
+		</p>
+		
+		<p>
+			In order to give good input, any of us require <em>at least</em> a good framing of context. That's hard because, often there is a lot and it's hard to know what matters and what doesn't.  The higher the "tax" of participating, the less likely it is that we will even get a good sampling of average users. Iur time is just pulled in too many directions.  It takes 2 seconds to read the poll and vote, many minutes to read this post.
+		</p>
+
+		<p>
+			Further, to give really quality feedback and input, probably you need the ability to ask some questions or something.  But, even then: even if you sink in time and ask questions, the truth is, it is impossibly difficult to really weigh vapor.</p>
+
+		<p>That is, until we really sit down to use things, get some actual experience with it, try to apply it, stretch it, pull it, live with it a while and so on… it’s just… really hard to say.  This is part of why I have advocated for the Extensible Web and Houdini work, and, why I argue that it is important to:</p>
+		<ul>
+			<li><a href="https://extensiblewebmanifesto.org">Be able to fail, adapt and remix ideas along the way</a></li>
+			<li><a href="https://medium.com/@briankardell/web-standards-we-want-part-i-chapters-ca71985bf914">Improve the economics</a> of this feedback loop and participation for developers so that there is more immediate value in their participation</li>
+			<li><a href="https://bkardell.com/blog/Crisis.html">Figure out how to incorporate all of this into the standards process in a really healthy way.</a></li>
+		</ul>
+
+		<p>I feel like we’re making progress on all of these fronts, but I think we still have a very long way to go.  Things like Custom Functions, for example, might go a long way toward answering future questions of similar ilk.  It might be very plausible to get value quickly and have it compete and fail and adapt and grow and, maybe settle in in some ground we haven't quite defined yet that is "not part of CSS proper" but "widely used in publishing".  I don't know.
+		</p>
+		<p>
+		I am very happy to say (and will probably write about) the fact that Houdini had some really good discussion in these meetings and, actually, I'm very pleasantly suprised by who I heard arguing what. 
+		</p>
+
+		<p>So... that's where we are, how we got there and some of the problems... How can we manage all of this better? Is there more we could do?</p>
+	</section>
+]]></content:encoded>
+        </item>
         <item>
             <title><![CDATA[Harold Crick and the Web Platform]]></title>
             <link>https://bkardell.com/blog/Math.html</link>
