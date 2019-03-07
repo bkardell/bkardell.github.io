@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://bkardell.com/</id>
     <title>bkardell.com rss feed</title>
-    <updated>2019-03-01T21:45:59Z</updated>
+    <updated>2019-03-07T18:00:37Z</updated>
     <generator>awesome mix</generator>
     <author>
         <name>Brian Kardell</name>
@@ -14,6 +14,291 @@
     <subtitle>Just the bkardell.com rss feed</subtitle>
     <logo>http://bkardell.com/profile.jpg</logo>
     <rights>All rights reserved 2018, Brian Kardell</rights>
+    <entry>
+        <title type="html"><![CDATA[Interesting Custom Element Data Begins]]></title>
+        <id>https://bkardell.com/blog/Fun-With-Custom-Element-Data.html</id>
+        <link href="https://bkardell.com/blog/Fun-With-Custom-Element-Data.html">
+        </link>
+        <updated>2019-03-07T00:00:00Z</updated>
+        <summary type="html"><![CDATA[ 
+        A while back I wrote a piece asking how we begin to think about using data to move forward with standardization, and called on way to help get data. One thing I did was requested a new query from the HTTPArchive including data on “dasherized elements”. Keep in mind that the
+  while the top 1.2 million sites or so in this dataset a lot of data, it is still a small sampling and has its own biases. It reports mostly on a particular ‘kind’ of site which is not representative of the giant bottom of the iceberg that lives beneath
+  the surface, inside of corporate intranets, behind logins and paywalls and so on. Ultimately, we need more - but you have to start somewhere.
+    ]]></summary>
+        <content type="html"><![CDATA[.captioned-image {
+    background-color: #eaeaea;
+    display: block;
+    overflow: hidden;
+    padding: 1rem;
+    text-align: center;
+    font-style: italic;
+}
+
+.captioned-image.p-attached {
+    width: 40%;
+    display: inline-block;
+    margin: 0 1rem 2rem 1rem;
+}
+
+section > .captioned-image.p-attached {
+    margin-top: 1.5rem; /* correct for heading size*/
+}
+
+ pre { overflow-x: auto }
+
+.captioned-image.p-attached.p-attached-left {
+    float: left;
+}
+
+.captioned-image.p-attached.p-attached-right {
+    float: right;
+}
+
+.captioned-image.p-attached + * + * {
+    clear: both;
+    margin-top: 2rem;
+}
+
+
+.captioned-image img, .captioned-image video {
+    display: block;
+    max-width: 100%;
+    margin: 0 auto 1em auto;
+}
+.source {
+    font-style: italic;
+}
+body {
+    display: flex;
+    font: 1em "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-weight: 300;
+    line-height: 1.625;
+}
+h1 { margin: 0.5rem; }
+code-format {
+    border-left: 0.5rem solid rgba(123,115,209,0.35);
+    display: block;
+    padding: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+contextual-heading {
+    display: block;
+    margin-top: 2rem;
+}
+
+[aria-level="1"] {
+    color: #43686b;
+    font-size: 1.45rem;
+}
+[aria-level="2"] {
+    color: #856363;
+    font-size: 1.35rem;
+}
+[aria-level="3"] {
+    color: #856363;
+    font-size: 1.25rem;
+}
+[aria-level="4"] {
+    color: #856363;
+    font-size: 1.2rem;
+}
+[aria-level="5"], [aria-level="6"] {
+    color: #667496;
+    font-size: 1.1rem;
+    font-weight: bolder;
+}
+.posted-on {
+    font-style: italic;
+    font-size: 0.8rem;
+    text-align: right;
+    margin-bottom: 1rem;
+}
+
+ul, li {
+    margin: 0.5rem;
+    text-align: left;
+}
+header {
+    padding-top: 1rem;
+    padding-right: 2rem;
+    background-color: #fbf5e9;
+}
+.tagline {
+    font-style: italic;
+    text-align: center;
+}
+
+[tag-esc] {
+    color: maroon;
+    font-family: Courier, "Lucida Console", monospace;
+}
+
+[tag-esc]::before {
+    content: '<';
+}
+
+[tag-esc]::after {
+    content: '>';
+}
+
+main {
+    min-width: 50%;
+    width: 80%;
+    padding: 1rem;
+}
+header .title {
+    background-color: rgba(123,115,209,0.35);
+    padding: 0.3rem;
+    padding-left: 0.25rem;
+    font-weight: bolder;
+    font-size: 0.9rem;
+    border-left: 1rem solid #999298;
+}
+
+header .profile {
+    width: 50%;
+    margin: 1rem 25%;
+}
+
+header .title + nav {
+    font-size: 0.9rem;
+}
+
+header .blurb {
+    font-size: 0.75rem;
+    text-align: center;
+}
+header .name {
+    text-align: center;
+    font-size: xx-large;
+}
+.segue {
+    font-style: italic;
+}
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  border: 0;
+}
+[for="aboutMeToggle"] {
+    display: none;
+}
+/* this needs rethinking, it wants a selector like 'not flow content' */
+article>*:not(contextual-heading,a), section>*:not(contextual-heading,a) {
+    margin-left: 0.45rem;
+}
+
+blockquote {
+  font-family: serif;
+  background: #f9f9f9;
+  border-left: 10px solid #ccc;
+  margin: 1.5em 10px;
+  padding: 0.5em 10px;
+}
+blockquote:before {
+  color: #ccc;
+  content: open-quote;
+  font-size: 2em;
+  line-height: 0.1em;
+  margin-right: 0.25em;
+  vertical-align: -0.4em;
+}
+
+blockquote:after {
+  color: #ccc;
+  content: close-quote;
+  font-size: 2em;
+  line-height: 0.1em;
+  margin-left: 0.25em;
+  vertical-align: -0.4em;
+}
+
+
+@media (max-width: 800px){
+    body {
+        flex-direction: column;
+    }
+    header {
+        border-bottom: 1px solid #afafff;
+    }
+
+    .captioned-image.p-attached {
+        width: 100%;
+        margin: 1rem 0;
+    }
+
+    .captioned-image.p-attached.p-attached-left,
+    .captioned-image.p-attached.p-attached-right {
+        float: none;
+    }
+
+    [for="aboutMeToggle"] {
+        background-color: #675e5e;
+        color: white;
+        padding: 0.25rem;
+        padding-left: 0.5rem;
+        display: block;
+        border-left: 1rem solid black;
+    }
+    #aboutMeToggle:focus + [for="aboutMeToggle"]{
+        outline: 4px solid #c6ddf2;
+    }
+
+    #aboutMeToggle:checked ~ header {
+        display: none;
+    }
+
+    header li { display: inline; margin-left: -0.5em; }
+    header .blurb li::after { content: '; '; }
+    header  nav li {
+        display: inline-block;
+        margin-left: 0.35rem;
+        margin-right: 0.35rem;
+    }
+    header .title {
+        width: 100%;
+    }
+    main li .source { display: block; }
+
+}
+    <contextual-heading role="heading" aria-level="1">Interesting Custom Element Data Begins</contextual-heading>
+    <p class="segue"> 
+        A while back I <a href="https://bkardell.com/blog/Crisis.html">wrote a piece asking</a> how we begin to think about using data to move forward with standardization, and called on way to help get data. One thing I did was requested a new query from the HTTPArchive including data on “dasherized elements”. Keep in mind that the
+  while the top 1.2 million sites or so in this dataset a lot of data, it is still a small sampling and has its own biases. It reports mostly on a particular ‘kind’ of site which is not representative of the giant bottom of the iceberg that lives beneath
+  the surface, inside of corporate intranets, behind logins and paywalls and so on. Ultimately, we need more - but you have to start somewhere.
+    </p>
+    <p>Yesterday, Simon Pieters answered with <a href="https://twitter.com/zcorpan/status/1103444943853498368">this tweet</a> linking to an HTTPArchive post and yielding <a href="https://gist.github.com/zcorpan/56d1040e1afaa883b610c342c2e7a437">this dataset</a>  which is amazing.</p>
+    <p>It’s still a little hard to track because we can’t tell whether that is one page that includes an element a bunch of times, or many pages that include them, but this is an awesome start!</p>
+    <p>It’s a little hard to view that dataset and, while the attributes are awesome in also helping us know more about what that element is, but it also means some noise and that the counts are slightly confused, so I took that, ran it through some processing
+      and created a few other views (linked where appropriate below)…</p>
+    <p>Here’s some preliminary, interesting observations:</p>
+    <p>Even from this small sample, the HTTPArchive query that reports on use of HTML elements searches for only 140 known specific elements that are in a standard, but this report shows over 24k <em>different</em> "dasherized tags that appear in the top
+      1.2 million pages. Wow! What this tells me is that there are a <em>lot</em> of dasherized tags in use.</p>
+    <p>It important to note that that doesn’t mean these are “custom elements” proper, but it also doesn’t really matter: What we care about really, is what you were trying to say there, semantically.</p>
+    <p>Of these, there are 3,227 different unique prefixes. These may or may not indicate common authors, but they might at least be a helpful way to look for popular ‘sets’ of elements. For example, it’s unsuprising to see the <code>amp-</code> prefix in there
+      given all of the boosts that it gets, and it’s nice to see them all linked in and counted there. I’ve organized <a href="https://gist.github.com/bkardell/efdebc65fc096e25916a8874ee0a4c33">a json output that looks like this</a></p>  
+    <p>To break them down into some further semi-arbitrary groups for summary:</p>
+    <ul>
+      <li>~7.8k of these occur between 1 and 100 times.</li>
+      <li>31 of these occur between 101-200 times</li>
+      <li>14 occur between 200-500 times</li>
+      <li>4 occur between 500-1000 times</li>
+      <li>4 occur &gt; 500 times</li>
+    </ul> 
+    <p>One personal note: I’m kind of sad to see that the most popular one is <code>amp-auto-ads</code> occuring a whopping 3718 times and it’s not remotely the only thing that would appear to be about ads. In fact, <code>amp-ad</code> also occurs 395 times and there are many
+      other non-amp elements that appear to be ad related. But... I guess the web has a lot of ads. Who knew.</p>
+    <p>More importantly, it’s interesting to look at this file from the bottom up (or the grouped one) though and think about whether we can identify the possible sources of these, or ‘tag’ them according to common purposes somehow. I’d like to think about how we could get this into a format thatIf
+      you feel like you’re potentially interested in digging in and helping think about this, identifying where some of those come from, what their purpose is, etc, getting that data into a a place where we can do that kind of stuff better – whatever, feel
+      free to leave comments on any of these gists or cc me (<a href="https://twitter.com/briankardell">@briankardell</a>) on twitter.</p>
+    
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[Intuition Bikeshed and Standards Challenges]]></title>
         <id>https://bkardell.com/blog/StringyCSS.html</id>

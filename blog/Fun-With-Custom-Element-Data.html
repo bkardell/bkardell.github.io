@@ -1,16 +1,14 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
+<html lang="en" resource-type="blogpost"><head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:site" content="@briankardell">
     <meta name="twitter:creator" content="@briankardell">
-    <meta name="twitter:title" content="">
-    <meta name="twitter:description" content="">
-    <meta name="twitter:image" content="">
+    <meta name="twitter:title" content="Interesting Custom Element Data Begins">
+    <meta name="twitter:description" content="A while back I wrote a piece asking how we begin to think about using data to move forward with standardization, and called on way to help get data. One thing I did was requested a">
+    
     <link rel="alternate" type="application/rss+xml" href="blog/feed.rss" title="bkardell.com/blog rss feed">
-    <title></title>
+    <title>Interesting Custom Element Data Begins</title>
     <style>.captioned-image {
     background-color: #eaeaea;
     display: block;
@@ -289,7 +287,7 @@ blockquote:after {
     </script>
   </head>
   <body>
-    <input id="aboutMeToggle" class="sr-only" type="checkbox" checked>
+    <input id="aboutMeToggle" class="sr-only" type="checkbox" checked="">
 <label for="aboutMeToggle">Toggle author information</label>
 <header>
     <div class="name">
@@ -325,50 +323,40 @@ America (art for sale)</a></li>
         </ul>
     </nav>
 </header>
-    <main>
-        <contextual-heading aria-role="heading" aria-level="1">Recent Posts</contextual-heading>
+    <main><div class="posted-on">Posted on 03/07/2019</div><article posted-on="03/07/2019" class="sectioning">
+    <contextual-heading role="heading" aria-level="1">Interesting Custom Element Data Begins</contextual-heading>
+    <p class="segue"> 
+        A while back I <a href="https://bkardell.com/blog/Crisis.html">wrote a piece asking</a> how we begin to think about using data to move forward with standardization, and called on way to help get data. One thing I did was requested a new query from the HTTPArchive including data on “dasherized elements”. Keep in mind that the
+  while the top 1.2 million sites or so in this dataset a lot of data, it is still a small sampling and has its own biases. It reports mostly on a particular ‘kind’ of site which is not representative of the giant bottom of the iceberg that lives beneath
+  the surface, inside of corporate intranets, behind logins and paywalls and so on. Ultimately, we need more - but you have to start somewhere.
+    </p>
+    <p>Yesterday, Simon Pieters answered with <a href="https://twitter.com/zcorpan/status/1103444943853498368">this tweet</a> linking to an HTTPArchive post and yielding <a href="https://gist.github.com/zcorpan/56d1040e1afaa883b610c342c2e7a437">this dataset</a>  which is amazing.</p>
+    <p>It’s still a little hard to track because we can’t tell whether that is one page that includes an element a bunch of times, or many pages that include them, but this is an awesome start!</p>
+    <p>It’s a little hard to view that dataset and, while the attributes are awesome in also helping us know more about what that element is, but it also means some noise and that the counts are slightly confused, so I took that, ran it through some processing
+      and created a few other views (linked where appropriate below)…</p>
+    <p>Here’s some preliminary, interesting observations:</p>
+    <p>Even from this small sample, the HTTPArchive query that reports on use of HTML elements searches for only 140 known specific elements that are in a standard, but this report shows over 24k <em>different</em> "dasherized tags that appear in the top
+      1.2 million pages. Wow! What this tells me is that there are a <em>lot</em> of dasherized tags in use.</p>
+    <p>It important to note that that doesn’t mean these are “custom elements” proper, but it also doesn’t really matter: What we care about really, is what you were trying to say there, semantically.</p>
+    <p>Of these, there are 3,227 different unique prefixes. These may or may not indicate common authors, but they might at least be a helpful way to look for popular ‘sets’ of elements. For example, it’s unsuprising to see the <code>amp-</code> prefix in there
+      given all of the boosts that it gets, and it’s nice to see them all linked in and counted there. I’ve organized <a href="https://gist.github.com/bkardell/efdebc65fc096e25916a8874ee0a4c33">a json output that looks like this</a></p>  
+    <p>To break them down into some further semi-arbitrary groups for summary:</p>
     <ul>
-<li><a href="https://bkardell.com/blog/Fun-With-Custom-Element-Data.html">Interesting Custom Element Data Begins</a> (Thu Mar 07 2019)</li>
-<li><a href="https://bkardell.com/blog/StringyCSS.html">Intuition Bikeshed and Standards Challenges</a> (Fri Mar 01 2019)</li>
-<li><a href="https://bkardell.com/blog/Math.html">Harold Crick and the Web Platform</a> (Wed Jan 09 2019)</li>
-<li><a href="https://bkardell.com/blog/Glitch.html">I Heart Glitch</a> (Wed Jan 02 2019)</li>
-<li><a href="https://bkardell.com/blog/Alice-2019.html">Alice 2019</a> (Sun Dec 23 2018)</li>
-<li><a href="https://bkardell.com/blog/Crisis.html">Standards Crisis on Earth-1</a> (Mon Dec 03 2018)</li>
-<li><a href="https://bkardell.com/blog/Onward.html">Onward</a> (Mon Nov 05 2018)</li>
-<li><a href="https://bkardell.com/blog/W3CTAGElectionChange.html">W3C Elections Just Got A Whole Lot Harder</a> (Mon Dec 11 2017)</li>
-<li><a href="https://bkardell.com/blog/W3CPrimer.html">A Brief W3C Primer for Busy People</a> (Tue Dec 05 2017)</li>
-<li><a href="https://bkardell.com/blog/TheWalrus.html">i is="the walrus"</a> (Thu Nov 23 2017)</li>
-<li><a href="https://bkardell.com/blog/Voice-Recognition-Thoughts.html">Thoughts on Voice Recognition: Web Speech APIs Part IV</a> (Sun Sep 17 2017)</li>
-<li><a href="https://bkardell.com/blog/Listen-Up.html">Listen up: Web Speech APIs Part III</a> (Fri Aug 25 2017)</li>
-<li><a href="https://bkardell.com/blog/Basic-Voice-Speaker.html">You Don't Say: Web Speech APIs Part II</a> (Thu Aug 24 2017)</li>
-<li><a href="https://bkardell.com/blog/Greetings-Professor-Falken.html">Greetings, Professor Falken: Web Speech APIs Part I</a> (Wed Aug 23 2017)</li>
-<li><a href="https://bkardell.com/blog/The-History-Of-Speech.html">The History and State of Speech</a> (Fri Aug 18 2017)</li>
-<li><a href="https://bkardell.com/blog/W3C-Congress.html">Contact Your W3C Congress Person</a> (Mon May 15 2017)</li>
-<li><a href="https://bkardell.com/blog/Reflecting-On-Roles.html">Reflecting on Roles</a> (Tue Apr 25 2017)</li>
-<li><a href="https://bkardell.com/blog/Divs.html">Divs</a> (Tue Mar 21 2017)</li>
-<li><a href="https://bkardell.com/blog/Whats-The-Deal-With-That.html">The Document Outline...What's the Deal with that?</a> (Fri Feb 24 2017)</li>
-<li><a href="https://bkardell.com/blog/On-Headings.html">Headings and the Seinfeld Pitch</a> (Fri Feb 17 2017)</li>
-<li><a href="https://bkardell.com/blog/Incubate-All-The-Things.html">Incubate All the Things</a> (Mon Dec 26 2016)</li>
-<li><a href="https://bkardell.com/blog/Perf.html">Performance: Shame, Hope, Nuance and Interesting Problems</a> (Tue Nov 22 2016)</li>
-<li><a href="https://bkardell.com/blog/The-Glory-Days-Of-The-Web.html">The Glory Days of the Web</a> (Wed Oct 05 2016)</li>
-<li><a href="https://bkardell.com/blog/Potentially-Scattered-Thoughts-On-Web-Components.html">Potentially Scattered Thoughts on Web Components and Frameworks</a> (Mon Sep 26 2016)</li>
-<li><a href="https://bkardell.com/blog/The-Future-Web-Wants-You.html">The Future Web Wants You</a> (Wed Aug 24 2016)</li>
-<li><a href="https://bkardell.com/blog/X-Web-Days-of-Future-Past.html">X-Web: Days of Future Past</a> (Mon Jun 20 2016)</li>
-<li><a href="https://bkardell.com/blog/Prognostication-And-The-Failure-Of-The-Web.html">Prognostication and the Failure of the Web</a> (Fri May 06 2016)</li>
-<li><a href="https://bkardell.com/blog/Brief-ish-History-of-The-Web-Part-4.html">A Brief(ish) History of the Web Universe - Part IV: New Hope(s)</a> (Sun Apr 10 2016)</li>
-<li><a href="https://bkardell.com/blog/TokenLists-Missing-DNA.html">TokenLists: Missing Web DNA</a> (Tue Mar 29 2016)</li>
-<li><a href="https://bkardell.com/blog/Brief-ish-History-of-The-Web-Part-3.html">A Brief(ish) History of the Web Universe - Part III: The Early Web</a> (Fri Feb 05 2016)</li>
-<li><a href="https://bkardell.com/blog/Brief-ish-History-of-The-Web-Part-2.html">A Brief(ish) History of the Web Universe - Part II: Time</a> (Mon Dec 07 2015)</li>
-<li><a href="https://bkardell.com/blog/Brief-ish-History-of-The-Web-Part-1.html">A Brief(ish) History of the Web Universe - Part I: The Pre-Web</a> (Sun Nov 22 2015)</li>
-<li><a href="https://bkardell.com/blog/Reflections-On-Engineering.html">Reflections on Engineering</a> (Sat Jun 20 2015)</li>
-<li><a href="https://bkardell.com/blog/Tao-Of-The-Extensible-Web.html">What Would Bruce Lee Do? The Tao of the Extensible Web.</a> (Tue Oct 07 2014)</li>
-<li><a href="https://bkardell.com/blog/A-Web-For-The-Next-Century.html">A Web for the Next Century</a> (Tue Oct 08 2013)</li>
-<li><a href="https://bkardell.com/blog/Dropping-The-F-Bomb-On-Standards.html">Dropping the F-Bomb on Web Standards</a> (Fri May 17 2013)</li>
-<li><a href="https://bkardell.com/blog/Off-With-Their-Heads.html">Off With Their Heads: Disband the W3C?</a> (Tue Apr 23 2013)</li>
-<li><a href="https://bkardell.com/blog/Really-Classy-CSS.html">(Really) classy CSS</a> (Fri May 11 2012)</li>
-</ul></main>
+      <li>~7.8k of these occur between 1 and 100 times.</li>
+      <li>31 of these occur between 101-200 times</li>
+      <li>14 occur between 200-500 times</li>
+      <li>4 occur between 500-1000 times</li>
+      <li>4 occur &gt; 500 times</li>
+    </ul> 
+    <p>One personal note: I’m kind of sad to see that the most popular one is <code>amp-auto-ads</code> occuring a whopping 3718 times and it’s not remotely the only thing that would appear to be about ads. In fact, <code>amp-ad</code> also occurs 395 times and there are many
+      other non-amp elements that appear to be ad related. But... I guess the web has a lot of ads. Who knew.</p>
+    <p>More importantly, it’s interesting to look at this file from the bottom up (or the grouped one) though and think about whether we can identify the possible sources of these, or ‘tag’ them according to common purposes somehow. I’d like to think about how we could get this into a format thatIf
+      you feel like you’re potentially interested in digging in and helping think about this, identifying where some of those come from, what their purpose is, etc, getting that data into a a place where we can do that kind of stuff better – whatever, feel
+      free to leave comments on any of these gists or cc me (<a href="https://twitter.com/briankardell">@briankardell</a>) on twitter.</p>
+    
+</article></main>
 
-  </body>
+  
     <script>
     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
     (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -399,4 +387,5 @@ America (art for sale)</a></li>
 
     })
   </script>
-</html>
+
+</body></html>
