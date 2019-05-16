@@ -4,7 +4,7 @@
         <title>bkardell.com rss feed</title>
         <link>http://bkardell.com/</link>
         <description>Just the bkardell.com rss feed</description>
-        <lastBuildDate>Thu, 16 May 2019 15:27:28 GMT</lastBuildDate>
+        <lastBuildDate>Thu, 16 May 2019 16:49:11 GMT</lastBuildDate>
         <docs>http://blogs.law.harvard.edu/tech/rss</docs>
         <generator>awesome mix</generator>
         <image>
@@ -9430,7 +9430,7 @@ blockquote:after {
             <pubDate>Wed, 05 Oct 2016 04:00:00 GMT</pubDate>
             <description><![CDATA[For the past couple of years, there have been a number of pieces lamenting the current state of Web development: It's gotten pretty complicated. Very recently a satirical piece on this subject really struck a chord and got a lot of attention. Dion Almaer wrote a piece in reply in which he introduced what I thought was a really good analogy - the rose colored glasses that we often see the past through...]]></description>
             <content:encoded><![CDATA[
-	<contextual-heading role="heading" aria-level="1">The Glory Days of the Web</contextual-heading>    
+	<contextual-heading role="heading" aria-level="1">The Glory Days of the Web</contextual-heading>     
 	<p class="segue">For the past couple of years, there have been a number of pieces lamenting the current state of Web development: It's gotten pretty complicated. Very recently a <a href="https://hackernoon.com/how-it-feels-to-learn-javascript-in-2016-d3a717dd577f#.m50p34qi8" rel="nofollow" target="_blank">satirical piece on this subject</a> really struck a chord and got a lot of attention. Dion Almaer <a href="https://medium.com/ben-and-dion/i-want-to-go-back-to-the-1950s-of-web-development-fa69d7fe357a#.bqj5a5ug1" target="_blank">wrote a piece in reply </a>in which he introduced what I thought was a really good analogy - the rose colored glasses that we often see the past through...</p>
 
 	<blockquote>...it reminds me of folk who talk about the golden era of the 1950s in the US. It isn't hard to look at the current political climate and long for another time. Remember the white picket fences? Life was so good! Those glasses sure are rosy though, and when you take them off you see a society that had huge problems...</blockquote>
