@@ -1,0 +1,424 @@
+<html lang="en" resource-type="blogpost"><head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@briankardell">
+    <meta name="twitter:creator" content="@briankardell">
+    <meta name="twitter:title" content="A Brief(ish) History of the Web Universe - Part V: Growing Pains">
+    <meta name="twitter:description" content="">
+    <meta name="twitter:image" content="https://bkardell.com/media/early-households-with-internet-chart.gif">
+    <link rel="alternate" type="application/rss+xml" href="blog/feed.rss" title="bkardell.com/blog rss feed">
+    <title>A Brief(ish) History of the Web Universe - Part V: Growing Pains</title>
+    <style>.captioned-image {
+    background-color: #eaeaea;
+    display: block;
+    overflow: hidden;
+    padding: 1rem;
+    text-align: center;
+    font-style: italic;
+}
+
+.captioned-image.p-attached {
+    width: 40%;
+    display: inline-block;
+    margin: 0 1rem 2rem 1rem;
+}
+
+section > .captioned-image.p-attached {
+    margin-top: 1.5rem; /* correct for heading size*/
+}
+
+ pre { overflow-x: auto }
+
+.captioned-image.p-attached.p-attached-left {
+    float: left;
+}
+
+.captioned-image.p-attached.p-attached-right {
+    float: right;
+}
+
+.captioned-image.p-attached + * + * {
+    clear: both;
+    margin-top: 2rem;
+}
+
+
+.captioned-image img, .captioned-image video {
+    display: block;
+    max-width: 100%;
+    margin: 0 auto 1em auto;
+}
+.source {
+    font-style: italic;
+}
+body {
+    display: flex;
+    font: 1em "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-weight: 400;
+    line-height: 1.625;
+}
+h1 { margin: 0.5rem; }
+code-format {
+    border-left: 0.5rem solid rgba(123,115,209,0.35);
+    display: block;
+    padding: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+contextual-heading {
+    display: block;
+    margin-top: 2rem;
+}
+
+[aria-level="1"] {
+    color: #43686b;
+    font-size: 1.45rem;
+}
+[aria-level="2"] {
+    color: #856363;
+    font-size: 1.35rem;
+}
+[aria-level="3"] {
+    color: #856363;
+    font-size: 1.25rem;
+}
+[aria-level="4"] {
+    color: #856363;
+    font-size: 1.2rem;
+}
+[aria-level="5"], [aria-level="6"] {
+    color: #667496;
+    font-size: 1.1rem;
+    font-weight: bolder;
+}
+.posted-on {
+    font-style: italic;
+    font-size: 0.8rem;
+    text-align: right;
+    margin-bottom: 1rem;
+}
+
+ul, li {
+    margin: 0.5rem;
+    text-align: left;
+}
+header {
+    padding-top: 1rem;
+    padding-right: 2rem;
+    background-color: #fbf5e9;
+}
+.tagline {
+    font-style: italic;
+    text-align: center;
+}
+
+[tag-esc] {
+    color: maroon;
+    font-family: Courier, "Lucida Console", monospace;
+}
+
+[tag-esc]::before {
+    content: '<';
+}
+
+[tag-esc]::after {
+    content: '>';
+}
+
+main {
+    min-width: 50%;
+    width: 80%;
+    padding: 1rem;
+}
+header .title {
+    background-color: rgba(123,115,209,0.35);
+    padding: 0.3rem;
+    padding-left: 0.25rem;
+    font-weight: bolder;
+    font-size: 0.9rem;
+    border-left: 1rem solid #999298;
+}
+
+header .profile {
+    width: 50%;
+    margin: 1rem 25%;
+}
+
+header .title + nav {
+    font-size: 0.9rem;
+}
+
+header .blurb {
+    font-size: 0.75rem;
+    text-align: center;
+}
+header .name {
+    text-align: center;
+    font-size: xx-large;
+}
+.segue {
+    font-style: italic;
+}
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  border: 0;
+}
+[for="aboutMeToggle"] {
+    display: none;
+}
+/* this needs rethinking, it wants a selector like 'not flow content' */
+article>*:not(contextual-heading,a), section>*:not(contextual-heading,a) {
+    margin-left: 0.45rem;
+}
+
+blockquote {
+  font-family: serif;
+  background: #f9f9f9;
+  border-left: 10px solid #ccc;
+  margin: 1.5em 10px;
+  padding: 0.5em 10px;
+}
+blockquote:before {
+  color: #ccc;
+  content: open-quote;
+  font-size: 2em;
+  line-height: 0.1em;
+  margin-right: 0.25em;
+  vertical-align: -0.4em;
+}
+
+blockquote:after {
+  color: #ccc;
+  content: close-quote;
+  font-size: 2em;
+  line-height: 0.1em;
+  margin-left: 0.25em;
+  vertical-align: -0.4em;
+}
+
+
+@media (max-width: 800px){
+    body {
+        flex-direction: column;
+    }
+    header {
+        border-bottom: 1px solid #afafff;
+    }
+
+    .captioned-image.p-attached {
+        width: 100%;
+        margin: 1rem 0;
+    }
+
+    .captioned-image.p-attached.p-attached-left,
+    .captioned-image.p-attached.p-attached-right {
+        float: none;
+    }
+
+    [for="aboutMeToggle"] {
+        background-color: #675e5e;
+        color: white;
+        padding: 0.25rem;
+        padding-left: 0.5rem;
+        display: block;
+        border-left: 1rem solid black;
+    }
+    #aboutMeToggle:focus + [for="aboutMeToggle"]{
+        outline: 4px solid #c6ddf2;
+    }
+
+    #aboutMeToggle:checked ~ header {
+        display: none;
+    }
+
+    header li { display: inline; margin-left: -0.5em; }
+    header .blurb li::after { content: '; '; }
+    header  nav li {
+        display: inline-block;
+        margin-left: 0.35rem;
+        margin-right: 0.35rem;
+    }
+    header .title {
+        width: 100%;
+    }
+    main li .source { display: block; }
+
+}</style>
+    <style>
+      .captioned-image { font-size: 0.9rem; }
+      .thanksTo { font-style: italic; font-size: 0.8rem; }
+    </style>
+    <script>
+      var activateOptional = function (media) {
+        var source = media.getAttribute('data-src'),
+            temp,
+            container = media.parentElement;
+
+          if (media.nextSibling && media.nextSibling.matches) {
+            if (media.nextSibling.matches('.clickToSee')) {
+              media.parentElement.removeChild(media.nextSibling);
+            }
+          }
+
+          if (media.tagName === 'VIDEO') {
+            temp = document.createElement('video')
+            temp.setAttribute('autoplay','')
+            temp.setAttribute('controls','')
+            temp.setAttribute('loop','')
+            temp.innerHTML = '<source src="' + source + '.webm" type="video/webm">'
+                    + '<source src="' + source + '.mp4" type="video/mp4">';
+            media.parentElement.replaceChild(temp, media);
+            setTimeout(function () {
+              temp.play()
+            }, 0);
+          } else {
+            media.src = media.getAttribute('data-src');
+          }
+
+          container.classList.add('active');
+      }
+    </script>
+  </head>
+  <body>
+    <input id="aboutMeToggle" class="sr-only" type="checkbox" checked="">
+<label for="aboutMeToggle">Toggle author information</label>
+<header>
+    <div class="name">
+        Brian Kardell
+    </div>
+    <img class="profile" src="/profile.jpg" alt="">
+    <div class="tagline"><a href="/">Betterifying the Web</a></div>
+    <div class="blurb">
+        <ul>
+            <li>Developer Advocate at Igalia</li>
+            <li>Original Co-author/Co-signer of The Extensible Web Manifesto</li>
+            <li>Co-Founder/Chair, W3C Extensible Web CG</li>
+            <li>Member, W3C (The JS Foundation)</li>
+            <li>Co-author of HitchJS</li>
+            <li>Blogger</li>
+            <li>Art, Science &amp; History Lover</li>
+            <li>Standards Geek</li>
+        </ul>
+    </div>
+    <div class="title">Follow Me On...</div>
+    <nav>
+        <ul>
+            <li><a rel="me" href="https://briankardell.wordpress.com">Wordpress</a></li>
+            <li><a rel="me" href="https://medium.com/@briankardell">Medium</a></li>
+            <li><a rel="me" href="https://twitter.com/briankardell">Twitter</a></li>
+            <li><a rel="me" href="https://github.com/bkardell/">Github</a></li>
+            <li><a rel="me" href="https://codepen.io/bkardell">Codepen</a></li>
+            <li><a rel="me" href="https://www.linkedin.com/in/brian-kardell-08a4264">LinkedIn</a></li>
+            <li><a rel="me" href="https://www.instagram.com/kardellbrian">Instagram (for
+art)</a></li>
+            <li><a rel="me" href="http://fineartamerica.com/profiles/brian-kardell?">Fine Art
+America (art for sale)</a></li>
+        </ul>
+    </nav>
+</header>
+    <main><div class="posted-on">Posted on null</div><article class="sectioning">
+	<contextual-heading role="heading" aria-level="1">A Brief(ish) History of the Web Universe - Part V: Growing Pains</contextual-heading>
+	<p class="segue"></p>
+	<p>
+		Literally weeks after where we ended in <a href="/blog/Brief-ish-History-of-The-Web-Part-4.html">Part IV</a> with Netscape seemingly on top of the world, Microsoft released it's Windows 95 operating system.  To say that the release of Windows 95 was hyped would have been an understatement of epic proportions.  Since DOS, Microsoft has negotiated OS contracts with manufacturers and sales - for quite a lot of people, Microsoft <em>was</em> the computer.  News was everywhere. Bill Gates had written a book and it gave him lots of opportunities to talk about his vision and promote.  Microsoft released a commercial featuring the Rolling Stone's "Start Me Up". A 30 minute promotional video staring insanely popular members of the cast of Friends was released.  The Empire State Building was lit to match the colors of the Windows logo and a 328 foot banner was hung from the top of the CN Tower in Toronto.  And when potential users finally saw it, for a lot of users around the world, Windows 95 felt like the first reason to care about computers.  Microsoft did an excellent job of including wow'ing sorts of things that most everyday people had never really thought of using a computer for.  It included music videos, film tailers and a game.   Windows 95 was a night and day difference from what a lot of people had seen before:  And users who puchased the "Plus" add-on pack had the ability to install Internet Explorer 1.0.</p>
+
+		<p>Internet Explorer 1.0 was, frankly, underwhelming even by the standards of the day.  It wasn't really even a Microsoft product.  The original NCSA Mosaic that Mark Andreesen had worked on at had happened at University of Illinois at Urbana-Champaign which had an offshoot company established to monetize such work by licensing it.  That's just what they had done with Mosaic and the product was called Spyglass, Inc.  The various browsers for different platforms that were built originally were a little fractured and Spyglass unified their codebase and licenced it to other companies, including Microsoft.  It shared a weird lineage with Netscape, but it was way behind by the time Microsoft licenced it.  While Netscape's Navigator 2 was already shipping with support for frames, images, image maps and JavaScript, the new Internet Explorer was playing catch up.</p>
+
+		<section class="sectioning">
+			<contextual-heading role="heading" aria-level="2">What even is it?</contextual-heading>
+			<p>Netscapes IPO was like discovering a vast new, uninhabited continent with plentiful and unusual resources and stunning beauty.  It wasn't just ripe for intellecutual study, everyone could suddenly see economic potential.  There was a rush to capture ground before it was too late.  Netscape released Navigator 2.0 and the plugins started flowing.  No longer was the Web "just text" or even just text and images - people began to dream and envision new ideas about both the clients and the servers.  Web mail "services" like HoTMaiL (originally spelled like that to stress the letters HTML) became a thing.  Email had been around forever, plenty of people used it.  Even webmail wasn't "new" - in fact - in 1993 CERN had webmail. The difference with services was that they weren't bound to anything else, they were super easy and you could use them from anywhere.  You could change your ISP or access your personal mail from work, or while on vacation at your parents house without setting up a whole new client or account.</p>
+
+
+			<!--
+				https://www.w3.org/MarkUp/html3/
+
+				 In October 1995, at Internet World, Template Graphics Software (TGS) demonstrated a 3D/VRML plug-in for the beta release of Netscape 2.0 by Netscape Communications.[7]
+
+				 (also IE2 demo showing VRML)
+
+				https://www.thefreelibrary.com/NETSCAPE+INTRODUCES+NETSCAPE+ENTERPRISE+SERVER(TM)+2.0-a018056425
+				JavaScript/LiveScript March 5, 1996
+
+				https://en.wikipedia.org/wiki/Active_Server_Pages
+				ASP 1.0 released December 1996 as part of IIS 3.0
+
+				https://en.wikipedia.org/wiki/Java_servlet#History
+				Servlet 	June 1997
+			-->
+			<section class="sectioning">
+				<contextual-heading role="heading" aria-level="3">The Stack</contextual-heading>
+				<p>But this was a tug of war - the early Web rush was full of companies that wanted to own both ends and therefore be able to offer "more" by way of control of the whole stack in much the same way that Microsoft had been able to do by owning the operating system. Netscape, Sun and Microsoft were the main contenders.</p>
+
+				<p>As mentioned in  <a href="/blog/Brief-ish-History-of-The-Web-Part-4.html">Part IV: New Hope(s)</a> Netscape had not only the best browser, but also a server, and they'd pioneered SSL too. Originally called 'Netsite Server' it was available in plain and 'Commerce' flavors</p>
+
+				<p>Sun's idea was that the internet was the real win and that Java would be the key to using that.  The Web was just a neat way to do hypertext.  And, in fact, this wasn't entirely inconguous with Tim's original vision.  Java's "Write Once, Run Anywhere" design meant that it could power servers and write desktop apps as well, and they thought for sure this would be the future.  Sure the "web" was useful, but it was eclipsed by the promise of Java and the internet.  The Hot Java browser was novel and got lots of early attention.  Java applets were neat too but the reality was that both were slow and those early connections and hardware didn't really help sell them.  They looked weird and lacked good common controls and, frequently they were buggy.  But, Sun Microsystems was a server company and, as I said, another thing you could do though was write a server in Java and this could be used to assemble HTML dynamically.  So began work on J2EE, to show off Java and gain more busines.  This was still very centered on the idea of Java, not HTML - its mentality was OO and it's early answer was a technology called Servlets.  Servlets didn't really care what you did, as long as you did it with Java - they simply adapted the request and reponse patterns of HTML to a simple lifecycle.</p>
+
+				<p>Microsoft also entered the server game and brought its money.  That year it worked on capturing the server market with its Internet Information Server which included a new product called "Active Server Pages" (ASP) which provided a really integrated idea that repurposed a whole lot of Microsoft's ideas and technologies.  From older concepts of Mail Merge and its experience with Office integration, it brought instead "templates" which used "scriptlet" tags to indicate that there was some bit of code to be run.  The language would be Microsoft's well known and popular "Visual Basic".  ASP was comparatively simple, and had a much broader potential audience and better evangelization.  ASP was kind of more the inverse of servlets - markup was the thing and, well, there was a little VB programming sprinkled about.</p>
+		</section>
+
+
+			<section class="sectioning">
+				<contextual-heading role="heading" aria-level="3">Servers</contextual-heading>
+
+			</section>
+		</section>
+
+        <!-- TODO: GET INTO images/tables and the boom created by the ability to appreciate -->
+
+		see&nbsp;<a href="/blog/Brief-ish-History-of-The-Web-Part-1.html">Part I: The Pre-Web</a>) and now they are pulling the plug. &nbsp;SmartSketch FutureSplash (again, Part I) won't be released. Its makers Jonathan Gay and Charlie Jackson briefly try porting to the desktop, but there they would have to compete with well-funded and mature products and that isn't practical. &nbsp;Keep them in the back of your mind, we'll come back to them.
+	<p></p>
+
+	<p>For the past few years, Tim Berners-Lee's "Web" concept has experienced increasing growth month over month thanks to a number of large number of contributing factors (see <a href="/blog/Brief-ish-History-of-The-Web-Part-3.html">Part III: The Early Web</a>). Still, its&nbsp;audience is comparatively almost microscopic by 2016 standards and mainly composed of academics and hard-core internet and markup enthusiasts. But, to put this into perspective: Just having a computer at home remains a pretty novel concept, even in America. Studies reveal that where they do exist they are frequently underused. While it's true that from 1984 to 1994 the percentage of homes with a PC tripled, it is still only 1 in 4 &nbsp;US homes that has a computer. Of those, many don't have modems or any kind of internet access. Only about 2% of Americans have access to the internet from home. Of this, only a small fraction are using the Web.</p>
+
+
+	<div class="captioned-image" style="margin-top:0">
+		<img src="/media/early-households-with-internet-chart.gif" alt="">
+	</div>
+
+
+
+	
+
+
+</article></main>
+
+  
+    <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-88027178-1', 'auto');
+    ga('send', 'pageview');
+  </script>
+
+  <script>
+    Array.prototype.slice.call(document.querySelectorAll('.optional [data-src]')).forEach(function (optional) {
+      var prefs = window.localStorage.downloadsPrefs,
+          clickToSee;
+      if (prefs === 'true') {
+        activateOptional(optional);
+      } else {
+        clickToSee = document.createElement('div');
+        clickToSee.classList.add('clickToSee')
+        clickToSee.innerHTML = '<button>Click to see media</button>';
+        clickToSee.style.textAlign = 'center';
+        clickToSee.style.border = 'none';
+        optional.parentElement.insertBefore(clickToSee, optional.nextSibling);
+        clickToSee.firstElementChild.addEventListener('click', function () {
+          activateOptional(optional);
+        })
+      }
+
+    })
+  </script>
+
+</body></html>
