@@ -4,11 +4,11 @@
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:site" content="@briankardell">
     <meta name="twitter:creator" content="@briankardell">
-    <meta name="twitter:title" content="Glass half :empty">
-    <meta name="twitter:description" content="Standards are hard.  Recently, the CSS Working Group has been discussing some related things about selectors dealing with &quot;emptiness&quot;.  I have no concrete opinions but a lot of tho">
+    <meta name="twitter:title" content="Much Ado About Nothing">
+    <meta name="twitter:description" content="Standards move slowly - far slower than the slowest project you've ever worked on.  Even the fastest standardization is  measured in years, not months, before there is wide enough ">
     
-    <link rel="alternate" type="application/rss+xml" href="blog/feed.rss" title="bkardell.com/blog rss feed">
-    <title>Glass half :empty</title>
+    <link rel="alternate" type="application/rss+xml" href="https://bkardell.com/blog/feed.rss" title="bkardell.com/blog rss feed">
+    <title>Much Ado About Nothing</title> 
     <style>.captioned-image {
     background-color: #eaeaea;
     display: block;
@@ -55,7 +55,7 @@ section > .captioned-image.p-attached {
 body {
     display: flex;
     font: 1em "Helvetica Neue", Helvetica, Arial, sans-serif;
-    font-weight: 300;
+    font-weight: 400;
     line-height: 1.625;
 }
 h1 { margin: 0.5rem; }
@@ -297,7 +297,7 @@ blockquote:after {
     <div class="tagline"><a href="/">Betterifying the Web</a></div>
     <div class="blurb">
         <ul>
-            <li>Sr Front-End Engineer at Apollo Group, Inc</li>
+            <li>Developer Advocate at Igalia</li>
             <li>Original Co-author/Co-signer of The Extensible Web Manifesto</li>
             <li>Co-Founder/Chair, W3C Extensible Web CG</li>
             <li>Member, W3C (The JS Foundation)</li>
@@ -324,7 +324,7 @@ America (art for sale)</a></li>
     </nav>
 </header>
     <main><div class="posted-on">Posted on null</div><article class="sectioning">
-    <contextual-heading role="heading" aria-level="1">Glass half :empty</contextual-heading>
+    <contextual-heading role="heading" aria-level="1">Much Ado About Nothing</contextual-heading>
     <script src="../prism.js"></script>
     <link rel="stylesheet" href="../prism.css">
     <style>
@@ -370,60 +370,366 @@ America (art for sale)</a></li>
     }
     </style>
     <p class="segue">
-        Standards are hard.  Recently, the CSS Working Group has been discussing some related things about selectors dealing with "emptiness".  I have no concrete opinions but a lot of thoughts and feedback I think it might be helpful to write down - and I'd like to hear yours after reading this as well...
+        Standards move slowly - far slower than the slowest project you've ever worked on.  Even the fastest standardization is  measured in years, not months, before there is wide enough deployment that most devs can really be bothered to look into it.  When we fail to get it right (as we have occasionally done) we basically get back in the very long queue to hopefully try again.  Worse, we don't get to "take back" the failure if anyone is using it either.  Some recent CSS Working Group discussions have me thinking a lot about one such particular shortcomming in standardization and how we should deal with it now.
     </p>
+
     <p>
-        Here is a story that I have heard many times:  A developer has an actual problem that they are trying to solve.  The typical class, attribute or ID selectors aren't going to make this as elegant or as easy as they like and so they think to themselves "wow, you know, this seems like probably a really common thing. I wonder if there is <em>another</em> kind of selector that I could use here to make this much better?"  Sometimes, they get lucky, but frequently, the answer is "no".  But every once in a while, they find something that <em>sounds</em> very promising, only to find out that it doesn't actually do what they thought it did.  These were not the droids they were looking for.
+        As you may, or may not be aware, CSS includes an <code>:empty</code> pseudo class, it has for some time.  Firefox 3.5, Safari 3.2, Chrome 4 all had support according to caniuse.  IE 6, 7, 8 didn't support it, but other than that, the full caniuse table is basically an entire <em>wall</em> of green.  jQuery also has supported it since the beginning (v1.0).
     </p>
-    <p>
-       That feeling sucks.  When this happens, people sometimes blog. They sometimes complain on social media, or to someone at a meetup or conference.  They sometimes send an email to the www-style mailing list, and they sometimes open an issue on github or propose something new.  New discussions begin.
-    </p>
-    <p>
-        The "trouble" here is two-fold.  First, standards move slowly - far more slowly than the projects that most of us are used to.  The fastest standardization is still measured in years before there is wide enough deployment that most devs can really be bothered to look into it.  When we fail to get it right, we basically get back in the very long queue to hopefully try again.  The second issue is the Web doesn't abide real, breaking changes.  We don't get to remove or repurpose the old thing except in rare/extreme circumstances.
-    </p>
-    <p>
-        So, with this as a backdrop...
-    </p>
-    <p>
-        CSS includes a pseudo class <code>:empty</code>, it has for some time.  Firefox 3.5, Safari 3.2, Chrome 4 all had support according to caniuse.  IE 6, 7, 8 didn't support it, but other than that, the full caniuse table is basically an entire wall of green.  jQuery definitely, also, has supported it forever because it was in the early CSS draft from the late 90's upon which jQuery based its selector support.  Yet, when you look at data in the wild, this selector is effectively unused and lots of people who use CSS all the time have not heard of it.
-    </p>
-    <p>
-        Why is that?  Well, it's hard to say for sure but we do have all of the channels of input listed above which would suggest that the reason is that it's not currently useful and that people would like it to have meant something else instead... Which is, I think, where it gets tricky.
-    </p>
+
 
     <section class="sectioning">
-        <contextual-heading role="heading" aria-level="2">WDYM Empty?</contextual-heading>
+        <contextual-heading role="heading" aria-level="2">Currently Deployed</contextual-heading>
         <p>
-            See, there seem to be no universal answer here.  Instead, there are a whole lot different expectations, wants, and rationales.  However, most of them sound like fairly reasonable interpretations and desires.  In retrospect, it's kind of not that suprising - we have so many words for subtle variations of "there is not something there":  0, null, void, undefined, empty, etc.
+            As currently deployed, the following div matches <code>:empty</code>, as I think just about everyone would expect.
+        </p>
+
+        <pre><code class="language-html">&lt;div&gt;&lt;/div&gt;</code></pre>
+
+        <p>
+            And so does this...
+        </p>
+
+        <pre><code class="language-html">&lt;div&gt;&lt;!-- still empty --&gt;&lt;/div&gt;</code></pre>
+
+        <p>Many people find it surprising that this is even a thing that would have to be specifically called out - of course it's empty.  Others find it suprising that the first group thinks that because, of course it is not.  Whichever group you fall into, as defined, comments and processing and processing instructions don't count toward 'non-emptiness'.  However, given that, it is suprising to <em>most</em> people, it seems, that this example (currently) does not match..
+        </p>
+        <pre><code class="language-html">&lt;div&gt;
+    &lt;!-- not empty --&gt;
+&lt;/div&gt;</code></pre>
+
+        <p>
+            Can you spot the difference?  It's just whitespace in the code formatting.
+        </p>
+
+        <p>
+            A lot of people think that these things (comments, "insignificant whitespace" and so on) get "parsed out" because generally, when we think about the Web, we are thinking about what we <em>experience</em> as users and the fact that as authors, our mental model is primarily based on elements.  We might "experience" neither regularly, but they are still parsed into <code>Node</code>s that still exist in the tree and that matters, if for example, you want to be able to say that the following does <em>not</em> match <code>:empty</code>,
+        </p>
+
+       <pre><code class="language-html">&lt;div&gt;This stuff is in a TextNode&lt;/div&gt;</code></pre>
+
+
+        <p>
+            ... despite having no actual <code>.children</code>, which seems pretty reasonable. So, these are some kind of key points in beginning to understand this discussion:
+        </p>
+        <ul>
+            <li>
+                It's possible to have 0 <code>children</code> (which is only about elements) but still have <code>childNodes</code>.
+            </li>
+            <li>
+                It would seem that any reasonably useful definition of emptiness must care about some child nodes, because that is what text is, it's not an element - but should not care about others (see Low Uptake below)
+            </li>
+            <li>
+                Nothing is "parsed out" or "insignificant" in terms of nodes:  The comments are nodes.  The text nodes are node, and yes, they really do contain all those whitespace characters.
+            </li>
+        </ul>
+        <p></p>
+
+    </section>
+
+    <section class="sectioning">
+        <contextual-heading role="heading" aria-level="2">Low Uptake</contextual-heading>
+        <p>
+            As I said, this has been available for some time.  Yet, it seems that when you look at data in the wild, this selector is effectively unused.  Many of those who have tried to turn to it for something have commented in some way (on social media, through blogs, mails to mailing lists, talking to people at conferences, creating other ways to solve similar problems or opening github issues) that it didn't do what they expected (or wanted, or needed).
         </p>
         <p>
-            The sections below are an attempt to catalog the various answers, asks, rationales and discussions that I've had or heard.  They seem to fall into a few broad categories, with subtley different and interesting bits.
+            Because of this, the CSS Working Group is trying to figure out what to do and how to move forward.  In fact, it has such incredibly low uptake that the Working Group itself is ok with actually changing the <em>existing</em> definition of the standard, meaning that things that didn't match yesterday suddenly would.
+        </p>
+    </section>
+
+    <section class="sectioning">
+        <contextual-heading role="heading" aria-level="2">Case Closed...ish</contextual-heading>
+        <p>
+            Just recently the CSS working group 'resolved' to expand the definition to not count text nodes that only contain whitespace in the same way that they don't count comment nodes today.
+        </p>
+        <p>
+            I want to stress that saying this was "resolved" doesn't make it so or final:  It really only means that this is our best plan to date that we seem to have enough agreement on.  It's not unusual for something to change - realistically speaking, something is only <em>actually</em> a standard when interoperable implementations have actually shipped and it gets some kind of measurable usage (though, it doesn't take much).
+        </p>
+    </section>
+
+    <section class="sectioning">
+        <contextual-heading role="heading" aria-level="2">Glass Half Empty</contextual-heading>
+        <p>
+            While this change would make it more practically useful for a few more cases which wouldn't work in the past, I'm actually sure whether this is good or bad.
+        </p>
+        <p>
+            Optimistically, imagine that we get this implemented widely, quickly.  Under the best scenario, we won't really know if we got it right for 3-4 years.  However, I am more pessimistic and believe it will take longer than that - and it's entirely possible that we again fall short.  At <em>best</em> that leaves us right back where we are now, having burned a little good will along the way.  Practically, maybe worse, we may now crossed that line where we can't define <code>:empty</code> well because in expanding the usefulness slightly, it was just enough to gain enough real world use to worry people about changing it.  This has happened before.
+        </p>
+        <p>
+            Given this, I feel like it <em>might</em> make sense to have a bit of a broader conversation <em>now</em> before determining that this is definitely the thing we want to ship.  To understand what I mean, and why I am still worried about this, let's rewind.
+        </p>
+    </section>
+
+    <section class="sectioning">
+        <contextual-heading role="heading" aria-level="2">How did we get here?</contextual-heading>
+        <p>If you've ever read my blog, you know that I like history.  I think that "how did we get here?" can be very helpful in informing "where do we go now?" - Especially if we are reconsidering  something where we missed the mark.  So, let's review some history.</p>
+         <p>
+            On April 3, 2000, David Baron sent <a href="https://lists.w3.org/Archives/Public/www-html/2000Apr/0024.html">an email to the www-html mailing list</a> noting that the HTML specification at the time recommended that
+        </p>
+        <blockquote>User agents should ignore empty P elements.</blockquote>
+        <p>
+            In it, he points out that there are <em>at least</em> two ways to "ignore" them and he wasn't quite sure what it meant.  They could, for example, be ignored stylistically via the default stylesheet, or they could be dropped by the parser and not even become an element.  He also notes that there might be good reasons to avoid the latter and gives an example:  Authors could put an empty tag in markup with the intent of populating it with script.  "I'd be interested to hear the opinions of others on this matter," says David.
+        </p>
+        <p>
+            Such a simple seeming question - but what happens next is enlightening: People don't agree.  Not just that, but they begin to ask a <em>whole lot</em> of new questions and provide very interesting rationales.  The very first reply, hours later, is in the form of a statement, not an opinion, that the  'correct' answer (i.e., there is one) is that empty <code tag-esc="">p</code> elements <em>should</em> be removed by the parser, and why he thinks that is.
+        </p>
+        <p>
+            Cool. Except that this is immediately followed by a reply that says "I'm afraid my recollection is quite the opposite" - including why that in fact <em>couldn't</em> work in XML or XHTML and also why that line was added to the spec in the first place (because a whole bunch of stuff in the real world creates empty paragraphs as we will see in a minute, and that is often purposeful. But... now we start hearing the first comments about "ignorable white space"
+        </p>
+        <blockquote>...then the problem
+would appear to be much harder,
+since what you really want
+is conditional formatting properties
+depending on whether 'some' elements
+contain only ignorable white space
+(in the XML sense).</blockquote>
+        <p>Which, as Tantek points out, isn't what most people think:</p>
+        <blockquote>There is no such thing
+as ignorable white space
+(in any sense, HTML, XML,WXYZML, whatever)
+for a complete CSS1 implementation
+because you can always
+have rules with white-space:pre:</blockquote>
+        <p>This is interesting, and totally true... Whitespace might not be an element child, but neither is a word.  And while it might "effectively" be ignorable to authors and users, it is, actually <em>totally</em> in the DOM, and kind of has to be.  It's also interesting because he mentions CSS styling in there - but we'll come back to that...</p>
+
+        <p>After not too much time, Jason Orendorff points out</p>
+        <blockquote>There is already a CSS property 'empty-cells'
+that affects how empty table cells are rendered.
+Perhaps there should be an 'empty-elements' property:
+<p>
+  P { empty-elements: ignore; }
+</p>
+Or an ":empty" pseudo-class:
+<p>
+  P:empty { display: none; }
+</p>
+<p>[And that the] bit about empty paragraphs
+being "ignored" should probably be removed [
+from HTML itself].</p></blockquote>
+        <p>
+            OK, pause briefly and think about this: If you had a child right when this discussion about <code>:empty</code> began, they would have graduated highschool this year... Wow.
         </p>
         <section class="sectioning">
-            <contextual-heading role="heading" aria-level="3"><strike>No Child Nodes at All</strike></contextual-heading>
+            <contextual-heading role="heading" aria-level="3">Now we've got a syntax for... something</contextual-heading>
+        <p>
+            This particular bit of thread moves to the CSS Working group and now we've got a good idea how to write a selector, but we honestly don't seem to know what it would mean.  The discussion goes on in both lists and opinions seem to abound.  One posits that this whole topic is <em>really</em> about <em>margin collapsing</em>.  Apparently, they (and maybe the spec?) maintain that that the following markup <em>shouldn't</em> match the <code>p+p</code> selector, but would, if they aren't 'ignored' in a big way:
+        </p>
+        <pre><code class="language-html">&lt;p&gt;&lt;p&gt;Test</code></pre>
+        <!--section>
+            <contextual-heading>A weird, but I think relevant, sidebar</contextual-heading>
+        <p>
+            Many people recognize that <code tag-esc>br</code> is a little strange.  It is a void element, it has no content nor closing tag.  At the end of the day, it's just a marker that represents a "line break".  However, if you have a look at the source of <a href="http://info.cern.ch/hypertext/WWW/TheProject.html">Tim's original WWW page</a> you'll notice that <code tag-esc>p</code> was a marker as well, like a pilcrow, that idenitifes where the paragraph starts.  There's no actual 'need' for more as the end of a paragraph is logically inferrable.  In fact, browsers still logically infer if an author messes it up.  Further, the HTML specification, even today contains several examples of paragraphs with <em>no</em> <code tag-esc>p</code> at all, and many popular formats, like markdown, have no need for it.  Similarly, if you ask for the <code>.innerText</code> of some node containing <code tag-esc>p</code>s and <code tag-esc>br</code>s, these will be represented pretty much like they are in markdown - as just text.  The reason we even have some of these elements, I think, owes to the history of HTML and the fact that they come from the very earliest atttempts at marking up documents.
+        </p>
+        </section -->
+        <p>
+            Dan Connoly points out that an "empty paragraph" is conceptual nonsense  -such a thing does not exist for any traditional definition of a 'paragraph'.  He  offers that a paragraph "Should include at least one character, word, image, or form control".  While this is 'technically true', it is suprisingly not actually especially helpful.  Why?  Well, because practically speaking, it doesn't matter for at least two important reasons.  First, there are <em>plenty</em> of empty <code tag-esc="">p</code> elements in the wild and, as David originally pointed out, the document might not be 'done'.  Further, it seems incomplete: What if that "one character" <em>also represented whitespace</em> - like a non-breaking space, or a carriage return, or an entity representing one of those?  All of these are just as conceptually illogical.
+        </p>
+        <p>
+            Anyways, the topic goes on.
+        </p>
+        <p>
+            Someone else points out that pseudo classes with generated content will mean the thing isn't really 'empty' by some definitions either... What about those?  Someone else asks about actual spaces vs entities.  There are comments that in terms of 'rendering' - a p containing a hidden form control 'kinda seems empty' too.  Eh, wait... Does it matter if that hidden form control has a value?  Is a form control's <code>value</code> property the same a TextNode's <code>.data</code> property?  Is a <code tag-esc="">p</code> containing only a <code tag-esc="">span</code> that is <code>display: none;</code> empty? Hmm... What about a comment?  That's not an <em>element</em> child, but it too parses into a node child...  If a thing contains only a comment, is it empty?  And, well, is <code tag-esc="">p</code> really <em>that special</em>, or does these same concerns apply to other things too?
+        </p>
+
+        <p>
+            Wait, wait, wait... what were we talking about again? Parsing? Semantics? Rendering?
+        </p>
+    </section>
+
+    <section class="sectioning">
+        <contextual-heading role="heading" aria-level="3">Observations and opinions</contextual-heading>
+        <p>
+            There are a few things that I generally take away from all of this.
+        </p>
+        <section class="sectioning">
+            <contextual-heading role="heading" aria-level="4">Over Stressing 'Correctness' is Probably a Red Herring</contextual-heading>
             <p>
-                Let's start with one of the strictest possible definitions I can imagine: If the thing actually has no child nodes at all.  The only thing that could match is things like this:
+             Arguing about whether a document is 'semantically correct' seems to eat a log of time here, or arguing that authors or tools shouldn't create trees that seem 'dumb' or 'illogical'. However, the truth is that there are numerous, reasonable ways for nearly all of these sitiations to happen, and tons and tons of existing content which shouldn't have to dramatically change either in order to utilize a concept of emptiness to improve styles.
             </p>
-            <pre><code class="language-html">&lt;p&gt;&lt;/p&gt;</code></pre>
-            <p>
-                This seems, initially, like an entirely reasonable interpretation.  If the concept of emptiness that you are thinking of has anything to do with 'stuff <em>inside the element</em>', this is the one case that everyone agrees should definitely be 'empty'.
-            </p>
-            <p>
-                Note, however, that it's crossed out above.  That's because this is <em>more strict</em> than the current specification and implementations which we have already discussed have nearly 0 uptake and lots of complaints that even that isn't what people want.  As you read more, hopefully it comes clear why, practically speaking, this is probably not an especially useful definition (at least not if we only get one).
-        </p></section>
+        </section>
 
         <section class="sectioning">
-            <contextual-heading role="heading" aria-level="3"><strike>Currently Matching <code>:empty</code> Perspective</strike></contextual-heading>
+            <contextual-heading role="heading" aria-level="4">Only the DOM</contextual-heading>
             <p>
-                Cut to what has been actually implemented all of these years.  Under that definition, the following is considered <code>:empty</code> too:
+                Over the years, a lot of people have brought up a lot of points about how CSS might affect this: For example that CSS 'styles' affect whitespace - or that you can generate content.  For example, from a user's perspective, this is not empty:
             </p>
-            <pre><code class="language-html">&lt;p&gt;&lt;!-- still empty --&gt;&lt;/p&gt;</code></pre>
+            <pre><code class="language-html">&lt;p id="one"&gt;&lt;/p&gt;
+&lt;style&gt;
+    #one::before {
+        content: 'empty?';
+    }
+&lt;/style&gt;</code></pre>
             <p>
-                If it surprises you that this is a thing that would actually even have to be called out separately, that I think is part of the issue: We're not all sharing a common mental model to begin with.  A lot of people think 'that is not a child, it's just a comment and it isn't parsed into anything'.  But, strictly speaking, that's not true.  It is not an <em>element</em> child, but it is definitely a <em>node</em> child.  <code>thatParagraph.childNodes.length</code> is 1.
+                While this may "feel" like an intuitive way to think about emptiness at first, it feels like any consideration of 'what CSS does' means we're probably looking at the wrong things.  CSS selectors cannot rely on the application of CSS.  This would itself create circularity which, in CSS is a deal breaker.  For example, that would make it possible to write:
+            </p>
+            <pre><code class="language-html">&lt;p id="one"&gt;&lt;/p&gt;
+&lt;style&gt;
+    #one:empty::before {
+        content: 'empty?';
+    }
+&lt;/style&gt;</code></pre>
+             <p>
+                 Assuing that the DOM matches empty, would cause CSS to match a rule which says it is not, which would cause the rule to no longer apply, and on and on.  There are probably ways to build in resilience to this very specific example, but still, it violates fundamental principles of CSS and so, we have to focus on the structure and semantics of the DOM as if CSS were <em>not</em> applied, because it isn't at this stage.
+             </p>
+        </section>
+
+
+
+        <section class="sectioning">
+            <contextual-heading role="heading" aria-level="4">Scope and Text</contextual-heading>
+            <p>
+                While many of the current discussions in the CSS Working Group are very focused on a few very specific examples, I believe this is problematic too.  I think that the reason that we are looking at these examples in the first place it because they distil the simplest possible example of something that is both reasonable, exists in the real world, and is currently problematic.  I think it's kind of a mistake to imagine that they remotely represent the actual 'scope' of the problem, and here's why..
+            </p>
+
+            <p>
+                If you look back at all of the discussions, it would seem most of them actually have to do with some kind of <em>text</em>.  Elements, Nodes, entities, values, semantics, intent, etc - these things mostly seem to be getting in the way of asking for what often seem to want.  It is entirely possible to fix those cases while still leaving most of the same conceptual problems. For example, every single element in the example below is arguably 'empty' in the sense that there is no useful text for the user to be had.
+            </p>
+
+           <pre><code class="language-html">&lt;ul&gt;
+    &lt;li&gt;
+    &lt;li&gt;&amp;nbsp;
+    &lt;li&gt;&lt;br&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;br&gt;&lt;/span&gt;
+&lt;/p&gt;
+&lt;p&gt;&amp;nbsp;&gt;&lt;/span&gt;
+&lt;/p&gt;
+&lt;p&gt;&lt;span&gt;&lt;/span&gt;
+&lt;/p&gt;
+&lt;div class="my-component"&gt;
+    &lt;link rel="stylesheet"
+        href="https://example.com/my.css"&gt;
+&lt;/div&gt;
+</code></pre>
+            <p>
+                Which of the above should match <code>:empty</code>? Today, even with the new change, few would.  Are each of the <code tag-esc="">li</code> elements empty?  Why?  If they all are, what about the <code tag-esc="">ul</code>?  Today, the <code tag-esc="">ul</code> definitely would't be.  The <code tag-esc="">link</code> itself would be, but not the <code>.my-component</code> div.  However, that is precisely what can happen if the thing you drag into the page contains a <code tag-esc="">link</code> node, and if you need a concept of <code>:empty</code> today so that that can be finished and configured, you probably don't want that to count toward empiness any more than a comment node.  In fact, if your element contains void tags that imply closing, they cannot contain text content.  They will be empty themselves, but in terms above, should they count as empty?  Yes, you <em>could</em> style them as visible, but they aren't supposed to be, right?
             </p>
             <p>
-                The CSS Working Group saw that this would trip people up and maybe reduce the usefulness of it as well and so, from day one, defined that comment nodes and processing instruction nodes, for example, didn't 'count' toward measuring emptiness.
-        </p></section>
+                Saying "If I am not in some edit mode, I'd like to hide <code tag-esc="">li</code>s which contain only things about whitespace, because that doesn't make sense" seems reasonable - and it seems reasonable that all of those could fit one reasonable definition of that, but it has to be about more than it is now.
+            </p>
+            <p>
+                Further, what we are talking about so far is very simple things - but modern tools let you drag, drop, and configure more advanced things than that, and frequently that is done by including some hunk of code which might include a <code tag-esc="">script</code>
+            </p>
+        </section>
+
+
+
+             <pre><code class="language-html">&lt;p&gt;&nbsp;&lt;/p&gt;</code></pre>
+            <p>
+                This surprises a number of people because they think "whitespace is insignificant in HTML and it is just parsed out".  But that is kind of an overstatement of what <em>insignificant whitespace</em> means.  That doesn't mean it isn't parsed, it means it shouldn't be <em>displayed</em>. Go ahead and ask that node how many <code>.childNodes</code> it has, and it will happily reply that the answer is <em>1</em>, not <em>0</em>.  That child is a <code>TextNode</code> holding the data <code>" "</code>.
+            </p>
+    </section>
+
+
+    <section class="sectioning">
+        <contextual-heading role="heading" aria-level="3">WDYM Empty?</contextual-heading>
+
+        <p>
+            See, I think that this is part of the problem: There not only seems to be no single, universal answer here - there are completely different asks and mental models.  I asked this question on twitter recently, and received a lot of relies.  Interestingly, there was a lot of variance and the variety of observations aligned pretty well with the same sorts of discussions from 2000.
+        </p>
+        <p>
+            This is kind of unsuprising if you think about it, we have so many subtley different definitions of some kind of "nothing":  0, null, void, undefined, empty, etc.  And in terms of the DOM, we have many constructs and use cases.
+        </p>
+        <p>
+            Looking back across history and comments I think there are some fairly certain observations that we can add to clarify the fuzziest ends of the problem.
+        </p>
+
+
+    </section>
+    <section class="sectioning">
+        <contextual-heading role="heading" aria-level="3">So, now what?</contextual-heading>
+
+        <p>Well, it seems to me that no discussion of this goes long before questions arise which are phrased based on text, rather than something about children or elements. Editors are a really common theme </p>
+
+        <p>So far, really a lot of discussion focuses on child
+
+
+
+                A lot of the discussions focus on a really simple 'does it have child nodes' or even 'does it have element children' mental model.  This is kind of the view we have now, and if you can believe it, one of the complains we have "on the record" is about empty paragraphs (actually lots of tags that 'can' be used as makers) because people like to indent code and it can lead to, for example, there being a "p" or an "li" that still contains a space and currently doesn't match the definition of <code>:empty</code> today.</p>
+            <p>Further, it seems we have a number of "child or descentant" asks or proposals that feel like they could solve any such case pretty well except that they can't consider the other perspectives listed below.   Because of this, I think 'child nodes' as the primary view here is a red herring and we should kind look elsewhere for these particular ideas.</p>
+        </section>
+
+        <section class="sectioning">
+            <contextual-heading role="heading" aria-level="3">The "something about text" Perspective</contextual-heading>
+            <p>
+                I think that, ultimately really a lot of the things raised have more to do with 'text' than they do about elements.  Most of the problematic cases that come up have to do with text somehow - even those weird "text, but as an element" or "text, but an entity" issues.  And, just like any time you are dealing with text, there are probably a few ways you might want to look at that - none of them are invalid, really.  You might want to trim, you might not.  You might want things escaped, or not.
+            </p>
+            <p>
+                Here's where things get just a little tricky though - text as structure is weird. Let me demonstrate..
+            </p>
+
+            <pre><code class="language-html">&lt;!-- if you want this to be empty "because it doesn't contain text" --&gt;
+&lt;p&gt; &lt;/p&gt;
+
+&lt;!-- and this to be empty "because it doesn't contain text" --&gt;
+&lt;p&gt;
+   &lt;!-- still empty --&gt;
+&lt;/p&gt;
+
+&lt;!-- it stands to reason that neither does this --&gt;
+&lt;p&gt;
+    &lt;strong&gt;&lt;/strong&gt;
+&lt;/p&gt;</code></pre>
+
+        <p>
+            That is, if we really want to talk about 'absence of text content' of some kind than it is unlikelywe probably want to talk about a <em>descendant</em> relationship and not strictly a parent/child one.  This isn't typically how CSS works - you can't generally style parents based on their qualities of their children.  Despite it also having been in the draft for years before anyone thought of <code>:empty</code>, <code>:has</code> (also supported by jQuery from the beginning, for the same reason) has been elusive precisely because it's not how CSS works and no one can seem to figure out how to make that work performantly.  So... perhaps we are at an impasse.
+        </p>
+        <p>
+            Well... Maybe not. describe limited has
+        </p>
+<p>
+
+                If you solve for that problem, it seems to me that either very nearly all or maybe even actually all of the things can be possible without so many confusing questions.
+            </p>
+
+            <p>
+                That makes sense to me because the Web is about text. As 'spiffy' as we might make it, HTML was envisioned with this perspective in mind. HTML was originally supposed to be the "least common denominator" - the thing you could always ask for.  In the original vision, you might have asked for an image, desribing the sorts of images  you could understand, and the server could tell you "I don't have any of those, but let me tell you what I can about the image in this common format (HTML) we can both understand".  This basic idea of the importance of text still holds true today in HTML today - we need text all over.  It's even true of images in a sense, and  form elements - the reason they more or less all have to 'enhance' an input is that that is the simple, most basic thing - some text.
+            </p>
+
+            <p>
+                The thing is that the history of text in HTML is itself confused and there are a few 'possible' ways to look at something.  I think the best thing is to accomodate
+            </p>
+
+            <p>
+                It seems to me that this would simplify things and the answers are often similar.
+            </p>
+            <pre><code class="language-html"><!-- Does this element contain text? Nope. -->
+&lt;p&gt;&lt;/p&gt;
+
+<!-- how about this one? well, here it depends what we are looking at.  We could look at the nodeType and the .data property, or we could look at that and trim() or think about it like .textContent of a text node and decide if we care about whitespace. If we had a way to indicate that, we could answer either appropriately -->
+&lt;p&gt; &lt;/p&gt;
+
+
+<!-- how about this one? well, same as the above really -->
+&lt;div&gt;&lt;br&gt;&lt;/div&gt;
+
+
+&lt;script&gt;
+let pEl = document.querySelector('#id');
+
+console.log(`"${pEl.innerText}"`);
+// logs " " (1 character, not an entity - this is the idea of "insignificant whitespace")
+
+console.log(`"${pEl.innerText}"`);
+// logs "   " (3 characters, no entities)
+
+console.log(`'${pEl.childNodes[0].data}'`)
+// logs "   " (3 characters, no entities)
+
+console.log(`'${pEl.childNodes[0].wholeText}'`)
+// logs "   " (3 characters, no entities)
+
+
+console.log(`'${pEl.childNodes[0]}'`)
+// logs " &amp;nbsp; "
+
+&lt;/script&gt;
+            </code></pre>
+
+
+        </section>
+
+
 
         <section class="sectioning">
             <contextual-heading role="heading" aria-level="3">The "Insignificant Whitespace"  Perspective</contextual-heading>
