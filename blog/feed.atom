@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://bkardell.com/</id>
     <title>bkardell.com rss feed</title>
-    <updated>2019-08-07T14:29:32.798Z</updated>
+    <updated>2019-08-20T14:18:15.795Z</updated>
     <generator>awesome mix</generator>
     <author>
         <name>Brian Kardell</name>
@@ -14,6 +14,99 @@
     <subtitle>Just the bkardell.com rss feed</subtitle>
     <logo>http://bkardell.com/profile.jpg</logo>
     <rights>All rights reserved 2018, Brian Kardell</rights>
+    <entry>
+        <title type="html"><![CDATA[Top Level Await: 2 Minute Standards]]></title>
+        <id>https://bkardell.com/blog/TopLevelAwaitIn2m.html</id>
+        <link href="https://bkardell.com/blog/TopLevelAwaitIn2m.html">
+        </link>
+        <updated>2019-08-20T04:00:00.000Z</updated>
+        <summary type="html"><![CDATA[My first post in a new effort #StandardsIn2Min to provide short, but useful information about developing standards.]]></summary>
+        <content type="html"><![CDATA[
+	<contextual-heading role="heading" aria-level="1" style="font-size: 2rem;">Top Level Await: 2 Minute Standards</contextual-heading>
+	<p class="segue">My first post in a new effort <a href="2MinuteStandards.html">#StandardsIn2Min</a> to provide short, but useful information about developing standards.</p>
+    <script src="../prism.js"></script>
+    <link rel="stylesheet" href="../prism.css">
+	<p> 
+		Previously, in order to use <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/await#Examples" rel="nofollow"><code>await</code></a>, code needed to be inside a function marked as <code>async</code>.  This meant you couldn't use await at the 'top-level' (outside of any function notation).  At first, this might seem like a minor annoyance. Just put the code you want to await into an <code>async function() {....}()</code> and call it, right?
+	</p>
+	<p>
+		Yes, and (mostly) no.  While being able to use <code>await</code> at the top-level is generally useful - the real <em>value</em> in it (the problem that it solves) has a lot to do with modules.
+	</p>
+	<p>
+		Modules are already asynchronous, and have a declarative <code>import</code> and <code>export</code>, and those also expressed at the top-level.  The practical implication of this was that if you wanted provide a module which relied on some asynchronus task in order to be useful - for example, connecting to a database - you had really no good options.  You might make every method in your own API internally dependent on that promise.  But, this is extra complicated.  All of your methods need to return promises, whether that makes sense, or not.  If errors do occur, they are late, and in the wrong place.  Or, you could make your API <code>export</code> that promise somehow.  "Somehow" because there are several models for how you can choose to do this.  Worse, whichever promise exporting model you chose, users of your module are left with <em>precisely the same problem</em>, creating a kind of domino effect.</p>
+
+		<p><em>That's</em> what the new <a href="https://github.com/tc39/proposal-top-level-await">top-level <code>await</code></a> proposal (stage 3 as of the time of this writing) really solves.  With it, you can write something like this.</p>
+
+<pre><code class="language-javascript">// products.js 
+import { fictionalDb } from './fictionaldb.js' 
+import { config } from './db-config.js'
+ 
+// connect() is promise returning
+let connection = await fictionalDb.connect(config)
+
+export default {
+	recent: function () {   
+	   // use the connection to return recent products
+	}
+	
+	discontinued: function () {
+	   // use the connection to return discontinued products	
+	}
+}</code></pre>
+
+	<p>It seems incredibly small - one word on line 6.  However, the magic and value really comes in how this module can now be used: You <em>just <code>import</code> it</em> like any other module.</p>
+
+	<section class="sectioning">
+		<contextual-heading role="heading" aria-level="2" style="font-size: 2.25rem;">If you're curious about how it <em>works</em></contextual-heading>
+
+	<p>The real magic here is largely in the definition of a standard <em>protocol</em> that imports and exports can reason about internally.  To explain: You can think about modules as <em>really</em> including both their actual <em>expressed</em> exports, and, a new implicit internal promise used by the module system's internal protocol.  While you're expressing your dependencies without that, the module system will (roughly) expand this internally as an implicit <code>Promise.all</code> around anything waiting for export.</p>
+
+	<p>For example, given the code:</p>
+	<pre><code class="language-javascript">import { a } from './a.mjs';
+import { b } from './b.js';
+import { c } from './c.js';
+
+console.log(a, b, c)</code></pre>
+	<p>The module system, internally, sees (again, roughly) this:</p>
+	<pre><code class="language-javascript">import { _internalPromise as aPromise, a } from './a.js';
+import { _internalPromise as bPromise, b } from './b.js';
+import { _internalPromise as cPromise, c } from './c.js';
+
+// the module system creates this promise 
+// and uses it to know your module is ready.
+export const _internalPromise = 
+	Promise.all([aPromise, bPromise, cPromise])
+		.then(() =&gt; {
+   			console.log(a, b, c);
+		});</code></pre>
+	<p>The net result is that modules are fetched in parallel and executed in order until the first await, and then waits until they are all complete before resolving the module itself.</p>
+	</section>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[2 Minute Standards]]></title>
+        <id>https://bkardell.com/blog/2MinuteStandards.html</id>
+        <link href="https://bkardell.com/blog/2MinuteStandards.html">
+        </link>
+        <updated>2019-08-20T04:00:00.000Z</updated>
+        <summary type="html"><![CDATA[A short explanation of a new effort]]></summary>
+        <content type="html"><![CDATA[
+    <contextual-heading role="heading" aria-level="1" style="font-size: 2rem;">2 Minute Standards</contextual-heading>
+    <p class="segue">A short explanation of a new effort</p>
+
+    <p>For a while now, we've been running some 'outreach groups'.  Originally started informally by my colleague at <a href="https://igalia.com" rel="nofollow">Igalia, </a><a href="https://twitter.com/littledan" rel="nofollow">Dan Ehrenberg</a>, it's become a set of monthly meetings with various groups of stakeholders in <a href="https://tc39.github.io" rel="nofollow">TC39</a> and the Web at large which I really look forward to.  The <a href="https://github.com/js-outreach/js-outreach-groups" rel="nofollow">groups</a> are meetings of people who work on Tooling, people who work on Frameworks and Libraries and Educators, with folks who work on standards.  The goals of all of them, at the end of the day, is to figure out how we all work better, together.</p>
+    
+    <p>The Educators Group has talked a bit about a number of efforts, but there's one conversation we've been having that I think is pretty interesting. I dont know of any developer who isn't interested in what is going on in standards, but the economics of this is currently kind of hard. We're interested in a whole bunch of other things too. There's lots of good content - too much in fact, coming at us from a million directions and it's all competing for our time and attention. We have jobs, and families, and pets, hobbies and lives. I love a lot of long form things, I'm excited when I see them in my stream, but they pile up and I have to choose. I only have so many slots of time where I can actually afford to consume 10, 15, 30 or 40 minutes worth of information. It can feel a little overwhelming sometimes.</p>
+
+    <p>So, we're going to try something new: 2 Minute Standards.  Think of it as "standards news, in brief".  The basic idea is pretty simple: Like a news segment, it's got to contain pertinent facts, more than a tweet - but it's air time is limited, as the name would suggest, to 2 Minutes.  That can come in a number of forms: An article that is 500 words or less, a two minute video, or a short web comic/zine.  The idea though is to ultimately give developers some channel with reasonable economics for staying 'generally informed'.  In the end, that's frequently what we want anyways: We can't know everything, we just need to know <em>enough</em> to know what it is, why it is, and that it is there when we're ready to learn more.  We'd like to be able to roughly understand it if it comes up. A maximum of 2 minutes per day, and almost certainly not even that much, seems... unintimidating and managable.</p>
+
+    <p>So, that's the idea.  We're still discussing many of the details about how to make this really 'click' in a bigger way: How to create as a sort of channel you can follow?  For now, it seems better to start with something simple and perhaps to begin to get feedback on the idea.  To this end, we'll post things with the hashtag #StandardsIn2Min, and others can too. If you see something fly by with the hashtag you can always find it again later on the twitter feed and, hopefully, expect that it will take no more than 2 minutes to consume.  However, we will also manage the Twitter account <a href="https://twitter.com/StandardsIn2Min" rel="nofollow">@StandardsIn2Min</a>, where we'll work to curate those hashtags too and create a manageable (honestly, probably slow) pace that never asks for more than two minutes of your attention in a day to keep up. Let us know what you think about the idea!</p>
+    
+
+    <p class="thanks-to">Thanks to the <a href="https://github.com/js-outreach/js-outreach-groups" rel="nofollow">educators group</a> for all of their help discussing and creating, and especially to <a href="https://twitter.com/laurieontech" rel="nofollow">Laurie Barth</a> and <a href="https://twitter.com/jorydotcom" rel="nofollow">Jory Burson</a> for helping get this post put together quickly!
+    </p>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[One Platform™]]></title>
         <id>https://bkardell.com/blog/OnePlatform.html</id>
@@ -2451,81 +2544,6 @@ Promise.all([
     <p class="thanksTo">Special thanks to my friend, the great Chris Wilson for proofing/commenting on pieces in this series.</p>
 
 ]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[You Don't Say: Web Speech APIs Part II]]></title>
-        <id>https://bkardell.com/blog/High-Level-Voice.html</id>
-        <link href="https://bkardell.com/blog/High-Level-Voice.html">
-        </link>
-        <updated>2017-08-24T04:00:00.000Z</updated>
-        <summary type="html"><![CDATA[This is part of a series about making the browser speak and listen to speech.  In my last post Greetings, Professor Falken: Web Speech APIs Part I, I talked about the existing APIs we "have" for speaking (as well as why the air quotes) and all the many ways that they are wonky today.  In this post I'll share some of my own opinions on that API, as well as how I'm dealing with the speaking part IRL.]]></summary>
-        <content type="html"><![CDATA[
-    <contextual-heading role="heading" aria-level="1" style="font-size: 2rem;">You Don't Say: Web Speech APIs Part II</contextual-heading>
-    <p class="segue">This is part of a series about making the browser speak and listen to speech.  In my last post <a href="https://bkardell.com/blog/Greetings-Professor-Falken.html">Greetings, Professor Falken: Web Speech APIs Part I</a>, I talked about the existing APIs we "have" for speaking (as well as why the air quotes) and all the many ways that they are wonky today.  In this post I'll share some of my own opinions on that API, as well as how I'm dealing with the <em>speaking</em> part IRL.</p>
-
-    <script src="../prism.js"></script>
-    <link rel="stylesheet" href="../prism.css">
-    <script src="../test/listening/basic-voice-listener.js"></script>
-    <script src="../test/listening/pausable-voice-listener.js"></script>
-    <script src="../test/listening/VoiceInputElement.js"></script>
-    
-    
-
-        <section class="sectioning">
-            <contextual-heading role="heading" aria-level="2" style="font-size: 2.25rem;">What I did</contextual-heading>
-            <p>While I think we need to drill down, I do believe there is room for high level features
-            that are super easy to use for various cases.  The original proposals from Google talked about
-            declarative ways to integrate TTS and Voice Recognition into HTML.  That's kind of interesting
-            and fortunately, Custom Elements allows us to experiment in that arena.
-            </p>
-
-            <section class="sectioning">
-                <contextual-heading role="heading" aria-level="3" style="font-size: 2.5rem;">Simple input...</contextual-heading>
-                <p></p>
-                <pre><code class="language-html">
-&lt;x-voice-listener&gt;
-    &lt;input name="input"&gt;
-&lt;/x-voice-listener&gt;
-                </code></pre>
-                <x-voice-listener>
-                    <input placeholder="How can I help?">
-                </x-voice-listener>
-
-                <p>That's pretty easy.  It uses the concept of progressive enhancement to say
-                that the <code tag-esc="">input</code> element is the target of listening, if
-                it happens to be listening and, in the Shadow DOM provides an accessible button
-                for toggling that.  The element isn't itself an input, but rather a decoration
-                around one.</p>
-
-                <p></p>
-
-
-                <p>The element has a <code>._voiceListener</code> property which exposes
-                an API about how it works. In this case, the API is called a
-                <code>PauseableVoiceListener</code> which has methods <code>.pause()</code>
-                <code>.unpause()</code> and <code>.pauseWhile(<em>Promise</em>)</code></p>
-
-            </section>
-
-
-
-
-
-            <section class="one sectioning">
-                <contextual-heading role="heading" aria-level="3" style="font-size: 2.5rem;">What about </contextual-heading>
-                <p></p>
-                <pre><code class="language-html">
-&lt;x-voice-listener&gt;&lt;input name="input" &gt;&lt;/x-voice-listener&gt;
-                </code></pre>
-                
-                <x-voice-listener>
-                    <input>
-                </x-voice-listener>
-            </section>
-
-    <!-- p class="thanksTo">Special thanks to my friend, the great Chris Wilson for proofing/commenting on pieces in this series.</p -->
-
-</section>]]></content>
     </entry>
     <entry>
         <title type="html"><![CDATA[Greetings, Professor Falken: Web Speech APIs Part I]]></title>

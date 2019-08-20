@@ -4,11 +4,11 @@
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:site" content="@briankardell">
     <meta name="twitter:creator" content="@briankardell">
-    <meta name="twitter:title" content="Top Level Await: 2 Minute Developing Standards">
-    <meta name="twitter:description" content="My first post in a new effort #2MinuteStandards to provide short, but useful information about developing standards.">
+    <meta name="twitter:title" content="Top Level Await: 2 Minute Standards">
+    <meta name="twitter:description" content="My first post in a new effort #StandardsIn2Min to provide short, but useful information about developing standards.">
     
     <link rel="alternate" type="application/rss+xml" href="https://bkardell.com/blog/feed.rss" title="bkardell.com/blog rss feed">
-    <title>Top Level Await: 2 Minute Developing Standards</title> 
+    <title>Top Level Await: 2 Minute Standards</title> 
     <style>.captioned-image {
     background-color: #eaeaea;
     display: block;
@@ -323,9 +323,9 @@ America (art for sale)</a></li>
         </ul>
     </nav>
 </header>
-    <main><div class="posted-on">Posted on null</div><article class="sectioning">
-	<contextual-heading role="heading" aria-level="1">Top Level Await: 2 Minute Developing Standards</contextual-heading>
-	<p class="segue">My first post in a new effort <a href="2MinuteStandards.html">#2MinuteStandards</a> to provide short, but useful information about developing standards.</p>
+    <main><div class="posted-on">Posted on 08/20/2019</div><article posted-on="08/20/2019" class="sectioning">
+	<contextual-heading role="heading" aria-level="1">Top Level Await: 2 Minute Standards</contextual-heading>
+	<p class="segue">My first post in a new effort <a href="2MinuteStandards.html">#StandardsIn2Min</a> to provide short, but useful information about developing standards.</p>
     <script src="../prism.js"></script>
     <link rel="stylesheet" href="../prism.css">
 	<p> 
@@ -340,8 +340,8 @@ America (art for sale)</a></li>
 		<p><em>That's</em> what the new <a href="https://github.com/tc39/proposal-top-level-await">top-level <code>await</code></a> proposal (stage 3 as of the time of this writing) really solves.  With it, you can write something like this.</p>
 
 <pre><code class="language-javascript">// products.js 
-import { fictionalDb } from 'fictionaldb' 
-import { config } from './db-config'
+import { fictionalDb } from './fictionaldb.js' 
+import { config } from './db-config.js'
  
 // connect() is promise returning
 let connection = await fictionalDb.connect(config)
@@ -365,14 +365,14 @@ export default {
 
 	<p>For example, given the code:</p>
 	<pre><code class="language-javascript">import { a } from './a.mjs';
-import { b } from './b.mjs';
-import { c } from './c.mjs';
+import { b } from './b.js';
+import { c } from './c.js';
 
 console.log(a, b, c)</code></pre>
 	<p>The module system, internally, sees (again, roughly) this:</p>
-	<pre><code class="language-javascript">import { _internalPromise as aPromise, a } from './a.mjs';
-import { _internalPromise as bPromise, b } from './b.mjs';
-import { _internalPromise as cPromise, c } from './c.mjs';
+	<pre><code class="language-javascript">import { _internalPromise as aPromise, a } from './a.js';
+import { _internalPromise as bPromise, b } from './b.js';
+import { _internalPromise as cPromise, c } from './c.js';
 
 // the module system creates this promise 
 // and uses it to know your module is ready.
