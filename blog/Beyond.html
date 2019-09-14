@@ -1,0 +1,453 @@
+<html lang="en" resource-type="blogpost"><head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@briankardell">
+    <meta name="twitter:creator" content="@briankardell">
+    <meta name="twitter:title" content="Beyond Browser Vendors">
+    <meta name="twitter:description" content="I'd like to explain what I think is potentially the most exciting set of changes that have taken place in the latter stages of the Web's history: Why we are now collectively consid">
+    
+    <link rel="alternate" type="application/rss+xml" href="https://bkardell.com/blog/feed.rss" title="bkardell.com/blog rss feed">
+    <title>Beyond Browser Vendors</title> 
+    <style>.captioned-image {
+    background-color: #eaeaea;
+    display: block;
+    overflow: hidden;
+    padding: 1rem;
+    text-align: center;
+    font-style: italic;
+}
+
+.captioned-image.p-attached {
+    width: 40%;
+    display: inline-block;
+    margin: 0 1rem 2rem 1rem;
+}
+
+section > .captioned-image.p-attached {
+    margin-top: 1.5rem; /* correct for heading size*/
+}
+
+ pre { overflow-x: auto }
+
+.captioned-image.p-attached.p-attached-left {
+    float: left;
+}
+
+.captioned-image.p-attached.p-attached-right {
+    float: right;
+}
+
+.captioned-image.p-attached + * + * {
+    clear: both;
+    margin-top: 2rem;
+}
+
+
+.captioned-image img, .captioned-image video {
+    display: block;
+    max-width: 100%;
+    margin: 0 auto 1em auto;
+}
+.source {
+    font-style: italic;
+}
+body {
+    display: flex;
+    font: 1em "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-weight: 400;
+    line-height: 1.625;
+}
+h1 { margin: 0.5rem; }
+code-format {
+    border-left: 0.5rem solid rgba(123,115,209,0.35);
+    display: block;
+    padding: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+contextual-heading {
+    display: block;
+    margin-top: 2rem;
+}
+
+[aria-level="1"] {
+    color: #43686b;
+    font-size: 1.45rem;
+}
+[aria-level="2"] {
+    color: #856363;
+    font-size: 1.35rem;
+}
+[aria-level="3"] {
+    color: #856363;
+    font-size: 1.25rem;
+}
+[aria-level="4"] {
+    color: #856363;
+    font-size: 1.2rem;
+}
+[aria-level="5"], [aria-level="6"] {
+    color: #667496;
+    font-size: 1.1rem;
+    font-weight: bolder;
+}
+.posted-on {
+    font-style: italic;
+    font-size: 0.8rem;
+    text-align: right;
+    margin-bottom: 1rem;
+}
+
+ul, li {
+    margin: 0.5rem;
+    text-align: left;
+}
+header {
+    padding-top: 1rem;
+    padding-right: 2rem;
+    background-color: #fbf5e9;
+}
+.tagline {
+    font-style: italic;
+    text-align: center;
+}
+
+[tag-esc] {
+    color: maroon;
+    font-family: Courier, "Lucida Console", monospace;
+}
+
+[tag-esc]::before {
+    content: '<';
+}
+
+[tag-esc]::after {
+    content: '>';
+}
+
+main {
+    min-width: 50%;
+    width: 80%;
+    padding: 1rem;
+}
+header .title {
+    background-color: rgba(123,115,209,0.35);
+    padding: 0.3rem;
+    padding-left: 0.25rem;
+    font-weight: bolder;
+    font-size: 0.9rem;
+    border-left: 1rem solid #999298;
+}
+
+header .profile {
+    width: 50%;
+    margin: 1rem 25%;
+}
+
+header .title + nav {
+    font-size: 0.9rem;
+}
+
+header .blurb {
+    font-size: 0.75rem;
+    text-align: center;
+}
+header .name {
+    text-align: center;
+    font-size: xx-large;
+}
+.segue {
+    font-style: italic;
+}
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  border: 0;
+}
+[for="aboutMeToggle"] {
+    display: none;
+}
+/* this needs rethinking, it wants a selector like 'not flow content' */
+article>*:not(contextual-heading,a), section>*:not(contextual-heading,a) {
+    margin-left: 0.45rem;
+}
+
+blockquote {
+  font-family: serif;
+  background: #f9f9f9;
+  border-left: 10px solid #ccc;
+  margin: 1.5em 10px;
+  padding: 0.5em 10px;
+}
+blockquote:before {
+  color: #ccc;
+  content: open-quote;
+  font-size: 2em;
+  line-height: 0.1em;
+  margin-right: 0.25em;
+  vertical-align: -0.4em;
+}
+
+blockquote:after {
+  color: #ccc;
+  content: close-quote;
+  font-size: 2em;
+  line-height: 0.1em;
+  margin-left: 0.25em;
+  vertical-align: -0.4em;
+}
+
+
+@media (max-width: 800px){
+    body {
+        flex-direction: column;
+    }
+    header {
+        border-bottom: 1px solid #afafff;
+    }
+
+    .captioned-image.p-attached {
+        width: 100%;
+        margin: 1rem 0;
+    }
+
+    .captioned-image.p-attached.p-attached-left,
+    .captioned-image.p-attached.p-attached-right {
+        float: none;
+    }
+
+    [for="aboutMeToggle"] {
+        background-color: #675e5e;
+        color: white;
+        padding: 0.25rem;
+        padding-left: 0.5rem;
+        display: block;
+        border-left: 1rem solid black;
+    }
+    #aboutMeToggle:focus + [for="aboutMeToggle"]{
+        outline: 4px solid #c6ddf2;
+    }
+
+    #aboutMeToggle:checked ~ header {
+        display: none;
+    }
+
+    header li { display: inline; margin-left: -0.5em; }
+    header .blurb li::after { content: '; '; }
+    header  nav li {
+        display: inline-block;
+        margin-left: 0.35rem;
+        margin-right: 0.35rem;
+    }
+    header .title {
+        width: 100%;
+    }
+    main li .source { display: block; }
+
+}</style>
+    <style>
+      .captioned-image { font-size: 0.9rem; }
+      .thanksTo { font-style: italic; font-size: 0.8rem; }
+    </style>
+    <script>
+      var activateOptional = function (media) {
+        var source = media.getAttribute('data-src'),
+            temp,
+            container = media.parentElement;
+
+          if (media.nextSibling && media.nextSibling.matches) {
+            if (media.nextSibling.matches('.clickToSee')) {
+              media.parentElement.removeChild(media.nextSibling);
+            }
+          }
+
+          if (media.tagName === 'VIDEO') {
+            temp = document.createElement('video')
+            temp.setAttribute('autoplay','')
+            temp.setAttribute('controls','')
+            temp.setAttribute('loop','')
+            temp.innerHTML = '<source src="' + source + '.webm" type="video/webm">'
+                    + '<source src="' + source + '.mp4" type="video/mp4">';
+            media.parentElement.replaceChild(temp, media);
+            setTimeout(function () {
+              temp.play()
+            }, 0);
+          } else {
+            media.src = media.getAttribute('data-src');
+          }
+
+          container.classList.add('active');
+      }
+    </script>
+  </head>
+  <body>
+    <input id="aboutMeToggle" class="sr-only" type="checkbox" checked="">
+<label for="aboutMeToggle">Toggle author information</label>
+<header>
+    <div class="name">
+        Brian Kardell
+    </div>
+    <img class="profile" src="/profile.jpg" alt="">
+    <div class="tagline"><a href="/">Betterifying the Web</a></div>
+    <div class="blurb">
+        <ul>
+            <li>Developer Advocate at Igalia</li>
+            <li>Original Co-author/Co-signer of The Extensible Web Manifesto</li>
+            <li>Co-Founder/Chair, W3C Extensible Web CG</li>
+            <li>Member, W3C (The JS Foundation)</li>
+            <li>Co-author of HitchJS</li>
+            <li>Blogger</li>
+            <li>Art, Science &amp; History Lover</li>
+            <li>Standards Geek</li>
+        </ul>
+    </div>
+    <div class="title">Follow Me On...</div>
+    <nav>
+        <ul>
+            <li><a rel="me" href="https://briankardell.wordpress.com">Wordpress</a></li>
+            <li><a rel="me" href="https://medium.com/@briankardell">Medium</a></li>
+            <li><a rel="me" href="https://twitter.com/briankardell">Twitter</a></li>
+            <li><a rel="me" href="https://github.com/bkardell/">Github</a></li>
+            <li><a rel="me" href="https://codepen.io/bkardell">Codepen</a></li>
+            <li><a rel="me" href="https://www.linkedin.com/in/brian-kardell-08a4264">LinkedIn</a></li>
+            <li><a rel="me" href="https://www.instagram.com/kardellbrian">Instagram (for
+art)</a></li>
+            <li><a rel="me" href="http://fineartamerica.com/profiles/brian-kardell?">Fine Art
+America (art for sale)</a></li>
+        </ul>
+    </nav>
+</header>
+    <main><div class="posted-on">Posted on </div><article posted-on="" class="sectioning">
+	<contextual-heading role="heading" aria-level="1">Beyond Browser Vendors</contextual-heading>
+	<p class="segue">I'd like to explain what I think is potentially the most exciting set of changes that have taken place in the latter stages of the Web's history: Why we are now collectively considerably more in control of our own destinies and have moved "beyond browser vendors".</p>
+	<p> 
+		For most of the history of the Web, browser vendors have played an exceptionally critical role in standardization. This isn't a secret, in fact, it's widely discussed. What is less widely discussed is why that is. Frequently, most of our discussions give this very political origins, or assume it is about power struggles. But in fact, much of it has been for pretty considerably less intriguing reasons: It was a sort of predictable, natural outflow of the reality that we had created.
+	</p>
+	<p>
+		The first popular web browser (Mosiac) was proprietary. For a good chunk of our history, either all or most of the deployed browsers were built upon proprietary stuff, managed by a single company.
+	</p>
+	<p>
+		This matters a lot because it meant that, practically speaking, everyone who is not a browser, including the myriad of organizations that participate in standards efforts are, effectively asking a small number of companies to invest money and manage priorites and budgets very particularly.
+	</p>
+	<section class="sectioning">
+		<contextual-heading role="heading" aria-level="2">Mundane Realities</contextual-heading>
+		<p>What's very, very difficult to appreciate from the outside is just how much is impacted, historically, by the fairly boring and entirely mundane fact above and that browser vendors aren't actually that special.</p>
+
+		<p>That is, they ultimately operate very much like most other organizations: They have a budget, carved out of some larger company. That company has some larger goals.</p>
+
+		<p>Their organization has an org chart with managers, teams, and projects, and QAs. They hire staff with specialized skills (these can be quite specialized). They have tasks and processes and annual reviews, and goals, and so on.</p>
+
+		<p>Code and approaches are adapted, they look for ways to improve performance, extend ideas, make things more modular, and so on.</p>
+
+		<p>Each quarter, then, managers have to decide how to maximize the budget in a way that includes an intersection of things in the pipeline (or that they might be interested in introducing), which best align with larger organizational goals,for which they have free resources with the right skills to do that work this quarter.
+		</p>
+
+	</section>
+
+	<section class="sectioning">
+		<contextual-heading role="heading" aria-level="2">The Under Discussed, Big Impacts</contextual-heading>
+		<p>If you can imagine a conveyor belt of ideas that ultimately land as tasks to be implemented, you can understand some of the problem. Even given the exact same inputs, different people can make pretty different, but entirely reasonable and defensible choices. And the inputs aren't remotely the same. Perhaps it takes one vendor twice as long to implement because this feature is much harder in their architecture, or they simply have less resources, or perhaps they're in the middle of reworking their layout, or... There are myriad reasons why these things get prioritized and worked differently.</p>
+
+		<p>If you were to consider nothing else at all, you can see why things get gummed up. There is an absolute gauntlet that something has to run in order to become a standard.</p>
+
+		<p>Practically speaking, this leads to misses. It leads to things backing up. The more backed up things get, the less likely a browser vendor is to entertain new ideas and spend a lot of time discussing things that doesn't directly align with their existing investments and priorities.</p>
+
+		<p>Things that come from another vendor, on the other hand, are more likely to place more direct pressure on them to respond.</p>
+
+		<p>Worse still, this creates kind of a feedback loop that ultimately winds up with a reality that yields near total <em>practical</em> domination of Web standards by browser vendors for reasons that aren't really especially political ones, or even intentional.</p>
+	</section>
+
+	<section class="sectioning">
+		<contextual-heading role="heading" aria-level="2">A different story...</contextual-heading>
+		<p>"But we do manage to get things done, even big things, rather quickly, when we really want to, right?" Is a refrain I've heard a lot. What about CSS Grid, for example? Grid seemed to drop everywhere at pretty much the same time, in 2017. It seemed like it happened very quickly to many of us, and I've heard this comment a number of times. If this isn't and illustration of vendors aligning on big ideas, prioritizing things, and getting things done fast when they want to, I don't know what is... Right? Here's the interesting part: <em>It isn't that at all.</em>
+
+		</p><p>And what it is <em>is far more interesting and exciting.</em></p>
+
+
+		<section class="sectioning">
+			<contextual-heading role="heading" aria-level="3">The backstory of CSS Grid</contextual-heading>
+			<p>In 1996, Bert Bos, Dave Raggett, and Håkon Lie were the authors of a proposal called "<a href="https://www.w3.org/TR/WD-layout.html" rel="nofollow">Frame-Based Layout</a>" which attempted to tackle the idea of a grid-oriented layout controlled by CSS.  That completely failed to get uptake and implementations.</p>
+			<p>At the end of 2005, Bert Bos put some of these ideas forward again in <a href="https://www.w3.org/TR/2005/WD-css3-layout-20051215/" rel="nofollow">CSS Advanced Layout</a>.  This kind of then became <a href="https://www.w3.org/TR/2009/WD-css3-layout-20090402/" rel="nofollow">CSS Template Layout</a> in 2009.  Not one browser shipped any of this.  It was important to the print industry though, so they invested and made their own renderers for print.</p>
+			<p>Fast foward to 2011, Microsoft reframes this work as <a href="https://www.w3.org/TR/2011/WD-css3-grid-layout-20110407/" rel="nofollow">Grid Layout</a> and pretty much just documented what they shipped in IE10.  But then, that's it.  It sat there, in no small part because it had some real problems, having been mostly developed by Microsoft for specific use cases.</p>
+
+			<p>But then something changed, what?  Well, a lot of things, but very importantly, the model of it all.</p>
+
+		</section>
+	</section>
+	<section class="sectioning">
+		<contextual-heading role="heading" aria-level="2">Open</contextual-heading>
+
+		<p>Something happened along the way in our history:  Both the standards process, and the the Web Platform itself got increasingly open.</p>
+
+		<p>In fact, today <em>all</em> of the implementations are open... And that's a big part of how we moved grid.</p>
+
+		<p>The work on CSS Grid in both Webkit and Chromium (Blink) was done, not by Google or Apple, but by teams at Igalia.</p>
+
+		<p>Think about that for a minute:  The prioritization of its work was determined in 2 browsers not by a vendor, but by an investment from Bloomberg who had the foresight to fund this work.</p>
+
+		<p>This isn't a unique story, it's just a really important and highly visible one that's fun to hold up.   In fact, just in the last 6 months engineers as Igalia have worked on CSS Containment, ResizeObserver, BigInt, Class Fields, Responsive Image Preloading, Web Packaging, CSS Text Level 3, bringing MathML to Chromium, and normalizing SVG and MathML DOMs and a lot more.
+		</p>
+
+		<p>Igalia <em>loves</em> open, and open standards - it's what we <em>do</em>.  We participate in TC39, W3C, WHATWG and Khronos.  We work on V8, JavaScriptCore, SpiderMonkey, Our teams work on Chromium, Gecko/Servo, Webkit.</p>
+
+		<section class="sectioning">
+			<contextual-heading role="heading" aria-level="3">The possibilities</contextual-heading>
+			<p>This is the really exciting reason that I came to work at Igalia:  Igalia potentially entirely shifts the standards paradigm.  All this stuff still has a lot of costs to manage along the way.  Browsers still play a hugely important role in reviews, managing questions of maintenance and so on - but, finally, we can begin to imagine a world in where we can more <em>collectively</em> prioritize and cooperate.</p> 
+
+			<p>Imagine the possibilities of all of the things we could get done <em>together</em>.  Lots and lots of stuff is just <em>stuck</em>- and many of the causes for this are ultimately because of things that are more organizational than because something is particularly controversial.  We can help break the cycle and give those uncontroversial things implementation priority.</p>
+
+			<p>All we have to do is decide a thing is important enough, and there are lots of ways to do that.  We're already doing a lot and I think we've just begun to scratch the surface of what is possible.</p>
+
+			<p>Imagine, for example, a world in which organizations or groups very interested in in moving a set of topics simply came together and helped collectively prioritize and fund the efforts of those things, for example.  We could get things <strong>done</strong>.  Things that have lingered.  Honestly, the possibilities seem endless:  From discrete proposals that are critically important to a small group to broad ideas like color systems that touch everything from design to accessibility... Or, good print support from the same rendering engines? New core capabilities to help make things more extensible that are just moving too slow?</p>
+
+			<p>Our possible future is very exciting, and more than ever in our collective hands to determine!</p>
+
+		</section>
+
+
+	</section>
+
+
+
+
+</article></main>
+
+  
+    <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-88027178-1', 'auto');
+    ga('send', 'pageview');
+  </script>
+
+  <script>
+    Array.prototype.slice.call(document.querySelectorAll('.optional [data-src]')).forEach(function (optional) {
+      var prefs = window.localStorage.downloadsPrefs,
+          clickToSee;
+      if (prefs === 'true') {
+        activateOptional(optional);
+      } else {
+        clickToSee = document.createElement('div');
+        clickToSee.classList.add('clickToSee')
+        clickToSee.innerHTML = '<button>Click to see media</button>';
+        clickToSee.style.textAlign = 'center';
+        clickToSee.style.border = 'none';
+        optional.parentElement.insertBefore(clickToSee, optional.nextSibling);
+        clickToSee.firstElementChild.addEventListener('click', function () {
+          activateOptional(optional);
+        })
+      }
+
+    })
+  </script>
+
+</body></html>
