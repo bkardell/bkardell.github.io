@@ -330,7 +330,7 @@ America (art for sale)</a></li>
 		For most of the history of the Web, browser vendors have played an exceptionally critical role in standardization. This isn't a secret, in fact, it's widely discussed. What is less widely discussed is why that is. Frequently, most of our discussions give this very political origins, or assume it is about power struggles. But in fact, much of it has been for pretty considerably less intriguing reasons: It was a sort of predictable, natural outflow of the reality that we had created.
 	</p>
 	<p>
-		The first popular web browser (Mosiac) was proprietary. For a good chunk of our history, either all or most of the deployed browsers were built upon proprietary stuff, managed by a single company.
+		The first popular web browser (Mosiac) was proprietary. For a good chunk of our history, either all or most of the deployed browsers were built upon proprietary stuff, managed entirely by a single company.
 	</p>
 	<p>
 		This matters a lot because it meant that, practically speaking, everyone who is not a browser, including the myriad of organizations that participate in standards efforts are, effectively asking a small number of companies to invest money and manage priorites and budgets very particularly.
@@ -354,13 +354,13 @@ America (art for sale)</a></li>
 		<contextual-heading role="heading" aria-level="2">The Under Discussed, Big Impacts</contextual-heading>
 		<p>If you can imagine a conveyor belt of ideas that ultimately land as tasks to be implemented, you can understand some of the problem. Even given the exact same inputs, different people can make pretty different, but entirely reasonable and defensible choices. And the inputs aren't remotely the same. Perhaps it takes one vendor twice as long to implement because this feature is much harder in their architecture, or they simply have less resources, or perhaps they're in the middle of reworking their layout, or... There are myriad reasons why these things get prioritized and worked differently.</p>
 
-		<p>If you were to consider nothing else at all, you can see why things get gummed up. There is an absolute gauntlet that something has to run in order to become a standard.</p>
+		<p>If you were to consider nothing else at all, you can see why things get gummed up. There is an absolute gauntlet that something has to run in order to become a standard, even when there isn't particular controversy.</p>
 
 		<p>Practically speaking, this leads to misses. It leads to things backing up. The more backed up things get, the less likely a browser vendor is to entertain new ideas and spend a lot of time discussing things that doesn't directly align with their existing investments and priorities.</p>
 
 		<p>Things that come from another vendor, on the other hand, are more likely to place more direct pressure on them to respond.</p>
 
-		<p>Worse still, this creates kind of a feedback loop that ultimately winds up with a reality that yields near total <em>practical</em> domination of Web standards by browser vendors for reasons that aren't really especially political ones, or even intentional.</p>
+		<p>Worse still, this creates kind of a feedback loop that ultimately winds up with a reality that yields near total <em>practical</em> domination of Web standards by browser vendors for reasons that aren't really especially political ones.  These outcomes are not because of controvery, nor even particularly intentional.</p>
 	</section>
 
 	<section class="sectioning">
@@ -368,7 +368,7 @@ America (art for sale)</a></li>
 		<p>"But we do manage to get things done, even big things, rather quickly, when we really want to, right?" Is a refrain I've heard a lot. What about CSS Grid, for example? Grid seemed to drop everywhere at pretty much the same time, in 2017. It seemed like it happened very quickly to many of us, and I've heard this comment a number of times. If this isn't and illustration of vendors aligning on big ideas, prioritizing things, and getting things done fast when they want to, I don't know what is... Right? Here's the interesting part: <em>It isn't that at all.</em>
 
 		</p><p>And what it is <em>is far more interesting and exciting.</em></p>
-
+ 
 
 		<section class="sectioning">
 			<contextual-heading role="heading" aria-level="3">The backstory of CSS Grid</contextual-heading>
@@ -385,16 +385,20 @@ America (art for sale)</a></li>
 
 		<p>Something happened along the way in our history:  Both the standards process, and the the Web Platform itself got increasingly open.</p>
 
-		<p>In fact, today <em>all</em> of the implementations are open... And that's a big part of how we moved grid.</p>
+		<p>In fact, today <em>all</em> of the implementations are open, and that's a big part of how we moved grid.</p>
 
 		<p>The work on CSS Grid in both Webkit and Chromium (Blink) was done, not by Google or Apple, but by teams at Igalia.</p>
 
-		<p>Think about that for a minute:  The prioritization of its work was determined in 2 browsers not by a vendor, but by an investment from Bloomberg who had the foresight to fund this work.</p>
+		<p>Think about that for a minute:  The prioritization of its work was determined in 2 browsers not by a vendor, but by an investment from Bloomberg who had the foresight to fund this largely uncontroversial work.</p>
 
-		<p>This isn't a unique story, it's just a really important and highly visible one that's fun to hold up.   In fact, just in the last 6 months engineers as Igalia have worked on CSS Containment, ResizeObserver, BigInt, Class Fields, Responsive Image Preloading, Web Packaging, CSS Text Level 3, bringing MathML to Chromium, and normalizing SVG and MathML DOMs and a lot more.
+		<p>This isn't a unique story, it's just a really important and highly visible one that's fun to hold up.   In fact, just in the last 6 months engineers as Igalia have worked on CSS Containment, ResizeObserver, BigInt, private fields and methods, responsive image preloading, Web Packaging, CSS Text Level 3, bringing MathML to Chromium, normalizing SVG and MathML DOMs and a lot more.
 		</p>
 
-		<p>Igalia <em>loves</em> open, and open standards - it's what we <em>do</em>.  We participate in TC39, W3C, WHATWG and Khronos.  We work on V8, JavaScriptCore, SpiderMonkey, Our teams work on Chromium, Gecko/Servo, Webkit.</p>
+		<p>Igalia <em>loves</em> open, and open standards - it's what we <em>do</em>.  We participate in TC39, W3C, WHATWG and Khronos.  We work on V8, JavaScriptCore, SpiderMonkey. Our teams work on Chromium, Gecko/Servo, Webkit.  We work very 
+		closely <em>with</em> browser vendors.  Openness can really change the economics involved and remove 
+		some previously difficult hurdles. This allows 
+		us all (including browsers vendors) to address more 
+		of those things than we could before.</p>
 
 		<section class="sectioning">
 			<contextual-heading role="heading" aria-level="3">The possibilities</contextual-heading>
@@ -406,7 +410,7 @@ America (art for sale)</a></li>
 
 			<p>Imagine, for example, a world in which organizations or groups very interested in in moving a set of topics simply came together and helped collectively prioritize and fund the efforts of those things, for example.  We could get things <strong>done</strong>.  Things that have lingered.  Honestly, the possibilities seem endless:  From discrete proposals that are critically important to a small group to broad ideas like color systems that touch everything from design to accessibility... Or, good print support from the same rendering engines? New core capabilities to help make things more extensible that are just moving too slow?</p>
 
-			<p>Our possible future is very exciting, and more than ever in our collective hands to determine!</p>
+			<p>Our possible future is very exciting, and more than ever in our collective hands to determine!  If you're interested in learning more, or have questions, you can <a href="https://www.igalia.com/contact/">contact Igalia</a>, or come and find me at TPAC if you happen to be here.</p>
 
 		</section>
 
