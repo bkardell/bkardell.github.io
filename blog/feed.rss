@@ -4,7 +4,7 @@
         <title>bkardell.com rss feed</title>
         <link>http://bkardell.com/</link>
         <description>Just the bkardell.com rss feed</description>
-        <lastBuildDate>Tue, 20 Aug 2019 14:18:15 GMT</lastBuildDate>
+        <lastBuildDate>Mon, 16 Sep 2019 22:21:32 GMT</lastBuildDate>
         <docs>http://blogs.law.harvard.edu/tech/rss</docs>
         <generator>awesome mix</generator>
         <image>
@@ -15,10 +15,138 @@
         <copyright>All rights reserved 2018, Brian Kardell</copyright>
         <atom:link href="https://bardell.com/blog/feed.atom" rel="self" type="application/rss+xml"/>
         <item>
+            <title><![CDATA[Beyond Browser Vendors]]></title>
+            <link>https://bkardell.com/blog/Beyond.html</link>
+            <guid>https://bkardell.com/blog/Beyond.html</guid>
+            <pubDate>Sun, 15 Sep 2019 15:00:00 GMT</pubDate>
+            <description><![CDATA[I'd like to explain what I think is potentially the most exciting set of changes that have taken place in the latter stages of the Web's history: Why we are now collectively considerably more in control of our own destinies and have moved "beyond browser vendors".]]></description>
+            <content:encoded><![CDATA[
+	<contextual-heading role="heading" aria-level="1" style="font-size: 2rem;">Beyond Browser Vendors</contextual-heading>
+	<p class="segue">I'd like to explain what I think is potentially the most exciting set of changes that have taken place in the latter stages of the Web's history: Why we are now collectively considerably more in control of our own destinies and have moved "beyond browser vendors".</p>
+	<p> 
+		For most of the history of the Web, browser vendors have played an exceptionally critical role in standardization. This isn't a secret, in fact, it's widely discussed. What is less widely discussed is why that is. Frequently, most of our discussions give this very political origins, or assume it is about power struggles. But in fact, much of it has been for pretty considerably less intriguing reasons: It was a sort of predictable, natural outflow of the reality that we had created.
+	</p>
+	<p>
+		The first popular web browser (Mosiac) was proprietary. For a good chunk of our history, either all or most of the deployed browsers were built upon proprietary stuff, managed entirely by a single company.
+	</p>
+	<p>
+		This matters a lot because it meant that, practically speaking, everyone who is not a browser, including the myriad of organizations that participate in standards efforts are, effectively asking a small number of companies to invest money and manage priorities and budgets very particularly.
+	</p>
+	<section class="sectioning">
+		<contextual-heading role="heading" aria-level="2" style="font-size: 2.25rem;">Mundane Realities</contextual-heading>
+		<p>What's very, very difficult to appreciate from the outside is just how much is impacted, historically, by the fairly boring and entirely mundane fact above and that browser vendors aren't actually that special.</p>
+
+		<p>That is, they ultimately operate very much like most other organizations: They have a budget, carved out of some larger company. That company has some larger goals.</p>
+
+		<p>Their organization has an org chart with managers, teams, and projects, and QAs. They hire staff with specialized skills (these can be quite specialized). They have tasks and processes and annual reviews, and goals, and so on.</p>
+
+		<p>Code and approaches are adapted, they look for ways to improve performance, extend ideas, make things more modular, and so on.</p>
+
+		<p>Each quarter, then, managers have to decide how to maximize the budget in a way that includes an intersection of things in the pipeline (or that they might be interested in introducing), which best align with larger organizational goals,for which they have free resources with the right skills to do that work this quarter.
+		</p>
+
+	</section>
+
+	<section class="sectioning">
+		<contextual-heading role="heading" aria-level="2" style="font-size: 2.25rem;">The Under Discussed, Big Impacts</contextual-heading>
+		<p>If you can imagine a conveyor belt of ideas that ultimately land as tasks to be implemented, you can understand some of the problem. Even given the exact same inputs, different people can make pretty different, but entirely reasonable and defensible choices. And the inputs aren't remotely the same. Perhaps it takes one vendor twice as long to implement because this feature is much harder in their architecture, or they simply have less resources, or perhaps they're in the middle of reworking their layout, or... There are myriad reasons why these things get prioritized and worked differently.</p>
+
+		<p>If you were to consider nothing else at all, you can see why things get gummed up. There is an absolute gauntlet that something has to run in order to become a standard, even when there isn't particular controversy.</p>
+
+		<p>Practically speaking, this leads to misses. It leads to things backing up. The more backed up things get, the less likely a browser vendor is to entertain new ideas and spend a lot of time discussing things that doesn't directly align with their existing investments and priorities.</p>
+
+		<p>Things that come from another vendor, on the other hand, are more likely to place more direct pressure on them to respond.</p>
+
+		<p>Worse still, this creates kind of a feedback loop that ultimately winds up with a reality that yields near total <em>practical</em> domination of Web standards by browser vendors for reasons that aren't really especially political ones.  These outcomes are not because of controvery, nor even particularly intentional.</p>
+	</section>
+
+	<section class="sectioning">
+		<contextual-heading role="heading" aria-level="2" style="font-size: 2.25rem;">A different story...</contextual-heading>
+		<p>"But we do manage to get things done, even big things, rather quickly, when we really want to, right?" Is a refrain I've heard a lot. What about CSS Grid, for example? Grid seemed to drop everywhere at pretty much the same time, in 2017. It seemed like it happened very quickly to many of us, and I've heard this comment a number of times. If this isn't and illustration of vendors aligning on big ideas, prioritizing things, and getting things done fast when they want to, I don't know what is... Right? Here's the interesting part: <em>It isn't that at all.</em>
+
+		</p><p>And what it is <em>is far more interesting and exciting.</em></p>
+ 
+
+		<section class="sectioning">
+			<contextual-heading role="heading" aria-level="3" style="font-size: 2.5rem;">The backstory of CSS Grid</contextual-heading>
+			<p>In 1996, Bert Bos, Dave Raggett, and Håkon Lie were the authors of a proposal called "<a href="https://www.w3.org/TR/WD-layout.html" rel="nofollow">Frame-Based Layout</a>" which attempted to tackle the idea of a grid-oriented layout controlled by CSS.  That completely failed to get uptake and implementations.</p>
+			<p>At the end of 2005, Bert Bos put some of these ideas forward again in <a href="https://www.w3.org/TR/2005/WD-css3-layout-20051215/" rel="nofollow">CSS Advanced Layout</a>.  This kind of then became <a href="https://www.w3.org/TR/2009/WD-css3-layout-20090402/" rel="nofollow">CSS Template Layout</a> in 2009.  Not one browser shipped any of this.  It was important to the print industry though, so they invested and made their own renderers for print.</p>
+			<p>Fast foward to 2011, Microsoft reframes this work as <a href="https://www.w3.org/TR/2011/WD-css3-grid-layout-20110407/" rel="nofollow">Grid Layout</a> and pretty much just documented what they shipped in IE10.  But then, that's it.  It sat there, in no small part because it had some real problems, having been mostly developed by Microsoft for specific use cases.</p>
+
+			<p>But then something changed, what?  Well, a lot of things, but very importantly, the model of it all.</p>
+
+		</section>
+	</section>
+	<section class="sectioning">
+		<contextual-heading role="heading" aria-level="2" style="font-size: 2.25rem;">Open</contextual-heading>
+
+		<p>Something happened along the way in our history:  Both the standards process, and the the Web Platform itself got increasingly open.</p>
+
+		<p>In fact, today <em>all</em> of the implementations are open, and that's a big part of how we moved grid.</p>
+
+		<p>Most of the work on CSS Grid in both WebKit and Chromium (Blink) was done, not by Google or Apple, but by teams at Igalia.</p>
+ 
+		<p>Think about that for a minute:  The prioritization of its work was determined in 2 browsers not by a vendor, but by an investment from Bloomberg who had the foresight to fund this largely uncontroversial work.</p>
+
+		<p>This isn't a unique story, it's just a really important and highly visible one that's fun to hold up.   In fact, just in the last 6 months engineers as Igalia have worked on CSS Containment, ResizeObserver, BigInt, private fields and methods, responsive image preloading, CSS Text Level 3, bringing MathML to Chromium, normalizing SVG and MathML DOMs and a lot more.
+		</p>
+
+		<p>Igalia <em>loves</em> open, and open standards - it's what we <em>do</em>.  We participate in TC39, W3C, WHATWG and Khronos.  We work on V8, JavaScriptCore, SpiderMonkey. Our teams work on Chromium, Gecko/Servo, WebKit.  We work very 
+		closely <em>with</em> browser vendors.  Openness can really change the economics involved and remove 
+		some previously difficult hurdles. This allows 
+		us all (including browsers vendors) to address more 
+		of those things than we could before.</p>
+
+		<section class="sectioning">
+			<contextual-heading role="heading" aria-level="3" style="font-size: 2.5rem;">The possibilities</contextual-heading>
+			<p>This is the really exciting reason that I came to work at Igalia:  Igalia potentially entirely shifts the standards paradigm.  All this stuff still has a lot of costs to manage along the way.  Browsers still play a hugely important role in reviews, managing questions of maintenance and so on - but, finally, we can begin to imagine a world in where we can more <em>collectively</em> prioritize and cooperate.</p> 
+
+			<p>Imagine the possibilities of all of the things we could get done <em>together</em>.  Lots and lots of stuff is just <em>stuck</em>- and many of the causes for this are ultimately because of things that are more organizational than because something is particularly controversial.  We can help break the cycle and give those uncontroversial things implementation priority.</p>
+
+			<p>All we have to do is decide a thing is important enough, and there are lots of ways to do that.  We're already doing a lot and I think we've just begun to scratch the surface of what is possible.</p>
+
+			<p>Imagine, for example, a world in which organizations or groups very interested in moving a set of topics simply came together and helped collectively prioritize and fund the efforts of those things, for example.  We could get things <strong>done</strong>.  Things that have lingered.  Honestly, the possibilities seem endless:  From discrete proposals that are critically important to a small group to broad ideas like color systems that touch everything from design to accessibility... Or, good print support from the same rendering engines? New core capabilities to help make things more extensible that are just moving too slow?</p>
+
+			<p>Our possible future is very exciting, and more than ever in our collective hands to determine!  If you're interested in learning more, or have questions, you can <a href="https://www.igalia.com/contact/">contact Igalia</a>, or come and find me at TPAC if you happen to be here.</p>
+
+		</section>
+
+
+	</section>
+
+
+
+
+]]></content:encoded>
+        </item>
+        <item>
+            <title><![CDATA[2 Minute Standards]]></title>
+            <link>https://bkardell.com/blog/2MinuteStandards.html</link>
+            <guid>https://bkardell.com/blog/2MinuteStandards.html</guid>
+            <pubDate>Mon, 19 Aug 2019 15:00:00 GMT</pubDate>
+            <description><![CDATA[A short explanation of a new effort]]></description>
+            <content:encoded><![CDATA[
+    <contextual-heading role="heading" aria-level="1" style="font-size: 2rem;">2 Minute Standards</contextual-heading>
+    <p class="segue">A short explanation of a new effort</p>
+
+    <p>For a while now, we've been running some 'outreach groups'.  Originally started informally by my colleague at <a href="https://igalia.com" rel="nofollow">Igalia, </a><a href="https://twitter.com/littledan" rel="nofollow">Dan Ehrenberg</a>, it's become a set of monthly meetings with various groups of stakeholders in <a href="https://tc39.github.io" rel="nofollow">TC39</a> and the Web at large which I really look forward to.  The <a href="https://github.com/js-outreach/js-outreach-groups" rel="nofollow">groups</a> are meetings of people who work on Tooling, people who work on Frameworks and Libraries and Educators, with folks who work on standards.  The goals of all of them, at the end of the day, is to figure out how we all work better, together.</p>
+    
+    <p>The Educators Group has talked a bit about a number of efforts, but there's one conversation we've been having that I think is pretty interesting. I dont know of any developer who isn't interested in what is going on in standards, but the economics of this is currently kind of hard. We're interested in a whole bunch of other things too. There's lots of good content - too much in fact, coming at us from a million directions and it's all competing for our time and attention. We have jobs, and families, and pets, hobbies and lives. I love a lot of long form things, I'm excited when I see them in my stream, but they pile up and I have to choose. I only have so many slots of time where I can actually afford to consume 10, 15, 30 or 40 minutes worth of information. It can feel a little overwhelming sometimes.</p>
+
+    <p>So, we're going to try something new: 2 Minute Standards.  Think of it as "standards news, in brief".  The basic idea is pretty simple: Like a news segment, it's got to contain pertinent facts, more than a tweet - but it's air time is limited, as the name would suggest, to 2 Minutes.  That can come in a number of forms: An article that is 500 words or less, a two minute video, or a short web comic/zine.  The idea though is to ultimately give developers some channel with reasonable economics for staying 'generally informed'.  In the end, that's frequently what we want anyways: We can't know everything, we just need to know <em>enough</em> to know what it is, why it is, and that it is there when we're ready to learn more.  We'd like to be able to roughly understand it if it comes up. A maximum of 2 minutes per day, and almost certainly not even that much, seems... unintimidating and managable.</p>
+
+    <p>So, that's the idea.  We're still discussing many of the details about how to make this really 'click' in a bigger way: How to create as a sort of channel you can follow?  For now, it seems better to start with something simple and perhaps to begin to get feedback on the idea.  To this end, we'll post things with the hashtag #StandardsIn2Min, and others can too. If you see something fly by with the hashtag you can always find it again later on the twitter feed and, hopefully, expect that it will take no more than 2 minutes to consume.  However, we will also manage the Twitter account <a href="https://twitter.com/StandardsIn2Min" rel="nofollow">@StandardsIn2Min</a>, where we'll work to curate those hashtags too and create a manageable (honestly, probably slow) pace that never asks for more than two minutes of your attention in a day to keep up. Let us know what you think about the idea!</p>
+    
+
+    <p class="thanks-to">Thanks to the <a href="https://github.com/js-outreach/js-outreach-groups" rel="nofollow">educators group</a> for all of their help discussing and creating, and especially to <a href="https://twitter.com/laurieontech" rel="nofollow">Laurie Barth</a> and <a href="https://twitter.com/jorydotcom" rel="nofollow">Jory Burson</a> for helping get this post put together quickly!
+    </p>
+]]></content:encoded>
+        </item>
+        <item>
             <title><![CDATA[Top Level Await: 2 Minute Standards]]></title>
             <link>https://bkardell.com/blog/TopLevelAwaitIn2m.html</link>
             <guid>https://bkardell.com/blog/TopLevelAwaitIn2m.html</guid>
-            <pubDate>Tue, 20 Aug 2019 04:00:00 GMT</pubDate>
+            <pubDate>Mon, 19 Aug 2019 15:00:00 GMT</pubDate>
             <description><![CDATA[My first post in a new effort #StandardsIn2Min to provide short, but useful information about developing standards.]]></description>
             <content:encoded><![CDATA[
 	<contextual-heading role="heading" aria-level="1" style="font-size: 2rem;">Top Level Await: 2 Minute Standards</contextual-heading>
@@ -83,33 +211,10 @@ export const _internalPromise =
 ]]></content:encoded>
         </item>
         <item>
-            <title><![CDATA[2 Minute Standards]]></title>
-            <link>https://bkardell.com/blog/2MinuteStandards.html</link>
-            <guid>https://bkardell.com/blog/2MinuteStandards.html</guid>
-            <pubDate>Tue, 20 Aug 2019 04:00:00 GMT</pubDate>
-            <description><![CDATA[A short explanation of a new effort]]></description>
-            <content:encoded><![CDATA[
-    <contextual-heading role="heading" aria-level="1" style="font-size: 2rem;">2 Minute Standards</contextual-heading>
-    <p class="segue">A short explanation of a new effort</p>
-
-    <p>For a while now, we've been running some 'outreach groups'.  Originally started informally by my colleague at <a href="https://igalia.com" rel="nofollow">Igalia, </a><a href="https://twitter.com/littledan" rel="nofollow">Dan Ehrenberg</a>, it's become a set of monthly meetings with various groups of stakeholders in <a href="https://tc39.github.io" rel="nofollow">TC39</a> and the Web at large which I really look forward to.  The <a href="https://github.com/js-outreach/js-outreach-groups" rel="nofollow">groups</a> are meetings of people who work on Tooling, people who work on Frameworks and Libraries and Educators, with folks who work on standards.  The goals of all of them, at the end of the day, is to figure out how we all work better, together.</p>
-    
-    <p>The Educators Group has talked a bit about a number of efforts, but there's one conversation we've been having that I think is pretty interesting. I dont know of any developer who isn't interested in what is going on in standards, but the economics of this is currently kind of hard. We're interested in a whole bunch of other things too. There's lots of good content - too much in fact, coming at us from a million directions and it's all competing for our time and attention. We have jobs, and families, and pets, hobbies and lives. I love a lot of long form things, I'm excited when I see them in my stream, but they pile up and I have to choose. I only have so many slots of time where I can actually afford to consume 10, 15, 30 or 40 minutes worth of information. It can feel a little overwhelming sometimes.</p>
-
-    <p>So, we're going to try something new: 2 Minute Standards.  Think of it as "standards news, in brief".  The basic idea is pretty simple: Like a news segment, it's got to contain pertinent facts, more than a tweet - but it's air time is limited, as the name would suggest, to 2 Minutes.  That can come in a number of forms: An article that is 500 words or less, a two minute video, or a short web comic/zine.  The idea though is to ultimately give developers some channel with reasonable economics for staying 'generally informed'.  In the end, that's frequently what we want anyways: We can't know everything, we just need to know <em>enough</em> to know what it is, why it is, and that it is there when we're ready to learn more.  We'd like to be able to roughly understand it if it comes up. A maximum of 2 minutes per day, and almost certainly not even that much, seems... unintimidating and managable.</p>
-
-    <p>So, that's the idea.  We're still discussing many of the details about how to make this really 'click' in a bigger way: How to create as a sort of channel you can follow?  For now, it seems better to start with something simple and perhaps to begin to get feedback on the idea.  To this end, we'll post things with the hashtag #StandardsIn2Min, and others can too. If you see something fly by with the hashtag you can always find it again later on the twitter feed and, hopefully, expect that it will take no more than 2 minutes to consume.  However, we will also manage the Twitter account <a href="https://twitter.com/StandardsIn2Min" rel="nofollow">@StandardsIn2Min</a>, where we'll work to curate those hashtags too and create a manageable (honestly, probably slow) pace that never asks for more than two minutes of your attention in a day to keep up. Let us know what you think about the idea!</p>
-    
-
-    <p class="thanks-to">Thanks to the <a href="https://github.com/js-outreach/js-outreach-groups" rel="nofollow">educators group</a> for all of their help discussing and creating, and especially to <a href="https://twitter.com/laurieontech" rel="nofollow">Laurie Barth</a> and <a href="https://twitter.com/jorydotcom" rel="nofollow">Jory Burson</a> for helping get this post put together quickly!
-    </p>
-]]></content:encoded>
-        </item>
-        <item>
             <title><![CDATA[One Platform™]]></title>
             <link>https://bkardell.com/blog/OnePlatform.html</link>
             <guid>https://bkardell.com/blog/OnePlatform.html</guid>
-            <pubDate>Tue, 09 Jul 2019 04:00:00 GMT</pubDate>
+            <pubDate>Mon, 08 Jul 2019 15:00:00 GMT</pubDate>
             <description><![CDATA[Let's talk about making SVG and MathML less special.]]></description>
             <content:encoded><![CDATA[
 	<contextual-heading role="heading" aria-level="1" style="font-size: 2rem;">One Platform™</contextual-heading>
@@ -149,7 +254,7 @@ export const _internalPromise =
             <title><![CDATA[Moving Math Forward, Thoughts and Experiments]]></title>
             <link>https://bkardell.com/blog/MathForward.html</link>
             <guid>https://bkardell.com/blog/MathForward.html</guid>
-            <pubDate>Tue, 09 Jul 2019 04:00:00 GMT</pubDate>
+            <pubDate>Mon, 08 Jul 2019 15:00:00 GMT</pubDate>
             <description><![CDATA[
 		In this piece, I explain details on thoughts on experiments and conversations around moving Math forward on the Web.
 	]]></description>
@@ -183,7 +288,7 @@ export const _internalPromise =
             <title><![CDATA[Interesting Custom Element Data Begins]]></title>
             <link>https://bkardell.com/blog/Fun-With-Custom-Element-Data.html</link>
             <guid>https://bkardell.com/blog/Fun-With-Custom-Element-Data.html</guid>
-            <pubDate>Thu, 07 Mar 2019 05:00:00 GMT</pubDate>
+            <pubDate>Wed, 06 Mar 2019 15:00:00 GMT</pubDate>
             <description><![CDATA[ 
         A while back I wrote a piece asking how we begin to think about using data to move forward with standardization, and called for ways to help get data. One thing I did was request a new query from the HTTPArchive including data on “dasherized elements”. Keep in mind that the
   while the top 1.2 million sites or so in this dataset a lot of data, it is still a small sampling and has its own biases. It reports mostly on a particular ‘kind’ of site which is not representative of the giant bottom of the iceberg that lives beneath
@@ -226,7 +331,7 @@ export const _internalPromise =
             <title><![CDATA[Intuition Bikeshed and Standards Challenges]]></title>
             <link>https://bkardell.com/blog/StringyCSS.html</link>
             <guid>https://bkardell.com/blog/StringyCSS.html</guid>
-            <pubDate>Fri, 01 Mar 2019 05:00:00 GMT</pubDate>
+            <pubDate>Thu, 28 Feb 2019 15:00:00 GMT</pubDate>
             <description><![CDATA[One thing that's been on my mind quite a lot for the last few years is how we can better communicate both in and out of standards bodies. This past week some things happened which I think make for an interesting review and some thought about whether we did the right things, and how we can do better.  
 	]]></description>
             <content:encoded><![CDATA[ 
@@ -480,7 +585,7 @@ hyperlink, opening a pop-up.)
             <title><![CDATA[Harold Crick and the Web Platform]]></title>
             <link>https://bkardell.com/blog/Math.html</link>
             <guid>https://bkardell.com/blog/Math.html</guid>
-            <pubDate>Wed, 09 Jan 2019 05:00:00 GMT</pubDate>
+            <pubDate>Tue, 08 Jan 2019 15:00:00 GMT</pubDate>
             <description><![CDATA[
 		In this piece I'll talk about MathML and why I think that it is especially unique, intersting, and stranger than fiction - as well as what we can/should do with it.  (note: Stranger than Fiction is a movie about a very competant and number-obsessed  accountant named Harold Crick who suddenly begins to hear his life being narrated, and learns that a seemingly innocuous event one Wednesday will ultimately change his life and lead to his demise, and what happens next).
 	]]></description>
@@ -725,7 +830,7 @@ hyperlink, opening a pop-up.)
             <title><![CDATA[I Heart Glitch]]></title>
             <link>https://bkardell.com/blog/Glitch.html</link>
             <guid>https://bkardell.com/blog/Glitch.html</guid>
-            <pubDate>Wed, 02 Jan 2019 05:00:00 GMT</pubDate>
+            <pubDate>Tue, 01 Jan 2019 15:00:00 GMT</pubDate>
             <description><![CDATA[
 		Today marks exactly one month since I started playing with Glitch, and I'd like to tell you about why I love it and can't stop playing with it.
 	]]></description>
@@ -812,7 +917,7 @@ hyperlink, opening a pop-up.)
             <title><![CDATA[Alice 2019]]></title>
             <link>https://bkardell.com/blog/Alice-2019.html</link>
             <guid>https://bkardell.com/blog/Alice-2019.html</guid>
-            <pubDate>Sun, 23 Dec 2018 05:00:00 GMT</pubDate>
+            <pubDate>Sat, 22 Dec 2018 15:00:00 GMT</pubDate>
             <description><![CDATA[I began blogging about W3C politics and elections in 2012.  If you've read my pieces before or are otherwise already familliar with the W3C Technical Architecture Group, you can skip ahead to "Alright, tell me about this election".  If, however, you find youself thinking "Elections in W3C? Politics?" then let me fill you in.]]></description>
             <content:encoded><![CDATA[
 	<contextual-heading role="heading" aria-level="1" style="font-size: 2rem;">Alice 2019</contextual-heading>
@@ -888,7 +993,7 @@ hyperlink, opening a pop-up.)
             <title><![CDATA[Standards Crisis on Earth-1]]></title>
             <link>https://bkardell.com/blog/Crisis.html</link>
             <guid>https://bkardell.com/blog/Crisis.html</guid>
-            <pubDate>Mon, 03 Dec 2018 05:00:00 GMT</pubDate>
+            <pubDate>Sun, 02 Dec 2018 15:00:00 GMT</pubDate>
             <description><![CDATA[
 	This week, not for the first time, some folks (here's one link) suggested that our inability to standardize really common things has had some negative impacts - and discussion about how to fix that. I agree, but also have complex thoughts on this that have been brewing for some time in the form of half finished blog posts... So, I'll try to write those here and, hopefully, not make it too boring.
 	]]></description>
@@ -1175,7 +1280,7 @@ hyperlink, opening a pop-up.)
             <title><![CDATA[Onward]]></title>
             <link>https://bkardell.com/blog/Onward.html</link>
             <guid>https://bkardell.com/blog/Onward.html</guid>
-            <pubDate>Mon, 05 Nov 2018 05:00:00 GMT</pubDate>
+            <pubDate>Sun, 04 Nov 2018 15:00:00 GMT</pubDate>
             <description><![CDATA[
 		So, it's time for something new... 
 	]]></description>
@@ -1234,7 +1339,7 @@ hyperlink, opening a pop-up.)
             <title><![CDATA[W3C Elections Just Got A Whole Lot Harder]]></title>
             <link>https://bkardell.com/blog/W3CTAGElectionChange.html</link>
             <guid>https://bkardell.com/blog/W3CTAGElectionChange.html</guid>
-            <pubDate>Mon, 11 Dec 2017 05:00:00 GMT</pubDate>
+            <pubDate>Sun, 10 Dec 2017 15:00:00 GMT</pubDate>
             <description><![CDATA[
         There's a new element to W3C politics and... it kind of worries me.  I'd like to make sure that people understand it and talk about what we can do about it.
     ]]></description>
@@ -1364,7 +1469,7 @@ hyperlink, opening a pop-up.)
             <title><![CDATA[A Brief W3C Primer for Busy People]]></title>
             <link>https://bkardell.com/blog/W3CPrimer.html</link>
             <guid>https://bkardell.com/blog/W3CPrimer.html</guid>
-            <pubDate>Tue, 05 Dec 2017 05:00:00 GMT</pubDate>
+            <pubDate>Mon, 04 Dec 2017 15:00:00 GMT</pubDate>
             <description><![CDATA[
         Every few months, I find it necessary for some reason, to describe something about how the various W3C roles/terms work together at a high level.  It takes about 400 words and, rather than continue to type them over and over, I thought I'd simply create a linkable thing that I can just point to instead. Hooray for links!
     ]]></description>
@@ -1402,7 +1507,7 @@ hyperlink, opening a pop-up.)
             <title><![CDATA[i is="the walrus"]]></title>
             <link>https://bkardell.com/blog/TheWalrus.html</link>
             <guid>https://bkardell.com/blog/TheWalrus.html</guid>
-            <pubDate>Thu, 23 Nov 2017 05:00:00 GMT</pubDate>
+            <pubDate>Wed, 22 Nov 2017 15:00:00 GMT</pubDate>
             <description><![CDATA[
         It's become a fairly regular occurence for me to encounter someone on social media expressing some kind of frustration with Custom Elements.  As both an avid user of them myself and someone involved in many discussions during their creation and evolution, I really want them to be better too.  As I speak to the folks who are frustrated, however, I find that there is so much there that it's difficult to discuss.  So, I thought perhaps it would be worth sitting down and writing about it.  That, and walruses.
     ]]></description>
@@ -1606,7 +1711,7 @@ hyperlink, opening a pop-up.)
             <title><![CDATA[Thoughts on Voice Recognition: Web Speech APIs Part IV]]></title>
             <link>https://bkardell.com/blog/Voice-Recognition-Thoughts.html</link>
             <guid>https://bkardell.com/blog/Voice-Recognition-Thoughts.html</guid>
-            <pubDate>Sun, 17 Sep 2017 04:00:00 GMT</pubDate>
+            <pubDate>Sat, 16 Sep 2017 15:00:00 GMT</pubDate>
             <description><![CDATA[This is part of a series about making the browser speak and listen to speech. In my last post You Don't Say: Web Speech APIs Part III, I talked about the recognition interfaces: listening or speech-to-text.]]></description>
             <content:encoded><![CDATA[
   <contextual-heading role="heading" aria-level="1" style="font-size: 2rem;">Thoughts on Voice Recognition: Web Speech APIs Part IV</contextual-heading>
@@ -1893,7 +1998,7 @@ speechRecognizer.audioContext.stop()</code></pre>
             <title><![CDATA[Listen up: Web Speech APIs Part III]]></title>
             <link>https://bkardell.com/blog/Listen-Up.html</link>
             <guid>https://bkardell.com/blog/Listen-Up.html</guid>
-            <pubDate>Fri, 25 Aug 2017 04:00:00 GMT</pubDate>
+            <pubDate>Thu, 24 Aug 2017 15:00:00 GMT</pubDate>
             <description><![CDATA[This is part of a series about making the browser speak and listen to speech. In my last post You Don't Say: Web Speech APIs Part II, I talked about how I'm personally papering over what
     we "have" today with regard to making the browser "talk" and why. In this post I'll talk about the other end of that: listening or speech-to-text.]]></description>
             <content:encoded><![CDATA[
@@ -2232,7 +2337,7 @@ transcript: "tu tu"</code></pre>
             <title><![CDATA[You Don't Say: Web Speech APIs Part II]]></title>
             <link>https://bkardell.com/blog/Basic-Voice-Speaker.html</link>
             <guid>https://bkardell.com/blog/Basic-Voice-Speaker.html</guid>
-            <pubDate>Thu, 24 Aug 2017 04:00:00 GMT</pubDate>
+            <pubDate>Wed, 23 Aug 2017 15:00:00 GMT</pubDate>
             <description><![CDATA[This is part of a series about making the browser speak and listen to speech.  In my last post Greetings, Professor Falken: Web Speech APIs Part I, I talked about the existing APIs we "have" for speaking (as well as why the air quotes) and all the many ways that they are wonky today.  In this post I'll share some of my own opinions on that API, as well as how I'm dealing with the speaking part IRL.]]></description>
             <content:encoded><![CDATA[
     <contextual-heading role="heading" aria-level="1" style="font-size: 2rem;">You Don't Say: Web Speech APIs Part II</contextual-heading>
@@ -2532,7 +2637,7 @@ Promise.all([
             <title><![CDATA[Greetings, Professor Falken: Web Speech APIs Part I]]></title>
             <link>https://bkardell.com/blog/Greetings-Professor-Falken.html</link>
             <guid>https://bkardell.com/blog/Greetings-Professor-Falken.html</guid>
-            <pubDate>Wed, 23 Aug 2017 04:00:00 GMT</pubDate>
+            <pubDate>Tue, 22 Aug 2017 15:00:00 GMT</pubDate>
             <description><![CDATA[There's a long, rich history of humans figuring out how to make machines talk and listen, and nearly as long as there has been a W3C there have been efforts to get these features into the browser.  It's too complicated to recount here, that's a whole post of it's own.  Suffice it to say that it's been fits and starts, steps forward and back and where we are right now is... muddy, but it works... sort of.  In this series of posts, I'll tell you all about it...]]></description>
             <content:encoded><![CDATA[
     <contextual-heading role="heading" aria-level="1" style="font-size: 2rem;">Greetings, Professor Falken: Web Speech APIs Part I</contextual-heading>
@@ -3077,7 +3182,7 @@ let voice = speechSynthesis.getVoices().find((voice) => {
             <title><![CDATA[The History and State of Speech]]></title>
             <link>https://bkardell.com/blog/The-History-Of-Speech.html</link>
             <guid>https://bkardell.com/blog/The-History-Of-Speech.html</guid>
-            <pubDate>Fri, 18 Aug 2017 04:00:00 GMT</pubDate>
+            <pubDate>Thu, 17 Aug 2017 15:00:00 GMT</pubDate>
             <description><![CDATA[One apocryphal legend says that when the great sculptor Michelangelo carved his statue of Moses, it was so life-like that as he struck his final blow to the left knee he demanded "Now, speak".  Sadly, it wasn't that easy.  But we've been working hard to figure it out pretty much ever since and, ultimately bring speech to the Web.  As often happens, I find myself so interested in understanding how we got here and where we are that it winds up being a whole piece on it's own.  So, in this piece I'll tell you about the history and at a high level current state of affairs of Speech on the Web, subsequent posts in this series will be more technical...]]></description>
             <content:encoded><![CDATA[
 	
@@ -3263,7 +3368,7 @@ No, Fuck you.
             <title><![CDATA[Contact Your W3C Congress Person]]></title>
             <link>https://bkardell.com/blog/W3C-Congress.html</link>
             <guid>https://bkardell.com/blog/W3C-Congress.html</guid>
-            <pubDate>Mon, 15 May 2017 04:00:00 GMT</pubDate>
+            <pubDate>Sun, 14 May 2017 15:00:00 GMT</pubDate>
             <description><![CDATA[The W3C is one of the primary standards bodies that works on Web standards.  Founded in 1994 along with the inventor of the Web Sir Tim Berners-Lee, it is a member based consortium originally modeled after the X-Consortium, with the stated aim of helping to "lead the Web to its full potential".  Its 465 "member orgs" are various types of organizations, foundations[1], academia and companies.   In late 2011 a movement in Web Standards began to take shape - seeking to help reform the things that many of us thought were broken.  This meant creating a common/shared vision across several standards bodies, changing ideas about where successful and lasting standards come from and how they are made and really stressing the importance of Web developers (who weren't themselves members) to that equation.  Lots and lots of positive change has happened at many levels, and lots more progress toward change has been set into motion but isn't yet complete and - if you'd like to see it continue, we could use your help.]]></description>
             <content:encoded><![CDATA[
 	<contextual-heading role="heading" aria-level="1" style="font-size: 2rem;">Contact Your W3C Congress Person</contextual-heading>
@@ -3337,7 +3442,7 @@ No, Fuck you.
             <title><![CDATA[Reflecting on Roles]]></title>
             <link>https://bkardell.com/blog/Reflecting-On-Roles.html</link>
             <guid>https://bkardell.com/blog/Reflecting-On-Roles.html</guid>
-            <pubDate>Tue, 25 Apr 2017 04:00:00 GMT</pubDate>
+            <pubDate>Mon, 24 Apr 2017 15:00:00 GMT</pubDate>
             <description><![CDATA[Just a silly little experiment based on an observation...]]></description>
             <content:encoded><![CDATA[
     <script src="../role-reflect.js"></script>
@@ -3435,7 +3540,7 @@ summary,
             <title><![CDATA[Divs]]></title>
             <link>https://bkardell.com/blog/Divs.html</link>
             <guid>https://bkardell.com/blog/Divs.html</guid>
-            <pubDate>Tue, 21 Mar 2017 04:00:00 GMT</pubDate>
+            <pubDate>Mon, 20 Mar 2017 15:00:00 GMT</pubDate>
             <description><![CDATA[I've been utterly failing to complete a couple of blog posts that I've been working on recently.  As sometimes happens when I am writing, I have a semi-random but kind of related thought that doesn't really fit in the post and I tweet it instead.  As it got some little attention/discussion, I'd like to expand on it here and offer a little more explanation/context.]]></description>
             <content:encoded><![CDATA[
 	<contextual-heading role="heading" aria-level="1" style="font-size: 2rem;">Divs</contextual-heading>
@@ -3503,7 +3608,7 @@ summary,
             <title><![CDATA[The Document Outline...What's the Deal with that?]]></title>
             <link>https://bkardell.com/blog/Whats-The-Deal-With-That.html</link>
             <guid>https://bkardell.com/blog/Whats-The-Deal-With-That.html</guid>
-            <pubDate>Fri, 24 Feb 2017 05:00:00 GMT</pubDate>
+            <pubDate>Thu, 23 Feb 2017 15:00:00 GMT</pubDate>
             <description><![CDATA[Last week there was a blur of activity surrounding "headings" or - more accurately around discussions about the "document outline". It started with Jon Neal (re)opening an issue.  This issue seems to be about a new element - but it's not entirely.  There were lots of comments and there was lots of discussion on lots of github issues in lots of repos.  I wrote a piece about my own complex thoughts about this issue.  It seems to suggest I am arguing that we start something brand new.  My friend Jake Archibald wrote a piece too which seems really different than the other two.  Trying to keep them all straight and read through comments, one would think that there is a lot of disagreement... But here's the thing: I don't think there really is.  I think it's just really complicated to follow.  To this end - I've asked a few people if this is a fair summary and the answer seems to be pretty much "yes"... So, if you're looking to understand in fairly straightforward terms what the discussions are, here it is...]]></description>
             <content:encoded><![CDATA[
 	<contextual-heading role="heading" aria-level="1" style="font-size: 2rem;">The Document Outline...What's the Deal with that?</contextual-heading>
@@ -3601,7 +3706,7 @@ summary,
             <title><![CDATA[Headings and the Seinfeld Pitch]]></title>
             <link>https://bkardell.com/blog/On-Headings.html</link>
             <guid>https://bkardell.com/blog/On-Headings.html</guid>
-            <pubDate>Fri, 17 Feb 2017 05:00:00 GMT</pubDate>
+            <pubDate>Thu, 16 Feb 2017 15:00:00 GMT</pubDate>
             <description><![CDATA[Because of its origins, HTML has a number of elements and concepts which are, in retrospect, probably not so great.  Headings being the way they are, for example, has caused seemingly no end of discussion.  I'd like to explain why I think this is, as well as what we should do about it.]]></description>
             <content:encoded><![CDATA[
 	
@@ -3742,7 +3847,7 @@ another h1 yet.
             <title><![CDATA[Incubate All the Things]]></title>
             <link>https://bkardell.com/blog/Incubate-All-The-Things.html</link>
             <guid>https://bkardell.com/blog/Incubate-All-The-Things.html</guid>
-            <pubDate>Mon, 26 Dec 2016 05:00:00 GMT</pubDate>
+            <pubDate>Sun, 25 Dec 2016 15:00:00 GMT</pubDate>
             <description><![CDATA[There's a conversation going on right now on the mailing list public-w3process, it's exceptionally long and twisty at this point, it took me a few hours to get caught up and... Wait, what's that? You've never even heard of this mailing list? No worries, I'll fill you in and tell you why this is important...]]></description>
             <content:encoded><![CDATA[
 	<contextual-heading role="heading" aria-level="1" style="font-size: 2rem;">Incubate All the Things</contextual-heading>
@@ -3832,7 +3937,7 @@ another h1 yet.
             <title><![CDATA[Performance: Shame, Hope, Nuance and Interesting Problems]]></title>
             <link>https://bkardell.com/blog/Perf.html</link>
             <guid>https://bkardell.com/blog/Perf.html</guid>
-            <pubDate>Tue, 22 Nov 2016 05:00:00 GMT</pubDate>
+            <pubDate>Mon, 21 Nov 2016 15:00:00 GMT</pubDate>
             <description><![CDATA[My free account on Wordpress.com has served me pretty well over the years by most measures.  I didn't have to set anything up, I use it, people all over the world read it - and did I mention it was free?  What else is there really?  But I've always wanted more control, and ownership of your own content is a really good thing, so couple of weeks ago, I broke down and bought bkardell.com. Given a domain, I decided that now that moving lots of legacy content there would be an interesting and fun exercise. I'd like to tell you about some things it's made me think about...]]></description>
             <content:encoded><![CDATA[
 	<contextual-heading role="heading" aria-level="1" style="font-size: 2rem;">Performance: Shame, Hope, Nuance and Interesting Problems</contextual-heading>
@@ -3975,7 +4080,7 @@ another h1 yet.
             <title><![CDATA[The Glory Days of the Web]]></title>
             <link>https://bkardell.com/blog/The-Glory-Days-Of-The-Web.html</link>
             <guid>https://bkardell.com/blog/The-Glory-Days-Of-The-Web.html</guid>
-            <pubDate>Wed, 05 Oct 2016 04:00:00 GMT</pubDate>
+            <pubDate>Tue, 04 Oct 2016 15:00:00 GMT</pubDate>
             <description><![CDATA[For the past couple of years, there have been a number of pieces lamenting the current state of Web development: It's gotten pretty complicated. Very recently a satirical piece on this subject really struck a chord and got a lot of attention. Dion Almaer wrote a piece in reply in which he introduced what I thought was a really good analogy - the rose colored glasses that we often see the past through...]]></description>
             <content:encoded><![CDATA[
 	<contextual-heading role="heading" aria-level="1" style="font-size: 2rem;">The Glory Days of the Web</contextual-heading>      
@@ -4029,7 +4134,7 @@ another h1 yet.
             <title><![CDATA[Potentially Scattered Thoughts on Web Components and Frameworks]]></title>
             <link>https://bkardell.com/blog/Potentially-Scattered-Thoughts-On-Web-Components.html</link>
             <guid>https://bkardell.com/blog/Potentially-Scattered-Thoughts-On-Web-Components.html</guid>
-            <pubDate>Mon, 26 Sep 2016 04:00:00 GMT</pubDate>
+            <pubDate>Sun, 25 Sep 2016 15:00:00 GMT</pubDate>
             <description><![CDATA[Chances are pretty good that you've seen at least one of the many articles and tweets flying around lately about Web Components and Frameworks. For the past week I've watched as all sorts of arguments have been made by friends of mine on both sides and wanted to weigh in and share some thoughts, but my life hasn't been cooperating. Finally, I have a moment so I tried to put down some thoughts that have been banging around in my head... No guarantee they are coherent and I'm out of time, so here they are....]]></description>
             <content:encoded><![CDATA[
 	<contextual-heading role="heading" aria-level="1" style="font-size: 2rem;">Potentially Scattered Thoughts on Web Components and Frameworks</contextual-heading>
@@ -4121,7 +4226,7 @@ another h1 yet.
             <title><![CDATA[The Future Web Wants You]]></title>
             <link>https://bkardell.com/blog/The-Future-Web-Wants-You.html</link>
             <guid>https://bkardell.com/blog/The-Future-Web-Wants-You.html</guid>
-            <pubDate>Wed, 24 Aug 2016 04:00:00 GMT</pubDate>
+            <pubDate>Tue, 23 Aug 2016 15:00:00 GMT</pubDate>
             <description><![CDATA[A few weeks ago I gave a talk in Pittsburgh, PA at Code and Supply. It was recorded if you would rather watch the video (the actual talk is ~40 minutes, the video captures some of the Q&amp;A afterward as well), but I'm more comfortable writing and I thought it might be worth a stab at a companion piece that tries to make the same points/arguments in blog-post-size, so - here it is.]]></description>
             <content:encoded><![CDATA[
 	
@@ -4267,7 +4372,7 @@ another h1 yet.
             <title><![CDATA[X-Web: Days of Future Past]]></title>
             <link>https://bkardell.com/blog/X-Web-Days-of-Future-Past.html</link>
             <guid>https://bkardell.com/blog/X-Web-Days-of-Future-Past.html</guid>
-            <pubDate>Mon, 20 Jun 2016 04:00:00 GMT</pubDate>
+            <pubDate>Sun, 19 Jun 2016 15:00:00 GMT</pubDate>
             <description><![CDATA[If you're not a comic book nerd, or a comic movie nerd, I suppose an explanation is necessary: In the Marvel Universe, there is a genetic mutation in some humans called "the X-gene". This gene leads to development of an exotic protein which can radically affect other genes in unpredictable ways. The result is mutants with all sorts of different "super" abilities. This is the basis for the story lines in the X-Men comics. Some humans, without the X-gene, see mutants as freaks, there is prejudice against them. Others would like to recruit them as weapons. Still others are friends. The mutant community is divided too. One group of mutants believe that they are a new homo superior destined to become the dominant species and they're willing to earn this by fear and force. Another group of mutants, the X-Men, led by Professor Xavier, believe that mutants and non-mutants should live in harmony. Mutants powers can even aid humanity. They work very hard for the advancement of peace and tolerance. And then, there are quite a lot of people - both mutants and everydays humans who are torn back and forth somewhere in the middle on a lot of the subtleties that arise. One of the most amazing parts of the narrative is that the leaders of the two groups are actually best friends. They actually agree on much. Most of their followers are not similarly friendly. It's kind of a hot mess, and it reminds me a little of the Web community.]]></description>
             <content:encoded><![CDATA[
 	
@@ -4405,7 +4510,7 @@ another h1 yet.
             <title><![CDATA[Prognostication and the Failure of the Web]]></title>
             <link>https://bkardell.com/blog/Prognostication-And-The-Failure-Of-The-Web.html</link>
             <guid>https://bkardell.com/blog/Prognostication-And-The-Failure-Of-The-Web.html</guid>
-            <pubDate>Fri, 06 May 2016 04:00:00 GMT</pubDate>
+            <pubDate>Thu, 05 May 2016 15:00:00 GMT</pubDate>
             <description><![CDATA[For almost as long as there has been a Web to write about, people have been prognosticating the death of the Web.  Mine is a different kind of prediction, but as I look into my crystal ball, I'm absolutely certain of it:  The Web will fail. Let me tell you what I see through the glass...]]></description>
             <content:encoded><![CDATA[
 	<contextual-heading role="heading" aria-level="1" style="font-size: 2rem;">Prognostication and the Failure of the Web</contextual-heading>
@@ -4472,7 +4577,7 @@ another h1 yet.
             <title><![CDATA[A Brief(ish) History of the Web Universe - Part IV: New Hope(s)]]></title>
             <link>https://bkardell.com/blog/Brief-ish-History-of-The-Web-Part-4.html</link>
             <guid>https://bkardell.com/blog/Brief-ish-History-of-The-Web-Part-4.html</guid>
-            <pubDate>Sun, 10 Apr 2016 04:00:00 GMT</pubDate>
+            <pubDate>Sat, 09 Apr 2016 15:00:00 GMT</pubDate>
             <description><![CDATA[
 		It's early 1994. AT&amp;T has purchased Go and PenOS (see&nbsp;Part I: The Pre-Web) and now they are pulling the plug. &nbsp;SmartSketch FutureSplash (again, Part I) won't be released. Its makers Jonathan Gay and Charlie Jackson briefly try porting to the desktop, but there they would have to compete with well-funded and mature products and that isn't practical. &nbsp;Keep them in the back of your mind, we'll come back to them.
 	]]></description>
@@ -4604,7 +4709,7 @@ another h1 yet.
             <title><![CDATA[TokenLists: Missing Web DNA]]></title>
             <link>https://bkardell.com/blog/TokenLists-Missing-DNA.html</link>
             <guid>https://bkardell.com/blog/TokenLists-Missing-DNA.html</guid>
-            <pubDate>Tue, 29 Mar 2016 04:00:00 GMT</pubDate>
+            <pubDate>Mon, 28 Mar 2016 15:00:00 GMT</pubDate>
             <description><![CDATA[As we move forward with the Web, it's important that we look down into the DNA and continue to find the missing connections - things that are fundamentally related in concept and managed so by the browser, but not exposed to developers in similar fashion.  I'd like to talk about one of those I recently uncovered...]]></description>
             <content:encoded><![CDATA[
 	<contextual-heading role="heading" aria-level="1" style="font-size: 2rem;">TokenLists: Missing Web DNA</contextual-heading>
@@ -4722,7 +4827,7 @@ element.className = (element.className === "selected") ? "" : "selected";</pre>
             <title><![CDATA[A Brief(ish) History of the Web Universe - Part III: The Early Web]]></title>
             <link>https://bkardell.com/blog/Brief-ish-History-of-The-Web-Part-3.html</link>
             <guid>https://bkardell.com/blog/Brief-ish-History-of-The-Web-Part-3.html</guid>
-            <pubDate>Fri, 05 Feb 2016 05:00:00 GMT</pubDate>
+            <pubDate>Thu, 04 Feb 2016 15:00:00 GMT</pubDate>
             <description><![CDATA[
 	Part I: The Pre-Web and Part II: Time of this series attempt to set the creation of the Web, the first Web browser and early attempts to publicly share Sir Tim Berners-Lee’s idea of “the Web” into some historical context.  They attempt to illustrate that there were ideas and forks of ideas along the way, each  considering different aspects of different problems; and that each had varying degrees of success. Some were popular and increasingly mature desktop products, others created standards upon which many products would be built.  Some were technically interesting but completely failed to take off and some which were academically fascinating but were largely vapor.   All of these were still “in motion” at the time that the Web was being conceived and it’s important to realize that they didn’t stop just because Tim said “wait, I’ve got it.”.  Those posts also attempt to explain how Tim really wanted the Web to be read/write, wanted to tap into existing mature products and which bits he imagined were most and least important.  I described the landscape of deployed hardware and technology at the time – the world was close, but not yet “ready” to be wired in richer form/  We weren’t connected by and large – In fact, the entire amount of information sent across the Internet monthly at that time would easily fit on a single sub $100 (US) external USB hard-drive in 2016.    All of this led helped shape the Web.]]></description>
             <content:encoded><![CDATA[
@@ -4825,7 +4930,7 @@ element.className = (element.className === "selected") ? "" : "selected";</pre>
             <title><![CDATA[A Brief(ish) History of the Web Universe - Part II: Time]]></title>
             <link>https://bkardell.com/blog/Brief-ish-History-of-The-Web-Part-2.html</link>
             <guid>https://bkardell.com/blog/Brief-ish-History-of-The-Web-Part-2.html</guid>
-            <pubDate>Mon, 07 Dec 2015 05:00:00 GMT</pubDate>
+            <pubDate>Sun, 06 Dec 2015 15:00:00 GMT</pubDate>
             <description><![CDATA[
 	Part II of&nbsp;"A Brief(ish) History of the Web Universe" aka "The Boring Posts". &nbsp;No themes, no punch, just history that I hope I can use to help explain where my own perspectives on a whole bunch of things draw from…]]></description>
             <content:encoded><![CDATA[
@@ -4958,7 +5063,7 @@ led by one Francis Kretz (Thompsa SA? Rennes?).
             <title><![CDATA[A Brief(ish) History of the Web Universe - Part I: The Pre-Web]]></title>
             <link>https://bkardell.com/blog/Brief-ish-History-of-The-Web-Part-1.html</link>
             <guid>https://bkardell.com/blog/Brief-ish-History-of-The-Web-Part-1.html</guid>
-            <pubDate>Sun, 22 Nov 2015 05:00:00 GMT</pubDate>
+            <pubDate>Sat, 21 Nov 2015 15:00:00 GMT</pubDate>
             <description><![CDATA[
 	There are a couple of posts that I've been wanting to write, but in each of them I keep finding myself wanting to talk about historical context.  Explaining it in place turns out to be too hard and I've been unable to find a resource that unifies that bits I want to talk about.  I've decided, then, that it might be easier then to write this history separately, mostly so that I can refer back to it.  So here it is, "A Brief(ish) History of the Web Universe" aka "The Boring Posts" in a few parts.  No themes, no punch, just history that I hope I can use to help explain where my own perspectives on a whole bunch of things draw from...]]></description>
             <content:encoded><![CDATA[
@@ -5130,7 +5235,7 @@ led by one Francis Kretz (Thompsa SA? Rennes?).
             <title><![CDATA[Reflections on Engineering]]></title>
             <link>https://bkardell.com/blog/Reflections-On-Engineering.html</link>
             <guid>https://bkardell.com/blog/Reflections-On-Engineering.html</guid>
-            <pubDate>Sat, 20 Jun 2015 04:00:00 GMT</pubDate>
+            <pubDate>Fri, 19 Jun 2015 15:00:00 GMT</pubDate>
             <description><![CDATA[Very early in my career, I was lucky enough to stumble on Web development before it really became a “thing” and landed an apprenticeship (and later job) in a new, small experimental arm of an established consulting firm which primarily worked on embedded systems. I was employee #2 of this new effort and we worked in an attic loft. Nearly all of my experience before this was from books and pure experimentation/willpower to accomplish something. I worked there for about a year, mostly by myself churning out code in somewhat typical fashion: Someone said “make it look like this picture” or “this stuff needs to come from a database” and that was pretty much it. I worked too hard, I was usually scared to death I'd never be able to figure out that one new technology that each project introduced me to and quite often it was just struggle to finish and make something work.]]></description>
             <content:encoded><![CDATA[
 	<contextual-heading role="heading" aria-level="1" style="font-size: 2rem;">Reflections on Engineering</contextual-heading>
@@ -5230,7 +5335,7 @@ led by one Francis Kretz (Thompsa SA? Rennes?).
             <title><![CDATA[What Would Bruce Lee Do? The Tao of the Extensible Web.]]></title>
             <link>https://bkardell.com/blog/Tao-Of-The-Extensible-Web.html</link>
             <guid>https://bkardell.com/blog/Tao-Of-The-Extensible-Web.html</guid>
-            <pubDate>Tue, 07 Oct 2014 04:00:00 GMT</pubDate>
+            <pubDate>Mon, 06 Oct 2014 15:00:00 GMT</pubDate>
             <description><![CDATA[Recently I participated in a panel on The Standards Process and the Extensible Web Manifesto at Edge Conf. &nbsp;While ours was the very last session of the day (you can watch the video here), nearly every topic that day called out some mention of the Extensible Web Manifesto. &nbsp;Privately,&nbsp;there were still&nbsp;plenty&nbsp;of people I met between sessions who privately said “So, what exactly is this Manifesto&nbsp;thing I keep hearing about, tell me more…”. &nbsp;and my day was filled with discussions at all levels about how exactly we should apply its words&nbsp;in practice or&nbsp;what exactly we meant by x - or specifically what we want to change about standards.  Given this, I thought&nbsp;it worth a post to share my own personal thoughts, and say some of the things I didn't have an opportunity to say on the panel. &nbsp; I'll begin in the obvious place: &nbsp;Bruce Lee.]]></description>
             <content:encoded><![CDATA[
 	
@@ -5349,7 +5454,7 @@ led by one Francis Kretz (Thompsa SA? Rennes?).
             <title><![CDATA[A Web for the Next Century]]></title>
             <link>https://bkardell.com/blog/A-Web-For-The-Next-Century.html</link>
             <guid>https://bkardell.com/blog/A-Web-For-The-Next-Century.html</guid>
-            <pubDate>Tue, 08 Oct 2013 04:00:00 GMT</pubDate>
+            <pubDate>Mon, 07 Oct 2013 15:00:00 GMT</pubDate>
             <description><![CDATA[If you've read any of the numerous articles about The Extensible Web or heard about it in conference presentations, or seen The Extensible Web Manifesto you've likely seen (or heard) three phrases repeated: "Explain the magic," "fundamental primitives" and "evolution of the platform". I thought it might be worth (another) piece explaining why&nbsp;I think&nbsp;these are at the heart of it all...]]></description>
             <content:encoded><![CDATA[
 	<contextual-heading role="heading" aria-level="1" style="font-size: 2rem;">A Web for the Next Century</contextual-heading>
@@ -5415,7 +5520,7 @@ led by one Francis Kretz (Thompsa SA? Rennes?).
             <title><![CDATA[Dropping the F-Bomb on Web Standards]]></title>
             <link>https://bkardell.com/blog/Dropping-The-F-Bomb-On-Standards.html</link>
             <guid>https://bkardell.com/blog/Dropping-The-F-Bomb-On-Standards.html</guid>
-            <pubDate>Fri, 17 May 2013 04:00:00 GMT</pubDate>
+            <pubDate>Thu, 16 May 2013 15:00:00 GMT</pubDate>
             <description><![CDATA[In 2012, Mirriam-Webster's dictionary added a&nbsp;definition for the F-Bomb. &nbsp;Why? &nbsp;Was it because some elite Mirriam-Webster working group d-wonk committee decided it was necessary to mint a "steamy new word"? &nbsp;No, rather, because it is a well-established part of the common vernacular of the English language. There are&nbsp;occurrences&nbsp;of it going all the way back to 1988. &nbsp;Not every slang term someone makes up will get into the dictionary. The Oxford English Dictionary has a&nbsp;vault full of millions of words that currently do not make the cut. &nbsp;Many never catch on. &nbsp;Some die out quickly and others change shape as they spread, that is what etymology is all about. &nbsp;Some stagnate and maintain distinct and valuable regional meanings, and that is fine, but they aren't part of the standard language. &nbsp;The ones that are ultimately widely understood and eventually become commonly used are accepted and codified into the dictionary. Some words even become extinct. &nbsp;In other words, the process of word standardization is&nbsp;evolutionary.]]></description>
             <content:encoded><![CDATA[
 	<contextual-heading role="heading" aria-level="1" style="font-size: 2rem;">Dropping the F-Bomb on Web Standards</contextual-heading>
@@ -5485,7 +5590,7 @@ led by one Francis Kretz (Thompsa SA? Rennes?).
             <title><![CDATA[Off With Their Heads: Disband the W3C?]]></title>
             <link>https://bkardell.com/blog/Off-With-Their-Heads.html</link>
             <guid>https://bkardell.com/blog/Off-With-Their-Heads.html</guid>
-            <pubDate>Tue, 23 Apr 2013 04:00:00 GMT</pubDate>
+            <pubDate>Mon, 22 Apr 2013 15:00:00 GMT</pubDate>
             <description><![CDATA[Just a few days ago, Matthew Butterick presented a talk entited "The Bomb in the Garden" at TYPO in San Francisco (poor title timing given recent events in Boston). In it, he concludes "the misery exists because of the W3C—the World Wide Web Consortium... So, respectfully, but quite seriously, I suggest: let’s Disband the W3C". Ultimately he suggests that "...the alternative is a web that’s organized entirely as a set of open-source software projects.]]></description>
             <content:encoded><![CDATA[
 	
@@ -5575,7 +5680,7 @@ led by one Francis Kretz (Thompsa SA? Rennes?).
             <title><![CDATA[(Really) classy CSS]]></title>
             <link>https://bkardell.com/blog/Really-Classy-CSS.html</link>
             <guid>https://bkardell.com/blog/Really-Classy-CSS.html</guid>
-            <pubDate>Fri, 11 May 2012 04:00:00 GMT</pubDate>
+            <pubDate>Thu, 10 May 2012 15:00:00 GMT</pubDate>
             <description><![CDATA[When CSS was conceived, the basic vision was that HTML should provide structure and semantics while CSS would providing styling via rules based on selectors describing (or selecting) what to style.  In an ideal world, Web pages could be authored by one group of people independently of the visual needs and then another group (designers) could go and write CSS to style it up.  The biggest problem in achieving this ideal was that HTML had such a small number of tags without any real obvious way to add enough semantics to actually accomplish this.  Thus, two things were added very early on:  The humble div and span tags in HTML and the .class in CSS  - the general idea being that the authors of a tree of markup could (quite independently of style concerns) build generic structures and pepper their markup with semantics via classes and ids.]]></description>
             <content:encoded><![CDATA[
 	<contextual-heading role="heading" aria-level="1" style="font-size: 2rem;">(Really) classy CSS</contextual-heading>
