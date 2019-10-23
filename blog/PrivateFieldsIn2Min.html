@@ -1,0 +1,458 @@
+<html lang="en" resource-type="blogpost"><head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@briankardell">
+    <meta name="twitter:creator" content="@briankardell">
+    <meta name="twitter:title" content="ES Private Class Features: 2 Minute Standards">
+    <meta name="twitter:description" content="A number of proposals come together to provide 'private' versions of most of the class-related concepts from ES6. Let's have a #StandardsIn2Min oriented look...">
+    
+    <link rel="alternate" type="application/rss+xml" href="https://bkardell.com/blog/feed.rss" title="bkardell.com/blog rss feed">
+    <title>ES Private Class Features: 2 Minute Standards</title> 
+    <style>.captioned-image {
+    background-color: #eaeaea;
+    display: block;
+    overflow: hidden;
+    padding: 1rem;
+    text-align: center;
+    font-style: italic;
+}
+
+.captioned-image.p-attached {
+    width: 40%;
+    display: inline-block;
+    margin: 0 1rem 2rem 1rem;
+}
+
+section > .captioned-image.p-attached {
+    margin-top: 1.5rem; /* correct for heading size*/
+}
+
+ pre { overflow-x: auto }
+
+.captioned-image.p-attached.p-attached-left {
+    float: left;
+}
+
+.captioned-image.p-attached.p-attached-right {
+    float: right;
+}
+
+.captioned-image.p-attached + * + * {
+    clear: both;
+    margin-top: 2rem;
+}
+
+
+.captioned-image img, .captioned-image video {
+    display: block;
+    max-width: 100%;
+    margin: 0 auto 1em auto;
+}
+.source {
+    font-style: italic;
+}
+body {
+    display: flex;
+    font: 1em "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-weight: 400;
+    line-height: 1.625;
+}
+h1 { margin: 0.5rem; }
+code-format {
+    border-left: 0.5rem solid rgba(123,115,209,0.35);
+    display: block;
+    padding: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+contextual-heading {
+    display: block;
+    margin-top: 2rem;
+}
+
+[aria-level="1"] {
+    color: #43686b;
+    font-size: 1.45rem;
+}
+[aria-level="2"] {
+    color: #856363;
+    font-size: 1.35rem;
+}
+[aria-level="3"] {
+    color: #856363;
+    font-size: 1.25rem;
+}
+[aria-level="4"] {
+    color: #856363;
+    font-size: 1.2rem;
+}
+[aria-level="5"], [aria-level="6"] {
+    color: #667496;
+    font-size: 1.1rem;
+    font-weight: bolder;
+}
+.posted-on {
+    font-style: italic;
+    font-size: 0.8rem;
+    text-align: right;
+    margin-bottom: 1rem;
+}
+
+ul, li {
+    margin: 0.5rem;
+    text-align: left;
+}
+header {
+    padding-top: 1rem;
+    padding-right: 2rem;
+    background-color: #fbf5e9;
+}
+.tagline {
+    font-style: italic;
+    text-align: center;
+}
+
+[tag-esc] {
+    color: maroon;
+    font-family: Courier, "Lucida Console", monospace;
+}
+
+[tag-esc]::before {
+    content: '<';
+}
+
+[tag-esc]::after {
+    content: '>';
+}
+
+main {
+    min-width: 50%;
+    width: 80%;
+    padding: 1rem;
+}
+header .title {
+    background-color: rgba(123,115,209,0.35);
+    padding: 0.3rem;
+    padding-left: 0.25rem;
+    font-weight: bolder;
+    font-size: 0.9rem;
+    border-left: 1rem solid #999298;
+}
+
+header .profile {
+    width: 50%;
+    margin: 1rem 25%;
+}
+
+header .title + nav {
+    font-size: 0.9rem;
+}
+
+header .blurb {
+    font-size: 0.75rem;
+    text-align: center;
+}
+header .name {
+    text-align: center;
+    font-size: xx-large;
+}
+.segue {
+    font-style: italic;
+}
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  border: 0;
+}
+[for="aboutMeToggle"] {
+    display: none;
+}
+/* this needs rethinking, it wants a selector like 'not flow content' */
+article>*:not(contextual-heading,a), section>*:not(contextual-heading,a) {
+    margin-left: 0.45rem;
+}
+
+blockquote {
+  font-family: serif;
+  background: #f9f9f9;
+  border-left: 10px solid #ccc;
+  margin: 1.5em 10px;
+  padding: 0.5em 10px;
+}
+blockquote:before {
+  color: #ccc;
+  content: open-quote;
+  font-size: 2em;
+  line-height: 0.1em;
+  margin-right: 0.25em;
+  vertical-align: -0.4em;
+}
+
+blockquote:after {
+  color: #ccc;
+  content: close-quote;
+  font-size: 2em;
+  line-height: 0.1em;
+  margin-left: 0.25em;
+  vertical-align: -0.4em;
+}
+
+
+@media (max-width: 800px){
+    body {
+        flex-direction: column;
+    }
+    header {
+        border-bottom: 1px solid #afafff;
+    }
+
+    .captioned-image.p-attached {
+        width: 100%;
+        margin: 1rem 0;
+    }
+
+    .captioned-image.p-attached.p-attached-left,
+    .captioned-image.p-attached.p-attached-right {
+        float: none;
+    }
+
+    [for="aboutMeToggle"] {
+        background-color: #675e5e;
+        color: white;
+        padding: 0.25rem;
+        padding-left: 0.5rem;
+        display: block;
+        border-left: 1rem solid black;
+    }
+    #aboutMeToggle:focus + [for="aboutMeToggle"]{
+        outline: 4px solid #c6ddf2;
+    }
+
+    #aboutMeToggle:checked ~ header {
+        display: none;
+    }
+
+    header li { display: inline; margin-left: -0.5em; }
+    header .blurb li::after { content: '; '; }
+    header  nav li {
+        display: inline-block;
+        margin-left: 0.35rem;
+        margin-right: 0.35rem;
+    }
+    header .title {
+        width: 100%;
+    }
+    main li .source { display: block; }
+
+}</style>
+    <style>
+      .captioned-image { font-size: 0.9rem; }
+      .thanksTo { font-style: italic; font-size: 0.8rem; }
+    </style>
+    <script>
+      var activateOptional = function (media) {
+        var source = media.getAttribute('data-src'),
+            temp,
+            container = media.parentElement;
+
+          if (media.nextSibling && media.nextSibling.matches) {
+            if (media.nextSibling.matches('.clickToSee')) {
+              media.parentElement.removeChild(media.nextSibling);
+            }
+          }
+
+          if (media.tagName === 'VIDEO') {
+            temp = document.createElement('video')
+            temp.setAttribute('autoplay','')
+            temp.setAttribute('controls','')
+            temp.setAttribute('loop','')
+            temp.innerHTML = '<source src="' + source + '.webm" type="video/webm">'
+                    + '<source src="' + source + '.mp4" type="video/mp4">';
+            media.parentElement.replaceChild(temp, media);
+            setTimeout(function () {
+              temp.play()
+            }, 0);
+          } else {
+            media.src = media.getAttribute('data-src');
+          }
+
+          container.classList.add('active');
+      }
+    </script>
+  </head>
+  <body>
+    <input id="aboutMeToggle" class="sr-only" type="checkbox" checked="">
+<label for="aboutMeToggle">Toggle author information</label>
+<header>
+    <div class="name">
+        Brian Kardell
+    </div>
+    <img class="profile" src="/profile.jpg" alt="">
+    <div class="tagline"><a href="/">Betterifying the Web</a></div>
+    <div class="blurb">
+        <ul>
+            <li>Developer Advocate at Igalia</li>
+            <li>Original Co-author/Co-signer of The Extensible Web Manifesto</li>
+            <li>Co-Founder/Chair, W3C Extensible Web CG</li>
+            <li>Member, W3C (The JS Foundation)</li>
+            <li>Co-author of HitchJS</li>
+            <li>Blogger</li>
+            <li>Art, Science &amp; History Lover</li>
+            <li>Standards Geek</li>
+        </ul>
+    </div>
+    <div class="title">Follow Me On...</div>
+    <nav>
+        <ul>
+            <li><a rel="me" href="https://briankardell.wordpress.com">Wordpress</a></li>
+            <li><a rel="me" href="https://medium.com/@briankardell">Medium</a></li>
+            <li><a rel="me" href="https://twitter.com/briankardell">Twitter</a></li>
+            <li><a rel="me" href="https://github.com/bkardell/">Github</a></li>
+            <li><a rel="me" href="https://codepen.io/bkardell">Codepen</a></li>
+            <li><a rel="me" href="https://www.linkedin.com/in/brian-kardell-08a4264">LinkedIn</a></li>
+            <li><a rel="me" href="https://www.instagram.com/kardellbrian">Instagram (for
+art)</a></li>
+            <li><a rel="me" href="http://fineartamerica.com/profiles/brian-kardell?">Fine Art
+America (art for sale)</a></li>
+        </ul>
+    </nav>
+</header>
+    <main><div class="posted-on">Posted on null</div><article class="sectioning">
+  <contextual-heading role="heading" aria-level="1">ES Private Class Features: 2 Minute Standards</contextual-heading>
+  <p class="segue">A number of proposals come together to provide 'private' versions of most of the class-related concepts from ES6. Let's have a <a href="2MinuteStandards.html">#StandardsIn2Min</a> oriented look...
+  </p>
+
+  <script src="../prism.js"></script>
+  <link rel="stylesheet" href="../prism.css">
+
+  <p>The new private class features (fields and methods, both instance and static) all use a new <code>#</code> to talk about private-ness.  These offer compile time guarantees that only the code in this class, or instances of this class can access these things.  In defining and using a private property, for example, you could write:</p>
+  <pre><code class="language-javascript">class Point {
+  #x = 0
+  #y = 0
+  
+  constructor(x=0, y=0) {
+    this.#x = x
+    this.#y = y
+  }
+  
+  toString() {
+    return `[${this.#x}, ${this.#y}]`
+  }
+}
+
+let p = new Point(1,2)
+</code></pre>
+
+  <p>The result is that you can now create a <code>Point</code> object which encapsulates its actual maintenance to these variables.  These private properties are not accessible from the outside, as we'll see.</p>
+
+  <section class="sectioning">
+    <contextual-heading role="heading" aria-level="2">The Sigil and 'private space'</contextual-heading>
+    
+    <p>The very new and perhaps most important bit to understand is that the <code>#</code> is a <em>sigil</em>, not simply a name - and its use is symmetrical.  That is - in order to declare a class property as private, you lead it with a <code>#</code>.  Then to access it again later (where it is referencable), you <em>again</em> use the <code>#</code> - as in the above <code>this.#x</code>.  And that doesn't work from the outside...</p>
+
+    <pre><code class="language-javascript">// x isn't #x it will log undefined..
+console.log(p.x)
+
+// #x used from an instance outside throws.
+console.log(p.#x)
+  
+&gt; Uncaught SyntaxError: Undefined private field undefined: must be declared in an enclosing class</code></pre>
+
+    <p>What's subtle but important about this is that the actual <em>names</em> of the fields above are  'x' and 'y' - they are just in 'private space' (not a spec term).  The symmetrical use of the sigil lets it be known unambiguously whether we intend to access or set something in public space, or private space.</p>
+
+    <p>This means that <em>you can have properties with the same names in both spaces</em>.  In fact, this is  desirable.  For example, when subclassing, what names you choose for public fields should not be dictated by the <em>private</em> fields of your super class.  This means that the below is entirely valid.</p>
+
+    <pre><code class="language-javascript">class X {
+  name = 'Brian'
+  #name = 'NotBrian
+  
+  constructor() {
+    console.log(this.name) // Brian
+    console.log(this.#name) // notBrian
+  }
+}
+
+let x = new X()
+
+console.log(x.name) // Brian
+// (attempting to access x.#name throws)</code></pre>
+
+    <p>If the only way to access a private field is through the sigil, you might be wondering how you could access a private field dynamically, for example, via <code>[]</code> notation and the answer is simple: You can't.  You also cannot access private fields of a Proxy target through the Proxy, they aren't accessible through property descriptors or <code>Object.keys</code> or anything like that.   The reason for this is provided in design discussions:</p>
+    <blockquote>
+    <p>Dynamic access to private fields is contrary to the notion of 'private'.</p>
+    </blockquote>
+  </section>
+  <section class="sectioning">
+    <contextual-heading role="heading" aria-level="2">Why use #?</contextual-heading>
+    <p>This sort of thing is very widely discussed and lots of options weighed.  The simplest answer is "That's the one we could make work without fouling up something else."</p>
+
+    <section class="sectioning">
+      <contextual-heading role="heading" aria-level="3">All the private things</contextual-heading>
+
+      <p>Once you understand the above, the rest flows pretty naturally.  We get private methods that are pretty self explanitory:</p>
+
+      <pre><code class="language-javascript">class Counter extends HTMLElement {
+    
+  #handleClicked() {
+    // do complex internal work
+  }
+
+  constructor() {
+    super();
+    this.#handleClicked = this.#handleClicked.bind(this);
+  }
+
+  connectedCallback() {  
+    this.addEventLister('onclick', this.#handleClicked)
+  }
+
+}</code></pre>
+    <p>and private static fields too...</p>
+    <pre><code class="language-javascript">class Colors {
+  static #red = "#ff0000";
+  static #green = "#00ff00";
+  static #blue = "#0000ff";
+}</code></pre>
+</section>
+</section>
+</article></main>
+
+  
+    <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-88027178-1', 'auto');
+    ga('send', 'pageview');
+  </script>
+
+  <script>
+    Array.prototype.slice.call(document.querySelectorAll('.optional [data-src]')).forEach(function (optional) {
+      var prefs = window.localStorage.downloadsPrefs,
+          clickToSee;
+      if (prefs === 'true') {
+        activateOptional(optional);
+      } else {
+        clickToSee = document.createElement('div');
+        clickToSee.classList.add('clickToSee')
+        clickToSee.innerHTML = '<button>Click to see media</button>';
+        clickToSee.style.textAlign = 'center';
+        clickToSee.style.border = 'none';
+        optional.parentElement.insertBefore(clickToSee, optional.nextSibling);
+        clickToSee.firstElementChild.addEventListener('click', function () {
+          activateOptional(optional);
+        })
+      }
+
+    })
+  </script>
+
+</body></html>
