@@ -354,7 +354,7 @@ let p = new Point(1,2)
   <section class="sectioning">
     <contextual-heading role="heading" aria-level="2">The Sigil and 'private space'</contextual-heading>
     
-    <p>The very new and perhaps most important bit to understand is that the <code>#</code> is a <em>sigil</em>, not simply a name - and its use is symmetrical.  That is - in order to declare a class property as private, you lead it with a <code>#</code>.  Then to access it again later (where it is referencable), you <em>again</em> use the <code>#</code> - as in the above <code>this.#x</code>.  And that doesn't work from the outside...</p>
+    <p>The very new and perhaps most important bit to understand is that the name of private things must begin with the <code>#</code> <em>sigil</em>, and its use is symmetrical.  That is - in order to declare a class property as private, its name must begin with a <code>#</code>.  To access it again later, you'll use the name beginning with <code>#</code> again, as in <code>this.#x</code>.  Attempts to access it from the outside will throw.</p>
 
     <pre><code class="language-javascript">// x isn't #x it will log undefined..
 console.log(p.x)
@@ -364,9 +364,9 @@ console.log(p.#x)
   
 &gt; Uncaught SyntaxError: Undefined private field undefined: must be declared in an enclosing class</code></pre>
 
-    <p>What's subtle but important about this is that the actual <em>names</em> of the fields above are  'x' and 'y' - they are just in 'private space' (not a spec term).  The symmetrical use of the sigil lets it be known unambiguously whether we intend to access or set something in public space, or private space.</p>
+    <p>What's subtle but important about this is that the symmetrical use of the sigil lets it be known unambiguously to both compilers and readers whether we intended to access or set something in public space, or private space.  This also means that while you can choose the same readable characters, <em>you can't actually wind up with properties with the same names in both spaces</em>: The private ones will always include the <code>sigil</code></p>
 
-    <p>This means that <em>you can have properties with the same names in both spaces</em>.  In fact, this is  desirable.  For example, when subclassing, what names you choose for public fields should not be dictated by the <em>private</em> fields of your super class.  This means that the below is entirely valid.</p>
+    <p>This makes a lot of sense because, for example, the names that you choose for public fields should not be dictated by the internal, <em>private</em> fields of your super class.  The following then is entirely possible and valid:</p>
 
     <pre><code class="language-javascript">class X {
   name = 'Brian'
@@ -383,14 +383,15 @@ let x = new X()
 console.log(x.name) // Brian
 // (attempting to access x.#name throws)</code></pre>
 
-    <p>If the only way to access a private field is through the sigil, you might be wondering how you could access a private field dynamically, for example, via <code>[]</code> notation and the answer is simple: You can't.  You also cannot access private fields of a Proxy target through the Proxy, they aren't accessible through property descriptors or <code>Object.keys</code> or anything like that.   The reason for this is provided in design discussions:</p>
+    <p>Since the name simply begins with the sigil, it's  tempting to think that you can access private fields dynamically, for example, via <code>[]</code> notation.
+    However, you can't.  You also cannot access private fields of a Proxy target through the Proxy, they aren't accessible through property descriptors or <code>Object.keys</code> or anything like that.  This is by design because (as provided in design discussion notes):</p>
     <blockquote>
     <p>Dynamic access to private fields is contrary to the notion of 'private'.</p>
     </blockquote>
   </section>
   <section class="sectioning">
     <contextual-heading role="heading" aria-level="2">Why use #?</contextual-heading>
-    <p>This sort of thing is very widely discussed and lots of options weighed.  The simplest answer is "That's the one we could make work without fouling up something else."</p>
+    <p>Why this particular character was chosen was very widely discussed, and lots of options were weighed.  The simplest answer is "That's the one we could make work without fouling up something else."</p>
 
     <section class="sectioning">
       <contextual-heading role="heading" aria-level="3">All the private things</contextual-heading>
