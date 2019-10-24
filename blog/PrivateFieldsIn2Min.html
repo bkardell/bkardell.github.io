@@ -384,10 +384,7 @@ console.log(x.name) // Brian
 // (attempting to access x.#name throws)</code></pre>
 
     <p>Since the name simply begins with the sigil, it's  tempting to think that you can access private fields dynamically, for example, via <code>[]</code> notation.
-    However, you can't.  You also cannot access private fields of a Proxy target through the Proxy, they aren't accessible through property descriptors or <code>Object.keys</code> or anything like that.  This is by design because (as provided in design discussion notes and <a href="https://github.com/tc39/proposal-class-fields/blob/master/PRIVATE_SYNTAX_FAQ.md#why-doesnt-thisx-access-the-private-field-named-x-given-that-thisx-does">in the FAQ</a>):</p>
-    <blockquote>
-    <p>Dynamic access to private fields is contrary to the notion of 'private'.</p>
-    </blockquote>
+    However, you can't.  You also cannot access private fields of a Proxy target through the Proxy, they aren't accessible through property descriptors or <code>Object.keys</code> or anything like that.  This is by design as doing so, would be self-defeating, making things available outside the class as well (as you can read about <a href="https://github.com/tc39/proposal-class-fields/blob/master/PRIVATE_SYNTAX_FAQ.md#why-doesnt-thisx-access-the-private-field-named-x-given-that-thisx-does">in the FAQ</a>).</p>
   </section>
   <section class="sectioning">
     <contextual-heading role="heading" aria-level="2">Why the #, specifically?</contextual-heading>
