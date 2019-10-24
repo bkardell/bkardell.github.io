@@ -352,7 +352,7 @@ let p = new Point(1,2)
   <p>The result is that you can now create a <code>Point</code> object which encapsulates its actual maintenance to these variables.  These private properties are not accessible from the outside, as we'll see.</p>
 
   <section class="sectioning">
-    <contextual-heading role="heading" aria-level="2">The Sigil and 'private space'</contextual-heading>
+    <contextual-heading role="heading" aria-level="2">The <code>#</code> sigil and 'private space'</contextual-heading>
     
     <p>The very new and perhaps most important bit to understand is that the name of private things must begin with the <code>#</code> <em>sigil</em>, and its use is symmetrical.  That is - in order to declare a class property as private, its name must begin with a <code>#</code>.  To access it again later, you'll use the name beginning with <code>#</code> again, as in <code>this.#x</code>.  Attempts to access it from the outside will throw.</p>
 
@@ -364,7 +364,7 @@ console.log(p.#x)
   
 &gt; Uncaught SyntaxError: Undefined private field undefined: must be declared in an enclosing class</code></pre>
 
-    <p>What's subtle but important about this is that the symmetrical use of the sigil lets it be known unambiguously to both compilers and readers whether we intended to access or set something in public space, or private space.  This also means that while you can choose the same readable characters, <em>you can't actually wind up with properties with the same names in both spaces</em>: The private ones will always include the <code>sigil</code></p>
+    <p>What's subtle but important about this is that the symmetrical use of the sigil lets it be known unambiguously to both compilers and readers whether we intended to access or set something in public space, or private space.  This also means that while you can choose the same readable characters, <em>you can't actually wind up with properties with the same names in both spaces</em>: The private ones will always include the <code>#</code></p>
 
     <p>This makes a lot of sense because, for example, the names that you choose for public fields should not be dictated by the internal, <em>private</em> fields of your super class.  The following then is entirely possible and valid:</p>
 
@@ -384,14 +384,14 @@ console.log(x.name) // Brian
 // (attempting to access x.#name throws)</code></pre>
 
     <p>Since the name simply begins with the sigil, it's  tempting to think that you can access private fields dynamically, for example, via <code>[]</code> notation.
-    However, you can't.  You also cannot access private fields of a Proxy target through the Proxy, they aren't accessible through property descriptors or <code>Object.keys</code> or anything like that.  This is by design because (as provided in design discussion notes):</p>
+    However, you can't.  You also cannot access private fields of a Proxy target through the Proxy, they aren't accessible through property descriptors or <code>Object.keys</code> or anything like that.  This is by design because (as provided in design discussion notes and <a href="https://github.com/tc39/proposal-class-fields/blob/master/PRIVATE_SYNTAX_FAQ.md#why-doesnt-thisx-access-the-private-field-named-x-given-that-thisx-does">in the FAQ</a>):</p>
     <blockquote>
     <p>Dynamic access to private fields is contrary to the notion of 'private'.</p>
     </blockquote>
   </section>
   <section class="sectioning">
     <contextual-heading role="heading" aria-level="2">Why the #, specifically?</contextual-heading>
-    <p>Why this particular character was chosen was very widely discussed, and lots of options were weighed.  The simplest answer is "That's the one we could make work without fouling up something else."</p>
+    <p>Why this particular character was chosen was very widely discussed, and lots of options were weighed.  You can read more about this in the <a href="https://github.com/tc39/proposal-class-fields/blob/master/PRIVATE_SYNTAX_FAQ.md#why-was-the-sigil--chosen-among-all-the-unicode-code-points">FAQ</a> as well, but the simplest answer is: That's the one, single character option, which we could make work without fouling up something else.</p>
 
     <section class="sectioning">
       <contextual-heading role="heading" aria-level="3">All the private things</contextual-heading>
@@ -423,7 +423,7 @@ console.log(x.name) // Brian
   </section>
   <section class="sectioning">
     <contextual-heading role="heading" aria-level="3">Learn More</contextual-heading>
-    <p>This is, of course, merely an 2 minute introduction. To learn a lot more details about this, including it's history, rationale about design choices, find links to the spec draft, and much more, check out the <a href="https://github.com/tc39/proposal-class-fields">TC39 Proposal Repo</a>.  For considerably more detail about the particular design choices, there's also an <a href="https://github.com/tc39/proposal-class-fields/blob/master/PRIVATE_SYNTAX_FAQ.md">FAQ</a></p> 
+    <p>This is, of course, merely an 2 minute introduction. To learn a lot more details about this, including it's history, rationale about design choices, find links to the spec draft, and much more, check out the <a href="https://github.com/tc39/proposal-class-fields">TC39 class fields proposal repository</a>.</p> 
   </section>
 </section>
 </article></main>
