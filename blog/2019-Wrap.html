@@ -1,0 +1,574 @@
+<html lang="en" resource-type="blogpost"><head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@briankardell">
+    <meta name="twitter:creator" content="@briankardell">
+    <meta name="twitter:title" content="Goodbye 2019, Hello 2020">
+    <meta name="twitter:description" content="As 2019 draws to a close and we look toward a new year (a new decade, in fact) Igalians like to take a moment and look back on the year.  As it is my first year at Igalia, I am sub">
+    <meta name="twitter:image" content="https://pbs.twimg.com/media/EJWhOZeUwAAicpP?format=jpg&amp;name=4096x4096">
+    <link rel="alternate" type="application/rss+xml" href="https://bkardell.com/blog/feed.rss" title="bkardell.com/blog rss feed">
+    <title>Goodbye 2019, Hello 2020</title> 
+    <style>.captioned-image {
+    background-color: #eaeaea;
+    display: block;
+    overflow: hidden;
+    padding: 1rem;
+    text-align: center;
+    font-style: italic;
+}
+
+.captioned-image.p-attached {
+    width: 40%;
+    display: inline-block;
+    margin: 0 1rem 2rem 1rem;
+}
+
+section > .captioned-image.p-attached {
+    margin-top: 1.5rem; /* correct for heading size*/
+}
+
+ pre { overflow-x: auto }
+
+.captioned-image.p-attached.p-attached-left {
+    float: left;
+}
+
+.captioned-image.p-attached.p-attached-right {
+    float: right;
+}
+
+.captioned-image.p-attached + * + * {
+    clear: both;
+    margin-top: 2rem;
+}
+
+
+.captioned-image img, .captioned-image video {
+    display: block;
+    max-width: 100%;
+    margin: 0 auto 1em auto;
+}
+.source {
+    font-style: italic;
+}
+body {
+    display: flex;
+    font: 1em "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-weight: 400;
+    line-height: 1.625;
+}
+h1 { margin: 0.5rem; }
+code-format {
+    border-left: 0.5rem solid rgba(123,115,209,0.35);
+    display: block;
+    padding: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+contextual-heading {
+    display: block;
+    margin-top: 2rem;
+}
+
+[aria-level="1"] {
+    color: #43686b;
+    font-size: 1.45rem;
+}
+[aria-level="2"] {
+    color: #856363;
+    font-size: 1.35rem;
+}
+[aria-level="3"] {
+    color: #856363;
+    font-size: 1.25rem;
+}
+[aria-level="4"] {
+    color: #856363;
+    font-size: 1.2rem;
+}
+[aria-level="5"], [aria-level="6"] {
+    color: #667496;
+    font-size: 1.1rem;
+    font-weight: bolder;
+}
+.posted-on {
+    font-style: italic;
+    font-size: 0.8rem;
+    text-align: right;
+    margin-bottom: 1rem;
+}
+
+ul, li {
+    margin: 0.5rem;
+    text-align: left;
+}
+header {
+    padding-top: 1rem;
+    padding-right: 2rem;
+    background-color: #fbf5e9;
+}
+.tagline {
+    font-style: italic;
+    text-align: center;
+}
+
+[tag-esc] {
+    color: maroon;
+    font-family: Courier, "Lucida Console", monospace;
+}
+
+[tag-esc]::before {
+    content: '<';
+}
+
+[tag-esc]::after {
+    content: '>';
+}
+
+main {
+    min-width: 50%;
+    width: 80%;
+    padding: 1rem;
+}
+header .title {
+    background-color: rgba(123,115,209,0.35);
+    padding: 0.3rem;
+    padding-left: 0.25rem;
+    font-weight: bolder;
+    font-size: 0.9rem;
+    border-left: 1rem solid #999298;
+}
+
+header .profile {
+    width: 50%;
+    margin: 1rem 25%;
+}
+
+header .title + nav {
+    font-size: 0.9rem;
+}
+
+header .blurb {
+    font-size: 0.75rem;
+    text-align: center;
+}
+header .name {
+    text-align: center;
+    font-size: xx-large;
+}
+.segue {
+    font-style: italic;
+}
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  border: 0;
+}
+[for="aboutMeToggle"] {
+    display: none;
+}
+/* this needs rethinking, it wants a selector like 'not flow content' */
+article>*:not(contextual-heading,a), section>*:not(contextual-heading,a) {
+    margin-left: 0.45rem;
+}
+
+blockquote {
+  font-family: serif;
+  background: #f9f9f9;
+  border-left: 10px solid #ccc;
+  margin: 1.5em 10px;
+  padding: 0.5em 10px;
+}
+blockquote:before {
+  color: #ccc;
+  content: open-quote;
+  font-size: 2em;
+  line-height: 0.1em;
+  margin-right: 0.25em;
+  vertical-align: -0.4em;
+}
+
+blockquote:after {
+  color: #ccc;
+  content: close-quote;
+  font-size: 2em;
+  line-height: 0.1em;
+  margin-left: 0.25em;
+  vertical-align: -0.4em;
+}
+
+
+@media (max-width: 800px){
+    body {
+        flex-direction: column;
+    }
+    header {
+        border-bottom: 1px solid #afafff;
+    }
+
+    .captioned-image.p-attached {
+        width: 100%;
+        margin: 1rem 0;
+    }
+
+    .captioned-image.p-attached.p-attached-left,
+    .captioned-image.p-attached.p-attached-right {
+        float: none;
+    }
+
+    [for="aboutMeToggle"] {
+        background-color: #675e5e;
+        color: white;
+        padding: 0.25rem;
+        padding-left: 0.5rem;
+        display: block;
+        border-left: 1rem solid black;
+    }
+    #aboutMeToggle:focus + [for="aboutMeToggle"]{
+        outline: 4px solid #c6ddf2;
+    }
+
+    #aboutMeToggle:checked ~ header {
+        display: none;
+    }
+
+    header li { display: inline; margin-left: -0.5em; }
+    header .blurb li::after { content: '; '; }
+    header  nav li {
+        display: inline-block;
+        margin-left: 0.35rem;
+        margin-right: 0.35rem;
+    }
+    header .title {
+        width: 100%;
+    }
+    main li .source { display: block; }
+
+}</style>
+    <style>
+      .captioned-image { font-size: 0.9rem; }
+      .thanksTo { font-style: italic; font-size: 0.8rem; }
+    </style>
+    <script>
+      var activateOptional = function (media) {
+        var source = media.getAttribute('data-src'),
+            temp,
+            container = media.parentElement;
+
+          if (media.nextSibling && media.nextSibling.matches) {
+            if (media.nextSibling.matches('.clickToSee')) {
+              media.parentElement.removeChild(media.nextSibling);
+            }
+          }
+
+          if (media.tagName === 'VIDEO') {
+            temp = document.createElement('video')
+            temp.setAttribute('autoplay','')
+            temp.setAttribute('controls','')
+            temp.setAttribute('loop','')
+            temp.innerHTML = '<source src="' + source + '.webm" type="video/webm">'
+                    + '<source src="' + source + '.mp4" type="video/mp4">';
+            media.parentElement.replaceChild(temp, media);
+            setTimeout(function () {
+              temp.play()
+            }, 0);
+          } else {
+            media.src = media.getAttribute('data-src');
+          }
+
+          container.classList.add('active');
+      }
+    </script>
+  </head>
+  <body>
+    <input id="aboutMeToggle" class="sr-only" type="checkbox" checked="">
+<label for="aboutMeToggle">Toggle author information</label>
+<header>
+    <div class="name">
+        Brian Kardell
+    </div>
+    <img class="profile" src="/profile.jpg" alt="">
+    <div class="tagline"><a href="/">Betterifying the Web</a></div>
+    <div class="blurb">
+        <ul>
+            <li>Developer Advocate at Igalia</li>
+            <li>Original Co-author/Co-signer of The Extensible Web Manifesto</li>
+            <li>Co-Founder/Chair, W3C Extensible Web CG</li>
+            <li>Member, W3C (The JS Foundation)</li>
+            <li>Co-author of HitchJS</li>
+            <li>Blogger</li>
+            <li>Art, Science &amp; History Lover</li>
+            <li>Standards Geek</li>
+        </ul>
+    </div>
+    <div class="title">Follow Me On...</div>
+    <nav>
+        <ul>
+            <li><a rel="me" href="https://briankardell.wordpress.com">Wordpress</a></li>
+            <li><a rel="me" href="https://medium.com/@briankardell">Medium</a></li>
+            <li><a rel="me" href="https://twitter.com/briankardell">Twitter</a></li>
+            <li><a rel="me" href="https://github.com/bkardell/">Github</a></li>
+            <li><a rel="me" href="https://codepen.io/bkardell">Codepen</a></li>
+            <li><a rel="me" href="https://www.linkedin.com/in/brian-kardell-08a4264">LinkedIn</a></li>
+            <li><a rel="me" href="https://www.instagram.com/kardellbrian">Instagram (for
+art)</a></li>
+            <li><a rel="me" href="http://fineartamerica.com/profiles/brian-kardell?">Fine Art
+America (art for sale)</a></li>
+        </ul>
+    </nav>
+</header>
+    <main><div class="posted-on">Posted on </div><article posted-on="" class="sectioning">
+	<contextual-heading role="heading" aria-level="1">Goodbye 2019, Hello 2020</contextual-heading>
+ 
+<p class="segue">As 2019 draws to a close and we look toward a new year (a new decade, in fact) Igalians like to take a moment and look back on the year.  As it is my first year at Igalia, I am substantially impressed by the long list of things we accomplished.  Looking at this list, it seems to me that a lot of the work that Igalia does, and it's importance to the open web remains a little unsung.  I thought then, that it would be really interesting to shine a light on <em>some</em> 'highlights' and layer in why I think this is important to us all…</p>
+
+
+<section class="sectioning">
+	<contextual-heading role="heading" aria-level="2">Browser Diversity</contextual-heading>
+
+	<p>We believe that browser diversity is important to the Web.  Because of this, we are active and trusted committers to all of them, able to lend a hand wherever necessary.  Of course, which particular browsers we contribute to and at what rate can vary from year to to year for reasons explained later in this post.  There are a lot of ways we could illustrate what this looked like in 2019.  The one I'm going to use is commits.</p>
+
+	<p class="note">It's worth mentioning that commits are an imperfect kind of measure.  Not all commits are of the same value (in fact, value is hard to qualify here).  It doesn't account for potentially lots and lots of downstream work that went into getting one upstream commit.  Even figuring out how to count them can be tricky - people's affiliations aren't always clear, sometimes they change, and getting relatively useful data takes some hard work.  That said, if you look at them purely as "how much did we do" they're a useful measure in illustrating, relatively, the scale of it. That's how I'd like to you view these statisics - about our slice of the commit pie, and not anyone elses.</p>
+
+	<section class="sectioning">
+		<contextual-heading role="heading" aria-level="3">Chromium</contextual-heading>
+
+		<p>During BlinkOn this year, you might have seen a number of mentions about our contributions to Chromium in 2019: We made the second most commits after Google this year.  </p>
+
+		<figure>
+		<img width="300" src="https://pbs.twimg.com/media/EJWhOZeUwAAicpP?format=jpg&amp;name=4096x4096" style="display:block;margin: 1rem auto;">
+		<figcaption>Just one of the slides shared from Google’s presentation at blinkon 2019 showing 1782 commits from Igalia at that point in 2019…</figcaption>
+		</figure>
+
+		<p>Chromium, if you're not aware, is a <em>very</em> large and busy project with lots of big company contributors, so it's quite exciting to show the level at which we are contending here. (It's also worth noting that this illustrates an imperfection of using commits as an <em>actual</em> measure of our work, as all of our MathML work was done downstream and thus commits toward this very significant project arent't even counted here!)</p>
+	</section>
+	<section class="sectioning">
+		<contextual-heading role="heading" aria-level="3">Mozilla</contextual-heading>
+
+		<p>This year, our contributions to Mozilla projects were  relatively small by comparison.  Nevertheless, 9 Igalians still actively contributed over 160 commits to servo and mozilla-central in 2019 placing us in the top 10 in servo and the top 20 in mozilla-central</p>
+
+		<figure>
+		<img width="300" src="/media/2019-contributions-to-servo.png" style="display:block;width: 100%;">
+		<figcaption>A little over 1% of contributions to Servo were by Igalians in 2019 (over 3.4% of non-Mozillan commits).</figcaption>
+		</figure>
+
+		<p>As an aside, it's pretty great to see that the #1 committer to mozilla-central this year is our friend Emilio Cobos (by a wide margin, over 2-to-1).  Emilio completed an Igalia Coding Experience in 2017… and gave a great talk at least years Web Engines Hackfest.  Congratulations Emilio!</p>
+	</section>
+	<section class="sectioning">
+		<contextual-heading role="heading" aria-level="3">WebKit</contextual-heading>
+
+		<p>Pretty importantly though, we are <em>also</em> the #2 contributor to WebKit.  37 Igalians made over 1100 commits to WebKit this year, delivering ~11% of the total commits to WebKit.</p>
+
+		<figure>
+		<img width="300" src="/media/webkit-contributions-2019.png" style="display:block;width: 100%;">
+		<figcaption>Almost 11% of all commits to WebKit in 2019 were from Igalians.</figcaption>
+		</figure>
+
+		<p>In fact, if we zoom out and look at what that looks like <em>without</em> Apple, our level of committment is even more evident…</p>
+
+		<figure>
+		<img width="300" src="/media/webkit-contributions-2019-sans-apple.png" style="display:block;width: 100%;">
+		<figcaption>60% of all non-Apple commits to WebKit in 2019 were from Igalians.</figcaption>
+		</figure>
+
+		<p>I think this is important because there's a larger, untold story here which I look forward to talking more about next year.  In short thought: While you might think of WebKit as “Apple”, the truth is that there are a number of companies invested and interested in keeping WebKit alive and increasingly competitive, and Igalia is definitely one of those companies. </p>
+
+		<p>In fact, 3 of the 5 downloads available from webkit.org are actually maintained by Igalia.   Non-Apple WebKit browsers are used on <em>hundreds of millions of devices</em> already.  Chances are even pretty good that you've encountered one, maybe even have one, and just didn't even know it.  </p>
+	</section>
+	<section class="sectioning">
+		<contextual-heading role="heading" aria-level="3">A Unique Role…</contextual-heading>
+
+		<p>As I explained in my post earlier this year <a href="https://bkardell.com/blog/Beyond.html">Beyond Browser Vendors</a>: Igalia does this work by uniquely expanding the ability to do and prioritize work and opening lots of new channels for funding and allow us to better collectively share the load, and the benefits.  </p>
+
+		<p>Bloomberg, as I explained in that post, funded the development of CSS Grid.  In 2019 they continue to fund a lot great efforts in both JavaScript and CSS standardization and implementation. To name just a few in 2019:  In CSS they funded some paint optimizations, development of <code>white-space: break-spaces</code>, <code>line-break: anywhere</code>, <code>overflow-wrap: anywhere</code>, <code>::marker</code> and <code>list-style-type: &lt;string&gt;</code>.  In JavaScript, <code>BigInt</code>, Public and Private Class Fields, Decorators and Records and Tuples.</p>
+
+		<p>But they aren't remotely alone: 2019 saw many diverse clients funding some kind of upstream work for all sorts of reasons.
+		Google AMP, as another example, funded a lot of great work in our Predictability efforts, several sponsors helped fund work on MathML (see below for more on both), and our work with embedded browsers has helped introduce a number of new paths as well.  We worked on Internationalization, accessibility, module loading, top-level-await, a proposal for operator overloading and more.</p>
+
+		<p>However, I'm also very proud of fact that we are also an example of what we preach:  Among those who sponsor our work is… us.  Igalia cares about doing things that matter, and while we are great at finding ways to help find new ways to fund the advancement of work that matters, it might also mean that we decide to invest to get it done ourselves.</p>
+	</section>
+
+	<section class="sectioning">
+		<contextual-heading role="heading" aria-level="3">What matters?</contextual-heading>
+
+		<p>Lots of things matter to Igalia.  As I mentioned already, browser diversity matters to us a lot, and finding new ways to advance standards.  But here are a few other technical areas that we think matter, and what we did about it in 2019…</p>
+
+		<section class="sectioning">
+			<contextual-heading role="heading" aria-level="4">Predictability</contextual-heading>
+
+			<p>This year MDN organized a giant survey which turned up a lot of interesting findings about what things caused developers pain, or that they would like to see improved.  Several of these had to do with uneven, inconsistent (buggy) or lacking implementations of standards.  This clearly matters:  A standard is really only a standard when it is interoperably implemented everywhere and that's a hard set of challenges.</p>
+
+			<p>Thanks to lots of clients, and a little investment, we were able to help here in a big way.  Thanks especially to funding and partnership from AMP we were able to resolve a number of incompatibilities, create a lot of tests, and fix bugs that cause a lot of developer pain, and even adding 'last implementations' of important missing features to WebKit like <code>ResizeObserver</code> and preloading for responsive images.</p>
+
+			<p>In 2019, 20 Igalians made 343 commits to Web Platform Tests, adding thousands of new tests and placing us among the top few contributors..</p>
+
+			<figure>
+			<img width="300" src="/media/2019-contributions-to-WPT.png" style="display:block;width: 100%;">
+			<figcaption>In 2019, Igalia was the #3 contributor to Web Platform Tests, after Google and Mozilla.</figcaption>
+			</figure>
+
+			<p>And were also among the top contributors to Test262 as well... 'd like to point out: Great contributions here from our friends at Bocoup!  We're for sure two very unique companies in this space - contributing to the open web with a different kind of background than most. It's excellent to see how much we're all accomplshing together - just between the two of us, that's approaching 60% of the commits!</p>
+			<figure>
+			<img width="300" src="/media/2019-contributions-to-test262.png" style="display:block;width: 100%;">
+			<figcaption>We're among the top contributors to Test262 as well.</figcaption>
+			</figure>
+		</section>
+		<section class="sectioning">
+			<contextual-heading role="heading" aria-level="4">Acccessibility</contextual-heading>
+
+			<p>And then there's accessibility.  “Accessibility is very important to us” might sound like a nice thing to say, but here's an overview of what Igalia brought to the table in 2019:</p>
+
+			<p>Overall, Igalia is pretty much accessibility on Linux's greatest champions.  As the maintainers of the Orca screen reader for the Gnome desktop we did an enormous amount of work this year with over 460 commits (over 83%) in 2019 to Orca itself.  </p>
+
+			<figure>
+			<img width="300" src="/media/2019-contributions-to-orca.png" style="display:block;width: 100%;">
+			<figcaption>Over 83% of all commits to Orca in 2019 were from Igalians.</figcaption>
+			</figure>
+
+			<p>We were also active contributors for lots of the underlying parts (at-spi2-atk, at-spi2-core).  And, thanks to investment from Google, we were also able to properly implement ATK support in Chromium, making Chrome for Linux now very accessible with a screen reader.  We also actively contributed to Accerciser, a popular Python based interactive accessibility explorer!</p>
+		</section>
+		<section class="sectioning">
+			<contextual-heading role="heading" aria-level="4">Standards</contextual-heading>
+
+			<p>Of course, all of our implentation work is predicated on open <em>standards</em>, and we care deeply about them, and I'm proud of our participation.  Here are a few highlights from 2019:</p>
+
+			<p>Igalia's <a href="https://www.igalia.com/igalian/jdiggs">Joanmarie Diggs</a> is the chair the ARIA Working Group, and co-editor of several of its related specifications.  Igalia had the second most commits to the ARIA specification itself - almost 20% in 2019 behind only Adobe (well done Adobe!). </p>
+
+			<figure>
+			<img width="300" src="/media/2019-contributions-to-ARIA.png" style="display:block;width: 100%;">
+			<figcaption>Almost 1/5th of contributions to ARIA came from Igalians in 2019.</figcaption>
+			</figure>
+
+			<p>We were also the top 3 contributor to the <a href="https://w3c.github.io/html-aam/">HTML Accessibility API Mappings 1.0</a> and actively contributed to <a href="https://w3c.github.io/accname/">Accessible Name and Description Computation</a>.  </p>
+
+			<p>This year, during the CSS Working Group's Face-to-Face meeting at the Mozilla offices in Toronto, our colleage <a href="https://www.igalia.com/igalian/obrufau">Oriol Brufau</a></p>
+
+			<p>2019 also saw the hiring of Nikolas Zimmerman, bringing the original authors of KSVG - the original SVG implementation back together at Igalia.  We've nominated him to the SVG working group and we're very excited to share what he's working on soon!</p>
+		</section>
+		<section class="sectioning">
+			<contextual-heading role="heading" aria-level="4">Math on the Web</contextual-heading>
+
+			<p>Enabling authors to share text was an original goal of the Web.  That math was an important aspect of this was evident from the very earliest days at CERN, however, because of a complex history and lacking implementation in Chromium, this remained elusive and without a starting point for productive conversation.  We believe that this matters to society, and resolving and enabling a way to move forward it is the right thing to do.</p>
+
+			<p>With some initial funding from sponsors,  this year we also helped to steadily advance and define an interoperable, modern and rigorous <a href="https://mathml-refresh.github.io/mathml-core">MathML Core</a> specification which is well integrated with the Web Platform to provide a starting point. Igalia's Fred Wang is the co-editor of MathML Core, and we've implemented alongside and completed an initial implementation thanks to lots of hard work from Rob Buis and Fred, and worked to write tests and align high quality interoperability.</p>
+
+
+			<figure>
+			<img width="300" src="/media/mathml-implementations-2019.png" style="display:block;width: 100%;">
+			<figcaption>Modern interoperabilty and high quality rendering by July 2019.</figcaption>
+			</figure>
+
+			<p>We filed the <a href="https://groups.google.com/a/chromium.org/forum/m/?utm_medium=email&amp;utm_source=footer#!msg/blink-dev/OOZIrtSPLeM/QsTCnouFDgAJ">Intent to Implement</a> and began the process of upstreaming.  As part of this, we have also created a corresponding <a href="https://github.com/mathml-refresh/mathml-core/blob/master/docs/explainer.md">explainer</a> and filed for a <a href="https://github.com/w3ctag/design-reviews/issues/438">review with the W3C Technical Architecture Group (TAG)</a>.  We've seen positive movement and feedback and several patches have already begun to land upstream toward this long, <a href="https://bugs.chromium.org/p/chromium/issues/detail?id=660#c84">popular and overdue issue</a>.  Thanks to our work, we will soon be able to say (interoperably), that the Web can handle original use cases <a href="https://www.w3.org/MarkUp/HTMLPlus/htmlplus_45.html">defined at CERN in the early 1990s</a>.</p>
+		</section>
+		<section class="sectioning">
+			<contextual-heading role="heading" aria-level="4">Outreach and Community</contextual-heading>
+
+			<p>Standards are a complex process and we believe that enabling good standardization requires input from a considerably larger audience than is historically able to engage in standards meetings.  Bringing diverse parts of the community together is important.  This has historically been quite a challenge to achieve.  As such, we've been doing a lot in this space.  </p>
+
+			<ul>
+			<li><p>Each year we organize an annual Web Engines Hackfest and bring together attendees from all over the world with varying interests around browsers and Web standards come together.  Last October we held this event at our offices in A Coruña Spain.  There were many <a href="https://www.youtube.com/playlist?list=PL4sEzdAGvRgDCN6qACHWs04mQQTWBkdGq">great talks</a> and a lot of great collaboration and discussion.  </p></li>
+			<li><p>We began a number of JavaScript outreach groups with different stakeholders.  We meet with each monthly, review and discuss what's happened recently or is brewing new in TC39 and related standards <a href="https://github.com/js-outreach/js-outreach-groups">see </a>.  One of these efforts has also spawned a new effort <a href="https://twitter.com/StandardsIn2Min">Standards in 2 Minutes</a> to allow developers to more easily stay in touch.</p></li>
+			<li><p>We joined in partnership on a new effort <a href="https://webwewant.fyi">WebWeWant.fyi</a> which aims to do more direct outreach from standards right to developers, where they are with regard to creating useful feedback into the system.</p></li>
+			<li><p>We partnered with colleagues at Bocoup to contribute the research and writing and tooling for the <a href="https://almanac.httparchive.org/en/2019/markup">2019 Web Almanac's chapter on Markup</a>, including for the first time data about non-standard and custom elements with an eye toward answering the question “What new cow paths are being laid down that HTML should consider standardizing”.</p></li>
+			<li><p>We began outreach to publishing, design and editorial communities within the W3C and have been connecting discussions with browser vendors on how to move a whole lot of exciting things forward.</p></li>
+			<li><p>We gave a lot of talks and participated in a lot of events, here are just a few that there are videos of…</p>
+
+			<ul>
+			<li>
+			<a href="https://www.youtube.com/watch?v=C1JcKq3NzWU" rel="nofollow noreferrer noopener" target="_blank">Grid Implementation Details</a> by Manuel Rego at CSS Day</li>
+			<li><a href="https://www.youtube.com/watch?v=GLi37QPSOv4&amp;list=PLe9psSNJBf74yYiVXDXz8UnRnWf3NHzS-">Standardizing JavaScript Decorators in TC39</a> by Dan Ehrenberg
+			</li>
+			<li>
+			<a href="https://youtu.be/Q8Z1D2i61j8" rel="nofollow noreferrer noopener" target="_blank">MathML in Browsers</a> by Frédéric Wang at Web Engines Hackfest</li>
+			<li><a href="https://www.youtube.com/watch?v=ceiUozUFF3Y">Web APIs in Node.js Core: Past, Present, and Future</a> at JSConf EU by Joyee Chung</li>
+			<li><a href="https://www.youtube.com/watch?v=Rc2TpO7WXYc&amp;t=486s">JavaScript Class Features: A case study in TC39</a> by Dan Ehrenberg</li>
+			<li>
+			<a href="https://youtu.be/Rc2TpO7WXYc rel=" nofollow="" noreferrer="" noopener"="" target="_blank">Improving Website Performance with CSS Containment</a> by Manuel Rego at CSSconf EU</li>
+			<li><a href="https://www.youtube.com/watch?v=gS3wLIoQAAY&amp;feature=youtu.be" noreferrer="" noopener="" target="_blank">The Battle of the Event Loops</a> by Ujjwal Sharma at HolyJS</li>
+			<!--li>
+			<a href="https://slides.com/briankardell/60-21-22-23#/" rel="nofollow noreferrer noopener" target="_blank">The Web Commons:Past, Present and Future</a> by <em>brian</em>. Abstractions II</li -->
+			<li>
+			<a href="https://www.youtube.com/watch?v=AqzztIpGCD8" rel="nofollow noreferrer noopener" target="_blank">Implementing Accessibility for the Web Platform</a> by Martin Robinson at Web Engines Hackfest</li>
+			<li><a href="https://www.youtube.com/watch?v=olSQai4EUD8">This.Javascript: State of Browsers panel, representing WebKit</a>, several TC39 panels like <a href="https://www.youtube.com/watch?v=m8KfqLPgi_w">this one from JSConf EU</a>, some podcasts, like <a href="https://www.youtube.com/watch?v=weVNrflT-vU">Talkscript</a> and started doing some <a href="https://www.youtube.com/watch?v=dw6QDmH7Sgs">interviews of our own.</a></li>
+			</ul>
+
+			</li><li>
+				<p>We wrote a lot of blog posts  too, here are a few I chose to highlight here that I thought were particularly interesting:</p>
+				<ul>
+					
+
+			<li>
+			<a href="https://blogs.igalia.com/mrego/2019/06/19/speaking-at-css-day-2019/" rel="nofollow noreferrer noopener" target="_blank">Speaking at CSS Day 2019</a> (a post about what it takes to implement and ship a new feature) by Manuel Rego</li>
+
+			<li>
+			<a href="https://bkardell.com/blog/OnePlatform.html" rel="nofollow noreferrer noopener" target="_blank">One Platform</a> (a post about resolving historical co-evolutionary oddities in the platform so we can more forward) by <em>Brian Kardell</em>
+			</li>
+
+
+			<li>
+			<a href="https://blogs.igalia.com/jfernandez/2019/06/10/a-new-terminal-style-line-breaking-with-css-text/" rel="nofollow noreferrer noopener" target="_blank">A terminal-style line breaking with CSS Text</a> by javif</li>
+
+
+			<li>
+			<a href="https://blogs.igalia.com/mrego/2019/01/11/an-introduction-to-css-containment/" rel="nofollow noreferrer noopener" target="_blank">An introduction to CSS Containment</a> by rego</li>
+
+			<li>
+			<a href="https://bkardell.com/blog/Beyond.html" rel="nofollow noreferrer noopener" target="_blank">Beyond Browser Vendors</a> (a post the not-often discussed reasons why we get the features that we do, and the changing landscape that enabled new ideas) by <em>Brian Kardell</em>
+			</li>
+
+			<!-- li>
+			<a href="https://docs.google.com/document/d/1DpwvJsDhMc32UGxxKVo1hGlaYLGwPWIVi37o8nt-pH0" rel="nofollow noreferrer noopener" target="_blank">Google AMP (a review)</a> by cathie, fred and rob</li -->
+
+				</ul>
+			</li>
+
+			</ul>
+			
+		</section>
+	</section>
+	<section class="sectioning">
+		<contextual-heading role="heading" aria-level="3">2020…</contextual-heading>
+		<p>So, I think we did some amazing and important things in 2019.  But, as amazing as it was: <em>Just wait until you see what we do 2020</em>. </p>
+	</section>
+</section>
+</article></main>
+
+  
+    <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-88027178-1', 'auto');
+    ga('send', 'pageview');
+  </script>
+
+  <script>
+    Array.prototype.slice.call(document.querySelectorAll('.optional [data-src]')).forEach(function (optional) {
+      var prefs = window.localStorage.downloadsPrefs,
+          clickToSee;
+      if (prefs === 'true') {
+        activateOptional(optional);
+      } else {
+        clickToSee = document.createElement('div');
+        clickToSee.classList.add('clickToSee')
+        clickToSee.innerHTML = '<button>Click to see media</button>';
+        clickToSee.style.textAlign = 'center';
+        clickToSee.style.border = 'none';
+        optional.parentElement.insertBefore(clickToSee, optional.nextSibling);
+        clickToSee.firstElementChild.addEventListener('click', function () {
+          activateOptional(optional);
+        })
+      }
+
+    })
+  </script>
+
+</body></html>
