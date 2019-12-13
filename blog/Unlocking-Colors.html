@@ -1,0 +1,440 @@
+<html lang="en" resource-type="blogpost"><head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@briankardell">
+    <meta name="twitter:creator" content="@briankardell">
+    <meta name="twitter:title" content="Unlocking Colors">
+    <meta name="twitter:description" content="Despite the fact that I draw and paint, and am involved with CSS, I am actually generally not good at design. Color, however, is endlessly fascinating. As there have been many colo">
+    <meta name="twitter:image" content="https://upload.wikimedia.org/wikipedia/commons/6/60/Cie_Chart_with_sRGB_gamut_by_spigget.png">
+    <link rel="alternate" type="application/rss+xml" href="https://bkardell.com/blog/feed.rss" title="bkardell.com/blog rss feed">
+    <title>Unlocking Colors</title> 
+    <style>.captioned-image {
+    background-color: #eaeaea;
+    display: block;
+    overflow: hidden;
+    padding: 1rem;
+    text-align: center;
+    font-style: italic;
+}
+
+.captioned-image.p-attached {
+    width: 40%;
+    display: inline-block;
+    margin: 0 1rem 2rem 1rem;
+}
+
+section > .captioned-image.p-attached {
+    margin-top: 1.5rem; /* correct for heading size*/
+}
+
+ pre { overflow-x: auto }
+
+.captioned-image.p-attached.p-attached-left {
+    float: left;
+}
+
+.captioned-image.p-attached.p-attached-right {
+    float: right;
+}
+
+.captioned-image.p-attached + * + * {
+    clear: both;
+    margin-top: 2rem;
+}
+
+
+.captioned-image img, .captioned-image video {
+    display: block;
+    max-width: 100%;
+    margin: 0 auto 1em auto;
+}
+.source {
+    font-style: italic;
+}
+body {
+    display: flex;
+    font: 1em "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-weight: 400;
+    line-height: 1.625;
+}
+h1 { margin: 0.5rem; }
+code-format {
+    border-left: 0.5rem solid rgba(123,115,209,0.35);
+    display: block;
+    padding: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+contextual-heading {
+    display: block;
+    margin-top: 2rem;
+}
+
+[aria-level="1"] {
+    color: #43686b;
+    font-size: 1.45rem;
+}
+[aria-level="2"] {
+    color: #856363;
+    font-size: 1.35rem;
+}
+[aria-level="3"] {
+    color: #856363;
+    font-size: 1.25rem;
+}
+[aria-level="4"] {
+    color: #856363;
+    font-size: 1.2rem;
+}
+[aria-level="5"], [aria-level="6"] {
+    color: #667496;
+    font-size: 1.1rem;
+    font-weight: bolder;
+}
+.posted-on {
+    font-style: italic;
+    font-size: 0.8rem;
+    text-align: right;
+    margin-bottom: 1rem;
+}
+
+ul, li {
+    margin: 0.5rem;
+    text-align: left;
+}
+header {
+    padding-top: 1rem;
+    padding-right: 2rem;
+    background-color: #fbf5e9;
+}
+.tagline {
+    font-style: italic;
+    text-align: center;
+}
+
+[tag-esc] {
+    color: maroon;
+    font-family: Courier, "Lucida Console", monospace;
+}
+
+[tag-esc]::before {
+    content: '<';
+}
+
+[tag-esc]::after {
+    content: '>';
+}
+
+main {
+    min-width: 50%;
+    width: 80%;
+    padding: 1rem;
+}
+header .title {
+    background-color: rgba(123,115,209,0.35);
+    padding: 0.3rem;
+    padding-left: 0.25rem;
+    font-weight: bolder;
+    font-size: 0.9rem;
+    border-left: 1rem solid #999298;
+}
+
+header .profile {
+    width: 50%;
+    margin: 1rem 25%;
+}
+
+header .title + nav {
+    font-size: 0.9rem;
+}
+
+header .blurb {
+    font-size: 0.75rem;
+    text-align: center;
+}
+header .name {
+    text-align: center;
+    font-size: xx-large;
+}
+.segue {
+    font-style: italic;
+}
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  border: 0;
+}
+[for="aboutMeToggle"] {
+    display: none;
+}
+/* this needs rethinking, it wants a selector like 'not flow content' */
+article>*:not(contextual-heading,a), section>*:not(contextual-heading,a) {
+    margin-left: 0.45rem;
+}
+
+blockquote {
+  font-family: serif;
+  background: #f9f9f9;
+  border-left: 10px solid #ccc;
+  margin: 1.5em 10px;
+  padding: 0.5em 10px;
+}
+blockquote:before {
+  color: #ccc;
+  content: open-quote;
+  font-size: 2em;
+  line-height: 0.1em;
+  margin-right: 0.25em;
+  vertical-align: -0.4em;
+}
+
+blockquote:after {
+  color: #ccc;
+  content: close-quote;
+  font-size: 2em;
+  line-height: 0.1em;
+  margin-left: 0.25em;
+  vertical-align: -0.4em;
+}
+
+
+@media (max-width: 800px){
+    body {
+        flex-direction: column;
+    }
+    header {
+        border-bottom: 1px solid #afafff;
+    }
+
+    .captioned-image.p-attached {
+        width: 100%;
+        margin: 1rem 0;
+    }
+
+    .captioned-image.p-attached.p-attached-left,
+    .captioned-image.p-attached.p-attached-right {
+        float: none;
+    }
+
+    [for="aboutMeToggle"] {
+        background-color: #675e5e;
+        color: white;
+        padding: 0.25rem;
+        padding-left: 0.5rem;
+        display: block;
+        border-left: 1rem solid black;
+    }
+    #aboutMeToggle:focus + [for="aboutMeToggle"]{
+        outline: 4px solid #c6ddf2;
+    }
+
+    #aboutMeToggle:checked ~ header {
+        display: none;
+    }
+
+    header li { display: inline; margin-left: -0.5em; }
+    header .blurb li::after { content: '; '; }
+    header  nav li {
+        display: inline-block;
+        margin-left: 0.35rem;
+        margin-right: 0.35rem;
+    }
+    header .title {
+        width: 100%;
+    }
+    main li .source { display: block; }
+
+}</style>
+    <style>
+      .captioned-image { font-size: 0.9rem; }
+      .thanksTo { font-style: italic; font-size: 0.8rem; }
+    </style>
+    <script>
+      var activateOptional = function (media) {
+        var source = media.getAttribute('data-src'),
+            temp,
+            container = media.parentElement;
+
+          if (media.nextSibling && media.nextSibling.matches) {
+            if (media.nextSibling.matches('.clickToSee')) {
+              media.parentElement.removeChild(media.nextSibling);
+            }
+          }
+
+          if (media.tagName === 'VIDEO') {
+            temp = document.createElement('video')
+            temp.setAttribute('autoplay','')
+            temp.setAttribute('controls','')
+            temp.setAttribute('loop','')
+            temp.innerHTML = '<source src="' + source + '.webm" type="video/webm">'
+                    + '<source src="' + source + '.mp4" type="video/mp4">';
+            media.parentElement.replaceChild(temp, media);
+            setTimeout(function () {
+              temp.play()
+            }, 0);
+          } else {
+            media.src = media.getAttribute('data-src');
+          }
+
+          container.classList.add('active');
+      }
+    </script>
+  </head>
+  <body>
+    <input id="aboutMeToggle" class="sr-only" type="checkbox" checked="">
+<label for="aboutMeToggle">Toggle author information</label>
+<header>
+    <div class="name">
+        Brian Kardell
+    </div>
+    <img class="profile" src="/profile.jpg" alt="">
+    <div class="tagline"><a href="/">Betterifying the Web</a></div>
+    <div class="blurb">
+        <ul>
+            <li>Developer Advocate at Igalia</li>
+            <li>Original Co-author/Co-signer of The Extensible Web Manifesto</li>
+            <li>Co-Founder/Chair, W3C Extensible Web CG</li>
+            <li>Member, W3C (The JS Foundation)</li>
+            <li>Co-author of HitchJS</li>
+            <li>Blogger</li>
+            <li>Art, Science &amp; History Lover</li>
+            <li>Standards Geek</li>
+        </ul>
+    </div>
+    <div class="title">Follow Me On...</div>
+    <nav>
+        <ul>
+            <li><a rel="me" href="https://briankardell.wordpress.com">Wordpress</a></li>
+            <li><a rel="me" href="https://medium.com/@briankardell">Medium</a></li>
+            <li><a rel="me" href="https://twitter.com/briankardell">Twitter</a></li>
+            <li><a rel="me" href="https://github.com/bkardell/">Github</a></li>
+            <li><a rel="me" href="https://codepen.io/bkardell">Codepen</a></li>
+            <li><a rel="me" href="https://www.linkedin.com/in/brian-kardell-08a4264">LinkedIn</a></li>
+            <li><a rel="me" href="https://www.instagram.com/kardellbrian">Instagram (for
+art)</a></li>
+            <li><a rel="me" href="http://fineartamerica.com/profiles/brian-kardell?">Fine Art
+America (art for sale)</a></li>
+        </ul>
+    </nav>
+</header>
+    <main><div class="posted-on">Posted on </div><article posted-on="" class="sectioning">
+	<contextual-heading role="heading" aria-level="1">Unlocking Colors</contextual-heading>
+	<p class="segue">
+		Despite the fact that I draw and paint, and am involved with CSS, I am actually generally not good at design. Color, however, is endlessly fascinating. As there have been many color-oriented proposals for CSS, I thought it might be nice to write about an important, but underdiscussed bit.
+	</p>
+
+
+	<section class="sectioning">
+		<contextual-heading role="heading" aria-level="2">First... What even is color?</contextual-heading>
+
+		<p>When you look at real physical things, what you perceive as color is a reflection of which wavelengths of light bounce back at you without being 'swallowed up' by the pigment.    Pigments are subtractive, light is additive.  That is, if you combine all of the colors of light, you get a pure white - and if you combine all of the pigments you get a pure black.</p>
+
+		<p>There is 'real information' that exists in the universe, but there are also real constraints when talking about color:  If the light shining on that pigment doesn't contain all of the possible wavelengths, that color will look different, for example. Or, if your monitor can't physically create true pure white or pure black, things are a little skewed.</p>
+
+		<p>When we're doing things digitally there's another important constraint:  We also have to <em>store</em> colors with some number of bits and format, express those somehow, and be able to reason about them.   Storing 'really accurate true values' would both require a lot of bits and a lot of bits, and machines (at various points in time) weren't capable of creating, managing or displaying - either efficiently, or at all.  As a result, over the years we've created a lot of interesting tradeoffs with regard to color.</p>
+		</section>
+
+		<section class="sectioning">
+			<contextual-heading role="heading" aria-level="2">Color spaces</contextual-heading>
+			<p>If you can imagine a true rainbow, with all of the real possible colors in the universe, the set of those you can actually represent (and how you move about in it) is called a 'color space'.  The limits of a color space are called its  gammut.  Because your monitor works with light, it is an additive process and 'Red' 'Green' and 'Blue' combined to create white (once upon a time, with actual CRTs).  Along the way, we created the sRGB color space.  The sRGB color space is a limited section of the rainbow, which is kind of narrow compared to all of the possible colors that exist in nature, but is very optimized for machines and common cases.  Below is an example from  <a href="https://en.wikipedia.org/wiki/SRGB" rel="nofollow">wikipedia</a> illustrating sRBG and color spaces illustrating the sRGB color space.  The colors within the triangle are part of the sRGB color space.</p>
+
+				<aside class="captioned-image optional">
+					<img src="https://upload.wikimedia.org/wikipedia/commons/6/60/Cie_Chart_with_sRGB_gamut_by_spigget.png" alt="sRGB color space, visualized">
+				</aside>
+
+
+			<p>But, the point is that tradeoffs that aren't always desirable.</p>
+
+			<p>Today, for example, we have machines capable of recording or displaying things with a much wider gammut -- the stuff outside the triangle. Your monitor does, and if you have a TV capable of HDR (hi dynamic range) that's got a wider gammut, for example.</p>
+		</section>
+
+		<section class="sectioning">
+			<contextual-heading role="heading" aria-level="2">Humans vs machines</contextual-heading>
+			<p>But it's more than just efficiency.  sRGB, as I said, is really built for machines - and humans and machines are quite different.  If I showed you a color and asked you to guess the value in RGB, mapped that to sRGB space and showed you on your monitor, chances that you could get it very close are pretty low in general and there's not great odds that you could efficiently zero in on closer and closer simply because it's a little unnatural.  This is why we have created things like like hsla which some people think is easier to reason about 'more saturated' and 'lighter' and a circle of color is potentially a little easier to think about.  But it's not just that one uses RGB either, it's that the color space itself has weird characteristics.</p>
+
+			<p>This plays in especially if we want to reason about things mathematically - for example - <em>in creating design systems.</em></p>
+
+			<p>Our design systems, ideally, want to reason about colors by 'moving through the color space'.  Doing things like mixing colors, lightening, darkening, do this well if they a sense of how our eyes really <em>work</em> rather than how machines like to think about storing and displaying. That is, if I move this one aspect just a little bit, I expect it to have the same effect no matter what the color I start with is... But in sRGB space, that really isn't true at all.  The sRGB space is not perceptually uniform.  The same mathematical movement has different degrees of perceived effect depending on where you are at in the color space.</p>
+
+			<section class="sectioning">
+				<contextual-heading role="heading" aria-level="3">Some examples…</contextual-heading>
+
+				<p>This is, of course, very hard to understand if you don't live in this space because we're just not used to it.  It doesn't sound intuitive, or maybe it sounds unnecessarily complex - but it really isn't.  It's kind of simple: the RGB color spaces aren't built for humans to reason about mathmetically, really, that's it.  Here are some examples where it is easy to see in action...</p>
+
+			<p class="codepen" data-height="500" data-theme-id="default" data-default-tab="result" data-user="bkardell" data-slug-hash="NWWZPdL" style="height: 500px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="NWWZPdL">
+  <span>See the Pen <a href="https://codepen.io/bkardell/pen/NWWZPdL">
+  NWWZPdL</a> by Brian Kardell (<a href="https://codepen.io/bkardell">@bkardell</a>)
+  on <a href="https://codepen.io">CodePen</a>.</span>
+</p>
+<script async="" src="https://static.codepen.io/assets/embed/ei.js"></script>
+		</section>
+		<section class="sectioning">
+			<contextual-heading role="heading" aria-level="3">This matters a lot...</contextual-heading>
+
+			<p>This matters a lot, for example, if you wanted to create a design system which mathematically reasons about color contrast.</p>
+
+			<p>There are color spaces like Lab and LCH which deal with the full spectrum and have qualities like perceptual uniformness.  Thus, if we want <a href="https://github.com/w3c/csswg-drafts/issues/3187#issuecomment-499126198">great color functions for use in real design systems</a> everyone seems to agree that having support to do said math in the Lab/LCH color spaces is the ideal enabling feature.  It's not <em>exactly</em> a prerequisite to doing useful things.  In fact, a lot of designers it seems aren't even aware of this quality because we've lived so long with the sRGB space.  However, realistically, we get the most value if we invest in having support for these two color spaces first.  They are also well defined, don't require a lot of debate and are non-controversial.  Having them would make everything else so much the better, because they give us the right tools to help the actual humans.</p>
+
+			<p>Recently, my friend Adam Argyle opened <a href="https://bugs.chromium.org/p/chromium/issues/detail?id=1026287" rel="nofollow">this issue</a> in Chromium.</p>
+		</section>
+		<section class="sectioning">
+			<contextual-heading role="heading" aria-level="3">Let's get this done.</contextual-heading>
+
+			<p>To recap... We have two CSS color related functions which:</p>
+
+			<ul>
+				<li>Are not controversial</li>
+				<li>Aree quite mature and widely used color standards</li>
+				<li>Are important for accesibility</li>
+				<li>Are important for design systems</li>
+				<li>Make all of the other design system related work much more attractive</li>
+				<li>Are actually some of the easiest things we could do in CSS</li>
+				<li>Just aren't getting done</li>
+			</ul>
+
+			<p>Chances are pretty good, I think, that as a designer or developer reading this, you'll find that last bullet irritating.  You might be asking yourself "<em>But why isn't it getting done?  Wouldn't that help so much?</em>".  The answer is neither as offensive nor complex as you might imagine, it's kind of simple really: Yes, it would - but yhere's <em>just so much in the pipeline</em> already.  In the end, <em>everyone</em> (including browser vendors) has to prioritize the work in the queue with available resources and skills. There are only so many people with the particular skills to be working on this available, and there are lots of importan tor interesting things competing for their prioritization.</p>
+
+			<p>I recently wrote <a href="https://bkardell.com/blog/Beyond.html" rel="nofollow">a post about this problem</a> and how Igalia enables us to move things like this.  We have shown that we can get big things done - like CSS Grid.  This is a small thing in terms of effort and cost with an outsized impact.  So, <em>if your organization is interested in design systems, or how you can help move important standards work, this is a great entry point for discussion and I'd love to talk with you.  My Twitter dms are open as well.  We can get this done.</em></p><em>
+		</em></section><em>
+	</em></section><em>
+</em></article></main>
+
+  
+    <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-88027178-1', 'auto');
+    ga('send', 'pageview');
+  </script>
+
+  <script>
+    Array.prototype.slice.call(document.querySelectorAll('.optional [data-src]')).forEach(function (optional) {
+      var prefs = window.localStorage.downloadsPrefs,
+          clickToSee;
+      if (prefs === 'true') {
+        activateOptional(optional);
+      } else {
+        clickToSee = document.createElement('div');
+        clickToSee.classList.add('clickToSee')
+        clickToSee.innerHTML = '<button>Click to see media</button>';
+        clickToSee.style.textAlign = 'center';
+        clickToSee.style.border = 'none';
+        optional.parentElement.insertBefore(clickToSee, optional.nextSibling);
+        clickToSee.firstElementChild.addEventListener('click', function () {
+          activateOptional(optional);
+        })
+      }
+
+    })
+  </script>
+
+</body></html>
