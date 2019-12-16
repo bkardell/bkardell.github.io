@@ -10,7 +10,7 @@
     <link rel="alternate" type="application/rss+xml" href="https://bkardell.com/blog/feed.rss" title="bkardell.com/blog rss feed">
     <title>2019, That's a Wrap.</title> 
     <style>.captioned-image {
-    background-color: #eaeaea; 
+    background-color: #eaeaea;
     display: block;
     overflow: hidden;
     padding: 1rem;
@@ -323,11 +323,11 @@ America (art for sale)</a></li>
         </ul>
     </nav>
 </header>
-    <main><div class="posted-on">Posted on </div><article posted-on="" class="sectioning">
+    <main><div class="posted-on">Posted on 12/16/2019</div><article posted-on="12/16/2019" class="sectioning">
 	<contextual-heading role="heading" aria-level="1">2019, That's a Wrap.</contextual-heading>
  
 <p class="segue">As 2019 draws to a close and we look toward a new year (a new decade, in fact) Igalians like to take a moment and look back on the year.  As it is my first year at Igalia, I am substantially impressed by the long list of things we accomplished.  I thought it was worth, then, highlighting some of that work and putting it into context: What we did, how, and why I think this work is important the open web platform and to us all…</p>
-<style>
+<style> 
 	.note {
         background-color: rgba(255,255,0,0.24);
         padding: 1rem;
@@ -341,6 +341,10 @@ America (art for sale)</a></li>
         padding: 0.25rem;
         margin-right: 0.5rem;
     }
+    figcaption {
+    	font-style: italic;
+    	font-size: 0.8rem;
+    }
     .twitter-tweet {
     	margin: 1rem auto;
     }
@@ -349,7 +353,7 @@ America (art for sale)</a></li>
 <section class="sectioning">
 	<contextual-heading role="heading" aria-level="2">All the Browsers…</contextual-heading>
 
-	<p>All of the browser projects are open source now and we are active and trusted committers to all of them.  That's important because browser diversity matters and we're able to  jump in and lend a hand wherever necessary.  The rate at which we contribute to any browser can vary from year to to year for reasons (many explained in this post), but I'd like to illuatrate what that actually <em>looked like</em> in 2019.  Let's look at the commits for 2019…</p>
+	<p>All of the browser projects are open source now and we are active and trusted committers to all of them.  That's important because browser diversity matters and we're able to  jump in and lend a hand wherever necessary.  The rate at which we contribute to any browser can vary from year to year for reasons (many explained in this post), but I'd like to illustrate what that actually <em>looked like</em> in 2019.  Let's look at the commits for 2019…</p>
 
 	<p class="note">Commits are an imperfect kind of measure.  Not all commits are of the same value (in fact, value is hard to qualify here).  It doesn't account for potentially lots and lots of downstream work that went into getting one upstream commit.  Even figuring out how to count them can be tricky.  Looking at them purely as a vague relative scale of "how much did we do", they're one useful illustration.  That's how I'd like to you view these statisics - about our slice of the commit pie, and not anyone elses.</p>
 
@@ -363,12 +367,12 @@ America (art for sale)</a></li>
 		<figcaption>Just one of the slides shared from Google’s presentation at blinkon 2019 showing 1782 commits from Igalia at that point in 2019…</figcaption>
 		</figure>
 
-		<p>Chromium, if you're not aware, is a <em>very</em> large and busy project with lots of big company contributors, so it's quite exciting to show the level at which we are contributing here. (Speaking of imperfections in this measure - all of our MathML work was done downstream and thus commits toward this very significant project arent't even counted here!)</p>
+		<p>Chromium, if you're not aware, is a <em>very</em> large and busy project with lots of big company contributors, so it's quite exciting to show the level at which we are contributing here. (Speaking of imperfections in this measure - all of our MathML work was done downstream and thus commits toward this very significant project aren't even counted here!)</p>
 	</section>
 	<section class="sectioning">
 		<contextual-heading role="heading" aria-level="3">Mozilla</contextual-heading>
 
-		<p>This year, our contributions to Mozilla projects were  relatively small by comparison.  Nevertheless, 9 Igalians still actively contributed over 160 commits to servo and mozilla-central in 2019 placing us in the top 10 in servo and the top 20 in mozilla-central.</p>
+		<p>This year, our contributions to Mozilla projects were  relatively small by comparison.  Nevertheless, 9 Igalians still actively contributed over 160 commits to servo and mozilla-central in 2019 placing us in the top 10 contributors to servo and the top 20 to mozilla-central.</p>
 
 		<figure>
 		<img width="300" src="/media/2019-contributions-to-servo.png" style="display:block;width: 100%;">
@@ -405,7 +409,7 @@ America (art for sale)</a></li>
 
 		<p>But they weren't remotely alone: 2019 saw many diverse clients funding some kind of upstream work for all sorts of reasons.  Google AMP, as another example, funded a lot of great work in our partnership for Predictability efforts.  Several sponsors helped fund work on MathML.  Our work with embedded browsers has helped introduce a number of new paths for contributions as well.  We worked on Internationalization, accessibility, module loading, top-level-await, a proposal for operator overloading and more.</p>
 
-		<p>I'm also very proud of fact that we are also an example of what we preach:<em>  Among those who sponsor our work is… us.</em> Igalia cares about doing things that matter, and while we are great at finding ways to help fund the advancement of work that matters, we're also willing to invest ourselves.</p>
+		<p>I'm also very proud of fact that we are an example of what we preach in this respect:<em>  Among those who sponsor our work is… us.</em> Igalia cares about doing things that matter, and while we are great at finding ways to help fund the advancement of work that matters, we're also willing to invest ourselves.</p>
 	</section>
  
 	<section class="sectioning">
@@ -428,7 +432,7 @@ America (art for sale)</a></li>
 			<figcaption>In 2019, Igalia was the #3 contributor to Web Platform Tests, after Google and Mozilla.</figcaption>
 			</figure>
 
-			<p>We were also among the top contributors to Test262 as well… Great contributions here from our friends at Bocoup!  We are two very unique companies in this space - contributing to the open web with a different kind of background than most. It's excellent to see how much we're all accomplshing together - just between the two of us, that's approaching 60% of the commits!</p>
+			<p>We were also among the top contributors to Test262 as well… Great contributions here from our friends at Bocoup!  We are two very unique companies in this space - contributing to the open web with a different kind of background than most. It's excellent to see how much we're all accomplishing together - just between the two of us, that's approaching 60% of the commits!</p>
 			<figure>
 			<img width="300" src="/media/2019-contributions-to-test262.png" style="display:block;width: 100%;">
 			<figcaption>We're among the top contributors to Test262 as well.</figcaption>
@@ -462,9 +466,9 @@ America (art for sale)</a></li>
 
 			<p>We were also the top 3 contributor to the <a href="https://w3c.github.io/html-aam/">HTML Accessibility API Mappings 1.0</a> and actively contributed to <a href="https://w3c.github.io/accname/">Accessible Name and Description Computation</a>.  </p>
 
-			<p>This year, during the CSS Working Group's Face-to-Face meeting at the Mozilla offices in Toronto, our colleage <a href="https://www.igalia.com/igalian/obrufau">Oriol Brufau</a></p>
+			<p>This year, during the CSS Working Group's Face-to-Face meeting at the Mozilla offices in Toronto, our colleage <a href="https://www.igalia.com/igalian/obrufau">Oriol Brufau</a> was unanimously, and quickly appointed as co-editor of the CSS Grid Specification.</p>
 
-			<p>2019 also saw the hiring of Nikolas Zimmerman, bringing the original authors of KSVG - the original SVG implementation back together at Igalia.  We've nominated him to the SVG working group and we we're so excited to share what he's working on (see end of post):</p>
+			<p>2019 also saw the hiring of Nikolas Zimmerman, <a href="https://twitter.com/briankardell/status/1185278473931231232">bringing the original authors of KSVG</a> (the original SVG implementation) back together at Igalia.  We've nominated Niko to the SVG working group and we we're so excited to share what he's working on (see end of post):</p>
 
 
 		</section>
@@ -492,7 +496,7 @@ America (art for sale)</a></li>
 			<li><p>Each year we organize an annual Web Engines Hackfest and bring together attendees from all over the world with varying interests around browsers and Web standards come together.  Last October we held this event at our offices in A Coruña Spain.  There were many <a href="https://www.youtube.com/playlist?list=PL4sEzdAGvRgDCN6qACHWs04mQQTWBkdGq">great talks</a> and a lot of great collaboration and discussion.  </p></li>
 			<li><p>We began a number of JavaScript outreach groups with different stakeholders.  We meet with each monthly, review and discuss what's happened recently or is brewing new in TC39 and related standards <a href="https://github.com/js-outreach/js-outreach-groups">see </a>.  One of these efforts has also spawned a new effort <a href="https://twitter.com/StandardsIn2Min">Standards in 2 Minutes</a> to allow developers to more easily stay in touch.</p></li>
 			<li><p>We joined in partnership on a new effort <a href="https://webwewant.fyi">WebWeWant.fyi</a> which aims to do more direct outreach from standards right to developers, where they are with regard to creating useful feedback into the system.</p></li>
-			<li><p>We partnered with colleagues at Bocoup to contribute the research and writing and tooling for the <a href="https://almanac.httparchive.org/en/2019/markup">2019 Web Almanac's chapter on Markup</a>, including for the first time data about non-standard and custom elements with an eye toward answering the question “What new cow paths are being laid down that HTML should consider standardizing”.</p></li>
+			<li><p>We partnered with colleagues at Bocoup to contribute the research, writing and tooling for the <a href="https://almanac.httparchive.org/en/2019/markup">2019 Web Almanac's chapter on Markup</a>, including for the first time data about non-standard and custom elements with an eye toward answering the question “What new cow paths are being laid down that HTML should consider standardizing”.</p></li>
 			<li><p>We began outreach to publishing, design and editorial communities within the W3C and have been connecting discussions with browser vendors on how to move a whole lot of exciting things forward.</p></li>
 			<li><p>We gave a lot of talks and participated in a lot of events, here are just a few that there are videos of…</p>
 
