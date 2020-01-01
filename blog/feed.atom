@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://bkardell.com/</id>
     <title>bkardell.com rss feed</title>
-    <updated>2019-12-18T20:13:01.170Z</updated>
+    <updated>2020-01-01T02:20:29.387Z</updated>
     <generator>awesome mix</generator>
     <author>
         <name>Brian Kardell</name>
@@ -14,6 +14,112 @@
     <subtitle>Just the bkardell.com rss feed</subtitle>
     <logo>http://bkardell.com/profile.jpg</logo>
     <rights>All rights reserved 2018, Brian Kardell</rights>
+    <entry>
+        <title type="html"><![CDATA[Unlocking Colors]]></title>
+        <id>https://bkardell.com/blog/Unlocking-Colors.html</id>
+        <link href="https://bkardell.com/blog/Unlocking-Colors.html">
+        </link>
+        <updated>2020-01-01T05:00:00.000Z</updated>
+        <summary type="html"><![CDATA[
+		Despite the fact that I draw and paint, and am involved with CSS, I am actually generally not good at design. Color, however, is endlessly fascinating. As there have been many color-oriented proposals for CSS, to enable people who are good at design, I thought it might be nice to write about an important, but underdiscussed bit that's necessary in order to really unlock a lot - and how we can help.
+	]]></summary>
+        <content type="html"><![CDATA[
+	<contextual-heading role="heading" aria-level="1" style="font-size: 2rem;">Unlocking Colors</contextual-heading>
+	<p class="segue">
+		Despite the fact that <a href="https://www.instagram.com/kardellbrian/">I draw and paint</a>, and am involved with CSS, I am actually generally not good at design. Color, however, is endlessly fascinating. As there have been many color-oriented proposals for CSS, to enable people who <em>are</em> good at design, I thought it might be nice to write about an important, but underdiscussed bit that's necessary in order to really unlock a lot - and how we can help.
+	</p>
+	
+
+	<section class="sectioning">
+		<contextual-heading role="heading" aria-level="2" style="font-size: 2.25rem;">First... What even is color?</contextual-heading>
+
+		<p>When you look at real physical things, what you perceive as color is a reflection of which wavelengths of light bounce back at you without being 'swallowed up' by the pigment.    Pigments are subtractive, light is additive.  That is, if you combine all of the colors of light, you get a pure white - and if you combine all of the pigments you get a pure black.</p>
+
+		<p>There is 'real information' that exists in the universe, but there are also real constraints when talking about color:  If the light shining on that pigment doesn't contain all of the possible wavelengths, that color will look different, for example. Or, if your monitor can't physically create true pure white or pure black, things are a little skewed.</p>
+
+		<p>When we're doing things digitally there's another important constraint:  We also have to <em>store</em> colors with some number of bits and format, express those somehow, and be able to reason about them.   Storing 'really accurate true values' would both require a lot of bits and a lot of bits, and machines (at various points in time) weren't capable of creating, managing or displaying - either efficiently, or at all.  As a result, over the years we've created a lot of interesting tradeoffs with regard to color.</p>
+		</section>
+
+		<section class="sectioning">
+			<contextual-heading role="heading" aria-level="2" style="font-size: 2.25rem;">Color spaces</contextual-heading>
+			<p>If you can imagine a true rainbow, with all of the real possible colors in the universe, the set of those you can actually represent (and how you move about in it) is called a 'color space'.  The limits of a color space are called its  gammut.  Because your monitor works with light, it is an additive process and 'Red' 'Green' and 'Blue' combined to create white (once upon a time, with actual CRTs).  Along the way, we created the sRGB color space.  The sRGB color space is a limited section of the rainbow, which is kind of narrow compared to all of the possible colors that exist in nature, but is very optimized for machines and common cases.  Below is an example from  <a href="https://en.wikipedia.org/wiki/SRGB" rel="nofollow">wikipedia</a> illustrating sRBG and color spaces illustrating the sRGB color space.  The colors within the triangle are part of the sRGB color space.</p>
+
+			<aside class="captioned-image optional">
+				<img src="https://upload.wikimedia.org/wikipedia/commons/6/60/Cie_Chart_with_sRGB_gamut_by_spigget.png" alt="sRGB color space, visualized">
+			</aside>
+
+
+			<p>But, the point is that these tradeoffs aren't always desirable.</p>
+
+			<p>Today, for example, we have machines capable of recording or displaying things with a much wider gammut -- the stuff outside the triangle. Your monitor does, and if you have a TV capable of HDR (hi dynamic range) that's got a wider gammut, for example... And then, there's the math…</p>
+		</section>
+
+		<section class="sectioning">
+			<contextual-heading role="heading" aria-level="2" style="font-size: 2.25rem;">Humans vs machines</contextual-heading>
+			<p>It's more than just efficiency.  sRGB, as I said, is really built for machines - and humans and machines are quite different.  If I showed you a color and asked you to guess the value in RGB, mapped that to sRGB space and showed you on your monitor, chances that you could get it very close are pretty low in general. You can test this theory with <a href="http://hex-guess.glitch.me/">hex-guess.glitch.me</a>.  Further, there's not great odds that you could efficiently zero in on closer and closer simply because it's a little unnatural.  This is why we have created things like like hsla which some people think is easier to reason about 'more saturated' and 'lighter' and a circle of color is potentially a little easier to think about.  But it's not just that one uses RGB either, it's that the color space itself has weird characteristics.</p>
+
+			<p>This plays in especially if we want to reason about things mathematically - for example - <em>in creating design systems.</em></p>
+
+			<p>Our design systems, ideally, want to reason about colors by 'moving through the color space'.  Doing things like mixing colors, lightening, darkening, do this well if they a sense of how our eyes really <em>work</em> rather than how machines like to think about storing and displaying. That is, if I move this one aspect just a little bit, I expect it to have the same effect no matter what the color I start with is... But in sRGB space, that really isn't true at all.  The sRGB space is not perceptually uniform.  The same mathematical movement has different degrees of perceived effect depending on where you are at in the color space.  If you want to read a designer's experience with this, here's an <a href="https://v6.robweychert.com/blog/2019/12/dynamic-color-javascript-hsl/">interesting example</a> which does a good job struggling to do well.</p>
+
+			<section class="sectioning">
+				<contextual-heading role="heading" aria-level="3" style="font-size: 2.5rem;">Some examples…</contextual-heading>
+
+				<p>This is, of course, very hard to understand if you don't live in this space because we're just not used to it.  It doesn't sound intuitive, or maybe it sounds unnecessarily complex - but it really isn't.  It's kind of simple: the RGB color spaces aren't built for humans to reason about mathmetically, really, that's it.  Here are some examples where it is easy to see in action...</p>
+
+			<p class="codepen" data-height="500" data-theme-id="default" data-default-tab="result" data-user="bkardell" data-slug-hash="NWWZPdL" style="height: 500px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="NWWZPdL">
+  <span>See the Pen <a href="https://codepen.io/bkardell/pen/NWWZPdL">
+  NWWZPdL</a> by Brian Kardell (<a href="https://codepen.io/bkardell">@bkardell</a>)
+  on <a href="https://codepen.io">CodePen</a>.</span>
+</p>
+<script async="" src="https://static.codepen.io/assets/embed/ei.js"></script>
+
+			<p>Recently, my friend and co-author of the CSS Colors specification, Adam Argyle also ran a twitter poll asking this question "Which of these is ligher".  Polls are tricky for stuff like this because people "assume" it's a trick question somehow.  Nevertheless, there was overwhelming agreement that #2 was lighter&amp;hellip Because, well, it is.</p>
+
+			<blockquote class="twitter-tweet"><p lang="en" dir="ltr">HSL vs LAB:: lightness 💡<br><br>Same colors from our tricky color poll, but this time I've shown LAB's version of the same color over top. Notice how much closer LAB's lightness value is to the results of our poll! <br><br>🎨 color spaces aren't all the same y'all! <a href="https://t.co/AIEs0amdWY">https://t.co/AIEs0amdWY</a> <a href="https://t.co/xkEguq3KZG">pic.twitter.com/xkEguq3KZG</a></p>— Adam Argyle (@argyleink) <a href="https://twitter.com/argyleink/status/1201908189257555968?ref_src=twsrc%5Etfw">December 3, 2019</a></blockquote> <script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+			<p>There's another great illustration of this in that <a 12="" 2019="" href="<a href=" https:="" v6.robweychert.com="" blog="" dynamic-color-javascript-hsl="" "="">earlier article  struggling with this</a>…</p>
+
+			<aside class="captioned-image optional">
+				<img src="https://v6.robweychert.com/assets/images/2019-12-15-fig09-luminance-spectrum.svg" alt="">
+				<div>The perceived brightness of all of the hues in a spectrum with the same saturation and lightness... It's quite clear they're different.</div>
+			</aside>
+
+			
+		</section>
+		<section class="sectioning">
+			<contextual-heading role="heading" aria-level="3" style="font-size: 2.5rem;">This matters a lot...</contextual-heading>
+
+			<p>This matters a lot, for example, if you wanted to create a design system which mathematically reasons about color contrast (just like the author of that article).</p>
+
+			<p>There are color spaces like Lab and LCH which deal with the full spectrum and have qualities like perceptual uniformness.  Thus, if we want <a href="https://github.com/w3c/csswg-drafts/issues/3187#issuecomment-499126198">great color functions for use in real design systems</a> everyone seems to agree that having support to do said math in the Lab/LCH color spaces is the ideal enabling feature.  It's not <em>exactly</em> a prerequisite to doing useful things.  In fact, a lot of designers it seems aren't even aware of this quality because we've lived so long with the sRGB space.  However, realistically, we get the most value if we invest in having support for these two color spaces first.  They are also well defined, don't require a lot of debate and are non-controversial.  Having them would make everything else so much the better, because they give us the right tools to help the actual humans.</p>
+
+			<p>Recently, Adam opened <a href="https://bugs.chromium.org/p/chromium/issues/detail?id=1026287" rel="nofollow">this issue</a> in Chromium.</p>
+		</section>
+		<section class="sectioning">
+			<contextual-heading role="heading" aria-level="3" style="font-size: 2.5rem;">Let's get this done.</contextual-heading>
+
+			<p>To recap... We have two CSS color related functions which:</p>
+
+			<ul>
+				<li>Are not controversial</li>
+				<li>Aree quite mature and widely used color standards</li>
+				<li>Are important for accesibility</li>
+				<li>Are important for design systems</li>
+				<li>Make all of the other design system related work much more attractive</li>
+				<li>Are actually some of the easiest things we could do in CSS</li>
+				<li>Just aren't getting done</li>
+			</ul>
+
+			<p>Chances are pretty good, I think, that as a designer or developer reading this, you'll find that last bullet irritating.  You might be asking yourself "<em>But why isn't it getting done?  Wouldn't that help so much?</em>".  The answer is neither as offensive nor complex as you might imagine, it's kind of simple really: Yes, it would - but yhere's <em>just so much in the pipeline</em> already.  In the end, <em>everyone</em> (including browser vendors) has to prioritize the work in the queue with available resources and skills. There are only so many people with the particular skills to be working on this available, and there are lots of importan tor interesting things competing for their prioritization.</p>
+
+			<p>I recently wrote <a href="https://bkardell.com/blog/Beyond.html" rel="nofollow">a post about this problem</a> and how Igalia enables us to move things like this.  We have shown that we can get big things done - like CSS Grid.  This is a small thing in terms of effort and cost with an outsized impact. We don't need to wait, ask for the browsers to move this in their priority queues, we just need someone to see the value in funding the work - and it's not huge.  <em>We can get this done.</em></p>
+
+			<p>So, <em>if your organization is interested in design systems, or how you can help move important standards work, this is a great entry point for discussion and I'd love to talk with you.  My Twitter dms are open as well.</em></p><em>
+		</em></section><em>
+	</em></section><em>
+</em>]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[2019, That's a Wrap.]]></title>
         <id>https://bkardell.com/blog/2019-Wrap.html</id>
@@ -459,6 +565,30 @@ console.log(x.name) // Brian
 ]]></content>
     </entry>
     <entry>
+        <title type="html"><![CDATA[2 Minute Standards]]></title>
+        <id>https://bkardell.com/blog/2MinuteStandards.html</id>
+        <link href="https://bkardell.com/blog/2MinuteStandards.html">
+        </link>
+        <updated>2019-08-20T04:00:00.000Z</updated>
+        <summary type="html"><![CDATA[A short explanation of a new effort]]></summary>
+        <content type="html"><![CDATA[
+    <contextual-heading role="heading" aria-level="1" style="font-size: 2rem;">2 Minute Standards</contextual-heading>
+    <p class="segue">A short explanation of a new effort</p>
+
+    <p>For a while now, we've been running some 'outreach groups'.  Originally started informally by my colleague at <a href="https://igalia.com" rel="nofollow">Igalia, </a><a href="https://twitter.com/littledan" rel="nofollow">Dan Ehrenberg</a>, it's become a set of monthly meetings with various groups of stakeholders in <a href="https://tc39.github.io" rel="nofollow">TC39</a> and the Web at large which I really look forward to.  The <a href="https://github.com/js-outreach/js-outreach-groups" rel="nofollow">groups</a> are meetings of people who work on Tooling, people who work on Frameworks and Libraries and Educators, with folks who work on standards.  The goals of all of them, at the end of the day, is to figure out how we all work better, together.</p>
+    
+    <p>The Educators Group has talked a bit about a number of efforts, but there's one conversation we've been having that I think is pretty interesting. I dont know of any developer who isn't interested in what is going on in standards, but the economics of this is currently kind of hard. We're interested in a whole bunch of other things too. There's lots of good content - too much in fact, coming at us from a million directions and it's all competing for our time and attention. We have jobs, and families, and pets, hobbies and lives. I love a lot of long form things, I'm excited when I see them in my stream, but they pile up and I have to choose. I only have so many slots of time where I can actually afford to consume 10, 15, 30 or 40 minutes worth of information. It can feel a little overwhelming sometimes.</p>
+
+    <p>So, we're going to try something new: 2 Minute Standards.  Think of it as "standards news, in brief".  The basic idea is pretty simple: Like a news segment, it's got to contain pertinent facts, more than a tweet - but it's air time is limited, as the name would suggest, to 2 Minutes.  That can come in a number of forms: An article that is 500 words or less, a two minute video, or a short web comic/zine.  The idea though is to ultimately give developers some channel with reasonable economics for staying 'generally informed'.  In the end, that's frequently what we want anyways: We can't know everything, we just need to know <em>enough</em> to know what it is, why it is, and that it is there when we're ready to learn more.  We'd like to be able to roughly understand it if it comes up. A maximum of 2 minutes per day, and almost certainly not even that much, seems... unintimidating and managable.</p>
+
+    <p>So, that's the idea.  We're still discussing many of the details about how to make this really 'click' in a bigger way: How to create as a sort of channel you can follow?  For now, it seems better to start with something simple and perhaps to begin to get feedback on the idea.  To this end, we'll post things with the hashtag #StandardsIn2Min, and others can too. If you see something fly by with the hashtag you can always find it again later on the twitter feed and, hopefully, expect that it will take no more than 2 minutes to consume.  However, we will also manage the Twitter account <a href="https://twitter.com/StandardsIn2Min" rel="nofollow">@StandardsIn2Min</a>, where we'll work to curate those hashtags too and create a manageable (honestly, probably slow) pace that never asks for more than two minutes of your attention in a day to keep up. Let us know what you think about the idea!</p>
+    
+
+    <p class="thanks-to">Thanks to the <a href="https://github.com/js-outreach/js-outreach-groups" rel="nofollow">educators group</a> for all of their help discussing and creating, and especially to <a href="https://twitter.com/laurieontech" rel="nofollow">Laurie Barth</a> and <a href="https://twitter.com/jorydotcom" rel="nofollow">Jory Burson</a> for helping get this post put together quickly!
+    </p>
+]]></content>
+    </entry>
+    <entry>
         <title type="html"><![CDATA[Top Level Await: 2 Minute Standards]]></title>
         <id>https://bkardell.com/blog/TopLevelAwaitIn2m.html</id>
         <link href="https://bkardell.com/blog/TopLevelAwaitIn2m.html">
@@ -525,30 +655,6 @@ export const _internalPromise =
 		});</code></pre>
 	<p>The net result is that modules are fetched in parallel and executed in order until the first await, and then waits until they are all complete before resolving the module itself.</p>
 	</section>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[2 Minute Standards]]></title>
-        <id>https://bkardell.com/blog/2MinuteStandards.html</id>
-        <link href="https://bkardell.com/blog/2MinuteStandards.html">
-        </link>
-        <updated>2019-08-20T04:00:00.000Z</updated>
-        <summary type="html"><![CDATA[A short explanation of a new effort]]></summary>
-        <content type="html"><![CDATA[
-    <contextual-heading role="heading" aria-level="1" style="font-size: 2rem;">2 Minute Standards</contextual-heading>
-    <p class="segue">A short explanation of a new effort</p>
-
-    <p>For a while now, we've been running some 'outreach groups'.  Originally started informally by my colleague at <a href="https://igalia.com" rel="nofollow">Igalia, </a><a href="https://twitter.com/littledan" rel="nofollow">Dan Ehrenberg</a>, it's become a set of monthly meetings with various groups of stakeholders in <a href="https://tc39.github.io" rel="nofollow">TC39</a> and the Web at large which I really look forward to.  The <a href="https://github.com/js-outreach/js-outreach-groups" rel="nofollow">groups</a> are meetings of people who work on Tooling, people who work on Frameworks and Libraries and Educators, with folks who work on standards.  The goals of all of them, at the end of the day, is to figure out how we all work better, together.</p>
-    
-    <p>The Educators Group has talked a bit about a number of efforts, but there's one conversation we've been having that I think is pretty interesting. I dont know of any developer who isn't interested in what is going on in standards, but the economics of this is currently kind of hard. We're interested in a whole bunch of other things too. There's lots of good content - too much in fact, coming at us from a million directions and it's all competing for our time and attention. We have jobs, and families, and pets, hobbies and lives. I love a lot of long form things, I'm excited when I see them in my stream, but they pile up and I have to choose. I only have so many slots of time where I can actually afford to consume 10, 15, 30 or 40 minutes worth of information. It can feel a little overwhelming sometimes.</p>
-
-    <p>So, we're going to try something new: 2 Minute Standards.  Think of it as "standards news, in brief".  The basic idea is pretty simple: Like a news segment, it's got to contain pertinent facts, more than a tweet - but it's air time is limited, as the name would suggest, to 2 Minutes.  That can come in a number of forms: An article that is 500 words or less, a two minute video, or a short web comic/zine.  The idea though is to ultimately give developers some channel with reasonable economics for staying 'generally informed'.  In the end, that's frequently what we want anyways: We can't know everything, we just need to know <em>enough</em> to know what it is, why it is, and that it is there when we're ready to learn more.  We'd like to be able to roughly understand it if it comes up. A maximum of 2 minutes per day, and almost certainly not even that much, seems... unintimidating and managable.</p>
-
-    <p>So, that's the idea.  We're still discussing many of the details about how to make this really 'click' in a bigger way: How to create as a sort of channel you can follow?  For now, it seems better to start with something simple and perhaps to begin to get feedback on the idea.  To this end, we'll post things with the hashtag #StandardsIn2Min, and others can too. If you see something fly by with the hashtag you can always find it again later on the twitter feed and, hopefully, expect that it will take no more than 2 minutes to consume.  However, we will also manage the Twitter account <a href="https://twitter.com/StandardsIn2Min" rel="nofollow">@StandardsIn2Min</a>, where we'll work to curate those hashtags too and create a manageable (honestly, probably slow) pace that never asks for more than two minutes of your attention in a day to keep up. Let us know what you think about the idea!</p>
-    
-
-    <p class="thanks-to">Thanks to the <a href="https://github.com/js-outreach/js-outreach-groups" rel="nofollow">educators group</a> for all of their help discussing and creating, and especially to <a href="https://twitter.com/laurieontech" rel="nofollow">Laurie Barth</a> and <a href="https://twitter.com/jorydotcom" rel="nofollow">Jory Burson</a> for helping get this post put together quickly!
-    </p>
 ]]></content>
     </entry>
     <entry>
