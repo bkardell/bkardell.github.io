@@ -323,12 +323,16 @@ America (art for sale)</a></li>
         </ul>
     </nav>
 </header>
-    <main><div class="posted-on">Posted on </div><article posted-on="" class="sectioning">
+    <main><div class="posted-on">Posted on 01/01/2020</div><article posted-on="01/01/2020" class="sectioning">
 	<contextual-heading role="heading" aria-level="1">Unlocking Colors</contextual-heading>
 	<p class="segue">
-		Despite the fact that I draw and paint, and am involved with CSS, I am actually generally not good at design. Color, however, is endlessly fascinating. As there have been many color-oriented proposals for CSS, I thought it might be nice to write about an important, but underdiscussed bit.
+		Despite the fact that <a href="https://www.instagram.com/kardellbrian/">I draw and paint</a>, and am involved with CSS, I am actually generally not good at design. Color, however, is endlessly fascinating. As there have been many color-oriented proposals for CSS, to enable people who <em>are</em> good at design, I thought it might be nice to write about an important, but underdiscussed bit that's necessary in order to really unlock a lot - and how we can help.
 	</p>
-
+	<style>
+		.twitter-tweet {
+    		margin: 1rem auto;
+    	}
+	</style>
 
 	<section class="sectioning">
 		<contextual-heading role="heading" aria-level="2">First... What even is color?</contextual-heading>
@@ -344,23 +348,23 @@ America (art for sale)</a></li>
 			<contextual-heading role="heading" aria-level="2">Color spaces</contextual-heading>
 			<p>If you can imagine a true rainbow, with all of the real possible colors in the universe, the set of those you can actually represent (and how you move about in it) is called a 'color space'.  The limits of a color space are called its  gammut.  Because your monitor works with light, it is an additive process and 'Red' 'Green' and 'Blue' combined to create white (once upon a time, with actual CRTs).  Along the way, we created the sRGB color space.  The sRGB color space is a limited section of the rainbow, which is kind of narrow compared to all of the possible colors that exist in nature, but is very optimized for machines and common cases.  Below is an example from  <a href="https://en.wikipedia.org/wiki/SRGB" rel="nofollow">wikipedia</a> illustrating sRBG and color spaces illustrating the sRGB color space.  The colors within the triangle are part of the sRGB color space.</p>
 
-				<aside class="captioned-image optional">
-					<img src="https://upload.wikimedia.org/wikipedia/commons/6/60/Cie_Chart_with_sRGB_gamut_by_spigget.png" alt="sRGB color space, visualized">
-				</aside>
+			<aside class="captioned-image optional">
+				<img src="https://upload.wikimedia.org/wikipedia/commons/6/60/Cie_Chart_with_sRGB_gamut_by_spigget.png" alt="sRGB color space, visualized">
+			</aside>
 
 
-			<p>But, the point is that tradeoffs that aren't always desirable.</p>
+			<p>But, the point is that these tradeoffs aren't always desirable.</p>
 
-			<p>Today, for example, we have machines capable of recording or displaying things with a much wider gammut -- the stuff outside the triangle. Your monitor does, and if you have a TV capable of HDR (hi dynamic range) that's got a wider gammut, for example.</p>
+			<p>Today, for example, we have machines capable of recording or displaying things with a much wider gammut -- the stuff outside the triangle. Your monitor does, and if you have a TV capable of HDR (hi dynamic range) that's got a wider gammut, for example... And then, there's the math…</p>
 		</section>
 
 		<section class="sectioning">
 			<contextual-heading role="heading" aria-level="2">Humans vs machines</contextual-heading>
-			<p>But it's more than just efficiency.  sRGB, as I said, is really built for machines - and humans and machines are quite different.  If I showed you a color and asked you to guess the value in RGB, mapped that to sRGB space and showed you on your monitor, chances that you could get it very close are pretty low in general and there's not great odds that you could efficiently zero in on closer and closer simply because it's a little unnatural.  This is why we have created things like like hsla which some people think is easier to reason about 'more saturated' and 'lighter' and a circle of color is potentially a little easier to think about.  But it's not just that one uses RGB either, it's that the color space itself has weird characteristics.</p>
+			<p>It's more than just efficiency.  sRGB, as I said, is really built for machines - and humans and machines are quite different.  If I showed you a color and asked you to guess the value in RGB, mapped that to sRGB space and showed you on your monitor, chances that you could get it very close are pretty low in general. You can test this theory with <a href="http://hex-guess.glitch.me/">hex-guess.glitch.me</a>.  Further, there's not great odds that you could efficiently zero in on closer and closer simply because it's a little unnatural.  This is why we have created things like like hsla which some people think is easier to reason about 'more saturated' and 'lighter' and a circle of color is potentially a little easier to think about.  But it's not just that one uses RGB either, it's that the color space itself has weird characteristics.</p>
 
 			<p>This plays in especially if we want to reason about things mathematically - for example - <em>in creating design systems.</em></p>
 
-			<p>Our design systems, ideally, want to reason about colors by 'moving through the color space'.  Doing things like mixing colors, lightening, darkening, do this well if they a sense of how our eyes really <em>work</em> rather than how machines like to think about storing and displaying. That is, if I move this one aspect just a little bit, I expect it to have the same effect no matter what the color I start with is... But in sRGB space, that really isn't true at all.  The sRGB space is not perceptually uniform.  The same mathematical movement has different degrees of perceived effect depending on where you are at in the color space.</p>
+			<p>Our design systems, ideally, want to reason about colors by 'moving through the color space'.  Doing things like mixing colors, lightening, darkening, do this well if they a sense of how our eyes really <em>work</em> rather than how machines like to think about storing and displaying. That is, if I move this one aspect just a little bit, I expect it to have the same effect no matter what the color I start with is... But in sRGB space, that really isn't true at all.  The sRGB space is not perceptually uniform.  The same mathematical movement has different degrees of perceived effect depending on where you are at in the color space.  If you want to read a designer's experience with this, here's an <a href="https://v6.robweychert.com/blog/2019/12/dynamic-color-javascript-hsl/">interesting example</a> which does a good job struggling to do well.</p>
 
 			<section class="sectioning">
 				<contextual-heading role="heading" aria-level="3">Some examples…</contextual-heading>
@@ -373,15 +377,28 @@ America (art for sale)</a></li>
   on <a href="https://codepen.io">CodePen</a>.</span>
 </p>
 <script async="" src="https://static.codepen.io/assets/embed/ei.js"></script>
+
+			<p>Recently, my friend and co-author of the CSS Colors specification, Adam Argyle also ran a twitter poll asking this question "Which of these is ligher".  Polls are tricky for stuff like this because people "assume" it's a trick question somehow.  Nevertheless, there was overwhelming agreement that #2 was lighter&amp;hellip Because, well, it is.</p>
+
+			<blockquote class="twitter-tweet"><p lang="en" dir="ltr">HSL vs LAB:: lightness 💡<br><br>Same colors from our tricky color poll, but this time I've shown LAB's version of the same color over top. Notice how much closer LAB's lightness value is to the results of our poll! <br><br>🎨 color spaces aren't all the same y'all! <a href="https://t.co/AIEs0amdWY">https://t.co/AIEs0amdWY</a> <a href="https://t.co/xkEguq3KZG">pic.twitter.com/xkEguq3KZG</a></p>— Adam Argyle (@argyleink) <a href="https://twitter.com/argyleink/status/1201908189257555968?ref_src=twsrc%5Etfw">December 3, 2019</a></blockquote> <script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+			<p>There's another great illustration of this in that <a 12="" 2019="" href="<a href=" https:="" v6.robweychert.com="" blog="" dynamic-color-javascript-hsl="" "="">earlier article  struggling with this</a>…</p>
+
+			<aside class="captioned-image optional">
+				<img src="https://v6.robweychert.com/assets/images/2019-12-15-fig09-luminance-spectrum.svg" alt="">
+				<div>The perceived brightness of all of the hues in a spectrum with the same saturation and lightness... It's quite clear they're different.</div>
+			</aside>
+
+			
 		</section>
 		<section class="sectioning">
 			<contextual-heading role="heading" aria-level="3">This matters a lot...</contextual-heading>
 
-			<p>This matters a lot, for example, if you wanted to create a design system which mathematically reasons about color contrast.</p>
+			<p>This matters a lot, for example, if you wanted to create a design system which mathematically reasons about color contrast (just like the author of that article).</p>
 
 			<p>There are color spaces like Lab and LCH which deal with the full spectrum and have qualities like perceptual uniformness.  Thus, if we want <a href="https://github.com/w3c/csswg-drafts/issues/3187#issuecomment-499126198">great color functions for use in real design systems</a> everyone seems to agree that having support to do said math in the Lab/LCH color spaces is the ideal enabling feature.  It's not <em>exactly</em> a prerequisite to doing useful things.  In fact, a lot of designers it seems aren't even aware of this quality because we've lived so long with the sRGB space.  However, realistically, we get the most value if we invest in having support for these two color spaces first.  They are also well defined, don't require a lot of debate and are non-controversial.  Having them would make everything else so much the better, because they give us the right tools to help the actual humans.</p>
 
-			<p>Recently, my friend Adam Argyle opened <a href="https://bugs.chromium.org/p/chromium/issues/detail?id=1026287" rel="nofollow">this issue</a> in Chromium.</p>
+			<p>Recently, Adam opened <a href="https://bugs.chromium.org/p/chromium/issues/detail?id=1026287" rel="nofollow">this issue</a> in Chromium.</p>
 		</section>
 		<section class="sectioning">
 			<contextual-heading role="heading" aria-level="3">Let's get this done.</contextual-heading>
@@ -400,7 +417,9 @@ America (art for sale)</a></li>
 
 			<p>Chances are pretty good, I think, that as a designer or developer reading this, you'll find that last bullet irritating.  You might be asking yourself "<em>But why isn't it getting done?  Wouldn't that help so much?</em>".  The answer is neither as offensive nor complex as you might imagine, it's kind of simple really: Yes, it would - but yhere's <em>just so much in the pipeline</em> already.  In the end, <em>everyone</em> (including browser vendors) has to prioritize the work in the queue with available resources and skills. There are only so many people with the particular skills to be working on this available, and there are lots of importan tor interesting things competing for their prioritization.</p>
 
-			<p>I recently wrote <a href="https://bkardell.com/blog/Beyond.html" rel="nofollow">a post about this problem</a> and how Igalia enables us to move things like this.  We have shown that we can get big things done - like CSS Grid.  This is a small thing in terms of effort and cost with an outsized impact.  So, <em>if your organization is interested in design systems, or how you can help move important standards work, this is a great entry point for discussion and I'd love to talk with you.  My Twitter dms are open as well.  We can get this done.</em></p><em>
+			<p>I recently wrote <a href="https://bkardell.com/blog/Beyond.html" rel="nofollow">a post about this problem</a> and how Igalia enables us to move things like this.  We have shown that we can get big things done - like CSS Grid.  This is a small thing in terms of effort and cost with an outsized impact. We don't need to wait, ask for the browsers to move this in their priority queues, we just need someone to see the value in funding the work - and it's not huge.  <em>We can get this done.</em></p>
+
+			<p>So, <em>if your organization is interested in design systems, or how you can help move important standards work, this is a great entry point for discussion and I'd love to talk with you.  My Twitter dms are open as well.</em></p><em>
 		</em></section><em>
 	</em></section><em>
 </em></article></main>

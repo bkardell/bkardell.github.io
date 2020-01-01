@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://bkardell.com/</id>
     <title>bkardell.com rss feed</title>
-    <updated>2019-12-16T23:43:16.594Z</updated>
+    <updated>2019-12-18T20:13:01.170Z</updated>
     <generator>awesome mix</generator>
     <author>
         <name>Brian Kardell</name>
@@ -160,9 +160,9 @@
 			<figure>
 			<img width="300" src="/media/mathml-implementations-2019.png" style="display:block;width: 100%;">
 			<figcaption>Modern interoperabilty and high quality rendering by July 2019.</figcaption>
-			</figure>
+			</figure> 
 
-			<p>We filed the <a href="https://groups.google.com/a/chromium.org/forum/m/?utm_medium=email&amp;utm_source=footer#!msg/blink-dev/OOZIrtSPLeM/QsTCnouFDgAJ">Intent to Implement</a> and began the process of upstreaming.  As part of this, we have also created a corresponding <a href="https://github.com/mathml-refresh/mathml-core/blob/master/docs/explainer.md">explainer</a> and filed for a <a href="https://github.com/w3ctag/design-reviews/issues/438">review with the W3C Technical Architecture Group (TAG)</a>.  We've seen positive movement and feedback and several patches have already begun to land upstream toward this long, <a href="https://bugs.chromium.org/p/chromium/issues/detail?id=660#c84">popular and overdue issue</a>.  Thanks to our work, we will soon be able to say (interoperably), that the Web can handle original use cases <a href="https://www.w3.org/MarkUp/HTMLPlus/htmlplus_45.html">defined at CERN in the early 1990s</a>.</p>
+			<p>We filed the <a href="https://groups.google.com/a/chromium.org/forum/m/?utm_medium=email&amp;utm_source=footer#!msg/blink-dev/OOZIrtSPLeM/QsTCnouFDgAJ">Intent to Implement</a> and began the process of upstreaming.  As part of this, we have also created a corresponding <a href="https://github.com/mathml-refresh/mathml-core/blob/master/docs/explainer.md">explainer</a> and filed for a <a href="https://github.com/w3ctag/design-reviews/issues/438">review with the W3C Technical Architecture Group (TAG)</a>.  We've seen positive movement and feedback and several patches have already begun to land upstream toward this long, <a href="https://bugs.chromium.org/p/chromium/issues/detail?id=6606#c84">popular and overdue issue</a>.  Thanks to our work, we will soon be able to say (interoperably), that the Web can handle original use cases <a href="https://www.w3.org/MarkUp/HTMLPlus/htmlplus_45.html">defined at CERN in the early 1990s</a>.</p>
 		</section>
 		<section class="sectioning">
 			<contextual-heading role="heading" aria-level="4" style="font-size: 2.75rem;">Outreach and Community</contextual-heading>
