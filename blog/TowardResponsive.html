@@ -1,0 +1,472 @@
+<html lang="en" resource-type="blogpost"><head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@briankardell">
+    <meta name="twitter:creator" content="@briankardell">
+    <meta name="twitter:title" content="Toward Responsive Elements">
+    <meta name="twitter:description" content="In this piece I'll talk about the &quot;Container Queries&quot; problem, try to shine some light on some misconceptions, and tell you about the state of things.">
+    
+    <link rel="alternate" type="application/rss+xml" href="https://bkardell.com/blog/feed.rss" title="bkardell.com/blog rss feed">
+    <title>Toward Responsive Elements</title> 
+    <style>.captioned-image {
+    background-color: #eaeaea;
+    display: block;
+    overflow: hidden;
+    padding: 1rem;
+    text-align: center;
+    font-style: italic;
+}
+
+.captioned-image.p-attached {
+    width: 40%;
+    display: inline-block;
+    margin: 0 1rem 2rem 1rem;
+}
+
+section > .captioned-image.p-attached {
+    margin-top: 1.5rem; /* correct for heading size*/
+}
+
+ pre { overflow-x: auto }
+
+.captioned-image.p-attached.p-attached-left {
+    float: left;
+}
+
+.captioned-image.p-attached.p-attached-right {
+    float: right;
+}
+
+.captioned-image.p-attached + * + * {
+    clear: both;
+    margin-top: 2rem;
+}
+
+
+.captioned-image img, .captioned-image video {
+    display: block;
+    max-width: 100%;
+    margin: 0 auto 1em auto;
+}
+.source {
+    font-style: italic;
+}
+body {
+    display: flex;
+    font: 1em "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-weight: 400;
+    line-height: 1.625;
+}
+h1 { margin: 0.5rem; }
+code-format {
+    border-left: 0.5rem solid rgba(123,115,209,0.35);
+    display: block;
+    padding: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+contextual-heading {
+    display: block;
+    margin-top: 2rem;
+}
+
+[aria-level="1"] {
+    color: #43686b;
+    font-size: 1.45rem;
+}
+[aria-level="2"] {
+    color: #856363;
+    font-size: 1.35rem;
+}
+[aria-level="3"] {
+    color: #856363;
+    font-size: 1.25rem;
+}
+[aria-level="4"] {
+    color: #856363;
+    font-size: 1.2rem;
+}
+[aria-level="5"], [aria-level="6"] {
+    color: #667496;
+    font-size: 1.1rem;
+    font-weight: bolder;
+}
+.posted-on {
+    font-style: italic;
+    font-size: 0.8rem;
+    text-align: right;
+    margin-bottom: 1rem;
+}
+
+ul, li {
+    margin: 0.5rem;
+    text-align: left;
+}
+header {
+    padding-top: 1rem;
+    padding-right: 2rem;
+    background-color: #fbf5e9;
+}
+.tagline {
+    font-style: italic;
+    text-align: center;
+}
+
+[tag-esc] {
+    color: maroon;
+    font-family: Courier, "Lucida Console", monospace;
+}
+
+[tag-esc]::before {
+    content: '<';
+}
+
+[tag-esc]::after {
+    content: '>';
+}
+
+main {
+    min-width: 50%;
+    width: 80%;
+    padding: 1rem;
+}
+header .title {
+    background-color: rgba(123,115,209,0.35);
+    padding: 0.3rem;
+    padding-left: 0.25rem;
+    font-weight: bolder;
+    font-size: 0.9rem;
+    border-left: 1rem solid #999298;
+}
+
+header .profile {
+    width: 50%;
+    margin: 1rem 25%;
+}
+
+header .title + nav {
+    font-size: 0.9rem;
+}
+
+header .blurb {
+    font-size: 0.75rem;
+    text-align: center;
+}
+header .name {
+    text-align: center;
+    font-size: xx-large;
+}
+.segue {
+    font-style: italic;
+}
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  border: 0;
+}
+[for="aboutMeToggle"] {
+    display: none;
+}
+/* this needs rethinking, it wants a selector like 'not flow content' */
+article>*:not(contextual-heading,a), section>*:not(contextual-heading,a) {
+    margin-left: 0.45rem;
+}
+
+blockquote {
+  font-family: serif;
+  background: #f9f9f9;
+  border-left: 10px solid #ccc;
+  margin: 1.5em 10px;
+  padding: 0.5em 10px;
+}
+blockquote:before {
+  color: #ccc;
+  content: open-quote;
+  font-size: 2em;
+  line-height: 0.1em;
+  margin-right: 0.25em;
+  vertical-align: -0.4em;
+}
+
+blockquote:after {
+  color: #ccc;
+  content: close-quote;
+  font-size: 2em;
+  line-height: 0.1em;
+  margin-left: 0.25em;
+  vertical-align: -0.4em;
+}
+
+
+@media (max-width: 800px){
+    body {
+        flex-direction: column;
+    }
+    header {
+        border-bottom: 1px solid #afafff;
+    }
+
+    .captioned-image.p-attached {
+        width: 100%;
+        margin: 1rem 0;
+    }
+
+    .captioned-image.p-attached.p-attached-left,
+    .captioned-image.p-attached.p-attached-right {
+        float: none;
+    }
+
+    [for="aboutMeToggle"] {
+        background-color: #675e5e;
+        color: white;
+        padding: 0.25rem;
+        padding-left: 0.5rem;
+        display: block;
+        border-left: 1rem solid black;
+    }
+    #aboutMeToggle:focus + [for="aboutMeToggle"]{
+        outline: 4px solid #c6ddf2;
+    }
+
+    #aboutMeToggle:checked ~ header {
+        display: none;
+    }
+
+    header li { display: inline; margin-left: -0.5em; }
+    header .blurb li::after { content: '; '; }
+    header  nav li {
+        display: inline-block;
+        margin-left: 0.35rem;
+        margin-right: 0.35rem;
+    }
+    header .title {
+        width: 100%;
+    }
+    main li .source { display: block; }
+
+}</style>
+    <style>
+      .captioned-image { font-size: 0.9rem; }
+      .thanksTo { font-style: italic; font-size: 0.8rem; }
+    </style>
+    <script>
+      var activateOptional = function (media) {
+        var source = media.getAttribute('data-src'),
+            temp,
+            container = media.parentElement;
+
+          if (media.nextSibling && media.nextSibling.matches) {
+            if (media.nextSibling.matches('.clickToSee')) {
+              media.parentElement.removeChild(media.nextSibling);
+            }
+          }
+
+          if (media.tagName === 'VIDEO') {
+            temp = document.createElement('video')
+            temp.setAttribute('autoplay','')
+            temp.setAttribute('controls','')
+            temp.setAttribute('loop','')
+            temp.innerHTML = '<source src="' + source + '.webm" type="video/webm">'
+                    + '<source src="' + source + '.mp4" type="video/mp4">';
+            media.parentElement.replaceChild(temp, media);
+            setTimeout(function () {
+              temp.play()
+            }, 0);
+          } else {
+            media.src = media.getAttribute('data-src');
+          }
+
+          container.classList.add('active');
+      }
+    </script>
+  </head>
+  <body>
+    <input id="aboutMeToggle" class="sr-only" type="checkbox" checked="">
+<label for="aboutMeToggle">Toggle author information</label>
+<header>
+    <div class="name">
+        Brian Kardell
+    </div>
+    <img class="profile" src="/profile.jpg" alt="">
+    <div class="tagline"><a href="/">Betterifying the Web</a></div>
+    <div class="blurb">
+        <ul>
+            <li>Developer Advocate at Igalia</li>
+            <li>Original Co-author/Co-signer of The Extensible Web Manifesto</li>
+            <li>Co-Founder/Chair, W3C Extensible Web CG</li>
+            <li>Member, W3C (The JS Foundation)</li>
+            <li>Co-author of HitchJS</li>
+            <li>Blogger</li>
+            <li>Art, Science &amp; History Lover</li>
+            <li>Standards Geek</li>
+        </ul>
+    </div>
+    <div class="title">Follow Me On...</div>
+    <nav>
+        <ul>
+            <li><a rel="me" href="https://briankardell.wordpress.com">Wordpress</a></li>
+            <li><a rel="me" href="https://medium.com/@briankardell">Medium</a></li>
+            <li><a rel="me" href="https://twitter.com/briankardell">Twitter</a></li>
+            <li><a rel="me" href="https://github.com/bkardell/">Github</a></li>
+            <li><a rel="me" href="https://codepen.io/bkardell">Codepen</a></li>
+            <li><a rel="me" href="https://www.linkedin.com/in/brian-kardell-08a4264">LinkedIn</a></li>
+            <li><a rel="me" href="https://www.instagram.com/kardellbrian">Instagram (for
+art)</a></li>
+            <li><a rel="me" href="http://fineartamerica.com/profiles/brian-kardell?">Fine Art
+America (art for sale)</a></li>
+        </ul>
+    </nav>
+</header>
+    <main><div class="posted-on">Posted on null</div><article class="sectioning">
+	<contextual-heading role="heading" aria-level="1">Toward Responsive Elements</contextual-heading>
+	
+	<p class="segue">In this piece I'll talk about the "Container Queries" problem, try to shine some light on some misconceptions, and tell you about the state of things.</p>
+	
+	<script src="../prism.js"></script>
+    <link rel="stylesheet" href="../prism.css">
+    <style>
+    	.note {
+	        background-color: rgba(255,255,0,0.24);
+	        padding: 1rem;
+	        font-style: italic;
+	    }
+	    .note::before {
+	        content: 'Note';
+	        font-size: 0.8rem;
+	        background-color: black;
+	        color: white;
+	        padding: 0.25rem;
+	        margin-right: 0.5rem;
+	    }
+    </style>
+
+	<p>As developers, watching standards can be frustrating.  We might learn of some new spec developing, some new features landing that you weren't even aware of - maybe many of these are even things you don't actually care much about.  In the meantime, "Container Queries," clearly the single most requested feature in CSS for years, appears to be just... ignored.</p>
+
+	<p>What gives? Why does the CSS Working Group not seem to listen?  After all of these years -- why isn't there some official CSS <em>spec</em> at least?</p>
+
+	<p>It's very easy to get the wrong impression about what's going on (or isn't) in Web standards, and why.  This isn't because it is a secret, but because there is just so <em>much</em> happening and so many levels of discussion it would be impossible to follow it all.  The net result is often that things the view from the outside can feel kind of opaque - and our impression can easily be a kind of a distorted image.  Shining some light on this sort of thing is one of my goals this year, so let's start here…</p> 
+
+	<section class="sectioning">
+		<contextual-heading role="heading" aria-level="2">N <em>problems</em></contextual-heading>
+		<p>One of the more difficult aspects of "Container Queries" is that there isn't actually a nice, single problem to discuss.  Many discussions begin with how to write them, even in a way that "feels kind of obvious" -- but this usually (inadvertently) often creates a <em>stack</em> of new asks of CSS and numerous conflicts.  In the process, it can also (inadvertently) hand-wave over tremendous complexity of what turn out to be very significant particulars and important aspects of CSS's current design and implementation.  This makes it very hard to focus a discussion, it is easily derailed.</p>
+this
+		<p>Depending on how you divide up the problem, some of these would suggest fundamental changes are necessary to the architectures of browser engines - and we don't know what they would be. Unfortunately, it's very hard to appreciate what this <em>means</em> in practice since so much of this, again, deals with things that are opaque to most developers.  For now: suffice it to say that any such re-architecture could require a entirely unknown (in years) speculative amount of work in order to create and prove such an idea - and then many more years of development per-engine.  Worse, all of this would be similarly invisible to developers in the meantime.  Did you know, for example, that there are multiple many year long efforts with huge investments underway <em>already</em> aimed at unlocking many new things in CSS?  There are - and I don't mean Houdini!</p>
+
+		<p>Ok, but what about container queries...</p>
+	</section>
+
+	<section class="sectioning">
+		<contextual-heading role="heading" aria-level="2">What <em>is</em> happening in this space?</contextual-heading>
+		<p>The truth is that while it might look like nothing much is happening, there have been <em>lots</em> of discussions and efforts to feel out various ideas.  They have mostly, unfortunately, run into certain kinds of problems very quickly and it's not been at all easy to even determine which paths aren't dead ends.</p>
+		<p>More recently, many have instead turned to "how do we make this into more solvable problems?" and "How do we actually make some progress, mitigate risk - take a step, and and actually get something to developers?"</p>
+		<p>Two important ideas that have gotten a lot of traction in this time are 'containment' and ResizeObserver, both of which force us to tackle a different set of (hopefully more answerable) problems - allow us to lay what we think are probably necessary foundations to solving the problem, while enabling developers to meet these and other use cases more effectively, and in more timely fashion.</p>
+	
+		<section class="sectioning">
+			<contextual-heading role="heading" aria-level="3">Lightspeed progress, actually...</contextual-heading>
+			<p>Standards move at a scale unfamilliar to most of us.  Consider that we shifted the stalemate conversation and <code>ResizeObserver</code> was envisioned, incubated, speced, tested, agreed upon, <em>iterated on</em> (we got things wrong!) and implemented <em>in all browsers</em> in about 2 years (with Igalia doing the latest implementation in WebKit thanks to some sponsorship from AMP).  Containment is shipping in 2 of 3 engines.</p>
+			<p>This is standards and normalization of something really new for developers at light speed.</p>
+		</section>
+		<section class="sectioning">
+			<contextual-heading role="heading" aria-level="3">But... this is incomplete.</contextual-heading>
+			<p>Yes, it is.</p>
+			<p>In the <a href="https://webkit.org/blog/9997/resizeobserver-in-webkit/" rel="nofollow">announcement about Igalia's implementation of ResizeObserver in WebKit</a>, I included an overly simple example of how you could create responsive compoenents with very few lines of code that actually worked, regardless of how or why things resized.  But... no one wants us to ultimately have to write JavaScript for this… Literally nobody that I know of - so what gives?
+			</p>
+			<p>First, by treating it this way, we've made some incredible, <em>actual</em> progress on parts of the problem in very short time - for the first time.   All browsers will have <code>ResizeObserver</code> now.  In the meantime developers will <em>at least</em> have the ability to do a thing they couldn't actually do before, and do the things they could do before more efficiently and experiments can understand a little more about how it actually has to work.   That's good for developers - we don't have to wait forever for something better than what we have now... But it's also good for problem solving: As things settle and we have more answers, its allowed us to focus conversations more and ask better next questions.</p>
+		</section>
+		<section class="sectioning">
+			<contextual-heading role="heading" aria-level="3">We <em>definitely</em> care above moving futher!</contextual-heading>
+	<p>For the last several months, I and some folks at Igalia have been working on this space.  We're <em>very</em> interested in helping find the connections that bring together developers, implementer and standards bodies to solve the problems. </p>
+	<p>Internally, we have had numerous sessions to discuss past proposals and tackle challenges. I've been researching the various user-space solutions: How they work, what their actual use is like on the Web, and so on.  In developer space we've worked a lot with folks active in this space: I've met regularly with Tommy Hodgins and Jon Neal, and had discussions with folks like Eric Portis, Brad Frost, Scott Jehl and several others.</p>
+	<p>But we've also talked to people from Google, Mozilla and Apple, and they've been very helpful and willing to chat - both commenting on and generating new ideas and discussions.  I really can't stress enough how helpful these discussions have been, or how willing all of the CSSWG members representing browser vendors have been to spend time doing this.  Just during the recent travel for the CSS Working Group face to face, I had <em>numerous</em> breakout discussions - many hours worth of idea trading between Igalians and browser folks.</p>
+	<p>I wish I could say that we were 'there' but we're not.</p>
+	<p>As it stands it seems that there are kind of a few 'big ideas' that seem like they could go somewhere - but not actually agreement on whether one or both of them is acceptable or prioritization yet.</p>
+	<section class="sectioning">
+		<contextual-heading role="heading" aria-level="4">Current ideas...</contextual-heading>
+		<p>
+			There does seem to be some general agreement on at least one part of what I am going to call instead "Responsive Design for Components" and that is that flipping the problem on its head is better.  In other words: Let's see if we can find a way talk about how we can expose the necessary <em>powers</em> in CSS, in a way that is largely compatible with CSS's architecture today... even if writing that looks absolutely nothing like past proposals at first.
+		</p>
+		<p>
+			There seems to be some agreement at large that this is where the hardest problems lie and we can sugar in user-sp…
+		</p>
+		<section class="sectioning">
+			<contextual-heading role="heading" aria-level="5">Lay down small, very optimal paths in CSS</contextual-heading>
+			<p>One very good idea generated by lots of discussion with many people during CSS Working Group breakouts sprang from a thought from Google's Ian Kilpatrick…
+			</p>
+			<p class="note">I am constantly impressed by Ian's ability to listen, pull the right threads, help guide the big ship and coordinate progress on even long visions that enable us to exceed current problem limits.  You probably don't hear a lot about him, but the Web is a lot better for his efforts…</p>
+			<p>The crux of the idea is that there seems to be one 'almost natural' space that enables a ton of the use cases we've actually seen in research.  Some community members have landed on not entirely dissimilar ideas: creating something of an 'if' via calc expressions to express different values for properties. The idea goes something like this:</p>
+			<p>Imagine that we added a function, let's call it "switch" which allows you to express something "like a media query" with several possible values for a property.  These would be based on the available-inline-width during the 'min/max' phase of layout.  Something like this…</p>
+
+			<pre><code class="language-css">.foo {
+	display: grid;
+	grid-template-columns: switch(
+	 	(available-inline-size &gt; 1024px) 1fr 4fr 1fr;
+	 	(available-inline-size &gt; 400px) 2fr 1fr;
+		(available-inline-size &gt; 100px) 1fr;
+		default 1fr;
+	 );
+}</code></pre>
+			<p>
+				See, a a whole lot of the problems with existing ideas is that they heave to loop back through (expensive) phases potentially several times and make it (seemingly) impossible to keep CSS rendering in the same frame - thus requiring fairly major architectural changes.  It would need to be limited to properties that affect things only <em>during layout</em>, but another practical benefit here is that it would be not that hard to start some basic prototyping and feel this out a little in an implementation without actually committing to years of work.
+			</p>
+		</section>
+		<section class="sectioning">
+			<contextual-heading role="heading" aria-level="5">Accept multi-phase loops, but improve performance opportunity a little</contextual-heading>
+			<p>There is another interesting idea generated primarily by David Baron at Mozilla.  It is still being fleshed out, he's writing something up as I write this.  However, effectively, the idea is that next step is to allow "containment in a single direction".</p>
+			<p>This would roughly be more or less the equivalent of optimizing what would happen if you built any system with <code>ResizeObserver</code> today.  You'd get notified of what happened, in a downward fashion, and do something about it (modify the DOM) which will cause another pass through the event loop - but downward and with enough information that we can help optimize it a bit.</p>
+			<p>It isn't currently clear how some questions will be answered or circularity avoided, but David is one of the most knowledgable people I know and I look forward to seeing more details!</p>
+		</section>
+		<section class="sectioning">
+			<contextual-heading role="heading" aria-level="5">Some new experiments?</contextual-heading>
+			<p>Another idea that we've tossed around punts on a few hard questions whose answers seem hard to speculate on and really focus instead on the circularity problem and thinking about the kind of unbounded space of use cases developers seem to imagine. Perhaps it "fits" with option B even...</p>
+			<p>These would be a kind of declarative way, in CSS, to wire up finite states. They would focus on a laying down a single new path in CSS that allowed us to express pattern of what to observe, how to observe it, how to measure and say that an element was in a particular state.  The practical upshot of this is that lots and lots of use cases that are currently hard to solve in CSS, but are entirely solvable in JS become suddenly possible to express via CSS.</p>
+		</section> 
+
+		<section class="sectioning">
+			<contextual-heading role="heading" aria-level="5">So what's next?</contextual-heading>
+			<p>In the coming months I hope to continue to think about,  explore this space and continue discussions.  I would love to publish some research and maybe some new (functional) experiments with JS that aim to be 'closer' to a path that might be paveable.  We have raw materials and enough information to understand some of where things are disjoint between what we're asking for and the practical aspects of what we're proving.</p>
+			<p>Ultimately, I'd like to get this back into a place where we have enough to really dig in in WICG or CSSWG without a very significant liklihood of easy derailment.</p>
+			<p>In the meantime - let's celebrate that we have actually made progress and work to encourage more!</p>
+		</section>
+	</section> 
+</section> 
+</section></article></main>
+
+  
+    <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-88027178-1', 'auto');
+    ga('send', 'pageview');
+  </script>
+
+  <script>
+    Array.prototype.slice.call(document.querySelectorAll('.optional [data-src]')).forEach(function (optional) {
+      var prefs = window.localStorage.downloadsPrefs,
+          clickToSee;
+      if (prefs === 'true') {
+        activateOptional(optional);
+      } else {
+        clickToSee = document.createElement('div');
+        clickToSee.classList.add('clickToSee')
+        clickToSee.innerHTML = '<button>Click to see media</button>';
+        clickToSee.style.textAlign = 'center';
+        clickToSee.style.border = 'none';
+        optional.parentElement.insertBefore(clickToSee, optional.nextSibling);
+        clickToSee.firstElementChild.addEventListener('click', function () {
+          activateOptional(optional);
+        })
+      }
+
+    })
+  </script>
+
+</body></html>
