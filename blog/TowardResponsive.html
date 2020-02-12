@@ -416,7 +416,7 @@ America (art for sale)</a></li>
 			</p>
 		</section> 
 		<section class="sectioning">
-			<contextual-heading role="heading" aria-level="5">Accept multi-phase loops, but improve performance opportunity a little</contextual-heading>
+			<contextual-heading role="heading" aria-level="5">Better Containment <em>and</em>...</contextual-heading>
 			<p>There is another interesting idea generated primarily by David Baron at Mozilla.  In fact, David has a whole series of prposals on this that would lay out how to get all the way there in one vision.  It is still being fleshed out, he's writing something up as I write this.</p>
 			<p>I've seen some early drafts and it's really interesting but it's worth noting that it also isn't without a practical order of dependencies.  Effectively, everything in David's idea hinges on "containment in a single direction".  This is the smallest and most fundamental property - the next step is almost certainly to define and impement that and if we have that then the next things follow more easily - but so do many other possibilities.</p>
 			<p>This information as a property potentially provides an <em>opportunity</em> for an optimization of what would happen if you built any system with <code>ResizeObserver</code> today, where it might be possible to avoid complete trips through the event loop.</p>
@@ -424,11 +424,11 @@ America (art for sale)</a></li>
 		</section>
 		<section class="sectioning">
 			<contextual-heading role="heading" aria-level="5">Some new experiments?</contextual-heading>
-			<p>Another idea that we've tossed around punts on a few hard questions whose answers seem hard to speculate on and really focus instead on the circularity problem and thinking about the kind of unbounded space of use cases developers seem to imagine. Perhaps it "fits" with option B even...</p>
-			<p>These would be a kind of declarative way, in CSS, to wire up finite states. They would focus on a laying down a single new path in CSS that allowed us to express pattern of what to observe, how to observe it, how to measure and say that an element was in a particular state.  The practical upshot of this is that lots and lots of use cases that are currently hard to solve in CSS, but are entirely solvable in JS become suddenly possible to express via CSS.</p>
+			<p>Another idea that we've tossed around a bunch at Igalia and with several developers punts on a few hard of these hard questions whose answers seem hard to speculate on and really focus instead on the circularity problem and thinking about the kind of unbounded space of use cases developers seem to imagine. Perhaps it "fits" with option B even...</p>
+			<p>These would be a kind of declarative way, in CSS, to wire up finite states. They would focus on a laying down a single new path in CSS that allowed us to express pattern of what to observe, how to observe it, how to measure and say that an element was in a particular state.  The practical upshot of this is that not just Container Queries, but lots and lots of use cases that are currently hard to solve in CSS, but are entirely solvable in JS with Observers become suddenly possible to just express via CSS without asking a lot of new stuff CSS - and doing that might <em>present</em> some new optimization opportunities, but it might not -- and at least we wouldn't block moving forward.</p>
 		</section> 
 
-		<section class="sectioning">
+		<section class="sectioning"> 
 			<contextual-heading role="heading" aria-level="5">So what's next?</contextual-heading>
 			<p>In the coming months I hope to continue to think about,  explore this space and continue discussions.  I would love to publish some research and maybe some new (functional) experiments with JS that aim to be 'closer' to a path that might be paveable.  We have raw materials and enough information to understand some of where things are disjoint between what we're asking for and the practical aspects of what we're proving.</p>
 			<p>Ultimately, I'd like to get this back into a place where we have enough to really dig in in WICG or CSSWG without a very significant liklihood of easy derailment.</p>
