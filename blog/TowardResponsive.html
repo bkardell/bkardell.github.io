@@ -354,7 +354,7 @@ America (art for sale)</a></li>
 
 	<section class="sectioning">
 		<contextual-heading role="heading" aria-level="2">N <em>problems</em></contextual-heading>
-		<p>One of the more difficult aspects of "Container Queries" is that there isn't actually a nice, single problem to discuss.  Many discussions begin with how to write them, even in a way that "feels kind of obvious" -- but this usually (inadvertently) often creates a <em>stack</em> of new asks of CSS and numerous conflicts.  In the process, it can also (inadvertently) hand-wave over tremendous complexity of what turn out to be very significant particulars and important aspects of CSS's current design and implementation.  This makes it very hard to focus a discussion, it is easily derailed.</p>
+		<p>One of the more difficult aspects of "Container Queries" is that there isn't actually a nice, single problem to discuss.  Many discussions begin with how to write them - usually in a way that "feels kind of obvious" -- but this usually (inadvertently) often creates a <em>stack</em> of new asks of CSS and numerous conflicts.  These wind up derailing the conversation.  In the process, it can also (inadvertently) hand-wave over tremendous complexity of what turn out to be very significant particulars and important aspects of CSS's current design and implementation.  This makes it very hard to focus a discussion, it is easily derailed.</p>
 this
 		<p>Depending on how you divide up the problem, some of these would suggest fundamental changes are necessary to the architectures of browser engines - and we don't know what they would be. Unfortunately, it's very hard to appreciate what this <em>means</em> in practice since so much of this, again, deals with things that are opaque to most developers.  For now: suffice it to say that any such re-architecture could require a entirely unknown (in years) speculative amount of work in order to create and prove such an idea - and then many more years of development per-engine.  Worse, all of this would be similarly invisible to developers in the meantime.  Did you know, for example, that there are multiple many year long efforts with huge investments underway <em>already</em> aimed at unlocking many new things in CSS?  There are - and I don't mean Houdini!</p>
 
@@ -400,7 +400,7 @@ this
 			</p>
 			<p class="note">I am constantly impressed by Ian's ability to listen, pull the right threads, help guide the big ship and coordinate progress on even long visions that enable us to exceed current problem limits.  You probably don't hear a lot about him, but the Web is a lot better for his efforts…</p>
 			<p>The crux of the idea is that there seems to be one 'almost natural' space that enables a ton of the use cases we've actually seen in research.  Some community members have landed on not entirely dissimilar ideas: creating something of an 'if' via calc expressions to express different values for properties. The idea goes something like this:</p>
-			<p>Imagine that we added a function, let's call it "switch" which allows you to express something "like a media query" with several possible values for a property.  These would be based on the available-inline-width during the 'min/max' phase of layout.  Something like this…</p>
+			<p>Imagine that we added a function, let's call it "switch" which allows you to express something "like a media query" with several possible values for a property.  These would be based on the available-inline-width during the layout phase.  Something like this…</p>
 
 			<pre><code class="language-css">.foo {
 	display: grid;
@@ -414,12 +414,13 @@ this
 			<p>
 				See, a a whole lot of the problems with existing ideas is that they heave to loop back through (expensive) phases potentially several times and make it (seemingly) impossible to keep CSS rendering in the same frame - thus requiring fairly major architectural changes.  It would need to be limited to properties that affect things only <em>during layout</em>, but another practical benefit here is that it would be not that hard to start some basic prototyping and feel this out a little in an implementation without actually committing to years of work.
 			</p>
-		</section>
+		</section> 
 		<section class="sectioning">
 			<contextual-heading role="heading" aria-level="5">Accept multi-phase loops, but improve performance opportunity a little</contextual-heading>
-			<p>There is another interesting idea generated primarily by David Baron at Mozilla.  It is still being fleshed out, he's writing something up as I write this.  However, effectively, the idea is that next step is to allow "containment in a single direction".</p>
-			<p>This would roughly be more or less the equivalent of optimizing what would happen if you built any system with <code>ResizeObserver</code> today.  You'd get notified of what happened, in a downward fashion, and do something about it (modify the DOM) which will cause another pass through the event loop - but downward and with enough information that we can help optimize it a bit.</p>
-			<p>It isn't currently clear how some questions will be answered or circularity avoided, but David is one of the most knowledgable people I know and I look forward to seeing more details!</p>
+			<p>There is another interesting idea generated primarily by David Baron at Mozilla.  In fact, David has a whole series of prposals on this that would lay out how to get all the way there in one vision.  It is still being fleshed out, he's writing something up as I write this.</p>
+			<p>I've seen some early drafts and it's really interesting but it's worth noting that it also isn't without a practical order of dependencies.  Effectively, everything in David's idea hinges on "containment in a single direction".  This is the smallest and most fundamental property - the next step is almost certainly to define and impement that and if we have that then the next things follow more easily - but so do many other possibilities.</p>
+			<p>This information as a property potentially provides an <em>opportunity</em> for an optimization of what would happen if you built any system with <code>ResizeObserver</code> today, where it might be possible to avoid complete trips through the event loop.</p>
+			<p>It isn't currently clear how some questions will be answered but David is one of the most knowledgable people I know, and there's a lot of good stuff in here - I look forward to seeing more details!</p>
 		</section>
 		<section class="sectioning">
 			<contextual-heading role="heading" aria-level="5">Some new experiments?</contextual-heading>
