@@ -412,9 +412,12 @@ America (art for sale)</a></li>
 	 );
 }</code></pre>
 			<p>
-				See, a a whole lot of the problems with existing ideas is that they heave to loop back through (expensive) phases potentially several times and make it (seemingly) impossible to keep CSS rendering in the same frame - thus requiring fairly major architectural changes.  It would need to be limited to properties that affect things only <em>during layout</em>, but another practical benefit here is that it would be not that hard to start some basic prototyping and feel this out a little in an implementation without actually committing to years of work.
+				See, a a whole lot of the problems with existing ideas is that they heave to loop back through (expensive) phases potentially several times and make it (seemingly) impossible to keep CSS rendering in the same frame - thus requiring fairly major architectural changes.  It would need to be limited to properties that affect things only <em>during layout</em>, but another practical benefit here is that it would be not that hard to start some basic prototyping and feel this out a little in an implementation without actually committing to years of work.  It would be, very likely, deliverable to developers in a comparatively short amount of time.
 			</p>
-		</section> 
+			<p>
+				<em>Importantly: While it makes sense to expose this step to developers, the idea really is that if we could get agreement and answers on this piece, we would be able to discuss concretely how we sugar some better syntax which effectly distills down to this, internally.  Nicole Sullivan also has some ideas which might help here, and which I look forward to learn more about.</em>
+			</p>
+		</section>  
 		<section class="sectioning">
 			<contextual-heading role="heading" aria-level="5">Better Containment <em>and</em>...</contextual-heading>
 			<p>There is another interesting idea generated primarily by David Baron at Mozilla.  In fact, David has a whole series of prposals on this that would lay out how to get all the way there in one vision.  It is still being fleshed out, he's writing something up as I write this.</p>
