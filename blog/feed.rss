@@ -4,7 +4,7 @@
         <title>bkardell.com rss feed</title>
         <link>http://bkardell.com/</link>
         <description>Just the bkardell.com rss feed</description>
-        <lastBuildDate>Wed, 01 Jan 2020 02:20:29 GMT</lastBuildDate>
+        <lastBuildDate>Wed, 12 Feb 2020 14:56:16 GMT</lastBuildDate>
         <docs>http://blogs.law.harvard.edu/tech/rss</docs>
         <generator>awesome mix</generator>
         <image>
@@ -14,6 +14,116 @@
         </image>
         <copyright>All rights reserved 2018, Brian Kardell</copyright>
         <atom:link href="https://bardell.com/blog/feed.atom" rel="self" type="application/rss+xml"/>
+        <item>
+            <title><![CDATA[Toward Responsive Elements]]></title>
+            <link>https://bkardell.com/blog/TowardResponsive.html</link>
+            <guid>https://bkardell.com/blog/TowardResponsive.html</guid>
+            <pubDate>Wed, 12 Feb 2020 05:00:00 GMT</pubDate>
+            <description><![CDATA[In this piece I'll talk about the "Container Queries" problem, try to shine some light on some misconceptions, and tell you about the state of things.]]></description>
+            <content:encoded><![CDATA[
+	<contextual-heading role="heading" aria-level="1" style="font-size: 2rem;">Toward Responsive Elements</contextual-heading>
+	
+	<p class="segue">In this piece I'll talk about the "Container Queries" problem, try to shine some light on some misconceptions, and tell you about the state of things.</p>
+	
+	<script src="../prism.js"></script>
+    <link rel="stylesheet" href="../prism.css">
+    
+
+	<p>As developers, watching standards can be frustrating.  We might learn of some new spec developing, some new features landing that you weren't even aware of - maybe many of these are even things you don't actually care much about.  In the meantime, "Container Queries," clearly the single most requested feature in CSS for years, appears to be just... ignored.</p>
+
+	<p>What gives? Why does the CSS Working Group not seem to listen?  After all of these years -- why isn't there some official CSS <em>spec</em> at least?</p>
+
+	<p>It's very easy to get the wrong impression about what's going on (or isn't) in Web standards, and why.  This isn't because it is a secret, but because there is just so <em>much</em> happening and so many levels of discussion it would be impossible to follow it all.  The net result is often that things the view from the outside can feel kind of opaque - and our impression can easily be a kind of a distorted image.  Shining some light on this sort of thing is one of my goals this year, so let's start here…</p> 
+
+	<section class="sectioning">
+		<contextual-heading role="heading" aria-level="2" style="font-size: 2.25rem;">N <em>problems</em></contextual-heading>
+		<p>One of the more difficult aspects of "Container Queries" is that there isn't actually a nice, single problem to discuss.  Many discussions begin with how to write them - usually in a way that "feels kind of obvious" -- but this usually (inadvertently) often creates a <em>stack</em> of new asks of CSS and numerous conflicts.  These wind up derailing the conversation.  In the process, it can also (inadvertently) hand-wave over tremendous complexity of what turn out to be very significant particulars and important aspects of CSS's current design and implementation.  This makes it very hard to focus a discussion, it is easily derailed.</p>
+ 
+		<p>A big part of the challenge here is that depending on how you divide up the problem, some of these asks would suggest that fundamental changes are necessary to the architectures of browser engines.  Worse:  We don't even know what they would be. Unfortunately, it's very hard to appreciate what this <em>means</em> in practice since so much of this, again, deals with things that are opaque to most developers.  For now: suffice it to say that any such re-architecture could require a entirely unknown (in years) speculative amount of work in order to create and prove such an idea - and then many more years of development per-engine.  Worse, all of this would be similarly invisible to developers in the meantime.  Did you know, for example, that there are multiple many year long efforts with huge investments underway <em>already</em> aimed at unlocking many new things in CSS?  There are - and I don't mean Houdini!</p>
+
+		<p>Ok, but what about container queries...</p>
+	</section>
+
+	<section class="sectioning">
+		<contextual-heading role="heading" aria-level="2" style="font-size: 2.25rem;">What <em>is</em> happening in this space?</contextual-heading>
+		<p>The truth is that while it might look like nothing much is happening, there have been <em>lots</em> of discussions and efforts to feel out various ideas.  They have mostly, unfortunately, run into certain kinds of problems very quickly and it's not been at all easy to even determine which paths aren't dead ends.</p>
+		<p>More recently, many have instead turned to "how do we make this into more solvable problems?" and "How do we actually make some progress, mitigate risk - take a step, and and actually get something to developers?"</p>
+		<p>Two important ideas that have gotten a lot of traction in this time are 'containment' and ResizeObserver, both of which force us to tackle a different set of (hopefully more answerable) problems - allow us to lay what we think are probably necessary foundations to solving the problem, while enabling developers to meet these and other use cases more effectively, and in more timely fashion.</p>
+	
+		<section class="sectioning">
+			<contextual-heading role="heading" aria-level="3" style="font-size: 2.5rem;">Lightspeed progress, actually...</contextual-heading>
+			<p>Standards move at a scale unfamilliar to most of us.  Consider that we shifted the stalemate conversation and <code>ResizeObserver</code> was envisioned, incubated, speced, tested, agreed upon, <em>iterated on</em> (we got things wrong!) and implemented <em>in all browsers</em> in about 2 years (with Igalia doing the latest implementation in WebKit thanks to some sponsorship from AMP).  Containment is shipping in 2 of 3 engines.</p>
+			<p>This is standards and normalization of something really new for developers at light speed.</p>
+		</section>
+		<section class="sectioning">
+			<contextual-heading role="heading" aria-level="3" style="font-size: 2.5rem;">But... this is incomplete.</contextual-heading>
+			<p>Yes, it is.</p>
+			<p>In the <a href="https://webkit.org/blog/9997/resizeobserver-in-webkit/" rel="nofollow">announcement about Igalia's implementation of ResizeObserver in WebKit</a>, I included an overly simple example of how you could create responsive compoenents with very few lines of code that actually worked, regardless of how or why things resized.  But... no one wants us to ultimately have to write JavaScript for this… Literally nobody that I know of - so what gives?
+			</p>
+			<p>First, by treating it this way, we've made some incredible, <em>actual</em> progress on parts of the problem in very short time - for the first time.   All browsers will have <code>ResizeObserver</code> now.  In the meantime developers will <em>at least</em> have the ability to do a thing they couldn't actually do before, and do the things they could do before more efficiently and experiments can understand a little more about how it actually has to work.   That's good for developers - we don't have to wait forever for something better than what we have now... But it's also good for problem solving: As things settle and we have more answers, its allowed us to focus conversations more and ask better next questions.</p>
+		</section>
+		<section class="sectioning">
+			<contextual-heading role="heading" aria-level="3" style="font-size: 2.5rem;">We <em>definitely</em> care above moving futher!</contextual-heading>
+	<p>For the last several months, I and some folks at Igalia have been working on this space.  We're <em>very</em> interested in helping find the connections that bring together developers, implementer and standards bodies to solve the problems. </p>
+	<p>Internally, we have had numerous sessions to discuss past proposals and tackle challenges. I've been researching the various user-space solutions: How they work, what their actual use is like on the Web, and so on.  In developer space we've worked a lot with folks active in this space: I've met regularly with Tommy Hodgins and Jon Neal, and had discussions with folks like Eric Portis, Brad Frost, Scott Jehl and several others.</p>
+	<p>But we've also talked to people from Google, Mozilla and Apple, and they've been very helpful and willing to chat - both commenting on and generating new ideas and discussions.  I really can't stress enough how helpful these discussions have been, or how willing all of the CSSWG members representing browser vendors have been to spend time doing this.  Just during the recent travel for the CSS Working Group face to face, I had <em>numerous</em> breakout discussions - many hours worth of idea trading between Igalians and browser folks.</p>
+	<p>I wish I could say that we were 'there' but we're not.</p>
+	<p>As it stands it seems that there are kind of a few 'big ideas' that seem like they could go somewhere - but not actually agreement on whether one or both of them is acceptable or prioritization yet.</p>
+	<section class="sectioning">
+		<contextual-heading role="heading" aria-level="4" style="font-size: 2.75rem;">Current ideas...</contextual-heading>
+		<p>
+			There does seem to be some general agreement on at least one part of what I am going to call instead "Responsive Design for Components" and that is that flipping the problem on its head is better.  In other words: Let's see if we can find a way talk about how we can expose the necessary <em>powers</em> in CSS, in a way that is largely compatible with CSS's architecture today... even if writing that looks absolutely nothing like past proposals at first.
+		</p>
+		<p>
+			There seems to be some agreement at large that this is where the hardest problems lie and separating that part of the discussion from things that we <em>can</em>  already sugar in user-space seems helpful for making progreess.  This has led to a few different ideas…
+		</p>
+		<section class="sectioning">
+			<contextual-heading role="heading" aria-level="5" style="font-size: 3rem;">Lay down small, very optimal paths in CSS</contextual-heading>
+			<p>One very good idea generated by lots of discussion with many people during CSS Working Group breakouts sprang from a thought from Google's Ian Kilpatrick…
+			</p>
+			<p class="note">I am constantly impressed by Ian's ability to listen, pull the right threads, help guide the big ship and coordinate progress on even long visions that enable us to exceed current problem limits.  You probably don't hear a lot about him, but the Web is a lot better for his efforts…</p>
+			<p>The crux of the idea is that there seems to be one 'almost natural' space that enables a ton of the use cases we've actually seen in research.  Some community members have landed on not entirely dissimilar ideas: creating something of an 'if' via calc expressions to express different values for properties. The idea goes something like this:</p>
+			<p>Imagine that we added a function, let's call it "switch" which allows you to express something "like a media query" with several possible values for a property.  These would be based on the available-inline-width during the layout phase.  Something like this…</p>
+
+			<pre><code class="language-css">.foo {
+	display: grid;
+	grid-template-columns: switch(
+	 	(available-inline-size &gt; 1024px) 1fr 4fr 1fr;
+	 	(available-inline-size &gt; 400px) 2fr 1fr;
+		(available-inline-size &gt; 100px) 1fr;
+		default 1fr;
+	 );
+}</code></pre>
+			<p>
+				See, a a whole lot of the problems with existing ideas is that they heave to loop back through (expensive) phases potentially several times and make it (seemingly) impossible to keep CSS rendering in the same frame - thus requiring fairly major architectural changes.  It would need to be limited to properties that affect things only <em>during layout</em>, but another practical benefit here is that it would be not that hard to start some basic prototyping and feel this out a little in an implementation without actually committing to years of work.  It would be, very likely, deliverable to developers in a comparatively short amount of time.
+			</p>
+			<p>
+				<em>Importantly: While it makes sense to expose this step to developers, the idea really is that if we could get agreement and answers on this piece, we would be able to discuss concretely how we sugar some better syntax which effectly distills down to this, internally.  Nicole Sullivan also has some ideas which might help here, and which I look forward to learn more about.</em>
+			</p>
+		</section>  
+		<section class="sectioning">
+			<contextual-heading role="heading" aria-level="5" style="font-size: 3rem;">Better Containment <em>and</em>...</contextual-heading>
+			<p>There is another interesting idea generated primarily by David Baron at Mozilla.  In fact, David has a whole series of prposals on this that would lay out how to get all the way there in one vision.  It is still being fleshed out, he's writing something up as I write this.</p>
+			<p>I've seen some early drafts and it's really interesting but it's worth noting that it also isn't without a practical order of dependencies.  Effectively, everything in David's idea hinges on "containment in a single direction".  This is the smallest and most fundamental property - the next step is almost certainly to define and impement that and if we have that then the next things follow more easily - but so do many other possibilities.</p>
+			<p>This information as a property potentially provides an <em>opportunity</em> for an optimization of what would happen if you built any system with <code>ResizeObserver</code> today, where it might be possible to avoid complete trips through the event loop.</p>
+			<p>It isn't currently clear how some questions will be answered but David is one of the most knowledgable people I know, and there's a lot of good stuff in here - I look forward to seeing more details!</p>
+		</section>
+		<section class="sectioning">
+			<contextual-heading role="heading" aria-level="5" style="font-size: 3rem;">Some new experiments?</contextual-heading>
+			<p>Another idea that we've tossed around a bunch at Igalia and with several developers punts on a few hard of these hard questions whose answers seem hard to speculate on and really focus instead on the circularity problem and thinking about the kind of unbounded space of use cases developers seem to imagine. Perhaps it "fits" with option B even...</p>
+			<p>These would be a kind of declarative way, in CSS, to wire up finite states. They would focus on a laying down a single new path in CSS that allowed us to express pattern of what to observe, how to observe it, how to measure and say that an element was in a particular state.  The practical upshot of this is that not just Container Queries, but lots and lots of use cases that are currently hard to solve in CSS, but are entirely solvable in JS with Observers become suddenly possible to just express via CSS without asking a lot of new stuff CSS - and doing that might <em>present</em> some new optimization opportunities, but it might not -- and at least we wouldn't block moving forward.</p>
+		</section> 
+
+		<section class="sectioning"> 
+			<contextual-heading role="heading" aria-level="5" style="font-size: 3rem;">So what's next?</contextual-heading>
+			<p>In the coming months I hope to continue to think about,  explore this space and continue discussions with others.  I would love to publish some research and maybe some new (functional) experiments with JS that aim to be 'closer' to a path that might be paveable.  We have raw materials and enough information to understand some of where things are disjoint between what we're asking for and the practical aspects of what we're proving.</p>
+			<p>Ultimately, I'd like to help gather all of these ideas back into a place where we have enough to really dig in in WICG or CSSWG without a very significant liklihood of easy derailment.  Sooner rather than later, I hope.</p>
+			<p>In the meantime - let's celebrate that we have actually made progress and work to encourage more!</p>
+		</section>
+	</section> 
+</section> 
+</section>]]></content:encoded>
+        </item>
         <item>
             <title><![CDATA[Unlocking Colors]]></title>
             <link>https://bkardell.com/blog/Unlocking-Colors.html</link>
@@ -36,7 +146,7 @@
 
 		<p>There is 'real information' that exists in the universe, but there are also real constraints when talking about color:  If the light shining on that pigment doesn't contain all of the possible wavelengths, that color will look different, for example. Or, if your monitor can't physically create true pure white or pure black, things are a little skewed.</p>
 
-		<p>When we're doing things digitally there's another important constraint:  We also have to <em>store</em> colors with some number of bits and format, express those somehow, and be able to reason about them.   Storing 'really accurate true values' would both require a lot of bits and a lot of bits, and machines (at various points in time) weren't capable of creating, managing or displaying - either efficiently, or at all.  As a result, over the years we've created a lot of interesting tradeoffs with regard to color.</p>
+		<p>When we're doing things digitally there's another important constraint:  We also have to <em>store</em> colors with some number of bits and format, express those somehow, and be able to reason about them.   Storing 'really accurate true values' would require a lot of bits and machines (at various points in time) weren't capable of creating, managing or displaying - either efficiently, or at all.  As a result, over the years we've created a lot of interesting tradeoffs with regard to color.</p>
 		</section>
 
 		<section class="sectioning">
@@ -55,11 +165,11 @@
 
 		<section class="sectioning">
 			<contextual-heading role="heading" aria-level="2" style="font-size: 2.25rem;">Humans vs machines</contextual-heading>
-			<p>It's more than just efficiency.  sRGB, as I said, is really built for machines - and humans and machines are quite different.  If I showed you a color and asked you to guess the value in RGB, mapped that to sRGB space and showed you on your monitor, chances that you could get it very close are pretty low in general. You can test this theory with <a href="http://hex-guess.glitch.me/">hex-guess.glitch.me</a>.  Further, there's not great odds that you could efficiently zero in on closer and closer simply because it's a little unnatural.  This is why we have created things like like hsla which some people think is easier to reason about 'more saturated' and 'lighter' and a circle of color is potentially a little easier to think about.  But it's not just that one uses RGB either, it's that the color space itself has weird characteristics.</p>
+			<p>It's more than just efficiency.  sRGB, as I said, is really built for machines - and humans and machines are quite different.  If I showed you a color and asked you to guess the value in RGB, mapped that to sRGB space and showed you on your monitor, chances that you could get it very close are pretty low in general. You can test this theory with <a href="http://hex-guess.glitch.me/">hex-guess.glitch.me</a>.  Further, there's not great odds that you could efficiently zero in on closer and closer simply because it's a little unnatural.  This is why we have created things like like hsla which some people think is easier to reason about 'more saturated' and 'lighter' and a circle of color is potentially a little easier to think about.  But it's not just that one uses RGB either, it's that the color space itself has weird characteristics.</p> 
 
 			<p>This plays in especially if we want to reason about things mathematically - for example - <em>in creating design systems.</em></p>
 
-			<p>Our design systems, ideally, want to reason about colors by 'moving through the color space'.  Doing things like mixing colors, lightening, darkening, do this well if they a sense of how our eyes really <em>work</em> rather than how machines like to think about storing and displaying. That is, if I move this one aspect just a little bit, I expect it to have the same effect no matter what the color I start with is... But in sRGB space, that really isn't true at all.  The sRGB space is not perceptually uniform.  The same mathematical movement has different degrees of perceived effect depending on where you are at in the color space.  If you want to read a designer's experience with this, here's an <a href="https://v6.robweychert.com/blog/2019/12/dynamic-color-javascript-hsl/">interesting example</a> which does a good job struggling to do well.</p>
+			<p>Our design systems, ideally, want to reason about colors by 'moving through the color space'.  Doing things like mixing colors, lightening, darkening, can be done well only if they include a sense of how our eyes really <em>work</em> rather than how machines like to think about storing and displaying. That is, if I move this one aspect just a little bit, I expect it to have the same effect no matter what the color I start with is... But in sRGB space, that really isn't true at all.  The sRGB space is not perceptually uniform.  The same mathematical movement has different degrees of perceived effect depending on where you are at in the color space.  If you want to read a designer's experience with this, here's an <a href="https://v6.robweychert.com/blog/2019/12/dynamic-color-javascript-hsl/">interesting example</a> which does a good job struggling to do well.</p>
 
 			<section class="sectioning">
 				<contextual-heading role="heading" aria-level="3" style="font-size: 2.5rem;">Some examples…</contextual-heading>
@@ -73,11 +183,11 @@
 </p>
 <script async="" src="https://static.codepen.io/assets/embed/ei.js"></script>
 
-			<p>Recently, my friend and co-author of the CSS Colors specification, Adam Argyle also ran a twitter poll asking this question "Which of these is ligher".  Polls are tricky for stuff like this because people "assume" it's a trick question somehow.  Nevertheless, there was overwhelming agreement that #2 was lighter&amp;hellip Because, well, it is.</p>
+			<p>Recently, my friend and co-author of the CSS Colors specification, Adam Argyle also ran a twitter poll asking this question "Which of these is ligher".  Polls are tricky for stuff like this because people "assume" it's a trick question somehow.  Nevertheless, there was overwhelming agreement that #2 was lighter… Because, well, it is.</p>
 
 			<blockquote class="twitter-tweet"><p lang="en" dir="ltr">HSL vs LAB:: lightness 💡<br><br>Same colors from our tricky color poll, but this time I've shown LAB's version of the same color over top. Notice how much closer LAB's lightness value is to the results of our poll! <br><br>🎨 color spaces aren't all the same y'all! <a href="https://t.co/AIEs0amdWY">https://t.co/AIEs0amdWY</a> <a href="https://t.co/xkEguq3KZG">pic.twitter.com/xkEguq3KZG</a></p>— Adam Argyle (@argyleink) <a href="https://twitter.com/argyleink/status/1201908189257555968?ref_src=twsrc%5Etfw">December 3, 2019</a></blockquote> <script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 
-			<p>There's another great illustration of this in that <a 12="" 2019="" href="<a href=" https:="" v6.robweychert.com="" blog="" dynamic-color-javascript-hsl="" "="">earlier article  struggling with this</a>…</p>
+			<p>There's another great illustration of this in that <a href="https://v6.robweychert.com/blog/2019/12/dynamic-color-javascript-hsl/">earlier article  struggling with this</a>…</p>
 
 			<aside class="captioned-image optional">
 				<img src="https://v6.robweychert.com/assets/images/2019-12-15-fig09-luminance-spectrum.svg" alt="">
@@ -93,8 +203,8 @@
 
 			<p>There are color spaces like Lab and LCH which deal with the full spectrum and have qualities like perceptual uniformness.  Thus, if we want <a href="https://github.com/w3c/csswg-drafts/issues/3187#issuecomment-499126198">great color functions for use in real design systems</a> everyone seems to agree that having support to do said math in the Lab/LCH color spaces is the ideal enabling feature.  It's not <em>exactly</em> a prerequisite to doing useful things.  In fact, a lot of designers it seems aren't even aware of this quality because we've lived so long with the sRGB space.  However, realistically, we get the most value if we invest in having support for these two color spaces first.  They are also well defined, don't require a lot of debate and are non-controversial.  Having them would make everything else so much the better, because they give us the right tools to help the actual humans.</p>
 
-			<p>Recently, Adam opened <a href="https://bugs.chromium.org/p/chromium/issues/detail?id=1026287" rel="nofollow">this issue</a> in Chromium.</p>
-		</section>
+			<p>Recently, Adam opened <a href="https://bugs.chromium.org/p/chromium/issues/detail?id=1026287" rel="nofollow">this issue</a> in Chromium. (<em>Update: Since this post Simon Frasier has also opened <a href="https://bugs.webkit.org/show_bug.cgi?id=205675" rel="nofollow">this issue</a> in WebKit)</em>.</p>
+		</section> 
 		<section class="sectioning">
 			<contextual-heading role="heading" aria-level="3" style="font-size: 2.5rem;">Let's get this done.</contextual-heading>
 
@@ -102,7 +212,7 @@
 
 			<ul>
 				<li>Are not controversial</li>
-				<li>Aree quite mature and widely used color standards</li>
+				<li>Are quite mature and widely used color standards</li>
 				<li>Are important for accesibility</li>
 				<li>Are important for design systems</li>
 				<li>Make all of the other design system related work much more attractive</li>
@@ -110,7 +220,7 @@
 				<li>Just aren't getting done</li>
 			</ul>
 
-			<p>Chances are pretty good, I think, that as a designer or developer reading this, you'll find that last bullet irritating.  You might be asking yourself "<em>But why isn't it getting done?  Wouldn't that help so much?</em>".  The answer is neither as offensive nor complex as you might imagine, it's kind of simple really: Yes, it would - but yhere's <em>just so much in the pipeline</em> already.  In the end, <em>everyone</em> (including browser vendors) has to prioritize the work in the queue with available resources and skills. There are only so many people with the particular skills to be working on this available, and there are lots of importan tor interesting things competing for their prioritization.</p>
+			<p>Chances are pretty good, I think, that as a designer or developer reading this, you'll find that last bullet irritating.  You might be asking yourself "<em>But why isn't it getting done?  Wouldn't that help so much?</em>".  The answer is neither as offensive nor complex as you might imagine, it's kind of simple really: Yes, it would - but there's <em>just so much in the pipeline</em> already.  In the end, <em>everyone</em> (including browser vendors) has to prioritize the work in the queue with available resources and skills. There are only so many people with the particular skills to be working on this available, and there are lots of important or interesting things competing for their prioritization.</p>
 
 			<p>I recently wrote <a href="https://bkardell.com/blog/Beyond.html" rel="nofollow">a post about this problem</a> and how Igalia enables us to move things like this.  We have shown that we can get big things done - like CSS Grid.  This is a small thing in terms of effort and cost with an outsized impact. We don't need to wait, ask for the browsers to move this in their priority queues, we just need someone to see the value in funding the work - and it's not huge.  <em>We can get this done.</em></p>
 
