@@ -1,0 +1,439 @@
+<html lang="en" resource-type="blogpost"><head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@briankardell">
+    <meta name="twitter:creator" content="@briankardell">
+    <meta name="twitter:title" content="Making Sure Content Lives On...">
+    <meta name="twitter:description" content="In which I describe a problem, a possible solution, and share a solution that you can use today...">
+    
+    <link rel="alternate" type="application/rss+xml" href="https://bkardell.com/blog/feed.rss" title="bkardell.com/blog rss feed">
+    <title>Making Sure Content Lives On...</title> 
+    <style>.captioned-image {
+    background-color: #eaeaea;
+    display: block;
+    overflow: hidden;
+    padding: 1rem;
+    text-align: center;
+    font-style: italic;
+}
+
+.captioned-image.p-attached {
+    width: 40%;
+    display: inline-block;
+    margin: 0 1rem 2rem 1rem;
+}
+
+section > .captioned-image.p-attached {
+    margin-top: 1.5rem; /* correct for heading size*/
+}
+
+ pre { overflow-x: auto }
+
+.captioned-image.p-attached.p-attached-left {
+    float: left;
+}
+
+.captioned-image.p-attached.p-attached-right {
+    float: right;
+}
+
+.captioned-image.p-attached + * + * {
+    clear: both;
+    margin-top: 2rem;
+}
+
+
+.captioned-image img, .captioned-image video {
+    display: block;
+    max-width: 100%;
+    margin: 0 auto 1em auto;
+}
+.source {
+    font-style: italic;
+}
+body {
+    display: flex;
+    font: 1em "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-weight: 400;
+    line-height: 1.625;
+}
+h1 { margin: 0.5rem; }
+code-format {
+    border-left: 0.5rem solid rgba(123,115,209,0.35);
+    display: block;
+    padding: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+contextual-heading {
+    display: block;
+    margin-top: 2rem;
+}
+
+[aria-level="1"] {
+    color: #43686b;
+    font-size: 1.45rem;
+}
+[aria-level="2"] {
+    color: #856363;
+    font-size: 1.35rem;
+}
+[aria-level="3"] {
+    color: #856363;
+    font-size: 1.25rem;
+}
+[aria-level="4"] {
+    color: #856363;
+    font-size: 1.2rem;
+}
+[aria-level="5"], [aria-level="6"] {
+    color: #667496;
+    font-size: 1.1rem;
+    font-weight: bolder;
+}
+.posted-on {
+    font-style: italic;
+    font-size: 0.8rem;
+    text-align: right;
+    margin-bottom: 1rem;
+}
+
+ul, li {
+    margin: 0.5rem;
+    text-align: left;
+}
+header {
+    padding-top: 1rem;
+    padding-right: 2rem;
+    background-color: #fbf5e9;
+}
+.tagline {
+    font-style: italic;
+    text-align: center;
+}
+
+[tag-esc] {
+    color: maroon;
+    font-family: Courier, "Lucida Console", monospace;
+}
+
+[tag-esc]::before {
+    content: '<';
+}
+
+[tag-esc]::after {
+    content: '>';
+}
+
+main {
+    min-width: 50%;
+    width: 80%;
+    padding: 1rem;
+}
+header .title {
+    background-color: rgba(123,115,209,0.35);
+    padding: 0.3rem;
+    padding-left: 0.25rem;
+    font-weight: bolder;
+    font-size: 0.9rem;
+    border-left: 1rem solid #999298;
+}
+
+header .profile {
+    width: 50%;
+    margin: 1rem 25%;
+}
+
+header .title + nav {
+    font-size: 0.9rem;
+}
+
+header .blurb {
+    font-size: 0.75rem;
+    text-align: center;
+}
+header .name {
+    text-align: center;
+    font-size: xx-large;
+}
+.segue {
+    font-style: italic;
+}
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  border: 0;
+}
+[for="aboutMeToggle"] {
+    display: none;
+}
+/* this needs rethinking, it wants a selector like 'not flow content' */
+article>*:not(contextual-heading,a), section>*:not(contextual-heading,a) {
+    margin-left: 0.45rem;
+}
+
+blockquote {
+  font-family: serif;
+  background: #f9f9f9;
+  border-left: 10px solid #ccc;
+  margin: 1.5em 10px;
+  padding: 0.5em 10px;
+}
+blockquote:before {
+  color: #ccc;
+  content: open-quote;
+  font-size: 2em;
+  line-height: 0.1em;
+  margin-right: 0.25em;
+  vertical-align: -0.4em;
+}
+
+blockquote:after {
+  color: #ccc;
+  content: close-quote;
+  font-size: 2em;
+  line-height: 0.1em;
+  margin-left: 0.25em;
+  vertical-align: -0.4em;
+}
+
+
+@media (max-width: 800px){
+    body {
+        flex-direction: column;
+    }
+    header {
+        border-bottom: 1px solid #afafff;
+    }
+
+    .captioned-image.p-attached {
+        width: 100%;
+        margin: 1rem 0;
+    }
+
+    .captioned-image.p-attached.p-attached-left,
+    .captioned-image.p-attached.p-attached-right {
+        float: none;
+    }
+
+    [for="aboutMeToggle"] {
+        background-color: #675e5e;
+        color: white;
+        padding: 0.25rem;
+        padding-left: 0.5rem;
+        display: block;
+        border-left: 1rem solid black;
+    }
+    #aboutMeToggle:focus + [for="aboutMeToggle"]{
+        outline: 4px solid #c6ddf2;
+    }
+
+    #aboutMeToggle:checked ~ header {
+        display: none;
+    }
+
+    header li { display: inline; margin-left: -0.5em; }
+    header .blurb li::after { content: '; '; }
+    header  nav li {
+        display: inline-block;
+        margin-left: 0.35rem;
+        margin-right: 0.35rem;
+    }
+    header .title {
+        width: 100%;
+    }
+    main li .source { display: block; }
+
+}</style>
+    <style>
+      .captioned-image { font-size: 0.9rem; }
+      .thanksTo { font-style: italic; font-size: 0.8rem; }
+    </style>
+    <script>
+      var activateOptional = function (media) {
+        var source = media.getAttribute('data-src'),
+            temp,
+            container = media.parentElement;
+
+          if (media.nextSibling && media.nextSibling.matches) {
+            if (media.nextSibling.matches('.clickToSee')) {
+              media.parentElement.removeChild(media.nextSibling);
+            }
+          }
+
+          if (media.tagName === 'VIDEO') {
+            temp = document.createElement('video')
+            temp.setAttribute('autoplay','')
+            temp.setAttribute('controls','')
+            temp.setAttribute('loop','')
+            temp.innerHTML = '<source src="' + source + '.webm" type="video/webm">'
+                    + '<source src="' + source + '.mp4" type="video/mp4">';
+            media.parentElement.replaceChild(temp, media);
+            setTimeout(function () {
+              temp.play()
+            }, 0);
+          } else {
+            media.src = media.getAttribute('data-src');
+          }
+
+          container.classList.add('active');
+      }
+    </script>
+  </head>
+  <body>
+    <input id="aboutMeToggle" class="sr-only" type="checkbox" checked="">
+<label for="aboutMeToggle">Toggle author information</label>
+<header>
+    <div class="name">
+        Brian Kardell
+    </div>
+    <img class="profile" src="/profile.jpg" alt="">
+    <div class="tagline"><a href="/">Betterifying the Web</a></div>
+    <div class="blurb">
+        <ul>
+            <li>Developer Advocate at Igalia</li>
+            <li>Original Co-author/Co-signer of The Extensible Web Manifesto</li>
+            <li>Co-Founder/Chair, W3C Extensible Web CG</li>
+            <li>Member, W3C (The JS Foundation)</li>
+            <li>Co-author of HitchJS</li>
+            <li>Blogger</li>
+            <li>Art, Science &amp; History Lover</li>
+            <li>Standards Geek</li>
+        </ul>
+    </div>
+    <div class="title">Follow Me On...</div>
+    <nav>
+        <ul>
+            <li><a rel="me" href="https://briankardell.wordpress.com">Wordpress</a></li>
+            <li><a rel="me" href="https://medium.com/@briankardell">Medium</a></li>
+            <li><a rel="me" href="https://twitter.com/briankardell">Twitter</a></li>
+            <li><a rel="me" href="https://github.com/bkardell/">Github</a></li>
+            <li><a rel="me" href="https://codepen.io/bkardell">Codepen</a></li>
+            <li><a rel="me" href="https://www.linkedin.com/in/brian-kardell-08a4264">LinkedIn</a></li>
+            <li><a rel="me" href="https://www.instagram.com/kardellbrian">Instagram (for
+art)</a></li>
+            <li><a rel="me" href="http://fineartamerica.com/profiles/brian-kardell?">Fine Art
+America (art for sale)</a></li>
+        </ul>
+    </nav>
+</header>
+    <main><div class="posted-on">Posted on null</div><article class="sectioning">
+    <contextual-heading role="heading" aria-level="1">Making Sure Content Lives On...</contextual-heading>
+    <p class="segue">
+        In which I describe a problem, a possible solution, and share a solution that you can use today... 
+    </p>
+
+    <p class="note">(If you already know the problem, and you're looking for the solution, check out <a href="https://github.com/bkardell/auto-archive/blob/master/README.md">the documentation over on GitHub</a>)</p>
+
+    <p>There's a series of problems that I experience literally all the time:  Link rot and the disappearance of our history.  I have written posts on blogging platforms that no longer exist.  I have written guest posts for sites that no longer exist.  I frequently wish that that content still existed - not only still existed, but was findable again.  I have researched hard and bookmarked or linked to obscure but important history which, you guessed it: no longer exists.  This is tremendously frustrating, but also just really sad (more on this later)...</p>
+
+
+    <p>This is one thing that really interests me about a potentially future decentralized web - we could do better here. At the same time, we often have to deal with the Web we have now - not the one we wish existed. So, let's look the state of this today?</p> 
+
+    <section class="sectioning">
+        <contextual-heading role="heading" aria-level="2">Archiving today</contextual-heading>
+
+        <p>Luckily, when content disappears, I can often turn to the Internet Archive and the Wayback Machine to find content.  But the truth is that they've got a very tough challenge.  Identifing all the things that need indexing is really hard.  If you have a relatively small blog or site, especially, it can be hard to find.  Then, even if it gets found, how do they know when you've got some new content?  So, the net result is that no matter how good a job they do - a lot of really interesting stuff can wind up not being findable today there either.</p>
+
+        <p>History itself makes this problem even harder: It's very unpredictable.  Often things are considerably more interesting in only in hindsight.  Things also tend to seem a lot more stable in the short term than they are in reality in the long arc of history:  Even giant "too big to fail", semi-monopolies ultimately shift, burn out or even just break their history.  One of the wisest things I ever heard was an older engineer who told me if they could impart one things to students it was this - all the paradigms that you think are forever will shift. Once upon a time IBM ruled the world.  Motorola was absolutely dominant.  Once upon a time, SourceForge was the shit.  Then GitHub.  Once upon a time Netscape won the interwebs, and then they lost it to Microsoft who won it even bigger.  Then Microsoft lost it again.</p>  
+
+        <p>It's ok if you don't share my desire, but I <em>personally</em>, want to be sure my content continues to exist, and people can find it via old links despite all of these uncertain futures.  Today, the best chance of that is in the Internet Archive.  So, how can I be more confident that it does? </p>
+
+        <section class="sectioning">
+            <contextual-heading role="heading" aria-level="3">Maybe... Just ask?</contextual-heading>
+            <p>Interestingly, a lot of these problems get hella simpler if you just ask.</p>
+
+            <p>For a really long time now (as long as I can remember the Wayback Machine existing), you can go to https://archive.org/web/, enter a URL under the heading 'Save page now' and click the button. </p>
+
+            <p>A notification model is way, way simpler than somehow trying to monitor and guess - and we use this same basic pattern for several things in engineering.  It's quite success at keeping things efficient.</p>
+
+            <p>The trouble here is, I think, that it is currently manual.  It's unlikely that I'm going to do that every time I add a new blog post, even thought that's _exactly_ what I want to do.</p>
+
+            <p>Maybe we can fix that?</p>
+
+        </section>
+
+        <section class="sectioning">
+            <contextual-heading role="heading" aria-level="3">Asking by default...</contextual-heading>
+            <p>
+                Recently, this got me to thinking... What if it were really easy to incorporate this into whatever blog software you use today?  Think about it:  RSS continues to thrive, in part, because you hardly have to know about it - it's so comparatively easy (entirely free in some cases in that it is just part of the software you get).  If you could incorporate this into your system in somewhere between 0 and 30 minutes, would you?  
+            </p>
+
+            <p>
+                Every now and then I have a thought like this that seems so clear to me that I figure "surely this must exist? Why do I not know about it?"  So, I asked around on social media.  Surprisingly, I could find no one who was aware of such a thing. What about publicly exposing an API? Do they?
+            </p>
+
+            <p>
+                Brendan Eich cc'ed Jason Scott from the Internet Archive into the conversation.  Jason cc'ed in Mark Graham, the Director for the Wayback Machine.  Mark got me access to a service and set up this little experiement to try it out. 
+            </p>
+        </section>
+        <section class="sectioning">
+            <contextual-heading role="heading" aria-level="3">But how to get there?</contextual-heading>
+            <p>
+                One of the challenges here is how to make something 'easy' when there are so many blogging systems and site hosting things.   Each of these uses different frameworks, langugages, package managers and so on.  I don't really have time to build out 100 different 'easy' solutions just to start a conversation.  In fact, I want this for myself, and currently my setup is very custom - it's all stuff I wrote that works for me but would be more or less useful to someone else.
+            </p>
+
+            <p>
+            But then I had a thought:  There's actually lots of good stuff in the Web we have for tackling this problem.
+            </p>
+
+            <section>Existing, higher level hooks</section>
+            <p>
+                HTTP is already a nice, high-level API that doesn't really care about how you built your site.  We already have lots of infrastructure too... As I said, almost everyone has an RSS feed and almost everyone has some kind of 'publish' process.  Maybe I could make it easy for huge swaths of people by just tapping into some big patterns and existing machinery.  What I really wanted, I thought, was just a flexible and easy to integrate service.  It doesn't have to block your build, it isn't absolutely critical, it's just "hey... I just published a thing."
+            </p>
+            <p>
+                So, I decided to try this..
+            </p>
+
+            <p>I created an HTTP service with a Cloudflare worker.  Cloudflare workers are interesting because they're deployed at the edge, they sleep when youre not using them and you can process up to 100k requests per-day for free.  Since they kind of spin up as needed, handling errors for this kind of thing is easy too - you aren't going to pollute the system somehow.  In fact, they seem kind of ideally suited for this kind of thing.</p>
+
+            <p>This seems very good actually because blogs, especially personal blogs, tend to churn out content "slowly".  That is, 100k requests per day seems like plenty for a few orders of magnitude more blogs than that. So... Cool.  </p>
+
+            <p>
+                Basically - you send an HTTP Post to this service with the content-type `application/json` and provide some stuff in the body.  But _what_ you provide can differ to make integration easy.  It allows, effectively 3 shapes that I've put together that should fit nicely into whatever system you have today and be easy to integrate.  If you're interested in trying it out or seeing what I came up with [check out the experiment](https://gist.github.com/bkardell/3c1c08d0dc64894a7069abcc8ba48fbc)</p>
+
+            <p>I think it should be pretty easy and flexible, but I don't know, wdyt?  Are you willing to try it?  Is this an interesting problem?  Should the Wayback maybe offer something like this itself?  How could it be better?
+            </p>
+        </section>
+    </section>
+</article></main>
+
+  
+    <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-88027178-1', 'auto');
+    ga('send', 'pageview');
+  </script>
+
+  <script>
+    Array.prototype.slice.call(document.querySelectorAll('.optional [data-src]')).forEach(function (optional) {
+      var prefs = window.localStorage.downloadsPrefs,
+          clickToSee;
+      if (prefs === 'true') {
+        activateOptional(optional);
+      } else {
+        clickToSee = document.createElement('div');
+        clickToSee.classList.add('clickToSee')
+        clickToSee.innerHTML = '<button>Click to see media</button>';
+        clickToSee.style.textAlign = 'center';
+        clickToSee.style.border = 'none';
+        optional.parentElement.insertBefore(clickToSee, optional.nextSibling);
+        clickToSee.firstElementChild.addEventListener('click', function () {
+          activateOptional(optional);
+        })
+      }
+
+    })
+  </script>
+
+</body></html>
