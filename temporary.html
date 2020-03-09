@@ -1,0 +1,194 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Focus silliness</title>
+<style>
+body { 
+  max-width: 45rem; 
+  padding: 1rem 25%;
+}
+
+button {
+  display: block;  
+  margin: 1rem auto;
+}
+
+#activeElement {
+  position: fixed;
+  right: 0;
+  top: 0;
+  z-index: 2;
+  background-color: yellow;
+  padding: 1rem;      
+}
+
+output {
+  border: 1px solid gray;
+  font-family: monospace;
+}
+
+[you]::before {
+  content: 'You:';
+  font-weight: bold;
+  margin-right: 1rem;
+}
+[me]::before {
+  content: 'Me:';
+  font-weight: bold;
+  margin-right: 1rem;
+}
+[you], [me] {
+  font-style: italic;
+  padding-left: 1rem;
+}
+</style>
+</head>
+<body translate="no">
+<h1>Silly focus stuff..</h1>
+<div id="activeElement"></div>
+<p>You'll need a device with a keyboard for this, and you'll need to read and follow the instructions carefully. Don't click or tab unless instructed. Mixed within are somewhat obscure details so even if it feels like review, read along...</p>
+<h2>Interactive elements</h2>
+<p id="topTarget" tabIndex="-1">
+This paragraph has an id of "top". Inside it, there is a link: <a id="topLink" href="#bottom">Jump to Bottom.</a>.
+</p>
+<p>
+Links are "<em>interactive elements</em>".
+</p>
+<p you>What's an interactive element, exactly?</p>
+<p me>I'm glad you asked. Let me explain...</p>
+<p>"Interactive elements" are things that users are expected to specifically interact with. When you see an interactive element, you expect that they can somehow interact with it. Those interactions are exposed in potentially many ways - for example, the keyboard. In the case of a link, you can know that it is 'activatable', in the case of a select box, you can navigate between options, select, and so on.</p>
+<p you>Ah, I see... I don't really use a keyboard, I use a mouse or a touch screen. Hmm... When I do that, I have visual context - how does that work with a <em>keyboard</em>? How do I move about?</p>
+<p me>Great queestion!</p>
+<h2>Sequential Focus</h2>
+<p>
+One way you can move about a document is by "sequential focus". The tab and shift-tab keys move your "focus" among <strong>interactive elements</strong> - that's what focus is all about. </p>
+<p> Non-interactive native elements, like paragraphs, headings, articles and so on, on the other hand are <em>not</em> focusable. Why? Because they are not interactive. This would be confusing and annoying.</p>
+<p><em>If you are creating content, you should follow similar guidance in idenitfying what is an interactive element and what is not. Consistency matters here because it's about how users can understand your interfaces</em>.</p>
+<p you>What about like... a link, inside another link?</p>
+<p me>No. Don't put interactive elements inside of other interactive elements. That's nonsense.</p>
+<p you>It seems to work?</p>
+<p me>No</p>
+<p you>What about a link inside a summary?</p>
+<p me>No</p>
+<p you>But it...</p>
+<p me>No</p>
+<h2>The focus indicator</h2>
+<p>The focus indicator helps users understand where the focus is, contextually: Which interactive element on the page your keyboard interactions are intended for is important, right? If you're about to type your password into a password field while projecting your screen during a meeting, you'd like to know where those characters are going to land.</p>
+<p>Things that aren't interactive shouldn't be focusable and shouldn't get a focus indicator.</p>
+<p>CSS has a <code>:focus</code> pseudo-class to allow you to style the focus indicator. </p>
+<p you>Coool... oh wait... this feels weird and I hate it.</p>
+<p me>Yeah, it's terrible, because browsers actually use heuristics about when to show and not show the indicator, unless you set this because it's feels weird if you are moving a mouse -- except sometimes, like on inputs that are 'texty' - those always get an indicator for reasons like the password case.</p>
+<p you>someone should fix that?</p>
+<p me>I agree! That's why we defined the new :focus-visible pseudo-class to match the heuristics!</p>
+<p you>Why not just fix how :focus works?</p>
+<p me>I wish! Unfortunately things would break!</p>
+<p you>I see... I guess I will use that then</p>
+<p me>... with a polyfill for now</p>
+<p you>But I thought this was important?</p>
+<p me>Me too!</p>
+<h2><code>.tabIndex</code></h2>
+<p>Generally speaking, we talk about focus in terms of "tabIndex".</p>
+<p me>I think this is a terrible idea in practice, and we shouldn't use these as if they are interchangable so commonly</p>
+<p you>Why?</p>
+<p me>Yeah, I'm about to tell you in great detail...</p>
+<p>In HTML, if you set an attribute called "tabIndex" to "0" this means it is in the sequential focus order. If you set it to "-1" is is programatically focusable.
+<p you>What if I set it to a positive number?</p>
+<p me>Don't.</p>
+<p you>But what if I did? It seems to work?</p>
+<p me>I will turn this car around.</p>
+<p you>Ok, but what if I don't set it at all?</p>
+<p me>Now <em>that's</em> a great question... It depends</p>
+<p>
+You might have noticed that we don't explicitly set that attribute or the property on native interactive elements, like the link above. We don't have to! You can focus any focusable element programatically by calling its <code>focus()</code> method.
+</p>
+<p you>What happens if I call focus on a paragraph or something</p>
+<p me>If the paragraph is unfocusable, it will fail to set focus</p>
+<p you>But a paragraph <em>isn't</em> focusable, because it isn't interactive, right? You don't interact with it with your keyboard, it's just text.</p>
+<p me>... we're getting there!</p>
+<p>
+You can also set focusability via the <code>.tabIndex</code> property in JavaScript with the same effect: If you set it to 0 it is focusable and in sequential order, if you set it to -1 it is programatically focusable but not in the sequential order. If you do either, explicitly, the property is <em>refective</em> - that is, updating one updates the other.</p>
+<p>
+Here's a fun and interesting thing...
+If we grab a reference to that first link element in the page and check what its <code>.tabIndex</code> <em>property</em> is, it will say <code>0</code>. Some script in the page just identified that link and reported its <code>.tabIndex</code> as -> <output id="linkOneTabTndex"></output>
+</p>
+<script>
+  linkOneTabTndex.innerHTML = topLink.tabIndex
+</script>
+<p>And the attribute doesn't get set. This is its default value.</p>
+<p you>Ah, interesting... so, what is it for a paragraph?
+<p me>-1</p>
+<p you>So... it is programatically focusable by default!</p>
+<p me>LOL, no! That's not what it means.</p>
+<p you>So it is not programatically focusable</p>
+<p me>I didn't say that!</p>
+<p you>I am confused!</p>
+<p me>Just wait!! What if it gets scrollbars?</p>
+<p you>???</p>
+<p me>If it gets scrollbars, moving your up and down keys scrolls the content inside, until it doesn't anymore. Is it interactive?</p>
+<p you>Uhmmm... Does it get focus?</p>
+<p me>Yes!</p>
+<p you>In sequential order?</p>
+<p me>Yes!</p>
+<p you>Does it's .tabIndex become 0?</p>
+<p me>LOL NO!</p>
+<p>But there's more fun to this too... If I put an &lt;a&gt; into the page, without an href attribute, it's <code>.tabIndex</code> property reports as 0, but it isn't focusable either, there are several elements like this, in fact. If something is display none, it will still report as 0, but it isn't <em>actually</em> focusbale either.</p>
+<h2>Finding interactive elements </h2>
+<p>Programatically, it's very non-trivial. As a user, it's pretty easy... Using your keyboard, you can navigate to <em>3</em> elements that are in the sequential focus order: The one at the top that says "Jump to bottom", one way way at the the bottom that says "return to not the whole story", and a button just below that also says "back to top". The two links are in page links, they won't navigate you away from the page.<p>
+<p>Go ahead and press tab/shift+tab a bunch of times to navigate the document and confirm this...Note the focus indicator letting you know where you are. Cool.
+</p>
+<p you>Hmm.. it doesn't work for me?</p>
+<p me>LOL. Your browser or OS may have different defaults that require you to set 'Full Keyboard Control' or something.</p>
+<p you>But I thought you said...</p>
+<p me>Yeah... I know. But, go ahead and find that and change it, I'll wait...</p>
+<p>When you're satisfied that there are exactly 3, activate 'return to not the whole story' link by pressing return while it has focus.</p>
+<h2 id="notTheWholeStory">Not the whole story...</h2>
+<p>
+Ok, so... What element has focus? (There should be a yellow rectangle at the top right of your screen to make this easy to identify) body.</p>
+<p you>Eh... wait... is body an interactive element?</p>
+<p me>No.</p>
+<p you>... But I thought you said...</p>
+<p me>shhh....</p>
+<p>Ok, now press tab again and focus will move... <em>not to the first interactive element in body, but to the next interactive element after this</em>. When you're satisfied, activate it again to return here.
+</p>
+<h3>fnsp</h3>
+<p>
+In page links work by finding the <em>first</em> element in the page with that id, scrolling it into view and setting it as the <em>focus navigation starting point</em>, or "fnsp" for short there. What's that? It's the thing 'beneath focus' that indicates where focus moves to next. It's not focus. What it doesn't do is set the actual focus to the <em>heading</em> that it points to.
+</p>
+<p you>Because it's not interactive, right?</p>
+<p me>Yes. Now let's talk about that button...</p>
+<h3>Buttons and fnsp;</h3>
+<p>Alright... So, what we want is for this button to kick off some work, and then, ultimately, put us back to the heading at the top.</p>
+<p>
+To do this, we'll have to make the heading programatically focusable, and call its focus() method.</p>
+<p you>But...</p>
+<p me>This is fine.</p>
+<p you>But...Why don't we just move the focus navigation starting point?</p>
+<p me>You can only programatically move the focus navigation starting point by moving focus.</p>
+<p you>But... You said this was important?</p>
+<p me>Nah, this is fine</p>
+<p you>Why?</p>
+<p me>It's complicated.</p>
+<h3>So... what are you saying?</h3>
+<p>Basically... How we "generally" talk about focus is kind of f*cked, and I think that a big part of that is because we lack terms and exposed primitives. It shouldnt' be quite so difficult to determine whether a thing could be focused, for real, in your browser, or not. It shouldn't be so obscure. We shouldn't have to give conflicting advice. It should be plasuble to say "move the focus navigation starting point" or "is this thing focusable" or "I'd like to make a custom element that works like other elements and doesn't sprout attributes".</p>
+<a id="returnLink" href="#notTheWholeStory">Return to not the whole story..</a>
+<button id="btn">Back to top</button>
+<script id="rendered-js">
+lastActiveElement = ''
+setInterval(()=> {
+  if (document.location.href.indexOf('#') == -1) { return; }
+  if (lastActiveElement === document.activeElement) return; 
+  activeElement.innerHTML = (document.activeElement.id || 'body') + " has focus"
+  
+}, 500)
+
+btn.onclick = () => {
+  requestAnimationFrame(() => {
+    topTarget.focus()
+  })
+}
+    </script>
+</body>
+</html>
