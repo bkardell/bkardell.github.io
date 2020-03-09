@@ -5,7 +5,7 @@
     <meta name="twitter:site" content="@briankardell">
     <meta name="twitter:creator" content="@briankardell">
     <meta name="twitter:title" content="Making Sure Content Lives On...">
-    <meta name="twitter:description" content="In which I describe a problem, a possible solution, and share a solution that you can use today...">
+    <meta name="twitter:description" content="In which I describe a problem, share a possible solution that you can use today, and, hopefully start a conversation...">
     
     <link rel="alternate" type="application/rss+xml" href="https://bkardell.com/blog/feed.rss" title="bkardell.com/blog rss feed">
     <title>Making Sure Content Lives On...</title> 
@@ -323,10 +323,10 @@ America (art for sale)</a></li>
         </ul>
     </nav>
 </header>
-    <main><div class="posted-on">Posted on null</div><article class="sectioning">
+    <main><div class="posted-on">Posted on 03/09/2020</div><article posted-on="03/09/2020" class="sectioning">
     <contextual-heading role="heading" aria-level="1">Making Sure Content Lives On...</contextual-heading>
     <p class="segue">
-        In which I describe a problem, a possible solution, and share a solution that you can use today... 
+        In which I describe a problem, share a possible solution that you can use today, and, hopefully start a conversation... 
     </p>
 
     <p class="note">(If you already know the problem, and you're looking for the solution, check out <a href="https://github.com/bkardell/auto-archive/blob/master/README.md">the documentation over on GitHub</a>)</p>
@@ -353,7 +353,7 @@ America (art for sale)</a></li>
 
             <p>A notification model is way, way simpler than somehow trying to monitor and guess - and we use this same basic pattern for several things in engineering.  It's quite success at keeping things efficient.</p>
 
-            <p>The trouble here is, I think, that it is currently manual.  It's unlikely that I'm going to do that every time I add a new blog post, even thought that's _exactly_ what I want to do.</p>
+            <p>The trouble here is, I think, that it is currently manual.  It's unlikely that I'm going to do that every time I add a new blog post, even thought that's <em>exactly</em> what I want to do.</p>
 
             <p>Maybe we can fix that?</p>
 
@@ -366,7 +366,7 @@ America (art for sale)</a></li>
             </p>
 
             <p>
-                Every now and then I have a thought like this that seems so clear to me that I figure "surely this must exist? Why do I not know about it?"  So, I asked around on social media.  Surprisingly, I could find no one who was aware of such a thing. What about publicly exposing an API? Do they?
+                Every now and then I have a thought like this that seems so clear to me that I figure "surely this must exist? Why do I not know about it?"  So, I asked around on social media.  Surprisingly, I could find no one who was aware of such a thing. What about publicly exposing an API? Do they? Maybe? Kinda?  Could we make it easier?
             </p>
 
             <p>
@@ -376,16 +376,17 @@ America (art for sale)</a></li>
         <section class="sectioning">
             <contextual-heading role="heading" aria-level="3">But how to get there?</contextual-heading>
             <p>
-                One of the challenges here is how to make something 'easy' when there are so many blogging systems and site hosting things.   Each of these uses different frameworks, langugages, package managers and so on.  I don't really have time to build out 100 different 'easy' solutions just to start a conversation.  In fact, I want this for myself, and currently my setup is very custom - it's all stuff I wrote that works for me but would be more or less useful to someone else.
+                One of the challenges here is how to make something 'easy' when there are so many blogging systems and site hosting things.   Submitting a URL automatically, even, is technically not hard - but fitting that into each system is a little more work.  Then, each of these uses different frameworks, languages, package managers and so on.  I don't really have time to build out 100 different 'easy' solutions just to start a conversation.  In fact, I want this for myself, and currently my setup is very custom - it's all stuff I wrote that works for me but would be more or less useful to someone else.
             </p>
 
             <p>
             But then I had a thought:  There's actually lots of good stuff in the Web we have for tackling this problem.
             </p>
 
-            <section>Existing, higher level hooks</section>
+            <section class="sectioning">
+                <contextual-heading role="heading" aria-level="4">Existing, higher level hooks</contextual-heading>
             <p>
-                HTTP is already a nice, high-level API that doesn't really care about how you built your site.  We already have lots of infrastructure too... As I said, almost everyone has an RSS feed and almost everyone has some kind of 'publish' process.  Maybe I could make it easy for huge swaths of people by just tapping into some big patterns and existing machinery.  What I really wanted, I thought, was just a flexible and easy to integrate service.  It doesn't have to block your build, it isn't absolutely critical, it's just "hey... I just published a thing."
+                HTTP is already a nice, high-level API that doesn't really care about how you built your site, but it might not be automatically obvious or convenient regarding how to plug into it.  We already have lots of infrastructure too... As I said, almost everyone has an RSS feed and almost everyone has some kind of 'publish' process.  Maybe I could make it easy for huge swaths of people by just tapping into some big patterns and existing machinery.  What I really wanted, I thought, was just a flexible and easy to integrate service.  It doesn't have to block your build, it isn't absolutely critical, it's just "hey... I just published a thing."  
             </p>
             <p>
                 So, I decided to try this..
@@ -396,8 +397,8 @@ America (art for sale)</a></li>
             <p>This seems very good actually because blogs, especially personal blogs, tend to churn out content "slowly".  That is, 100k requests per day seems like plenty for a few orders of magnitude more blogs than that. So... Cool.  </p>
 
             <p>
-                Basically - you send an HTTP Post to this service with the content-type `application/json` and provide some stuff in the body.  But _what_ you provide can differ to make integration easy.  It allows, effectively 3 shapes that I've put together that should fit nicely into whatever system you have today and be easy to integrate.  If you're interested in trying it out or seeing what I came up with [check out the experiment](https://gist.github.com/bkardell/3c1c08d0dc64894a7069abcc8ba48fbc)</p>
-
+                Basically - you send an HTTP Post to this service with the content-type `application/json` and provide some stuff in the body.  But <em>what</em> you provide can differ to make integration very easy regardless of what kind of setup you have.  It allows, effectively 3 'shapes' that I've put together that should fit nicely and easily into whatever system you already have today and be easy to integrate.  For my own blog, hosted on gh pages, it took ~5 minutes.  If you're interested in trying it out or seeing what I came up with  <a href="https://github.com/bkardell/auto-archive/blob/master/README.md">check out the experiment itself</a>, try it out.</p>
+            </section>
             <p>I think it should be pretty easy and flexible, but I don't know, wdyt?  Are you willing to try it?  Is this an interesting problem?  Should the Wayback maybe offer something like this itself?  How could it be better?
             </p>
         </section>
