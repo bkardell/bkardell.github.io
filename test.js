@@ -1,1 +1,1 @@
-console.log('loaded simple js')
+console.log('loaded simple js');
