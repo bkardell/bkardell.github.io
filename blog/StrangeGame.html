@@ -1,0 +1,700 @@
+<html lang="en" resource-type="blogpost"><head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@briankardell">
+    <meta name="twitter:creator" content="@briankardell">
+    <meta name="twitter:title" content="Interactive Elements: A Strange Game">
+    <meta name="twitter:description" content="Native interactive HTML elements: History, challenges and War Games.">
+    <meta name="twitter:image" content="https://bkardell.com/media/10-wargames-falken.png">
+    <link rel="alternate" type="application/rss+xml" href="https://bkardell.com/blog/feed.rss" title="bkardell.com/blog rss feed">
+    <title>Interactive Elements: A Strange Game</title> 
+    <style>.captioned-image {
+    background-color: #eaeaea;
+    display: block;
+    overflow: hidden;
+    padding: 1rem;
+    text-align: center;
+    font-style: italic;
+}
+
+.captioned-image.p-attached {
+    width: 40%;
+    display: inline-block;
+    margin: 0 1rem 2rem 1rem;
+}
+
+section > .captioned-image.p-attached {
+    margin-top: 1.5rem; /* correct for heading size*/
+}
+
+ pre { overflow-x: auto }
+
+.captioned-image.p-attached.p-attached-left {
+    float: left;
+}
+
+.captioned-image.p-attached.p-attached-right {
+    float: right;
+}
+
+.captioned-image.p-attached + * + * {
+    clear: both;
+    margin-top: 2rem;
+}
+
+
+.captioned-image img, .captioned-image video {
+    display: block;
+    max-width: 100%;
+    margin: 0 auto 1em auto;
+}
+.source {
+    font-style: italic;
+}
+body {
+    display: flex;
+    font: 1em "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-weight: 400;
+    line-height: 1.625;
+}
+h1 { margin: 0.5rem; }
+code-format {
+    border-left: 0.5rem solid rgba(123,115,209,0.35);
+    display: block;
+    padding: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+contextual-heading {
+    display: block;
+    margin-top: 2rem;
+}
+
+[aria-level="1"] {
+    color: #43686b;
+    font-size: 1.45rem;
+}
+[aria-level="2"] {
+    color: #856363;
+    font-size: 1.35rem;
+}
+[aria-level="3"] {
+    color: #856363;
+    font-size: 1.25rem;
+}
+[aria-level="4"] {
+    color: #856363;
+    font-size: 1.2rem;
+}
+[aria-level="5"], [aria-level="6"] {
+    color: #667496;
+    font-size: 1.1rem;
+    font-weight: bolder;
+}
+.posted-on {
+    font-style: italic;
+    font-size: 0.8rem;
+    text-align: right;
+    margin-bottom: 1rem;
+}
+
+ul, li {
+    margin: 0.5rem;
+    text-align: left;
+}
+header {
+    padding-top: 1rem;
+    padding-right: 2rem;
+    background-color: #fbf5e9;
+}
+.tagline {
+    font-style: italic;
+    text-align: center;
+}
+
+[tag-esc] {
+    color: maroon;
+    font-family: Courier, "Lucida Console", monospace;
+}
+
+[tag-esc]::before {
+    content: '<';
+}
+
+[tag-esc]::after {
+    content: '>';
+}
+
+main {
+    min-width: 50%;
+    width: 80%;
+    padding: 1rem;
+}
+header .title {
+    background-color: rgba(123,115,209,0.35);
+    padding: 0.3rem;
+    padding-left: 0.25rem;
+    font-weight: bolder;
+    font-size: 0.9rem;
+    border-left: 1rem solid #999298;
+}
+
+header .profile {
+    width: 50%;
+    margin: 1rem 25%;
+}
+
+header .title + nav {
+    font-size: 0.9rem;
+}
+
+header .blurb {
+    font-size: 0.75rem;
+    text-align: center;
+}
+header .name {
+    text-align: center;
+    font-size: xx-large;
+}
+.segue {
+    font-style: italic;
+}
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  border: 0;
+}
+[for="aboutMeToggle"] {
+    display: none;
+}
+/* this needs rethinking, it wants a selector like 'not flow content' */
+article>*:not(contextual-heading,a), section>*:not(contextual-heading,a) {
+    margin-left: 0.45rem;
+}
+
+blockquote {
+  font-family: serif;
+  background: #f9f9f9;
+  border-left: 10px solid #ccc;
+  margin: 1.5em 10px;
+  padding: 0.5em 10px;
+}
+blockquote:before {
+  color: #ccc;
+  content: open-quote;
+  font-size: 2em;
+  line-height: 0.1em;
+  margin-right: 0.25em;
+  vertical-align: -0.4em;
+}
+
+blockquote:after {
+  color: #ccc;
+  content: close-quote;
+  font-size: 2em;
+  line-height: 0.1em;
+  margin-left: 0.25em;
+  vertical-align: -0.4em;
+}
+
+
+@media (max-width: 800px){
+    body {
+        flex-direction: column;
+    }
+    header {
+        border-bottom: 1px solid #afafff;
+    }
+
+    .captioned-image.p-attached {
+        width: 100%;
+        margin: 1rem 0;
+    }
+
+    .captioned-image.p-attached.p-attached-left,
+    .captioned-image.p-attached.p-attached-right {
+        float: none;
+    }
+
+    [for="aboutMeToggle"] {
+        background-color: #675e5e;
+        color: white;
+        padding: 0.25rem;
+        padding-left: 0.5rem;
+        display: block;
+        border-left: 1rem solid black;
+    }
+    #aboutMeToggle:focus + [for="aboutMeToggle"]{
+        outline: 4px solid #c6ddf2;
+    }
+
+    #aboutMeToggle:checked ~ header {
+        display: none;
+    }
+
+    header li { display: inline; margin-left: -0.5em; }
+    header .blurb li::after { content: '; '; }
+    header  nav li {
+        display: inline-block;
+        margin-left: 0.35rem;
+        margin-right: 0.35rem;
+    }
+    header .title {
+        width: 100%;
+    }
+    main li .source { display: block; }
+
+}</style>
+    <style>
+      .captioned-image { font-size: 0.9rem; }
+      .thanksTo { font-style: italic; font-size: 0.8rem; }
+    </style>
+    <script>
+      var activateOptional = function (media) {
+        var source = media.getAttribute('data-src'),
+            temp,
+            container = media.parentElement;
+
+          if (media.nextSibling && media.nextSibling.matches) {
+            if (media.nextSibling.matches('.clickToSee')) {
+              media.parentElement.removeChild(media.nextSibling);
+            }
+          }
+
+          if (media.tagName === 'VIDEO') {
+            temp = document.createElement('video')
+            temp.setAttribute('autoplay','')
+            temp.setAttribute('controls','')
+            temp.setAttribute('loop','')
+            temp.innerHTML = '<source src="' + source + '.webm" type="video/webm">'
+                    + '<source src="' + source + '.mp4" type="video/mp4">';
+            media.parentElement.replaceChild(temp, media);
+            setTimeout(function () {
+              temp.play()
+            }, 0);
+          } else {
+            media.src = media.getAttribute('data-src');
+          }
+
+          container.classList.add('active');
+      }
+    </script>
+  </head>
+  <body>
+    <input id="aboutMeToggle" class="sr-only" type="checkbox" checked="">
+<label for="aboutMeToggle">Toggle author information</label>
+<header>
+    <div class="name">
+        Brian Kardell
+    </div>
+    <img class="profile" src="/profile.jpg" alt="">
+    <div class="tagline"><a href="/">Betterifying the Web</a></div>
+    <div class="blurb">
+        <ul>
+            <li>Developer Advocate at Igalia</li>
+            <li>Original Co-author/Co-signer of The Extensible Web Manifesto</li>
+            <li>Co-Founder/Chair, W3C Extensible Web CG</li>
+            <li>Member, W3C (The JS Foundation)</li>
+            <li>Co-author of HitchJS</li>
+            <li>Blogger</li>
+            <li>Art, Science &amp; History Lover</li>
+            <li>Standards Geek</li>
+        </ul>
+    </div>
+    <div class="title">Follow Me On...</div>
+    <nav>
+        <ul>
+            <li><a rel="me" href="https://briankardell.wordpress.com">Wordpress</a></li>
+            <li><a rel="me" href="https://medium.com/@briankardell">Medium</a></li>
+            <li><a rel="me" href="https://twitter.com/briankardell">Twitter</a></li>
+            <li><a rel="me" href="https://github.com/bkardell/">Github</a></li>
+            <li><a rel="me" href="https://codepen.io/bkardell">Codepen</a></li>
+            <li><a rel="me" href="https://www.linkedin.com/in/brian-kardell-08a4264">LinkedIn</a></li>
+            <li><a rel="me" href="https://www.instagram.com/kardellbrian">Instagram (for
+art)</a></li>
+            <li><a rel="me" href="http://fineartamerica.com/profiles/brian-kardell?">Fine Art
+America (art for sale)</a></li>
+        </ul>
+    </nav>
+</header>
+    <main><div class="posted-on">Posted on </div><article posted-on="" class="sectioning">
+    <style>
+        section { clear: both; }
+        .captioned-image {
+          background-color: transparent;
+        }
+        .wargames {
+          font-family: monospace;
+          background: black;
+          color: lime;
+          padding: 0.5rem;
+        }
+  </style>
+  <style>
+		/*body:not(.preferences-set) > :not(main) { display: none; }
+		body:not(.preferences-set) {
+			background-color: #444;
+			color: white;
+		}
+		*/
+		body:not(.prefers-images) .captioned-image:not(.active) > * { border: 1px dashed gray }
+
+		#downloadsPrefs {
+			font-size: 0.8rem;
+			background-color: #fcfcfc;
+			border: 1px dotted gray;
+			margin-bottom: 1rem;
+		}
+		#downloadsPrefs p {
+			margin: 2rem 10%;
+		}/*
+		#downloadsPrefs ~ * {
+			display: none;
+		}*/
+	</style>
+	<div id="downloadsPrefs">
+		<p style="font-size: 1.5rem">Note from the author...</p>
+		<p>My posts frequently (like this one) have a 'theme' and tend to use a number of images for visual flourish. Personally, I like it that way, I find it more engaging and I prefer for people to read it that way.  However, for users on a metered or slow connection, downloading unnecessary images is, well, unnecessary, potentially costly and kind of rude.  Just to be polite to my users, I offer the ability for you to opt out of 'optional' images if the total size of viewing the page would exceed a budget I have currently defined as 200k...
+		</p>
+		<p><label>Show me all the images when I read <input type="checkbox" id="download-all-images-pref" checked=""></label></p>
+		<p><label>Don't ask me again on this device <input type="checkbox" id="download-all-images-pref-save"></label></p>
+		<p><button id="setDownloadPrefs">Dismiss</button></p>
+	</div>
+	<script>
+		'use strict';
+		(function () {
+			var prefsButton = document.querySelector('#setDownloadPrefs'),
+				prefs = window.localStorage.downloadsPrefs;
+			function downloadImages () {
+				var lazy = Array.prototype.slice.call(document.querySelectorAll('.captioned-image>[data-src]'));
+
+				lazy.forEach(activateOptional)
+			}
+			function removeDownloadPrefsOverlay() {
+				document.body.classList.add('preferences-set')
+				document.querySelector('#downloadsPrefs').remove()
+			}
+
+			prefsButton.addEventListener('click', function() {
+				var all = document.querySelector('#download-all-images-pref'),
+					save = document.querySelector('#download-all-images-pref-save'),
+					prefs = window.localStorage.downloadsPrefs
+
+				if (all.checked) {
+					downloadImages();
+				}
+				if (save.checked) {
+					window.localStorage.downloadsPrefs = all.checked;
+				}
+				removeDownloadPrefsOverlay()
+			});
+
+			if (typeof prefs !== 'undefined') {
+				console.log(prefs)
+				if (prefs === 'true') {
+					document.body.classList.add('prefers-images')
+					window.localStorage.downloadsPrefs = prefs
+					window.addEventListener('DOMContentLoaded', downloadImages)
+				}
+				removeDownloadPrefsOverlay()
+			}
+		}())
+	</script>
+    <contextual-heading role="heading" aria-level="1">Interactive Elements: A Strange Game</contextual-heading>
+    <p class="segue">Native interactive HTML elements: History, challenges and War Games.</p>
+ 
+    <p>
+      It's can seem especially frustrating to a lot of developers that we don't have more elements "out of the box" as part of HTML.
+      In this piece I'll talk a little about why, how to see this for what it is, how we're trying to move forward - and also present an interesting experiment for your consideration and feedback that may help inform some of these efforts.  If you want, you can <a href="#chess">skip right to the chase</a>, but I think this background is pretty helpful in understanding it, so please, come back and read it...</p>
+
+    <p>Interactive elements on the web are... tricky.</p>
+
+    <p>
+      On the one hand, there's a lot to like about them. In theory, they can
+      bring a simple declarative form with all kinds of goodness in terms of platform integration, portability and centralized work on accessibility and UX.
+    </p>
+ 
+    <p>
+      Unfortunately, the system tells us...
+    </p>
+
+    <pre class="wargames">...primary goal has not yet been achieved
+&gt; What is the primary goal?
+To win the game.</pre>
+
+    <p>More accurately, I suppose: The goal is simply to be used.  However, the reality is that far too many people gravitate toward custom implementations.</p>
+
+    <section class="sectioning">
+      <contextual-heading role="heading" aria-level="2">Why has it been hard to get developers to use native elements?</contextual-heading>
+      <p>So many reasons.</p>
+      <p>
+        To start with, unfortunately many of the benefits of native interactive elemenets aren't exactly self-evident: It takes  time and education to be able to appreciate a lot of it. Buttons seem pretty basic, for example, but you can watch many of my friends talk about less immediately obvious of them for 45 minutes.  On the other hand, a whole lot easily observable, surface-level aspects of many are notoriously kind of frustrating.  
+      </p>
+
+    <p>But there's also the fact that we've been tackling, primarily, one <em>kind</em> of problem: Form controls.  Let's look at where we stand today</p>
+
+    <section class="sectioning">
+      <contextual-heading role="heading" aria-level="3"><pre>&lt;input type="WOPR"&gt;</pre></contextual-heading>
+
+    <p>
+      HTML's had a ton of investment in form-related interactive controls. It's hard to appreciate just how much goes into getting us what we have today, in real time and dollars.  However, in all this time there are an astonishing few <em>elements</em> because many of the controls are created based on
+      <code>&lt;input type-"..."&gt;</code>.
+    </p>
+
+    <p>
+      You've probably heard someone suggest that
+      this is great because in cases where it isn't supported, simply
+      providing the text field is fine. However, this is incomplete.</p>
+
+    <p>
+      In fact, this particular approach to that problem is actually quite problematic for a number of reasons and it's not the view held by implementers that this is a path we are eager to repeat.
+    </p>
+
+
+    <section class="sectioning">
+      <contextual-heading role="heading" aria-level="4"><pre class="wargames">&gt; People sometimes make... mistakes.</pre></contextual-heading>
+
+      <p>If you're interested in some history and developer-based reasons
+      why this is frustrating, 
+      <a href="https://meowni.ca/posts/a-story-about-input/">Monica Dinculescu's <code>&lt;input&gt;</code> I ♡ you, but you're
+        bringing me down</a>
+      is a great read. Many of these problems stem from us accepting the illusion
+      presented that a date picker is a kind of text input. 
+    </p>
+
+    <figure class="captioned-image optional">
+      <img data-src="/media/10-wargames-falken.png" alt="Faulken pointing to NORAD screens">
+      <figcaption>Stephen Falken: Uh, uh, General, what you see on these screens up here is a fantasy; a computer-enhanced hallucination. Those blips are not real missiles. They're phantoms.</figcaption>
+    </figure>
+
+    <p>
+      Realistically, a date picker <em>isn't</em> a text input.  Perhaps at an HTTP level, or even a database level, it's just a value - but controls are about how to <em>populate</em> values, and that's quite a different thing.  A date picker is a
+      completely different complex control with potentially lots of complex interactions: Different things
+      it needs to communicate, lots of sub-iteractions to manage, and so on.
+    </p>
+
+    <p>All of this is why you might hear people suggest "LSP" or <a href="https://en.wikipedia.org/wiki/Composition_over_inheritance">"Favor composition over inheritance"</a> as a better alternative.</p>
+
+    <section class="sectioning">
+      <contextual-heading role="heading" aria-level="5">Acceptable Losses?</contextual-heading>
+      <p>At the end of the day, it seems that developers are left with some pretty unappealing choices.  Something is going to be sacrificed.</p>
+
+      <p>
+        Color pickers provide a great example of how this plays out in practice: Will developers building the sorts of tools that use a color picker allow a simple input field as the fallback until <em>every browser</em> ships something acceptable?  Seems like not much of a choice really.
+      </p>
+
+      <p>
+        Sadly the story for 'polyfilling' an element also still isn't great: It's really just 'replacing it with something else entirely'.
+        So, at the end of the day, you've got to go and find something that is a good quality stand in anyway.  Finally, since literally <em>everything your code relies on understanding them DOM</em>, and that stand in will have entirely <em>different</em> DOM, you now have two entirely different interactive trees to worry about. Yikes.
+      </p>
+
+      <p>
+        Further, this isn't necessarily short lived, historically.  The reality is that lacking universal support can be the case for a long time: Native
+        support for
+        <code>&lt;input type="color"&gt;</code> was added to the last major
+        browser... <em>Checks notes...</em> <strong>last year</strong>.
+      </p>
+
+
+      <p>
+        Even after all of that... Guess what? It still isn't <em>acceptable</em>
+        for a lot of people. It isn't styleable. It has entirely different UI and features everywhere. While this can occasionally be useful on some kinds of devices, it makes things like helpful documentation hard.
+      </p>
+
+      <p>
+        And many of them (even the native ones) weren't super keyboard
+        accessible either.
+      </p>
+
+
+      <p>
+        Alternatively, a custom solution can solve all of these problems <em>now</em>... So it shouldn't actually be surprising that developers often
+        choose a custom solution: There are no 'acceptable losses' for developers here - all of the choices are somehow bad.
+      </p>
+    </section>
+
+    <section class="sectioning">
+      <contextual-heading role="heading" aria-level="5">Learn, dammit.</contextual-heading>
+
+      <p>
+        You'll be happy to know that there <em>are</em> efforts to both learn and
+        improve existing native interactive elements. If you haven't seen Greg
+        Whitworth and Nicole Sullivan's talk
+        <a href="https://www.youtube.com/watch?v=ZFvPLrKZywA">HTML Isn't Done</a> from
+        Chrome Dev Summit last year, I would highly recommend it (below).
+      </p>
+
+    <figure class="captioned-image optional">
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/ZFvPLrKZywA" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>
+    </figure>
+
+    <p>
+      There's also been a heck of a lot of work to make it possible for authors to
+      define their own interactive elements that work just like the native ones. The
+      idea is to help empower developers to help explore the space and try to help
+      find the really sweet spots that strike all of the right balances.
+    </p>
+
+    <p>
+      It's worth pointing out <em>why</em> this is useful - it's not just an
+      academic exersize that is trying to push responsibility to developers. It's
+      important because the truth is: <em>We don't actually know how</em>. We
+      need to be able to throw lots of things at the wall and see what sticks: We
+      learn a lot through failure.
+    </p>
+
+    <p>
+      The trouble is, currently (historically) failure is <em>really</em> slow and
+      <em>really</em> expensive -- and even our most educated 'guesses' at
+      improvement are still just that: Guesses. We haven't proved we have this
+      figured out yet.
+    </p>
+
+    <p>But let's flip the game around and talk about <em>non-form related interactive controls</em> - what does <em>that</em> game look like?
+
+    </p><section class="sectioning">
+      <contextual-heading id="different" role="heading" aria-level="6"><pre class="wargames">Shall we play a game?</pre></contextual-heading>
+
+    <p>
+      This is where things get really interesting to me - because a lot of components people really want <em>aren't</em> about forms at all.  And interestingly, realistically, we've come up with really only 1 strictly generic non-form-related UI control in 30 years: <code>&lt;details&gt;</code>.
+      We've had that supported universally since... <em>checks notes...</em>
+      <strong>Jan 14, <em>2020</em></strong>. Again, it has most of the same kinds of general problems. In the most
+      recent HTTP Almanac data, it was the 102nd most used HTML element... Can you
+      even <em>name</em> 101 other HTML elements?
+    </p>
+
+    <p>So... This is terrible.</p>
+
+    <p>
+      Our continued problems in this space are part of the reason there is hesitancy
+      to take up entirely <em>new</em> things... Like, tabs.
+    </p>
+
+    <p>
+      Back in 2015, I managed to get a number of people in Web standards (especially
+      a11y) interested in working on a possible new element proposal for HTML which
+      would have which would have given not only the tabset but some other things as
+      well. Determined not let this be doomed by the same sorts of stylability
+      problems, we set out to define things that would become shadow parts and
+      themes and custom properties and so on.
+    </p>
+
+    <p>
+      But, in many ways, it wasn't great. Recently, this has got me to thinking:
+      What if this isn't even the right game we're playing? What if for
+      <em>some</em> elements at least - non-form associated ones - the right lesson take away is that this is a unnecessary exercise in futility?
+    </p>
+
+    <p>
+      Maybe we need a <em>different</em> kind of experiment: One that just says
+      "Strange game. The only winning move is not to play".
+    </p>
+    </section>
+
+    <section class="sectioning">
+      <contextual-heading id="chess" role="heading" aria-level="6"><pre class="wargames">How about a nice game of chess?</pre></contextual-heading>
+    <p>
+      So, here's the basic idea: What if we just created a resilient pattern
+      focused on mainly <em>function</em> and <em>meaning</em> -- and
+      <em>hardly at all on the UI aspect</em>. What if instead of inventing complex
+      new ways to strike the balance of preventing authors from styling too much, we
+      mostly just acknowledged the fact that they want to, and... let them.
+    </p>
+
+    <p>
+      What if, like with <code>&lt;video&gt;</code> you could kind of just take
+      control of the UI, but... maybe without throwing it away entirely.
+    </p>
+
+    <p>
+      I spoke with Greg Whitworth about this, who has been investigating how to improve the existing controls on the Web(see also <a href="http://gwhitworth.com/blog/2019/10/can-we-please-style-select/)">Can we please style select?</a>.  
+    </p>
+
+    <p>
+      In fact, he completely agreed with the overall premise. He went described how...</p>
+
+    <blockquote>
+      The core mission of Open UI, a new W3C community group, is to document the anatamoies, behaviors and states of components and controls from across frameworks. By doing this, we can ensure that the key pieces that folks don't want to re-create, they don't have to. We've got a few different ideas that are beginning to take shape but changes like this are like peeling an onion. If it's a new control/component then it would be a bit more straight forward but the most painful controls we've found have been on the web since the 90s. So we'll be gathering telemetry and ensuring that any modifications we ultimately propose are web compatible.
+    </blockquote>
+
+    <p>
+      In our conversation we discussed how things like tabs seem like an interesting target where this kind of thing
+      might just work really well. The particular shape of the tabs problem lends
+      itself, I think, to easily trying something completely different and entirely without past baggage.</p>
+
+    <p> 
+      So, in that light 
+      <a href="http://panel-set.glitch.me/">here's just such an experiment</a>
+      which we think has some nice qualities:
+    </p>
+
+    <ul>
+      <li>
+        It is a declarative <em>decorator</em> over otherwise good but
+        non-interactive semantics. That means there's no miss of differing
+        interaction issues here caused by complex inheritance.
+      </li>
+      <li>
+        It doesn't change your light DOM, and it <em>barely</em> uses Shadow DOM.
+        There's no "two trees" problem, and there's not secrets or new
+        challenges. Go ahead, use CSS and JavaScript.
+      </li>
+      <li>
+        It adds the function, keyboard handling, accessibility stuff and a simple
+        container for you. That's it, really.
+      </li>
+      <li>
+        If you really <em>want</em> to opt in to some simple 'default styles' that
+        might be passible if you don't care too much and like the 'minor tweaks
+        only' approach, it has an attribute that enables 'native' look and
+        feel which might be enough for some people.
+      </li>
+    </ul>
+
+    <p>So... that's it. It could for sure use more work, but WDYT? Would you try it out?  Let us know your thoughts?  Such experiments will be useful in informing work and directions for efforts like Open-UI and possible future standards.</p>
+
+    <p>Will it help?  To be honest, I don't know, but maybe the right way to learn involves trying something really different, and I'm open to anything...</p>
+     <figure class="captioned-image optional">
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/7FogV4Qv8p8" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>
+    </figure>
+</section></section></section></section></section></article></main>
+
+  
+    <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-88027178-1', 'auto');
+    ga('send', 'pageview');
+  </script>
+
+  <script>
+    Array.prototype.slice.call(document.querySelectorAll('.optional [data-src]')).forEach(function (optional) {
+      var prefs = window.localStorage.downloadsPrefs,
+          clickToSee;
+      if (prefs === 'true') {
+        activateOptional(optional);
+      } else {
+        clickToSee = document.createElement('div');
+        clickToSee.classList.add('clickToSee')
+        clickToSee.innerHTML = '<button>Click to see media</button>';
+        clickToSee.style.textAlign = 'center';
+        clickToSee.style.border = 'none';
+        optional.parentElement.insertBefore(clickToSee, optional.nextSibling);
+        clickToSee.firstElementChild.addEventListener('click', function () {
+          activateOptional(optional);
+        })
+      }
+
+    })
+  </script>
+
+</body></html>
