@@ -548,21 +548,20 @@ To win the game.</pre>
     </figure>
  
 
-    <p>But let's flip the game around and talk about <em>non-form related interactive controls</em> - what does <em>that</em> game look like?</p>
-
     <section class="sectioning">
-      <contextual-heading id="different" role="heading" aria-level="5"><pre class="wargames">Shall we play a game?</pre></contextual-heading>
+      <contextual-heading id="different" role="heading" aria-level="5"><pre class="wargames">Shall we play a (different) game?</pre></contextual-heading>
 
     <p>
-      This is where things get really interesting to me - because a lot of components people really want <em>aren't</em> about forms at all.  And interestingly, realistically, we've come up with really only 1 strictly generic non-form-related UI control in 30 years: <code>&lt;details&gt;</code>.
-      We've had that supported universally since... <em>checks notes...</em>
-      <strong>Jan 14, <em>2020</em></strong>. Again, it has most of the same kinds of general problems. In the most
+      Ok, but hold on.... Let's talk about <em>non-form related interactive controls</em> now.  Realistically, we've come up with really only 1 strictly generic non-form-related UI control in 30 years: <code>&lt;details&gt;</code>.  That "other" one in my intial list.  Wow... And we've had that done for like 10 years, right?  Let's see, it's been supported universally since... <em>checks notes...</em>
+      <strong>Jan 14, <em>2020</em></strong>. Waaaaat?</p>
+
+    <p>But... Again, it has most of the same kinds of general problems. In the most
       recent HTTP Almanac data, it was the 102nd most used HTML element... Can you
-      even <em>name</em> 101 other HTML elements?
+      even <em>name</em> 101 other HTML elements?  It has styling problems.  It's misunderstood.  It was hard to polyfill well without just creating other problems.
     </p>
 
     <p>So... This is terrible.</p>
-
+ 
     <p>
       Our continued problems in this space are part of the reason there is hesitancy
       to take up entirely <em>new</em> things... Like, tabs.
