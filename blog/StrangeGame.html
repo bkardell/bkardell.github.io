@@ -411,7 +411,7 @@ America (art for sale)</a></li>
       It can seem especially frustrating to a lot of developers that we don't have more elements "out of the box" as part of HTML. I mean: <em>Where are the tabs? How do we not have tabs by now?</em> It seems like almost every week this comes up in some fashion or other. In this piece I'll talk a little about why, how to see this for what it is, how we're trying to move forward - and also present an interesting experiment for your consideration and feedback that may help inform some of these efforts.  If you want, you can <a href="#chess">skip right to the 'new idea/experiment'</a>, but I think this background is pretty helpful in understanding it, so please, come back and read it...</p>
 
     <p>
-      Let's have a look at <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element" target="_blank">HTML so far</a>:  ~10 of the elements are the 'boilerplate stuff': html, body head and metadata stuff - link, meta, base,  style, script, title. ~30 are "weak sematics about text" that aren't interactive and don't have signficant (any) special meaning necessarily and are primarily just things with default CSS stylesheet rules. About 15 are "weak semantics about text, but meaningfully weak" - stuff like lists.  ~15 are sectioning or landmarks.  11 more are about tables - a 2 dimensional relationship of text.  14 are about forms. 2 are about "web components" using that term broadly as they aren't actually bound to custom elements - Templates and slots. And then two are... well... something else.  We'll come back to that. And ~30 are deprecated.
+      Let's have a look at <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element" target="_blank">HTML so far</a>:  ~10 of the elements are the 'boilerplate stuff': html, body head and metadata stuff - link, meta, base,  style, script, title. There's a few elements for linking and embedding other content and multimedia and templates and slots. And then the rest:  ~30 are "weak sematics about text" that aren't interactive and don't have signficant (any) special meaning necessarily and are primarily just things with default CSS stylesheet rules. About 15 are "weak semantics about text, but meaningfully weak" - stuff like lists.  ~15 are sectioning or landmarks.  11 more are about tables - a 2 dimensional relationship of text.  14 are about forms. And then two are... well... something else.  We'll come back to that. And ~30 are deprecated.
     </p>
 
     <p>The route to all of these elements was a little different - and they have different costs associated with them, and offer different value.  One thing that's interesting to note is that the majority of them are what Dave Rupert refers to as "Spicy Divs".  That is, there's not much to them - they aren't complex or interactive, and they don't bring a ton of real world value. That's not to say they are value-<em>less</em>, but ultimately we spend a lot of time and bandwidth in standards debating what often amount to silly things because of it.  &lt;main&gt; is a kind of a good example.  Nothing wrong with it as an element, it's great, in fact - it just has a long and complex backstory that ultimately cost a lot relative to its real world value and proven use.  Tons of time defining and debating address, which isn't really that meaningful to browsers, and then lots of evangelism telling people they're using it wrong - only in the end to eventually have to admit that it ultimately means the thing people used it as.</p>
@@ -433,13 +433,13 @@ America (art for sale)</a></li>
 &gt; What is the primary goal?
 To win the game.</pre>
 
-    <p>More simply: Despite a lot of work, and huge investments, people still gravitate toward custom implmentations. That's not good for anybody.</p>
+    <p>More simply: Despite a lot of work, and huge investments, people still gravitate toward custom implementations. That's not good for anybody.</p>
 
     <p><em>Why are native form controls are hard?</em></p>
     
 
-    <p>Well... So many reasons, but to start with, they one that they could really do without is that they got off to a tricky start by design.</p>
-      
+    <p>Well... So many reasons, but to start with, the one that they could really do without is that they got off to a tricky start by design.</p>
+      the on
 
     <section class="sectioning">
       <contextual-heading role="heading" aria-level="3"><pre>&lt;input type="WOPR"&gt;</pre></contextual-heading>
@@ -527,7 +527,7 @@ To win the game.</pre>
     <p>
       There's also been a heck of a lot of work to make it possible for authors to
       define their own interactive elements that work just like the native ones. The
-      idea is to help empower developers to help explore the space and try to help
+      idea is to empower developers to explore the space and try to help
       find the really sweet spots that strike all of the right balances.
     </p>
 
@@ -571,7 +571,7 @@ To win the game.</pre>
       Back in 2015, I managed to get a number of people in Web standards (especially
       a11y) interested in working on a possible new element proposal for HTML which
       would have given not only the tabset but some other things as
-      well. Determined not to doomed by the same sorts of stylability
+      well. Determined not to be doomed by the same sorts of stylability
       problems, we set out to define things that would become shadow parts and
       themes and custom properties and so on.
     </p>
@@ -604,14 +604,14 @@ To win the game.</pre>
     </p>
 
     <p>
-      I spoke with Greg Whitworth about this, who has been investigating how to improve the existing controls on the Web(see also <a href="http://gwhitworth.com/blog/2019/10/can-we-please-style-select/)">Can we please style select?</a>.  
+      I spoke with Greg Whitworth about this, who has been investigating how to improve the existing controls on the Web(see also <a href="https://gwhitworth.com/blog/2019/10/can-we-please-style-select/">Can we please style select?</a>.  
     </p>
 
     <p>
-      In fact, he completely agreed with the overall premise. He went described how...</p>
+      In fact, he completely agreed with the overall premise and went on to described how...</p>
 
     <blockquote>
-      The core mission of Open UI, a new W3C community group, is to document the anatamoies, behaviors and states of components and controls from across frameworks. By doing this, we can ensure that the key pieces that folks don't want to re-create, they don't have to. We've got a few different ideas that are beginning to take shape but changes like this are like peeling an onion. If it's a new control/component then it would be a bit more straight forward but the most painful controls we've found have been on the web since the 90s. So we'll be gathering telemetry and ensuring that any modifications we ultimately propose are web compatible.
+      The core mission of Open UI, a new W3C community group, is to document the anatamoies, behaviors and states of components and controls from across frameworks. By doing this, we can ensure that the key pieces that folks don't want to re-create, they don't have to. We've got a few different ideas that are beginning to take shape but changes like this are like peeling an onion. <em>If it's a new control/component then it would be a bit more straight forward but the most painful controls we've found have been on the web since the 90s.</em> So we'll be gathering telemetry and ensuring that any modifications we ultimately propose are web compatible.
     </blockquote>
 
     <p>
@@ -621,9 +621,8 @@ To win the game.</pre>
 
     <p> 
       So, in that light 
-      <a href="http://panel-set.glitch.me/">here's just such an experiment</a>
-      which we think has some nice qualities:
-    </p>
+      <a href="http://panel-set.glitch.me/receipe.html">here's a demo/link to just such an experiment</a> which gives us... <em>tabs!</em> - and which we think has some nice qualities:
+    </p> 
 
     <ul>
       <li>
@@ -637,14 +636,10 @@ To win the game.</pre>
         challenges. Go ahead, use CSS and JavaScript.
       </li>
       <li>
-        It adds the function, keyboard handling, accessibility stuff and a simple
-        container for you. That's it, really.
+        It adds the functionality: roving focus, keyboard handling, accessibility stuff and a simple container for you. That's it, really.
       </li>
       <li>
-        If you really <em>want</em> to opt in to some simple 'default styles' that
-        might be passible if you don't care too much and like the 'minor tweaks
-        only' approach, it has an attribute that enables 'native' look and
-        feel which might be enough for some people.
+        If you really <em>want</em> to opt in to some simple 'default styles' and like the 'minor tweaksonly' approach, it has an attribute that enables 'native' look and feel, with a bit less flexibility, but which might be enough for some people.  It just starts with the assumption that that's not the case.
       </li> 
     </ul>
 
