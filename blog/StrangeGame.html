@@ -336,7 +336,7 @@ America (art for sale)</a></li>
           padding: 0.5rem;
         }
   </style>
-  <style>
+    <style>
 		/*body:not(.preferences-set) > :not(main) { display: none; }
 		body:not(.preferences-set) {
 			background-color: #444;
@@ -411,10 +411,10 @@ America (art for sale)</a></li>
       It can seem especially frustrating to a lot of developers that we don't have more elements "out of the box" as part of HTML. I mean: <em>Where are the tabs? How do we not have tabs by now?</em> It seems like almost every week this comes up in some fashion or other. In this piece I'll talk a little about why, how to see this for what it is, how we're trying to move forward - and also present an interesting experiment for your consideration and feedback that may help inform some of these efforts.  If you want, you can <a href="#chess">skip right to the 'new idea/experiment'</a>, but I think this background is pretty helpful in understanding it, so please, come back and read it...</p>
 
     <p>
-      Let's have a look at <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element" target="_blank">HTML so far</a>:  ~10 of the elements are the 'boilerplate stuff': &lt;html&gt;, &lt;body&gt;, &lt;head&gt; and metadata stuff - &lt;link&gt;, &lt;meta&gt;, &lt;base&gt;, &lt;style&gt;, &lt;script&gt;, &lt;title&gt;. There's a few elements for linking and embedding other content and multimedia, and a few with special powers like &lt;template&gt; and &lt;slot&lt;. And then the rest:  ~30 are "weak semantics about text" that aren't interactive and don't have signficant (any) special meaning necessarily and are primarily just things with default CSS stylesheet rules. About 15 are "weak semantics about text, but meaningfully weak" - stuff like lists.  ~15 are sectioning or landmarks.  11 more are about tables - a 2 dimensional relationship of text.  14 are about forms. And then two are... well... something else.  We'll come back to that. And ~30 are deprecated.
+      Let's have a look at <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element" target="_blank">HTML so far</a>:  ~10 of the elements are the 'boilerplate stuff': &lt;html&gt;, &lt;body&gt;, &lt;head&gt; and metadata stuff - &lt;link&gt;, &lt;meta&gt;, &lt;base&gt;, &lt;style&gt;, &lt;script&gt;, &lt;title&gt;. There's a few elements for linking and embedding other content and multimedia, and a few with special powers like &lt;template&gt; and &lt;slot&gt;. And then the rest:  ~30 are "weak semantics about text" that aren't interactive and don't have signficant (any) special meaning necessarily and are primarily just things with default CSS stylesheet rules. About 15 are "weak semantics about text, but meaningfully weak" - stuff like lists.  ~15 are sectioning or landmarks.  11 more are about tables - a 2 dimensional relationship of text.  14 are about forms. And then two are... well... something else.  We'll come back to that. And ~30 are deprecated.
     </p>
 
-    <p>The route to all of these elements was a little different - and they have different costs associated with them, and offer different value.  One thing that's interesting to note is that the majority of them are what Dave Rupert refers to as "Spicy Divs".  That is, there's not much to them - they aren't complex or interactive, and they don't bring a ton of real world value. That's not to say they are value-<em>less</em>, but ultimately we spend a lot of time and bandwidth in standards debating what often amount to silly things because of it.  &lt;main&gt; is a kind of a good example.  Nothing wrong with it as an element, it's great, in fact - it just has a long and complex backstory that ultimately cost a lot relative to its real world value and proven use.  Tons of time defining and debating &lt;address&gt;, which isn't really that meaningful to browsers, and then lots of evangelism telling people they're using it wrong - only in the end to eventually have to admit that it ultimately means the thing people used it as.</p>
+    <p>The route to all of these elements was a little different - and they have different costs associated with them, and offer different value.  One thing that's interesting to note is that the majority of them are what Dave Rupert refers to as "Spicy Divs".  That is, there's not much to them - they aren't complex or interactive, and they don't bring a ton of real world value. That's not to say they are <em>without value</em>, but ultimately we spend a lot of time and bandwidth in standards debating what often amount to silly things because of it.  &lt;main&gt; is a kind of a good example.  Nothing wrong with it as an element, it's great, in fact - it just has a long and complex backstory that ultimately cost a lot relative to its real world value and proven use.  Tons of time defining and debating &lt;address&gt;, which isn't really that meaningful to browsers, and then lots of evangelism telling people they're using it wrong - only in the end to eventually have to admit that it ultimately means the thing people used it as.</p>
  
     <p>The second thing to notice is that there there are <em>very few</em> interactive elements.  Further, most of the ones we usually talk about are about <em>forms</em>.  And that lead us to this: Interactive, form-related elements on the web are... tricky.</p>
 
@@ -439,7 +439,7 @@ To win the game.</pre>
     
 
     <p>Well... So many reasons, but to start with, the one that they could really do without is that they got off to a tricky start by design.</p>
-      the on
+      
 
     <section class="sectioning">
       <contextual-heading role="heading" aria-level="3"><pre>&lt;input type="WOPR"&gt;</pre></contextual-heading>
