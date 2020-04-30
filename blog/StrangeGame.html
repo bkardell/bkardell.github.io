@@ -452,10 +452,10 @@ To win the game.</pre>
 
     <pre class="wargames">&gt; People sometimes make... mistakes.</pre>
 
-    <p>Did you ever notice how the JavaScript API surface of input works differently based on the type?  If the type is number and you type gibberish that looks remotely 'potentially numbery' like '12312e314124', then <code>.value</code> will be '' (empty string).  Or, the checkbox type has a checked property, but that means that input type=number has that property too... What does it do? Anything!? Or, have you ever noticed how <code>.selectionStart</code> and <code>.selectionEnd</code> actually <em>throw</em> if you tried to use them on a numeric input type?!  If not, go have a watch of <a href="https://vimeo.com/144980655">Monica Dinculescu's <code>&lt;input&gt;</code> I ♡ you, but you're
+    <p>Did you ever notice how the JavaScript API surface of input works differently based on the type?  If the type is number and you type gibberish that looks remotely 'potentially numbery' like '12312e314124', then <code>.value</code> will be '' (empty string).  Or, the checkbox type has a checked property, but that means that input type=number has that property too... What does it do? Anything!? Or, have you ever noticed how <code>.selectionStart</code> and <code>.selectionEnd</code> actually would initially  <em>throw</em> if you tried to use them on a numeric input type?! (<a href="https://github.com/whatwg/html/pull/1006">fixed by Simon Pieters</a>).  If not, go have a watch of <a href="https://vimeo.com/144980655">Monica Dinculescu's <code>&lt;input&gt;</code> I ♡ you, but you're
         bringing me down</a> -- a 45 minute talk about <em>just this</em>.</p>
 
-    <p> 
+    <p>  
       Ultimately, many of these problems stem from us accepting the illusion presented that a date picker <em>is a</em> kind of text input.
     </p>
 
