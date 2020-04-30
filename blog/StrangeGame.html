@@ -323,7 +323,7 @@ America (art for sale)</a></li>
         </ul>
     </nav>
 </header>
-    <main><div class="posted-on">Posted on </div><article posted-on="" class="sectioning">
+    <main><div class="posted-on">Posted on 04/29/2020</div><article posted-on="04/29/2020" class="sectioning">
     <style>
         section { clear: both; }
         .captioned-image {
@@ -411,15 +411,15 @@ America (art for sale)</a></li>
       It can seem especially frustrating to a lot of developers that we don't have more elements "out of the box" as part of HTML. I mean: <em>Where are the tabs? How do we not have tabs by now?</em> It seems like almost every week this comes up in some fashion or other. In this piece I'll talk a little about why, how to see this for what it is, how we're trying to move forward - and also present an interesting experiment for your consideration and feedback that may help inform some of these efforts.  If you want, you can <a href="#chess">skip right to the 'new idea/experiment'</a>, but I think this background is pretty helpful in understanding it, so please, come back and read it...</p>
 
     <p>
-      Let's have a look at <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element" target="_blank">HTML so far</a>:  ~10 of the elements are the 'boilerplate stuff': html, body head and metadata stuff - link, meta, base,  style, script, title. There's a few elements for linking and embedding other content and multimedia and templates and slots. And then the rest:  ~30 are "weak sematics about text" that aren't interactive and don't have signficant (any) special meaning necessarily and are primarily just things with default CSS stylesheet rules. About 15 are "weak semantics about text, but meaningfully weak" - stuff like lists.  ~15 are sectioning or landmarks.  11 more are about tables - a 2 dimensional relationship of text.  14 are about forms. And then two are... well... something else.  We'll come back to that. And ~30 are deprecated.
+      Let's have a look at <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element" target="_blank">HTML so far</a>:  ~10 of the elements are the 'boilerplate stuff': &lt;html&gt;, &lt;body&gt;, &lt;head&gt; and metadata stuff - &lt;link&gt;, &lt;meta&gt;, &lt;base&gt;, &lt;style&gt;, &lt;script&gt;, &lt;title&gt;. There's a few elements for linking and embedding other content and multimedia, and a few with special powers like &lt;template&gt; and &lt;slot&lt;. And then the rest:  ~30 are "weak semantics about text" that aren't interactive and don't have signficant (any) special meaning necessarily and are primarily just things with default CSS stylesheet rules. About 15 are "weak semantics about text, but meaningfully weak" - stuff like lists.  ~15 are sectioning or landmarks.  11 more are about tables - a 2 dimensional relationship of text.  14 are about forms. And then two are... well... something else.  We'll come back to that. And ~30 are deprecated.
     </p>
 
-    <p>The route to all of these elements was a little different - and they have different costs associated with them, and offer different value.  One thing that's interesting to note is that the majority of them are what Dave Rupert refers to as "Spicy Divs".  That is, there's not much to them - they aren't complex or interactive, and they don't bring a ton of real world value. That's not to say they are value-<em>less</em>, but ultimately we spend a lot of time and bandwidth in standards debating what often amount to silly things because of it.  &lt;main&gt; is a kind of a good example.  Nothing wrong with it as an element, it's great, in fact - it just has a long and complex backstory that ultimately cost a lot relative to its real world value and proven use.  Tons of time defining and debating address, which isn't really that meaningful to browsers, and then lots of evangelism telling people they're using it wrong - only in the end to eventually have to admit that it ultimately means the thing people used it as.</p>
+    <p>The route to all of these elements was a little different - and they have different costs associated with them, and offer different value.  One thing that's interesting to note is that the majority of them are what Dave Rupert refers to as "Spicy Divs".  That is, there's not much to them - they aren't complex or interactive, and they don't bring a ton of real world value. That's not to say they are value-<em>less</em>, but ultimately we spend a lot of time and bandwidth in standards debating what often amount to silly things because of it.  &lt;main&gt; is a kind of a good example.  Nothing wrong with it as an element, it's great, in fact - it just has a long and complex backstory that ultimately cost a lot relative to its real world value and proven use.  Tons of time defining and debating &lt;address&gt;, which isn't really that meaningful to browsers, and then lots of evangelism telling people they're using it wrong - only in the end to eventually have to admit that it ultimately means the thing people used it as.</p>
 
-    <p>The second thing to notice is that there there are <em>very few</em> interactive elements.  Further, most of the ones we usually talk about are about <em>forms</em>.  And that lead us to this: Interactive, form-related elements on the web are... tricky.</p>
+    <p>The second thing to notice is that there there are <em>very few interactive elements.  Further, most of the ones we usually talk about are about <em>forms</em>.  And that lead us to this: Interactive, form-related elements on the web are... tricky.</em></p><em>
 
     <section class="sectioning">
-      <contextual-heading role="heading" aria-level="2">The form-related game</contextual-heading>
+      <contextual-heading role="heading" aria-level="1">The form-related game</contextual-heading>
     <p>
       On the one hand, there's a lot to like about native, interactive form controls. In theory, they can
       bring a simple declarative form with all kinds of goodness in terms of platform integration, portability and centralized work on accessibility and UX.
@@ -435,14 +435,14 @@ To win the game.</pre>
 
     <p>More simply: Despite a lot of work, and huge investments, people still gravitate toward custom implementations. That's not good for anybody.</p>
 
-    <p><em>Why are native form controls are hard?</em></p>
+    <p><em>Why are native form controls hard?</em></p>
     
 
     <p>Well... So many reasons, but to start with, the one that they could really do without is that they got off to a tricky start by design.</p>
       the on
 
     <section class="sectioning">
-      <contextual-heading role="heading" aria-level="3"><pre>&lt;input type="WOPR"&gt;</pre></contextual-heading>
+      <contextual-heading role="heading" aria-level="2"><pre>&lt;input type="WOPR"&gt;</pre></contextual-heading>
 
     <p>
       <em>Most</em> of the form-related controls are created based on
@@ -473,7 +473,7 @@ To win the game.</pre>
     <p>All of this is why you might hear people suggest "LSP" or <a href="https://en.wikipedia.org/wiki/Composition_over_inheritance">"Favor composition over inheritance"</a> as a better alternative.</p>
 
     <section class="sectioning">
-      <contextual-heading role="heading" aria-level="4">Acceptable Losses?</contextual-heading>
+      <contextual-heading role="heading" aria-level="3">Acceptable Losses?</contextual-heading>
       <p>This is exacerbated by the fact that at the end of the day, developers are left with some pretty unappealing choices: Something is going to be sacrificed.</p>
 
       <p>
@@ -482,7 +482,7 @@ To win the game.</pre>
 
       <p>
         Sadly the story for 'polyfilling' an element also still isn't great: It's really just 'replacing it with something else entirely'.
-        So, at the end of the day, you've got to go and find something that is a good quality stand in anyway.  Finally, since literally <em>everything your code relies on understanding them DOM</em>, and that stand in will have entirely <em>different</em> DOM, you now have two entirely different interactive trees to worry about. Yikes.
+        So, at the end of the day, you've got to go and find something that is a good quality stand in anyway.  Finally, since literally <em>everything your code relies on understanding the DOM</em>, and that stand in will have entirely <em>different</em> DOM, you now have two entirely different interactive trees to worry about. Yikes.
       </p>
 
       <p>
@@ -509,7 +509,7 @@ To win the game.</pre>
     </section>
 
     <section class="sectioning">
-      <contextual-heading role="heading" aria-level="4">Learn, dammit.</contextual-heading>
+      <contextual-heading role="heading" aria-level="3">Learn, dammit.</contextual-heading>
       <p>
         Now, let's talk about how we get out of this mess. 
       </p>
@@ -549,7 +549,7 @@ To win the game.</pre>
  
 
     <section class="sectioning">
-      <contextual-heading id="different" role="heading" aria-level="5"><pre class="wargames">Shall we play a (different) game?</pre></contextual-heading>
+      <contextual-heading id="different" role="heading" aria-level="4"><pre class="wargames">Shall we play a (different) game?</pre></contextual-heading>
 
     <p>
       Ok, but hold on.... Let's talk about <em>non-form related interactive controls</em> now.  Realistically, we've come up with really only 1 strictly generic non-form-related UI control in 30 years: <code>&lt;details&gt;</code>.  That "other" one in my intial list.  Wow... And we've had that done for like 10 years, right?  Let's see, it's been supported universally since... <em>checks notes...</em>
@@ -579,7 +579,7 @@ To win the game.</pre>
     <p>
       But, in many ways, it wasn't great. Recently, this has got me to thinking:
       What if this isn't even the right game we're playing? What if for
-      <em>some</em> elements at least - non-form associated ones - the right lesson take away is that this is an unnecessary exercise in futility?
+      <em>some</em> elements at least - non-form associated ones - the right lesson to take away is that this is an unnecessary exercise in futility?
     </p>
 
     <p>
@@ -589,7 +589,7 @@ To win the game.</pre>
     </section>
 
     <section class="sectioning">
-      <contextual-heading id="chess" role="heading" aria-level="5"><pre class="wargames">How about a nice game of chess?</pre></contextual-heading>
+      <contextual-heading id="chess" role="heading" aria-level="4"><pre class="wargames">How about a nice game of chess?</pre></contextual-heading>
     <p>
       So, here's the basic idea: What if we just created a resilient pattern
       focused on mainly <em>function</em> and <em>meaning</em> -- and
@@ -604,14 +604,14 @@ To win the game.</pre>
     </p>
 
     <p>
-      I spoke with Greg Whitworth about this, who has been investigating how to improve the existing controls on the Web(see also <a href="https://gwhitworth.com/blog/2019/10/can-we-please-style-select/">Can we please style select?</a>.  
+      I spoke with Greg Whitworth about this, who has been investigating how to improve the existing controls on the Web (see also <a href="https://gwhitworth.com/blog/2019/10/can-we-please-style-select/">Can we please style select?</a>.  
     </p>
 
     <p>
       In fact, he completely agreed with the overall premise and went on to described how...</p>
 
     <blockquote>
-      The core mission of Open UI, a new W3C community group, is to document the anatamoies, behaviors and states of components and controls from across frameworks. By doing this, we can ensure that the key pieces that folks don't want to re-create, they don't have to. We've got a few different ideas that are beginning to take shape but changes like this are like peeling an onion. <em>If it's a new control/component then it would be a bit more straight forward but the most painful controls we've found have been on the web since the 90s.</em> So we'll be gathering telemetry and ensuring that any modifications we ultimately propose are web compatible.
+      The core mission of Open UI, a new W3C community group, is to document the anatomies, behaviors and states of components and controls from across frameworks. By doing this, we can ensure that the key pieces that folks don't want to re-create, they don't have to. We've got a few different ideas that are beginning to take shape but changes like this are like peeling an onion. <em>If it's a new control/component then it would be a bit more straight forward but the most painful controls we've found have been on the web since the 90s.</em> So we'll be gathering telemetry and ensuring that any modifications we ultimately propose are web compatible.
     </blockquote>
 
     <p>
@@ -621,7 +621,7 @@ To win the game.</pre>
 
     <p> 
       So, in that light 
-      <a href="http://panel-set.glitch.me/receipe.html">here's a demo/link to just such an experiment</a> which gives us... <em>tabs!</em> - and which we think has some nice qualities:
+      <a href="https://panel-set.glitch.me/reciepe.html">here's a demo/link to just such an experiment</a> which gives us... <em>tabs!</em> - and which we think has some nice qualities:
     </p> 
 
     <ul>
@@ -652,7 +652,7 @@ To win the game.</pre>
     </figure>
 </section>
 
-</section></section></section></article></main>
+</section></section></section></em></article></main>
 
   
     <script>

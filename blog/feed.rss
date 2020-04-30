@@ -4,7 +4,7 @@
         <title>bkardell.com rss feed</title>
         <link>http://bkardell.com/</link>
         <description>Just the bkardell.com rss feed</description>
-        <lastBuildDate>Mon, 09 Mar 2020 20:45:57 GMT</lastBuildDate>
+        <lastBuildDate>Wed, 29 Apr 2020 18:20:51 GMT</lastBuildDate>
         <docs>http://blogs.law.harvard.edu/tech/rss</docs>
         <generator>awesome mix</generator>
         <image>
@@ -14,6 +14,273 @@
         </image>
         <copyright>All rights reserved 2018, Brian Kardell</copyright>
         <atom:link href="https://bardell.com/blog/feed.atom" rel="self" type="application/rss+xml"/>
+        <item>
+            <title><![CDATA[Interactive Elements: A Strange Game]]></title>
+            <link>https://bkardell.com/blog/StrangeGame.html</link>
+            <guid>https://bkardell.com/blog/StrangeGame.html</guid>
+            <pubDate>Wed, 29 Apr 2020 04:00:00 GMT</pubDate>
+            <description><![CDATA[
+      It can seem especially frustrating to a lot of developers that we don't have more elements "out of the box" as part of HTML. I mean: Where are the tabs? How do we not have tabs by now? It seems like almost every week this comes up in some fashion or other. In this piece I'll talk a little about why, how to see this for what it is, how we're trying to move forward - and also present an interesting experiment for your consideration and feedback that may help inform some of these efforts.  If you want, you can skip right to the 'new idea/experiment', but I think this background is pretty helpful in understanding it, so please, come back and read it...]]></description>
+            <content:encoded><![CDATA[
+    
+  
+	<div id="downloadsPrefs">
+		<p style="font-size: 1.5rem">Note from the author...</p>
+		<p>My posts frequently (like this one) have a 'theme' and tend to use a number of images for visual flourish. Personally, I like it that way, I find it more engaging and I prefer for people to read it that way.  However, for users on a metered or slow connection, downloading unnecessary images is, well, unnecessary, potentially costly and kind of rude.  Just to be polite to my users, I offer the ability for you to opt out of 'optional' images if the total size of viewing the page would exceed a budget I have currently defined as 200k...
+		</p>
+		<p><label>Show me all the images when I read <input type="checkbox" id="download-all-images-pref" checked=""></label></p>
+		<p><label>Don't ask me again on this device <input type="checkbox" id="download-all-images-pref-save"></label></p>
+		<p><button id="setDownloadPrefs">Dismiss</button></p>
+	</div>
+	
+    <contextual-heading role="heading" aria-level="1" style="font-size: 2rem;">Interactive Elements: A Strange Game</contextual-heading>
+    <p class="segue">
+      It can seem especially frustrating to a lot of developers that we don't have more elements "out of the box" as part of HTML. I mean: <em>Where are the tabs? How do we not have tabs by now?</em> It seems like almost every week this comes up in some fashion or other. In this piece I'll talk a little about why, how to see this for what it is, how we're trying to move forward - and also present an interesting experiment for your consideration and feedback that may help inform some of these efforts.  If you want, you can <a href="#chess">skip right to the 'new idea/experiment'</a>, but I think this background is pretty helpful in understanding it, so please, come back and read it...</p>
+
+    <p>
+      Let's have a look at <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element" target="_blank">HTML so far</a>:  ~10 of the elements are the 'boilerplate stuff': &lt;html&gt;, &lt;body&gt;, &lt;head&gt; and metadata stuff - &lt;link&gt;, &lt;meta&gt;, &lt;base&gt;, &lt;style&gt;, &lt;script&gt;, &lt;title&gt;. There's a few elements for linking and embedding other content and multimedia, and a few with special powers like &lt;template&gt; and &lt;slot&lt;. And then the rest:  ~30 are "weak semantics about text" that aren't interactive and don't have signficant (any) special meaning necessarily and are primarily just things with default CSS stylesheet rules. About 15 are "weak semantics about text, but meaningfully weak" - stuff like lists.  ~15 are sectioning or landmarks.  11 more are about tables - a 2 dimensional relationship of text.  14 are about forms. And then two are... well... something else.  We'll come back to that. And ~30 are deprecated.
+    </p>
+
+    <p>The route to all of these elements was a little different - and they have different costs associated with them, and offer different value.  One thing that's interesting to note is that the majority of them are what Dave Rupert refers to as "Spicy Divs".  That is, there's not much to them - they aren't complex or interactive, and they don't bring a ton of real world value. That's not to say they are value-<em>less</em>, but ultimately we spend a lot of time and bandwidth in standards debating what often amount to silly things because of it.  &lt;main&gt; is a kind of a good example.  Nothing wrong with it as an element, it's great, in fact - it just has a long and complex backstory that ultimately cost a lot relative to its real world value and proven use.  Tons of time defining and debating &lt;address&gt;, which isn't really that meaningful to browsers, and then lots of evangelism telling people they're using it wrong - only in the end to eventually have to admit that it ultimately means the thing people used it as.</p>
+
+    <p>The second thing to notice is that there there are <em>very few interactive elements.  Further, most of the ones we usually talk about are about <em>forms</em>.  And that lead us to this: Interactive, form-related elements on the web are... tricky.</em></p><em>
+
+    <section class="sectioning">
+      <contextual-heading role="heading" aria-level="1" style="font-size: 2rem;">The form-related game</contextual-heading>
+    <p>
+      On the one hand, there's a lot to like about native, interactive form controls. In theory, they can
+      bring a simple declarative form with all kinds of goodness in terms of platform integration, portability and centralized work on accessibility and UX.
+    </p>
+ 
+    <p>
+      Unfortunately...
+    </p>
+
+    <pre class="wargames">...primary goal has not yet been achieved
+&gt; What is the primary goal?
+To win the game.</pre>
+
+    <p>More simply: Despite a lot of work, and huge investments, people still gravitate toward custom implementations. That's not good for anybody.</p>
+
+    <p><em>Why are native form controls hard?</em></p>
+    
+
+    <p>Well... So many reasons, but to start with, the one that they could really do without is that they got off to a tricky start by design.</p>
+      the on
+
+    <section class="sectioning">
+      <contextual-heading role="heading" aria-level="2" style="font-size: 2.25rem;"><pre>&lt;input type="WOPR"&gt;</pre></contextual-heading>
+
+    <p>
+      <em>Most</em> of the form-related controls are created based on
+      <code>&lt;input type-"..."&gt;</code>. You've probably heard someone suggest that
+      this is great because in cases where it isn't supported, simply
+      providing the text field is fine. However, this is incomplete and we've been paying the price for it for a long time.</p>
+
+    <pre class="wargames">&gt; People sometimes make... mistakes.</pre>
+
+    <p>Did you ever notice how the JavaScript API surface of input works differently based on the type?  If the type is number and you type gibberish that looks remotely 'potentially numbery' like '12312e314124', then <code>.value</code> will be '' (empty string).  Or, the checkbox type has a checked property, but that means that input type=number has that property too... What does it do? Anything!? Or, have you ever noticed how <code>.selectionStart</code> and <code>.selectionEnd</code> actually <em>throw</em> if you tried to use them on a numeric input type?!  If not, go have a watch of <a href="https://vimeo.com/144980655">Monica Dinculescu's <code>&lt;input&gt;</code> I ♡ you, but you're
+        bringing me down</a> -- a 45 minute talk about <em>just this</em>.</p>
+
+    <p> 
+      Ultimately, many of these problems stem from us accepting the illusion presented that a date picker <em>is a</em> kind of text input.
+    </p>
+
+    <figure class="captioned-image optional">
+      <img data-src="/media/10-wargames-falken.png" alt="Faulken pointing to NORAD screens">
+      <figcaption>Stephen Falken: Uh, uh, General, what you see on these screens up here is a fantasy; a computer-enhanced hallucination. Those blips are not real missiles. They're phantoms.</figcaption>
+    </figure>
+
+    <p>
+      Realistically, a date picker <em>isn't</em> a text input.  Perhaps at an HTTP level, or even a database level, it's just a value - but controls are about how to <em>populate</em> values, and that's quite a different thing. It's not an <em>is-a</em> relationship:  A date picker is a
+      completely different complex control with potentially lots of complex interactions: Different things
+      it needs to communicate, lots of sub-iteractions to manage, and so on.
+    </p>
+
+    <p>All of this is why you might hear people suggest "LSP" or <a href="https://en.wikipedia.org/wiki/Composition_over_inheritance">"Favor composition over inheritance"</a> as a better alternative.</p>
+
+    <section class="sectioning">
+      <contextual-heading role="heading" aria-level="3" style="font-size: 2.5rem;">Acceptable Losses?</contextual-heading>
+      <p>This is exacerbated by the fact that at the end of the day, developers are left with some pretty unappealing choices: Something is going to be sacrificed.</p>
+
+      <p>
+        Color pickers provide a great example of how this plays out in practice: Will developers building the sorts of tools that use a color picker allow a simple input field as the fallback until <em>every browser</em> ships something acceptable?  Seems like not much of a choice really.
+      </p>
+
+      <p>
+        Sadly the story for 'polyfilling' an element also still isn't great: It's really just 'replacing it with something else entirely'.
+        So, at the end of the day, you've got to go and find something that is a good quality stand in anyway.  Finally, since literally <em>everything your code relies on understanding the DOM</em>, and that stand in will have entirely <em>different</em> DOM, you now have two entirely different interactive trees to worry about. Yikes.
+      </p>
+
+      <p>
+        Further, this situation isn't necessarily short lived, historically.  The reality is that lacking universal support can be the case for a long time: Native
+        support for
+        <code>&lt;input type="color"&gt;</code> was added to the last major
+        browser... <em>Checks notes...</em> <strong>last year</strong>.
+      </p>
+
+      <p>
+        Even after all of that... Guess what? It still isn't <em>acceptable</em>
+        for a lot of people because it isn't styleable -- and in fact, it has entirely different UI and features everywhere. While this <em>can</em> occasionally be very useful on some kinds of devices, it makes things like providing helpful documentation hard.  Worse, even the native ones weren't super keyboard accessible either.
+      </p>
+
+      <p>
+        So... That's a lot of barriers and disincentives.
+
+      </p>
+
+      <p>
+        Conversely, a custom solution can solve all of these problems <em>now</em>... So it shouldn't actually be surprising that developers often
+        choose a custom solution: There are no 'acceptable losses' for developers here - all of the choices are somehow bad.
+      </p>
+    </section>
+
+    <section class="sectioning">
+      <contextual-heading role="heading" aria-level="3" style="font-size: 2.5rem;">Learn, dammit.</contextual-heading>
+      <p>
+        Now, let's talk about how we get out of this mess. 
+      </p>
+      <p>
+        You'll be happy to know that there <em>are</em> efforts to both learn and
+        improve existing native interactive elements. If you haven't seen Greg
+        Whitworth and Nicole Sullivan's talk
+        <a href="https://www.youtube.com/watch?v=ZFvPLrKZywA">HTML Isn't Done</a> from
+        Chrome Dev Summit last year, I would highly recommend it (below).
+      </p>
+    <figure class="captioned-image optional">
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/ZFvPLrKZywA" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>
+    </figure>
+
+    <p>
+      There's also been a heck of a lot of work to make it possible for authors to
+      define their own interactive elements that work just like the native ones. The
+      idea is to empower developers to explore the space and try to help
+      find the really sweet spots that strike all of the right balances.
+    </p>
+
+    <p>
+      It's worth pointing out <em>why</em> this is useful - it's not just an
+      academic exercise that is trying to push responsibility to developers. It's
+      important because the truth is: <em>We don't actually know how</em>. We
+      need to be able to throw lots of things at the wall and see what sticks.
+      The trouble is, currently (historically) failure is <em>really</em> slow and
+      <em>really</em> expensive -- and even our most educated 'guesses' at
+      improvement are still just that: Guesses. We haven't proved we have this
+      figured out yet.
+        </p>
+
+    <figure class="captioned-image optional">
+      <img data-src="/media/wopr.jpeg" alt="WOPR">
+      <figcaption>We need something like the WOPR for playing out possible answers without doing harm: failing, and learning - that's what the custom elements stuff is all about.</figcaption>
+    </figure>
+ 
+
+    <section class="sectioning">
+      <contextual-heading id="different" role="heading" aria-level="4" style="font-size: 2.75rem;"><pre class="wargames">Shall we play a (different) game?</pre></contextual-heading>
+
+    <p>
+      Ok, but hold on.... Let's talk about <em>non-form related interactive controls</em> now.  Realistically, we've come up with really only 1 strictly generic non-form-related UI control in 30 years: <code>&lt;details&gt;</code>.  That "other" one in my intial list.  Wow... And we've had that done for like 10 years, right?  Let's see, it's been supported universally since... <em>checks notes...</em>
+      <strong>Jan 14, <em>2020</em></strong>. Waaaaat?</p>
+
+    <p>But... Again, it has most of the same kinds of general problems. In the most
+      recent HTTP Almanac data, it was the 102nd most used HTML element... Can you
+      even <em>name</em> 101 other HTML elements?  It has styling problems.  It's misunderstood.  It was hard to polyfill well without just creating other problems.
+    </p>
+
+    <p>So... This is terrible.</p>
+ 
+    <p>
+      Our continued problems in this space are part of the reason there is hesitancy
+      to take up entirely <em>new</em> things... Like, tabs.
+    </p>
+
+    <p>
+      Back in 2015, I managed to get a number of people in Web standards (especially
+      a11y) interested in working on a possible new element proposal for HTML which
+      would have given not only the tabset but some other things as
+      well. Determined not to be doomed by the same sorts of stylability
+      problems, we set out to define things that would become shadow parts and
+      themes and custom properties and so on.
+    </p>
+
+    <p>
+      But, in many ways, it wasn't great. Recently, this has got me to thinking:
+      What if this isn't even the right game we're playing? What if for
+      <em>some</em> elements at least - non-form associated ones - the right lesson to take away is that this is an unnecessary exercise in futility?
+    </p>
+
+    <p>
+      Maybe we need a <em>different</em> kind of experiment: One that just says
+      "Strange game. The only winning move is not to play".
+    </p>
+    </section>
+
+    <section class="sectioning">
+      <contextual-heading id="chess" role="heading" aria-level="4" style="font-size: 2.75rem;"><pre class="wargames">How about a nice game of chess?</pre></contextual-heading>
+    <p>
+      So, here's the basic idea: What if we just created a resilient pattern
+      focused on mainly <em>function</em> and <em>meaning</em> -- and
+      <em>hardly at all on the UI aspect</em>. What if instead of inventing complex
+      new ways to strike the balance of preventing authors from styling too much, we
+      mostly just acknowledged the fact that they want to, and... let them.
+    </p>
+
+    <p>
+      What if, like with <code>&lt;video&gt;</code> you could kind of just take
+      control of the UI, but... maybe without throwing it away entirely.
+    </p>
+
+    <p>
+      I spoke with Greg Whitworth about this, who has been investigating how to improve the existing controls on the Web (see also <a href="https://gwhitworth.com/blog/2019/10/can-we-please-style-select/">Can we please style select?</a>.  
+    </p>
+
+    <p>
+      In fact, he completely agreed with the overall premise and went on to described how...</p>
+
+    <blockquote>
+      The core mission of Open UI, a new W3C community group, is to document the anatomies, behaviors and states of components and controls from across frameworks. By doing this, we can ensure that the key pieces that folks don't want to re-create, they don't have to. We've got a few different ideas that are beginning to take shape but changes like this are like peeling an onion. <em>If it's a new control/component then it would be a bit more straight forward but the most painful controls we've found have been on the web since the 90s.</em> So we'll be gathering telemetry and ensuring that any modifications we ultimately propose are web compatible.
+    </blockquote>
+
+    <p>
+      In our conversation we discussed how things like tabs seem like an interesting target where this kind of thing
+      might just work really well. The particular shape of the tabs problem lends
+      itself, I think, to easily trying something completely different and entirely without past baggage.</p>
+
+    <p> 
+      So, in that light 
+      <a href="https://panel-set.glitch.me/reciepe.html">here's a demo/link to just such an experiment</a> which gives us... <em>tabs!</em> - and which we think has some nice qualities:
+    </p> 
+
+    <ul>
+      <li>
+        It is a declarative <em>decorator</em> over otherwise good but
+        non-interactive semantics. That means there's no miss of differing
+        interaction issues here caused by complex inheritance. It's <em>composition</em>.
+      </li>
+      <li>
+        It doesn't change your light DOM, and it <em>barely</em> uses Shadow DOM.
+        There's no "two trees" problem, and there's not secrets or new
+        challenges. Go ahead, use CSS and JavaScript.
+      </li>
+      <li>
+        It adds the functionality: roving focus, keyboard handling, accessibility stuff and a simple container for you. That's it, really.
+      </li>
+      <li>
+        If you really <em>want</em> to opt in to some simple 'default styles' and like the 'minor tweaksonly' approach, it has an attribute that enables 'native' look and feel, with a bit less flexibility, but which might be enough for some people.  It just starts with the assumption that that's not the case.
+      </li> 
+    </ul>
+
+    <p>So... that's it. It could for sure use more work, but WDYT? Would you try it out?  Let us know your thoughts?  Such experiments will be useful in informing work and directions for efforts like Open-UI and possible future standards.</p>
+
+    <p>Will it help?  To be honest, I don't know, but maybe the right way to learn involves trying something really different, and I'm open to anything...</p>
+
+     <figure class="captioned-image optional">
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/7FogV4Qv8p8" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>
+    </figure>
+</section>
+
+</section></section></section></em>]]></content:encoded>
+        </item>
         <item>
             <title><![CDATA[Making Sure Content Lives On...]]></title>
             <link>https://bkardell.com/blog/ArchivingByDefault.html</link>
@@ -761,29 +1028,6 @@ console.log(x.name) // Brian
 ]]></content:encoded>
         </item>
         <item>
-            <title><![CDATA[2 Minute Standards]]></title>
-            <link>https://bkardell.com/blog/2MinuteStandards.html</link>
-            <guid>https://bkardell.com/blog/2MinuteStandards.html</guid>
-            <pubDate>Tue, 20 Aug 2019 04:00:00 GMT</pubDate>
-            <description><![CDATA[A short explanation of a new effort]]></description>
-            <content:encoded><![CDATA[
-    <contextual-heading role="heading" aria-level="1" style="font-size: 2rem;">2 Minute Standards</contextual-heading>
-    <p class="segue">A short explanation of a new effort</p>
-
-    <p>For a while now, we've been running some 'outreach groups'.  Originally started informally by my colleague at <a href="https://igalia.com" rel="nofollow">Igalia, </a><a href="https://twitter.com/littledan" rel="nofollow">Dan Ehrenberg</a>, it's become a set of monthly meetings with various groups of stakeholders in <a href="https://tc39.github.io" rel="nofollow">TC39</a> and the Web at large which I really look forward to.  The <a href="https://github.com/js-outreach/js-outreach-groups" rel="nofollow">groups</a> are meetings of people who work on Tooling, people who work on Frameworks and Libraries and Educators, with folks who work on standards.  The goals of all of them, at the end of the day, is to figure out how we all work better, together.</p>
-    
-    <p>The Educators Group has talked a bit about a number of efforts, but there's one conversation we've been having that I think is pretty interesting. I dont know of any developer who isn't interested in what is going on in standards, but the economics of this is currently kind of hard. We're interested in a whole bunch of other things too. There's lots of good content - too much in fact, coming at us from a million directions and it's all competing for our time and attention. We have jobs, and families, and pets, hobbies and lives. I love a lot of long form things, I'm excited when I see them in my stream, but they pile up and I have to choose. I only have so many slots of time where I can actually afford to consume 10, 15, 30 or 40 minutes worth of information. It can feel a little overwhelming sometimes.</p>
-
-    <p>So, we're going to try something new: 2 Minute Standards.  Think of it as "standards news, in brief".  The basic idea is pretty simple: Like a news segment, it's got to contain pertinent facts, more than a tweet - but it's air time is limited, as the name would suggest, to 2 Minutes.  That can come in a number of forms: An article that is 500 words or less, a two minute video, or a short web comic/zine.  The idea though is to ultimately give developers some channel with reasonable economics for staying 'generally informed'.  In the end, that's frequently what we want anyways: We can't know everything, we just need to know <em>enough</em> to know what it is, why it is, and that it is there when we're ready to learn more.  We'd like to be able to roughly understand it if it comes up. A maximum of 2 minutes per day, and almost certainly not even that much, seems... unintimidating and managable.</p>
-
-    <p>So, that's the idea.  We're still discussing many of the details about how to make this really 'click' in a bigger way: How to create as a sort of channel you can follow?  For now, it seems better to start with something simple and perhaps to begin to get feedback on the idea.  To this end, we'll post things with the hashtag #StandardsIn2Min, and others can too. If you see something fly by with the hashtag you can always find it again later on the twitter feed and, hopefully, expect that it will take no more than 2 minutes to consume.  However, we will also manage the Twitter account <a href="https://twitter.com/StandardsIn2Min" rel="nofollow">@StandardsIn2Min</a>, where we'll work to curate those hashtags too and create a manageable (honestly, probably slow) pace that never asks for more than two minutes of your attention in a day to keep up. Let us know what you think about the idea!</p>
-    
-
-    <p class="thanks-to">Thanks to the <a href="https://github.com/js-outreach/js-outreach-groups" rel="nofollow">educators group</a> for all of their help discussing and creating, and especially to <a href="https://twitter.com/laurieontech" rel="nofollow">Laurie Barth</a> and <a href="https://twitter.com/jorydotcom" rel="nofollow">Jory Burson</a> for helping get this post put together quickly!
-    </p>
-]]></content:encoded>
-        </item>
-        <item>
             <title><![CDATA[Top Level Await: 2 Minute Standards]]></title>
             <link>https://bkardell.com/blog/TopLevelAwaitIn2m.html</link>
             <guid>https://bkardell.com/blog/TopLevelAwaitIn2m.html</guid>
@@ -849,6 +1093,29 @@ export const _internalPromise =
 		});</code></pre>
 	<p>The net result is that modules are fetched in parallel and executed in order until the first await, and then waits until they are all complete before resolving the module itself.</p>
 	</section>
+]]></content:encoded>
+        </item>
+        <item>
+            <title><![CDATA[2 Minute Standards]]></title>
+            <link>https://bkardell.com/blog/2MinuteStandards.html</link>
+            <guid>https://bkardell.com/blog/2MinuteStandards.html</guid>
+            <pubDate>Tue, 20 Aug 2019 04:00:00 GMT</pubDate>
+            <description><![CDATA[A short explanation of a new effort]]></description>
+            <content:encoded><![CDATA[
+    <contextual-heading role="heading" aria-level="1" style="font-size: 2rem;">2 Minute Standards</contextual-heading>
+    <p class="segue">A short explanation of a new effort</p>
+
+    <p>For a while now, we've been running some 'outreach groups'.  Originally started informally by my colleague at <a href="https://igalia.com" rel="nofollow">Igalia, </a><a href="https://twitter.com/littledan" rel="nofollow">Dan Ehrenberg</a>, it's become a set of monthly meetings with various groups of stakeholders in <a href="https://tc39.github.io" rel="nofollow">TC39</a> and the Web at large which I really look forward to.  The <a href="https://github.com/js-outreach/js-outreach-groups" rel="nofollow">groups</a> are meetings of people who work on Tooling, people who work on Frameworks and Libraries and Educators, with folks who work on standards.  The goals of all of them, at the end of the day, is to figure out how we all work better, together.</p>
+    
+    <p>The Educators Group has talked a bit about a number of efforts, but there's one conversation we've been having that I think is pretty interesting. I dont know of any developer who isn't interested in what is going on in standards, but the economics of this is currently kind of hard. We're interested in a whole bunch of other things too. There's lots of good content - too much in fact, coming at us from a million directions and it's all competing for our time and attention. We have jobs, and families, and pets, hobbies and lives. I love a lot of long form things, I'm excited when I see them in my stream, but they pile up and I have to choose. I only have so many slots of time where I can actually afford to consume 10, 15, 30 or 40 minutes worth of information. It can feel a little overwhelming sometimes.</p>
+
+    <p>So, we're going to try something new: 2 Minute Standards.  Think of it as "standards news, in brief".  The basic idea is pretty simple: Like a news segment, it's got to contain pertinent facts, more than a tweet - but it's air time is limited, as the name would suggest, to 2 Minutes.  That can come in a number of forms: An article that is 500 words or less, a two minute video, or a short web comic/zine.  The idea though is to ultimately give developers some channel with reasonable economics for staying 'generally informed'.  In the end, that's frequently what we want anyways: We can't know everything, we just need to know <em>enough</em> to know what it is, why it is, and that it is there when we're ready to learn more.  We'd like to be able to roughly understand it if it comes up. A maximum of 2 minutes per day, and almost certainly not even that much, seems... unintimidating and managable.</p>
+
+    <p>So, that's the idea.  We're still discussing many of the details about how to make this really 'click' in a bigger way: How to create as a sort of channel you can follow?  For now, it seems better to start with something simple and perhaps to begin to get feedback on the idea.  To this end, we'll post things with the hashtag #StandardsIn2Min, and others can too. If you see something fly by with the hashtag you can always find it again later on the twitter feed and, hopefully, expect that it will take no more than 2 minutes to consume.  However, we will also manage the Twitter account <a href="https://twitter.com/StandardsIn2Min" rel="nofollow">@StandardsIn2Min</a>, where we'll work to curate those hashtags too and create a manageable (honestly, probably slow) pace that never asks for more than two minutes of your attention in a day to keep up. Let us know what you think about the idea!</p>
+    
+
+    <p class="thanks-to">Thanks to the <a href="https://github.com/js-outreach/js-outreach-groups" rel="nofollow">educators group</a> for all of their help discussing and creating, and especially to <a href="https://twitter.com/laurieontech" rel="nofollow">Laurie Barth</a> and <a href="https://twitter.com/jorydotcom" rel="nofollow">Jory Burson</a> for helping get this post put together quickly!
+    </p>
 ]]></content:encoded>
         </item>
         <item>
