@@ -1,0 +1,448 @@
+<html lang="en" resource-type="blogpost"><head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@briankardell">
+    <meta name="twitter:creator" content="@briankardell">
+    <meta name="twitter:title" content="Web Engine Diversity and Ecosystem Health">
+    <meta name="twitter:description" content="For many years, we've seen lots of blog posts and conversation on the topic of &quot;browser engine diversity&quot;.  I'd like to offer a slightly tilted view of this based instead on &quot;the h">
+    
+    <link rel="alternate" type="application/rss+xml" href="https://bkardell.com/blog/feed.rss" title="bkardell.com/blog rss feed">
+    <title>Web Engine Diversity and Ecosystem Health</title> 
+    <style>.captioned-image {
+    background-color: #eaeaea;
+    display: block;
+    overflow: hidden;
+    padding: 1rem;
+    text-align: center;
+    font-style: italic;
+}
+
+.captioned-image.p-attached {
+    width: 40%;
+    display: inline-block;
+    margin: 0 1rem 2rem 1rem;
+}
+
+section > .captioned-image.p-attached {
+    margin-top: 1.5rem; /* correct for heading size*/
+}
+
+ pre { overflow-x: auto }
+
+.captioned-image.p-attached.p-attached-left {
+    float: left;
+}
+
+.captioned-image.p-attached.p-attached-right {
+    float: right;
+}
+
+.captioned-image.p-attached + * + * {
+    clear: both;
+    margin-top: 2rem;
+}
+
+
+.captioned-image img, .captioned-image video {
+    display: block;
+    max-width: 100%;
+    margin: 0 auto 1em auto;
+}
+.source {
+    font-style: italic;
+}
+body {
+    display: flex;
+    font: 1em "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-weight: 400;
+    line-height: 1.625;
+}
+h1 { margin: 0.5rem; }
+code-format {
+    border-left: 0.5rem solid rgba(123,115,209,0.35);
+    display: block;
+    padding: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+contextual-heading {
+    display: block;
+    margin-top: 2rem;
+}
+
+[aria-level="1"] {
+    color: #43686b;
+    font-size: 1.45rem;
+}
+[aria-level="2"] {
+    color: #856363;
+    font-size: 1.35rem;
+}
+[aria-level="3"] {
+    color: #856363;
+    font-size: 1.25rem;
+}
+[aria-level="4"] {
+    color: #856363;
+    font-size: 1.2rem;
+}
+[aria-level="5"], [aria-level="6"] {
+    color: #667496;
+    font-size: 1.1rem;
+    font-weight: bolder;
+}
+.posted-on {
+    font-style: italic;
+    font-size: 0.8rem;
+    text-align: right;
+    margin-bottom: 1rem;
+}
+
+ul, li {
+    margin: 0.5rem;
+    text-align: left;
+}
+header {
+    padding-top: 1rem;
+    padding-right: 2rem;
+    background-color: #fbf5e9;
+}
+.tagline {
+    font-style: italic;
+    text-align: center;
+}
+
+[tag-esc] {
+    color: maroon;
+    font-family: Courier, "Lucida Console", monospace;
+}
+
+[tag-esc]::before {
+    content: '<';
+}
+
+[tag-esc]::after {
+    content: '>';
+}
+
+main {
+    min-width: 50%;
+    width: 80%;
+    padding: 1rem;
+}
+header .title {
+    background-color: rgba(123,115,209,0.35);
+    padding: 0.3rem;
+    padding-left: 0.25rem;
+    font-weight: bolder;
+    font-size: 0.9rem;
+    border-left: 1rem solid #999298;
+}
+
+header .profile {
+    width: 50%;
+    margin: 1rem 25%;
+}
+
+header .title + nav {
+    font-size: 0.9rem;
+}
+
+header .blurb {
+    font-size: 0.75rem;
+    text-align: center;
+}
+header .name {
+    text-align: center;
+    font-size: xx-large;
+}
+.segue {
+    font-style: italic;
+}
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  border: 0;
+}
+[for="aboutMeToggle"] {
+    display: none;
+}
+/* this needs rethinking, it wants a selector like 'not flow content' */
+article>*:not(contextual-heading,a), section>*:not(contextual-heading,a) {
+    margin-left: 0.45rem;
+}
+
+blockquote {
+  font-family: serif;
+  background: #f9f9f9;
+  border-left: 10px solid #ccc;
+  margin: 1.5em 10px;
+  padding: 0.5em 10px;
+}
+blockquote:before {
+  color: #ccc;
+  content: open-quote;
+  font-size: 2em;
+  line-height: 0.1em;
+  margin-right: 0.25em;
+  vertical-align: -0.4em;
+}
+
+blockquote:after {
+  color: #ccc;
+  content: close-quote;
+  font-size: 2em;
+  line-height: 0.1em;
+  margin-left: 0.25em;
+  vertical-align: -0.4em;
+}
+
+
+@media (max-width: 800px){
+    body {
+        flex-direction: column;
+    }
+    header {
+        border-bottom: 1px solid #afafff;
+    }
+
+    .captioned-image.p-attached {
+        width: 100%;
+        margin: 1rem 0;
+    }
+
+    .captioned-image.p-attached.p-attached-left,
+    .captioned-image.p-attached.p-attached-right {
+        float: none;
+    }
+
+    [for="aboutMeToggle"] {
+        background-color: #675e5e;
+        color: white;
+        padding: 0.25rem;
+        padding-left: 0.5rem;
+        display: block;
+        border-left: 1rem solid black;
+    }
+    #aboutMeToggle:focus + [for="aboutMeToggle"]{
+        outline: 4px solid #c6ddf2;
+    }
+
+    #aboutMeToggle:checked ~ header {
+        display: none;
+    }
+
+    header li { display: inline; margin-left: -0.5em; }
+    header .blurb li::after { content: '; '; }
+    header  nav li {
+        display: inline-block;
+        margin-left: 0.35rem;
+        margin-right: 0.35rem;
+    }
+    header .title {
+        width: 100%;
+    }
+    main li .source { display: block; }
+
+}</style>
+    <style>
+      .captioned-image { font-size: 0.9rem; }
+      .thanksTo { font-style: italic; font-size: 0.8rem; }
+    </style>
+    <script>
+      var activateOptional = function (media) {
+        var source = media.getAttribute('data-src'),
+            temp,
+            container = media.parentElement;
+
+          if (media.nextSibling && media.nextSibling.matches) {
+            if (media.nextSibling.matches('.clickToSee')) {
+              media.parentElement.removeChild(media.nextSibling);
+            }
+          }
+
+          if (media.tagName === 'VIDEO') {
+            temp = document.createElement('video')
+            temp.setAttribute('autoplay','')
+            temp.setAttribute('controls','')
+            temp.setAttribute('loop','')
+            temp.innerHTML = '<source src="' + source + '.webm" type="video/webm">'
+                    + '<source src="' + source + '.mp4" type="video/mp4">';
+            media.parentElement.replaceChild(temp, media);
+            setTimeout(function () {
+              temp.play()
+            }, 0);
+          } else {
+            media.src = media.getAttribute('data-src');
+          }
+
+          container.classList.add('active');
+      }
+    </script>
+  </head>
+  <body>
+    <input id="aboutMeToggle" class="sr-only" type="checkbox" checked="">
+<label for="aboutMeToggle">Toggle author information</label>
+<header>
+    <div class="name">
+        Brian Kardell
+    </div>
+    <img class="profile" src="/profile.jpg" alt="">
+    <div class="tagline"><a href="/">Betterifying the Web</a></div>
+    <div class="blurb">
+        <ul>
+            <li>Developer Advocate at Igalia</li>
+            <li>Original Co-author/Co-signer of The Extensible Web Manifesto</li>
+            <li>Co-Founder/Chair, W3C Extensible Web CG</li>
+            <li>Member, W3C (The JS Foundation)</li>
+            <li>Co-author of HitchJS</li>
+            <li>Blogger</li>
+            <li>Art, Science &amp; History Lover</li>
+            <li>Standards Geek</li>
+        </ul>
+    </div>
+    <div class="title">Follow Me On...</div>
+    <nav>
+        <ul>
+            <li><a rel="me" href="https://briankardell.wordpress.com">Wordpress</a></li>
+            <li><a rel="me" href="https://medium.com/@briankardell">Medium</a></li>
+            <li><a rel="me" href="https://twitter.com/briankardell">Twitter</a></li>
+            <li><a rel="me" href="https://github.com/bkardell/">Github</a></li>
+            <li><a rel="me" href="https://codepen.io/bkardell">Codepen</a></li>
+            <li><a rel="me" href="https://www.linkedin.com/in/brian-kardell-08a4264">LinkedIn</a></li>
+            <li><a rel="me" href="https://www.instagram.com/kardellbrian">Instagram (for
+art)</a></li>
+            <li><a rel="me" href="http://fineartamerica.com/profiles/brian-kardell?">Fine Art
+America (art for sale)</a></li>
+        </ul>
+    </nav>
+</header>
+    <main><div class="posted-on">Posted on null</div><article class="sectioning">
+	&lt;
+	<contextual-heading role="heading" aria-level="1">Web Engine Diversity and Ecosystem Health</contextual-heading>
+	<style>
+    .note {
+        background-color: rgba(255,255,0,0.24);
+        padding: 1rem;
+        font-style: italic;
+    }
+    .note::before {
+        content: 'Note';
+        font-size: 0.8rem;
+        background-color: black;
+        color: white;
+        padding: 0.25rem;
+        margin-right: 0.5rem;
+    }</style>
+	<style>
+    .note {
+        background-color: rgba(255,255,0,0.24);
+        padding: 1rem;
+        font-style: italic;
+    }
+    .note::before {
+        content: 'Note';
+        font-size: 0.8rem;
+        background-color: black;
+        color: white;
+        padding: 0.25rem;
+        margin-right: 0.5rem;
+    }</style>
+	<p class="segue">For many years, we've seen lots of blog posts and conversation on the topic of "browser engine diversity".  I'd like to offer a slightly tilted view of this based instead on "the health of the ecosystem", and explain why I think this is more valuable measure and way to discuss these topics.</p>
+	<p>Back in January, Jeremy Keith compared the complexity of browser engine diversity to political systems...</p>
+	<blockquote>
+	<p>If you have hundreds of different political parties, that’s not ideal. But if you only have one political party, that’s very bad indeed!</p>
+	</blockquote>
+	<p>I like this analogy because I think he's right in even more ways than he intended.  We don't even usually bother to talk about political parties in those terms because it's almost self-evident: 1 is too few, a hundred is too many - it's just chaos and noise.  But what is the ideal number?  This answer dogs us a lot, in part because it is not only unanswerable, it's actually kind of a red herring. I think there's something to this that leads to an important takeaway about how we think about the problem...</p>
+	<section class="sectioning">
+		<contextual-heading role="heading" aria-level="2">Numbers and goals...</contextual-heading>
+		<p>The interesting part about this analogy is that the simple number of political parties isn't actually a very meaningful measure: Parties can differ a lot, or they can differ a little.  6 parties that barely disagree is quite a different thing than 3 that disagree substantially.  Further, it's not simply a matter of giving voice to every dissenting opinion that matters either: There are political parties formed on ideas of hate, for example. Adding those doesn't add good things.  In short, what really matters is the <em>goal</em> of those numbers.</p>
+		<p>In the case of the political analogy, the real aim is about what makes for a healthy, effective and just model of governance.  Similarly on the topic of "browser engine diversity", I believe that the real goal is "What makes for a healthy and effective ecosystem?" and that the numbers we frequently talk about (and how) can easily lead us into perhaps the wrong takeaways.</p>
+	</section>
+	<section class="sectioning">
+		<contextual-heading role="heading" aria-level="2">Older engines and diversity</contextual-heading>
+		<p>It is fairly common that discussions of browser diveristy point to the Web's own history for examples of "why engine diversity matters": IE vs Netscape are often held up.  IE's dominance and ability to dictate the market (or even kill it in this case) was overcome by diversity.  This is true, but very incomplete:  There's a lot more beneath the surface...</p>
+		<p>Consider, for example, the fact that for a time there were <em>only two</em> mainstream browsers - and the very dominant one (IE) was both  entirely proprietary and based on a single proprietary OS.</p>
+		<p>Consider how different this could have been if IE been open source and properly licensed.  Even if Microsoft didn't want it to run on other operating systems, someone else could step in and fill that gap.  If Microsoft walked away from the Web, or worse, went belly up, someone could fork and take over the project.  If, for any reason at all, the primary maintainer cannot prioritize - other people and organization could more directly invest in advancements.</p>
+		<p>A while later, Opera's Presto was very interesting, even multi-OS - but ultimately similarly proprietary.</p>
+		<p>So, while we had greater 'diverity', these numbers alone aren't a great measure of the overall health of the ecosystem.</p>
+	</section>
+	<section class="sectioning">
+		<contextual-heading role="heading" aria-level="2">The most healthy, open ecosystem ever.</contextual-heading>
+		<p>This is in stark contrast to the situation today: In important ways, we are a <em>more</em> diverse, efficient and healthier ecosystem with the three multi-os, open source engines we have left than when we had had more and were dominated by projects that weren't that at all.</p>
+		<div class="note">
+			A lot of people seem to want to suggest that there aren't really 3 today because blink was born from a fork of WebKit, or because they think that WebKit is somehow "Just for iOS".
+			<p>There are certainly 3 <em>entirely</em> different JavaScript engines, and 3 <em>entirely</em> different architectures.  There are some bits that remain similar, but the truth is that that this is neither new nor easily solvable:  Web engines today are so astonishingly complex (measured in tens of millions of lines of code) that we only get new ones through evolution.  For the most part, this has been true for a long time.  Even Netscape was a "take 2" from many of the same minds from Mosaic.  Mozilla was created from a rework of Netscape.  Even IE was born by licensing the Mosaic code.  WebKit was born by forking KHTML.  In other words: The critical investment required to create a full-blown compliant browser from nothing would be mind-boggling if everything were stopped today - and it never stops.</p>
+		</div>
+		<p>Today, the 3 that remain are all multi-OS.</p>
+		<blockquote><em>"...Wait, even WebKit?"</em> - you, just now.</blockquote>
+		<p>Yes!  I'm glad you asked!  The GNOME flagship Epiphany/Web browser for Linux is WebKit based -- and <em>billions</em> of devices are based on Embedded WebKit.  PS4 is a fun example of something lots of people might be familliar with -- not only the Web browser on your PS4, but in fact lots of the UI itself is made with Web content running in a WebKit based browser.  But chances are pretty good that you encounter emdedded WebKit all the time: On cable boxes, smart TVs and appliances, kiosks, car and airplane infotainment systems, digital signage and so on.</p>
+		<p>This is possible because WebKit (and all of the engines today) are open source.  Because of this, they all receive investments more widely than the org that maintains them, and that's expanding in important ways that are very good for the health of the ecosystem.</p>
+		<p>Igalia, where I work, for example are able to work on all of the browsers and help expand investment in advancing the commons.  The list of things we have helped advance, and who has helped fund that is growing all the time: From recent things in JavaScript like class fields and Big Integer, to CSS features like CSS Grid, or features in HTML like lazy loading - the benefits of this are clear.</p>
+		<p>This also leads to lots of interesting new opportunities.  For example, we are the creators/maintainers of WPE, the official WebKit Port for Embedded that powers tons of those devices mentioned above. This matters a lot because a rising tide lifts all boats in the commons.  You can see an example of this in that Igalia is advancing work on SVG2 and hardware acceleration for SVG in WebKit - a topic which has failed to get the prioritization for years, but is especially critical for lots of embedded use cases.  If you're interested in this, as well as <a href="https://www.igalia.com/chats/Igalia-Chats-Niko-SVG-WPE" rel="nofollow">some interesting history of SVG, WebKit, HTML/CSS and embedded browsers, have a listen to this.</a></p>
+	</section>
+	<section class="sectioning">
+		<contextual-heading role="heading" aria-level="2">Opportunities to do better...</contextual-heading>
+
+		<p>There is another interesting thing here that is always left of of these discussions but I think is considerably interesting in this reframing.  A funny little quirk of history is that while we say there are 3 rendering engines, that's only <em>partially</em> true.</p>
+		<p>More specifically, there are 3 <em>modern browser rendering engines</em>,  and <em>a bunch of other rendering engines that aren't that</em>.</p>
+		<p>Amazon, for example, has a renderer that is used for ebooks and printing.  PrinceXML has a renderer used for print.  Antenna house too.  And there are more still.</p>
+		<p>For the most part, these are proprietary and what they do and don't support isn't necessarily clear cut.  Their support for modern standards is pretty ragged and the gaps are only likely to grow faster. This is a shame as there are lots of potentially useful things for these industries, like Houdini which are unlikely to ever exist for them.</p>
+		<p>This is a topic I'd love to see discussed more for several reasons - but mainy they center on the fact that it is just harder for us to move forward <em>together</em> if things are too fragmented.  Instead of growing together and a rising tide lifting all boats - the boats are kind of all in entirely different bodies of water.</p>
+		<p>I would love to see some effort to resolve this.  Imagine if these vendors came into the fray and either invested in basing their work on modern engines (hopefully various), <em>or</em> pulled together to create something new.  That <em>might</em> be the one practical way we could arrive at an actual viable 4th engine somehow.</p>
+		<section class="sectioning">
+			<contextual-heading role="heading" aria-level="3">Why now is a good time to discuss it</contextual-heading>
+		<p>Most of these engines also contain some things that were developed in standards organizations but which no browser supports... That's kind of why they were created.  However, there are new opportunities to align...</p>
+		<p>Web engine architectures are like a lot of engineering projects - they grow, they get crufty, you get locked into certain boundaries that you know you'd like to escape.  However,until you do you can't really afford to tackle certain kinds of problems.  That's a big part of why <em>browser</em> engines today don't do a lot of the things you needed to fill their use cases.  Browser architectures have traditionally, generally not been well-prepared for the problems of print or ebooks, and that's part of why we find ourselves in the current situation.</p>
+		<p>However, for many years, there has been much rework and rearchitecture of layout engines aimed at solving precisely the fundamental sorts of things that prevented those sorts of things from being considered.</p>
+		<p>Stir in that most of our office suites and things are now web based and there's considerable incentives to figuring out things like good print and pagination.</p>
+		</section>
+	</section>
+	<section class="sectioning">
+		<contextual-heading role="heading" aria-level="2">More open <em>prioritization</em></contextual-heading>
+		<p>But it's not just the projects being open source that matters, it's also that this affords us new opportunities for standardization itself.</p>
+		<p>Ultimately, it is the calculus of prioritization which impacts our ability to get things done almost more than anything else.  Historically, lots of companies get together and, effectively, ask that a very few companies do the work.  They are big organizations with big investments, to be sure - but they are all constrained by hard limits.  The gauntlet of issues surrounding our ability to prioritize everything from attention to actual implementation have stymied many a topic.</p>
+		<p>But in this new age, companies like Igalia are showing that there is potentially a whole new game here: Where centralized, concrete investments from outside that small group can lift up the commons,  benefit everyone and help drive progress.</p>
+		<p>In other words: Things are <em>better</em> and <em>healthier</em> because we continue to find better ways to work <em>together</em>. And when we do, <em>everyone</em> does better.</p>
+	</section>
+</article></main>
+
+  
+    <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-88027178-1', 'auto');
+    ga('send', 'pageview');
+  </script>
+
+  <script>
+    Array.prototype.slice.call(document.querySelectorAll('.optional [data-src]')).forEach(function (optional) {
+      var prefs = window.localStorage.downloadsPrefs,
+          clickToSee;
+      if (prefs === 'true') {
+        activateOptional(optional);
+      } else {
+        clickToSee = document.createElement('div');
+        clickToSee.classList.add('clickToSee')
+        clickToSee.innerHTML = '<button>Click to see media</button>';
+        clickToSee.style.textAlign = 'center';
+        clickToSee.style.border = 'none';
+        optional.parentElement.insertBefore(clickToSee, optional.nextSibling);
+        clickToSee.firstElementChild.addEventListener('click', function () {
+          activateOptional(optional);
+        })
+      }
+
+    })
+  </script>
+
+</body></html>
