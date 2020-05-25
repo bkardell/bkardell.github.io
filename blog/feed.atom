@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://bkardell.com/</id>
     <title>bkardell.com rss feed</title>
-    <updated>2020-04-29T18:20:51.622Z</updated>
+    <updated>2020-05-25T22:28:51.563Z</updated>
     <generator>awesome mix</generator>
     <author>
         <name>Brian Kardell</name>
@@ -15,6 +15,76 @@
     <logo>http://bkardell.com/profile.jpg</logo>
     <rights>All rights reserved 2018, Brian Kardell</rights>
     <entry>
+        <title type="html"><![CDATA[Web Engine Diversity and Ecosystem Health]]></title>
+        <id>https://bkardell.com/blog/EcosystemHealth.html</id>
+        <link href="https://bkardell.com/blog/EcosystemHealth.html">
+        </link>
+        <updated>2020-05-26T04:00:00.000Z</updated>
+        <summary type="html"><![CDATA[For many years, we've seen lots of blog posts and conversation on the topic of "browser engine diversity".  I'd like to offer a slightly tilted view of this based instead on "the health of the ecosystem", and explain why I think this is more valuable measure and way to discuss these topics.]]></summary>
+        <content type="html"><![CDATA[
+	<contextual-heading role="heading" aria-level="1" style="font-size: 2rem;">Web Engine Diversity and Ecosystem Health</contextual-heading>
+	
+	
+	<p class="segue">For many years, we've seen lots of blog posts and conversation on the topic of "browser engine diversity".  I'd like to offer a slightly tilted view of this based instead on "the health of the ecosystem", and explain why I think this is more valuable measure and way to discuss these topics.</p>
+	<p>Back in January, Jeremy Keith compared the complexity of browser engine diversity to political systems...</p>
+	<blockquote>
+	<p>If you have hundreds of different political parties, that’s not ideal. But if you only have one political party, that’s very bad indeed!</p>
+	</blockquote>
+	<p>I like this analogy bat's almost self-evident: 1 is too few, a hundred is too many - it's just chaos and noise.  But what is the ideal number?  This answer dogs us a lot, in part because it is not only unanswerable, it's actually kind of a red herring. I think there's something to this that leads to an important takeaway about how we think about the problem...</p>
+	<section class="sectioning">
+		<contextual-heading role="heading" aria-level="2" style="font-size: 2.25rem;">Numbers and goals...</contextual-heading>
+		<p>The interesting part about this analogy is that the simple number of political parties isn't actually a very meaningful measure: Parties can differ a lot, or they can differ a little.  6 parties that barely disagree is quite a different thing than 3 that disagree substantially.  Further, it's not simply a matter of giving voice to every dissenting opinion that matters either: There are political parties formed on ideas of hate, for example. Adding those doesn't add good things.  In short, what really matters is the <em>goal</em> of those numbers.</p>
+		<p>In the case of the political analogy, the real aim is about what makes for a healthy, effective and just model of governance.  Similarly on the topic of "browser engine diversity", I believe that the real goal is "What makes for a healthy and effective ecosystem?" and that the numbers we frequently talk about (and how) can easily lead us into perhaps the wrong takeaways.</p>
+	</section>
+	<section class="sectioning">
+		<contextual-heading role="heading" aria-level="2" style="font-size: 2.25rem;">Older engines and diversity</contextual-heading>
+		<p>It is fairly common that discussions of browser diversity point to the Web's own history for examples of "why engine diversity matters": IE vs Netscape are often held up.  IE's dominance and ability to dictate the market (or even kill it in this case) was overcome by diversity.  This is true, but very incomplete:  There's a lot more beneath the surface...</p>
+		<p>Consider, for example, the fact that for a time there were <em>only two</em> mainstream browsers - and the very dominant one (IE) was both  entirely proprietary and based on a single proprietary OS.</p>
+		<p>Consider how different this could have been, if IE had been open source and properly licensed.  Even if Microsoft didn't want it to run on other operating systems, someone else could step in and fill that gap.  If Microsoft walked away from the Web, or worse, went belly up, someone could fork and take over the project.  If, for any reason at all, the primary maintainer cannot prioritize - other people and organization could more directly invest in advancements.</p>
+		<p>A while later, Opera's Presto was very interesting, even multi-OS - but ultimately similarly proprietary.</p>
+		<p>So, while we had greater 'diverity', these numbers alone aren't a great measure of the overall health of the ecosystem.</p>
+	</section>
+	<section class="sectioning">
+		<contextual-heading role="heading" aria-level="2" style="font-size: 2.25rem;">The most healthy, open ecosystem ever.</contextual-heading>
+		<p>This is in stark contrast to the situation today: In important ways, we are a <em>more</em> diverse, efficient and healthier ecosystem with the three multi-os, open source engines we have left than when we had had more and were dominated by projects that weren't that at all.</p>
+		<div class="note">
+			A lot of people seem to want to suggest that there aren't really 3 today because blink was born from a fork of WebKit, or because they think that WebKit is somehow "Just for iOS".
+			<p>There are certainly 3 <em>entirely</em> different JavaScript engines, and 3 <em>entirely</em> different architectures.  There are some bits that remain similar, but the truth is that that this is neither new nor easily solvable.  Web engines today are so astonishingly complex (measured in tens of millions of lines of code) that we only get new ones through evolution.  For the most part, this has been true for a long time.  Even Netscape was a "take 2" from many of the same minds from Mosaic.  Mozilla was created from a rework of Netscape.  Even IE was born by licensing the Mosaic code.  WebKit was born by forking KHTML.  In other words: The critical investment required to create a full-blown compliant browser from nothing would be mind-boggling if everything were stopped today - and it never stops.</p>
+		</div>
+		<p>Today, the 3 that remain are all multi-OS.</p>
+		<blockquote><em>"...Wait, even WebKit?"</em> - you, just now.</blockquote>
+		<p>Yes!  I'm glad you asked!  The GNOME flagship Epiphany/Web browser for Linux is WebKit based -- and <em>billions</em> of devices are based on Embedded WebKit.  PS4 is a fun example of something lots of people might be familliar with -- not only the Web browser on your PS4, but in fact lots of the UI itself is made with Web content running in a WebKit based browser.  But chances are pretty good that you encounter emdedded WebKit all the time: On cable boxes, smart TVs and appliances, kiosks, car and airplane infotainment systems, digital signage and so on.</p>
+		<p>This is possible because WebKit (and all of the engines today) are open source.  Because of this, they all receive investments more widely than the org that maintains them, and that's expanding in important ways that are very good for the health of the ecosystem.</p>
+		<p>Igalia, where I work, for example are able to work on all of the browsers and help expand investment in advancing the commons.  The list of things we have helped advance, and who has helped fund that is growing all the time: From recent things in JavaScript like class fields and Big Integer, to CSS features like CSS Grid, or features in HTML like lazy loading - the benefits of this are clear.</p>
+		<p>This also leads to lots of interesting new opportunities.  For example, we are the creators/maintainers of WPE, the official WebKit Port for Embedded that powers tons of those devices mentioned above. This matters a lot because a rising tide lifts all boats in the commons.  You can see an example of this in that Igalia is advancing work on SVG2 and hardware acceleration for SVG in WebKit - a topic which has failed to get the prioritization for years, but is especially critical for lots of embedded use cases.  If you're interested in this, as well as <a href="https://www.igalia.com/chats/Igalia-Chats-Niko-SVG-WPE" rel="nofollow">some interesting history of SVG, WebKit, HTML/CSS and embedded browsers, have a listen to this.</a></p>
+	</section>
+	<section class="sectioning">
+		<contextual-heading role="heading" aria-level="2" style="font-size: 2.25rem;">Opportunities to do better...</contextual-heading>
+
+		<p>There is another interesting thing here that is always left out of these discussions but I think is considerably interesting in this reframing.  A funny little quirk of history is that while we say there are 3 rendering engines, that's only <em>partially</em> true.</p>
+		<p>More specifically, there are 3 <em>modern browser rendering engines</em>,  and <em>a bunch of other rendering engines that aren't that</em>.</p>
+		<p>Amazon, for example, has a renderer that is used for ebooks and printing.  PrinceXML has a renderer used for print.  Antenna house too.  And there are more still.</p>
+		<p>For the most part, these are proprietary and what they do and don't support isn't necessarily clear cut.  Their support for modern standards is pretty ragged and the gaps are only likely to grow faster. This is a shame as there are lots of potentially useful things for these industries, like Houdini which are unlikely to ever exist for them.</p>
+		<p>This is a topic I'd love to see discussed more for several reasons - but mainy they center on the fact that it is just harder for us to move forward <em>together</em> if things are too fragmented.  Instead of growing together and a rising tide lifting all boats - the boats are kind of all in entirely different bodies of water.</p>
+		<p>I would love to see some effort to resolve this.  Imagine if these vendors came into the fray and either invested in basing their work on modern engines (hopefully various), <em>or</em> pulled together to create something new.  That <em>might</em> be the one practical way we could arrive at an actual viable 4th engine somehow.</p>
+		<section class="sectioning">
+			<contextual-heading role="heading" aria-level="3" style="font-size: 2.5rem;">Why now is a good time to discuss it</contextual-heading>
+		<p>Most of these engines also contain some things that were developed in standards organizations but which no browser supports... That's kind of why they were created.  However, there are new opportunities to align...</p>
+		<p>Web engine architectures are like a lot of engineering projects - they grow, they get crufty, you get locked into certain boundaries that you know you'd like to escape.  However,until you do you can't really afford to tackle certain kinds of problems.  That's a big part of why <em>browser</em> engines today don't do a lot of the things you needed to fill their use cases.  Browser architectures have traditionally, generally not been well-prepared for the problems of print or ebooks, and that's part of why we find ourselves in the current situation.</p>
+		<p>However, for many years, there has been much rework and rearchitecture of layout engines aimed at solving precisely the fundamental sorts of things that prevented those sorts of things from being considered.</p>
+		<p>Stir in that most of our office suites and things are now web based and there's considerable incentives to figuring out things like good print and pagination.</p>
+		</section>
+	</section>
+	<section class="sectioning">
+		<contextual-heading role="heading" aria-level="2" style="font-size: 2.25rem;">More open <em>prioritization</em></contextual-heading>
+		<p>But it's not just the projects being open source that matters, it's also that this affords us new opportunities for standardization itself.</p>
+		<p>Ultimately, it is the calculus of prioritization which impacts our ability to get things done almost more than anything else.  Historically, lots of companies get together and, effectively, ask that a very few companies do the work.  They are big organizations with big investments, to be sure - but they are all constrained by hard limits.  The gauntlet of issues surrounding our ability to prioritize everything from attention to actual implementation have stymied many a topic.</p>
+		<p>But in this new age, companies like Igalia are showing that there is potentially a whole new game here: Where centralized, concrete investments from outside that small group can lift up the commons,  benefit everyone and help drive progress.</p>
+		<p>In other words: Things are <em>better</em> and <em>healthier</em> because we continue to find better ways to work <em>together</em>. And when we do, <em>everyone</em> does better.</p>
+	</section>
+]]></content>
+    </entry>
+    <entry>
         <title type="html"><![CDATA[Interactive Elements: A Strange Game]]></title>
         <id>https://bkardell.com/blog/StrangeGame.html</id>
         <link href="https://bkardell.com/blog/StrangeGame.html">
@@ -24,7 +94,7 @@
       It can seem especially frustrating to a lot of developers that we don't have more elements "out of the box" as part of HTML. I mean: Where are the tabs? How do we not have tabs by now? It seems like almost every week this comes up in some fashion or other. In this piece I'll talk a little about why, how to see this for what it is, how we're trying to move forward - and also present an interesting experiment for your consideration and feedback that may help inform some of these efforts.  If you want, you can skip right to the 'new idea/experiment', but I think this background is pretty helpful in understanding it, so please, come back and read it...]]></summary>
         <content type="html"><![CDATA[
     
-  
+    
 	<div id="downloadsPrefs">
 		<p style="font-size: 1.5rem">Note from the author...</p>
 		<p>My posts frequently (like this one) have a 'theme' and tend to use a number of images for visual flourish. Personally, I like it that way, I find it more engaging and I prefer for people to read it that way.  However, for users on a metered or slow connection, downloading unnecessary images is, well, unnecessary, potentially costly and kind of rude.  Just to be polite to my users, I offer the ability for you to opt out of 'optional' images if the total size of viewing the page would exceed a budget I have currently defined as 200k...
@@ -39,15 +109,15 @@
       It can seem especially frustrating to a lot of developers that we don't have more elements "out of the box" as part of HTML. I mean: <em>Where are the tabs? How do we not have tabs by now?</em> It seems like almost every week this comes up in some fashion or other. In this piece I'll talk a little about why, how to see this for what it is, how we're trying to move forward - and also present an interesting experiment for your consideration and feedback that may help inform some of these efforts.  If you want, you can <a href="#chess">skip right to the 'new idea/experiment'</a>, but I think this background is pretty helpful in understanding it, so please, come back and read it...</p>
 
     <p>
-      Let's have a look at <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element" target="_blank">HTML so far</a>:  ~10 of the elements are the 'boilerplate stuff': &lt;html&gt;, &lt;body&gt;, &lt;head&gt; and metadata stuff - &lt;link&gt;, &lt;meta&gt;, &lt;base&gt;, &lt;style&gt;, &lt;script&gt;, &lt;title&gt;. There's a few elements for linking and embedding other content and multimedia, and a few with special powers like &lt;template&gt; and &lt;slot&lt;. And then the rest:  ~30 are "weak semantics about text" that aren't interactive and don't have signficant (any) special meaning necessarily and are primarily just things with default CSS stylesheet rules. About 15 are "weak semantics about text, but meaningfully weak" - stuff like lists.  ~15 are sectioning or landmarks.  11 more are about tables - a 2 dimensional relationship of text.  14 are about forms. And then two are... well... something else.  We'll come back to that. And ~30 are deprecated.
+      Let's have a look at <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element" target="_blank">HTML so far</a>:  ~10 of the elements are the 'boilerplate stuff': &lt;html&gt;, &lt;body&gt;, &lt;head&gt; and metadata stuff - &lt;link&gt;, &lt;meta&gt;, &lt;base&gt;, &lt;style&gt;, &lt;script&gt;, &lt;title&gt;. There's a few elements for linking and embedding other content and multimedia, and a few with special powers like &lt;template&gt; and &lt;slot&gt;. And then the rest:  ~30 are "weak semantics about text" that aren't interactive and don't have signficant (any) special meaning necessarily and are primarily just things with default CSS stylesheet rules. About 15 are "weak semantics about text, but meaningfully weak" - stuff like lists.  ~15 are sectioning or landmarks.  11 more are about tables - a 2 dimensional relationship of text.  14 are about forms. And then two are... well... something else.  We'll come back to that. And ~30 are deprecated.
     </p>
 
-    <p>The route to all of these elements was a little different - and they have different costs associated with them, and offer different value.  One thing that's interesting to note is that the majority of them are what Dave Rupert refers to as "Spicy Divs".  That is, there's not much to them - they aren't complex or interactive, and they don't bring a ton of real world value. That's not to say they are value-<em>less</em>, but ultimately we spend a lot of time and bandwidth in standards debating what often amount to silly things because of it.  &lt;main&gt; is a kind of a good example.  Nothing wrong with it as an element, it's great, in fact - it just has a long and complex backstory that ultimately cost a lot relative to its real world value and proven use.  Tons of time defining and debating &lt;address&gt;, which isn't really that meaningful to browsers, and then lots of evangelism telling people they're using it wrong - only in the end to eventually have to admit that it ultimately means the thing people used it as.</p>
-
-    <p>The second thing to notice is that there there are <em>very few interactive elements.  Further, most of the ones we usually talk about are about <em>forms</em>.  And that lead us to this: Interactive, form-related elements on the web are... tricky.</em></p><em>
+    <p>The route to all of these elements was a little different - and they have different costs associated with them, and offer different value.  One thing that's interesting to note is that the majority of them are what Dave Rupert refers to as "Spicy Divs".  That is, there's not much to them - they aren't complex or interactive, and they don't bring a ton of real world value. That's not to say they are <em>without value</em>, but ultimately we spend a lot of time and bandwidth in standards debating what often amount to silly things because of it.  &lt;main&gt; is a kind of a good example.  Nothing wrong with it as an element, it's great, in fact - it just has a long and complex backstory that ultimately cost a lot relative to its real world value and proven use.  Tons of time defining and debating &lt;address&gt;, which isn't really that meaningful to browsers, and then lots of evangelism telling people they're using it wrong - only in the end to eventually have to admit that it ultimately means the thing people used it as.</p>
+ 
+    <p>The second thing to notice is that there there are <em>very few</em> interactive elements.  Further, most of the ones we usually talk about are about <em>forms</em>.  And that lead us to this: Interactive, form-related elements on the web are... tricky.</p>
 
     <section class="sectioning">
-      <contextual-heading role="heading" aria-level="1" style="font-size: 2rem;">The form-related game</contextual-heading>
+      <contextual-heading role="heading" aria-level="2" style="font-size: 2.25rem;">The form-related game</contextual-heading>
     <p>
       On the one hand, there's a lot to like about native, interactive form controls. In theory, they can
       bring a simple declarative form with all kinds of goodness in terms of platform integration, portability and centralized work on accessibility and UX.
@@ -67,10 +137,10 @@ To win the game.</pre>
     
 
     <p>Well... So many reasons, but to start with, the one that they could really do without is that they got off to a tricky start by design.</p>
-      the on
+      
 
     <section class="sectioning">
-      <contextual-heading role="heading" aria-level="2" style="font-size: 2.25rem;"><pre>&lt;input type="WOPR"&gt;</pre></contextual-heading>
+      <contextual-heading role="heading" aria-level="3" style="font-size: 2.5rem;"><pre>&lt;input type="WOPR"&gt;</pre></contextual-heading>
 
     <p>
       <em>Most</em> of the form-related controls are created based on
@@ -80,10 +150,10 @@ To win the game.</pre>
 
     <pre class="wargames">&gt; People sometimes make... mistakes.</pre>
 
-    <p>Did you ever notice how the JavaScript API surface of input works differently based on the type?  If the type is number and you type gibberish that looks remotely 'potentially numbery' like '12312e314124', then <code>.value</code> will be '' (empty string).  Or, the checkbox type has a checked property, but that means that input type=number has that property too... What does it do? Anything!? Or, have you ever noticed how <code>.selectionStart</code> and <code>.selectionEnd</code> actually <em>throw</em> if you tried to use them on a numeric input type?!  If not, go have a watch of <a href="https://vimeo.com/144980655">Monica Dinculescu's <code>&lt;input&gt;</code> I ♡ you, but you're
+    <p>Did you ever notice how the JavaScript API surface of input works differently based on the type?  If the type is number and you type gibberish that looks remotely 'potentially numbery' like '12312e314124', then <code>.value</code> will be '' (empty string).  Or, the checkbox type has a checked property, but that means that input type=number has that property too... What does it do? Anything!? Or, have you ever noticed how <code>.selectionStart</code> and <code>.selectionEnd</code> actually would initially  <em>throw</em> if you tried to use them on a numeric input type?! (<a href="https://github.com/whatwg/html/pull/1006">fixed by Simon Pieters</a>).  If not, go have a watch of <a href="https://vimeo.com/144980655">Monica Dinculescu's <code>&lt;input&gt;</code> I ♡ you, but you're
         bringing me down</a> -- a 45 minute talk about <em>just this</em>.</p>
 
-    <p> 
+    <p>  
       Ultimately, many of these problems stem from us accepting the illusion presented that a date picker <em>is a</em> kind of text input.
     </p>
 
@@ -101,7 +171,7 @@ To win the game.</pre>
     <p>All of this is why you might hear people suggest "LSP" or <a href="https://en.wikipedia.org/wiki/Composition_over_inheritance">"Favor composition over inheritance"</a> as a better alternative.</p>
 
     <section class="sectioning">
-      <contextual-heading role="heading" aria-level="3" style="font-size: 2.5rem;">Acceptable Losses?</contextual-heading>
+      <contextual-heading role="heading" aria-level="4" style="font-size: 2.75rem;">Acceptable Losses?</contextual-heading>
       <p>This is exacerbated by the fact that at the end of the day, developers are left with some pretty unappealing choices: Something is going to be sacrificed.</p>
 
       <p>
@@ -137,7 +207,7 @@ To win the game.</pre>
     </section>
 
     <section class="sectioning">
-      <contextual-heading role="heading" aria-level="3" style="font-size: 2.5rem;">Learn, dammit.</contextual-heading>
+      <contextual-heading role="heading" aria-level="4" style="font-size: 2.75rem;">Learn, dammit.</contextual-heading>
       <p>
         Now, let's talk about how we get out of this mess. 
       </p>
@@ -177,7 +247,7 @@ To win the game.</pre>
  
 
     <section class="sectioning">
-      <contextual-heading id="different" role="heading" aria-level="4" style="font-size: 2.75rem;"><pre class="wargames">Shall we play a (different) game?</pre></contextual-heading>
+      <contextual-heading id="different" role="heading" aria-level="5" style="font-size: 3rem;"><pre class="wargames">Shall we play a (different) game?</pre></contextual-heading>
 
     <p>
       Ok, but hold on.... Let's talk about <em>non-form related interactive controls</em> now.  Realistically, we've come up with really only 1 strictly generic non-form-related UI control in 30 years: <code>&lt;details&gt;</code>.  That "other" one in my intial list.  Wow... And we've had that done for like 10 years, right?  Let's see, it's been supported universally since... <em>checks notes...</em>
@@ -217,7 +287,7 @@ To win the game.</pre>
     </section>
 
     <section class="sectioning">
-      <contextual-heading id="chess" role="heading" aria-level="4" style="font-size: 2.75rem;"><pre class="wargames">How about a nice game of chess?</pre></contextual-heading>
+      <contextual-heading id="chess" role="heading" aria-level="5" style="font-size: 3rem;"><pre class="wargames">How about a nice game of chess?</pre></contextual-heading>
     <p>
       So, here's the basic idea: What if we just created a resilient pattern
       focused on mainly <em>function</em> and <em>meaning</em> -- and
@@ -280,7 +350,7 @@ To win the game.</pre>
     </figure>
 </section>
 
-</section></section></section></em>]]></content>
+</section></section></section>]]></content>
     </entry>
     <entry>
         <title type="html"><![CDATA[Making Sure Content Lives On...]]></title>
@@ -1128,41 +1198,6 @@ export const _internalPromise =
 ]]></content>
     </entry>
     <entry>
-        <title type="html"><![CDATA[Moving Math Forward, Thoughts and Experiments]]></title>
-        <id>https://bkardell.com/blog/MathForward.html</id>
-        <link href="https://bkardell.com/blog/MathForward.html">
-        </link>
-        <updated>2019-07-09T04:00:00.000Z</updated>
-        <summary type="html"><![CDATA[
-		In this piece, I explain details on thoughts on experiments and conversations around moving Math forward on the Web.
-	]]></summary>
-        <content type="html"><![CDATA[
-	<contextual-heading role="heading" aria-level="1" style="font-size: 2rem;">Moving Math Forward, Thoughts and Experiments</contextual-heading>
-	<p class="segue">
-		In this piece, I explain details on thoughts on experiments and conversations around moving Math forward on the Web.
-	</p>
-		
-	<p>For some context, <a href="https://mathml.igalia.com" rel="nofollow">my team is actively working on implementing MathML in Chromium</a> (the engine Chrome, Edge, Samsung, Brave, UC Browser and lots of other share), more specifically MathML Core.  MathML has long had implementations in Safari and Firefox and has an 
-	intersting history that leaves it in a very unique spot.
-	</p>
-	<p>MathML Core, defines the comparatively small, but well defined and mostly interoperable subset of MathML - with an aim of resolving uniqueness.  It provides details about how it actually <em>fits</em> into the layers platform in well defined ways and to explain their existing magic in terms of the platform - to expose it if is it new.  As such, in indirectly aims to provide a basis for moving <em>many</em> things forward.</p>
-
-	<section class="sectioning">
-		<contextual-heading role="heading" aria-level="2" style="font-size: 2.25rem;">A thought experiment</contextual-heading>
-	<p>Recently conversations in the web platform at large have begun about <a href="https://github.com/whatwg/html/issues/4696">moving HTML forward and polyfilling elements</a>.   Since we are actively working on a 'core' ourselves, we thought this would be an interesting discussion and experiment:  We asked "What if MathML Core was largely 'done' and you would import other support to move forward?"  Those things <em>could</em> potentially be shipped by a browser, but there's no guarantee they ever would.  However, they could also be loaded as polyfills and in standard means that help omit many of the problems that traditional polyfills create.</p>
-	<p>To explain this, we took some elements that <em>aren't</em> in MathML Core, but are specified elsewhere, as an interesting stand in.  One such example is an element called <code>mfenced</code>.  <code>mfenced</code> is just a "more convenient way" of writing some math that has a lot of 'fences' (parens, pipes, braces, and so on).  The original spec even said "It is strictly equivalent to this expanded, longer form".</p>
-	<p>Today, 'polyfills' exist for it if your browser doesn't support it, and today, those work by (if your browser doesn't support it) destroying your tree and replacing it with the equivalent version, at some undefined point in time.</p>
-	<p>We experimentally changed very little in our implementation and it now considers any MathML 'unknown element' as on the whitelist of elements which can have a Shadow DOM.  We used a simple stand-in using Mutation Observer to allow any of those to be defined without a dash, and wrote a polyfill for <code>mfenced</code> which simply expands it into Shadow DOM.</p>
-	<p>For purposes of discussion, we illustrated how we could, in theory, use MathML Core, import some new vocabulary (potentially a future proposal, or just some slang) and easily expand it into some Shadow DOM, leaving you with the tree that you authored and all of the things just fitting together nicely and predictably. Below is a screenshot from our actual implementation experiment.</p>
-	<p><a target="_blank" rel="noopener noreferrer" href="https://camo.githubusercontent.com/8e0c8bf38ccd6fa1a20a3d3fa2299a7e32291d32/68747470733a2f2f63646e2e676c697463682e636f6d2f39303035373538332d326137392d343662372d623565662d36636566336265383764613625324653637265656e73686f7425323066726f6d253230323031392d30372d303725323031322d35322d35302e706e673f763d31353632353138353030313933"><img src="https://camo.githubusercontent.com/8e0c8bf38ccd6fa1a20a3d3fa2299a7e32291d32/68747470733a2f2f63646e2e676c697463682e636f6d2f39303035373538332d326137392d343662372d623565662d36636566336265383764613625324653637265656e73686f7425323066726f6d253230323031392d30372d303725323031322d35322d35302e706e673f763d31353632353138353030313933" alt="screenshot of element and shadow dom in experimental browser build" data-canonical-src="https://cdn.glitch.com/90057583-2a79-46b7-b5ef-6cef3be87da6%2FScreenshot%20from%202019-07-07%2012-52-50.png?v=1562518500193" style="max-width:100%;"></a></p>
-	<p>We think that these sorts of experiments are useful and informative and help us ask better questions about how we are fitting into the platform itself: Have we answered the necessary questions?  How does the introduction of a ShadowRoot impact rendering and namespacing, for example?  Could developers really 'plug in' to all the necessary bits?  Could they properly layer atop?  To test this, we also created elements that expand shorthands like TeX and ASCII Math.  In the end, can we ultimately resolve a great a stable core that allows us to move math forward using these things similar in ways similar to Knuth's TeX book/engine - but in a way that is properly "of the platform"?  We think the answer is yes.</p>
-
-	<p>While we're not entirely sure where larger conversations about how HTML will move forward will go, and we aren't claiming that this implementation is anything more than a quick experiment for discussion and testing, the MathML community itself is very excited that such talks are even happening in HTML and <em>very</em> interested in being a part of that conversation, and sorting out how we can move forward together as One Platform™, with less 'specialness'.</p>
-	</section>
-	
-]]></content>
-    </entry>
-    <entry>
         <title type="html"><![CDATA[One Platform™]]></title>
         <id>https://bkardell.com/blog/OnePlatform.html</id>
         <link href="https://bkardell.com/blog/OnePlatform.html">
@@ -1202,6 +1237,41 @@ export const _internalPromise =
 		<p>While the MathML Community Group is aware that these questions are far from settled, they were universally excited to see such talks begin in HTML and <em>very</em> interested in making sure that they're thinking about those things too: Being a part of that conversation, and sorting out how we can move forward together as One Platform™, with less 'specialness'.</p>
 		<p>If you think this is interesting or useful, please share your support and let someone know.</p>
 		</section></section>]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Moving Math Forward, Thoughts and Experiments]]></title>
+        <id>https://bkardell.com/blog/MathForward.html</id>
+        <link href="https://bkardell.com/blog/MathForward.html">
+        </link>
+        <updated>2019-07-09T04:00:00.000Z</updated>
+        <summary type="html"><![CDATA[
+		In this piece, I explain details on thoughts on experiments and conversations around moving Math forward on the Web.
+	]]></summary>
+        <content type="html"><![CDATA[
+	<contextual-heading role="heading" aria-level="1" style="font-size: 2rem;">Moving Math Forward, Thoughts and Experiments</contextual-heading>
+	<p class="segue">
+		In this piece, I explain details on thoughts on experiments and conversations around moving Math forward on the Web.
+	</p>
+		
+	<p>For some context, <a href="https://mathml.igalia.com" rel="nofollow">my team is actively working on implementing MathML in Chromium</a> (the engine Chrome, Edge, Samsung, Brave, UC Browser and lots of other share), more specifically MathML Core.  MathML has long had implementations in Safari and Firefox and has an 
+	intersting history that leaves it in a very unique spot.
+	</p>
+	<p>MathML Core, defines the comparatively small, but well defined and mostly interoperable subset of MathML - with an aim of resolving uniqueness.  It provides details about how it actually <em>fits</em> into the layers platform in well defined ways and to explain their existing magic in terms of the platform - to expose it if is it new.  As such, in indirectly aims to provide a basis for moving <em>many</em> things forward.</p>
+
+	<section class="sectioning">
+		<contextual-heading role="heading" aria-level="2" style="font-size: 2.25rem;">A thought experiment</contextual-heading>
+	<p>Recently conversations in the web platform at large have begun about <a href="https://github.com/whatwg/html/issues/4696">moving HTML forward and polyfilling elements</a>.   Since we are actively working on a 'core' ourselves, we thought this would be an interesting discussion and experiment:  We asked "What if MathML Core was largely 'done' and you would import other support to move forward?"  Those things <em>could</em> potentially be shipped by a browser, but there's no guarantee they ever would.  However, they could also be loaded as polyfills and in standard means that help omit many of the problems that traditional polyfills create.</p>
+	<p>To explain this, we took some elements that <em>aren't</em> in MathML Core, but are specified elsewhere, as an interesting stand in.  One such example is an element called <code>mfenced</code>.  <code>mfenced</code> is just a "more convenient way" of writing some math that has a lot of 'fences' (parens, pipes, braces, and so on).  The original spec even said "It is strictly equivalent to this expanded, longer form".</p>
+	<p>Today, 'polyfills' exist for it if your browser doesn't support it, and today, those work by (if your browser doesn't support it) destroying your tree and replacing it with the equivalent version, at some undefined point in time.</p>
+	<p>We experimentally changed very little in our implementation and it now considers any MathML 'unknown element' as on the whitelist of elements which can have a Shadow DOM.  We used a simple stand-in using Mutation Observer to allow any of those to be defined without a dash, and wrote a polyfill for <code>mfenced</code> which simply expands it into Shadow DOM.</p>
+	<p>For purposes of discussion, we illustrated how we could, in theory, use MathML Core, import some new vocabulary (potentially a future proposal, or just some slang) and easily expand it into some Shadow DOM, leaving you with the tree that you authored and all of the things just fitting together nicely and predictably. Below is a screenshot from our actual implementation experiment.</p>
+	<p><a target="_blank" rel="noopener noreferrer" href="https://camo.githubusercontent.com/8e0c8bf38ccd6fa1a20a3d3fa2299a7e32291d32/68747470733a2f2f63646e2e676c697463682e636f6d2f39303035373538332d326137392d343662372d623565662d36636566336265383764613625324653637265656e73686f7425323066726f6d253230323031392d30372d303725323031322d35322d35302e706e673f763d31353632353138353030313933"><img src="https://camo.githubusercontent.com/8e0c8bf38ccd6fa1a20a3d3fa2299a7e32291d32/68747470733a2f2f63646e2e676c697463682e636f6d2f39303035373538332d326137392d343662372d623565662d36636566336265383764613625324653637265656e73686f7425323066726f6d253230323031392d30372d303725323031322d35322d35302e706e673f763d31353632353138353030313933" alt="screenshot of element and shadow dom in experimental browser build" data-canonical-src="https://cdn.glitch.com/90057583-2a79-46b7-b5ef-6cef3be87da6%2FScreenshot%20from%202019-07-07%2012-52-50.png?v=1562518500193" style="max-width:100%;"></a></p>
+	<p>We think that these sorts of experiments are useful and informative and help us ask better questions about how we are fitting into the platform itself: Have we answered the necessary questions?  How does the introduction of a ShadowRoot impact rendering and namespacing, for example?  Could developers really 'plug in' to all the necessary bits?  Could they properly layer atop?  To test this, we also created elements that expand shorthands like TeX and ASCII Math.  In the end, can we ultimately resolve a great a stable core that allows us to move math forward using these things similar in ways similar to Knuth's TeX book/engine - but in a way that is properly "of the platform"?  We think the answer is yes.</p>
+
+	<p>While we're not entirely sure where larger conversations about how HTML will move forward will go, and we aren't claiming that this implementation is anything more than a quick experiment for discussion and testing, the MathML community itself is very excited that such talks are even happening in HTML and <em>very</em> interested in being a part of that conversation, and sorting out how we can move forward together as One Platform™, with less 'specialness'.</p>
+	</section>
+	
+]]></content>
     </entry>
     <entry>
         <title type="html"><![CDATA[Interesting Custom Element Data Begins]]></title>
