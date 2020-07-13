@@ -4,7 +4,7 @@
         <title>bkardell.com rss feed</title>
         <link>http://bkardell.com/</link>
         <description>Just the bkardell.com rss feed</description>
-        <lastBuildDate>Mon, 25 May 2020 22:28:51 GMT</lastBuildDate>
+        <lastBuildDate>Mon, 13 Jul 2020 11:24:59 GMT</lastBuildDate>
         <docs>http://blogs.law.harvard.edu/tech/rss</docs>
         <generator>awesome mix</generator>
         <image>
@@ -14,6 +14,117 @@
         </image>
         <copyright>All rights reserved 2018, Brian Kardell</copyright>
         <atom:link href="https://bardell.com/blog/feed.atom" rel="self" type="application/rss+xml"/>
+        <item>
+            <title><![CDATA[Open Prioritization and Advocacy]]></title>
+            <link>https://bkardell.com/blog/OpenPrioritization.html</link>
+            <guid>https://bkardell.com/blog/OpenPrioritization.html</guid>
+            <pubDate>Mon, 13 Jul 2020 04:00:00 GMT</pubDate>
+            <description><![CDATA[I love the Web, and I want it to thrive.  It is an incredible open commons that makes so much of modern life possible, and better.  If you're reading this, chances are pretty good that the web has even enabled your career.  Mine too!  But there's also pretty good odds that you think it could be better.  I agree!  Let me tell you about an experiment at visibly making it better, together.]]></description>
+            <content:encoded><![CDATA[
+	<contextual-heading role="heading" aria-level="1" style="font-size: 2rem;">Open Prioritization and Advocacy</contextual-heading>
+	<p class="segue">I love the Web, and I want it to thrive.  It is an incredible open commons that makes so much of modern life possible, and better.  If you're reading this, chances are pretty good that the web has even enabled your career.  Mine too!  But there's also pretty good odds that you think <em>it could be better</em>.  I agree!  Let me tell you about an experiment at <em>visibly</em> making it better, together.</p>
+	
+	<p>The web is 30 years old. In that time we've learned a lot about the problem space involved. I write a lot about the challenges we've faced, and am a regular advocate for the idea that we can do better.  I believe that when we lean on pragmatic answers and include more people as directly as possible, we all win.  The commons wins.  That's why I am so excited about our new experiment...</p>
+
+	<div class="captioned-image" style="background-color: transparent;">
+		<img src="/media/open-prioritization.png" alt="Open Prioritization, by Igalia: An experiment in crowdfunding prioritization">
+	</div>
+
+
+	<p>If you're a fan of The ShopTalk show, <a href="https://shoptalkshow.com/407/">I first publicly discussed the idea there back in <em>April</em></a>. But, as you might have noticed, the world has been full of snags in 2020 and things got a little delayed.  But finally, here we are!</p>
+
+	<p>There will be lots of posts describing what its about, it's a big idea. But, in a very few words: Here are six concrete web features that we can crowdfund together toward advancing actual work.  Here is a means of having a tangible voice in how we advance this commons that we all share.  Below is a short  (5 min) video that describes it and answers questions submitted by some friends we talked to about it early...</p>
+
+	<div class="video-container captioned-image" style="background-color: transparent;">
+		<iframe src="https://www.youtube.com/embed/xCRxNVbUqhk" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>
+	</div>
+
+	<p>More details are available at <a href="https://igalia.com/open-prioritization">open-prioritization.igalia.com</a>, and that's where you can pledge, and it contains more details too.  But before you pledge anything, I'd like to offer some thoughts on it before you go.</p>
+
+	<p>I think that we'll see that prioritization is <em>hard</em>.  I think we'll see that we probably don't all automatically agree on which thing is <em>most worthy</em> of prioritization.</p>
+
+	<p><em>And that's ok</em>... In fact, it's really interesting.</p>
+
+	<section class="sectioning">
+		<contextual-heading role="heading" aria-level="2" style="font-size: 2.25rem;">Which of the 6 features best to support...</contextual-heading>
+
+		<p>Everything is best.  It depends who you ask.  Part of the purpose of this experiment is to show that groups can find new ways to <em>advocate</em> and <em>work together to decide to do concrete things</em>. So let me attempt to do just that and get the ball rolling...</p>
+
+		<p>Let me tell you how <em>I prioritized</em>, and why - and advocate for the ones I think are the best choices.  You can judge for yourself whether that makes sense and make your own decisions, or share your own advocacy.</p>
+
+		<p>First off, note that you have a lot of expressive power here:  I pledged <em>something</em> to <em>everything</em> because I really believe in the idea.  I think think that changing the status quo and advancing <em>any</em> of these in a new way is a positive result.  What I did is vary <em>how much</em> I helped anything along the way to it's goal.  My minium was $5, my max was $40, but that could just as well be $1 or $5.  If you pledge $1, that is $1 worth of funding of the commons that didn't exist before and lots of $1's can get it done too.</p>
+
+		<section class="sectioning">
+			<contextual-heading role="heading" aria-level="3" style="font-size: 2.5rem;">The implmentation projects I pledged less to...</contextual-heading>
+
+			<ul>
+	
+				<li>
+					<p><strong>Selector list support for `<code>:not</code> in Chromium</strong>`</p>
+
+					<p>I pledged $5 (1/9600th of the goal) to supporting selector lists in Chromium.  Chrome already spends way more than anyone else, and is by far the most dominant browser.  Generally speaking, I am more interested in helping to level things out.  Almost as importantly to me: It's only a second implementation - it doesn't achieve universality in the way some others do. Those are more valuable to me. A second implementation is better than a just first, and it's a necessary step along the way, for sure.  However, it still leaves me without for a while.  In a very tangible way, the last implementation is worth a lot.  Finally, while it offers something toward specifity issues, mostly, it's just sugar.  Would I like it? Sure, but it feels like there not a long of "bang for the buck".</p>
+				</li> 
+
+				<li>
+					<p><strong>CSS <code>lab()</code>` colors in Firefox</strong></p>
+
+					<p>I gave $5 toward CSS's lab colors in Firefox too (the same degree toward the goal as <code>:not</code>).  This was a tough one, I'm not going to lie. It is potentially very valuable, but it is the kind of investment you only fully realize at the end of several stages. This is, in fact, one of the reasons it's been slow to get traction. We have to get this to get colors level 5.   We want this in design tools.  But the real value is only when we have all of the next steps, even across the platform (like in canvas too).  It would also appear that this is not  yet a "cross the finish line" investment.</p>
+				</li>
+
+
+				<li>
+					<p><strong>CSS <code>d</code> (SVG path) support in Firefox</strong></p>
+
+					<p>I also pledged $5 toward supporting SVG (d) path in CSS in Firefox (but that is 1/2600th of the goal).  It seems less important than others to me on a number of counts.  It also doesn't help us cross a finish line: Once this is done, it still isn't in WebKit. That said, it is very good bang for the buck and I think we could get it done.</p>
+				</li>
+	
+				<li>
+					<p><strong>CSS <code>contain</code> in WebKit</strong></p>
+
+					<p>I pledged $10 toward supporting containment in WebKit (1/7100th of the the goal).  Again, this is tough.  It is a last mile - only WebKit doesn't support it.  However, the price tag is much bigger too, and my big challenge here is that I don't know what the payoff really looks like is in practice. It can improve performance, which is great, but for me - it's extra.  It can be used in conjunction with ResizeObserver for some pretty good approximations of container queries, which is great too.  But it isn't <em>100% clear</em> that it is a necessary element for container queries. In fact, in <a href="https://bkardell.com/blog/TowardResponsive.html">our proposal</a> and experiments to far, it isn't necessary for a whole bunch of use cases.  But... it's uncertain. If it turns out to be critical, and we haven't invested in it, it's only that much longer until we finally arrive. So... Sigh... That's a tough one.</p>
+				</li>
+			</ul>
+		</section>
+		<section class="sectioning">
+			<contextual-heading role="heading" aria-level="3" style="font-size: 2.5rem;">My top choices: <code>inert</code> and <code>focus-visible</code></contextual-heading>
+
+			<p>This leads me to my top choices: <code>:focus-visible</code> (I pledged $40 - 1/875th of the goal) and <code>inert</code> ($40 or 1 1200th of the goal)- both in WebKit.  </p>
+
+			<p>Why these?  Well, because I think they are the most valuable in a lot of ways.   Of course, I'm biased:   I worked on the design and championing of both of these features with my friends Alice Boxhall and Rob Dodson, including writing and popularizing polyfills and iterating on the details with practical feedback and experience under our belts.  And now, here we are a few years later and these are <em>last miles</em> - only one browser doesn't have them implemented or isn't implementing yet.  We can change that.</p>
+
+			<p>I did this work on my own time. as a developer, before I came to work for Igalia because there were real problems my teams were facing every day. Worse, they were right at the intersection of UX, DX and accessibility so the pains were very real.  So, let me tell you about what they are and why I think they're worth giving that last push.</p>
+
+			<section class="sectioning">
+				<contextual-heading role="heading" aria-level="4" style="font-size: 2.75rem;"><code>inert</code></contextual-heading>
+
+				<p>There are a whole bunch of design patterns that require you to manage a whole bunch of other properties enmasse:  Make them unclickable, make their text unselectable, hide them from screen readers via ARIA, take them out of sequential focus temporarily.  Probably the easiest example of this is when a dialog is open - the rest of the page is 'there' but kind of 'inert'.  In fact, inert was as a term to the HTML specification when <code>&lt;dialog&gt;</code> was spec'ed.  But this isn't the only time when you want this behavior and, in fact, it is useful in a number of other use cases - but it's hard enough that even a lot of common UI libraries get it wrong.</p>
+
+				<p><code>inert</code> exposes the ability to say "the stuff inside this element should be all of those things" in a simple way via a reflecting attribute - that is, you can set it in markup as an attribute, or via DOM property (which updates the attribute).</p>
+
+				<p>You can read more about it, including other use cases and details <a href="https://github.com/WICG/inert/blob/master/explainer.md#use-cases">on the WICG explainer</a> (the related pull request to HTML itself is pending).</p>
+			</section>
+
+			<section class="sectioning">
+				<contextual-heading role="heading" aria-level="4" style="font-size: 2.75rem;"><code>:focus-visible</code></contextual-heading>
+
+
+				<p>Research shows that way too many people disable the focus indicator, at the cost of accessibility.  Well, there's kind of a rational explanation for why this happens so much, and that is that CSS's <code>:focus</code> pseudo-class is just plain broken.</p>
+
+				<p>From very early days, browsers have used various heuristics to make the native focus ring valuable and, at the same time, unobtrusive.  There are times when an element gets focus where showing the indicator just <em>feels bad</em> and is there for no particularly really good reason for it to be there. The use cases are not all the same: If you click on a password field in a busy environment, for example, it's very important that you understand that your typed characters will land in the obscured field -- so you will <em>always</em> get a focus indicator.  If you click on a button, on the other hand, and it gets a focus indicator, that might be disorienting... <em>But</em> if you <em>keyboard navigate to that button</em>, then you <em>need</em> to see the indicator.</p>
+
+				<p>Unfortunately, designs frequently don't "work" with only the native indicator, and the trouble is that traditionally the only tool that designers have to style the focus indicator is :focus, and it doesn't care about any of that.  The net result is that, unfortunately, attempting to use <code>:focus</code> to make the focus indicator work better for your site results in unfamilliar and disorienting UX for everyone.  Given only bad choices, the answer that too many make is the easy one: Simply disable it.</p>
+
+				<p><code>:focus-visible</code>, on the other hand, only matches if the indicator would natively be shown, taking into account all of the browser UX research and preventing this disconnect.  It is, in our experience, provably easier to get right, and more successful.</p>
+			</section>
+		</section>
+		<section class="sectioning">
+			<contextual-heading role="heading" aria-level="3" style="font-size: 2.5rem;">What about you?</contextual-heading>
+
+			<p>What about you, will you support something? Will you help advocate for the priority of something specific?  I (and we at Igalia at large) would love to hear your thoughts - share them on social media with the hashtag <code>#openprioritization</code> so that we can try to collect them.</p>
+		</section>
+	</section>
+]]></content:encoded>
+        </item>
         <item>
             <title><![CDATA[Web Engine Diversity and Ecosystem Health]]></title>
             <link>https://bkardell.com/blog/EcosystemHealth.html</link>
@@ -25,11 +136,11 @@
 	
 	
 	<p class="segue">For many years, we've seen lots of blog posts and conversation on the topic of "browser engine diversity".  I'd like to offer a slightly tilted view of this based instead on "the health of the ecosystem", and explain why I think this is more valuable measure and way to discuss these topics.</p>
-	<p>Back in January, Jeremy Keith compared the complexity of browser engine diversity to political systems...</p>
+	<p>Back in January, Jeremy Keith <a href="https://adactio.com/journal/16331">compared the complexity of browser engine diversity to political systems</a>...</p> 
 	<blockquote>
 	<p>If you have hundreds of different political parties, that’s not ideal. But if you only have one political party, that’s very bad indeed!</p>
 	</blockquote>
-	<p>I like this analogy bat's almost self-evident: 1 is too few, a hundred is too many - it's just chaos and noise.  But what is the ideal number?  This answer dogs us a lot, in part because it is not only unanswerable, it's actually kind of a red herring. I think there's something to this that leads to an important takeaway about how we think about the problem...</p>
+	<p>I like this analogy because I think he's right in even more ways than he intended. It's almost self-evident: 1 is too few, a hundred is too many - it's just chaos and noise.  But what is the ideal number?  This answer dogs us a lot, in part because it is not only unanswerable, it's actually kind of a red herring. I think there's something to this that leads to an important takeaway about how we think about the problem...</p>
 	<section class="sectioning">
 		<contextual-heading role="heading" aria-level="2" style="font-size: 2.25rem;">Numbers and goals...</contextual-heading>
 		<p>The interesting part about this analogy is that the simple number of political parties isn't actually a very meaningful measure: Parties can differ a lot, or they can differ a little.  6 parties that barely disagree is quite a different thing than 3 that disagree substantially.  Further, it's not simply a matter of giving voice to every dissenting opinion that matters either: There are political parties formed on ideas of hate, for example. Adding those doesn't add good things.  In short, what really matters is the <em>goal</em> of those numbers.</p>
@@ -41,11 +152,11 @@
 		<p>Consider, for example, the fact that for a time there were <em>only two</em> mainstream browsers - and the very dominant one (IE) was both  entirely proprietary and based on a single proprietary OS.</p>
 		<p>Consider how different this could have been, if IE had been open source and properly licensed.  Even if Microsoft didn't want it to run on other operating systems, someone else could step in and fill that gap.  If Microsoft walked away from the Web, or worse, went belly up, someone could fork and take over the project.  If, for any reason at all, the primary maintainer cannot prioritize - other people and organization could more directly invest in advancements.</p>
 		<p>A while later, Opera's Presto was very interesting, even multi-OS - but ultimately similarly proprietary.</p>
-		<p>So, while we had greater 'diverity', these numbers alone aren't a great measure of the overall health of the ecosystem.</p>
+		<p>So, while we had greater 'diversity', these numbers alone aren't a great measure of the overall health of the ecosystem.</p>
 	</section>
 	<section class="sectioning">
 		<contextual-heading role="heading" aria-level="2" style="font-size: 2.25rem;">The most healthy, open ecosystem ever.</contextual-heading>
-		<p>This is in stark contrast to the situation today: In important ways, we are a <em>more</em> diverse, efficient and healthier ecosystem with the three multi-os, open source engines we have left than when we had had more and were dominated by projects that weren't that at all.</p>
+		<p>This is in stark contrast to the situation today: In important ways, we are a <em>more</em> diverse, efficient and healthier ecosystem with the three multi-os, open source engines we have left (Blink, Gecko and WebKit) than when we had had more and were dominated by projects that weren't that at all.</p>
 		<div class="note">
 			A lot of people seem to want to suggest that there aren't really 3 today because blink was born from a fork of WebKit, or because they think that WebKit is somehow "Just for iOS".
 			<p>There are certainly 3 <em>entirely</em> different JavaScript engines, and 3 <em>entirely</em> different architectures.  There are some bits that remain similar, but the truth is that that this is neither new nor easily solvable.  Web engines today are so astonishingly complex (measured in tens of millions of lines of code) that we only get new ones through evolution.  For the most part, this has been true for a long time.  Even Netscape was a "take 2" from many of the same minds from Mosaic.  Mozilla was created from a rework of Netscape.  Even IE was born by licensing the Mosaic code.  WebKit was born by forking KHTML.  In other words: The critical investment required to create a full-blown compliant browser from nothing would be mind-boggling if everything were stopped today - and it never stops.</p>
@@ -1097,6 +1208,29 @@ console.log(x.name) // Brian
 ]]></content:encoded>
         </item>
         <item>
+            <title><![CDATA[2 Minute Standards]]></title>
+            <link>https://bkardell.com/blog/2MinuteStandards.html</link>
+            <guid>https://bkardell.com/blog/2MinuteStandards.html</guid>
+            <pubDate>Tue, 20 Aug 2019 04:00:00 GMT</pubDate>
+            <description><![CDATA[A short explanation of a new effort]]></description>
+            <content:encoded><![CDATA[
+    <contextual-heading role="heading" aria-level="1" style="font-size: 2rem;">2 Minute Standards</contextual-heading>
+    <p class="segue">A short explanation of a new effort</p>
+
+    <p>For a while now, we've been running some 'outreach groups'.  Originally started informally by my colleague at <a href="https://igalia.com" rel="nofollow">Igalia, </a><a href="https://twitter.com/littledan" rel="nofollow">Dan Ehrenberg</a>, it's become a set of monthly meetings with various groups of stakeholders in <a href="https://tc39.github.io" rel="nofollow">TC39</a> and the Web at large which I really look forward to.  The <a href="https://github.com/js-outreach/js-outreach-groups" rel="nofollow">groups</a> are meetings of people who work on Tooling, people who work on Frameworks and Libraries and Educators, with folks who work on standards.  The goals of all of them, at the end of the day, is to figure out how we all work better, together.</p>
+    
+    <p>The Educators Group has talked a bit about a number of efforts, but there's one conversation we've been having that I think is pretty interesting. I dont know of any developer who isn't interested in what is going on in standards, but the economics of this is currently kind of hard. We're interested in a whole bunch of other things too. There's lots of good content - too much in fact, coming at us from a million directions and it's all competing for our time and attention. We have jobs, and families, and pets, hobbies and lives. I love a lot of long form things, I'm excited when I see them in my stream, but they pile up and I have to choose. I only have so many slots of time where I can actually afford to consume 10, 15, 30 or 40 minutes worth of information. It can feel a little overwhelming sometimes.</p>
+
+    <p>So, we're going to try something new: 2 Minute Standards.  Think of it as "standards news, in brief".  The basic idea is pretty simple: Like a news segment, it's got to contain pertinent facts, more than a tweet - but it's air time is limited, as the name would suggest, to 2 Minutes.  That can come in a number of forms: An article that is 500 words or less, a two minute video, or a short web comic/zine.  The idea though is to ultimately give developers some channel with reasonable economics for staying 'generally informed'.  In the end, that's frequently what we want anyways: We can't know everything, we just need to know <em>enough</em> to know what it is, why it is, and that it is there when we're ready to learn more.  We'd like to be able to roughly understand it if it comes up. A maximum of 2 minutes per day, and almost certainly not even that much, seems... unintimidating and managable.</p>
+
+    <p>So, that's the idea.  We're still discussing many of the details about how to make this really 'click' in a bigger way: How to create as a sort of channel you can follow?  For now, it seems better to start with something simple and perhaps to begin to get feedback on the idea.  To this end, we'll post things with the hashtag #StandardsIn2Min, and others can too. If you see something fly by with the hashtag you can always find it again later on the twitter feed and, hopefully, expect that it will take no more than 2 minutes to consume.  However, we will also manage the Twitter account <a href="https://twitter.com/StandardsIn2Min" rel="nofollow">@StandardsIn2Min</a>, where we'll work to curate those hashtags too and create a manageable (honestly, probably slow) pace that never asks for more than two minutes of your attention in a day to keep up. Let us know what you think about the idea!</p>
+    
+
+    <p class="thanks-to">Thanks to the <a href="https://github.com/js-outreach/js-outreach-groups" rel="nofollow">educators group</a> for all of their help discussing and creating, and especially to <a href="https://twitter.com/laurieontech" rel="nofollow">Laurie Barth</a> and <a href="https://twitter.com/jorydotcom" rel="nofollow">Jory Burson</a> for helping get this post put together quickly!
+    </p>
+]]></content:encoded>
+        </item>
+        <item>
             <title><![CDATA[Top Level Await: 2 Minute Standards]]></title>
             <link>https://bkardell.com/blog/TopLevelAwaitIn2m.html</link>
             <guid>https://bkardell.com/blog/TopLevelAwaitIn2m.html</guid>
@@ -1165,26 +1299,37 @@ export const _internalPromise =
 ]]></content:encoded>
         </item>
         <item>
-            <title><![CDATA[2 Minute Standards]]></title>
-            <link>https://bkardell.com/blog/2MinuteStandards.html</link>
-            <guid>https://bkardell.com/blog/2MinuteStandards.html</guid>
-            <pubDate>Tue, 20 Aug 2019 04:00:00 GMT</pubDate>
-            <description><![CDATA[A short explanation of a new effort]]></description>
+            <title><![CDATA[Moving Math Forward, Thoughts and Experiments]]></title>
+            <link>https://bkardell.com/blog/MathForward.html</link>
+            <guid>https://bkardell.com/blog/MathForward.html</guid>
+            <pubDate>Tue, 09 Jul 2019 04:00:00 GMT</pubDate>
+            <description><![CDATA[
+		In this piece, I explain details on thoughts on experiments and conversations around moving Math forward on the Web.
+	]]></description>
             <content:encoded><![CDATA[
-    <contextual-heading role="heading" aria-level="1" style="font-size: 2rem;">2 Minute Standards</contextual-heading>
-    <p class="segue">A short explanation of a new effort</p>
+	<contextual-heading role="heading" aria-level="1" style="font-size: 2rem;">Moving Math Forward, Thoughts and Experiments</contextual-heading>
+	<p class="segue">
+		In this piece, I explain details on thoughts on experiments and conversations around moving Math forward on the Web.
+	</p>
+		
+	<p>For some context, <a href="https://mathml.igalia.com" rel="nofollow">my team is actively working on implementing MathML in Chromium</a> (the engine Chrome, Edge, Samsung, Brave, UC Browser and lots of other share), more specifically MathML Core.  MathML has long had implementations in Safari and Firefox and has an 
+	intersting history that leaves it in a very unique spot.
+	</p>
+	<p>MathML Core, defines the comparatively small, but well defined and mostly interoperable subset of MathML - with an aim of resolving uniqueness.  It provides details about how it actually <em>fits</em> into the layers platform in well defined ways and to explain their existing magic in terms of the platform - to expose it if is it new.  As such, in indirectly aims to provide a basis for moving <em>many</em> things forward.</p>
 
-    <p>For a while now, we've been running some 'outreach groups'.  Originally started informally by my colleague at <a href="https://igalia.com" rel="nofollow">Igalia, </a><a href="https://twitter.com/littledan" rel="nofollow">Dan Ehrenberg</a>, it's become a set of monthly meetings with various groups of stakeholders in <a href="https://tc39.github.io" rel="nofollow">TC39</a> and the Web at large which I really look forward to.  The <a href="https://github.com/js-outreach/js-outreach-groups" rel="nofollow">groups</a> are meetings of people who work on Tooling, people who work on Frameworks and Libraries and Educators, with folks who work on standards.  The goals of all of them, at the end of the day, is to figure out how we all work better, together.</p>
-    
-    <p>The Educators Group has talked a bit about a number of efforts, but there's one conversation we've been having that I think is pretty interesting. I dont know of any developer who isn't interested in what is going on in standards, but the economics of this is currently kind of hard. We're interested in a whole bunch of other things too. There's lots of good content - too much in fact, coming at us from a million directions and it's all competing for our time and attention. We have jobs, and families, and pets, hobbies and lives. I love a lot of long form things, I'm excited when I see them in my stream, but they pile up and I have to choose. I only have so many slots of time where I can actually afford to consume 10, 15, 30 or 40 minutes worth of information. It can feel a little overwhelming sometimes.</p>
+	<section class="sectioning">
+		<contextual-heading role="heading" aria-level="2" style="font-size: 2.25rem;">A thought experiment</contextual-heading>
+	<p>Recently conversations in the web platform at large have begun about <a href="https://github.com/whatwg/html/issues/4696">moving HTML forward and polyfilling elements</a>.   Since we are actively working on a 'core' ourselves, we thought this would be an interesting discussion and experiment:  We asked "What if MathML Core was largely 'done' and you would import other support to move forward?"  Those things <em>could</em> potentially be shipped by a browser, but there's no guarantee they ever would.  However, they could also be loaded as polyfills and in standard means that help omit many of the problems that traditional polyfills create.</p>
+	<p>To explain this, we took some elements that <em>aren't</em> in MathML Core, but are specified elsewhere, as an interesting stand in.  One such example is an element called <code>mfenced</code>.  <code>mfenced</code> is just a "more convenient way" of writing some math that has a lot of 'fences' (parens, pipes, braces, and so on).  The original spec even said "It is strictly equivalent to this expanded, longer form".</p>
+	<p>Today, 'polyfills' exist for it if your browser doesn't support it, and today, those work by (if your browser doesn't support it) destroying your tree and replacing it with the equivalent version, at some undefined point in time.</p>
+	<p>We experimentally changed very little in our implementation and it now considers any MathML 'unknown element' as on the whitelist of elements which can have a Shadow DOM.  We used a simple stand-in using Mutation Observer to allow any of those to be defined without a dash, and wrote a polyfill for <code>mfenced</code> which simply expands it into Shadow DOM.</p>
+	<p>For purposes of discussion, we illustrated how we could, in theory, use MathML Core, import some new vocabulary (potentially a future proposal, or just some slang) and easily expand it into some Shadow DOM, leaving you with the tree that you authored and all of the things just fitting together nicely and predictably. Below is a screenshot from our actual implementation experiment.</p>
+	<p><a target="_blank" rel="noopener noreferrer" href="https://camo.githubusercontent.com/8e0c8bf38ccd6fa1a20a3d3fa2299a7e32291d32/68747470733a2f2f63646e2e676c697463682e636f6d2f39303035373538332d326137392d343662372d623565662d36636566336265383764613625324653637265656e73686f7425323066726f6d253230323031392d30372d303725323031322d35322d35302e706e673f763d31353632353138353030313933"><img src="https://camo.githubusercontent.com/8e0c8bf38ccd6fa1a20a3d3fa2299a7e32291d32/68747470733a2f2f63646e2e676c697463682e636f6d2f39303035373538332d326137392d343662372d623565662d36636566336265383764613625324653637265656e73686f7425323066726f6d253230323031392d30372d303725323031322d35322d35302e706e673f763d31353632353138353030313933" alt="screenshot of element and shadow dom in experimental browser build" data-canonical-src="https://cdn.glitch.com/90057583-2a79-46b7-b5ef-6cef3be87da6%2FScreenshot%20from%202019-07-07%2012-52-50.png?v=1562518500193" style="max-width:100%;"></a></p>
+	<p>We think that these sorts of experiments are useful and informative and help us ask better questions about how we are fitting into the platform itself: Have we answered the necessary questions?  How does the introduction of a ShadowRoot impact rendering and namespacing, for example?  Could developers really 'plug in' to all the necessary bits?  Could they properly layer atop?  To test this, we also created elements that expand shorthands like TeX and ASCII Math.  In the end, can we ultimately resolve a great a stable core that allows us to move math forward using these things similar in ways similar to Knuth's TeX book/engine - but in a way that is properly "of the platform"?  We think the answer is yes.</p>
 
-    <p>So, we're going to try something new: 2 Minute Standards.  Think of it as "standards news, in brief".  The basic idea is pretty simple: Like a news segment, it's got to contain pertinent facts, more than a tweet - but it's air time is limited, as the name would suggest, to 2 Minutes.  That can come in a number of forms: An article that is 500 words or less, a two minute video, or a short web comic/zine.  The idea though is to ultimately give developers some channel with reasonable economics for staying 'generally informed'.  In the end, that's frequently what we want anyways: We can't know everything, we just need to know <em>enough</em> to know what it is, why it is, and that it is there when we're ready to learn more.  We'd like to be able to roughly understand it if it comes up. A maximum of 2 minutes per day, and almost certainly not even that much, seems... unintimidating and managable.</p>
-
-    <p>So, that's the idea.  We're still discussing many of the details about how to make this really 'click' in a bigger way: How to create as a sort of channel you can follow?  For now, it seems better to start with something simple and perhaps to begin to get feedback on the idea.  To this end, we'll post things with the hashtag #StandardsIn2Min, and others can too. If you see something fly by with the hashtag you can always find it again later on the twitter feed and, hopefully, expect that it will take no more than 2 minutes to consume.  However, we will also manage the Twitter account <a href="https://twitter.com/StandardsIn2Min" rel="nofollow">@StandardsIn2Min</a>, where we'll work to curate those hashtags too and create a manageable (honestly, probably slow) pace that never asks for more than two minutes of your attention in a day to keep up. Let us know what you think about the idea!</p>
-    
-
-    <p class="thanks-to">Thanks to the <a href="https://github.com/js-outreach/js-outreach-groups" rel="nofollow">educators group</a> for all of their help discussing and creating, and especially to <a href="https://twitter.com/laurieontech" rel="nofollow">Laurie Barth</a> and <a href="https://twitter.com/jorydotcom" rel="nofollow">Jory Burson</a> for helping get this post put together quickly!
-    </p>
+	<p>While we're not entirely sure where larger conversations about how HTML will move forward will go, and we aren't claiming that this implementation is anything more than a quick experiment for discussion and testing, the MathML community itself is very excited that such talks are even happening in HTML and <em>very</em> interested in being a part of that conversation, and sorting out how we can move forward together as One Platform™, with less 'specialness'.</p>
+	</section>
+	
 ]]></content:encoded>
         </item>
         <item>
@@ -1226,40 +1371,6 @@ export const _internalPromise =
 		<p>While the MathML Community Group is aware that these questions are far from settled, they were universally excited to see such talks begin in HTML and <em>very</em> interested in making sure that they're thinking about those things too: Being a part of that conversation, and sorting out how we can move forward together as One Platform™, with less 'specialness'.</p>
 		<p>If you think this is interesting or useful, please share your support and let someone know.</p>
 		</section></section>]]></content:encoded>
-        </item>
-        <item>
-            <title><![CDATA[Moving Math Forward, Thoughts and Experiments]]></title>
-            <link>https://bkardell.com/blog/MathForward.html</link>
-            <guid>https://bkardell.com/blog/MathForward.html</guid>
-            <pubDate>Tue, 09 Jul 2019 04:00:00 GMT</pubDate>
-            <description><![CDATA[
-		In this piece, I explain details on thoughts on experiments and conversations around moving Math forward on the Web.
-	]]></description>
-            <content:encoded><![CDATA[
-	<contextual-heading role="heading" aria-level="1" style="font-size: 2rem;">Moving Math Forward, Thoughts and Experiments</contextual-heading>
-	<p class="segue">
-		In this piece, I explain details on thoughts on experiments and conversations around moving Math forward on the Web.
-	</p>
-		
-	<p>For some context, <a href="https://mathml.igalia.com" rel="nofollow">my team is actively working on implementing MathML in Chromium</a> (the engine Chrome, Edge, Samsung, Brave, UC Browser and lots of other share), more specifically MathML Core.  MathML has long had implementations in Safari and Firefox and has an 
-	intersting history that leaves it in a very unique spot.
-	</p>
-	<p>MathML Core, defines the comparatively small, but well defined and mostly interoperable subset of MathML - with an aim of resolving uniqueness.  It provides details about how it actually <em>fits</em> into the layers platform in well defined ways and to explain their existing magic in terms of the platform - to expose it if is it new.  As such, in indirectly aims to provide a basis for moving <em>many</em> things forward.</p>
-
-	<section class="sectioning">
-		<contextual-heading role="heading" aria-level="2" style="font-size: 2.25rem;">A thought experiment</contextual-heading>
-	<p>Recently conversations in the web platform at large have begun about <a href="https://github.com/whatwg/html/issues/4696">moving HTML forward and polyfilling elements</a>.   Since we are actively working on a 'core' ourselves, we thought this would be an interesting discussion and experiment:  We asked "What if MathML Core was largely 'done' and you would import other support to move forward?"  Those things <em>could</em> potentially be shipped by a browser, but there's no guarantee they ever would.  However, they could also be loaded as polyfills and in standard means that help omit many of the problems that traditional polyfills create.</p>
-	<p>To explain this, we took some elements that <em>aren't</em> in MathML Core, but are specified elsewhere, as an interesting stand in.  One such example is an element called <code>mfenced</code>.  <code>mfenced</code> is just a "more convenient way" of writing some math that has a lot of 'fences' (parens, pipes, braces, and so on).  The original spec even said "It is strictly equivalent to this expanded, longer form".</p>
-	<p>Today, 'polyfills' exist for it if your browser doesn't support it, and today, those work by (if your browser doesn't support it) destroying your tree and replacing it with the equivalent version, at some undefined point in time.</p>
-	<p>We experimentally changed very little in our implementation and it now considers any MathML 'unknown element' as on the whitelist of elements which can have a Shadow DOM.  We used a simple stand-in using Mutation Observer to allow any of those to be defined without a dash, and wrote a polyfill for <code>mfenced</code> which simply expands it into Shadow DOM.</p>
-	<p>For purposes of discussion, we illustrated how we could, in theory, use MathML Core, import some new vocabulary (potentially a future proposal, or just some slang) and easily expand it into some Shadow DOM, leaving you with the tree that you authored and all of the things just fitting together nicely and predictably. Below is a screenshot from our actual implementation experiment.</p>
-	<p><a target="_blank" rel="noopener noreferrer" href="https://camo.githubusercontent.com/8e0c8bf38ccd6fa1a20a3d3fa2299a7e32291d32/68747470733a2f2f63646e2e676c697463682e636f6d2f39303035373538332d326137392d343662372d623565662d36636566336265383764613625324653637265656e73686f7425323066726f6d253230323031392d30372d303725323031322d35322d35302e706e673f763d31353632353138353030313933"><img src="https://camo.githubusercontent.com/8e0c8bf38ccd6fa1a20a3d3fa2299a7e32291d32/68747470733a2f2f63646e2e676c697463682e636f6d2f39303035373538332d326137392d343662372d623565662d36636566336265383764613625324653637265656e73686f7425323066726f6d253230323031392d30372d303725323031322d35322d35302e706e673f763d31353632353138353030313933" alt="screenshot of element and shadow dom in experimental browser build" data-canonical-src="https://cdn.glitch.com/90057583-2a79-46b7-b5ef-6cef3be87da6%2FScreenshot%20from%202019-07-07%2012-52-50.png?v=1562518500193" style="max-width:100%;"></a></p>
-	<p>We think that these sorts of experiments are useful and informative and help us ask better questions about how we are fitting into the platform itself: Have we answered the necessary questions?  How does the introduction of a ShadowRoot impact rendering and namespacing, for example?  Could developers really 'plug in' to all the necessary bits?  Could they properly layer atop?  To test this, we also created elements that expand shorthands like TeX and ASCII Math.  In the end, can we ultimately resolve a great a stable core that allows us to move math forward using these things similar in ways similar to Knuth's TeX book/engine - but in a way that is properly "of the platform"?  We think the answer is yes.</p>
-
-	<p>While we're not entirely sure where larger conversations about how HTML will move forward will go, and we aren't claiming that this implementation is anything more than a quick experiment for discussion and testing, the MathML community itself is very excited that such talks are even happening in HTML and <em>very</em> interested in being a part of that conversation, and sorting out how we can move forward together as One Platform™, with less 'specialness'.</p>
-	</section>
-	
-]]></content:encoded>
         </item>
         <item>
             <title><![CDATA[Interesting Custom Element Data Begins]]></title>
