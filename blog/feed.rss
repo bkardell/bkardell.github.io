@@ -4,7 +4,7 @@
         <title>bkardell.com rss feed</title>
         <link>http://bkardell.com/</link>
         <description>Just the bkardell.com rss feed</description>
-        <lastBuildDate>Mon, 13 Jul 2020 11:24:59 GMT</lastBuildDate>
+        <lastBuildDate>Wed, 12 Aug 2020 19:24:20 GMT</lastBuildDate>
         <docs>http://blogs.law.harvard.edu/tech/rss</docs>
         <generator>awesome mix</generator>
         <image>
@@ -14,6 +14,93 @@
         </image>
         <copyright>All rights reserved 2018, Brian Kardell</copyright>
         <atom:link href="https://bardell.com/blog/feed.atom" rel="self" type="application/rss+xml"/>
+        <item>
+            <title><![CDATA[Reimaging the Vendor-Only Model]]></title>
+            <link>https://bkardell.com/blog/Reimagining.html</link>
+            <guid>https://bkardell.com/blog/Reimagining.html</guid>
+            <pubDate>Wed, 12 Aug 2020 04:00:00 GMT</pubDate>
+            <description><![CDATA[I have been trying to organize my personal thoughts on this and figure out how to carefuly articulate them for a while now.  I hadn't planned on posting this just yet but recent events and discussions make me think that maybe it is worth sharing.]]></description>
+            <content:encoded><![CDATA[
+	<contextual-heading role="heading" aria-level="1" style="font-size: 2rem;">Reimaging the Vendor-Only Model</contextual-heading>
+	<p class="segue">I have been trying to organize my personal thoughts on this and figure out how to carefuly articulate them for a while now.  I hadn't planned on posting this just yet but recent events and discussions make me think that maybe it is worth sharing.</p>
+
+	<p>I've been talking a lot this year about the health of the Web Ecosystem<sup><a href="https://bkardell.com/blog/EcosystemHealth.html">[1]</a>, <a href="https://www.igalia.com/chats/ecosystem-health">[2]</a>, <a href="https://www.igalia.com/chats/ecosystem-health-ii">[3]</a>,</sup>, kind of trying to raise the larger discussion that we should have a discussion about how we think about it and re-consider how we ensure it remains (or increases) its vibrance.   Our recent open-prioritization experiment is meant, in part, to prompt some of this discussion and begin looking at ways to make things better.  Recent news from Mozilla, it seems, has done as much to prompt some urgency on this discussion in people's minds, so let's dig into it.</p>
+ 
+	<p>One comment that I heard a lot over the years goes something like this...</p>
+
+	<blockquote>
+	  "This is vendors  <em>responsibility</em> - and their companies make bajillions of dollars on the web... Why don't they just hire more people?.
+	</blockquote>
+
+	<p>It's a very natural question since this is the way we tried look at it in practice for roughly the first 25 years, and it's <em>mostly</em> how many of us still think about it.  It's hard to even imagine something else with that kind of inertia.  And... <em>Maybe</em> that model is fine.</p>
+
+	<p>But then again... <em>Maybe not</em>.  I think it's worth considering together, because I am ever increasingly on the "probably not" side. So, now that the conversation is started, let me try to explain why...</p>
+
+	<section class="sectioning">
+		<contextual-heading role="heading" aria-level="2" style="font-size: 2.25rem;">The trouble with the vendor-only model...</contextual-heading>
+
+		<p>In the entire world, at the time of this writing, only 3 organizations currently make the level of investments necessary to maintain a rendering engine at all.  Developers sometimes express frustration at the level of investment because 2 of these 3 organizations are part of the most profitable companies on earth, and they have chosen to invest very differently.  That's fine.  You can continue to do that, and I'm not suggesting that is <em>invalid</em> ... But I think this somewhat of a red herring and that we might be missing the more important conversation.</p>
+
+		<p>At some level, what is <em>far more interesting</em> than the specific arbitrary amount and how it relates to their profits (by this argument both of them could, in theory, invest more) is the fact that they are under no actual obligation to do so, and that <em>in the end,there are no guarantees</em> about continued level of investment.</p>
+
+		<p>Don't get me wrong: I'm tremendously happy that they do, and I absolutely want them to continue playing a core role - just not alone.  I think this is too important to not discuss - because we've already seen several varieties of changes here over time.  Whatever the world looks like today - the only thing you can be sure of is that change is inevitable.  As hard as it is to believe, <em>all</em> the paradigms of organizational power will eventually shift.  The Fortune 500 changes, ultimately many declare bankruptcy and/or are completely re-imagined.  Even if we are extremely fortunate and a company really <em>wants</em>, at its very core, to put in a huge level of investment - there may come a day when they just <em>can't</em>. </p>
+
+		<p>In other words: The traditional model of a few big vendors voluntarily funding development of the Web with very specific revenues puts <em>all</em> of eggs in a very particularly centralized and fickle basket. Just this week, there is related news from Mozilla, kind of demonstrating the latter point.</p>
+
+		<p>Conversely: diversifying investments in the commons would buffer it significantly - and thankfully, it would seem that there are plenty of opportunities to do so. Let's look some..</p>
+
+		<section class="sectioning">
+			<contextual-heading role="heading" aria-level="3" style="font-size: 2.5rem;">Diversifying investments</contextual-heading>
+
+			<p>The most obvious and immediate thing to do is to try to expand the sorts of things that have already begun happening and working...</p>
+
+			<p>Finding additional ways of funding an organization like Mozilla itself is a good idea.  Experimenting with new models for funding development like Brave or Puma which could potentially make a browser itself actually profitable are interesting ideas too.</p>
+
+			<p>Some things, like CSS Grid, are examples of really big investments from <em>non-browser vendors</em>.  A whole lot of that implementation in two browsers was funded by Bloomberg Tech and done by Igalia thanks to the increasingly open and collaborative nature of all of the engines.   That is great too!  There are many wealthy organizations out there (Fortune companies)who can help expand investment like that.  If you work for an organization who is intersted in that, reach out to me!</p>
+
+			<p>However, this avenue isn't immediately appealing even to a lot of big companies.  Could we do more?</p>
+
+			<p>Sure, why not!  There is a much bigger group still of big companies who perhaps won't, themselves, fund a whole feature. What we are trying to show with <a href="http://open-prioritization.igalia.com">open-prioritization</a> is that there are many ways that we can pool money toward a specific purpose. Several big companies can share the costs.  That seems good, and it's <em>one thing</em> that open-prioritization allows for: <em>A comparatively small number of really big businesses working better together would be excellent all on its own</em>.  </p>
+
+			<p>But then... If we're exploring diversifying funding, why place some arbitrary limits on "bigness"?  What makes them special?  Perhaps you don't have to be a mega-company to help advance things?  Experimenting with this is also part of what open-prioritization is about -Maybe there doesn't even have to be a single answer.  In fact, maybe it's better if there isn't! </p>
+		</section>
+		<section class="sectioning">
+			<contextual-heading role="heading" aria-level="3" style="font-size: 2.5rem;">Exploring <em>many</em> models</contextual-heading>
+
+			<p>When I was a kid, and cable television was "new", my grandmother thought it was just ridiculous that someone would <em>pay</em> for television. After all, it came over the air wave "for free".  Of course... It wasn't free, and despite it costing a lot to produce and run, it was a money making endeavor.  The cost to maintain a station is comparatively tiny compared to the potential profits they could make from shoving advertising in our eyeballs.  You paid.  All the way through the system.  A small amount of your product purchases funded advertising, which funded broadcast.</p>
+
+			<p>Actually, the web isn't that different here.  It is traditionally largely supported by very few revenues, mainly advertising in search.  When ad revenue takes a hit, so do the budgets.  </p>
+
+			<p>But over time we've created lots of ways to explore different models.  When it comes to watching TV and movies, I haven't seen "traditional commercial TV" in years - I use some other model to pay for content more directly.  And, honestly, this has been good in a whole lot of ways.  It's generated some real good content even.  Still, there are other forms of short form content - podcasts or music services, for example, that I actually prefer the advertising model for.  And, you can also donate to public radio.  </p>
+
+			<p>Open prioritization is aimed at exploring all of the different ways that we can realize our potential for power and give people <em>opportunities</em> to improve things in many ways.</p>
+
+			<p>With a way to pool funding, there doesn't have to be artificial barriers.  We can give smaller organizations opportunities to participate however they can:  Maybe that is simply through advocating/lobbying bigger companies for specific dollars for development of specific thing.  Perhaps sometimes they don't even need a bigger company.  Perhaps together, several smaller organizations can rally together to act as a big one?  It seems good to allow them to.  </p>
+
+			<p>The one thing that you'll notice that all answers have in common is that ultimately, somehow <em>lots</em> of people are paying in small amounts, and lots of little bits add up to a lot.</p>
+
+			<section class="sectioning">
+				<contextual-heading role="heading" aria-level="4" style="font-size: 2.75rem;">The potential power of collectives</contextual-heading> 
+
+				<p>With no arbitrary limits, even developers themselves could play a big, very direct role... If we want to. </p>
+
+				<p><em>Should we</em>?  I don't know!  </p>
+
+				<p>I'd love to talk about it though because I think that hidden in here is something with <em>immense potential for good</em> by voluntarily even small commitments simply by realizing our sheer numbers. This is sort of the power of collectives.  If you're looking for interesting analaogies, check out <a href="https://www.piamancini.com/">Pia Mancini's Talks/Media posts</a> explaining things like how and why this can also work for governments.</p>
+
+				<p>Consider that meetup.com alone lists something like 18 million people who identify as Web developers.  Using that as just some kind of working number:  If even 1/10th of those developers decided to voluntarily contibute a single dollar each month, this would be over 21.5 million dollars annually that we could use to collectively <em>directly</em> decide what should happen.  This seems very plausible as you need far less than 1/10th if we assume that some people would be willing to give $2 or $5 or maybe even $10.</p>
+
+				<p>In other words, in addition to all of the other ways that we can explore, even we developers actuallly have <em>enormous</em> potential untapped power even with <em>very limited kinds of investment</em> to play <em>a role</em> (not exclusively)... That's more than we can convince most big companies to invest, to directly shape things today.  That would be some <em>extreme</em> diversification, and a real "commons".  To <em>me</em> that seems really good to have in the mix... If we want it.</p>
+
+				<p>I guess the question is: Do we? </p>
+
+				<p>I am willing to accept the possibility that it is possible that the answer is simply "No thanks" - but I think it's great that at least we have the choice/opportunity and an avenue to begin to consider <em>all of these things</em>, directly, and have the discussion.  I think that's a real positive.  What do you think? I'd love to hear from you.  If you like this idea, pass it on and maybe consider pledging $1 to one of the pledge collectives in our experiment to help advance the larger ideas and conversation.</p>
+
+			</section>
+		</section>
+	</section>
+]]></content:encoded>
+        </item>
         <item>
             <title><![CDATA[Open Prioritization and Advocacy]]></title>
             <link>https://bkardell.com/blog/OpenPrioritization.html</link>
@@ -1299,40 +1386,6 @@ export const _internalPromise =
 ]]></content:encoded>
         </item>
         <item>
-            <title><![CDATA[Moving Math Forward, Thoughts and Experiments]]></title>
-            <link>https://bkardell.com/blog/MathForward.html</link>
-            <guid>https://bkardell.com/blog/MathForward.html</guid>
-            <pubDate>Tue, 09 Jul 2019 04:00:00 GMT</pubDate>
-            <description><![CDATA[
-		In this piece, I explain details on thoughts on experiments and conversations around moving Math forward on the Web.
-	]]></description>
-            <content:encoded><![CDATA[
-	<contextual-heading role="heading" aria-level="1" style="font-size: 2rem;">Moving Math Forward, Thoughts and Experiments</contextual-heading>
-	<p class="segue">
-		In this piece, I explain details on thoughts on experiments and conversations around moving Math forward on the Web.
-	</p>
-		
-	<p>For some context, <a href="https://mathml.igalia.com" rel="nofollow">my team is actively working on implementing MathML in Chromium</a> (the engine Chrome, Edge, Samsung, Brave, UC Browser and lots of other share), more specifically MathML Core.  MathML has long had implementations in Safari and Firefox and has an 
-	intersting history that leaves it in a very unique spot.
-	</p>
-	<p>MathML Core, defines the comparatively small, but well defined and mostly interoperable subset of MathML - with an aim of resolving uniqueness.  It provides details about how it actually <em>fits</em> into the layers platform in well defined ways and to explain their existing magic in terms of the platform - to expose it if is it new.  As such, in indirectly aims to provide a basis for moving <em>many</em> things forward.</p>
-
-	<section class="sectioning">
-		<contextual-heading role="heading" aria-level="2" style="font-size: 2.25rem;">A thought experiment</contextual-heading>
-	<p>Recently conversations in the web platform at large have begun about <a href="https://github.com/whatwg/html/issues/4696">moving HTML forward and polyfilling elements</a>.   Since we are actively working on a 'core' ourselves, we thought this would be an interesting discussion and experiment:  We asked "What if MathML Core was largely 'done' and you would import other support to move forward?"  Those things <em>could</em> potentially be shipped by a browser, but there's no guarantee they ever would.  However, they could also be loaded as polyfills and in standard means that help omit many of the problems that traditional polyfills create.</p>
-	<p>To explain this, we took some elements that <em>aren't</em> in MathML Core, but are specified elsewhere, as an interesting stand in.  One such example is an element called <code>mfenced</code>.  <code>mfenced</code> is just a "more convenient way" of writing some math that has a lot of 'fences' (parens, pipes, braces, and so on).  The original spec even said "It is strictly equivalent to this expanded, longer form".</p>
-	<p>Today, 'polyfills' exist for it if your browser doesn't support it, and today, those work by (if your browser doesn't support it) destroying your tree and replacing it with the equivalent version, at some undefined point in time.</p>
-	<p>We experimentally changed very little in our implementation and it now considers any MathML 'unknown element' as on the whitelist of elements which can have a Shadow DOM.  We used a simple stand-in using Mutation Observer to allow any of those to be defined without a dash, and wrote a polyfill for <code>mfenced</code> which simply expands it into Shadow DOM.</p>
-	<p>For purposes of discussion, we illustrated how we could, in theory, use MathML Core, import some new vocabulary (potentially a future proposal, or just some slang) and easily expand it into some Shadow DOM, leaving you with the tree that you authored and all of the things just fitting together nicely and predictably. Below is a screenshot from our actual implementation experiment.</p>
-	<p><a target="_blank" rel="noopener noreferrer" href="https://camo.githubusercontent.com/8e0c8bf38ccd6fa1a20a3d3fa2299a7e32291d32/68747470733a2f2f63646e2e676c697463682e636f6d2f39303035373538332d326137392d343662372d623565662d36636566336265383764613625324653637265656e73686f7425323066726f6d253230323031392d30372d303725323031322d35322d35302e706e673f763d31353632353138353030313933"><img src="https://camo.githubusercontent.com/8e0c8bf38ccd6fa1a20a3d3fa2299a7e32291d32/68747470733a2f2f63646e2e676c697463682e636f6d2f39303035373538332d326137392d343662372d623565662d36636566336265383764613625324653637265656e73686f7425323066726f6d253230323031392d30372d303725323031322d35322d35302e706e673f763d31353632353138353030313933" alt="screenshot of element and shadow dom in experimental browser build" data-canonical-src="https://cdn.glitch.com/90057583-2a79-46b7-b5ef-6cef3be87da6%2FScreenshot%20from%202019-07-07%2012-52-50.png?v=1562518500193" style="max-width:100%;"></a></p>
-	<p>We think that these sorts of experiments are useful and informative and help us ask better questions about how we are fitting into the platform itself: Have we answered the necessary questions?  How does the introduction of a ShadowRoot impact rendering and namespacing, for example?  Could developers really 'plug in' to all the necessary bits?  Could they properly layer atop?  To test this, we also created elements that expand shorthands like TeX and ASCII Math.  In the end, can we ultimately resolve a great a stable core that allows us to move math forward using these things similar in ways similar to Knuth's TeX book/engine - but in a way that is properly "of the platform"?  We think the answer is yes.</p>
-
-	<p>While we're not entirely sure where larger conversations about how HTML will move forward will go, and we aren't claiming that this implementation is anything more than a quick experiment for discussion and testing, the MathML community itself is very excited that such talks are even happening in HTML and <em>very</em> interested in being a part of that conversation, and sorting out how we can move forward together as One Platform™, with less 'specialness'.</p>
-	</section>
-	
-]]></content:encoded>
-        </item>
-        <item>
             <title><![CDATA[One Platform™]]></title>
             <link>https://bkardell.com/blog/OnePlatform.html</link>
             <guid>https://bkardell.com/blog/OnePlatform.html</guid>
@@ -1371,6 +1424,40 @@ export const _internalPromise =
 		<p>While the MathML Community Group is aware that these questions are far from settled, they were universally excited to see such talks begin in HTML and <em>very</em> interested in making sure that they're thinking about those things too: Being a part of that conversation, and sorting out how we can move forward together as One Platform™, with less 'specialness'.</p>
 		<p>If you think this is interesting or useful, please share your support and let someone know.</p>
 		</section></section>]]></content:encoded>
+        </item>
+        <item>
+            <title><![CDATA[Moving Math Forward, Thoughts and Experiments]]></title>
+            <link>https://bkardell.com/blog/MathForward.html</link>
+            <guid>https://bkardell.com/blog/MathForward.html</guid>
+            <pubDate>Tue, 09 Jul 2019 04:00:00 GMT</pubDate>
+            <description><![CDATA[
+		In this piece, I explain details on thoughts on experiments and conversations around moving Math forward on the Web.
+	]]></description>
+            <content:encoded><![CDATA[
+	<contextual-heading role="heading" aria-level="1" style="font-size: 2rem;">Moving Math Forward, Thoughts and Experiments</contextual-heading>
+	<p class="segue">
+		In this piece, I explain details on thoughts on experiments and conversations around moving Math forward on the Web.
+	</p>
+		
+	<p>For some context, <a href="https://mathml.igalia.com" rel="nofollow">my team is actively working on implementing MathML in Chromium</a> (the engine Chrome, Edge, Samsung, Brave, UC Browser and lots of other share), more specifically MathML Core.  MathML has long had implementations in Safari and Firefox and has an 
+	intersting history that leaves it in a very unique spot.
+	</p>
+	<p>MathML Core, defines the comparatively small, but well defined and mostly interoperable subset of MathML - with an aim of resolving uniqueness.  It provides details about how it actually <em>fits</em> into the layers platform in well defined ways and to explain their existing magic in terms of the platform - to expose it if is it new.  As such, in indirectly aims to provide a basis for moving <em>many</em> things forward.</p>
+
+	<section class="sectioning">
+		<contextual-heading role="heading" aria-level="2" style="font-size: 2.25rem;">A thought experiment</contextual-heading>
+	<p>Recently conversations in the web platform at large have begun about <a href="https://github.com/whatwg/html/issues/4696">moving HTML forward and polyfilling elements</a>.   Since we are actively working on a 'core' ourselves, we thought this would be an interesting discussion and experiment:  We asked "What if MathML Core was largely 'done' and you would import other support to move forward?"  Those things <em>could</em> potentially be shipped by a browser, but there's no guarantee they ever would.  However, they could also be loaded as polyfills and in standard means that help omit many of the problems that traditional polyfills create.</p>
+	<p>To explain this, we took some elements that <em>aren't</em> in MathML Core, but are specified elsewhere, as an interesting stand in.  One such example is an element called <code>mfenced</code>.  <code>mfenced</code> is just a "more convenient way" of writing some math that has a lot of 'fences' (parens, pipes, braces, and so on).  The original spec even said "It is strictly equivalent to this expanded, longer form".</p>
+	<p>Today, 'polyfills' exist for it if your browser doesn't support it, and today, those work by (if your browser doesn't support it) destroying your tree and replacing it with the equivalent version, at some undefined point in time.</p>
+	<p>We experimentally changed very little in our implementation and it now considers any MathML 'unknown element' as on the whitelist of elements which can have a Shadow DOM.  We used a simple stand-in using Mutation Observer to allow any of those to be defined without a dash, and wrote a polyfill for <code>mfenced</code> which simply expands it into Shadow DOM.</p>
+	<p>For purposes of discussion, we illustrated how we could, in theory, use MathML Core, import some new vocabulary (potentially a future proposal, or just some slang) and easily expand it into some Shadow DOM, leaving you with the tree that you authored and all of the things just fitting together nicely and predictably. Below is a screenshot from our actual implementation experiment.</p>
+	<p><a target="_blank" rel="noopener noreferrer" href="https://camo.githubusercontent.com/8e0c8bf38ccd6fa1a20a3d3fa2299a7e32291d32/68747470733a2f2f63646e2e676c697463682e636f6d2f39303035373538332d326137392d343662372d623565662d36636566336265383764613625324653637265656e73686f7425323066726f6d253230323031392d30372d303725323031322d35322d35302e706e673f763d31353632353138353030313933"><img src="https://camo.githubusercontent.com/8e0c8bf38ccd6fa1a20a3d3fa2299a7e32291d32/68747470733a2f2f63646e2e676c697463682e636f6d2f39303035373538332d326137392d343662372d623565662d36636566336265383764613625324653637265656e73686f7425323066726f6d253230323031392d30372d303725323031322d35322d35302e706e673f763d31353632353138353030313933" alt="screenshot of element and shadow dom in experimental browser build" data-canonical-src="https://cdn.glitch.com/90057583-2a79-46b7-b5ef-6cef3be87da6%2FScreenshot%20from%202019-07-07%2012-52-50.png?v=1562518500193" style="max-width:100%;"></a></p>
+	<p>We think that these sorts of experiments are useful and informative and help us ask better questions about how we are fitting into the platform itself: Have we answered the necessary questions?  How does the introduction of a ShadowRoot impact rendering and namespacing, for example?  Could developers really 'plug in' to all the necessary bits?  Could they properly layer atop?  To test this, we also created elements that expand shorthands like TeX and ASCII Math.  In the end, can we ultimately resolve a great a stable core that allows us to move math forward using these things similar in ways similar to Knuth's TeX book/engine - but in a way that is properly "of the platform"?  We think the answer is yes.</p>
+
+	<p>While we're not entirely sure where larger conversations about how HTML will move forward will go, and we aren't claiming that this implementation is anything more than a quick experiment for discussion and testing, the MathML community itself is very excited that such talks are even happening in HTML and <em>very</em> interested in being a part of that conversation, and sorting out how we can move forward together as One Platform™, with less 'specialness'.</p>
+	</section>
+	
+]]></content:encoded>
         </item>
         <item>
             <title><![CDATA[Interesting Custom Element Data Begins]]></title>
