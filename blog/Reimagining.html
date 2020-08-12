@@ -1,0 +1,435 @@
+<html lang="en" resource-type="blogpost"><head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@briankardell">
+    <meta name="twitter:creator" content="@briankardell">
+    <meta name="twitter:title" content="Reimaging the Vendor Centered Model">
+    <meta name="twitter:description" content="I have been trying to organize my thoughts on this clearly for a while, I hadn't planned on posting this just yet but recent events and discussions make me think it is worth sharin">
+    
+    <link rel="alternate" type="application/rss+xml" href="https://bkardell.com/blog/feed.rss" title="bkardell.com/blog rss feed">
+    <title>Reimaging the Vendor Centered Model</title> 
+    <style>.captioned-image {
+    background-color: #eaeaea;
+    display: block;
+    overflow: hidden;
+    padding: 1rem;
+    text-align: center;
+    font-style: italic;
+}
+
+.captioned-image.p-attached {
+    width: 40%;
+    display: inline-block;
+    margin: 0 1rem 2rem 1rem;
+}
+
+section > .captioned-image.p-attached {
+    margin-top: 1.5rem; /* correct for heading size*/
+}
+
+ pre { overflow-x: auto }
+
+.captioned-image.p-attached.p-attached-left {
+    float: left;
+}
+
+.captioned-image.p-attached.p-attached-right {
+    float: right;
+}
+
+.captioned-image.p-attached + * + * {
+    clear: both;
+    margin-top: 2rem;
+}
+
+
+.captioned-image img, .captioned-image video {
+    display: block;
+    max-width: 100%;
+    margin: 0 auto 1em auto;
+}
+.source {
+    font-style: italic;
+}
+body {
+    display: flex;
+    font: 1em "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-weight: 400;
+    line-height: 1.625;
+}
+h1 { margin: 0.5rem; }
+code-format {
+    border-left: 0.5rem solid rgba(123,115,209,0.35);
+    display: block;
+    padding: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+contextual-heading {
+    display: block;
+    margin-top: 2rem;
+}
+
+[aria-level="1"] {
+    color: #43686b;
+    font-size: 1.45rem;
+}
+[aria-level="2"] {
+    color: #856363;
+    font-size: 1.35rem;
+}
+[aria-level="3"] {
+    color: #856363;
+    font-size: 1.25rem;
+}
+[aria-level="4"] {
+    color: #856363;
+    font-size: 1.2rem;
+}
+[aria-level="5"], [aria-level="6"] {
+    color: #667496;
+    font-size: 1.1rem;
+    font-weight: bolder;
+}
+.posted-on {
+    font-style: italic;
+    font-size: 0.8rem;
+    text-align: right;
+    margin-bottom: 1rem;
+}
+
+ul, li {
+    margin: 0.5rem;
+    text-align: left;
+}
+header {
+    padding-top: 1rem;
+    padding-right: 2rem;
+    background-color: #fbf5e9;
+}
+.tagline {
+    font-style: italic;
+    text-align: center;
+}
+
+[tag-esc] {
+    color: maroon;
+    font-family: Courier, "Lucida Console", monospace;
+}
+
+[tag-esc]::before {
+    content: '<';
+}
+
+[tag-esc]::after {
+    content: '>';
+}
+
+main {
+    min-width: 50%;
+    width: 80%;
+    padding: 1rem;
+}
+header .title {
+    background-color: rgba(123,115,209,0.35);
+    padding: 0.3rem;
+    padding-left: 0.25rem;
+    font-weight: bolder;
+    font-size: 0.9rem;
+    border-left: 1rem solid #999298;
+}
+
+header .profile {
+    width: 50%;
+    margin: 1rem 25%;
+}
+
+header .title + nav {
+    font-size: 0.9rem;
+}
+
+header .blurb {
+    font-size: 0.75rem;
+    text-align: center;
+}
+header .name {
+    text-align: center;
+    font-size: xx-large;
+}
+.segue {
+    font-style: italic;
+}
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  border: 0;
+}
+[for="aboutMeToggle"] {
+    display: none;
+}
+/* this needs rethinking, it wants a selector like 'not flow content' */
+article>*:not(contextual-heading,a), section>*:not(contextual-heading,a) {
+    margin-left: 0.45rem;
+}
+
+blockquote {
+  font-family: serif;
+  background: #f9f9f9;
+  border-left: 10px solid #ccc;
+  margin: 1.5em 10px;
+  padding: 0.5em 10px;
+}
+blockquote:before {
+  color: #ccc;
+  content: open-quote;
+  font-size: 2em;
+  line-height: 0.1em;
+  margin-right: 0.25em;
+  vertical-align: -0.4em;
+}
+
+blockquote:after {
+  color: #ccc;
+  content: close-quote;
+  font-size: 2em;
+  line-height: 0.1em;
+  margin-left: 0.25em;
+  vertical-align: -0.4em;
+}
+
+
+@media (max-width: 800px){
+    body {
+        flex-direction: column;
+    }
+    header {
+        border-bottom: 1px solid #afafff;
+    }
+
+    .captioned-image.p-attached {
+        width: 100%;
+        margin: 1rem 0;
+    }
+
+    .captioned-image.p-attached.p-attached-left,
+    .captioned-image.p-attached.p-attached-right {
+        float: none;
+    }
+
+    [for="aboutMeToggle"] {
+        background-color: #675e5e;
+        color: white;
+        padding: 0.25rem;
+        padding-left: 0.5rem;
+        display: block;
+        border-left: 1rem solid black;
+    }
+    #aboutMeToggle:focus + [for="aboutMeToggle"]{
+        outline: 4px solid #c6ddf2;
+    }
+
+    #aboutMeToggle:checked ~ header {
+        display: none;
+    }
+
+    header li { display: inline; margin-left: -0.5em; }
+    header .blurb li::after { content: '; '; }
+    header  nav li {
+        display: inline-block;
+        margin-left: 0.35rem;
+        margin-right: 0.35rem;
+    }
+    header .title {
+        width: 100%;
+    }
+    main li .source { display: block; }
+
+}</style>
+    <style>
+      .captioned-image { font-size: 0.9rem; }
+      .thanksTo { font-style: italic; font-size: 0.8rem; }
+    </style>
+    <script>
+      var activateOptional = function (media) {
+        var source = media.getAttribute('data-src'),
+            temp,
+            container = media.parentElement;
+
+          if (media.nextSibling && media.nextSibling.matches) {
+            if (media.nextSibling.matches('.clickToSee')) {
+              media.parentElement.removeChild(media.nextSibling);
+            }
+          }
+
+          if (media.tagName === 'VIDEO') {
+            temp = document.createElement('video')
+            temp.setAttribute('autoplay','')
+            temp.setAttribute('controls','')
+            temp.setAttribute('loop','')
+            temp.innerHTML = '<source src="' + source + '.webm" type="video/webm">'
+                    + '<source src="' + source + '.mp4" type="video/mp4">';
+            media.parentElement.replaceChild(temp, media);
+            setTimeout(function () {
+              temp.play()
+            }, 0);
+          } else {
+            media.src = media.getAttribute('data-src');
+          }
+
+          container.classList.add('active');
+      }
+    </script>
+  </head>
+  <body>
+    <input id="aboutMeToggle" class="sr-only" type="checkbox" checked="">
+<label for="aboutMeToggle">Toggle author information</label>
+<header>
+    <div class="name">
+        Brian Kardell
+    </div>
+    <img class="profile" src="/profile.jpg" alt="">
+    <div class="tagline"><a href="/">Betterifying the Web</a></div>
+    <div class="blurb">
+        <ul>
+            <li>Developer Advocate at Igalia</li>
+            <li>Original Co-author/Co-signer of The Extensible Web Manifesto</li>
+            <li>Co-Founder/Chair, W3C Extensible Web CG</li>
+            <li>Member, W3C (The JS Foundation)</li>
+            <li>Co-author of HitchJS</li>
+            <li>Blogger</li>
+            <li>Art, Science &amp; History Lover</li>
+            <li>Standards Geek</li>
+        </ul>
+    </div>
+    <div class="title">Follow Me On...</div>
+    <nav>
+        <ul>
+            <li><a rel="me" href="https://briankardell.wordpress.com">Wordpress</a></li>
+            <li><a rel="me" href="https://medium.com/@briankardell">Medium</a></li>
+            <li><a rel="me" href="https://twitter.com/briankardell">Twitter</a></li>
+            <li><a rel="me" href="https://github.com/bkardell/">Github</a></li>
+            <li><a rel="me" href="https://codepen.io/bkardell">Codepen</a></li>
+            <li><a rel="me" href="https://www.linkedin.com/in/brian-kardell-08a4264">LinkedIn</a></li>
+            <li><a rel="me" href="https://www.instagram.com/kardellbrian">Instagram (for
+art)</a></li>
+            <li><a rel="me" href="http://fineartamerica.com/profiles/brian-kardell?">Fine Art
+America (art for sale)</a></li>
+        </ul>
+    </nav>
+</header>
+    <main><div class="posted-on">Posted on null</div><article class="sectioning"> <!-- 08/12/2020 -->
+	<contextual-heading role="heading" aria-level="1">Reimaging the Vendor Centered Model</contextual-heading>
+	<p class="segue">I have been trying to organize my thoughts on this clearly for a while, I hadn't planned on posting this just yet but recent events and discussions make me think it is worth sharing...</p>
+
+	<p>I've been talking a lot this year about the health of the Web Ecosystem, kind of trying to raise the larger discussion that we should have a discussion about how we think about it and re-consider how we ensure it remains (or increases) its vibrance.   Our recent open-prioritization experiment is meant, in part, to prompt some of this discussion.  Recent news from Mozilla, it seems, has done as much to prompt its urgency, so let's dig into it.</p>
+
+	<p>One comment that I have received from a few people privately to Igalia's <a href="https://open-prioritiation.igalia.com">open prioritization experiement</a> goes something like this...</p>
+
+	<blockquote>
+	  "This makes me a little frustrated... It is vendors  <em>responsibility</em> - and their companies make bajillions of dollars on the web... Why shouldn't they just hire more people?  It feels <em>wrong</em>.  Maybe it's not a good precedent to set."
+	</blockquote>
+
+	<p>To be honest, I expected to hear a lot more of it.  It's a very natural question:  That is, for sure, one way to look at it.  It's the way we've been trying to look at it for roughly 30 years now, so it's hard to imagine something else.  And... <em>Maybe</em> that model is fine.</p>
+
+	<p>But then again... _<em>Maybe not</em>.  I think it's worth considering together, because I am ever increasingly on the "probably not" side, so now that the conversation is started, let me try to explain why...</p>
+
+	<section class="sectioning">
+		<contextual-heading role="heading" aria-level="2">The trouble with the traditional model...</contextual-heading>
+
+		<p>In the entire world, at the time of this writing, only 3 organizations currently make the level of investments necessary to maintain a rendering engine at all.  Developers sometimes express frustration at the level of investment because 2 of these 3 organizations are part of the most profitable companies on earth, and they have choosem to invest very differently.  That's fine.  You can continue to do that, and I'm not suggesting that is <em>invalid</em> ... But I do this it's somewhat of a red herring and we're missing the more important conversation.  </p>
+
+		<p>At some level, what is <em>far more interesting</em> than the specific arbitrary amount and how it relates to their profits (by this argument both of them could, in theory, invest more) is the fact that they are under no actual obligation to do so, and that <em>in the end,there are no guarantees</em> about continued level of investment.</p>
+
+		<p>Don't get me wrong: I'm tremendously happy that they do, and I absolutely want them to continue playing a giant role... But I think this is too important to not discuss - because we've already seen several varieties of changes here over time.  Whatever the world looks like today - the only thing you can be sure of is that change is inevitable.  As hard as it is to believe, <em>all</em> the paradigms of organizational power will eventually shift.  The Fortune 500 changes, ultimately many declare bankruptcy and/or are completely re-imagined.  Even if we are extremely fortunate and a company really <em>wants</em>, at its very core, to put in a huge level of investment - there may come a day when they just <em>can't</em>. </p>
+
+		<p>In other words: The traditional model of a few big vendors voluntarily funding development of the Web with very specific revenues puts a lot of eggs in a very fickle basket. Just this week, there is related news from Mozilla, kind of demonstrating the latter point.</p>
+
+		<p>Conversely: diversifying investments in the commons would buffer it significantly - and thankfully, it would seem that there are plenty of opportunities to do so. Let's look some..</p>
+
+		<section class="sectioning">
+			<contextual-heading role="heading" aria-level="3">Diversifying investments</contextual-heading>
+
+			<p>The most obvious and immediate thing to do is to try to expand the sorts of things that have already begun happening and working: Some things like CSS Grid are examples of really big investments from non-browser vendors.  A whole lot of that implmentation in two browsers was funded by Bloomberg Tech and done by Igalia.   There are many wealthy organizations out there (Fortune companies)who can help expand investment like that.  That's awesome.  If you work for an organization who is intersted in that, reach out to me!</p>
+
+			<p>However, this avenue isn't immediately appealing even to a lot of big companies.  Could we do more?  </p>
+
+			<p>Sure, why not!  There is a much bigger group still of big companies who perhaps won't, themselves, fund a whole feature. What we are trying to show here is that there are ways that we can pool money toward a specific purpose so that even several big companies can share the costs.  That seems good, and it's <em>one thing</em> open-prioritization allows for: <em>A comparatively small number of really big businesses working better together would be excellent all on its own</em>.  </p>
+
+			<p>But then... If we're exploring diversifying funding, why place some arbitrary limits on "bigness"?  What makes them special?  Perhaps you don't have to be a mega-company to help advance things?  Experimenting with this is also part of what open-prioritization is about -Maybe there doesn't even have to be a single answer.  In fact, maybe it's better if there isn't! </p>
+		</section>
+		<section class="sectioning">
+			<contextual-heading role="heading" aria-level="3">Exploring <em>many</em> models</contextual-heading>
+
+			<p>When I was a kid, and cable television was "new", my grandmother thought it was just ridiculous that someone would <em>pay</em> for television. After all, it came over the air wave "for free".  Of course... It wasn't free, and despite is costing a lot to produce and run, it was a money making endeavor.  The cost to maintain a station is comparatively tiny compared to the potential profits they could make from shoving advertising in our eyeballs.  You paid.  All the way through the system.  A small amount of your product purchases funded advertising, which funded broadcast.</p>
+
+			<p>Actually, the web isn't that different here.  It is traditionally largely supported by very few revenues, mainly advertising in search.  When ad revenue takes a hit, so do the budgets.  </p>
+
+			<p>But over time we've created lots of ways to explore different models.  When it comes to watching TV and movies, I haven't seen "traditional commercial TV" in years - I use some other model to pay for content more directly.  And, honestly, this has been good in a whole lot of ways.  It's generated some real good content even.  Still, there are other forms of short form content - podcasts or music services, for example, that I actually prefer the advertising model for.  And, you can also donate to public radio.  </p>
+
+			<p>Open prioritization is aimed at exploring all of the different ways that we can realize our potential for power and give people <em>opportunities</em> to improve things in many ways.</p>
+
+			<p>With a way to pool funding, there doesn't have to be artificial barriers.  We can give smaller organizations opportunities to participate however they can:  Maybe that is simply through advocating/lobbying bigger companies for specific dollars for development of specific thing.  Perhaps sometimes they don't even need a bigger company.  Perhaps together, several smaller organizations can rally together to act as a big one?  It seems good to allow them to.  </p>
+
+			<p>The one thing that you'll notice that all answers have in common is that ultimately, somehow <em>lots</em> of people are paying in small amounts, and lots of little bits add up to a lot.</p>
+
+			<section class="sectioning">
+				<contextual-heading role="heading" aria-level="4">The potential power of collectives</contextual-heading> 
+
+				<p>With no arbitrary limits, even developers themselves could play a big, very direct role... If we want to. </p>
+
+				<p><em>Should we</em>?  I don't know!  </p>
+
+				<p>I'd love to talk about it though because I think that hidden in here is something with <em>immense potential for good</em> by voluntarily even small commitments simply by realizing our sheer numbers. This is sort of the power of collectives.  If you're looking for intersting analaogies, check out [Pia Mancini's Talks/Media posts](https://www.piamancini.com/) explaining things like how and why this can also work for governments.</p>
+
+				<p>Consider that meetup.com alone lists something like 18 million people who identify as Web developers.  Using that as just some kind of working number:  If even 1/10th of those developers decided to voluntarily contibute a single dollar each month, this would be over 21.5 million dollars annually that we could use to collectively <em>directly</em> decide what should happen.  This seems very plausible as you need far less than 1/10th if we assume that some people would be willing to give $2 or $5 or maybe even $10.</p>
+
+				<p>In other words, in addition to all of the other ways that we can explore, even we developers actuallly have <em>enormous</em> potential untapped power even with <em>very limited kinds of investment</em> to play <em>a role</em> (not exclusively)... That's more than we can convince most big companies to invest, to directly shape things today.  That would be some <em>extreme</em> diversification, and a real "commons".  To <em>me</em> that seems really good to have in the mix... If we want it.</p>
+
+				<p>I guess the question is: Do we? </p>
+
+				<p>I am willing to accept the possibility that it is possible that the answer is simply "No thanks" - but I think it's great that at least we have the choice/opportunity to consider all of these things.  I think that's a real positive.  What do you think? I'd love to hear from you.  If you like this idea, pass it on and maybe consider pledging $1 to one of the pledge collectives in our experiment to help advance the larger ideas and conversation.</p>
+
+			</section>
+		</section>
+	</section>
+</article></main>
+
+  
+    <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-88027178-1', 'auto');
+    ga('send', 'pageview');
+  </script>
+
+  <script>
+    Array.prototype.slice.call(document.querySelectorAll('.optional [data-src]')).forEach(function (optional) {
+      var prefs = window.localStorage.downloadsPrefs,
+          clickToSee;
+      if (prefs === 'true') {
+        activateOptional(optional);
+      } else {
+        clickToSee = document.createElement('div');
+        clickToSee.classList.add('clickToSee')
+        clickToSee.innerHTML = '<button>Click to see media</button>';
+        clickToSee.style.textAlign = 'center';
+        clickToSee.style.border = 'none';
+        optional.parentElement.insertBefore(clickToSee, optional.nextSibling);
+        clickToSee.firstElementChild.addEventListener('click', function () {
+          activateOptional(optional);
+        })
+      }
+
+    })
+  </script>
+
+</body></html>
