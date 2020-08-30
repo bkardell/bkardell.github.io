@@ -1,4 +1,4 @@
-<html lang="en" resource-type="blogpost"><head>
+<html lang="en" resource-type="blogpost"><head> 
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta name="twitter:card" content="summary_large_image">
@@ -7,6 +7,8 @@
     <meta name="twitter:title" content="Interesting Custom Element Data Begins">
     <meta name="twitter:description" content="A while back I wrote a piece asking how we begin to think about using data to move forward with standardization, and called for ways to help get data. One thing I did was request a">
     
+    <meta name="monetization" content="$ilp.uphold.com/kKU4GXiRwhnfS">
+
     <link rel="alternate" type="application/rss+xml" href="https://bkardell.com/blog/feed.rss" title="bkardell.com/blog rss feed">
     <title>Interesting Custom Element Data Begins</title> 
     <style>.captioned-image {
@@ -170,9 +172,16 @@ header .name {
   clip: rect(0,0,0,0);
   border: 0;
 }
+
+#aboutMeToggle {
+    display: none;
+}
+
 [for="aboutMeToggle"] {
     display: none;
 }
+
+main article { max-width: 100em; margin: auto; }
 /* this needs rethinking, it wants a selector like 'not flow content' */
 article>*:not(contextual-heading,a), section>*:not(contextual-heading,a) {
     margin-left: 0.45rem;
@@ -266,7 +275,7 @@ blockquote:after {
               media.parentElement.removeChild(media.nextSibling);
             }
           }
-
+ 
           if (media.tagName === 'VIDEO') {
             temp = document.createElement('video')
             temp.setAttribute('autoplay','')

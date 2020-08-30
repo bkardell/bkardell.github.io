@@ -1,0 +1,587 @@
+<html lang="en" resource-type="blogpost"><head> 
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@briankardell">
+    <meta name="twitter:creator" content="@briankardell">
+    <meta name="twitter:title" content="On the Origin of Great Websites">
+    <meta name="twitter:description" content="What makes a great website?  I should probably define &quot;website&quot; and that's, I guess, part of the problem. By &quot;website&quot; I mean literally a domain that delievers content to Web brows">
+    
+    <meta name="monetization" content="$ilp.uphold.com/kKU4GXiRwhnfS">
+
+    <link rel="alternate" type="application/rss+xml" href="https://bkardell.com/blog/feed.rss" title="bkardell.com/blog rss feed">
+    <title>On the Origin of Great Websites</title> 
+    <style>.captioned-image {
+    background-color: #eaeaea;
+    display: block;
+    overflow: hidden;
+    padding: 1rem;
+    text-align: center;
+    font-style: italic;
+}
+
+.captioned-image.p-attached {
+    width: 40%;
+    display: inline-block;
+    margin: 0 1rem 2rem 1rem;
+}
+
+section > .captioned-image.p-attached {
+    margin-top: 1.5rem; /* correct for heading size*/
+}
+
+ pre { overflow-x: auto }
+
+.captioned-image.p-attached.p-attached-left {
+    float: left;
+}
+
+.captioned-image.p-attached.p-attached-right {
+    float: right;
+}
+
+.captioned-image.p-attached + * + * {
+    clear: both;
+    margin-top: 2rem;
+}
+
+
+.captioned-image img, .captioned-image video {
+    display: block;
+    max-width: 100%;
+    margin: 0 auto 1em auto;
+}
+.source {
+    font-style: italic;
+}
+body {
+    display: flex;
+    font: 1em "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-weight: 400;
+    line-height: 1.625;
+}
+h1 { margin: 0.5rem; }
+code-format {
+    border-left: 0.5rem solid rgba(123,115,209,0.35);
+    display: block;
+    padding: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+contextual-heading {
+    display: block;
+    margin-top: 2rem;
+}
+
+[aria-level="1"] {
+    color: #43686b;
+    font-size: 1.45rem;
+}
+[aria-level="2"] {
+    color: #856363;
+    font-size: 1.35rem;
+}
+[aria-level="3"] {
+    color: #856363;
+    font-size: 1.25rem;
+}
+[aria-level="4"] {
+    color: #856363;
+    font-size: 1.2rem;
+}
+[aria-level="5"], [aria-level="6"] {
+    color: #667496;
+    font-size: 1.1rem;
+    font-weight: bolder;
+}
+.posted-on {
+    font-style: italic;
+    font-size: 0.8rem;
+    text-align: right;
+    margin-bottom: 1rem;
+}
+
+ul, li {
+    margin: 0.5rem;
+    text-align: left;
+}
+header {
+    padding-top: 1rem;
+    padding-right: 2rem;
+    background-color: #fbf5e9;
+}
+.tagline {
+    font-style: italic;
+    text-align: center;
+}
+
+[tag-esc] {
+    color: maroon;
+    font-family: Courier, "Lucida Console", monospace;
+}
+
+[tag-esc]::before {
+    content: '<';
+}
+
+[tag-esc]::after {
+    content: '>';
+}
+
+main {
+    min-width: 50%;
+    width: 80%;
+    padding: 1rem;
+}
+header .title {
+    background-color: rgba(123,115,209,0.35);
+    padding: 0.3rem;
+    padding-left: 0.25rem;
+    font-weight: bolder;
+    font-size: 0.9rem;
+    border-left: 1rem solid #999298;
+}
+
+header .profile {
+    width: 50%;
+    margin: 1rem 25%;
+}
+
+header .title + nav {
+    font-size: 0.9rem;
+}
+
+header .blurb {
+    font-size: 0.75rem;
+    text-align: center;
+}
+header .name {
+    text-align: center;
+    font-size: xx-large;
+}
+.segue {
+    font-style: italic;
+}
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  border: 0;
+}
+
+#aboutMeToggle {
+    display: none;
+}
+
+[for="aboutMeToggle"] {
+    display: none;
+}
+
+main article { max-width: 100em; margin: auto; }
+/* this needs rethinking, it wants a selector like 'not flow content' */
+article>*:not(contextual-heading,a), section>*:not(contextual-heading,a) {
+    margin-left: 0.45rem;
+}
+
+blockquote {
+  font-family: serif;
+  background: #f9f9f9;
+  border-left: 10px solid #ccc;
+  margin: 1.5em 10px;
+  padding: 0.5em 10px;
+}
+blockquote:before {
+  color: #ccc;
+  content: open-quote;
+  font-size: 2em;
+  line-height: 0.1em;
+  margin-right: 0.25em;
+  vertical-align: -0.4em;
+}
+
+blockquote:after {
+  color: #ccc;
+  content: close-quote;
+  font-size: 2em;
+  line-height: 0.1em;
+  margin-left: 0.25em;
+  vertical-align: -0.4em;
+}
+
+
+@media (max-width: 800px){
+    body {
+        flex-direction: column;
+    }
+    header {
+        border-bottom: 1px solid #afafff;
+    }
+
+    .captioned-image.p-attached {
+        width: 100%;
+        margin: 1rem 0;
+    }
+
+    .captioned-image.p-attached.p-attached-left,
+    .captioned-image.p-attached.p-attached-right {
+        float: none;
+    }
+
+    [for="aboutMeToggle"] {
+        background-color: #675e5e;
+        color: white;
+        padding: 0.25rem;
+        padding-left: 0.5rem;
+        display: block;
+        border-left: 1rem solid black;
+    }
+    #aboutMeToggle:focus + [for="aboutMeToggle"]{
+        outline: 4px solid #c6ddf2;
+    }
+
+    #aboutMeToggle:checked ~ header {
+        display: none;
+    }
+
+    header li { display: inline; margin-left: -0.5em; }
+    header .blurb li::after { content: '; '; }
+    header  nav li {
+        display: inline-block;
+        margin-left: 0.35rem;
+        margin-right: 0.35rem;
+    }
+    header .title {
+        width: 100%;
+    }
+    main li .source { display: block; }
+
+}</style>
+    <style>
+      .captioned-image { font-size: 0.9rem; }
+      .thanksTo { font-style: italic; font-size: 0.8rem; }
+    </style>
+    <script>
+      var activateOptional = function (media) {
+        var source = media.getAttribute('data-src'),
+            temp,
+            container = media.parentElement;
+
+          if (media.nextSibling && media.nextSibling.matches) {
+            if (media.nextSibling.matches('.clickToSee')) {
+              media.parentElement.removeChild(media.nextSibling);
+            }
+          }
+ 
+          if (media.tagName === 'VIDEO') {
+            temp = document.createElement('video')
+            temp.setAttribute('autoplay','')
+            temp.setAttribute('controls','')
+            temp.setAttribute('loop','')
+            temp.innerHTML = '<source src="' + source + '.webm" type="video/webm">'
+                    + '<source src="' + source + '.mp4" type="video/mp4">';
+            media.parentElement.replaceChild(temp, media);
+            setTimeout(function () {
+              temp.play()
+            }, 0);
+          } else {
+            media.src = media.getAttribute('data-src');
+          }
+
+          container.classList.add('active');
+      }
+    </script>
+  </head>
+  <body>
+    <input id="aboutMeToggle" class="sr-only" type="checkbox" checked="">
+<label for="aboutMeToggle">Toggle author information</label>
+<header>
+    <div class="name">
+        Brian Kardell
+    </div>
+    <img class="profile" src="/profile.jpg" alt="">
+    <div class="tagline"><a href="/">Betterifying the Web</a></div>
+    <div class="blurb">
+        <ul>
+            <li>Developer Advocate at Igalia</li>
+            <li>Original Co-author/Co-signer of The Extensible Web Manifesto</li>
+            <li>Co-Founder/Chair, W3C Extensible Web CG</li>
+            <li>Member, W3C (The JS Foundation)</li>
+            <li>Co-author of HitchJS</li>
+            <li>Blogger</li>
+            <li>Art, Science &amp; History Lover</li>
+            <li>Standards Geek</li>
+        </ul>
+    </div>
+    <div class="title">Follow Me On...</div>
+    <nav>
+        <ul>
+            <li><a rel="me" href="https://briankardell.wordpress.com">Wordpress</a></li>
+            <li><a rel="me" href="https://medium.com/@briankardell">Medium</a></li>
+            <li><a rel="me" href="https://twitter.com/briankardell">Twitter</a></li>
+            <li><a rel="me" href="https://github.com/bkardell/">Github</a></li>
+            <li><a rel="me" href="https://codepen.io/bkardell">Codepen</a></li>
+            <li><a rel="me" href="https://www.linkedin.com/in/brian-kardell-08a4264">LinkedIn</a></li>
+            <li><a rel="me" href="https://www.instagram.com/kardellbrian">Instagram (for
+art)</a></li>
+            <li><a rel="me" href="http://fineartamerica.com/profiles/brian-kardell?">Fine Art
+America (art for sale)</a></li>
+        </ul>
+    </nav>
+</header>
+    <main><div class="posted-on">Posted on null</div><article class="sectioning">
+	<contextual-heading role="heading" aria-level="1">On the Origin of Great Websites</contextual-heading>
+	<p class="segue">
+		What makes a great website?  I should probably define "website" and that's, I guess, part of the problem. By "website" I mean literally a domain that delievers content to Web browsers using URLs, period.  Your website might be an application, but it's still a site.  With this as our broad definition, it's actually really surprisingly hard to talk about things. Perhaps it's best to start with an illustration.
+	</p>
+
+	<section class="sectioning">
+		<contextual-heading role="heading" aria-level="2">Easy Web Pages and Original Intents</contextual-heading>
+		<p>
+			There are a number of arguments and comments that I hear oft repeated about a kind of worry of "greatness lost" compared with the early web.  It seems kind of helpful to start here.
+		</p>
+		<p>
+			In the early 1990's, all that you need to do to make a website was write some HTML and put it on a server.  The baseline was Tim Berner-Lee's first page.  If you could do that much, your site was "technically great".
+		</p>
+		<p>
+			In reality, you needed even less tham you think.  Just some text which ideally included <code tag-esc="">a href="..."</code>s, include links to other URLs would do it.  Most web pages, even Tim's didn't include much more than that really.
+		</p>
+		<p>
+			From this seems to have sprung an entire series of observations that are often repeated:
+
+			</p><ul>
+				<li>This made it really easy to learn to author</li>
+				<li>HTML is forgiving by design because it is declarative</li>
+				<li>HTML was based on SGML </li>
+			</ul>
+
+			This is great because HTML is forgiving and that that is a great asset, it's Postel's Law
+
+			The design was really easy to author by hand, it had structure, it was forgiving (it would just keep chugging if it encountered an unknown tag) and it was about universal content and it would work on really anything - a teletype even, bandwidth was minimal.  It was so simple a child could do it.  This is in stark contrast to a lot of things today.
+		<p></p>
+		<p>
+			Except that this is not really an accurate picture of even the earliest web and, in fact, it's not just hard to apply it to today it's hard to apply it to the web even a year or two later and keep talking about good and bad in simple ways.
+		</p>
+		<section class="sectioning">
+			<contextual-heading role="heading" aria-level="3">Was it easy?</contextual-heading>
+			<p>Environments at the time were not that friendly, tools were pretty shodddy and not especially helpful by and large to the n00b.  Just getting <em>on</em> the internet at all was still kind of a challenge.  It often meant understanding things about interrupts on your modem, drivers, protocols, etc (or fiddling with until it worked for reasons you didn't entirely understand), finding an ISP (not easy), etc.  Setting up a server or finding hosting was also non-trivial. Before Mosaic came along, you had to compile and build the browser itself.  This was non-trivial enough that many web pioneers had trouble, even Tim.</p>
+
+			<p>Fair to say that given a computer already setup, with an editor that was mostly a digital typewriter and a web browser a child could type and probably learn the concepts of tags and the 5 or so that would make what was, at the time, a really advanced web page.  I'll come back to this, because I just said something critical, but we're not "there" yet.  So yes, learning HTML was comparatively simple.</p>
+
+			<p>That's all well and good, but Tim didn't really want you writing HTML.</p>
+
+			<p>Tim did not imagine that people would sit around in a text editor writing markup, in fact, his browser was read/write.  It had a GUI - the HTML was hidden.  It was also flat.  You could say that it had structure, but that structure was weak, not a lot more (in fact, arguably less) than was available with a typewritten page and it really existed more because tags could be given a formatting function, or not and that was really simple.  This expanded on ideas from the 1960's that originated with GML and there's some interesting history there that had less to do with arguments about struture than practicality of getting the idea off the ground.</p>
+
+			<p>But the <em>idea</em>... Universal Content</p>
+
+			<p>Yeah, also worth mentioning that the idea wasn't in fact for the Web to be composed of HTML, especially manually crafted HTML. Tim's HTML was weak because it played a relatively minor role.  Tim imagined that most of the links wouldn't point to other HTML, they'd point to other files - often with proprietary formats.  The idea was to use content type negotiation and for the browser to say "here is what I understand and prefer, do you have that?" and if the server didn't, it could reply with HTML.  That HTML, he imagined, could at least give you <em>something</em>.  Perhaps it could give you instructions on how to download and install the software you'd need to see the file.  Perhaps it could give you a meaningful abstract about what's inside.  In some cases, perhaps it could give you a simple text equivalent.</p>
+
+			<p>For any of that vision to work, someone would have to write imperative programs that could create some kind of HTML from a given format.  In fact, the <em>very first</em> "real" use of HTML which Tim helped conceive generated HTML for an address book from various databases at CERN - it wasn't even really for the public.</p>
+
+			<p>The real idea was "universal <em>access</em>" and that was also something that was kind less than we play it up.  In many ways, it was kind of a concession. Tim's original Web Browser ran only on a NeXT.  Similarly, even when you obviously needed access to a computer, the internet and some kind of web browser - and bandwidth.  A number of efforts to create what are effectively text versions of books have occured since then and even with only text, it wasn't actually fast or cheap to view War and Peace (3.2 mb of only text).  But at least it could stream, right?  Wellllll... not exactly, but we'll get to that and you'll see that it would still be very possible to debate in a world even which websites were "best" on a number of measures - content, performance and usefulness.</p>
+
+			<p>Note here that already this is not simple, it's never been simple.  I write about that more in <a href="/blog/The-Glory-Days-Of-The-Web.html">The Glory Days of the Web</a> and you can see my <a href="/blog/Brief-ish-History-of-The-Web-Part-1.html">Brief(-ish) History of the Web Universe series for more history</a></p>
+		</section>
+	</section>
+
+
+
+		this is somewhat of a loaded question and our inability to just come out and recognisze that and draw some circles around things makes discussions much harder than they need to be.
+
+		Here's why it is a loaded question:  What does it mean to be great?
+
+
+		There are billions of sites on the web, each of those has potentially tons and tons of what we sometimes call "pages" - things with URLs that deliver HTML (and potentially more).  That's a lot, but it is honestly merely the tip of the iceberg.  In many corporations, the amount of stuff delivered through a Web browser that isn't public far exceeds that which is.  How you judge their greatness is, actually pretty complicated.
+	<p></p>
+
+	<p>
+		If you were to take the top million sites - that's 1/10th of a percent by way of search results for the top million or so terms you would find a vast array of differences in qualities you've probably read a lot of blog posts about or seen talks on from various people in the industry: perfromance, robustness, inclusiveness, responsiveness, size, security, usefulness and qualities of interaction and aesthetic.  Each of these are independent qualities and that's not an exhaustive list - for example: The quality of content and metadata <em>aren't even on that list</em>.  If we were to imagine a world in which each of those aspects were quantifiable (they're not) and you were able to look across those top 0.1% of sites, I'd be willing to bet my left arm that you would likely find they have <em>very</em> different combinations of these measures.
+	</p>
+
+	<p>
+		Maybe that is just stating the obvious, but it's worth noting that they exhibit vastly different qualities, and yet they are able to exist and they are measurably useful.  They're not just 'surviving' they're thriving.  They're more successful than 99.9% of their peers.  It's very possible that they could be better on any measure, and it's quite likely that far less successful sites do.  The interesting part is how much it doesn't matter.
+	</p>
+
+	<p><strong>WHOA! HOLD ON A MINUTE THERE HERETIC!</strong></p>
+
+	<p>
+		No, I'm not saying they don't matter - of course they do.  There are tons of good arguments and excellent presentations that explain how they matter in very real ways - it's just that we often leave a lot out when we talk about those.  It's not the people making the cases - they know this....
+	</p>
+
+	<p>
+		Bruce Lawson raises excellent points about emerging markets.  No really, they're excellent points and you should absolutely think about them.  If you are in a position to make decision or a case in which these points are relevant (a lot of them), I seriously suggest that you use Bruce's excellent points.  But I also promise you that Bruce Lawson knows that the local pizza shop who pays an independent firm to develop a way to order online doesn't want to pay them to internationalize their system and really don't want to hear your arguments about users in the Sudan.  He knows that whether you can use their system without JavaScript is just not nearly as important to them as that most users have a really pleasant experience and he knows that your team has to manage a budget that maybe has to think about time to market, existing expertise and maybe even an existing server and tech that you have no control of.  Could you make it faster? Sure, but at some point you say "good enough, go".  Is it remotely plausible that you could instead build a system you could resell to pizza shops around the world, or that could conceivably someday serve their other locations in Europe or China?  Yeah, but it's not highly likely and it's just as likely that that opportunity could come in a completely different way - perhaps it's Delivery-As-A-Service, in which case your shitty server architecture doesn't scale either.  But by then you'll have spread the costs and no one cares.  They'll want to rethink a lot anyway.  What really matters right now is "can I give the vast majority of my potential users a functional and hopefully pleasant experience that at least just keeps running forever".
+	</p>
+
+	<p>
+
+	</p>
+
+	<p>
+		I am going to make a conscious effort to expunge concepts like "good" and "bad" in talking about websites.  I know that to many this is going to sound silly - we've all seen a bad website, right?  I'm not denying that they exist, but they're suprisingly hard to quantify that way.  Terms like "good" and "bad" are single-dimensional, black-and-white things that often imply a kind of intrinsic and unchanging value.  This is frequently how we wind up with arguments that come across as relgion and wind us in what appear to be opposing 'camps'.  I realize that it will be very tempting for some to suggest that there are foundational principles that are intrinsically good and unchanging, but hear me out.
+	</p>
+
+	<p>
+		Depending on what you are reading, or who you are listening to, we talk about aspects like There are a lot of websites in the world - and a lot of ways to measure.  It's safe to say that there are billions of websites and that's only on the public Web.  Quite a lot of sites built with web technologies are on coroporate intranets.  In fact, I think that one could safely wager that the public bits are merely the tip of the iceberg.
+	</p>
+
+	<p>
+		The critically minded will have no trouble finding sites in that set which they think are bad - and yet, there they are, and that's interesting.  Why?  I mean, we'll make arguments about any of those aspect and why not doing <em>X</em> is bad and will cost you.  Yet, they're doing ok.  Far better than average, in fact, so how is that working out for us?
+	</p>
+
+	<p>
+		I propose that thinking about it like this leads us to constructing arguments that are not entirely helpful and that thinking about it another way might help.  Evolution doesn't make a value judgement really.  It does have a concept that winds down to a black-and-white: Fitness.  Frequently the case we're making is doing <em>X</em> (or not doing <em>X</em>) makes you unfit - but this is clearly not the case.  What we can see is that the top million sites or so are fit - at least currently.  The trouble is that while fitness is ultimately pass/fail, it is in fact, multi-dimensional.  While our comments about sites sound as if they are pass fail, they too are actually multi-dimensional and have some interesting correlaries with evolution.
+	</p>
+
+	<section class="sectioning">
+		<contextual-heading role="heading" aria-level="2">Competition</contextual-heading>
+		<p>When we say that competition drives evolution, it's non-exclusive.  That is, male giraffes are in competition with other male giraffes for food and mates and to survive the climate.  Male giraffes aren't in competition in any way with a sturgeon (a kind of fish).  Moose and giraffe are both herbavores, but they are also geographically isolated and while moose prefer grass and aquatic plants, giraffes have a food source up high in the trees.  Other animals in Africa also eat things up high in trees, but many of them are small and therefore there's enough to go around, so they are not really in much of a struggle between one another just to exist either.  Plenty of animals are in competition to escape not being eaten by some carniverous animal and they've developed lots of different solutions to that problem.</p>
+
+
+		<p>Down beneath all that, they're just DNA.  That's standard.  They're just mammals.  That's standard too.  They share a lot in fact.  However, we easily recognize that they are different and don't compare them in terms of better or worse.  They just are. It would be a mistake to say that a giraffe is better than a moose because it is faster and has a long neck.  A giraffe is better at what a giraffe does, where it does it, currently than a moose.  A giraffe makes for a shitty moose, and a moose for a shitty giraffe.  But when we talk about websites, there's a real pull to talk about them just as 'websites'.</p>
+		<p></p>
+
+		<p>Some sites are books, some sites are spreadsheets, some are conversation forums, some are art gallerties, some are classrooms, and some are video stores or television channels.  Some exist in ways that are friendly to printing, some not.  While it is a useful mental exercise to think "what are the good aspects of the ones that are like book that I can apply to my video store" - it's still a video store.  At some point, if you keep moving the DNA, you're no longer making a video store, you're writing a book and that's not what it wants to me.</p>
+
+
+
+	had a current norm baseline gleaned from, say the top million sites and your site was scored based on the standard deviation from each, we would arrive at a matrix rather than a single number.  If you applied this matrix to all websites, I posit that you would find it is improbable for any one site to hit or exceed the norm in all categories because not all sites are trying to do the same things.  Some sites are books, some sites are spreadsheets, some sites are conversation forums, some are art galleries and some are classrooms and so on.  Further, improvement in one frequently will come at a cost to another. <p></p>
+
+
+
+
+
+	<p>Frequently, when we talk about the quality of a website, we're doing so in a particular context.  How is the performance?  What <em>should</em> it be?  To answer a question like that we need a measure, except that that measure changes.  At one point in time, there were significant numbers of people - and I don't just mean dumb terminal users - using the internet who still had modems in use which delivered 300bps (not kbps or mbps) of bandwidth - if they could get it all (frequently, they couldn't), they didn't own a mouse.  They used an operating system with no graphical display on screens with no color and resolutions less than 640x480.   Any machines that you could personally afford just weren't capable of that much and to provide it would have been more than just imagination, it would have been impossible.  Memory alone was too expensive, read speeds too low.  If they were lucky they used floppy disks which fit about a megabyte of data.  Some might be tempted to think "if it would work on that, that would be really good".  Except that in fact, it probably wouldn't.  This is easily provable by the fact that things that wouldn't run on that supplanted them.  Those machines have gone extinct.
+
+
+	trying to think about it as some kind of continuum in terms of "current norms and expectations" of things like performance, robustness, responsiveness, usefulness and quality of (including performance) interaction.  That's multi-dimensional, and "good" and "bad" are kind of black-and-white single-dimensional things that often imply an intrinsic and unchanging kind of value.  It seems like perhaps this hampers our dialog and maybe even how we think about it.</p>
+
+
+	<p>
+
+
+	e idea of <em>current norms and expectations</em> and <em>current abilities</em> makes this an interesting sort of problem.  These mean that your site </p>
+
+
+
+
+
+
+	<p>Dave's point was effectively that it is suprising that 25+ years into the Web, it's still so hard to build a site that scored well on all of those categories, and that it seems like it's gotten harder.  A while back I published a piece called <a href="/blog/The-Glory-Days-Of-The-Web.html">The Glory Days of the Web</a> about how we tend to long for a time that wasn't.  I'm not going to rehash that here, but </p>
+
+	<section class="sectioning">
+		<contextual-heading role="heading" aria-level="3">What makes a competitive website and how hard is it?</contextual-heading>
+
+
+		<p>
+			So yes, it was amazing in that you could publish lots of content with just markup and a comparatively little knowledge as long as you could get off the ground and were then committed to sitting in front of a text editor and manually writing HTML content content... and didn't need things like recurring nav menus.  Arguably this never really was anyone's practical bar for real "sites" but if it was, it's interesting that that has in fact gotten a lot easier. Why?  Because the expectations, defaults, necessary knowledge and tools to do all that have gotten much, much better.</p>
+		<p></p>
+
+		<section class="sectioning">
+			<contextual-heading role="heading" aria-level="4">Performance, Complexity, Expectations</contextual-heading>
+			<p>If you are measuring performance by mid-1990s standards you are talking about a 14.4 modem and even sending several kilobytes of text wasn't exactly fast.  HTTP was a document-based idea.  GET a document, then display it.  In these conditions, you spend a lot of time waiting for the whole document.  Servers weren't that fast, disks weren't that fast.  But that was the norm - make no mistake, your site was great.  However, your really amazing website would soon be outshined by a website that used chunked transfer encoding which allowed us to pipe our server's read stream to an output stream and let your browser start parsing chunks as they were delivered rather than "GET, then display". You knew how to do that in the mid 1990's right?  Make sure you were hostng on a server that was properly configured to stream chunks?</p>
+
+			<p>It's very probable that you didn't, and even if you did it wasn't adding a lot for you, why?</p>
+
+			<section class="sectioning">
+				<contextual-heading role="heading" aria-level="5">Dynamic Websites</contextual-heading>
+				<p>As I said, even in the mid 1990's very few sites were "already built" - increasingly they were dynamic.  That is, they would dynamically assemble a page as the requests came through.  That was much more complicated.  You needed an imperative environment, probably a VM, you needed a language.  In all probablility, you needed a framework and a template language.  You needed special hosting.  You frequently needed to understand databases.  That's complexity, but you can read <a href="/blog/The-Glory-Days-Of-The-Web.html">The Glory Days of the Web</a> for that perpective. More importantly was something else...</p>
+
+				<p>Servers are hard and expensive.</p>
+
+				<p>If you're doing all of this dynamically, what happens for the client while you're busy doing it all?  There's nothing at all to start streaming because it doesn't even remotely exist yet.  What happens on the server while you're doing all this?  You're using lots of resources until it's complete.  The client gets nothing but a browser progress bar to let them know that (we hope) something is happening.  Ah, and, of course, every request and every computation, every hit to a database is another opportunity for things to go wrong.  If you're not savvy enough to handle all of those errors, most servers will helpfully give your users a default error page of barf instead of a page.  One. tiny. mistake.  It could be as simple as whether you are including an image of a green light or a red light to indicate the status of something - if it fails, the user gets:  Barf.  Nothing.  Performance and robsustness are only improved here by engineering.  Except that the people building the Web largely aren't trained engineers and engineering isn't easy.</p>
+
+				<p>Lots of smart people propose lots of smart solutions, none of them are standard and all of them still pretty complex - especially for non-engineers... Just like getting on the internet was, things are probably extra hard at first.</p>
+
+				<p>Interesting to note though that suddenly "great sites" could be quickly reduced to "awful sites" by very little to do with HTTP or HTML simply because they got an ununusual of attention one day, or because a dba accidentally fouled some information or a permission.</p>
+			</section>
+
+
+			<section class="sectioning">
+				<contextual-heading role="heading" aria-level="5">Display</contextual-heading>
+				<p>Let's not forget, we're still in the mid/late 1990s here... We didn't have much control over display, except by repurposing the DNA of tables and side-effects of images.  This was anything but simple, in fact, it was nightmarish. Nevertheless David Siegel's book <em>Creating Killer Websites</em> showed us how and people built some pretty amazingly "better" things with that approach.</p>
+
+				<p>But by what definition of better?   Even if you managed to stream it, the browser's inability to figure out how to layout your tables according to a mixture of container and content, some of it potentially latent (images) really, really put a damper on actual rendering performance - as did the fact that you were sending an <em>incredible</em> amount of extra bytes down the wire.  Further, no one - not search engines nor early accessibility software could make heads nor tails of it.  Local rendering problems were also greatly exacerbated, but we'll come back to that in another sense.</p>
+
+				<p>Here again, some really "great" websites suddenly bacame "kinda terrible" when screen sizes began to radically vary and "decently performing" websites became "abysmal" when mobile dropped the normal bar for bandwidth we'd only seen increasingly rapidly.</p>
+			</section>
+
+			<section class="sectioning">
+				<contextual-heading role="heading" aria-level="5">Enter CSS and JavaScript</contextual-heading>
+				<p>Enter CSS and early JavaScript (pre-ajax).  Before this, you would get a document and the parser would parse it, or, at least try to.  You could mess it up - more easily than we like to pretend too: A single missing attribute quote or closing tag or a badly escaped bit of content could render it so bad you'd really rather have the option of not showing it at all (potentially even just 'blank' or 'mostly blank').  Don't kid yourself otherwise, I see this still today at least once a week.  But you would get it and the parser would try its best to parse it - tags and attributes convey meaning to the thing constructing the DOM, or they don't... That's really all there is to it.  Any tag, any tag at all will be parsed and meaningess... it's just text in a meaningless node.  Any attribute will be parsed, it will just be meaningless.  Everything to this point was more or less built with this idea in mind.  More or less it was the process of boxing off anything that wasn't that by giving it it's own tag and allowing it to fail in whole on its own or not after the initial parse.</p>
+
+				<section class="sectioning">
+					<contextual-heading role="heading" aria-level="6">CSS</contextual-heading>
+					<p>People like to talk about JavaScript, but I'm going to start with CSS.  Initially, CSS was far less powerful, we knew how to use it poorly and it didn't have good support, so building a "good" website that used CSS instead of table/image abuse actually probably didn't seem to a lot of end users like an improvement.  That's particularly notable in my mind because there's frequently an ask about who we're doing it for.  In this case, it wasn't users at the time, it was at best "we hope future users, but also us, it's more managable".</p>
+
+					<p>Interestingly, with CSS it was possible for <em>just a bit of CSS</em> to fail - a "bad" selector or a "bad" property (as defined by whatever particular browser you are using).  Suddenly there is a new class of challenge - its not just "can you reason about all of your rules" but "can you reason about bits of them failing" - how does that impact everything else?  Before browsers had fairly consistent CSS support, this was actually kind of painful.  It was mostly benign at first though because CSS was built with that in mind.  If something failed you'd probably just notice that it looked kind of imperfect.  Right?  Well... maybe, but then there are linked dependencies...</p>
+
+					<p>See, with HTML you can link a dependency to CSS.  You knew that.  This is really useful because sometimes you have global rules and sometimes you have themes and more local rules.  CSS can even import other CSS. This is great because some of it is cachable and once people visit once you can shove it off in cache.  Well,  you knew how to setup cache advice on your server, right?  You have the ability in your server to set those headers and have a plan for how to know when, right?  Careful because if you mess up you might not be able to fix it very easily once the client has it!</p>
+
+					<p>But in fact: Wow, holy cow performance just got really much harder because you can't even start drawing until those requests are completed and parsed, and, if those have dependencies, those too.  It's not unusual that the CSS provided to a page is nearly as big as the content itself.  At least you can gzip it though... You know how to do that, right?  Maybe you should minify it too?  Do you know how?  Good.  Except, that makes it harder to debug, so you should probably be sure to provide a sourcemap - do you know hot to do that?</p>
+
+					<p>Ok, so, we added a lot of complexity here.  But tooling and smart approaches caught up.  It's fairly easy to do that stuff now.  Except, well, pre-processors.  Ok, back to the drawing board, but hey, we'll figure it out!</p>
+
+					<p>Whew... well, we're done with CSS at least, right?  Nope, not remotely. Here comes maybe the biggest new problem: You see, CSS also impacts accessibility and people begin to come up with all kinds of clever uses with things that CSS exposes about state - like the checkbox hack. They begin to imagine possible futures - better, more interactive controls.  Some people see them as better than their JavaScript equivalents for many reasons.  If you only care about display, perhaps.  If you're concerned with accessibility too, maybe not.  But perhaps not even with regard to display... Let's think about that linked dependency problem again:  Now it's not just "what if there is not CSS" or "what if there is a bad rule" it's "what if random sets of rules load and others don't"?  Well brother, you've got a real mess on your hands.  Your website doesn't just look imperfect, it's potentially totally useless, probably inaccessible and well, just generally really shitty.  It looks bad for you, and there's not much you can do about it.</p>
+
+				</section>
+
+				<section class="sectioning">
+					<contextual-heading role="heading" aria-level="6">JavaScript</contextual-heading>
+
+					<p>Ok, let's talk about JavaScript.  I know people like to talk about the JavaScript parser: "One missing semi-colon" - but that's mostly a red-herring.   Yes, JavaScript also has a parser with some more failure modes than HTML.  Don't ship programs that don't parse in the same way you don't ship CSS that won't parse or HTML with missing quotes or attributes.   Unlike HTML though, you don't generally build it with a template system, it's a program and there are tools to verify the parsing of programs.  That feels like the least of our problems to be honest.</p>
+
+					<p>JavaScript also suffers from the same linked dependencies problem.  That sucks so we try to find ways to improve it.  It's a lot like what happened with early server systems, it's kind of a mess.  It's quite possible that things we did with concatination will actually decrease the potential performance with HTTP 2 push once the tools and servers catch up with really easy ways to do that instead.</p>
+
+					<p>JavaScript is also procedural and it has the same sort of problem as HTML has with a missing tag or quote in <em>this</em> respect - a runtime error there can impact all of the things that "come next".  It's important not to take this observation too far though.  Some people like to imply that this makes it all or nothing, but that's just not true.  The reason that some sites fail to load at all is usually not this, it's a problem bootstrapping the very first things, it's simple dependencies.  If you were to open your dev tools for the day and surf around the Web you will find that there are runtime errors aplenty that you never even notice. That's owed to two interesting features: 1) It's event driven - you'll only spoil the stack, not the whole program.  2) It's the only it's the only bit on the client with the ability to intelligently recover!  That's... amazing!  You should do that.  You know how, right?  Here's the interesting thing: It works exactly the same way it works on the server, basically.  You did you deal with it before, right?  If you didn't, <em>that</em> was all or nothing.</p>
+
+					<p>JavaScript is also the bit that it allows us to imagine the possible futures without doing as much damage as previous attempts.  That's amazing and terrible too.  It means that the responsibility is on makers who aren't browser vendors.  It at least <em>allows</em> us to make accessible UIs, but it also means <em>that's on us</em>.  Note: It is on us with CSS too, but CSS can't really do it.  Sadly.  It also means it will be noisy, and of differing levels of 'quality' by different definitions.  But it's also responsible for driving the bar of what makes a really excellent website experience better.  It's not just time to render.  Of course, it is time to render, but it is also your perception as you use it.  How it looks, how it feels, what capabilities and interactions you can have.  But, like everything else, we're going to get stuff wrong before we get it right...</p>
+
+					<p>JavaScript is also single-threaded and most of the stuff you do runs on the main thread. that sucks. Most of our current solutions also add more blocking/streaming issues just like we did with generating content on the server or the dependency on CSS to start drawing. That sucks too... and it's really hard.  But, at least people are working on it and again, it's the one place in the platform where we actually can figure out improved definitions of what's good.</p>
+
+				</section>
+			</section>
+		</section>
+
+		<section class="sectioning">
+			<contextual-heading role="heading" aria-level="4">Conculsion</contextual-heading>
+			<p>Your definition of 'good' is probably much different than it was a few years ago, and it's probably going to be much different in another few years.  The problem itself is constantly shifting and our bar for what is amazing, or good enough is kind of always shifting upward. JavaScript is most directly responsible for giving us enough ability to imagine experiences we couldn't even have before.  That's a mixed bag, but in fact, this is the what HTTP and URLS (and inadvertently HTML) did too - it built a platform for solutions, not a solution.  That's not a bad thing, in fact, you can listen to Web's creator go on at length about it in several talks.  But it opens new challenges and, of course, we don't have good answers to those challenges... yet.  The tools and challenges of the last generation get easier, but are supplanted by new challenges, expectations and new complexities.</p>
+		</section>
+	</section>
+</section></article></main>
+
+  
+    <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-88027178-1', 'auto');
+    ga('send', 'pageview');
+  </script>
+
+  <script>
+    Array.prototype.slice.call(document.querySelectorAll('.optional [data-src]')).forEach(function (optional) {
+      var prefs = window.localStorage.downloadsPrefs,
+          clickToSee;
+      if (prefs === 'true') {
+        activateOptional(optional);
+      } else {
+        clickToSee = document.createElement('div');
+        clickToSee.classList.add('clickToSee')
+        clickToSee.innerHTML = '<button>Click to see media</button>';
+        clickToSee.style.textAlign = 'center';
+        clickToSee.style.border = 'none';
+        optional.parentElement.insertBefore(clickToSee, optional.nextSibling);
+        clickToSee.firstElementChild.addEventListener('click', function () {
+          activateOptional(optional);
+        })
+      }
+
+    })
+  </script>
+
+</body></html>

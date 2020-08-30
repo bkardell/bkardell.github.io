@@ -1,7 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en"> 
   <head>
     <meta name='viewport' content='width=device-width; initial-scale=1.0;' />
+    <meta name="monetization" content="$ilp.uphold.com/kKU4GXiRwhnfS">
+
     <title>Brian Kardell: Introduction</title>
     <style>.captioned-image {
     background-color: #eaeaea;
@@ -164,9 +166,16 @@ header .name {
   clip: rect(0,0,0,0);
   border: 0;
 }
+
+#aboutMeToggle {
+    display: none;
+}
+
 [for="aboutMeToggle"] {
     display: none;
 }
+
+main article { max-width: 100em; margin: auto; }
 /* this needs rethinking, it wants a selector like 'not flow content' */
 article>*:not(contextual-heading,a), section>*:not(contextual-heading,a) {
     margin-left: 0.45rem;
@@ -360,10 +369,12 @@ America (art for sale)</a></li>
                     <a>A Plea to Web Developers</a>
                     <span class="source">net Magazine December 2016 (Issue 287)</span>
                 </li>
+                <!--This is gone, removing unless I can find archive
                 <li>
                     <a href="http://codingstuff.org/brian-kardell/">How I Got Into Computers</a>
                     <span class="source">For a series on codingstuff.org</span>
                 </li>
+                 -->
             </ul>
         </section>
         <section>
@@ -382,7 +393,16 @@ America (art for sale)</a></li>
                 <li>
                     <a href="https://www.igalia.com/chats/Igalia-Chats-Niko-SVG-WPE">WebKit, SVG and WPE with Brian Kardell and Nikolas Zimmermann</a>
                     <span class="source">Igalia Chats (Eposide 3)</span>
-                </li>                
+                </li>   
+                <li>
+                    <a href="https://www.igalia.com/chats/ecosystem-health">Web Ecosystem Health, Part I with Jeremy Keith and Stuart Langridge</a>
+                    <span class="source">Igalia Chats (Eposide 4)</span>
+                </li>                             
+                <li>
+                    <a href="https://www.igalia.com/chats/ecosystem-health-ii">Web Ecosystem Health, Part II with Rick Byers and Rossen Atanassov</a>
+                    <span class="source">Igalia Chats (Eposide 5)</span>
+                </li>        
+ 
                 <li>
                     <a href="https://shoptalkshow.com/407/">Building Browser Features</a>
                     <span class="source">The Shop Talk Show Podcast (Eposide 407)</span>

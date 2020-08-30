@@ -4,13 +4,13 @@
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:site" content="@briankardell">
     <meta name="twitter:creator" content="@briankardell">
-    <meta name="twitter:title" content="Divs">
-    <meta name="twitter:description" content="I've been utterly failing to complete a couple of blog posts that I've been working on recently.  As sometimes happens when I am writing, I have a semi-random but kind of related t">
-    <meta name="twitter:image" content="https://bkardell.com/media/button-1.png">
+    <meta name="twitter:title" content="Building Better Websites">
+    <meta name="twitter:description" content="There are an almost infinite amount of blog posts, presentations and books that comment on how you should and shouldn't build websites.  Unsurprisingly perhaps, they appear to disa">
+    
     <meta name="monetization" content="$ilp.uphold.com/kKU4GXiRwhnfS">
 
     <link rel="alternate" type="application/rss+xml" href="https://bkardell.com/blog/feed.rss" title="bkardell.com/blog rss feed">
-    <title>Divs</title> 
+    <title>Building Better Websites</title> 
     <style>.captioned-image {
     background-color: #eaeaea;
     display: block;
@@ -332,65 +332,36 @@ America (art for sale)</a></li>
         </ul>
     </nav>
 </header>
-    <main><div class="posted-on">Posted on 03/21/2017</div><article posted-on="03/21/2017" class="sectioning">
-	<contextual-heading role="heading" aria-level="1">Divs</contextual-heading>
-	<p class="segue">I've been utterly failing to complete a couple of blog posts that I've been working on recently.  As sometimes happens when I am writing, I have a semi-random but kind of related thought that doesn't really fit in the post and I tweet it instead.  As it got some little attention/discussion, I'd like to expand on it here and offer a little more explanation/context.</p>
+    <main><div class="posted-on">Posted on null</div><article class="sectioning">
+	<contextual-heading role="heading" aria-level="1">Building Better Websites</contextual-heading>
+	<p class="segue">
+		There are an almost infinite amount of blog posts, presentations and books that comment on how you should and shouldn't build websites.  Unsurprisingly perhaps, they appear to disagree on a lot.  They spawn lots and lots of commentary and argument and debate. Entire "camps" and "factions" seem to form around particular arguments or philosophies.  There are lots of landmines because of language: "You don't care about X?" makes people feel defensive.  So, what exactly is the better website and how do you build it?  In this post, I'll tackle that question as honestly as I can.
+	</p>
 
-	<p>Yesterday I tweeted a tweet about divs...</p>
-
-	<blockquote class="twitter-tweet" data-lang="en"><p lang="en" dir="ltr">I wonder, seriously, if it was a mistake to make the meaningless element &lt;div&gt; only 3 characters long. Would we abuse it less if it was long</p>— вкαя∂εℓℓ (@briankardell) <a href="https://twitter.com/briankardell/status/843917216533925888">March 20, 2017</a></blockquote>
-	<script async="" src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
-
-	<p>I'd like to share some context on that.</p>
+	<p>Ok, so - the secret to building better websites.. I'm going to let you in on a little secret, are you ready for it?  Drumroll please...</p>
 
 
-	<p>Let's imagine that you have a small contract to create a website whose whole aim is just to collect data.  It's really just a few simple forms.  If you wrote vanilla HTML without CSS for that and showed it to your client your client would probably immediately begin the search for your replacement.</p>
+	<p style="font-size: 3rem">It depends.</p>
 
 
-	<p>It looks abysmal really.  Unprofessional even.</p>
+"It depends" doesn't sound like much of an answer on its own - it's not exactly helpful, I realize.
 
-	<p>And it's not just potentially complicated things like layout - even simple things like buttons look pretty terrible "out-of-the-box" by today's standards.  From what I observe in practice it seems that a lot of people have decided that the default UA stylesheet is just kind of a terrible starting point for lots of things that we do.</p>
-
-	<p>So we turn to something like Bootstrap.  Include Bootstrap's CSS and it immediately looks better.</p>
-
-	<p>Surpringly to many at first though is that it doesn't look <em>that much</em> better.  Your buttons, for example, don't look like those fancy Bootstrap buttons.</p>
-
-	<p>That's because those "buttons" are actually painted based on classes.  If you want your <code tag-esc="">button</code> element to look like a Bootstrap button you have to add classes ala <code tag-esc="">button class="btn"</code>.</p>
-
-	<p>Now, before I talk about any more of this I want to stress something:  <em>Bootstrap is a tool.</em>  Tools want to be generally purposed - able to be used to solve many problems.  Tools and parts kind of don't care what you do with them, they just are.  Sparkplugs, batteries, wires and gasoline are all perfectly wonderful tools and parts and with them you can build lawnmowers and tractors and go carts and semi-trucks and - well, all sorts of useful things.  You could also plug those things together directly and blow yourself up.</p>
-
-	<p>Bootstrap is a perfectly useful tool that you can use to build wonderful things.  I'm not against it.</p>
-
-	<p>In fact, a great thing about something like Bootstrap is that it comes with some pre-defined and useful vernaular that doesn't exist in native HTML.  The concept of a <em>primary</em> button for example. UIs frequently have a concept of a "primary" action. In our forms, "submit" or "next" is probably the primary action.  In an email client or chat client "send" is primary.</p>
-
-	<p>The promise of CSS is really dependent on having more than just tags to work with. Part of the problem is that the standard vocabulary is quite limited and left to our own devices we'll just be all over the map.  Many of us won't even think about the idea of "primary".  The advantage of having some common "slang" with some good meanings like this is clear - people get in the habit of thinking about and identifying the "primary" action and marking it up as such.  Just like the default UA stylesheet, Bootstrap gives it some kind of visual treatment "out-of-the-box".  You can see how people appreciate this and how that isn't a bad thing at all.</p>
-
-	<p>Where I have seen this really bite us is when those things aren't entirely clear and we combine that with an over-dependence on tools.  Tools <em>like Bootstrap</em> (this isn't unique to Boostrap in any way) enable people who don't know much about HTML or CSS to build a pretty nice <em>looking</em> sites and it's easy to take that a little too far.</p>
-
-	<p>So, the thing is: Bootstrap will let you attach those button classes to absolutely anything.  Most of the time, the right answer is probably <code tag-esc="">button class="btn btn-primary"</code>.</p>
-
-	<p>Here's why:  The <code tag-esc="">button</code> element is suprisingly full featured:</p>
-	<div class="captioned-image" style="margin-top: 1rem;">
-			<img src="/media/button-1.png" alt="">
-			<div>The humble <code tag-esc="">button</code> is focusable, clickable, touchable and smartly integrated with DOM events, by default looks 'buttony', has the potential to integrate with form/HTTP automatically, has an accessible role and label and has <a href="https://www.oreilly.com/ideas/proposing-css-input-modality">quite a lot of smarts about how focus rings work</a> and more - all "built in" - and this is an incomplete list.  Buttons also have built in concepts like the ability to disable them and well-established meaning for that on all of these things.</div>
-	</div>
-
-	<p>However, all too frequently, once a project is already completed I find something like this instead <code tag-esc="">div class="btn btn-primary</code>.  Look, semantics are weird. Sometimes this can lead to you asking weird philosophical questions about which element you really should use and there isn't always a clear answer.  But that tweet and this observation aren't a slam on <code tag-esc="">div</code>s either: They're a perfectly useful 'container' structure.  You can use them to build structures that you can reason about more easily in your CSS and JavaScript. You should use them. I do. They just have absolutely no "meaning" at all - and in this particular case, it isn't really an especially philospocal question.  Point to the thing on the screen and say "this thing" and immediately most people will say "the button?".  It's a button.</p>
-
-	<p>When you use a <code tag-esc="">div</code> instead of a <code tag-esc="">button</code>, all of those things sketched above go out the window.  You've got a lot of problems.  It might "appear to work in a demo with the CEO" but there's lots of issues that are harder to demonstrate and explain and that's a terrible situation to be in.</p>
-
-	<p>Frequently, this isn't noticed until it's spread like a cancer.  Buttons are one of the most fundamental building blocks of UI.  You can't throw a stone without hitting a button, so remediating this late means touching your code in lots and lots of places. It might sound like a simple search/replace will fix you right up, but actually, those are quite different elements.  Subtle differences chase you, and you'll be suprised at how many bugs will keep coming back from your QA department if they're doing their job well.</p>
-
-	<p>So, in the posts I'm currently failing to write I'm pondering the things that enable/reinforce us getting into these types of situations and why they are so terrible to find yourself in... and how to avoid them.  It seems pretty evident to me that the gap is in large part about presentation and the power of 'demonstration' to shape things - but that's for those other posts....</p>
-
-	<p>What isn't clear to me at all is why so many developers seem to turn to a <code tag-esc="">div</code> in the first place instead of defaulting to using a <code tag-esc="">button</code>?</p>
+The first, and probably most obvious thing worth admitting
 
 
-	<p>That's kind of a mystery, and all I can do is speculate.</p>
-
-	<p>One possibility is that perhaps if you think they "seem equivant" - one is shorter and looks less redundant?</p>
 
 
+
+
+In 2005, most operating systems shipped with some simple text editor for rich text which were capable of saving things in <code>.txt</code> or <code>.rtf</code> formats.  Microsoft Word was pretty much the defacto standard for "real" word processing.  But then, suddenly, someone said "what if you could do that in the browser"?
+
+A full blown word processor in the browser was a novel idea, but it definitely wasn't a 'page' anymore or was there an immediately obvious way to accomplish it via form fields.  Instead, it was JavaScript APIs and the new content-editable attribute which made this possible.
+
+
+
+
+
+http://mcnitt.com/wp-site/wp-content/uploads/images/writely.gif
 
 </article></main>
 

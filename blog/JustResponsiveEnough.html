@@ -1,0 +1,510 @@
+<html lang="en" resource-type="blogpost"><head> 
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@briankardell">
+    <meta name="twitter:creator" content="@briankardell">
+    <meta name="twitter:title" content="Responsive Perspective">
+    <meta name="twitter:description" content="If you've ever made anything resposive, you probably experienced something like this:  You learn about Media Queries.  You try them.  Ah beautiful.  But very quickly, you wonder &quot;o">
+    
+    <meta name="monetization" content="$ilp.uphold.com/kKU4GXiRwhnfS">
+
+    <link rel="alternate" type="application/rss+xml" href="https://bkardell.com/blog/feed.rss" title="bkardell.com/blog rss feed">
+    <title>Responsive Perspective</title> 
+    <style>.captioned-image {
+    background-color: #eaeaea;
+    display: block;
+    overflow: hidden;
+    padding: 1rem;
+    text-align: center;
+    font-style: italic;
+}
+
+.captioned-image.p-attached {
+    width: 40%;
+    display: inline-block;
+    margin: 0 1rem 2rem 1rem;
+}
+
+section > .captioned-image.p-attached {
+    margin-top: 1.5rem; /* correct for heading size*/
+}
+
+ pre { overflow-x: auto }
+
+.captioned-image.p-attached.p-attached-left {
+    float: left;
+}
+
+.captioned-image.p-attached.p-attached-right {
+    float: right;
+}
+
+.captioned-image.p-attached + * + * {
+    clear: both;
+    margin-top: 2rem;
+}
+
+
+.captioned-image img, .captioned-image video {
+    display: block;
+    max-width: 100%;
+    margin: 0 auto 1em auto;
+}
+.source {
+    font-style: italic;
+}
+body {
+    display: flex;
+    font: 1em "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-weight: 400;
+    line-height: 1.625;
+}
+h1 { margin: 0.5rem; }
+code-format {
+    border-left: 0.5rem solid rgba(123,115,209,0.35);
+    display: block;
+    padding: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+contextual-heading {
+    display: block;
+    margin-top: 2rem;
+}
+
+[aria-level="1"] {
+    color: #43686b;
+    font-size: 1.45rem;
+}
+[aria-level="2"] {
+    color: #856363;
+    font-size: 1.35rem;
+}
+[aria-level="3"] {
+    color: #856363;
+    font-size: 1.25rem;
+}
+[aria-level="4"] {
+    color: #856363;
+    font-size: 1.2rem;
+}
+[aria-level="5"], [aria-level="6"] {
+    color: #667496;
+    font-size: 1.1rem;
+    font-weight: bolder;
+}
+.posted-on {
+    font-style: italic;
+    font-size: 0.8rem;
+    text-align: right;
+    margin-bottom: 1rem;
+}
+
+ul, li {
+    margin: 0.5rem;
+    text-align: left;
+}
+header {
+    padding-top: 1rem;
+    padding-right: 2rem;
+    background-color: #fbf5e9;
+}
+.tagline {
+    font-style: italic;
+    text-align: center;
+}
+
+[tag-esc] {
+    color: maroon;
+    font-family: Courier, "Lucida Console", monospace;
+}
+
+[tag-esc]::before {
+    content: '<';
+}
+
+[tag-esc]::after {
+    content: '>';
+}
+
+main {
+    min-width: 50%;
+    width: 80%;
+    padding: 1rem;
+}
+header .title {
+    background-color: rgba(123,115,209,0.35);
+    padding: 0.3rem;
+    padding-left: 0.25rem;
+    font-weight: bolder;
+    font-size: 0.9rem;
+    border-left: 1rem solid #999298;
+}
+
+header .profile {
+    width: 50%;
+    margin: 1rem 25%;
+}
+
+header .title + nav {
+    font-size: 0.9rem;
+}
+
+header .blurb {
+    font-size: 0.75rem;
+    text-align: center;
+}
+header .name {
+    text-align: center;
+    font-size: xx-large;
+}
+.segue {
+    font-style: italic;
+}
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  border: 0;
+}
+
+#aboutMeToggle {
+    display: none;
+}
+
+[for="aboutMeToggle"] {
+    display: none;
+}
+
+main article { max-width: 100em; margin: auto; }
+/* this needs rethinking, it wants a selector like 'not flow content' */
+article>*:not(contextual-heading,a), section>*:not(contextual-heading,a) {
+    margin-left: 0.45rem;
+}
+
+blockquote {
+  font-family: serif;
+  background: #f9f9f9;
+  border-left: 10px solid #ccc;
+  margin: 1.5em 10px;
+  padding: 0.5em 10px;
+}
+blockquote:before {
+  color: #ccc;
+  content: open-quote;
+  font-size: 2em;
+  line-height: 0.1em;
+  margin-right: 0.25em;
+  vertical-align: -0.4em;
+}
+
+blockquote:after {
+  color: #ccc;
+  content: close-quote;
+  font-size: 2em;
+  line-height: 0.1em;
+  margin-left: 0.25em;
+  vertical-align: -0.4em;
+}
+
+
+@media (max-width: 800px){
+    body {
+        flex-direction: column;
+    }
+    header {
+        border-bottom: 1px solid #afafff;
+    }
+
+    .captioned-image.p-attached {
+        width: 100%;
+        margin: 1rem 0;
+    }
+
+    .captioned-image.p-attached.p-attached-left,
+    .captioned-image.p-attached.p-attached-right {
+        float: none;
+    }
+
+    [for="aboutMeToggle"] {
+        background-color: #675e5e;
+        color: white;
+        padding: 0.25rem;
+        padding-left: 0.5rem;
+        display: block;
+        border-left: 1rem solid black;
+    }
+    #aboutMeToggle:focus + [for="aboutMeToggle"]{
+        outline: 4px solid #c6ddf2;
+    }
+
+    #aboutMeToggle:checked ~ header {
+        display: none;
+    }
+
+    header li { display: inline; margin-left: -0.5em; }
+    header .blurb li::after { content: '; '; }
+    header  nav li {
+        display: inline-block;
+        margin-left: 0.35rem;
+        margin-right: 0.35rem;
+    }
+    header .title {
+        width: 100%;
+    }
+    main li .source { display: block; }
+
+}</style>
+    <style>
+      .captioned-image { font-size: 0.9rem; }
+      .thanksTo { font-style: italic; font-size: 0.8rem; }
+    </style>
+    <script>
+      var activateOptional = function (media) {
+        var source = media.getAttribute('data-src'),
+            temp,
+            container = media.parentElement;
+
+          if (media.nextSibling && media.nextSibling.matches) {
+            if (media.nextSibling.matches('.clickToSee')) {
+              media.parentElement.removeChild(media.nextSibling);
+            }
+          }
+ 
+          if (media.tagName === 'VIDEO') {
+            temp = document.createElement('video')
+            temp.setAttribute('autoplay','')
+            temp.setAttribute('controls','')
+            temp.setAttribute('loop','')
+            temp.innerHTML = '<source src="' + source + '.webm" type="video/webm">'
+                    + '<source src="' + source + '.mp4" type="video/mp4">';
+            media.parentElement.replaceChild(temp, media);
+            setTimeout(function () {
+              temp.play()
+            }, 0);
+          } else {
+            media.src = media.getAttribute('data-src');
+          }
+
+          container.classList.add('active');
+      }
+    </script>
+  </head>
+  <body>
+    <input id="aboutMeToggle" class="sr-only" type="checkbox" checked="">
+<label for="aboutMeToggle">Toggle author information</label>
+<header>
+    <div class="name">
+        Brian Kardell
+    </div>
+    <img class="profile" src="/profile.jpg" alt="">
+    <div class="tagline"><a href="/">Betterifying the Web</a></div>
+    <div class="blurb">
+        <ul>
+            <li>Developer Advocate at Igalia</li>
+            <li>Original Co-author/Co-signer of The Extensible Web Manifesto</li>
+            <li>Co-Founder/Chair, W3C Extensible Web CG</li>
+            <li>Member, W3C (The JS Foundation)</li>
+            <li>Co-author of HitchJS</li>
+            <li>Blogger</li>
+            <li>Art, Science &amp; History Lover</li>
+            <li>Standards Geek</li>
+        </ul>
+    </div>
+    <div class="title">Follow Me On...</div>
+    <nav>
+        <ul>
+            <li><a rel="me" href="https://briankardell.wordpress.com">Wordpress</a></li>
+            <li><a rel="me" href="https://medium.com/@briankardell">Medium</a></li>
+            <li><a rel="me" href="https://twitter.com/briankardell">Twitter</a></li>
+            <li><a rel="me" href="https://github.com/bkardell/">Github</a></li>
+            <li><a rel="me" href="https://codepen.io/bkardell">Codepen</a></li>
+            <li><a rel="me" href="https://www.linkedin.com/in/brian-kardell-08a4264">LinkedIn</a></li>
+            <li><a rel="me" href="https://www.instagram.com/kardellbrian">Instagram (for
+art)</a></li>
+            <li><a rel="me" href="http://fineartamerica.com/profiles/brian-kardell?">Fine Art
+America (art for sale)</a></li>
+        </ul>
+    </nav>
+</header>
+    <main><div class="posted-on">Posted on null</div><article class="sectioning">
+    <contextual-heading role="heading" aria-level="1">Responsive Perspective</contextual-heading>
+    <p class="segue">
+        If you've ever made anything resposive, you probably experienced something like this:  You learn about Media Queries.  You try them.  Ah beautiful.  But very quickly, you wonder "ok, but I don't really care about the <em>viewport</em> here:  How can I make <em>based on available space?</em>  You discover that you can't.  You write a couple extra media queries that reason about this very specific case we see on the screen and, you're done.  This problem isn't new.  Efforts to standardize some kind of solution to it continue under the banner of "Container Queries" (previously "Element Queries"), and much has been written about it. But... I have some thoughts.
+        </p>
+    <p></p>
+    <section class="sectioning">
+        <contextual-heading role="heading" aria-level="2">Have you ever...</contextual-heading>
+        <p>
+            If you've ever made anything resposive, you  probably experienced something like this:  You learn about Media Queries.  You try them.  Ah beautiful.  But very quickly, you think "OK, that's grea, but... I don't really care about the <em>viewport</em> here.  How can I make <em>based on available space?</em>" You ultimately discover that you can't.  However, you write a couple extra media queries that reason about this very specific case we see on the screen and... You're done.
+        </p>
+        <p>
+            I think that most of us who do anything at all with the Web have probably written some CSS and that this probably describes a common, shared experience.  For a lot of us, though, this is not a primary part of our day to day job.  It's a thing we did to understand the technology, or to make our own site, or a site for our OSS project, or some consulting work.
+        </p>
+        <p>
+            And... If this is you, then when you hit the situation above, it's pretty temping to think "Well... that was less pleasant than I would have liked" but ultimately, just move on.  After all, it wasn't really <em>that</em> big of a deal... You made it work with just a couple of extra lines of code.  For many of us, it seems, we just have much bigger and more complex fish to fry than worrying about saving that little extra bit of effort.
+        </p>
+    </section>
+
+    <section class="sectioning">
+        <contextual-heading role="heading" aria-level="2">Shifting Perspective</contextual-heading>
+        <p>
+            For the last few years, I've been busy devising shared declarative components or focused on performance, accessibility and all sorts of other things.  All of these, in my mind, were hard problems with scalable value.  A well designed 'component' designed to be used declaratively, for example, is reusable in many systems and has longevity - even if the actual implementation changes.  Our teams can talk about a thing, and use the same markup, predictable DOM and common CSS, and so on regardless of whether the folks using it are using a Custom Element or an older version of Angular.  There's a lot of value in both the portability of that and in actually insulating the implementation, if nothing else.  Similarly, providing some core accessibility features like <em>:focus-visible</em> or <em>inert</em> makes previously difficult situations with no good answers suddenly much simpler, and provides some good answers for everyone that uses them.
+        </p>
+        <p>
+            So... That's sort of how I framed things in my mind: These were things with much value, while the 'Container Queries' problem was more of a nice to have that would make our CSS a little easier to maintain. A big part of that attitude is, no doubt, because I haven't been in charge of CSS and because the person who is is pretty stoic about it and doesn't complain.
+        </p>
+        <p>
+            But then something happened that caused me to shift my perspective.  Very recently, this person became unexpectedly temporarily unavailable for an extended period of time and I would have step into their world for a bit. Hey... no problem.
+        </p>
+    </section>
+
+    <section class="sectioning">
+        <contextual-heading role="heading" aria-level="2">What fresh hell?</contextual-heading>
+        <p>
+            I'm given a demo showing a new markup pattern that will be used in several systems and how it should respond.  Luckily, this one is pretty simple, it's not even interactive.  I have no accessibility concerns.  We don't really even need to make a component out of this, it's just "here's a very very simple receipe of HTML".  Really, all that I have to do is provide the CSS to make it responsive.
+        </p>
+
+        <p>
+            But.. we don't control the layouts or CSS in any of those systems, all we can do is give them a thing to integrate.  These systems run the gambit of variance, some of them have core HTML and CSS tht is a decade old.  As I look at how they have solved similar problems, all I can think is "what fresh hell is this"?  I am struck with a new appreciation of the scale of problem.  Each site has to re-figure out the responsive breakpoints for this element with regard to all possible layouts that it can occur in.  Neither side can really change anything without causing a domino effect in which all the things need to be redone.
+        </p>
+    </section>
+
+    <section class="sectioning">
+        <contextual-heading role="heading" aria-level="2">Where do we stand?</contextual-heading>
+        <p>
+            Given my new perspective, I am thankful that other people have been working on this problem.  Perhaps there's something that could us.  I knew we've got <code>ResizeObserver</code> coming, and that it's even shipping in Chrome. Perhaps I could help make this better.
+        </p>
+
+        <p>
+            And so I started reading and I realized that.. Wow, there's still way too many things to solve here.
+        </p>
+
+        <p>
+            I gotta be honest... Very, very efficiently observing the resizing of an element is only a small part of the actual challenges facing designers here.  As for me, for now I'd probably even settle for something slightly less than ideal in terms of efficiency as it would still be fine for many of my use cases.
+        </p>
+
+        <p>
+            Don't get me wrong, ResizeObservers are excellent, and ultimately will be an important aspect of the ultimate solution.  They will explain the observation magic involved in whatever we ultimately introduce so that the platform itself makes sense.
+        </p>
+        <p>
+            Sadly though, they don't do anything to help with the other very hard problems:  How do you express and collect which breakpoints apply to which things?  How do you know which elements to watch?  How do you keep stylistic things in CSS?  Fixing these problems  involves a lot more primitives than we currently have, or a lot more tooling.
+        </p>
+    </section>
+    <section class="sectioning">
+        <contextual-heading role="heading" aria-level="2">But... I need an answer <em>now</em></contextual-heading>
+
+        <p>
+            I'm faced with two choices, really: Perpetuate this madness, or find something <em>good enough</em> for now.   So I sat down to think about what a decent answer would even look like.
+        </p>
+
+        <section class="sectioning">
+            <contextual-heading role="heading" aria-level="3">Expressing Container Breakpoints</contextual-heading>
+            <p>
+               One thing I noted pretty quickly is that where and how to express them seemed like one of the biggest problems, actually.  How do you even begin to resolve this?  But, the more I thought about it, the more I thought "Wait... do I really even need to?"
+            </p>
+
+            <p>
+                Maybe that's important.  I mean, think about it.. Media Queries are powerful, but they're also kind of a pain in the ass.  In theory while anyone could lay out an infinite number of breakpoints by any arbitrary criteria, most people, I thnk, don't. Instead, they use a few standard breakpoints.  A lot of people use pre-processors to refer to them as kind of t-shirt sizes.
+            </p>
+            <p>
+                 By simply thinking about it this way, there's no longer a need to express arbitrary breakpoints.  If we could simply attach a something to the element that we can use in a CSS selector, then it's all pretty straightforward stuff really.  You just write vanilla CSS that has some sense of its available space.
+            </p>
+            <p>
+                That's a much easier problem to solve.  Again, it's potentially a trade in efficiency.  Breakpoints shift a whole 'stylesheet' into the mix at once, or remove it in one go.  That's potentially more efficient, but not strictly necessary.
+            </p>
+            <p>
+                Taken a little further, we can set a number of predefined t-shirt size breakpoints.  If we name them well, and use an attribute rather than a class, we can also approximate math using nothing more than CSS's powerful attribute selectors which were part of CSS 2.1!
+            </p>
+            <p>
+                For example <code>[container-size*="large"]</code> could match <code>large</code>, <code>x-large</code> and <code>medium-large</code>, while  <code>[container-size="large"]</code> could express something very specific.  This seemed quite expressive enough.
+            </p>
+        </section>
+        <section class="sectioning">
+            <contextual-heading role="heading" aria-level="3">What to monitor?</contextual-heading>
+            <p>
+                The next big problem to solve is how to figure out how to say "these are the things I need you to monitor in the first place".  All of the current proposals do this in CSS, with an arbitrary selector.  But once again, I thought, "But... do I really need that"?
+            </p>
+            <p>
+                Again, I thought... actually, no.  If I were to express a container query in CSS, I'd still want to be very careful about what I attached it to.  I'll want some kind of hook, maybe a class.  Good old classes.
+            </p>
+            <p>
+                But, realize that we've changed the shape of the problem.  We're no longer saying "monitor this specific thing for these specific breakpoints" we're simply saying "monitor this thing the same way you do for all of the others, and just update the t-shirt size".  So... how many possible classes do I need?  Just One.
+            </p>
+
+            <p>
+                Now, we could use <code>MutationObserver</code> to watch all of the things that are added to or removed from the DOM that match this class, but that introduces kind of a lot of challeges: Most of the checks are just cost with no value.  We don't know when the MutationObserver got added, so we have to write extra code to deal with that, etc.
+            </p>
+            <p>
+                But, there is a perfect plugin entry point for knowing when a thing has been added or removed from the DOM which already deals with all of these issues: Custom Elements.
+            </p>
+            <p>
+                If we created a <code>&lt;responsive-container&lt;</code> we could just put stuff in it and get the selector and the lifecycle and breakpoints - wow, we're almost there.
+            </p>
+            <p>
+                Now, some of you will think "that has no business being in my HTML".  To which I have a few counterpoints:  First, as I said, you would have likely added some hook.  Why <em>can't</em> that hook be an element?  Second, like a class with no definition, an unknown tag with no definition is benign.  It is kind of the poster child for Custom Elements as Progressive Enhancement.
+            </p>
+            <p>
+                One final point here: A lot of times, you wouldn't even see this.  In addition to being usable in this simple form, other custom elements can <em>extend</em> this class and just gain these magical powers.  If someone makes a <code>&lt;x-card&gt;</code>, and <code>class XCardElement extends XResponsiveContainerElement</code>, then it just <em>is</em> one of those and you can just distribute a responsive <code>&lt;x-card&gt;</code> component and no one even has to be the wiser.
+            </p>
+        </section>
+        <section class="sectioning">
+            <contextual-heading role="heading" aria-level="3">This is all very doable today</contextual-heading>
+            <p>
+                So... This is all very doable today, and it strikes a lot of good chords.  To be honest, it makes me wonder if we actually need 'more' in the design of such a solution other than better implementations and underlying primitives.  I hacked up a version of this and used it in my use cases at work and the results are better than I could have imagined.
+            </p>
+            <p>
+                After doing so, I showed a friend because I thought that surely I am missing something critical and there is a significant flaw.  I was happily surprized when they sent me a link to Philip Walton's <a href="https://philipwalton.com/articles/responsive-components-a-solution-to-the-container-queries-problem/">Responsive Components: a Solution to the Container Queries Problem</a>, in which he landed at a very similar approximation.
+            </p>
+            <p>
+                Philip made some different implmentation choices that trade different things than mine, and he used classes rather than an attribute - but we landed in <em>suprisingly</em> similar places.  I was very tempted to simply promote his piece, but I thought I had a slightly different take, and some more to say - so here are the points I want to highlight.
+            </p>
+            <ul>
+                <li>Maybe there's a chance that, like me, you might not have a true appreciation for the scale and impact of this problem.  If you're more likely to think about 'components' - just think of it like that: At the end of the day, this is a component problem. It's like giving someone a markup receipe for tabs, and then asking each of them to implement the interactivity, and do it accessibly, please.</li>
+                <li>Maybe there's a chance that you've been thinking about Container Queries for a long time.  Note how much of the complexity involved with proposed solutions have to do with so much being potentially arbitrary.  Perhaps this can help you look at the problem with different eyes.</li>
+                <li>Finally, just to say "Hey... Here's a thing that could make your life easier... Maybe it's worth trying!"  I think this is a fundamentally important extensible web concept.  The technically 'best' solution hardly ever wins, and at the end of the day, we can't know precisely what is the fitness function here... We have to try things and see what it is.  Maybe this is something worth trying.</li>
+            </ul>
+
+
+        </section>
+    <!-- p class="thanksTo"></p -->
+</section></article></main>
+
+  
+    <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-88027178-1', 'auto');
+    ga('send', 'pageview');
+  </script>
+
+  <script>
+    Array.prototype.slice.call(document.querySelectorAll('.optional [data-src]')).forEach(function (optional) {
+      var prefs = window.localStorage.downloadsPrefs,
+          clickToSee;
+      if (prefs === 'true') {
+        activateOptional(optional);
+      } else {
+        clickToSee = document.createElement('div');
+        clickToSee.classList.add('clickToSee')
+        clickToSee.innerHTML = '<button>Click to see media</button>';
+        clickToSee.style.textAlign = 'center';
+        clickToSee.style.border = 'none';
+        optional.parentElement.insertBefore(clickToSee, optional.nextSibling);
+        clickToSee.firstElementChild.addEventListener('click', function () {
+          activateOptional(optional);
+        })
+      }
+
+    })
+  </script>
+
+</body></html>

@@ -1,4 +1,4 @@
-<html lang="en" resource-type="blogpost"><head>
+<html lang="en" resource-type="blogpost"><head> 
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta name="twitter:card" content="summary_large_image">
@@ -7,6 +7,8 @@
     <meta name="twitter:title" content="Unlocking Colors">
     <meta name="twitter:description" content="Despite the fact that I draw and paint, and am involved with CSS, I am actually generally not good at design. Color, however, is endlessly fascinating. As there have been many colo">
     <meta name="twitter:image" content="https://upload.wikimedia.org/wikipedia/commons/6/60/Cie_Chart_with_sRGB_gamut_by_spigget.png">
+    <meta name="monetization" content="$ilp.uphold.com/kKU4GXiRwhnfS">
+
     <link rel="alternate" type="application/rss+xml" href="https://bkardell.com/blog/feed.rss" title="bkardell.com/blog rss feed">
     <title>Unlocking Colors</title> 
     <style>.captioned-image {
@@ -170,9 +172,16 @@ header .name {
   clip: rect(0,0,0,0);
   border: 0;
 }
+
+#aboutMeToggle {
+    display: none;
+}
+
 [for="aboutMeToggle"] {
     display: none;
 }
+
+main article { max-width: 100em; margin: auto; }
 /* this needs rethinking, it wants a selector like 'not flow content' */
 article>*:not(contextual-heading,a), section>*:not(contextual-heading,a) {
     margin-left: 0.45rem;
@@ -266,7 +275,7 @@ blockquote:after {
               media.parentElement.removeChild(media.nextSibling);
             }
           }
-
+ 
           if (media.tagName === 'VIDEO') {
             temp = document.createElement('video')
             temp.setAttribute('autoplay','')

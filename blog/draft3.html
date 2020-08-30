@@ -1,0 +1,762 @@
+<html lang="en" resource-type="blogpost"><head> 
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@briankardell">
+    <meta name="twitter:creator" content="@briankardell">
+    <meta name="twitter:title" content="Untitled Draft">
+    <meta name="twitter:description" content="In which I share &quot;deep thoughts&quot; on design and technical theories">
+    <meta name="twitter:image" content="https://bkardell.com/media/forest-landscape-leafs-11435.jpg">
+    <meta name="monetization" content="$ilp.uphold.com/kKU4GXiRwhnfS">
+
+    <link rel="alternate" type="application/rss+xml" href="https://bkardell.com/blog/feed.rss" title="bkardell.com/blog rss feed">
+    <title>Untitled Draft</title> 
+    <style>.captioned-image {
+    background-color: #eaeaea;
+    display: block;
+    overflow: hidden;
+    padding: 1rem;
+    text-align: center;
+    font-style: italic;
+}
+
+.captioned-image.p-attached {
+    width: 40%;
+    display: inline-block;
+    margin: 0 1rem 2rem 1rem;
+}
+
+section > .captioned-image.p-attached {
+    margin-top: 1.5rem; /* correct for heading size*/
+}
+
+ pre { overflow-x: auto }
+
+.captioned-image.p-attached.p-attached-left {
+    float: left;
+}
+
+.captioned-image.p-attached.p-attached-right {
+    float: right;
+}
+
+.captioned-image.p-attached + * + * {
+    clear: both;
+    margin-top: 2rem;
+}
+
+
+.captioned-image img, .captioned-image video {
+    display: block;
+    max-width: 100%;
+    margin: 0 auto 1em auto;
+}
+.source {
+    font-style: italic;
+}
+body {
+    display: flex;
+    font: 1em "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-weight: 400;
+    line-height: 1.625;
+}
+h1 { margin: 0.5rem; }
+code-format {
+    border-left: 0.5rem solid rgba(123,115,209,0.35);
+    display: block;
+    padding: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+contextual-heading {
+    display: block;
+    margin-top: 2rem;
+}
+
+[aria-level="1"] {
+    color: #43686b;
+    font-size: 1.45rem;
+}
+[aria-level="2"] {
+    color: #856363;
+    font-size: 1.35rem;
+}
+[aria-level="3"] {
+    color: #856363;
+    font-size: 1.25rem;
+}
+[aria-level="4"] {
+    color: #856363;
+    font-size: 1.2rem;
+}
+[aria-level="5"], [aria-level="6"] {
+    color: #667496;
+    font-size: 1.1rem;
+    font-weight: bolder;
+}
+.posted-on {
+    font-style: italic;
+    font-size: 0.8rem;
+    text-align: right;
+    margin-bottom: 1rem;
+}
+
+ul, li {
+    margin: 0.5rem;
+    text-align: left;
+}
+header {
+    padding-top: 1rem;
+    padding-right: 2rem;
+    background-color: #fbf5e9;
+}
+.tagline {
+    font-style: italic;
+    text-align: center;
+}
+
+[tag-esc] {
+    color: maroon;
+    font-family: Courier, "Lucida Console", monospace;
+}
+
+[tag-esc]::before {
+    content: '<';
+}
+
+[tag-esc]::after {
+    content: '>';
+}
+
+main {
+    min-width: 50%;
+    width: 80%;
+    padding: 1rem;
+}
+header .title {
+    background-color: rgba(123,115,209,0.35);
+    padding: 0.3rem;
+    padding-left: 0.25rem;
+    font-weight: bolder;
+    font-size: 0.9rem;
+    border-left: 1rem solid #999298;
+}
+
+header .profile {
+    width: 50%;
+    margin: 1rem 25%;
+}
+
+header .title + nav {
+    font-size: 0.9rem;
+}
+
+header .blurb {
+    font-size: 0.75rem;
+    text-align: center;
+}
+header .name {
+    text-align: center;
+    font-size: xx-large;
+}
+.segue {
+    font-style: italic;
+}
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  border: 0;
+}
+
+#aboutMeToggle {
+    display: none;
+}
+
+[for="aboutMeToggle"] {
+    display: none;
+}
+
+main article { max-width: 100em; margin: auto; }
+/* this needs rethinking, it wants a selector like 'not flow content' */
+article>*:not(contextual-heading,a), section>*:not(contextual-heading,a) {
+    margin-left: 0.45rem;
+}
+
+blockquote {
+  font-family: serif;
+  background: #f9f9f9;
+  border-left: 10px solid #ccc;
+  margin: 1.5em 10px;
+  padding: 0.5em 10px;
+}
+blockquote:before {
+  color: #ccc;
+  content: open-quote;
+  font-size: 2em;
+  line-height: 0.1em;
+  margin-right: 0.25em;
+  vertical-align: -0.4em;
+}
+
+blockquote:after {
+  color: #ccc;
+  content: close-quote;
+  font-size: 2em;
+  line-height: 0.1em;
+  margin-left: 0.25em;
+  vertical-align: -0.4em;
+}
+
+
+@media (max-width: 800px){
+    body {
+        flex-direction: column;
+    }
+    header {
+        border-bottom: 1px solid #afafff;
+    }
+
+    .captioned-image.p-attached {
+        width: 100%;
+        margin: 1rem 0;
+    }
+
+    .captioned-image.p-attached.p-attached-left,
+    .captioned-image.p-attached.p-attached-right {
+        float: none;
+    }
+
+    [for="aboutMeToggle"] {
+        background-color: #675e5e;
+        color: white;
+        padding: 0.25rem;
+        padding-left: 0.5rem;
+        display: block;
+        border-left: 1rem solid black;
+    }
+    #aboutMeToggle:focus + [for="aboutMeToggle"]{
+        outline: 4px solid #c6ddf2;
+    }
+
+    #aboutMeToggle:checked ~ header {
+        display: none;
+    }
+
+    header li { display: inline; margin-left: -0.5em; }
+    header .blurb li::after { content: '; '; }
+    header  nav li {
+        display: inline-block;
+        margin-left: 0.35rem;
+        margin-right: 0.35rem;
+    }
+    header .title {
+        width: 100%;
+    }
+    main li .source { display: block; }
+
+}</style>
+    <style>
+      .captioned-image { font-size: 0.9rem; }
+      .thanksTo { font-style: italic; font-size: 0.8rem; }
+    </style>
+    <script>
+      var activateOptional = function (media) {
+        var source = media.getAttribute('data-src'),
+            temp,
+            container = media.parentElement;
+
+          if (media.nextSibling && media.nextSibling.matches) {
+            if (media.nextSibling.matches('.clickToSee')) {
+              media.parentElement.removeChild(media.nextSibling);
+            }
+          }
+ 
+          if (media.tagName === 'VIDEO') {
+            temp = document.createElement('video')
+            temp.setAttribute('autoplay','')
+            temp.setAttribute('controls','')
+            temp.setAttribute('loop','')
+            temp.innerHTML = '<source src="' + source + '.webm" type="video/webm">'
+                    + '<source src="' + source + '.mp4" type="video/mp4">';
+            media.parentElement.replaceChild(temp, media);
+            setTimeout(function () {
+              temp.play()
+            }, 0);
+          } else {
+            media.src = media.getAttribute('data-src');
+          }
+
+          container.classList.add('active');
+      }
+    </script>
+  </head>
+  <body>
+    <input id="aboutMeToggle" class="sr-only" type="checkbox" checked="">
+<label for="aboutMeToggle">Toggle author information</label>
+<header>
+    <div class="name">
+        Brian Kardell
+    </div>
+    <img class="profile" src="/profile.jpg" alt="">
+    <div class="tagline"><a href="/">Betterifying the Web</a></div>
+    <div class="blurb">
+        <ul>
+            <li>Developer Advocate at Igalia</li>
+            <li>Original Co-author/Co-signer of The Extensible Web Manifesto</li>
+            <li>Co-Founder/Chair, W3C Extensible Web CG</li>
+            <li>Member, W3C (The JS Foundation)</li>
+            <li>Co-author of HitchJS</li>
+            <li>Blogger</li>
+            <li>Art, Science &amp; History Lover</li>
+            <li>Standards Geek</li>
+        </ul>
+    </div>
+    <div class="title">Follow Me On...</div>
+    <nav>
+        <ul>
+            <li><a rel="me" href="https://briankardell.wordpress.com">Wordpress</a></li>
+            <li><a rel="me" href="https://medium.com/@briankardell">Medium</a></li>
+            <li><a rel="me" href="https://twitter.com/briankardell">Twitter</a></li>
+            <li><a rel="me" href="https://github.com/bkardell/">Github</a></li>
+            <li><a rel="me" href="https://codepen.io/bkardell">Codepen</a></li>
+            <li><a rel="me" href="https://www.linkedin.com/in/brian-kardell-08a4264">LinkedIn</a></li>
+            <li><a rel="me" href="https://www.instagram.com/kardellbrian">Instagram (for
+art)</a></li>
+            <li><a rel="me" href="http://fineartamerica.com/profiles/brian-kardell?">Fine Art
+America (art for sale)</a></li>
+        </ul>
+    </nav>
+</header>
+    <main><div class="posted-on">Posted on null</div><article class="sectioning">
+    <contextual-heading role="heading" aria-level="1">Untitled Draft</contextual-heading>
+    <style>
+		/*body:not(.preferences-set) > :not(main) { display: none; }
+		body:not(.preferences-set) {
+			background-color: #444;
+			color: white;
+		} 
+		*/
+		body:not(.prefers-images) .captioned-image:not(.active) > * { border: 1px dashed gray }
+
+		#downloadsPrefs {
+			font-size: 0.8rem;
+			background-color: #fcfcfc;
+			border: 1px dotted gray;
+			margin-bottom: 1rem;
+		}
+		#downloadsPrefs p {
+			margin: 2rem 10%;
+		}/*
+		#downloadsPrefs ~ * {
+			display: none;
+		}*/
+	</style>
+	<div id="downloadsPrefs">
+		<p style="font-size: 1.5rem">Note from the author...</p>
+		<p>My posts frequently (like this one) have a 'theme' and tend to use a number of images for visual flourish. Personally, I like it that way, I find it more engaging and I prefer for people to read it that way.  However, for users on a metered or slow connection, downloading unnecessary images is, well, unnecessary, potentially costly and kind of rude.  Just to be polite to my users, I offer the ability for you to opt out of 'optional' images if the total size of viewing the page would exceed a budget I have currently defined as 200k...
+		</p>
+		<p><label>Show me all the images when I read <input type="checkbox" id="download-all-images-pref" checked=""></label></p>
+		<p><label>Don't ask me again on this device <input type="checkbox" id="download-all-images-pref-save"></label></p>
+		<p><button id="setDownloadPrefs">Dismiss</button></p>
+	</div>
+	<script>
+		'use strict';
+		(function () {
+			var prefsButton = document.querySelector('#setDownloadPrefs'),
+				prefs = window.localStorage.downloadsPrefs;
+			function downloadImages () {
+				var lazy = Array.prototype.slice.call(document.querySelectorAll('.captioned-image>[data-src]'));
+
+				lazy.forEach(activateOptional)
+			}
+			function removeDownloadPrefsOverlay() {
+				document.body.classList.add('preferences-set')
+				document.querySelector('#downloadsPrefs').remove()
+			}
+
+			prefsButton.addEventListener('click', function() {
+				var all = document.querySelector('#download-all-images-pref'),
+					save = document.querySelector('#download-all-images-pref-save'),
+					prefs = window.localStorage.downloadsPrefs
+
+				if (all.checked) {
+					downloadImages();
+				}
+				if (save.checked) {
+					window.localStorage.downloadsPrefs = all.checked;
+				}
+				removeDownloadPrefsOverlay()
+			});
+
+			if (typeof prefs !== 'undefined') {
+				console.log(prefs)
+				if (prefs === 'true') {
+					document.body.classList.add('prefers-images')
+					window.localStorage.downloadsPrefs = prefs
+					window.addEventListener('DOMContentLoaded', downloadImages)
+				}
+				removeDownloadPrefsOverlay()
+			}
+		}())
+	</script>
+    <script src="../prism.js"></script>
+    <link rel="stylesheet" href="../prism.css">
+    <style>
+    .note {
+        background-color: rgba(255,255,0,0.24);
+        padding: 1rem;
+        font-style: italic;
+    }
+    .note::before {
+        content: 'Note';
+        font-size: 0.8rem;
+        background-color: black;
+        color: white;
+        padding: 0.25rem;
+        margin-right: 0.5rem;
+    }
+    .output {
+        margin-left: 1rem;
+        font-family: "Courier New", Courier, monospace
+    }
+    .spec-quote {
+        display: block;
+        margin: 1rem;
+    }
+    section {
+        margin-left: 0.5rem;
+    }
+    ul {
+        font-style: italic;
+    }
+    table {
+        margin: 1rem auto;
+        width: 80%;
+    }
+    th:nth-child(1),
+    td:nth-child(1) {
+        text-align: left;
+    }
+    th:nth-child(2),
+    td:nth-child(2) {
+        text-align: right;
+        font-style: italic;
+    }
+    </style>
+    <p class="segue">
+        In which I share "deep thoughts" on design and technical theories
+    </p>
+    <p>
+        In the show The 100, there are small groups of people with wildly different backgrounds,  perspectives, and skills just trying to survive a post apocalyptic earth as best they can figure out.  They develop factions, and factions within factions, and frequently even close friends sometimes disagree.  Sometimes, people change their minds.  Sometimes, what begins as strong opinion for or against, becomes less so the more we understand the various perspectives.
+    </p>
+    <p>
+        The Web community is kind of like that.
+    </p>
+    <p>
+        From a design standpoint, the early Web was sustainable. No matter what new things we threw at it, it would just keep on "working".  This was the "natural state" of the Web.
+    </p>
+    <div class="captioned-image optional">
+        <img data-src="/media/forest-landscape-leafs-11435.jpg" alt="A photo of a pristine forest">
+        The natural state of the Web.  Look at it.  Isn't it beautiful?
+    </div>
+
+    <p>
+        But, despite the pleasant description, the "natural state" of things wasn't actually so pleasant.  Nature is beautiful, but also harsh and cruel.  On the Web, this flexibility was because it wasn't about "design" at all.  There was only HTML, it included a very small number of tags, and browsers simply flowed text (and later images) and they were painted on a screen.  The reality is, this didn't excite a lot of people and it really couldn't have held the attention it does today.
+    </p>
+
+    <p>
+        When the natural state isn't pleasant, we try to improve it.  Just as things like clothing, shelters and fire allowed humans to survive and become more populous, bringing more design to the Web allowed more people to become more interested and address more use cases.  It helped the web to thrive.
+    </p>
+
+    <p>
+        In our attempts to "tame" the Web and exert increasing control over design, we tried all sorts of things with all sorts of implications.  Many of them, we realize now, seem pretty bad in retrospect.  While they may have helped increase the <em>popularity</em> of the Web, they often did so at the expense of other things.   Tables for layout were a brilliant hack, but a nightmare to develop and a big problem for accessibility.  Fixed size designs seemed brilliant for a while, many of them were gorgeous - until small devices came along.  Flash allowed all sorts of vector based expression, but... well... that was something else and full of its own problems. And so on...
+    </p>
+
+    <div class="captioned-image optional">
+        <img data-src="/media/the-100-earth-destroyed.gif" alt="A nuclear explosion in the forrest, Clarke running">
+        It's possible that occassionaly we've created some problems in trying to exert too much control over design.
+    </div>
+
+    <p>
+        And so, as long as there has been a web, there has been this tension:  The Web 'wants' flexibility, while design historically 'wants' strict boundaries and measurements.  We have groups that say "all we need are more ways to use flexibility better", and we have groups that say "we need far more control than that" - and we have lots of people who are somewhere in between.
+    </p>
+
+    <section class="sectioning">
+        <contextual-heading role="heading" aria-level="2">Sensors</contextual-heading>
+        <p>
+            In your house, you probably have a thermostat that allows you to say something roughly like "If it gets warmer than 72 degrees farenheight, turn on the AC.  If it gets colder than 70 degrees farenheight, turn on the heat."  With <code>@media</code> queries, we got something  like that and it was great, because we never had that ability before.
+        </p>
+        <p>
+            The trouble with how this works, traditionally, in most houses is that the thermostat is measuring a particular spot in the house that doesn't remotely reflect the average temperature and the whole thing turns on or off at once.  If it is 70 near the thermostat, it might be nearer 80 in the bedroom.
+
+
+
+
+            My house is in a valley that is often 8-10 degrees cooler than where the city temperature is measured.
+        </p>
+    </section>
+    <section class="sectioning">
+        <contextual-heading role="heading" aria-level="2">Who needs that sink anyway?</contextual-heading>
+        <p>
+            Sometimes, frequently perhaps even, this is more of an inconvenience than a critical problem.  If the problem is localized or specific we actually can deal with this pretty well.  However, the costs and impacts of this increase non-linearly the less localized and specific it is and the more you need to share.
+        </p>
+
+        <p>
+            For a significant number of people out there, this leaves them with a real connundrum:  Centralizing design of "things" means you could spend a little more time and money making it really great, just once.  This makes things more managable and provides more consistent experiences. However, the cost of "interpreting and adapting" those responsive designs falls again to each system that uses it and couples things together so that no one can really make changes without lots of close coordination - the antithesis of what you are trying to do.  You can't afford not to do it, and you can't afford to do it either.  Unless you have been in this situation, it is unfortunately, very easy to underappreciate the criticality of this issue in many companies.
+        </p>
+    </section>
+
+    <p>
+        And so I sat down to think of a way to circle this square.  Surprisingly, I came up with an answer I'm actually fairly happy with.  It's got a lot of good qualities:
+    </p>
+    <ul>
+        <li>
+            It allows me to design 'things' responsively, without requiring careful coordination with the layouts that they are used in
+        </li>
+        <li>
+            Author express their stylistic designs in real CSS, whereever that lives
+        </li>
+        <li>
+            It doesn't have to be re-parsed, processed or transformed in any way.  It doesn't require any build tools, or putting those styles into a &lt;style&gt; element or &lt;script&gt; block or anything.
+        </li>
+        <li>
+            It is a 'live' solution.  That is, it doesn't matter how an element got into the DOM or when or why something's style is suddenly affected.
+        </li>
+        <li>
+            There's no JavaScript for users to write in order to wire it up
+        </li>
+        <li>
+            It is a PE oriented solution
+        </li>
+        <li>
+            The JavaScript that enables it is &lt;1k minified and gzipped.
+        </li>
+    </ul>
+    <section class="sectioning">
+        <contextual-heading role="heading" aria-level="2">Declarative Resize Observer</contextual-heading>
+        <p>
+            What I arrived at is a <a href="https://bkardell.com/test/declarative-resize-observer.html">Declarative Resize Observer</a>.  While it is entirely useful, you might note that it doesn't look at all like current proposals for Container Queries.
+        </p>
+        <p>
+            Once I got it put together, I discovered that I am not remotely the only one who landed on a solution that "looks" more similar to what I arrived at than it does current proposals.
+        </p>
+        <p>
+            Philip Walton, for example, <a href="philipwalton.com/articles/responsive-components-a-solution-to-the-container-queries-problem/">arrived at something <em>very</em> similar</a>.  He and I have since had some very good talks, discussing the pros and cons of various details.  More importantly, perhaps, we talked about why that happened in the first place.
+        </p>
+        <p>
+            I'd like to propose that perhaps understanding this could be potentially useful or informative for existing standardization efforts.  I kind of think it is, so I'll explain below.
+        </p>
+    </section>
+    <section class="sectioning">
+        <contextual-heading role="heading" aria-level="2">Where to start</contextual-heading>
+        <p>
+            Most proposals begin by attempting to propose something via pseudo-code that looks something like one of these:
+        </p>
+        <pre><code class="language-css">/* one example, from Mat Marquis */
+.mod:media( min-width: 425px ) img {
+    …
+}
+
+/* another example, from Ethan Marcotte */
+.recirc-container:(min-width: 20em) {
+    .ranked-list li,
+    .ranked-list li:nth-child( n ) { … }
+    .ranked-list li:nth-child( 2n ) { … }
+    .ranked-list li:nth-child( 2n+1 ) { … }
+}
+
+/* another example, from Tommy Hodgins */
+@element 'nav label, nav .label' and (max-width: 150px) {
+  $this {
+    padding-right: 0;
+  }
+}
+</code></pre>
+        <p>
+            Each of the above proposals observes that: a) CSS has selectors that allow us to identify things - and b) CSS has MediaQueries with <em>min-height</em> and <em>min-width</em> that allow us to express something about 'size' through various units.  It seems as if CSS "almost does this".  All you need to do, it seems, is smash those two things together somehow.
+        </p>
+        <p>
+            However, this is kind of misleading.  From a functional standpoint this is a significantly different application of both of those existing features than what CSS does today which will require fundamentally new plumbing.
+        </p>
+
+        <p>
+            The reason I think that I and others land in an entirely different place is that we focused primarily on the plumbing.  We looked at this not a single problem of 'how to express what we mean', but rather a series of problems about missing machinery that would allow us to think about where such a solution would really fit in.  Here's the general thought process...
+        </p>
+    </section>
+    <section class="sectioning">
+        <contextual-heading role="heading" aria-level="2">Minimum Viable  Machinery</contextual-heading>
+        <p>
+            So what are the fundamental, major moving parts that we would need for a reasonable, minimum viable soltion to designing responsive 'bits'?
+        </p>
+        <section class="sectioning">
+            <contextual-heading role="heading" aria-level="3">Observing Size of an Element</contextual-heading>
+            <p>
+                The first, most basic issue is that we need some way to observe size changes to an element.
+            </p>
+            <p>
+                This is the one we're closest to answering today.  <code>ResizeObserver</code> is shipping in Chrome, and there are even half decent ways if less efficient ways to approximate this pretty well in non-supporting browsers.  Regardless of what solutions we ultimately arrive at, <code>ResizeObserver</code> will explain this bit of magic, and that's wonderful.
+            </p>
+            <p>
+                As great as it is, that's the extent of what this primitive offers.  It doesn't do anything to help the system identify which things it should and shouldn't monitor, nor when it starts and stops monitoring them, nor what a 'breakpoint' is or what to do about it.
+            </p>
+        </section>
+
+        <section class="sectioning">
+            <contextual-heading role="heading" aria-level="3">Identifing which elements to observe</contextual-heading><p>
+                The second part of the problem is that we need some way to identify which elements we want to observe in the first place.  We also know that, this means tying certain, 'special' elements to a <code>ResizeObserver</code>.
+            </p>
+            <p>
+                We can greatly simplify the probem by specifying a common, rather than arbitary way to indicate what should be observed.  For example, we can provide a declarative way to express that relationship, perhaps via an attribute:
+            </p>
+
+            <pre><code class="language-javascript">&lt;div resize-observer&gt;<br>
+   ...<br>
+&lt;/div&gt;</code></pre>
+
+            <p class="note">
+                Note that this doesn't mean that that has to be a final solution, it simply separates the "someone will have to provide this connective tissue" and creates a particular part of the problem as something that may be fairly  easy to explain or approximate in terms of things that do exist in the platform already - via, for example, <code>MutationObserver</code>.
+            </p>
+            <p>
+                Splitting the problem allows us to think about what needs to happen, where and when.
+            </p>
+            <p>
+                Let's skip the "when" for now and talk about <em>what</em> happens.  Well, this is where an element is measured and some new thing is consulted:  Upon the reaching of some threshold a certain rule or rules can become relevant, or made irrelevant.
+            </p>
+        </section>
+        <section class="sectioning">
+            <contextual-heading role="heading" aria-level="3">Threshold Mapping</contextual-heading>
+            <p>
+                Current proposals are based on the idea that this should be expressed in the same sorts of ways that we express <code>@media</code> queries today.  It's entirely possible that that is, ultimately, a perfectly valid idea.
+            </p>
+            <p>
+                However, it is also true that this is not strictly necessary in order to describe the system - nor to present an answer that allows us to do very good things.
+            </p>
+            <p>
+                I'd like you to consider the following: While <code>@media</code> queries allow us to express an almost infinite number of designs ideally suited to any arbitrary size, measured by any valid CSS unit, we don't.
+            </p>
+            <p>
+                This isn't just one observation, it's several.
+            </p>
+            <section class="sectioning">
+                <contextual-heading role="heading" aria-level="4">How many designs?</contextual-heading>
+                <p>"Mobile First Responsive Design" laid out the philosophy that you design initially for the smallest available space.  Small designs scale up better than big ones scale down (it also helps us think about the document more linearly which is helpful for accessibility).  It reasons that, at some point, you will have more space to play with and can lay out more ideally.</p>
+                <p>For a lot of use cases, this means two designs: One small, one large enough to do more.  In rare cases you might find a third, fourth or even fifth, but the number of designs is, for the most part, actually generally quite small.
+                </p>
+            </section>
+             <section class="sectioning">
+                <contextual-heading role="heading" aria-level="4">Which breakpoints?</contextual-heading>
+                <p>
+                    This is, I believe, one of the key things to think about, for a few reasons.
+                </p>
+                <p>
+                    First, realize that many teams do not create media queries with arbitrary breakpoint, by any arbitrary unit of measure.  Many designers that I know don't even know what their breakpoints are - that's because they rely on some system which provides them a number of canned breakpoint by which they can talk about them in more generalized terms, like t-shirt sizes.
+                </p>
+
+                <p>
+                    The second is that I think that, to some extent, this is a thing that we continue to struggle with.  Good responsive design is as much about ceding control as it is gaining it.  Today's rules about which breakpoints tend to translate to which designs on which popular devices is good for precisely that, and nothing more.  This isn't suggesting that you shouldn't think about that at all, but rather to underscore that the web demands fluidity.  If you're stressing about whether you should 'flip' your design when there are 765 pixels available rather than 768, you'll never sleep.
+                </p>
+                <p>
+                    "Ranges" or "buckets" that increase at a "small enough rate" work pretty well for this - and they solve another problem that we have right now too: We're a little unsure what to actually measure: Is it the content box? the border box? both? Keeping things less granular helps me think more generally, for now.
+                </p>
+            </section>
+            <p>
+                As the resize observer measures the element that it is listening to,
+                breakpoints will trigger "something" to flip.  In current proposals those things are invisible - the mechanisms of media queries.  However, to begin with, we can make them visible - simply reflect them into the DOM as attributes, something like this:
+            </p>
+            <pre><code class="language-html">&lt;div resize-observer
+    available-width="small"
+    available-height="large"&gt;
+    ...<br>
+&lt;/div&gt;</code></pre>
+            <p>
+                Because attributes are a thing CSS already undertands, and already optimizes via clever tricks like bloom filters, and because attribute selectors are powerfully expressive, this gives us the ability to approximate all of the moving parts today.
+            </p>
+            <pre><code class="language-css">/*
+  Styles for
+  .myResponsiveElement .foo
+  which apply when there is
+  medium-large, large, x-large
+  or xx-large available space
+*/
+[available-width*="large"].myResponsiveElement.foo {
+    ...<br>
+}
+
+/*
+  Styles for
+  .myResponsiveElement .foo
+  which apply  when there is
+  small-medium, medium
+  or large available space
+*/
+[available-width*="medium"].myResponsiveElement .foo {
+    ...<br>
+}
+
+
+/*
+  Styles for
+  .anotherThing .bar
+  which apply when there is
+  x-large or xx-large
+  available space
+*/
+[available-width*="x-large"].anotherThing .bar {
+    ...<br>
+}
+
+/* ... you get the idea ...*/</code></pre>
+
+            <p>
+                This solution more closely approximates a breakpoint oriented pseudo-class, if we assume that those would operate more or less 'as they do today'.  "At-Rules" on the other hand insert or remove entire stylesheets at once.  Ultimately, this will matter in terms of optimizing a final solution as much as possible, but the difference will often be negligible, so it doesn't make too much sense to get too hung up on that.
+            </p>
+
+    </section>
+
+    <section class="sectioning">
+        <contextual-heading role="heading" aria-level="3"></contextual-heading>
+        <p class="note">
+                It could also be argued that the design and lifecycle methods of <code>Custom Elements</code> provide a more efficient/straightforward way to "plug in" here.  This is the approach used by Philip Walton in his piece <a href="https://philipwalton.com/articles/responsive-components-a-solution-to-the-container-queries-problem/">Responsive Components: a Solution to the Container Queries Problem</a>, and, in truth is the solution that I initially landed on independently as well.  However, after more thought, I believe that an element is a less close 'approximation' and certainly less paletable to many people.  Still, if your site is built with custom elements, you can follow an implementation where all other things here are equal and I think that that is still a very valid way to prove out these ideas.
+            </p>
+        </section>
+    <!-- p class="thanksTo"></p -->
+</section></article></main>
+
+  
+    <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-88027178-1', 'auto');
+    ga('send', 'pageview');
+  </script>
+
+  <script>
+    Array.prototype.slice.call(document.querySelectorAll('.optional [data-src]')).forEach(function (optional) {
+      var prefs = window.localStorage.downloadsPrefs,
+          clickToSee;
+      if (prefs === 'true') {
+        activateOptional(optional);
+      } else {
+        clickToSee = document.createElement('div');
+        clickToSee.classList.add('clickToSee')
+        clickToSee.innerHTML = '<button>Click to see media</button>';
+        clickToSee.style.textAlign = 'center';
+        clickToSee.style.border = 'none';
+        optional.parentElement.insertBefore(clickToSee, optional.nextSibling);
+        clickToSee.firstElementChild.addEventListener('click', function () {
+          activateOptional(optional);
+        })
+      }
+
+    })
+  </script>
+
+</body></html>

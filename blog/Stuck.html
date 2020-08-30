@@ -4,13 +4,13 @@
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:site" content="@briankardell">
     <meta name="twitter:creator" content="@briankardell">
-    <meta name="twitter:title" content="Interactive Elements: A Strange Game">
-    <meta name="twitter:description" content="It can seem especially frustrating to a lot of developers that we don't have more elements &quot;out of the box&quot; as part of HTML. I mean: Where are the tabs? How do we not have tabs by ">
+    <meta name="twitter:title" content="Progress">
+    <meta name="twitter:description" content="In this piece I'll attempt to provide some context around &quot;progress&quot; in the Web Platform.">
     <meta name="twitter:image" content="https://bkardell.com/media/10-wargames-falken.png">
     <meta name="monetization" content="$ilp.uphold.com/kKU4GXiRwhnfS">
 
     <link rel="alternate" type="application/rss+xml" href="https://bkardell.com/blog/feed.rss" title="bkardell.com/blog rss feed">
-    <title>Interactive Elements: A Strange Game</title> 
+    <title>Progress</title> 
     <style>.captioned-image {
     background-color: #eaeaea;
     display: block;
@@ -332,105 +332,34 @@ America (art for sale)</a></li>
         </ul>
     </nav>
 </header>
-    <main><div class="posted-on">Posted on 04/29/2020</div><article posted-on="04/29/2020" class="sectioning">
-    <style>
-        section { clear: both; }
-        .captioned-image {
-          background-color: transparent;
-        }
-        .wargames {
-          font-family: monospace;
-          background: black;
-          color: lime;
-          padding: 0.5rem;
-        }
-  </style>
-    <style>
-		/*body:not(.preferences-set) > :not(main) { display: none; }
-		body:not(.preferences-set) {
-			background-color: #444;
-			color: white;
-		} 
-		*/
-		body:not(.prefers-images) .captioned-image:not(.active) > * { border: 1px dashed gray }
-
-		#downloadsPrefs {
-			font-size: 0.8rem;
-			background-color: #fcfcfc;
-			border: 1px dotted gray;
-			margin-bottom: 1rem;
-		}
-		#downloadsPrefs p {
-			margin: 2rem 10%;
-		}/*
-		#downloadsPrefs ~ * {
-			display: none;
-		}*/
-	</style>
-	<div id="downloadsPrefs">
-		<p style="font-size: 1.5rem">Note from the author...</p>
-		<p>My posts frequently (like this one) have a 'theme' and tend to use a number of images for visual flourish. Personally, I like it that way, I find it more engaging and I prefer for people to read it that way.  However, for users on a metered or slow connection, downloading unnecessary images is, well, unnecessary, potentially costly and kind of rude.  Just to be polite to my users, I offer the ability for you to opt out of 'optional' images if the total size of viewing the page would exceed a budget I have currently defined as 200k...
-		</p>
-		<p><label>Show me all the images when I read <input type="checkbox" id="download-all-images-pref" checked=""></label></p>
-		<p><label>Don't ask me again on this device <input type="checkbox" id="download-all-images-pref-save"></label></p>
-		<p><button id="setDownloadPrefs">Dismiss</button></p>
-	</div>
-	<script>
-		'use strict';
-		(function () {
-			var prefsButton = document.querySelector('#setDownloadPrefs'),
-				prefs = window.localStorage.downloadsPrefs;
-			function downloadImages () {
-				var lazy = Array.prototype.slice.call(document.querySelectorAll('.captioned-image>[data-src]'));
-
-				lazy.forEach(activateOptional)
-			}
-			function removeDownloadPrefsOverlay() {
-				document.body.classList.add('preferences-set')
-				document.querySelector('#downloadsPrefs').remove()
-			}
-
-			prefsButton.addEventListener('click', function() {
-				var all = document.querySelector('#download-all-images-pref'),
-					save = document.querySelector('#download-all-images-pref-save'),
-					prefs = window.localStorage.downloadsPrefs
-
-				if (all.checked) {
-					downloadImages();
-				}
-				if (save.checked) {
-					window.localStorage.downloadsPrefs = all.checked;
-				}
-				removeDownloadPrefsOverlay()
-			});
-
-			if (typeof prefs !== 'undefined') {
-				console.log(prefs)
-				if (prefs === 'true') {
-					document.body.classList.add('prefers-images')
-					window.localStorage.downloadsPrefs = prefs
-					window.addEventListener('DOMContentLoaded', downloadImages)
-				}
-				removeDownloadPrefsOverlay()
-			}
-		}())
-	</script>
-    <contextual-heading role="heading" aria-level="1">Interactive Elements: A Strange Game</contextual-heading>
+    <main><div class="posted-on">Posted on </div><article posted-on="" class="sectioning">
+    <contextual-heading role="heading" aria-level="1">Progress</contextual-heading>
     <p class="segue">
-      It can seem especially frustrating to a lot of developers that we don't have more elements "out of the box" as part of HTML. I mean: <em>Where are the tabs? How do we not have tabs by now?</em> It seems like almost every week this comes up in some fashion or other. In this piece I'll talk a little about why, how to see this for what it is, how we're trying to move forward - and also present an interesting experiment for your consideration and feedback that may help inform some of these efforts.  If you want, you can <a href="#chess">skip right to the 'new idea/experiment'</a>, but I think this background is pretty helpful in understanding it, so please, come back and read it...</p>
-
-    <p>
-      Let's have a look at <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element" target="_blank">HTML so far</a>:  ~10 of the elements are the 'boilerplate stuff': &lt;html&gt;, &lt;body&gt;, &lt;head&gt; and metadata stuff - &lt;link&gt;, &lt;meta&gt;, &lt;base&gt;, &lt;style&gt;, &lt;script&gt;, &lt;title&gt;. There's a few elements for linking and embedding other content and multimedia, and a few with special powers like &lt;template&gt; and &lt;slot&gt;. And then the rest:  ~30 are "weak semantics about text" that aren't interactive and don't have signficant (any) special meaning necessarily and are primarily just things with default CSS stylesheet rules. About 15 are "weak semantics about text, but meaningfully weak" - stuff like lists.  ~15 are sectioning or landmarks.  11 more are about tables - a 2 dimensional relationship of text.  14 are about forms. And then two are... well... something else.  We'll come back to that. And ~30 are deprecated.
+      In this piece I'll attempt to provide some context around "progress" in the Web Platform.
     </p>
 
-    <p>The route to all of these elements was a little different - and they have different costs associated with them, and offer different value.  One thing that's interesting to note is that the majority of them are what Dave Rupert refers to as "Spicy Divs".  That is, there's not much to them - they aren't complex or interactive, and they don't bring a ton of real world value. That's not to say they are <em>without value</em>, but ultimately we spend a lot of time and bandwidth in standards debating what often amount to silly things because of it.  &lt;main&gt; is a kind of a good example.  Nothing wrong with it as an element, it's great, in fact - it just has a long and complex backstory that ultimately cost a lot relative to its real world value and proven use.  Tons of time defining and debating &lt;address&gt;, which isn't really that meaningful to browsers, and then lots of evangelism telling people they're using it wrong - only in the end to eventually have to admit that it ultimately means the thing people used it as.</p>
- 
-    <p>The second thing to notice is that there there are <em>very few</em> interactive elements.  Further, most of the ones we usually talk about are about <em>forms</em>.  And that lead us to this: Interactive, form-related elements on the web are... tricky.</p>
-
-    <section class="sectioning">
-      <contextual-heading role="heading" aria-level="2">The form-related game</contextual-heading>
     <p>
-      On the one hand, there's a lot to like about native, interactive form controls. In theory, they can
+      It can seem especially frustrating to a lot of developers that we don't have more elements "out of the box" as part of HTML. It seems like almost every week this comes up in some fashion or other.  Why is the web "stuck"?  Why did we "stop developing elements 10 years ago"?  And even "was the Extensible Web Manifesto just an entirely wrong turn"?  The trouble with these particular questions is that we don't begin them with a shared understanding of the data and similar perspective.  This is a piece I've been wanting to write for a while, so in this piece I'll try to shine a little light on the questions and provide some context.
+    </p>
+   
+
+    <p>
+      First, a thing to be aware of is that standards move at a different pace.
+
+
+    </p><blockquote class="twitter-tweet"><p lang="en" dir="ltr">10 years ago, HTML added PeerToPeerServer, later changed to WebRTC. 9, &lt;img crossorigin&gt;. 8, &lt;img srcset&gt;. 7, &lt;template&gt;. 6, &lt;picture&gt;. 5, &lt;slot&gt;. 4, &lt;script type=module&gt;. 3, &lt;link rel=serviceworker&gt;. 2, &lt;iframe allow&gt;. 1, form-associated custom elements. 0, &lt;img loading=lazy&gt;. <a href="https://t.co/CdPWKAnRCY">https://t.co/CdPWKAnRCY</a></p>— Simon Pieters (@zcorpan) <a href="https://twitter.com/zcorpan/status/1255207331014627329?ref_src=twsrc%5Etfw">April 28, 2020</a></blockquote> <script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+    <p>
+      First, 
+    * Perspective
+       * There actually has been high level progress
+       * There has been far more low level progress
+       * There are reasons 
+
+    </p><p>Interactive elements on the web are... tricky.</p>
+
+    <p>
+      On the one hand, there's a lot to like about them. In theory, they can
       bring a simple declarative form with all kinds of goodness in terms of platform integration, portability and centralized work on accessibility and UX.
     </p>
  
@@ -442,30 +371,44 @@ America (art for sale)</a></li>
 &gt; What is the primary goal?
 To win the game.</pre>
 
-    <p>More simply: Despite a lot of work, and huge investments, people still gravitate toward custom implementations. That's not good for anybody.</p>
+    <p>More simply: People still gravitate toward custom implmentations. It would appear to most developers that we're "stuck".</p>
 
-    <p><em>Why are native form controls hard?</em></p>
-    
+    <section class="sectioning">
+      <contextual-heading role="heading" aria-level="2">Why has it been hard to get developers to use native elements?</contextual-heading>
+      <p>So many reasons.</p>
+      <p>
+        To start with, unfortunately many of the benefits of native interactive elemenets aren't exactly self-evident: It takes  time and education to be able to appreciate a lot of it. Buttons seem pretty basic, for example, but you can watch many of my friends talk about less immediately obvious of them for 45 minutes.  On the other hand, a whole lot easily observable, surface-level aspects of many are notoriously kind of frustrating.  
+      </p>
 
-    <p>Well... So many reasons, but to start with, the one that they could really do without is that they got off to a tricky start by design.</p>
-      
+    <p>But there's also the fact that we've been tackling, primarily, one <em>kind</em> of problem: Form controls.  Let's look at where we stand today</p>
 
     <section class="sectioning">
       <contextual-heading role="heading" aria-level="3"><pre>&lt;input type="WOPR"&gt;</pre></contextual-heading>
 
     <p>
-      <em>Most</em> of the form-related controls are created based on
-      <code>&lt;input type-"..."&gt;</code>. You've probably heard someone suggest that
+      HTML's had a ton of investment in form-related interactive controls. However, in all this time there are an astonishing few <em>elements</em> because many of the controls are created based on
+      <code>&lt;input type-"..."&gt;</code>.
+    </p>
+
+    <p>
+      You've probably heard someone suggest that
       this is great because in cases where it isn't supported, simply
-      providing the text field is fine. However, this is incomplete and we've been paying the price for it for a long time.</p>
+      providing the text field is fine. However, this is incomplete.</p>
 
-    <pre class="wargames">&gt; People sometimes make... mistakes.</pre>
+    <p>
+      In fact, this particular approach to that problem is actually quite problematic for a number of reasons and it's not the view held by implementers that this is a path we are eager to repeat.
+    </p>
 
-    <p>Did you ever notice how the JavaScript API surface of input works differently based on the type?  If the type is number and you type gibberish that looks remotely 'potentially numbery' like '12312e314124', then <code>.value</code> will be '' (empty string).  Or, the checkbox type has a checked property, but that means that input type=number has that property too... What does it do? Anything!? Or, have you ever noticed how <code>.selectionStart</code> and <code>.selectionEnd</code> actually would initially  <em>throw</em> if you tried to use them on a numeric input type?! (<a href="https://github.com/whatwg/html/pull/1006">fixed by Simon Pieters</a>).  If not, go have a watch of <a href="https://vimeo.com/144980655">Monica Dinculescu's <code>&lt;input&gt;</code> I ♡ you, but you're
-        bringing me down</a> -- a 45 minute talk about <em>just this</em>.</p>
 
-    <p>  
-      Ultimately, many of these problems stem from us accepting the illusion presented that a date picker <em>is a</em> kind of text input.
+    <section class="sectioning">
+      <contextual-heading role="heading" aria-level="4"><pre class="wargames">&gt; People sometimes make... mistakes.</pre></contextual-heading>
+
+      <p>If you're interested in some history and developer-based reasons
+      why this is frustrating, 
+      <a href="https://meowni.ca/posts/a-story-about-input/">Monica Dinculescu's <code>&lt;input&gt;</code> I ♡ you, but you're
+        bringing me down</a>
+      is a great read. Many of these problems stem from us accepting the illusion
+      presented that a date picker is a kind of text input. 
     </p>
 
     <figure class="captioned-image optional">
@@ -474,7 +417,7 @@ To win the game.</pre>
     </figure>
 
     <p>
-      Realistically, a date picker <em>isn't</em> a text input.  Perhaps at an HTTP level, or even a database level, it's just a value - but controls are about how to <em>populate</em> values, and that's quite a different thing. It's not an <em>is-a</em> relationship:  A date picker is a
+      Realistically, a date picker <em>isn't</em> a text input.  Perhaps at an HTTP level, or even a database level, it's just a value - but controls are about how to <em>populate</em> values, and that's quite a different thing.  A date picker is a
       completely different complex control with potentially lots of complex interactions: Different things
       it needs to communicate, lots of sub-iteractions to manage, and so on.
     </p>
@@ -482,8 +425,8 @@ To win the game.</pre>
     <p>All of this is why you might hear people suggest "LSP" or <a href="https://en.wikipedia.org/wiki/Composition_over_inheritance">"Favor composition over inheritance"</a> as a better alternative.</p>
 
     <section class="sectioning">
-      <contextual-heading role="heading" aria-level="4">Acceptable Losses?</contextual-heading>
-      <p>This is exacerbated by the fact that at the end of the day, developers are left with some pretty unappealing choices: Something is going to be sacrificed.</p>
+      <contextual-heading role="heading" aria-level="5">Acceptable Losses?</contextual-heading>
+      <p>At the end of the day, it seems that developers are left with some pretty unappealing choices.  Something is going to be sacrificed.</p>
 
       <p>
         Color pickers provide a great example of how this plays out in practice: Will developers building the sorts of tools that use a color picker allow a simple input field as the fallback until <em>every browser</em> ships something acceptable?  Seems like not much of a choice really.
@@ -491,37 +434,37 @@ To win the game.</pre>
 
       <p>
         Sadly the story for 'polyfilling' an element also still isn't great: It's really just 'replacing it with something else entirely'.
-        So, at the end of the day, you've got to go and find something that is a good quality stand in anyway.  Finally, since literally <em>everything your code relies on understanding the DOM</em>, and that stand in will have entirely <em>different</em> DOM, you now have two entirely different interactive trees to worry about. Yikes.
+        So, at the end of the day, you've got to go and find something that is a good quality stand in anyway.  Finally, since literally <em>everything your code relies on understanding them DOM</em>, and that stand in will have entirely <em>different</em> DOM, you now have two entirely different interactive trees to worry about. Yikes.
       </p>
 
       <p>
-        Further, this situation isn't necessarily short lived, historically.  The reality is that lacking universal support can be the case for a long time: Native
+        Further, this isn't necessarily short lived, historically.  The reality is that lacking universal support can be the case for a long time: Native
         support for
         <code>&lt;input type="color"&gt;</code> was added to the last major
         browser... <em>Checks notes...</em> <strong>last year</strong>.
       </p>
 
+
       <p>
         Even after all of that... Guess what? It still isn't <em>acceptable</em>
-        for a lot of people because it isn't styleable -- and in fact, it has entirely different UI and features everywhere. While this <em>can</em> occasionally be very useful on some kinds of devices, it makes things like providing helpful documentation hard.  Worse, even the native ones weren't super keyboard accessible either.
+        for a lot of people. It isn't styleable. It has entirely different UI and features everywhere. While this can occasionally be useful on some kinds of devices, it makes things like helpful documentation hard.
       </p>
 
       <p>
-        So... That's a lot of barriers and disincentives.
-
+        And many of them (even the native ones) weren't super keyboard
+        accessible either.
       </p>
 
+
       <p>
-        Conversely, a custom solution can solve all of these problems <em>now</em>... So it shouldn't actually be surprising that developers often
+        Alternatively, a custom solution can solve all of these problems <em>now</em>... So it shouldn't actually be surprising that developers often
         choose a custom solution: There are no 'acceptable losses' for developers here - all of the choices are somehow bad.
       </p>
     </section>
 
     <section class="sectioning">
-      <contextual-heading role="heading" aria-level="4">Learn, dammit.</contextual-heading>
-      <p>
-        Now, let's talk about how we get out of this mess. 
-      </p>
+      <contextual-heading role="heading" aria-level="5">Learn, dammit.</contextual-heading>
+
       <p>
         You'll be happy to know that there <em>are</em> efforts to both learn and
         improve existing native interactive elements. If you haven't seen Greg
@@ -529,6 +472,7 @@ To win the game.</pre>
         <a href="https://www.youtube.com/watch?v=ZFvPLrKZywA">HTML Isn't Done</a> from
         Chrome Dev Summit last year, I would highly recommend it (below).
       </p>
+
     <figure class="captioned-image optional">
       <iframe width="560" height="315" src="https://www.youtube.com/embed/ZFvPLrKZywA" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>
     </figure>
@@ -536,13 +480,13 @@ To win the game.</pre>
     <p>
       There's also been a heck of a lot of work to make it possible for authors to
       define their own interactive elements that work just like the native ones. The
-      idea is to empower developers to explore the space and try to help
+      idea is to help empower developers to help explore the space and try to help
       find the really sweet spots that strike all of the right balances.
     </p>
 
     <p>
       It's worth pointing out <em>why</em> this is useful - it's not just an
-      academic exercise that is trying to push responsibility to developers. It's
+      academic exersize that is trying to push responsibility to developers. It's
       important because the truth is: <em>We don't actually know how</em>. We
       need to be able to throw lots of things at the wall and see what sticks.
       The trouble is, currently (historically) failure is <em>really</em> slow and
@@ -557,20 +501,21 @@ To win the game.</pre>
     </figure>
  
 
-    <section class="sectioning">
-      <contextual-heading id="different" role="heading" aria-level="5"><pre class="wargames">Shall we play a (different) game?</pre></contextual-heading>
+    <p>But let's flip the game around and talk about <em>non-form related interactive controls</em> - what does <em>that</em> game look like?
+
+    </p><section class="sectioning">
+      <contextual-heading id="different" role="heading" aria-level="6"><pre class="wargames">Shall we play a game?</pre></contextual-heading>
 
     <p>
-      Ok, but hold on.... Let's talk about <em>non-form related interactive controls</em> now.  Realistically, we've come up with really only 1 strictly generic non-form-related UI control in 30 years: <code>&lt;details&gt;</code>.  That "other" one in my intial list.  Wow... And we've had that done for like 10 years, right?  Let's see, it's been supported universally since... <em>checks notes...</em>
-      <strong>Jan 14, <em>2020</em></strong>. Waaaaat?</p>
-
-    <p>But... Again, it has most of the same kinds of general problems. In the most
+      This is where things get really interesting to me - because a lot of components people really want <em>aren't</em> about forms at all.  And interestingly, realistically, we've come up with really only 1 strictly generic non-form-related UI control in 30 years: <code>&lt;details&gt;</code>.
+      We've had that supported universally since... <em>checks notes...</em>
+      <strong>Jan 14, <em>2020</em></strong>. Again, it has most of the same kinds of general problems. In the most
       recent HTTP Almanac data, it was the 102nd most used HTML element... Can you
-      even <em>name</em> 101 other HTML elements?  It has styling problems.  It's misunderstood.  It was hard to polyfill well without just creating other problems.
+      even <em>name</em> 101 other HTML elements?
     </p>
 
     <p>So... This is terrible.</p>
- 
+
     <p>
       Our continued problems in this space are part of the reason there is hesitancy
       to take up entirely <em>new</em> things... Like, tabs.
@@ -579,8 +524,8 @@ To win the game.</pre>
     <p>
       Back in 2015, I managed to get a number of people in Web standards (especially
       a11y) interested in working on a possible new element proposal for HTML which
-      would have given not only the tabset but some other things as
-      well. Determined not to be doomed by the same sorts of stylability
+      would have which would have given not only the tabset but some other things as
+      well. Determined not let this be doomed by the same sorts of stylability
       problems, we set out to define things that would become shadow parts and
       themes and custom properties and so on.
     </p>
@@ -588,7 +533,7 @@ To win the game.</pre>
     <p>
       But, in many ways, it wasn't great. Recently, this has got me to thinking:
       What if this isn't even the right game we're playing? What if for
-      <em>some</em> elements at least - non-form associated ones - the right lesson to take away is that this is an unnecessary exercise in futility?
+      <em>some</em> elements at least - non-form associated ones - the right lesson take away is that this is a unnecessary exercise in futility?
     </p>
 
     <p>
@@ -598,7 +543,7 @@ To win the game.</pre>
     </section>
 
     <section class="sectioning">
-      <contextual-heading id="chess" role="heading" aria-level="5"><pre class="wargames">How about a nice game of chess?</pre></contextual-heading>
+      <contextual-heading id="chess" role="heading" aria-level="6"><pre class="wargames">How about a nice game of chess?</pre></contextual-heading>
     <p>
       So, here's the basic idea: What if we just created a resilient pattern
       focused on mainly <em>function</em> and <em>meaning</em> -- and
@@ -613,14 +558,14 @@ To win the game.</pre>
     </p>
 
     <p>
-      I spoke with Greg Whitworth about this, who has been investigating how to improve the existing controls on the Web (see also <a href="https://gwhitworth.com/blog/2019/10/can-we-please-style-select/">Can we please style select?</a>.  
+      I spoke with Greg Whitworth about this, who has been investigating how to improve the existing controls on the Web(see also <a href="http://gwhitworth.com/blog/2019/10/can-we-please-style-select/)">Can we please style select?</a>.  
     </p>
 
     <p>
-      In fact, he completely agreed with the overall premise and went on to described how...</p>
+      In fact, he completely agreed with the overall premise. He went described how...</p>
 
     <blockquote>
-      The core mission of Open UI, a new W3C community group, is to document the anatomies, behaviors and states of components and controls from across frameworks. By doing this, we can ensure that the key pieces that folks don't want to re-create, they don't have to. We've got a few different ideas that are beginning to take shape but changes like this are like peeling an onion. <em>If it's a new control/component then it would be a bit more straight forward but the most painful controls we've found have been on the web since the 90s.</em> So we'll be gathering telemetry and ensuring that any modifications we ultimately propose are web compatible.
+      The core mission of Open UI, a new W3C community group, is to document the anatamoies, behaviors and states of components and controls from across frameworks. By doing this, we can ensure that the key pieces that folks don't want to re-create, they don't have to. We've got a few different ideas that are beginning to take shape but changes like this are like peeling an onion. If it's a new control/component then it would be a bit more straight forward but the most painful controls we've found have been on the web since the 90s. So we'll be gathering telemetry and ensuring that any modifications we ultimately propose are web compatible.
     </blockquote>
 
     <p>
@@ -630,14 +575,15 @@ To win the game.</pre>
 
     <p> 
       So, in that light 
-      <a href="https://panel-set.glitch.me/reciepe.html">here's a demo/link to just such an experiment</a> which gives us... <em>tabs!</em> - and which we think has some nice qualities:
-    </p> 
+      <a href="http://panel-set.glitch.me/">here's just such an experiment</a>
+      which we think has some nice qualities:
+    </p>
 
     <ul>
       <li>
         It is a declarative <em>decorator</em> over otherwise good but
         non-interactive semantics. That means there's no miss of differing
-        interaction issues here caused by complex inheritance. It's <em>composition</em>.
+        interaction issues here caused by complex inheritance.
       </li>
       <li>
         It doesn't change your light DOM, and it <em>barely</em> uses Shadow DOM.
@@ -645,23 +591,24 @@ To win the game.</pre>
         challenges. Go ahead, use CSS and JavaScript.
       </li>
       <li>
-        It adds the functionality: roving focus, keyboard handling, accessibility stuff and a simple container for you. That's it, really.
+        It adds the function, keyboard handling, accessibility stuff and a simple
+        container for you. That's it, really.
       </li>
       <li>
-        If you really <em>want</em> to opt in to some simple 'default styles' and like the 'minor tweaksonly' approach, it has an attribute that enables 'native' look and feel, with a bit less flexibility, but which might be enough for some people.  It just starts with the assumption that that's not the case.
-      </li> 
+        If you really <em>want</em> to opt in to some simple 'default styles' that
+        might be passible if you don't care too much and like the 'minor tweaks
+        only' approach, it has an attribute that enables 'native' look and
+        feel which might be enough for some people.
+      </li>
     </ul>
 
     <p>So... that's it. It could for sure use more work, but WDYT? Would you try it out?  Let us know your thoughts?  Such experiments will be useful in informing work and directions for efforts like Open-UI and possible future standards.</p>
 
     <p>Will it help?  To be honest, I don't know, but maybe the right way to learn involves trying something really different, and I'm open to anything...</p>
-
      <figure class="captioned-image optional">
       <iframe width="560" height="315" src="https://www.youtube.com/embed/7FogV4Qv8p8" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>
     </figure>
-</section>
-
-</section></section></section></article></main>
+</section></section></section></section></section></article></main>
 
   
     <script>

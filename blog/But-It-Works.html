@@ -1,0 +1,524 @@
+<html lang="en" resource-type="blogpost"><head> 
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@briankardell">
+    <meta name="twitter:creator" content="@briankardell">
+    <meta name="twitter:title" content="But... it works.">
+    <meta name="twitter:description" content="Once upon a time the Web was simple.  It was flat structures and very &quot;low design&quot;.  It was made, more or less, of text.  This might have been super interesting technically or arch">
+    <meta name="twitter:image" content="https://bkardell.com/media/video-shadow-dom.png">
+    <meta name="monetization" content="$ilp.uphold.com/kKU4GXiRwhnfS">
+
+    <link rel="alternate" type="application/rss+xml" href="https://bkardell.com/blog/feed.rss" title="bkardell.com/blog rss feed">
+    <title>But... it works.</title> 
+    <style>.captioned-image {
+    background-color: #eaeaea;
+    display: block;
+    overflow: hidden;
+    padding: 1rem;
+    text-align: center;
+    font-style: italic;
+}
+
+.captioned-image.p-attached {
+    width: 40%;
+    display: inline-block;
+    margin: 0 1rem 2rem 1rem;
+}
+
+section > .captioned-image.p-attached {
+    margin-top: 1.5rem; /* correct for heading size*/
+}
+
+ pre { overflow-x: auto }
+
+.captioned-image.p-attached.p-attached-left {
+    float: left;
+}
+
+.captioned-image.p-attached.p-attached-right {
+    float: right;
+}
+
+.captioned-image.p-attached + * + * {
+    clear: both;
+    margin-top: 2rem;
+}
+
+
+.captioned-image img, .captioned-image video {
+    display: block;
+    max-width: 100%;
+    margin: 0 auto 1em auto;
+}
+.source {
+    font-style: italic;
+}
+body {
+    display: flex;
+    font: 1em "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-weight: 400;
+    line-height: 1.625;
+}
+h1 { margin: 0.5rem; }
+code-format {
+    border-left: 0.5rem solid rgba(123,115,209,0.35);
+    display: block;
+    padding: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+contextual-heading {
+    display: block;
+    margin-top: 2rem;
+}
+
+[aria-level="1"] {
+    color: #43686b;
+    font-size: 1.45rem;
+}
+[aria-level="2"] {
+    color: #856363;
+    font-size: 1.35rem;
+}
+[aria-level="3"] {
+    color: #856363;
+    font-size: 1.25rem;
+}
+[aria-level="4"] {
+    color: #856363;
+    font-size: 1.2rem;
+}
+[aria-level="5"], [aria-level="6"] {
+    color: #667496;
+    font-size: 1.1rem;
+    font-weight: bolder;
+}
+.posted-on {
+    font-style: italic;
+    font-size: 0.8rem;
+    text-align: right;
+    margin-bottom: 1rem;
+}
+
+ul, li {
+    margin: 0.5rem;
+    text-align: left;
+}
+header {
+    padding-top: 1rem;
+    padding-right: 2rem;
+    background-color: #fbf5e9;
+}
+.tagline {
+    font-style: italic;
+    text-align: center;
+}
+
+[tag-esc] {
+    color: maroon;
+    font-family: Courier, "Lucida Console", monospace;
+}
+
+[tag-esc]::before {
+    content: '<';
+}
+
+[tag-esc]::after {
+    content: '>';
+}
+
+main {
+    min-width: 50%;
+    width: 80%;
+    padding: 1rem;
+}
+header .title {
+    background-color: rgba(123,115,209,0.35);
+    padding: 0.3rem;
+    padding-left: 0.25rem;
+    font-weight: bolder;
+    font-size: 0.9rem;
+    border-left: 1rem solid #999298;
+}
+
+header .profile {
+    width: 50%;
+    margin: 1rem 25%;
+}
+
+header .title + nav {
+    font-size: 0.9rem;
+}
+
+header .blurb {
+    font-size: 0.75rem;
+    text-align: center;
+}
+header .name {
+    text-align: center;
+    font-size: xx-large;
+}
+.segue {
+    font-style: italic;
+}
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  border: 0;
+}
+
+#aboutMeToggle {
+    display: none;
+}
+
+[for="aboutMeToggle"] {
+    display: none;
+}
+
+main article { max-width: 100em; margin: auto; }
+/* this needs rethinking, it wants a selector like 'not flow content' */
+article>*:not(contextual-heading,a), section>*:not(contextual-heading,a) {
+    margin-left: 0.45rem;
+}
+
+blockquote {
+  font-family: serif;
+  background: #f9f9f9;
+  border-left: 10px solid #ccc;
+  margin: 1.5em 10px;
+  padding: 0.5em 10px;
+}
+blockquote:before {
+  color: #ccc;
+  content: open-quote;
+  font-size: 2em;
+  line-height: 0.1em;
+  margin-right: 0.25em;
+  vertical-align: -0.4em;
+}
+
+blockquote:after {
+  color: #ccc;
+  content: close-quote;
+  font-size: 2em;
+  line-height: 0.1em;
+  margin-left: 0.25em;
+  vertical-align: -0.4em;
+}
+
+
+@media (max-width: 800px){
+    body {
+        flex-direction: column;
+    }
+    header {
+        border-bottom: 1px solid #afafff;
+    }
+
+    .captioned-image.p-attached {
+        width: 100%;
+        margin: 1rem 0;
+    }
+
+    .captioned-image.p-attached.p-attached-left,
+    .captioned-image.p-attached.p-attached-right {
+        float: none;
+    }
+
+    [for="aboutMeToggle"] {
+        background-color: #675e5e;
+        color: white;
+        padding: 0.25rem;
+        padding-left: 0.5rem;
+        display: block;
+        border-left: 1rem solid black;
+    }
+    #aboutMeToggle:focus + [for="aboutMeToggle"]{
+        outline: 4px solid #c6ddf2;
+    }
+
+    #aboutMeToggle:checked ~ header {
+        display: none;
+    }
+
+    header li { display: inline; margin-left: -0.5em; }
+    header .blurb li::after { content: '; '; }
+    header  nav li {
+        display: inline-block;
+        margin-left: 0.35rem;
+        margin-right: 0.35rem;
+    }
+    header .title {
+        width: 100%;
+    }
+    main li .source { display: block; }
+
+}</style>
+    <style>
+      .captioned-image { font-size: 0.9rem; }
+      .thanksTo { font-style: italic; font-size: 0.8rem; }
+    </style>
+    <script>
+      var activateOptional = function (media) {
+        var source = media.getAttribute('data-src'),
+            temp,
+            container = media.parentElement;
+
+          if (media.nextSibling && media.nextSibling.matches) {
+            if (media.nextSibling.matches('.clickToSee')) {
+              media.parentElement.removeChild(media.nextSibling);
+            }
+          }
+ 
+          if (media.tagName === 'VIDEO') {
+            temp = document.createElement('video')
+            temp.setAttribute('autoplay','')
+            temp.setAttribute('controls','')
+            temp.setAttribute('loop','')
+            temp.innerHTML = '<source src="' + source + '.webm" type="video/webm">'
+                    + '<source src="' + source + '.mp4" type="video/mp4">';
+            media.parentElement.replaceChild(temp, media);
+            setTimeout(function () {
+              temp.play()
+            }, 0);
+          } else {
+            media.src = media.getAttribute('data-src');
+          }
+
+          container.classList.add('active');
+      }
+    </script>
+  </head>
+  <body>
+    <input id="aboutMeToggle" class="sr-only" type="checkbox" checked="">
+<label for="aboutMeToggle">Toggle author information</label>
+<header>
+    <div class="name">
+        Brian Kardell
+    </div>
+    <img class="profile" src="/profile.jpg" alt="">
+    <div class="tagline"><a href="/">Betterifying the Web</a></div>
+    <div class="blurb">
+        <ul>
+            <li>Developer Advocate at Igalia</li>
+            <li>Original Co-author/Co-signer of The Extensible Web Manifesto</li>
+            <li>Co-Founder/Chair, W3C Extensible Web CG</li>
+            <li>Member, W3C (The JS Foundation)</li>
+            <li>Co-author of HitchJS</li>
+            <li>Blogger</li>
+            <li>Art, Science &amp; History Lover</li>
+            <li>Standards Geek</li>
+        </ul>
+    </div>
+    <div class="title">Follow Me On...</div>
+    <nav>
+        <ul>
+            <li><a rel="me" href="https://briankardell.wordpress.com">Wordpress</a></li>
+            <li><a rel="me" href="https://medium.com/@briankardell">Medium</a></li>
+            <li><a rel="me" href="https://twitter.com/briankardell">Twitter</a></li>
+            <li><a rel="me" href="https://github.com/bkardell/">Github</a></li>
+            <li><a rel="me" href="https://codepen.io/bkardell">Codepen</a></li>
+            <li><a rel="me" href="https://www.linkedin.com/in/brian-kardell-08a4264">LinkedIn</a></li>
+            <li><a rel="me" href="https://www.instagram.com/kardellbrian">Instagram (for
+art)</a></li>
+            <li><a rel="me" href="http://fineartamerica.com/profiles/brian-kardell?">Fine Art
+America (art for sale)</a></li>
+        </ul>
+    </nav>
+</header>
+    <main><div class="posted-on">Posted on null</div><article class="sectioning">
+	<contextual-heading role="heading" aria-level="1">But... it works.</contextual-heading>
+	<p class="segue">Once upon a time the Web was simple.  It was flat structures and very "low design".  It was made, more or less, of text.  This might have been super interesting technically or architecturally, but it wasn't especially attractive to businesses, designers or lots of creative people.  This was originally 'by design' as Tim Berners-Lee imagined that content negotiation of other formats would play a much bigger role and that HTML was sort of the necessary least common denominator only when you had nothing else.  And so, it wasn't especially easy for many people to appreciate <em>why</em> it was interesting.  It was too abstract, and so the audience of the Web was limited.</p>
+
+	<p>However, with the introduction of features like tables and images, creative people suddenly began discovering ways to subvert the purer intents in order to create beautiful and engaging websites.  And that was it.  With these tools they made things that anyone <em>could</em> see, touch and appreciate and this, in turn, made more creative people and more businesses interested.  Thus was born the feedback loop that made the Web.</p>
+
+	<p>Also was born the fact that it was mostly shitty... but it worked.  Kinda.</p>
+
+	<p>By what definition of "worked"?  In "whole terms" of what the Web was really "intended" for, this is actually kind of a miserable failure. This is a real problem for search engines and indexing and all sorts of things that should have kind of "fallen out" of the Web's architecture pretty naturally -but in the parts that the most people could most easily appreciate, it was a roaring success.</p>
+
+	<p>If you're writing for the Web today, you're not using image and table hackery to make your beautiful website - but that wasn't really a given.  We came up with a "better" way but lots of people were already quite adept with the old ways by then - and a lot of dollars had been invested in systems that made extensive use of those approaches.  If you tried to tell your boss in 1997 that you needed to rewrite the system they'd just spend a ton of money getting up and running because CSS &gt; this hackery, a lot of them would just say "nope".</p>
+
+	<p>A lot of the earliest sites that tried to use CSS were way less fancy than the ones that used hackery.  That was a really hard sell - it's a technical advantage, it's kind of difficult to appreciate because the comparison was a lot like HTML without images and table hacks.  You're left with a choice that feels alot like the Emporer's New Clothes -- I know you can't see them, but they're really really good, trust me.</p>
+
+	<p>Even once it was <em>possible</em> to create a pretty nice site with CSS, those old sites were expensive to convert.  It wasn't until new sites were developed faster, design "standards" evolved a bit and your competitors started ranking higher in search and it became evident that you were at a disadvantage that we could help the old stuff die off.</p>
+
+	<p>Now, this seems like a predictable sort of cycle and, if it really were, that would be fine.  We just need to keep pushing and things will just keep getting better. But, I'd like to ask the question: Is it?</p>
+
+	<p>If you look around the Web today vs the Web 10 years ago, I think that a lot of us would say "definitely yes".  At the same time, there's a particular problem that I see getting worse and worse and I feel like it is very highly related to a lot of those problems I've already discussed.</p>
+
+	<p>Consider this code for a moment:</p>
+
+	<code-format type="html"><pre>&lt;video controls&gt;
+   &lt;source src="video/sintel-short.mp4"
+   	type="video/mp4"&gt;
+
+   &lt;track label="English"
+   	kind="subtitles"
+   	srclang="en"
+   	src="captions/vtt/sintel-en.vtt"
+   	default&gt;
+&lt;/video&gt;</pre></code-format>
+
+	<p>It's really simple. Its an element that has just a few valid child elements in 0...N fashion, each of those elements have certain attributes.  With these, you can express all sorts of things declaratively and they'll <em>just work</em> (at least in theory).</p>
+
+	<p>One interesting feature of declarative things is that they are really easy to write.  Because they're so easy to write, it's also easy to have larger systems that help you write them. It's easy to integrate a new element in a CMS, for example, because CMSs are just another way of declaring: "Put this here and here are the questions I need answered to make it work."  CMSes provide a kind of generic data store for these configurations - as they like to say "out of the box", and then that's it - you're off to the races.</p>
+
+	<p>This article isn't about CMSes, but this allows us a nice starting off point to illustrate something.</p>
+
+	<section class="sectioning">
+		<contextual-heading role="heading" aria-level="2">Peek inside</contextual-heading>
+		<p>
+			If you "peek inside" how the browser creates the video player interface, you will see that it's just more of the same.
+		</p>
+
+		<div class="captioned-image" style="margin-top:0">
+			<img src="/media/video-shadow-dom.png" alt="">
+		</div>
+
+		<p>
+			The interface for the video player is robust, resposive and fully featured "out of the box" - but it's made of the same simple stuff as everything else: Labels, buttons, inputs, divs and so on.   It's tortoises all the way down.
+		</p>
+	</section>
+
+	<section class="sectioning">
+		<contextual-heading role="heading" aria-level="2">Lots of little parts</contextual-heading>
+		<p>
+			The interesting thing is that all of those things that are used to make the interface for a video player existed before the <code tag-esc="">video</code> element itself.</p>
+
+		<p>
+			It's tempting then, at some level, to think that you could build that video player interface by dragging and dropping buttons and inputs and sliders from the GUI interface.  After all, that's all it is, right?
+		</p>
+		<p>
+			In fact, we've built prototyping tools for designers that do exactly this, they even give us a bit more... some "hooks" for doing some basic wiring of events.  Of course, most of us immediately realize that this interface wouldn't have a way to actually stream and render video, but other than that it should be basically that simple, right?  Here's a box.  Put some buttons inside it, and a slider.  Give them some font-icons and... beauty.  All that's left for development is a little JavaScript to "wire it up".
+		</p>
+		<p>
+			You might even be thinking "look how great I did, I even used proper <code tag-esc="">button</code>s so you know it will be accessible".  But, there's just one problem: It isn't.  Your player is probably not accessible.  In fact, a lot of browsers initially made their players inaccessible too.
+		</p>
+		<p>
+			Now we get into this rather unhealthy discussion...
+		</p><p>
+		</p><p>Ugh...Those freaking accessibility nuts, always pouring cold water on something.  Stop complaining and help me make it accessible, right?  It's just all that crazy ARIA stuff that I just don't understand... Just help me put that stuff on there and we'll be golden.  Stop complaining and be helpful -- Right?</p>
+
+		<p>But then, as they try to help, it takes forever and you're left thinking "  "God, this is <em>so hard".</em>.
+		</p>
+	</section>
+
+	<section class="sectioning">
+		<contextual-heading role="heading" aria-level="2">But... it works</contextual-heading>
+
+
+		<p>At some level, it's really hard to argue with "it works".   Iteration is good, and it certainly does <em>appear</em> to work. So we make an effort to poke an patch and inch our way to victory.</p>
+
+		 and yes, you can poke and patch and inch your way toward victory - but all of these things have analogies with the "no wallet in the parking lot" scenario.  They're all costly and most of them are still an incomplete result.<p></p>
+
+		<p>Let's go back to the video player example for a moment.  The mute button, the captions button are examples of "more than a button".  They are a toggle button, or a switch of some kind.  They need special ARIA attributes to reflect that their state.  But hey, guess what?  Sighted people want to know the difference too.  A toggle button isn't just a button.
+
+
+	</p></section>
+
+
+
+
+
+
+
+	<section class="sectioning">
+		<contextual-heading role="heading" aria-level="2">The long and winding road</contextual-heading>
+		<p>I used to live in the boonies.  Once a month I would make a trip to the nearest Costco and stock up.  The drive was about an hour and a half, each way.  Sometimes my kids would come along and keep me company.  There's nothing more frustrating than arriving in the parking lot only to realize that you've forgotten you wallet.</p>
+
+		<p>At that point, what can you do?  You can run to a Western Union 2 miles away and have your partner wire you some cash, but that's going to cost you a pretty severe monetary penalty.  You can drive an hour and a half home, get your wallet and start back out but that means your whole day is gone and a lot of gas.  Or you can try other desparate moves perhaps - you can scour the car and see if you can find a few dollars worth of change.   You can use what you find to buy milk and bread maybe and simply postpone the inevitable.  Or perhaps you can buy a lottery ticket and hope you win enough to buy more than that.  Perhaps you can start calling friends who live closer to see if you can borrow $20 so that at least you don't go home empty handed.</p>
+
+		<p>This is, in some ways, what it's like coming into the conversation about accessibility only once you've 'arrived' at what you think are all your solutions.  But - keep in mind that it's not just with accessibility either - the same is true of a lot of things.  Making your site responsive only after the fact is way harder than starting with that in mind.  Changing your framework, CMS or approach to anything is hard once you've already invested the long drive.</p>
+	</section>
+
+
+	<p>As more businesses became interested, there was more reason for more businesses to be interested.</p>
+
+	<p>Interesting.  Sites that abused images and tables or relied on things that only worked in some browsers were technically worse by a number of measures but they were more compelling in a lot of ways to a lot of people.  At the end of the day, things were often seen as "do you want a technically great thing with a number of qualities that are hard for many to appreciate" or "do you want a technically terrible thing with a few qualities that are really easy for many to appreciate".</p>
+
+	<section class="sectioning">
+		<!-- cow: beef wellington / button: media player controls -->
+		<contextual-heading role="heading" aria-level="2">The "But... it works." Disconnect</contextual-heading>
+		<p>Luckily we don't have a lot of table/image abuse conversations anymore but it <em>does</em> seem like we perpetually find ourselves in a similar situation.  The more abstract a benefit is, and the less likely it is to cause you personally some pain, the less likely you are to consider it a "major issue".</p>
+
+		<p>You see this everyday in discussions about how we build sites.  This one isn't very performant on 3g with a mid-range phone.  That one isn't keyboard accessible.  This one is fast to first render but each post eats 30mb of a data plan in the background.  This other one isn't maintainable.  That one doesn't work at all if a CDN is down.  This one blows up when there are trivial errors.</p>
+
+		<p>It's very easy to appreciate that they seem to work pretty well under good circumstances and that the experience once it is loaded is really nice.  All of the counterpoints above on the other hand are harder to appreciate and easier to rationalize in the same sort of fashion we used to with tables and image hacks because "yes, but... it works".</p>
+
+		<p>Everything is a cost benefit analysis that is heavily weighted toward the things that we can actually experience and appreciate.</p>
+
+
+<p>Over the years, libraries and plugins normalized and simplifed wonky Web APIs and made it easier to create or some trivially 'clickable' UI.  Web fonts made it easier to create snazzier type, and funky font packages like font-awesome made it possible to create interesting iconographic treatments.  CSS Frameworks made it easier to make something that looks very professional, pretty quickly.</p>
+
+	<p>As a result of all of this, showing something visually impressive and slightly interactive in very controlled circumstances is pretty easy, and the demo is a powerful tool.</p>
+		<p>Next time this comes up, try this instead:</p>
+
+		<blockquote>
+			Imagine that you're in your house or in your car - for whatever reason, you're otherwise occupied and can't see the screen.  You need to act through a trusted mediator.  This could be your spouse, a child, or a partner or an assistant.  The assistant might even be something like Alexa or Siri.  If you want them to describe the screen to you, you want them to use words like "button".  If you want to tell them "click the delete button," you want them to understand what that means and how to do it.  With a <code tag-esc="">button</code> that's possible, without, it really isn't.  You are judging based on biases of familliar visual clues that they cannot.  You are acting based on biases of familliar interactions that they cannot.  <em>In fact, lots of things want to understand your UI in ways other than that, and if you do it poorly, they cannot.</em>
+		</blockquote>
+	</section>
+
+	<section class="sectioning">
+		<contextual-heading role="heading" aria-level="2">"Out-of-the-box" over-simplification: More than the sum of their parts</contextual-heading>
+		<p>Now for the less obvious part:  HTML has lots of components that are "semantic" and "accessible out-of-the-box" like buttons.  However, as you are probably accutely aware, lots of things that are built with perfectly semantic bits are still not actually very semantic or accessible.</p>
+
+		<p>I think this is, in large part, because we mix up a lot of concerns and as a result we're bad at talking about "what we mean" - very frequently we jump straight into those biases.</p>
+
+		<p>Here's an example:  Imagine that you are building media player controls.  You know that there are N of them and that they are related to controlling a certain media because of how they are arranged visually. What are all those controls?  Mostly 'buttons' right?  Except that some of them are kind of different.  Rewind, for example is a button that you press that has an action on the state of the video.  Things like "mute" or "captions", are toggles with a sticky position.  They're stateful.  You know that something is muted in potentially several ways - there's some kind of visual indication.  And so on..</p>
+
+		<p>However, great looking bunch of HTML <code tag-esc="">button</code> elements won't necessarily, by itself, express any of this.  To accomplish this, we need larger patterns.  We need ARIA.  We need JavaScript.  This can get pretty complex.</p>
+
+	</section>
+
+	<section class="sectioning">
+		<contextual-heading role="heading" aria-level="2">Patterns, Slang and Abstration</contextual-heading>
+		<p>Luckily, there is now the <a href="https://www.w3.org/TR/wai-aria-practices-1.1/">WAI-ARIA Authoring Practices 1.1</a> document which lays out all of the requirements for a bunch of patterns.</p>
+	</section>
+
+
+
+
+
+	<p>Most of those features, however, are hard to explain, or appreciate from a picture or demo.</p>
+
+</article></main>
+
+  
+    <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-88027178-1', 'auto');
+    ga('send', 'pageview');
+  </script>
+
+  <script>
+    Array.prototype.slice.call(document.querySelectorAll('.optional [data-src]')).forEach(function (optional) {
+      var prefs = window.localStorage.downloadsPrefs,
+          clickToSee;
+      if (prefs === 'true') {
+        activateOptional(optional);
+      } else {
+        clickToSee = document.createElement('div');
+        clickToSee.classList.add('clickToSee')
+        clickToSee.innerHTML = '<button>Click to see media</button>';
+        clickToSee.style.textAlign = 'center';
+        clickToSee.style.border = 'none';
+        optional.parentElement.insertBefore(clickToSee, optional.nextSibling);
+        clickToSee.firstElementChild.addEventListener('click', function () {
+          activateOptional(optional);
+        })
+      }
+
+    })
+  </script>
+
+</body></html>
