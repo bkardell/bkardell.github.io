@@ -1,0 +1,457 @@
+<html lang="en" resource-type="blogpost"><head> 
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@briankardell">
+    <meta name="twitter:creator" content="@briankardell">
+    <meta name="twitter:title" content="Flipping All the Switches">
+    <meta name="twitter:description" content="In this post I'll talk about developments along the way to a proposal and ask for your input...">
+    
+    <meta name="monetization" content="$ilp.uphold.com/kKU4GXiRwhnf ">
+
+    <link rel="alternate" type="application/rss+xml" href="https://bkardell.com/blog/feed.rss" title="bkardell.com/blog rss feed">
+    <title>Flipping All the Switches</title> 
+    <style>.captioned-image {
+    background-color: #eaeaea;
+    display: block;
+    overflow: hidden;
+    padding: 1rem;
+    text-align: center;
+    font-style: italic;
+}
+
+.captioned-image.p-attached {
+    width: 40%;
+    display: inline-block;
+    margin: 0 1rem 2rem 1rem;
+}
+
+section > .captioned-image.p-attached {
+    margin-top: 1.5rem; /* correct for heading size*/
+}
+
+ pre { overflow-x: auto }
+
+.captioned-image.p-attached.p-attached-left {
+    float: left;
+}
+
+.captioned-image.p-attached.p-attached-right {
+    float: right;
+}
+
+.captioned-image.p-attached + * + * {
+    clear: both;
+    margin-top: 2rem;
+}
+
+
+.captioned-image img, .captioned-image video {
+    display: block;
+    max-width: 100%;
+    margin: 0 auto 1em auto;
+}
+.source {
+    font-style: italic;
+}
+body {
+    display: flex;
+    font: 1em "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-weight: 400;
+    line-height: 1.625;
+    margin: 0;
+}
+h1 { margin: 0.5rem; }
+code-format {
+    border-left: 0.5rem solid rgba(123,115,209,0.35);
+    display: block;
+    padding: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+contextual-heading {
+    display: block;
+    margin-top: 2rem;
+}
+
+[aria-level="1"] {
+    color: #43686b;
+    font-size: 1.45rem;
+}
+[aria-level="2"] {
+    color: #856363;
+    font-size: 1.35rem;
+}
+[aria-level="3"] {
+    color: #856363;
+    font-size: 1.25rem;
+}
+[aria-level="4"] {
+    color: #856363;
+    font-size: 1.2rem;
+}
+[aria-level="5"], [aria-level="6"] {
+    color: #667496;
+    font-size: 1.1rem;
+    font-weight: bolder;
+}
+.posted-on {
+    font-style: italic;
+    font-size: 0.8rem; 
+    text-align: right;
+    margin-bottom: 1rem;
+}
+
+ul, li {
+    margin: 0.5rem;
+    text-align: left;
+}
+header {
+    padding-top: 1rem;
+    padding-right: 2rem;
+    /* background-color: #fbf5e9; */
+    background-image: linear-gradient(to right, #dde0e8 , #ffffff);
+}
+.tagline {
+    font-style: italic;
+    text-align: center;
+}
+
+[tag-esc] {
+    color: maroon;
+    font-family: Courier, "Lucida Console", monospace;
+}
+
+[tag-esc]::before {
+    content: '<';
+}
+
+[tag-esc]::after {
+    content: '>';
+}
+
+main {
+    min-width: 50%;
+    width: 80%;
+    padding: 1rem;
+}
+header .title {
+    background-color: rgba(123,115,209,0.35);
+    padding: 0.3rem;
+    padding-left: 0.25rem;
+    font-weight: bolder;
+    font-size: 0.9rem;
+    border-left: 1rem solid #999298;
+}
+
+header .profile {
+    width: 50%;
+    margin: 1rem 25%;
+}
+
+header .title + nav {
+    font-size: 0.9rem;
+}
+
+header .blurb {
+    font-size: 0.75rem;
+    text-align: center;
+}
+header .name {
+    text-align: center;
+    font-size: xx-large;
+}
+.segue {
+    font-style: italic;
+}
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  border: 0;
+}
+
+#aboutMeToggle {
+    display: none;
+}
+
+[for="aboutMeToggle"] {
+    display: none;
+}
+
+main article { max-width: 100em; margin: auto; }
+/* this needs rethinking, it wants a selector like 'not flow content' */
+article>*:not(contextual-heading,a), section>*:not(contextual-heading,a) {
+    margin-left: 0.45rem;
+}
+
+blockquote {
+  font-family: serif;
+  background: #f9f9f9;
+  border-left: 10px solid #ccc;
+  margin: 1.5em 10px;
+  padding: 0.5em 10px;
+}
+blockquote:before {
+  color: #ccc;
+  content: open-quote;
+  font-size: 2em;
+  line-height: 0.1em;
+  margin-right: 0.25em;
+  vertical-align: -0.4em;
+}
+
+blockquote:after {
+  color: #ccc;
+  content: close-quote;
+  font-size: 2em;
+  line-height: 0.1em;
+  margin-left: 0.25em;
+  vertical-align: -0.4em;
+}
+
+
+@media (max-width: 800px){
+    body {
+        flex-direction: column;
+    }
+    header {
+        border-bottom: 1px solid #afafff;
+    }
+
+    .captioned-image.p-attached {
+        width: 100%;
+        margin: 1rem 0;
+    }
+
+    .captioned-image.p-attached.p-attached-left,
+    .captioned-image.p-attached.p-attached-right {
+        float: none;
+    }
+
+    [for="aboutMeToggle"] {
+        background-color: #675e5e;
+        color: white;
+        padding: 0.25rem;
+        padding-left: 0.5rem;
+        display: block;
+        border-left: 1rem solid black;
+    }
+    #aboutMeToggle:focus + [for="aboutMeToggle"]{
+        outline: 4px solid #c6ddf2;
+    }
+
+    #aboutMeToggle:checked ~ header {
+        display: none;
+    }
+
+    header li { display: inline; margin-left: -0.5em; }
+    header .blurb li::after { content: '; '; }
+    header  nav li {
+        display: inline-block;
+        margin-left: 0.35rem;
+        margin-right: 0.35rem;
+    }
+    header .title {
+        width: 100%;
+    }
+    main li .source { display: block; }
+
+}</style>
+    <style>
+      .captioned-image { font-size: 0.9rem; }
+      .thanksTo { font-style: italic; font-size: 0.8rem; }
+    </style>
+    <script>
+      var activateOptional = function (media) {
+        var source = media.getAttribute('data-src'),
+            temp,
+            container = media.parentElement;
+
+          if (media.nextSibling && media.nextSibling.matches) {
+            if (media.nextSibling.matches('.clickToSee')) {
+              media.parentElement.removeChild(media.nextSibling);
+            }
+          }
+ 
+          if (media.tagName === 'VIDEO') {
+            temp = document.createElement('video')
+            temp.setAttribute('autoplay','')
+            temp.setAttribute('controls','')
+            temp.setAttribute('loop','')
+            temp.innerHTML = '<source src="' + source + '.webm" type="video/webm">'
+                    + '<source src="' + source + '.mp4" type="video/mp4">';
+            media.parentElement.replaceChild(temp, media);
+            setTimeout(function () {
+              temp.play()
+            }, 0);
+          } else {
+            media.src = media.getAttribute('data-src');
+          }
+
+          container.classList.add('active');
+      }
+    </script>
+  </head>
+  <body>
+    <input id="aboutMeToggle" class="sr-only" type="checkbox" checked="">
+<label for="aboutMeToggle">Toggle author information</label>
+<header>
+    <div class="name">
+        Brian Kardell
+    </div>
+    <img class="profile" src="/profile.jpg" alt="">
+    <div class="tagline"><a href="/">Betterifying the Web</a></div>
+    <div class="blurb">
+        <ul>
+            <li>Developer Advocate at Igalia</li>
+            <li>Original Co-author/Co-signer of The Extensible Web Manifesto</li>
+            <li>Co-Founder/Chair, W3C Extensible Web CG</li>
+            <li>Member, W3C (The JS Foundation)</li>
+            <li>Co-author of HitchJS</li>
+            <li>Blogger</li>
+            <li>Art, Science &amp; History Lover</li>
+            <li>Standards Geek</li>
+        </ul>
+    </div>
+    <div class="title">Follow Me On...</div>
+    <nav>
+        <ul>
+            <li><a rel="me" href="https://briankardell.wordpress.com">Wordpress</a></li>
+            <li><a rel="me" href="https://medium.com/@briankardell">Medium</a></li>
+            <li><a rel="me" href="https://twitter.com/briankardell">Twitter</a></li>
+            <li><a rel="me" href="https://github.com/bkardell/">Github</a></li>
+            <li><a rel="me" href="https://codepen.io/bkardell">Codepen</a></li>
+            <li><a rel="me" href="https://www.linkedin.com/in/brian-kardell-08a4264">LinkedIn</a></li>
+            <li><a rel="me" href="https://www.instagram.com/kardellbrian">Instagram (for
+art)</a></li>
+            <li><a rel="me" href="http://fineartamerica.com/profiles/brian-kardell?">Fine Art
+America (art for sale)</a></li>
+        </ul>
+    </nav>
+</header>
+    <main><div class="posted-on">Posted on null</div><article class="sectioning">
+	<contextual-heading role="heading" aria-level="1">Flipping All the Switches</contextual-heading>
+	<style>[aria-level="4"] {
+    font-size: 1.1rem;
+}</style>
+	<p class="segue">In this post I'll talk about developments along the way to a proposal and ask for your input...</p> 
+    <script src="../prism.js"></script>
+    <link rel="stylesheet" href="../prism.css">
+		<p>As you might be aware, Igalia believes that the web ecosystem is a commons, and has been working for some time to help to expand investment it.  I've been talking a lot about that this year <sup><a href="https://bkardell.com/blog/Beyond.html">1</a>,<a href="https://bkardell.com/blog/EcosystemHealth.html">2</a>,<a href="https://bkardell.com/blog/Reimagining.html">3</a>,<a href="https://www.igalia.com/24-7/chats">4</a>,<a href="https://open-prioritization.igalia.com">5</a></sup>.  I imagine that a lot of people assume this is just our business model but it's quite a bit more than that.  Collectively, we believe the things that we say and choose to invest in the commons ourselves.  We try to apply our expertise toward helping solve hard problems that have been long stuck, trying to listen to developers and do things that we believe can help further what we think are valuable causes.  Sometimes this means big efforts with a budget, like MathML, and sometimes it is just where we are able to make time.  I'd like to tell you the story of one of those efforts, which became two - and enlist your input..
+		</p>
+		
+		<section class="sectioning">
+			<contextual-heading role="heading" aria-level="2">Advancing the Container Queries Cause: A backstory</contextual-heading>
+		<p>
+		Last year, as my colleague Cathie Chen was completing work on ResizeObserver in WebKit, I suggested that we should try to expend efforts toward advancing work toward the use cases commonly referred to as "Container Queries".  That is, the desire to be able to style an element based on the size available to it.  That's not a big thing with a budget beause the costs and outcomes are too hard to identify - but we should expend efforts to advance it where we can.
+		</p>
+
+		<p>My peers agreed, and so I worked with developers, collected data, built some speculative polyfills, and spent hours discussing various challenges and avenues. I spent many hours with another colleague, Oriol Brufau bouncing ideas back and forth in Spain. I spent many hours back and forth with other implemeters and prompted many discussions.  In Feburary I posted <a href="https://bkardell.com/blog/TowardResponsive.html">an article</a> explaining our thoughts and interest and just letting people know that <em>something</em> is happening... People are listening, and trying.  
+		</p>
+		<p>
+			In late April eventually made an actual informal proposal of some of these ideas to the CSS working group the form of our eventual <a href="https://gist.github.com/bkardell/e5d702b15c7bcf2de2d60b80b916e53c">proposal for a <code>switch()</code> function in CSS</a> as a stepwise measure. Shortly after we said that we would also try to make time to try to do some prototyping and implementation exploration and report back.</p>
+	</section>
+	<section class="sectioning">
+		<contextual-heading role="heading" aria-level="2">What's been happening since then..</contextual-heading>
+		
+		<p>My colleague Javi Fernadez agreed to tackle initial investigations with some down time he had.  Initially, he made some nice progress, coming up with a strategy, writing some low-level tests and getting them passing. But, then things got a little busy and the world itself has been, you know... hectic.  Significant challenges remained around parsing, code generation and so on - any of which would require more undivided attention than he was able to make immeditely available.  So, it's been hard to find the time to advance those again until recently.</p>
+
+		<p>But an interesting thing happened along the way, and we'd like your thoughts...</p>
+
+		<section class="sectioning">
+			<contextual-heading role="heading" aria-level="3">Switching gears...</contextual-heading>
+			<p>Shortly after we made our switch proposal, my friend Jon neal opened a github issue based on some twitter conversations.  For the next week or two this thread was very busy with lots of function proosals that looked vaguely "switch-like" - in fact, a number of them were also using the word switch.  From these, there are 3 ideas which look somewhat similar, but have some (very) importantly different characteristics, challenges and abilities. They are described below.
+ 			</p>
+ 			<section class="sectioning">
+ 				<contextual-heading role="heading" aria-level="4">nth-value()</contextual-heading>
+ 				<p>This proposal is a function which lets a variable represent an index into a list of possible values. Its use would look like this:</p>
+ 				<pre><code class="language-javascript">.foo {
+  color: 
+    nth-value(
+      var(--x); 
+      red; 
+      blue; 
+      yellow
+    );
+}</code></pre>
+ 			</section>
+ 			<section class="sectioning">
+ 				<contextual-heading role="heading" aria-level="4">cond()</contextual-heading>
+ 				<p>This proposal is a function which allows you to pass pairs of math-like conditions and value associations, as well as a default value.  The conditions are evaluated from left to right and the value following the first condition to be true is used, or the default if none are. Its use would look like this:</p>
+ 				<pre><code class="language-javascript">.foo {
+  margin-left: 
+    (
+      (50vw &lt; 400px) 2em, 
+      (50vw &lt; 800px) 1em, 
+      0px
+    );
+}</code></pre>
+ 			</section>
+ 			<section class="sectioning">
+ 				<contextual-heading role="heading" aria-level="4">switch()</contextual-heading>
+ 				<p>This (our) proposal is a function which works like <code>cond()</code> above, but can provide contextual information only available at appropriate stages in the lifecycle.  In the case of layout properties, it would have the same sorts of information available to it as a layout worklet, thus allowing you to do a lot of the things people want to do with "container queries" as in this example below (available-inline-size is the contextual value provided during layout).  Its use would look like this:</p>
+ 				<pre><code class="language-javascript">.foo {
+  grid-template-columns: 
+    switch(
+      (available-inline-size &gt; 1024px) 1fr 4fr 1fr;
+      (available-inline-size &gt; 400px) 2fr 1fr;
+      (available-inline-size &gt; 100px) 1fr;
+      default 1fr;
+    );
+
+}</code></pre>
+ 			</section>
+
+ 			<p>As similar as these may seem, almost everything about them concretely is different.  Each is parsed and follows very different paths around what can be resolved and when, as well as what you can do with them.  <code>nth-value()</code>, it was suggested by Mozilla's Emilio Cobos, should be <em>extremely</em> easy to implement because it reuses much of the existing infrastructure for CSS math functions.  In fact, he went ahead and implemented it in Mozilla's code base to illustrate.</p>
+
+ 			<p>We decided it might make sense to look into the details here as there might be relationships, and the time necessary might actually be available.</p>
+
+ 			<p>This seemed to work out rather well.  Indeed, the <code>nth-value()</code> proposal was fairly simple to implement in Chromium too.  In a very short time, without very sustained investment, we were able to create a complete patch that we could submit.</p>
+
+ 			<p>While we've found some time to move back to advancing our <code>switch()</code> prototype again, and <code>nth-value()</code> doesn't help advance the container queries use cases, we agree that it looks like a comparatively easy win for developers, and it might be worth having too.</p>
+
+ 			<p>So, we put it to you: Is it?</p> 
+
+ 			<p>We would like to know your feedback on whether the <code>nth-value</code> proposal this is something that you would like to see standards bodies and implementers pursue.  We certainly are willing to implement a similar prototype for WebKit if necessary if developers are interested and it is standardized.</p>
+		</section>
+	</section>
+</article></main>
+
+  
+    <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-88027178-1', 'auto');
+    ga('send', 'pageview');
+  </script>
+
+  <script>
+    Array.prototype.slice.call(document.querySelectorAll('.optional [data-src]')).forEach(function (optional) {
+      var prefs = window.localStorage.downloadsPrefs,
+          clickToSee;
+      if (prefs === 'true') {
+        activateOptional(optional);
+      } else {
+        clickToSee = document.createElement('div');
+        clickToSee.classList.add('clickToSee')
+        clickToSee.innerHTML = '<button>Click to see media</button>';
+        clickToSee.style.textAlign = 'center';
+        clickToSee.style.border = 'none';
+        optional.parentElement.insertBefore(clickToSee, optional.nextSibling);
+        clickToSee.firstElementChild.addEventListener('click', function () {
+          activateOptional(optional);
+        })
+      }
+
+    })
+  </script>
+
+</body></html>
