@@ -370,14 +370,18 @@ dt {
 		As you may recall, back in Feburary I posted <a href="https://bkardell.com/blog/TowardResponsive.html">an article</a> explaining that we had been working on this problem a bunch, and sharing our thoughts and progress and just letting people know that <em>something</em> is happening... People are listening, and trying. I also shared that our discussions also prompted David Baron's work toward another possible path.  
 		</p>
 		<p>
-		We wanted to present these together, so by late April we both made informal proposals to the CSS working group of what we'd like to explore.  Ours was to begin with a <a href="https://gist.github.com/bkardell/e5d702b15c7bcf2de2d60b80b916e53c"><code>switch()</code> function in CSS</a> focused on slotting into the architecture of CSS in a way that allows us to solve currently impossible problems.  If we can show that this works and progress all of the engines, the problem of sugaring an even higher level expression becomes possible, but we deliver useful values fast too.  Shortly after we said that we would also be willing to try to make time to try to do some prototyping and implementation exploration and report back.</p>
+		We wanted to present these together, so by late April we both made informal proposals to the CSS working group of what we'd like to explore.  Ours was to begin with a <a href="https://gist.github.com/bkardell/e5d702b15c7bcf2de2d60b80b916e53c"><code>switch()</code> function in CSS</a> focused on slotting into the architecture of CSS in a way that allows us to solve currently impossible problems.  If we can show that this works and progress all of the engines, the problem of sugaring an even higher level expression becomes possible, but we deliver useful values fast too.</p>
+
+    <p class="note">Neither the CSS working nor anyone involved in any of the proposals is arguing that these are an either/or choice here.  We are pursuing options and answering questions, together.  We all believe that working this problem from both ends has definite value in both the short and long term and are mutually supportive.  We are also excited by Miriam Suzanne's recent work.  They are almost certainly complimentary and may even wind up helping each other with different cases.</p>
+
+    <p>Shortly after we presented our idea, Igalia also said that we would be willing to invest  time to try to do some prototyping and implementation exploration and report back.</p>
 	</section>
 	<section class="sectioning">
 		<contextual-heading role="heading" aria-level="2">Demos and Updates</contextual-heading>
 		
 		<p>My colleague Javi Fernadez agreed to tackle initial implementation investigations with some down time he had.  Initially, he made some really nice progress pretty quickly, coming up with a strategy, writing some low-level tests and getting them passing. But, then the world got very... you know... hectic.</p>
 
-		<p>However, I'm really happy to say that we have recently completed enough to to share and to say we'll be able to take this experience back to report to CSSWG pretty soon.</p>
+		<p>However, I'm really happy to announce today that that we have recently completed enough to to share and to say we'll be able to take this experience back to report to CSSWG pretty soon.</p>
       <p class="note">
         The following demos represent research and development. Implementation is limited, not yet standard and was done for the purposes of investigation, dicussion and to answer questions necessary for implementers. It is, nevertheless, real, functioning code.
       </p>
@@ -385,18 +389,20 @@ dt {
         <iframe width="560" height="315" src="https://www.youtube.com/embed/cWub_3wActI" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>
          <p>A running demo in a build of Chromium of an image grid component designed independently from page layout, which uses the proposed CSS <code>switch()</code> function to declaratively, responsively change the <code>grid-template-columns</code> that it uses based on the size available to it.</p>
       </div>
-      <p>Cool, right?  Here's a <a href="https://youtu.be/8QFST9MvjyA">short "lightning talk" style presentation on it</a> with some more demos too...</p>
+      <p>Cool, right?  Here's a <a href="https://youtu.be/8QFST9MvjyA">short "lightning talk" style presentation on it</a> with some more demos too (note the bit of jank you see is dropped frames from my recording, rendering is very fluid as they are in the version embedded above)...</p>
      
       <p>So - I think this is pretty exciting... What do you think?  Here are answers to some questions I know people have</p>
       <details>
         <summary>FAQ</summary>
         <dl>
           <dt>Why a function and not a MQ or pseduo?</dt>
-          <dd><a href="https://bkardell.com/blog/TowardResponsive.html">My post from Feb</a> and the proposal explains that this is not an "instead of", but rather a "how to get there".  The things we want ultimately and tend to discuss are full of <em>several</em> hard problems, not just one. It's very hard to discuss numerous hypotheticals all at once, especially if they represent enormous amounts of work to imagine how they slot together in existing CSS architecture.  Our proposal, we believe, neatly slots out a few of the hardest problems in CSS and provides an achieveable answer we can make fast progress on and lessen the number of open questoons. Once we have that, we can talk about sugar.  You've probably taken similar approaches on your own engineering projects.</dd>
+          <dd><a href="https://bkardell.com/blog/TowardResponsive.html">My post from Feb</a> and the proposal explains that this is not an "instead of", but rather a " simpler and powerful step in breaking down the problem, which is luckily also a very useful step on its own".  The things we want ultimately and tend to discuss are full of <em>several</em> hard problems, not just one. It's very hard to discuss numerous hypotheticals all at once, especially if they represent enormous amounts of work to imagine how they slot together in existing CSS architecture.  That's not to say we <em>shouldn't</em> still try that too, it's just that the path for one is more definite and known.  Our proposal, we believe, neatly slots out a few of the hardest problems in CSS and provides an achieveable answer we can make fast progress on in all engines and lessen the number of open questoons. This could allow us to both take on higher level sugar next, but also to fill that gap in user-land until we do.  Breaking down problems like this is probably a thing you have done on your own engineering projects.  It makes sense.</dd>
           <dt>Why is it called <code>inline available size</code>?</dt>
           <dd>The short answer is because that is accurately what it actually represents internally and there are good arguments for it I'll save for a more detailed post if this carries on, but don't get hung up on that, we haven't begun bikeshedding details of how you write the function and it will change. In fact, these demos use a slightly different format than our proposal because it was easier to parse.  Don't get hung up on that either.</dd>
           <dt>Where can you use switch?</dt>
           <dd>You can use anything anywhere, but it will only be valid and meaningful in certain places. The function will only provide an <code>available-inline-size</code> value to switch in places that the CSS WG agrees to list. Sensibly what you can say is that these will <em>never</em> include things that could create circularties because they are used in derermining the available size.  So, you wont be able to change the display, or the font with a <code>switch()</code> that depends on <code>inine-available-size</code>, but anything that changes properties of a layout module or paint is probably fair game. CSS could make other switchable values available for other properties though.</dd>
+          <dt>Why doesn't it use min-width/max-width style like media queries?</dt>
+          <dd>Media Queries L4 supports these examples, we just wanted to show you could.  You could just as easily use min-width/max-width here!</dd>
         </dl>
       </details>
     </section>
@@ -423,7 +429,7 @@ dt {
  				<p>This proposal is a function which allows you to pass pairs of math-like conditions and value associations, as well as a default value.  The conditions are evaluated from left to right and the value following the first condition to be true is used, or the default if none are. Its use would look like this:</p>
  				<pre><code class="language-javascript">.foo {
   margin-left: 
-    (
+    cond(
       (50vw &lt; 400px) 2em, 
       (50vw &lt; 800px) 1em, 
       0px
@@ -433,8 +439,8 @@ dt {
  			<section class="sectioning">
  				<contextual-heading role="heading" aria-level="3">switch()</contextual-heading>
  				<p>This (our) proposal is a function which works like <code>cond()</code> above, but can provide contextual information only available at appropriate stages in the lifecycle.  In the case of layout properties, it would have the same sorts of information available to it as a layout worklet, thus allowing you to do a lot of the things people want to do with "container queries" as in this example below (available-inline-size is the contextual value provided during layout).  Its use would look like this:</p>
- 				<pre><code class="language-javascript">/* (proposed syntax) */
-  .foo {
+ 				<pre><code class="language-javascript">/* (proposed syntax, to be bikeshed much.. note the demos use a less flexible/different/easier to implement syntax for now ) */ 
+.foo {
   grid-template-columns: 
     switch(
       (available-inline-size &gt; 1024px) 1fr 4fr 1fr;
@@ -447,11 +453,9 @@ dt {
 
  			<p>As similar as these may seem, almost everything about them concretely is different.  Each is parsed and follows very different paths around what can be resolved and when, as well as what you can do with them.  <code>nth-value()</code>, it was suggested by Mozilla's Emilio Cobos, should be <em>extremely</em> easy to implement because it reuses much of the existing infrastructure for CSS math functions.  In fact, he went ahead and implemented it in Mozilla's code base to illustrate.</p>
 
- 			<p>We decided that since we didn't have the bandwidth to advance next steps on our proposal, it might make sense to at least look into this one.</p>
+ 			<p>While things were too hectic to advance our own proposal for a while earlier this year, we did have a enough time to look into that and indeed, the <code>nth-value()</code> proposal was fairly simple to implement in Chromium too!  In a very short time, without very sustained investment, we were able to create a complete patch that we could submit.</p>
 
- 			<p>This seemed to work out rather well.  Indeed, the <code>nth-value()</code> proposal was fairly simple to implement in Chromium too.  In a very short time, without very sustained investment, we were able to create a complete patch that we could submit.</p>
-
- 			<p>While we've found some time to move back to advancing our <code>switch()</code> prototype again, and <code>nth-value()</code> doesn't help advance the container queries use cases, we agree that it looks like a comparatively easy win for developers, and it might be worth having too.</p>
+ 			<p>While <code>nth-value()</code> doesn't help advance the container queries use cases, we agree that it looks like a comparatively easy win for developers, and it might be worth having too.</p>
 
  			<p>So, we put it to you: Is it?</p> 
  
