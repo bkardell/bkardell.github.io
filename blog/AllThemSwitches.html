@@ -4,13 +4,13 @@
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:site" content="@briankardell">
     <meta name="twitter:creator" content="@briankardell">
-    <meta name="twitter:title" content="All Them Switches">
-    <meta name="twitter:description" content="In this post I'll talk about developments along the way to a proposal I talked about earlier this year, a brief detour on something tangentially related, and finally, ask for your ">
+    <meta name="twitter:title" content="All Them Switches: Responsive Elements and More">
+    <meta name="twitter:description" content="In this post I'll talk about developments along the way to a 'responsive elements' proposal (aka container queries/element queries use cases) that I talked about earlier this year,">
     
     <meta name="monetization" content="$ilp.uphold.com/kKU4GXiRwhnf ">
 
     <link rel="alternate" type="application/rss+xml" href="https://bkardell.com/blog/feed.rss" title="bkardell.com/blog rss feed">
-    <title>All Them Switches</title> 
+    <title>All Them Switches: Responsive Elements and More</title> 
     <style>.captioned-image {
     background-color: #eaeaea;
     display: block;
@@ -335,45 +335,78 @@ America (art for sale)</a></li>
         </ul>
     </nav>
 </header>
-    <main><div class="posted-on">Posted on null</div><article class="sectioning">
-	<contextual-heading role="heading" aria-level="1">All Them Switches</contextual-heading>
+    <main><div class="posted-on">Posted on 11/05/2020</div><article posted-on="11/05/2020" class="sectioning">
+	<contextual-heading role="heading" aria-level="1">All Them Switches: Responsive Elements and More</contextual-heading>
 	<style>[aria-level="4"] {
     font-size: 1.1rem;
-}</style>
-	<p class="segue">In this post I'll talk about developments along the way to a proposal I talked about earlier this year, a brief detour on something tangentially related, and finally, ask for your input...</p> 
+}
+.note {
+    background-color: rgba(255,255,0,0.24);
+    padding: 1rem;
+    font-style: italic;
+}
+.note::before {
+    content: 'Note';
+    font-size: 0.8rem;
+    background-color: black;
+    color: white;
+    padding: 0.25rem;
+    margin-right: 0.5rem;
+}
+dt {
+    font-weight: bold;
+    font-style: italic;
+}
+</style>
+	<p class="segue">In this post I'll talk about developments along the way to a 'responsive elements' proposal (aka container queries/element queries use cases) that I talked about earlier this year, a brief detour along the way, and finally, ask for your input on both...</p> 
     <script src="../prism.js"></script>
     <link rel="stylesheet" href="../prism.css">
-		<p>I've been talking a lot this year about the web ecosystem as a commons, its health, and why I believe that diversifying investment in it is both important and productive<sup><a href="https://bkardell.com/blog/Beyond.html">1</a>,<a href="https://bkardell.com/blog/EcosystemHealth.html">2</a>,<a href="https://bkardell.com/blog/Reimagining.html">3</a>,<a href="https://www.igalia.com/24-7/chats">4</a>,<a href="https://open-prioritization.igalia.com">5</a></sup>.  Collectively, at Igalia, believe this and choose to invest in the commons ourselves too: Appling our expertise toward helping solve hard problems that have been long stuck, trying to listen to developers and do things that we believe can help further what we think are valuable causes.  Sometimes this means big efforts which require a concrete budget, like MathML.  But other times it is just where we are able to make time.  I'd like to tell you the story of one of those efforts, which became two - and enlist your input..
+		<p>I've been talking a lot this year about the web ecosystem as a commons, its health, and why I believe that diversifying investment in it is both important and productive<sup><a href="https://bkardell.com/blog/Beyond.html">1</a>,<a href="https://bkardell.com/blog/EcosystemHealth.html">2</a>,<a href="https://bkardell.com/blog/Reimagining.html">3</a>,<a href="https://www.igalia.com/24-7/chats">4</a>,<a href="https://open-prioritization.igalia.com">5</a></sup>.  Collectively, at Igalia, believe this and <em>we choose to invest in the commons ourselves too</em>.  We try to apply our expertise toward helping solve hard problems that have been long stuck, trying to listen to developers and do things that we believe can help further what we think are valuable causes.  I'd like to tell you the story of one of those efforts, which became two - and enlist your input..
 		</p>
 		
 		<section class="sectioning">
-			<contextual-heading role="heading" aria-level="2">Advancing the Container Queries Cause: A backstory</contextual-heading>
+			<contextual-heading role="heading" aria-level="2">Advancing the Container Queries Cause</contextual-heading>
 		<p>
-		Last year, as my colleague Cathie Chen was completing work on <a href="https://webkit.org/blog/9997/resizeobserver-in-webkit/">ResizeObserver in WebKit</a>, I suggested that we should try to expend some efforts toward advancing work toward the use cases commonly referred to as "Container Queries".  That is, the desire to be able to style an element based on the size available to it.  It is the single most requested ability, but it's full of really hard problems so it's been hard to make progress. Because it's hard to make progress, there's not a lot of news about it.  Because there's not a lot of news, developers think that no one cares and no one is investing in trying to move it.</p>
-
-		<p>Well... That's just wrong, so we should do something about that.  We should expend efforts to advance it where we can, and we should talk about it.  We should look for an opportunity to move the needle. Right?  My peers agreed.
-		</p>
-
-		<p>So, I worked with developers.  I collected data.  We built some speculative polyfills with various ideas and spent hours discussing the various challenges and dead-ends. My colleague Oriol Brufau, in praticular spent many hours bouncing ideas back and forth in Spain. I went back and forth with other implemeters and prompted many discussions.  In Feburary I posted <a href="https://bkardell.com/blog/TowardResponsive.html">an article</a> explaining our thoughts and interest and just letting people know that <em>something</em> is happening... People are listening, and trying.  
+		As you may recall, back in Feburary I posted <a href="https://bkardell.com/blog/TowardResponsive.html">an article</a> explaining that we had been working on this problem a bunch, and sharing our thoughts and progress and just letting people know that <em>something</em> is happening... People are listening, and trying. I also shared that our discussions also prompted David Baron's work toward another possible path.  
 		</p>
 		<p>
-		In late April eventually made an actual informal proposal of some of these ideas to the CSS working group the form of our eventual <a href="https://gist.github.com/bkardell/e5d702b15c7bcf2de2d60b80b916e53c">proposal for a <code>switch()</code> function in CSS</a> as a stepwise measure. Shortly after we said that we would also try to make time to try to do some prototyping and implementation exploration and report back.</p>
+		We wanted to present these together, so by late April we both made informal proposals to the CSS working group of what we'd like to explore.  Ours was to begin with a <a href="https://gist.github.com/bkardell/e5d702b15c7bcf2de2d60b80b916e53c"><code>switch()</code> function in CSS</a> focused on slotting into the architecture of CSS in a way that allows us to solve currently impossible problems.  If we can show that this works and progress all of the engines, the problem of sugaring an even higher level expression becomes possible, but we deliver useful values fast too.  Shortly after we said that we would also be willing to try to make time to try to do some prototyping and implementation exploration and report back.</p>
 	</section>
 	<section class="sectioning">
-		<contextual-heading role="heading" aria-level="2">What's been happening since then..</contextual-heading>
+		<contextual-heading role="heading" aria-level="2">Demos and Updates</contextual-heading>
 		
-		<p>My colleague Javi Fernadez agreed to tackle initial implementation investigations with some down time he had.  Initially, he made some really nice progress, coming up with a strategy, writing some low-level tests and getting them passing. But, then things got a little busy and the world itself has been, you know... hectic.  Significant challenges remained around parsing, code generation and so on - any of which would require more undivided attention than he was able to make immeditely available.  So, it's been hard to find the time to advance any of those again until recently.</p>
+		<p>My colleague Javi Fernadez agreed to tackle initial implementation investigations with some down time he had.  Initially, he made some really nice progress pretty quickly, coming up with a strategy, writing some low-level tests and getting them passing. But, then the world got very... you know... hectic.</p>
 
-		<p>I'm really happy to say that recently he's been able to get back to it a bit with some focused time and just today I saw a demo of a <em>very</em> limited prototype actually functioning in a browser with real HTML and CSS. Don't get too excited by that - we've got a ways to go yet before we even take this back to the CSSWG for further discussion but it's exciting to see a real thing take some concrete shape, right?!  Looking forward to sharing more on that as soon as we can.</p>
-
-		<p>But... this is not that post.  This is the post about an interesting thing happened along the way, and something that we'd like your thoughts on...</p>
+		<p>However, I'm really happy to say that we have recently completed enough to to share and to say we'll be able to take this experience back to report to CSSWG pretty soon.</p>
+      <p class="note">
+        The following demos represent research and development. Implementation is limited, not yet standard and was done for the purposes of investigation, dicussion and to answer questions necessary for implementers. It is, nevertheless, real, functioning code.
+      </p>
+      <div class="captioned-image">
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/cWub_3wActI" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>
+         <p>A running demo in a build of Chromium of an image grid component designed independently from page layout, which uses the proposed CSS <code>switch()</code> function to declaratively, responsively change the <code>grid-template-columns</code> that it uses based on the size available to it.</p>
+      </div>
+      <p>Cool, right?  Here's a <a href="">short "lightning talk" style presentation on it</a> with some more demos too...</p>
+     
+      <p>So - I think this is pretty exciting... What do you think?  Here are answers to some questions I know people have</p>
+      <details>
+        <summary>FAQ</summary>
+        <dl>
+          <dt>Why a function and not a MQ or pseduo?</dt>
+          <dd><a href="https://bkardell.com/blog/TowardResponsive.html">My post from Feb</a> and the proposal explains that this is not an "instead of", but rather a "how to get there".  The things we want ultimately and tend to discuss are full of <em>several</em> hard problems, not just one. It's very hard to discuss numerous hypotheticals all at once, especially if they represent enormous amounts of work to imagine how they slot together in existing CSS architecture.  Our proposal, we believe, neatly slots out a few of the hardest problems in CSS and provides an achieveable answer we can make fast progress on and lessen the number of open questoons. Once we have that, we can talk about sugar.  You've probably taken similar approaches on your own engineering projects.</dd>
+          <dt>Why is it called <code>inline available size</code>?</dt>
+          <dd>The short answer is because that is accurately what it actually represents internally and there are good arguments for it I'll save for a more detailed post if this carries on, but don't get hung up on that, we haven't begun bikeshedding details of how you write the function and it will change. In fact, these demos use a slightly different format than our proposal because it was easier to parse.  Don't get hung up on that either.</dd>
+          <dt>Where can you use switch?</dt>
+          <dd>You can use anything anywhere, but it will only be valid and meaningful in certain places. The function will only provide an <code>available-inline-size</code> value to switch in places that the CSS WG agrees to list. Sensibly what you can say is that these will <em>never</em> include things that could create circularties because they are used in derermining the available size.  So, you wont be able to change the display, or the font with a <code>switch()</code> that depends on <code>inine-available-size</code>, but anything that changes properties of a layout module or paint is probably fair game. CSS could make other switchable values available for other properties though.</dd>
+        </dl>
+      </details>
+    </section>
 
 		<section class="sectioning">
-			<contextual-heading role="heading" aria-level="3">Switching gears...</contextual-heading>
+			<contextual-heading role="heading" aria-level="2"><em>Bonus Round:</em> Switching gears...</contextual-heading>
 			<p>Shortly after we made our switch proposal, my friend Jon Neal opened a github issue based on some twitter conversations.  For the next week or two this thread was very busy with lots of function proposals that looked vaguely "switch-like".  In fact, a number of them were also using the word "switch". From these, there are 3 ideas which seem interesting, look somewhat similar, but have some (very) importantly different characteristics, challenges and abilities. They are described below.
  			</p>
  			<section class="sectioning">
- 				<contextual-heading role="heading" aria-level="4">nth-value()</contextual-heading>
+ 				<contextual-heading role="heading" aria-level="3">nth-value()</contextual-heading>
  				<p>This proposal is a function which lets a variable represent an index into a list of possible values. Its use would look like this:</p>
  				<pre><code class="language-javascript">.foo {
   color: 
@@ -386,7 +419,7 @@ America (art for sale)</a></li>
 }</code></pre>
  			</section>
  			<section class="sectioning">
- 				<contextual-heading role="heading" aria-level="4">cond()</contextual-heading>
+ 				<contextual-heading role="heading" aria-level="3">cond()</contextual-heading>
  				<p>This proposal is a function which allows you to pass pairs of math-like conditions and value associations, as well as a default value.  The conditions are evaluated from left to right and the value following the first condition to be true is used, or the default if none are. Its use would look like this:</p>
  				<pre><code class="language-javascript">.foo {
   margin-left: 
@@ -398,9 +431,10 @@ America (art for sale)</a></li>
 }</code></pre>
  			</section>
  			<section class="sectioning">
- 				<contextual-heading role="heading" aria-level="4">switch()</contextual-heading>
+ 				<contextual-heading role="heading" aria-level="3">switch()</contextual-heading>
  				<p>This (our) proposal is a function which works like <code>cond()</code> above, but can provide contextual information only available at appropriate stages in the lifecycle.  In the case of layout properties, it would have the same sorts of information available to it as a layout worklet, thus allowing you to do a lot of the things people want to do with "container queries" as in this example below (available-inline-size is the contextual value provided during layout).  Its use would look like this:</p>
- 				<pre><code class="language-javascript">.foo {
+ 				<pre><code class="language-javascript">/* (proposed syntax) */
+  .foo {
   grid-template-columns: 
     switch(
       (available-inline-size &gt; 1024px) 1fr 4fr 1fr;
@@ -408,7 +442,6 @@ America (art for sale)</a></li>
       (available-inline-size &gt; 100px) 1fr;
       default 1fr;
     );
-
 }</code></pre>
  			</section>
 
@@ -422,9 +455,9 @@ America (art for sale)</a></li>
 
  			<p>So, we put it to you: Is it?</p> 
  
- 			<p>We would like to know your feedback on whether the <code>nth-value</code> proposal this is something that you would like to see standards bodies and implementers pursue.  We certainly are willing to implement a similar prototype for WebKit if necessary if developers are interested and it is standardized.  Let us know what you think via <a href="https://twitter.com/igalia">@igalia</a> or <a href="https://twitter.com/briankardell">@briankardell</a></p>
+ 			<p>We would love your feedback on both of these things - are they things that you would like to see standards bodies and implementers pursue?  We certainly are willing to implement a similar prototype for WebKit if necessary if developers are interested and it is standardized.  Let us know what you think via <a href="https://twitter.com/igalia">@igalia</a> or <a href="https://twitter.com/briankardell">@briankardell</a>!</p>
 		</section>
-	</section>
+	
 </article></main>
 
   
