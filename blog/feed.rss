@@ -4,7 +4,7 @@
         <title>bkardell.com rss feed</title>
         <link>http://bkardell.com/</link>
         <description>Just the bkardell.com rss feed</description>
-        <lastBuildDate>Thu, 05 Nov 2020 23:41:03 GMT</lastBuildDate>
+        <lastBuildDate>Fri, 20 Nov 2020 16:38:00 GMT</lastBuildDate>
         <docs>http://blogs.law.harvard.edu/tech/rss</docs>
         <generator>awesome mix</generator>
         <image>
@@ -14,6 +14,70 @@
         </image>
         <copyright>All rights reserved 2018, Brian Kardell</copyright>
         <atom:link href="https://bardell.com/blog/feed.atom" rel="self" type="application/rss+xml"/>
+        <item>
+            <title><![CDATA[Open Prioritization First Experiment Wrap Up]]></title>
+            <link>https://bkardell.com/blog/FirstOPFinished.html</link>
+            <guid>https://bkardell.com/blog/FirstOPFinished.html</guid>
+            <pubDate>Fri, 20 Nov 2020 05:00:00 GMT</pubDate>
+            <description><![CDATA[Earlier this year, Igalia launched an experiment called "Open Prioritization" which, effectively, lets us pull money together to prioritize work on a feature in web browsers.  In this piece I'll talk about the outcome, lessons learned along the way and next steps.
+  ]]></description>
+            <content:encoded><![CDATA[
+  <contextual-heading role="heading" aria-level="1" style="font-size: 2rem;">Open Prioritization First Experiment Wrap Up</contextual-heading>
+  <p class="segue">Earlier this year, Igalia launched an experiment called "Open Prioritization" which, effectively, lets us pull money together to prioritize work on a feature in web browsers.  In this piece I'll talk about the outcome, lessons learned along the way and next steps.
+  </p>
+ 
+  <p>
+  Our Open Prioritization experiment was a pretty big idea.  On the surface, it seems to be asking a pretty simple question: "Could we crowdfund some development work on browser?"  However, it was quite a bit more involved in its goals, because there is a lot more hiding behind that question than meets the eye, and most of it is kind of difficult to talk about in purely theoretical ways. I'll get into all of that in a minute, but let's start with the results...</p>
+
+  <section class="sectioning">
+<contextual-heading role="heading" aria-level="2" style="font-size: 2.25rem;">One project advances: <code>:focus-visible</code></contextual-heading>
+
+<p>We began the experiment with six possible things we would try to crowdfund, and I'm pleased to say that one <em>will</em> advance: <code>:focus-visible</code> in WebKit.  </p>
+
+<p>We are working with Open Collective on next steps as it involves some decision making on how we manage future experiments and a bigger idea too.  However, very soon this will shift from a <em>pledged</em> collective which just asked "would you financially support this project if it were to be offered?" to a proper way to collect funds for it.  If you pledged, you will receive an contact when it's ready asking you to fulfill your pledge with information on how.  We will also write a post when that happens as it's likely that at least some people will not come back and fulfill their pledge.</p>
+
+<p>As soon as this begins and enough funds are available, it will enter our developers work queue and as staff frees up, they will shift to begin work on implementing this in WebKit!    </p>
+
+<p>We did it! We at Igalia would like to say a giant "thank you" for all of those who helped support these efforts in improving our commons.</p>
+<section class="sectioning">
+<contextual-heading role="heading" aria-level="3" style="font-size: 2.5rem;">Retrospective</contextual-heading>
+
+<p>Let's talk about some of those bigger ideas this experiment was aiming to look at, and lessons we learned along the way, in retrospect...  </p>
+
+<ul>
+<li><p><strong>Resources are finite. Prioritization is hard.</strong> No matter how big the budget, resources are still finite and work has to be prioritized. Even with only a few choices on the table to choose from, it's not necessarily easy or plain what to choose because there isn't a "right" answer.  </p></li>
+<li><p><strong>There are reasonable arguments for prioritizing different things</strong>.  The two finalists both had strong arguments from different angles, but even a step back - at least <em>some</em> people  chose to pledge to something <em>else</em>.  Some thought that  supporting SVG path syntax in CSS was the best choice. They only pledged to that one. Many of these were final implementations, but this wasn't.  Some people thought that advancing <em>new</em> things that no one else seems to be advancing was the way to go.  Others supported it because they thought that it was really important to boost ones that are help Mozilla.  There just weren't <em>enough</em> people either seeing or agreeing with that weighting of things.</p></li>
+<li><p><strong>Cost is a <em>factor</em></strong> It's not an exclusive factor - the cheapest option by far (SVG Path in CSS/Mozilla) was eliminated earlier.  There are other reasons <code>:focus-visible</code> made some giant leaps too, but - at the end of the day the bar was also just lower.  The second place project never actually managed to pull ahead, depite hoving more actual pledged dollars at one point.</p></li>
+<li><p><strong>Investing with uncertainty is especially hard</strong> .  Just last week, Twitter exploded with excitement that Google was going to prototype some high level stuff with Container Queries. Fundamental to Google's intent is <em>CSS containment in a single direction</em>.  CSS does not currently define containment in a single direction, but it does define the <em>containment</em> module where it would be defined.   Containment was, in part, trying to lay some potential groundwork here.  When we launched the project, I wrote about this: WebKit doesn't currently support the containment that <em>is</em> defined already and is a necessary prerequisite of any proposal involving that approach. The trouble is: We don't <em>know</em> if that will be the approach, and supporting it is a big task.  Building a high level solution on the magic in our <code>switch</code> proposal, for example, doesn't require containment at all.   Adding general containment support was the most expensive project on our list, by far.  In fact, we could have done a couple of them for that price.  This makes the value proposition of that work very speculative. Despite being potentially critically valuable for the single biggest/longest ask in CSS history - that project didn't make the finals when we put it to the public either.</p></li>
+<li><p><strong>Some things are difficult to predict</strong>. Going into this, I didn't know what to expect.  A single viral tweet and a mass of developers pitching in $1 or $2 could, in theory, have funded any of these in hours.  While I didn't expect that, I did kind of expect some amount of funds in the end would be of that sort.  Interestingly, that didn't happen.  At all.  Depite lots of efforts trying to get lots of people to pledge very small dollars even asking specifically, and making it possible to do with a tweet - very, very few did (literally 1 on the winning project pledged less than five dollars).  The most popular pledge was $20 with about a quarter of the pledges being over $50, and going up from there.</p></li>
+<li><p><strong>Matching funds are a really big deal</strong>.  You can definitely see why fundraisers stress this.  For the duration of this experiment, we saw  periods of little actual movement, despite lots of tweets about it, likes and blog posts.  There were a few giant leaps, and they all involved offers of matching dollars.  Igalia ourselves, The A11Y Project and AMPHTML all had some offer of matching dollars that really seemed to inspire a lot more participation.  The bigger the matching dollars available, the bigger the participation was.</p></li>
+<li><strong>Communication is hard. These might not have been the most ideal projects, in some respects</strong>.  This last bullet is complicated enough that I'll give it it's own section.</li>
+</ul>
+
+<section class="sectioning">
+<contextual-heading role="heading" aria-level="4" style="font-size: 2.75rem;">Lessons learned: Communication challenges</contextual-heading>
+
+<p>While I am <em>tremendously</em> happy that <code>inert</code> and <code>:focus-visible</code> were our finalists and both did very well, I am biased.  I helped advocate for and specify these two features before I came to Igalia, working with some Googlers who also did the initial implementations.  I also advocated for them to be included in the list of projects we offered.  However, I failed to anticipate that the very reasons I did both of these would present challenges for the experiment, so I'd like to talk about that a bit...</p>
+
+<p>Unfortunately a confluence of things led to a lot of chatter and blog posts which were effectively saying something along the lines of "Developers shouldn't have to foot the bill because Apple doesn't care about accessibility and refuses to implement something. They don't care, and this is evidence proof - they are the last ones to not implement" and I wound up having a lot of conversations trying to correct the various misunderstanding here.  That's not everyone else's fault, it's mine.  I should have taken more time to communicate these things clearly, but for the record, nothing about this is really correct, so let me take the time to add the clarity for posterity...</p>
+
+<ul>
+<li><p><strong>On last implementations</strong> The second implementations only recently began or completed in Firefox, and one of those was also by Igalia.  It seems really unfortunate and not exactly fair to suggest that being a few weeks/months behind, and especially when that came from outside help, is really an indictment.  It's not.  As an example, in the winning project, Chromium shipped this by default in October 2020.  Firefox is <em>right now</em> pending a default release. Keep in mind that vendors don't have perfect insight into what is happening in other browsers, and even if they did reallocating resources isn't a thing that is done on a whim: Different browsers have different people with different skills and availability at any given point in time.</p></li>
+<li><p><strong>On refusal to implement</strong> This is 100% incorrect. I want to <em>really</em> stress this:  Every item on our list comes from the list of things that are 'wants' from vendors themselves that need prioritization and are among the things they will be considering taking up next.  If not funded here, it will <em>definitely</em> still get done - it's just impossible to say when really, and whatever priority they give it, they can't give to something else.  This experiment gives us a more definite timeframe <em>and</em> frees them to spend that on implementing something else.</p></li>
+<li><p><strong>On web developers shouldn't have to foot the bill</strong>.  Well, if you mean contributing dollars directly in crowdfunding in order to get the feature, we absolutely don't (see above bullet).  However, generally speaking, this was in fact part of the conversation we wanted to start.  Make no mistake: You are paying today, indirectly - and the actual investment back into the commons is inefficeint and non-guaranteed.  It's wonderful that 3 organizations have seemed to foot the bill for decades, but <a href="https://bkardell.com/blog/Reimagining.html">starting a conversation about whether it is talking about that</a> is definitely part of the goal here.</p></li>
+<li><p><strong>On "Apple doesn't care about accessibility"</strong> This one makes me really sad, not only because I know it isn't true and it seems easy to show otherwise, but also because there are some really great people from Apple like James Craig who absolutely not only care very deeply but often help lead on important things.</p></li> 
+<li><p><strong>On "it's wrong to crowdfund accessibility features"</strong>Unfortunately, it seems the very things that drew me to work on these in the first place wound up working against us a little: Both  <code>inert</code> and <code>:focus-visible</code> are interesting because they are "core features" to the platform that are useful to everyone.  However, they are designed to sit at an intersection where they happily have really out-sized impact for accessibility.  There are good polyfills for both of these which work well and somewhat reduce the degree of 'urgency'.  I really thought that this made for a nice combination of interests/pains might lead to good partnerships of investment where, yes, I imagined that perhaps some organizations interested in advancing the accessibility end of things and who have historically contribute their labors, might see value in contributing to the flame more directly.  Perhaps this wasn't as wise or obviously great as I imagined.</p></li>
+</ul>
+</section>
+</section>
+<section class="sectioning">
+<contextual-heading role="heading" aria-level="3" style="font-size: 2.5rem;">Wrapping up</contextual-heading>
+
+<p>All in all, in the end - despite some rocky communications, we are really encouraged by this first experiment.  Thank you to everyone who pledged, boosted, blogged about the effort, etc.  We're really looking forward to taking this much further next year and we'd like to begin by asking you to share which specific projects you'd be interested in seeing or supporting in the future?  Hit us up on <a href="https://twitter.com/briankardell">@briankardell</a> or <a href="https://twitter.com/igalia">@igalia</a>.</p>
+</section>
+</section>
+]]></content:encoded>
+        </item>
         <item>
             <title><![CDATA[All Them Switches: Responsive Elements and More]]></title>
             <link>https://bkardell.com/blog/AllThemSwitches.html</link>
@@ -1547,40 +1611,6 @@ export const _internalPromise =
 ]]></content:encoded>
         </item>
         <item>
-            <title><![CDATA[Moving Math Forward, Thoughts and Experiments]]></title>
-            <link>https://bkardell.com/blog/MathForward.html</link>
-            <guid>https://bkardell.com/blog/MathForward.html</guid>
-            <pubDate>Tue, 09 Jul 2019 04:00:00 GMT</pubDate>
-            <description><![CDATA[
-		In this piece, I explain details on thoughts on experiments and conversations around moving Math forward on the Web.
-	]]></description>
-            <content:encoded><![CDATA[
-	<contextual-heading role="heading" aria-level="1" style="font-size: 2rem;">Moving Math Forward, Thoughts and Experiments</contextual-heading>
-	<p class="segue">
-		In this piece, I explain details on thoughts on experiments and conversations around moving Math forward on the Web.
-	</p>
-		
-	<p>For some context, <a href="https://mathml.igalia.com" rel="nofollow">my team is actively working on implementing MathML in Chromium</a> (the engine Chrome, Edge, Samsung, Brave, UC Browser and lots of other share), more specifically MathML Core.  MathML has long had implementations in Safari and Firefox and has an 
-	intersting history that leaves it in a very unique spot.
-	</p>
-	<p>MathML Core, defines the comparatively small, but well defined and mostly interoperable subset of MathML - with an aim of resolving uniqueness.  It provides details about how it actually <em>fits</em> into the layers platform in well defined ways and to explain their existing magic in terms of the platform - to expose it if is it new.  As such, in indirectly aims to provide a basis for moving <em>many</em> things forward.</p>
-
-	<section class="sectioning">
-		<contextual-heading role="heading" aria-level="2" style="font-size: 2.25rem;">A thought experiment</contextual-heading>
-	<p>Recently conversations in the web platform at large have begun about <a href="https://github.com/whatwg/html/issues/4696">moving HTML forward and polyfilling elements</a>.   Since we are actively working on a 'core' ourselves, we thought this would be an interesting discussion and experiment:  We asked "What if MathML Core was largely 'done' and you would import other support to move forward?"  Those things <em>could</em> potentially be shipped by a browser, but there's no guarantee they ever would.  However, they could also be loaded as polyfills and in standard means that help omit many of the problems that traditional polyfills create.</p>
-	<p>To explain this, we took some elements that <em>aren't</em> in MathML Core, but are specified elsewhere, as an interesting stand in.  One such example is an element called <code>mfenced</code>.  <code>mfenced</code> is just a "more convenient way" of writing some math that has a lot of 'fences' (parens, pipes, braces, and so on).  The original spec even said "It is strictly equivalent to this expanded, longer form".</p>
-	<p>Today, 'polyfills' exist for it if your browser doesn't support it, and today, those work by (if your browser doesn't support it) destroying your tree and replacing it with the equivalent version, at some undefined point in time.</p>
-	<p>We experimentally changed very little in our implementation and it now considers any MathML 'unknown element' as on the whitelist of elements which can have a Shadow DOM.  We used a simple stand-in using Mutation Observer to allow any of those to be defined without a dash, and wrote a polyfill for <code>mfenced</code> which simply expands it into Shadow DOM.</p>
-	<p>For purposes of discussion, we illustrated how we could, in theory, use MathML Core, import some new vocabulary (potentially a future proposal, or just some slang) and easily expand it into some Shadow DOM, leaving you with the tree that you authored and all of the things just fitting together nicely and predictably. Below is a screenshot from our actual implementation experiment.</p>
-	<p><a target="_blank" rel="noopener noreferrer" href="https://camo.githubusercontent.com/8e0c8bf38ccd6fa1a20a3d3fa2299a7e32291d32/68747470733a2f2f63646e2e676c697463682e636f6d2f39303035373538332d326137392d343662372d623565662d36636566336265383764613625324653637265656e73686f7425323066726f6d253230323031392d30372d303725323031322d35322d35302e706e673f763d31353632353138353030313933"><img src="https://camo.githubusercontent.com/8e0c8bf38ccd6fa1a20a3d3fa2299a7e32291d32/68747470733a2f2f63646e2e676c697463682e636f6d2f39303035373538332d326137392d343662372d623565662d36636566336265383764613625324653637265656e73686f7425323066726f6d253230323031392d30372d303725323031322d35322d35302e706e673f763d31353632353138353030313933" alt="screenshot of element and shadow dom in experimental browser build" data-canonical-src="https://cdn.glitch.com/90057583-2a79-46b7-b5ef-6cef3be87da6%2FScreenshot%20from%202019-07-07%2012-52-50.png?v=1562518500193" style="max-width:100%;"></a></p>
-	<p>We think that these sorts of experiments are useful and informative and help us ask better questions about how we are fitting into the platform itself: Have we answered the necessary questions?  How does the introduction of a ShadowRoot impact rendering and namespacing, for example?  Could developers really 'plug in' to all the necessary bits?  Could they properly layer atop?  To test this, we also created elements that expand shorthands like TeX and ASCII Math.  In the end, can we ultimately resolve a great a stable core that allows us to move math forward using these things similar in ways similar to Knuth's TeX book/engine - but in a way that is properly "of the platform"?  We think the answer is yes.</p>
-
-	<p>While we're not entirely sure where larger conversations about how HTML will move forward will go, and we aren't claiming that this implementation is anything more than a quick experiment for discussion and testing, the MathML community itself is very excited that such talks are even happening in HTML and <em>very</em> interested in being a part of that conversation, and sorting out how we can move forward together as One Platform™, with less 'specialness'.</p>
-	</section>
-	
-]]></content:encoded>
-        </item>
-        <item>
             <title><![CDATA[One Platform™]]></title>
             <link>https://bkardell.com/blog/OnePlatform.html</link>
             <guid>https://bkardell.com/blog/OnePlatform.html</guid>
@@ -1619,6 +1649,40 @@ export const _internalPromise =
 		<p>While the MathML Community Group is aware that these questions are far from settled, they were universally excited to see such talks begin in HTML and <em>very</em> interested in making sure that they're thinking about those things too: Being a part of that conversation, and sorting out how we can move forward together as One Platform™, with less 'specialness'.</p>
 		<p>If you think this is interesting or useful, please share your support and let someone know.</p>
 		</section></section>]]></content:encoded>
+        </item>
+        <item>
+            <title><![CDATA[Moving Math Forward, Thoughts and Experiments]]></title>
+            <link>https://bkardell.com/blog/MathForward.html</link>
+            <guid>https://bkardell.com/blog/MathForward.html</guid>
+            <pubDate>Tue, 09 Jul 2019 04:00:00 GMT</pubDate>
+            <description><![CDATA[
+		In this piece, I explain details on thoughts on experiments and conversations around moving Math forward on the Web.
+	]]></description>
+            <content:encoded><![CDATA[
+	<contextual-heading role="heading" aria-level="1" style="font-size: 2rem;">Moving Math Forward, Thoughts and Experiments</contextual-heading>
+	<p class="segue">
+		In this piece, I explain details on thoughts on experiments and conversations around moving Math forward on the Web.
+	</p>
+		
+	<p>For some context, <a href="https://mathml.igalia.com" rel="nofollow">my team is actively working on implementing MathML in Chromium</a> (the engine Chrome, Edge, Samsung, Brave, UC Browser and lots of other share), more specifically MathML Core.  MathML has long had implementations in Safari and Firefox and has an 
+	intersting history that leaves it in a very unique spot.
+	</p>
+	<p>MathML Core, defines the comparatively small, but well defined and mostly interoperable subset of MathML - with an aim of resolving uniqueness.  It provides details about how it actually <em>fits</em> into the layers platform in well defined ways and to explain their existing magic in terms of the platform - to expose it if is it new.  As such, in indirectly aims to provide a basis for moving <em>many</em> things forward.</p>
+
+	<section class="sectioning">
+		<contextual-heading role="heading" aria-level="2" style="font-size: 2.25rem;">A thought experiment</contextual-heading>
+	<p>Recently conversations in the web platform at large have begun about <a href="https://github.com/whatwg/html/issues/4696">moving HTML forward and polyfilling elements</a>.   Since we are actively working on a 'core' ourselves, we thought this would be an interesting discussion and experiment:  We asked "What if MathML Core was largely 'done' and you would import other support to move forward?"  Those things <em>could</em> potentially be shipped by a browser, but there's no guarantee they ever would.  However, they could also be loaded as polyfills and in standard means that help omit many of the problems that traditional polyfills create.</p>
+	<p>To explain this, we took some elements that <em>aren't</em> in MathML Core, but are specified elsewhere, as an interesting stand in.  One such example is an element called <code>mfenced</code>.  <code>mfenced</code> is just a "more convenient way" of writing some math that has a lot of 'fences' (parens, pipes, braces, and so on).  The original spec even said "It is strictly equivalent to this expanded, longer form".</p>
+	<p>Today, 'polyfills' exist for it if your browser doesn't support it, and today, those work by (if your browser doesn't support it) destroying your tree and replacing it with the equivalent version, at some undefined point in time.</p>
+	<p>We experimentally changed very little in our implementation and it now considers any MathML 'unknown element' as on the whitelist of elements which can have a Shadow DOM.  We used a simple stand-in using Mutation Observer to allow any of those to be defined without a dash, and wrote a polyfill for <code>mfenced</code> which simply expands it into Shadow DOM.</p>
+	<p>For purposes of discussion, we illustrated how we could, in theory, use MathML Core, import some new vocabulary (potentially a future proposal, or just some slang) and easily expand it into some Shadow DOM, leaving you with the tree that you authored and all of the things just fitting together nicely and predictably. Below is a screenshot from our actual implementation experiment.</p>
+	<p><a target="_blank" rel="noopener noreferrer" href="https://camo.githubusercontent.com/8e0c8bf38ccd6fa1a20a3d3fa2299a7e32291d32/68747470733a2f2f63646e2e676c697463682e636f6d2f39303035373538332d326137392d343662372d623565662d36636566336265383764613625324653637265656e73686f7425323066726f6d253230323031392d30372d303725323031322d35322d35302e706e673f763d31353632353138353030313933"><img src="https://camo.githubusercontent.com/8e0c8bf38ccd6fa1a20a3d3fa2299a7e32291d32/68747470733a2f2f63646e2e676c697463682e636f6d2f39303035373538332d326137392d343662372d623565662d36636566336265383764613625324653637265656e73686f7425323066726f6d253230323031392d30372d303725323031322d35322d35302e706e673f763d31353632353138353030313933" alt="screenshot of element and shadow dom in experimental browser build" data-canonical-src="https://cdn.glitch.com/90057583-2a79-46b7-b5ef-6cef3be87da6%2FScreenshot%20from%202019-07-07%2012-52-50.png?v=1562518500193" style="max-width:100%;"></a></p>
+	<p>We think that these sorts of experiments are useful and informative and help us ask better questions about how we are fitting into the platform itself: Have we answered the necessary questions?  How does the introduction of a ShadowRoot impact rendering and namespacing, for example?  Could developers really 'plug in' to all the necessary bits?  Could they properly layer atop?  To test this, we also created elements that expand shorthands like TeX and ASCII Math.  In the end, can we ultimately resolve a great a stable core that allows us to move math forward using these things similar in ways similar to Knuth's TeX book/engine - but in a way that is properly "of the platform"?  We think the answer is yes.</p>
+
+	<p>While we're not entirely sure where larger conversations about how HTML will move forward will go, and we aren't claiming that this implementation is anything more than a quick experiment for discussion and testing, the MathML community itself is very excited that such talks are even happening in HTML and <em>very</em> interested in being a part of that conversation, and sorting out how we can move forward together as One Platform™, with less 'specialness'.</p>
+	</section>
+	
+]]></content:encoded>
         </item>
         <item>
             <title><![CDATA[Interesting Custom Element Data Begins]]></title>
