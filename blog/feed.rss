@@ -4,7 +4,7 @@
         <title>bkardell.com rss feed</title>
         <link>http://bkardell.com/</link>
         <description>Just the bkardell.com rss feed</description>
-        <lastBuildDate>Tue, 22 Dec 2020 21:24:43 GMT</lastBuildDate>
+        <lastBuildDate>Tue, 22 Dec 2020 21:28:45 GMT</lastBuildDate>
         <docs>http://blogs.law.harvard.edu/tech/rss</docs>
         <generator>awesome mix</generator>
         <image>
@@ -14,6 +14,151 @@
         </image>
         <copyright>All rights reserved 2018, Brian Kardell</copyright>
         <atom:link href="https://bardell.com/blog/feed.atom" rel="self" type="application/rss+xml"/>
+        <item>
+            <title><![CDATA[2020: The Good Parts]]></title>
+            <link>https://bkardell.com/blog/2020-Wrap.html</link>
+            <guid>https://bkardell.com/blog/2020-Wrap.html</guid>
+            <pubDate>Tue, 22 Dec 2020 05:00:00 GMT</pubDate>
+            <description><![CDATA[Each year, Igalians take a moment and look back on the year and assess what we've accomplished. Last year I wrote a wrap up for 2019 and hinted at being excited about some things in 2020 - I'd like to do the same this year. ]]></description>
+            <content:encoded><![CDATA[
+
+  
+	<div id="downloadsPrefs">
+		<p style="font-size: 1.5rem">Note from the author...</p>
+		<p>My posts frequently (like this one) have a 'theme' and tend to use a number of images for visual flourish. Personally, I like it that way, I find it more engaging and I prefer for people to read it that way.  However, for users on a metered or slow connection, downloading unnecessary images is, well, unnecessary, potentially costly and kind of rude.  Just to be polite to my users, I offer the ability for you to opt out of 'optional' images if the total size of viewing the page would exceed a budget I have currently defined as 200k...
+		</p>
+		<p><label>Show me all the images when I read <input type="checkbox" id="download-all-images-pref" checked=""></label></p>
+		<p><label>Don't ask me again on this device <input type="checkbox" id="download-all-images-pref-save"></label></p>
+		<p><button id="setDownloadPrefs">Dismiss</button></p>
+	</div>
+	
+  
+  <contextual-heading role="heading" aria-level="1" style="font-size: 2rem;">2020: The Good Parts</contextual-heading>
+ 
+<p class="segue">Each year, Igalians take a moment and look back on the year and assess what we've accomplished. Last year I wrote a wrap up for 2019 and hinted at being excited about some things in 2020 - I'd like to do the same this year. </p>  
+
+<p>Even in a "normal" year, making a list of things that you've actually accomplished can be a good exercise for your mental health. I do it once a month, in fact. It's easy to loose sight beyond what you're thinking of in the moment and feel overwhelmed by the sheer volume. If I can be honest with you, since it's just between us, heading into this exercise always fills me with a sense of dread.  It always seems like now is the time when you have to come to grips with how little you actually accomplished this month.  <strong>But</strong>, my experience is always quite the opposite:  The simple act of even <em>starting</em> to create a list of things you actually did can give you a whole new perspective. Sometimes, usually maybe, I don't even finish the list because I hit a point where I say "Wow, actually, that's quite a lot" and feel quite a bit better.</p>
+
+<p>But, 2020 is, of course, not a "normal year".  It's more than fair to expect less of ourselves.  So, when I sat down to write about what we accomplished, I was faced with this familiar sinking feeling -- and I had precisely the same reaction: Wow! We did <em>a lot</em>.  So, let me share some highlights of Igalia's 2020: The Good Parts.</p>
+
+<section class="sectioning">
+  <contextual-heading role="heading" aria-level="2" style="font-size: 2.25rem;">All the browsers</contextual-heading>
+
+  <p>At Igalia, we are significant contributors to all of the browser engines (and several of the browsers that sit atop them too).  There's a lot of ways you can look at just <em>how much</em> we do, and none of them are perfect, but commits are one kind of easy, but fuzzy measure of comparatively how much we did in the community.  So, how much comparatively less did we do this year, than last? The opposite actually!</p>
+
+  <p>Igalia is again the #2 contributor to Chromium (Microsoft is coming up fast though).  We are also again the #2 contributor to WebKit. Last year we raised some eyebrows by announcing that we had <em>11%</em> of the total commits.  This year: <strong>15.5%!</strong>  We also are up one place to the #6 contributors in the mozilla-central repository and up <em>three places</em> to #4 is servo!  Keep in mind that #1 in all of these are the project owners (Google, Apple and Mozilla respectively).</p>
+
+    <figure>
+      <img width="500" src="/media/webkit-2020-contributions.png" style="display:block;margin: 1rem auto;">
+      <figcaption style="max-width: 400px;margin: 1rem auto;">We were huge contributors everywhere, but look at this: 15.5% of <em>all</em> WebKit Contributions in 2020!!</figcaption>
+    </figure>
+</section>
+<section class="sectioning">
+  <contextual-heading role="heading" aria-level="2" style="font-size: 2.25rem;">We worked on <em>so many web features</em>!</contextual-heading>
+
+<p>Some of the things we worked on are big or exciting things that everyone can appreciate and I want to highlight a little more here, but the list of features where we worked on at least one (sometimes two) implementations would be prohibitively long!  Here is a very partial list of ones we worked on that I won't be highlighting.</p>
+
+<ul>
+<li>Lazy loading </li>
+<li>stale-while-revalidate </li>
+<li>referrer-policy</li>
+<li>Fixing bugs with XHR/fetch </li>
+<li>Interop/Improvements to ResizeObserver/IntersectionObserver</li>
+<li>Custom Properties performance</li>
+<li>Text wrapping, line breaking and whitespace</li>
+<li>Trailing ideograph spaces</li>
+<li>Default aspect ratio from HTML Attributes</li>
+<li>scroll snap</li>
+<li>scroll-behavior</li>
+<li>overscroll-behavior</li>
+<li>scrollend event</li>
+<li>Gamepad </li>
+<li>PointerLock</li>
+<li>list-stlye-type: &lt;string&gt;</li>
+<li>::marker</li>
+<li>Lgical inset/border/padding/margin</li>
+</ul>
+
+  <section class="sectioning">
+    <contextual-heading role="heading" aria-level="3" style="font-size: 2.5rem;">A few web feature highlights...</contextual-heading>
+    <p>Here are just a few things that I'd like to say a little more about...</p>
+
+    <section class="sectioning">
+      <contextual-heading role="heading" aria-level="4" style="font-size: 2.75rem;">Container Queries</contextual-heading>
+<p>I am exceptionally pleased that we have been pivotal in moving the ball in conversations on container queries.  Not only did our outreach and discussions last year change the temperature of the room, but we got a start on two proposals and actually had CSS Working Group discussion on both.  I'm also really pleased that Igalia built a functional prototype for further review and discussion of our switch proposal and that we've been collaborating with Google and Miriam Suzanne who have picked up where David Baron's proposal left. </p>
+
+  <figure class="captioned-image  optional">
+    <img data-src="/media/unicorns.gif" alt="unicorns walking around in paradise">
+    <figcaption>It's like we just found not one, but two mytical unicorns</figcaption>
+  </figure>
+  <p>I expect 2021 to be an exciting year of developments in this space where we get a lot more answers sorted out.</p>
+</section>
+<section class="sectioning">
+  <contextual-heading role="heading" aria-level="4" style="font-size: 2.75rem;">MathML</contextual-heading>
+
+  <p>Two years ago, MathML fell into a <a href="https://bkardell.com/blog/Math.html">strange place in web history</a> and had an uncertain future in browsers. Igalia has led the charge in righting all of this.  Along with the MathML Refresh Community Group, peer implementers and help from various standards groups we now have <a href="https://mathml-refresh.github.io/mathml-core/">MathML-Core</a> - a well defined spec, with tests that define the most meaningful parts of MathML and their relation to the web platform as interoperability targets. We've made a ton of proress in aligning support, describing how things fit, and invested a lot of time this year up-streaming work in Chromium.  Some additional work remains for next year pending Layout NG work at Google, but it's looking better and better and most of it shipping behind the experimental web platform features flag today.  We also helped create and advocate for a new W3C charter for math.</p>
+  <p>But let me share why I'm especially proud of it...</p>
+  <figure class="captioned-image  optional">
+    <img data-src="/media/math-chalkboard.gif" alt="A professor in front of a chalkboard full of math with space scenes super-imposed">
+  </figure>
+  <p>Because Math is <em>text</em>, and a phenomenally import <em>kind</em> of text.  The importance of begin able to render formulae is really highlighted during a pandemic, where researchers of all kinds need to share information and students are learning from home. I'm super proud to be a part of this single action that I believe really is a leap in helping the Web realize its potential for these societally important issues.</p>
+  </section>
+  <section class="sectioning">
+    <contextual-heading role="heading" aria-level="4" style="font-size: 2.75rem;">SVG/CSS Alignment</contextual-heading>
+
+    <p>At the end of last year's post I hinted about something we were working on.  The practical upshots that people will more immediately relate to will be the abilities to do 3D transforms in SVG and <em>hardware accelerate</em> SVG.</p>
+
+    <p>These are long requested enhancements but also come with historical baggage, so it's been difficult for browsers to invest.  It's a great illustration of why Igalia is great for the ecosystem.  This work is getting investment priority because Igalia are the maintainers of <a href="https://wpewebkit.org/">WPE WebKit</a>, the official WebKit port for embedded devices.</p>
+    <div class="captioned-image" style="background-color: transparent; margin: 1rem 15%">
+      <img src="https://wpewebkit.org/assets/svg/blue_Web_Logo.svg" alt=""></div>
+    
+
+    <p>Software on embedded devices has a marriage of unique qualities that lots of controls and displays want to be SVG-based, but also have to deal with typically low end hardware, which usually still has a GPU.  Thus, this problem for those devices is a few orders of magnitude more critical than it is elsewhere.  However, our work will ultimately fund improvements for all WebKit browsers, which also incentivizes others to follow!</p>
+</section>
+<section class="sectioning">
+  <contextual-heading role="heading" aria-level="4" style="font-size: 2.75rem;">OffscreenCanvas</contextual-heading>
+
+  <p>One thing we haven't talked about yet, but I can't wait to is OffscreenCanvas.  Apple originally pioneered the <code>&lt;canvas&gt;</code> element and it's super cool and useful for a lot of stuff.  Unfortunately, it is historically tied to the DOM, did its work on the main thread and couldn't be used in workers.  This is terrible because <em>many</em> of the use cases it is really great for are real intense.  This is a bad situation - luckily, we're working on it!  Chris Lord has been working on OffscreenCanvas in WebKit and it looks great so far - everything except text portions is done and I've been using it with great results.</p>
+
+  <p>OffscreenCanvas can be used in workers, and you can 'snap off' and transfer the context from a DOM rendered canvas to a worker too.  So great!  And guess why we're investing in it? You guessed it: Embedded.</p>
+</section>
+<section class="sectioning">
+<contextual-heading role="heading" aria-level="4" style="font-size: 2.75rem;">WebXR</contextual-heading>
+  <p>I mean, this is kinda huge right? Igalia is investing to help move XR forward in WebKit - part of this is generalized for WebKit, and I think that is kind of awesome.  Still early days and there's a lot to do, but this is pretty exciting to see developing and I'm proud that Igalia is helping make it happen!</p>
+</section>
+<section class="sectioning">
+  <contextual-heading role="heading" aria-level="4" style="font-size: 2.75rem;">Important JavaScript stuff!</contextual-heading>
+
+  <p>We Pushed and shipped public/private instance and static fields in JavaScriptCore (WebKit). Private methods are ongoing.  We've really improved coordination with WebKit at large this year, and we're constantly improving the 32bit JSC too.  We're working on WebAssembly and numerous emerging TC39 specifications we're excited about: Module blocks, decorators, bundling, Realms, decimal, records and typles, Temporal and lots of things for ECMA 402 (Internationalization) too!</p>
+</section>
+</section>
+
+<section class="sectioning">
+
+  <contextual-heading role="heading" aria-level="3" style="font-size: 2.5rem;">Web Related, non-feature things</contextual-heading>
+
+  <p>There's a lot of other things that we accomplished this year at Igalia which are pretty exciting too!</p>
+
+  <ul>
+  <li><p><strong>Open Prioritization!</strong>  This year we ran a pilot experiment called <a href="https://open-prioritization.igalia.com">"Open Prioritization"</a> to start some big and complex discussions and attempt to find ways to give more people a voice in the prioritization of work on the commons.  We partnered with Open Collective and while I can't say the first experiment was flawless, we learned a lot and are moving forward with a project picked and funded by the larger community as well as establishing a collective to continue to do this!  </p></li>
+  <li><p><strong>Our new podcast!</strong>  This year we also launched a podcast.  We've had great discussions on complex topics and had amazing guests, including one of the creators of CSS <a href="https://en.wikipedia.org/wiki/H%C3%A5kon_Wium_Lie">Håkon Wium Lie</a>, people from several browser vendors past and present, people who helped drive the two historically special embeddable forms in HTML (MathML and SVG), and some developer and web friends.  It's available via all of your favorite podcasting services, a playlist on our YouTube channel and <a href="https://www-ci-dev.igalia.com/24-7/chats">on our website</a></p></li>
+  <li><p><strong>ipfs</strong> This year we also began working with Protocol Labs to improve some things around protocol handers - those are great for the web at large and it's interesting and exciting to see what is happening with things like IPFS!</p></li>
+  <li><p><strong>Joined MDN PAB</strong> This year Igalia also joined the MDN Product Advisory Board, and we're looking forward to helping ensure that the vital resource that is MDN remains healthy!</p></li>
+  <li><p><strong>WPE</strong> You might know that Igalia are the maintainers of a few of the <a href="https://webkit.org/downloads/">official WebKit ports</a>, and one of them is for embedded systems. I'm <em>really</em> pleased with all of the thins that this has allowed us to help drive for WebKit and the larger Web Platform.  However, embedded "browsers" was kind of a new topic to me when I began my work here and it's somewhat different than the sorts of challenges I am used to. With embedded systems you typically build the OS specifically for the device.  Sharing the same web tech commons is phenomenal, but for many developers like myself, my questions about embedded were difficult to explore on my own as someone who rarely compiles a browser, much less an operating system!  I'm <em>really</em> pleased with the progress we've made on this, making <a href="https://wpewebkit.org/">wpewebkit.org</a> more friendly, informative and relevant to people who might not already be experts at this, including making easy step-wise options available for people to explore.  Someone with no experience and download a raspbian based OS with WPE WebKit on it and flash it right on a Raspberry Pi just to explore.  For a lot of pet projects,  you can do a lot with that too.  That's not super representative of a good embedded system in terms of performance and things, but it is <em>very</em> easy and it's maintained by us, so it's pretty up to date.  A short step away, if you're pretty comfortable with Linux shell and ssh, you can get a minimal/optimized for Raspberry Pi 3 install you can flash right onto your Pi that runs a Weston Wayland compositor.  Finally, if you already kind of know what you're doing, we maintain Yocto receipes for developers to more easily build and maintain their real systems.</p></li>
+  <li><p><strong>Vulkan! driver</strong> - 
+  You might know that Igalia does all kinds of stuff beyond just the Web, we work on all of the things that <em>power</em> the web too, and kind of all the way down - so we have lots of areas of specialization.  I think it's really cool that we partnered with Raspberry Pi to create a Vulkan driver for the Mesa graphic driver stack for the latest generation of Raspberry Pi, <a href="https://www.raspberrypi.org/blog/vulkan-update-were-conformant/">achieving conformance in less than 1 year</a>, passing over 100k tests from Kronos' Conformance Test Suite since our initial announcement of drawing the first triangle!</p></li>
+  </ul>
+</section>
+<section class="sectioning">
+  <contextual-heading role="heading" aria-level="3" style="font-size: 2.5rem;">Looking forward...???</contextual-heading>
+  <p>So, what exciting things can we look forward to in 2021?  Definitely, advancing all of the things above - and that's exciting enough.  It's hard to know what to be most excited for, but I'm personaly really looking forward to watchin Open Prioritization grow and get a real good idea and very concrete progress on Container Queries issues.  We've also got our eyes on some new things we'll be starting to talk about in the next year, so stay tuned on those too.</p>
+
+  <p>One, that I'd like to mention, however is <strong>tabs</strong>.  Over the past year, Igalia has begun to get involved with efforts like OpenUI and I've been talking to developers and peers at Igalia about tabs. I had some thoughts and ideas that I posted earlier this year.  Just recently some actual work and collaboration has been done - gettinga number of us with similar ideas together to sort  <a href="https://github.com/thepassle/generic-components/">out a useful custom element</a> that we can test out, as well as working in OpenUI on aligning all of the stars we'll need to align as we attempt to approach something like standard tabs.   It is <em>very</em> early days here, but we've gone from a vague blog post to some actual involvement and we're getting behind the idea - which is pretty exciting and I can't wait to say more concrete things here!</p>
+</section>
+
+</section>
+]]></content:encoded>
+        </item>
         <item>
             <title><![CDATA[Open Prioritization First Experiment Wrap Up]]></title>
             <link>https://bkardell.com/blog/FirstOPFinished.html</link>
@@ -1079,151 +1224,6 @@ To win the game.</pre>
 </em>]]></content:encoded>
         </item>
         <item>
-            <title><![CDATA[2020: The Good Parts]]></title>
-            <link>https://bkardell.com/blog/2020-Wrap.html</link>
-            <guid>https://bkardell.com/blog/2020-Wrap.html</guid>
-            <pubDate>Sun, 22 Dec 2019 05:00:00 GMT</pubDate>
-            <description><![CDATA[Each year, Igalians take a moment and look back on the year and assess what we've accomplished. Last year I wrote a wrap up for 2019 and hinted at being excited about some things in 2020 - I'd like to do the same this year. ]]></description>
-            <content:encoded><![CDATA[
-
-  
-	<div id="downloadsPrefs">
-		<p style="font-size: 1.5rem">Note from the author...</p>
-		<p>My posts frequently (like this one) have a 'theme' and tend to use a number of images for visual flourish. Personally, I like it that way, I find it more engaging and I prefer for people to read it that way.  However, for users on a metered or slow connection, downloading unnecessary images is, well, unnecessary, potentially costly and kind of rude.  Just to be polite to my users, I offer the ability for you to opt out of 'optional' images if the total size of viewing the page would exceed a budget I have currently defined as 200k...
-		</p>
-		<p><label>Show me all the images when I read <input type="checkbox" id="download-all-images-pref" checked=""></label></p>
-		<p><label>Don't ask me again on this device <input type="checkbox" id="download-all-images-pref-save"></label></p>
-		<p><button id="setDownloadPrefs">Dismiss</button></p>
-	</div>
-	
-  
-  <contextual-heading role="heading" aria-level="1" style="font-size: 2rem;">2020: The Good Parts</contextual-heading>
- 
-<p class="segue">Each year, Igalians take a moment and look back on the year and assess what we've accomplished. Last year I wrote a wrap up for 2019 and hinted at being excited about some things in 2020 - I'd like to do the same this year. </p>  
-
-<p>Even in a "normal" year, making a list of things that you've actually accomplished can be a good exercise for your mental health. I do it once a month, in fact. It's easy to loose sight beyond what you're thinking of in the moment and feel overwhelmed by the sheer volume. If I can be honest with you, since it's just between us, heading into this exercise always fills me with a sense of dread.  It always seems like now is the time when you have to come to grips with how little you actually accomplished this month.  <strong>But</strong>, my experience is always quite the opposite:  The simple act of even <em>starting</em> to create a list of things you actually did can give you a whole new perspective. Sometimes, usually maybe, I don't even finish the list because I hit a point where I say "Wow, actually, that's quite a lot" and feel quite a bit better.</p>
-
-<p>But, 2020 is, of course, not a "normal year".  It's more than fair to expect less of ourselves.  So, when I sat down to write about what we accomplished, I was faced with this familiar sinking feeling -- and I had precisely the same reaction: Wow! We did <em>a lot</em>.  So, let me share some highlights of Igalia's 2020: The Good Parts.</p>
-
-<section class="sectioning">
-  <contextual-heading role="heading" aria-level="2" style="font-size: 2.25rem;">All the browsers</contextual-heading>
-
-  <p>At Igalia, we are significant contributors to all of the browser engines (and several of the browsers that sit atop them too).  There's a lot of ways you can look at just <em>how much</em> we do, and none of them are perfect, but commits are one kind of easy, but fuzzy measure of comparatively how much we did in the community.  So, how much comparatively less did we do this year, than last? The opposite actually!</p>
-
-  <p>Igalia is again the #2 contributor to Chromium (Microsoft is coming up fast though).  We are also again the #2 contributor to WebKit. Last year we raised some eyebrows by announcing that we had <em>11%</em> of the total commits.  This year: <strong>15.5%!</strong>  We also are up one place to the #6 contributors in the mozilla-central repository and up <em>three places</em> to #4 is servo!  Keep in mind that #1 in all of these are the project owners (Google, Apple and Mozilla respectively).</p>
-
-    <figure>
-      <img width="500" src="/media/webkit-2020-contributions.png" style="display:block;margin: 1rem auto;">
-      <figcaption style="max-width: 400px;margin: 1rem auto;">We were huge contributors everywhere, but look at this: 15.5% of <em>all</em> WebKit Contributions in 2020!!</figcaption>
-    </figure>
-</section>
-<section class="sectioning">
-  <contextual-heading role="heading" aria-level="2" style="font-size: 2.25rem;">We worked on <em>so many web features</em>!</contextual-heading>
-
-<p>Some of the things we worked on are big or exciting things that everyone can appreciate and I want to highlight a little more here, but the list of features where we worked on at least one (sometimes two) implementations would be prohibitively long!  Here is a very partial list of ones we worked on that I won't be highlighting.</p>
-
-<ul>
-<li>Lazy loading </li>
-<li>stale-while-revalidate </li>
-<li>referrer-policy</li>
-<li>Fixing bugs with XHR/fetch </li>
-<li>Interop/Improvements to ResizeObserver/IntersectionObserver</li>
-<li>Custom Properties performance</li>
-<li>Text wrapping, line breaking and whitespace</li>
-<li>Trailing ideograph spaces</li>
-<li>Default aspect ratio from HTML Attributes</li>
-<li>scroll snap</li>
-<li>scroll-behavior</li>
-<li>overscroll-behavior</li>
-<li>scrollend event</li>
-<li>Gamepad </li>
-<li>PointerLock</li>
-<li>list-stlye-type: &lt;string&gt;</li>
-<li>::marker</li>
-<li>Lgical inset/border/padding/margin</li>
-</ul>
-
-  <section class="sectioning">
-    <contextual-heading role="heading" aria-level="3" style="font-size: 2.5rem;">A few web feature highlights...</contextual-heading>
-    <p>Here are just a few things that I'd like to say a little more about...</p>
-
-    <section class="sectioning">
-      <contextual-heading role="heading" aria-level="4" style="font-size: 2.75rem;">Container Queries</contextual-heading>
-<p>I am exceptionally pleased that we have been pivotal in moving the ball in conversations on container queries.  Not only did our outreach and discussions last year change the temperature of the room, but we got a start on two proposals and actually had CSS Working Group discussion on both.  I'm also really pleased that Igalia built a functional prototype for further review and discussion of our switch proposal and that we've been collaborating with Google and Miriam Suzanne who have picked up where David Baron's proposal left. </p>
-
-  <figure class="captioned-image  optional">
-    <img data-src="/media/unicorns.gif" alt="unicorns walking around in paradise">
-    <figcaption>It's like we just found not one, but two mytical unicorns</figcaption>
-  </figure>
-  <p>I expect 2021 to be an exciting year of developments in this space where we get a lot more answers sorted out.</p>
-</section>
-<section class="sectioning">
-  <contextual-heading role="heading" aria-level="4" style="font-size: 2.75rem;">MathML</contextual-heading>
-
-  <p>Two years ago, MathML fell into a <a href="https://bkardell.com/blog/Math.html">strange place in web history</a> and had an uncertain future in browsers. Igalia has led the charge in righting all of this.  Along with the MathML Refresh Community Group, peer implementers and help from various standards groups we now have <a href="https://mathml-refresh.github.io/mathml-core/">MathML-Core</a> - a well defined spec, with tests that define the most meaningful parts of MathML and their relation to the web platform as interoperability targets. We've made a ton of proress in aligning support, describing how things fit, and invested a lot of time this year up-streaming work in Chromium.  Some additional work remains for next year pending Layout NG work at Google, but it's looking better and better and most of it shipping behind the experimental web platform features flag today.  We also helped create and advocate for a new W3C charter for math.</p>
-  <p>But let me share why I'm especially proud of it...</p>
-  <figure class="captioned-image  optional">
-    <img data-src="/media/math-chalkboard.gif" alt="A professor in front of a chalkboard full of math with space scenes super-imposed">
-  </figure>
-  <p>Because Math is <em>text</em>, and a phenomenally import <em>kind</em> of text.  The importance of begin able to render formulae is really highlighted during a pandemic, where researchers of all kinds need to share information and students are learning from home. I'm super proud to be a part of this single action that I believe really is a leap in helping the Web realize its potential for these societally important issues.</p>
-  </section>
-  <section class="sectioning">
-    <contextual-heading role="heading" aria-level="4" style="font-size: 2.75rem;">SVG/CSS Alignment</contextual-heading>
-
-    <p>At the end of last year's post I hinted about something we were working on.  The practical upshots that people will more immediately relate to will be the abilities to do 3D transforms in SVG and <em>hardware accelerate</em> SVG.</p>
-
-    <p>These are long requested enhancements but also come with historical baggage, so it's been difficult for browsers to invest.  It's a great illustration of why Igalia is great for the ecosystem.  This work is getting investment priority because Igalia are the maintainers of <a href="https://wpewebkit.org/">WPE WebKit</a>, the official WebKit port for embedded devices.</p>
-    <div class="captioned-image" style="background-color: transparent; margin: 1rem 15%">
-      <img src="https://wpewebkit.org/assets/svg/blue_Web_Logo.svg" alt=""></div>
-    
-
-    <p>Software on embedded devices has a marriage of unique qualities that lots of controls and displays want to be SVG-based, but also have to deal with typically low end hardware, which usually still has a GPU.  Thus, this problem for those devices is a few orders of magnitude more critical than it is elsewhere.  However, our work will ultimately fund improvements for all WebKit browsers, which also incentivizes others to follow!</p>
-</section>
-<section class="sectioning">
-  <contextual-heading role="heading" aria-level="4" style="font-size: 2.75rem;">OffscreenCanvas</contextual-heading>
-
-  <p>One thing we haven't talked about yet, but I can't wait to is OffscreenCanvas.  Apple originally pioneered the <code>&lt;canvas&gt;</code> element and it's super cool and useful for a lot of stuff.  Unfortunately, it is historically tied to the DOM, did its work on the main thread and couldn't be used in workers.  This is terrible because <em>many</em> of the use cases it is really great for are real intense.  This is a bad situation - luckily, we're working on it!  Chris Lord has been working on OffscreenCanvas in WebKit and it looks great so far - everything except text portions is done and I've been using it with great results.</p>
-
-  <p>OffscreenCanvas can be used in workers, and you can 'snap off' and transfer the context from a DOM rendered canvas to a worker too.  So great!  And guess why we're investing in it? You guessed it: Embedded.</p>
-</section>
-<section class="sectioning">
-<contextual-heading role="heading" aria-level="4" style="font-size: 2.75rem;">WebXR</contextual-heading>
-  <p>I mean, this is kinda huge right? Igalia is investing to help move XR forward in WebKit - part of this is generalized for WebKit, and I think that is kind of awesome.  Still early days and there's a lot to do, but this is pretty exciting to see developing and I'm proud that Igalia is helping make it happen!</p>
-</section>
-<section class="sectioning">
-  <contextual-heading role="heading" aria-level="4" style="font-size: 2.75rem;">Important JavaScript stuff!</contextual-heading>
-
-  <p>We Pushed and shipped public/private instance and static fields in JavaScriptCore (WebKit). Private methods are ongoing.  We've really improved coordination with WebKit at large this year, and we're constantly improving the 32bit JSC too.  We're working on WebAssembly and numerous emerging TC39 specifications we're excited about: Module blocks, decorators, bundling, Realms, decimal, records and typles, Temporal and lots of things for ECMA 402 (Internationalization) too!</p>
-</section>
-</section>
-
-<section class="sectioning">
-
-  <contextual-heading role="heading" aria-level="3" style="font-size: 2.5rem;">Web Related, non-feature things</contextual-heading>
-
-  <p>There's a lot of other things that we accomplished this year at Igalia which are pretty exciting too!</p>
-
-  <ul>
-  <li><p><strong>Open Prioritization!</strong>  This year we ran a pilot experiment called <a href="https://open-prioritization.igalia.com">"Open Prioritization"</a> to start some big and complex discussions and attempt to find ways to give more people a voice in the prioritization of work on the commons.  We partnered with Open Collective and while I can't say the first experiment was flawless, we learned a lot and are moving forward with a project picked and funded by the larger community as well as establishing a collective to continue to do this!  </p></li>
-  <li><p><strong>Our new podcast!</strong>  This year we also launched a podcast.  We've had great discussions on complex topics and had amazing guests, including one of the creators of CSS <a href="https://en.wikipedia.org/wiki/H%C3%A5kon_Wium_Lie">Håkon Wium Lie</a>, people from several browser vendors past and present, people who helped drive the two historically special embeddable forms in HTML (MathML and SVG), and some developer and web friends.  It's available via all of your favorite podcasting services, a playlist on our YouTube channel and <a href="https://www-ci-dev.igalia.com/24-7/chats">on our website</a></p></li>
-  <li><p><strong>ipfs</strong> This year we also began working with Protocol Labs to improve some things around protocol handers - those are great for the web at large and it's interesting and exciting to see what is happening with things like IPFS!</p></li>
-  <li><p><strong>Joined MDN PAB</strong> This year Igalia also joined the MDN Product Advisory Board, and we're looking forward to helping ensure that the vital resource that is MDN remains healthy!</p></li>
-  <li><p><strong>WPE</strong> You might know that Igalia are the maintainers of a few of the <a href="https://webkit.org/downloads/">official WebKit ports</a>, and one of them is for embedded systems. I'm <em>really</em> pleased with all of the thins that this has allowed us to help drive for WebKit and the larger Web Platform.  However, embedded "browsers" was kind of a new topic to me when I began my work here and it's somewhat different than the sorts of challenges I am used to. With embedded systems you typically build the OS specifically for the device.  Sharing the same web tech commons is phenomenal, but for many developers like myself, my questions about embedded were difficult to explore on my own as someone who rarely compiles a browser, much less an operating system!  I'm <em>really</em> pleased with the progress we've made on this, making <a href="https://wpewebkit.org/">wpewebkit.org</a> more friendly, informative and relevant to people who might not already be experts at this, including making easy step-wise options available for people to explore.  Someone with no experience and download a raspbian based OS with WPE WebKit on it and flash it right on a Raspberry Pi just to explore.  For a lot of pet projects,  you can do a lot with that too.  That's not super representative of a good embedded system in terms of performance and things, but it is <em>very</em> easy and it's maintained by us, so it's pretty up to date.  A short step away, if you're pretty comfortable with Linux shell and ssh, you can get a minimal/optimized for Raspberry Pi 3 install you can flash right onto your Pi that runs a Weston Wayland compositor.  Finally, if you already kind of know what you're doing, we maintain Yocto receipes for developers to more easily build and maintain their real systems.</p></li>
-  <li><p><strong>Vulkan! driver</strong> - 
-  You might know that Igalia does all kinds of stuff beyond just the Web, we work on all of the things that <em>power</em> the web too, and kind of all the way down - so we have lots of areas of specialization.  I think it's really cool that we partnered with Raspberry Pi to create a Vulkan driver for the Mesa graphic driver stack for the latest generation of Raspberry Pi, <a href="https://www.raspberrypi.org/blog/vulkan-update-were-conformant/">achieving conformance in less than 1 year</a>, passing over 100k tests from Kronos' Conformance Test Suite since our initial announcement of drawing the first triangle!</p></li>
-  </ul>
-</section>
-<section class="sectioning">
-  <contextual-heading role="heading" aria-level="3" style="font-size: 2.5rem;">Looking forward...???</contextual-heading>
-  <p>So, what exciting things can we look forward to in 2021?  Definitely, advancing all of the things above - and that's exciting enough.  It's hard to know what to be most excited for, but I'm personaly really looking forward to watchin Open Prioritization grow and get a real good idea and very concrete progress on Container Queries issues.  We've also got our eyes on some new things we'll be starting to talk about in the next year, so stay tuned on those too.</p>
-
-  <p>One, that I'd like to mention, however is <strong>tabs</strong>.  Over the past year, Igalia has begun to get involved with efforts like OpenUI and I've been talking to developers and peers at Igalia about tabs. I had some thoughts and ideas that I posted earlier this year.  Just recently some actual work and collaboration has been done - gettinga number of us with similar ideas together to sort  <a href="https://github.com/thepassle/generic-components/">out a useful custom element</a> that we can test out, as well as working in OpenUI on aligning all of the stars we'll need to align as we attempt to approach something like standard tabs.   It is <em>very</em> early days here, but we've gone from a vague blog post to some actual involvement and we're getting behind the idea - which is pretty exciting and I can't wait to say more concrete things here!</p>
-</section>
-
-</section>
-]]></content:encoded>
-        </item>
-        <item>
             <title><![CDATA[2019, That's a Wrap.]]></title>
             <link>https://bkardell.com/blog/2019-Wrap.html</link>
             <guid>https://bkardell.com/blog/2019-Wrap.html</guid>
@@ -1756,6 +1756,40 @@ export const _internalPromise =
 ]]></content:encoded>
         </item>
         <item>
+            <title><![CDATA[Moving Math Forward, Thoughts and Experiments]]></title>
+            <link>https://bkardell.com/blog/MathForward.html</link>
+            <guid>https://bkardell.com/blog/MathForward.html</guid>
+            <pubDate>Tue, 09 Jul 2019 04:00:00 GMT</pubDate>
+            <description><![CDATA[
+		In this piece, I explain details on thoughts on experiments and conversations around moving Math forward on the Web.
+	]]></description>
+            <content:encoded><![CDATA[
+	<contextual-heading role="heading" aria-level="1" style="font-size: 2rem;">Moving Math Forward, Thoughts and Experiments</contextual-heading>
+	<p class="segue">
+		In this piece, I explain details on thoughts on experiments and conversations around moving Math forward on the Web.
+	</p>
+		
+	<p>For some context, <a href="https://mathml.igalia.com" rel="nofollow">my team is actively working on implementing MathML in Chromium</a> (the engine Chrome, Edge, Samsung, Brave, UC Browser and lots of other share), more specifically MathML Core.  MathML has long had implementations in Safari and Firefox and has an 
+	intersting history that leaves it in a very unique spot.
+	</p>
+	<p>MathML Core, defines the comparatively small, but well defined and mostly interoperable subset of MathML - with an aim of resolving uniqueness.  It provides details about how it actually <em>fits</em> into the layers platform in well defined ways and to explain their existing magic in terms of the platform - to expose it if is it new.  As such, in indirectly aims to provide a basis for moving <em>many</em> things forward.</p>
+
+	<section class="sectioning">
+		<contextual-heading role="heading" aria-level="2" style="font-size: 2.25rem;">A thought experiment</contextual-heading>
+	<p>Recently conversations in the web platform at large have begun about <a href="https://github.com/whatwg/html/issues/4696">moving HTML forward and polyfilling elements</a>.   Since we are actively working on a 'core' ourselves, we thought this would be an interesting discussion and experiment:  We asked "What if MathML Core was largely 'done' and you would import other support to move forward?"  Those things <em>could</em> potentially be shipped by a browser, but there's no guarantee they ever would.  However, they could also be loaded as polyfills and in standard means that help omit many of the problems that traditional polyfills create.</p>
+	<p>To explain this, we took some elements that <em>aren't</em> in MathML Core, but are specified elsewhere, as an interesting stand in.  One such example is an element called <code>mfenced</code>.  <code>mfenced</code> is just a "more convenient way" of writing some math that has a lot of 'fences' (parens, pipes, braces, and so on).  The original spec even said "It is strictly equivalent to this expanded, longer form".</p>
+	<p>Today, 'polyfills' exist for it if your browser doesn't support it, and today, those work by (if your browser doesn't support it) destroying your tree and replacing it with the equivalent version, at some undefined point in time.</p>
+	<p>We experimentally changed very little in our implementation and it now considers any MathML 'unknown element' as on the whitelist of elements which can have a Shadow DOM.  We used a simple stand-in using Mutation Observer to allow any of those to be defined without a dash, and wrote a polyfill for <code>mfenced</code> which simply expands it into Shadow DOM.</p>
+	<p>For purposes of discussion, we illustrated how we could, in theory, use MathML Core, import some new vocabulary (potentially a future proposal, or just some slang) and easily expand it into some Shadow DOM, leaving you with the tree that you authored and all of the things just fitting together nicely and predictably. Below is a screenshot from our actual implementation experiment.</p>
+	<p><a target="_blank" rel="noopener noreferrer" href="https://camo.githubusercontent.com/8e0c8bf38ccd6fa1a20a3d3fa2299a7e32291d32/68747470733a2f2f63646e2e676c697463682e636f6d2f39303035373538332d326137392d343662372d623565662d36636566336265383764613625324653637265656e73686f7425323066726f6d253230323031392d30372d303725323031322d35322d35302e706e673f763d31353632353138353030313933"><img src="https://camo.githubusercontent.com/8e0c8bf38ccd6fa1a20a3d3fa2299a7e32291d32/68747470733a2f2f63646e2e676c697463682e636f6d2f39303035373538332d326137392d343662372d623565662d36636566336265383764613625324653637265656e73686f7425323066726f6d253230323031392d30372d303725323031322d35322d35302e706e673f763d31353632353138353030313933" alt="screenshot of element and shadow dom in experimental browser build" data-canonical-src="https://cdn.glitch.com/90057583-2a79-46b7-b5ef-6cef3be87da6%2FScreenshot%20from%202019-07-07%2012-52-50.png?v=1562518500193" style="max-width:100%;"></a></p>
+	<p>We think that these sorts of experiments are useful and informative and help us ask better questions about how we are fitting into the platform itself: Have we answered the necessary questions?  How does the introduction of a ShadowRoot impact rendering and namespacing, for example?  Could developers really 'plug in' to all the necessary bits?  Could they properly layer atop?  To test this, we also created elements that expand shorthands like TeX and ASCII Math.  In the end, can we ultimately resolve a great a stable core that allows us to move math forward using these things similar in ways similar to Knuth's TeX book/engine - but in a way that is properly "of the platform"?  We think the answer is yes.</p>
+
+	<p>While we're not entirely sure where larger conversations about how HTML will move forward will go, and we aren't claiming that this implementation is anything more than a quick experiment for discussion and testing, the MathML community itself is very excited that such talks are even happening in HTML and <em>very</em> interested in being a part of that conversation, and sorting out how we can move forward together as One Platform™, with less 'specialness'.</p>
+	</section>
+	
+]]></content:encoded>
+        </item>
+        <item>
             <title><![CDATA[One Platform™]]></title>
             <link>https://bkardell.com/blog/OnePlatform.html</link>
             <guid>https://bkardell.com/blog/OnePlatform.html</guid>
@@ -1794,40 +1828,6 @@ export const _internalPromise =
 		<p>While the MathML Community Group is aware that these questions are far from settled, they were universally excited to see such talks begin in HTML and <em>very</em> interested in making sure that they're thinking about those things too: Being a part of that conversation, and sorting out how we can move forward together as One Platform™, with less 'specialness'.</p>
 		<p>If you think this is interesting or useful, please share your support and let someone know.</p>
 		</section></section>]]></content:encoded>
-        </item>
-        <item>
-            <title><![CDATA[Moving Math Forward, Thoughts and Experiments]]></title>
-            <link>https://bkardell.com/blog/MathForward.html</link>
-            <guid>https://bkardell.com/blog/MathForward.html</guid>
-            <pubDate>Tue, 09 Jul 2019 04:00:00 GMT</pubDate>
-            <description><![CDATA[
-		In this piece, I explain details on thoughts on experiments and conversations around moving Math forward on the Web.
-	]]></description>
-            <content:encoded><![CDATA[
-	<contextual-heading role="heading" aria-level="1" style="font-size: 2rem;">Moving Math Forward, Thoughts and Experiments</contextual-heading>
-	<p class="segue">
-		In this piece, I explain details on thoughts on experiments and conversations around moving Math forward on the Web.
-	</p>
-		
-	<p>For some context, <a href="https://mathml.igalia.com" rel="nofollow">my team is actively working on implementing MathML in Chromium</a> (the engine Chrome, Edge, Samsung, Brave, UC Browser and lots of other share), more specifically MathML Core.  MathML has long had implementations in Safari and Firefox and has an 
-	intersting history that leaves it in a very unique spot.
-	</p>
-	<p>MathML Core, defines the comparatively small, but well defined and mostly interoperable subset of MathML - with an aim of resolving uniqueness.  It provides details about how it actually <em>fits</em> into the layers platform in well defined ways and to explain their existing magic in terms of the platform - to expose it if is it new.  As such, in indirectly aims to provide a basis for moving <em>many</em> things forward.</p>
-
-	<section class="sectioning">
-		<contextual-heading role="heading" aria-level="2" style="font-size: 2.25rem;">A thought experiment</contextual-heading>
-	<p>Recently conversations in the web platform at large have begun about <a href="https://github.com/whatwg/html/issues/4696">moving HTML forward and polyfilling elements</a>.   Since we are actively working on a 'core' ourselves, we thought this would be an interesting discussion and experiment:  We asked "What if MathML Core was largely 'done' and you would import other support to move forward?"  Those things <em>could</em> potentially be shipped by a browser, but there's no guarantee they ever would.  However, they could also be loaded as polyfills and in standard means that help omit many of the problems that traditional polyfills create.</p>
-	<p>To explain this, we took some elements that <em>aren't</em> in MathML Core, but are specified elsewhere, as an interesting stand in.  One such example is an element called <code>mfenced</code>.  <code>mfenced</code> is just a "more convenient way" of writing some math that has a lot of 'fences' (parens, pipes, braces, and so on).  The original spec even said "It is strictly equivalent to this expanded, longer form".</p>
-	<p>Today, 'polyfills' exist for it if your browser doesn't support it, and today, those work by (if your browser doesn't support it) destroying your tree and replacing it with the equivalent version, at some undefined point in time.</p>
-	<p>We experimentally changed very little in our implementation and it now considers any MathML 'unknown element' as on the whitelist of elements which can have a Shadow DOM.  We used a simple stand-in using Mutation Observer to allow any of those to be defined without a dash, and wrote a polyfill for <code>mfenced</code> which simply expands it into Shadow DOM.</p>
-	<p>For purposes of discussion, we illustrated how we could, in theory, use MathML Core, import some new vocabulary (potentially a future proposal, or just some slang) and easily expand it into some Shadow DOM, leaving you with the tree that you authored and all of the things just fitting together nicely and predictably. Below is a screenshot from our actual implementation experiment.</p>
-	<p><a target="_blank" rel="noopener noreferrer" href="https://camo.githubusercontent.com/8e0c8bf38ccd6fa1a20a3d3fa2299a7e32291d32/68747470733a2f2f63646e2e676c697463682e636f6d2f39303035373538332d326137392d343662372d623565662d36636566336265383764613625324653637265656e73686f7425323066726f6d253230323031392d30372d303725323031322d35322d35302e706e673f763d31353632353138353030313933"><img src="https://camo.githubusercontent.com/8e0c8bf38ccd6fa1a20a3d3fa2299a7e32291d32/68747470733a2f2f63646e2e676c697463682e636f6d2f39303035373538332d326137392d343662372d623565662d36636566336265383764613625324653637265656e73686f7425323066726f6d253230323031392d30372d303725323031322d35322d35302e706e673f763d31353632353138353030313933" alt="screenshot of element and shadow dom in experimental browser build" data-canonical-src="https://cdn.glitch.com/90057583-2a79-46b7-b5ef-6cef3be87da6%2FScreenshot%20from%202019-07-07%2012-52-50.png?v=1562518500193" style="max-width:100%;"></a></p>
-	<p>We think that these sorts of experiments are useful and informative and help us ask better questions about how we are fitting into the platform itself: Have we answered the necessary questions?  How does the introduction of a ShadowRoot impact rendering and namespacing, for example?  Could developers really 'plug in' to all the necessary bits?  Could they properly layer atop?  To test this, we also created elements that expand shorthands like TeX and ASCII Math.  In the end, can we ultimately resolve a great a stable core that allows us to move math forward using these things similar in ways similar to Knuth's TeX book/engine - but in a way that is properly "of the platform"?  We think the answer is yes.</p>
-
-	<p>While we're not entirely sure where larger conversations about how HTML will move forward will go, and we aren't claiming that this implementation is anything more than a quick experiment for discussion and testing, the MathML community itself is very excited that such talks are even happening in HTML and <em>very</em> interested in being a part of that conversation, and sorting out how we can move forward together as One Platform™, with less 'specialness'.</p>
-	</section>
-	
-]]></content:encoded>
         </item>
         <item>
             <title><![CDATA[Interesting Custom Element Data Begins]]></title>
