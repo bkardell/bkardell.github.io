@@ -4,7 +4,7 @@
         <title>bkardell.com rss feed</title>
         <link>http://bkardell.com/</link>
         <description>Just the bkardell.com rss feed</description>
-        <lastBuildDate>Tue, 22 Dec 2020 21:17:29 GMT</lastBuildDate>
+        <lastBuildDate>Tue, 22 Dec 2020 21:24:43 GMT</lastBuildDate>
         <docs>http://blogs.law.harvard.edu/tech/rss</docs>
         <generator>awesome mix</generator>
         <image>
@@ -1079,6 +1079,151 @@ To win the game.</pre>
 </em>]]></content:encoded>
         </item>
         <item>
+            <title><![CDATA[2020: The Good Parts]]></title>
+            <link>https://bkardell.com/blog/2020-Wrap.html</link>
+            <guid>https://bkardell.com/blog/2020-Wrap.html</guid>
+            <pubDate>Sun, 22 Dec 2019 05:00:00 GMT</pubDate>
+            <description><![CDATA[Each year, Igalians take a moment and look back on the year and assess what we've accomplished. Last year I wrote a wrap up for 2019 and hinted at being excited about some things in 2020 - I'd like to do the same this year. ]]></description>
+            <content:encoded><![CDATA[
+
+  
+	<div id="downloadsPrefs">
+		<p style="font-size: 1.5rem">Note from the author...</p>
+		<p>My posts frequently (like this one) have a 'theme' and tend to use a number of images for visual flourish. Personally, I like it that way, I find it more engaging and I prefer for people to read it that way.  However, for users on a metered or slow connection, downloading unnecessary images is, well, unnecessary, potentially costly and kind of rude.  Just to be polite to my users, I offer the ability for you to opt out of 'optional' images if the total size of viewing the page would exceed a budget I have currently defined as 200k...
+		</p>
+		<p><label>Show me all the images when I read <input type="checkbox" id="download-all-images-pref" checked=""></label></p>
+		<p><label>Don't ask me again on this device <input type="checkbox" id="download-all-images-pref-save"></label></p>
+		<p><button id="setDownloadPrefs">Dismiss</button></p>
+	</div>
+	
+  
+  <contextual-heading role="heading" aria-level="1" style="font-size: 2rem;">2020: The Good Parts</contextual-heading>
+ 
+<p class="segue">Each year, Igalians take a moment and look back on the year and assess what we've accomplished. Last year I wrote a wrap up for 2019 and hinted at being excited about some things in 2020 - I'd like to do the same this year. </p>  
+
+<p>Even in a "normal" year, making a list of things that you've actually accomplished can be a good exercise for your mental health. I do it once a month, in fact. It's easy to loose sight beyond what you're thinking of in the moment and feel overwhelmed by the sheer volume. If I can be honest with you, since it's just between us, heading into this exercise always fills me with a sense of dread.  It always seems like now is the time when you have to come to grips with how little you actually accomplished this month.  <strong>But</strong>, my experience is always quite the opposite:  The simple act of even <em>starting</em> to create a list of things you actually did can give you a whole new perspective. Sometimes, usually maybe, I don't even finish the list because I hit a point where I say "Wow, actually, that's quite a lot" and feel quite a bit better.</p>
+
+<p>But, 2020 is, of course, not a "normal year".  It's more than fair to expect less of ourselves.  So, when I sat down to write about what we accomplished, I was faced with this familiar sinking feeling -- and I had precisely the same reaction: Wow! We did <em>a lot</em>.  So, let me share some highlights of Igalia's 2020: The Good Parts.</p>
+
+<section class="sectioning">
+  <contextual-heading role="heading" aria-level="2" style="font-size: 2.25rem;">All the browsers</contextual-heading>
+
+  <p>At Igalia, we are significant contributors to all of the browser engines (and several of the browsers that sit atop them too).  There's a lot of ways you can look at just <em>how much</em> we do, and none of them are perfect, but commits are one kind of easy, but fuzzy measure of comparatively how much we did in the community.  So, how much comparatively less did we do this year, than last? The opposite actually!</p>
+
+  <p>Igalia is again the #2 contributor to Chromium (Microsoft is coming up fast though).  We are also again the #2 contributor to WebKit. Last year we raised some eyebrows by announcing that we had <em>11%</em> of the total commits.  This year: <strong>15.5%!</strong>  We also are up one place to the #6 contributors in the mozilla-central repository and up <em>three places</em> to #4 is servo!  Keep in mind that #1 in all of these are the project owners (Google, Apple and Mozilla respectively).</p>
+
+    <figure>
+      <img width="500" src="/media/webkit-2020-contributions.png" style="display:block;margin: 1rem auto;">
+      <figcaption style="max-width: 400px;margin: 1rem auto;">We were huge contributors everywhere, but look at this: 15.5% of <em>all</em> WebKit Contributions in 2020!!</figcaption>
+    </figure>
+</section>
+<section class="sectioning">
+  <contextual-heading role="heading" aria-level="2" style="font-size: 2.25rem;">We worked on <em>so many web features</em>!</contextual-heading>
+
+<p>Some of the things we worked on are big or exciting things that everyone can appreciate and I want to highlight a little more here, but the list of features where we worked on at least one (sometimes two) implementations would be prohibitively long!  Here is a very partial list of ones we worked on that I won't be highlighting.</p>
+
+<ul>
+<li>Lazy loading </li>
+<li>stale-while-revalidate </li>
+<li>referrer-policy</li>
+<li>Fixing bugs with XHR/fetch </li>
+<li>Interop/Improvements to ResizeObserver/IntersectionObserver</li>
+<li>Custom Properties performance</li>
+<li>Text wrapping, line breaking and whitespace</li>
+<li>Trailing ideograph spaces</li>
+<li>Default aspect ratio from HTML Attributes</li>
+<li>scroll snap</li>
+<li>scroll-behavior</li>
+<li>overscroll-behavior</li>
+<li>scrollend event</li>
+<li>Gamepad </li>
+<li>PointerLock</li>
+<li>list-stlye-type: &lt;string&gt;</li>
+<li>::marker</li>
+<li>Lgical inset/border/padding/margin</li>
+</ul>
+
+  <section class="sectioning">
+    <contextual-heading role="heading" aria-level="3" style="font-size: 2.5rem;">A few web feature highlights...</contextual-heading>
+    <p>Here are just a few things that I'd like to say a little more about...</p>
+
+    <section class="sectioning">
+      <contextual-heading role="heading" aria-level="4" style="font-size: 2.75rem;">Container Queries</contextual-heading>
+<p>I am exceptionally pleased that we have been pivotal in moving the ball in conversations on container queries.  Not only did our outreach and discussions last year change the temperature of the room, but we got a start on two proposals and actually had CSS Working Group discussion on both.  I'm also really pleased that Igalia built a functional prototype for further review and discussion of our switch proposal and that we've been collaborating with Google and Miriam Suzanne who have picked up where David Baron's proposal left. </p>
+
+  <figure class="captioned-image  optional">
+    <img data-src="/media/unicorns.gif" alt="unicorns walking around in paradise">
+    <figcaption>It's like we just found not one, but two mytical unicorns</figcaption>
+  </figure>
+  <p>I expect 2021 to be an exciting year of developments in this space where we get a lot more answers sorted out.</p>
+</section>
+<section class="sectioning">
+  <contextual-heading role="heading" aria-level="4" style="font-size: 2.75rem;">MathML</contextual-heading>
+
+  <p>Two years ago, MathML fell into a <a href="https://bkardell.com/blog/Math.html">strange place in web history</a> and had an uncertain future in browsers. Igalia has led the charge in righting all of this.  Along with the MathML Refresh Community Group, peer implementers and help from various standards groups we now have <a href="https://mathml-refresh.github.io/mathml-core/">MathML-Core</a> - a well defined spec, with tests that define the most meaningful parts of MathML and their relation to the web platform as interoperability targets. We've made a ton of proress in aligning support, describing how things fit, and invested a lot of time this year up-streaming work in Chromium.  Some additional work remains for next year pending Layout NG work at Google, but it's looking better and better and most of it shipping behind the experimental web platform features flag today.  We also helped create and advocate for a new W3C charter for math.</p>
+  <p>But let me share why I'm especially proud of it...</p>
+  <figure class="captioned-image  optional">
+    <img data-src="/media/math-chalkboard.gif" alt="A professor in front of a chalkboard full of math with space scenes super-imposed">
+  </figure>
+  <p>Because Math is <em>text</em>, and a phenomenally import <em>kind</em> of text.  The importance of begin able to render formulae is really highlighted during a pandemic, where researchers of all kinds need to share information and students are learning from home. I'm super proud to be a part of this single action that I believe really is a leap in helping the Web realize its potential for these societally important issues.</p>
+  </section>
+  <section class="sectioning">
+    <contextual-heading role="heading" aria-level="4" style="font-size: 2.75rem;">SVG/CSS Alignment</contextual-heading>
+
+    <p>At the end of last year's post I hinted about something we were working on.  The practical upshots that people will more immediately relate to will be the abilities to do 3D transforms in SVG and <em>hardware accelerate</em> SVG.</p>
+
+    <p>These are long requested enhancements but also come with historical baggage, so it's been difficult for browsers to invest.  It's a great illustration of why Igalia is great for the ecosystem.  This work is getting investment priority because Igalia are the maintainers of <a href="https://wpewebkit.org/">WPE WebKit</a>, the official WebKit port for embedded devices.</p>
+    <div class="captioned-image" style="background-color: transparent; margin: 1rem 15%">
+      <img src="https://wpewebkit.org/assets/svg/blue_Web_Logo.svg" alt=""></div>
+    
+
+    <p>Software on embedded devices has a marriage of unique qualities that lots of controls and displays want to be SVG-based, but also have to deal with typically low end hardware, which usually still has a GPU.  Thus, this problem for those devices is a few orders of magnitude more critical than it is elsewhere.  However, our work will ultimately fund improvements for all WebKit browsers, which also incentivizes others to follow!</p>
+</section>
+<section class="sectioning">
+  <contextual-heading role="heading" aria-level="4" style="font-size: 2.75rem;">OffscreenCanvas</contextual-heading>
+
+  <p>One thing we haven't talked about yet, but I can't wait to is OffscreenCanvas.  Apple originally pioneered the <code>&lt;canvas&gt;</code> element and it's super cool and useful for a lot of stuff.  Unfortunately, it is historically tied to the DOM, did its work on the main thread and couldn't be used in workers.  This is terrible because <em>many</em> of the use cases it is really great for are real intense.  This is a bad situation - luckily, we're working on it!  Chris Lord has been working on OffscreenCanvas in WebKit and it looks great so far - everything except text portions is done and I've been using it with great results.</p>
+
+  <p>OffscreenCanvas can be used in workers, and you can 'snap off' and transfer the context from a DOM rendered canvas to a worker too.  So great!  And guess why we're investing in it? You guessed it: Embedded.</p>
+</section>
+<section class="sectioning">
+<contextual-heading role="heading" aria-level="4" style="font-size: 2.75rem;">WebXR</contextual-heading>
+  <p>I mean, this is kinda huge right? Igalia is investing to help move XR forward in WebKit - part of this is generalized for WebKit, and I think that is kind of awesome.  Still early days and there's a lot to do, but this is pretty exciting to see developing and I'm proud that Igalia is helping make it happen!</p>
+</section>
+<section class="sectioning">
+  <contextual-heading role="heading" aria-level="4" style="font-size: 2.75rem;">Important JavaScript stuff!</contextual-heading>
+
+  <p>We Pushed and shipped public/private instance and static fields in JavaScriptCore (WebKit). Private methods are ongoing.  We've really improved coordination with WebKit at large this year, and we're constantly improving the 32bit JSC too.  We're working on WebAssembly and numerous emerging TC39 specifications we're excited about: Module blocks, decorators, bundling, Realms, decimal, records and typles, Temporal and lots of things for ECMA 402 (Internationalization) too!</p>
+</section>
+</section>
+
+<section class="sectioning">
+
+  <contextual-heading role="heading" aria-level="3" style="font-size: 2.5rem;">Web Related, non-feature things</contextual-heading>
+
+  <p>There's a lot of other things that we accomplished this year at Igalia which are pretty exciting too!</p>
+
+  <ul>
+  <li><p><strong>Open Prioritization!</strong>  This year we ran a pilot experiment called <a href="https://open-prioritization.igalia.com">"Open Prioritization"</a> to start some big and complex discussions and attempt to find ways to give more people a voice in the prioritization of work on the commons.  We partnered with Open Collective and while I can't say the first experiment was flawless, we learned a lot and are moving forward with a project picked and funded by the larger community as well as establishing a collective to continue to do this!  </p></li>
+  <li><p><strong>Our new podcast!</strong>  This year we also launched a podcast.  We've had great discussions on complex topics and had amazing guests, including one of the creators of CSS <a href="https://en.wikipedia.org/wiki/H%C3%A5kon_Wium_Lie">Håkon Wium Lie</a>, people from several browser vendors past and present, people who helped drive the two historically special embeddable forms in HTML (MathML and SVG), and some developer and web friends.  It's available via all of your favorite podcasting services, a playlist on our YouTube channel and <a href="https://www-ci-dev.igalia.com/24-7/chats">on our website</a></p></li>
+  <li><p><strong>ipfs</strong> This year we also began working with Protocol Labs to improve some things around protocol handers - those are great for the web at large and it's interesting and exciting to see what is happening with things like IPFS!</p></li>
+  <li><p><strong>Joined MDN PAB</strong> This year Igalia also joined the MDN Product Advisory Board, and we're looking forward to helping ensure that the vital resource that is MDN remains healthy!</p></li>
+  <li><p><strong>WPE</strong> You might know that Igalia are the maintainers of a few of the <a href="https://webkit.org/downloads/">official WebKit ports</a>, and one of them is for embedded systems. I'm <em>really</em> pleased with all of the thins that this has allowed us to help drive for WebKit and the larger Web Platform.  However, embedded "browsers" was kind of a new topic to me when I began my work here and it's somewhat different than the sorts of challenges I am used to. With embedded systems you typically build the OS specifically for the device.  Sharing the same web tech commons is phenomenal, but for many developers like myself, my questions about embedded were difficult to explore on my own as someone who rarely compiles a browser, much less an operating system!  I'm <em>really</em> pleased with the progress we've made on this, making <a href="https://wpewebkit.org/">wpewebkit.org</a> more friendly, informative and relevant to people who might not already be experts at this, including making easy step-wise options available for people to explore.  Someone with no experience and download a raspbian based OS with WPE WebKit on it and flash it right on a Raspberry Pi just to explore.  For a lot of pet projects,  you can do a lot with that too.  That's not super representative of a good embedded system in terms of performance and things, but it is <em>very</em> easy and it's maintained by us, so it's pretty up to date.  A short step away, if you're pretty comfortable with Linux shell and ssh, you can get a minimal/optimized for Raspberry Pi 3 install you can flash right onto your Pi that runs a Weston Wayland compositor.  Finally, if you already kind of know what you're doing, we maintain Yocto receipes for developers to more easily build and maintain their real systems.</p></li>
+  <li><p><strong>Vulkan! driver</strong> - 
+  You might know that Igalia does all kinds of stuff beyond just the Web, we work on all of the things that <em>power</em> the web too, and kind of all the way down - so we have lots of areas of specialization.  I think it's really cool that we partnered with Raspberry Pi to create a Vulkan driver for the Mesa graphic driver stack for the latest generation of Raspberry Pi, <a href="https://www.raspberrypi.org/blog/vulkan-update-were-conformant/">achieving conformance in less than 1 year</a>, passing over 100k tests from Kronos' Conformance Test Suite since our initial announcement of drawing the first triangle!</p></li>
+  </ul>
+</section>
+<section class="sectioning">
+  <contextual-heading role="heading" aria-level="3" style="font-size: 2.5rem;">Looking forward...???</contextual-heading>
+  <p>So, what exciting things can we look forward to in 2021?  Definitely, advancing all of the things above - and that's exciting enough.  It's hard to know what to be most excited for, but I'm personaly really looking forward to watchin Open Prioritization grow and get a real good idea and very concrete progress on Container Queries issues.  We've also got our eyes on some new things we'll be starting to talk about in the next year, so stay tuned on those too.</p>
+
+  <p>One, that I'd like to mention, however is <strong>tabs</strong>.  Over the past year, Igalia has begun to get involved with efforts like OpenUI and I've been talking to developers and peers at Igalia about tabs. I had some thoughts and ideas that I posted earlier this year.  Just recently some actual work and collaboration has been done - gettinga number of us with similar ideas together to sort  <a href="https://github.com/thepassle/generic-components/">out a useful custom element</a> that we can test out, as well as working in OpenUI on aligning all of the stars we'll need to align as we attempt to approach something like standard tabs.   It is <em>very</em> early days here, but we've gone from a vague blog post to some actual involvement and we're getting behind the idea - which is pretty exciting and I can't wait to say more concrete things here!</p>
+</section>
+
+</section>
+]]></content:encoded>
+        </item>
+        <item>
             <title><![CDATA[2019, That's a Wrap.]]></title>
             <link>https://bkardell.com/blog/2019-Wrap.html</link>
             <guid>https://bkardell.com/blog/2019-Wrap.html</guid>
@@ -1520,6 +1665,29 @@ console.log(x.name) // Brian
 ]]></content:encoded>
         </item>
         <item>
+            <title><![CDATA[2 Minute Standards]]></title>
+            <link>https://bkardell.com/blog/2MinuteStandards.html</link>
+            <guid>https://bkardell.com/blog/2MinuteStandards.html</guid>
+            <pubDate>Tue, 20 Aug 2019 04:00:00 GMT</pubDate>
+            <description><![CDATA[A short explanation of a new effort]]></description>
+            <content:encoded><![CDATA[
+    <contextual-heading role="heading" aria-level="1" style="font-size: 2rem;">2 Minute Standards</contextual-heading>
+    <p class="segue">A short explanation of a new effort</p>
+
+    <p>For a while now, we've been running some 'outreach groups'.  Originally started informally by my colleague at <a href="https://igalia.com" rel="nofollow">Igalia, </a><a href="https://twitter.com/littledan" rel="nofollow">Dan Ehrenberg</a>, it's become a set of monthly meetings with various groups of stakeholders in <a href="https://tc39.github.io" rel="nofollow">TC39</a> and the Web at large which I really look forward to.  The <a href="https://github.com/js-outreach/js-outreach-groups" rel="nofollow">groups</a> are meetings of people who work on Tooling, people who work on Frameworks and Libraries and Educators, with folks who work on standards.  The goals of all of them, at the end of the day, is to figure out how we all work better, together.</p>
+    
+    <p>The Educators Group has talked a bit about a number of efforts, but there's one conversation we've been having that I think is pretty interesting. I dont know of any developer who isn't interested in what is going on in standards, but the economics of this is currently kind of hard. We're interested in a whole bunch of other things too. There's lots of good content - too much in fact, coming at us from a million directions and it's all competing for our time and attention. We have jobs, and families, and pets, hobbies and lives. I love a lot of long form things, I'm excited when I see them in my stream, but they pile up and I have to choose. I only have so many slots of time where I can actually afford to consume 10, 15, 30 or 40 minutes worth of information. It can feel a little overwhelming sometimes.</p>
+
+    <p>So, we're going to try something new: 2 Minute Standards.  Think of it as "standards news, in brief".  The basic idea is pretty simple: Like a news segment, it's got to contain pertinent facts, more than a tweet - but it's air time is limited, as the name would suggest, to 2 Minutes.  That can come in a number of forms: An article that is 500 words or less, a two minute video, or a short web comic/zine.  The idea though is to ultimately give developers some channel with reasonable economics for staying 'generally informed'.  In the end, that's frequently what we want anyways: We can't know everything, we just need to know <em>enough</em> to know what it is, why it is, and that it is there when we're ready to learn more.  We'd like to be able to roughly understand it if it comes up. A maximum of 2 minutes per day, and almost certainly not even that much, seems... unintimidating and managable.</p>
+
+    <p>So, that's the idea.  We're still discussing many of the details about how to make this really 'click' in a bigger way: How to create as a sort of channel you can follow?  For now, it seems better to start with something simple and perhaps to begin to get feedback on the idea.  To this end, we'll post things with the hashtag #StandardsIn2Min, and others can too. If you see something fly by with the hashtag you can always find it again later on the twitter feed and, hopefully, expect that it will take no more than 2 minutes to consume.  However, we will also manage the Twitter account <a href="https://twitter.com/StandardsIn2Min" rel="nofollow">@StandardsIn2Min</a>, where we'll work to curate those hashtags too and create a manageable (honestly, probably slow) pace that never asks for more than two minutes of your attention in a day to keep up. Let us know what you think about the idea!</p>
+    
+
+    <p class="thanks-to">Thanks to the <a href="https://github.com/js-outreach/js-outreach-groups" rel="nofollow">educators group</a> for all of their help discussing and creating, and especially to <a href="https://twitter.com/laurieontech" rel="nofollow">Laurie Barth</a> and <a href="https://twitter.com/jorydotcom" rel="nofollow">Jory Burson</a> for helping get this post put together quickly!
+    </p>
+]]></content:encoded>
+        </item>
+        <item>
             <title><![CDATA[Top Level Await: 2 Minute Standards]]></title>
             <link>https://bkardell.com/blog/TopLevelAwaitIn2m.html</link>
             <guid>https://bkardell.com/blog/TopLevelAwaitIn2m.html</guid>
@@ -1585,29 +1753,6 @@ export const _internalPromise =
 		});</code></pre>
 	<p>The net result is that modules are fetched in parallel and executed in order until the first await, and then waits until they are all complete before resolving the module itself.</p>
 	</section>
-]]></content:encoded>
-        </item>
-        <item>
-            <title><![CDATA[2 Minute Standards]]></title>
-            <link>https://bkardell.com/blog/2MinuteStandards.html</link>
-            <guid>https://bkardell.com/blog/2MinuteStandards.html</guid>
-            <pubDate>Tue, 20 Aug 2019 04:00:00 GMT</pubDate>
-            <description><![CDATA[A short explanation of a new effort]]></description>
-            <content:encoded><![CDATA[
-    <contextual-heading role="heading" aria-level="1" style="font-size: 2rem;">2 Minute Standards</contextual-heading>
-    <p class="segue">A short explanation of a new effort</p>
-
-    <p>For a while now, we've been running some 'outreach groups'.  Originally started informally by my colleague at <a href="https://igalia.com" rel="nofollow">Igalia, </a><a href="https://twitter.com/littledan" rel="nofollow">Dan Ehrenberg</a>, it's become a set of monthly meetings with various groups of stakeholders in <a href="https://tc39.github.io" rel="nofollow">TC39</a> and the Web at large which I really look forward to.  The <a href="https://github.com/js-outreach/js-outreach-groups" rel="nofollow">groups</a> are meetings of people who work on Tooling, people who work on Frameworks and Libraries and Educators, with folks who work on standards.  The goals of all of them, at the end of the day, is to figure out how we all work better, together.</p>
-    
-    <p>The Educators Group has talked a bit about a number of efforts, but there's one conversation we've been having that I think is pretty interesting. I dont know of any developer who isn't interested in what is going on in standards, but the economics of this is currently kind of hard. We're interested in a whole bunch of other things too. There's lots of good content - too much in fact, coming at us from a million directions and it's all competing for our time and attention. We have jobs, and families, and pets, hobbies and lives. I love a lot of long form things, I'm excited when I see them in my stream, but they pile up and I have to choose. I only have so many slots of time where I can actually afford to consume 10, 15, 30 or 40 minutes worth of information. It can feel a little overwhelming sometimes.</p>
-
-    <p>So, we're going to try something new: 2 Minute Standards.  Think of it as "standards news, in brief".  The basic idea is pretty simple: Like a news segment, it's got to contain pertinent facts, more than a tweet - but it's air time is limited, as the name would suggest, to 2 Minutes.  That can come in a number of forms: An article that is 500 words or less, a two minute video, or a short web comic/zine.  The idea though is to ultimately give developers some channel with reasonable economics for staying 'generally informed'.  In the end, that's frequently what we want anyways: We can't know everything, we just need to know <em>enough</em> to know what it is, why it is, and that it is there when we're ready to learn more.  We'd like to be able to roughly understand it if it comes up. A maximum of 2 minutes per day, and almost certainly not even that much, seems... unintimidating and managable.</p>
-
-    <p>So, that's the idea.  We're still discussing many of the details about how to make this really 'click' in a bigger way: How to create as a sort of channel you can follow?  For now, it seems better to start with something simple and perhaps to begin to get feedback on the idea.  To this end, we'll post things with the hashtag #StandardsIn2Min, and others can too. If you see something fly by with the hashtag you can always find it again later on the twitter feed and, hopefully, expect that it will take no more than 2 minutes to consume.  However, we will also manage the Twitter account <a href="https://twitter.com/StandardsIn2Min" rel="nofollow">@StandardsIn2Min</a>, where we'll work to curate those hashtags too and create a manageable (honestly, probably slow) pace that never asks for more than two minutes of your attention in a day to keep up. Let us know what you think about the idea!</p>
-    
-
-    <p class="thanks-to">Thanks to the <a href="https://github.com/js-outreach/js-outreach-groups" rel="nofollow">educators group</a> for all of their help discussing and creating, and especially to <a href="https://twitter.com/laurieontech" rel="nofollow">Laurie Barth</a> and <a href="https://twitter.com/jorydotcom" rel="nofollow">Jory Burson</a> for helping get this post put together quickly!
-    </p>
 ]]></content:encoded>
         </item>
         <item>
