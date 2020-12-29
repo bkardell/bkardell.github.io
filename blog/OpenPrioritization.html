@@ -1,4 +1,4 @@
-<html lang="en" resource-type="blogpost"><head> 
+<html lang="en" resource-type="blogpost"><head>  
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta name="twitter:card" content="summary_large_image">
@@ -55,10 +55,12 @@ section > .captioned-image.p-attached {
     font-style: italic;
 }
 body {
-    display: flex;
-    font: 1em "Helvetica Neue", Helvetica, Arial, sans-serif;
+    display: grid;
+    grid-template-columns: 25rem auto;
+    font: 1.1rem "Helvetica Neue", Helvetica, Arial, sans-serif;
     font-weight: 400;
     line-height: 1.625;
+    margin: 0;
 }
 h1 { margin: 0.5rem; }
 code-format {
@@ -73,30 +75,35 @@ contextual-heading {
     margin-top: 2rem;
 }
 
-[aria-level="1"] {
+h1, [aria-level="1"] {
     color: #43686b;
     font-size: 1.45rem;
 }
-[aria-level="2"] {
+
+h2, [aria-level="2"] {
     color: #856363;
     font-size: 1.35rem;
 }
-[aria-level="3"] {
+
+h3, [aria-level="3"] {
     color: #856363;
     font-size: 1.25rem;
 }
-[aria-level="4"] {
+
+h4, [aria-level="4"] {
     color: #856363;
     font-size: 1.2rem;
 }
-[aria-level="5"], [aria-level="6"] {
+
+h5, h6, [aria-level="5"], [aria-level="6"] {
     color: #667496;
-    font-size: 1.1rem;
+    font-size: 1.2rem;
     font-weight: bolder;
 }
+
 .posted-on {
     font-style: italic;
-    font-size: 0.8rem;
+    font-size: 0.8rem; 
     text-align: right;
     margin-bottom: 1rem;
 }
@@ -105,11 +112,16 @@ ul, li {
     margin: 0.5rem;
     text-align: left;
 }
-header {
+
+responsive-details {
+    height: 100%;
     padding-top: 1rem;
-    padding-right: 2rem;
-    background-color: #fbf5e9;
+    padding-right: 0;
+    background-color: #fbf5e9; 
+    display: block;
+    background-image: linear-gradient(to right, #dde0e8 , #ffffff);
 }
+
 .tagline {
     font-style: italic;
     text-align: center;
@@ -138,7 +150,7 @@ header .title {
     padding: 0.3rem;
     padding-left: 0.25rem;
     font-weight: bolder;
-    font-size: 0.9rem;
+    font-size: 1rem;
     border-left: 1rem solid #999298;
 }
 
@@ -152,7 +164,7 @@ header .title + nav {
 }
 
 header .blurb {
-    font-size: 0.75rem;
+    font-size: 0.9rem;
     text-align: center;
 }
 header .name {
@@ -215,11 +227,14 @@ blockquote:after {
 
 @media (max-width: 800px){
     body {
-        flex-direction: column;
+        grid-template-columns: 1fr;
     }
-    header {
+    responsive-details {
+        height: auto;
         border-bottom: 1px solid #afafff;
-    }
+    } 
+
+    main { width: 95%; margin: 0 auto;}
 
     .captioned-image.p-attached {
         width: 100%;
@@ -231,20 +246,13 @@ blockquote:after {
         float: none;
     }
 
-    [for="aboutMeToggle"] {
+    #aboutMeToggle {
+        display: block;
         background-color: #675e5e;
         color: white;
         padding: 0.25rem;
         padding-left: 0.5rem;
-        display: block;
         border-left: 1rem solid black;
-    }
-    #aboutMeToggle:focus + [for="aboutMeToggle"]{
-        outline: 4px solid #c6ddf2;
-    }
-
-    #aboutMeToggle:checked ~ header {
-        display: none;
     }
 
     header li { display: inline; margin-left: -0.5em; }
@@ -296,8 +304,41 @@ blockquote:after {
     </script>
   </head>
   <body>
-    <input id="aboutMeToggle" class="sr-only" type="checkbox" checked="">
-<label for="aboutMeToggle">Toggle author information</label>
+    <script>
+class ResponsiveDetails extends HTMLElement {
+  
+  checkForced() {
+      let details = this.querySelector('details')
+        if (this.mql.matches) {
+          details.setAttribute('open','')
+        } else {
+          details.removeAttribute('open')
+        }
+  }
+  connectedCallback() {
+    this.mql = window.matchMedia(`(min-width: ${this.getAttribute("open-after") || "1px" })`);
+    this.mql.addEventListener('change', () => {
+        this.checkForced()
+    })
+    requestAnimationFrame(() => this.checkForced())
+  }
+  constructor() {
+    super()
+    this.attachShadow({mode: "open"})
+    this.shadowRoot.innerHTML = `<slot></slot>`
+    let slot = this.shadowRoot.firstElementChild;
+    slot.addEventListener('slotchange', ()=> this.checkForced)          
+
+  }
+}                         
+
+customElements.define('responsive-details', ResponsiveDetails)
+</script>
+
+<responsive-details open-after="800px">
+<details open="">
+<summary id="aboutMeToggle">Author Information</summary>
+
 <header>
     <div class="name">
         Brian Kardell
@@ -309,7 +350,7 @@ blockquote:after {
             <li>Developer Advocate at Igalia</li>
             <li>Original Co-author/Co-signer of The Extensible Web Manifesto</li>
             <li>Co-Founder/Chair, W3C Extensible Web CG</li>
-            <li>Member, W3C (The JS Foundation)</li>
+            <li>Member, W3C (OpenJS Foundation)</li>
             <li>Co-author of HitchJS</li>
             <li>Blogger</li>
             <li>Art, Science &amp; History Lover</li>
@@ -332,8 +373,10 @@ America (art for sale)</a></li>
         </ul>
     </nav>
 </header>
+</details>
+</responsive-details>
     <main><div class="posted-on">Posted on 07/13/2020</div><article posted-on="07/13/2020" class="sectioning">
-	<contextual-heading role="heading" aria-level="1">Open Prioritization and Advocacy</contextual-heading>
+	<h1 class="contextual-heading">Open Prioritization and Advocacy</h1>
 	<p class="segue">I love the Web, and I want it to thrive.  It is an incredible open commons that makes so much of modern life possible, and better.  If you're reading this, chances are pretty good that the web has even enabled your career.  Mine too!  But there's also pretty good odds that you think <em>it could be better</em>.  I agree!  Let me tell you about an experiment at <em>visibly</em> making it better, together.</p>
 	<style>
 		.video-container { position: relative; padding-bottom: 56.25%; padding-top: 30px; height: 0; overflow: hidden; }
@@ -362,7 +405,7 @@ America (art for sale)</a></li>
 	<p><em>And that's ok</em>... In fact, it's really interesting.</p>
 
 	<section class="sectioning">
-		<contextual-heading role="heading" aria-level="2">Which of the 6 features best to support...</contextual-heading>
+		<h2 class="contextual-heading">Which of the 6 features best to support...</h2>
 
 		<p>Everything is best.  It depends who you ask.  Part of the purpose of this experiment is to show that groups can find new ways to <em>advocate</em> and <em>work together to decide to do concrete things</em>. So let me attempt to do just that and get the ball rolling...</p>
 
@@ -371,7 +414,7 @@ America (art for sale)</a></li>
 		<p>First off, note that you have a lot of expressive power here:  I pledged <em>something</em> to <em>everything</em> because I really believe in the idea.  I think think that changing the status quo and advancing <em>any</em> of these in a new way is a positive result.  What I did is vary <em>how much</em> I helped anything along the way to it's goal.  My minium was $5, my max was $40, but that could just as well be $1 or $5.  If you pledge $1, that is $1 worth of funding of the commons that didn't exist before and lots of $1's can get it done too.</p>
 
 		<section class="sectioning">
-			<contextual-heading role="heading" aria-level="3">The implmentation projects I pledged less to...</contextual-heading>
+			<h3 class="contextual-heading">The implmentation projects I pledged less to...</h3>
 
 			<ul>
 	
@@ -402,7 +445,7 @@ America (art for sale)</a></li>
 			</ul>
 		</section>
 		<section class="sectioning">
-			<contextual-heading role="heading" aria-level="3">My top choices: <code>inert</code> and <code>focus-visible</code></contextual-heading>
+			<h3 class="contextual-heading">My top choices: <code>inert</code> and <code>focus-visible</code></h3>
 
 			<p>This leads me to my top choices: <code>:focus-visible</code> (I pledged $40 - 1/875th of the goal) and <code>inert</code> ($40 or 1 1200th of the goal)- both in WebKit.  </p>
 
@@ -411,7 +454,7 @@ America (art for sale)</a></li>
 			<p>I did this work on my own time. as a developer, before I came to work for Igalia because there were real problems my teams were facing every day. Worse, they were right at the intersection of UX, DX and accessibility so the pains were very real.  So, let me tell you about what they are and why I think they're worth giving that last push.</p>
 
 			<section class="sectioning">
-				<contextual-heading role="heading" aria-level="4"><code>inert</code></contextual-heading>
+				<h4 class="contextual-heading"><code>inert</code></h4>
 
 				<p>There are a whole bunch of design patterns that require you to manage a whole bunch of other properties enmasse:  Make them unclickable, make their text unselectable, hide them from screen readers via ARIA, take them out of sequential focus temporarily.  Probably the easiest example of this is when a dialog is open - the rest of the page is 'there' but kind of 'inert'.  In fact, inert was as a term to the HTML specification when <code>&lt;dialog&gt;</code> was spec'ed.  But this isn't the only time when you want this behavior and, in fact, it is useful in a number of other use cases - but it's hard enough that even a lot of common UI libraries get it wrong.</p>
 
@@ -421,7 +464,7 @@ America (art for sale)</a></li>
 			</section>
 
 			<section class="sectioning">
-				<contextual-heading role="heading" aria-level="4"><code>:focus-visible</code></contextual-heading>
+				<h4 class="contextual-heading"><code>:focus-visible</code></h4>
 
 
 				<p>Research shows that way too many people disable the focus indicator, at the cost of accessibility.  Well, there's kind of a rational explanation for why this happens so much, and that is that CSS's <code>:focus</code> pseudo-class is just plain broken.</p>
@@ -434,7 +477,7 @@ America (art for sale)</a></li>
 			</section>
 		</section>
 		<section class="sectioning">
-			<contextual-heading role="heading" aria-level="3">What about you?</contextual-heading>
+			<h3 class="contextual-heading">What about you?</h3>
 
 			<p>What about you, will you support something? Will you help advocate for the priority of something specific?  I (and we at Igalia at large) would love to hear your thoughts - share them on social media with the hashtag <code>#openprioritization</code> so that we can try to collect them.</p>
 		</section>
@@ -442,15 +485,7 @@ America (art for sale)</a></li>
 </article></main>
 
   
-    <script>
-    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-
-    ga('create', 'UA-88027178-1', 'auto');
-    ga('send', 'pageview');
-  </script>
+    
 
   <script>
     Array.prototype.slice.call(document.querySelectorAll('.optional [data-src]')).forEach(function (optional) {
@@ -473,4 +508,12 @@ America (art for sale)</a></li>
     })
   </script>
 
-</body></html>
+</body><!-- script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-88027178-1', 'auto');
+    ga('send', 'pageview');
+  </script --></html>

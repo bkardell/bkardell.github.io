@@ -1,4 +1,4 @@
-<html lang="en" resource-type="blogpost"><head> 
+<html lang="en" resource-type="blogpost"><head>  
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta name="twitter:card" content="summary_large_image">
@@ -55,10 +55,12 @@ section > .captioned-image.p-attached {
     font-style: italic;
 }
 body {
-    display: flex;
-    font: 1em "Helvetica Neue", Helvetica, Arial, sans-serif;
+    display: grid;
+    grid-template-columns: 25rem auto;
+    font: 1.1rem "Helvetica Neue", Helvetica, Arial, sans-serif;
     font-weight: 400;
     line-height: 1.625;
+    margin: 0;
 }
 h1 { margin: 0.5rem; }
 code-format {
@@ -73,30 +75,35 @@ contextual-heading {
     margin-top: 2rem;
 }
 
-[aria-level="1"] {
+h1, [aria-level="1"] {
     color: #43686b;
     font-size: 1.45rem;
 }
-[aria-level="2"] {
+
+h2, [aria-level="2"] {
     color: #856363;
     font-size: 1.35rem;
 }
-[aria-level="3"] {
+
+h3, [aria-level="3"] {
     color: #856363;
     font-size: 1.25rem;
 }
-[aria-level="4"] {
+
+h4, [aria-level="4"] {
     color: #856363;
     font-size: 1.2rem;
 }
-[aria-level="5"], [aria-level="6"] {
+
+h5, h6, [aria-level="5"], [aria-level="6"] {
     color: #667496;
-    font-size: 1.1rem;
+    font-size: 1.2rem;
     font-weight: bolder;
 }
+
 .posted-on {
     font-style: italic;
-    font-size: 0.8rem;
+    font-size: 0.8rem; 
     text-align: right;
     margin-bottom: 1rem;
 }
@@ -105,11 +112,16 @@ ul, li {
     margin: 0.5rem;
     text-align: left;
 }
-header {
+
+responsive-details {
+    height: 100%;
     padding-top: 1rem;
-    padding-right: 2rem;
-    background-color: #fbf5e9;
+    padding-right: 0;
+    background-color: #fbf5e9; 
+    display: block;
+    background-image: linear-gradient(to right, #dde0e8 , #ffffff);
 }
+
 .tagline {
     font-style: italic;
     text-align: center;
@@ -138,7 +150,7 @@ header .title {
     padding: 0.3rem;
     padding-left: 0.25rem;
     font-weight: bolder;
-    font-size: 0.9rem;
+    font-size: 1rem;
     border-left: 1rem solid #999298;
 }
 
@@ -152,7 +164,7 @@ header .title + nav {
 }
 
 header .blurb {
-    font-size: 0.75rem;
+    font-size: 0.9rem;
     text-align: center;
 }
 header .name {
@@ -215,11 +227,14 @@ blockquote:after {
 
 @media (max-width: 800px){
     body {
-        flex-direction: column;
+        grid-template-columns: 1fr;
     }
-    header {
+    responsive-details {
+        height: auto;
         border-bottom: 1px solid #afafff;
-    }
+    } 
+
+    main { width: 95%; margin: 0 auto;}
 
     .captioned-image.p-attached {
         width: 100%;
@@ -231,20 +246,13 @@ blockquote:after {
         float: none;
     }
 
-    [for="aboutMeToggle"] {
+    #aboutMeToggle {
+        display: block;
         background-color: #675e5e;
         color: white;
         padding: 0.25rem;
         padding-left: 0.5rem;
-        display: block;
         border-left: 1rem solid black;
-    }
-    #aboutMeToggle:focus + [for="aboutMeToggle"]{
-        outline: 4px solid #c6ddf2;
-    }
-
-    #aboutMeToggle:checked ~ header {
-        display: none;
     }
 
     header li { display: inline; margin-left: -0.5em; }
@@ -296,8 +304,41 @@ blockquote:after {
     </script>
   </head>
   <body>
-    <input id="aboutMeToggle" class="sr-only" type="checkbox" checked="">
-<label for="aboutMeToggle">Toggle author information</label>
+    <script>
+class ResponsiveDetails extends HTMLElement {
+  
+  checkForced() {
+      let details = this.querySelector('details')
+        if (this.mql.matches) {
+          details.setAttribute('open','')
+        } else {
+          details.removeAttribute('open')
+        }
+  }
+  connectedCallback() {
+    this.mql = window.matchMedia(`(min-width: ${this.getAttribute("open-after") || "1px" })`);
+    this.mql.addEventListener('change', () => {
+        this.checkForced()
+    })
+    requestAnimationFrame(() => this.checkForced())
+  }
+  constructor() {
+    super()
+    this.attachShadow({mode: "open"})
+    this.shadowRoot.innerHTML = `<slot></slot>`
+    let slot = this.shadowRoot.firstElementChild;
+    slot.addEventListener('slotchange', ()=> this.checkForced)          
+
+  }
+}                         
+
+customElements.define('responsive-details', ResponsiveDetails)
+</script>
+
+<responsive-details open-after="800px">
+<details open="">
+<summary id="aboutMeToggle">Author Information</summary>
+
 <header>
     <div class="name">
         Brian Kardell
@@ -309,7 +350,7 @@ blockquote:after {
             <li>Developer Advocate at Igalia</li>
             <li>Original Co-author/Co-signer of The Extensible Web Manifesto</li>
             <li>Co-Founder/Chair, W3C Extensible Web CG</li>
-            <li>Member, W3C (The JS Foundation)</li>
+            <li>Member, W3C (OpenJS Foundation)</li>
             <li>Co-author of HitchJS</li>
             <li>Blogger</li>
             <li>Art, Science &amp; History Lover</li>
@@ -332,8 +373,10 @@ America (art for sale)</a></li>
         </ul>
     </nav>
 </header>
+</details>
+</responsive-details>
     <main><div class="posted-on">Posted on 10/24/2019</div><article posted-on="10/24/2019" class="sectioning">
-  <contextual-heading role="heading" aria-level="1">ES Private Class Features: 2 Minute Standards</contextual-heading>
+  <h1 class="contextual-heading">ES Private Class Features: 2 Minute Standards</h1>
   <p class="segue">A number of proposals come together to provide 'private' versions of most of the class-related concepts from ES6. Let's have a <a href="2MinuteStandards.html">#StandardsIn2Min</a> oriented look...
   </p>
 
@@ -361,7 +404,7 @@ let p = new Point(1,2)
   <p>The result is that you can now create a <code>Point</code> object which encapsulates its actual maintenance to these variables.  These private properties are not accessible from the outside, as we'll see.</p>
 
   <section class="sectioning">
-    <contextual-heading role="heading" aria-level="2">The <code>#</code> sigil and 'private space'</contextual-heading>
+    <h2 class="contextual-heading">The <code>#</code> sigil and 'private space'</h2>
     
     <p>The very new and perhaps most important bit to understand is that the name of private things must begin with the <code>#</code> <em>sigil</em>, and its use is symmetrical.  That is - in order to declare a class property as private, its name must begin with a <code>#</code>.  To access it again later, you'll use the name beginning with <code>#</code> again, as in <code>this.#x</code>.  Attempts to access it from the outside will throw.</p>
 
@@ -396,11 +439,11 @@ console.log(x.name) // Brian
     However, you can't.  You also cannot access private fields of a Proxy target through the Proxy, they aren't accessible through property descriptors or <code>Object.keys</code> or anything like that.  This is by design as doing so, would be self-defeating, making things available outside the class as well (as you can read about <a href="https://github.com/tc39/proposal-class-fields/blob/master/PRIVATE_SYNTAX_FAQ.md#why-doesnt-thisx-access-the-private-field-named-x-given-that-thisx-does">in the FAQ</a>).</p>
   </section>
   <section class="sectioning">
-    <contextual-heading role="heading" aria-level="2">Why the #, specifically?</contextual-heading>
+    <h2 class="contextual-heading">Why the #, specifically?</h2>
     <p>Why this particular character was chosen was very widely discussed, and lots of options were weighed.  You can read more about this in the <a href="https://github.com/tc39/proposal-class-fields/blob/master/PRIVATE_SYNTAX_FAQ.md#why-was-the-sigil--chosen-among-all-the-unicode-code-points">FAQ</a> as well, but the simplest answer is: That's the one, single character option, which we could make work without fouling up something else.</p>
 
     <section class="sectioning">
-      <contextual-heading role="heading" aria-level="3">All the private things</contextual-heading>
+      <h3 class="contextual-heading">All the private things</h3>
 
       <p>Once you understand the above, the rest flows pretty naturally.  We get private methods that are pretty self explanitory:</p>
 
@@ -428,22 +471,14 @@ console.log(x.name) // Brian
 }</code></pre>
   </section>
   <section class="sectioning">
-    <contextual-heading role="heading" aria-level="3">Learn More</contextual-heading>
+    <h3 class="contextual-heading">Learn More</h3>
     <p>This is, of course, merely an 2 minute introduction. To learn a lot more details about this, including it's history, rationale about design choices, find links to the spec draft, and much more, check out the <a href="https://github.com/tc39/proposal-class-fields">TC39 class fields proposal repository</a>.</p> 
   </section>
 </section>
 </article></main>
 
   
-    <script>
-    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-
-    ga('create', 'UA-88027178-1', 'auto');
-    ga('send', 'pageview');
-  </script>
+    
 
   <script>
     Array.prototype.slice.call(document.querySelectorAll('.optional [data-src]')).forEach(function (optional) {
@@ -466,4 +501,12 @@ console.log(x.name) // Brian
     })
   </script>
 
-</body></html>
+</body><!-- script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-88027178-1', 'auto');
+    ga('send', 'pageview');
+  </script --></html>

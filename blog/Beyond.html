@@ -1,4 +1,4 @@
-<html lang="en" resource-type="blogpost"><head> 
+<html lang="en" resource-type="blogpost"><head>  
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta name="twitter:card" content="summary_large_image">
@@ -55,10 +55,12 @@ section > .captioned-image.p-attached {
     font-style: italic;
 }
 body {
-    display: flex;
-    font: 1em "Helvetica Neue", Helvetica, Arial, sans-serif;
+    display: grid;
+    grid-template-columns: 25rem auto;
+    font: 1.1rem "Helvetica Neue", Helvetica, Arial, sans-serif;
     font-weight: 400;
     line-height: 1.625;
+    margin: 0;
 }
 h1 { margin: 0.5rem; }
 code-format {
@@ -73,30 +75,35 @@ contextual-heading {
     margin-top: 2rem;
 }
 
-[aria-level="1"] {
+h1, [aria-level="1"] {
     color: #43686b;
     font-size: 1.45rem;
 }
-[aria-level="2"] {
+
+h2, [aria-level="2"] {
     color: #856363;
     font-size: 1.35rem;
 }
-[aria-level="3"] {
+
+h3, [aria-level="3"] {
     color: #856363;
     font-size: 1.25rem;
 }
-[aria-level="4"] {
+
+h4, [aria-level="4"] {
     color: #856363;
     font-size: 1.2rem;
 }
-[aria-level="5"], [aria-level="6"] {
+
+h5, h6, [aria-level="5"], [aria-level="6"] {
     color: #667496;
-    font-size: 1.1rem;
+    font-size: 1.2rem;
     font-weight: bolder;
 }
+
 .posted-on {
     font-style: italic;
-    font-size: 0.8rem;
+    font-size: 0.8rem; 
     text-align: right;
     margin-bottom: 1rem;
 }
@@ -105,11 +112,16 @@ ul, li {
     margin: 0.5rem;
     text-align: left;
 }
-header {
+
+responsive-details {
+    height: 100%;
     padding-top: 1rem;
-    padding-right: 2rem;
-    background-color: #fbf5e9;
+    padding-right: 0;
+    background-color: #fbf5e9; 
+    display: block;
+    background-image: linear-gradient(to right, #dde0e8 , #ffffff);
 }
+
 .tagline {
     font-style: italic;
     text-align: center;
@@ -138,7 +150,7 @@ header .title {
     padding: 0.3rem;
     padding-left: 0.25rem;
     font-weight: bolder;
-    font-size: 0.9rem;
+    font-size: 1rem;
     border-left: 1rem solid #999298;
 }
 
@@ -152,7 +164,7 @@ header .title + nav {
 }
 
 header .blurb {
-    font-size: 0.75rem;
+    font-size: 0.9rem;
     text-align: center;
 }
 header .name {
@@ -215,11 +227,14 @@ blockquote:after {
 
 @media (max-width: 800px){
     body {
-        flex-direction: column;
+        grid-template-columns: 1fr;
     }
-    header {
+    responsive-details {
+        height: auto;
         border-bottom: 1px solid #afafff;
-    }
+    } 
+
+    main { width: 95%; margin: 0 auto;}
 
     .captioned-image.p-attached {
         width: 100%;
@@ -231,20 +246,13 @@ blockquote:after {
         float: none;
     }
 
-    [for="aboutMeToggle"] {
+    #aboutMeToggle {
+        display: block;
         background-color: #675e5e;
         color: white;
         padding: 0.25rem;
         padding-left: 0.5rem;
-        display: block;
         border-left: 1rem solid black;
-    }
-    #aboutMeToggle:focus + [for="aboutMeToggle"]{
-        outline: 4px solid #c6ddf2;
-    }
-
-    #aboutMeToggle:checked ~ header {
-        display: none;
     }
 
     header li { display: inline; margin-left: -0.5em; }
@@ -296,8 +304,41 @@ blockquote:after {
     </script>
   </head>
   <body>
-    <input id="aboutMeToggle" class="sr-only" type="checkbox" checked="">
-<label for="aboutMeToggle">Toggle author information</label>
+    <script>
+class ResponsiveDetails extends HTMLElement {
+  
+  checkForced() {
+      let details = this.querySelector('details')
+        if (this.mql.matches) {
+          details.setAttribute('open','')
+        } else {
+          details.removeAttribute('open')
+        }
+  }
+  connectedCallback() {
+    this.mql = window.matchMedia(`(min-width: ${this.getAttribute("open-after") || "1px" })`);
+    this.mql.addEventListener('change', () => {
+        this.checkForced()
+    })
+    requestAnimationFrame(() => this.checkForced())
+  }
+  constructor() {
+    super()
+    this.attachShadow({mode: "open"})
+    this.shadowRoot.innerHTML = `<slot></slot>`
+    let slot = this.shadowRoot.firstElementChild;
+    slot.addEventListener('slotchange', ()=> this.checkForced)          
+
+  }
+}                         
+
+customElements.define('responsive-details', ResponsiveDetails)
+</script>
+
+<responsive-details open-after="800px">
+<details open="">
+<summary id="aboutMeToggle">Author Information</summary>
+
 <header>
     <div class="name">
         Brian Kardell
@@ -309,7 +350,7 @@ blockquote:after {
             <li>Developer Advocate at Igalia</li>
             <li>Original Co-author/Co-signer of The Extensible Web Manifesto</li>
             <li>Co-Founder/Chair, W3C Extensible Web CG</li>
-            <li>Member, W3C (The JS Foundation)</li>
+            <li>Member, W3C (OpenJS Foundation)</li>
             <li>Co-author of HitchJS</li>
             <li>Blogger</li>
             <li>Art, Science &amp; History Lover</li>
@@ -332,8 +373,10 @@ America (art for sale)</a></li>
         </ul>
     </nav>
 </header>
+</details>
+</responsive-details>
     <main><div class="posted-on">Posted on 09/16/2019</div><article posted-on="09/16/2019" class="sectioning">
-	<contextual-heading role="heading" aria-level="1">Beyond Browser Vendors</contextual-heading>
+	<h1 class="contextual-heading">Beyond Browser Vendors</h1>
 	<p class="segue">I'd like to explain what I think is potentially the most exciting set of changes that have taken place in the latter stages of the Web's history: Why we are now collectively considerably more in control of our own destinies and have moved "beyond browser vendors".</p>
 	<p> 
 		For most of the history of the Web, browser vendors have played an exceptionally critical role in standardization. This isn't a secret, in fact, it's widely discussed. What is less widely discussed is why that is. Frequently, most of our discussions give this very political origins, or assume it is about power struggles. But in fact, much of it has been for pretty considerably less intriguing reasons: It was a sort of predictable, natural outflow of the reality that we had created.
@@ -345,7 +388,7 @@ America (art for sale)</a></li>
 		This matters a lot because it meant that, practically speaking, everyone who is not a browser, including the myriad of organizations that participate in standards efforts are, effectively asking a small number of companies to invest money and manage priorities and budgets very particularly.
 	</p>
 	<section class="sectioning">
-		<contextual-heading role="heading" aria-level="2">Mundane Realities</contextual-heading>
+		<h2 class="contextual-heading">Mundane Realities</h2>
 		<p>What's very, very difficult to appreciate from the outside is just how much is impacted, historically, by the fairly boring and entirely mundane fact above and that browser vendors aren't actually that special.</p>
 
 		<p>That is, they ultimately operate very much like most other organizations: They have a budget, carved out of some larger company. That company has some larger goals.</p>
@@ -360,7 +403,7 @@ America (art for sale)</a></li>
 	</section>
 
 	<section class="sectioning">
-		<contextual-heading role="heading" aria-level="2">The Under Discussed, Big Impacts</contextual-heading>
+		<h2 class="contextual-heading">The Under Discussed, Big Impacts</h2>
 		<p>If you can imagine a conveyor belt of ideas that ultimately land as tasks to be implemented, you can understand some of the problem. Even given the exact same inputs, different people can make pretty different, but entirely reasonable and defensible choices. And the inputs aren't remotely the same. Perhaps it takes one vendor twice as long to implement because this feature is much harder in their architecture, or they simply have less resources, or perhaps they're in the middle of reworking their layout, or... There are myriad reasons why these things get prioritized and worked differently.</p>
 
 		<p>If you were to consider nothing else at all, you can see why things get gummed up. There is an absolute gauntlet that something has to run in order to become a standard, even when there isn't particular controversy.</p>
@@ -373,14 +416,14 @@ America (art for sale)</a></li>
 	</section>
 
 	<section class="sectioning">
-		<contextual-heading role="heading" aria-level="2">A different story...</contextual-heading>
+		<h2 class="contextual-heading">A different story...</h2>
 		<p>"But we do manage to get things done, even big things, rather quickly, when we really want to, right?" Is a refrain I've heard a lot. What about CSS Grid, for example? Grid seemed to drop everywhere at pretty much the same time, in 2017. It seemed like it happened very quickly to many of us, and I've heard this comment a number of times. If this isn't and illustration of vendors aligning on big ideas, prioritizing things, and getting things done fast when they want to, I don't know what is... Right? Here's the interesting part: <em>It isn't that at all.</em>
 
 		</p><p>And what it is <em>is far more interesting and exciting.</em></p>
  
 
 		<section class="sectioning">
-			<contextual-heading role="heading" aria-level="3">The backstory of CSS Grid</contextual-heading>
+			<h3 class="contextual-heading">The backstory of CSS Grid</h3>
 			<p>In 1996, Bert Bos, Dave Raggett, and Håkon Lie were the authors of a proposal called "<a href="https://www.w3.org/TR/WD-layout.html" rel="nofollow">Frame-Based Layout</a>" which attempted to tackle the idea of a grid-oriented layout controlled by CSS.  That completely failed to get uptake and implementations.</p>
 			<p>At the end of 2005, Bert Bos put some of these ideas forward again in <a href="https://www.w3.org/TR/2005/WD-css3-layout-20051215/" rel="nofollow">CSS Advanced Layout</a>.  This kind of then became <a href="https://www.w3.org/TR/2009/WD-css3-layout-20090402/" rel="nofollow">CSS Template Layout</a> in 2009.  Not one browser shipped any of this.  It was important to the print industry though, so they invested and made their own renderers for print.</p>
 			<p>Fast foward to 2011, Microsoft reframes this work as <a href="https://www.w3.org/TR/2011/WD-css3-grid-layout-20110407/" rel="nofollow">Grid Layout</a> and pretty much just documented what they shipped in IE10.  But then, that's it.  It sat there, in no small part because it had some real problems, having been mostly developed by Microsoft for specific use cases.</p>
@@ -390,7 +433,7 @@ America (art for sale)</a></li>
 		</section>
 	</section>
 	<section class="sectioning">
-		<contextual-heading role="heading" aria-level="2">Open</contextual-heading>
+		<h2 class="contextual-heading">Open</h2>
 
 		<p>Something happened along the way in our history:  Both the standards process, and the the Web Platform itself got increasingly open.</p>
 
@@ -410,7 +453,7 @@ America (art for sale)</a></li>
 		of those things than we could before.</p>
 
 		<section class="sectioning">
-			<contextual-heading role="heading" aria-level="3">The possibilities</contextual-heading>
+			<h3 class="contextual-heading">The possibilities</h3>
 			<p>This is the really exciting reason that I came to work at Igalia:  Igalia potentially entirely shifts the standards paradigm.  All this stuff still has a lot of costs to manage along the way.  Browsers still play a hugely important role in reviews, managing questions of maintenance and so on - but, finally, we can begin to imagine a world in where we can more <em>collectively</em> prioritize and cooperate.</p> 
 
 			<p>Imagine the possibilities of all of the things we could get done <em>together</em>.  Lots and lots of stuff is just <em>stuck</em>- and many of the causes for this are ultimately because of things that are more organizational than because something is particularly controversial.  We can help break the cycle and give those uncontroversial things implementation priority.</p>
@@ -432,15 +475,7 @@ America (art for sale)</a></li>
 </article></main>
 
   
-    <script>
-    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-
-    ga('create', 'UA-88027178-1', 'auto');
-    ga('send', 'pageview');
-  </script>
+    
 
   <script>
     Array.prototype.slice.call(document.querySelectorAll('.optional [data-src]')).forEach(function (optional) {
@@ -463,4 +498,12 @@ America (art for sale)</a></li>
     })
   </script>
 
-</body></html>
+</body><!-- script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-88027178-1', 'auto');
+    ga('send', 'pageview');
+  </script --></html>

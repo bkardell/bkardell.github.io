@@ -1,4 +1,4 @@
-<html lang="en" resource-type="blogpost"><head> 
+<html lang="en" resource-type="blogpost"><head>  
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta name="twitter:card" content="summary_large_image">
@@ -55,10 +55,12 @@ section > .captioned-image.p-attached {
     font-style: italic;
 }
 body {
-    display: flex;
-    font: 1em "Helvetica Neue", Helvetica, Arial, sans-serif;
+    display: grid;
+    grid-template-columns: 25rem auto;
+    font: 1.1rem "Helvetica Neue", Helvetica, Arial, sans-serif;
     font-weight: 400;
     line-height: 1.625;
+    margin: 0;
 }
 h1 { margin: 0.5rem; }
 code-format {
@@ -73,30 +75,35 @@ contextual-heading {
     margin-top: 2rem;
 }
 
-[aria-level="1"] {
+h1, [aria-level="1"] {
     color: #43686b;
     font-size: 1.45rem;
 }
-[aria-level="2"] {
+
+h2, [aria-level="2"] {
     color: #856363;
     font-size: 1.35rem;
 }
-[aria-level="3"] {
+
+h3, [aria-level="3"] {
     color: #856363;
     font-size: 1.25rem;
 }
-[aria-level="4"] {
+
+h4, [aria-level="4"] {
     color: #856363;
     font-size: 1.2rem;
 }
-[aria-level="5"], [aria-level="6"] {
+
+h5, h6, [aria-level="5"], [aria-level="6"] {
     color: #667496;
-    font-size: 1.1rem;
+    font-size: 1.2rem;
     font-weight: bolder;
 }
+
 .posted-on {
     font-style: italic;
-    font-size: 0.8rem;
+    font-size: 0.8rem; 
     text-align: right;
     margin-bottom: 1rem;
 }
@@ -105,11 +112,16 @@ ul, li {
     margin: 0.5rem;
     text-align: left;
 }
-header {
+
+responsive-details {
+    height: 100%;
     padding-top: 1rem;
-    padding-right: 2rem;
-    background-color: #fbf5e9;
+    padding-right: 0;
+    background-color: #fbf5e9; 
+    display: block;
+    background-image: linear-gradient(to right, #dde0e8 , #ffffff);
 }
+
 .tagline {
     font-style: italic;
     text-align: center;
@@ -138,7 +150,7 @@ header .title {
     padding: 0.3rem;
     padding-left: 0.25rem;
     font-weight: bolder;
-    font-size: 0.9rem;
+    font-size: 1rem;
     border-left: 1rem solid #999298;
 }
 
@@ -152,7 +164,7 @@ header .title + nav {
 }
 
 header .blurb {
-    font-size: 0.75rem;
+    font-size: 0.9rem;
     text-align: center;
 }
 header .name {
@@ -215,11 +227,14 @@ blockquote:after {
 
 @media (max-width: 800px){
     body {
-        flex-direction: column;
+        grid-template-columns: 1fr;
     }
-    header {
+    responsive-details {
+        height: auto;
         border-bottom: 1px solid #afafff;
-    }
+    } 
+
+    main { width: 95%; margin: 0 auto;}
 
     .captioned-image.p-attached {
         width: 100%;
@@ -231,20 +246,13 @@ blockquote:after {
         float: none;
     }
 
-    [for="aboutMeToggle"] {
+    #aboutMeToggle {
+        display: block;
         background-color: #675e5e;
         color: white;
         padding: 0.25rem;
         padding-left: 0.5rem;
-        display: block;
         border-left: 1rem solid black;
-    }
-    #aboutMeToggle:focus + [for="aboutMeToggle"]{
-        outline: 4px solid #c6ddf2;
-    }
-
-    #aboutMeToggle:checked ~ header {
-        display: none;
     }
 
     header li { display: inline; margin-left: -0.5em; }
@@ -296,8 +304,41 @@ blockquote:after {
     </script>
   </head>
   <body>
-    <input id="aboutMeToggle" class="sr-only" type="checkbox" checked="">
-<label for="aboutMeToggle">Toggle author information</label>
+    <script>
+class ResponsiveDetails extends HTMLElement {
+  
+  checkForced() {
+      let details = this.querySelector('details')
+        if (this.mql.matches) {
+          details.setAttribute('open','')
+        } else {
+          details.removeAttribute('open')
+        }
+  }
+  connectedCallback() {
+    this.mql = window.matchMedia(`(min-width: ${this.getAttribute("open-after") || "1px" })`);
+    this.mql.addEventListener('change', () => {
+        this.checkForced()
+    })
+    requestAnimationFrame(() => this.checkForced())
+  }
+  constructor() {
+    super()
+    this.attachShadow({mode: "open"})
+    this.shadowRoot.innerHTML = `<slot></slot>`
+    let slot = this.shadowRoot.firstElementChild;
+    slot.addEventListener('slotchange', ()=> this.checkForced)          
+
+  }
+}                         
+
+customElements.define('responsive-details', ResponsiveDetails)
+</script>
+
+<responsive-details open-after="800px">
+<details open="">
+<summary id="aboutMeToggle">Author Information</summary>
+
 <header>
     <div class="name">
         Brian Kardell
@@ -309,7 +350,7 @@ blockquote:after {
             <li>Developer Advocate at Igalia</li>
             <li>Original Co-author/Co-signer of The Extensible Web Manifesto</li>
             <li>Co-Founder/Chair, W3C Extensible Web CG</li>
-            <li>Member, W3C (The JS Foundation)</li>
+            <li>Member, W3C (OpenJS Foundation)</li>
             <li>Co-author of HitchJS</li>
             <li>Blogger</li>
             <li>Art, Science &amp; History Lover</li>
@@ -332,8 +373,10 @@ America (art for sale)</a></li>
         </ul>
     </nav>
 </header>
+</details>
+</responsive-details>
     <main><div class="posted-on">Posted on 08/12/2020</div><article posted-on="08/12/2020" class="sectioning">
-	<contextual-heading role="heading" aria-level="1">Reimagining the Vendor-Only Model</contextual-heading>
+	<h1 class="contextual-heading">Reimagining the Vendor-Only Model</h1>
 	<p class="segue">I have been trying to organize my personal thoughts on this and figure out how to carefuly articulate them for a while now.  I hadn't planned on posting this just yet but recent events and discussions make me think that maybe it is worth sharing.</p>
 
 	<p>I've been talking a lot this year about the health of the Web Ecosystem<sup><a href="https://bkardell.com/blog/EcosystemHealth.html">[1]</a>, <a href="https://www.igalia.com/chats/ecosystem-health">[2]</a>, <a href="https://www.igalia.com/chats/ecosystem-health-ii">[3]</a>,</sup>, kind of trying to raise the larger discussion that we should have a discussion about how we think about it and re-consider how we ensure it remains (or increases) its vibrance.   Our recent open-prioritization experiment is meant, in part, to prompt some of this discussion and begin looking at ways to make things better.  Recent news from Mozilla, it seems, has done as much to prompt some urgency on this discussion in people's minds, so let's dig into it.</p>
@@ -349,7 +392,7 @@ America (art for sale)</a></li>
 	<p>But then again... <em>Maybe not</em>.  I think it's worth considering together, because I am ever increasingly on the "probably not" side. So, now that the conversation is started, let me try to explain why...</p>
 
 	<section class="sectioning">
-		<contextual-heading role="heading" aria-level="2">The trouble with the vendor-only model...</contextual-heading>
+		<h2 class="contextual-heading">The trouble with the vendor-only model...</h2>
 
 		<p>In the entire world, at the time of this writing, only 3 organizations currently make the level of investments necessary to maintain a rendering engine at all.  Developers sometimes express frustration at the level of investment because 2 of these 3 organizations are part of the most profitable companies on earth, and they have chosen to invest very differently.  That's fine.  You can continue to do that, and I'm not suggesting that is <em>invalid</em> ... But I think this somewhat of a red herring and that we might be missing the more important conversation.</p>
 
@@ -362,7 +405,7 @@ America (art for sale)</a></li>
 		<p>Conversely: diversifying investments in the commons would buffer it significantly - and thankfully, it would seem that there are plenty of opportunities to do so. Let's look some..</p>
 
 		<section class="sectioning">
-			<contextual-heading role="heading" aria-level="3">Diversifying investments</contextual-heading>
+			<h3 class="contextual-heading">Diversifying investments</h3>
 
 			<p>The most obvious and immediate thing to do is to try to expand the sorts of things that have already begun happening and working...</p>
 
@@ -377,7 +420,7 @@ America (art for sale)</a></li>
 			<p>But then... If we're exploring diversifying funding, why place some arbitrary limits on "bigness"?  What makes them special?  Perhaps you don't have to be a mega-company to help advance things?  Experimenting with this is also part of what open-prioritization is about -Maybe there doesn't even have to be a single answer.  In fact, maybe it's better if there isn't! </p>
 		</section>
 		<section class="sectioning">
-			<contextual-heading role="heading" aria-level="3">Exploring <em>many</em> models</contextual-heading>
+			<h3 class="contextual-heading">Exploring <em>many</em> models</h3>
 
 			<p>When I was a kid, and cable television was "new", my grandmother thought it was just ridiculous that someone would <em>pay</em> for television. After all, it came over the air wave "for free".  Of course... It wasn't free, and despite it costing a lot to produce and run, it was a money making endeavor.  The cost to maintain a station is comparatively tiny compared to the potential profits they could make from shoving advertising in our eyeballs.  You paid.  All the way through the system.  A small amount of your product purchases funded advertising, which funded broadcast.</p>
 
@@ -392,7 +435,7 @@ America (art for sale)</a></li>
 			<p>The one thing that you'll notice that all answers have in common is that ultimately, somehow <em>lots</em> of people are paying in small amounts, and lots of little bits add up to a lot.</p>
 
 			<section class="sectioning">
-				<contextual-heading role="heading" aria-level="4">The potential power of collectives</contextual-heading> 
+				<h4 class="contextual-heading">The potential power of collectives</h4> 
 
 				<p>With no arbitrary limits, even developers themselves could play a big, very direct role... If we want to. </p>
 
@@ -420,15 +463,7 @@ America (art for sale)</a></li>
 </article></main>
 
   
-    <script>
-    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-
-    ga('create', 'UA-88027178-1', 'auto');
-    ga('send', 'pageview');
-  </script>
+    
 
   <script>
     Array.prototype.slice.call(document.querySelectorAll('.optional [data-src]')).forEach(function (optional) {
@@ -451,4 +486,12 @@ America (art for sale)</a></li>
     })
   </script>
 
-</body></html>
+</body><!-- script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-88027178-1', 'auto');
+    ga('send', 'pageview');
+  </script --></html>

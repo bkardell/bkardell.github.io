@@ -1,4 +1,4 @@
-<html lang="en" resource-type="blogpost"><head> 
+<html lang="en" resource-type="blogpost"><head>  
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta name="twitter:card" content="summary_large_image">
@@ -55,10 +55,12 @@ section > .captioned-image.p-attached {
     font-style: italic;
 }
 body {
-    display: flex;
-    font: 1em "Helvetica Neue", Helvetica, Arial, sans-serif;
+    display: grid;
+    grid-template-columns: 25rem auto;
+    font: 1.1rem "Helvetica Neue", Helvetica, Arial, sans-serif;
     font-weight: 400;
     line-height: 1.625;
+    margin: 0;
 }
 h1 { margin: 0.5rem; }
 code-format {
@@ -73,30 +75,35 @@ contextual-heading {
     margin-top: 2rem;
 }
 
-[aria-level="1"] {
+h1, [aria-level="1"] {
     color: #43686b;
     font-size: 1.45rem;
 }
-[aria-level="2"] {
+
+h2, [aria-level="2"] {
     color: #856363;
     font-size: 1.35rem;
 }
-[aria-level="3"] {
+
+h3, [aria-level="3"] {
     color: #856363;
     font-size: 1.25rem;
 }
-[aria-level="4"] {
+
+h4, [aria-level="4"] {
     color: #856363;
     font-size: 1.2rem;
 }
-[aria-level="5"], [aria-level="6"] {
+
+h5, h6, [aria-level="5"], [aria-level="6"] {
     color: #667496;
-    font-size: 1.1rem;
+    font-size: 1.2rem;
     font-weight: bolder;
 }
+
 .posted-on {
     font-style: italic;
-    font-size: 0.8rem;
+    font-size: 0.8rem; 
     text-align: right;
     margin-bottom: 1rem;
 }
@@ -105,11 +112,16 @@ ul, li {
     margin: 0.5rem;
     text-align: left;
 }
-header {
+
+responsive-details {
+    height: 100%;
     padding-top: 1rem;
-    padding-right: 2rem;
-    background-color: #fbf5e9;
+    padding-right: 0;
+    background-color: #fbf5e9; 
+    display: block;
+    background-image: linear-gradient(to right, #dde0e8 , #ffffff);
 }
+
 .tagline {
     font-style: italic;
     text-align: center;
@@ -138,7 +150,7 @@ header .title {
     padding: 0.3rem;
     padding-left: 0.25rem;
     font-weight: bolder;
-    font-size: 0.9rem;
+    font-size: 1rem;
     border-left: 1rem solid #999298;
 }
 
@@ -152,7 +164,7 @@ header .title + nav {
 }
 
 header .blurb {
-    font-size: 0.75rem;
+    font-size: 0.9rem;
     text-align: center;
 }
 header .name {
@@ -215,11 +227,14 @@ blockquote:after {
 
 @media (max-width: 800px){
     body {
-        flex-direction: column;
+        grid-template-columns: 1fr;
     }
-    header {
+    responsive-details {
+        height: auto;
         border-bottom: 1px solid #afafff;
-    }
+    } 
+
+    main { width: 95%; margin: 0 auto;}
 
     .captioned-image.p-attached {
         width: 100%;
@@ -231,20 +246,13 @@ blockquote:after {
         float: none;
     }
 
-    [for="aboutMeToggle"] {
+    #aboutMeToggle {
+        display: block;
         background-color: #675e5e;
         color: white;
         padding: 0.25rem;
         padding-left: 0.5rem;
-        display: block;
         border-left: 1rem solid black;
-    }
-    #aboutMeToggle:focus + [for="aboutMeToggle"]{
-        outline: 4px solid #c6ddf2;
-    }
-
-    #aboutMeToggle:checked ~ header {
-        display: none;
     }
 
     header li { display: inline; margin-left: -0.5em; }
@@ -296,8 +304,41 @@ blockquote:after {
     </script>
   </head>
   <body>
-    <input id="aboutMeToggle" class="sr-only" type="checkbox" checked="">
-<label for="aboutMeToggle">Toggle author information</label>
+    <script>
+class ResponsiveDetails extends HTMLElement {
+  
+  checkForced() {
+      let details = this.querySelector('details')
+        if (this.mql.matches) {
+          details.setAttribute('open','')
+        } else {
+          details.removeAttribute('open')
+        }
+  }
+  connectedCallback() {
+    this.mql = window.matchMedia(`(min-width: ${this.getAttribute("open-after") || "1px" })`);
+    this.mql.addEventListener('change', () => {
+        this.checkForced()
+    })
+    requestAnimationFrame(() => this.checkForced())
+  }
+  constructor() {
+    super()
+    this.attachShadow({mode: "open"})
+    this.shadowRoot.innerHTML = `<slot></slot>`
+    let slot = this.shadowRoot.firstElementChild;
+    slot.addEventListener('slotchange', ()=> this.checkForced)          
+
+  }
+}                         
+
+customElements.define('responsive-details', ResponsiveDetails)
+</script>
+
+<responsive-details open-after="800px">
+<details open="">
+<summary id="aboutMeToggle">Author Information</summary>
+
 <header>
     <div class="name">
         Brian Kardell
@@ -309,7 +350,7 @@ blockquote:after {
             <li>Developer Advocate at Igalia</li>
             <li>Original Co-author/Co-signer of The Extensible Web Manifesto</li>
             <li>Co-Founder/Chair, W3C Extensible Web CG</li>
-            <li>Member, W3C (The JS Foundation)</li>
+            <li>Member, W3C (OpenJS Foundation)</li>
             <li>Co-author of HitchJS</li>
             <li>Blogger</li>
             <li>Art, Science &amp; History Lover</li>
@@ -332,8 +373,10 @@ America (art for sale)</a></li>
         </ul>
     </nav>
 </header>
+</details>
+</responsive-details>
     <main><div class="posted-on">Posted on 5/6/2016</div><article posted-on="5/6/2016" class="sectioning">
-	<contextual-heading role="heading" aria-level="1">Prognostication and the Failure of the Web</contextual-heading>
+	<h1 class="contextual-heading">Prognostication and the Failure of the Web</h1>
 	<p class="segue">For almost as long as there has been a Web to write about, people have been prognosticating the death of the Web.  Mine is a different kind of prediction, but as I look into my crystal ball, I'm absolutely certain of it:  The Web will <em>fail.</em> Let me tell you what I see through the glass...</p>
 
 	<div class="captioned-image share-image">
@@ -341,7 +384,7 @@ America (art for sale)</a></li>
 	</div>
 	<hr style="visibility: hidden">
 	<section class="sectioning">
-		<contextual-heading role="heading" aria-level="2">A Story of Failure</contextual-heading>
+		<h2 class="contextual-heading">A Story of Failure</h2>
 		<div class="captioned-image p-attached p-attached-left">
 			<img alt="" src="https://briankardell.files.wordpress.com/2016/05/86632h.jpg">
 			A Photo of Scott's phonautograph on display in the Smithsonian
@@ -362,7 +405,7 @@ America (art for sale)</a></li>
 	</section>
 
 	<section class="sectioning">
-		<contextual-heading role="heading" aria-level="2">Our Inability To See the Future</contextual-heading>
+		<h2 class="contextual-heading">Our Inability To See the Future</h2>
 		<p>Our ability to see the future is, as we just saw, very tied to our place in time and our current perspective.  Very frequently, in trying to solve one problem, we are affecting another.  If we measure "failure" by intent to complete what we set out to do, it's truly astonishing how much around us that we'd typically view as huge success was actually rooted in "failure".  When he created sound recording and playback, Edison imagined that people would use it for correspondence.  Again, his world was a world of writing and mail.  He prognosticated that a fine and probably common use of his technology would be for someone to record a "letter" and pop it in the mail.  When Bell invented the telephone he imagined that it might be used to pipe music from a performance to an audience remotely.  When people got their hands on both, they were basically used inversely.  Meanwhile, Lee de Forest who helped pioneer AM radio, had imagined something so different that he sent a letter to National Association of Broadcasters saying ""What have you done with my child, the radio broadcast? You have debased this child, dressed him in rags of ragtime, tatters of jive and boogie-woogie."  Ever used super glue?  That isn't what he was trying to invent.  Not remotely.</p>
 
 		<p>Have a look-see here...</p>
@@ -374,7 +417,7 @@ America (art for sale)</a></li>
 	</section>
 
 	<section class="sectioning">
-		<contextual-heading role="heading" aria-level="2">Failure vs Death</contextual-heading>
+		<h2 class="contextual-heading">Failure vs Death</h2>
 		<p>he death of the Web would mean it was over, done.  But failure is something different, or at least it can be.  Failure can be good. It's necessary even.  If you are capable of seeing or hearing this post, it's only the result of millions of failures in DNA and the consequence of a process with no long-term vision at all - just an inherent bias toward not dying long enough to reproduce.</p>
 
 		<p>But the really interesting thing to note is that this is possible only because failures breed opportunity.  The entire universe (but especially humanity) seems very adept at finding opportunity and exploiting it.  The general trend then is usually, at least from the perspective of those viewing it, "up" as we capitalize on an increasing number of opportunities.</p>
@@ -392,15 +435,7 @@ America (art for sale)</a></li>
 </article></main>
 
   
-    <script>
-    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-
-    ga('create', 'UA-88027178-1', 'auto');
-    ga('send', 'pageview');
-  </script>
+    
 
   <script>
     Array.prototype.slice.call(document.querySelectorAll('.optional [data-src]')).forEach(function (optional) {
@@ -423,4 +458,12 @@ America (art for sale)</a></li>
     })
   </script>
 
-</body></html>
+</body><!-- script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-88027178-1', 'auto');
+    ga('send', 'pageview');
+  </script --></html>

@@ -1,4 +1,4 @@
-<html lang="en" resource-type="blogpost"><head> 
+<html lang="en" resource-type="blogpost"><head>  
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta name="twitter:card" content="summary_large_image">
@@ -55,10 +55,12 @@ section > .captioned-image.p-attached {
     font-style: italic;
 }
 body {
-    display: flex;
-    font: 1em "Helvetica Neue", Helvetica, Arial, sans-serif;
+    display: grid;
+    grid-template-columns: 25rem auto;
+    font: 1.1rem "Helvetica Neue", Helvetica, Arial, sans-serif;
     font-weight: 400;
     line-height: 1.625;
+    margin: 0;
 }
 h1 { margin: 0.5rem; }
 code-format {
@@ -73,30 +75,35 @@ contextual-heading {
     margin-top: 2rem;
 }
 
-[aria-level="1"] {
+h1, [aria-level="1"] {
     color: #43686b;
     font-size: 1.45rem;
 }
-[aria-level="2"] {
+
+h2, [aria-level="2"] {
     color: #856363;
     font-size: 1.35rem;
 }
-[aria-level="3"] {
+
+h3, [aria-level="3"] {
     color: #856363;
     font-size: 1.25rem;
 }
-[aria-level="4"] {
+
+h4, [aria-level="4"] {
     color: #856363;
     font-size: 1.2rem;
 }
-[aria-level="5"], [aria-level="6"] {
+
+h5, h6, [aria-level="5"], [aria-level="6"] {
     color: #667496;
-    font-size: 1.1rem;
+    font-size: 1.2rem;
     font-weight: bolder;
 }
+
 .posted-on {
     font-style: italic;
-    font-size: 0.8rem;
+    font-size: 0.8rem; 
     text-align: right;
     margin-bottom: 1rem;
 }
@@ -105,11 +112,16 @@ ul, li {
     margin: 0.5rem;
     text-align: left;
 }
-header {
+
+responsive-details {
+    height: 100%;
     padding-top: 1rem;
-    padding-right: 2rem;
-    background-color: #fbf5e9;
+    padding-right: 0;
+    background-color: #fbf5e9; 
+    display: block;
+    background-image: linear-gradient(to right, #dde0e8 , #ffffff);
 }
+
 .tagline {
     font-style: italic;
     text-align: center;
@@ -138,7 +150,7 @@ header .title {
     padding: 0.3rem;
     padding-left: 0.25rem;
     font-weight: bolder;
-    font-size: 0.9rem;
+    font-size: 1rem;
     border-left: 1rem solid #999298;
 }
 
@@ -152,7 +164,7 @@ header .title + nav {
 }
 
 header .blurb {
-    font-size: 0.75rem;
+    font-size: 0.9rem;
     text-align: center;
 }
 header .name {
@@ -215,11 +227,14 @@ blockquote:after {
 
 @media (max-width: 800px){
     body {
-        flex-direction: column;
+        grid-template-columns: 1fr;
     }
-    header {
+    responsive-details {
+        height: auto;
         border-bottom: 1px solid #afafff;
-    }
+    } 
+
+    main { width: 95%; margin: 0 auto;}
 
     .captioned-image.p-attached {
         width: 100%;
@@ -231,20 +246,13 @@ blockquote:after {
         float: none;
     }
 
-    [for="aboutMeToggle"] {
+    #aboutMeToggle {
+        display: block;
         background-color: #675e5e;
         color: white;
         padding: 0.25rem;
         padding-left: 0.5rem;
-        display: block;
         border-left: 1rem solid black;
-    }
-    #aboutMeToggle:focus + [for="aboutMeToggle"]{
-        outline: 4px solid #c6ddf2;
-    }
-
-    #aboutMeToggle:checked ~ header {
-        display: none;
     }
 
     header li { display: inline; margin-left: -0.5em; }
@@ -296,8 +304,41 @@ blockquote:after {
     </script>
   </head>
   <body>
-    <input id="aboutMeToggle" class="sr-only" type="checkbox" checked="">
-<label for="aboutMeToggle">Toggle author information</label>
+    <script>
+class ResponsiveDetails extends HTMLElement {
+  
+  checkForced() {
+      let details = this.querySelector('details')
+        if (this.mql.matches) {
+          details.setAttribute('open','')
+        } else {
+          details.removeAttribute('open')
+        }
+  }
+  connectedCallback() {
+    this.mql = window.matchMedia(`(min-width: ${this.getAttribute("open-after") || "1px" })`);
+    this.mql.addEventListener('change', () => {
+        this.checkForced()
+    })
+    requestAnimationFrame(() => this.checkForced())
+  }
+  constructor() {
+    super()
+    this.attachShadow({mode: "open"})
+    this.shadowRoot.innerHTML = `<slot></slot>`
+    let slot = this.shadowRoot.firstElementChild;
+    slot.addEventListener('slotchange', ()=> this.checkForced)          
+
+  }
+}                         
+
+customElements.define('responsive-details', ResponsiveDetails)
+</script>
+
+<responsive-details open-after="800px">
+<details open="">
+<summary id="aboutMeToggle">Author Information</summary>
+
 <header>
     <div class="name">
         Brian Kardell
@@ -309,7 +350,7 @@ blockquote:after {
             <li>Developer Advocate at Igalia</li>
             <li>Original Co-author/Co-signer of The Extensible Web Manifesto</li>
             <li>Co-Founder/Chair, W3C Extensible Web CG</li>
-            <li>Member, W3C (The JS Foundation)</li>
+            <li>Member, W3C (OpenJS Foundation)</li>
             <li>Co-author of HitchJS</li>
             <li>Blogger</li>
             <li>Art, Science &amp; History Lover</li>
@@ -332,15 +373,17 @@ America (art for sale)</a></li>
         </ul>
     </nav>
 </header>
+</details>
+</responsive-details>
     <main><div class="posted-on">Posted on 2/5/2016</div><article posted-on="2/5/2016" class="sectioning">
-	<contextual-heading role="heading" aria-level="1">A Brief(ish) History of the Web Universe - Part III: The Early Web</contextual-heading>
+	<h1 class="contextual-heading">A Brief(ish) History of the Web Universe - Part III: The Early Web</h1>
 	<p class="segue">
 	<a href="/blog/Brief-ish-History-of-The-Web-Part-1.html">Part I: The Pre-Web</a> and <a href="/blog/Brief-ish-History-of-The-Web-Part-2.html">Part II: Time</a> of this series attempt to set the creation of the Web, the first Web browser and early attempts to publicly share Sir Tim Berners-Lee’s idea of “the Web” into some historical context.  They attempt to illustrate that there were ideas and forks of ideas along the way, each  considering different aspects of different problems; and that each had varying degrees of success. Some were popular and increasingly mature desktop products, others created standards upon which many products would be built.  Some were technically interesting but completely failed to take off and some which were academically fascinating but were largely vapor.   All of these were still “in motion” at the time that the Web was being conceived and it’s important to realize that they didn’t stop just because Tim said “wait, I’ve got it.”.  Those posts also attempt to explain how Tim really wanted the Web to be read/write, wanted to tap into existing mature products and which bits he imagined were most and least important.  I described the landscape of deployed hardware and technology at the time – the world was close, but not yet “ready” to be wired in richer form/  We weren’t connected by and large – In fact, the entire amount of information sent across the Internet monthly at that time would easily fit on a single sub $100 (US) external USB hard-drive in 2016.    All of this led helped shape the Web.</p>
 
 	<p>It would be an understatement to say that early on, the vast majority of folks in the mature bits of the industry didn't really take the Web&nbsp;seriously yet. &nbsp;As explained in previous posts, the authors of mature hypertext products turned down early opportunities to integrate the Web outright. &nbsp;In 1992 Tim's&nbsp;talk proposal for&nbsp;the Hypertext Conference was actually rejected. &nbsp;Even in terms of new "Internet ideas" the Web didn't seem like the popular&nbsp;winner. SGML enthusiasts by and large shunned it as a crude interpretation of a much better idea with little hope of success. &nbsp;<a href="https://en.wikipedia.org/wiki/Gopher_(protocol)" target="_blank">Gopher</a>, which&nbsp;was created at almost exactly the same time, was gaining users far&nbsp;faster than this "World Wide Web". What did happen for the Web, however, is that a <em>huge percentage of the&nbsp;</em>small number of early enthusiasts involved started building browsers... Meanwhile,&nbsp;<em>existing ideas&nbsp;kept evolving independently</em>, and <em>new&nbsp;ideas started</em>&nbsp;emerging&nbsp;too and these would continue to help shape and inspire.</p>
 
 	<section class="sectioning">
-		<contextual-heading role="heading" aria-level="2">1992-1993: &nbsp;WWWWI</contextual-heading>
+		<h2 class="contextual-heading">1992-1993: &nbsp;WWWWI</h2>
 		<p>1992 saw the birth of a <em>lot</em> of browsers and little actual hypertext. &nbsp;For perspective, by the end of 1992 there were&nbsp;<em>seven</em>&nbsp;web browsers which allowed users to surf the vast ocean of what was at the time <em>only 22 known Websites</em>. &nbsp;As each browser came online they built on Tim's original idea that the parser&nbsp;could just ignore tags it didn't understand and each attempted to "adjust" what we might call the political map of the Web's features. &nbsp;Each brought with it it's own ideas, innovations, bugs and so on. &nbsp;Effectively, this was the first "Browser War" or what I'll call "World Wide Web War I".</p>
 
 		<p>There is one in particular, worth calling&nbsp;out: &nbsp;ViolaWWW. It was created by a student named Pei Wei and it included innovations like stylesheets, tables, inline images, a scripting language and even the ability to <em>embed</em> small applications. &nbsp;Remember that nearly all the popular non-Web, desktop hypertext and hypermedia products of the time had many these features. &nbsp;What made ViolaWWW different was that it was so much more than text. &nbsp;Viola (not ViolaWWW)&nbsp;was&nbsp;an Object Oriented programming language and a bytecode VM. &nbsp; The ViolaWWW&nbsp;browser was&nbsp;a just VM application (though, it was the killer one that made most people care about it) - this made it possible to do all sorts of incredibly interesting things.</p>
@@ -393,7 +436,7 @@ America (art for sale)</a></li>
 
 
 	<section class="sectioning">
-		<contextual-heading role="heading" aria-level="2">1993-1994: The Perfect Storm</contextual-heading>
+		<h2 class="contextual-heading">1993-1994: The Perfect Storm</h2>
 		<p>When Marc Andreessen, was shown <em>Viola</em> it helped inspire him to start an&nbsp;effort at NSCA - at least that's one story.</p>
 
 		<p>For all its value Viola had what turned out to be a critical flaw: &nbsp;It was hard to get it working. &nbsp;Despite all of its advantages, you had to install the runtime itself (the VM) and then run the browser in the runtime. Getting it setup and running proved problematic, even for a number of pretty technically savvy people. There were issues with permissions and bugs and Pei was kind of alone in building and maintaining it.</p>
@@ -411,7 +454,7 @@ America (art for sale)</a></li>
 		<p>Previous efforts to standardize didn't get there - It wasn't until November 28, 1994 that RFC-1886 was finally sent to the IETF to begin to create an HTML "standard" which we'll talk about in Part IV, but wouldn't ultimately arrive for another year and then in debatable form.</p>
 
 		<section class="sectioning">
-			<contextual-heading role="heading" aria-level="3">The VM</contextual-heading>
+			<h3 class="contextual-heading">The VM</h3>
 			<p>Pei wasn't the only one thinking about a runtime VM, Sun Microsystems was too.&nbsp;&nbsp;As described in <a href="/blog/Brief-ish-History-of-The-Web-Part-2.html">Part II</a>,&nbsp;Project Green spawned Oak thinking they'd found the next big market in consumer devices with embedded systems. &nbsp;By&nbsp;1992 they had a working demo for set-top boxes which created a read/write interactive internet-<em>like</em> experience for television - MovieWood which they had hoped to sell to cable companies. &nbsp;But the cable companies didn't bite.</p>
 
 			<p>This confluence of timing and ideas left the Green Team at Sun wondering what to do with the rest of their&nbsp;lives and their ideas. &nbsp;Over the course of 3 days they discussed the success of Mosaic and decided their future.&nbsp; As James Gosling would later describe:</p>
@@ -429,15 +472,7 @@ America (art for sale)</a></li>
 </article></main>
 
   
-    <script>
-    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-
-    ga('create', 'UA-88027178-1', 'auto');
-    ga('send', 'pageview');
-  </script>
+    
 
   <script>
     Array.prototype.slice.call(document.querySelectorAll('.optional [data-src]')).forEach(function (optional) {
@@ -460,4 +495,12 @@ America (art for sale)</a></li>
     })
   </script>
 
-</body></html>
+</body><!-- script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-88027178-1', 'auto');
+    ga('send', 'pageview');
+  </script --></html>

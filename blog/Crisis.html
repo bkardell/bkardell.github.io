@@ -1,4 +1,4 @@
-<html lang="en" resource-type="blogpost"><head> 
+<html lang="en" resource-type="blogpost"><head>  
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta name="twitter:card" content="summary_large_image">
@@ -55,10 +55,12 @@ section > .captioned-image.p-attached {
     font-style: italic;
 }
 body {
-    display: flex;
-    font: 1em "Helvetica Neue", Helvetica, Arial, sans-serif;
+    display: grid;
+    grid-template-columns: 25rem auto;
+    font: 1.1rem "Helvetica Neue", Helvetica, Arial, sans-serif;
     font-weight: 400;
     line-height: 1.625;
+    margin: 0;
 }
 h1 { margin: 0.5rem; }
 code-format {
@@ -73,30 +75,35 @@ contextual-heading {
     margin-top: 2rem;
 }
 
-[aria-level="1"] {
+h1, [aria-level="1"] {
     color: #43686b;
     font-size: 1.45rem;
 }
-[aria-level="2"] {
+
+h2, [aria-level="2"] {
     color: #856363;
     font-size: 1.35rem;
 }
-[aria-level="3"] {
+
+h3, [aria-level="3"] {
     color: #856363;
     font-size: 1.25rem;
 }
-[aria-level="4"] {
+
+h4, [aria-level="4"] {
     color: #856363;
     font-size: 1.2rem;
 }
-[aria-level="5"], [aria-level="6"] {
+
+h5, h6, [aria-level="5"], [aria-level="6"] {
     color: #667496;
-    font-size: 1.1rem;
+    font-size: 1.2rem;
     font-weight: bolder;
 }
+
 .posted-on {
     font-style: italic;
-    font-size: 0.8rem;
+    font-size: 0.8rem; 
     text-align: right;
     margin-bottom: 1rem;
 }
@@ -105,11 +112,16 @@ ul, li {
     margin: 0.5rem;
     text-align: left;
 }
-header {
+
+responsive-details {
+    height: 100%;
     padding-top: 1rem;
-    padding-right: 2rem;
-    background-color: #fbf5e9;
+    padding-right: 0;
+    background-color: #fbf5e9; 
+    display: block;
+    background-image: linear-gradient(to right, #dde0e8 , #ffffff);
 }
+
 .tagline {
     font-style: italic;
     text-align: center;
@@ -138,7 +150,7 @@ header .title {
     padding: 0.3rem;
     padding-left: 0.25rem;
     font-weight: bolder;
-    font-size: 0.9rem;
+    font-size: 1rem;
     border-left: 1rem solid #999298;
 }
 
@@ -152,7 +164,7 @@ header .title + nav {
 }
 
 header .blurb {
-    font-size: 0.75rem;
+    font-size: 0.9rem;
     text-align: center;
 }
 header .name {
@@ -215,11 +227,14 @@ blockquote:after {
 
 @media (max-width: 800px){
     body {
-        flex-direction: column;
+        grid-template-columns: 1fr;
     }
-    header {
+    responsive-details {
+        height: auto;
         border-bottom: 1px solid #afafff;
-    }
+    } 
+
+    main { width: 95%; margin: 0 auto;}
 
     .captioned-image.p-attached {
         width: 100%;
@@ -231,20 +246,13 @@ blockquote:after {
         float: none;
     }
 
-    [for="aboutMeToggle"] {
+    #aboutMeToggle {
+        display: block;
         background-color: #675e5e;
         color: white;
         padding: 0.25rem;
         padding-left: 0.5rem;
-        display: block;
         border-left: 1rem solid black;
-    }
-    #aboutMeToggle:focus + [for="aboutMeToggle"]{
-        outline: 4px solid #c6ddf2;
-    }
-
-    #aboutMeToggle:checked ~ header {
-        display: none;
     }
 
     header li { display: inline; margin-left: -0.5em; }
@@ -296,8 +304,41 @@ blockquote:after {
     </script>
   </head>
   <body>
-    <input id="aboutMeToggle" class="sr-only" type="checkbox" checked="">
-<label for="aboutMeToggle">Toggle author information</label>
+    <script>
+class ResponsiveDetails extends HTMLElement {
+  
+  checkForced() {
+      let details = this.querySelector('details')
+        if (this.mql.matches) {
+          details.setAttribute('open','')
+        } else {
+          details.removeAttribute('open')
+        }
+  }
+  connectedCallback() {
+    this.mql = window.matchMedia(`(min-width: ${this.getAttribute("open-after") || "1px" })`);
+    this.mql.addEventListener('change', () => {
+        this.checkForced()
+    })
+    requestAnimationFrame(() => this.checkForced())
+  }
+  constructor() {
+    super()
+    this.attachShadow({mode: "open"})
+    this.shadowRoot.innerHTML = `<slot></slot>`
+    let slot = this.shadowRoot.firstElementChild;
+    slot.addEventListener('slotchange', ()=> this.checkForced)          
+
+  }
+}                         
+
+customElements.define('responsive-details', ResponsiveDetails)
+</script>
+
+<responsive-details open-after="800px">
+<details open="">
+<summary id="aboutMeToggle">Author Information</summary>
+
 <header>
     <div class="name">
         Brian Kardell
@@ -309,7 +350,7 @@ blockquote:after {
             <li>Developer Advocate at Igalia</li>
             <li>Original Co-author/Co-signer of The Extensible Web Manifesto</li>
             <li>Co-Founder/Chair, W3C Extensible Web CG</li>
-            <li>Member, W3C (The JS Foundation)</li>
+            <li>Member, W3C (OpenJS Foundation)</li>
             <li>Co-author of HitchJS</li>
             <li>Blogger</li>
             <li>Art, Science &amp; History Lover</li>
@@ -332,6 +373,8 @@ America (art for sale)</a></li>
         </ul>
     </nav>
 </header>
+</details>
+</responsive-details>
     <main><div class="posted-on">Posted on 12/03/2018</div><article posted-on="12/03/2018" class="sectioning">
 	<style>
 		/*body:not(.preferences-set) > :not(main) { display: none; }
@@ -403,7 +446,7 @@ America (art for sale)</a></li>
 			}
 		}())
 	</script>
-	<contextual-heading role="heading" aria-level="1">Standards Crisis on Earth-1</contextual-heading>
+	<h1 class="contextual-heading">Standards Crisis on Earth-1</h1>
     <script src="../prism.js"></script>
     <link rel="stylesheet" href="../prism.css">
 	<style>
@@ -451,7 +494,7 @@ America (art for sale)</a></li>
 	</p>
  
 	<section class="sectioning">
-		<contextual-heading role="heading" aria-level="2">Introduction: A thought experiment setup</contextual-heading>
+		<h2 class="contextual-heading">Introduction: A thought experiment setup</h2>
 
 
 		<div class="captioned-image optional">
@@ -542,7 +585,7 @@ America (art for sale)</a></li>
 
 
 	<section class="sectioning">
-		<contextual-heading role="heading" aria-level="2">Why?</contextual-heading>
+		<h2 class="contextual-heading">Why?</h2>
 
 		<p>For the last four or five years we've (in reality) made a lot of progress, on a lot of fronts with regard to reforming "standardization".  We widely agree on a lot of foundational "bits" even across numerous standards bodies.  But, there are still a lot of unanswered questions about how to make this really "click". While the basic challenges are largely similar across standards bodies, HTML is especially interesting because it adds additional complexities...</p>
 
@@ -559,7 +602,7 @@ America (art for sale)</a></li>
 	</section>
 
 	<section class="sectioning">
-		<contextual-heading role="heading" aria-level="2">"Data" initial handwaving</contextual-heading>
+		<h2 class="contextual-heading">"Data" initial handwaving</h2>
 
 		<p>So, we've said that data <em>exists</em> on Earth-2, but that doesn't mean we have it.  In fact, that's job #1:  Any kind of "science" is going to inevitably involve measuring.  But who measures? How? And what do we accept that those measurements actually mean? What do we do with that information?</p>
 
@@ -574,7 +617,7 @@ America (art for sale)</a></li>
 	</section>
 
 	<section class="sectioning">
-		<contextual-heading role="heading" aria-level="2">Usage and Languages</contextual-heading>
+		<h2 class="contextual-heading">Usage and Languages</h2>
 		<p>If we look at that information (measuring use on unique URLs to feather out some local biases in which a few authors use it really a lot) as a chart, it would look like this.
 		</p>
 		<aside class="captioned-image optional">
@@ -596,7 +639,7 @@ America (art for sale)</a></li>
 	</section>
 
 	<section class="sectioning">
-		<contextual-heading role="heading" aria-level="2">"Dictionary Research"</contextual-heading>
+		<h2 class="contextual-heading">"Dictionary Research"</h2>
 
 		<p>Ideally, someone (or something) would be "watching" data that probably looks a lot like the above and looking for slang that is getting popular enough to warrant further review. Ideally they would have some kind of rule.</p>
 
@@ -620,7 +663,7 @@ America (art for sale)</a></li>
 	</section>
 
 	<section class="sectioning">
-		<contextual-heading role="heading" aria-level="2">Dictionary, or Dictionaries?</contextual-heading>
+		<h2 class="contextual-heading">Dictionary, or Dictionaries?</h2>
 
 		<p>Well, now it gets even a little fuzzier. The most straightforward way of understanding "standardization" here is that elements become part of HTML. I think that at a minimum, everyone in all universes would agree that HTML should contain the "core words", but what are those? "section" is almost certainly one, but it's unclear what the "core words" really should be. Further, even in spoken languages real communication usualy requires more than core words. It seems very likely to me that HTML should have (and arguably does on Earth-1 already) at least some "more specific" words too. But, I'm not sure where we draw the line, or that we're discussing what that even means.</p>
 
@@ -643,7 +686,7 @@ America (art for sale)</a></li>
 
 	</section>
 	<section class="sectioning">
-		<contextual-heading role="heading" aria-level="2">Codifying vs Similar Solutioning</contextual-heading>
+		<h2 class="contextual-heading">Codifying vs Similar Solutioning</h2>
 
 		<p>Another thing that I think plays into this thinking about the story of how we go from custom element to native HTML.</p>
 
@@ -672,7 +715,7 @@ America (art for sale)</a></li>
 	</section>
 
 	<section class="sectioning">
-		<contextual-heading role="heading" aria-level="2"><em>Actually</em> Measuring and Researching</contextual-heading>
+		<h2 class="contextual-heading"><em>Actually</em> Measuring and Researching</h2>
 
 
 		<p>Thusfar we have simply imagined that the data from the HTTP Archive is our data set. But, as I said, I think that getting the "real" data that we actually need is probably going to be trickier than that.</p>
@@ -693,7 +736,7 @@ America (art for sale)</a></li>
 	</section>
 
 	<section class="sectioning">
-		<contextual-heading role="heading" aria-level="2">So....?</contextual-heading>
+		<h2 class="contextual-heading">So....?</h2>
 		<p>
 			So, it seems like, somehow, we're going to start figuring out how we really science the shit out of this. How do we do it? How do we answer all of these questions and setup processes (and maybe new roles?) to make this really hum?
 		</p>
@@ -711,15 +754,7 @@ America (art for sale)</a></li>
 </article></main>
 
   
-    <script>
-    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-
-    ga('create', 'UA-88027178-1', 'auto');
-    ga('send', 'pageview');
-  </script>
+    
 
   <script>
     Array.prototype.slice.call(document.querySelectorAll('.optional [data-src]')).forEach(function (optional) {
@@ -742,4 +777,12 @@ America (art for sale)</a></li>
     })
   </script>
 
-</body></html>
+</body><!-- script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-88027178-1', 'auto');
+    ga('send', 'pageview');
+  </script --></html>

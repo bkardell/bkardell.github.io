@@ -1,4 +1,4 @@
-<html lang="en" resource-type="blogpost"><head> 
+<html lang="en" resource-type="blogpost"><head>  
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta name="twitter:card" content="summary_large_image">
@@ -55,10 +55,12 @@ section > .captioned-image.p-attached {
     font-style: italic;
 }
 body {
-    display: flex;
-    font: 1em "Helvetica Neue", Helvetica, Arial, sans-serif;
+    display: grid;
+    grid-template-columns: 25rem auto;
+    font: 1.1rem "Helvetica Neue", Helvetica, Arial, sans-serif;
     font-weight: 400;
     line-height: 1.625;
+    margin: 0;
 }
 h1 { margin: 0.5rem; }
 code-format {
@@ -73,30 +75,35 @@ contextual-heading {
     margin-top: 2rem;
 }
 
-[aria-level="1"] {
+h1, [aria-level="1"] {
     color: #43686b;
     font-size: 1.45rem;
 }
-[aria-level="2"] {
+
+h2, [aria-level="2"] {
     color: #856363;
     font-size: 1.35rem;
 }
-[aria-level="3"] {
+
+h3, [aria-level="3"] {
     color: #856363;
     font-size: 1.25rem;
 }
-[aria-level="4"] {
+
+h4, [aria-level="4"] {
     color: #856363;
     font-size: 1.2rem;
 }
-[aria-level="5"], [aria-level="6"] {
+
+h5, h6, [aria-level="5"], [aria-level="6"] {
     color: #667496;
-    font-size: 1.1rem;
+    font-size: 1.2rem;
     font-weight: bolder;
 }
+
 .posted-on {
     font-style: italic;
-    font-size: 0.8rem;
+    font-size: 0.8rem; 
     text-align: right;
     margin-bottom: 1rem;
 }
@@ -105,11 +112,16 @@ ul, li {
     margin: 0.5rem;
     text-align: left;
 }
-header {
+
+responsive-details {
+    height: 100%;
     padding-top: 1rem;
-    padding-right: 2rem;
-    background-color: #fbf5e9;
+    padding-right: 0;
+    background-color: #fbf5e9; 
+    display: block;
+    background-image: linear-gradient(to right, #dde0e8 , #ffffff);
 }
+
 .tagline {
     font-style: italic;
     text-align: center;
@@ -138,7 +150,7 @@ header .title {
     padding: 0.3rem;
     padding-left: 0.25rem;
     font-weight: bolder;
-    font-size: 0.9rem;
+    font-size: 1rem;
     border-left: 1rem solid #999298;
 }
 
@@ -152,7 +164,7 @@ header .title + nav {
 }
 
 header .blurb {
-    font-size: 0.75rem;
+    font-size: 0.9rem;
     text-align: center;
 }
 header .name {
@@ -215,11 +227,14 @@ blockquote:after {
 
 @media (max-width: 800px){
     body {
-        flex-direction: column;
+        grid-template-columns: 1fr;
     }
-    header {
+    responsive-details {
+        height: auto;
         border-bottom: 1px solid #afafff;
-    }
+    } 
+
+    main { width: 95%; margin: 0 auto;}
 
     .captioned-image.p-attached {
         width: 100%;
@@ -231,20 +246,13 @@ blockquote:after {
         float: none;
     }
 
-    [for="aboutMeToggle"] {
+    #aboutMeToggle {
+        display: block;
         background-color: #675e5e;
         color: white;
         padding: 0.25rem;
         padding-left: 0.5rem;
-        display: block;
         border-left: 1rem solid black;
-    }
-    #aboutMeToggle:focus + [for="aboutMeToggle"]{
-        outline: 4px solid #c6ddf2;
-    }
-
-    #aboutMeToggle:checked ~ header {
-        display: none;
     }
 
     header li { display: inline; margin-left: -0.5em; }
@@ -296,8 +304,41 @@ blockquote:after {
     </script>
   </head>
   <body>
-    <input id="aboutMeToggle" class="sr-only" type="checkbox" checked="">
-<label for="aboutMeToggle">Toggle author information</label>
+    <script>
+class ResponsiveDetails extends HTMLElement {
+  
+  checkForced() {
+      let details = this.querySelector('details')
+        if (this.mql.matches) {
+          details.setAttribute('open','')
+        } else {
+          details.removeAttribute('open')
+        }
+  }
+  connectedCallback() {
+    this.mql = window.matchMedia(`(min-width: ${this.getAttribute("open-after") || "1px" })`);
+    this.mql.addEventListener('change', () => {
+        this.checkForced()
+    })
+    requestAnimationFrame(() => this.checkForced())
+  }
+  constructor() {
+    super()
+    this.attachShadow({mode: "open"})
+    this.shadowRoot.innerHTML = `<slot></slot>`
+    let slot = this.shadowRoot.firstElementChild;
+    slot.addEventListener('slotchange', ()=> this.checkForced)          
+
+  }
+}                         
+
+customElements.define('responsive-details', ResponsiveDetails)
+</script>
+
+<responsive-details open-after="800px">
+<details open="">
+<summary id="aboutMeToggle">Author Information</summary>
+
 <header>
     <div class="name">
         Brian Kardell
@@ -309,7 +350,7 @@ blockquote:after {
             <li>Developer Advocate at Igalia</li>
             <li>Original Co-author/Co-signer of The Extensible Web Manifesto</li>
             <li>Co-Founder/Chair, W3C Extensible Web CG</li>
-            <li>Member, W3C (The JS Foundation)</li>
+            <li>Member, W3C (OpenJS Foundation)</li>
             <li>Co-author of HitchJS</li>
             <li>Blogger</li>
             <li>Art, Science &amp; History Lover</li>
@@ -332,6 +373,8 @@ America (art for sale)</a></li>
         </ul>
     </nav>
 </header>
+</details>
+</responsive-details>
     <main><div class="posted-on">Posted on 02/17/2017</div><article posted-on="02/17/2017" class="sectioning">
 	<style>
 		/*body:not(.preferences-set) > :not(main) { display: none; }
@@ -403,13 +446,13 @@ America (art for sale)</a></li>
 			}
 		}())
 	</script>
-	<contextual-heading role="heading" aria-level="1">Headings and the Seinfeld Pitch</contextual-heading>
+	<h1 class="contextual-heading">Headings and the Seinfeld Pitch</h1>
 	<p class="segue">Because of its origins, HTML has a number of elements and concepts which are, in retrospect, probably not so great.  Headings being the way they are, for example, has caused seemingly no end of discussion.  I'd like to explain why I think this is, as well as what we should do about it.</p>
 
 	<p>Let's talk about paragraphs.  You can't get much more basic than a paragraph. When I say "paragraph" pretty much everyone will know immediately what I mean.  While some of us might stumble a bit if pressed to describe it abstractly, most of us will, like the US Supreme Court surely "know it when I see it". <span style="display:block; margin: 1rem 0 0">Most people reading this, for example, will recognize immediately that this sentence is in its own paragraph.</span></p>
 
 	<section class="sectioning">
-		<contextual-heading role="heading" aria-level="2">If it walks like a duck...</contextual-heading>
+		<h2 class="contextual-heading">If it walks like a duck...</h2>
 
 		<p>Except that the above sentence isn't its own paragraph. Kind of.  Let me tell you a story that will help explain the disconnect...</p>
 
@@ -426,7 +469,7 @@ America (art for sale)</a></li>
 	</section>
 
     <section class="sectioning">
-    	<contextual-heading role="heading" aria-level="2">Flat Earth Markup</contextual-heading>
+    	<h2 class="contextual-heading">Flat Earth Markup</h2>
     	<p>Flash forward a few hundred years to when we were just beginning to use computers.  GML borrowed the concept of editors marks like the pilcrow in the 1960s.  Thus, they reasoned about things the same way: No "closing tag" was required for many things.  These traditions carried on years later in SGML, and years laters still in HTML.  As you may know, the original vocabulary of HTML was based on a lot of SGML at CERN.  It was built "on the bones" with the intent that you could view these documents with a web browser and still pretty much understand it.</p>
 
     	<p>Given this history, HTML originally (unsuprisingly) contained only the simplest and most basic concepts from print. It was originally intended to be written with a simple rich text style editor in your browser, in a more or less "flat" fashion - visually. Thus, something like this might be an example of a really common "original" document back in the day:</p>
@@ -450,7 +493,7 @@ another h1 yet.
 
 
 		<section class="sectioning">
-    		<contextual-heading role="heading" aria-level="3">Much ado about nothing?</contextual-heading>
+    		<h3 class="contextual-heading">Much ado about nothing?</h3>
 
 	    	<p>A lot of people might think <em>who cares? is it that big of a deal?</em>.  Yes, I think it is.  We can't understand an "outline" of the document and it would be super if we could.  Have you ever wanted to auto-generate a table of contents?  Well, you can't easily do that based on mud or at best it is a really "dumb" outline.  If the only way to really discern the proper boundaries of a section and their relationships with "headings" requires eyesight, well, machines don't have it.  What if a new device, like a watch or something came along and wanted to generate an outline and present you with sections?  How could it?  Or how about this: You're driving in your car and I send you a link that says "read the history section here".  Wouldn't it be nice if you could ask your phone's voice assistant "open this link and read me the history section".  Or wouldn't it be nice if search engines and AI could analyze  your sections?    Oh, and also anyone using assistive technology (AT) would have a hard time.  I mention them last because I want to stress that, <em>in fact, all of these things rely on the same stuff</em>.  It's not just "people using screen readers" who need this. You too, effectively use (and will increasingly use) a kind of AT.</p>
 
@@ -483,7 +526,7 @@ another h1 yet.
     </section>
 
     <section class="sectioning">
-    	<contextual-heading role="heading" aria-level="2">Round Earth Headings</contextual-heading>
+    	<h2 class="contextual-heading">Round Earth Headings</h2>
     	<p>So yeah - the earth is round, documents are structured, and we should fix this problem with headings.</p>
 
     	<p>During the creation of HTML5, this was much discussed and there was a proposal for how to create a "Document Outline".  This was speculative fiction, no one implemented it. Not even a little bit.  Not even at all.</p>
@@ -494,7 +537,7 @@ another h1 yet.
 
     <section style="clear:both" class="sectioning">
 
-    	<contextual-heading role="heading" aria-level="2">The Seinfeld Pitch</contextual-heading>
+    	<h2 class="contextual-heading">The Seinfeld Pitch</h2>
     	<p>Ok, ready?  What does the <code tag-esc="">h</code> tag mean?  Nothing.</p>
 
 		<p>Ok, that probably needs more...</p>
@@ -526,15 +569,7 @@ another h1 yet.
 </article></main>
 
   
-    <script>
-    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-
-    ga('create', 'UA-88027178-1', 'auto');
-    ga('send', 'pageview');
-  </script>
+    
 
   <script>
     Array.prototype.slice.call(document.querySelectorAll('.optional [data-src]')).forEach(function (optional) {
@@ -557,4 +592,12 @@ another h1 yet.
     })
   </script>
 
-</body></html>
+</body><!-- script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-88027178-1', 'auto');
+    ga('send', 'pageview');
+  </script --></html>

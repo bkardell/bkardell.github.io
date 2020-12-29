@@ -1,4 +1,4 @@
-<html lang="en" resource-type="blogpost"><head> 
+<html lang="en" resource-type="blogpost"><head>  
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta name="twitter:card" content="summary_large_image">
@@ -55,10 +55,12 @@ section > .captioned-image.p-attached {
     font-style: italic;
 }
 body {
-    display: flex;
-    font: 1em "Helvetica Neue", Helvetica, Arial, sans-serif;
+    display: grid;
+    grid-template-columns: 25rem auto;
+    font: 1.1rem "Helvetica Neue", Helvetica, Arial, sans-serif;
     font-weight: 400;
     line-height: 1.625;
+    margin: 0;
 }
 h1 { margin: 0.5rem; }
 code-format {
@@ -73,30 +75,35 @@ contextual-heading {
     margin-top: 2rem;
 }
 
-[aria-level="1"] {
+h1, [aria-level="1"] {
     color: #43686b;
     font-size: 1.45rem;
 }
-[aria-level="2"] {
+
+h2, [aria-level="2"] {
     color: #856363;
     font-size: 1.35rem;
 }
-[aria-level="3"] {
+
+h3, [aria-level="3"] {
     color: #856363;
     font-size: 1.25rem;
 }
-[aria-level="4"] {
+
+h4, [aria-level="4"] {
     color: #856363;
     font-size: 1.2rem;
 }
-[aria-level="5"], [aria-level="6"] {
+
+h5, h6, [aria-level="5"], [aria-level="6"] {
     color: #667496;
-    font-size: 1.1rem;
+    font-size: 1.2rem;
     font-weight: bolder;
 }
+
 .posted-on {
     font-style: italic;
-    font-size: 0.8rem;
+    font-size: 0.8rem; 
     text-align: right;
     margin-bottom: 1rem;
 }
@@ -105,11 +112,16 @@ ul, li {
     margin: 0.5rem;
     text-align: left;
 }
-header {
+
+responsive-details {
+    height: 100%;
     padding-top: 1rem;
-    padding-right: 2rem;
-    background-color: #fbf5e9;
+    padding-right: 0;
+    background-color: #fbf5e9; 
+    display: block;
+    background-image: linear-gradient(to right, #dde0e8 , #ffffff);
 }
+
 .tagline {
     font-style: italic;
     text-align: center;
@@ -138,7 +150,7 @@ header .title {
     padding: 0.3rem;
     padding-left: 0.25rem;
     font-weight: bolder;
-    font-size: 0.9rem;
+    font-size: 1rem;
     border-left: 1rem solid #999298;
 }
 
@@ -152,7 +164,7 @@ header .title + nav {
 }
 
 header .blurb {
-    font-size: 0.75rem;
+    font-size: 0.9rem;
     text-align: center;
 }
 header .name {
@@ -215,11 +227,14 @@ blockquote:after {
 
 @media (max-width: 800px){
     body {
-        flex-direction: column;
+        grid-template-columns: 1fr;
     }
-    header {
+    responsive-details {
+        height: auto;
         border-bottom: 1px solid #afafff;
-    }
+    } 
+
+    main { width: 95%; margin: 0 auto;}
 
     .captioned-image.p-attached {
         width: 100%;
@@ -231,20 +246,13 @@ blockquote:after {
         float: none;
     }
 
-    [for="aboutMeToggle"] {
+    #aboutMeToggle {
+        display: block;
         background-color: #675e5e;
         color: white;
         padding: 0.25rem;
         padding-left: 0.5rem;
-        display: block;
         border-left: 1rem solid black;
-    }
-    #aboutMeToggle:focus + [for="aboutMeToggle"]{
-        outline: 4px solid #c6ddf2;
-    }
-
-    #aboutMeToggle:checked ~ header {
-        display: none;
     }
 
     header li { display: inline; margin-left: -0.5em; }
@@ -296,8 +304,41 @@ blockquote:after {
     </script>
   </head>
   <body>
-    <input id="aboutMeToggle" class="sr-only" type="checkbox" checked="">
-<label for="aboutMeToggle">Toggle author information</label>
+    <script>
+class ResponsiveDetails extends HTMLElement {
+  
+  checkForced() {
+      let details = this.querySelector('details')
+        if (this.mql.matches) {
+          details.setAttribute('open','')
+        } else {
+          details.removeAttribute('open')
+        }
+  }
+  connectedCallback() {
+    this.mql = window.matchMedia(`(min-width: ${this.getAttribute("open-after") || "1px" })`);
+    this.mql.addEventListener('change', () => {
+        this.checkForced()
+    })
+    requestAnimationFrame(() => this.checkForced())
+  }
+  constructor() {
+    super()
+    this.attachShadow({mode: "open"})
+    this.shadowRoot.innerHTML = `<slot></slot>`
+    let slot = this.shadowRoot.firstElementChild;
+    slot.addEventListener('slotchange', ()=> this.checkForced)          
+
+  }
+}                         
+
+customElements.define('responsive-details', ResponsiveDetails)
+</script>
+
+<responsive-details open-after="800px">
+<details open="">
+<summary id="aboutMeToggle">Author Information</summary>
+
 <header>
     <div class="name">
         Brian Kardell
@@ -309,7 +350,7 @@ blockquote:after {
             <li>Developer Advocate at Igalia</li>
             <li>Original Co-author/Co-signer of The Extensible Web Manifesto</li>
             <li>Co-Founder/Chair, W3C Extensible Web CG</li>
-            <li>Member, W3C (The JS Foundation)</li>
+            <li>Member, W3C (OpenJS Foundation)</li>
             <li>Co-author of HitchJS</li>
             <li>Blogger</li>
             <li>Art, Science &amp; History Lover</li>
@@ -332,8 +373,10 @@ America (art for sale)</a></li>
         </ul>
     </nav>
 </header>
+</details>
+</responsive-details>
     <main><div class="posted-on">Posted on 05/26/2020</div><article posted-on="05/26/2020" class="sectioning">
-	<contextual-heading role="heading" aria-level="1">Web Engine Diversity and Ecosystem Health</contextual-heading>
+	<h1 class="contextual-heading">Web Engine Diversity and Ecosystem Health</h1>
 	<style>
     .note { 
         background-color: rgba(255,255,0,0.24);
@@ -369,12 +412,12 @@ America (art for sale)</a></li>
 	</blockquote>
 	<p>I like this analogy because I think he's right in even more ways than he intended. It's almost self-evident: 1 is too few, a hundred is too many - it's just chaos and noise.  But what is the ideal number?  This answer dogs us a lot, in part because it is not only unanswerable, it's actually kind of a red herring. I think there's something to this that leads to an important takeaway about how we think about the problem...</p>
 	<section class="sectioning">
-		<contextual-heading role="heading" aria-level="2">Numbers and goals...</contextual-heading>
+		<h2 class="contextual-heading">Numbers and goals...</h2>
 		<p>The interesting part about this analogy is that the simple number of political parties isn't actually a very meaningful measure: Parties can differ a lot, or they can differ a little.  6 parties that barely disagree is quite a different thing than 3 that disagree substantially.  Further, it's not simply a matter of giving voice to every dissenting opinion that matters either: There are political parties formed on ideas of hate, for example. Adding those doesn't add good things.  In short, what really matters is the <em>goal</em> of those numbers.</p>
 		<p>In the case of the political analogy, the real aim is about what makes for a healthy, effective and just model of governance.  Similarly on the topic of "browser engine diversity", I believe that the real goal is "What makes for a healthy and effective ecosystem?" and that the numbers we frequently talk about (and how) can easily lead us into perhaps the wrong takeaways.</p>
 	</section>
 	<section class="sectioning">
-		<contextual-heading role="heading" aria-level="2">Older engines and diversity</contextual-heading>
+		<h2 class="contextual-heading">Older engines and diversity</h2>
 		<p>It is fairly common that discussions of browser diversity point to the Web's own history for examples of "why engine diversity matters": IE vs Netscape are often held up.  IE's dominance and ability to dictate the market (or even kill it in this case) was overcome by diversity.  This is true, but very incomplete:  There's a lot more beneath the surface...</p>
 		<p>Consider, for example, the fact that for a time there were <em>only two</em> mainstream browsers - and the very dominant one (IE) was both  entirely proprietary and based on a single proprietary OS.</p>
 		<p>Consider how different this could have been, if IE had been open source and properly licensed.  Even if Microsoft didn't want it to run on other operating systems, someone else could step in and fill that gap.  If Microsoft walked away from the Web, or worse, went belly up, someone could fork and take over the project.  If, for any reason at all, the primary maintainer cannot prioritize - other people and organization could more directly invest in advancements.</p>
@@ -382,7 +425,7 @@ America (art for sale)</a></li>
 		<p>So, while we had greater 'diversity', these numbers alone aren't a great measure of the overall health of the ecosystem.</p>
 	</section>
 	<section class="sectioning">
-		<contextual-heading role="heading" aria-level="2">The most healthy, open ecosystem ever.</contextual-heading>
+		<h2 class="contextual-heading">The most healthy, open ecosystem ever.</h2>
 		<p>This is in stark contrast to the situation today: In important ways, we are a <em>more</em> diverse, efficient and healthier ecosystem with the three multi-os, open source engines we have left (Blink, Gecko and WebKit) than when we had had more and were dominated by projects that weren't that at all.</p>
 		<div class="note">
 			A lot of people seem to want to suggest that there aren't really 3 today because blink was born from a fork of WebKit, or because they think that WebKit is somehow "Just for iOS".
@@ -396,7 +439,7 @@ America (art for sale)</a></li>
 		<p>This also leads to lots of interesting new opportunities.  For example, we are the creators/maintainers of WPE, the official WebKit Port for Embedded that powers tons of those devices mentioned above. This matters a lot because a rising tide lifts all boats in the commons.  You can see an example of this in that Igalia is advancing work on SVG2 and hardware acceleration for SVG in WebKit - a topic which has failed to get the prioritization for years, but is especially critical for lots of embedded use cases.  If you're interested in this, as well as <a href="https://www.igalia.com/chats/Igalia-Chats-Niko-SVG-WPE" rel="nofollow">some interesting history of SVG, WebKit, HTML/CSS and embedded browsers, have a listen to this.</a></p>
 	</section>
 	<section class="sectioning">
-		<contextual-heading role="heading" aria-level="2">Opportunities to do better...</contextual-heading>
+		<h2 class="contextual-heading">Opportunities to do better...</h2>
 
 		<p>There is another interesting thing here that is always left out of these discussions but I think is considerably interesting in this reframing.  A funny little quirk of history is that while we say there are 3 rendering engines, that's only <em>partially</em> true.</p>
 		<p>More specifically, there are 3 <em>modern browser rendering engines</em>,  and <em>a bunch of other rendering engines that aren't that</em>.</p>
@@ -405,7 +448,7 @@ America (art for sale)</a></li>
 		<p>This is a topic I'd love to see discussed more for several reasons - but mainy they center on the fact that it is just harder for us to move forward <em>together</em> if things are too fragmented.  Instead of growing together and a rising tide lifting all boats - the boats are kind of all in entirely different bodies of water.</p>
 		<p>I would love to see some effort to resolve this.  Imagine if these vendors came into the fray and either invested in basing their work on modern engines (hopefully various), <em>or</em> pulled together to create something new.  That <em>might</em> be the one practical way we could arrive at an actual viable 4th engine somehow.</p>
 		<section class="sectioning">
-			<contextual-heading role="heading" aria-level="3">Why now is a good time to discuss it</contextual-heading>
+			<h3 class="contextual-heading">Why now is a good time to discuss it</h3>
 		<p>Most of these engines also contain some things that were developed in standards organizations but which no browser supports... That's kind of why they were created.  However, there are new opportunities to align...</p>
 		<p>Web engine architectures are like a lot of engineering projects - they grow, they get crufty, you get locked into certain boundaries that you know you'd like to escape.  However,until you do you can't really afford to tackle certain kinds of problems.  That's a big part of why <em>browser</em> engines today don't do a lot of the things you needed to fill their use cases.  Browser architectures have traditionally, generally not been well-prepared for the problems of print or ebooks, and that's part of why we find ourselves in the current situation.</p>
 		<p>However, for many years, there has been much rework and rearchitecture of layout engines aimed at solving precisely the fundamental sorts of things that prevented those sorts of things from being considered.</p>
@@ -413,7 +456,7 @@ America (art for sale)</a></li>
 		</section>
 	</section>
 	<section class="sectioning">
-		<contextual-heading role="heading" aria-level="2">More open <em>prioritization</em></contextual-heading>
+		<h2 class="contextual-heading">More open <em>prioritization</em></h2>
 		<p>But it's not just the projects being open source that matters, it's also that this affords us new opportunities for standardization itself.</p>
 		<p>Ultimately, it is the calculus of prioritization which impacts our ability to get things done almost more than anything else.  Historically, lots of companies get together and, effectively, ask that a very few companies do the work.  They are big organizations with big investments, to be sure - but they are all constrained by hard limits.  The gauntlet of issues surrounding our ability to prioritize everything from attention to actual implementation have stymied many a topic.</p>
 		<p>But in this new age, companies like Igalia are showing that there is potentially a whole new game here: Where centralized, concrete investments from outside that small group can lift up the commons,  benefit everyone and help drive progress.</p>
@@ -422,15 +465,7 @@ America (art for sale)</a></li>
 </article></main>
 
   
-    <script>
-    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-
-    ga('create', 'UA-88027178-1', 'auto');
-    ga('send', 'pageview');
-  </script>
+    
 
   <script>
     Array.prototype.slice.call(document.querySelectorAll('.optional [data-src]')).forEach(function (optional) {
@@ -453,4 +488,12 @@ America (art for sale)</a></li>
     })
   </script>
 
-</body></html>
+</body><!-- script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-88027178-1', 'auto');
+    ga('send', 'pageview');
+  </script --></html>

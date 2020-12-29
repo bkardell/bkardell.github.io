@@ -1,4 +1,4 @@
-<html lang="en" resource-type="blogpost"><head> 
+<html lang="en" resource-type="blogpost"><head>  
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta name="twitter:card" content="summary_large_image">
@@ -55,10 +55,12 @@ section > .captioned-image.p-attached {
     font-style: italic;
 }
 body {
-    display: flex;
-    font: 1em "Helvetica Neue", Helvetica, Arial, sans-serif;
+    display: grid;
+    grid-template-columns: 25rem auto;
+    font: 1.1rem "Helvetica Neue", Helvetica, Arial, sans-serif;
     font-weight: 400;
     line-height: 1.625;
+    margin: 0;
 }
 h1 { margin: 0.5rem; }
 code-format {
@@ -73,30 +75,35 @@ contextual-heading {
     margin-top: 2rem;
 }
 
-[aria-level="1"] {
+h1, [aria-level="1"] {
     color: #43686b;
     font-size: 1.45rem;
 }
-[aria-level="2"] {
+
+h2, [aria-level="2"] {
     color: #856363;
     font-size: 1.35rem;
 }
-[aria-level="3"] {
+
+h3, [aria-level="3"] {
     color: #856363;
     font-size: 1.25rem;
 }
-[aria-level="4"] {
+
+h4, [aria-level="4"] {
     color: #856363;
     font-size: 1.2rem;
 }
-[aria-level="5"], [aria-level="6"] {
+
+h5, h6, [aria-level="5"], [aria-level="6"] {
     color: #667496;
-    font-size: 1.1rem;
+    font-size: 1.2rem;
     font-weight: bolder;
 }
+
 .posted-on {
     font-style: italic;
-    font-size: 0.8rem;
+    font-size: 0.8rem; 
     text-align: right;
     margin-bottom: 1rem;
 }
@@ -105,11 +112,16 @@ ul, li {
     margin: 0.5rem;
     text-align: left;
 }
-header {
+
+responsive-details {
+    height: 100%;
     padding-top: 1rem;
-    padding-right: 2rem;
-    background-color: #fbf5e9;
+    padding-right: 0;
+    background-color: #fbf5e9; 
+    display: block;
+    background-image: linear-gradient(to right, #dde0e8 , #ffffff);
 }
+
 .tagline {
     font-style: italic;
     text-align: center;
@@ -138,7 +150,7 @@ header .title {
     padding: 0.3rem;
     padding-left: 0.25rem;
     font-weight: bolder;
-    font-size: 0.9rem;
+    font-size: 1rem;
     border-left: 1rem solid #999298;
 }
 
@@ -152,7 +164,7 @@ header .title + nav {
 }
 
 header .blurb {
-    font-size: 0.75rem;
+    font-size: 0.9rem;
     text-align: center;
 }
 header .name {
@@ -215,11 +227,14 @@ blockquote:after {
 
 @media (max-width: 800px){
     body {
-        flex-direction: column;
+        grid-template-columns: 1fr;
     }
-    header {
+    responsive-details {
+        height: auto;
         border-bottom: 1px solid #afafff;
-    }
+    } 
+
+    main { width: 95%; margin: 0 auto;}
 
     .captioned-image.p-attached {
         width: 100%;
@@ -231,20 +246,13 @@ blockquote:after {
         float: none;
     }
 
-    [for="aboutMeToggle"] {
+    #aboutMeToggle {
+        display: block;
         background-color: #675e5e;
         color: white;
         padding: 0.25rem;
         padding-left: 0.5rem;
-        display: block;
         border-left: 1rem solid black;
-    }
-    #aboutMeToggle:focus + [for="aboutMeToggle"]{
-        outline: 4px solid #c6ddf2;
-    }
-
-    #aboutMeToggle:checked ~ header {
-        display: none;
     }
 
     header li { display: inline; margin-left: -0.5em; }
@@ -296,8 +304,41 @@ blockquote:after {
     </script>
   </head>
   <body>
-    <input id="aboutMeToggle" class="sr-only" type="checkbox" checked="">
-<label for="aboutMeToggle">Toggle author information</label>
+    <script>
+class ResponsiveDetails extends HTMLElement {
+  
+  checkForced() {
+      let details = this.querySelector('details')
+        if (this.mql.matches) {
+          details.setAttribute('open','')
+        } else {
+          details.removeAttribute('open')
+        }
+  }
+  connectedCallback() {
+    this.mql = window.matchMedia(`(min-width: ${this.getAttribute("open-after") || "1px" })`);
+    this.mql.addEventListener('change', () => {
+        this.checkForced()
+    })
+    requestAnimationFrame(() => this.checkForced())
+  }
+  constructor() {
+    super()
+    this.attachShadow({mode: "open"})
+    this.shadowRoot.innerHTML = `<slot></slot>`
+    let slot = this.shadowRoot.firstElementChild;
+    slot.addEventListener('slotchange', ()=> this.checkForced)          
+
+  }
+}                         
+
+customElements.define('responsive-details', ResponsiveDetails)
+</script>
+
+<responsive-details open-after="800px">
+<details open="">
+<summary id="aboutMeToggle">Author Information</summary>
+
 <header>
     <div class="name">
         Brian Kardell
@@ -309,7 +350,7 @@ blockquote:after {
             <li>Developer Advocate at Igalia</li>
             <li>Original Co-author/Co-signer of The Extensible Web Manifesto</li>
             <li>Co-Founder/Chair, W3C Extensible Web CG</li>
-            <li>Member, W3C (The JS Foundation)</li>
+            <li>Member, W3C (OpenJS Foundation)</li>
             <li>Co-author of HitchJS</li>
             <li>Blogger</li>
             <li>Art, Science &amp; History Lover</li>
@@ -332,8 +373,10 @@ America (art for sale)</a></li>
         </ul>
     </nav>
 </header>
+</details>
+</responsive-details>
     <main><div class="posted-on">Posted on 01/09/2019</div><article posted-on="01/09/2019" class="sectioning">
-	<contextual-heading role="heading" aria-level="1">Harold Crick and the Web Platform</contextual-heading>
+	<h1 class="contextual-heading">Harold Crick and the Web Platform</h1>
 	<script src="../prism.js"></script>
     <link rel="stylesheet" href="../prism.css">
 	<style>
@@ -393,7 +436,7 @@ America (art for sale)</a></li>
 	</p>
 
 	<section class="sectioning">
-		<contextual-heading role="heading" aria-level="2">For many years</contextual-heading>
+		<h2 class="contextual-heading">For many years</h2>
 
 		<p>
 		  And so, for many years, two communities continued to work on these problems outside of HTML itself: In the case of graphics this would become SVG, and in the case of formulae, MathML.  
@@ -466,7 +509,7 @@ America (art for sale)</a></li>
 
 			
 	<section class="sectioning">
-		<contextual-heading role="heading" aria-level="2">Little did he know</contextual-heading>		
+		<h2 class="contextual-heading">Little did he know</h2>		
 		<p>
 			In the process of forking, the Blink teams intent was to do a lot of refactoring and really focus on performance.  Along the way, they reviewed code and found that the newly landed contribution of MathML had a lot of complexity.  They found that it had several issues, including a security flaw.  It had no long-term owner on the team and would make refactoring a lot harder, so, they debated what to do with it.</p>
 
@@ -509,7 +552,7 @@ America (art for sale)</a></li>
 
 
 	<section class="sectioning">
-		<contextual-heading role="heading" aria-level="2">Aren't you relieved to know you're not a golem?</contextual-heading>
+		<h2 class="contextual-heading">Aren't you relieved to know you're not a golem?</h2>
 		<p>
 			Along the way we began trying to collectively find new ways to think about how we go about evolving the whole <em>platform</em> in healtier ways than the past and explaining how we deal with where we are, and how we move forward - but this has actually not been great for MathML.
 		</p>
@@ -531,7 +574,7 @@ America (art for sale)</a></li>
 		</p>
 
 		<section class="sectioning">
-			<contextual-heading role="heading" aria-level="3">Earned Credits</contextual-heading>
+			<h3 class="contextual-heading">Earned Credits</h3>
 			<p>
 				As I explained earlier, because of where it fit in history, I think MathML is an exceptional case.  I would argue that we should 'credit' MathML as if they'd used Custom Elements all along and just shortcut that whole aspect of the conversation.  But, then what?
 			</p>
@@ -558,7 +601,7 @@ America (art for sale)</a></li>
 
 
 	<section class="sectioning">
-		<contextual-heading role="heading" aria-level="3">I Can't Kill Harold Crick</contextual-heading>
+		<h3 class="contextual-heading">I Can't Kill Harold Crick</h3>
 		<p>
 			But, it's not just a general feeling of "we have a duty to any community who did that much to give them some answers" that is bothering me. It's  pressed further by who these groups are.  The groups who have invested in and continue to need MathML have names like the "<em>National Science Foundation</em>".  They serve altruitistic purposes like Higher Education and cancer research.  They aren't just important - they are literally among the very group of folks that the Web proposed to help from the very beginning.
 			</p>
@@ -567,7 +610,7 @@ America (art for sale)</a></li>
 			</p>
 	</section>
 	<section class="sectioning">
-		<contextual-heading role="heading" aria-level="3">Solutions</contextual-heading>
+		<h3 class="contextual-heading">Solutions</h3>
 		<p>
 			As for myself, I believe that any suggestion of 'starting over' here is problematic.  It's not that there might not be 'better', but we need a starting point and to not largely accept the one that has this much success and investment already seems really bad.  I believe we have to find a "standard way" to ship MathML in some way that is better than the situation today. The polyfills are better than nothing, but they introduce many new challenges from performance to accessibility which are unfortunate and non-trivial.
 		</p>
@@ -591,15 +634,7 @@ America (art for sale)</a></li>
 </section></article></main>
 
   
-    <script>
-    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-
-    ga('create', 'UA-88027178-1', 'auto');
-    ga('send', 'pageview');
-  </script>
+    
 
   <script>
     Array.prototype.slice.call(document.querySelectorAll('.optional [data-src]')).forEach(function (optional) {
@@ -622,4 +657,12 @@ America (art for sale)</a></li>
     })
   </script>
 
-</body></html>
+</body><!-- script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-88027178-1', 'auto');
+    ga('send', 'pageview');
+  </script --></html>

@@ -1,4 +1,4 @@
-<html lang="en" resource-type="blogpost"><head> 
+<html lang="en" resource-type="blogpost"><head>  
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta name="twitter:card" content="summary_large_image">
@@ -55,10 +55,12 @@ section > .captioned-image.p-attached {
     font-style: italic;
 }
 body {
-    display: flex;
-    font: 1em "Helvetica Neue", Helvetica, Arial, sans-serif;
+    display: grid;
+    grid-template-columns: 25rem auto;
+    font: 1.1rem "Helvetica Neue", Helvetica, Arial, sans-serif;
     font-weight: 400;
     line-height: 1.625;
+    margin: 0;
 }
 h1 { margin: 0.5rem; }
 code-format {
@@ -73,30 +75,35 @@ contextual-heading {
     margin-top: 2rem;
 }
 
-[aria-level="1"] {
+h1, [aria-level="1"] {
     color: #43686b;
     font-size: 1.45rem;
 }
-[aria-level="2"] {
+
+h2, [aria-level="2"] {
     color: #856363;
     font-size: 1.35rem;
 }
-[aria-level="3"] {
+
+h3, [aria-level="3"] {
     color: #856363;
     font-size: 1.25rem;
 }
-[aria-level="4"] {
+
+h4, [aria-level="4"] {
     color: #856363;
     font-size: 1.2rem;
 }
-[aria-level="5"], [aria-level="6"] {
+
+h5, h6, [aria-level="5"], [aria-level="6"] {
     color: #667496;
-    font-size: 1.1rem;
+    font-size: 1.2rem;
     font-weight: bolder;
 }
+
 .posted-on {
     font-style: italic;
-    font-size: 0.8rem;
+    font-size: 0.8rem; 
     text-align: right;
     margin-bottom: 1rem;
 }
@@ -105,11 +112,16 @@ ul, li {
     margin: 0.5rem;
     text-align: left;
 }
-header {
+
+responsive-details {
+    height: 100%;
     padding-top: 1rem;
-    padding-right: 2rem;
-    background-color: #fbf5e9;
+    padding-right: 0;
+    background-color: #fbf5e9; 
+    display: block;
+    background-image: linear-gradient(to right, #dde0e8 , #ffffff);
 }
+
 .tagline {
     font-style: italic;
     text-align: center;
@@ -138,7 +150,7 @@ header .title {
     padding: 0.3rem;
     padding-left: 0.25rem;
     font-weight: bolder;
-    font-size: 0.9rem;
+    font-size: 1rem;
     border-left: 1rem solid #999298;
 }
 
@@ -152,7 +164,7 @@ header .title + nav {
 }
 
 header .blurb {
-    font-size: 0.75rem;
+    font-size: 0.9rem;
     text-align: center;
 }
 header .name {
@@ -215,11 +227,14 @@ blockquote:after {
 
 @media (max-width: 800px){
     body {
-        flex-direction: column;
+        grid-template-columns: 1fr;
     }
-    header {
+    responsive-details {
+        height: auto;
         border-bottom: 1px solid #afafff;
-    }
+    } 
+
+    main { width: 95%; margin: 0 auto;}
 
     .captioned-image.p-attached {
         width: 100%;
@@ -231,20 +246,13 @@ blockquote:after {
         float: none;
     }
 
-    [for="aboutMeToggle"] {
+    #aboutMeToggle {
+        display: block;
         background-color: #675e5e;
         color: white;
         padding: 0.25rem;
         padding-left: 0.5rem;
-        display: block;
         border-left: 1rem solid black;
-    }
-    #aboutMeToggle:focus + [for="aboutMeToggle"]{
-        outline: 4px solid #c6ddf2;
-    }
-
-    #aboutMeToggle:checked ~ header {
-        display: none;
     }
 
     header li { display: inline; margin-left: -0.5em; }
@@ -296,8 +304,41 @@ blockquote:after {
     </script>
   </head>
   <body>
-    <input id="aboutMeToggle" class="sr-only" type="checkbox" checked="">
-<label for="aboutMeToggle">Toggle author information</label>
+    <script>
+class ResponsiveDetails extends HTMLElement {
+  
+  checkForced() {
+      let details = this.querySelector('details')
+        if (this.mql.matches) {
+          details.setAttribute('open','')
+        } else {
+          details.removeAttribute('open')
+        }
+  }
+  connectedCallback() {
+    this.mql = window.matchMedia(`(min-width: ${this.getAttribute("open-after") || "1px" })`);
+    this.mql.addEventListener('change', () => {
+        this.checkForced()
+    })
+    requestAnimationFrame(() => this.checkForced())
+  }
+  constructor() {
+    super()
+    this.attachShadow({mode: "open"})
+    this.shadowRoot.innerHTML = `<slot></slot>`
+    let slot = this.shadowRoot.firstElementChild;
+    slot.addEventListener('slotchange', ()=> this.checkForced)          
+
+  }
+}                         
+
+customElements.define('responsive-details', ResponsiveDetails)
+</script>
+
+<responsive-details open-after="800px">
+<details open="">
+<summary id="aboutMeToggle">Author Information</summary>
+
 <header>
     <div class="name">
         Brian Kardell
@@ -309,7 +350,7 @@ blockquote:after {
             <li>Developer Advocate at Igalia</li>
             <li>Original Co-author/Co-signer of The Extensible Web Manifesto</li>
             <li>Co-Founder/Chair, W3C Extensible Web CG</li>
-            <li>Member, W3C (The JS Foundation)</li>
+            <li>Member, W3C (OpenJS Foundation)</li>
             <li>Co-author of HitchJS</li>
             <li>Blogger</li>
             <li>Art, Science &amp; History Lover</li>
@@ -332,8 +373,10 @@ America (art for sale)</a></li>
         </ul>
     </nav>
 </header>
+</details>
+</responsive-details>
     <main><div class="posted-on">Posted on 08/24/2017</div><article posted-on="08/24/2017" class="sectioning">
-    <contextual-heading role="heading" aria-level="1">You Don't Say: Web Speech APIs Part II</contextual-heading>
+    <h1 class="contextual-heading">You Don't Say: Web Speech APIs Part II</h1>
     <p class="segue">This is part of a series about making the browser speak and listen to speech.  In my last post <a href="https://bkardell.com/blog/Greetings-Professor-Falken.html">Greetings, Professor Falken: Web Speech APIs Part I</a>, I talked about the existing APIs we "have" for speaking (as well as why the air quotes) and all the many ways that they are wonky today.  In this post I'll share some of my own opinions on that API, as well as how I'm dealing with the <em>speaking</em> part IRL.</p>
 
     <script src="../prism.js"></script>
@@ -384,19 +427,19 @@ America (art for sale)</a></li>
     </ul>
 
     <section class="sectioning">
-        <contextual-heading role="heading" aria-level="2">What's wrong with the current API?</contextual-heading>
+        <h2 class="contextual-heading">What's wrong with the current API?</h2>
         <p><em>Note: These are just my personal opinions after using it a lot for the past couple of months.</em></p>
         <p>Let's assume that the API worked consistently, as advertised by the existing draft, across browsers and devices.  Would it be what we really want or need.  I think that, actually, the answer is no.  </p>
 
         <section class="sectioning">
-            <contextual-heading role="heading" aria-level="3">How low can you go?</contextual-heading>
+            <h3 class="contextual-heading">How low can you go?</h3>
             <p>On the one hand, it's intending to be a low level API, but here I feel like it still falls a little short.  Speech is sound, and yet it's not clear to me how this really fits into the audio architecture.  There was very brief disussion of this, but to not seems like a failure to me.  For example, here's a nifty demo from MDN that allows you to <a href="https://mdn.github.io/voice-change-o-matic/">add effects to your voice with input from the mic</a> by connecting it to an audio stream which gets processed to add things like reverb.  However, the draft nor implementation seem to have no way to intercept the audio stream generated by <code>speechSynthesis</code>.  This seems like a shame because the set of things that you could do there is nearly unbounded, whereas the set of things you can do with the existing levers is exceptionally finite.  In my own use cases, I really wanted those abilitites.  Similarly, the most handy of them (pitch, rate, volume) overlap.  Surely there is something 'down there' that deserves explanation.  If these were done 'in post' there's no reason that any voice shouldn't support those.  So, I think we need more there.</p>
 
             <p>It seems to me there could easily be an 'audiocreated' callback or something which gave you a chance to deal with the audio itself instead of just piping it to the speakers.</p>
         </section>
 
         <section class="sectioning">
-            <contextual-heading role="heading" aria-level="3">Off to the races</contextual-heading>
+            <h3 class="contextual-heading">Off to the races</h3>
             <p>Ok, so it's not the low-level API I'd like it to be, but there's a lot of room for improvement at higher levels too...</p>
             <p>As I explained, <code>.getVoices</code> is weird.  It's kind of typical Web weird in that listeners for events like <code>DOMContentLoaded</code> are also historically racey.  The rationale, I believe, is that remote voices may or may not be available and that can actually change through the duration of your program.  If you've ever used Google Maps Navigation you might have heard the speech change - I beleive that's what's going on there.  But it feels like we should be past this as we have had <code>Promises</code> for some time and the two can co-exist.  Most of the time what we really want to know is "have some voices loaded or not" and managing and guarding against that seems unnecessarily complicated.  You can't put something into the queue with <code>speechSynthesis.speak()</code> until you have an utterance.  You can't create an utterance until you have voices.  You can't simply grab voices because they might not be loaded yet, you can't listen for voices to change if they <em>are</em> already loaded and, in theory, even once something is queued you could lose it before it is actually processed.</p>
             <p>This is a lot to ask the average author to understand how to get right in my opinion.</p>
@@ -404,24 +447,24 @@ America (art for sale)</a></li>
         </section>
 
         <section class="sectioning">
-            <contextual-heading role="heading" aria-level="3">Immutable?</contextual-heading>
+            <h3 class="contextual-heading">Immutable?</h3>
             <p>The fact that you create an instance of an utterance and then set properties seems to lead to a lot of confusion, it's kind of hard to read too.  It definitely seems to me that it would be very handy for it to take an options/config object like <code>MutationObserver</code> and then be immutable properties. Generally speaking, I'm not sure what you would hope to 'do' with an utterance once it has been created except put it in the queue or take it out of the queue and having it present you with an API that throws at some times and not others seems to be begging for classes of problems we don't really neeed.</p>
         </section>
 
         <section class="sectioning">
-            <contextual-heading role="heading" aria-level="3">Reuse</contextual-heading>
+            <h3 class="contextual-heading">Reuse</h3>
             <p>Think for a moment of the choice of voice, the pitch, rate and volume as a "speaker".  In my own
             uses I found that I wanted to reuse these - either to have a single speaker I used all the time, or
             a few speakers that I wanted to variously "say" things. In the current incarnation, this was kind of more painful than I would like because I had to build up things aware of all the quirks above.</p>
         </section>
 
         <section class="sectioning">
-            <contextual-heading role="heading" aria-level="3">What I did</contextual-heading>
+            <h3 class="contextual-heading">What I did</h3>
             <p>So, for me, I ended up building something very close to the above that allows me to do simple things simply... Here are some examples.
             </p>
 
             <section class="sectioning">
-                <contextual-heading role="heading" aria-level="4">Look, just say something...</contextual-heading>
+                <h4 class="contextual-heading">Look, just say something...</h4>
                 <p>The simplest case is that you just want to say something and you don't care about anything else.  To be honest, that was pretty simple before too, unless you wanted to say something long, because there were problems with that, or you cared that it might be defaulting you to some voice that wasn't even in the right language.. but here's what it looks like for me, and it works with long text by chopping it up at hopefully sensible points and chaining them together, selecting
                 a voice by default that is at least in the same major language as the document.</p>
                 <pre><code class="language-javascript">
@@ -456,7 +499,7 @@ new BasicVoiceSpeaker().say(`
             </section>
 
             <section class="sectioning">
-                <contextual-heading role="heading" aria-level="4">Can you take me higher?</contextual-heading>
+                <h4 class="contextual-heading">Can you take me higher?</h4>
                 <p>But I can configure my speaker as described above, and reuse it.  They queue in order.</p>
                 <pre><code class="language-javascript">
 let speaker = new BasicVoiceSpeaker({
@@ -480,7 +523,7 @@ speaker.say(`Would you like to play a game?`)
         </section>
 
         <section class="sectioning">
-            <contextual-heading role="heading" aria-level="3">Voices</contextual-heading>
+            <h3 class="contextual-heading">Voices</h3>
             <p>Of course, all the crap with loading the voices/finding one
             are what you really want to be easier, so there is a <code>.filter</code>
             property that passes you the voices at the right time and lets you
@@ -558,7 +601,7 @@ speaker.say(`Dr. Robert Hume, a.k.a. Stephen W. Falken, 5 Tall Cedar Road, Goose
         </section>
 
         <section class="sectioning">
-            <contextual-heading role="heading" aria-level="3">Queing and Promises</contextual-heading>
+            <h3 class="contextual-heading">Queing and Promises</h3>
             <p>Each call to <code>.say(..)</code> also returns a promise, which is
             resolved when the entire text is spoken (even if it had to be chopped up),
             so you can kind of mostly have a synchronous looking block of calls that
@@ -635,7 +678,7 @@ Promise.all([
         </section>
 
         <section class="sectioning">
-            <contextual-heading role="heading" aria-level="3">Wrapping up</contextual-heading>
+            <h3 class="contextual-heading">Wrapping up</h3>
             <p>So, this is 'at the bottom' of what I'm using and why.
             It still doesn't even attempt to deal with the
             whole audio stream thing. I'm not sure how to deal with that, but one thing I considered
@@ -659,15 +702,7 @@ Promise.all([
 </article></main>
 
   
-    <script>
-    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-
-    ga('create', 'UA-88027178-1', 'auto');
-    ga('send', 'pageview');
-  </script>
+    
 
   <script>
     Array.prototype.slice.call(document.querySelectorAll('.optional [data-src]')).forEach(function (optional) {
@@ -690,4 +725,12 @@ Promise.all([
     })
   </script>
 
-</body></html>
+</body><!-- script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-88027178-1', 'auto');
+    ga('send', 'pageview');
+  </script --></html>

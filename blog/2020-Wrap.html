@@ -1,4 +1,4 @@
-<html lang="en" resource-type="blogpost"><head> 
+<html lang="en" resource-type="blogpost"><head>  
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta name="twitter:card" content="summary_large_image">
@@ -55,8 +55,9 @@ section > .captioned-image.p-attached {
     font-style: italic;
 }
 body {
-    display: flex;
-    font: 1em "Helvetica Neue", Helvetica, Arial, sans-serif;
+    display: grid;
+    grid-template-columns: 25rem auto;
+    font: 1.1rem "Helvetica Neue", Helvetica, Arial, sans-serif;
     font-weight: 400;
     line-height: 1.625;
     margin: 0;
@@ -74,27 +75,32 @@ contextual-heading {
     margin-top: 2rem;
 }
 
-[aria-level="1"] {
+h1, [aria-level="1"] {
     color: #43686b;
     font-size: 1.45rem;
 }
-[aria-level="2"] {
+
+h2, [aria-level="2"] {
     color: #856363;
     font-size: 1.35rem;
 }
-[aria-level="3"] {
+
+h3, [aria-level="3"] {
     color: #856363;
     font-size: 1.25rem;
 }
-[aria-level="4"] {
+
+h4, [aria-level="4"] {
     color: #856363;
     font-size: 1.2rem;
 }
-[aria-level="5"], [aria-level="6"] {
+
+h5, h6, [aria-level="5"], [aria-level="6"] {
     color: #667496;
-    font-size: 1.1rem;
+    font-size: 1.2rem;
     font-weight: bolder;
 }
+
 .posted-on {
     font-style: italic;
     font-size: 0.8rem; 
@@ -106,12 +112,16 @@ ul, li {
     margin: 0.5rem;
     text-align: left;
 }
-header {
+
+responsive-details {
+    height: 100%;
     padding-top: 1rem;
-    padding-right: 2rem;
+    padding-right: 0;
     background-color: #fbf5e9; 
+    display: block;
     background-image: linear-gradient(to right, #dde0e8 , #ffffff);
 }
+
 .tagline {
     font-style: italic;
     text-align: center;
@@ -140,7 +150,7 @@ header .title {
     padding: 0.3rem;
     padding-left: 0.25rem;
     font-weight: bolder;
-    font-size: 0.9rem;
+    font-size: 1rem;
     border-left: 1rem solid #999298;
 }
 
@@ -154,7 +164,7 @@ header .title + nav {
 }
 
 header .blurb {
-    font-size: 0.75rem;
+    font-size: 0.9rem;
     text-align: center;
 }
 header .name {
@@ -217,11 +227,14 @@ blockquote:after {
 
 @media (max-width: 800px){
     body {
-        flex-direction: column;
+        grid-template-columns: 1fr;
     }
-    header {
+    responsive-details {
+        height: auto;
         border-bottom: 1px solid #afafff;
-    }
+    } 
+
+    main { width: 95%; margin: 0 auto;}
 
     .captioned-image.p-attached {
         width: 100%;
@@ -233,20 +246,13 @@ blockquote:after {
         float: none;
     }
 
-    [for="aboutMeToggle"] {
+    #aboutMeToggle {
+        display: block;
         background-color: #675e5e;
         color: white;
         padding: 0.25rem;
         padding-left: 0.5rem;
-        display: block;
         border-left: 1rem solid black;
-    }
-    #aboutMeToggle:focus + [for="aboutMeToggle"]{
-        outline: 4px solid #c6ddf2;
-    }
-
-    #aboutMeToggle:checked ~ header {
-        display: none;
     }
 
     header li { display: inline; margin-left: -0.5em; }
@@ -298,8 +304,41 @@ blockquote:after {
     </script>
   </head>
   <body>
-    <input id="aboutMeToggle" class="sr-only" type="checkbox" checked="">
-<label for="aboutMeToggle">Toggle author information</label>
+    <script>
+class ResponsiveDetails extends HTMLElement {
+  
+  checkForced() {
+      let details = this.querySelector('details')
+        if (this.mql.matches) {
+          details.setAttribute('open','')
+        } else {
+          details.removeAttribute('open')
+        }
+  }
+  connectedCallback() {
+    this.mql = window.matchMedia(`(min-width: ${this.getAttribute("open-after") || "1px" })`);
+    this.mql.addEventListener('change', () => {
+        this.checkForced()
+    })
+    requestAnimationFrame(() => this.checkForced())
+  }
+  constructor() {
+    super()
+    this.attachShadow({mode: "open"})
+    this.shadowRoot.innerHTML = `<slot></slot>`
+    let slot = this.shadowRoot.firstElementChild;
+    slot.addEventListener('slotchange', ()=> this.checkForced)          
+
+  }
+}                         
+
+customElements.define('responsive-details', ResponsiveDetails)
+</script>
+
+<responsive-details open-after="800px">
+<details open="">
+<summary id="aboutMeToggle">Author Information</summary>
+
 <header>
     <div class="name">
         Brian Kardell
@@ -334,6 +373,8 @@ America (art for sale)</a></li>
         </ul>
     </nav>
 </header>
+</details>
+</responsive-details>
     <main><div class="posted-on">Posted on 12/22/2020</div><article posted-on="12/22/2020" class="sectioning">
 
   <style>
@@ -407,7 +448,7 @@ America (art for sale)</a></li>
 		}())
 	</script>
   
-  <contextual-heading role="heading" aria-level="1">2020: The Good Parts</contextual-heading>
+  <h1 class="contextual-heading">2020: The Good Parts</h1>
  
 <p class="segue">Each year, Igalians take a moment and look back on the year and assess what we've accomplished. Last year I wrote a wrap up for 2019 and hinted at being excited about some things in 2020 - I'd like to do the same this year. </p>  
 
@@ -416,7 +457,7 @@ America (art for sale)</a></li>
 <p>But, 2020 is, of course, not a "normal year".  It's more than fair to expect less of ourselves.  So, when I sat down to write about what we accomplished, I was faced with this familiar sinking feeling -- and I had precisely the same reaction: Wow! We did <em>a lot</em>.  So, let me share some highlights of Igalia's 2020: The Good Parts.</p>
 
 <section class="sectioning">
-  <contextual-heading role="heading" aria-level="2">All the browsers</contextual-heading>
+  <h2 class="contextual-heading">All the browsers</h2>
 
   <p>At Igalia, we are significant contributors to all of the browser engines (and several of the browsers that sit atop them too).  There's a lot of ways you can look at just <em>how much</em> we do, and none of them are perfect, but commits are one kind of easy, but fuzzy measure of comparatively how much we did in the community.  So, how much comparatively less did we do this year, than last? The opposite actually!</p>
 
@@ -428,7 +469,7 @@ America (art for sale)</a></li>
     </figure>
 </section>
 <section class="sectioning">
-  <contextual-heading role="heading" aria-level="2">We worked on <em>so many web features</em>!</contextual-heading>
+  <h2 class="contextual-heading">We worked on <em>so many web features</em>!</h2>
 
 <p>Some of the things we worked on are big or exciting things that everyone can appreciate and I want to highlight a little more here, but the list of features where we worked on at least one (sometimes two) implementations would be prohibitively long!  Here is a very partial list of ones we worked on that I won't be highlighting.</p>
 
@@ -454,11 +495,11 @@ America (art for sale)</a></li>
 </ul>
 
   <section class="sectioning">
-    <contextual-heading role="heading" aria-level="3">A few web feature highlights...</contextual-heading>
+    <h3 class="contextual-heading">A few web feature highlights...</h3>
     <p>Here are just a few things that I'd like to say a little more about...</p>
 
     <section class="sectioning">
-      <contextual-heading role="heading" aria-level="4">Container Queries</contextual-heading>
+      <h4 class="contextual-heading">Container Queries</h4>
 <p>I am exceptionally pleased that we have been pivotal in moving the ball in conversations on container queries.  Not only did our outreach and discussions last year change the temperature of the room, but we got a start on two proposals and actually had CSS Working Group discussion on both.  I'm also really pleased that Igalia built a functional prototype for further review and discussion of our switch proposal and that we've been collaborating with Google and Miriam Suzanne who have picked up where David Baron's proposal left. </p>
 
   <figure class="captioned-image  optional">
@@ -468,7 +509,7 @@ America (art for sale)</a></li>
   <p>I expect 2021 to be an exciting year of developments in this space where we get a lot more answers sorted out.</p>
 </section>
 <section class="sectioning">
-  <contextual-heading role="heading" aria-level="4">MathML</contextual-heading>
+  <h4 class="contextual-heading">MathML</h4>
 
   <p>Two years ago, MathML fell into a <a href="https://bkardell.com/blog/Math.html">strange place in web history</a> and had an uncertain future in browsers. Igalia has led the charge in righting all of this.  Along with the MathML Refresh Community Group, peer implementers and help from various standards groups we now have <a href="https://mathml-refresh.github.io/mathml-core/">MathML-Core</a> - a well defined spec, with tests that define the most meaningful parts of MathML and their relation to the web platform as interoperability targets. We've made a ton of proress in aligning support, describing how things fit, and invested a lot of time this year up-streaming work in Chromium.  Some additional work remains for next year pending Layout NG work at Google, but it's looking better and better and most of it shipping behind the experimental web platform features flag today.  We also helped create and advocate for a new W3C charter for math.</p>
   <p>But let me share why I'm especially proud of it...</p>
@@ -478,7 +519,7 @@ America (art for sale)</a></li>
   <p>Because Math is <em>text</em>, and a phenomenally import <em>kind</em> of text.  The importance of begin able to render formulae is really highlighted during a pandemic, where researchers of all kinds need to share information and students are learning from home. I'm super proud to be a part of this single action that I believe really is a leap in helping the Web realize its potential for these societally important issues.</p>
   </section>
   <section class="sectioning">
-    <contextual-heading role="heading" aria-level="4">SVG/CSS Alignment</contextual-heading>
+    <h4 class="contextual-heading">SVG/CSS Alignment</h4>
 
     <p>At the end of last year's post I hinted about something we were working on.  The practical upshots that people will more immediately relate to will be the abilities to do 3D transforms in SVG and <em>hardware accelerate</em> SVG.</p>
 
@@ -490,18 +531,18 @@ America (art for sale)</a></li>
     <p>Software on embedded devices has a marriage of unique qualities that lots of controls and displays want to be SVG-based, but also have to deal with typically low end hardware, which usually still has a GPU.  Thus, this problem for those devices is a few orders of magnitude more critical than it is elsewhere.  However, our work will ultimately fund improvements for all WebKit browsers, which also incentivizes others to follow!</p>
 </section>
 <section class="sectioning">
-  <contextual-heading role="heading" aria-level="4">OffscreenCanvas</contextual-heading>
+  <h4 class="contextual-heading">OffscreenCanvas</h4>
 
   <p>One thing we haven't talked about yet, but I can't wait to is OffscreenCanvas.  Apple originally pioneered the <code>&lt;canvas&gt;</code> element and it's super cool and useful for a lot of stuff.  Unfortunately, it is historically tied to the DOM, did its work on the main thread and couldn't be used in workers.  This is terrible because <em>many</em> of the use cases it is really great for are real intense.  This is a bad situation - luckily, we're working on it!  Chris Lord has been working on OffscreenCanvas in WebKit and it looks great so far - everything except text portions is done and I've been using it with great results.</p>
 
   <p>OffscreenCanvas can be used in workers, and you can 'snap off' and transfer the context from a DOM rendered canvas to a worker too.  So great!  And guess why we're investing in it? You guessed it: Embedded.</p>
 </section>
 <section class="sectioning">
-<contextual-heading role="heading" aria-level="4">WebXR</contextual-heading>
+<h4 class="contextual-heading">WebXR</h4>
   <p>I mean, this is kinda huge right? Igalia is investing to help move XR forward in WebKit - part of this is generalized for WebKit, and I think that is kind of awesome.  Still early days and there's a lot to do, but this is pretty exciting to see developing and I'm proud that Igalia is helping make it happen!</p>
 </section>
 <section class="sectioning">
-  <contextual-heading role="heading" aria-level="4">Important JavaScript stuff!</contextual-heading>
+  <h4 class="contextual-heading">Important JavaScript stuff!</h4>
 
   <p>We Pushed and shipped public/private instance and static fields in JavaScriptCore (WebKit). Private methods are ongoing.  We've really improved coordination with WebKit at large this year, and we're constantly improving the 32bit JSC too.  We're working on WebAssembly and numerous emerging TC39 specifications we're excited about: Module blocks, decorators, bundling, Realms, decimal, records and tuples, Temporal and lots of things for ECMA 402 (Internationalization) too!</p>
 </section>
@@ -509,7 +550,7 @@ America (art for sale)</a></li>
 
 <section class="sectioning">
 
-  <contextual-heading role="heading" aria-level="3">Web Related, non-feature things</contextual-heading>
+  <h3 class="contextual-heading">Web Related, non-feature things</h3>
 
   <p>There's a lot of other things that we accomplished this year at Igalia which are pretty exciting too!</p>
 
@@ -524,7 +565,7 @@ America (art for sale)</a></li>
   </ul>
 </section>
 <section class="sectioning">
-  <contextual-heading role="heading" aria-level="3">Looking forward...???</contextual-heading>
+  <h3 class="contextual-heading">Looking forward...???</h3>
   <p>So, what exciting things can we look forward to in 2021?  Definitely, advancing all of the things above - and that's exciting enough.  It's hard to know what to be most excited for, but I'm personaly really looking forward to watchin Open Prioritization grow and get a real good idea and very concrete progress on Container Queries issues.  We've also got our eyes on some new things we'll be starting to talk about in the next year, so stay tuned on those too.</p>
 
   <p>One, that I'd like to mention, however is <strong>tabs</strong>.  Over the past year, Igalia has begun to get involved with efforts like OpenUI and I've been talking to developers and peers at Igalia about tabs. I had some thoughts and ideas that I posted earlier this year.  Just recently some actual work and collaboration has been done - gettinga number of us with similar ideas together to sort  <a href="https://github.com/thepassle/generic-components/">out a useful custom element</a> that we can test out, as well as working in OpenUI on aligning all of the stars we'll need to align as we attempt to approach something like standard tabs.   It is <em>very</em> early days here, but we've gone from a vague blog post to some actual involvement and we're getting behind the idea - which is pretty exciting and I can't wait to say more concrete things here!</p>
@@ -534,15 +575,7 @@ America (art for sale)</a></li>
 </article></main>
 
   
-    <script>
-    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-
-    ga('create', 'UA-88027178-1', 'auto');
-    ga('send', 'pageview');
-  </script>
+    
 
   <script>
     Array.prototype.slice.call(document.querySelectorAll('.optional [data-src]')).forEach(function (optional) {
@@ -565,4 +598,12 @@ America (art for sale)</a></li>
     })
   </script>
 
-</body></html>
+</body><!-- script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-88027178-1', 'auto');
+    ga('send', 'pageview');
+  </script --></html>

@@ -1,4 +1,4 @@
-<html lang="en" resource-type="blogpost"><head> 
+<html lang="en" resource-type="blogpost"><head>  
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta name="twitter:card" content="summary_large_image">
@@ -55,10 +55,12 @@ section > .captioned-image.p-attached {
     font-style: italic;
 }
 body {
-    display: flex;
-    font: 1em "Helvetica Neue", Helvetica, Arial, sans-serif;
+    display: grid;
+    grid-template-columns: 25rem auto;
+    font: 1.1rem "Helvetica Neue", Helvetica, Arial, sans-serif;
     font-weight: 400;
     line-height: 1.625;
+    margin: 0;
 }
 h1 { margin: 0.5rem; }
 code-format {
@@ -73,30 +75,35 @@ contextual-heading {
     margin-top: 2rem;
 }
 
-[aria-level="1"] {
+h1, [aria-level="1"] {
     color: #43686b;
     font-size: 1.45rem;
 }
-[aria-level="2"] {
+
+h2, [aria-level="2"] {
     color: #856363;
     font-size: 1.35rem;
 }
-[aria-level="3"] {
+
+h3, [aria-level="3"] {
     color: #856363;
     font-size: 1.25rem;
 }
-[aria-level="4"] {
+
+h4, [aria-level="4"] {
     color: #856363;
     font-size: 1.2rem;
 }
-[aria-level="5"], [aria-level="6"] {
+
+h5, h6, [aria-level="5"], [aria-level="6"] {
     color: #667496;
-    font-size: 1.1rem;
+    font-size: 1.2rem;
     font-weight: bolder;
 }
+
 .posted-on {
     font-style: italic;
-    font-size: 0.8rem;
+    font-size: 0.8rem; 
     text-align: right;
     margin-bottom: 1rem;
 }
@@ -105,11 +112,16 @@ ul, li {
     margin: 0.5rem;
     text-align: left;
 }
-header {
+
+responsive-details {
+    height: 100%;
     padding-top: 1rem;
-    padding-right: 2rem;
-    background-color: #fbf5e9;
+    padding-right: 0;
+    background-color: #fbf5e9; 
+    display: block;
+    background-image: linear-gradient(to right, #dde0e8 , #ffffff);
 }
+
 .tagline {
     font-style: italic;
     text-align: center;
@@ -138,7 +150,7 @@ header .title {
     padding: 0.3rem;
     padding-left: 0.25rem;
     font-weight: bolder;
-    font-size: 0.9rem;
+    font-size: 1rem;
     border-left: 1rem solid #999298;
 }
 
@@ -152,7 +164,7 @@ header .title + nav {
 }
 
 header .blurb {
-    font-size: 0.75rem;
+    font-size: 0.9rem;
     text-align: center;
 }
 header .name {
@@ -215,11 +227,14 @@ blockquote:after {
 
 @media (max-width: 800px){
     body {
-        flex-direction: column;
+        grid-template-columns: 1fr;
     }
-    header {
+    responsive-details {
+        height: auto;
         border-bottom: 1px solid #afafff;
-    }
+    } 
+
+    main { width: 95%; margin: 0 auto;}
 
     .captioned-image.p-attached {
         width: 100%;
@@ -231,20 +246,13 @@ blockquote:after {
         float: none;
     }
 
-    [for="aboutMeToggle"] {
+    #aboutMeToggle {
+        display: block;
         background-color: #675e5e;
         color: white;
         padding: 0.25rem;
         padding-left: 0.5rem;
-        display: block;
         border-left: 1rem solid black;
-    }
-    #aboutMeToggle:focus + [for="aboutMeToggle"]{
-        outline: 4px solid #c6ddf2;
-    }
-
-    #aboutMeToggle:checked ~ header {
-        display: none;
     }
 
     header li { display: inline; margin-left: -0.5em; }
@@ -296,8 +304,41 @@ blockquote:after {
     </script>
   </head>
   <body>
-    <input id="aboutMeToggle" class="sr-only" type="checkbox" checked="">
-<label for="aboutMeToggle">Toggle author information</label>
+    <script>
+class ResponsiveDetails extends HTMLElement {
+  
+  checkForced() {
+      let details = this.querySelector('details')
+        if (this.mql.matches) {
+          details.setAttribute('open','')
+        } else {
+          details.removeAttribute('open')
+        }
+  }
+  connectedCallback() {
+    this.mql = window.matchMedia(`(min-width: ${this.getAttribute("open-after") || "1px" })`);
+    this.mql.addEventListener('change', () => {
+        this.checkForced()
+    })
+    requestAnimationFrame(() => this.checkForced())
+  }
+  constructor() {
+    super()
+    this.attachShadow({mode: "open"})
+    this.shadowRoot.innerHTML = `<slot></slot>`
+    let slot = this.shadowRoot.firstElementChild;
+    slot.addEventListener('slotchange', ()=> this.checkForced)          
+
+  }
+}                         
+
+customElements.define('responsive-details', ResponsiveDetails)
+</script>
+
+<responsive-details open-after="800px">
+<details open="">
+<summary id="aboutMeToggle">Author Information</summary>
+
 <header>
     <div class="name">
         Brian Kardell
@@ -309,7 +350,7 @@ blockquote:after {
             <li>Developer Advocate at Igalia</li>
             <li>Original Co-author/Co-signer of The Extensible Web Manifesto</li>
             <li>Co-Founder/Chair, W3C Extensible Web CG</li>
-            <li>Member, W3C (The JS Foundation)</li>
+            <li>Member, W3C (OpenJS Foundation)</li>
             <li>Co-author of HitchJS</li>
             <li>Blogger</li>
             <li>Art, Science &amp; History Lover</li>
@@ -332,8 +373,10 @@ America (art for sale)</a></li>
         </ul>
     </nav>
 </header>
+</details>
+</responsive-details>
     <main><div class="posted-on">Posted on null</div><article class="sectioning">
-	<contextual-heading role="heading" aria-level="1">A Brief(ish) History of the Web Universe - Part V: Growing Pains</contextual-heading>
+	<h1 class="contextual-heading">A Brief(ish) History of the Web Universe - Part V: Growing Pains</h1>
 	<p class="segue"></p>
 	<p>
 		Literally weeks after where we ended in <a href="/blog/Brief-ish-History-of-The-Web-Part-4.html">Part IV</a> with Netscape seemingly on top of the world, Microsoft released it's Windows 95 operating system.  To say that the release of Windows 95 was hyped would have been an understatement of epic proportions.  Since DOS, Microsoft has negotiated OS contracts with manufacturers and sales - for quite a lot of people, Microsoft <em>was</em> the computer.  News was everywhere. Bill Gates had written a book and it gave him lots of opportunities to talk about his vision and promote.  Microsoft released a commercial featuring the Rolling Stone's "Start Me Up". A 30 minute promotional video staring insanely popular members of the cast of Friends was released.  The Empire State Building was lit to match the colors of the Windows logo and a 328 foot banner was hung from the top of the CN Tower in Toronto.  And when potential users finally saw it, for a lot of users around the world, Windows 95 felt like the first reason to care about computers.  Microsoft did an excellent job of including wow'ing sorts of things that most everyday people had never really thought of using a computer for.  It included music videos, film tailers and a game.   Windows 95 was a night and day difference from what a lot of people had seen before:  And users who puchased the "Plus" add-on pack had the ability to install Internet Explorer 1.0.</p>
@@ -341,7 +384,7 @@ America (art for sale)</a></li>
 		<p>Internet Explorer 1.0 was, frankly, underwhelming even by the standards of the day.  It wasn't really even a Microsoft product.  The original NCSA Mosaic that Mark Andreesen had worked on at had happened at University of Illinois at Urbana-Champaign which had an offshoot company established to monetize such work by licensing it.  That's just what they had done with Mosaic and the product was called Spyglass, Inc.  The various browsers for different platforms that were built originally were a little fractured and Spyglass unified their codebase and licenced it to other companies, including Microsoft.  It shared a weird lineage with Netscape, but it was way behind by the time Microsoft licenced it.  While Netscape's Navigator 2 was already shipping with support for frames, images, image maps and JavaScript, the new Internet Explorer was playing catch up.</p>
 
 		<section class="sectioning">
-			<contextual-heading role="heading" aria-level="2">What even is it?</contextual-heading>
+			<h2 class="contextual-heading">What even is it?</h2>
 			<p>Netscapes IPO was like discovering a vast new, uninhabited continent with plentiful and unusual resources and stunning beauty.  It wasn't just ripe for intellecutual study, everyone could suddenly see economic potential.  There was a rush to capture ground before it was too late.  Netscape released Navigator 2.0 and the plugins started flowing.  No longer was the Web "just text" or even just text and images - people began to dream and envision new ideas about both the clients and the servers.  Web mail "services" like HoTMaiL (originally spelled like that to stress the letters HTML) became a thing.  Email had been around forever, plenty of people used it.  Even webmail wasn't "new" - in fact - in 1993 CERN had webmail. The difference with services was that they weren't bound to anything else, they were super easy and you could use them from anywhere.  You could change your ISP or access your personal mail from work, or while on vacation at your parents house without setting up a whole new client or account.</p>
 
 
@@ -362,7 +405,7 @@ America (art for sale)</a></li>
 				Servlet 	June 1997
 			-->
 			<section class="sectioning">
-				<contextual-heading role="heading" aria-level="3">The Stack</contextual-heading>
+				<h3 class="contextual-heading">The Stack</h3>
 				<p>But this was a tug of war - the early Web rush was full of companies that wanted to own both ends and therefore be able to offer "more" by way of control of the whole stack in much the same way that Microsoft had been able to do by owning the operating system. Netscape, Sun and Microsoft were the main contenders.</p>
 
 				<p>As mentioned in  <a href="/blog/Brief-ish-History-of-The-Web-Part-4.html">Part IV: New Hope(s)</a> Netscape had not only the best browser, but also a server, and they'd pioneered SSL too. Originally called 'Netsite Server' it was available in plain and 'Commerce' flavors</p>
@@ -374,7 +417,7 @@ America (art for sale)</a></li>
 
 
 			<section class="sectioning">
-				<contextual-heading role="heading" aria-level="3">Servers</contextual-heading>
+				<h3 class="contextual-heading">Servers</h3>
 
 			</section>
 		</section>
@@ -399,15 +442,7 @@ America (art for sale)</a></li>
 </article></main>
 
   
-    <script>
-    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-
-    ga('create', 'UA-88027178-1', 'auto');
-    ga('send', 'pageview');
-  </script>
+    
 
   <script>
     Array.prototype.slice.call(document.querySelectorAll('.optional [data-src]')).forEach(function (optional) {
@@ -430,4 +465,12 @@ America (art for sale)</a></li>
     })
   </script>
 
-</body></html>
+</body><!-- script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-88027178-1', 'auto');
+    ga('send', 'pageview');
+  </script --></html>

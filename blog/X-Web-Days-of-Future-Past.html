@@ -1,4 +1,4 @@
-<html lang="en" resource-type="blogpost"><head> 
+<html lang="en" resource-type="blogpost"><head>  
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta name="twitter:card" content="summary_large_image">
@@ -55,10 +55,12 @@ section > .captioned-image.p-attached {
     font-style: italic;
 }
 body {
-    display: flex;
-    font: 1em "Helvetica Neue", Helvetica, Arial, sans-serif;
+    display: grid;
+    grid-template-columns: 25rem auto;
+    font: 1.1rem "Helvetica Neue", Helvetica, Arial, sans-serif;
     font-weight: 400;
     line-height: 1.625;
+    margin: 0;
 }
 h1 { margin: 0.5rem; }
 code-format {
@@ -73,30 +75,35 @@ contextual-heading {
     margin-top: 2rem;
 }
 
-[aria-level="1"] {
+h1, [aria-level="1"] {
     color: #43686b;
     font-size: 1.45rem;
 }
-[aria-level="2"] {
+
+h2, [aria-level="2"] {
     color: #856363;
     font-size: 1.35rem;
 }
-[aria-level="3"] {
+
+h3, [aria-level="3"] {
     color: #856363;
     font-size: 1.25rem;
 }
-[aria-level="4"] {
+
+h4, [aria-level="4"] {
     color: #856363;
     font-size: 1.2rem;
 }
-[aria-level="5"], [aria-level="6"] {
+
+h5, h6, [aria-level="5"], [aria-level="6"] {
     color: #667496;
-    font-size: 1.1rem;
+    font-size: 1.2rem;
     font-weight: bolder;
 }
+
 .posted-on {
     font-style: italic;
-    font-size: 0.8rem;
+    font-size: 0.8rem; 
     text-align: right;
     margin-bottom: 1rem;
 }
@@ -105,11 +112,16 @@ ul, li {
     margin: 0.5rem;
     text-align: left;
 }
-header {
+
+responsive-details {
+    height: 100%;
     padding-top: 1rem;
-    padding-right: 2rem;
-    background-color: #fbf5e9;
+    padding-right: 0;
+    background-color: #fbf5e9; 
+    display: block;
+    background-image: linear-gradient(to right, #dde0e8 , #ffffff);
 }
+
 .tagline {
     font-style: italic;
     text-align: center;
@@ -138,7 +150,7 @@ header .title {
     padding: 0.3rem;
     padding-left: 0.25rem;
     font-weight: bolder;
-    font-size: 0.9rem;
+    font-size: 1rem;
     border-left: 1rem solid #999298;
 }
 
@@ -152,7 +164,7 @@ header .title + nav {
 }
 
 header .blurb {
-    font-size: 0.75rem;
+    font-size: 0.9rem;
     text-align: center;
 }
 header .name {
@@ -215,11 +227,14 @@ blockquote:after {
 
 @media (max-width: 800px){
     body {
-        flex-direction: column;
+        grid-template-columns: 1fr;
     }
-    header {
+    responsive-details {
+        height: auto;
         border-bottom: 1px solid #afafff;
-    }
+    } 
+
+    main { width: 95%; margin: 0 auto;}
 
     .captioned-image.p-attached {
         width: 100%;
@@ -231,20 +246,13 @@ blockquote:after {
         float: none;
     }
 
-    [for="aboutMeToggle"] {
+    #aboutMeToggle {
+        display: block;
         background-color: #675e5e;
         color: white;
         padding: 0.25rem;
         padding-left: 0.5rem;
-        display: block;
         border-left: 1rem solid black;
-    }
-    #aboutMeToggle:focus + [for="aboutMeToggle"]{
-        outline: 4px solid #c6ddf2;
-    }
-
-    #aboutMeToggle:checked ~ header {
-        display: none;
     }
 
     header li { display: inline; margin-left: -0.5em; }
@@ -296,8 +304,41 @@ blockquote:after {
     </script>
   </head>
   <body>
-    <input id="aboutMeToggle" class="sr-only" type="checkbox" checked="">
-<label for="aboutMeToggle">Toggle author information</label>
+    <script>
+class ResponsiveDetails extends HTMLElement {
+  
+  checkForced() {
+      let details = this.querySelector('details')
+        if (this.mql.matches) {
+          details.setAttribute('open','')
+        } else {
+          details.removeAttribute('open')
+        }
+  }
+  connectedCallback() {
+    this.mql = window.matchMedia(`(min-width: ${this.getAttribute("open-after") || "1px" })`);
+    this.mql.addEventListener('change', () => {
+        this.checkForced()
+    })
+    requestAnimationFrame(() => this.checkForced())
+  }
+  constructor() {
+    super()
+    this.attachShadow({mode: "open"})
+    this.shadowRoot.innerHTML = `<slot></slot>`
+    let slot = this.shadowRoot.firstElementChild;
+    slot.addEventListener('slotchange', ()=> this.checkForced)          
+
+  }
+}                         
+
+customElements.define('responsive-details', ResponsiveDetails)
+</script>
+
+<responsive-details open-after="800px">
+<details open="">
+<summary id="aboutMeToggle">Author Information</summary>
+
 <header>
     <div class="name">
         Brian Kardell
@@ -309,7 +350,7 @@ blockquote:after {
             <li>Developer Advocate at Igalia</li>
             <li>Original Co-author/Co-signer of The Extensible Web Manifesto</li>
             <li>Co-Founder/Chair, W3C Extensible Web CG</li>
-            <li>Member, W3C (The JS Foundation)</li>
+            <li>Member, W3C (OpenJS Foundation)</li>
             <li>Co-author of HitchJS</li>
             <li>Blogger</li>
             <li>Art, Science &amp; History Lover</li>
@@ -332,6 +373,8 @@ America (art for sale)</a></li>
         </ul>
     </nav>
 </header>
+</details>
+</responsive-details>
     <main><div class="posted-on">Posted on 6/20/2016</div><article posted-on="6/20/2016" class="sectioning">
 	<style>
 		/*body:not(.preferences-set) > :not(main) { display: none; }
@@ -403,7 +446,7 @@ America (art for sale)</a></li>
 			}
 		}())
 	</script>
-	<contextual-heading role="heading" aria-level="1">X-Web: Days of Future Past</contextual-heading>
+	<h1 class="contextual-heading">X-Web: Days of Future Past</h1>
 	<p class="segue">If you're not a comic book nerd, or a comic movie nerd, I suppose an explanation is necessary: In the Marvel Universe, there is a genetic mutation in some humans called "the X-gene". This gene leads to development of an exotic protein which can radically affect other genes in unpredictable ways. The result is mutants with all sorts of different "super" abilities. This is the basis for the story lines in the X-Men comics. Some humans, without the X-gene, see mutants as freaks, there is prejudice against them. Others would like to recruit them as weapons. Still others are friends. The mutant community is divided too. One group of mutants believe that they are a new homo superior destined to become the dominant species and they're willing to earn this by fear and force. Another group of mutants, the X-Men, led by Professor Xavier, believe that mutants and non-mutants should live in harmony. Mutants powers can even aid humanity. They work very hard for the advancement of peace and tolerance. And then, there are quite a lot of people - both mutants and everydays humans who are torn back and forth somewhere in the middle on a lot of the subtleties that arise. One of the most amazing parts of the narrative is that the leaders of the two groups are actually best friends. They actually agree on much. Most of their followers are not similarly friendly. It's kind of a hot mess, and it reminds me a little of the Web community.</p>
 
 	<p>I don't think it should be controversial to say "we aren't really where we'd like to be" on the Web. For some reason there seems to be more division that we'd like. Some would like to paint the future, or even the present, as being dark and desolate...</p>
@@ -460,7 +503,7 @@ America (art for sale)</a></li>
 	<p>We left out an important detail. If this was really the only option, HTML 5 might still be lingering as something we 'hoped' to achieve. The truth is that there are still commonly used HTML 5 bits that are not universally implemented even in modern browsers. The implementation space is, was, and always will be ragged. The aspect that launched a thousand ships with HTML uptake was the polyfill. Key to the polyfill, of course, is JavaScript. </p>
 
 	<section class="sectioning">
-		<contextual-heading role="heading" aria-level="2">If the Web had an "X-Gene" it would be JavaScript.</contextual-heading>
+		<h2 class="contextual-heading">If the Web had an "X-Gene" it would be JavaScript.</h2>
 		<p>Yes, the X-Gene can give you powers that are seriously abused. Yes, people might use their powers in not super ways. They might even do something like try to drop a stadium on the White House...</p>
 
 		<div class="captioned-image optional" id="s" aria-hidden="true">
@@ -475,7 +518,7 @@ America (art for sale)</a></li>
 		<p>This is the reality of where we actually are as I see it.</p>
 
 		<section class="sectioning">
-			<contextual-heading role="heading" aria-level="3">Enter: Xavier's School for Gifted Youngsters</contextual-heading>
+			<h3 class="contextual-heading">Enter: Xavier's School for Gifted Youngsters</h3>
 			<div class="captioned-image p-attached p-attached-left share-image optional">
 				<img data-src="/media/x-web-first-class.jpg" alt="Professor's Xavier's School For Gifted Youngsters Logo">
 				X-Web: First class.
@@ -523,15 +566,7 @@ America (art for sale)</a></li>
 </article></main>
 
   
-    <script>
-    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-
-    ga('create', 'UA-88027178-1', 'auto');
-    ga('send', 'pageview');
-  </script>
+    
 
   <script>
     Array.prototype.slice.call(document.querySelectorAll('.optional [data-src]')).forEach(function (optional) {
@@ -554,4 +589,12 @@ America (art for sale)</a></li>
     })
   </script>
 
-</body></html>
+</body><!-- script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-88027178-1', 'auto');
+    ga('send', 'pageview');
+  </script --></html>

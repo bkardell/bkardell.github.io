@@ -1,4 +1,4 @@
-<html lang="en" resource-type="blogpost"><head> 
+<html lang="en" resource-type="blogpost"><head>  
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta name="twitter:card" content="summary_large_image">
@@ -55,8 +55,9 @@ section > .captioned-image.p-attached {
     font-style: italic;
 }
 body {
-    display: flex;
-    font: 1em "Helvetica Neue", Helvetica, Arial, sans-serif;
+    display: grid;
+    grid-template-columns: 25rem auto;
+    font: 1.1rem "Helvetica Neue", Helvetica, Arial, sans-serif;
     font-weight: 400;
     line-height: 1.625;
     margin: 0;
@@ -74,27 +75,32 @@ contextual-heading {
     margin-top: 2rem;
 }
 
-[aria-level="1"] {
+h1, [aria-level="1"] {
     color: #43686b;
     font-size: 1.45rem;
 }
-[aria-level="2"] {
+
+h2, [aria-level="2"] {
     color: #856363;
     font-size: 1.35rem;
 }
-[aria-level="3"] {
+
+h3, [aria-level="3"] {
     color: #856363;
     font-size: 1.25rem;
 }
-[aria-level="4"] {
+
+h4, [aria-level="4"] {
     color: #856363;
     font-size: 1.2rem;
 }
-[aria-level="5"], [aria-level="6"] {
+
+h5, h6, [aria-level="5"], [aria-level="6"] {
     color: #667496;
-    font-size: 1.1rem;
+    font-size: 1.2rem;
     font-weight: bolder;
 }
+
 .posted-on {
     font-style: italic;
     font-size: 0.8rem; 
@@ -106,13 +112,16 @@ ul, li {
     margin: 0.5rem;
     text-align: left;
 }
-header {
+
+responsive-details {
+    height: 100%;
     padding-top: 1rem;
-    padding-right: 2rem;
+    padding-right: 0;
     background-color: #fbf5e9; 
-    /*
-    background-image: linear-gradient(to right, #dde0e8 , #ffffff);*/
+    display: block;
+    background-image: linear-gradient(to right, #dde0e8 , #ffffff);
 }
+
 .tagline {
     font-style: italic;
     text-align: center;
@@ -141,7 +150,7 @@ header .title {
     padding: 0.3rem;
     padding-left: 0.25rem;
     font-weight: bolder;
-    font-size: 0.9rem;
+    font-size: 1rem;
     border-left: 1rem solid #999298;
 }
 
@@ -155,7 +164,7 @@ header .title + nav {
 }
 
 header .blurb {
-    font-size: 0.75rem;
+    font-size: 0.9rem;
     text-align: center;
 }
 header .name {
@@ -218,11 +227,14 @@ blockquote:after {
 
 @media (max-width: 800px){
     body {
-        flex-direction: column;
+        grid-template-columns: 1fr;
     }
-    header {
+    responsive-details {
+        height: auto;
         border-bottom: 1px solid #afafff;
-    }
+    } 
+
+    main { width: 95%; margin: 0 auto;}
 
     .captioned-image.p-attached {
         width: 100%;
@@ -234,20 +246,13 @@ blockquote:after {
         float: none;
     }
 
-    [for="aboutMeToggle"] {
+    #aboutMeToggle {
+        display: block;
         background-color: #675e5e;
         color: white;
         padding: 0.25rem;
         padding-left: 0.5rem;
-        display: block;
         border-left: 1rem solid black;
-    }
-    #aboutMeToggle:focus + [for="aboutMeToggle"]{
-        outline: 4px solid #c6ddf2;
-    }
-
-    #aboutMeToggle:checked ~ header {
-        display: none;
     }
 
     header li { display: inline; margin-left: -0.5em; }
@@ -299,8 +304,41 @@ blockquote:after {
     </script>
   </head>
   <body>
-    <input id="aboutMeToggle" class="sr-only" type="checkbox" checked="">
-<label for="aboutMeToggle">Toggle author information</label>
+    <script>
+class ResponsiveDetails extends HTMLElement {
+  
+  checkForced() {
+      let details = this.querySelector('details')
+        if (this.mql.matches) {
+          details.setAttribute('open','')
+        } else {
+          details.removeAttribute('open')
+        }
+  }
+  connectedCallback() {
+    this.mql = window.matchMedia(`(min-width: ${this.getAttribute("open-after") || "1px" })`);
+    this.mql.addEventListener('change', () => {
+        this.checkForced()
+    })
+    requestAnimationFrame(() => this.checkForced())
+  }
+  constructor() {
+    super()
+    this.attachShadow({mode: "open"})
+    this.shadowRoot.innerHTML = `<slot></slot>`
+    let slot = this.shadowRoot.firstElementChild;
+    slot.addEventListener('slotchange', ()=> this.checkForced)          
+
+  }
+}                         
+
+customElements.define('responsive-details', ResponsiveDetails)
+</script>
+
+<responsive-details open-after="800px">
+<details open="">
+<summary id="aboutMeToggle">Author Information</summary>
+
 <header>
     <div class="name">
         Brian Kardell
@@ -312,7 +350,7 @@ blockquote:after {
             <li>Developer Advocate at Igalia</li>
             <li>Original Co-author/Co-signer of The Extensible Web Manifesto</li>
             <li>Co-Founder/Chair, W3C Extensible Web CG</li>
-            <li>Member, W3C (The JS Foundation)</li>
+            <li>Member, W3C (OpenJS Foundation)</li>
             <li>Co-author of HitchJS</li>
             <li>Blogger</li>
             <li>Art, Science &amp; History Lover</li>
@@ -335,8 +373,10 @@ America (art for sale)</a></li>
         </ul>
     </nav>
 </header>
+</details>
+</responsive-details>
     <main><div class="posted-on">Posted on 11/05/2020</div><article posted-on="11/05/2020" class="sectioning">
-	<contextual-heading role="heading" aria-level="1">All Them Switches: Responsive Elements and More</contextual-heading>
+	<h1 class="contextual-heading">All Them Switches: Responsive Elements and More</h1>
 	<style>[aria-level="4"] {
     font-size: 1.1rem;
 }
@@ -365,7 +405,7 @@ dt {
 		</p>
 		
 		<section class="sectioning">
-			<contextual-heading role="heading" aria-level="2">Advancing the Container Queries Cause</contextual-heading>
+			<h2 class="contextual-heading">Advancing the Container Queries Cause</h2>
 		<p>
 		As you may recall, back in Feburary I posted <a href="https://bkardell.com/blog/TowardResponsive.html">an article</a> explaining that we had been working on this problem a bunch, and sharing our thoughts and progress and just letting people know that <em>something</em> is happening... People are listening, and trying. I also shared that our discussions also prompted David Baron's work toward another possible path.  
 		</p>
@@ -377,7 +417,7 @@ dt {
     <p>Shortly after we presented our idea, Igalia also said that we would be willing to invest  time to try to do some prototyping and implementation exploration and report back.</p>
 	</section>
 	<section class="sectioning">
-		<contextual-heading role="heading" aria-level="2">Demos and Updates</contextual-heading>
+		<h2 class="contextual-heading">Demos and Updates</h2>
 		
 		<p>My colleague Javi Fernadez agreed to tackle initial implementation investigations with some down time he had.  Initially, he made some really nice progress pretty quickly, coming up with a strategy, writing some low-level tests and getting them passing. But, then the world got very... you know... hectic.</p>
 
@@ -408,11 +448,11 @@ dt {
     </section>
 
 		<section class="sectioning">
-			<contextual-heading role="heading" aria-level="2"><em>Bonus Round:</em> Switching gears...</contextual-heading>
+			<h2 class="contextual-heading"><em>Bonus Round:</em> Switching gears...</h2>
 			<p>Shortly after we made our switch proposal, my friend Jon Neal opened a github issue based on some twitter conversations.  For the next week or two this thread was very busy with lots of function proposals that looked vaguely "switch-like".  In fact, a number of them were also using the word "switch". From these, there are 3 ideas which seem interesting, look somewhat similar, but have some (very) importantly different characteristics, challenges and abilities. They are described below.
  			</p>
  			<section class="sectioning">
- 				<contextual-heading role="heading" aria-level="3">nth-value()</contextual-heading>
+ 				<h3 class="contextual-heading">nth-value()</h3>
  				<p>This proposal is a function which lets a variable represent an index into a list of possible values. Its use would look like this:</p>
  				<pre><code class="language-javascript">.foo {
   color: 
@@ -425,7 +465,7 @@ dt {
 }</code></pre>
  			</section>
  			<section class="sectioning">
- 				<contextual-heading role="heading" aria-level="3">cond()</contextual-heading>
+ 				<h3 class="contextual-heading">cond()</h3>
  				<p>This proposal is a function which allows you to pass pairs of math-like conditions and value associations, as well as a default value.  The conditions are evaluated from left to right and the value following the first condition to be true is used, or the default if none are. Its use would look like this:</p>
  				<pre><code class="language-javascript">.foo {
   margin-left: 
@@ -437,7 +477,7 @@ dt {
 }</code></pre>
  			</section>
  			<section class="sectioning">
- 				<contextual-heading role="heading" aria-level="3">switch()</contextual-heading>
+ 				<h3 class="contextual-heading">switch()</h3>
  				<p>This (our) proposal is a function which works like <code>cond()</code> above, but can provide contextual information only available at appropriate stages in the lifecycle.  In the case of layout properties, it would have the same sorts of information available to it as a layout worklet, thus allowing you to do a lot of the things people want to do with "container queries" as in this example below (available-inline-size is the contextual value provided during layout).  Its use would look like this:</p>
  				<pre><code class="language-javascript">/* (proposed syntax, to be bikeshed much.. note the demos use a less flexible/different/easier to implement syntax for now ) */ 
 .foo {
@@ -465,15 +505,7 @@ dt {
 </article></main>
 
   
-    <script>
-    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-
-    ga('create', 'UA-88027178-1', 'auto');
-    ga('send', 'pageview');
-  </script>
+    
 
   <script>
     Array.prototype.slice.call(document.querySelectorAll('.optional [data-src]')).forEach(function (optional) {
@@ -496,4 +528,12 @@ dt {
     })
   </script>
 
-</body></html>
+</body><!-- script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-88027178-1', 'auto');
+    ga('send', 'pageview');
+  </script --></html>

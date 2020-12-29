@@ -1,4 +1,4 @@
-<html lang="en" resource-type="blogpost"><head> 
+<html lang="en" resource-type="blogpost"><head>  
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta name="twitter:card" content="summary_large_image">
@@ -55,10 +55,12 @@ section > .captioned-image.p-attached {
     font-style: italic;
 }
 body {
-    display: flex;
-    font: 1em "Helvetica Neue", Helvetica, Arial, sans-serif;
+    display: grid;
+    grid-template-columns: 25rem auto;
+    font: 1.1rem "Helvetica Neue", Helvetica, Arial, sans-serif;
     font-weight: 400;
     line-height: 1.625;
+    margin: 0;
 }
 h1 { margin: 0.5rem; }
 code-format {
@@ -73,30 +75,35 @@ contextual-heading {
     margin-top: 2rem;
 }
 
-[aria-level="1"] {
+h1, [aria-level="1"] {
     color: #43686b;
     font-size: 1.45rem;
 }
-[aria-level="2"] {
+
+h2, [aria-level="2"] {
     color: #856363;
     font-size: 1.35rem;
 }
-[aria-level="3"] {
+
+h3, [aria-level="3"] {
     color: #856363;
     font-size: 1.25rem;
 }
-[aria-level="4"] {
+
+h4, [aria-level="4"] {
     color: #856363;
     font-size: 1.2rem;
 }
-[aria-level="5"], [aria-level="6"] {
+
+h5, h6, [aria-level="5"], [aria-level="6"] {
     color: #667496;
-    font-size: 1.1rem;
+    font-size: 1.2rem;
     font-weight: bolder;
 }
+
 .posted-on {
     font-style: italic;
-    font-size: 0.8rem;
+    font-size: 0.8rem; 
     text-align: right;
     margin-bottom: 1rem;
 }
@@ -105,11 +112,16 @@ ul, li {
     margin: 0.5rem;
     text-align: left;
 }
-header {
+
+responsive-details {
+    height: 100%;
     padding-top: 1rem;
-    padding-right: 2rem;
-    background-color: #fbf5e9;
+    padding-right: 0;
+    background-color: #fbf5e9; 
+    display: block;
+    background-image: linear-gradient(to right, #dde0e8 , #ffffff);
 }
+
 .tagline {
     font-style: italic;
     text-align: center;
@@ -138,7 +150,7 @@ header .title {
     padding: 0.3rem;
     padding-left: 0.25rem;
     font-weight: bolder;
-    font-size: 0.9rem;
+    font-size: 1rem;
     border-left: 1rem solid #999298;
 }
 
@@ -152,7 +164,7 @@ header .title + nav {
 }
 
 header .blurb {
-    font-size: 0.75rem;
+    font-size: 0.9rem;
     text-align: center;
 }
 header .name {
@@ -215,11 +227,14 @@ blockquote:after {
 
 @media (max-width: 800px){
     body {
-        flex-direction: column;
+        grid-template-columns: 1fr;
     }
-    header {
+    responsive-details {
+        height: auto;
         border-bottom: 1px solid #afafff;
-    }
+    } 
+
+    main { width: 95%; margin: 0 auto;}
 
     .captioned-image.p-attached {
         width: 100%;
@@ -231,20 +246,13 @@ blockquote:after {
         float: none;
     }
 
-    [for="aboutMeToggle"] {
+    #aboutMeToggle {
+        display: block;
         background-color: #675e5e;
         color: white;
         padding: 0.25rem;
         padding-left: 0.5rem;
-        display: block;
         border-left: 1rem solid black;
-    }
-    #aboutMeToggle:focus + [for="aboutMeToggle"]{
-        outline: 4px solid #c6ddf2;
-    }
-
-    #aboutMeToggle:checked ~ header {
-        display: none;
     }
 
     header li { display: inline; margin-left: -0.5em; }
@@ -296,8 +304,41 @@ blockquote:after {
     </script>
   </head>
   <body>
-    <input id="aboutMeToggle" class="sr-only" type="checkbox" checked="">
-<label for="aboutMeToggle">Toggle author information</label>
+    <script>
+class ResponsiveDetails extends HTMLElement {
+  
+  checkForced() {
+      let details = this.querySelector('details')
+        if (this.mql.matches) {
+          details.setAttribute('open','')
+        } else {
+          details.removeAttribute('open')
+        }
+  }
+  connectedCallback() {
+    this.mql = window.matchMedia(`(min-width: ${this.getAttribute("open-after") || "1px" })`);
+    this.mql.addEventListener('change', () => {
+        this.checkForced()
+    })
+    requestAnimationFrame(() => this.checkForced())
+  }
+  constructor() {
+    super()
+    this.attachShadow({mode: "open"})
+    this.shadowRoot.innerHTML = `<slot></slot>`
+    let slot = this.shadowRoot.firstElementChild;
+    slot.addEventListener('slotchange', ()=> this.checkForced)          
+
+  }
+}                         
+
+customElements.define('responsive-details', ResponsiveDetails)
+</script>
+
+<responsive-details open-after="800px">
+<details open="">
+<summary id="aboutMeToggle">Author Information</summary>
+
 <header>
     <div class="name">
         Brian Kardell
@@ -309,7 +350,7 @@ blockquote:after {
             <li>Developer Advocate at Igalia</li>
             <li>Original Co-author/Co-signer of The Extensible Web Manifesto</li>
             <li>Co-Founder/Chair, W3C Extensible Web CG</li>
-            <li>Member, W3C (The JS Foundation)</li>
+            <li>Member, W3C (OpenJS Foundation)</li>
             <li>Co-author of HitchJS</li>
             <li>Blogger</li>
             <li>Art, Science &amp; History Lover</li>
@@ -332,13 +373,15 @@ America (art for sale)</a></li>
         </ul>
     </nav>
 </header>
+</details>
+</responsive-details>
     <main><div class="posted-on">Posted on 05/15/2017</div><article posted-on="05/15/2017" class="sectioning">
-	<contextual-heading role="heading" aria-level="1">Contact Your W3C Congress Person</contextual-heading>
+	<h1 class="contextual-heading">Contact Your W3C Congress Person</h1>
 	<p class="segue">The W3C is one of the primary standards bodies that works on Web standards.  Founded in 1994 along with the inventor of the Web Sir Tim Berners-Lee, it is a member based consortium originally modeled after the X-Consortium, with the stated aim of helping to "lead the Web to its full potential".  Its 465 "member orgs" are various types of organizations, foundations<a href="#footnote1"><sup>[1]</sup></a>, academia and companies.   In late 2011 a movement in Web Standards began to take shape - seeking to help reform the things that many of us thought were broken.  This meant creating a common/shared vision across <em>several standards</em> bodies, changing ideas about where successful and lasting standards come from and how they are made and really stressing the importance of Web developers (who weren't themselves members) to that equation.  Lots and lots of positive change has happened at many levels, and lots more progress <em>toward</em> change has been set into motion but isn't yet complete and - if you'd like to see it continue, we could use your help.</p>
 
 	<p>Everything about how it works is based on a series of rules codified in a thing called "The Process Document."  You can sort of think about them as "the laws" that govern the W3C.  It's boring, I know, but it's crucially important if you want to really affect change to how the W3C works.</p>
 	<section class="sectioning">
-		<contextual-heading role="heading" aria-level="2">I'm Just a Bill: An analogy</contextual-heading>
+		<h2 class="contextual-heading">I'm Just a Bill: An analogy</h2>
 		<p>In the US, if you want to change or pass a law, it begins with a Bill.  A bill is effectively, the text of the proposed change.  If it can get a number of individuals in Congress to support it, it can eventually go to the Congress for a simple "yes" or "no" vote.  Most countries (even localities and the United Nations) have similar concepts, but they use different terminology.  So, incase the analogy/terminology is a little too culturally biased, here's a fun primer that a lot of US children saw when I was growing up that explains the ones I'm using:</p>
 
 		<div class="captioned-image optional" id="s" aria-hidden="true">
@@ -353,7 +396,7 @@ America (art for sale)</a></li>
 	</section>
 
 	<section class="sectioning">
-		<contextual-heading role="heading" aria-level="2">Meta-Election</contextual-heading>
+		<h2 class="contextual-heading">Meta-Election</h2>
 		<p>Within the W3C, the job of managing all of this - getting a "bill" together with a number of co-sponsors, building some support, bringing it to the "floor" at TPAC answering questions and so on so that it can come to a vote is placed upon a group called the "Advisory Board" (or AB). The AB also plays an important advisory role to  the W3C staff itself on strategic issues.</p>
 
 		<p>In deep, and deeply nerdy ways, the AB is important if you want to affect fundamental changes.</p>
@@ -361,7 +404,7 @@ America (art for sale)</a></li>
 		<p>The AB is itself is a (mostly) elected group of nine people. So, if you want to affect real, substantial and lasting "process" changes at the W3C, the first stop is the AB.</p>
 
 		<section class="sectioning">
-			<contextual-heading role="heading" aria-level="3">Battles Won</contextual-heading>
+			<h3 class="contextual-heading">Battles Won</h3>
 			<p>For most of the history of the W3C, all of this was "inside stuff" - that is, outside of the W3C, it was unknown.  But then, around 2012, we began appealing to Web developers to help make our desires known under the pretense that, like Congress, membership to some extent must represent you.  Without your support and adoption, they have very little - and it's worked.   In nearly every election, "reform" has progressed and the opposition has slowly diminished. Groups like the AB have increasingly come to better represent us - they've also gotten more diverse and slowly, but surely things we have made substantial progress.  The W3C is more interested in developers, in outreach, in how to include our voices.  Incubation of ideas that includes developers is one thing that our AB have successfully advocated.  Because of our efforts, even the quality of candidates who run has improved.  But we're not there yet.  As you can imagine, getting substantial change through is a long, dull and arduous process.</p>
 
 			<p>Currently, there is an election underway for the Advisory Board.  4 of the 9 seats are up for grabs and it once again falls to developers to show up and advocate if we want things to continue.</p>
@@ -370,7 +413,7 @@ America (art for sale)</a></li>
 	</section>
 
 	<section class="sectioning">
-		<contextual-heading role="heading" aria-level="2">Here's Who I Support, and why..</contextual-heading>
+		<h2 class="contextual-heading">Here's Who I Support, and why..</h2>
 		<p>Each of the seats that are up for election have incumbent candidates, but we have 7 candidates for only 4 seats. You can have a look at all 7 <a href="https://www.w3.org/2017/05/02-ab-nominations#nr">official candidate statements</a> made to the ACs asking for their votes.</p>
 
 		<p>For the most part, I believe that most of the new candidates will be less successful toward the aims we've been supporting - worse: Progress is much more easily lost than gained.</p>
@@ -390,7 +433,7 @@ America (art for sale)</a></li>
 		It may surprise some that this list doesn't include Charles McCathie Nevile as I have actively campaigned for him in the past.  I'm thankful for his contributions and efforts and I'd actually largely happy for all of them to be re-elected.  He's a good friend and I greatly respect all that he does.  I'm not specifically opposing him, but the reality is that there are only 4 seats and, as he says in his statement:  He's been there longer than anyone else and he does a crazy lot of other important stuff for the W3C.  Given all this, this might be a great time to introduce some new energy and give him some space to focus on those other roles for a time.  At least, that's what I think would be the best receipe for most success right now.  This W3C election will also include a form of preferential voting, which is an effort he championed for a long time and is now in place, so ACs can be quite expressive with their own votes.</p>
 
 		<section class="sectioning">
-			<contextual-heading role="heading" aria-level="3">So what do I do?</contextual-heading>
+			<h3 class="contextual-heading">So what do I do?</h3>
 			<p>It's this simple:  Share your support of whomever on social media.  If you know anyone who works for any of the <a href="https://www.w3.org/Consortium/Member/List">465 W3C Member orgianizations</a> and want to reach out to them directly, that'd be helpful too - especially if you know an AC rep (the list of AC reps is private, but some list it in their profiles).  Share your thoughts, be part of the conversation.  If Web developers speak up, history shows that people will hear you.</p>
 		</section>
 	</section>
@@ -401,15 +444,7 @@ America (art for sale)</a></li>
 </article></main>
 
   
-    <script>
-    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-
-    ga('create', 'UA-88027178-1', 'auto');
-    ga('send', 'pageview');
-  </script>
+    
 
   <script>
     Array.prototype.slice.call(document.querySelectorAll('.optional [data-src]')).forEach(function (optional) {
@@ -432,4 +467,12 @@ America (art for sale)</a></li>
     })
   </script>
 
-</body></html>
+</body><!-- script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-88027178-1', 'auto');
+    ga('send', 'pageview');
+  </script --></html>

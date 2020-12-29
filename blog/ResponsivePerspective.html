@@ -1,4 +1,4 @@
-<html lang="en" resource-type="blogpost"><head> 
+<html lang="en" resource-type="blogpost"><head>  
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta name="twitter:card" content="summary_large_image">
@@ -55,10 +55,12 @@ section > .captioned-image.p-attached {
     font-style: italic;
 }
 body {
-    display: flex;
-    font: 1em "Helvetica Neue", Helvetica, Arial, sans-serif;
+    display: grid;
+    grid-template-columns: 25rem auto;
+    font: 1.1rem "Helvetica Neue", Helvetica, Arial, sans-serif;
     font-weight: 400;
     line-height: 1.625;
+    margin: 0;
 }
 h1 { margin: 0.5rem; }
 code-format {
@@ -73,30 +75,35 @@ contextual-heading {
     margin-top: 2rem;
 }
 
-[aria-level="1"] {
+h1, [aria-level="1"] {
     color: #43686b;
     font-size: 1.45rem;
 }
-[aria-level="2"] {
+
+h2, [aria-level="2"] {
     color: #856363;
     font-size: 1.35rem;
 }
-[aria-level="3"] {
+
+h3, [aria-level="3"] {
     color: #856363;
     font-size: 1.25rem;
 }
-[aria-level="4"] {
+
+h4, [aria-level="4"] {
     color: #856363;
     font-size: 1.2rem;
 }
-[aria-level="5"], [aria-level="6"] {
+
+h5, h6, [aria-level="5"], [aria-level="6"] {
     color: #667496;
-    font-size: 1.1rem;
+    font-size: 1.2rem;
     font-weight: bolder;
 }
+
 .posted-on {
     font-style: italic;
-    font-size: 0.8rem;
+    font-size: 0.8rem; 
     text-align: right;
     margin-bottom: 1rem;
 }
@@ -105,11 +112,16 @@ ul, li {
     margin: 0.5rem;
     text-align: left;
 }
-header {
+
+responsive-details {
+    height: 100%;
     padding-top: 1rem;
-    padding-right: 2rem;
-    background-color: #fbf5e9;
+    padding-right: 0;
+    background-color: #fbf5e9; 
+    display: block;
+    background-image: linear-gradient(to right, #dde0e8 , #ffffff);
 }
+
 .tagline {
     font-style: italic;
     text-align: center;
@@ -138,7 +150,7 @@ header .title {
     padding: 0.3rem;
     padding-left: 0.25rem;
     font-weight: bolder;
-    font-size: 0.9rem;
+    font-size: 1rem;
     border-left: 1rem solid #999298;
 }
 
@@ -152,7 +164,7 @@ header .title + nav {
 }
 
 header .blurb {
-    font-size: 0.75rem;
+    font-size: 0.9rem;
     text-align: center;
 }
 header .name {
@@ -215,11 +227,14 @@ blockquote:after {
 
 @media (max-width: 800px){
     body {
-        flex-direction: column;
+        grid-template-columns: 1fr;
     }
-    header {
+    responsive-details {
+        height: auto;
         border-bottom: 1px solid #afafff;
-    }
+    } 
+
+    main { width: 95%; margin: 0 auto;}
 
     .captioned-image.p-attached {
         width: 100%;
@@ -231,20 +246,13 @@ blockquote:after {
         float: none;
     }
 
-    [for="aboutMeToggle"] {
+    #aboutMeToggle {
+        display: block;
         background-color: #675e5e;
         color: white;
         padding: 0.25rem;
         padding-left: 0.5rem;
-        display: block;
         border-left: 1rem solid black;
-    }
-    #aboutMeToggle:focus + [for="aboutMeToggle"]{
-        outline: 4px solid #c6ddf2;
-    }
-
-    #aboutMeToggle:checked ~ header {
-        display: none;
     }
 
     header li { display: inline; margin-left: -0.5em; }
@@ -296,8 +304,41 @@ blockquote:after {
     </script>
   </head>
   <body>
-    <input id="aboutMeToggle" class="sr-only" type="checkbox" checked="">
-<label for="aboutMeToggle">Toggle author information</label>
+    <script>
+class ResponsiveDetails extends HTMLElement {
+  
+  checkForced() {
+      let details = this.querySelector('details')
+        if (this.mql.matches) {
+          details.setAttribute('open','')
+        } else {
+          details.removeAttribute('open')
+        }
+  }
+  connectedCallback() {
+    this.mql = window.matchMedia(`(min-width: ${this.getAttribute("open-after") || "1px" })`);
+    this.mql.addEventListener('change', () => {
+        this.checkForced()
+    })
+    requestAnimationFrame(() => this.checkForced())
+  }
+  constructor() {
+    super()
+    this.attachShadow({mode: "open"})
+    this.shadowRoot.innerHTML = `<slot></slot>`
+    let slot = this.shadowRoot.firstElementChild;
+    slot.addEventListener('slotchange', ()=> this.checkForced)          
+
+  }
+}                         
+
+customElements.define('responsive-details', ResponsiveDetails)
+</script>
+
+<responsive-details open-after="800px">
+<details open="">
+<summary id="aboutMeToggle">Author Information</summary>
+
 <header>
     <div class="name">
         Brian Kardell
@@ -309,7 +350,7 @@ blockquote:after {
             <li>Developer Advocate at Igalia</li>
             <li>Original Co-author/Co-signer of The Extensible Web Manifesto</li>
             <li>Co-Founder/Chair, W3C Extensible Web CG</li>
-            <li>Member, W3C (The JS Foundation)</li>
+            <li>Member, W3C (OpenJS Foundation)</li>
             <li>Co-author of HitchJS</li>
             <li>Blogger</li>
             <li>Art, Science &amp; History Lover</li>
@@ -332,13 +373,15 @@ America (art for sale)</a></li>
         </ul>
     </nav>
 </header>
+</details>
+</responsive-details>
     <main><div class="posted-on">Posted on null</div><article class="sectioning">
-    <contextual-heading role="heading" aria-level="1">Responsive Perspective</contextual-heading>
+    <h1 class="contextual-heading">Responsive Perspective</h1>
     <p class="segue">
         If you've ever made anything resposive, you probably experienced something like this:  You learn about Media Queries.  You try them.  Ah beautiful.  But very quickly, you wonder "ok, but I don't really care about the <em>viewport</em> here:  How can I make the breakpoint be <em>based on available space?</em>  You discover that you can't.  You write a couple extra media queries that reason about this very specific case we see on the screen and, you're done.  This problem isn't new.  Efforts to standardize some kind of solution to it continue under the banner of "Container Queries" (previously "Element Queries"), and much has been written about it. But... I have some thoughts.
     </p>
     <section class="sectioning">
-        <contextual-heading role="heading" aria-level="2">Bias</contextual-heading>
+        <h2 class="contextual-heading">Bias</h2>
         <p>
             For a lot of us, writing CSS is not a primary part of our day to day job.  We learn it, perhaps simply to understand the technology, or to make a site for our blog or OSS project, or some side consulting work, but it's not our core concern.
         </p>
@@ -357,7 +400,7 @@ America (art for sale)</a></li>
     </section>
 
     <section class="sectioning">
-        <contextual-heading role="heading" aria-level="2">What fresh hell?</contextual-heading>
+        <h2 class="contextual-heading">What fresh hell?</h2>
         <p>
             I'm given a demo showing a new design element that will be used in several systems and how it should respond.  Luckily, this one is pretty simple, it's not even interactive.  I have no accessibility concerns.  We devise a simple receipe of HTML.  I don't really even need to make a component out of this.  Really, all that falls to me is to write somce CSS for its inclusion in our many systems.
         </p>
@@ -381,7 +424,7 @@ America (art for sale)</a></li>
     </section>
 
     <section class="sectioning">
-        <contextual-heading role="heading" aria-level="2">So...Where do we stand?</contextual-heading>
+        <h2 class="contextual-heading">So...Where do we stand?</h2>
         <p>
             Given my new perspective, I was thankful that other people have been working on this problem.  Perhaps there's something there that could help us.  I knew we've got <code>ResizeObserver</code> coming, and that it's even shipping in Chrome. Perhaps I could use that to help make things better!  So, I spend the afternoon reading.  Very quickly, I realize that.. <em>Wow, there's still way too many things to solve here</em>.
         </p>
@@ -402,7 +445,7 @@ America (art for sale)</a></li>
         <p></p>
     </section>
     <section class="sectioning">
-        <contextual-heading role="heading" aria-level="2">But... I need an answer <em>now</em></contextual-heading>
+        <h2 class="contextual-heading">But... I need an answer <em>now</em></h2>
 
         <p>
             So, I'm faced with two choices: Perpetuate this madness, or find something <em>good enough</em> for now and, hopefully, lift all boats.   Given this, I sat down to think about what a decent answer would even look like.
@@ -420,7 +463,7 @@ America (art for sale)</a></li>
         </p>
 
         <section class="sectioning">
-            <contextual-heading role="heading" aria-level="3">A subtle, but important shift in thinking</contextual-heading>
+            <h3 class="contextual-heading">A subtle, but important shift in thinking</h3>
             <p>
                But, the more I thought about it, the more I thought "<em>Wait... do I really even need that?</em>".
             </p>
@@ -434,7 +477,7 @@ America (art for sale)</a></li>
                 <em>That seemed like a really interesting observation, because that one simple shift in perspective <em>entirely</em> changes the space of the problem.</em>
             </p>
             <section class="sectioning">
-                <contextual-heading role="heading" aria-level="4">Revised Perspective #1: Expression</contextual-heading>
+                <h4 class="contextual-heading">Revised Perspective #1: Expression</h4>
                 <p>
                     Let's talk about why this shifts the perspective in a big way.  First, if I no longer need to figure out <em>how</em> to express arbitary breakpoints, I don't have to figure out where to put them and how to get them out and interpret them and so on.
                 </p>
@@ -446,7 +489,7 @@ America (art for sale)</a></li>
                 </p>
         </section>
         <section class="sectioning">
-            <contextual-heading role="heading" aria-level="4">Revised Perspective #2: What to monitor?</contextual-heading>
+            <h4 class="contextual-heading">Revised Perspective #2: What to monitor?</h4>
             <p>
                 All of the current proposals do this in CSS, as such, tying an arbitrary selector to the arbitrary breakpoint.  Even in those proposals, authors would still want to be very careful about what elements they attach size monitoring to.
             </p>
@@ -472,7 +515,7 @@ America (art for sale)</a></li>
 
         </section>
         <section class="sectioning">
-            <contextual-heading role="heading" aria-level="4">This is all very doable today</contextual-heading>
+            <h4 class="contextual-heading">This is all very doable today</h4>
             <p>
                 So... This is all very doable today, and it seems to me like strikes a lot of good chords.  To be honest, it even makes me wonder if we actually need so much 'more' in the design of a final solution other than better implementations and underlying primitives.
             </p>
@@ -497,15 +540,7 @@ America (art for sale)</a></li>
 </section></section></article></main>
 
   
-    <script>
-    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-
-    ga('create', 'UA-88027178-1', 'auto');
-    ga('send', 'pageview');
-  </script>
+    
 
   <script>
     Array.prototype.slice.call(document.querySelectorAll('.optional [data-src]')).forEach(function (optional) {
@@ -528,4 +563,12 @@ America (art for sale)</a></li>
     })
   </script>
 
-</body></html>
+</body><!-- script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-88027178-1', 'auto');
+    ga('send', 'pageview');
+  </script --></html>

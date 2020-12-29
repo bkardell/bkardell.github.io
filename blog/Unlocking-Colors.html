@@ -1,4 +1,4 @@
-<html lang="en" resource-type="blogpost"><head> 
+<html lang="en" resource-type="blogpost"><head>  
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta name="twitter:card" content="summary_large_image">
@@ -55,10 +55,12 @@ section > .captioned-image.p-attached {
     font-style: italic;
 }
 body {
-    display: flex;
-    font: 1em "Helvetica Neue", Helvetica, Arial, sans-serif;
+    display: grid;
+    grid-template-columns: 25rem auto;
+    font: 1.1rem "Helvetica Neue", Helvetica, Arial, sans-serif;
     font-weight: 400;
     line-height: 1.625;
+    margin: 0;
 }
 h1 { margin: 0.5rem; }
 code-format {
@@ -73,30 +75,35 @@ contextual-heading {
     margin-top: 2rem;
 }
 
-[aria-level="1"] {
+h1, [aria-level="1"] {
     color: #43686b;
     font-size: 1.45rem;
 }
-[aria-level="2"] {
+
+h2, [aria-level="2"] {
     color: #856363;
     font-size: 1.35rem;
 }
-[aria-level="3"] {
+
+h3, [aria-level="3"] {
     color: #856363;
     font-size: 1.25rem;
 }
-[aria-level="4"] {
+
+h4, [aria-level="4"] {
     color: #856363;
     font-size: 1.2rem;
 }
-[aria-level="5"], [aria-level="6"] {
+
+h5, h6, [aria-level="5"], [aria-level="6"] {
     color: #667496;
-    font-size: 1.1rem;
+    font-size: 1.2rem;
     font-weight: bolder;
 }
+
 .posted-on {
     font-style: italic;
-    font-size: 0.8rem;
+    font-size: 0.8rem; 
     text-align: right;
     margin-bottom: 1rem;
 }
@@ -105,11 +112,16 @@ ul, li {
     margin: 0.5rem;
     text-align: left;
 }
-header {
+
+responsive-details {
+    height: 100%;
     padding-top: 1rem;
-    padding-right: 2rem;
-    background-color: #fbf5e9;
+    padding-right: 0;
+    background-color: #fbf5e9; 
+    display: block;
+    background-image: linear-gradient(to right, #dde0e8 , #ffffff);
 }
+
 .tagline {
     font-style: italic;
     text-align: center;
@@ -138,7 +150,7 @@ header .title {
     padding: 0.3rem;
     padding-left: 0.25rem;
     font-weight: bolder;
-    font-size: 0.9rem;
+    font-size: 1rem;
     border-left: 1rem solid #999298;
 }
 
@@ -152,7 +164,7 @@ header .title + nav {
 }
 
 header .blurb {
-    font-size: 0.75rem;
+    font-size: 0.9rem;
     text-align: center;
 }
 header .name {
@@ -215,11 +227,14 @@ blockquote:after {
 
 @media (max-width: 800px){
     body {
-        flex-direction: column;
+        grid-template-columns: 1fr;
     }
-    header {
+    responsive-details {
+        height: auto;
         border-bottom: 1px solid #afafff;
-    }
+    } 
+
+    main { width: 95%; margin: 0 auto;}
 
     .captioned-image.p-attached {
         width: 100%;
@@ -231,20 +246,13 @@ blockquote:after {
         float: none;
     }
 
-    [for="aboutMeToggle"] {
+    #aboutMeToggle {
+        display: block;
         background-color: #675e5e;
         color: white;
         padding: 0.25rem;
         padding-left: 0.5rem;
-        display: block;
         border-left: 1rem solid black;
-    }
-    #aboutMeToggle:focus + [for="aboutMeToggle"]{
-        outline: 4px solid #c6ddf2;
-    }
-
-    #aboutMeToggle:checked ~ header {
-        display: none;
     }
 
     header li { display: inline; margin-left: -0.5em; }
@@ -296,8 +304,41 @@ blockquote:after {
     </script>
   </head>
   <body>
-    <input id="aboutMeToggle" class="sr-only" type="checkbox" checked="">
-<label for="aboutMeToggle">Toggle author information</label>
+    <script>
+class ResponsiveDetails extends HTMLElement {
+  
+  checkForced() {
+      let details = this.querySelector('details')
+        if (this.mql.matches) {
+          details.setAttribute('open','')
+        } else {
+          details.removeAttribute('open')
+        }
+  }
+  connectedCallback() {
+    this.mql = window.matchMedia(`(min-width: ${this.getAttribute("open-after") || "1px" })`);
+    this.mql.addEventListener('change', () => {
+        this.checkForced()
+    })
+    requestAnimationFrame(() => this.checkForced())
+  }
+  constructor() {
+    super()
+    this.attachShadow({mode: "open"})
+    this.shadowRoot.innerHTML = `<slot></slot>`
+    let slot = this.shadowRoot.firstElementChild;
+    slot.addEventListener('slotchange', ()=> this.checkForced)          
+
+  }
+}                         
+
+customElements.define('responsive-details', ResponsiveDetails)
+</script>
+
+<responsive-details open-after="800px">
+<details open="">
+<summary id="aboutMeToggle">Author Information</summary>
+
 <header>
     <div class="name">
         Brian Kardell
@@ -309,7 +350,7 @@ blockquote:after {
             <li>Developer Advocate at Igalia</li>
             <li>Original Co-author/Co-signer of The Extensible Web Manifesto</li>
             <li>Co-Founder/Chair, W3C Extensible Web CG</li>
-            <li>Member, W3C (The JS Foundation)</li>
+            <li>Member, W3C (OpenJS Foundation)</li>
             <li>Co-author of HitchJS</li>
             <li>Blogger</li>
             <li>Art, Science &amp; History Lover</li>
@@ -332,8 +373,10 @@ America (art for sale)</a></li>
         </ul>
     </nav>
 </header>
+</details>
+</responsive-details>
     <main><div class="posted-on">Posted on 01/01/2020</div><article posted-on="01/01/2020" class="sectioning">
-	<contextual-heading role="heading" aria-level="1">Unlocking Colors</contextual-heading>
+	<h1 class="contextual-heading">Unlocking Colors</h1>
 	<p class="segue">
 		Despite the fact that <a href="https://www.instagram.com/kardellbrian/">I draw and paint</a>, and am involved with CSS, I am actually generally not good at design. Color, however, is endlessly fascinating. As there have been many color-oriented proposals for CSS, to enable people who <em>are</em> good at design, I thought it might be nice to write about an important, but underdiscussed bit that's necessary in order to really unlock a lot - and how we can help.
 	</p>
@@ -344,7 +387,7 @@ America (art for sale)</a></li>
 	</style>
 
 	<section class="sectioning">
-		<contextual-heading role="heading" aria-level="2">First... What even is color?</contextual-heading>
+		<h2 class="contextual-heading">First... What even is color?</h2>
 
 		<p>When you look at real physical things, what you perceive as color is a reflection of which wavelengths of light bounce back at you without being 'swallowed up' by the pigment.    Pigments are subtractive, light is additive.  That is, if you combine all of the colors of light, you get a pure white - and if you combine all of the pigments you get a pure black.</p>
 
@@ -354,7 +397,7 @@ America (art for sale)</a></li>
 		</section>
 
 		<section class="sectioning">
-			<contextual-heading role="heading" aria-level="2">Color spaces</contextual-heading>
+			<h2 class="contextual-heading">Color spaces</h2>
 			<p>If you can imagine a true rainbow, with all of the real possible colors in the universe, the set of those you can actually represent (and how you move about in it) is called a 'color space'.  The limits of a color space are called its  gammut.  Because your monitor works with light, it is an additive process and 'Red' 'Green' and 'Blue' combined to create white (once upon a time, with actual CRTs).  Along the way, we created the sRGB color space.  The sRGB color space is a limited section of the rainbow, which is kind of narrow compared to all of the possible colors that exist in nature, but is very optimized for machines and common cases.  Below is an example from  <a href="https://en.wikipedia.org/wiki/SRGB" rel="nofollow">wikipedia</a> illustrating sRBG and color spaces illustrating the sRGB color space.  The colors within the triangle are part of the sRGB color space.</p>
 
 			<aside class="captioned-image optional">
@@ -368,7 +411,7 @@ America (art for sale)</a></li>
 		</section>
 
 		<section class="sectioning">
-			<contextual-heading role="heading" aria-level="2">Humans vs machines</contextual-heading>
+			<h2 class="contextual-heading">Humans vs machines</h2>
 			<p>It's more than just efficiency.  sRGB, as I said, is really built for machines - and humans and machines are quite different.  If I showed you a color and asked you to guess the value in RGB, mapped that to sRGB space and showed you on your monitor, chances that you could get it very close are pretty low in general. You can test this theory with <a href="http://hex-guess.glitch.me/">hex-guess.glitch.me</a>.  Further, there's not great odds that you could efficiently zero in on closer and closer simply because it's a little unnatural.  This is why we have created things like like hsla which some people think is easier to reason about 'more saturated' and 'lighter' and a circle of color is potentially a little easier to think about.  But it's not just that one uses RGB either, it's that the color space itself has weird characteristics.</p> 
 
 			<p>This plays in especially if we want to reason about things mathematically - for example - <em>in creating design systems.</em></p>
@@ -376,7 +419,7 @@ America (art for sale)</a></li>
 			<p>Our design systems, ideally, want to reason about colors by 'moving through the color space'.  Doing things like mixing colors, lightening, darkening, can be done well only if they include a sense of how our eyes really <em>work</em> rather than how machines like to think about storing and displaying. That is, if I move this one aspect just a little bit, I expect it to have the same effect no matter what the color I start with is... But in sRGB space, that really isn't true at all.  The sRGB space is not perceptually uniform.  The same mathematical movement has different degrees of perceived effect depending on where you are at in the color space.  If you want to read a designer's experience with this, here's an <a href="https://v6.robweychert.com/blog/2019/12/dynamic-color-javascript-hsl/">interesting example</a> which does a good job struggling to do well.</p>
 
 			<section class="sectioning">
-				<contextual-heading role="heading" aria-level="3">Some examples…</contextual-heading>
+				<h3 class="contextual-heading">Some examples…</h3>
 
 				<p>This is, of course, very hard to understand if you don't live in this space because we're just not used to it.  It doesn't sound intuitive, or maybe it sounds unnecessarily complex - but it really isn't.  It's kind of simple: the RGB color spaces aren't built for humans to reason about mathmetically, really, that's it.  Here are some examples where it is easy to see in action...</p>
 
@@ -401,7 +444,7 @@ America (art for sale)</a></li>
 			
 		</section>
 		<section class="sectioning">
-			<contextual-heading role="heading" aria-level="3">This matters a lot...</contextual-heading>
+			<h3 class="contextual-heading">This matters a lot...</h3>
 
 			<p>This matters a lot, for example, if you wanted to create a design system which mathematically reasons about color contrast (just like the author of that article).</p>
 
@@ -410,7 +453,7 @@ America (art for sale)</a></li>
 			<p>Recently, Adam opened <a href="https://bugs.chromium.org/p/chromium/issues/detail?id=1026287" rel="nofollow">this issue</a> in Chromium. (<em>Update: Since this post Simon Frasier has also opened <a href="https://bugs.webkit.org/show_bug.cgi?id=205675" rel="nofollow">this issue</a> in WebKit)</em>.</p>
 		</section> 
 		<section class="sectioning">
-			<contextual-heading role="heading" aria-level="3">Let's get this done.</contextual-heading>
+			<h3 class="contextual-heading">Let's get this done.</h3>
 
 			<p>To recap... We have two CSS color related functions which:</p>
 
@@ -434,15 +477,7 @@ America (art for sale)</a></li>
 </em></article></main>
 
   
-    <script>
-    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-
-    ga('create', 'UA-88027178-1', 'auto');
-    ga('send', 'pageview');
-  </script>
+    
 
   <script>
     Array.prototype.slice.call(document.querySelectorAll('.optional [data-src]')).forEach(function (optional) {
@@ -465,4 +500,12 @@ America (art for sale)</a></li>
     })
   </script>
 
-</body></html>
+</body><!-- script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-88027178-1', 'auto');
+    ga('send', 'pageview');
+  </script --></html>

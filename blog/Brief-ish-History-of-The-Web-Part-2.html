@@ -1,4 +1,4 @@
-<html lang="en" resource-type="blogpost"><head> 
+<html lang="en" resource-type="blogpost"><head>  
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta name="twitter:card" content="summary_large_image">
@@ -55,10 +55,12 @@ section > .captioned-image.p-attached {
     font-style: italic;
 }
 body {
-    display: flex;
-    font: 1em "Helvetica Neue", Helvetica, Arial, sans-serif;
+    display: grid;
+    grid-template-columns: 25rem auto;
+    font: 1.1rem "Helvetica Neue", Helvetica, Arial, sans-serif;
     font-weight: 400;
     line-height: 1.625;
+    margin: 0;
 }
 h1 { margin: 0.5rem; }
 code-format {
@@ -73,30 +75,35 @@ contextual-heading {
     margin-top: 2rem;
 }
 
-[aria-level="1"] {
+h1, [aria-level="1"] {
     color: #43686b;
     font-size: 1.45rem;
 }
-[aria-level="2"] {
+
+h2, [aria-level="2"] {
     color: #856363;
     font-size: 1.35rem;
 }
-[aria-level="3"] {
+
+h3, [aria-level="3"] {
     color: #856363;
     font-size: 1.25rem;
 }
-[aria-level="4"] {
+
+h4, [aria-level="4"] {
     color: #856363;
     font-size: 1.2rem;
 }
-[aria-level="5"], [aria-level="6"] {
+
+h5, h6, [aria-level="5"], [aria-level="6"] {
     color: #667496;
-    font-size: 1.1rem;
+    font-size: 1.2rem;
     font-weight: bolder;
 }
+
 .posted-on {
     font-style: italic;
-    font-size: 0.8rem;
+    font-size: 0.8rem; 
     text-align: right;
     margin-bottom: 1rem;
 }
@@ -105,11 +112,16 @@ ul, li {
     margin: 0.5rem;
     text-align: left;
 }
-header {
+
+responsive-details {
+    height: 100%;
     padding-top: 1rem;
-    padding-right: 2rem;
-    background-color: #fbf5e9;
+    padding-right: 0;
+    background-color: #fbf5e9; 
+    display: block;
+    background-image: linear-gradient(to right, #dde0e8 , #ffffff);
 }
+
 .tagline {
     font-style: italic;
     text-align: center;
@@ -138,7 +150,7 @@ header .title {
     padding: 0.3rem;
     padding-left: 0.25rem;
     font-weight: bolder;
-    font-size: 0.9rem;
+    font-size: 1rem;
     border-left: 1rem solid #999298;
 }
 
@@ -152,7 +164,7 @@ header .title + nav {
 }
 
 header .blurb {
-    font-size: 0.75rem;
+    font-size: 0.9rem;
     text-align: center;
 }
 header .name {
@@ -215,11 +227,14 @@ blockquote:after {
 
 @media (max-width: 800px){
     body {
-        flex-direction: column;
+        grid-template-columns: 1fr;
     }
-    header {
+    responsive-details {
+        height: auto;
         border-bottom: 1px solid #afafff;
-    }
+    } 
+
+    main { width: 95%; margin: 0 auto;}
 
     .captioned-image.p-attached {
         width: 100%;
@@ -231,20 +246,13 @@ blockquote:after {
         float: none;
     }
 
-    [for="aboutMeToggle"] {
+    #aboutMeToggle {
+        display: block;
         background-color: #675e5e;
         color: white;
         padding: 0.25rem;
         padding-left: 0.5rem;
-        display: block;
         border-left: 1rem solid black;
-    }
-    #aboutMeToggle:focus + [for="aboutMeToggle"]{
-        outline: 4px solid #c6ddf2;
-    }
-
-    #aboutMeToggle:checked ~ header {
-        display: none;
     }
 
     header li { display: inline; margin-left: -0.5em; }
@@ -296,8 +304,41 @@ blockquote:after {
     </script>
   </head>
   <body>
-    <input id="aboutMeToggle" class="sr-only" type="checkbox" checked="">
-<label for="aboutMeToggle">Toggle author information</label>
+    <script>
+class ResponsiveDetails extends HTMLElement {
+  
+  checkForced() {
+      let details = this.querySelector('details')
+        if (this.mql.matches) {
+          details.setAttribute('open','')
+        } else {
+          details.removeAttribute('open')
+        }
+  }
+  connectedCallback() {
+    this.mql = window.matchMedia(`(min-width: ${this.getAttribute("open-after") || "1px" })`);
+    this.mql.addEventListener('change', () => {
+        this.checkForced()
+    })
+    requestAnimationFrame(() => this.checkForced())
+  }
+  constructor() {
+    super()
+    this.attachShadow({mode: "open"})
+    this.shadowRoot.innerHTML = `<slot></slot>`
+    let slot = this.shadowRoot.firstElementChild;
+    slot.addEventListener('slotchange', ()=> this.checkForced)          
+
+  }
+}                         
+
+customElements.define('responsive-details', ResponsiveDetails)
+</script>
+
+<responsive-details open-after="800px">
+<details open="">
+<summary id="aboutMeToggle">Author Information</summary>
+
 <header>
     <div class="name">
         Brian Kardell
@@ -309,7 +350,7 @@ blockquote:after {
             <li>Developer Advocate at Igalia</li>
             <li>Original Co-author/Co-signer of The Extensible Web Manifesto</li>
             <li>Co-Founder/Chair, W3C Extensible Web CG</li>
-            <li>Member, W3C (The JS Foundation)</li>
+            <li>Member, W3C (OpenJS Foundation)</li>
             <li>Co-author of HitchJS</li>
             <li>Blogger</li>
             <li>Art, Science &amp; History Lover</li>
@@ -332,8 +373,10 @@ America (art for sale)</a></li>
         </ul>
     </nav>
 </header>
+</details>
+</responsive-details>
     <main><div class="posted-on">Posted on 12/7/2015</div><article posted-on="12/7/2015" class="sectioning">
-	<contextual-heading role="heading" aria-level="1">A Brief(ish) History of the Web Universe - Part II: Time</contextual-heading>
+	<h1 class="contextual-heading">A Brief(ish) History of the Web Universe - Part II: Time</h1>
 	<p class="segue">
 	Part II of&nbsp;"A Brief(ish) History of the Web Universe" aka "The Boring Posts". &nbsp;No themes, no punch, just history that I hope I can use to help explain where my own perspectives on a whole bunch of things draw from…</p>
 
@@ -382,7 +425,7 @@ led by one Francis Kretz (Thompsa SA? Rennes?).
 	<p>More interestingly still for purposes here, I'd like to note that the very first surviving HTML document was about quite literally about Hyper<em>Media.&nbsp;</em>It's part of notes from what they called the hypertext conference and, unsurprisingly, that is what everyone was talking about. &nbsp;To understand why I think this matters, let's rewind just a little and tie in some things from&nbsp;<a href="/blog/Brief-ish-History-of-The-Web-Part-1.html">Part I</a>&nbsp;with some things that weren't....</p>
 
 	<section class="sectioning">
-		<contextual-heading role="heading" aria-level="2">The Tim<em>ing</em> of the Web</contextual-heading>
+		<h2 class="contextual-heading">The Tim<em>ing</em> of the Web</h2>
 		<p>Remember VideoWorks/Director from <a href="/blog/Brief-ish-History-of-The-Web-Part-1.html">Part I</a>? &nbsp;It&nbsp;illustrated that perhaps&nbsp;the concept of Time was really important to&nbsp;hyper<em>media. &nbsp;</em>However,&nbsp;they weren't the only ones to see this.&nbsp;In fact, even as early as&nbsp;1984 people were already seeing a gap between <em>documents</em> and <em>hypermedia/multimedia</em> and talking about how to solve it. It&nbsp;turns out SGML, the reigning standard approach of the time for documents as markup actually wasn't quite suited to the task.&nbsp;It needed revision.</p>
 
 
@@ -405,7 +448,7 @@ led by one Francis Kretz (Thompsa SA? Rennes?).
 
 
 		<section class="sectioning">
-			<contextual-heading role="heading" aria-level="3">Shipping</contextual-heading>
+			<h3 class="contextual-heading">Shipping</h3>
 			<p>So the world around him was moving forward and there were lots of interesting ideas on all fronts. Tim had a prototype in hand. &nbsp;HTML as&nbsp;understood by the NeXT&nbsp;had no forms, no tables, you couldn't even nest things - it was flat. &nbsp;Not only did it have no&nbsp;CSS but no colors (his screen was black and white). &nbsp;But, for the most part&nbsp;many of his tags&nbsp;<em>were</em>&nbsp;simple formatting. &nbsp;You can debate that an H1 <em>is&nbsp;</em>semantic, but&nbsp;in Tim's interface it was under styling. &nbsp;That is, as you could "style" things as an H1, more or less WYSIWYG style, and the editor&nbsp;would flattened it all out in serializing&nbsp;markup.</p>
 
 			<p>Tim&nbsp;imagined (and has repeated since) that the most important thing was the URI, then HTTP then stuff like HTML and later CSS. &nbsp;URIs, in theory, can work for anything as long as you have a concept of a file that is addressable. &nbsp;HTTP was built with a feature called 'content type negotiation' which allows the sender to say what it's prepared to handle and the server to give him back something appropriate. &nbsp; As Tim explains this feature in&nbsp;<em>Weaving the Web:</em></p>
@@ -420,7 +463,7 @@ led by one Francis Kretz (Thompsa SA? Rennes?).
 		</section>
 
 		<section class="sectioning">
-			<contextual-heading role="heading" aria-level="3">It would turn out...</contextual-heading>
+			<h3 class="contextual-heading">It would turn out...</h3>
 			<p>One of the most interesting things&nbsp;about invention is the stuff that the inventor&nbsp;<em>didn't&nbsp;</em>expect people would do with it. &nbsp;It would&nbsp;<em>turn out</em> that HTML would become really popular for content for a number of reasons. &nbsp;One reason, undoubtedly, is that the simplest thing to do is simply to provide HTML in the first place with no alternatives. &nbsp;More importantly, perhaps, &nbsp;to re-iterate the point from part I:&nbsp;The line between documents and 'more than documents' was clearly fuzzy.</p>
 
 			<p>To illustrate:&nbsp;Even with the NeXT browser "in hand", it was very hard to show people value. Very few people had a NeXT, even at CERN - after all, it was a pilot&nbsp;for establishing whether the new-fangled machines&nbsp;would be useful. &nbsp;Lugging it around only went to far . &nbsp; There was a new project at CERN to provide a directory and&nbsp;Tim and early partners like Robert Cailliau&nbsp;convinced CERN to publish the directory via the Web.</p>
@@ -440,7 +483,7 @@ led by one Francis Kretz (Thompsa SA? Rennes?).
 		</section>
 
 		<section class="sectioning">
-			<contextual-heading role="heading" aria-level="3">Adjacent Possibles</contextual-heading>
+			<h3 class="contextual-heading">Adjacent Possibles</h3>
 			<p>However it came about, it turns out as well that the line mode browser was kind of perfect in time for a number of reasons. &nbsp;To keep things in perspective, this was 1990. &nbsp;While computers were starting to catch on, in 1990 they were still very expensive. &nbsp;As such, as deployed, many of them didn't even have OS' with something remotely like what we would call graphical UIs as a norm yet. &nbsp;Of those that did, few even had modems. &nbsp;And of those with modems, many still connected at 1200 or 2400 baud. &nbsp;We weren't connected nor even completely GUI yet. &nbsp;Those who&nbsp;<em>were</em> connecting most frequently were often doing so through large, expensive and frequently&nbsp;outdated systems which had been a <em>really&nbsp;</em>big investment years before.</p>
 
 			<p>Because of this, what the line mode browser <em>definitely did&nbsp;</em>was to allow Tim and others to show the people who&nbsp;<em>would </em>start&nbsp;writing the modern browsers with GUIs and increasingly recognizable features in short order and keep a small but steady stream of new potential enthusiasts checking it out. &nbsp;Sadly perhaps, another thing it did was to omit the&nbsp;<em>authoring</em> piece that was present on the NeXT machine and set in motion a trend where people perceived&nbsp;the Web as a way to&nbsp;<em>consume</em> rather than publish and contribute and likely spurned a greater focus on authoring HTML. &nbsp;"Sadly Perhaps," but then again, perhaps that's precisely what was necessary in order for it to mature anyway. &nbsp;It's hard to say in retrospect.</p>
@@ -457,15 +500,7 @@ led by one Francis Kretz (Thompsa SA? Rennes?).
 </article></main>
 
   
-    <script>
-    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-
-    ga('create', 'UA-88027178-1', 'auto');
-    ga('send', 'pageview');
-  </script>
+    
 
   <script>
     Array.prototype.slice.call(document.querySelectorAll('.optional [data-src]')).forEach(function (optional) {
@@ -488,4 +523,12 @@ led by one Francis Kretz (Thompsa SA? Rennes?).
     })
   </script>
 
-</body></html>
+</body><!-- script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-88027178-1', 'auto');
+    ga('send', 'pageview');
+  </script --></html>

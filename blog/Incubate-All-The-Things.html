@@ -1,4 +1,4 @@
-<html lang="en" resource-type="blogpost"><head> 
+<html lang="en" resource-type="blogpost"><head>  
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta name="twitter:card" content="summary_large_image">
@@ -55,10 +55,12 @@ section > .captioned-image.p-attached {
     font-style: italic;
 }
 body {
-    display: flex;
-    font: 1em "Helvetica Neue", Helvetica, Arial, sans-serif;
+    display: grid;
+    grid-template-columns: 25rem auto;
+    font: 1.1rem "Helvetica Neue", Helvetica, Arial, sans-serif;
     font-weight: 400;
     line-height: 1.625;
+    margin: 0;
 }
 h1 { margin: 0.5rem; }
 code-format {
@@ -73,30 +75,35 @@ contextual-heading {
     margin-top: 2rem;
 }
 
-[aria-level="1"] {
+h1, [aria-level="1"] {
     color: #43686b;
     font-size: 1.45rem;
 }
-[aria-level="2"] {
+
+h2, [aria-level="2"] {
     color: #856363;
     font-size: 1.35rem;
 }
-[aria-level="3"] {
+
+h3, [aria-level="3"] {
     color: #856363;
     font-size: 1.25rem;
 }
-[aria-level="4"] {
+
+h4, [aria-level="4"] {
     color: #856363;
     font-size: 1.2rem;
 }
-[aria-level="5"], [aria-level="6"] {
+
+h5, h6, [aria-level="5"], [aria-level="6"] {
     color: #667496;
-    font-size: 1.1rem;
+    font-size: 1.2rem;
     font-weight: bolder;
 }
+
 .posted-on {
     font-style: italic;
-    font-size: 0.8rem;
+    font-size: 0.8rem; 
     text-align: right;
     margin-bottom: 1rem;
 }
@@ -105,11 +112,16 @@ ul, li {
     margin: 0.5rem;
     text-align: left;
 }
-header {
+
+responsive-details {
+    height: 100%;
     padding-top: 1rem;
-    padding-right: 2rem;
-    background-color: #fbf5e9;
+    padding-right: 0;
+    background-color: #fbf5e9; 
+    display: block;
+    background-image: linear-gradient(to right, #dde0e8 , #ffffff);
 }
+
 .tagline {
     font-style: italic;
     text-align: center;
@@ -138,7 +150,7 @@ header .title {
     padding: 0.3rem;
     padding-left: 0.25rem;
     font-weight: bolder;
-    font-size: 0.9rem;
+    font-size: 1rem;
     border-left: 1rem solid #999298;
 }
 
@@ -152,7 +164,7 @@ header .title + nav {
 }
 
 header .blurb {
-    font-size: 0.75rem;
+    font-size: 0.9rem;
     text-align: center;
 }
 header .name {
@@ -215,11 +227,14 @@ blockquote:after {
 
 @media (max-width: 800px){
     body {
-        flex-direction: column;
+        grid-template-columns: 1fr;
     }
-    header {
+    responsive-details {
+        height: auto;
         border-bottom: 1px solid #afafff;
-    }
+    } 
+
+    main { width: 95%; margin: 0 auto;}
 
     .captioned-image.p-attached {
         width: 100%;
@@ -231,20 +246,13 @@ blockquote:after {
         float: none;
     }
 
-    [for="aboutMeToggle"] {
+    #aboutMeToggle {
+        display: block;
         background-color: #675e5e;
         color: white;
         padding: 0.25rem;
         padding-left: 0.5rem;
-        display: block;
         border-left: 1rem solid black;
-    }
-    #aboutMeToggle:focus + [for="aboutMeToggle"]{
-        outline: 4px solid #c6ddf2;
-    }
-
-    #aboutMeToggle:checked ~ header {
-        display: none;
     }
 
     header li { display: inline; margin-left: -0.5em; }
@@ -296,8 +304,41 @@ blockquote:after {
     </script>
   </head>
   <body>
-    <input id="aboutMeToggle" class="sr-only" type="checkbox" checked="">
-<label for="aboutMeToggle">Toggle author information</label>
+    <script>
+class ResponsiveDetails extends HTMLElement {
+  
+  checkForced() {
+      let details = this.querySelector('details')
+        if (this.mql.matches) {
+          details.setAttribute('open','')
+        } else {
+          details.removeAttribute('open')
+        }
+  }
+  connectedCallback() {
+    this.mql = window.matchMedia(`(min-width: ${this.getAttribute("open-after") || "1px" })`);
+    this.mql.addEventListener('change', () => {
+        this.checkForced()
+    })
+    requestAnimationFrame(() => this.checkForced())
+  }
+  constructor() {
+    super()
+    this.attachShadow({mode: "open"})
+    this.shadowRoot.innerHTML = `<slot></slot>`
+    let slot = this.shadowRoot.firstElementChild;
+    slot.addEventListener('slotchange', ()=> this.checkForced)          
+
+  }
+}                         
+
+customElements.define('responsive-details', ResponsiveDetails)
+</script>
+
+<responsive-details open-after="800px">
+<details open="">
+<summary id="aboutMeToggle">Author Information</summary>
+
 <header>
     <div class="name">
         Brian Kardell
@@ -309,7 +350,7 @@ blockquote:after {
             <li>Developer Advocate at Igalia</li>
             <li>Original Co-author/Co-signer of The Extensible Web Manifesto</li>
             <li>Co-Founder/Chair, W3C Extensible Web CG</li>
-            <li>Member, W3C (The JS Foundation)</li>
+            <li>Member, W3C (OpenJS Foundation)</li>
             <li>Co-author of HitchJS</li>
             <li>Blogger</li>
             <li>Art, Science &amp; History Lover</li>
@@ -332,14 +373,16 @@ America (art for sale)</a></li>
         </ul>
     </nav>
 </header>
+</details>
+</responsive-details>
     <main><div class="posted-on">Posted on 12/26/2016</div><article posted-on="12/26/2016" class="sectioning">
-	<contextual-heading role="heading" aria-level="1">Incubate All the Things</contextual-heading>
+	<h1 class="contextual-heading">Incubate All the Things</h1>
 	<p class="segue">There's a conversation going on right now on the mailing list public-w3process, it's exceptionally long and twisty at this point, it took me a few hours to get caught up and... Wait, what's that? You've never even heard of this mailing list? No worries, I'll fill you in and tell you why this is important...</p>
 
 	<p>Chances are pretty good that you've never even heard of the <a href="https://lists.w3.org/Archives/Public/public-w3process/">public-w3process</a> group, but it's dedicated toward discussion of, effectively, process changes at the W3C.</p>
 
 	<section class="sectioning">
-		<contextual-heading role="heading" aria-level="2">The Process</contextual-heading>
+		<h2 class="contextual-heading">The Process</h2>
 		<p>Everything about how the W3C works is codified in a document called "The Process".  It's a really important document, but a <em>very</em> dull one.  However, if you want to change the way that the W3C actually <em>works</em>, then ultimately, you have to modify it, which must be done in accordance with... surprise: The Process.</p>
 
 		<p>Generally speaking, the Terrible, Awful, Horrible, No Good, Very Bad Job of maintaining this document is the domain of the Advisory Board (AB).  It takes a long time and it is painful process that involves lots of debate with lots of people about all sorts of arcane silliness.</p>
@@ -356,7 +399,7 @@ America (art for sale)</a></li>
 	<p>As you may or may not know, there is a movement in the W3C to embrace incubation as a part of the process.  I've mentioned aspects of this in blog posts since before there was an thing with a name we could point to, but I don't know that I've ever written about it and explained why I think it is so important on it's own, so here it is....</p>
 
 	<section class="sectioning">
-		<contextual-heading role="heading" aria-level="2">Old Fiction: Why we need incubation</contextual-heading>
+		<h2 class="contextual-heading">Old Fiction: Why we need incubation</h2>
 		<p>If you ask "who writes the specs" the answer is inevitably "some standard development organization".  This often leads to the wrong mental image.  To paraphrase a friend who will remain nameless just incase they regret their particularly colorful choice of words:</p>
 
 		<blockquote>So many people come to standards work with stars in their eyes and say, "Well, I just have to get it in the standard and it will be real" and "we're doing R&amp;D here" and... I just want to find ways to kill those people [because] this is really about consolidation and building a platform that we can agree upon and then building value on top of that [and markets in which they can fail].</blockquote>
@@ -379,7 +422,7 @@ America (art for sale)</a></li>
 	</section>
 
 	<section class="sectioning">
-		<contextual-heading role="heading" aria-level="2">Incubation: Useful speculation</contextual-heading>
+		<h2 class="contextual-heading">Incubation: Useful speculation</h2>
 		<p>Put very simply, incubation is based on the idea that until a certain point, things are really just useful speculation and that finding better ways to identify it as such and work within that idea may be very advantageous.  If we're really fortunate, instead of the cascade of bad, we can build a virtuous cycle of good. This is the aim of the Web Incubator Community Group (<a href="https://wicg.io">WICG</a>).</p>
 
 		<p>Instead of entering the conversation as a something that looks like more than it is in a working group then, ideas begin in incubation.  Incubation happens out in the open, and not on a mailing list where you have to subscribe to everything but in a forum where you can choose smaller, more focused topics to participate in and engage in those.  They don't just come from working group members either because they are, just that: Ideas.</p>
@@ -395,7 +438,7 @@ America (art for sale)</a></li>
 	</section>
 
 	<section class="sectioning">
-		<contextual-heading role="heading" aria-level="2">Fears</contextual-heading>
+		<h2 class="contextual-heading">Fears</h2>
 		<p>Change is difficult and make no mistake, including incubation as an even relatively formal concept in W3C is a change.  It's natural then that some people have fears. Working groups have been the exclusive way to work for a really long time. Why should something not happen in a working group if members of the working group think it should start there and most mailiing lists, like www-style, are technically forums open to the public?  How doesn't this hollow out working groups and make them nothing more than paper-pushers as things move through the process?</p>
 
 		<p>The interesting thing is, it's actually a smaller change in practice than you might think.  Currently, the vast majority of specs have a single primary editor and sometimes two or three collaborators.  They work outside of any working group and answer most of the questions, and have deep discussion and come back with an answer.  It's only at this point that the rest of the working group often talks about it much at all.  There are also exceptionally noisy conversations along the way between other folks on IRC or slack or lots of other venues to help them hammer out ideas which they then bring back to wider audiences.  They move the noise, because that's just how information works.  In many cases then, what incubation provides is, realistically, mostly a move of the venue and the admission of how serious/likely it is to become a standard.</p>
@@ -405,7 +448,7 @@ America (art for sale)</a></li>
 	</section>
 
 	<section class="sectioning">
-		<contextual-heading role="heading" aria-level="2">Cool Story Bro</contextual-heading>
+		<h2 class="contextual-heading">Cool Story Bro</h2>
 		<p>So why do you care, and what am I asking of you?  Well, it's my opinion that this is your Web, as much as it is any W3C member orgs Web.  Ultimately, it is developers who have to live with this stuff.  It's developers who advocate and adopt and occasionally complain about or even occasionally outright reject standards.  You are, in the end, a very important piece of the puzzle and I don't know that anyone is really specifically asking you what you think.  I don't think that you should have to wade through all of the discussions but, somehow, you should be heard.  Your voice matters, if you want it to.  But noone <em>else</em> is gonna do it, if we want to be involved, we've got to be involved.  I think that incubation is an important part of that, but I'm just one guy.  So I'm asking you to start a public discussion, share your perspective - tweet, blog, share. Or, if you're uninterested with changing anything, feel free to ignore.  Here's my own perspective:</p>
 
 
@@ -417,15 +460,7 @@ America (art for sale)</a></li>
 </article></main>
 
   
-    <script>
-    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-
-    ga('create', 'UA-88027178-1', 'auto');
-    ga('send', 'pageview');
-  </script>
+    
 
   <script>
     Array.prototype.slice.call(document.querySelectorAll('.optional [data-src]')).forEach(function (optional) {
@@ -448,4 +483,12 @@ America (art for sale)</a></li>
     })
   </script>
 
-</body></html>
+</body><!-- script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-88027178-1', 'auto');
+    ga('send', 'pageview');
+  </script --></html>

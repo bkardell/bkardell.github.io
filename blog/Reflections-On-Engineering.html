@@ -1,4 +1,4 @@
-<html lang="en" resource-type="blogpost"><head> 
+<html lang="en" resource-type="blogpost"><head>  
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta name="twitter:card" content="summary_large_image">
@@ -55,10 +55,12 @@ section > .captioned-image.p-attached {
     font-style: italic;
 }
 body {
-    display: flex;
-    font: 1em "Helvetica Neue", Helvetica, Arial, sans-serif;
+    display: grid;
+    grid-template-columns: 25rem auto;
+    font: 1.1rem "Helvetica Neue", Helvetica, Arial, sans-serif;
     font-weight: 400;
     line-height: 1.625;
+    margin: 0;
 }
 h1 { margin: 0.5rem; }
 code-format {
@@ -73,30 +75,35 @@ contextual-heading {
     margin-top: 2rem;
 }
 
-[aria-level="1"] {
+h1, [aria-level="1"] {
     color: #43686b;
     font-size: 1.45rem;
 }
-[aria-level="2"] {
+
+h2, [aria-level="2"] {
     color: #856363;
     font-size: 1.35rem;
 }
-[aria-level="3"] {
+
+h3, [aria-level="3"] {
     color: #856363;
     font-size: 1.25rem;
 }
-[aria-level="4"] {
+
+h4, [aria-level="4"] {
     color: #856363;
     font-size: 1.2rem;
 }
-[aria-level="5"], [aria-level="6"] {
+
+h5, h6, [aria-level="5"], [aria-level="6"] {
     color: #667496;
-    font-size: 1.1rem;
+    font-size: 1.2rem;
     font-weight: bolder;
 }
+
 .posted-on {
     font-style: italic;
-    font-size: 0.8rem;
+    font-size: 0.8rem; 
     text-align: right;
     margin-bottom: 1rem;
 }
@@ -105,11 +112,16 @@ ul, li {
     margin: 0.5rem;
     text-align: left;
 }
-header {
+
+responsive-details {
+    height: 100%;
     padding-top: 1rem;
-    padding-right: 2rem;
-    background-color: #fbf5e9;
+    padding-right: 0;
+    background-color: #fbf5e9; 
+    display: block;
+    background-image: linear-gradient(to right, #dde0e8 , #ffffff);
 }
+
 .tagline {
     font-style: italic;
     text-align: center;
@@ -138,7 +150,7 @@ header .title {
     padding: 0.3rem;
     padding-left: 0.25rem;
     font-weight: bolder;
-    font-size: 0.9rem;
+    font-size: 1rem;
     border-left: 1rem solid #999298;
 }
 
@@ -152,7 +164,7 @@ header .title + nav {
 }
 
 header .blurb {
-    font-size: 0.75rem;
+    font-size: 0.9rem;
     text-align: center;
 }
 header .name {
@@ -215,11 +227,14 @@ blockquote:after {
 
 @media (max-width: 800px){
     body {
-        flex-direction: column;
+        grid-template-columns: 1fr;
     }
-    header {
+    responsive-details {
+        height: auto;
         border-bottom: 1px solid #afafff;
-    }
+    } 
+
+    main { width: 95%; margin: 0 auto;}
 
     .captioned-image.p-attached {
         width: 100%;
@@ -231,20 +246,13 @@ blockquote:after {
         float: none;
     }
 
-    [for="aboutMeToggle"] {
+    #aboutMeToggle {
+        display: block;
         background-color: #675e5e;
         color: white;
         padding: 0.25rem;
         padding-left: 0.5rem;
-        display: block;
         border-left: 1rem solid black;
-    }
-    #aboutMeToggle:focus + [for="aboutMeToggle"]{
-        outline: 4px solid #c6ddf2;
-    }
-
-    #aboutMeToggle:checked ~ header {
-        display: none;
     }
 
     header li { display: inline; margin-left: -0.5em; }
@@ -296,8 +304,41 @@ blockquote:after {
     </script>
   </head>
   <body>
-    <input id="aboutMeToggle" class="sr-only" type="checkbox" checked="">
-<label for="aboutMeToggle">Toggle author information</label>
+    <script>
+class ResponsiveDetails extends HTMLElement {
+  
+  checkForced() {
+      let details = this.querySelector('details')
+        if (this.mql.matches) {
+          details.setAttribute('open','')
+        } else {
+          details.removeAttribute('open')
+        }
+  }
+  connectedCallback() {
+    this.mql = window.matchMedia(`(min-width: ${this.getAttribute("open-after") || "1px" })`);
+    this.mql.addEventListener('change', () => {
+        this.checkForced()
+    })
+    requestAnimationFrame(() => this.checkForced())
+  }
+  constructor() {
+    super()
+    this.attachShadow({mode: "open"})
+    this.shadowRoot.innerHTML = `<slot></slot>`
+    let slot = this.shadowRoot.firstElementChild;
+    slot.addEventListener('slotchange', ()=> this.checkForced)          
+
+  }
+}                         
+
+customElements.define('responsive-details', ResponsiveDetails)
+</script>
+
+<responsive-details open-after="800px">
+<details open="">
+<summary id="aboutMeToggle">Author Information</summary>
+
 <header>
     <div class="name">
         Brian Kardell
@@ -309,7 +350,7 @@ blockquote:after {
             <li>Developer Advocate at Igalia</li>
             <li>Original Co-author/Co-signer of The Extensible Web Manifesto</li>
             <li>Co-Founder/Chair, W3C Extensible Web CG</li>
-            <li>Member, W3C (The JS Foundation)</li>
+            <li>Member, W3C (OpenJS Foundation)</li>
             <li>Co-author of HitchJS</li>
             <li>Blogger</li>
             <li>Art, Science &amp; History Lover</li>
@@ -332,14 +373,16 @@ America (art for sale)</a></li>
         </ul>
     </nav>
 </header>
+</details>
+</responsive-details>
     <main><div class="posted-on">Posted on 6/20/2015</div><article posted-on="6/20/2015" class="sectioning">
-	<contextual-heading role="heading" aria-level="1">Reflections on Engineering</contextual-heading>
+	<h1 class="contextual-heading">Reflections on Engineering</h1>
 	<p class="segue">Very early in my career, I was lucky enough to stumble on Web development before it really became a “thing” and landed an apprenticeship (and later job) in a new, small experimental arm of an established consulting firm which primarily worked on embedded systems. I was employee #2 of this new effort and we worked in an attic loft. Nearly all of my experience before this was from books and pure experimentation/willpower to accomplish something. I worked there for about a year, mostly by myself churning out code in somewhat typical fashion: Someone said “make it look like this picture” or “this stuff needs to come from a database” and that was pretty much it. I worked too hard, I was usually scared to death I'd never be able to figure out that one new technology that each project introduced me to and quite often it was just struggle to finish and make something work.</p>
 
 	<p>I was learning a lot about APIs and the languages I was working with, but very little about how to do my job. If this sounds confusing to you, you're not alone: I've been writing software professionally for about 20 years and I've worked on a lot of teams with a wide array of people and initially nearly all of them hold the position that that is my whole job. So, let me explain the counterpoint and how I came to hold this idea about what my job really is.</p>
 
 	<section class="sectioning">
-		<contextual-heading role="heading" aria-level="2">My First Lesson...</contextual-heading>
+		<h2 class="contextual-heading">My First Lesson...</h2>
 		<p>About a year into my first job, an opportunity came up for a project that the boss didn't want to pass up: A former client with a startup who had gotten into some trouble with a deadline had heard we were doing this sort of thing now. Success would likely mean more work — but it was considerably over our heads. It dealt with some ideas for which there were only two books we could find and it seemed at the time like pretty high-end nerd stuff. We'd be working with the author of those books directly. The deadlines looked clearly impossible even if it were something we'd understood well. Still, the boss signed the contract on faith and almost immediately we lost the only other employee we had — it was just me.</p>
 
 		<p>So the boss negotiated with an old partner who had left the company to come back and help out. His name was George and, actually, he was the one that recommended me for the position in the first place. He was friendly and quiet — a lanky guy with beard and glasses, a seasoned engineer who was great with C but he knew nothing about the Web. He came back on one condition: He was running the team — no questions or pressure or status inquiries from the boss. It seemed strange to me coming from this quiet and very amiable guy.</p>
@@ -385,7 +428,7 @@ America (art for sale)</a></li>
 		<p>I, my boss, and even the client mistakenly understood the problem to be “how do we measure and knock down units of work to do variants of what someone clumsily hacked together before they really understood the problem” . George was able to see the greater issue. Originally, their product shipped on time with two completely different approaches inside — that’s not great engineering, in fact, it’s terrible. George never tried to tell them they should do otherwise — he simply showed them a better way, he delivered and optimized everyone’s happiness. If they had any sense, they went back and learned the right lessons.</p>
 
 		<section class="sectioning">
-			<contextual-heading role="heading" aria-level="3">On my own...</contextual-heading>
+			<h3 class="contextual-heading">On my own...</h3>
 			<p>Over the years I've frequently been in situations where I've had to apply these lessons. It’s not always easy and sometimes the hardest part is the fact that under a lot of pressure, no one can see the forest for the trees. No one wants to hear you — you can frequently be misunderstood as shooting for unaffordable perfection or just “difficult” even if that is pretty clearly not the case. But let me share just one of many stories about how this matters in a very real way — and why it’s worth caring and having the integrity to focus on the non-programming bits.</p>
 
 			<p>Several years ago I was contracted by a large company for 6 months to complete a simple task: They had a number of systems which were written in Java or .NET. After years of discussion and planning they had timetables and budgets and a directive to convert all of their existing .NET applications to Java. I was hired to do one. They practiced a waterfall methodology and had already spent tons in codifying the requirements and analysis of the existing system and so on. More or less a straight port. They wanted me to potentially suggest a few minor UI tweaks since I was pretty good with JavaScript and CSS, but otherwise straightforward. I spent my first two weeks reading requirements, looking at code, trying to get set up and run through the existing system and so on. At the end of all of this, I had a nagging problem: I still had no idea what this system was actually for and I couldn't even get it to do simple things without crashing — even the one in production.</p>
@@ -404,7 +447,7 @@ America (art for sale)</a></li>
 		</section>
 
 		<section class="sectioning">
-			<contextual-heading role="heading" aria-level="3">In short...</contextual-heading>
+			<h3 class="contextual-heading">In short...</h3>
 			<p>
 				Many of us, and those we work with would frequently like to imagine that our job is just programming. It’s easy to forget that, and while yes, you have that rare skill — your real job is in making the project successful. It’s that same quality of solving problems that occasionally gives you an insight that others can’t have. What someone is asking you for is frequently abstract, it often lacks an understanding of the medium and that means various choices incur significantly more cost than others. It’s quite possible (at least in my experience) that with just a little cooperation and effort you can adjust expectations, correct problems with deadlines and budgets and just generally increase the overall happiness of everyone. It doesn't always work — sometimes people will misunderstand your position or even be frustrated by it. But, after ~20 years of doing this, I can honestly say that in the end my results have been overwhelmingly positive. In the end, people tend to come around and frequently those who most misunderstood initially have later come to be some of the best partners.
 			</p>
@@ -427,15 +470,7 @@ America (art for sale)</a></li>
 </section></article></main>
 
   
-    <script>
-    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-
-    ga('create', 'UA-88027178-1', 'auto');
-    ga('send', 'pageview');
-  </script>
+    
 
   <script>
     Array.prototype.slice.call(document.querySelectorAll('.optional [data-src]')).forEach(function (optional) {
@@ -458,4 +493,12 @@ America (art for sale)</a></li>
     })
   </script>
 
-</body></html>
+</body><!-- script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-88027178-1', 'auto');
+    ga('send', 'pageview');
+  </script --></html>

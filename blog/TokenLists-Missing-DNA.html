@@ -1,4 +1,4 @@
-<html lang="en" resource-type="blogpost"><head> 
+<html lang="en" resource-type="blogpost"><head>  
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta name="twitter:card" content="summary_large_image">
@@ -55,10 +55,12 @@ section > .captioned-image.p-attached {
     font-style: italic;
 }
 body {
-    display: flex;
-    font: 1em "Helvetica Neue", Helvetica, Arial, sans-serif;
+    display: grid;
+    grid-template-columns: 25rem auto;
+    font: 1.1rem "Helvetica Neue", Helvetica, Arial, sans-serif;
     font-weight: 400;
     line-height: 1.625;
+    margin: 0;
 }
 h1 { margin: 0.5rem; }
 code-format {
@@ -73,30 +75,35 @@ contextual-heading {
     margin-top: 2rem;
 }
 
-[aria-level="1"] {
+h1, [aria-level="1"] {
     color: #43686b;
     font-size: 1.45rem;
 }
-[aria-level="2"] {
+
+h2, [aria-level="2"] {
     color: #856363;
     font-size: 1.35rem;
 }
-[aria-level="3"] {
+
+h3, [aria-level="3"] {
     color: #856363;
     font-size: 1.25rem;
 }
-[aria-level="4"] {
+
+h4, [aria-level="4"] {
     color: #856363;
     font-size: 1.2rem;
 }
-[aria-level="5"], [aria-level="6"] {
+
+h5, h6, [aria-level="5"], [aria-level="6"] {
     color: #667496;
-    font-size: 1.1rem;
+    font-size: 1.2rem;
     font-weight: bolder;
 }
+
 .posted-on {
     font-style: italic;
-    font-size: 0.8rem;
+    font-size: 0.8rem; 
     text-align: right;
     margin-bottom: 1rem;
 }
@@ -105,11 +112,16 @@ ul, li {
     margin: 0.5rem;
     text-align: left;
 }
-header {
+
+responsive-details {
+    height: 100%;
     padding-top: 1rem;
-    padding-right: 2rem;
-    background-color: #fbf5e9;
+    padding-right: 0;
+    background-color: #fbf5e9; 
+    display: block;
+    background-image: linear-gradient(to right, #dde0e8 , #ffffff);
 }
+
 .tagline {
     font-style: italic;
     text-align: center;
@@ -138,7 +150,7 @@ header .title {
     padding: 0.3rem;
     padding-left: 0.25rem;
     font-weight: bolder;
-    font-size: 0.9rem;
+    font-size: 1rem;
     border-left: 1rem solid #999298;
 }
 
@@ -152,7 +164,7 @@ header .title + nav {
 }
 
 header .blurb {
-    font-size: 0.75rem;
+    font-size: 0.9rem;
     text-align: center;
 }
 header .name {
@@ -215,11 +227,14 @@ blockquote:after {
 
 @media (max-width: 800px){
     body {
-        flex-direction: column;
+        grid-template-columns: 1fr;
     }
-    header {
+    responsive-details {
+        height: auto;
         border-bottom: 1px solid #afafff;
-    }
+    } 
+
+    main { width: 95%; margin: 0 auto;}
 
     .captioned-image.p-attached {
         width: 100%;
@@ -231,20 +246,13 @@ blockquote:after {
         float: none;
     }
 
-    [for="aboutMeToggle"] {
+    #aboutMeToggle {
+        display: block;
         background-color: #675e5e;
         color: white;
         padding: 0.25rem;
         padding-left: 0.5rem;
-        display: block;
         border-left: 1rem solid black;
-    }
-    #aboutMeToggle:focus + [for="aboutMeToggle"]{
-        outline: 4px solid #c6ddf2;
-    }
-
-    #aboutMeToggle:checked ~ header {
-        display: none;
     }
 
     header li { display: inline; margin-left: -0.5em; }
@@ -296,8 +304,41 @@ blockquote:after {
     </script>
   </head>
   <body>
-    <input id="aboutMeToggle" class="sr-only" type="checkbox" checked="">
-<label for="aboutMeToggle">Toggle author information</label>
+    <script>
+class ResponsiveDetails extends HTMLElement {
+  
+  checkForced() {
+      let details = this.querySelector('details')
+        if (this.mql.matches) {
+          details.setAttribute('open','')
+        } else {
+          details.removeAttribute('open')
+        }
+  }
+  connectedCallback() {
+    this.mql = window.matchMedia(`(min-width: ${this.getAttribute("open-after") || "1px" })`);
+    this.mql.addEventListener('change', () => {
+        this.checkForced()
+    })
+    requestAnimationFrame(() => this.checkForced())
+  }
+  constructor() {
+    super()
+    this.attachShadow({mode: "open"})
+    this.shadowRoot.innerHTML = `<slot></slot>`
+    let slot = this.shadowRoot.firstElementChild;
+    slot.addEventListener('slotchange', ()=> this.checkForced)          
+
+  }
+}                         
+
+customElements.define('responsive-details', ResponsiveDetails)
+</script>
+
+<responsive-details open-after="800px">
+<details open="">
+<summary id="aboutMeToggle">Author Information</summary>
+
 <header>
     <div class="name">
         Brian Kardell
@@ -309,7 +350,7 @@ blockquote:after {
             <li>Developer Advocate at Igalia</li>
             <li>Original Co-author/Co-signer of The Extensible Web Manifesto</li>
             <li>Co-Founder/Chair, W3C Extensible Web CG</li>
-            <li>Member, W3C (The JS Foundation)</li>
+            <li>Member, W3C (OpenJS Foundation)</li>
             <li>Co-author of HitchJS</li>
             <li>Blogger</li>
             <li>Art, Science &amp; History Lover</li>
@@ -332,8 +373,10 @@ America (art for sale)</a></li>
         </ul>
     </nav>
 </header>
+</details>
+</responsive-details>
     <main><div class="posted-on">Posted on 3/29/2016</div><article posted-on="3/29/2016" class="sectioning">
-	<contextual-heading role="heading" aria-level="1">TokenLists: Missing Web DNA</contextual-heading>
+	<h1 class="contextual-heading">TokenLists: Missing Web DNA</h1>
 	<p class="segue">As we move forward with the Web, it's important that we look down into the DNA and continue to find the missing connections - things that are fundamentally related in concept and managed so by the browser, but not exposed to developers in similar fashion.  I'd like to talk about one of those I recently uncovered...</p>
 
 	<p>A long long time ago, in a browser far far away, Brendan Eich introduced what would become known as "DOM Level 0" - basically: Simple reflective properties that allowed you to access useful bits of what would later become "DOM" and twiddle with them. &nbsp;It looked something like this...</p>
@@ -369,7 +412,7 @@ America (art for sale)</a></li>
 	<p>In CSS, the <code>class</code> attribute has special meaning, surely it deserved some sugar.  But the above wouldn't have worked because at the time, using property names that were JavaScript reserved words just wouldn't work.  To resolve all these issues, we got the <code>.className</code> property&nbsp;which was reflective on the <code>class</code> attribute. &nbsp;Problem solved... Except, not.</p>
 
 	<section class="sectioning">
-		<contextual-heading role="heading" aria-level="2">Not Simple Enough</contextual-heading>
+		<h2 class="contextual-heading">Not Simple Enough</h2>
 		<p>CSS says that any element can specify&nbsp;0...N classes, not 0 or 1.  These are provided in a space separated list. &nbsp;In SGML/XML terms these were "<code>NMTokens</code>". &nbsp;It sounds quite simple - a space separated list of values with some simple constraints should work everywhere, and it does... kind of.</p>
 
 		<p>In the browser world, however, where we were messing with&nbsp;classes at runtime all over the place that needed to be reflected back (CSS wasn't based on&nbsp;runtime properties, it was based on&nbsp;attributes) we began facing issues. &nbsp;Someone would come along and write code like the above example, which assumed that it was a single value:</p>
@@ -388,7 +431,7 @@ element.className = (element.className === "selected") ? "" : "selected";</pre>
 		<p>The problem being two-fold: &nbsp;First, it assumes it could === a single value, the second being that it can overwrite all the others. &nbsp;We had problems removing classes, adding them, removing them, toggling them, finding out if it contained something. &nbsp;It sounds trivial but it turns out that it wasn't: Each time you wanted to touch the className you had to deal with deserializing the string, doing your work and re-serializing it without stepping on any of a number of landmines. &nbsp;The net result was, as one might expect, we came up with libraries to help with this - however, they varied in quality and assumptions. It was still a mess.</p>
 
 		<section class="sectioning">
-			<contextual-heading role="heading" aria-level="3">Problem Solved.</contextual-heading>
+			<h3 class="contextual-heading">Problem Solved.</h3>
 
 			<p>When jQuery joined the W3C after becoming the most widely used solution, they lobbied to improve this situation (disclaimer, I represent jQuery in several W3C groups). &nbsp;It wasn't long before we had the <code>.classList</code> interface. &nbsp;The world is much better with <code>.classList</code> at our disposal - finally we can be rid of the above problem. &nbsp;Now users can write:</p>
 
@@ -401,7 +444,7 @@ element.className = (element.className === "selected") ? "" : "selected";</pre>
 	</section>
 
 	<section class="sectioning">
-		<contextual-heading role="heading" aria-level="2">Wait... Problem Solved?</contextual-heading>
+		<h2 class="contextual-heading">Wait... Problem Solved?</h2>
 		<p>Sadly, I think still not quite. &nbsp;While it's a major improvement, the trouble is that the <code>NMTokens</code> issue does not solely affect the <code>class</code> attribute, or even just in JavaScript, but we only exposed it through <code>.classList</code>.</p>
 
 		<p>It's quite possible that you are thinking "Well, this probably isn't something I need to worry about because I've never come across it". &nbsp;However, I think you will, and that's the problem.</p>
@@ -414,7 +457,7 @@ element.className = (element.className === "selected") ? "" : "selected";</pre>
 	</section>
 
 	<section class="sectioning">
-		<contextual-heading role="heading" aria-level="2">Good News and Bad</contextual-heading>
+		<h2 class="contextual-heading">Good News and Bad</h2>
 		<p>The good news is that standards makers had the foresight to create an interface for this type of problem called <code>DOMTokenList</code> with all the useful methods and properties that <code>.classList</code> exposes. &nbsp;The <code>.classList</code> property holds a <code>DOMTokenList</code>.</p>
 
 		<p>The bad news is that it's pretty much locked away and there's no way to easily re-apply it to new things as they emerge. &nbsp;We could continue to identify spec properties and create new things&nbsp;like <code>.classList</code> each time we find them. &nbsp;For example, we could expose <code>.ariaDescribedByList</code> - and we might want to occasionally do that - but it's not great. &nbsp;It's just additive. &nbsp;Each time we do, the API of things to learn gets bigger, it also doesn't expose these abilities to custom elements, and it doesn't help with anything that isn't specifically HTML (if you care about that sort of thing).</p>
@@ -422,7 +465,7 @@ element.className = (element.className === "selected") ? "" : "selected";</pre>
 		<p>Alternatively, however, <em>we could define a single new foundational DOM method to expose <strong>any</strong> attribute this way</em></p>
 
 		<section class="sectioning">
-			<contextual-heading role="heading" aria-level="3">Can you show me?</contextual-heading>
+			<h3 class="contextual-heading">Can you show me?</h3>
 			<p>
 				Yes!  The good news is that this is actually pretty easy to do, minimal new API to learn and should reasonably work for everyone. &nbsp;Jonathan Neal and I are providing a <a href="https://github.com/bkardell/tokenListFor/blob/master/_tokenListFor.js" target="_blank">prollyfill</a>, or a "speculative polyfill", for this (public domain).  This allows people to ask for an attribute as a <code>DOMTokenList</code>&nbsp;and deal with it the same as they would <code>.classList</code>. &nbsp;Because it's a proposal, and should a standard ultimately arrive it may differ, we've underscored the method name to keep it future safe, but here's an example of its use...
 			</p>
@@ -445,15 +488,7 @@ element.className = (element.className === "selected") ? "" : "selected";</pre>
 </article></main>
 
   
-    <script>
-    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-
-    ga('create', 'UA-88027178-1', 'auto');
-    ga('send', 'pageview');
-  </script>
+    
 
   <script>
     Array.prototype.slice.call(document.querySelectorAll('.optional [data-src]')).forEach(function (optional) {
@@ -476,4 +511,12 @@ element.className = (element.className === "selected") ? "" : "selected";</pre>
     })
   </script>
 
-</body></html>
+</body><!-- script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-88027178-1', 'auto');
+    ga('send', 'pageview');
+  </script --></html>

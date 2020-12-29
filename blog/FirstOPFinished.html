@@ -1,4 +1,4 @@
-<html lang="en" resource-type="blogpost"><head> 
+<html lang="en" resource-type="blogpost"><head>  
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta name="twitter:card" content="summary_large_image">
@@ -55,8 +55,9 @@ section > .captioned-image.p-attached {
     font-style: italic;
 }
 body {
-    display: flex;
-    font: 1em "Helvetica Neue", Helvetica, Arial, sans-serif;
+    display: grid;
+    grid-template-columns: 25rem auto;
+    font: 1.1rem "Helvetica Neue", Helvetica, Arial, sans-serif;
     font-weight: 400;
     line-height: 1.625;
     margin: 0;
@@ -74,27 +75,32 @@ contextual-heading {
     margin-top: 2rem;
 }
 
-[aria-level="1"] {
+h1, [aria-level="1"] {
     color: #43686b;
     font-size: 1.45rem;
 }
-[aria-level="2"] {
+
+h2, [aria-level="2"] {
     color: #856363;
     font-size: 1.35rem;
 }
-[aria-level="3"] {
+
+h3, [aria-level="3"] {
     color: #856363;
     font-size: 1.25rem;
 }
-[aria-level="4"] {
+
+h4, [aria-level="4"] {
     color: #856363;
     font-size: 1.2rem;
 }
-[aria-level="5"], [aria-level="6"] {
+
+h5, h6, [aria-level="5"], [aria-level="6"] {
     color: #667496;
-    font-size: 1.1rem;
+    font-size: 1.2rem;
     font-weight: bolder;
 }
+
 .posted-on {
     font-style: italic;
     font-size: 0.8rem; 
@@ -106,13 +112,16 @@ ul, li {
     margin: 0.5rem;
     text-align: left;
 }
-header {
+
+responsive-details {
+    height: 100%;
     padding-top: 1rem;
-    padding-right: 2rem;
+    padding-right: 0;
     background-color: #fbf5e9; 
-    /*
-    background-image: linear-gradient(to right, #dde0e8 , #ffffff);*/
+    display: block;
+    background-image: linear-gradient(to right, #dde0e8 , #ffffff);
 }
+
 .tagline {
     font-style: italic;
     text-align: center;
@@ -141,7 +150,7 @@ header .title {
     padding: 0.3rem;
     padding-left: 0.25rem;
     font-weight: bolder;
-    font-size: 0.9rem;
+    font-size: 1rem;
     border-left: 1rem solid #999298;
 }
 
@@ -155,7 +164,7 @@ header .title + nav {
 }
 
 header .blurb {
-    font-size: 0.75rem;
+    font-size: 0.9rem;
     text-align: center;
 }
 header .name {
@@ -218,11 +227,14 @@ blockquote:after {
 
 @media (max-width: 800px){
     body {
-        flex-direction: column;
+        grid-template-columns: 1fr;
     }
-    header {
+    responsive-details {
+        height: auto;
         border-bottom: 1px solid #afafff;
-    }
+    } 
+
+    main { width: 95%; margin: 0 auto;}
 
     .captioned-image.p-attached {
         width: 100%;
@@ -234,20 +246,13 @@ blockquote:after {
         float: none;
     }
 
-    [for="aboutMeToggle"] {
+    #aboutMeToggle {
+        display: block;
         background-color: #675e5e;
         color: white;
         padding: 0.25rem;
         padding-left: 0.5rem;
-        display: block;
         border-left: 1rem solid black;
-    }
-    #aboutMeToggle:focus + [for="aboutMeToggle"]{
-        outline: 4px solid #c6ddf2;
-    }
-
-    #aboutMeToggle:checked ~ header {
-        display: none;
     }
 
     header li { display: inline; margin-left: -0.5em; }
@@ -299,8 +304,41 @@ blockquote:after {
     </script>
   </head>
   <body>
-    <input id="aboutMeToggle" class="sr-only" type="checkbox" checked="">
-<label for="aboutMeToggle">Toggle author information</label>
+    <script>
+class ResponsiveDetails extends HTMLElement {
+  
+  checkForced() {
+      let details = this.querySelector('details')
+        if (this.mql.matches) {
+          details.setAttribute('open','')
+        } else {
+          details.removeAttribute('open')
+        }
+  }
+  connectedCallback() {
+    this.mql = window.matchMedia(`(min-width: ${this.getAttribute("open-after") || "1px" })`);
+    this.mql.addEventListener('change', () => {
+        this.checkForced()
+    })
+    requestAnimationFrame(() => this.checkForced())
+  }
+  constructor() {
+    super()
+    this.attachShadow({mode: "open"})
+    this.shadowRoot.innerHTML = `<slot></slot>`
+    let slot = this.shadowRoot.firstElementChild;
+    slot.addEventListener('slotchange', ()=> this.checkForced)          
+
+  }
+}                         
+
+customElements.define('responsive-details', ResponsiveDetails)
+</script>
+
+<responsive-details open-after="800px">
+<details open="">
+<summary id="aboutMeToggle">Author Information</summary>
+
 <header>
     <div class="name">
         Brian Kardell
@@ -312,7 +350,7 @@ blockquote:after {
             <li>Developer Advocate at Igalia</li>
             <li>Original Co-author/Co-signer of The Extensible Web Manifesto</li>
             <li>Co-Founder/Chair, W3C Extensible Web CG</li>
-            <li>Member, W3C (The JS Foundation)</li>
+            <li>Member, W3C (OpenJS Foundation)</li>
             <li>Co-author of HitchJS</li>
             <li>Blogger</li>
             <li>Art, Science &amp; History Lover</li>
@@ -335,8 +373,10 @@ America (art for sale)</a></li>
         </ul>
     </nav>
 </header>
+</details>
+</responsive-details>
     <main><div class="posted-on">Posted on 11/20/2020</div><article posted-on="11/20/2020" class="sectioning">
-  <contextual-heading role="heading" aria-level="1">Open Prioritization First Experiment Wrap Up</contextual-heading>
+  <h1 class="contextual-heading">Open Prioritization First Experiment Wrap Up</h1>
   <p class="segue">Earlier this year, Igalia launched an experiment called "Open Prioritization" which, effectively, lets us pull money together to prioritize work on a feature in web browsers.  In this piece I'll talk about the outcome, lessons learned along the way and next steps.
   </p>
  
@@ -344,7 +384,7 @@ America (art for sale)</a></li>
   Our Open Prioritization experiment was a pretty big idea.  On the surface, it seems to be asking a pretty simple question: "Could we crowdfund some development work on browser?"  However, it was quite a bit more involved in its goals, because there is a lot more hiding behind that question than meets the eye, and most of it is kind of difficult to talk about in purely theoretical ways. I'll get into all of that in a minute, but let's start with the results...</p>
 
   <section class="sectioning">
-<contextual-heading role="heading" aria-level="2">One project advances: <code>:focus-visible</code></contextual-heading>
+<h2 class="contextual-heading">One project advances: <code>:focus-visible</code></h2>
 
 <p>We began the experiment with six possible things we would try to crowdfund, and I'm pleased to say that one <em>will</em> advance: <code>:focus-visible</code> in WebKit.  </p>
 
@@ -354,7 +394,7 @@ America (art for sale)</a></li>
 
 <p>We did it! We at Igalia would like to say a giant "thank you" for all of those who helped support these efforts in improving our commons.</p>
 <section class="sectioning">
-<contextual-heading role="heading" aria-level="3">Retrospective</contextual-heading>
+<h3 class="contextual-heading">Retrospective</h3>
 
 <p>Let's talk about some of those bigger ideas this experiment was aiming to look at, and lessons we learned along the way, in retrospect...  </p>
 
@@ -369,7 +409,7 @@ America (art for sale)</a></li>
 </ul>
 
 <section class="sectioning">
-<contextual-heading role="heading" aria-level="4">Lessons learned: Communication challenges</contextual-heading>
+<h4 class="contextual-heading">Lessons learned: Communication challenges</h4>
 
 <p>While I am <em>tremendously</em> happy that <code>inert</code> and <code>:focus-visible</code> were our finalists and both did very well, I am biased.  I helped advocate for and specify these two features before I came to Igalia, working with some Googlers who also did the initial implementations.  I also advocated for them to be included in the list of projects we offered.  However, I failed to anticipate that the very reasons I did both of these would present challenges for the experiment, so I'd like to talk about that a bit...</p>
 
@@ -385,7 +425,7 @@ America (art for sale)</a></li>
 </section>
 </section>
 <section class="sectioning">
-<contextual-heading role="heading" aria-level="3">Wrapping up</contextual-heading>
+<h3 class="contextual-heading">Wrapping up</h3>
 
 <p>All in all, in the end - despite some rocky communications, we are really encouraged by this first experiment.  Thank you to everyone who pledged, boosted, blogged about the effort, etc.  We're really looking forward to taking this much further next year and we'd like to begin by asking you to share which specific projects you'd be interested in seeing or supporting in the future?  Hit us up on <a href="https://twitter.com/briankardell">@briankardell</a> or <a href="https://twitter.com/igalia">@igalia</a>.</p>
 </section>
@@ -393,15 +433,7 @@ America (art for sale)</a></li>
 </article></main>
 
   
-    <script>
-    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-
-    ga('create', 'UA-88027178-1', 'auto');
-    ga('send', 'pageview');
-  </script>
+    
 
   <script>
     Array.prototype.slice.call(document.querySelectorAll('.optional [data-src]')).forEach(function (optional) {
@@ -424,4 +456,12 @@ America (art for sale)</a></li>
     })
   </script>
 
-</body></html>
+</body><!-- script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-88027178-1', 'auto');
+    ga('send', 'pageview');
+  </script --></html>

@@ -1,4 +1,4 @@
-<html lang="en" resource-type="blogpost"><head> 
+<html lang="en" resource-type="blogpost"><head>  
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta name="twitter:card" content="summary_large_image">
@@ -55,10 +55,12 @@ section > .captioned-image.p-attached {
     font-style: italic;
 }
 body {
-    display: flex;
-    font: 1em "Helvetica Neue", Helvetica, Arial, sans-serif;
+    display: grid;
+    grid-template-columns: 25rem auto;
+    font: 1.1rem "Helvetica Neue", Helvetica, Arial, sans-serif;
     font-weight: 400;
     line-height: 1.625;
+    margin: 0;
 }
 h1 { margin: 0.5rem; }
 code-format {
@@ -73,30 +75,35 @@ contextual-heading {
     margin-top: 2rem;
 }
 
-[aria-level="1"] {
+h1, [aria-level="1"] {
     color: #43686b;
     font-size: 1.45rem;
 }
-[aria-level="2"] {
+
+h2, [aria-level="2"] {
     color: #856363;
     font-size: 1.35rem;
 }
-[aria-level="3"] {
+
+h3, [aria-level="3"] {
     color: #856363;
     font-size: 1.25rem;
 }
-[aria-level="4"] {
+
+h4, [aria-level="4"] {
     color: #856363;
     font-size: 1.2rem;
 }
-[aria-level="5"], [aria-level="6"] {
+
+h5, h6, [aria-level="5"], [aria-level="6"] {
     color: #667496;
-    font-size: 1.1rem;
+    font-size: 1.2rem;
     font-weight: bolder;
 }
+
 .posted-on {
     font-style: italic;
-    font-size: 0.8rem;
+    font-size: 0.8rem; 
     text-align: right;
     margin-bottom: 1rem;
 }
@@ -105,11 +112,16 @@ ul, li {
     margin: 0.5rem;
     text-align: left;
 }
-header {
+
+responsive-details {
+    height: 100%;
     padding-top: 1rem;
-    padding-right: 2rem;
-    background-color: #fbf5e9;
+    padding-right: 0;
+    background-color: #fbf5e9; 
+    display: block;
+    background-image: linear-gradient(to right, #dde0e8 , #ffffff);
 }
+
 .tagline {
     font-style: italic;
     text-align: center;
@@ -138,7 +150,7 @@ header .title {
     padding: 0.3rem;
     padding-left: 0.25rem;
     font-weight: bolder;
-    font-size: 0.9rem;
+    font-size: 1rem;
     border-left: 1rem solid #999298;
 }
 
@@ -152,7 +164,7 @@ header .title + nav {
 }
 
 header .blurb {
-    font-size: 0.75rem;
+    font-size: 0.9rem;
     text-align: center;
 }
 header .name {
@@ -215,11 +227,14 @@ blockquote:after {
 
 @media (max-width: 800px){
     body {
-        flex-direction: column;
+        grid-template-columns: 1fr;
     }
-    header {
+    responsive-details {
+        height: auto;
         border-bottom: 1px solid #afafff;
-    }
+    } 
+
+    main { width: 95%; margin: 0 auto;}
 
     .captioned-image.p-attached {
         width: 100%;
@@ -231,20 +246,13 @@ blockquote:after {
         float: none;
     }
 
-    [for="aboutMeToggle"] {
+    #aboutMeToggle {
+        display: block;
         background-color: #675e5e;
         color: white;
         padding: 0.25rem;
         padding-left: 0.5rem;
-        display: block;
         border-left: 1rem solid black;
-    }
-    #aboutMeToggle:focus + [for="aboutMeToggle"]{
-        outline: 4px solid #c6ddf2;
-    }
-
-    #aboutMeToggle:checked ~ header {
-        display: none;
     }
 
     header li { display: inline; margin-left: -0.5em; }
@@ -296,8 +304,41 @@ blockquote:after {
     </script>
   </head>
   <body>
-    <input id="aboutMeToggle" class="sr-only" type="checkbox" checked="">
-<label for="aboutMeToggle">Toggle author information</label>
+    <script>
+class ResponsiveDetails extends HTMLElement {
+  
+  checkForced() {
+      let details = this.querySelector('details')
+        if (this.mql.matches) {
+          details.setAttribute('open','')
+        } else {
+          details.removeAttribute('open')
+        }
+  }
+  connectedCallback() {
+    this.mql = window.matchMedia(`(min-width: ${this.getAttribute("open-after") || "1px" })`);
+    this.mql.addEventListener('change', () => {
+        this.checkForced()
+    })
+    requestAnimationFrame(() => this.checkForced())
+  }
+  constructor() {
+    super()
+    this.attachShadow({mode: "open"})
+    this.shadowRoot.innerHTML = `<slot></slot>`
+    let slot = this.shadowRoot.firstElementChild;
+    slot.addEventListener('slotchange', ()=> this.checkForced)          
+
+  }
+}                         
+
+customElements.define('responsive-details', ResponsiveDetails)
+</script>
+
+<responsive-details open-after="800px">
+<details open="">
+<summary id="aboutMeToggle">Author Information</summary>
+
 <header>
     <div class="name">
         Brian Kardell
@@ -309,7 +350,7 @@ blockquote:after {
             <li>Developer Advocate at Igalia</li>
             <li>Original Co-author/Co-signer of The Extensible Web Manifesto</li>
             <li>Co-Founder/Chair, W3C Extensible Web CG</li>
-            <li>Member, W3C (The JS Foundation)</li>
+            <li>Member, W3C (OpenJS Foundation)</li>
             <li>Co-author of HitchJS</li>
             <li>Blogger</li>
             <li>Art, Science &amp; History Lover</li>
@@ -332,8 +373,10 @@ America (art for sale)</a></li>
         </ul>
     </nav>
 </header>
+</details>
+</responsive-details>
     <main><div class="posted-on">Posted on 08/25/2017</div><article posted-on="08/25/2017" class="sectioning">
-  <contextual-heading role="heading" aria-level="1">Listen up: Web Speech APIs Part III</contextual-heading>
+  <h1 class="contextual-heading">Listen up: Web Speech APIs Part III</h1>
   <p class="segue">This is part of a series about making the browser speak and listen to speech. In my last post <a href="https://bkardell.com/blog/Basic-Voice-Speaker.html">You Don't Say: Web Speech APIs Part II</a>, I talked about how I'm personally papering over what
     we "have" today with regard to making the browser "talk" and why. In this post I'll talk about the other end of that: <em>listening</em> or <em>speech-to-text</em>.</p>
 
@@ -393,7 +436,7 @@ America (art for sale)</a></li>
 
 
   <section class="sectioning">
-    <contextual-heading role="heading" aria-level="2">Let's get started</contextual-heading>
+    <h2 class="contextual-heading">Let's get started</h2>
     <p>Ok, so first things first: <code>webkitSpeechRecognition</code>. This is the thing that makes recognition possible. There are a number of really good articles that will tell you that you should have a line that looks something like this:
     </p>
 
@@ -422,7 +465,7 @@ const recognition = new webkitSpeechRecognition();
       But this is just creating an interface for you, it's not <em>actually doing</em> anything yet.
 
       </p><section class="sectioning">
-        <contextual-heading role="heading" aria-level="3">Events</contextual-heading>
+        <h3 class="contextual-heading">Events</h3>
         <p>In order to actually do anything with it, we're going to want to tell this recognizer what we actually want from it via attaching some listeners to it. There are a lot of events that we can plug into, as you will see below but in practice I haven't
           personally required many of them.</p>
 
@@ -451,7 +494,7 @@ const recognition = new webkitSpeechRecognition();
 
 
       <section class="sectioning">
-        <contextual-heading role="heading" aria-level="3">Methods</contextual-heading>
+        <h3 class="contextual-heading">Methods</h3>
         <p>
           The recognition object also has 3 methods in charge of whether it is actively listening and feeding things to the above events:
         </p>
@@ -471,7 +514,7 @@ const recognition = new webkitSpeechRecognition();
       <p>So, at it's most basic: You create a recognizer, add some listeners and call <code>.start()</code> and you should get some results until they are again disconnected (we'll come back to that in a moment)</p>
 
       <section class="sectioning">
-        <contextual-heading role="heading" aria-level="3">Starting up</contextual-heading>
+        <h3 class="contextual-heading">Starting up</h3>
         <p>Before we set up an example, it's worth explaining that this feature is "different". <em>Playing</em> some media is something that has been a part of the Web for a really long time, it's not something that requires a special permission. But
           <em>listening to your microphone</em> is different, as it should be. That's something that the user has to explicitly give permission for and be made aware when it's happening. As such, when you call <code>.start()</code> Chrome will ask the
           user if it's ok for this website to use the mic. Keep in mind, they could well say "no" so you'll want to prepare for that eventuality - it will call the error handler with the <code>event.error</code> property of <code>not-allowed</code>.</p>
@@ -495,7 +538,7 @@ const recognition = new webkitSpeechRecognition();
     </section>
 
     <section class="sectioning">
-      <contextual-heading role="heading" aria-level="3">The most basic example</contextual-heading>
+      <h3 class="contextual-heading">The most basic example</h3>
       <p>Alright, so now you know what to expect, as a user and we know basically what the API looks like, let's talk about code.</p>
 
       <pre><code class="language-javascript">
@@ -551,7 +594,7 @@ recognition.start()
       <p>Note that once you got a result, it stopped listening for more results automatically. By default, this is how it works. Now let's talk about that crazy <code>evt.results[0][0].transcript</code> thing.</p>
 
       <section class="sectioning">
-        <contextual-heading role="heading" aria-level="4"><code>evt.results</code></contextual-heading>
+        <h4 class="contextual-heading"><code>evt.results</code></h4>
         <p><code>evt.results</code> is, as you might have guessed a collection. Unfortunately, it is not a true <code>Array</code> (very sadly since other things in the TTS portions covered in previous articles are) but another weird array-like thing called
           a <code>SpeechRecognitionResults</code>. By default, it will have exactly one item. It contains, in turn, individial <code>SpeechRecognitionResult</code> objects.</p>
 
@@ -584,7 +627,7 @@ recognition.onresult = (evt) =&gt; {
           next property/example to see why..</p>
 
         <section class="sectioning">
-            <contextual-heading role="heading" aria-level="5">Max Alternatives</contextual-heading>
+            <h5 class="contextual-heading">Max Alternatives</h5>
 
             <p>The recognizer we set up has a property called <code>maxAlternatives</code> which is a numeric value indicating how many alternatives we're willing to receive. Let's take the following example:</p>
 
@@ -647,7 +690,7 @@ transcript: "tu tu"</code></pre>
             </section>
 
             <section class="sectioning">
-                <contextual-heading role="heading" aria-level="5"><code>.continuous</code></contextual-heading>
+                <h5 class="contextual-heading"><code>.continuous</code></h5>
                 <p>The recognizer you create also has a <code>.continuous</code> property which, by default is false.  The idea is that there are use cases (like dictation) in which once the user has indicated that they want the program to start listening, we do not actually want it to stop (or miss anything) until it's told to. That's "continuous mode".</p>
 
                 <p>If the "continuous mode" flag is set then <code>evt.results</code> will have one more item each time and you'll want the <code>evt.results[evt.results.length-1]</code> to get 'this one'.</p>
@@ -668,7 +711,7 @@ transcript: "tu tu"</code></pre>
 
 
         <section class="sectioning">
-            <contextual-heading role="heading" aria-level="4">"Other" bits</contextual-heading>
+            <h4 class="contextual-heading">"Other" bits</h4>
             <p><code>SpeechRecognition</code> (the recognizer object you create) has some 'other bits' too...</p>
 
 
@@ -697,7 +740,7 @@ transcript: "tu tu"</code></pre>
     </section>
 
     <section class="sectioning">
-      <contextual-heading role="heading" aria-level="3">Wrapping up</contextual-heading>
+      <h3 class="contextual-heading">Wrapping up</h3>
       <p>So, it's interesting.  It works experimentally, if you can use only the parts that work.  It isn't nearly as far along 'in practice' as the text-to-speech APIs and even the limited implementations we have have some wonky bits... In my next post, I'll talk about how I am dealing with the wonky bits of this,
       and putting together some interesting things you can do with it.
       </p>
@@ -709,15 +752,7 @@ transcript: "tu tu"</code></pre>
 </article></main>
 
   
-    <script>
-    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-
-    ga('create', 'UA-88027178-1', 'auto');
-    ga('send', 'pageview');
-  </script>
+    
 
   <script>
     Array.prototype.slice.call(document.querySelectorAll('.optional [data-src]')).forEach(function (optional) {
@@ -740,4 +775,12 @@ transcript: "tu tu"</code></pre>
     })
   </script>
 
-</body></html>
+</body><!-- script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-88027178-1', 'auto');
+    ga('send', 'pageview');
+  </script --></html>

@@ -1,4 +1,4 @@
-<html lang="en" resource-type="blogpost"><head> 
+<html lang="en" resource-type="blogpost"><head>  
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta name="twitter:card" content="summary_large_image">
@@ -55,10 +55,12 @@ section > .captioned-image.p-attached {
     font-style: italic;
 }
 body {
-    display: flex;
-    font: 1em "Helvetica Neue", Helvetica, Arial, sans-serif;
+    display: grid;
+    grid-template-columns: 25rem auto;
+    font: 1.1rem "Helvetica Neue", Helvetica, Arial, sans-serif;
     font-weight: 400;
     line-height: 1.625;
+    margin: 0;
 }
 h1 { margin: 0.5rem; }
 code-format {
@@ -73,30 +75,35 @@ contextual-heading {
     margin-top: 2rem;
 }
 
-[aria-level="1"] {
+h1, [aria-level="1"] {
     color: #43686b;
     font-size: 1.45rem;
 }
-[aria-level="2"] {
+
+h2, [aria-level="2"] {
     color: #856363;
     font-size: 1.35rem;
 }
-[aria-level="3"] {
+
+h3, [aria-level="3"] {
     color: #856363;
     font-size: 1.25rem;
 }
-[aria-level="4"] {
+
+h4, [aria-level="4"] {
     color: #856363;
     font-size: 1.2rem;
 }
-[aria-level="5"], [aria-level="6"] {
+
+h5, h6, [aria-level="5"], [aria-level="6"] {
     color: #667496;
-    font-size: 1.1rem;
+    font-size: 1.2rem;
     font-weight: bolder;
 }
+
 .posted-on {
     font-style: italic;
-    font-size: 0.8rem;
+    font-size: 0.8rem; 
     text-align: right;
     margin-bottom: 1rem;
 }
@@ -105,11 +112,16 @@ ul, li {
     margin: 0.5rem;
     text-align: left;
 }
-header {
+
+responsive-details {
+    height: 100%;
     padding-top: 1rem;
-    padding-right: 2rem;
-    background-color: #fbf5e9;
+    padding-right: 0;
+    background-color: #fbf5e9; 
+    display: block;
+    background-image: linear-gradient(to right, #dde0e8 , #ffffff);
 }
+
 .tagline {
     font-style: italic;
     text-align: center;
@@ -138,7 +150,7 @@ header .title {
     padding: 0.3rem;
     padding-left: 0.25rem;
     font-weight: bolder;
-    font-size: 0.9rem;
+    font-size: 1rem;
     border-left: 1rem solid #999298;
 }
 
@@ -152,7 +164,7 @@ header .title + nav {
 }
 
 header .blurb {
-    font-size: 0.75rem;
+    font-size: 0.9rem;
     text-align: center;
 }
 header .name {
@@ -215,11 +227,14 @@ blockquote:after {
 
 @media (max-width: 800px){
     body {
-        flex-direction: column;
+        grid-template-columns: 1fr;
     }
-    header {
+    responsive-details {
+        height: auto;
         border-bottom: 1px solid #afafff;
-    }
+    } 
+
+    main { width: 95%; margin: 0 auto;}
 
     .captioned-image.p-attached {
         width: 100%;
@@ -231,20 +246,13 @@ blockquote:after {
         float: none;
     }
 
-    [for="aboutMeToggle"] {
+    #aboutMeToggle {
+        display: block;
         background-color: #675e5e;
         color: white;
         padding: 0.25rem;
         padding-left: 0.5rem;
-        display: block;
         border-left: 1rem solid black;
-    }
-    #aboutMeToggle:focus + [for="aboutMeToggle"]{
-        outline: 4px solid #c6ddf2;
-    }
-
-    #aboutMeToggle:checked ~ header {
-        display: none;
     }
 
     header li { display: inline; margin-left: -0.5em; }
@@ -296,8 +304,41 @@ blockquote:after {
     </script>
   </head>
   <body>
-    <input id="aboutMeToggle" class="sr-only" type="checkbox" checked="">
-<label for="aboutMeToggle">Toggle author information</label>
+    <script>
+class ResponsiveDetails extends HTMLElement {
+  
+  checkForced() {
+      let details = this.querySelector('details')
+        if (this.mql.matches) {
+          details.setAttribute('open','')
+        } else {
+          details.removeAttribute('open')
+        }
+  }
+  connectedCallback() {
+    this.mql = window.matchMedia(`(min-width: ${this.getAttribute("open-after") || "1px" })`);
+    this.mql.addEventListener('change', () => {
+        this.checkForced()
+    })
+    requestAnimationFrame(() => this.checkForced())
+  }
+  constructor() {
+    super()
+    this.attachShadow({mode: "open"})
+    this.shadowRoot.innerHTML = `<slot></slot>`
+    let slot = this.shadowRoot.firstElementChild;
+    slot.addEventListener('slotchange', ()=> this.checkForced)          
+
+  }
+}                         
+
+customElements.define('responsive-details', ResponsiveDetails)
+</script>
+
+<responsive-details open-after="800px">
+<details open="">
+<summary id="aboutMeToggle">Author Information</summary>
+
 <header>
     <div class="name">
         Brian Kardell
@@ -309,7 +350,7 @@ blockquote:after {
             <li>Developer Advocate at Igalia</li>
             <li>Original Co-author/Co-signer of The Extensible Web Manifesto</li>
             <li>Co-Founder/Chair, W3C Extensible Web CG</li>
-            <li>Member, W3C (The JS Foundation)</li>
+            <li>Member, W3C (OpenJS Foundation)</li>
             <li>Co-author of HitchJS</li>
             <li>Blogger</li>
             <li>Art, Science &amp; History Lover</li>
@@ -332,8 +373,10 @@ America (art for sale)</a></li>
         </ul>
     </nav>
 </header>
+</details>
+</responsive-details>
     <main><div class="posted-on">Posted on 08/23/2017</div><article posted-on="08/23/2017" class="sectioning">
-    <contextual-heading role="heading" aria-level="1">Greetings, Professor Falken: Web Speech APIs Part I</contextual-heading>
+    <h1 class="contextual-heading">Greetings, Professor Falken: Web Speech APIs Part I</h1>
     <p class="segue">There's a long, rich history of humans figuring out how to make machines talk and listen, and nearly as long as there has been a W3C there have been efforts to get these features into the browser.  It's too complicated to recount here, that's <a href="http://bkardell.com/blog/The-History-Of-Speech.html">a whole post of it's own</a>.  Suffice it to say that it's been fits and starts, steps forward and back and where we are right now is... muddy, but it works... sort of.  In this series of posts, I'll tell you all about it...</p>
     <script src="../prism.js"></script>
     <link rel="stylesheet" href="../prism.css">
@@ -372,7 +415,7 @@ America (art for sale)</a></li>
         })
     </script>
     <section class="sectioning">
-        <contextual-heading role="heading" aria-level="2">The Current State of things</contextual-heading>
+        <h2 class="contextual-heading">The Current State of things</h2>
         <p>The bad news first:  There <em>have</em> been several "official standards" that aren't ultimately giving us speech in browsers.  There is no Speech API for the browser currently on any standards track.</p>
 
         <p>The good news: There have been unofficial proposals and experiments that give us some (not insignifiant) degree of speech in all modern browsers and <em>together, we can change the 'unofficial' part if we want that</em>. </p>
@@ -385,7 +428,7 @@ America (art for sale)</a></li>
     </section>
 
     <section class="sectioning">
-        <contextual-heading role="heading" aria-level="2">Utterly Basic</contextual-heading>
+        <h2 class="contextual-heading">Utterly Basic</h2>
         <p>Probably the simplest thing you might want to do is have your page say something.  You do this by creating a <code>SpeechSynthesisUtterance</code> for those words and handing that to the <code>speechSynthesis.speak(...)</code> method.</p>
 
         <pre><code class="language-javascript">// I'll explain later why I'm misspelling Falken
@@ -412,7 +455,7 @@ speechSynthesis.speak(
         <p>Once you have constructed an utterance, you can mess with several properties before passing it off to be spoken.  What we've seen here is just using defaults, and the defaults will vary from machine to machine.  All you can <em>really</em> say for sure is that that will be said (well... almost for sure, but we'll come back to that).</p>
 
         <section class="sectioning">
-            <contextual-heading role="heading" aria-level="3">Pitch, rate and volume</contextual-heading>
+            <h3 class="contextual-heading">Pitch, rate and volume</h3>
             <p>The most basic properties are:</p>
                 <ul>
                     <li><code>.pitch</code> (a float from 0 to 2, defaults to 1)</li>
@@ -472,7 +515,7 @@ speechSynthesis.speak(three)
             <button class="run">Run this</button>
 
         <section class="sectioning">
-            <contextual-heading role="heading" aria-level="4">Queueing</contextual-heading>
+            <h4 class="contextual-heading">Queueing</h4>
 
             The <code>speak(...)</code> method is asynchronous.  It returns immediately and <code>speechSynthesis</code> manages a queue of utterances that are intended to be spoken.<p></p>
 
@@ -594,7 +637,7 @@ setTimeout(() =&gt; {
         <p class="note" id="pause-on-android">If you're on Chrome on Android, this probably didn't work, worse - if you go back, run the first example, it won't work either.  <code>.resume()</code> doesn't actually seem to work.  Don't panic, just click this button to <button class="cancel">restore normalcy</button>.  How did I do this?  <code>speechSynthesis.cancel()</code> to clear the queue.  Unfortunately, I swear I have seen cancel actually resume and speak out stuff that was queued, but I can't find a case that illustrates it.</p>
 
         <section class="sectioning">
-            <contextual-heading role="heading" aria-level="5">Utterance Events</contextual-heading>
+            <h5 class="contextual-heading">Utterance Events</h5>
             <p>
                 Because everything is async, if you wanted to do something like sync up some UI
                 with spoken text, you'll need to know when things happen by watching for events
@@ -741,7 +784,7 @@ setTimeout(() =&gt; {
 
 
         <section class="sectioning">
-            <contextual-heading role="heading" aria-level="5">Expressiveness</contextual-heading>
+            <h5 class="contextual-heading">Expressiveness</h5>
             <p>Speech is complicated if you want it to seem natural. In my <a href="https://bkardell.com/blog/The-History-Of-Speech.html">History of Speech</a> I link to a recording of Bell Lab's Voder in the 1940s demonstrating the many ways one might intone the phrase "she saw me".  Similarly, since we're just using strings of text, we're theoretically subject to all of the sorts of potential problems about ambigious strings. For example given the string "12/4 = 3" we'd probably like that to be pronounced "twelve divided by four equals three" whereas we might like "12/12/2012" to be pronounced like "December twelfth, twenty twelve".</p>
 
             <p>The first bit of good news is that all of the speech synthesis implementations I've tried actually do a <em>pretty good job</em> using punctuation to inflect and pause and frequently can deal with a lot of those problems automatically... For example, all of the below pronouce sensibly for me without further effort:
@@ -777,7 +820,7 @@ setTimeout(() =&gt; {
         </section>
 
         <section class="sectioning">
-            <contextual-heading role="heading" aria-level="5">Language</contextual-heading>
+            <h5 class="contextual-heading">Language</h5>
             <p>Utterances also have a <code>.lang</code> property which you can set.  It has to be a string representing a <a href="http://www.rfc-editor.org/rfc/bcp/bcp47.txt">BCP 47 language tag</a> (like en-US). If you don't set it, it will by default be the language of the document.  This can give hints to pronounciation. Let's try an example from <em>The Godfather</em>:</p>
             <pre><code class="language-javascript">let apollonia = new SpeechSynthesisUtterance(
    `io so l'inglese:
@@ -806,12 +849,12 @@ speechSynthesis.speak(apollonia)</code></pre>
         </section>
 
         <section class="sectioning">
-            <contextual-heading role="heading" aria-level="5">A million voices cried out</contextual-heading>
+            <h5 class="contextual-heading">A million voices cried out</h5>
             <p>Let's talk about the most painful part of this: voices. You might have noticed that the example above from <em>The Godfather</em> sounded quite a lot different - it was using a different <code>SpeechSynthesisVoice</code>, automatically.</p>
             <p class="note">From here out, I'm going to refer to <code>SpeechSynthesisVoice</code> as simply "voice" because, well, that's a mouthful.</p>
             <p>You can also set the voice yourself, but there are a number of gotchas here...</p>
             <section class="sectioning">
-                <contextual-heading role="heading" aria-level="6">.getVoices(...)</contextual-heading>
+                <h6 class="contextual-heading">.getVoices(...)</h6>
                 <p>You have to get the list of voices supported by your particular
                 <code>speechSyntheis</code> by calling <code>speechSynthesis.getVoices()</code>.  The bad news is that as this page was loaded I detected the length of the array returned from <code>speechSynthesis.getVoices()</code> and placed it here -&gt; <span id="immediate-voices" style="border: 1px dotted gray;"></span>.</p>
 
@@ -851,7 +894,7 @@ speechSynthesis.speak(apollonia)</code></pre>
                 <p>Very, very likely nothing is happening for you no matter how many times you click that.  Why? Because it's a race, as near as I can tell: The voices are already loaded by the time you ran that, so you missed the event - so it's up to you to manage that.</p>
             </section>
             <section class="sectioning">
-                <contextual-heading role="heading" aria-level="6"><code>SpeechSynthesisVoice</code> objects</contextual-heading>
+                <h6 class="contextual-heading"><code>SpeechSynthesisVoice</code> objects</h6>
                 <p>Assuming that you manage to get the array of voice objects, each has several properties:</p>
                 <ul>
                     <li><code>.default</code> (a boolean indicating if this is the default voice currently being used)</li>
@@ -899,22 +942,14 @@ let voice = speechSynthesis.getVoices().find((voice) => {
         </section>
     </section>
     <section class="sectioning">
-        <contextual-heading role="heading" aria-level="4">Wrapping up</contextual-heading>
+        <h4 class="contextual-heading">Wrapping up</h4>
         <p>So... It's pretty cool stuff, but it's a little like writing anything during the browser wars.  You'll want abstractions to paper over the warts and help you deal with all the quirks, and probably just to make it not hellish to write with.  There's a bunch of stuff I didn't cover, for example, there are 'boundary' callbacks and a few other things, but I think this gives you a lot.  In <a href="https://bkardell.com/blog/Basic-Voice-Speaker.html">my next piece</a> I'll talk a little about papering over some of the warts, and then we will get into <em>listening</em> to speech.</p>
     </section>
     <p class="thanksTo">Special thanks to my friend, the great Chris Wilson for proofing/commenting on pieces in this series.</p>
 </section></section></article></main>
 
   
-    <script>
-    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-
-    ga('create', 'UA-88027178-1', 'auto');
-    ga('send', 'pageview');
-  </script>
+    
 
   <script>
     Array.prototype.slice.call(document.querySelectorAll('.optional [data-src]')).forEach(function (optional) {
@@ -937,4 +972,12 @@ let voice = speechSynthesis.getVoices().find((voice) => {
     })
   </script>
 
-</body></html>
+</body><!-- script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-88027178-1', 'auto');
+    ga('send', 'pageview');
+  </script --></html>
