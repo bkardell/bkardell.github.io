@@ -319,9 +319,16 @@ class ResponsiveDetails extends HTMLElement {
   }
   connectedCallback() {
     this.mql = window.matchMedia(`(min-width: ${this.getAttribute("open-after") || "1px" })`);
-    this.mql.addEventListener('change', () => {
-        this.checkForced()
-    })
+
+    if (this.mql.addEventListener) {
+        this.mql.addEventListener('change', () => {
+            this.checkForced()
+        })
+    } else {
+        this.mql.addListener(() => {
+            this.checkForced()
+        })
+    }
     requestAnimationFrame(() => this.checkForced())
   }
   constructor() {
