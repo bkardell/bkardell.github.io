@@ -4,7 +4,7 @@
         <title>bkardell.com rss feed</title>
         <link>http://bkardell.com/</link>
         <description>Just the bkardell.com rss feed</description>
-        <lastBuildDate>Tue, 29 Dec 2020 19:39:15 GMT</lastBuildDate>
+        <lastBuildDate>Thu, 31 Dec 2020 17:34:23 GMT</lastBuildDate>
         <docs>http://blogs.law.harvard.edu/tech/rss</docs>
         <generator>awesome mix</generator>
         <image>
@@ -14,6 +14,72 @@
         </image>
         <copyright>All rights reserved 2018, Brian Kardell</copyright>
         <atom:link href="https://bardell.com/blog/feed.atom" rel="self" type="application/rss+xml"/>
+        <item>
+            <title><![CDATA[TAG 2021]]></title>
+            <link>https://bkardell.com/blog/TAG-2021.html</link>
+            <guid>https://bkardell.com/blog/TAG-2021.html</guid>
+            <pubDate>Fri, 31 Dec 2021 05:00:00 GMT</pubDate>
+            <description><![CDATA[The W3C is in the middle of a big, and arguably very difficult election for the W3C Techincal Architecture Group (aka TAG).  The TAG is one of two small bodies within the W3C which are elected by membership.  If you're unfamilliar with this, I wrote this exceptionally brief Primer for Busy People.  I'd like to tell you why I think this is a big election, why it is complex, what I (parsonally) think about it, and what you can do if you agree.]]></description>
+            <content:encoded><![CDATA[
+  <h1 class="contextual-heading" style="font-size: NaNrem;">TAG 2021</h1>
+  <p class="segue">The W3C is in the middle of a big, and arguably very difficult election for the W3C Techincal Architecture Group (aka TAG).  The TAG is one of two small bodies within the W3C which are <em>elected</em> by membership.  If you're unfamilliar with this, I wrote this exceptionally brief <a href="https://bkardell.com/blog/W3CPrimer.html">Primer for Busy People</a>.  I'd like to tell you why I think this is a big election, why it is complex, what I (parsonally) think about it, and what you can do if you agree.</p>
+
+<p>
+The current W3C TAG election is both important and complex for several reasons.  It's big because 4 of the 6 elected seats are up for election and two exceptional members (Alice Boxhall from Google and David Baron from Mozilla) are unable to run for reelection. It's big because there are) <a href="https://www.w3.org/2020/12/07-tag-nominations">nine candidates</a> and each brings different things to the table (and statements don't always capture enough). It's complex because of the voting system and participation.</p>
+
+<p>Let me share thoughts on what I think would be a good result, and then I'll explain why that's hard to achieve and what I think we need to avoid.</p>
+
+<section class="sectioning">
+  <h2 class="contextual-heading" style="font-size: NaNrem;">A good result...</h2>
+
+  <p>I believe the best result involves 3 candidates for sure (listed alphabetically):  Lea Verou, Sangwhan Moon and Theresa O’Connor.</p>
+
+  <p>Let's start with the incumbents.  I fully support re-electing both Theresa O’Connor and Sangwhan Moon and cannot imagine reasons not to.  Both have a history in standards, have served well on TAG, have a diversity of knowledge, and are very reasonable and able to work well.  Re-electing some good incumbents with these qualities is a practical advantage to the TAG as well as they are already well immersed.  These are easy choices.</p>
+
+  <p>Lea Verou is another easy choice for me.  Lea brings a really diverse background, set of perspectives and skills to the table.  She's worked for the W3C, she's a great communicator to developers (this is definitely a great skill in TAG whose outreach is important), she's worked with small teams, produced a number of popular libraries and helped drive some interesting standards. The OpenJS Foundation was pleased to nominate her, but Frontiers and several others were also supportive.  Lea also deserves "high marks".</p>
+
+  <p>These 3 are also a happily diverse group.</p>
+
+  <p>This leaves one seat.  There are 3 other candidates who I think would be good, for different reasons: Martin Thompson, Amy Guy and Jeffrey Yaskin.  Each of them will bring something different to the table and if I am really honest, it is a hard choice. I wish we could seat all 3 of them, but we can't.  At least in this election (that is, they can run again).</p>
+
+  <p>For brevity, I will not even attempt to make all the cases here, but I encourage you to read their statements and ask friends. Truth be told, I have a strong sense that "any mix of these 6 could be fine" and different mixes optimize for slightly different things. Also, as I will explain, there are some things that seem slightly more important to me than who I recommend is third best vs fourth or fifth...</p>
+</section>
+
+
+<section style="margin: 1rem; padding: 1rem; border: 1px solid gray;" class="sectioning">
+  <h2 class="contextual-heading" style="font-size: NaNrem;">TLDR; Turn out the vote</h2>
+  <p><em>If you find yourself in agreement with me, more or less, I would suggest: "place the 3 I mentioned above (Lea, Tess, Sangwhan) at least your top 4 places", pick a fourth from my other list and put them in whatever order you like.</em>.</p>
+
+  <aside class="captioned-image" style="display: grid; grid-template-columns: 1fr 1fr 1fr;">
+    <img src="/media/tess.jpg" style="width: 100%" alt="tess">
+    <img src="/media/lea.jpg" style="width: 100%" alt="lea">
+    <img src="/media/sangwhan.jpg" style="width: 100%" alt="sangwhan">
+    <p style="grid-column: 1/4">I think there are many possible great slates for TAG in 2021, but they all involve Lea, Tess and Sangwhan.  Please help support them and place them among your top 4 votes.</p>
+  </aside>
+  <p>If you're a W3C member, your AC Representative votes for you -- tell them.  Make sure they vote - the best result definitely depends on higher than average turnout.  Suprisingly, about 75% of membership <em>doesn't normally vote</em>.  These elections are among the rare times when there are "votes" where there are equal voices.  A tiny 1 person member org has exactly the same voting power as every mega company. </p>
+
+  <p>If you're not a W3C member, you don't have a way to vote directly but you <em>can</em> publicly state your support and tag in member orgs or reach out to people you know who work for member orgs.  Historically this has definitely helped - let's keep W3C working well!</p>
+</section>
+
+<hr>
+
+<section class="sectioning">
+  <h2 class="contextual-heading" style="font-size: NaNrem;">STV, Turnout and Negative Preference</h2>
+
+  <p>The W3C's election system uses STV. STV stands for "single transferrable vote".  Single is the operative word: While you express 9 preferences in this election, only one of those will actually be counted to help someone win a seat.  The counting system is (I think) rather complex, but the higher up on your list someone appears it is far more likely to be the one that counts. Each vote that is counted counts a 1 vote in that candidates' favor.</p>
+
+  <p>Let me stress why this matters: STV optimizes for choosing diversity of opinion with demonstrably critical support.  A passionate group supporting an 'issue' candidate will all place their candidate as the #1 choice - those are guaranteed to be counted.</p>
+
+  <p>Historically only about 100 of the W3C's <a href="https://www.w3.org/Consortium/Member/List">438 member organizations</a> actually turn out in a good election. Let's imagine turnout is even lower in 2020 and it's only 70.  This means that if a candidate reaches 18 votes (a little over 4% of membership) they have a seat, no matter how the rest of us vote - even if everyone else had and actively <em>negative</em> preference for them.</p>
+
+  <p>Non-participation is an issue for all voting systems, but it seems like STV can really amplify outcomes which are undesirable here.  The only solution to this problem is to increase turnout.  Increasing turnout raises the quota bar and helps ensure that this doesn't happen.</p>
+
+  <p>Regardless of how you feel about any of the candidates, please help turnout the vote.  The W3C works best when as many members vote as possible!</p>
+
+</section>
+
+]]></content:encoded>
+        </item>
         <item>
             <title><![CDATA[2020: The Good Parts]]></title>
             <link>https://bkardell.com/blog/2020-Wrap.html</link>
@@ -1756,40 +1822,6 @@ export const _internalPromise =
 ]]></content:encoded>
         </item>
         <item>
-            <title><![CDATA[Moving Math Forward, Thoughts and Experiments]]></title>
-            <link>https://bkardell.com/blog/MathForward.html</link>
-            <guid>https://bkardell.com/blog/MathForward.html</guid>
-            <pubDate>Tue, 09 Jul 2019 04:00:00 GMT</pubDate>
-            <description><![CDATA[
-		In this piece, I explain details on thoughts on experiments and conversations around moving Math forward on the Web.
-	]]></description>
-            <content:encoded><![CDATA[
-	<h1 class="contextual-heading" style="font-size: NaNrem;">Moving Math Forward, Thoughts and Experiments</h1>
-	<p class="segue">
-		In this piece, I explain details on thoughts on experiments and conversations around moving Math forward on the Web.
-	</p>
-		
-	<p>For some context, <a href="https://mathml.igalia.com" rel="nofollow">my team is actively working on implementing MathML in Chromium</a> (the engine Chrome, Edge, Samsung, Brave, UC Browser and lots of other share), more specifically MathML Core.  MathML has long had implementations in Safari and Firefox and has an 
-	intersting history that leaves it in a very unique spot.
-	</p>
-	<p>MathML Core, defines the comparatively small, but well defined and mostly interoperable subset of MathML - with an aim of resolving uniqueness.  It provides details about how it actually <em>fits</em> into the layers platform in well defined ways and to explain their existing magic in terms of the platform - to expose it if is it new.  As such, in indirectly aims to provide a basis for moving <em>many</em> things forward.</p>
-
-	<section class="sectioning">
-		<h2 class="contextual-heading" style="font-size: NaNrem;">A thought experiment</h2>
-	<p>Recently conversations in the web platform at large have begun about <a href="https://github.com/whatwg/html/issues/4696">moving HTML forward and polyfilling elements</a>.   Since we are actively working on a 'core' ourselves, we thought this would be an interesting discussion and experiment:  We asked "What if MathML Core was largely 'done' and you would import other support to move forward?"  Those things <em>could</em> potentially be shipped by a browser, but there's no guarantee they ever would.  However, they could also be loaded as polyfills and in standard means that help omit many of the problems that traditional polyfills create.</p>
-	<p>To explain this, we took some elements that <em>aren't</em> in MathML Core, but are specified elsewhere, as an interesting stand in.  One such example is an element called <code>mfenced</code>.  <code>mfenced</code> is just a "more convenient way" of writing some math that has a lot of 'fences' (parens, pipes, braces, and so on).  The original spec even said "It is strictly equivalent to this expanded, longer form".</p>
-	<p>Today, 'polyfills' exist for it if your browser doesn't support it, and today, those work by (if your browser doesn't support it) destroying your tree and replacing it with the equivalent version, at some undefined point in time.</p>
-	<p>We experimentally changed very little in our implementation and it now considers any MathML 'unknown element' as on the whitelist of elements which can have a Shadow DOM.  We used a simple stand-in using Mutation Observer to allow any of those to be defined without a dash, and wrote a polyfill for <code>mfenced</code> which simply expands it into Shadow DOM.</p>
-	<p>For purposes of discussion, we illustrated how we could, in theory, use MathML Core, import some new vocabulary (potentially a future proposal, or just some slang) and easily expand it into some Shadow DOM, leaving you with the tree that you authored and all of the things just fitting together nicely and predictably. Below is a screenshot from our actual implementation experiment.</p>
-	<p><a target="_blank" rel="noopener noreferrer" href="https://camo.githubusercontent.com/8e0c8bf38ccd6fa1a20a3d3fa2299a7e32291d32/68747470733a2f2f63646e2e676c697463682e636f6d2f39303035373538332d326137392d343662372d623565662d36636566336265383764613625324653637265656e73686f7425323066726f6d253230323031392d30372d303725323031322d35322d35302e706e673f763d31353632353138353030313933"><img src="https://camo.githubusercontent.com/8e0c8bf38ccd6fa1a20a3d3fa2299a7e32291d32/68747470733a2f2f63646e2e676c697463682e636f6d2f39303035373538332d326137392d343662372d623565662d36636566336265383764613625324653637265656e73686f7425323066726f6d253230323031392d30372d303725323031322d35322d35302e706e673f763d31353632353138353030313933" alt="screenshot of element and shadow dom in experimental browser build" data-canonical-src="https://cdn.glitch.com/90057583-2a79-46b7-b5ef-6cef3be87da6%2FScreenshot%20from%202019-07-07%2012-52-50.png?v=1562518500193" style="max-width:100%;"></a></p>
-	<p>We think that these sorts of experiments are useful and informative and help us ask better questions about how we are fitting into the platform itself: Have we answered the necessary questions?  How does the introduction of a ShadowRoot impact rendering and namespacing, for example?  Could developers really 'plug in' to all the necessary bits?  Could they properly layer atop?  To test this, we also created elements that expand shorthands like TeX and ASCII Math.  In the end, can we ultimately resolve a great a stable core that allows us to move math forward using these things similar in ways similar to Knuth's TeX book/engine - but in a way that is properly "of the platform"?  We think the answer is yes.</p>
-
-	<p>While we're not entirely sure where larger conversations about how HTML will move forward will go, and we aren't claiming that this implementation is anything more than a quick experiment for discussion and testing, the MathML community itself is very excited that such talks are even happening in HTML and <em>very</em> interested in being a part of that conversation, and sorting out how we can move forward together as One Platform™, with less 'specialness'.</p>
-	</section>
-	
-]]></content:encoded>
-        </item>
-        <item>
             <title><![CDATA[One Platform™]]></title>
             <link>https://bkardell.com/blog/OnePlatform.html</link>
             <guid>https://bkardell.com/blog/OnePlatform.html</guid>
@@ -1828,6 +1860,40 @@ export const _internalPromise =
 		<p>While the MathML Community Group is aware that these questions are far from settled, they were universally excited to see such talks begin in HTML and <em>very</em> interested in making sure that they're thinking about those things too: Being a part of that conversation, and sorting out how we can move forward together as One Platform™, with less 'specialness'.</p>
 		<p>If you think this is interesting or useful, please share your support and let someone know.</p>
 		</section></section>]]></content:encoded>
+        </item>
+        <item>
+            <title><![CDATA[Moving Math Forward, Thoughts and Experiments]]></title>
+            <link>https://bkardell.com/blog/MathForward.html</link>
+            <guid>https://bkardell.com/blog/MathForward.html</guid>
+            <pubDate>Tue, 09 Jul 2019 04:00:00 GMT</pubDate>
+            <description><![CDATA[
+		In this piece, I explain details on thoughts on experiments and conversations around moving Math forward on the Web.
+	]]></description>
+            <content:encoded><![CDATA[
+	<h1 class="contextual-heading" style="font-size: NaNrem;">Moving Math Forward, Thoughts and Experiments</h1>
+	<p class="segue">
+		In this piece, I explain details on thoughts on experiments and conversations around moving Math forward on the Web.
+	</p>
+		
+	<p>For some context, <a href="https://mathml.igalia.com" rel="nofollow">my team is actively working on implementing MathML in Chromium</a> (the engine Chrome, Edge, Samsung, Brave, UC Browser and lots of other share), more specifically MathML Core.  MathML has long had implementations in Safari and Firefox and has an 
+	intersting history that leaves it in a very unique spot.
+	</p>
+	<p>MathML Core, defines the comparatively small, but well defined and mostly interoperable subset of MathML - with an aim of resolving uniqueness.  It provides details about how it actually <em>fits</em> into the layers platform in well defined ways and to explain their existing magic in terms of the platform - to expose it if is it new.  As such, in indirectly aims to provide a basis for moving <em>many</em> things forward.</p>
+
+	<section class="sectioning">
+		<h2 class="contextual-heading" style="font-size: NaNrem;">A thought experiment</h2>
+	<p>Recently conversations in the web platform at large have begun about <a href="https://github.com/whatwg/html/issues/4696">moving HTML forward and polyfilling elements</a>.   Since we are actively working on a 'core' ourselves, we thought this would be an interesting discussion and experiment:  We asked "What if MathML Core was largely 'done' and you would import other support to move forward?"  Those things <em>could</em> potentially be shipped by a browser, but there's no guarantee they ever would.  However, they could also be loaded as polyfills and in standard means that help omit many of the problems that traditional polyfills create.</p>
+	<p>To explain this, we took some elements that <em>aren't</em> in MathML Core, but are specified elsewhere, as an interesting stand in.  One such example is an element called <code>mfenced</code>.  <code>mfenced</code> is just a "more convenient way" of writing some math that has a lot of 'fences' (parens, pipes, braces, and so on).  The original spec even said "It is strictly equivalent to this expanded, longer form".</p>
+	<p>Today, 'polyfills' exist for it if your browser doesn't support it, and today, those work by (if your browser doesn't support it) destroying your tree and replacing it with the equivalent version, at some undefined point in time.</p>
+	<p>We experimentally changed very little in our implementation and it now considers any MathML 'unknown element' as on the whitelist of elements which can have a Shadow DOM.  We used a simple stand-in using Mutation Observer to allow any of those to be defined without a dash, and wrote a polyfill for <code>mfenced</code> which simply expands it into Shadow DOM.</p>
+	<p>For purposes of discussion, we illustrated how we could, in theory, use MathML Core, import some new vocabulary (potentially a future proposal, or just some slang) and easily expand it into some Shadow DOM, leaving you with the tree that you authored and all of the things just fitting together nicely and predictably. Below is a screenshot from our actual implementation experiment.</p>
+	<p><a target="_blank" rel="noopener noreferrer" href="https://camo.githubusercontent.com/8e0c8bf38ccd6fa1a20a3d3fa2299a7e32291d32/68747470733a2f2f63646e2e676c697463682e636f6d2f39303035373538332d326137392d343662372d623565662d36636566336265383764613625324653637265656e73686f7425323066726f6d253230323031392d30372d303725323031322d35322d35302e706e673f763d31353632353138353030313933"><img src="https://camo.githubusercontent.com/8e0c8bf38ccd6fa1a20a3d3fa2299a7e32291d32/68747470733a2f2f63646e2e676c697463682e636f6d2f39303035373538332d326137392d343662372d623565662d36636566336265383764613625324653637265656e73686f7425323066726f6d253230323031392d30372d303725323031322d35322d35302e706e673f763d31353632353138353030313933" alt="screenshot of element and shadow dom in experimental browser build" data-canonical-src="https://cdn.glitch.com/90057583-2a79-46b7-b5ef-6cef3be87da6%2FScreenshot%20from%202019-07-07%2012-52-50.png?v=1562518500193" style="max-width:100%;"></a></p>
+	<p>We think that these sorts of experiments are useful and informative and help us ask better questions about how we are fitting into the platform itself: Have we answered the necessary questions?  How does the introduction of a ShadowRoot impact rendering and namespacing, for example?  Could developers really 'plug in' to all the necessary bits?  Could they properly layer atop?  To test this, we also created elements that expand shorthands like TeX and ASCII Math.  In the end, can we ultimately resolve a great a stable core that allows us to move math forward using these things similar in ways similar to Knuth's TeX book/engine - but in a way that is properly "of the platform"?  We think the answer is yes.</p>
+
+	<p>While we're not entirely sure where larger conversations about how HTML will move forward will go, and we aren't claiming that this implementation is anything more than a quick experiment for discussion and testing, the MathML community itself is very excited that such talks are even happening in HTML and <em>very</em> interested in being a part of that conversation, and sorting out how we can move forward together as One Platform™, with less 'specialness'.</p>
+	</section>
+	
+]]></content:encoded>
         </item>
         <item>
             <title><![CDATA[Interesting Custom Element Data Begins]]></title>
