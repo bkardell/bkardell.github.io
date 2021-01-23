@@ -1,0 +1,516 @@
+<html lang="en" resource-type="blogpost"><head>  
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@briankardell">
+    <meta name="twitter:creator" content="@briankardell">
+    <meta name="twitter:title" content="Optimizing The W3C Sandwiches">
+    <meta name="twitter:description" content="In which I muse about a boring, but, I think important topic of W3C structures in a hopefully not-boring way...">
+    
+    <meta name="monetization" content="$ilp.uphold.com/kKU4GXiRwhnf ">
+
+    <link rel="alternate" type="application/rss+xml" href="https://bkardell.com/blog/feed.rss" title="bkardell.com/blog rss feed">
+    <title>Optimizing The W3C Sandwiches</title> 
+    <style>.captioned-image {
+    background-color: #eaeaea;
+    display: block;
+    overflow: hidden;
+    padding: 1rem;
+    text-align: center;
+    font-style: italic;
+}
+
+.captioned-image.p-attached {
+    width: 40%;
+    display: inline-block;
+    margin: 0 1rem 2rem 1rem;
+}
+
+section > .captioned-image.p-attached {
+    margin-top: 1.5rem; /* correct for heading size*/
+}
+
+ pre { overflow-x: auto }
+
+.captioned-image.p-attached.p-attached-left {
+    float: left;
+}
+
+.captioned-image.p-attached.p-attached-right {
+    float: right;
+}
+
+.captioned-image.p-attached + * + * {
+    clear: both;
+    margin-top: 2rem;
+}
+
+
+.captioned-image img, .captioned-image video {
+    display: block;
+    max-width: 100%;
+    margin: 0 auto 1em auto;
+}
+.source {
+    font-style: italic;
+}
+body {
+    display: grid;
+    grid-template-columns: 25rem auto;
+    font: 1.1rem "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-weight: 400;
+    line-height: 1.625;
+    margin: 0;
+}
+h1 { margin: 0.5rem; }
+code-format {
+    border-left: 0.5rem solid rgba(123,115,209,0.35);
+    display: block;
+    padding: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+contextual-heading {
+    display: block;
+    margin-top: 2rem;
+}
+
+h1, [aria-level="1"] {
+    color: #43686b;
+    font-size: 1.45rem;
+}
+
+h2, [aria-level="2"] {
+    color: #856363;
+    font-size: 1.35rem;
+}
+
+h3, [aria-level="3"] {
+    color: #856363;
+    font-size: 1.25rem;
+}
+
+h4, [aria-level="4"] {
+    color: #856363;
+    font-size: 1.2rem;
+}
+
+h5, h6, [aria-level="5"], [aria-level="6"] {
+    color: #667496;
+    font-size: 1.2rem;
+    font-weight: bolder;
+}
+
+.posted-on {
+    font-style: italic;
+    font-size: 0.8rem; 
+    text-align: right;
+    margin-bottom: 1rem;
+}
+
+ul, li {
+    margin: 0.5rem;
+    text-align: left;
+}
+
+responsive-details {
+    height: 100%;
+    padding-top: 1rem;
+    padding-right: 0;
+    background-color: #fbf5e9; 
+    display: block;
+    background-image: linear-gradient(to right, #dde0e8 , #ffffff);
+}
+
+.tagline {
+    font-style: italic;
+    text-align: center;
+}
+
+[tag-esc] {
+    color: maroon;
+    font-family: Courier, "Lucida Console", monospace;
+}
+
+[tag-esc]::before {
+    content: '<';
+}
+
+[tag-esc]::after {
+    content: '>';
+}
+
+main {
+    min-width: 50%;
+    width: 80%;
+    padding: 1rem;
+}
+header .title {
+    background-color: rgba(123,115,209,0.35);
+    padding: 0.3rem;
+    padding-left: 0.25rem;
+    font-weight: bolder;
+    font-size: 1rem;
+    border-left: 1rem solid #999298;
+}
+
+header .profile {
+    width: 50%;
+    margin: 1rem 25%;
+}
+
+header .title + nav {
+    font-size: 0.9rem;
+}
+
+header .blurb {
+    font-size: 0.9rem;
+    text-align: center;
+}
+header .name {
+    text-align: center;
+    font-size: xx-large;
+}
+.segue {
+    font-style: italic;
+}
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  border: 0;
+}
+
+#aboutMeToggle {
+    display: none;
+}
+
+[for="aboutMeToggle"] {
+    display: none;
+}
+
+main article { max-width: 100em; margin: auto; }
+/* this needs rethinking, it wants a selector like 'not flow content' */
+article>*:not(contextual-heading,a), section>*:not(contextual-heading,a) {
+    margin-left: 0.45rem;
+}
+
+blockquote {
+  font-family: serif;
+  background: #f9f9f9;
+  border-left: 10px solid #ccc;
+  margin: 1.5em 10px;
+  padding: 0.5em 10px;
+}
+blockquote:before {
+  color: #ccc;
+  content: open-quote;
+  font-size: 2em;
+  line-height: 0.1em;
+  margin-right: 0.25em;
+  vertical-align: -0.4em;
+}
+
+blockquote:after {
+  color: #ccc;
+  content: close-quote;
+  font-size: 2em;
+  line-height: 0.1em;
+  margin-left: 0.25em;
+  vertical-align: -0.4em;
+}
+
+
+@media (max-width: 800px){
+    body {
+        grid-template-columns: 1fr;
+    }
+    responsive-details {
+        height: auto;
+        border-bottom: 1px solid #afafff;
+    } 
+
+    main { width: 95%; margin: 0 auto;}
+
+    .captioned-image.p-attached {
+        width: 100%;
+        margin: 1rem 0;
+    }
+
+    .captioned-image.p-attached.p-attached-left,
+    .captioned-image.p-attached.p-attached-right {
+        float: none;
+    }
+
+    #aboutMeToggle {
+        display: block;
+        background-color: #675e5e;
+        color: white;
+        padding: 0.25rem;
+        padding-left: 0.5rem;
+        border-left: 1rem solid black;
+    }
+
+    header li { display: inline; margin-left: -0.5em; }
+    header .blurb li::after { content: '; '; }
+    header  nav li {
+        display: inline-block;
+        margin-left: 0.35rem;
+        margin-right: 0.35rem;
+    }
+    header .title {
+        width: 100%;
+    }
+    main li .source { display: block; }
+
+}</style>
+    <style>
+      .captioned-image { font-size: 0.9rem; }
+      .thanksTo { font-style: italic; font-size: 0.8rem; }
+    </style>
+    <script>
+      var activateOptional = function (media) {
+        var source = media.getAttribute('data-src'),
+            temp,
+            container = media.parentElement;
+
+          if (media.nextSibling && media.nextSibling.matches) {
+            if (media.nextSibling.matches('.clickToSee')) {
+              media.parentElement.removeChild(media.nextSibling);
+            }
+          }
+ 
+          if (media.tagName === 'VIDEO') {
+            temp = document.createElement('video')
+            temp.setAttribute('autoplay','')
+            temp.setAttribute('controls','')
+            temp.setAttribute('loop','')
+            temp.innerHTML = '<source src="' + source + '.webm" type="video/webm">'
+                    + '<source src="' + source + '.mp4" type="video/mp4">';
+            media.parentElement.replaceChild(temp, media);
+            setTimeout(function () {
+              temp.play()
+            }, 0);
+          } else {
+            media.src = media.getAttribute('data-src');
+          }
+
+          container.classList.add('active');
+      }
+    </script>
+  </head>
+  <body>
+    <script>
+class ResponsiveDetails extends HTMLElement {
+  
+  checkForced() {
+      let details = this.querySelector('details')
+        if (this.mql.matches) {
+          details.setAttribute('open','')
+        } else {
+          details.removeAttribute('open')
+        }
+  }
+  connectedCallback() {
+    this.mql = window.matchMedia(`(min-width: ${this.getAttribute("open-after") || "1px" })`);
+
+    if (this.mql.addEventListener) {
+        this.mql.addEventListener('change', () => {
+            this.checkForced()
+        })
+    } else {
+        this.mql.addListener(() => {
+            this.checkForced()
+        })
+    }
+    requestAnimationFrame(() => this.checkForced())
+  }
+  constructor() {
+    super()
+    this.attachShadow({mode: "open"})
+    this.shadowRoot.innerHTML = `<slot></slot>`
+    let slot = this.shadowRoot.firstElementChild;
+    slot.addEventListener('slotchange', ()=> this.checkForced)          
+
+  }
+}                         
+
+customElements.define('responsive-details', ResponsiveDetails)
+</script>
+
+<responsive-details open-after="800px">
+<details open="">
+<summary id="aboutMeToggle">Author Information</summary>
+
+<header>
+    <div class="name">
+        Brian Kardell
+    </div>
+    <img class="profile" src="/profile.jpg" alt="">
+    <div class="tagline"><a href="/">Betterifying the Web</a></div>
+    <div class="blurb">
+        <ul>
+            <li>Developer Advocate at Igalia</li>
+            <li>Original Co-author/Co-signer of The Extensible Web Manifesto</li>
+            <li>Co-Founder/Chair, W3C Extensible Web CG</li>
+            <li>Member, W3C (OpenJS Foundation)</li>
+            <li>Co-author of HitchJS</li>
+            <li>Blogger</li>
+            <li>Art, Science &amp; History Lover</li>
+            <li>Standards Geek</li>
+        </ul>
+    </div>
+    <div class="title">Follow Me On...</div>
+    <nav>
+        <ul>
+            <li><a rel="me" href="https://briankardell.wordpress.com">Wordpress</a></li>
+            <li><a rel="me" href="https://medium.com/@briankardell">Medium</a></li>
+            <li><a rel="me" href="https://twitter.com/briankardell">Twitter</a></li>
+            <li><a rel="me" href="https://github.com/bkardell/">Github</a></li>
+            <li><a rel="me" href="https://codepen.io/bkardell">Codepen</a></li>
+            <li><a rel="me" href="https://www.linkedin.com/in/brian-kardell-08a4264">LinkedIn</a></li>
+            <li><a rel="me" href="https://www.instagram.com/kardellbrian">Instagram (for
+art)</a></li>
+            <li><a rel="me" href="http://fineartamerica.com/profiles/brian-kardell?">Fine Art
+America (art for sale)</a></li>
+        </ul>
+    </nav>
+</header>
+</details>
+</responsive-details>
+    <main><div class="posted-on">Posted on null</div><article class="sectioning">
+  <h1 class="contextual-heading">Optimizing The W3C Sandwiches</h1>
+  <p class="segue">In which I muse about a boring, but, I think important topic of W3C structures in a hopefully not-boring way...</p>
+
+<p>Imagine that there is a trade organization which had a marathon meeting event for its 500 members every year.  It's a long meeting, and so during it, they serve sandwiches.  A break, with food and peers, it seems is really condusive to the productivity.  So, while it's a little non-obvious, while small and with no special 'powers' - the sandwiches are actually really important.  The trade organization realizes this and decides to formalize a way to make sure we always have good sandwiches.  A few weeks before they send out an email asking people:</p>
+
+<blockquote>
+<p>Please tell us an ingredient which you could provide enough of for every sandwich. Your ingredient may or may not be used, we are just looking for ingredient <em>nomination statements</em> expressing what your ingredient brings to the table".  </p>
+</blockquote>
+
+<p>Even if everyone doesn't really understand how interconnectedly important the sandwiches are, they aren't entirely apathetic about them either:  When it comes time to eat, and everyone's hungry after long meetings, there will <em>definitely</em> be opinions about the sandwiches.  </p>
+
+<p><em>BUT...</em>  At the same time, there will incredibly be very few ingredient nominations. Why?  So many reasons!</p>
+
+<p>Even if a person really had some vague notion that "a lot of my favorite sandwiches had pickles", their company is small, and it doesn't actually deal with pickles.  After a moment or three worth of thought about "which pickles?" and "do other people even like pickles?" and "how would I ask my boss for money to <em>offer</em> 1000 pickles... maybe" - this is quickly abandoned as not really worth the time.  Each person receiving this email knows there are 499 other organizations, and that what we need are really just 4 ingredients! Someone else will offer ingredients, and they should, because they have all the money and food connections anyways.</p>
+
+<p>And so, that's what happens... Several of them are from some food or food service industry. Their businesses totally <em>get</em> the importance of the sandwiches, and they are structured in a way where this basically isn't a problem for them.  Several of them might even discuss among themselves to make sure they're bringing complimentary things... They'll nominate things like"lettuce" or "tomatoes", or maybe "cheese".  Maybe some others don't discuss, but they do a lot of sandwich adjacent work and so they still nominate some pretty general condiments that could plausibly be used on a lot of good sandwiches... maybe they offer "mustard" or "mayonsaise".  But, then there's also people with other food connections who, for various reasons, offer other things.  We wind up with eggs, vegemite, peanut butter, some gourmet cactus jelly, caviar, and butter.   Then, there's someone who offers some not-even-food item, because... Who knows... Maybe they're trying to make a point or because they think it helps their company or cause's visibility somehow.  </p>
+
+<p>Now, with the exception of the last one - there's not really something inherently <em>wrong</em> with any of those ingredients - but I think we could at least agree that making a sandwich from random combinations of them is likely to produce a lot of suboptimal sandwiches. </p>
+
+<h2>Vote for pickles!</h2>
+
+<p>But, the way the organization goes about deciding on which sandwich everyone will have is by voting for <em>ingredients</em>.  This way everyone gets a say and has some 'sandwich representation'.</p>
+
+<p>Now, again -- not due to apapthy about sandwiches, only about 1/5th of people will actually vote. And again, "this isn't worth my time, surely someone else can figure out sandwiches" plays in heavily as to why. Lack of participation is somewhat a recognion of what a dysfunctional way this is to make a sandwich:  </p>
+
+<p>I mean, who really has time to read the nomination statements and learn about the dietary benefits of whey, or read the back and forth debates extolling the health virtues of mayonaise over mustard - or why the tomato lobby is colluding with the spinach people, putting honest bean farmers out of business - and inevitable back and forth.  Who has time to get entagnled in the debate about how the caviar people shouldn't even have been invited in the first place?</p>
+
+<p>Still, the organization believes that members should make the decision,  and, it seems there are a few ways we could ask this question.  So, in early years it was asked like this:</p>
+
+<blockquote>
+<p>Here are 12 ingredients, everybody pick 4, and we'll use the top 4 vote getters to make everyone sandwiches.</p>
+</blockquote>
+
+<p>The initial sandwiches reviews seemed pretty good, actually, people even praised the sandwiches 'distinquished tastes'.  But, slowly, a lot of people began admitting that while they were 'fine', most people actually preferred something a little less so, but were kind of afraid to admit it.   Also, it was really kind of a crap shoot.   There was really nothing preventing us getting a real mish mash of ingredients beyond the fact that, in the end that people were casting 4 votes, representing all of the ingredients of an actual sandwich.  This meant that there were at least some odds that lots of "common sandwich" votes were somewhat compatible.  But really... that was just luck, and after a few years people kind of resented sandwiches and the quality of productivity, collaboration and relationships at the event suffered.</p>
+
+<h2>How about a nice club sandwich?</h2>
+
+<p>But then, some people realized... Hey... <em>nobody</em> on purpose probably picked the combination of vegemite, mustard, butter and caviar - even if they really liked some of those.  We're <em>expressing</em> something about whole sandwiches...  Maybe a better way would be to try to talk to lots of people and put together a proposal for a good sandwich, that we think we could get enough people to vote for the same way, and just say </p>
+
+<blockquote>
+<p>Hi.  We've taken the time to help make sure we had good ingredients, and looking at everything that is available and trying to balance lots of things, we're  recommending this nice club sandwich - &lt;here's why&gt;.  If that sounds good, order the club.</p>
+</blockquote>
+
+<p>Well, that question is a lot easier to answer, so at least <em>some</em> additional people say "yes, please, that sounds good".  The simple volumne of several new people voting in the same direction was enough to generally make sure that those sandwiches won.  Cool!  The sandwich proposing people <em>also</em> cared about variety and and began actively working to make sure that good, compatible, but not commonly offered ingreditents got nominated.  And, we got some more interesting sandwiches because of it.</p>
+
+<h2>The Exclusive Club Sandwich</h2>
+
+<p>In the end, not everyone was happy though.  Some kinds of ingredients just weren't getting picked anymore.  People began asking:  How can our trade organization possibly represent the tastes of the people who always offers us caviar if we never pick caviar!?  Your club sandwich is an <em>exlusive</em> club, it's biased toward the food service people!</p>
+
+<p>The whole sandwhich proposing people suggested that this seemed like a weird take.  They <em>did</em> care about including diversity of ingredients and making members happy.  In fact, they pointed to the fact that sandwiches had gotten <em>more</em> diverse ingredients by discussing the whole sandwich.  Sure, a lot of them are coming from food service companies but a lot of that is about the practicalities of them coming from other places.  And, yes, it's true, none of our clubs have included caviar.  But, perhaps the caviar people work with others to find a way to offer and build some concesus around a good alternative sandwich with caviar.  It might be plausible - it's not even that we neccessarily hate caviar - we just don't know how to make a good sandwich with it, and all of our sandwich experiences with it so far are bad.  Offer a good sandwich that includes caviar - can you?  That, or <em>maybe</em> just find something to offer other than caviar.  </p>
+
+<p>This, it seems, was unacceptable.  So, in an attempt to improve the fairness things, the trade organization changed the question to</p>
+
+<blockquote>
+<p>Here are 9 ingredients, everybody rank them in order of preference and they we will use a complex system whereby <em>one</em> of the things you ranked will be counted, and we'll use the 4 winners to make everyone sandwiches</p>
+</blockquote>
+
+<p>This amplifies the likelihood that things like caviar wind up our sandwiches.  That's literally the <em>feature</em>.</p>
+
+<p>Why?  Because there is no single ingredient that makes a club sandwich.  Ingredients wind up as they're all variants of #2, #3, #4, and those don't even wind up counting.  But, a small but passionate group of people who are really passionate about a less common ingreditent like vegemite or caviar, and maybe even a little irked because they historically never make the cut, rank their thing as #1.</p>
+
+<p>But... I don't think this has actually helped optimize the sandwich, which I tought was the goal.  </p>
+
+<p>Luckily, through a combination of adapting the strategy - and sheer luck - we have thusfar still managed to avoid really terrible sandwiches so far.</p>
+
+<h2>The TAG/AB Sandwiches</h2>
+
+<p>The most universally agreeable sandwich isn't created by talking about ingredients in isolation - you <em>have</em> to talk about the sandwich.</p>
+
+<p>All of this is analogy for how the W3C TAG and AB, and I've laid it out in an attempt to explain why I think this is a really silly way to do it, and why I think it should change.  Yes, I get that sandwiches are a bit of a strained analogy.  TAG isn't <em>exactly</em> a sandwich.... Maybe "a bunch of people going to a restraurant and attempting to pick a shared menu of 4 items based on whatever random stuff is available" is a better one.  Or maybe picking a DND party is a better one still... </p>
+
+<p>But, the fuzzy point is mostly the same with any of them: "Good" and "bad" are, except at real extremes not really judgable in isolation.  Sure, there are some "not-actually-even-food" items and maybe we can universally say "no thanks" and not feel bad about it, but that's also rare, and the opposite of how things are counted.  What matters in counting is  "which one is best" and there being a clear answer to that question without considering the whole is almost never the case.  If you went to a restaurant and and ordered a mystery sandwhich you couldn't answer "would you like pickles on that?" or whether you had a prefernce for mayonaise or mustard without knowing more.    No one can honstly look at a list of 20 random ingredients and say "any 4 of those is fine, but I really would like it to have pickles, or if I can't have pickles, mustard".  Worse, no on even thinks they're doing that - most of them think they are voting for a sandwich.</p>
+
+<p>I just can't see how we can create a good solution without a group of actively trying to finding good and not entirely common potential nominations and working with the people who want to nominate.  I just can't see how we can expect participation to be high this way, or how we can expect good results without some group of people working hard to discuss what a few potentially ok with more than a niche of people variants of the whole might look like.</p>
+
+<h2>How to address this...?</h2>
+
+<p>I mean,the only way to fix it is stop insisting that we can't talk about the sandwich and talk about sandwiches. </p>
+
+<p>The weird part is that we don't actually even need to change a single rule to do.  If we are super extra organized we actually could achieve all of this <em>despite</em> the systems that are in place... But, it just feels like the system should encourage this, not fight it.</p>
+
+<p>Still, without anyone's "permission" today, we could coordinate together to do what some of us have been doing all along.</p>
+
+<p>Nominations are all announced at the same time, and in a vaccum.  Except that they aren't really - you just have to really actively ask around and work with others.  Why is the default "nobody has potentially useful information"?  The default should be openness.  There's absolutely nothing to be gained from not letting people know someone has been nominated, and potentially a lot to be gained in doing so - we can know what things we are still in desparate need of or whether maybe we don't actually <em>need</em> to nominate someone very similar to that person, because actually, we'd be fine with that person.  Likewise, there should be a place where people can discuss what we need in order to make a few good sandwiches, and a place that discusses what might some good sandwiches we could make with the ingredients we have.</p>
+
+<p>Ultimately, most of that noise should move, earlier, to where people who have the time, bandwidth, etc to do that work on creating a few good options.  Call them slates if you want, but I feel like that is a loaded term here, so I'm going to say "sandwiches".</p>
+
+<p>What is presented to ACs should <em>largely</em> be outcomes from those recommendations.  </p>
+
+<blockquote>
+<p>Here are 5 sandwiches, a bit about them and a link to more if you need it... Place them in order from most preferred to least preferred</p>
+</blockquote>
+
+<p>Is a simple question that most people could actually answer.  It can be the result of trying to find consensus as much a possible while considering what is important, right now.</p>
+
+<p>Really, all of this is acheivable by voluntary participation and coordination in a Community Group even if we don't change any rule.  I realize that people worry about discussing some of this publicly, but there's plenty of ways to discuss aspects of this that avoid the things people worry about.  If everyone is afraid to hurt the caviar's feelings, because really they <em>like</em> caviar, just not on a sandwich - we are stuck.  That's not a good relationship tradeoff in my opinion.  We've got to be able to either help find a way to make a viable caviar sandwich, or make people understand that sorry, there's just not going to be a caviar sandwich in such a way that they can accept this and try to bring something else instead.</p>
+</article></main>
+
+  
+    
+
+  <script>
+    Array.prototype.slice.call(document.querySelectorAll('.optional [data-src]')).forEach(function (optional) {
+      var prefs = window.localStorage.downloadsPrefs,
+          clickToSee;
+      if (prefs === 'true') {
+        activateOptional(optional);
+      } else {
+        clickToSee = document.createElement('div');
+        clickToSee.classList.add('clickToSee')
+        clickToSee.innerHTML = '<button>Click to see media</button>';
+        clickToSee.style.textAlign = 'center';
+        clickToSee.style.border = 'none';
+        optional.parentElement.insertBefore(clickToSee, optional.nextSibling);
+        clickToSee.firstElementChild.addEventListener('click', function () {
+          activateOptional(optional);
+        })
+      }
+
+    })
+  </script>
+
+</body><!-- script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-88027178-1', 'auto');
+    ga('send', 'pageview');
+  </script --></html>
