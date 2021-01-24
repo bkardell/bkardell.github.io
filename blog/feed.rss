@@ -4,7 +4,7 @@
         <title>bkardell.com rss feed</title>
         <link>http://bkardell.com/</link>
         <description>Just the bkardell.com rss feed</description>
-        <lastBuildDate>Thu, 31 Dec 2020 17:34:23 GMT</lastBuildDate>
+        <lastBuildDate>Sun, 24 Jan 2021 22:14:23 GMT</lastBuildDate>
         <docs>http://blogs.law.harvard.edu/tech/rss</docs>
         <generator>awesome mix</generator>
         <image>
@@ -77,6 +77,119 @@ The current W3C TAG election is both important and complex for several reasons. 
   <p>Regardless of how you feel about any of the candidates, please help turnout the vote.  The W3C works best when as many members vote as possible!</p>
 
 </section>
+
+]]></content:encoded>
+        </item>
+        <item>
+            <title><![CDATA[Optimizing The W3C Sandwiches]]></title>
+            <link>https://bkardell.com/blog/W3C-Sandwiches.html</link>
+            <guid>https://bkardell.com/blog/W3C-Sandwiches.html</guid>
+            <pubDate>Sun, 24 Jan 2021 05:00:00 GMT</pubDate>
+            <description><![CDATA[In which I muse about a boring, but, I think important topic of flawed W3C structures and process, in a hopefully not-boring way...]]></description>
+            <content:encoded><![CDATA[
+  <h1 class="contextual-heading" style="font-size: NaNrem;">Optimizing The W3C Sandwiches</h1>
+  <p class="segue">In which I muse about a boring, but, I think important topic of flawed W3C structures and process, in a hopefully not-boring way...</p>
+
+<p>Imagine that there is a trade organization which had a marathon meeting event for its 500 members every year.  It's a long meeting, and so during it, they serve sandwiches.  A break, with food and peers, it seems is really conducive to the productivity.  So, while it's a little non-obvious, while small and with no special 'powers' - the sandwiches are actually really important.  The trade organization realizes this and decides to formalize a way to make sure we always have good sandwiches.  A few weeks before they send out an email asking people:</p>
+
+<blockquote>
+<p>Please tell us an ingredient which you could provide enough of for every sandwich for the next 3 years. Your ingredient may or may not be used, we are just looking for ingredient <em>nomination statements</em> expressing what your ingredient brings to the table.  If your ingredient is chosen, we will tell you whether that is a 1, 2 or 3 year commitment.</p>
+</blockquote>
+
+<p>Even if everyone doesn't really understand how inter-connectedly important the sandwiches are, they aren't entirely apathetic about them either:  When it comes time to eat, and everyone's hungry after long meetings, there will <em>definitely</em> be opinions about the sandwiches.  </p>
+
+<p><em>BUT...</em>  At the same time, there will incredibly be very few ingredient nominations. Why?  So many reasons!</p>
+
+<p>Even if a person really had some vague notion that "a lot of my favorite sandwiches had pickles", their company is small, and it doesn't actually deal with pickles.  After a moment or three worth of thought about "which pickles?" and "do other people even like pickles?" and "how would I ask my boss for money to <em>offer</em> 1000 pickles... maybe" - this is quickly abandoned as not really worth the time.  Each person receiving this email knows there are 499 other organizations, and that what we need are really just 4 ingredients! Someone else - with the money and food connections will nominate anyways.</p>
+
+<p>And so, that's what happens... Several of them are from some grocery or food service industry. Their businesses totally <em>get</em> the importance of the sandwiches, as well as what people largely "like" and they are structured in a way where this basically isn't a problem for them.  Several of them might even discuss among themselves to make sure they're bringing complimentary things... They'll nominate things like"lettuce" or "tomatoes", or maybe "cheese".  Maybe some others don't discuss, but they do a lot of sandwich adjacent work and so they still nominate some pretty general condiments that could plausibly be used on a lot of good sandwiches... maybe they offer "mustard" or "mayonnaise".  But, then there's also people with other food connections who offer other things.  In the end, we wind up with eggs, Vegemite, peanut butter, some gourmet cactus jelly, caviar, and butter.   Then, of course - there's someone who offers some not-even-food item.</p>
+
+<p>Now, with the exception of the last one - there's not really something inherently <em>wrong</em> with any of those ingredients - but I think we could at least agree that making a sandwich from random combinations of them is likely to produce a lot of suboptimal sandwiches. </p>
+
+<h2>Vote for pickles!</h2>
+
+<p>Everyone should have a say here, and we need to account for multiple tastes - so the way organization goes about deciding on which sandwich everyone will have is by voting for <em>ingredients</em>.</p>
+
+<p>Now, again -- <em>not due to apathy about the actual sandwiches, or the results of the meeting that they will effect</em> - only about 1/5th of people will actually vote for ingredients. Why?  Again, "this isn't worth my time, surely someone else can figure out sandwiches" plays in heavily. Perhaps you could even say that lack of participation an indirect recognion of what a dysfunctional way this is to make a sandwich.</p>
+
+<p>I mean, who really has time to read the ingredient nomination statements, and also to filter out what might be just bull?  Who wants to take the time to learn about the dietary benefits of whey, or read the back and forth debates extolling the health virtues of mayonnaise over mustard - or read some people ranting about why the tomato lobby is colluding with the spinach people, putting honest bean farmers out of business - and inevitable back and forth.  Who has time to get entangled in the debate about how maybe the caviar people shouldn't even have been invited in the first place?</p>
+
+<p>Still, the organization believes that members should make the decision,  and, it seems there are a few ways we could ask this question.  So, in early years it was asked like this:</p>
+
+<blockquote>
+<p>Here are 12 ingredients, everybody pick 4, and we'll use the some of the same ingredients from last year, plus the top 4 vote getters here to make everyone sandwiches!</p>
+</blockquote>
+
+<p>The initial sandwiches reviews seemed pretty good, actually.  Some people even praised the first sandwiches' 'distinguish tastes'.  But, slowly, a lot of people began admitting that really, they actually preferred something a little more boring, or less healthy but had been kind of afraid to admit it.</p>
+
+<p>Also, it was really kind of a crap shoot.   There was really nothing preventing us getting a real mishmash of random ingredients that didn't go thereto at all.  Well, except for the fact that, in the end that most people were casting 4 votes, representing all of the ingredients of an actual sandwich. <em>Nobody</em> on purpose probably picked the combination of vegemite, mustard, butter and caviar - even if they really liked some of those.  This meant that there were at least some odds that lots of "common sandwich" votes were somewhat compatible.</p>
+
+<p>
+But really... that still involved a lot of luck, and after a few years, people began to kind of resent the sandwiches.  The quality of productivity, collaboration and relationships at the event suffered.
+</p>
+
+<h2>How about a nice club sandwich?</h2>
+
+<p>But then, some people realized... Hey... Maybe a better way would be to try to talk to lots of people and put together a proposal for a good sandwich.  The whole sandwich. Let's call them the "Whole Sandwich People".  Like, can we get enough people to vote for the same way, by just saying:</p>
+
+<blockquote>
+<p>Hi.  We've taken the time to help make sure we had good ingredients, and looking at everything that is available and trying to balance lots of things, we're  recommending this nice club sandwich - &lt;here's why&gt;.  If that sounds good, order the club.</p>
+</blockquote>
+
+<p>Well, that question is a lot easier to answer, so at least <em>some</em> additional people say "yes, please, that sounds good".  The simple volume of several new people voting in the same direction was enough to generally make sure that those sandwiches won.</p>
+
+<p>Cool!  The Whole Sandwich People <em>also</em> cared about variety and nutrition and all of the other things and so began actively working to make sure that good, compatible, but not commonly offered ingredients got nominated.  And, we got some more interesting sandwiches because of it.</p>
+
+<h2>The Exclusive Club Sandwich</h2>
+
+<p>In the end, not everyone was happy though.  Some kinds of ingredients just weren't getting picked anymore.  People began asking:  How can our trade organization possibly represent the tastes of the people who always offers us caviar if we never pick caviar!?  Your club sandwich is an <em>exclusive</em> club, it's biased toward the food service people!</p>
+
+<p>The Whole Sandwich People suggested that this seemed like a weird take.  In fact, they pointed to the fact that sandwiches had gotten <em>more</em> diverse, interesting and nutritious by discussing the whole sandwich.  Sure, a lot of the ingredients were  coming from food service companies, but that's just practical realities about other parts of the dysfunctional system.</p>
+
+<p>And, yes, the Whole Sandwich People admitted, it's true, none of our sandwiches have included caviar.  But, where is the bug? Couldn't the caviar people work with others to find a way to offer an acceptable Whole Sandwich with caviar? It might be plausible - it's not even that we necessarily hate caviar!  The truth is, we just don't know how to make a good sandwich with it, and all of our sandwich experiences with it so far are bad.  Or, if you <em>can't</em> offer a whole sandwich with caviar that people will order willingly.... <em>Maybe</em> just find something to offer other than caviar.</p>
+
+<p>This, it seems, was unacceptable. It was seen as unfair.  The Whole Sandwich People held too much sway over sandwich determination.  So, in an attempt to improve the fairness things, the trade organization changed the question to:</p>
+
+<blockquote>
+<p>Here are 9 ingredients, everybody rank them in order of preference and they we will use a complex system whereby <em>one</em> of the things you ranked will be counted, and we'll use the 4 winners to make everyone sandwiches</p>
+</blockquote>
+
+<p>This amplifies the likelihood that things like caviar wind up our sandwiches.  That's literally the <em>feature</em>.</p>
+
+<p>Why?  Because there is no single ingredient that makes a club sandwich.  While everyone ranks the widely approved ingredients the inevitably have to be in an order, and only one of them will count.  Meanwhile, the small but passionate group of people who are really passionate about a less common ingredient, and who are maybe even a little irked because they are never picked, just put that as #1 - which definitely counts.</p>
+ 
+<p>Have we optimized the sandwich?  Because I thought was the goal.  I think, no.</p>
+
+<h2>The TAG/AB Sandwiches</h2>
+<p>All of this is analogy for how the W3C TAG and AB, and I've laid it out in an attempt to explain why I think this is a really silly way to do it, and why I think it should change:  <em>The "best sandwich" isn't created by talking about ingredients in isolation - you <strong>have</strong> to talk about the sandwich.</em></p>
+
+<p>Yes, I get that sandwiches are a bit of a strained analogy.  TAG isn't <em>exactly</em> a sandwich.... Maybe "a bunch of people going to a restaurant and attempting to pick a shared menu of 4 items based on whatever random stuff is available" is a better one.  Or maybe picking a DND party is a better one still... </p>
+
+<p>But, the fuzzy point is mostly the same with any of them: "Good" and "bad" are, except at real extremes not really judge-able in isolation.  Sure, there are some "not-actually-even-food" items we can universally say "no thanks" to, but that's also rare, and not really how it works.</p>
+
+<p>What matters in counting is  "which one is best" and there is almost never a clear answer to that question without considering the whole.  What matters to really knowing what people want, is also asking them in such a way that they can actually participate meaningfully.</p>
+
+<h2>How big of a problem is this, really?</h2>
+<p>After all, it's been a few elections now since we changed the question, and while there were some early "surprises", things seem to be generally going alright. We just had a really big TAG election, for example, and people seem generally pretty happy with the results of the actual election part. I know I am. So... Maybe this is much ado about nothing?  Is it really worth our time to discuss?</p>
+
+<p>I think, yes. Here's why: Good results in recent elections have been a combination of factors that won't always hold and that we shouldn't have to count on.  They as much despite the process as anything (as argued below).</p>
+
+<p>Plus, it's just silly.</p>
+
+<h2>How to address this...?</h2>
+
+<p>Well, that's the big question. But, one thing seem obvious to me: We need to stop insisting that we can't talk about the sandwich and instead focus on how we talk about the sandwich all the way through the process.</p>
+
+<p>We Whole Sandwich People have learned that even if the way the question has asked has been changed, it's still possible to help elect whole sandwiches, it's just <em>much</em> harder and requires an astonishing amount of more coordination, trust and ultimately still some luck.
+</p>
+
+<p>The point is that all of the things that we need to happen are already happening, but the process actually fights them.  That's broken.</p>
+
+<p>I think we need to move to a more open model, but one that moves impractical noise out of the general discussion for people whom that is mostly annoying and/or confusing.  I think we need to stop being "procedurally secretive" about nominations.  I think we need to enlist a willing group of people who can help cooperatively search for candidates and make sure that we're getting ingredients that are good by a number of metrics.  I think this group should work to seek something like consensus on a menu of a few possible, "well-balanced meals" and provide recommendations that allow ACs to work with that by default or dig into ala carte options and more details only if they really want to.</p>
+
+<p>Further, I think that rotating terms only complicates this. It's very, very simple to re-affirm seats every time - and this really lets us talk about the whole thing at once.</p>
+
+<p>We don't really even have to change a single rule to accomplish any of this in practice, but currently the rules fight it at every step and make it an extraordinary difficult exercise. We should fix that. I intend to open some issues with some more specific proposals soon, but I'd love to hear anyone's thoughts or work collaborative with anyone to make those good proposals.</p>
 
 ]]></content:encoded>
         </item>
@@ -1731,6 +1844,29 @@ console.log(x.name) // Brian
 ]]></content:encoded>
         </item>
         <item>
+            <title><![CDATA[2 Minute Standards]]></title>
+            <link>https://bkardell.com/blog/2MinuteStandards.html</link>
+            <guid>https://bkardell.com/blog/2MinuteStandards.html</guid>
+            <pubDate>Tue, 20 Aug 2019 04:00:00 GMT</pubDate>
+            <description><![CDATA[A short explanation of a new effort]]></description>
+            <content:encoded><![CDATA[
+    <h1 class="contextual-heading" style="font-size: NaNrem;">2 Minute Standards</h1>
+    <p class="segue">A short explanation of a new effort</p>
+
+    <p>For a while now, we've been running some 'outreach groups'.  Originally started informally by my colleague at <a href="https://igalia.com" rel="nofollow">Igalia, </a><a href="https://twitter.com/littledan" rel="nofollow">Dan Ehrenberg</a>, it's become a set of monthly meetings with various groups of stakeholders in <a href="https://tc39.github.io" rel="nofollow">TC39</a> and the Web at large which I really look forward to.  The <a href="https://github.com/js-outreach/js-outreach-groups" rel="nofollow">groups</a> are meetings of people who work on Tooling, people who work on Frameworks and Libraries and Educators, with folks who work on standards.  The goals of all of them, at the end of the day, is to figure out how we all work better, together.</p>
+    
+    <p>The Educators Group has talked a bit about a number of efforts, but there's one conversation we've been having that I think is pretty interesting. I dont know of any developer who isn't interested in what is going on in standards, but the economics of this is currently kind of hard. We're interested in a whole bunch of other things too. There's lots of good content - too much in fact, coming at us from a million directions and it's all competing for our time and attention. We have jobs, and families, and pets, hobbies and lives. I love a lot of long form things, I'm excited when I see them in my stream, but they pile up and I have to choose. I only have so many slots of time where I can actually afford to consume 10, 15, 30 or 40 minutes worth of information. It can feel a little overwhelming sometimes.</p>
+
+    <p>So, we're going to try something new: 2 Minute Standards.  Think of it as "standards news, in brief".  The basic idea is pretty simple: Like a news segment, it's got to contain pertinent facts, more than a tweet - but it's air time is limited, as the name would suggest, to 2 Minutes.  That can come in a number of forms: An article that is 500 words or less, a two minute video, or a short web comic/zine.  The idea though is to ultimately give developers some channel with reasonable economics for staying 'generally informed'.  In the end, that's frequently what we want anyways: We can't know everything, we just need to know <em>enough</em> to know what it is, why it is, and that it is there when we're ready to learn more.  We'd like to be able to roughly understand it if it comes up. A maximum of 2 minutes per day, and almost certainly not even that much, seems... unintimidating and managable.</p>
+
+    <p>So, that's the idea.  We're still discussing many of the details about how to make this really 'click' in a bigger way: How to create as a sort of channel you can follow?  For now, it seems better to start with something simple and perhaps to begin to get feedback on the idea.  To this end, we'll post things with the hashtag #StandardsIn2Min, and others can too. If you see something fly by with the hashtag you can always find it again later on the twitter feed and, hopefully, expect that it will take no more than 2 minutes to consume.  However, we will also manage the Twitter account <a href="https://twitter.com/StandardsIn2Min" rel="nofollow">@StandardsIn2Min</a>, where we'll work to curate those hashtags too and create a manageable (honestly, probably slow) pace that never asks for more than two minutes of your attention in a day to keep up. Let us know what you think about the idea!</p>
+    
+
+    <p class="thanks-to">Thanks to the <a href="https://github.com/js-outreach/js-outreach-groups" rel="nofollow">educators group</a> for all of their help discussing and creating, and especially to <a href="https://twitter.com/laurieontech" rel="nofollow">Laurie Barth</a> and <a href="https://twitter.com/jorydotcom" rel="nofollow">Jory Burson</a> for helping get this post put together quickly!
+    </p>
+]]></content:encoded>
+        </item>
+        <item>
             <title><![CDATA[Top Level Await: 2 Minute Standards]]></title>
             <link>https://bkardell.com/blog/TopLevelAwaitIn2m.html</link>
             <guid>https://bkardell.com/blog/TopLevelAwaitIn2m.html</guid>
@@ -1796,29 +1932,6 @@ export const _internalPromise =
 		});</code></pre>
 	<p>The net result is that modules are fetched in parallel and executed in order until the first await, and then waits until they are all complete before resolving the module itself.</p>
 	</section>
-]]></content:encoded>
-        </item>
-        <item>
-            <title><![CDATA[2 Minute Standards]]></title>
-            <link>https://bkardell.com/blog/2MinuteStandards.html</link>
-            <guid>https://bkardell.com/blog/2MinuteStandards.html</guid>
-            <pubDate>Tue, 20 Aug 2019 04:00:00 GMT</pubDate>
-            <description><![CDATA[A short explanation of a new effort]]></description>
-            <content:encoded><![CDATA[
-    <h1 class="contextual-heading" style="font-size: NaNrem;">2 Minute Standards</h1>
-    <p class="segue">A short explanation of a new effort</p>
-
-    <p>For a while now, we've been running some 'outreach groups'.  Originally started informally by my colleague at <a href="https://igalia.com" rel="nofollow">Igalia, </a><a href="https://twitter.com/littledan" rel="nofollow">Dan Ehrenberg</a>, it's become a set of monthly meetings with various groups of stakeholders in <a href="https://tc39.github.io" rel="nofollow">TC39</a> and the Web at large which I really look forward to.  The <a href="https://github.com/js-outreach/js-outreach-groups" rel="nofollow">groups</a> are meetings of people who work on Tooling, people who work on Frameworks and Libraries and Educators, with folks who work on standards.  The goals of all of them, at the end of the day, is to figure out how we all work better, together.</p>
-    
-    <p>The Educators Group has talked a bit about a number of efforts, but there's one conversation we've been having that I think is pretty interesting. I dont know of any developer who isn't interested in what is going on in standards, but the economics of this is currently kind of hard. We're interested in a whole bunch of other things too. There's lots of good content - too much in fact, coming at us from a million directions and it's all competing for our time and attention. We have jobs, and families, and pets, hobbies and lives. I love a lot of long form things, I'm excited when I see them in my stream, but they pile up and I have to choose. I only have so many slots of time where I can actually afford to consume 10, 15, 30 or 40 minutes worth of information. It can feel a little overwhelming sometimes.</p>
-
-    <p>So, we're going to try something new: 2 Minute Standards.  Think of it as "standards news, in brief".  The basic idea is pretty simple: Like a news segment, it's got to contain pertinent facts, more than a tweet - but it's air time is limited, as the name would suggest, to 2 Minutes.  That can come in a number of forms: An article that is 500 words or less, a two minute video, or a short web comic/zine.  The idea though is to ultimately give developers some channel with reasonable economics for staying 'generally informed'.  In the end, that's frequently what we want anyways: We can't know everything, we just need to know <em>enough</em> to know what it is, why it is, and that it is there when we're ready to learn more.  We'd like to be able to roughly understand it if it comes up. A maximum of 2 minutes per day, and almost certainly not even that much, seems... unintimidating and managable.</p>
-
-    <p>So, that's the idea.  We're still discussing many of the details about how to make this really 'click' in a bigger way: How to create as a sort of channel you can follow?  For now, it seems better to start with something simple and perhaps to begin to get feedback on the idea.  To this end, we'll post things with the hashtag #StandardsIn2Min, and others can too. If you see something fly by with the hashtag you can always find it again later on the twitter feed and, hopefully, expect that it will take no more than 2 minutes to consume.  However, we will also manage the Twitter account <a href="https://twitter.com/StandardsIn2Min" rel="nofollow">@StandardsIn2Min</a>, where we'll work to curate those hashtags too and create a manageable (honestly, probably slow) pace that never asks for more than two minutes of your attention in a day to keep up. Let us know what you think about the idea!</p>
-    
-
-    <p class="thanks-to">Thanks to the <a href="https://github.com/js-outreach/js-outreach-groups" rel="nofollow">educators group</a> for all of their help discussing and creating, and especially to <a href="https://twitter.com/laurieontech" rel="nofollow">Laurie Barth</a> and <a href="https://twitter.com/jorydotcom" rel="nofollow">Jory Burson</a> for helping get this post put together quickly!
-    </p>
 ]]></content:encoded>
         </item>
         <item>

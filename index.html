@@ -276,9 +276,16 @@ class ResponsiveDetails extends HTMLElement {
   }
   connectedCallback() {
     this.mql = window.matchMedia(`(min-width: ${this.getAttribute("open-after") || "1px" })`);
-    this.mql.addEventListener('change', () => {
-        this.checkForced()
-    })
+
+    if (this.mql.addEventListener) {
+        this.mql.addEventListener('change', () => {
+            this.checkForced()
+        })
+    } else {
+        this.mql.addListener(() => {
+            this.checkForced()
+        })
+    }
     requestAnimationFrame(() => this.checkForced())
   }
   constructor() {
@@ -709,6 +716,7 @@ America (art for sale)</a></li>
       }
     };
 
+  
   const template = document.createElement('template');
   template.innerHTML = `
   <style>
@@ -727,6 +735,8 @@ America (art for sale)</a></li>
     div[role="tablist"] {
       display: flex;
     }
+
+    
   </style>
 
   <div part="tablist" role="tablist">
@@ -798,13 +808,13 @@ America (art for sale)</a></li>
           tabs[i].setAttribute('selected', '');
           tabs[i].setAttribute('aria-selected', 'true');
           tabs[i].setAttribute('tabindex', '0');
-          panels[i].removeAttribute('hidden');
+          panels[i].removeAttribute('_hidden');
           this.value = tabs[i].textContent.trim();
         } else {
           tabs[i].removeAttribute('selected');
           tabs[i].setAttribute('aria-selected', 'false');
           tabs[i].setAttribute('tabindex', '-1');
-          panels[i].setAttribute('hidden', '');
+          panels[i].setAttribute('_hidden', '');
         }
 
         if (!tabs[i].id.startsWith('generic-tab-')) {
@@ -822,7 +832,7 @@ America (art for sale)</a></li>
     }
   }
 
-  customElements.define('generic-tabs', GenericTabs);
+  //customElements.define('generic-tabs', GenericTabs);
 
 }());
 
