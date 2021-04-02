@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<title>Matching behavior for :has</title>
+<style>
+  .car { color: gray; }
+</style>
+<style id="normalStylesheet" disabled="disabled">
+  .car { color: black; }
+  .car:nth-child(3n+2) { background-color: gray; }
+  .car:nth-child(3n+3) { background-color: yellow; }
+  [features*="power-windows"] { color: orange; }
+  [features*="bluetooth"] { color: purple; }
+</style>
+<style id="hasStylesheet">
+  .car { color: blue; }
+  .car:has([features*="windows"]) {
+    font-style: italic;
+  }
+  .car:has(.sale) {
+    font-weight: bold;
+  }
+  .car:has(.sale [id$="0"]) { 
+    background-color: blue; 
+  }
+  :has([features$="roof"]) {
+    border: 1px solid green;
+  }
+</style>
+<body>
+<p>
+  Below is a dynamically built DOM of list items with information about cars encoded in attributes. There are two stylesheets, both of which are disabled by default. One is a 'regular' stylesheet stripes rows with nth-child white, gray and yellow, and sets some (not very readable) font colors. The other is a stylesheet with some :has() rules.  Clicking the button will grab a starting timestamp and then toggle the regular stylesheet on and off 100 times in between animation frames, and then measure the average speed.  It will then do the same with the stylesheet containing the :has rules and report the results. Note that the second test includes all of the rules from the first test too.  <strong>This will cause rapid flashing, do not look at this test if you have some photosensitivity</strong>
+</p>
+<button id="go">Go</button>
+<output id="out"></output>
+<ul id="inventory">
+  <!-- we'll build a bunch of items that go here -->
+</ul>
+<script>
+  let normalEnabled = false
+  normalStylesheet.disabled = true
+  hasStylesheet.disabled = true
+  let range = new Range(), source = ''
+  for (let i=0;i<100;i++) {
+    source += `
+      <li class="car">
+        <div features="power-windows ${i%2 === 0 ? "bluetooth" : "sunroof"}" class=${i%2 === 0 ? "sale" : ""}>
+          Content About Car <span id="s${i}">${i}</span>
+        </div>
+      </li>`
+  }
+  inventory.appendChild(
+    range.createContextualFragment(source)
+  )
+
+  let start = performance.now()
+  let i = 0;
+  let standardToggle = () => {
+    normalStylesheet.disabled = !normalStylesheet.disabled 
+
+    if (i<100) {
+      i++
+      requestAnimationFrame(standardToggle)
+    } else {
+      out.innerHTML += `<div>standard average took ${(performance.now() - start) / 100}</div>`
+      i=0
+      start = performance.now()
+      hasToggle()
+    }
+  }
+
+  let hasToggle = () => {
+    hasStylesheet.disabled = !hasStylesheet.disabled 
+
+    if (i<100) {
+      i++
+      requestAnimationFrame(hasToggle)
+    } else {
+      out.innerHTML += `<div>has average took ${(performance.now() - start) / 100}</div>`
+    }
+  }
+  // how much time does it take to find the elements
+  // get their computed style and verify it is right?
+  
+  go.onclick = standardToggle
+</script>
+</body>

@@ -455,21 +455,27 @@ console.log(x.name) // Brian
       <p>Once you understand the above, the rest flows pretty naturally.  We get private methods that are pretty self explanitory:</p>
 
       <pre><code class="language-javascript">class Counter extends HTMLElement {
-    
+  #x = 0
+   
+  render() { this.innerHTML = this.#x; }  
+ 
   #handleClicked() {
-    // do complex internal work
+    ++this.#x;
+    this.render();
   }
 
   constructor() {
     super();
-    this.#handleClicked = this.#handleClicked.bind(this);
+    this.render();
   }
 
   connectedCallback() {  
-    this.addEventLister('onclick', this.#handleClicked)
+    this.addEventListener('click', this.#handleClicked);
   }
 
-}</code></pre>
+}
+
+customElements.define('x-counter', Counter);</code></pre>
     <p>and private static fields too...</p>
     <pre><code class="language-javascript">class Colors {
   static #red = "#ff0000";
