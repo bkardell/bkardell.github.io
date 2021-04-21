@@ -5,7 +5,7 @@
     <meta name="twitter:site" content="@briankardell">
     <meta name="twitter:creator" content="@briankardell">
     <meta name="twitter:title" content="Design Afforance Controls">
-    <meta name="twitter:description" content="We often use a single word to discuss &quot;controls&quot; (the actual word varies). This carries with it a basic premise that they are all somehow all &quot;the same&quot; and, I believe, has shaped ">
+    <meta name="twitter:description" content="We often use a single word (the actual word varies) to discuss &quot;controls&quot; . This, I believe, carries with it a fundamental assumption that they are all somehow all &quot;the same&quot; has s">
     <meta name="twitter:image" content="https://bkardell.com/media/desktop-site-April-2021.png">
     <meta name="monetization" content="$ilp.uphold.com/kKU4GXiRwhnf ">
 
@@ -384,7 +384,22 @@ America (art for sale)</a></li>
 </responsive-details>
     <main><div class="posted-on">Posted on null</div><article class="sectioning">
   <h1 class="contextual-heading">Design Afforance Controls</h1>
-  <p class="segue">We often use a single word to discuss "controls" (the actual word varies). This carries with it a basic premise that they are all somehow all "the same" and, I believe, has shaped how we think about them.  I'd like to explain why I have recently come to think that perhaps they aren't the same at all.  I'll suggest that some additional terminology to describe a few broad <em>classes</em> of controls, which I think could help us better discuss (and perhaps shape) them.</p>
+  <style>
+    .note {
+        background-color: rgba(255,255,0,0.24);
+        padding: 1rem;
+        font-style: italic;
+    }
+    .note::before {
+        content: 'Note';
+        font-size: 0.8rem;
+        background-color: black;
+        color: white;
+        padding: 0.25rem;
+        margin-right: 0.5rem;
+    }
+  </style>
+  <p class="segue">We often use a single word (the actual word varies) to discuss "controls" . This, I believe, carries with it a fundamental assumption that they are all somehow all "the same" has shaped how we think about them.  In this post I'll  explain why I have recently come to think that perhaps they aren't really quite the same at all.  I'll suggest that some additional terminology to describe a few broad <em>classes</em> of controls, which I think could help us better discuss (and perhaps shape) them.</p>
 
   <section class="sectioning">
     <h2 class="contextual-heading">What is a "control", exactly?</h2>
@@ -395,10 +410,10 @@ America (art for sale)</a></li>
 
     <ul>
       <li>They paint scroll bars and mouse/touch afforances</li>
-      <li>They might gain become user-sizable</li>
       <li>They become part of the sequential focus order. </li>
       <li>Standard keyboard control affordances for managing the scroll are added</li>
       <li>There are events and UI states to track.</li>
+      <li>They might gain an affordance to become user-sizable</li>
       <li>...and so on</li>
     </ul>
 
@@ -414,9 +429,9 @@ America (art for sale)</a></li>
   <section class="sectioning">
     <h2 class="contextual-heading">"Design Affordance Controls"</h2>
 
-    <p>I would like to argue that there are several other "common controls" (collapseable content, tabs, accordions, and trees are some examples) which have more in common with scrollable areas than they do with form controls, and that it would make sense for us to think about this.</p>
+    <p><em>I would like to argue that there are several other "common controls" (collapseable content, tabs, accordions are some examples) which have more in common with scrollable areas than they do with form controls, and that this might be worth careful consideration.</em></p>
 
-    <p>While these components aren't simply about "overflow" (they manage hiddenness and have ARIA roles), they seem to share a lot of other qualities with scroll containers:  </p>
+    <p>While these components aren't simply about "overflow" (they manage actual hiddenness and have ARIA roles), they do seem to share a lot of other qualities with scroll containers:  </p>
 
     <ul>
       <li>They can be (should be, I will argue) thought of, first and foremost, as <strong>natural, meaningful document content.</strong>.</li>
@@ -424,30 +439,47 @@ America (art for sale)</a></li>
       <li>Their interaction is not primary to the control, but <strong>secondary</strong>.</li>
     </ul>
 
-    <p>I will label these here as "Design Affordance Controls". HTML has <code>&lt;details&gt;</code> and <code>&lt;summary&gt;</code> elements which provide collapsible content. I will use it as an illustration of why I think this really  matters.</p>
+    <p>I will label these here as "Design Affordance Controls". To consider why this matters: HTML has <code>&lt;details&gt;</code> and <code>&lt;summary&gt;</code> elements which provide collapsible content. I will use it as an illustration for comparison.</p>
 
     <section class="sectioning">
       <h3 class="contextual-heading">What about print?</h3>
       <p>When you print a page containing input collection controls, what prints is the control, in its current state.  This is entirely unsuprising. What else could it do, really?</p>
 
-      <p>However, is this uniformly desirable?  I would suggest it is not true of any of the things I have labelled "Display Affordance Controls".  Just as with scrolling, it isn't a simple "Yes, always" or "No, never" - it is reasonable for an author to decide whether it should print as control-like or content-like.</p>
+      <p>However, is this uniformly desirable?  I would suggest it is not.  In fact, it is not universally true of any of the things I have labelled "Display Affordance Controls".  Just as with scrolling, it isn't a simple "Yes, always" or "No, never".  It is <em>reasonable</em> for an author to decide whether it should print as control-like or content-like.</p>
 
-      <p>Imagine that I built a a site about receipes. It has sections about the 'ingredients', 'instructions' and 'dietary information'.  I might like those to display on someone's screen as collapsable sections of the sort provided by   <code>&lt;details&gt;</code> and <code>&lt;summary&gt;</code> in order to provide a a nicer design and a set of affordances for a user to consume the content more easily.</p>
+      <p>To illustrate: Imagine that I built a a site about receipes. It has sections about the 'ingredients', 'instructions' and 'dietary information'.  I might like those to display on someone's screen as collapsable sections of the sort provided by   <code>&lt;details&gt;</code> and <code>&lt;summary&gt;</code> in order to provide a a nicer design and a set of affordances for a user to consume the content more easily.</p>
+ 
+      <figure class="captioned-image">
+        <img src="/media/dac-disclosures.png">
+        <figcaption>Receipes displayed with disclosure sections</figcaption>
+      </figure>
 
-      <p>But really, at the end of the day, it's just that: A convenience of design affordance.  If I printed it, don't I actually want to at least have the <em>ability</em> to print <em>all</em> of that content? With <code>&lt;details&gt;</code> and <code>&lt;summary&gt;</code>, I do not.  Their control-ness is hard-wired and fundamental.  This feels like a mistake.</p>
+      <p>But really, at the end of the day, it's just that: A convenience of design affordance.  As an author, in this case, I'd like it to print with all of the content, sans controls.</p>
 
-      <p>Relatedly, what about reader mode? Our current answers lose content - again, because of how this control treats "control-ness" as somehow fundamental... But it isn't.</p>
+      <figure class="captioned-image"> 
+        <img src="/media/dac-sections.png" style="max-width: 400px;">
+        <figcaption>Receipes as simple sections</figcaption>
+      </figure>
+
+      <p>But with <code>&lt;details&gt;</code> and <code>&lt;summary&gt;</code>, this is not an option.  Their control-ness is hard-wired and fundamental.  This feels like a mistake.</p>
     </section>
-      <section class="sectioning">
+    <section class="sectioning">
         <h3 class="contextual-heading">Interchangability?</h3>
-        <p>Unlike collection of input which wants to describe a single "right shape", there isn't really a "right" answer to which of the things I have labelled Design Affordance Controls we should use.  In the above example, one could easily and reasonably swap in several (maybe any) of them - and because it is in pursuit of design it even be desirable to even change our minds!</p>
+        <p>Unlike collection of input which wants to describe a single "right shape", there isn't really a "right" answer to which of the things I have labelled Design Affordance Controls we should use.  In the above example, one could easily and reasonably swap in several (maybe any) of them. Tabs, for example, are also a reasonable choice.</p>
 
-        <p>"Responsive Tabs" which allow for a control to be presented as either "tab-like" or "accordion-like" based on design constraints aren't uncommon.  Their existence helps illustrate that there are at least <em>reasons</em> to consider that this observation is relevant.</p>    
+        <figure class="captioned-image">
+          <img src="/media/dac-tabs.png">
+          <figcaption>Receipes displayed with sections as tabs</figcaption>
+        </figure>
+
+        <p>Because this is all <em>in pursuit of design</em> it might even be desirable to even change our minds!  "Responsive Tabs" which allow for a control to be presented as either "tab-like" or "accordion-like" based on design constraints aren't uncommon, and are an example of just this.  Their existence helps illustrate that there are at least <em>reasons</em> to consider that this observation is relevant.</p>   
+
+        <p>(<em>There is a <a href="#note-on-browser-tabs">Note about "browser tabs"</a> later</em>)</p>
     </section>
     <section class="sectioning">
       <h3 class="contextual-heading">UnControling?</h3>
 
-      <p>Even outside of print, as an author, the answer to whether I'd like something to even provide <code>&lt;details&gt;</code> and <code>&lt;summary&gt;</code> affordances vary based on the design.  This website is an example.</p> 
+      <p>Even outside of print, as an author, the answer to whether I'd like something to even provide <code>&lt;details&gt;</code> and <code>&lt;summary&gt;</code> affordances varies based on the design.  This website, in fact, is an example.</p> 
 
       <p>If your browser window is big enough, the left side of this website (as of this writing, at least) is a bunch of information about me.  It's not, very probably, <em>why</em> you're here. You didn't come to learn about me, you want to read the <code>&lt;main&gt;</code> content.  But, that's not a design problem either... In fact, I think that showing you both and making it easy for you to get that information without being overly distracting is a <em>feature</em> of the design.</p>
 
@@ -470,7 +502,7 @@ America (art for sale)</a></li>
       <p>Except... wait... is it? That's not how the API surface of <code>&lt;details&gt;</code> and <code>&lt;summary&gt;</code> work. At all.  I believe that's because of how we approached its design. I can't think of any precedent of a control that becomes... not a control.  I can, however, point to plenty of examples of "regular things" that can potentially gain afforances.</p>
     </section>
     <section class="sectioning">
-      <h3 class="contextual-heading">Enhancing</h3>
+      <h3 class="contextual-heading">Enhancing vs... Unenhancing?</h3>
 
       <p>Just as scrollbars "enhance" regular content with afforances, Progressive Enhancement does something similar.  That's useful to think about.</p>
 
@@ -484,9 +516,9 @@ America (art for sale)</a></li>
 
       <p>This exersize is potentially helpful in designing a new control like this for HTML itself too.  Until new controls are supported by every browser (and historically, that takes a long time), the situation is not dissimilar.</p>
 
-      <p>A more robust solution involves <em>enhancing</em> otherwise good and meaningful content with affordances, if that is possible and desirable.  In fact, this is precisely what several of the original PE examples/essays did. The essence of the element didn't change, only the afforances inside it did, and only if they could. They were perfectly good on their own and were careful to avoid the above kind of situation.</p>
+      <p>A more robust solution involves <em>enhancing</em> otherwise good and meaningful content (as you see in the print version above) with affordances, if that is both possible and desirable.  In fact, this is precisely what several of the original PE examples/essays did. The essence of the element didn't change, only the afforances inside it did, and only if they could. They were perfectly good on their own and were careful to avoid the above kind of situation.</p>
 
-      <p>But <code>&lt;details&gt;</code> and <code>&lt;summary&gt;</code> were just unknown elements (effectively, <code>&lt;spans&gt;</code>s). They ran together stylistically, and they had no useful meaning to AT either. If we had thought of these as "Design Afforances" which <em>could</em> appear on a <code>&lt;section&gt;</code>, how much better would that have been in the interim?</p>
+      <p>But <code>&lt;details&gt;</code> and <code>&lt;summary&gt;</code> were not that.  They were just unknown elements (effectively, <code>&lt;spans&gt;</code>s). They ran together stylistically, and they had no useful meaning to AT either. If we had thought of these as "Design Afforances" which <em>could</em> appear on a <code>&lt;section&gt;</code>, how much better would that have been in the interim?</p>
     </section>
 
     <section class="sectioning">
@@ -495,20 +527,27 @@ America (art for sale)</a></li>
 
       <p>I feel like these offer further evidence their UI affordances are necessarily secondary and not fundamental.</p>
     </section>
-
+    <section class="note sectioning" id="note-on-browser-tabs">
+      <h3 class="contextual-heading">A Quick Note on "Browser Tabs"</h3>
+      <p>Lots of interfaces that we use have things we'd all refer to in polite conversation as "Tabs".  These are used as examples that confound a lot of conversations and take them in many directions. It's never the case, for example, that one would "print all the open tabs" or "view them all in a sequence".  In fact, one could reply to many of the things I've written here with "...but, browser tabs...".</p>
+      <p>It's important to note that while we refer to all of these things as "tabs", most UI toolkits have entirely separate classes of "tab-like" things with independent names.  The fundamental distinction being that one of those kinds of tabs (the kind in browsers, chat clients, editors and so on) are actually managing <em>windows</em>, and the other kind is managing <em>panels of content in a window</em>.  On the web, our model is documents. But, there is an easy  to imagine parallel with embedded documents.  That is, one could perhaps make tabs out of <code>&lt;section&gt;</code>s, or perhaps out of <code>&lt;iframe&gt;</code>s. These would have roughly the same kinds of boundaries as toolkits, but (even from a user's POV) actually different expectations on several of the things noted in this post.</p>
+    </section> 
     
     <section class="sectioning">
-      <h3 class="contextual-heading">How this might shape the way we look at things</h3>
+      <h3 class="contextual-heading">Conclusions?</h3>
+      <p>This post isn't actually intended to present a "solution" as much as it is to provide food for thought about how we shape the conversations as we design new things for HTML.  Perhaps even toward helping shape answers to some long open questions.  Even something as simple as "what is an accordion" remains, believe it or not, just a bit elusive in some important ways that even the ARIA Practices Guide (APG) itself has struggled with. Perhaps this line of thinking and discussion is helpful to that.</p>
 
-      <p>If we approached designing this class of controls differently, with these things in mind, I expect that we'd design something very different than if we did so without them in mind. My own feedback on <code>&lt;details&gt;</code> and <code>&lt;summary&gt;</code>, were they developing today, would be quite different.</p>
+      <p>In truth, it's probably not even this cut and dry. It seems there is very probably a small <em>spectrum</em> of classes of controls and concerns here that are worth thinking about carefully -- but we can't really do that unless we start talking about it somewhere.</p>
 
-      <p>I'd like to say that I have a whole proposal about how this might work and be employed "in practice", but I don't.  This post isn't intended to present a "solution" as much as it is "food for thought about how we shape the conversations and designs".  I expect that actually even just <em>asking</em> these questions could be helpful all along the way, even to conversations happening today: <em>What has changed?</em>. Even something as simple as "what is an accordion" remains, believe it or not, just a bit elusive in some important ways that even the ARIA Practices Guide (APG) itself has struggled with. Perhaps this line of thinking is helpful to that.</p>
+      <p>What would this mean in practical terms?  I'm not sure really.  I'm currently working with lots of folks in OpenUI on trying to introduce some of these things - Will, or can we incorporate any of this thought into those? I'm not sure yet.  Maybe?</p>
 
-      <p>I can't help but think that new questions would be necessarily asked in this light. In OpenUI, for example, we want to introduce new controls... Can we incorporate any of this thought into those?  I think so, but only if we think about it now.  Are there things to learn from modern UI kits and how they employ common subclasses and mixins? Maybe? Is their control-ness <em>fundamental</em> or secondary?  It's tempting to kind of think of something like <code>input</code>'s <code>type</code> attribute here - but it's not quite that either (which is good, because that is rife with issues -- see Monica's 
-        <a href="https://vimeo.com/176453149">Input I &lt;3 you, but you're bringing me down.</a> for a rough sense of them).</p>
+      <p>It's tempting to kind of think of something like <code>input</code>'s <code>type</code> attribute here - but it's not quite that either (which is good, because that is rife with issues -- see Monica's 
+        <a href="https://vimeo.com/176453149">Input I &lt;3 you, but you're bringing me down.</a> for a rough sense of them).</p>.
 
-        <p>I feel like this is an area ripe for serious R&amp;D, study and discussion, and I'd love to hear your thoughts.</p>
+      <p>Honestly, I'd love to hear your thoughts. I feel like this is an area ripe for serious R&amp;D, study and discussion.</p>
+
     </section>
+    <p class="thanksTo">Special thanks to several friends for proofing/commenting on this as it developed ** alice? jon? mia? eric? dave? **.</p>
 </section></article></main>
 
   
