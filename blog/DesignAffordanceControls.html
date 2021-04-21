@@ -5,7 +5,7 @@
     <meta name="twitter:site" content="@briankardell">
     <meta name="twitter:creator" content="@briankardell">
     <meta name="twitter:title" content="Design Afforance Controls">
-    <meta name="twitter:description" content="We often use a single word (the actual word varies) to discuss &quot;controls&quot; . This, I believe, carries with it a fundamental assumption that they are all somehow all &quot;the same,&quot; and ">
+    <meta name="twitter:description" content="We often use a single word (the actual word varies) to discuss &quot;controls&quot; . This, I believe, carries with it a fundamental assumption that they are all somehow &quot;the same,&quot; and that">
     <meta name="twitter:image" content="https://bkardell.com/media/desktop-site-April-2021.png">
     <meta name="monetization" content="$ilp.uphold.com/kKU4GXiRwhnf ">
 
@@ -399,7 +399,7 @@ America (art for sale)</a></li>
         margin-right: 0.5rem;
     }
   </style>
-  <p class="segue">We often use a single word (the actual word varies) to discuss "controls" . This, I believe, carries with it a fundamental assumption that they are all somehow all "the same," and that has shaped how we think about them.  In this post I'll  explain why I have recently come to think that perhaps they aren't really quite the same at all.  I'll suggest that some additional terminology to describe a few broad <em>classes</em> of controls, which I think could help us better discuss (and perhaps shape) them.</p>
+  <p class="segue">We often use a single word (the actual word varies) to discuss "controls" . This, I believe, carries with it a fundamental assumption that they are all somehow "the same," and that has shaped how we think about them.  In this post I'll  explain why I have recently come to think that perhaps they aren't really quite the same at all.  I'll suggest that some additional terminology to describe a few broad <em>classes</em> of controls, which I think could help us better discuss (and perhaps shape) them.</p>
 
   <section class="sectioning">
     <h2 class="contextual-heading">What is a "control", exactly?</h2>
@@ -537,12 +537,10 @@ America (art for sale)</a></li>
       <h3 class="contextual-heading">Conclusions?</h3>
       <p>This post isn't actually intended to present a "solution" as much as it is to provide food for thought about how we shape the conversations as we design new things for HTML.  Perhaps even toward helping shape answers to some long open questions.  Even something as simple as "what is an accordion" remains, believe it or not, just a bit elusive in some important ways that even the ARIA Practices Guide (APG) itself has struggled with. Perhaps this line of thinking and discussion is helpful to that.</p>
 
-      <p>In truth, it's probably not even this cut and dry. It seems there is very probably a small <em>spectrum</em> of classes of controls and concerns here that are worth thinking about carefully -- but we can't really do that unless we start talking about it somewhere.</p>
+      <p>In truth, it's probably not even this cut and dry. As I said: These controls aren't exactly like scrollbars either. I'm definitely not suggesting we should just match that either.  It's tempting to kind of think of something like <code>input</code>'s <code>type</code> attribute here - but it's not quite that either (which is good, because that is rife with issues -- see Monica's 
+        <a href="https://vimeo.com/176453149">Input I &lt;3 you, but you're bringing me down.</a> for a rough sense of them).</p>.  Instead, it seems there is very probably a small <em>spectrum</em> of "classes of controls and concerns" here that are worth thinking about carefully as we are designing that.   But we can't really do that unless we start talking about it somewhere.  Starting that conversation is my hope here.<p></p>
 
-      <p>What would this mean in practical terms?  I'm not sure really.  I'm currently working with lots of folks in OpenUI on trying to introduce some of these things - Will, or can we incorporate any of this thought into those? I'm not sure yet.  Maybe?</p>
-
-      <p>It's tempting to kind of think of something like <code>input</code>'s <code>type</code> attribute here - but it's not quite that either (which is good, because that is rife with issues -- see Monica's 
-        <a href="https://vimeo.com/176453149">Input I &lt;3 you, but you're bringing me down.</a> for a rough sense of them).</p>.
+      <p>I'm currently working with lots of folks in OpenUI on trying to introduce some of these controls and I'm hopeful that we can incorporate these thoughts into our discussions there.  While it needs a lot more to be fleshed out, there is a version of this that I can imagine that very closely resembles a proposal from Ian Hixon from long ago that provided a wrapper element around otherwise good, sectioned content and would have offered minimal affordances (like grouping the headings as "tabs") and state management.  There is a lot that appeals to me about that kind of approach and could play well here.  A few of us have also been working on creating a custom element along similar lines and can be sections, "tab-like" or "accordion-like".</p>
 
       <p>Honestly, I'd love to hear your thoughts. I feel like this is an area ripe for serious R&amp;D, study and discussion.</p>
 
