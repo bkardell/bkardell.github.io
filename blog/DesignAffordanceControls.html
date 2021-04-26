@@ -409,7 +409,7 @@ America (art for sale)</a></li>
     <p>However, consider this: Many UI toolkits outside the web have, at some point, explicitly defined some kind of control which could be described as "a container with scrollbars". In a way, this makes sense: When something is scrollable, there are several UI implications:</p>
 
     <ul>
-      <li>They paint scroll bars and mouse/touch afforances</li>
+      <li>They paint scroll bars and mouse/touch affordances</li>
       <li>They become part of the sequential focus order. </li>
       <li>Standard keyboard control affordances for managing the scroll are added</li>
       <li>There are events and UI states to track.</li>
@@ -429,7 +429,7 @@ America (art for sale)</a></li>
   <section class="sectioning">
     <h2 class="contextual-heading">"Design Affordance Controls"</h2>
 
-    <p><em>I would like to argue that there are several other "common controls" (collapsable content, tabs and accordions are some examples) which have more in common with scrollable areas than they do with form controls, and that this might be worth careful consideration.</em></p>
+    <p><em>I would like to argue that there are several other "common controls" (collapsible content, tabs and accordions are some examples) which have more in common with scrollable areas than they do with form controls, and that this might be worth careful consideration.</em></p>
 
     <p>While these components aren't simply about "overflow" (they manage actual hiddenness and have ARIA roles), they do seem to share a lot of other qualities with scroll containers:  </p>
 
@@ -447,11 +447,11 @@ America (art for sale)</a></li>
 
       <p>However, is this uniformly desirable?  I would suggest it is not.  In fact, it is not universally true of any of the things I have labelled "Display Affordance Controls".  Just as with scrolling, there isn't a simple "Yes, always" or "No, never" to the question of whether it should be content-like, or control like..  It is <em>reasonable</em> for an author to decide whether it should print either way.</p>
 
-      <p>To illustrate: Imagine that I built a a site about receipes. It has sections about the 'ingredients', 'instructions' and 'dietary information'.  I might like those to display on someone's screen as collapsable sections of the sort provided by   <code>&lt;details&gt;</code> and <code>&lt;summary&gt;</code> in order to provide a a nicer design and a set of affordances for a user to consume the content more easily.</p>
+      <p>To illustrate: Imagine that I built a a site about recipes. It has sections about the 'ingredients', 'instructions' and 'dietary information'.  I might like those to display on someone's screen as collapsible sections of the sort provided by   <code>&lt;details&gt;</code> and <code>&lt;summary&gt;</code> in order to provide a a nicer design and a set of affordances for a user to consume the content more easily.</p>
  
       <figure class="captioned-image">
         <img src="/media/dac-disclosures.png">
-        <figcaption>Receipes displayed with disclosure sections</figcaption>
+        <figcaption>Recipes displayed with disclosure sections</figcaption>
       </figure>
 
       <p>But really, at the end of the day, it's just that: A convenience of design affordance.  As an author, in this case, I'd like it to print with all of the content, sans controls.</p>
@@ -464,12 +464,12 @@ America (art for sale)</a></li>
       <p>With <code>&lt;details&gt;</code> and <code>&lt;summary&gt;</code>, this is not an option.  Their control-ness is hard-wired and fundamental.  This feels like a mistake.</p>
     </section>
     <section class="sectioning">
-        <h3 class="contextual-heading">Interchangability?</h3>
+        <h3 class="contextual-heading">Interchangeability?</h3>
         <p>Unlike the collection of input which wants to describe a single "right shape", there isn't really a "right" answer to which of the things I have labelled Design Affordance Controls we should use.  In the above example, one could easily and reasonably swap in several (maybe any) of them. Tabs, for example, are also a reasonable choice.</p>
 
         <figure class="captioned-image">
           <img src="/media/dac-tabs.png">
-          <figcaption>Receipes displayed with sections as tabs</figcaption>
+          <figcaption>Recipes displayed with sections as tabs</figcaption>
         </figure>
 
         <p>Because this is all <em>in pursuit of design</em>, it might even be desirable to even change our minds!  "Responsive Tabs" which allow for a control to be presented as either "tab-like" or "accordion-like" based on design constraints aren't uncommon, and are an example of just this.  Their existence helps illustrate that there are at least <em>reasons</em> to consider that this observation is relevant.</p>   
@@ -504,9 +504,9 @@ America (art for sale)</a></li>
     <section class="sectioning">
       <h3 class="contextual-heading">Enhancing vs... Unenhancing?</h3>
 
-      <p>Just as scrollbars "enhance" regular content with afforances, Progressive Enhancement does something similar.  That's useful to think about.</p>
+      <p>Just as scrollbars "enhance" regular content with affordances, Progressive Enhancement does something similar.  That's useful to think about.</p>
 
-      <p>Assuming that content should be meaningful and non-interactive to start is a good exersise, generally.  <a href="https://www.smashingmagazine.com/2016/05/developing-dependency-awareness/">Any of a myriad of problems can get in the way</a> and if markup and styling implies something is interactive, but it doesn't wind up being so, users are left in one of two bad states:
+      <p>Assuming that content should be meaningful and non-interactive to start is a good exercise, generally.  <a href="https://www.smashingmagazine.com/2016/05/developing-dependency-awareness/">Any of a myriad of problems can get in the way</a> and if markup and styling implies something is interactive, but it doesn't wind up being so, users are left in one of two bad states:
       </p>
 
       <ul>
@@ -514,11 +514,11 @@ America (art for sale)</a></li>
         <li>(much worse) a UI which seems to imply there is content (which their is) which the user  should be able to expand, but frustratingly cannot.</li>
       </ul>
 
-      <p>This exersise is also potentially helpful in designing a new control like this for HTML itself.  Until new controls are supported by every browser (and historically, that takes a long time), the situation is not dissimilar.</p>
+      <p>This exercise is also potentially helpful in designing a new control like this for HTML itself.  Until new controls are supported by every browser (and historically, that takes a long time), the situation is not dissimilar.</p>
 
       <p>A more robust solution involves <em>enhancing</em> otherwise good and meaningful content (as you see in the print version above) with affordances, if that is both possible and desirable.  In fact, this is precisely what several of the original PE examples/essays did. The essence of the element didn't change, only the affordances inside it did, and only if they could. They were perfectly good on their own, and were careful to avoid the above kind of situation.</p>
 
-      <p>But <code>&lt;details&gt;</code> and <code>&lt;summary&gt;</code> were not that.  They were just unknown elements (effectively, <code>&lt;spans&gt;</code>s). They ran together stylistically, and they had no useful meaning to assistive technolgoy either. If we had thought of these as "Design Affordances" which <em>could</em> appear on a <code>&lt;section&gt;</code>, how much better would that have been in the interim?</p>
+      <p>But <code>&lt;details&gt;</code> and <code>&lt;summary&gt;</code> were not that.  They were just unknown elements (effectively, <code>&lt;spans&gt;</code>s). They ran together stylistically, and they had no useful meaning to assistive technology either. If we had thought of these as "Design Affordances" which <em>could</em> appear on a <code>&lt;section&gt;</code>, how much better would that have been in the interim?</p>
     </section>
 
     <section class="sectioning">
