@@ -1,0 +1,473 @@
+<html lang="en" resource-type="blogpost"><head>  
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@briankardell">
+    <meta name="twitter:creator" content="@briankardell">
+    <meta name="twitter:title" content="Can I :has()">
+    <meta name="twitter:description" content="As you might know, my company (Igalia) works on all of the web engines and we contribute a lot.  I'm very proud of all of the things we're able to do to improve both the features o">
+    
+    <meta name="monetization" content="$ilp.uphold.com/kKU4GXiRwhnf ">
+
+    <link rel="alternate" type="application/rss+xml" href="https://bkardell.com/blog/feed.rss" title="bkardell.com/blog rss feed">
+    <title>Can I :has()</title> 
+    <style>.captioned-image {
+    background-color: #eaeaea;
+    display: block;
+    overflow: hidden;
+    padding: 1rem;
+    text-align: center;
+    font-style: italic;
+}
+
+.captioned-image.p-attached {
+    width: 40%;
+    display: inline-block;
+    margin: 0 1rem 2rem 1rem;
+}
+
+section > .captioned-image.p-attached {
+    margin-top: 1.5rem; /* correct for heading size*/
+}
+
+ pre { overflow-x: auto }
+
+.captioned-image.p-attached.p-attached-left {
+    float: left;
+}
+
+.captioned-image.p-attached.p-attached-right {
+    float: right;
+}
+
+.captioned-image.p-attached + * + * {
+    clear: both;
+    margin-top: 2rem;
+}
+
+
+.captioned-image img, .captioned-image video {
+    display: block;
+    max-width: 100%;
+    margin: 0 auto 1em auto;
+}
+.source {
+    font-style: italic;
+}
+body {
+    display: grid;
+    grid-template-columns: 25rem auto;
+    font: 1.1rem "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-weight: 400;
+    line-height: 1.625;
+    margin: 0;
+}
+h1 { margin: 0.5rem; }
+code-format {
+    border-left: 0.5rem solid rgba(123,115,209,0.35);
+    display: block;
+    padding: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+contextual-heading {
+    display: block;
+    margin-top: 2rem;
+}
+
+h1, [aria-level="1"] {
+    color: #43686b;
+    font-size: 1.45rem;
+}
+
+h2, [aria-level="2"] {
+    color: #856363;
+    font-size: 1.35rem;
+}
+
+h3, [aria-level="3"] {
+    color: #856363;
+    font-size: 1.25rem;
+}
+
+h4, [aria-level="4"] {
+    color: #856363;
+    font-size: 1.2rem;
+}
+
+h5, h6, [aria-level="5"], [aria-level="6"] {
+    color: #667496;
+    font-size: 1.2rem;
+    font-weight: bolder;
+}
+
+.posted-on {
+    font-style: italic;
+    font-size: 0.8rem; 
+    text-align: right;
+    margin-bottom: 1rem;
+}
+
+ul, li {
+    margin: 0.5rem;
+    text-align: left;
+}
+
+responsive-details {
+    height: 100%;
+    padding-top: 1rem;
+    padding-right: 0;
+    background-color: #fbf5e9; 
+    display: block;
+    background-image: linear-gradient(to right, #dde0e8 , #ffffff);
+}
+
+.tagline {
+    font-style: italic;
+    text-align: center;
+}
+
+[tag-esc] {
+    color: maroon;
+    font-family: Courier, "Lucida Console", monospace;
+}
+
+[tag-esc]::before {
+    content: '<';
+}
+
+[tag-esc]::after {
+    content: '>';
+}
+
+main {
+    min-width: 50%;
+    width: 80%;
+    padding: 1rem;
+}
+header .title {
+    background-color: rgba(123,115,209,0.35);
+    padding: 0.3rem;
+    padding-left: 0.25rem;
+    font-weight: bolder;
+    font-size: 1rem;
+    border-left: 1rem solid #999298;
+}
+
+header .profile {
+    width: 50%;
+    margin: 1rem 25%;
+}
+
+header .title + nav {
+    font-size: 0.9rem;
+}
+
+header .blurb {
+    font-size: 0.9rem;
+    text-align: center;
+}
+header .name {
+    text-align: center;
+    font-size: xx-large;
+}
+.segue {
+    font-style: italic;
+}
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  border: 0;
+}
+
+#aboutMeToggle {
+    display: none;
+}
+
+[for="aboutMeToggle"] {
+    display: none;
+}
+
+main article { max-width: 100em; margin: auto; }
+/* this needs rethinking, it wants a selector like 'not flow content' */
+article>*:not(contextual-heading,a), section>*:not(contextual-heading,a) {
+    margin-left: 0.45rem;
+}
+
+blockquote {
+  font-family: serif;
+  background: #f9f9f9;
+  border-left: 10px solid #ccc;
+  margin: 1.5em 10px;
+  padding: 0.5em 10px;
+}
+blockquote:before {
+  color: #ccc;
+  content: open-quote;
+  font-size: 2em;
+  line-height: 0.1em;
+  margin-right: 0.25em;
+  vertical-align: -0.4em;
+}
+
+blockquote:after {
+  color: #ccc;
+  content: close-quote;
+  font-size: 2em;
+  line-height: 0.1em;
+  margin-left: 0.25em;
+  vertical-align: -0.4em;
+}
+
+
+@media (max-width: 800px){
+    body {
+        grid-template-columns: 1fr;
+    }
+    responsive-details {
+        height: auto;
+        border-bottom: 1px solid #afafff;
+    } 
+
+    main { width: 95%; margin: 0 auto;}
+
+    .captioned-image.p-attached {
+        width: 100%;
+        margin: 1rem 0;
+    }
+
+    .captioned-image.p-attached.p-attached-left,
+    .captioned-image.p-attached.p-attached-right {
+        float: none;
+    }
+
+    #aboutMeToggle {
+        display: block;
+        background-color: #675e5e;
+        color: white;
+        padding: 0.25rem;
+        padding-left: 0.5rem;
+        border-left: 1rem solid black;
+    }
+
+    header li { display: inline; margin-left: -0.5em; }
+    header .blurb li::after { content: '; '; }
+    header  nav li {
+        display: inline-block;
+        margin-left: 0.35rem;
+        margin-right: 0.35rem;
+    }
+    header .title {
+        width: 100%;
+    }
+    main li .source { display: block; }
+
+}</style>
+    <style>
+      .captioned-image { font-size: 0.9rem; }
+      .thanksTo { font-style: italic; font-size: 0.8rem; }
+    </style>
+    <script>
+      var activateOptional = function (media) {
+        var source = media.getAttribute('data-src'),
+            temp,
+            container = media.parentElement;
+
+          if (media.nextSibling && media.nextSibling.matches) {
+            if (media.nextSibling.matches('.clickToSee')) {
+              media.parentElement.removeChild(media.nextSibling);
+            }
+          }
+ 
+          if (media.tagName === 'VIDEO') {
+            temp = document.createElement('video')
+            temp.setAttribute('autoplay','')
+            temp.setAttribute('controls','')
+            temp.setAttribute('loop','')
+            temp.innerHTML = '<source src="' + source + '.webm" type="video/webm">'
+                    + '<source src="' + source + '.mp4" type="video/mp4">';
+            media.parentElement.replaceChild(temp, media);
+            setTimeout(function () {
+              temp.play()
+            }, 0);
+          } else {
+            media.src = media.getAttribute('data-src');
+          }
+
+          container.classList.add('active');
+      }
+    </script>
+  </head>
+  <body>
+    <script>
+class ResponsiveDetails extends HTMLElement {
+  
+  checkForced() {
+      let details = this.querySelector('details')
+        if (this.mql.matches) {
+          details.setAttribute('open','')
+        } else {
+          details.removeAttribute('open')
+        }
+  }
+  connectedCallback() {
+    this.mql = window.matchMedia(`(min-width: ${this.getAttribute("open-after") || "1px" })`);
+
+    if (this.mql.addEventListener) {
+        this.mql.addEventListener('change', () => {
+            this.checkForced()
+        })
+    } else {
+        this.mql.addListener(() => {
+            this.checkForced()
+        })
+    }
+    requestAnimationFrame(() => this.checkForced())
+  }
+  constructor() {
+    super()
+    this.attachShadow({mode: "open"})
+    this.shadowRoot.innerHTML = `<slot></slot>`
+    let slot = this.shadowRoot.firstElementChild;
+    slot.addEventListener('slotchange', ()=> this.checkForced)          
+
+  }
+}                         
+
+customElements.define('responsive-details', ResponsiveDetails)
+</script>
+
+<responsive-details open-after="800px">
+<details open="">
+<summary id="aboutMeToggle">Author Information</summary>
+
+<header>
+    <div class="name">
+        Brian Kardell
+    </div>
+    <img class="profile" src="/profile.jpg" alt="">
+    <div class="tagline"><a href="/">Betterifying the Web</a></div>
+    <div class="blurb">
+        <ul>
+            <li>Developer Advocate at Igalia</li>
+            <li>Original Co-author/Co-signer of The Extensible Web Manifesto</li>
+            <li>Co-Founder/Chair, W3C Extensible Web CG</li>
+            <li>Member, W3C (OpenJS Foundation)</li>
+            <li>Co-author of HitchJS</li>
+            <li>Blogger</li>
+            <li>Art, Science &amp; History Lover</li>
+            <li>Standards Geek</li>
+        </ul>
+    </div>
+    <div class="title">Follow Me On...</div>
+    <nav>
+        <ul>
+            <li><a rel="me" href="https://briankardell.wordpress.com">Wordpress</a></li>
+            <li><a rel="me" href="https://medium.com/@briankardell">Medium</a></li>
+            <li><a rel="me" href="https://twitter.com/briankardell">Twitter</a></li>
+            <li><a rel="me" href="https://github.com/bkardell/">Github</a></li>
+            <li><a rel="me" href="https://codepen.io/bkardell">Codepen</a></li>
+            <li><a rel="me" href="https://www.linkedin.com/in/brian-kardell-08a4264">LinkedIn</a></li>
+            <li><a rel="me" href="https://www.instagram.com/kardellbrian">Instagram (for
+art)</a></li>
+            <li><a rel="me" href="http://fineartamerica.com/profiles/brian-kardell?">Fine Art
+America (art for sale)</a></li>
+        </ul>
+    </nav>
+</header>
+</details>
+</responsive-details>
+    <main><div class="posted-on">Posted on null</div><article class="sectioning">
+  <h1 class="contextual-heading">Can I <code>:has()</code></h1>
+  <script src="../prism.js"></script>
+    <link rel="stylesheet" href="../prism.css">
+<p class="segue">As you might know, my company (Igalia) works on all of the web engines and we contribute a lot.  I'm very proud of all of the things we're able to do to improve both the features of the web platform, and the overall health of this commons.  I'm especially pleased when this lets us tackle historically hard problems.  A very incomplete list of things with some historical challenges that we've helped move in important ways the past few years would include: CSS Grid, MathML, JavaScript Class features, hardware accelerated SVGs and Container Queries.  Today I'll be telling you about another one we're working on.</p> 
+
+<p>Today we're filing an intent to prototype, tackling yet another historically hard problem for the web: The <code>:has()</code> selector.  In this post, I'd like to explain what this intent means, why it matters, where it comes from and why I am very excited about it.</p>
+
+<section class="sectioning">
+  <h2 class="contextual-heading"><code>:has()</code> for the unfamilliar</h2>
+
+<p>When you write a CSS rule, the <em>last</em>  (right-most) bit of the selector is the thing that you're styling. We call that the "subject" of the rule.  Most people writing CSS have, at some point, found themselves wanting to style something <em>based on what is inside it</em>.  You might have heard people talk about wanting "a parent selector" or an "ancestor combinator". <code>:has()</code> is that - basically.</p>
+
+<pre><code class="language-css">/* style an .x that contains a .y - not the .y */ 
+.x:has(.y) { ... }
+</code></pre>
+</section>
+
+<section class="sectioning">
+<h2 class="contextual-heading">The long history of postponed <code>:has</code></h2>
+
+<p>The basic reasons to desire such powers are pretty obvious. Powerful selection ability greatly enables a real separation of concerns.  This fact wasn't lost on anyone.  XPath allowed it, and CSS specifications since the late 1990's have tried.  </p>
+
+<p>In fact, a lot of people learned about <code>:has()</code> first through jQuery.  That's because when John Resig wrote it he wanted it to support all of the ""new CSS 3 selectors" - and <code>:has()</code> was one of them. It was in the spec.  The trouble, of course, is that no one actually knows what will gain implementations and reach recommendations at the start of the process - and <code>:has()</code> didn't, and was postponed again to Selectors Level 4. The first draft of Selectors Level 4 was <a href="https://www.w3.org/TR/2011/WD-selectors4-20110929/">published in 2011</a>.  Every year this remains among the top 2-3 most requested features and every so often someone (frequently me) brings it up again. </p>
+</section>
+
+<section class="sectioning">
+  <h2 class="contextual-heading">Why the hold up?</h2>
+
+<p>Primarily, even without <code>:has()</code> it's pretty hard to live up to performance guarantees of CSS, where everything continue to evaluate and render "live" at 60fps.  If you think, mathematically, about just how much work is conceptually involved in applying hundreds or thousands of rules as the DOM changes (including as it is parsing), it's quite a feat as is.</p>
+
+<p>Engines have figured out how to optimize this based on clever patterns and observations that avoid the work that is conceptually necessary - and a lot of that is sort of based on these subject invariants that <code>has()</code> would appear to throw to the wind.</p>
+
+<p>At the same time, there are plenty of aspects of this problem that are considerably easier than others.  CSS engines for print, for example support <code>:has()</code> because they don't need to run at 60fps.  DOM APIs like <code>querySelector()</code> / <code>querySelectorAll()</code> / <code>matches()</code> also check at a very specific point in time in a completely different manner - it's very doable there, as jQuery showed.  </p>
+
+<p>Or, there are limits that we could potentially place on this selector that might help a little.  Or, there are things like <code>:focus-within</code> or <code>:empty</code> which seem similar, but internally, are very specifically easier - but very incomplete.</p>
+
+<p>And so, for the last decade this comes up once or twice a year as we try to find some way forward. In the end, we ultimately sort of go around in circles: It's impossible to make decisions and progress while everything is in limbo.  We don't really know what the options are, and its hard for anyone to take up trying to imagine a way forward.   As we've seen with some other things, like Container Queries, this is also somewhat of a vicious cycle:  The more it comes up, and the more it is discussed without ultimate progress of any real kind, the less likely it is that anyone actually wants to talk about it again.  </p>
+
+<p>We need prototyping, exploration, data we can point to and more concrete things we can discuss - but the longer it goes on, the more hopeless it looks and the less likely anyone is to do it.</p>
+</section>
+
+<section class="sectioning">
+<h2 class="contextual-heading">eyeo, Igalia and prototypes</h2>
+
+<p>Igalia works on all of the web engines, and with lots of of consumers of those engines to expand investment in this wonderful commons.  eyeo makes a number of product like the Adblock Browser and Adblock Plus.  They, like a ton of useful things from reader mode to search use rules and heuristics to make sense of DOM.  The trouble, of course, is that having no native solutions for some of these hard problems causes everyone to have to deal with it themselves.  So, eyeo approached us about sponsoring work, research and prototyping on some things - among them <code>:has()</code>.  Can we get past these impasses somehow and make progress on this one?  What does that look like? Can it possibly conceivably work in the main 60fps CSS?  If not, can we provide some research and data that allows other paths like support in the JavaScript DOM methods, or a static profile?</p>
+
+<p>For the past little while, Igalia engineers have been looking into this problem. We've been having discussions with Chromium developers, looking into Firefox and WebKit codebases and doing some initial protypes and tests to really get our heads around it.  Through this, we've provided <a href="https://css-has.glitch.me/">lots of data about performance of what we have already</a> and where we believe challenges and possibilities lie.  We've begun sketching out an <a href="https://github.com/Igalia/explainers/tree/main/css/has">explainer</a> with all of our design notes and questions linked up - so it's all there in the open for people to review as we attempt to open this discussion.</p>
+</section>
+
+<section class="sectioning">
+<h2 class="contextual-heading">Today's intent</h2>
+
+<p>The meaning of "intents" have been occasionally difficult for the larger community to understand in the same way, so I wanted to take a moment to suggest how to interpret it:  With today's intent, we're simply stating that we feel that we have gathered enough information and data on this that we feel like we're ready to share it for wider review and discussion, productively. We believe that the data suggests that it seems at least plausible to carry on with discussions around supporting a (partially limited) form of <code>:has</code> in the main, live CSS.  We would like for data, designs and limits to be discussed fairly concretely.  We would like like to carry forward with additional, concrete implementation prototyping and continue to help sort out a path forward.</p></section>
+</article></main>
+
+  
+    
+
+  <script>
+    Array.prototype.slice.call(document.querySelectorAll('.optional [data-src]')).forEach(function (optional) {
+      var prefs = window.localStorage.downloadsPrefs,
+          clickToSee;
+      if (prefs === 'true') {
+        activateOptional(optional);
+      } else {
+        clickToSee = document.createElement('div');
+        clickToSee.classList.add('clickToSee')
+        clickToSee.innerHTML = '<button>Click to see media</button>';
+        clickToSee.style.textAlign = 'center';
+        clickToSee.style.border = 'none';
+        optional.parentElement.insertBefore(clickToSee, optional.nextSibling);
+        clickToSee.firstElementChild.addEventListener('click', function () {
+          activateOptional(optional);
+        })
+      }
+
+    })
+  </script>
+
+</body><!-- script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-88027178-1', 'auto');
+    ga('send', 'pageview');
+  </script --></html>
