@@ -1,0 +1,545 @@
+<html lang="en" resource-type="blogpost"><head>  
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@briankardell">
+    <meta name="twitter:creator" content="@briankardell">
+    <meta name="twitter:title" content="Why I'm hella excited about OffscreenCanvas">
+    <meta name="twitter:description" content="My friend and co-worker at Igalia Chris Lord has been working on OffscreenCanvas in WebKit and I'm (almost unreasonably) excited about it for so many reasons.    In this post, I'll">
+    
+    <meta name="monetization" content="$ilp.uphold.com/kKU4GXiRwhnf ">
+
+    <link rel="alternate" type="application/rss+xml" href="https://bkardell.com/blog/feed.rss" title="bkardell.com/blog rss feed">
+    <title>Why I'm hella excited about OffscreenCanvas</title> 
+    <style>.captioned-image {
+    background-color: #eaeaea;
+    display: block;
+    overflow: hidden;
+    padding: 1rem;
+    text-align: center;
+    font-style: italic;
+}
+
+.captioned-image.p-attached {
+    width: 40%;
+    display: inline-block;
+    margin: 0 1rem 2rem 1rem;
+}
+
+section > .captioned-image.p-attached {
+    margin-top: 1.5rem; /* correct for heading size*/
+}
+
+ pre { overflow-x: auto }
+
+.captioned-image.p-attached.p-attached-left {
+    float: left;
+}
+
+.captioned-image.p-attached.p-attached-right {
+    float: right;
+}
+
+.captioned-image.p-attached + * + * {
+    clear: both;
+    margin-top: 2rem;
+}
+
+
+.captioned-image img, .captioned-image video {
+    display: block;
+    max-width: 100%;
+    margin: 0 auto 1em auto;
+}
+.source {
+    font-style: italic;
+}
+body {
+    display: grid;
+    grid-template-columns: 25rem auto;
+    font: 1.1rem "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-weight: 400;
+    line-height: 1.625;
+    margin: 0;
+}
+h1 { margin: 0.5rem; }
+code-format {
+    border-left: 0.5rem solid rgba(123,115,209,0.35);
+    display: block;
+    padding: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+contextual-heading {
+    display: block;
+    margin-top: 2rem;
+}
+
+h1, [aria-level="1"] {
+    color: #43686b;
+    font-size: 1.45rem;
+}
+
+h2, [aria-level="2"] {
+    color: #856363;
+    font-size: 1.35rem;
+}
+
+h3, [aria-level="3"] {
+    color: #856363;
+    font-size: 1.25rem;
+}
+
+h4, [aria-level="4"] {
+    color: #856363;
+    font-size: 1.2rem;
+}
+
+h5, h6, [aria-level="5"], [aria-level="6"] {
+    color: #667496;
+    font-size: 1.2rem;
+    font-weight: bolder;
+}
+
+.posted-on {
+    font-style: italic;
+    font-size: 0.8rem; 
+    text-align: right;
+    margin-bottom: 1rem;
+}
+
+ul, li {
+    margin: 0.5rem;
+    text-align: left;
+}
+
+responsive-details {
+    height: 100%;
+    padding-top: 1rem;
+    padding-right: 0;
+    background-color: #fbf5e9; 
+    display: block;
+    background-image: linear-gradient(to right, #dde0e8 , #ffffff);
+}
+
+.tagline {
+    font-style: italic;
+    text-align: center;
+}
+
+[tag-esc] {
+    color: maroon;
+    font-family: Courier, "Lucida Console", monospace;
+}
+
+[tag-esc]::before {
+    content: '<';
+}
+
+[tag-esc]::after {
+    content: '>';
+}
+
+main {
+    min-width: 50%;
+    width: 80%;
+    padding: 1rem;
+}
+header .title {
+    background-color: rgba(123,115,209,0.35);
+    padding: 0.3rem;
+    padding-left: 0.25rem;
+    font-weight: bolder;
+    font-size: 1rem;
+    border-left: 1rem solid #999298;
+}
+
+header .profile {
+    width: 50%;
+    margin: 1rem 25%;
+}
+
+header .title + nav {
+    font-size: 0.9rem;
+}
+
+header .blurb {
+    font-size: 0.9rem;
+    text-align: center;
+}
+header .name {
+    text-align: center;
+    font-size: xx-large;
+}
+.segue {
+    font-style: italic;
+}
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  border: 0;
+}
+
+#aboutMeToggle {
+    display: none;
+}
+
+[for="aboutMeToggle"] {
+    display: none;
+}
+
+main article { max-width: 100em; margin: auto; }
+/* this needs rethinking, it wants a selector like 'not flow content' */
+article>*:not(contextual-heading,a), section>*:not(contextual-heading,a) {
+    margin-left: 0.45rem;
+}
+
+blockquote {
+  font-family: serif;
+  background: #f9f9f9;
+  border-left: 10px solid #ccc;
+  margin: 1.5em 10px;
+  padding: 0.5em 10px;
+}
+blockquote:before {
+  color: #ccc;
+  content: open-quote;
+  font-size: 2em;
+  line-height: 0.1em;
+  margin-right: 0.25em;
+  vertical-align: -0.4em;
+}
+
+blockquote:after {
+  color: #ccc;
+  content: close-quote;
+  font-size: 2em;
+  line-height: 0.1em;
+  margin-left: 0.25em;
+  vertical-align: -0.4em;
+}
+
+
+@media (max-width: 800px){
+    body {
+        grid-template-columns: 1fr;
+    }
+    responsive-details {
+        height: auto;
+        border-bottom: 1px solid #afafff;
+    } 
+
+    main { width: 95%; margin: 0 auto;}
+
+    .captioned-image.p-attached {
+        width: 100%;
+        margin: 1rem 0;
+    }
+
+    .captioned-image.p-attached.p-attached-left,
+    .captioned-image.p-attached.p-attached-right {
+        float: none;
+    }
+
+    #aboutMeToggle {
+        display: block;
+        background-color: #675e5e;
+        color: white;
+        padding: 0.25rem;
+        padding-left: 0.5rem;
+        border-left: 1rem solid black;
+    }
+
+    header li { display: inline; margin-left: -0.5em; }
+    header .blurb li::after { content: '; '; }
+    header  nav li {
+        display: inline-block;
+        margin-left: 0.35rem;
+        margin-right: 0.35rem;
+    }
+    header .title {
+        width: 100%;
+    }
+    main li .source { display: block; }
+
+}</style>
+    <style>
+      .captioned-image { font-size: 0.9rem; }
+      .thanksTo { font-style: italic; font-size: 0.8rem; }
+    </style>
+    <script>
+      var activateOptional = function (media) {
+        var source = media.getAttribute('data-src'),
+            temp,
+            container = media.parentElement;
+
+          if (media.nextSibling && media.nextSibling.matches) {
+            if (media.nextSibling.matches('.clickToSee')) {
+              media.parentElement.removeChild(media.nextSibling);
+            }
+          }
+ 
+          if (media.tagName === 'VIDEO') {
+            temp = document.createElement('video')
+            temp.setAttribute('autoplay','')
+            temp.setAttribute('controls','')
+            temp.setAttribute('loop','')
+            temp.innerHTML = '<source src="' + source + '.webm" type="video/webm">'
+                    + '<source src="' + source + '.mp4" type="video/mp4">';
+            media.parentElement.replaceChild(temp, media);
+            setTimeout(function () {
+              temp.play()
+            }, 0);
+          } else {
+            media.src = media.getAttribute('data-src');
+          }
+
+          container.classList.add('active');
+      }
+    </script>
+  </head>
+  <body>
+    <script>
+class ResponsiveDetails extends HTMLElement {
+  
+  checkForced() {
+      let details = this.querySelector('details')
+        if (this.mql.matches) {
+          details.setAttribute('open','')
+        } else {
+          details.removeAttribute('open')
+        }
+  }
+  connectedCallback() {
+    this.mql = window.matchMedia(`(min-width: ${this.getAttribute("open-after") || "1px" })`);
+
+    if (this.mql.addEventListener) {
+        this.mql.addEventListener('change', () => {
+            this.checkForced()
+        })
+    } else {
+        this.mql.addListener(() => {
+            this.checkForced()
+        })
+    }
+    requestAnimationFrame(() => this.checkForced())
+  }
+  constructor() {
+    super()
+    this.attachShadow({mode: "open"})
+    this.shadowRoot.innerHTML = `<slot></slot>`
+    let slot = this.shadowRoot.firstElementChild;
+    slot.addEventListener('slotchange', ()=> this.checkForced)          
+
+  }
+}                         
+
+customElements.define('responsive-details', ResponsiveDetails)
+</script>
+
+<responsive-details open-after="800px">
+<details open="">
+<summary id="aboutMeToggle">Author Information</summary>
+
+<header>
+    <div class="name">
+        Brian Kardell
+    </div>
+    <img class="profile" src="/profile.jpg" alt="">
+    <div class="tagline"><a href="/">Betterifying the Web</a></div>
+    <div class="blurb">
+        <ul>
+            <li>Developer Advocate at Igalia</li>
+            <li>Original Co-author/Co-signer of The Extensible Web Manifesto</li>
+            <li>Co-Founder/Chair, W3C Extensible Web CG</li>
+            <li>Member, W3C (OpenJS Foundation)</li>
+            <li>Co-author of HitchJS</li>
+            <li>Blogger</li>
+            <li>Art, Science &amp; History Lover</li>
+            <li>Standards Geek</li>
+        </ul>
+    </div>
+    <div class="title">Follow Me On...</div>
+    <nav>
+        <ul>
+            <li><a rel="me" href="https://briankardell.wordpress.com">Wordpress</a></li>
+            <li><a rel="me" href="https://medium.com/@briankardell">Medium</a></li>
+            <li><a rel="me" href="https://twitter.com/briankardell">Twitter</a></li>
+            <li><a rel="me" href="https://github.com/bkardell/">Github</a></li>
+            <li><a rel="me" href="https://codepen.io/bkardell">Codepen</a></li>
+            <li><a rel="me" href="https://www.linkedin.com/in/brian-kardell-08a4264">LinkedIn</a></li>
+            <li><a rel="me" href="https://www.instagram.com/kardellbrian">Instagram (for
+art)</a></li>
+            <li><a rel="me" href="http://fineartamerica.com/profiles/brian-kardell?">Fine Art
+America (art for sale)</a></li>
+        </ul>
+    </nav>
+</header>
+</details>
+</responsive-details>
+    <main><div class="posted-on">Posted on null</div><article class="sectioning">
+    <h1 class="contextual-heading">Why I'm hella excited about <code>OffscreenCanvas</code></h1>
+
+  <p class="segue">My friend and co-worker at Igalia <a href="https://twitter.com/cwiiis">Chris Lord</a> has been working on <code>OffscreenCanvas</code> in WebKit and I'm (almost unreasonably) excited about it for <em>so many reasons</em>.    In this post, I'll tell you a little about why it is a Really Big Deal™ to me.</p>
+  <style>
+    iframe { width: 100%; height: fit-content; }
+    figcaption { font-style: italic; }
+  </style>
+  <section>
+    <h2>What the heck is <code>OffscreenCanvas</code>?</h2>
+
+    <p><code>OffscreenCanvas</code> is a JavaScript class  with a <code>getContent('2d')</code> method, just like the <code>&lt;canvas&gt;</code> element.  Unlike <code>&lt;canvas&gt;</code>, however it is <em>independent from a DOM element</em>. That's great, because it means you can create and use one, even in a worker.</p>
+
+    <p>Cool enough... But <code>OffscreenCanvas</code> <em>also</em> has a superpower: Instances of it are <em>transferrable</em>. In other words, references to them can be transferred via <code>postMessage</code>!  </p>
+
+    <p>All of this is really boosted by the addition of a new method on the existing DOM <code>&lt;canvas&gt;</code> API itself: <code>.transferControlToOffscreen</code>.  This returns an instance of an <code>OffscreenCanvas</code>.</p>
+
+    <p>All that might be a little hard to put together in your head - but what is means, practically speaking, is that that you can "break off" the part of a <code>&lt;canvas&gt;</code> which is in charge of actually painting on that element's surface, and hand control doing that to a worker (asynchronously).  Amazing.</p>
+  </section>
+
+  <section class="sectioning">
+    <h2 class="contextual-heading">Why I think it's so exciting.</h2>
+    <p>First, it's really great for performance, which I'll demonstrate and talk about.  But the story of how we got here helps explain all of the subtle, but important reasons I think this is also exciting:
+      </p><li>It is an illustration of platform evolution</li>
+      <li>It helps resolve some historical questions and tech debt</li>
+      <li>It is an illustration of improving the health and prioritization of the commons that is the Web ecosystem.</li>
+    
+    <p>To understand all of this, let me set the stage...</p>
+     
+    <section class="sectioning">
+      <h3 class="contextual-heading">Prelude: The introduction of <code>&lt;canvas&gt;</code></h3>
+
+    <p>It's hard to overstate just how much has changed since just before 2004 when Apple introduced the <code>&lt;canvas&gt;</code> element. Before this "HTML5 era" standards were stalled.  Interoperability was <em>poor</em> - most things were not very rigorously specified and there were no shared tests.</p>
+
+    <p>Also, browsers didn't have tabs, just windows everything  ran in a single process and on a single thread.</p>
+
+    <p>This is the world into which Apple introduced the <code>&lt;canvas&gt;</code> element, explaining it as as <em>"an image element with a programmatic drawing surface"</em> (remember that, it will come back).  </p>
+
+    <p>It seemed like a <em>really</em> neat idea to me...  I wasn't quite sure <em>what</em> you would practically do with it, but very soon people began sharing lots of cool demos and experiments. I still remember a number of them.</p>
+  </section>
+ 
+  <section class="sectioning">
+    <h3 class="contextual-heading">Exploration and iteration</h3>
+
+    <p>Lots of those early experiments were mostly toys.  Many were also terrible on counts: Lots were totally inaccessible.  Some shot way too far. All of them inherently  bound up the main thread and had performance challenges.</p>
+
+    <p>But, as we've come to see many times, the ability for <em>developers</em> to use the available tools to dream, share, rapidly critique and then iterate upon is a pretty powerful force. It allowed us to explore the question "but... for what?" in concrete ways without guessing. It helped show that there are lots of <em>actually very useful things</em> one could build - and far more that could be, if only performance was better...</p>
+  </section>
+
+  <section class="sectioning">
+    <h3 class="contextual-heading">Now make it fast.</h3>
+
+    <p>The fact that we now have many proven and real world uses helps highlight what could be improved. It also provides test scenarios that aren't easily gamed benchmarks to test whether new solutions actually help achieve that.</p>
+
+    <p>Here's an example that should be easy to appreciate: Maps.  Maps on the web incredibly useful.  Many of the most popular map tools and services ultimately render to a canvas. This involves lots of taxing work.  You might have experienced janky painting or blocked user input as you attempted to pan or zoom around as all of that was blocking the main thread.  To highlight the impact that <code>OffscreenCanvas</code> this can have on maps, Andreas Hocevar has integrated a version of <code>OffscreenCanvas</code> into the OpenLayers mapping library. The before and after comparison (below) of even this initial work sort of speak for themselves...</p>
+
+    <details>
+      <summary>Demo - Maps: <strong>Before</strong> <code>Offscreen Canvas</code></summary>
+      <figure>
+
+        <iframe src="https://player.vimeo.com/video/399970907" width="640" height="366" frameborder="0" style="width:100%" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen=""></iframe>
+        <figcaption>User interactions are temporarily blocked on and off as rendering tries to keep up. The rendering itself is very janky.  The interface feels a little broken and frustrating.</figcaption>
+      </figure>
+    </details>
+    
+    <details>
+      <summary>Demo - Maps: Using <code>Offscreen Canvas</code></summary>
+      <figure>
+        <iframe src="https://player.vimeo.com/video/399972879" width="640" height="366" frameborder="0" style="width:100%" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen=""></iframe>
+        <figcaption>Using <code>OffscreenCanvas</code>, user interactions are not blocked - the rendering is way more fluid and the interface is able to feel smooth and responsive.</figcaption>
+      </figure>
+    </details>
+
+    <p>You can read a lot more about this experiment and other impressive and important benchmarks in the <a href="maps4html">Benchmarks section of his post</a>
+    
+
+    </p><p>There are a <em>ton</em> of things like this that already exist, made with <code>canvas</code> and which can now offer a real boost to all of their users.</p>
+  </section>
+
+  <section class="sectioning">
+    <h3 class="contextual-heading">Bigger communities, re-thinking prioritization</h3>
+
+    <p>Another thing that excites me is how Igalia is getting this work done and the impacts it has.</p>
+
+    <p>Lots of good people in the web community are constantly pushing us to please pay attention to people who don't have expensive phones. However, not only is this not working out so well - it is really only scratching the surface of it.</p>
+
+    <section class="sectioning">
+      <h4 class="contextual-heading">For whom the hardware
+     Cheap tablets also abound, for example.  But, far more than that: embedded devices are <em>everywhere</em>! Game consoles, the TVs they play on, the cable boxes and streaming devices that are hooked up to them: <em>All of them</em> are embedded hardware, and most of those are presenting interfaces with web rendering engines.  Wow!  And <em>those are just the ones that are probably in front of your face as you sit on the livingroom couch</em>.<p></p>
+
+    <p>Walk into a modern kitchen and you'll find more: Smart appliances from refrigerators to stoves to cooking devices... Same thing.  </p>
+
+    <p>Travel somewhere, you'll find web engine based interfaces in just about every form of transportation these days: Infotainment systems in cars, airplanes, trains and vehicle dashboards too.</p>
+
+    <p>While you're looking out the window in transit, you'll see some more in digital signage. You'll find them in the stores you visit in point of sale systems, kiosks, at gas pumps - I mean, they are <em>literally everywhere</em>.</p>
+
+    <p>For that one <em>maybe powerful</em> device you call a "phone" and look at a bunch during the day, you probably encounter half a dozen or more (and growing) embedded systems using web tech. And, with a few rare exceptions, they are almost universally underpowered, and replaced really slowly.</p>
+
+    <p>Ask not for whom the hardware is slow - it is for you!</p>
+
+    <p>Plenty of things which are at least usefully functional on a higher-end device can quickly drop the framerate (and resposiveness to user input) all the way down to ~1ps on some of these devices.</p>
+
+    <p>More interestingly still - many of those devices are <em>precisely</em> the ones that really <em>want</em> the ability to make splashy visualization with canvas and SVG.</p>
+
+    <p>Our work on <code>OffscreenCanvas</code> at Igalia helped create new priotitization pressures and diversified investments through things like cable boxes and cooking devices.  Lots of our tests that bog those systems down to near 1ps now run a fluid 60fps... And they make things better for <em>all of these devices</em> along the way.</p>
+
+    <p>I think that's <em>hella</em> cool.</p>
+  </h4></section>
+ 
+  <section class="sectioning">
+    <h4 class="contextual-heading">Paying down Web Tech Debt</h4>
+
+    <p>Here's <em>another</em> reason it excites me:  Shortly after we wrote the Extensible Web Manifesto, Alex Russell, Yehuda Katz and I <a href="https://www.smashingmagazine.com/2013/11/laying-the-groundwork-for-extensibility/">co-authored a piece for smashing magazine</a> where we explained some of the rationale for writing it.  In it, we explained that the platform had, essentially, a lot of tech debt, and needed to pay some some attention to it and lay good groundwork for the future.</p>
+
+    <p><code>&lt;canvas&gt;</code> was an illustration we used. That's because while you can <em>imagine</em> the sort of relationship with <code>&lt;img&gt;</code> as described in its introduction, it didn't exactly exist. In fact, while one probably imagined many strata of architecture empowering an <code>&lt;img&gt;</code>'s magic (fetching, decoding, painting pixels on a canvas, etc), it wasn't clear that really existed at all. From the outside, in fact, there appeared to be many inconsistencies. If such an architecture <em>did</em> exist, it was certainly unavailable to developers. This, we explained, was probably not great for the future.</p>
+
+    <p>While I don't know that we've created a system that literally makes Apple's introduction <em>true</em>, there have been <em>lots</em> of developments and improvements to this story to make the web platform actually <em>have</em> some kind of stata of architecture that authors can understand, plug into, hack and extend - and the arrival of <code>OffscreenCanvas</code> is just the latest and greatest addition..  </p>
+
+    <p>There are potentially many things that are <em>like</em> an <code>&lt;img&gt;</code> in some ways, and a myriad of ideas that could extend this or borrow features  I'm excited that this allows us to entertain lot of interesting experiments that we can rapidly share, compare, critique, break down, recompose nd reassemble in order to find  some really great ideas which a lot of people (and a diverse number of businesses) could support... And very importantly, it can share all fo the same platform "stuff" because it didn't have to reinvent the entire stack beneath it, making for much easier cow-paths to pave and create standards out of.</p>
+
+    <p>What will they be? I don't know yet! I have some ideas, of course:  New patterns for data visualizations and rendering controls, for sure.  Some new ideas for image manipulation tools feel almost certain.  Perhaps customized image elements with register-able image decoders?  Perhaps ideas that integrate new concepts of panning and zooming an actual bitmap, potentially loading higher resolution one? Or, maybe whole elements that manage the stitching together together of <em>many</em> tiles of a larger, and partially loaded conceptual image - like the technique used in mapping. </p>
+
+    <p>Providing these new abilities unlocks all kinds of potential and my own imagination is limited. </p>
+
+    <p>I can't wait to see what ideas develop here!</p>
+  </section>
+</section></section></article></main>
+
+  
+    
+
+  <script>
+    Array.prototype.slice.call(document.querySelectorAll('.optional [data-src]')).forEach(function (optional) {
+      var prefs = window.localStorage.downloadsPrefs,
+          clickToSee;
+      if (prefs === 'true') {
+        activateOptional(optional);
+      } else {
+        clickToSee = document.createElement('div');
+        clickToSee.classList.add('clickToSee')
+        clickToSee.innerHTML = '<button>Click to see media</button>';
+        clickToSee.style.textAlign = 'center';
+        clickToSee.style.border = 'none';
+        optional.parentElement.insertBefore(clickToSee, optional.nextSibling);
+        clickToSee.firstElementChild.addEventListener('click', function () {
+          activateOptional(optional);
+        })
+      }
+
+    })
+  </script>
+
+</body><!-- script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-88027178-1', 'auto');
+    ga('send', 'pageview');
+  </script --></html>
