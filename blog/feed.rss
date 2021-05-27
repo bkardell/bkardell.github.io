@@ -4,7 +4,7 @@
         <title>bkardell.com rss feed</title>
         <link>http://bkardell.com/</link>
         <description>Just the bkardell.com rss feed</description>
-        <lastBuildDate>Thu, 13 May 2021 13:32:49 GMT</lastBuildDate>
+        <lastBuildDate>Thu, 27 May 2021 14:45:36 GMT</lastBuildDate>
         <docs>http://blogs.law.harvard.edu/tech/rss</docs>
         <generator>awesome mix</generator>
         <image>
@@ -13,7 +13,34 @@
             <link>http://bkardell.com/</link>
         </image>
         <copyright>All rights reserved 2018, Brian Kardell</copyright>
-        <atom:link href="https://bardell.com/blog/feed.atom" rel="self" type="application/rss+xml"/>
+        <atom:link href="https://bkardell.com/blog/feed.atom" rel="self" type="application/rss+xml"/>
+        <item>
+            <title><![CDATA[Stranger Than Fractions]]></title>
+            <link>https://bkardell.com/blog/StrangerThanFractions.html</link>
+            <guid>https://bkardell.com/blog/StrangerThanFractions.html</guid>
+            <pubDate>Thu, 27 May 2021 04:00:00 GMT</pubDate>
+            <description><![CDATA[There's a new Math Working Group in the W3C (and I'm co-chairing).  In this post, I'll share some information on that, why I really hope your organizations will join, as well as some personal reflections.]]></description>
+            <content:encoded><![CDATA[
+<h1 class="contextual-heading" style="font-size: NaNrem;">Stranger Than Fractions</h1>
+<p class="segue"><em>There's a new Math Working Group in the W3C (and I'm co-chairing).  In this post, I'll share some information on that, why I really hope your organizations will join, as well as some personal reflections.</em></p>
+
+<p>Life is weird.  If I could travel back in time and explain my life to a younger me, I couldn't even count of the number of things that younger me would have just absolutely scoffed at in disbelief.  Here's another one to add to the list: I'm co-chairing a new W3C Working Group focused on Math on the Web.</p>
+
+<p>I'm not going to  offer all of the reasons this would be surprising to a younger me, but suffice to say it's a pretty long list.  Even a me of only 2-3 years ago would probably be pretty incredulous.  See, I'd never really given math on the web much thought until then.  The thing that really brought it to my attention was that a company I knew to be full of some pretty smart people (Igalia, where I now work) were suddenly talking about how to add MathML to Chromium, and why this is a thing we should do.  It came up before the W3C Technical Architecture Group and was getting some larger discussion around the interwebs.  Particularly, there were connections to Extensible Web Manifesto. I felt kind of compelled to really think about it and write something thoughtful about it myself. So in January 2019 (I didn't work for Igalia then) I wrote <a href="https://bkardell.com/blog/Math.html">Harold Crick and the Web Platform</a>.    </p>
+
+<p>Based on this and some other observations that I was having about what an important role I thought Igalia could play in so many fundamentally important issues, I applied there (here).  Since then I've tried to help "right the ship" and get math onto the web and on a stable footing that is integrated with the platform. I participated in the CG where we worked out <a href="https://mathml-refresh.github.io/mathml-core/">MathML-Core</a>, attempting to do just that. I helped write some tests, open (and resolve!) issues in a number of standards about how we integrate, draft a bit of spec, open implementation bugs (and ship changes in all browsers!), explain why this work is important from a significant number of angles (not the least of which is that it is societally important) in blog posts and talks (I won't link them all because there's already a lot of links here), prioritize work, draft an <a href="https://github.com/mathml-refresh/mathml-core/blob/master/docs/explainer.md">expainer</a>, work through <a href="https://github.com/w3ctag/design-reviews/issues/438">a TAG review</a>, draft the <a href="https://www.w3.org/Math/Documents/Charter2021.html">new Working Group Charter</a> and gain support for it (I'm very pleased to say that every browser vendor supported its creation - and Chrome was even first one, if anyone has doubts).</p>
+
+<p>A few weeks after the charter was approved, I was asked to sign on as a co-chair to lead the MathML-Core portion (the bit that goes in browsers). Last week I was officially added and "approved by the director" as co-chair.</p>
+
+<p>Now for... you know... lots more important work as we try reach a really great state of affairs.  </p>
+
+<p>We'll only really hope to do that though with help and good, diverse (from many angles) participation in the Working Group.  If you're a W3C member,  consider getting involved yourself.  If not, still please comment on issues and review things. Importantly: Put aside any math phobias, doubts or pre-conceived notions.  Even if your present-self is a little (or even a lot) incredulous at the idea that you can really help.  Believe me, I get it.  But that's wrong.  Help and participation from people with backgrounds across the platform aren't only very welcome, they're necessary:  There's a lot to do to ensure that the platform is sensible and consistent as possible.  Many discliplines need to coordinate to make sure that things stay on track, make sense and that important aspects don't get left behind.  </p>
+
+<p>We'll be starting up the MathML-Core meetings soon (end of June or early July, tdb sooon) and focus on actually moving some of this through the standards process and beginning to work together to answer remaining questions and make sure we're driving toward really good interoperable, well integrated math on the Web.  </p>
+
+<p>We can do this.</p>
+]]></content:encoded>
+        </item>
         <item>
             <title><![CDATA[Can I :has()]]></title>
             <link>https://bkardell.com/blog/canihas.html</link>
@@ -2195,29 +2222,6 @@ customElements.define('x-counter', Counter);</code></pre>
 ]]></content:encoded>
         </item>
         <item>
-            <title><![CDATA[2 Minute Standards]]></title>
-            <link>https://bkardell.com/blog/2MinuteStandards.html</link>
-            <guid>https://bkardell.com/blog/2MinuteStandards.html</guid>
-            <pubDate>Tue, 20 Aug 2019 04:00:00 GMT</pubDate>
-            <description><![CDATA[A short explanation of a new effort]]></description>
-            <content:encoded><![CDATA[
-    <h1 class="contextual-heading" style="font-size: NaNrem;">2 Minute Standards</h1>
-    <p class="segue">A short explanation of a new effort</p>
-
-    <p>For a while now, we've been running some 'outreach groups'.  Originally started informally by my colleague at <a href="https://igalia.com" rel="nofollow">Igalia, </a><a href="https://twitter.com/littledan" rel="nofollow">Dan Ehrenberg</a>, it's become a set of monthly meetings with various groups of stakeholders in <a href="https://tc39.github.io" rel="nofollow">TC39</a> and the Web at large which I really look forward to.  The <a href="https://github.com/js-outreach/js-outreach-groups" rel="nofollow">groups</a> are meetings of people who work on Tooling, people who work on Frameworks and Libraries and Educators, with folks who work on standards.  The goals of all of them, at the end of the day, is to figure out how we all work better, together.</p>
-    
-    <p>The Educators Group has talked a bit about a number of efforts, but there's one conversation we've been having that I think is pretty interesting. I dont know of any developer who isn't interested in what is going on in standards, but the economics of this is currently kind of hard. We're interested in a whole bunch of other things too. There's lots of good content - too much in fact, coming at us from a million directions and it's all competing for our time and attention. We have jobs, and families, and pets, hobbies and lives. I love a lot of long form things, I'm excited when I see them in my stream, but they pile up and I have to choose. I only have so many slots of time where I can actually afford to consume 10, 15, 30 or 40 minutes worth of information. It can feel a little overwhelming sometimes.</p>
-
-    <p>So, we're going to try something new: 2 Minute Standards.  Think of it as "standards news, in brief".  The basic idea is pretty simple: Like a news segment, it's got to contain pertinent facts, more than a tweet - but it's air time is limited, as the name would suggest, to 2 Minutes.  That can come in a number of forms: An article that is 500 words or less, a two minute video, or a short web comic/zine.  The idea though is to ultimately give developers some channel with reasonable economics for staying 'generally informed'.  In the end, that's frequently what we want anyways: We can't know everything, we just need to know <em>enough</em> to know what it is, why it is, and that it is there when we're ready to learn more.  We'd like to be able to roughly understand it if it comes up. A maximum of 2 minutes per day, and almost certainly not even that much, seems... unintimidating and managable.</p>
-
-    <p>So, that's the idea.  We're still discussing many of the details about how to make this really 'click' in a bigger way: How to create as a sort of channel you can follow?  For now, it seems better to start with something simple and perhaps to begin to get feedback on the idea.  To this end, we'll post things with the hashtag #StandardsIn2Min, and others can too. If you see something fly by with the hashtag you can always find it again later on the twitter feed and, hopefully, expect that it will take no more than 2 minutes to consume.  However, we will also manage the Twitter account <a href="https://twitter.com/StandardsIn2Min" rel="nofollow">@StandardsIn2Min</a>, where we'll work to curate those hashtags too and create a manageable (honestly, probably slow) pace that never asks for more than two minutes of your attention in a day to keep up. Let us know what you think about the idea!</p>
-    
-
-    <p class="thanks-to">Thanks to the <a href="https://github.com/js-outreach/js-outreach-groups" rel="nofollow">educators group</a> for all of their help discussing and creating, and especially to <a href="https://twitter.com/laurieontech" rel="nofollow">Laurie Barth</a> and <a href="https://twitter.com/jorydotcom" rel="nofollow">Jory Burson</a> for helping get this post put together quickly!
-    </p>
-]]></content:encoded>
-        </item>
-        <item>
             <title><![CDATA[Top Level Await: 2 Minute Standards]]></title>
             <link>https://bkardell.com/blog/TopLevelAwaitIn2m.html</link>
             <guid>https://bkardell.com/blog/TopLevelAwaitIn2m.html</guid>
@@ -2283,6 +2287,29 @@ export const _internalPromise =
 		});</code></pre>
 	<p>The net result is that modules are fetched in parallel and executed in order until the first await, and then waits until they are all complete before resolving the module itself.</p>
 	</section>
+]]></content:encoded>
+        </item>
+        <item>
+            <title><![CDATA[2 Minute Standards]]></title>
+            <link>https://bkardell.com/blog/2MinuteStandards.html</link>
+            <guid>https://bkardell.com/blog/2MinuteStandards.html</guid>
+            <pubDate>Tue, 20 Aug 2019 04:00:00 GMT</pubDate>
+            <description><![CDATA[A short explanation of a new effort]]></description>
+            <content:encoded><![CDATA[
+    <h1 class="contextual-heading" style="font-size: NaNrem;">2 Minute Standards</h1>
+    <p class="segue">A short explanation of a new effort</p>
+
+    <p>For a while now, we've been running some 'outreach groups'.  Originally started informally by my colleague at <a href="https://igalia.com" rel="nofollow">Igalia, </a><a href="https://twitter.com/littledan" rel="nofollow">Dan Ehrenberg</a>, it's become a set of monthly meetings with various groups of stakeholders in <a href="https://tc39.github.io" rel="nofollow">TC39</a> and the Web at large which I really look forward to.  The <a href="https://github.com/js-outreach/js-outreach-groups" rel="nofollow">groups</a> are meetings of people who work on Tooling, people who work on Frameworks and Libraries and Educators, with folks who work on standards.  The goals of all of them, at the end of the day, is to figure out how we all work better, together.</p>
+    
+    <p>The Educators Group has talked a bit about a number of efforts, but there's one conversation we've been having that I think is pretty interesting. I dont know of any developer who isn't interested in what is going on in standards, but the economics of this is currently kind of hard. We're interested in a whole bunch of other things too. There's lots of good content - too much in fact, coming at us from a million directions and it's all competing for our time and attention. We have jobs, and families, and pets, hobbies and lives. I love a lot of long form things, I'm excited when I see them in my stream, but they pile up and I have to choose. I only have so many slots of time where I can actually afford to consume 10, 15, 30 or 40 minutes worth of information. It can feel a little overwhelming sometimes.</p>
+
+    <p>So, we're going to try something new: 2 Minute Standards.  Think of it as "standards news, in brief".  The basic idea is pretty simple: Like a news segment, it's got to contain pertinent facts, more than a tweet - but it's air time is limited, as the name would suggest, to 2 Minutes.  That can come in a number of forms: An article that is 500 words or less, a two minute video, or a short web comic/zine.  The idea though is to ultimately give developers some channel with reasonable economics for staying 'generally informed'.  In the end, that's frequently what we want anyways: We can't know everything, we just need to know <em>enough</em> to know what it is, why it is, and that it is there when we're ready to learn more.  We'd like to be able to roughly understand it if it comes up. A maximum of 2 minutes per day, and almost certainly not even that much, seems... unintimidating and managable.</p>
+
+    <p>So, that's the idea.  We're still discussing many of the details about how to make this really 'click' in a bigger way: How to create as a sort of channel you can follow?  For now, it seems better to start with something simple and perhaps to begin to get feedback on the idea.  To this end, we'll post things with the hashtag #StandardsIn2Min, and others can too. If you see something fly by with the hashtag you can always find it again later on the twitter feed and, hopefully, expect that it will take no more than 2 minutes to consume.  However, we will also manage the Twitter account <a href="https://twitter.com/StandardsIn2Min" rel="nofollow">@StandardsIn2Min</a>, where we'll work to curate those hashtags too and create a manageable (honestly, probably slow) pace that never asks for more than two minutes of your attention in a day to keep up. Let us know what you think about the idea!</p>
+    
+
+    <p class="thanks-to">Thanks to the <a href="https://github.com/js-outreach/js-outreach-groups" rel="nofollow">educators group</a> for all of their help discussing and creating, and especially to <a href="https://twitter.com/laurieontech" rel="nofollow">Laurie Barth</a> and <a href="https://twitter.com/jorydotcom" rel="nofollow">Jory Burson</a> for helping get this post put together quickly!
+    </p>
 ]]></content:encoded>
         </item>
         <item>
