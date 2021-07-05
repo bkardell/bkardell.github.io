@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://bkardell.com/</id>
     <title>bkardell.com rss feed</title>
-    <updated>2021-05-27T14:45:36.925Z</updated>
+    <updated>2021-07-05T19:19:27.128Z</updated>
     <generator>awesome mix</generator>
     <author>
         <name>Brian Kardell</name>
@@ -14,6 +14,141 @@
     <subtitle>Just the bkardell.com rss feed</subtitle>
     <logo>http://bkardell.com/profile.jpg</logo>
     <rights>All rights reserved 2018, Brian Kardell</rights>
+    <entry>
+        <title type="html"><![CDATA[Tabs in HTML?]]></title>
+        <id>https://bkardell.com/blog/SpicySections.html</id>
+        <link href="https://bkardell.com/blog/SpicySections.html">
+        </link>
+        <updated>2021-07-04T04:00:00.000Z</updated>
+        <summary type="html"><![CDATA[Please help us evaluate an idea!]]></summary>
+        <content type="html"><![CDATA[
+  <h1 class="contextual-heading" style="font-size: NaNrem;">Tabs in HTML?</h1>
+ 
+<p class="segue">Please help us evaluate an idea!</p>
+
+<p>I've fallen a bit behind on my podcast consumption (thanks to being very busy), but I was recently catching up during a drive in the car and was pleased to hear Dave Rupert and Chris Coyier having some good discussion on the Shop Talk Show episode 466 (time jumped to the start) <a href="https://shoptalkshow.com/466/#t=04:12">about some work we've been doing and that we're looking for more opinions/thoughts on</a>. Dave did a bang-up job explaining I think, but just trying to imagine it all might be a little difficult, so I wanted to share something a little more concrete, provide some context around it, and to re-iterate that "we'd like (need) your help in evaluating this idea ".</p>
+
+<section class="sectioning">
+<h2 class="contextual-heading" style="font-size: NaNrem;">Show me something...</h2>
+
+<p>Imagine that you could have something that worked .... kind of like this (insert giant hand wavey motions):  You write some good old HTML that looks just like HTML you  write today, but are able to express that want you to <em>sometimes</em> treat it with different interaction affordances - just like the way scroll panes work on the Web today...</p>
+
+<div class="captioned-image">
+  <iframe width="560" height="315" src="https://www.youtube.com/embed/1x_SDV4PDQU" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>
+   <p>A running demo showing sections that gain tabset or collapse affordances as the screen resizes.</p>
+</div>
+
+<p>You should be able to load the demo in this video yourself in any browser...</p>
+
+<a href="https://codepen.io/bkardell/pen/VwpJGGL?editors=1100" style="border: 1px solid blue;
+    display: block;
+    margin: 1rem 20%;
+    background: papayawhip;
+    padding: 0.5rem; 
+    text-align: center;
+    border-radius: 0.5rem;">Show me the demo</a>
+
+<p>If you view the source of that page, you'll see there is just a single element that we have cleverly named <code>&lt;spicy-sections&gt;</code>.</p>
+
+<p>Please check it out: It's <a href="https://github.com/tabvengers/spicy-sections">very easy to try</a>. Note that the actual syntax or way to express the association with interactive afforances is entirely up in the air. This custom element <em>isn't</em> a proposal itself. There are many efforts happening in parallel discussing precisely how this should (and shouldn't or can and can't) work, but the custom element should help you explore the ideas.</p>
+
+<p>Play with it. Build something useful.  Ask questions, show us your uses, <a href="https://github.com/tabvengers/spicy-sections/issues">give us feedback about what you like or don't</a>. This will help us shape good and successful approaches and inform actual proposals. Question #1 is on the crux of the idea itself.</p>
+
+<p>If the answer to "how do I get a native tabset in the browser?"" involved using 0...1 'new' elements (perhaps one to identify content which could fit these models) and some CSS (or CSS-like) means of expressing 'when'" - would you call that a win? Do you get it? Do you love it? Do you hate it? What are your questions?</p>
+
+<section class="sectioning">
+<h3 class="contextual-heading" style="font-size: NaNrem;">A little background</h3>
+
+<p>There are lots of efforts around adding new elements to HTML - many of which are being coordiated through an effort in WICG called "Open UI". This effort involves browser implementers, developers, UI Toolkit makers, etc, and I think that's great. I <em>really</em> want the web to have a better set of tools for making basic UI and I hope that Open UI can show us a better way forward than we've done in the past.</p>
+
+<p>To me, this means involving more people. It means meeting developers closer to where they are and giving them something useful to evaluate, to tighten the feedback loop and make sure we're able to course correct.  But it also means that we should be producing things out in the open along the way that allow anyone to see how we even got to here.  Proposals shouldn't lack a back-story or explantion, or seem like they appeared out of nowhere.  There shouln''t be any things "you just have to trust us on".</p>
+
+<p>So, that's what we're trying to do: A group of us have been looking at 'tabs' - and there is a reason we're asking.  Chances are, I think, this won't  match your first ideas about how the browser would get native support for tabs.  It didn't match my own, in fact.  I've built and used a lot of tabs over the last 20+ years, and never thought of it this way either.  So, I wanted to add some context and explanation for the curious...</p>
+</section>
+</section>
+
+<section class="sectioning">
+<h2 class="contextual-heading" style="font-size: NaNrem;">Step 1: Define Tabs?</h2>
+
+<p>I realize this sounds almost silly.  In fact, when I asked the question "can we define 'tabs'" a friend replied to me...
+
+</p><blockquote>You know what tabs are, Brian".  </blockquote>
+
+<p>I mean... You use them every day, on every OS. Everybody <em>knows</em> they exist in every toolbox. All that's left is to "just pave the cowpaths!" But when you get right down to it, it's a lot more complicated than that.</p>
+
+<p>Different "tabset" implementations have different features and different limits.  All of them have changed and evolved over time.  Today, most UI toolboxes have <em>multiple</em> APIs for creating things that users would just call "tabs" - and there are reasons for that.  Sometimes these APIs are even the basis of things a user might <em>not</em> call tabs!  In many cases, the APIs themselves <em>aren't called "tabs" (or anything close to that)</em>.  So, if we want to discuss these things (any components, really), we need to begin with a survey and lay down some clear definitions and goals.  We laid this all out in <a href="https://open-ui.org/components/tabs.research.parts">this research identifying the parts and features</a> in the landscape.</p>
+
+<section class="sectioning">
+  <h3 class="contextual-heading" style="font-size: NaNrem;">An interesting distinction</h3>
+  <p>One thing which falls out this is an intesting distinction of 2 broad "kinds of tabset-like controls":</p>
+  <ul>
+    <li>One kind is actually a <em>window manager</em>. The tabs at the top of the browser you're looking at right now are windows that happen to be arranged visually as groups that look like tabs.</li>
+    <li>Another kind manages exclusive display and focus management patterns of what are, effectively, sections within the same document that happen to look like tabs.</li>
+  </ul>
+  <p>As end-users we probably don't think about this much, but it is a pretty important distinction actually and there are differences we understand commonly.  In fact, so many expectations about both the shape of the UI and user interactions flow from this. Text searching happens in a window, not across windows, for example.  Windows can be "dragged out" and displayed as, well, windows. The keyboard interactions and accessibility roles of windows are expected to be... windows. And so on.</p>
+
+  <p>For our purposes, we have chosen to focus primarily on the ltter kind which are prevalent in UI kits for the Web.</p>
+</section>
+
+</section>
+
+<section class="sectioning">
+<h2 class="contextual-heading" style="font-size: NaNrem;">Markup and APIs</h2>
+
+<p>Again, it <em>feels</em> like it shouldn't be difficult to pave these paths into markup.  However, even in systems <em>without</em> markup, the shape of APIs varies pretty considerably.  Translating this to markup adds a new set of challenges.  There isn't a clear/self evident mapping to DOM/markup at all - and whatever decisions we make somehow dictate something about how APIs should work on the web.</p>
+
+<p>To illustrate this, we have also collected <a href="https://open-ui.org/components/tabs.research.markup">a bunch of research showing all sorts of variants over the years</a> and various dissected pros and cons of each.</p>
+
+<section class="sectioning">
+  <h3 class="contextual-heading" style="font-size: NaNrem;">Some things we thought were important...</h3>
+
+<p>We thought it is worth thinking about progressive enhancement.  Support for new features generally rolls out unevenly (we only got the last support for summary/details about a year ago, for example).  This means that for potentially a long time, some browsers may not have support for native tabs.</p>
+
+<p>But that's only part of the story: When you consider "other browsers" - things like embedded devices which update more slowly still, or search engines or reader modes... What happens to content?</p>
+
+<p>Further, we'd would like to test out any theory with a custom element (as above), and the script can fail to download.  In fact, these things seem to dovetail nicely. We'd like the content to be "good" even if script for some reason doesn't execute in that case.</p>
+
+<p>This fed into roads we didn't go down..</p>
+
+<section class="sectioning">
+  <h4 class="contextual-heading" style="font-size: NaNrem;">Attributes?</h4>
+  <p>One popular approach involves putting the tab's "label" as an attribute.  That has a lot of really nice qualities, but it falls down on a number of other points.  Without support (including all of those cases above), users would be left with information loss and a wall of run-on and unlabelled content.  This also has pretty extreme limitations on what can be put <em>into</em> a tab label. No additional elements means no ruby text, for example,  or interesting icon treatments or stylistic markup or structured text of any kind.  So, we suggest that attributes for labels are not our first choice.</p>
+</section>
+
+<section class="sectioning">
+  <h4 class="contextual-heading" style="font-size: NaNrem;">TOC Style?</h4>
+  <p>Another very popular set of solutions involves "table of contents (TOC) style" markup. These draw a parallel which equates tab labels to items in a table of contents.  In fact, over the years this sort of pattern has been popular with progressive enhancement enthusiasts because you can use a list of links. The markup itself even "looks like tabs" already. It's probably surprising then that this isn't our first choice - why?</p>
+
+  <p>
+  The short answer is that there are some fundamental flaws in this analogy which have impacts.  Tables of contents are an enhancement of headings, not a replacement for them.  That is, they are generally built based on headings that label content and simply repeated/reflected earlier.  Without these already in place, the un-enhanced content is just a wall of unbroken text without labels. It's almost exactly the same issue as attribute style.  While it's possible to repeat the headings too, why repeat yourself? If you have the heading, you can build the TOC, but not vice-versa.</p>
+
+  <p>Similarly, the argument that "the markup looks like tabs already" is less than perfect.  As our research shows, tabset labels can exist along any axis, or even around the circumference of a circle.  If you look at it just slightly differently, they can perhaps even be interleaved in the content ('responsive tabs' do this, and at one point ARIA's "single select accordions" were also tabs).</p>
+
+  <p>So, we suggest TOC-style isn't our first choice either.</p>
+</section>
+
+<section class="sectioning">
+  <h4 class="contextual-heading" style="font-size: NaNrem;">A tabset element?</h4>
+  <p>All of this helps shine light on some interesting questions and led to my post <a href="https://bkardell.com/blog/DesignAffordanceControls.html">Design Afforance Controls</a> which talks about why the way we approach this matters. It holds up flaws in the inherent control-specific-ness of <code>&lt;summary&gt;</code> and <code>&lt;details&gt;</code> and contrasts this with the fact that we don't have a <code>&lt;scrollpane&gt;</code> element - but rather employ those affordances when they make sense.</p>
+
+  <p>If a thing's fundamental, primary "nature" is just "good sections", don't we often want to change our minds on presentation based on things like media or design? It's worth considering.</p>
+
+  <p>So, it's not that we <em>shouldn't</em> have an element specifically for tabs as much as "isn't this maybe more useful"?
+</p></section>
+
+</section>
+
+
+<section class="sectioning">
+<h3 class="contextual-heading" style="font-size: NaNrem;">What do you think?</h3>
+
+<p>Please let us know what you think about the ideas here!  If you could provide "just good content" and have pretty much full stylistic control, and use CSS to express what kind of "showey/hidey" control it should be/when... How would you feel about that? Do you "get it"?  Do you "buy the arguments"? Or are we just barking up the wrong tree?  Your feedback will help inform how we discuss or advocate for things next in OpenUI to move things forward.</p>
+</section>
+
+  <p class="thanksTo">Mentions do not imply endorsements, but many thanks to folks who  proofread this post, met along the way, helped research, had discussions, and did work.  Very special thanks especially @jon_neal @TerribleMia and @davatron5000 for many thoughtful discussions.</p>
+
+</section>]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[Stranger Than Fractions]]></title>
         <id>https://bkardell.com/blog/StrangerThanFractions.html</id>
