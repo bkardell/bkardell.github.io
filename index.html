@@ -260,7 +260,28 @@ blockquote:after {
     }
     main li .source { display: block; }
 
-}</style>
+} 
+
+spicy-sections {
+--const-mq-affordances:
+  [screen and (min-width: 600px) ] collapse |
+  [screen and (min-width: 801px) ] tab-bar
+;
+display: block;
+}
+
+spicy-sections.single {
+--const-mq-affordances:
+  [screen ] collapse 
+;
+display: block;
+}
+
+[role="tab"] {
+    margin-right:  1.5rem;
+}
+
+</style>
   </head> 
   <body>
     <script>
@@ -341,169 +362,188 @@ America (art for sale)</a></li>
 </header>
 </details>
 </responsive-details>
+<script>
+  /*
+    You're probably wondering "Do I need to write this?""
+    "Is this part of it?"  No... If you're interested tho - 
+    Custom elements have a FOUC/PE gap 
+    (see https://github.com/whatwg/html/issues/6231).
+    This is a slightly better experience: It 
+    will be hidden _if JS is enabled_, and 
+    will be shown as it is defined, 
+    or after 1 sec, whichever is first.
+  */
+  let ss = document.createElement("style");
+
+  ss.innerHTML = `html:not(.lldelay) :not(:defined) { visibility: hidden; }`;
+  document.head.appendChild(ss);
+
+  setTimeout(() => {
+    document.documentElement.classList.add("lldelay");
+  }, 1000);
+</script>
     <main>
     	<style> 
     		section + section {
     			margin-top: 2rem;
     			margin-bottom: 2rem;
     		}
-
-            [slot="tab"] {
-                border: 1px solid gray;
-                border-top-left-radius: 0.5rem;
-                border-bottom: none;
-                margin-right: 0.7rem;
-                padding-left: 0.5rem;
-                padding-right: 0.5rem;
-            }
-            [slot="tab"][selected] {
-                box-shadow: 0px 4px 2px 1px rgba(123,115,209,0.35);
-            }
-
     	</style>
         <contextual-heading role="heading" aria-level="1">Stuff about me...</contextual-heading>
         <p>
             I believe in the Web and its potential. I'd like to make it even better, and I'd like your help.
         </p>
-        <generic-tabs>
-            <h2>Blog</h2>
-            <div>
-            <p>I'm in the process of making this domain the cannonical source for all my posts. Here are a few of my favorites/some popular ones, but you can find a <a href="/blog/">complete list</a> (of the ones I've moved) or subscribe to the <a href="/blog/feed.rss">rss feed</a> for updates.</p>
-            <ul>
-                <li><a href="/blog/canihas.html">Can I :has()</a></li>
-                <li><a href="/blog/DesignAffordanceControls.html">Design Affordance Controls</a></li>
-                <li><a href="/blog/Dropping-The-F-Bomb-On-Standards.html">Dropping the F-Bomb on Web Standards</a></li>
-                <li><a href="blog/Perf.html">Performance: Shame, Hope, Nuance and Interesting Problems</a></li>
-                <li><a href="/blog/Potentially-Scattered-Thoughts-On-Web-Components.html">Potentially Scattered Thoughts on Web Components</a></li>
-                <li><a href="/blog/The-Future-Web-Wants-You.html">The Future Web Wants You</a></li>
-                <li><a href="/blog/The-Glory-Days-Of-The-Web.html">The Glory Days of the Web</a></li>
-                <li><a href="/blog/Beyond.html">Beyond Browser Vendors</a></li>
-                <li><a href="/blog/TowardResponsive.html">Toward Responsive Elements</a></li>
-                <li><a href="/blog/StrangeGame.html">Interactive Elements: A Strange Game</a></li>
-                <li><a href="/blog/Prognostication-And-The-Failure-Of-The-Web.html">Prognostication and the Failure of
-                the Web</a></li>
-                <li><a href="/blog/X-Web-Days-of-Future-Past.html">X-Web: Days of Future Past</a></li>
-                <li><a href="/blog/Tao-Of-The-Extensible-Web.html">What Would Bruce Lee Do: The Tao of the Extensible Web</a></li>
-                <li><a href="/blog/Off-With-Their-Heads.html">Off With Their Heads: Disband the W3C?</a></li>
-                <li>A Brief(ish) History of the Web Universe (series)<ul>
-                    <li><a href="/blog/Brief-ish-History-of-The-Web-Part-1.html">Part I: The Pre-Web</a></li>
-                    <li><a href="/blog/Brief-ish-History-of-The-Web-Part-2.html">Part II: Time</a></li>
-                    <li><a href="/blog/Brief-ish-History-of-The-Web-Part-3.html">Part III: The Early Web</a></li>
-                    <li><a href="/blog/Brief-ish-History-of-The-Web-Part-4.html">Part IV: New Hope(s)</a></li>
-                    </ul>
-                </li>
-                <li>Web Speech (series)<ul>
-                    <li><a href="/blog/The-History-Of-Speech.html">Intro: The History and State of Speech </a></li>
-                    <li><a href="/blog/Greetings-Professor-Falken.html">Part I: Greetings, Professor Falken</a></li>
-                    <li><a href="/blog//Basic-Voice-Speaker.html">Part II: You Don't Say</a></li>
-                    <li><a href="/blog/Listen-Up.html">Part III: Listen up</a></li>
-                    <li><a href="/blog/Voice-Recognition-Thoughts.html">Part IV: Thoughts on Voice Recognition</a></li>
-                    </ul>
-                </li>
-            </ul>
-            </div>
-            <h2>Guest Posts</h2>
-            <div>
+
+        <p style="background-color: rgba(123,115,209,0.35);padding: 1rem;">Are you looking for my <a href="/blog/">actual blog</a> where you can see all posts with a reverse chronologial list of posts, and subscribe to the <a href="/blog/feed.rss">rss feed</a> for updates?</p>.
+
+        <spicy-sections>
+          <h2>Writings</h2>
+          <div>
+            <p>Here are a random collection of some of my writings...</p>
+            <spicy-sections class="single" style="margin-left: 2rem;">
+              <h2 default-activate>Elsewhere</h2>
+              <div>
                 <p>I occasionally write elsewhere, or have been involved in other joint writings. Here are a selection of interesting ones...
                 </p>
-            <ul>
-                <li><a href="https://extensiblewebmanifesto.org">The Extensible Web Manifesto</a></li>
-                <li>
-                    <a href="http://radar.oreilly.com/2015/03/pandoras-box-model.html">Pandora's Box Model</a>
-                    <span class="source">oreilly.com</span>
-                </li>
-                <li>
-                    <a href="https://www.oreilly.com/ideas/proposing-css-input-modality">Proposing CSS input modality</a>
-                    <span class="source">oreilly.com</span>
-                </li>
-                <li> 
-                    <a href="https://blog.jquery.com/2016/07/27/the-jquery-foundation-and-standards-2/">The jQuery Foundation and Standards</a>
-                    <span class="source">The jQuery Blog</span>
-                </li>
-                <li>
-                    <a href="https://dev.opera.com/articles/houdini/">Sex, Houdini and the Extensible Web</a>
-                    <span class="source">dev.opera Blog</span>
-                </li>
-                <li>
-                    <a href="https://www.smashingmagazine.com/2013/11/laying-the-groundwork-for-extensibility/">Laying the Groundwork for Extensibility</a>
-                    <span class="source">Smashing Magazine</span>
-                </li>
-                <li>
-                    <a href="https://css-tricks.com/an-intro-to-hitch-js-and-the-extensible-web/">An Intro to HitchJS and the Extensible Web</a>
-                    <span class="source">CSS Tricks</span>
-                </li>
-                <li>
-                    <a>A Plea to Web Developers</a>
-                    <span class="source">net Magazine December 2016 (Issue 287)</span>
-                </li>
-                <!--This is gone, removing unless I can find archive
-                <li>
-                    <a href="http://codingstuff.org/brian-kardell/">How I Got Into Computers</a>
-                    <span class="source">For a series on codingstuff.org</span>
-                </li>
+                <ul> 
+                  <li><a href="https://extensiblewebmanifesto.org">The Extensible Web Manifesto</a></li>
+                  <li>
+                      <a href="http://radar.oreilly.com/2015/03/pandoras-box-model.html">Pandora's Box Model</a>
+                      <span class="source">oreilly.com</span>
+                  </li>
+                  <li>
+                      <a href="https://www.oreilly.com/ideas/proposing-css-input-modality">Proposing CSS input modality</a>
+                      <span class="source">oreilly.com</span>
+                  </li>
+                  <li> 
+                      <a href="https://blog.jquery.com/2016/07/27/the-jquery-foundation-and-standards-2/">The jQuery Foundation and Standards</a>
+                      <span class="source">The jQuery Blog</span>
+                  </li>
+                  <li>
+                      <a href="https://dev.opera.com/articles/houdini/">Sex, Houdini and the Extensible Web</a>
+                      <span class="source">dev.opera Blog</span>
+                  </li>
+                  <li>
+                      <a href="https://www.smashingmagazine.com/2013/11/laying-the-groundwork-for-extensibility/">Laying the Groundwork for Extensibility</a>
+                      <span class="source">Smashing Magazine</span>
+                  </li>
+                  <li>
+                      <a href="https://css-tricks.com/an-intro-to-hitch-js-and-the-extensible-web/">An Intro to HitchJS and the Extensible Web</a>
+                      <span class="source">CSS Tricks</span>
+                  </li>
+                  <li>
+                      <a>A Plea to Web Developers</a>
+                      <span class="source">net Magazine December 2016 (Issue 287)</span>
+                  </li>
+                  <!--This is gone, removing unless I can find archive
+                  <li>
+                      <a href="http://codingstuff.org/brian-kardell/">How I Got Into Computers</a>
+                      <span class="source">For a series on codingstuff.org</span>
+                  </li>
                  -->
-            </ul>
-        </div>
-            <h2>Talks</h2>
-            <div>
-                <p>I also give talks and appear on podcasts. Here are a few I think are interesting...</p>
+                </ul>
+              </div>
+            </spicy-sections>
+            <spicy-sections class="single" style="margin-left: 2rem;"> 
+              <h3>Some popular blog posts...</h3>
+              <div>
+                <p>If you're just poking around or new to my blog, here are a small collection of interesting or popular things I've written, listed with no relevance to when...
+                </p>
                 <ul>
-                
-                <li>
-                    <a href="https://mathml.igalia.com/news/2019/12/03/igalia-chats-with-neil-soiffer-on-mathml/#new">MathML with Brian Kardell and Neil Soiffer </a>
-                    <span class="source">Igalia Chats (Eposide 1)</span>
-                </li>                             
-                
-                <li>
-                    <a href="https://www.igalia.com/chats/accessibility-with-brian-kardell-and-martin-robinson">Accessibility with Brian Kardell and Martin Robinson</a>
-                    <span class="source">Igalia Chats (Eposide 2)</span>
-                </li>                             
-                <li>
-                    <a href="https://www.igalia.com/chats/Igalia-Chats-Niko-SVG-WPE">WebKit, SVG and WPE with Brian Kardell and Nikolas Zimmermann</a>
-                    <span class="source">Igalia Chats (Eposide 3)</span>
-                </li>   
-                <li>
-                    <a href="https://www.igalia.com/chats/ecosystem-health">Web Ecosystem Health, Part I with Jeremy Keith and Stuart Langridge</a>
-                    <span class="source">Igalia Chats (Eposide 4)</span>
-                </li>                             
-                <li>
-                    <a href="https://www.igalia.com/chats/ecosystem-health-ii">Web Ecosystem Health, Part II with Rick Byers and Rossen Atanassov</a>
-                    <span class="source">Igalia Chats (Eposide 5)</span>
-                </li>        
- 
-                <li>
-                    <a href="https://shoptalkshow.com/407/">Building Browser Features</a>
-                    <span class="source">The Shop Talk Show Podcast (Eposide 407)</span>
-                </li>
-                <li>
-                    <a href="https://thewebplatformpodcast.com/195-platforms-and-priorities">Platforms and Priorities</a>
-                    <span class="source">The Web Platform Podcast (Eposide 195)</span>
-                </li>
-                <li>
-                    <a href="http://thewebplatformpodcast.com/101-browser-wars-standards-battles">Browser Wars and Standards Battles</a>
-                    <span class="source">The Web Platform Podcast (Eposide 101)</span>
-                </li>
-                <li>
-                    <a href="http://thewebplatformpodcast.com/106-aria-for-developers">ARIA for Developers</a>
-                    <span class="source">The Web Platform Podcast (Eposide 106)</span>
-                </li>
-                <li>
-                    <a href="https://www.youtube.com/watch?v=vl4q0Q9ucIs">Standards and the Extensible Web Manifesto</a>
-                    <span class="source">EdgeConf 4</span>
-                </li>
-                <li>
-                    <a href="https://www.youtube.com/watch?v=IRSdpQXDIAo">You say you want a (r)evolution: Embracing a living system</a>
-                    <span class="source">JSFest Oakland Extensible Web Summit</span>
-                </li>
-                <li>
-                    <a href="https://www.youtube.com/watch?v=rwWEQPc5GRE">Hitchhiker's Guide to Web Standards & Chapters.io</a>
-                    <span class="source">Code & Supply Pittsburgh</span>
-                </li>
+                  <li><a href="/blog/canihas.html">Can I :has()</a></li>
+                  <li><a href="/blog/DesignAffordanceControls.html">Design Affordance Controls</a></li>
+                  <li><a href="/blog/Dropping-The-F-Bomb-On-Standards.html">
+                  Dropping the F-Bomb on Web Standards</a></li>
+                  <li><a href="blog/Perf.html">Performance: Shame, Hope, Nuance and Interesting Problems</a></li>
+                  <li><a href="/blog/Potentially-Scattered-Thoughts-On-Web-Components.html">Potentially Scattered Thoughts on Web Components</a></li>
+                  <li><a href="/blog/The-Future-Web-Wants-You.html">The Future Web Wants You</a></li>
+                  <li><a href="/blog/The-Glory-Days-Of-The-Web.html">The Glory Days of the Web</a></li>
+                  <li><a href="/blog/Beyond.html">Beyond Browser Vendors</a></li>
+                  <li><a href="/blog/TowardResponsive.html">Toward Responsive Elements</a></li>
+                  <li><a href="/blog/StrangeGame.html">Interactive Elements: A Strange Game</a></li>
+                  <li><a href="/blog/Prognostication-And-The-Failure-Of-The-Web.html">Prognostication and the Failure of
+                  the Web</a></li>
+                  <li><a href="/blog/X-Web-Days-of-Future-Past.html">X-Web: Days of Future Past</a></li> 
+                  <li><a href="/blog/Tao-Of-The-Extensible-Web.html">What Would Bruce Lee Do: The Tao of the Extensible Web</a></li>
+                  <li><a href="/blog/Off-With-Their-Heads.html">Off With Their Heads: Disband the W3C?</a></li>
+                  <li>A Brief(ish) History of the Web Universe (series)<ul>
+                      <li><a href="/blog/Brief-ish-History-of-The-Web-Part-1.html">Part I: The Pre-Web</a></li>
+                      <li><a href="/blog/Brief-ish-History-of-The-Web-Part-2.html">Part II: Time</a></li>
+                      <li><a href="/blog/Brief-ish-History-of-The-Web-Part-3.html">Part III: The Early Web</a></li>
+                      <li><a href="/blog/Brief-ish-History-of-The-Web-Part-4.html">Part IV: New Hope(s)</a></li>
+                      </ul>
+                  </li>
+                  <li>Web Speech (series)<ul>
+                      <li><a href="/blog/The-History-Of-Speech.html">Intro: The History and State of Speech </a></li>
+                      <li><a href="/blog/Greetings-Professor-Falken.html">Part I: Greetings, Professor Falken</a></li>
+                      <li><a href="/blog//Basic-Voice-Speaker.html">Part II: You Don't Say</a></li>
+                      <li><a href="/blog/Listen-Up.html">Part III: Listen up</a></li>
+                      <li><a href="/blog/Voice-Recognition-Thoughts.html">Part IV: Thoughts on Voice Recognition</a></li>
+                      </ul>
+                  </li>
+                </ul>
+              </div>
+            </spicy-sections>
+          </div>
+      
+          <h2>Talks</h2>
+          <div>
+              <p>I also give talks and appear on podcasts. Here are a few I think are interesting...</p>
+              <ul>
+              
+              <li>
+                  <a href="https://mathml.igalia.com/news/2019/12/03/igalia-chats-with-neil-soiffer-on-mathml/#new">MathML with Brian Kardell and Neil Soiffer </a>
+                  <span class="source">Igalia Chats (Eposide 1)</span>
+              </li>                             
+              
+              <li>
+                  <a href="https://www.igalia.com/chats/accessibility-with-brian-kardell-and-martin-robinson">Accessibility with Brian Kardell and Martin Robinson</a>
+                  <span class="source">Igalia Chats (Eposide 2)</span>
+              </li>                             
+              <li>
+                  <a href="https://www.igalia.com/chats/Igalia-Chats-Niko-SVG-WPE">WebKit, SVG and WPE with Brian Kardell and Nikolas Zimmermann</a>
+                  <span class="source">Igalia Chats (Eposide 3)</span>
+              </li>   
+              <li>
+                  <a href="https://www.igalia.com/chats/ecosystem-health">Web Ecosystem Health, Part I with Jeremy Keith and Stuart Langridge</a>
+                  <span class="source">Igalia Chats (Eposide 4)</span>
+              </li>                             
+              <li>
+                  <a href="https://www.igalia.com/chats/ecosystem-health-ii">Web Ecosystem Health, Part II with Rick Byers and Rossen Atanassov</a>
+                  <span class="source">Igalia Chats (Eposide 5)</span>
+              </li>        
 
-
+              <li>
+                  <a href="https://shoptalkshow.com/407/">Building Browser Features</a>
+                  <span class="source">The Shop Talk Show Podcast (Eposide 407)</span>
+              </li>
+              <li>
+                  <a href="https://thewebplatformpodcast.com/195-platforms-and-priorities">Platforms and Priorities</a>
+                  <span class="source">The Web Platform Podcast (Eposide 195)</span>
+              </li>
+              <li>
+                  <a href="http://thewebplatformpodcast.com/101-browser-wars-standards-battles">Browser Wars and Standards Battles</a>
+                  <span class="source">The Web Platform Podcast (Eposide 101)</span>
+              </li>
+              <li>
+                  <a href="http://thewebplatformpodcast.com/106-aria-for-developers">ARIA for Developers</a>
+                  <span class="source">The Web Platform Podcast (Eposide 106)</span>
+              </li>
+              <li>
+                  <a href="https://www.youtube.com/watch?v=vl4q0Q9ucIs">Standards and the Extensible Web Manifesto</a>
+                  <span class="source">EdgeConf 4</span>
+              </li>
+              <li>
+                  <a href="https://www.youtube.com/watch?v=IRSdpQXDIAo">You say you want a (r)evolution: Embracing a living system</a>
+                  <span class="source">JSFest Oakland Extensible Web Summit</span>
+              </li>
+              <li>
+                  <a href="https://www.youtube.com/watch?v=rwWEQPc5GRE">Hitchhiker's Guide to Web Standards & Chapters.io</a>
+                  <span class="source">Code & Supply Pittsburgh</span>
+              </li>
             </ul>
-        </div>
-        </generic-tabs>
+          </div>
+        </spicy-sections>
     </main>
       <!-- script>
     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -515,329 +555,488 @@ America (art for sale)</a></li>
     ga('send', 'pageview');
   </script -->
 
+ 
+
     <script>
-        (function () {
-  'use strict';
+    //import { MediaAffordancesElement } from "./MediaAffordancesElement.js";
+    class MediaAffordancesElement extends HTMLElement {
+      constructor() {
+        super();
+        // todo: this should be a private field
+        this.__matching = new Set()
+        this.mqls = [];
+        this.observers = [];
 
-  class BatchingElement extends HTMLElement {
-    constructor() {
-      super();
-      this.updateComplete = this.__resolver();
-      this.__uuid = BatchingElement.uuid++; // eslint-disable-line
-    }
+        this.supportedAffordances = new Set();
+      }
 
-    update() {}
+      observeAffordanceChange(cb) {
+        this.observers.push(cb);
+      }
 
-    async requestUpdate(dispatchEvent) {
-      if (!this.__renderRequest) {
-        this.__renderRequest = true;
-        await 0;
-        this.update();
-        if (dispatchEvent) {
-          if (this.constructor.config.disabled && this.hasAttribute('disabled')) ; else {
-            this.__dispatch();
+      notifyChange() {
+        let intersection = new Set();
+        for (let elem of this.__matching) {
+          if (this.supportedAffordances.has(elem)) {
+            intersection.add(elem);
           }
         }
 
-        this.__res();
-        this.updateComplete = this.__resolver();
-        this.__renderRequest = false;
-      }
-    }
-
-    __dispatch() {} // eslint-disable-line
-
-    __resolver() {
-      return new Promise(res => {
-        this.__res = res;
-      });
-    }
-  }
-
-  BatchingElement.uuid = 0;
-
-  const KEYCODES = {
-    TAB: 9,
-    ENTER: 13,
-    SHIFT: 16,
-    ESC: 27,
-    SPACE: 32,
-    END: 35,
-    HOME: 36,
-    LEFT: 37,
-    UP: 38,
-    RIGHT: 39,
-    DOWN: 40,
-  };
-
-  /**
-   * @TODO
-   * - getFocusableElements wont work for listbox, figure something out
-   * actually it should work I think, because of the shouldFocus property in config
-   */
-
-  const SelectedMixin = superclass =>
-    // eslint-disable-next-line
-    class SelectedMixin extends superclass {
-      constructor() {
-        super();
-        this.__onClick = this.__onClick.bind(this);
-        this.__onKeyDown = this.__onKeyDown.bind(this);
-      }
-
-      connectedCallback() {
-        if (super.connectedCallback) {
-          super.connectedCallback();
-        }
-
-        if (this.hasAttribute('selected')) {
-          this.__index = Number(this.getAttribute('selected'));
+        if (this.__matching.size > 0) {
+          this.setAttribute("mq-matched", [...this.__matching].join(" "));
         } else {
-          this.__index = 0;
-          this.requestUpdate(false);
+          this.removeAttribute("mq-matched");
         }
-
-        this.shadowRoot.addEventListener('click', this.__onClick);
-        this.shadowRoot.addEventListener('keydown', this.__onKeyDown);
-
-        this.shadowRoot.addEventListener('slotchange', async () => {
-          this.requestUpdate(false);
+        let arr =  [...intersection]
+        let affordance = arr[arr.length - 1];
+        if (affordance) {
+          this.setAttribute("affordance", affordance);
+        } else {
+          this.removeAttribute("affordance");
+        }
+        this.observers.forEach(cb => {
+          cb(intersection, this.__matching);
         });
       }
 
       static get observedAttributes() {
-        return ['selected'];
+        return ["mq-affordances"];
       }
 
-      attributeChangedCallback(name, oldVal, newVal) {
-        if (name === 'selected') {
-          if (newVal !== oldVal) {
-            this.__index = Number(this.getAttribute('selected'));
-            this.requestUpdate(true);
-          }
-        }
-      }
-
-      getElements() {
-        const obj = {};
-        Object.entries(this.constructor.config.selectors).forEach(([key, val]) => {
-          obj[key] = val.selector(this);
-        });
-        return obj;
-      }
-
-      __getFocusableElements() {
-        const focusableElements = Object.entries(this.constructor.config.selectors).find(
-          ([, val]) => val.focusTarget,
-        )[1];
-
-        return [...focusableElements.selector(this)];
-      }
-
-      __dispatch() {
-        const { selected } = this;
-        this.dispatchEvent(
-          new CustomEvent('selected-changed', {
-            detail: selected,
-          }),
+      connectedCallback() {
+        let newValue = getComputedStyle(this).getPropertyValue(
+          "--const-mq-affordances"
         );
+        this.connectListeners(newValue);
       }
 
-      __focus() {
-        this.__getFocusableElements()[this.__index].focus();
+      connectListeners(newValue = "") {
+        if (newValue.trim().length === 0) {
+          return;
+        }
+        
+        newValue.split("|").forEach(segment => {
+          let mq = segment.trim().match(/\[([^\]]*)/)[1];
+          let names = segment
+            .replace(`[${mq}]`, "")
+            .trim()
+            .split(" ");
+          let mql = window.matchMedia(mq);
+          let mqh = evt => {
+            names.forEach(name => {
+              this.__matching[mql.matches ? "add" : "delete"](name);
+            });
+
+            this.notifyChange();
+          };
+          mqh();
+          mql.addEventListener("change", mqh);
+          this.mqls.push(mql);
+        }, this);
       }
 
-      __onClick(e) {
-        if (this.constructor.config.disabled && this.hasAttribute('disabled')) return;
-        const focusableElements = this.__getFocusableElements();
-        if (![...focusableElements].includes(e.target)) return;
-        this.__index = focusableElements.indexOf(e.target);
-        this.requestUpdate(true);
-        if (this.constructor.config.shouldFocus) {
-          this.__focus();
-        }
+      attributeChangedCallback(name, oldValue, newValue) {
+        this.connectListeners(newValue);
       }
-
-      __onKeyDown(event) {
-        if (this.constructor.config.disabled && this.hasAttribute('disabled')) return;
-        const elements = this.__getFocusableElements();
-        // eslint-disable-next-line
-        let { orientation, multiDirectional } = this.constructor.config;
-
-        if (orientation === 'horizontal' && multiDirectional && this.hasAttribute('vertical')) {
-          orientation = 'vertical';
-        }
-
-        switch (event.keyCode) {
-          case orientation === 'horizontal' ? KEYCODES.LEFT : KEYCODES.UP:
-            if (this.__index === 0) {
-              this.__index = elements.length - 1;
-            } else {
-              this.__index--; // eslint-disable-line
-            }
-            break;
-
-          case orientation === 'horizontal' ? KEYCODES.RIGHT : KEYCODES.DOWN:
-            if (this.__index === elements.length - 1) {
-              this.__index = 0;
-            } else {
-              this.__index++; // eslint-disable-line
-            }
-            break;
-
-          case KEYCODES.HOME:
-            this.__index = 0;
-            break;
-
-          case KEYCODES.END:
-            this.__index = elements.length - 1;
-            break;
-          default:
-            return;
-        }
-        event.preventDefault();
-
-        if (this.constructor.config.activateOnKeydown) {
-          this.requestUpdate(true);
-        }
-
-        if (this.constructor.config.shouldFocus) {
-          this.__focus();
-        }
-      }
-
-      get selected() {
-        return this.__index;
-      }
-
-      set selected(val) {
-        this.__index = val;
-        if (val !== null) {
-          this.requestUpdate(true);
-        }
-      }
-    };
-
-  
-  const template = document.createElement('template');
-  template.innerHTML = `
-  <style>
-    :host {
-      display: block;
     }
 
-    :host([vertical]) {
-      display: flex;
-    }
+    //-----------------------------------------------------
 
-    :host([vertical]) div[role="tablist"] {
-      flex-direction: column;
-    }
-
-    div[role="tablist"] {
-      display: flex;
-    }
-
-    
-  </style>
-
-  <div part="tablist" role="tablist">
-    <slot name="tab"></slot>
-  </div>
-
-  <div part="panel">
-    <slot name="panel"></slot>
-  </div>
-`;
-
-  class GenericTabs extends SelectedMixin(BatchingElement) {
-    static get config() {
-      return {
-        selectors: {
-          tabs: {
-            selector: el =>
-              Array.from(el.children).filter(node =>
-                node.matches('h1, h2, h3, h4, h5, h6, [slot="tab"]'),
-              ),
-            focusTarget: true,
-          },
-          panels: {
-            selector: el =>
-              Array.from(el.children).filter(
-                node =>
-                  node.matches('h1 ~ *, h2 ~ *, h3 ~ *, h4 ~ *, h5 ~ *, h6 ~ *, [slot="panel"]') &&
-                  !node.matches('h1, h2, h3, h4, h5, h6, [slot="tab"]'),
-              ),
-          },
-        },
-        multiDirectional: true,
-        orientation: 'horizontal',
-        shouldFocus: true,
-        activateOnKeydown: true,
-        disabled: false,
+    (function() {
+      let lastUId = 0;
+      let nextUId = () => {
+        return `cp${++lastUId}`;
       };
-    }
 
-    static get observedAttributes() {
-      return [...super.observedAttributes, 'vertical'];
-    }
+      let getLabels = regionset => {
+        return [...regionset.children].filter(el => /^H\d$/.test(el.tagName));
+      };
 
-    attributeChangedCallback(name, old, val) {
-      super.attributeChangedCallback(name, old, val);
-      if (name === 'vertical') {
-        this.requestUpdate(false);
+      let getContentEls = regionset => {
+        return [...regionset.children].filter(el => !/^H\d$/.test(el.tagName));
+      };
+
+      let ensureId = el => {
+        el.id = el.id || nextUId();
+        return el.id;
+      };
+
+      let getDisclosureButton = label => {
+        return label.shadowRoot.querySelector("button");
+      };
+
+     
+      let style = document.createElement('style')
+      style.innerHTML = `
+          
+        :where(spicy-sections > [affordance*="collapse"])::before { 
+          content: ' ';
+          display: inline-block;
+          width: 0.5em;
+          height: 0.75em;
+          margin: 0 0.4em 0 0;
+          transform: rotate(90deg);
+          background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' x='0px' y='0px' width='10px' height='10px' viewBox='0 0 270 240' enable-background='new 0 0 270 240' xml:space='preserve'%3e%3cpolygon fill='black' points='5,235 135,10 265,235 '/%3e%3c/svg%3e ");
+          background-size: 100% 100%;
+        }
+
+        :where(spicy-sections > [affordance*="collapse"][aria-expanded="true"])::before, 
+        :where(spicy-sections > [affordance*="collapse"][aria-expanded="true"])::after {
+          transform: rotate(180deg);
+        }
+      `
+      document.head.prepend(style)
+      
+      const template = `
+            <style>
+              :root {
+                font-size: 1rem;
+              }
+
+              :host([hidden]),
+              ::slotted([hidden]) {
+                display: none;
+              }
+              
+              ::slotted(h1),
+              ::slotted(h2),
+              ::slotted(h3),
+              ::slotted(h4),
+              ::slotted(h5),
+              ::slotted(h6) {
+                 margin-right: 1rem;
+              }
+              
+              tab-bar ::slotted([tabindex="0"]) {
+                border-bottom: 1px solid blue;
+              }
+              
+              tab-list { 
+                display: flex; 
+                overflow: hidden;
+                white-space: nowrap;
+              }
+            </style>
+            <tab-bar part="tab-bar">
+              <!-- The region/tablist should have a  label -->
+              <tab-list part="tab-list" role="tablist"
+              ><slot name="tabListSlot"></slot></tab-list>
+            </tab-bar>
+            <content part="content-panels">
+              <slot default></slot>
+            </content>
+        `;
+
+      class RegionSet extends MediaAffordancesElement {
+        __defaults;
+        __tabListEl;
+
+        // tabs and exclusive collapses should have the same affordance object?
+        __affordanceConf = {
+          collapse: {
+            // can take a condition to force, check-like
+            toggle: (label, condition) => {
+              let state =
+                typeof condition === "boolean"
+                  ? condition
+                  : !label.affordanceState.expanded;
+              let contentEl = label.nextElementSibling;
+              label.affordanceState.expanded = state;
+              label.affordanceState.nonExclusiveExpanded = state;
+              label.setAttribute("aria-expanded", state);
+              if (state) {
+                label.setAttribute("expanded", "");
+                contentEl.style.display = "block";
+              } else {
+                label.removeAttribute("expanded");
+                contentEl.style.display = "none";
+              }
+            }
+          },
+          "exclusive-collapse": {
+            // ignores condition, radio-like
+            toggle: label => {
+              let labels = getLabels(label.parentElement);
+              let siblings = labels.filter(c => c !== label);
+              let index = labels.findIndex(c => c === label);
+
+              siblings.forEach((sibLabel, i) => {
+                let relatedContent = sibLabel.nextElementSibling;
+                sibLabel.tabIndex = -1;
+                relatedContent.style.display = "none";
+                label.setAttribute("aria-expanded", "false");
+                sibLabel.affordanceState.exclusiveExpanded = false;
+              });
+              label.tabIndex = 0;
+              //nope - todo, fix/remove this?
+              label.parentElement.affordanceState.exclusiveSelection.index = index;
+              label.nextElementSibling.style.display = "block";
+              label.setAttribute("aria-expanded", "true");
+              label.affordanceState.exclusiveExpanded = true;
+              label.focus();
+            }
+          },
+          "tab-bar": {
+            // ignores condition, radio-like
+            toggle: label => {
+              let labels = getLabels(label.parentElement);
+              let siblings = labels.filter(c => c !== label);
+              let index = labels.findIndex(c => c === label);
+
+              siblings.forEach((sibLabel, i) => {
+                let relatedContent = sibLabel.nextElementSibling;
+                sibLabel.tabIndex = -1;
+                relatedContent.style.display = "none";
+                sibLabel.setAttribute("aria-expanded", "false");
+                sibLabel.affordanceState.exclusiveExpanded = false;
+              });
+              label.tabIndex = 0;
+              label.parentElement.affordanceState.exclusiveSelection.index = index;
+              label.nextElementSibling.style.display = "block";
+              label.setAttribute("aria-expanded", "true");
+              label.affordanceState.exclusiveExpanded = true;
+              label.focus();
+            }
+          }
+        };
+        __setSize = (labelEls, contentEls) => {
+          this.__size = Math.min(labelEls.length, contentEls.length);
+
+          if (labelEls.length !== this.__size) {
+            console.warn("mismatch in tab-set label/content pairs...");
+          }
+
+          labelEls.forEach((labelEl, i) => {
+            let contentEl = contentEls[i];
+            if (!labelEl.initialized) {
+              labelEl.initialized = true; // todo: this used to be shadow, do i need it?
+              let defs = this.__defaults.defaultActive;
+
+              // this assumes it is about collapses
+              labelEl.affordanceState = {
+                expanded: defs.includes(labelEl),
+                active: false,
+                // activate in the current mode
+                activate: () => {
+                  if (this.affordanceState.current) {
+                    this.__affordanceConf[this.affordanceState.current].toggle(
+                      labelEl
+                    );
+                  }
+                }
+              };
+
+              let defaultExclusive =
+                defs.length === 0 ? labelEls[0] : defs[defs.length - 1];
+
+              this.affordanceState.exclusiveSelection.index = labelEls.indexOf(
+                defaultExclusive
+              );
+            }
+            labelEl.setMode = mode => {
+              if (mode === "non-exclusive") {
+                let isExpanded = labelEl.affordanceState.expanded;
+                labelEl.setAttribute("affordance", "collapse");
+                labelEl.setAttribute("tabindex", "0");
+                labelEl.setAttribute("aria-controls", contentEl.id);
+                labelEl.setAttribute("role", "button");
+                labelEl.setAttribute("aria-expanded", isExpanded);
+                labelEl.nextElementSibling.style.display = isExpanded
+                  ? "block"
+                  : "none";
+              } else if (mode === "exclusive") {
+                let isExpanded =
+                  labelEls.indexOf(labelEl) ===
+                  this.affordanceState.exclusiveSelection.index;
+                labelEl.setAttribute("affordance", "collapse");
+                labelEl.setAttribute("tabindex", isExpanded ? 0 : -1);
+                labelEl.setAttribute("role", "button");
+                labelEl.setAttribute("aria-expanded", isExpanded);
+                labelEl.setAttribute("aria-controls", contentEl.id);
+                labelEl.nextElementSibling.style.display = isExpanded
+                  ? "block"
+                  : "none";
+              } else {
+                labelEl.removeAttribute("tabIndex");
+                labelEl.removeAttribute("affordance");
+                labelEl.removeAttribute("aria-expanded");
+                labelEl.removeAttribute("role");
+              }
+            };
+          });
+        };
+
+        __projectTabBar = () => {
+          this.__removeProjections();
+          getLabels(this).forEach((tabSource, i) => {
+            let selected = false,
+              tabIndex = -1,
+              display = "none";
+
+            tabSource.setMode();
+            tabSource.slot = "tabListSlot";
+            tabSource.setAttribute("role", "tab");
+            let tabId = ensureId(tabSource);
+            let contentSource = tabSource.nextElementSibling;
+            contentSource.tabIndex = 0;
+            tabSource.setAttribute("aria-controls", ensureId(contentSource));
+            contentSource.setAttribute("role", "tabpanel");
+            contentSource.setAttribute("aria-labelledby", tabSource.id);
+            if (i === this.affordanceState.exclusiveSelection.index) {
+              tabIndex = 0;
+              selected = true;
+              display = "block";
+            }
+            tabSource.setAttribute("aria-selected", selected);
+            tabSource.tabIndex = tabIndex;
+            contentSource.style.display = display;
+
+            // TODO: aria-orientation :(
+          });
+        };
+
+        __projectCollapses = exclusive => {
+          // TODO - remove projections and... ??
+          this.__removeProjections();
+          getLabels(this).forEach(label => {
+            label.setMode(exclusive ? "exclusive" : "non-exclusive");
+          });
+        };
+
+        __removeProjections = () => {
+          [...this.children].forEach(child => {
+            child.removeAttribute("slot");
+            child.removeAttribute("affordance")
+            child.removeAttribute("role");
+            child.removeAttribute("aria-selected");
+            child.removeAttribute("aria-controls");
+            child.removeAttribute("tabindex");
+            child.removeAttribute("aria-expanded")
+            child.style.display = "block";
+          });
+        };
+
+        // matching pairs
+        __size = 0;
+
+        __configure = () => {
+          ///hmmm
+
+          this.__setSize(getLabels(this), getContentEls(this));
+
+          if (this.affordanceState.current === "tab-bar") {
+            this.affordanceState.currentMode = "exclusive";
+            this.__projectTabBar();
+          } else if (this.affordanceState.current === "collapse") {
+            this.affordanceState.currentMode = "non-exclusive";
+            this.__projectCollapses();
+          } else if (this.affordanceState.current === "exclusive-collapse") {
+            this.affordanceState.currentMode = "exclusive";
+            this.__projectCollapses(true);
+          } else {
+            this.affordanceState.currentMode = undefined;
+            this.__removeProjections();
+          }
+
+          let specifiedIndex = this.activeTabIndex || 0;
+          // TODO: hmm, these are DOM changes, we could cache them
+          let labelEls = getLabels(this);
+          let contentEls = getContentEls(this);
+
+          for (let i = 0; i < this.__size; i++) {
+            let label = labelEls[i];
+            // probably add one handler that decides
+            if (!label._inited) {
+              label.addEventListener("click", evt => {
+                evt.target.affordanceState.activate();
+              });
+              label._inited = true;
+            }
+          }
+        };
+        
+        __childListObserver = new MutationObserver(mutationList => {
+          // we have to wire up new elements
+          let labelEls = getLabels(this);
+          let contentEls = getContentEls(this);
+
+          // what if there is a mismatch?
+          this.__setSize(labelEls, contentEls);
+          this.__configure();
+        });
+
+        __tabset;
+
+        affordanceState = {
+          exclusiveSelection: { index: undefined },
+          current: undefined,
+          currentMode: undefined,
+          getLabels: () => {
+            return getLabels(this);
+          }
+        };
+
+        /*
+          Wires up suppored affordances...
+        */
+        constructor() {
+          super();
+          this.supportedAffordances.add("tab-bar");
+          this.supportedAffordances.add("collapse");
+          this.supportedAffordances.add("exclusive-collapse");
+
+          this.observeAffordanceChange((matching, all) => {
+            if (!this.__defaults) {
+              this.__defaults = {
+                onMatch: this.hasAttribute("defaults-on-match"),
+                defaultActive: getLabels(this).filter(l =>
+                  l.hasAttribute("default-activate")
+                )
+              };
+            }
+            this.affordanceState.current = this.getAttribute("affordance");
+            this.__configure();
+          });
+
+          this.attachShadow({ mode: "open" });
+          this.shadowRoot.innerHTML = template;
+     
+          this.__tabListEl = this.shadowRoot.querySelector("tab-list");
+          this.addEventListener(
+            "keydown",
+            evt => {
+              let labels = getLabels(this);
+              let size = labels.length;
+              let cur = this.affordanceState.exclusiveSelection.index;
+              let prev = cur === 0 ? size - 1 : cur - 1;
+              let next = cur === size - 1 ? 0 : cur + 1;
+
+              if (
+                this.affordanceState.current === "tab-bar" ||
+                this.affordanceState.current === "exclusive-collapse"
+              ) {
+                if (evt.keyCode == 37 || evt.keyCode == 38) {
+                  labels[prev].affordanceState.activate();
+                } else if (evt.keyCode == 39 || evt.keyCode == 40) {
+                  labels[next].affordanceState.activate();
+                }
+              }
+            },
+            false
+          );
+        }
+
+        connectedCallback() {
+          super.connectedCallback();
+
+          //TODO: check whether there is a hash/handle selection
+          
+          // If you append a fragment with a pair, it should work
+          this.__childListObserver.observe(this, { childList: true });
+        }
       }
-    }
-
-    connectedCallback() {
-      super.connectedCallback();
-      this.shadowRoot
-        .querySelector('[role="tablist"]')
-        .setAttribute('aria-label', this.getAttribute('label') || 'tablist');
-    }
-
-    constructor() {
-      super();
-      this.attachShadow({ mode: 'open' });
-      this.shadowRoot.appendChild(template.content.cloneNode(true));
-    }
-
-    update() {
-      const { tabs, panels } = this.getElements();
-      tabs.forEach((_, i) => {
-        tabs[i].slot = 'tab';
-        if (i === this.selected) {
-          tabs[i].setAttribute('selected', '');
-          tabs[i].setAttribute('aria-selected', 'true');
-          tabs[i].setAttribute('tabindex', '0');
-          panels[i].removeAttribute('_hidden');
-          this.value = tabs[i].textContent.trim();
-        } else {
-          tabs[i].removeAttribute('selected');
-          tabs[i].setAttribute('aria-selected', 'false');
-          tabs[i].setAttribute('tabindex', '-1');
-          panels[i].setAttribute('_hidden', '');
-        }
-
-        if (!tabs[i].id.startsWith('generic-tab-')) {
-          tabs[i].setAttribute('role', 'tab');
-          panels[i].setAttribute('role', 'tabpanel');
-
-          tabs[i].id = `generic-tab-${this.__uuid}-${i}`;
-          tabs[i].setAttribute('aria-controls', `generic-tab-${this.__uuid}-${i}`);
-          panels[i].setAttribute('aria-labelledby', `generic-tab-${this.__uuid}-${i}`);
-        }
-      });
-      panels.forEach((_, i) => {
-        panels[i].slot = 'panel';
-      });
-    }
-  }
-
-  // disable for now, customElements.define('generic-tabs', GenericTabs);
-
-}());
-
+      customElements.define("spicy-sections", RegionSet);
+    })();
     </script>
   </body>
 </html>
