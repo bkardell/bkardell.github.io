@@ -396,7 +396,7 @@ America (art for sale)</a></li>
     document.documentElement.classList.add("lldelay");
   }, 1000);
 </script>
-    <main><div class="posted-on">Posted on null</div><article class="sectioning">
+    <main><div class="posted-on">Posted on 08/20/2021</div><article posted-on="08/20/2021" class="sectioning">
     <h1 class="contextual-heading">Experimenting with <code>:has()</code></h1>
 
   <p class="segue">Back in May, I wrote <a href="https://bkardell.com/blog/canihas.html">Can I :has()?</a>. In that piece, I discussed the <code>:has()</code> pseudo-class and the practical reasons it's been hard to advance. Today I'll give you some updates on advancing <code>:has()</code> efforts in Chromium, and how you can play with it <em>today</em>.</p>
@@ -407,7 +407,7 @@ America (art for sale)</a></li>
 
   <section class="sectioning">
     <h2 class="contextual-heading">Where things stand in Chromium, as of yesterday</h2>
-    <p>As you may, or may not know, the process for shipping new features in Chromium is pretty involved and careful.  There are several 'intent' steps, many, reviews along the way, many channels (canary, dev, beta, stable). Atop this are also things which launch with command line flags, runtime feature flags, origin trials and finch flags.</p>
+    <p>As you may, or may not know, the process for shipping new features in Chromium is pretty involved and careful.  There are several 'intent' steps, many, reviews along the way, many channels (canary, dev, beta, stable). Atop this are also things which launch with command line flags, runtime feature flags, origin trials (experimentally on for some sites opted in), reverse origin trials (some sites opted out) and field trials/finch flags (rollout to some % of users on or off by default).</p>
 
     <p>Effectively, things get more serious and certain, and as that happens we want to expand the reach of these things by making it easier for more developers to experiment with it.</p>
 
@@ -415,9 +415,8 @@ America (art for sale)</a></li>
       <h3 class="contextual-heading">Previously...</h3>
     <p>For a while now our up-streaming efforts have allowed you to pass command line flags to enable some support in early channels. Either</p>
 
-    <pre><code class="langauge-javascript">
---enable-blink-features=CSSPseudoHasInSnapshotProfile
---enable-blink-features=CSSPseudoHas  </code></pre>
+    <pre><code class="langauge-javascript">--enable-blink-features=CSSPseudoHasInSnapshotProfile
+--enable-blink-features=CSSPseudoHas</code></pre>
 
   <p>The former adds support for the use of the <code>:has()</code> pseudo class in the JavaScript selector APIs ('the snapshot/static profile'), and the latter enables support in CSS stylesheets too.</p>
 
@@ -429,6 +428,8 @@ America (art for sale)</a></li>
     <p>As things have gotten more stable and serious, we're moving along and making some thing easier...</p>
 
     <p>As of the dev channel release 94.0.4606.12 (yesterday), enabling support <em>in the JavaScript selector APIs</em> is now as simple as <a href="https://techviral.net/enable-experimental-web-platform-features-in-chrome/">enabling the experimental web platform features runtime flag</a>. Chances are, a number of readers already have this flag flipped, so low friction indeed!</p>
+
+    <p>Support in the JavaScript APIs has always involved far fewer unknowns and challenges, but what's held us from adding support there first has always been a desire to prevent splitting and a lack of ability to answer questions about whether the main, live CSS profile could be supported, what limits it would need and so on.  We feel like we have a much better grip on many of these questions now and so things are moving along a bit.</p>
 
     <p>We hope that this encourages more people to try it out and provide feedback, open bugs, or just add encouragement. Let us know if you do!</p>
   </section>

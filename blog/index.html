@@ -401,6 +401,7 @@ America (art for sale)</a></li>
     <main>
         <contextual-heading aria-role="heading" aria-level="1">Recent Posts</contextual-heading>
     <ul>
+<li><a href="https://bkardell.com/blog/ExperimentingWithHas.html">Experimenting with :has()</a> (Fri Aug 20 2021)</li>
 <li><a href="https://bkardell.com/blog/SpicySections.html">Tabs in HTML?</a> (Sun Jul 04 2021)</li>
 <li><a href="https://bkardell.com/blog/StrangerThanFractions.html">Stranger Than Fractions</a> (Thu May 27 2021)</li>
 <li><a href="https://bkardell.com/blog/canihas.html">Can I :has()</a> (Thu May 13 2021)</li>
@@ -424,8 +425,8 @@ America (art for sale)</a></li>
 <li><a href="https://bkardell.com/blog/Beyond.html">Beyond Browser Vendors</a> (Mon Sep 16 2019)</li>
 <li><a href="https://bkardell.com/blog/TopLevelAwaitIn2m.html">Top Level Await: 2 Minute Standards</a> (Tue Aug 20 2019)</li>
 <li><a href="https://bkardell.com/blog/2MinuteStandards.html">2 Minute Standards</a> (Tue Aug 20 2019)</li>
-<li><a href="https://bkardell.com/blog/OnePlatform.html">One Platform™</a> (Tue Jul 09 2019)</li>
 <li><a href="https://bkardell.com/blog/MathForward.html">Moving Math Forward, Thoughts and Experiments</a> (Tue Jul 09 2019)</li>
+<li><a href="https://bkardell.com/blog/OnePlatform.html">One Platform™</a> (Tue Jul 09 2019)</li>
 <li><a href="https://bkardell.com/blog/Fun-With-Custom-Element-Data.html">Interesting Custom Element Data Begins</a> (Thu Mar 07 2019)</li>
 <li><a href="https://bkardell.com/blog/StringyCSS.html">Intuition Bikeshed and Standards Challenges</a> (Fri Mar 01 2019)</li>
 <li><a href="https://bkardell.com/blog/Math.html">Harold Crick and the Web Platform</a> (Wed Jan 09 2019)</li>
@@ -467,7 +468,7 @@ America (art for sale)</a></li>
 <li><a href="https://bkardell.com/blog/Really-Classy-CSS.html">(Really) classy CSS</a> (Fri May 11 2012)</li>
 </ul></main>
  
-  </body>
+  </body> 
   <script>
     //import { MediaAffordancesElement } from "./MediaAffordancesElement.js";
     class MediaAffordancesElement extends HTMLElement {
@@ -925,16 +926,26 @@ America (art for sale)</a></li>
               if (
                 this.affordanceState.current === "tab-bar" ||
                 this.affordanceState.current === "exclusive-collapse"
-              ) {
+              ) { 
                 if (evt.keyCode == 37 || evt.keyCode == 38) {
                   labels[prev].affordanceState.activate();
                 } else if (evt.keyCode == 39 || evt.keyCode == 40) {
                   labels[next].affordanceState.activate();
                 }
+              } else if (evt.keyCode == 32 && this.affordanceState.current === 'collapse') {
+                evt.preventDefault()
               }
             },
             false
           );
+          this.addEventListener(
+            "keyup", 
+            evt => {
+              if (evt.keyCode == 32 && this.affordanceState.current === 'collapse') {
+                evt.target.closest('[affordance]').affordanceState.activate()
+                evt.preventDefault()
+              }
+            }
         }
 
         connectedCallback() {
