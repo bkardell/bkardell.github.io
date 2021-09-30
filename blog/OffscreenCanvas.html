@@ -4,13 +4,13 @@
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:site" content="@briankardell">
     <meta name="twitter:creator" content="@briankardell">
-    <meta name="twitter:title" content="Why I'm hella excited about OffscreenCanvas">
-    <meta name="twitter:description" content="My friend and co-worker at Igalia Chris Lord has been working on OffscreenCanvas in WebKit and I'm (almost unreasonably) excited about it for so many reasons.    In this post, I'll">
+    <meta name="twitter:title" content="Making the whole web better, one canvas at a time.">
+    <meta name="twitter:description" content="One can have an entire career on the web and never write a single canvas.getContext('2d'), so &quot;Why should I care about this new OffscreenCanvas thing?&quot; is a decent question for man">
     
     <meta name="monetization" content="$ilp.uphold.com/kKU4GXiRwhnf ">
 
     <link rel="alternate" type="application/rss+xml" href="https://bkardell.com/blog/feed.rss" title="bkardell.com/blog rss feed">
-    <title>Why I'm hella excited about OffscreenCanvas</title> 
+    <title>Making the whole web better, one canvas at a time.</title> 
     <style>.captioned-image {
     background-color: #eaeaea;
     display: block;
@@ -397,141 +397,116 @@ America (art for sale)</a></li>
   }, 1000);
 </script>
     <main><div class="posted-on">Posted on null</div><article class="sectioning">
-    <h1 class="contextual-heading">Why I'm hella excited about <code>OffscreenCanvas</code></h1>
+    <h1 class="contextual-heading">Making the whole web better, one canvas at a time.</h1>
 
-  <p class="segue">My friend and co-worker at Igalia <a href="https://twitter.com/cwiiis">Chris Lord</a> has been working on <code>OffscreenCanvas</code> in WebKit and I'm (almost unreasonably) excited about it for <em>so many reasons</em>.    In this post, I'll tell you a little about why it is a Really Big Deal™ to me.</p>
+  <p class="segue">
+    One can have an entire career on the web and never write a single canvas.getContext('2d'), so "Why should I care about this new <code>OffscreenCanvas thing</code>?" is a decent question for many. In this post, I'll tell you why I'm certain that it will matter to you, in real ways.</p> 
   <style>
     iframe { width: 100%; height: fit-content; }
     figcaption { font-style: italic; }
   </style>
-  <section>
-    <h2>What the heck is <code>OffscreenCanvas</code>?</h2>
-
-    <p><code>OffscreenCanvas</code> is a JavaScript class  with a <code>getContent('2d')</code> method, just like the <code>&lt;canvas&gt;</code> element.  Unlike <code>&lt;canvas&gt;</code>, however it is <em>independent from a DOM element</em>. That's great, because it means you can create and use one, even in a worker.</p>
-
-    <p>Cool enough... But <code>OffscreenCanvas</code> <em>also</em> has a superpower: Instances of it are <em>transferrable</em>. In other words, references to them can be transferred via <code>postMessage</code>!  </p>
-
-    <p>All of this is really boosted by the addition of a new method on the existing DOM <code>&lt;canvas&gt;</code> API itself: <code>.transferControlToOffscreen</code>.  This returns an instance of an <code>OffscreenCanvas</code>.</p>
-
-    <p>All that might be a little hard to put together in your head - but what is means, practically speaking, is that that you can "break off" the part of a <code>&lt;canvas&gt;</code> which is in charge of actually painting on that element's surface, and hand control doing that to a worker (asynchronously).  Amazing.</p>
-  </section>
-
   <section class="sectioning">
-    <h2 class="contextual-heading">Why I think it's so exciting.</h2>
-    <p>First, it's really great for performance, which I'll demonstrate and talk about.  But the story of how we got here helps explain all of the subtle, but important reasons I think this is also exciting:
-      </p><li>It is an illustration of platform evolution</li>
-      <li>It helps resolve some historical questions and tech debt</li>
-      <li>It is an illustration of improving the health and prioritization of the commons that is the Web ecosystem.</li>
+    <h2 class="contextual-heading">How relevant is canvas?</h2>  
+    <p>As a user, you know from lived experience that <code>&lt;video&gt;</code> on the web is pretty popular.  It isn't remotely niche. However, many developers I talk to think that <code>&lt;canvas&gt;</code> is.  The sentiment seems to be something like...</p>
+
+    <blockquote>I can see how it is useful if you want to make a photo editor or something,  but... It's not really a thing I've ever added to a site or think I experience much... It's kind of niche, right?</blockquote>
+
+    <p>
+      What's interesting though, is that <code>&lt;canvas&gt;</code> appears on approximately as many pages in the HTTPArchive as the <code>&lt;video&gt;</code> element.</p>
+
+    <p>Amazing, right? I mean, how could that even be?!</p>
+
+    <p>The short answer is, it's just harder to recognize.  A great example of this is maps.  As a user, you recognize maps.  You know they are  common and popular.  But what perhaps you don't recognize that it's on a canvas.  As a developer, there is a fair chance you have included a somewhere without realizing, but again, since as a user it is harder to recognize "ah this is a canvas" we don't idenitfy it the way we do video.  Think about it: We include videos similarly all the time - not by directly including a <code>&lt;video&gt;</code> but via an abtraction - maybe it is a custom element or an iframe.  Still, as a user you still clearly idenitfy it, so you count it.</p>
+
+    <p>If canvas is niche, it is only so in the sense of who has to worry about those details.  So let's talk about why you'll care, even if you don't directly use the API... 
+    </p>
+  </section>
+  <section class="sectioning">
+    <h2 class="contextual-heading">The trouble with canvas...</h2>
+    <p>Unfortunately, <code>&lt;canvas&gt;</code> itself has a fundamental flaw.  Let me show you... 
+
+     </p><section class="sectioning">
+        <h3 class="contextual-heading">Canvas (old)</h3>
+        <figure>
+          <div style="position: relative;display: block;padding-top:50.25%;">
+          <iframe src="https://player.vimeo.com/video/399970907" width="640" height="366" frameborder="0" style="position:absolute;top:0;left:0; width:100%; height: 100%; " allow="autoplay; fullscreen; picture-in-picture" allowfullscreen=""></iframe>
+          </div>
+          <figcaption>This video is made by Andreas Hocevar using a common mapping library, on some fairly powerful hardware. You'll note how janky it gets - what you also can't tell from the video is that user interactions are temporarily interrupted on and off as rendering tries to keep up. The interface feels a little broken and frustrating.</figcaption>
+        </figure>
+       </section>
+
+       <section class="sectioning">
+         <h3 class="contextual-heading">For whom the bell tolls</h3>
+         <p>For as bad as the video above is, as is the case on all performance related things, it's tempting to kind of shrug it off and think "Well, I don't know.. it's pretty usable, still - and hardware will catch up".</p>
+
+         <p>For all of the various appeals that have been made over the years to get us to care more about performance ("What about the fact that the majority of people use hardware less powerful than yours?" or "What about the fact that you're losing potential customers and users?" etc), we haven't moved that ball as meaningfully as we'd like... But I'd like to add one more to the list of things to think about here...</p>
+
+         <blockquote>Ask not for whom the performance bell tolls, because increasingly: It tolls for you.</blockquote>
+
+         <p>While we've been busy talking about phones and computers, something interesting happened:  <em>Billions</em> of new devices using embedded web rendering engines appeared. TVs, game consoles, GPS systems, audio systems, infotainment systems in cars, planes and trains, kiosks, point of sale, digital signage, refridgerators, cooking appliances, ereaders, etc.. They're all using web engines.</p>
+
+         <p>If you own a high-end computer or phone, you're similarly likely to enounter more of these, as a user.</p>
+
+        <p>Embedded systems are <em>generally</em> way less powered than the universal devices we talk about often when they're brand new -- and their replacement rate is way slower.</p>
+
+        <p>So, while that moderately uncomfortable jank on your new iPhone still seems pretty bearable, it might translate to just a few (or even 1) FPS on your embedded device. Zoiks!</p>
+
+        <p>In other words, increasingly, that person that all of the other talks ask you to consider... is you.</p>
+
     
-    <p>To understand all of this, let me set the stage...</p>
-     
-    <section class="sectioning">
-      <h3 class="contextual-heading">Prelude: The introduction of <code>&lt;canvas&gt;</code></h3>
+       <section class="sectioning">
+         <h4 class="contextual-heading">Enter: <code>OffscreenCanvas</code></h4>
 
-    <p>It's hard to overstate just how much has changed since just before 2004 when Apple introduced the <code>&lt;canvas&gt;</code> element. Before this "HTML5 era" standards were stalled.  Interoperability was <em>poor</em> - most things were not very rigorously specified and there were no shared tests.</p>
+         <p><code>OffscreenCanvas</code> is a solution to this.  It's API surface is <em>really</em> small:  It has a constructor, and a <code>getContext('2d')</code> method.  Unlike the canvas element itself, however, <em> it is neatly decoupled from the DOM</em>. It can be used in a worker - in fact, they are tranferrable - you can pass them between windows and workers via <code>postMessage</code>. The <em>existing</em> DOM <code>&lt;canvas&gt;</code> API itself adds a <code>.transferControlToOffscreen</code> which will (explcitly) give you one back, and is in charge of painting in this rectangle.</p>
 
-    <p>Also, browsers didn't have tabs, just windows everything  ran in a single process and on a single thread.</p>
+         <p>If you are one of the many people who don't program against canvases yourself, don't worry about the details... Instead, let me show you what that means.  The practical upshot of simply decoupling this is pretty clear, even on high end hardware, as you can see in this demo...</p>
 
-    <p>This is the world into which Apple introduced the <code>&lt;canvas&gt;</code> element, explaining it as as <em>"an image element with a programmatic drawing surface"</em> (remember that, it will come back).  </p>
+         <section class="sectioning">
+          <h5 class="contextual-heading">OffscreenCanvas based maps</h5>
+          <figure>
+            <div style="position: relative; display: block;padding-top:50.25%">
+              <iframe src="https://player.vimeo.com/video/399972879" width="640" height="366" frameborder="0" style="position:absolute;top:0;left:0;width:100%;height: 100%" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen=""></iframe>
+            </div>
+            <figcaption>Using <code>OffscreenCanvas</code>, user interactions are not blocked - the rendering is way more fluid and the interface is able to feel smooth and responsive.</figcaption>
+          </figure>
 
-    <p>It seemed like a <em>really</em> neat idea to me...  I wasn't quite sure <em>what</em> you would practically do with it, but very soon people began sharing lots of cool demos and experiments. I still remember a number of them.</p>
-  </section>
- 
-  <section class="sectioning">
-    <h3 class="contextual-heading">Exploration and iteration</h3>
+         </section>
+       </section>
 
-    <p>Lots of those early experiments were mostly toys.  Many were also terrible on counts: Lots were totally inaccessible.  Some shot way too far. All of them inherently  bound up the main thread and had performance challenges.</p>
+       <section class="sectioning">
+        <h4 class="contextual-heading">A Unique Opportunity</h4>
+        <p>Canvas is also pretty unique in the history of the web because it began as unusually low level.  That has its pros and its cons - but one positive thing is that the fact that most people use it by abstraction presents an intersting opportunity.  We can radically  improve things for pretty much all real users, through the actions of comparatively group of people who directly write things against the actual canvas APIs.  Your own work can realize this very probably without any changes to your code. Potentially without you even knowing.  Nice.</p>
+      </section>
 
-    <p>But, as we've come to see many times, the ability for <em>developers</em> to use the available tools to dream, share, rapidly critique and then iterate upon is a pretty powerful force. It allowed us to explore the question "but... for what?" in concrete ways without guessing. It helped show that there are lots of <em>actually very useful things</em> one could build - and far more that could be, if only performance was better...</p>
-  </section>
 
-  <section class="sectioning">
-    <h3 class="contextual-heading">Now make it fast.</h3>
+       <section class="sectioning">
+        <h4 class="contextual-heading">New super powers, same great taste</h4>
+        <p>There's a knock on effect here too that might be hard to notice at first.  <code>OffscreenCanvas</code> doesn't create a whole new API - it's a canvas context.  And so are Houdini Custom Paint worklets.  In fact, it's pretty hard to not see the relationship between painting on a canvas in a worker, and painting on a canvas in a worklet - right?  They are effectively the same idea.  There is minimal new platform "stuff" but we gain whole new superpowers and a clearer architecture. To me, this seems great.</p>
 
-    <p>The fact that we now have many proven and real world uses helps highlight what could be improved. It also provides test scenarios that aren't easily gamed benchmarks to test whether new solutions actually help achieve that.</p>
+        <p>What's more, while breaking off control and decoupling the main thread is a kind of easy win for performance and an intersting super power on it's own, we actually get more than that:  In the case of Houdini we are suddenly able to tap into <em>all of the rest of the CSS infrastructure</em> and use this to brainstorm, explore and test and polyfill interesting new paint ideas before we talk about standardizing them.  Amazing!  That's really good for both standards and users. </p>
 
-    <p>Here's an example that should be easy to appreciate: Maps.  Maps on the web incredibly useful.  Many of the most popular map tools and services ultimately render to a canvas. This involves lots of taxing work.  You might have experienced janky painting or blocked user input as you attempted to pan or zoom around as all of that was blocking the main thread.  To highlight the impact that <code>OffscreenCanvas</code> this can have on maps, Andreas Hocevar has integrated a version of <code>OffscreenCanvas</code> into the OpenLayers mapping library. The before and after comparison (below) of even this initial work sort of speak for themselves...</p>
+        <p>Really interestingly though: In the case of <code>OffscreenCanvas</code>, we now suddenly have the ability to <em>parallelize</em> tasks and throw more hardware at highly parallelizable problems. Maps are also an example of that, but they aren't the only one.</p>
 
-    <details>
-      <summary>Demo - Maps: <strong>Before</strong> <code>Offscreen Canvas</code></summary>
-      <figure>
+        <p>My colleague <a href="https://twitter.com/cwiiis">Chris Lord</a> recently gave a talk in which he gave a great demo visualizing an interactive and animated Mandlebrot Set (below). If you're unfamilliar with why this is impressive:  A fractal is a self repeating geometric pattern, and they can be pretty intense to visualize.  1080p and 250 iterations, that's about <em>half a billion complex equations per rendered frame</em>.  Fortunately, they are also an example of a highly parallelizable problem, so they make for a nice demo of a thing that was just totally impossible with web technology yesterday, suddenly becomming possible with this new superpower.</p>
 
-        <iframe src="https://player.vimeo.com/video/399970907" width="640" height="366" frameborder="0" style="width:100%" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen=""></iframe>
-        <figcaption>User interactions are temporarily blocked on and off as rendering tries to keep up. The rendering itself is very janky.  The interface feels a little broken and frustrating.</figcaption>
-      </figure>
-    </details>
-    
-    <details>
-      <summary>Demo - Maps: Using <code>Offscreen Canvas</code></summary>
-      <figure>
-        <iframe src="https://player.vimeo.com/video/399972879" width="640" height="366" frameborder="0" style="width:100%" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen=""></iframe>
-        <figcaption>Using <code>OffscreenCanvas</code>, user interactions are not blocked - the rendering is way more fluid and the interface is able to feel smooth and responsive.</figcaption>
-      </figure>
-    </details>
+         <section class="sectioning">
+          <h5 class="contextual-heading">OffscreenCanvas super powers!</h5>
+          <figure>
+            <div style="position: relative; display: block;padding-top:50.25%">
+              
+              <iframe width="560" height="315" src="https://www.youtube.com/embed/8aAdP9nQSss" title="YouTube video player" style="position:absolute;top:0;left:0;width:100%;height: 100%" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>
+            </div>
+            <figcaption>A time-jumped video to a demo at a recent WebKit Contributors meeting, showing impressive rendering</figcaption>
+          </figure>
+      </section>
 
-    <p>You can read a lot more about this experiment and other impressive and important benchmarks in the <a href="maps4html">Benchmarks section of his post</a>
-    
+        <p>What other doors will this open, and what will we see come from it? It will be super exciting to see!</p>
 
-    </p><p>There are a <em>ton</em> of things like this that already exist, made with <code>canvas</code> and which can now offer a real boost to all of their users.</p>
-  </section>
+      </section>
 
-  <section class="sectioning">
-    <h3 class="contextual-heading">Bigger communities, re-thinking prioritization</h3>
-
-    <p>Another thing that excites me is how Igalia is getting this work done and the impacts it has.</p>
-
-    <p>Lots of good people in the web community are constantly pushing us to please pay attention to people who don't have expensive phones. However, not only is this not working out so well - it is really only scratching the surface of it.</p>
-
-    <section class="sectioning">
-      <h4 class="contextual-heading">For whom the bell tolls</h4>
-     Cheap tablets also abound, for example.  But, far more than that: embedded devices are <em>everywhere</em>! Game consoles, the TVs they play on, the cable boxes and streaming devices that are hooked up to them: <em>All of them</em> are embedded hardware, and most of those are presenting interfaces with web rendering engines.  Wow!  And <em>those are just the ones that are probably in front of your face as you sit on the livingroom couch</em>.<p></p>
-
-    <p>Walk into a modern kitchen and you'll find more: Smart appliances from refrigerators to stoves to cooking devices... Same thing.  </p>
-
-    <p>Travel somewhere, you'll find web engine based interfaces in just about every form of transportation these days: Infotainment systems in cars, airplanes, trains and vehicle dashboards too.</p>
-
-    <p>While you're looking out the window in transit, you'll see some more in digital signage. You'll find them in the stores you visit in point of sale systems, kiosks, at gas pumps - I mean, they are <em>literally everywhere</em>.</p>
-
-    <p>For that one <em>maybe powerful</em> device you call a "phone" and look at a bunch during the day, you probably encounter half a dozen or more (and growing) embedded systems using web tech. And, with a few rare exceptions, they are almost universally underpowered, and replaced really slowly.</p>
-
-    <p>Ask not for whom the hardware is slow - it is for you!</p>
-
-    <p>Plenty of things which are at least usefully functional on a higher-end device can quickly drop the framerate (and resposiveness to user input) all the way down to ~1ps on some of these devices.</p>
-
-    <p>More interestingly still - many of those devices are <em>precisely</em> the ones that really <em>want</em> the ability to make splashy visualization with canvas and SVG.</p>
-
-    <p>Our work on <code>OffscreenCanvas</code> at Igalia helped create new priotitization pressures and diversified investments through things like cable boxes and cooking devices.  Lots of our tests that bog those systems down to near 1ps now run a fluid 60fps... And they make things better for <em>all of these devices</em> along the way.</p>
-
-    <p>I think that's <em>hella</em> cool.</p>
-  </section>
- 
-  <section class="sectioning">
-    <h4 class="contextual-heading">Paying down Web Tech Debt</h4>
-
-    <p>Here's <em>another</em> reason it excites me:  Shortly after we wrote the Extensible Web Manifesto, Alex Russell, Yehuda Katz and I <a href="https://www.smashingmagazine.com/2013/11/laying-the-groundwork-for-extensibility/">co-authored a piece for smashing magazine</a> where we explained some of the rationale for writing it.  In it, we explained that the platform had, essentially, a lot of tech debt, and needed to pay some some attention to it and lay good groundwork for the future.</p>
-
-    <p><code>&lt;canvas&gt;</code> was an illustration we used. That's because while you can <em>imagine</em> the sort of relationship with <code>&lt;img&gt;</code> as described in its introduction, it didn't exactly exist. In fact, while one probably imagined many strata of architecture empowering an <code>&lt;img&gt;</code>'s magic (fetching, decoding, painting pixels on a canvas, etc), it wasn't clear that really existed at all. From the outside, in fact, there appeared to be many inconsistencies. If such an architecture <em>did</em> exist, it was certainly unavailable to developers. This, we explained, was probably not great for the future.</p>
-
-    <p>While I don't know that we've created a system that literally makes Apple's introduction <em>true</em>, there have been <em>lots</em> of developments and improvements to this story to make the web platform actually <em>have</em> some kind of stata of architecture that authors can understand, plug into, hack and extend - and the arrival of <code>OffscreenCanvas</code> is just the latest and greatest addition..  </p>
-
-    <p>There are potentially many things that are <em>like</em> an <code>&lt;img&gt;</code> in some ways, and a myriad of ideas that could extend this or borrow features  I'm excited that this allows us to entertain lot of interesting experiments that we can rapidly share, compare, critique, break down, recompose nd reassemble in order to find  some really great ideas which a lot of people (and a diverse number of businesses) could support... And very importantly, it can share all fo the same platform "stuff" because it didn't have to reinvent the entire stack beneath it, making for much easier cow-paths to pave and create standards out of.</p>
-
-    <p>What will they be? I don't know yet! I have some ideas, of course:  New patterns for data visualizations and rendering controls, for sure.  Some new ideas for image manipulation tools feel almost certain.  Perhaps customized image elements with register-able image decoders?  Perhaps ideas that integrate new concepts of panning and zooming an actual bitmap, potentially loading higher resolution one?</p>
-
-    <figure class="captioned-image">  
-      <iframe style="height: 644px" width="1145" height="644" src="https://www.youtube.com/embed/huLhOQM7pVA" title="YouTube video player" frameborder="0" allowfullscreen=""></iframe>
-      <figcaption>An example of a progressively enhanced, independently pan-and-zoomable image which can lazily load higer-def image in action.</figcaption>
-    </figure>
-
-    <p>Or, maybe whole elements that manage the stitching together together of <em>many</em> tiles of a larger, and partially loaded conceptual image - like the technique used in mapping. </p>
-
-    <p>Providing these new abilities unlocks all kinds of potential and my own imagination is limited. </p>
-
-    <p>I can't wait to see what ideas develop here!</p>
-  </section>
 </section></section></article></main>
  
-  
+   
   <script>
     //import { MediaAffordancesElement } from "./MediaAffordancesElement.js";
     class MediaAffordancesElement extends HTMLElement {
@@ -989,16 +964,26 @@ America (art for sale)</a></li>
               if (
                 this.affordanceState.current === "tab-bar" ||
                 this.affordanceState.current === "exclusive-collapse"
-              ) {
+              ) { 
                 if (evt.keyCode == 37 || evt.keyCode == 38) {
                   labels[prev].affordanceState.activate();
                 } else if (evt.keyCode == 39 || evt.keyCode == 40) {
                   labels[next].affordanceState.activate();
                 }
+              } else if (evt.keyCode == 32 && this.affordanceState.current === 'collapse') {
+                evt.preventDefault()
               }
             },
             false
           );
+          this.addEventListener(
+            "keyup", 
+            evt => {
+              if (evt.keyCode == 32 && this.affordanceState.current === 'collapse') {
+                evt.target.closest('[affordance]').affordanceState.activate()
+                evt.preventDefault()
+              }
+            })
         }
 
         connectedCallback() {
