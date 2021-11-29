@@ -4,7 +4,7 @@
         <title>bkardell.com rss feed</title>
         <link>http://bkardell.com/</link>
         <description>Just the bkardell.com rss feed</description>
-        <lastBuildDate>Thu, 30 Sep 2021 17:58:00 GMT</lastBuildDate>
+        <lastBuildDate>Mon, 29 Nov 2021 22:17:11 GMT</lastBuildDate>
         <docs>http://blogs.law.harvard.edu/tech/rss</docs>
         <generator>awesome mix</generator>
         <image>
@@ -14,6 +14,65 @@
         </image>
         <copyright>All rights reserved 2018, Brian Kardell</copyright>
         <atom:link href="https://bkardell.com/blog/feed.atom" rel="self" type="application/rss+xml"/>
+        <item>
+            <title><![CDATA[Webrise]]></title>
+            <link>https://bkardell.com/blog/Webrise.html</link>
+            <guid>https://bkardell.com/blog/Webrise.html</guid>
+            <pubDate>Mon, 29 Nov 2021 05:00:00 GMT</pubDate>
+            <description><![CDATA[Something in a recent piece by Jeremy Keith really clicked with something I’ve been thinking about, so I thought I’d write about it.]]></description>
+            <content:encoded><![CDATA[
+  <h1 class="contextual-heading" style="font-size: NaNrem;">Webrise</h1>
+  <p class="segue">Something in a recent piece by Jeremy Keith really clicked with something I’ve been thinking about, so I thought I’d write about it.</p>
+  <section>   
+    <p>Recently Jeremy Keith published “<a href="https://adactio.com/journal/18586">The State of the Web</a>”. It’s based on an opening talk from the An Event Apart Spring Summit  earlier this year.  He’s also made it available in audio format.  Jeremy is a great story teller/writer/speaker, so it is unsurpringly a delightful read/listen, and I couldn’t recommend it enough.  In it, he (beautifully) explains a lot about perspective. He holds up that</p>
+
+    <blockquote>
+    <p>“Astronauts have been known to experience something called the overview effect. It’s a profound change in perspective that comes from seeing the totality of our home planet in all its beauty and fragility.”</p>
+    </blockquote>
+
+    <p>He notes that the famous “earthrise” photo (below) that the astronauts took, gave everyone here on earth a very small taste of that too.</p>
+
+    <figure class="captioned-image">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a8/NASA-Apollo8-Dec24-Earthrise.jpg/800px-NASA-Apollo8-Dec24-Earthrise.jpg" style="max-width: 400px;">
+      <figcaption>Earthrise, taken on December 24, 1968, by Apollo 8 astronaut William Anders.</figcaption>
+    </figure>
+
+    <p>Then he asks...</p>
+    <blockquote>
+    <p>“I wonder if it’s possible to get an overview effect for the World Wide Web?”</p>
+    </blockquote>
+
+    <p>When I heard this, I realized: <em>This is exactly what I have been trying to get at too, just from a different angle</em>.</p>
+
+    <h2>Zoom out...</h2>
+    <p>I have been trying to ask people to put aside a lot of the conversations that we typically have for a moment. Zoom out, and see the whole ecosystem.</p>
+
+    <p>It’s not that all of things we talk about today are <em>unimportant</em>, in fact, some of them are <em>profoundly</em> important - but when you zoom way out and look at the whole thing, you gain some new perspective on all of them... And more.</p>
+
+    <p>Gaining new perspective can have big impacts.  In <em>How we got to now</em> Steven Johnson describes how mirrors, and the simple ability to see one’s self ultimately impacted art, literature and politics. It literally helped shape the world in profound ways.</p>
+
+    <p>Since coming to work at Igalia, I’ve gotten the rare privilidge to observe the web ecosystem from a whole new point of view. That is, not the site and pages, but <em>what makes all of that stuff possible and holds it all together</em>? This has caused exactly that sort of “overview effect” shift for me, and really want to share it.</p>
+
+    <p>There is, unfortunately, no camera with which to snap a nice neat “Webrise” photo that I can distribute, nor a mirror I can just show people. So, I’ll try to use words.</p>
+
+    <section class="sectioning">
+      <h1 class="contextual-heading" style="font-size: NaNrem;">New Perspective</h1><p>We spend so much time discussing particular details: “Why are none of them giving time to feature Q?”.  Or, “Why does z push so many (or few) features?”. Or even, “Why are they all doing x instead of y?!”. We imagine larger motives.  We fill volumes with debates.</p><p>But, from my vantage point, I see something that informs all of those, and seems <em>far</em> more important.</p><p>We’ve built the web so far on a very particular model, with web engine implementers at the center. The whole world is leaning <em>extremely heavily</em> on the indepenendent, voluntary funding (and management and prioritization) of a very few steward organizations.</p><p>Maybe that isn’t a great idea.</p> </section>
+      <section class="sectioning">
+
+      <h1 class="contextual-heading" style="font-size: NaNrem;">Fragility</h1><p>However much we might have convinced ourselves that this is how it should work, it feels increasingly bad to me. It seems like it is not a lasting strategy, and we really need one that is.  Web <em>engines</em> have to outlast each of those voluntary investments/investors.  The current situation feels precarious.</p><p>There are, of course, a lot of variables, but I can easily imagine a lot of ways that it could all come apart - either with a bang, or a whimper.</p><p>Imagine, for example, that Apple is convinced to match or even exceed Google’s contributions. Yay! A boom in innovation! Great! It seems hard to imagine Mozilla not being left behind.  Maybe Google responds in kind and we enter a sort of “new arms” race.  Again, great for a lot of things, but sustainability isn’t one.  In this scenario it feels almost certain to me that Mozilla (the only foundation here) is the first casuality, but maybe not the last.  The aim of a war is to win. And then what?  Microsoft won the first browser wars, and then left the game.</p><p>Or perhaps legislation hits Google’s default search deal and seriously disrupts things in the ecosystem.  That’s pretty much all of the actual funding for Mozilla. Uh oh.  Interestingly too though, Apple’s entire earnings would suddenly dip by something like 15-20%.  Yikes!  Perhaps there are simply changes in leadership. Or several of these happen together.  All sorts of things like these cause companies to re-evaluate what they’re spending money on.  If any of these things caused reevaluation by either company, it’s not impossible for me to imagine them deciding that maybe the costs outweigh the benefits of maintaining an engine in the first place.  That’s an entirely normal response and there are historical precedents: Opera did it.  Microsoft did it.  And the problems in this space only get harder and harder (see next section).</p><p>The only thing I can say for sure is that things <em>will</em> change for businesses we’re leaning on.  In fact, things <em>have</em> changed. In 1993 when the web was still in its infancy - Microsoft had just entered the top 10 by market cap.  By actual revenue, they weren’t even on the list.  In fact, the first company who makes an engine to appear on the top 10 list by revenue was Apple, <em>in 2014</em>…  At the same time, there are several other tech companies who <em>are also</em> on the list who don’t invest in implementations at all.  Many have come and gone since.  It is <em>incredibly</em> rare for a business to stay on the Fortune 500 list (let alone dominate it) for more than 10-15 years.  When this status is lost, actions and reevaluation usually follow and as a result key dominating names in computing have disappeared entirely.</p>
+    </section>
+    <section class="sectioning">
+      <h1 class="contextual-heading" style="font-size: NaNrem;">Not just more sustainable… More.</h1><p>Being reliant on the historical model isn’t <em>just</em> possibly precarious in the long term - it also has definite limits.  <em>All of the engine teams</em>, no matter how big, have to do some fairly radical prioritorization.  The backlog is already miles long, and subject to lots of filters.  It’s not just how big a team is, but tons of mundane things about the makeup, expertise, and often the vision and current state of some area of code in their engine.</p><p>A really basic implication of this is that rollouts of features can be extremely ragged, but it’s much more than that.  It also means that they have to short circuit things where they can.  Even in standards discussion, it means a lot of potentially good stuff just can’t get discussed.   In the end, it's hard to work all of those things in a way that it’s easy to say is representative of everyone if only a few are investing in the commons.</p>
+    </section>
+    <section class="sectioning">
+      <h1 class="contextual-heading" style="font-size: NaNrem;">Solvable, but not solved anywhere</h1><p>Luckily, this is all very solvable, and is very much in our control.  To some extent we’ve already started to address it: There are today, more limited partners too. I think that somehow people have impressions of this, but we don’t talk about the actual details much, so let’s…</p><p>It’s held up, for example, that Microsoft, Samsung and Intel are all Chromium partners.  That’s great, and that isn’t even counting Igalia, who has, for the last few years, made more contributions than anyone outside of Google.</p><p>Others, I’ve heard say that Mozilla has a veritable army of independent contributors too.</p><p>Conversely, I often hear WebKit described as “mainly an Apple thing”.  However, there are partners there too. Igalia, Sony and RedHat all contribute significantly, for example.</p><p>However, if we look at commits: Over 80% of contributions to Chromium come from Google, about 77% of contributions in WebKit come from Apple, and at Mozilla Central - about 82% of commits are from Mozillans.</p><p>In other words, they aren’t all that different in terms of diversity of investment.  Each engine project would seem to have about 20-25% of its investment diversified.  That’s way better than <em>exclusive</em> investment, but I think we’ve still got a long way to go.</p><p>One obvious solution seems to be for existing implementation partners to simply ramp up contribution budgets.</p><p>Sure that would be great on its own, but that’s still a really small number of organizations.  There are many big tech web companies who aren’t on that list at all, at lest one of them is in the “trillion dollar club”.</p><p>Imagine what we could do if we changed our perspective, and built a model in which we invested and prioritized more collaboratively. Imagine how much more resilient that would be.</p>
+    </section>
+    <section class="sectioning">
+      <h1 class="contextual-heading" style="font-size: NaNrem;">Collective Funding for Collective Benefits</h1><p>We’ve spent a lot of time trying to solve problems <em>together</em> in standards, but we don’t then also <em>act</em> together.  But… we could.</p><p>In fact, why should we stop at a dozen big tech companies making gigantic or general investments?  We <em>could</em> decide that investments, could <em>also</em> be shared in different ways.  Funding doesn’t need to come from giant sources, or to be generally purposed.  10 companies agreeing to invest $10k apiece to advance and maintain some area of shared interest is every bit as useful as 1 agreeing to invest $100k generally. In fact, maybe it’s more representative.</p><p>Igalia has help advanced things that boost capabilities for <em>everyone</em> by working with individual organizations, often much smaller ones, who have considerably finite asks: More responsive cable box interfaces or more fluid SVG interfaces on their cooking machines.  We do this precisely because we can see the interconnectedness of it.</p><p>We believe that there is a <em>very</em> long tail of increasingly smaller companies who could do <em>something</em>, if only they coordinated to fund it <em>together</em>.   The further we stretch this out, the more sources we enable, the more its potential adds up.</p><p>That’s part of what our Open Prioritization efforts have been about.  We’re trying to shine light on this in different ways,  open new doors and help people see the web ecosystem from a different perspective.</p><p>My colleage, Eric Meyer recently gave a talk to W3C member orgnizations on this topic, and we did a podcast together on it too, as part of announcing our new MathML-Core Support Collective.  You can find links to both and learn more about it in <a href="https://www.igalia.com/2021/10/19/Announcing-the-MathML-Core-Support-Collective.html" target="_blank" rel="noopener">this announcement</a>.</p><p>If you find this interesting, please let us know.  Consider talking to orgnanizations interested in promoting the advancement of more rapidly interoperable and standard and accessible mathematical support on the web by <a href="https://www.igalia.com/2021/10/19/Announcing-the-MathML-Core-Support-Collective.html" target="_blank" rel="noopener">adding some supporting funding through the collective</a> - but also to organizations who aren’t interested in math specifically about the bigger idea.  I’m hopeful that we can shift our perspective.</p> 
+    </section>
+  </section>
+]]></content:encoded>
+        </item>
         <item>
             <title><![CDATA[Making the whole web better, one canvas at a time.]]></title>
             <link>https://bkardell.com/blog/OffscreenCanvas.html</link>
@@ -809,119 +868,6 @@
             </enclosure>
         </item>
         <item>
-            <title><![CDATA[Optimizing The W3C Sandwiches]]></title>
-            <link>https://bkardell.com/blog/W3C-Sandwiches.html</link>
-            <guid>https://bkardell.com/blog/W3C-Sandwiches.html</guid>
-            <pubDate>Sun, 24 Jan 2021 05:00:00 GMT</pubDate>
-            <description><![CDATA[In which I muse about a boring, but, I think important topic of flawed W3C structures and process, in a hopefully not-boring way...]]></description>
-            <content:encoded><![CDATA[
-  <h1 class="contextual-heading" style="font-size: NaNrem;">Optimizing The W3C Sandwiches</h1>
-  <p class="segue">In which I muse about a boring, but, I think important topic of flawed W3C structures and process, in a hopefully not-boring way...</p>
-
-<p>Imagine that there is a trade organization which had a marathon meeting event for its 500 members every year.  It's a long meeting, and so during it, they serve sandwiches.  A break, with food and peers, it seems is really conducive to the productivity.  So, while it's a little non-obvious, while small and with no special 'powers' - the sandwiches are actually really important.  The trade organization realizes this and decides to formalize a way to make sure we always have good sandwiches.  A few weeks before they send out an email asking people:</p>
-
-<blockquote>
-<p>Please tell us an ingredient which you could provide enough of for every sandwich for the next 3 years. Your ingredient may or may not be used, we are just looking for ingredient <em>nomination statements</em> expressing what your ingredient brings to the table.  If your ingredient is chosen, we will tell you whether that is a 1, 2 or 3 year commitment.</p>
-</blockquote>
-
-<p>Even if everyone doesn't really understand how inter-connectedly important the sandwiches are, they aren't entirely apathetic about them either:  When it comes time to eat, and everyone's hungry after long meetings, there will <em>definitely</em> be opinions about the sandwiches.  </p>
-
-<p><em>BUT...</em>  At the same time, there will incredibly be very few ingredient nominations. Why?  So many reasons!</p>
-
-<p>Even if a person really had some vague notion that "a lot of my favorite sandwiches had pickles", their company is small, and it doesn't actually deal with pickles.  After a moment or three worth of thought about "which pickles?" and "do other people even like pickles?" and "how would I ask my boss for money to <em>offer</em> 1000 pickles... maybe" - this is quickly abandoned as not really worth the time.  Each person receiving this email knows there are 499 other organizations, and that what we need are really just 4 ingredients! Someone else - with the money and food connections will nominate anyways.</p>
-
-<p>And so, that's what happens... Several of them are from some grocery or food service industry. Their businesses totally <em>get</em> the importance of the sandwiches, as well as what people largely "like" and they are structured in a way where this basically isn't a problem for them.  Several of them might even discuss among themselves to make sure they're bringing complimentary things... They'll nominate things like"lettuce" or "tomatoes", or maybe "cheese".  Maybe some others don't discuss, but they do a lot of sandwich adjacent work and so they still nominate some pretty general condiments that could plausibly be used on a lot of good sandwiches... maybe they offer "mustard" or "mayonnaise".  But, then there's also people with other food connections who offer other things.  In the end, we wind up with eggs, Vegemite, peanut butter, some gourmet cactus jelly, caviar, and butter.   Then, of course - there's someone who offers some not-even-food item.</p>
-
-<p>Now, with the exception of the last one - there's not really something inherently <em>wrong</em> with any of those ingredients - but I think we could at least agree that making a sandwich from random combinations of them is likely to produce a lot of suboptimal sandwiches. </p>
-
-<h2>Vote for pickles!</h2>
-
-<p>Everyone should have a say here, and we need to account for multiple tastes - so the way organization goes about deciding on which sandwich everyone will have is by voting for <em>ingredients</em>.</p>
-
-<p>Now, again -- <em>not due to apathy about the actual sandwiches, or the results of the meeting that they will effect</em> - only about 1/5th of people will actually vote for ingredients. Why?  Again, "this isn't worth my time, surely someone else can figure out sandwiches" plays in heavily. Perhaps you could even say that lack of participation an indirect recognition of what a dysfunctional way this is to make a sandwich.</p>
-
-<p>I mean, who really has time to read the ingredient nomination statements, and also to filter out what might be just bull?  Who wants to take the time to learn about the dietary benefits of whey, or read the back and forth debates extolling the health virtues of mayonnaise over mustard - or read some people ranting about why the tomato lobby is colluding with the spinach people, putting honest bean farmers out of business - and inevitable back and forth.  Who has time to get entangled in the debate about how maybe the caviar people shouldn't even have been invited in the first place?</p>
-
-<p>Still, the organization believes that members should make the decision,  and, it seems there are a few ways we could ask this question.  So, in early years it was asked like this:</p>
-
-<blockquote>
-<p>Here are 12 ingredients, everybody pick 4, and we'll use the some of the same ingredients from last year, plus the top 4 vote getters here to make everyone sandwiches!</p>
-</blockquote>
-
-<p>The initial sandwiches reviews seemed pretty good, actually.  Some people even praised the first sandwiches' 'distinguish tastes'.  But, slowly, a lot of people began admitting that really, they actually preferred something a little more boring, or less healthy but had been kind of afraid to admit it.</p>
-
-<p>Also, it was really kind of a crap shoot.   There was really nothing preventing us getting a real mishmash of random ingredients that didn't go thereto at all.  Well, except for the fact that, in the end that most people were casting 4 votes, representing all of the ingredients of an actual sandwich. <em>Nobody</em> on purpose probably picked the combination of vegemite, mustard, butter and caviar - even if they really liked some of those.  This meant that there were at least some odds that lots of "common sandwich" votes were somewhat compatible.</p>
-
-<p>
-But really... that still involved a lot of luck, and after a few years, people began to kind of resent the sandwiches.  The quality of productivity, collaboration and relationships at the event suffered.
-</p>
-
-<h2>How about a nice club sandwich?</h2>
-
-<p>But then, some people realized... Hey... Maybe a better way would be to try to talk to lots of people and put together a proposal for a good sandwich.  The whole sandwich. Let's call them the "Whole Sandwich People".  Like, can we get enough people to vote for the same way, by just saying:</p>
-
-<blockquote>
-<p>Hi.  We've taken the time to help make sure we had good ingredients, and looking at everything that is available and trying to balance lots of things, we're  recommending this nice club sandwich - &lt;here's why&gt;.  If that sounds good, order the club.</p>
-</blockquote>
-
-<p>Well, that question is a lot easier to answer, so at least <em>some</em> additional people say "yes, please, that sounds good".  The simple volume of several new people voting in the same direction was enough to generally make sure that those sandwiches won.</p>
-
-<p>Cool!  The Whole Sandwich People <em>also</em> cared about variety and nutrition and all of the other things and so began actively working to make sure that good, compatible, but not commonly offered ingredients got nominated.  And, we got some more interesting sandwiches because of it.</p>
-
-<h2>The Exclusive Club Sandwich</h2>
-
-<p>In the end, not everyone was happy though.  Some kinds of ingredients just weren't getting picked anymore.  People began asking:  How can our trade organization possibly represent the tastes of the people who always offers us caviar if we never pick caviar!?  Your club sandwich is an <em>exclusive</em> club, it's biased toward the food service people!</p>
-
-<p>The Whole Sandwich People suggested that this seemed like a weird take.  In fact, they pointed to the fact that sandwiches had gotten <em>more</em> diverse, interesting and nutritious by discussing the whole sandwich.  Sure, a lot of the ingredients were  coming from food service companies, but that's just practical realities about other parts of the dysfunctional system.</p>
-
-<p>And, yes, the Whole Sandwich People admitted, it's true, none of our sandwiches have included caviar.  But, where is the bug? Couldn't the caviar people work with others to find a way to offer an acceptable Whole Sandwich with caviar? It might be plausible - it's not even that we necessarily hate caviar!  The truth is, we just don't know how to make a good sandwich with it, and all of our sandwich experiences with it so far are bad.  Or, if you <em>can't</em> offer a whole sandwich with caviar that people will order willingly.... <em>Maybe</em> just find something to offer other than caviar.</p>
-
-<p>This, it seems, was unacceptable. It was seen as unfair.  The Whole Sandwich People held too much sway over sandwich determination.  So, in an attempt to improve the fairness things, the trade organization changed the question to:</p>
-
-<blockquote>
-<p>Here are 9 ingredients, everybody rank them in order of preference and they we will use a complex system whereby <em>one</em> of the things you ranked will be counted, and we'll use the 4 winners to make everyone sandwiches</p>
-</blockquote>
-
-<p>This amplifies the likelihood that things like caviar wind up our sandwiches.  That's literally the <em>feature</em>.</p>
-
-<p>Why?  Because there is no single ingredient that makes a club sandwich.  While everyone ranks the widely approved ingredients the inevitably have to be in an order, and only one of them will count.  Meanwhile, the small but passionate group of people who are really passionate about a less common ingredient, and who are maybe even a little irked because they are never picked, just put that as #1 - which definitely counts.</p>
- 
-<p>Have we optimized the sandwich?  Because I thought was the goal.  I think, no.</p>
-
-<h2>The TAG/AB Sandwiches</h2>
-<p>All of this is analogy for how the W3C TAG and AB, and I've laid it out in an attempt to explain why I think this is a really silly way to do it, and why I think it should change:  <em>The "best sandwich" isn't created by talking about ingredients in isolation - you <strong>have</strong> to talk about the sandwich.</em></p>
-
-<p>Yes, I get that sandwiches are a bit of a strained analogy.  TAG isn't <em>exactly</em> a sandwich.... Maybe "a bunch of people going to a restaurant and attempting to pick a shared menu of 4 items based on whatever random stuff is available" is a better one.  Or maybe picking a DND party is a better one still... </p>
-
-<p>But, the fuzzy point is mostly the same with any of them: "Good" and "bad" are, except at real extremes not really judge-able in isolation.  Sure, there are some "not-actually-even-food" items we can universally say "no thanks" to, but that's also rare, and not really how it works.</p>
-
-<p>What matters in counting is  "which one is best" and there is almost never a clear answer to that question without considering the whole.  What matters to really knowing what people want, is also asking them in such a way that they can actually participate meaningfully.</p>
-
-<h2>How big of a problem is this, really?</h2>
-<p>After all, it's been a few elections now since we changed the question, and while there were some early "surprises", things seem to be generally going alright. We just had a really big TAG election, for example, and people seem generally pretty happy with the results of the actual election part. I know I am. So... Maybe this is much ado about nothing?  Is it really worth our time to discuss?</p>
-
-<p>I think, yes. Here's why: Good results in recent elections have been a combination of factors that won't always hold and that we shouldn't have to count on.  They as much despite the process as anything (as argued below).</p>
-
-<p>Plus, it's just silly.</p>
-
-<h2>How to address this...?</h2>
-
-<p>Well, that's the big question. But, one thing seem obvious to me: We need to stop insisting that we can't talk about the sandwich and instead focus on how we talk about the sandwich all the way through the process.</p>
-
-<p>We Whole Sandwich People have learned that even if the way the question has asked has been changed, it's still possible to help elect whole sandwiches, it's just <em>much</em> harder and requires an astonishing amount of more coordination, trust and ultimately still some luck.
-</p>
-
-<p>The point is that all of the things that we need to happen are already happening, but the process actually fights them.  That's broken.</p>
-
-<p>I think we need to move to a more open model, but one that moves impractical noise out of the general discussion for people whom that is mostly annoying and/or confusing.  I think we need to stop being "procedurally secretive" about nominations.  I think we need to enlist a willing group of people who can help cooperatively search for candidates and make sure that we're getting ingredients that are good by a number of metrics.  I think this group should work to seek something like consensus on a menu of a few possible, "well-balanced meals" and provide recommendations that allow ACs to work with that by default or dig into ala carte options and more details only if they really want to.</p>
-
-<p>Further, I think that rotating terms only complicates this. It's very, very simple to re-affirm seats every time - and this really lets us talk about the whole thing at once.</p>
-
-<p>We don't really even have to change a single rule to accomplish any of this in practice, but currently the rules fight it at every step and make it an extraordinary difficult exercise. We should fix that. I intend to open some issues with some more specific proposals soon, but I'd love to hear anyone's thoughts or work collaborative with anyone to make those good proposals.</p>
-
-]]></content:encoded>
-        </item>
-        <item>
             <title><![CDATA[TAG 2021]]></title>
             <link>https://bkardell.com/blog/TAG-2021.html</link>
             <guid>https://bkardell.com/blog/TAG-2021.html</guid>
@@ -985,151 +931,6 @@ The current W3C TAG election is both important and complex for several reasons. 
 
 </section>
 
-]]></content:encoded>
-        </item>
-        <item>
-            <title><![CDATA[2020: The Good Parts]]></title>
-            <link>https://bkardell.com/blog/2020-Wrap.html</link>
-            <guid>https://bkardell.com/blog/2020-Wrap.html</guid>
-            <pubDate>Tue, 22 Dec 2020 05:00:00 GMT</pubDate>
-            <description><![CDATA[Each year, Igalians take a moment and look back on the year and assess what we've accomplished. Last year I wrote a wrap up for 2019 and hinted at being excited about some things in 2020 - I'd like to do the same this year. ]]></description>
-            <content:encoded><![CDATA[
-
-  
-	<div id="downloadsPrefs">
-		<p style="font-size: 1.5rem">Note from the author...</p>
-		<p>My posts frequently (like this one) have a 'theme' and tend to use a number of images for visual flourish. Personally, I like it that way, I find it more engaging and I prefer for people to read it that way.  However, for users on a metered or slow connection, downloading unnecessary images is, well, unnecessary, potentially costly and kind of rude.  Just to be polite to my users, I offer the ability for you to opt out of 'optional' images if the total size of viewing the page would exceed a budget I have currently defined as 200k...
-		</p>
-		<p><label>Show me all the images when I read <input type="checkbox" id="download-all-images-pref" checked=""></label></p>
-		<p><label>Don't ask me again on this device <input type="checkbox" id="download-all-images-pref-save"></label></p>
-		<p><button id="setDownloadPrefs">Dismiss</button></p>
-	</div>
-	
-  
-  <h1 class="contextual-heading" style="font-size: NaNrem;">2020: The Good Parts</h1>
- 
-<p class="segue">Each year, Igalians take a moment and look back on the year and assess what we've accomplished. Last year I wrote a wrap up for 2019 and hinted at being excited about some things in 2020 - I'd like to do the same this year. </p>  
-
-<p>Even in a "normal" year, making a list of things that you've actually accomplished can be a good exercise for your mental health. I do it once a month, in fact. It's easy to loose sight beyond what you're thinking of in the moment and feel overwhelmed by the sheer volume. If I can be honest with you, since it's just between us, heading into this exercise always fills me with a sense of dread.  It always seems like now is the time when you have to come to grips with how little you actually accomplished this month.  <strong>But</strong>, my experience is always quite the opposite:  The simple act of even <em>starting</em> to create a list of things you actually did can give you a whole new perspective. Sometimes, usually maybe, I don't even finish the list because I hit a point where I say "Wow, actually, that's quite a lot" and feel quite a bit better.</p>
-
-<p>But, 2020 is, of course, not a "normal year".  It's more than fair to expect less of ourselves.  So, when I sat down to write about what we accomplished, I was faced with this familiar sinking feeling -- and I had precisely the same reaction: Wow! We did <em>a lot</em>.  So, let me share some highlights of Igalia's 2020: The Good Parts.</p>
-
-<section class="sectioning">
-  <h2 class="contextual-heading" style="font-size: NaNrem;">All the browsers</h2>
-
-  <p>At Igalia, we are significant contributors to all of the browser engines (and several of the browsers that sit atop them too).  There's a lot of ways you can look at just <em>how much</em> we do, and none of them are perfect, but commits are one kind of easy, but fuzzy measure of comparatively how much we did in the community.  So, how much comparatively less did we do this year, than last? The opposite actually!</p>
-
-  <p>Igalia is again the #2 contributor to Chromium (Microsoft is coming up fast though).  We are also again the #2 contributor to WebKit. Last year we raised some eyebrows by announcing that we had <em>11%</em> of the total commits.  This year: <strong>15.5%!</strong>  We also are up one place to the #6 contributors in the mozilla-central repository and up <em>three places</em> to #4 is servo!  Keep in mind that #1 in all of these are the project owners (Google, Apple and Mozilla respectively).</p>
-
-    <figure>
-      <img width="500" src="/media/webkit-2020-contributions.png" style="display:block;margin: 1rem auto;">
-      <figcaption style="max-width: 400px;margin: 1rem auto;">We were huge contributors everywhere, but look at this: 15.5% of <em>all</em> WebKit Contributions in 2020!!</figcaption>
-    </figure>
-</section>
-<section class="sectioning">
-  <h2 class="contextual-heading" style="font-size: NaNrem;">We worked on <em>so many web features</em>!</h2>
-
-<p>Some of the things we worked on are big or exciting things that everyone can appreciate and I want to highlight a little more here, but the list of features where we worked on at least one (sometimes two) implementations would be prohibitively long!  Here is a very partial list of ones we worked on that I won't be highlighting.</p>
-
-<ul>
-<li>Lazy loading </li>
-<li>stale-while-revalidate </li>
-<li>referrer-policy</li>
-<li>Fixing bugs with XHR/fetch </li>
-<li>Interop/Improvements to ResizeObserver/IntersectionObserver</li>
-<li>Custom Properties performance</li>
-<li>Text wrapping, line breaking and whitespace</li>
-<li>Trailing ideograph spaces</li>
-<li>Default aspect ratio from HTML Attributes</li>
-<li>scroll snap</li>
-<li>scroll-behavior</li>
-<li>overscroll-behavior</li>
-<li>scrollend event</li>
-<li>Gamepad </li>
-<li>PointerLock</li>
-<li>list-stlye-type: &lt;string&gt;</li>
-<li>::marker</li>
-<li>Lgical inset/border/padding/margin</li>
-</ul>
-
-  <section class="sectioning">
-    <h3 class="contextual-heading" style="font-size: NaNrem;">A few web feature highlights...</h3>
-    <p>Here are just a few things that I'd like to say a little more about...</p>
-
-    <section class="sectioning">
-      <h4 class="contextual-heading" style="font-size: NaNrem;">Container Queries</h4>
-<p>I am exceptionally pleased that we have been pivotal in moving the ball in conversations on container queries.  Not only did our outreach and discussions last year change the temperature of the room, but we got a start on two proposals and actually had CSS Working Group discussion on both.  I'm also really pleased that Igalia built a functional prototype for further review and discussion of our switch proposal and that we've been collaborating with Google and Miriam Suzanne who have picked up where David Baron's proposal left. </p>
-
-  <figure class="captioned-image  optional">
-    <img data-src="/media/unicorns.gif" alt="unicorns walking around in paradise">
-    <figcaption>It's like we just found not one, but two mytical unicorns</figcaption>
-  </figure>
-  <p>I expect 2021 to be an exciting year of developments in this space where we get a lot more answers sorted out.</p>
-</section>
-<section class="sectioning">
-  <h4 class="contextual-heading" style="font-size: NaNrem;">MathML</h4>
-
-  <p>Two years ago, MathML fell into a <a href="https://bkardell.com/blog/Math.html">strange place in web history</a> and had an uncertain future in browsers. Igalia has led the charge in righting all of this.  Along with the MathML Refresh Community Group, peer implementers and help from various standards groups we now have <a href="https://mathml-refresh.github.io/mathml-core/">MathML-Core</a> - a well defined spec, with tests that define the most meaningful parts of MathML and their relation to the web platform as interoperability targets. We've made a ton of proress in aligning support, describing how things fit, and invested a lot of time this year up-streaming work in Chromium.  Some additional work remains for next year pending Layout NG work at Google, but it's looking better and better and most of it shipping behind the experimental web platform features flag today.  We also helped create and advocate for a new W3C charter for math.</p>
-  <p>But let me share why I'm especially proud of it...</p>
-  <figure class="captioned-image  optional">
-    <img data-src="/media/math-chalkboard.gif" alt="A professor in front of a chalkboard full of math with space scenes super-imposed">
-  </figure>
-  <p>Because Math is <em>text</em>, and a phenomenally import <em>kind</em> of text.  The importance of begin able to render formulae is really highlighted during a pandemic, where researchers of all kinds need to share information and students are learning from home. I'm super proud to be a part of this single action that I believe really is a leap in helping the Web realize its potential for these societally important issues.</p>
-  </section>
-  <section class="sectioning">
-    <h4 class="contextual-heading" style="font-size: NaNrem;">SVG/CSS Alignment</h4>
-
-    <p>At the end of last year's post I hinted about something we were working on.  The practical upshots that people will more immediately relate to will be the abilities to do 3D transforms in SVG and <em>hardware accelerate</em> SVG.</p>
-
-    <p>These are long requested enhancements but also come with historical baggage, so it's been difficult for browsers to invest.  It's a great illustration of why Igalia is great for the ecosystem.  This work is getting investment priority because Igalia are the maintainers of <a href="https://wpewebkit.org/">WPE WebKit</a>, the official WebKit port for embedded devices.</p>
-    <div class="captioned-image" style="background-color: transparent; margin: 1rem 15%">
-      <img src="https://wpewebkit.org/assets/svg/blue_Web_Logo.svg" alt=""></div>
-    
-
-    <p>Software on embedded devices has a marriage of unique qualities that lots of controls and displays want to be SVG-based, but also have to deal with typically low end hardware, which usually still has a GPU.  Thus, this problem for those devices is a few orders of magnitude more critical than it is elsewhere.  However, our work will ultimately fund improvements for all WebKit browsers, which also incentivizes others to follow!</p>
-</section>
-<section class="sectioning">
-  <h4 class="contextual-heading" style="font-size: NaNrem;">OffscreenCanvas</h4>
-
-  <p>One thing we haven't talked about yet, but I can't wait to is OffscreenCanvas.  Apple originally pioneered the <code>&lt;canvas&gt;</code> element and it's super cool and useful for a lot of stuff.  Unfortunately, it is historically tied to the DOM, did its work on the main thread and couldn't be used in workers.  This is terrible because <em>many</em> of the use cases it is really great for are real intense.  This is a bad situation - luckily, we're working on it!  Chris Lord has been working on OffscreenCanvas in WebKit and it looks great so far - everything except text portions is done and I've been using it with great results.</p>
-
-  <p>OffscreenCanvas can be used in workers, and you can 'snap off' and transfer the context from a DOM rendered canvas to a worker too.  So great!  And guess why we're investing in it? You guessed it: Embedded.</p>
-</section>
-<section class="sectioning">
-<h4 class="contextual-heading" style="font-size: NaNrem;">WebXR</h4>
-  <p>I mean, this is kinda huge right? Igalia is investing to help move XR forward in WebKit - part of this is generalized for WebKit, and I think that is kind of awesome.  Still early days and there's a lot to do, but this is pretty exciting to see developing and I'm proud that Igalia is helping make it happen!</p>
-</section>
-<section class="sectioning">
-  <h4 class="contextual-heading" style="font-size: NaNrem;">Important JavaScript stuff!</h4>
-
-  <p>We Pushed and shipped public/private instance and static fields in JavaScriptCore (WebKit). Private methods are ongoing.  We've really improved coordination with WebKit at large this year, and we're constantly improving the 32bit JSC too.  We're working on WebAssembly and numerous emerging TC39 specifications we're excited about: Module blocks, decorators, bundling, Realms, decimal, records and tuples, Temporal and lots of things for ECMA 402 (Internationalization) too!</p>
-</section>
-</section>
-
-<section class="sectioning">
-
-  <h3 class="contextual-heading" style="font-size: NaNrem;">Web Related, non-feature things</h3>
-
-  <p>There's a lot of other things that we accomplished this year at Igalia which are pretty exciting too!</p>
-
-  <ul>
-  <li><p><strong>Open Prioritization!</strong>  This year we ran a pilot experiment called <a href="https://open-prioritization.igalia.com">"Open Prioritization"</a> to start some big and complex discussions and attempt to find ways to give more people a voice in the prioritization of work on the commons.  We partnered with Open Collective and while I can't say the first experiment was flawless, we learned a lot and are moving forward with a project picked and funded by the larger community as well as establishing a collective to continue to do this!  </p></li>
-  <li><p><strong>Our new podcast!</strong>  This year we also launched a podcast.  We've had great discussions on complex topics and had amazing guests, including one of the creators of CSS <a href="https://en.wikipedia.org/wiki/H%C3%A5kon_Wium_Lie">Håkon Wium Lie</a>, people from several browser vendors past and present, people who helped drive the two historically special embeddable forms in HTML (MathML and SVG), and some developer and web friends.  It's available via all of your favorite podcasting services, a playlist on our YouTube channel and <a href="https://www-ci-dev.igalia.com/24-7/chats">on our website</a></p></li>
-  <li><p><strong>ipfs</strong> This year we also began working with Protocol Labs to improve some things around protocol handers - those are great for the web at large and it's interesting and exciting to see what is happening with things like IPFS!</p></li>
-  <li><p><strong>Joined MDN PAB</strong> This year Igalia also joined the MDN Product Advisory Board, and we're looking forward to helping ensure that the vital resource that is MDN remains healthy!</p></li>
-  <li><p><strong>WPE</strong> You might know that Igalia are the maintainers of a few of the <a href="https://webkit.org/downloads/">official WebKit ports</a>, and one of them is for embedded systems. I'm <em>really</em> pleased with all of the thins that this has allowed us to help drive for WebKit and the larger Web Platform.  However, embedded "browsers" was kind of a new topic to me when I began my work here and it's somewhat different than the sorts of challenges I am used to. With embedded systems you typically build the OS specifically for the device.  Sharing the same web tech commons is phenomenal, but for many developers like myself, my questions about embedded were difficult to explore on my own as someone who rarely compiles a browser, much less an operating system!  I'm <em>really</em> pleased with the progress we've made on this, making <a href="https://wpewebkit.org/">wpewebkit.org</a> more friendly, informative and relevant to people who might not already be experts at this, including making easy step-wise options available for people to explore.  Someone with no experience and download a raspbian based OS with WPE WebKit on it and flash it right on a Raspberry Pi just to explore.  For a lot of pet projects,  you can do a lot with that too.  That's not super representative of a good embedded system in terms of performance and things, but it is <em>very</em> easy and it's maintained by us, so it's pretty up to date.  A short step away, if you're pretty comfortable with Linux shell and ssh, you can get a minimal/optimized for Raspberry Pi 3 install you can flash right onto your Pi that runs a Weston Wayland compositor.  Finally, if you already kind of know what you're doing, we maintain Yocto receipes for developers to more easily build and maintain their real systems.</p></li>
-  <li><p><strong>Vulkan! driver</strong> - 
-  You might know that Igalia does all kinds of stuff beyond just the Web, we work on all of the things that <em>power</em> the web too, and kind of all the way down - so we have lots of areas of specialization.  I think it's really cool that we partnered with Raspberry Pi to create a Vulkan driver for the Mesa graphic driver stack for the latest generation of Raspberry Pi, <a href="https://www.raspberrypi.org/blog/vulkan-update-were-conformant/">achieving conformance in less than 1 year</a>, passing over 100k tests from Kronos' Conformance Test Suite since our initial announcement of drawing the first triangle!</p></li>
-  </ul>
-</section>
-<section class="sectioning">
-  <h3 class="contextual-heading" style="font-size: NaNrem;">Looking forward...???</h3>
-  <p>So, what exciting things can we look forward to in 2021?  Definitely, advancing all of the things above - and that's exciting enough.  It's hard to know what to be most excited for, but I'm personaly really looking forward to watchin Open Prioritization grow and get a real good idea and very concrete progress on Container Queries issues.  We've also got our eyes on some new things we'll be starting to talk about in the next year, so stay tuned on those too.</p>
-
-  <p>One, that I'd like to mention, however is <strong>tabs</strong>.  Over the past year, Igalia has begun to get involved with efforts like OpenUI and I've been talking to developers and peers at Igalia about tabs. I had some thoughts and ideas that I posted earlier this year.  Just recently some actual work and collaboration has been done - gettinga number of us with similar ideas together to sort  <a href="https://github.com/thepassle/generic-components/">out a useful custom element</a> that we can test out, as well as working in OpenUI on aligning all of the stars we'll need to align as we attempt to approach something like standard tabs.   It is <em>very</em> early days here, but we've gone from a vague blog post to some actual involvement and we're getting behind the idea - which is pretty exciting and I can't wait to say more concrete things here!</p>
-</section>
-
-</section>
 ]]></content:encoded>
         </item>
         <item>
@@ -2735,6 +2536,40 @@ export const _internalPromise =
 ]]></content:encoded>
         </item>
         <item>
+            <title><![CDATA[Moving Math Forward, Thoughts and Experiments]]></title>
+            <link>https://bkardell.com/blog/MathForward.html</link>
+            <guid>https://bkardell.com/blog/MathForward.html</guid>
+            <pubDate>Tue, 09 Jul 2019 04:00:00 GMT</pubDate>
+            <description><![CDATA[
+		In this piece, I explain details on thoughts on experiments and conversations around moving Math forward on the Web.
+	]]></description>
+            <content:encoded><![CDATA[
+	<h1 class="contextual-heading" style="font-size: NaNrem;">Moving Math Forward, Thoughts and Experiments</h1>
+	<p class="segue">
+		In this piece, I explain details on thoughts on experiments and conversations around moving Math forward on the Web.
+	</p>
+		
+	<p>For some context, <a href="https://mathml.igalia.com" rel="nofollow">my team is actively working on implementing MathML in Chromium</a> (the engine Chrome, Edge, Samsung, Brave, UC Browser and lots of other share), more specifically MathML Core.  MathML has long had implementations in Safari and Firefox and has an 
+	intersting history that leaves it in a very unique spot.
+	</p>
+	<p>MathML Core, defines the comparatively small, but well defined and mostly interoperable subset of MathML - with an aim of resolving uniqueness.  It provides details about how it actually <em>fits</em> into the layers platform in well defined ways and to explain their existing magic in terms of the platform - to expose it if is it new.  As such, in indirectly aims to provide a basis for moving <em>many</em> things forward.</p>
+
+	<section class="sectioning">
+		<h2 class="contextual-heading" style="font-size: NaNrem;">A thought experiment</h2>
+	<p>Recently conversations in the web platform at large have begun about <a href="https://github.com/whatwg/html/issues/4696">moving HTML forward and polyfilling elements</a>.   Since we are actively working on a 'core' ourselves, we thought this would be an interesting discussion and experiment:  We asked "What if MathML Core was largely 'done' and you would import other support to move forward?"  Those things <em>could</em> potentially be shipped by a browser, but there's no guarantee they ever would.  However, they could also be loaded as polyfills and in standard means that help omit many of the problems that traditional polyfills create.</p>
+	<p>To explain this, we took some elements that <em>aren't</em> in MathML Core, but are specified elsewhere, as an interesting stand in.  One such example is an element called <code>mfenced</code>.  <code>mfenced</code> is just a "more convenient way" of writing some math that has a lot of 'fences' (parens, pipes, braces, and so on).  The original spec even said "It is strictly equivalent to this expanded, longer form".</p>
+	<p>Today, 'polyfills' exist for it if your browser doesn't support it, and today, those work by (if your browser doesn't support it) destroying your tree and replacing it with the equivalent version, at some undefined point in time.</p>
+	<p>We experimentally changed very little in our implementation and it now considers any MathML 'unknown element' as on the whitelist of elements which can have a Shadow DOM.  We used a simple stand-in using Mutation Observer to allow any of those to be defined without a dash, and wrote a polyfill for <code>mfenced</code> which simply expands it into Shadow DOM.</p>
+	<p>For purposes of discussion, we illustrated how we could, in theory, use MathML Core, import some new vocabulary (potentially a future proposal, or just some slang) and easily expand it into some Shadow DOM, leaving you with the tree that you authored and all of the things just fitting together nicely and predictably. Below is a screenshot from our actual implementation experiment.</p>
+	<p><a target="_blank" rel="noopener noreferrer" href="https://camo.githubusercontent.com/8e0c8bf38ccd6fa1a20a3d3fa2299a7e32291d32/68747470733a2f2f63646e2e676c697463682e636f6d2f39303035373538332d326137392d343662372d623565662d36636566336265383764613625324653637265656e73686f7425323066726f6d253230323031392d30372d303725323031322d35322d35302e706e673f763d31353632353138353030313933"><img src="https://camo.githubusercontent.com/8e0c8bf38ccd6fa1a20a3d3fa2299a7e32291d32/68747470733a2f2f63646e2e676c697463682e636f6d2f39303035373538332d326137392d343662372d623565662d36636566336265383764613625324653637265656e73686f7425323066726f6d253230323031392d30372d303725323031322d35322d35302e706e673f763d31353632353138353030313933" alt="screenshot of element and shadow dom in experimental browser build" data-canonical-src="https://cdn.glitch.com/90057583-2a79-46b7-b5ef-6cef3be87da6%2FScreenshot%20from%202019-07-07%2012-52-50.png?v=1562518500193" style="max-width:100%;"></a></p>
+	<p>We think that these sorts of experiments are useful and informative and help us ask better questions about how we are fitting into the platform itself: Have we answered the necessary questions?  How does the introduction of a ShadowRoot impact rendering and namespacing, for example?  Could developers really 'plug in' to all the necessary bits?  Could they properly layer atop?  To test this, we also created elements that expand shorthands like TeX and ASCII Math.  In the end, can we ultimately resolve a great a stable core that allows us to move math forward using these things similar in ways similar to Knuth's TeX book/engine - but in a way that is properly "of the platform"?  We think the answer is yes.</p>
+
+	<p>While we're not entirely sure where larger conversations about how HTML will move forward will go, and we aren't claiming that this implementation is anything more than a quick experiment for discussion and testing, the MathML community itself is very excited that such talks are even happening in HTML and <em>very</em> interested in being a part of that conversation, and sorting out how we can move forward together as One Platform™, with less 'specialness'.</p>
+	</section>
+	
+]]></content:encoded>
+        </item>
+        <item>
             <title><![CDATA[One Platform™]]></title>
             <link>https://bkardell.com/blog/OnePlatform.html</link>
             <guid>https://bkardell.com/blog/OnePlatform.html</guid>
@@ -2773,40 +2608,6 @@ export const _internalPromise =
 		<p>While the MathML Community Group is aware that these questions are far from settled, they were universally excited to see such talks begin in HTML and <em>very</em> interested in making sure that they're thinking about those things too: Being a part of that conversation, and sorting out how we can move forward together as One Platform™, with less 'specialness'.</p>
 		<p>If you think this is interesting or useful, please share your support and let someone know.</p>
 		</section></section>]]></content:encoded>
-        </item>
-        <item>
-            <title><![CDATA[Moving Math Forward, Thoughts and Experiments]]></title>
-            <link>https://bkardell.com/blog/MathForward.html</link>
-            <guid>https://bkardell.com/blog/MathForward.html</guid>
-            <pubDate>Tue, 09 Jul 2019 04:00:00 GMT</pubDate>
-            <description><![CDATA[
-		In this piece, I explain details on thoughts on experiments and conversations around moving Math forward on the Web.
-	]]></description>
-            <content:encoded><![CDATA[
-	<h1 class="contextual-heading" style="font-size: NaNrem;">Moving Math Forward, Thoughts and Experiments</h1>
-	<p class="segue">
-		In this piece, I explain details on thoughts on experiments and conversations around moving Math forward on the Web.
-	</p>
-		
-	<p>For some context, <a href="https://mathml.igalia.com" rel="nofollow">my team is actively working on implementing MathML in Chromium</a> (the engine Chrome, Edge, Samsung, Brave, UC Browser and lots of other share), more specifically MathML Core.  MathML has long had implementations in Safari and Firefox and has an 
-	intersting history that leaves it in a very unique spot.
-	</p>
-	<p>MathML Core, defines the comparatively small, but well defined and mostly interoperable subset of MathML - with an aim of resolving uniqueness.  It provides details about how it actually <em>fits</em> into the layers platform in well defined ways and to explain their existing magic in terms of the platform - to expose it if is it new.  As such, in indirectly aims to provide a basis for moving <em>many</em> things forward.</p>
-
-	<section class="sectioning">
-		<h2 class="contextual-heading" style="font-size: NaNrem;">A thought experiment</h2>
-	<p>Recently conversations in the web platform at large have begun about <a href="https://github.com/whatwg/html/issues/4696">moving HTML forward and polyfilling elements</a>.   Since we are actively working on a 'core' ourselves, we thought this would be an interesting discussion and experiment:  We asked "What if MathML Core was largely 'done' and you would import other support to move forward?"  Those things <em>could</em> potentially be shipped by a browser, but there's no guarantee they ever would.  However, they could also be loaded as polyfills and in standard means that help omit many of the problems that traditional polyfills create.</p>
-	<p>To explain this, we took some elements that <em>aren't</em> in MathML Core, but are specified elsewhere, as an interesting stand in.  One such example is an element called <code>mfenced</code>.  <code>mfenced</code> is just a "more convenient way" of writing some math that has a lot of 'fences' (parens, pipes, braces, and so on).  The original spec even said "It is strictly equivalent to this expanded, longer form".</p>
-	<p>Today, 'polyfills' exist for it if your browser doesn't support it, and today, those work by (if your browser doesn't support it) destroying your tree and replacing it with the equivalent version, at some undefined point in time.</p>
-	<p>We experimentally changed very little in our implementation and it now considers any MathML 'unknown element' as on the whitelist of elements which can have a Shadow DOM.  We used a simple stand-in using Mutation Observer to allow any of those to be defined without a dash, and wrote a polyfill for <code>mfenced</code> which simply expands it into Shadow DOM.</p>
-	<p>For purposes of discussion, we illustrated how we could, in theory, use MathML Core, import some new vocabulary (potentially a future proposal, or just some slang) and easily expand it into some Shadow DOM, leaving you with the tree that you authored and all of the things just fitting together nicely and predictably. Below is a screenshot from our actual implementation experiment.</p>
-	<p><a target="_blank" rel="noopener noreferrer" href="https://camo.githubusercontent.com/8e0c8bf38ccd6fa1a20a3d3fa2299a7e32291d32/68747470733a2f2f63646e2e676c697463682e636f6d2f39303035373538332d326137392d343662372d623565662d36636566336265383764613625324653637265656e73686f7425323066726f6d253230323031392d30372d303725323031322d35322d35302e706e673f763d31353632353138353030313933"><img src="https://camo.githubusercontent.com/8e0c8bf38ccd6fa1a20a3d3fa2299a7e32291d32/68747470733a2f2f63646e2e676c697463682e636f6d2f39303035373538332d326137392d343662372d623565662d36636566336265383764613625324653637265656e73686f7425323066726f6d253230323031392d30372d303725323031322d35322d35302e706e673f763d31353632353138353030313933" alt="screenshot of element and shadow dom in experimental browser build" data-canonical-src="https://cdn.glitch.com/90057583-2a79-46b7-b5ef-6cef3be87da6%2FScreenshot%20from%202019-07-07%2012-52-50.png?v=1562518500193" style="max-width:100%;"></a></p>
-	<p>We think that these sorts of experiments are useful and informative and help us ask better questions about how we are fitting into the platform itself: Have we answered the necessary questions?  How does the introduction of a ShadowRoot impact rendering and namespacing, for example?  Could developers really 'plug in' to all the necessary bits?  Could they properly layer atop?  To test this, we also created elements that expand shorthands like TeX and ASCII Math.  In the end, can we ultimately resolve a great a stable core that allows us to move math forward using these things similar in ways similar to Knuth's TeX book/engine - but in a way that is properly "of the platform"?  We think the answer is yes.</p>
-
-	<p>While we're not entirely sure where larger conversations about how HTML will move forward will go, and we aren't claiming that this implementation is anything more than a quick experiment for discussion and testing, the MathML community itself is very excited that such talks are even happening in HTML and <em>very</em> interested in being a part of that conversation, and sorting out how we can move forward together as One Platform™, with less 'specialness'.</p>
-	</section>
-	
-]]></content:encoded>
         </item>
         <item>
             <title><![CDATA[Interesting Custom Element Data Begins]]></title>
