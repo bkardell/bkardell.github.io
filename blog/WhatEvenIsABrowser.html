@@ -396,9 +396,9 @@ America (art for sale)</a></li>
     document.documentElement.classList.add("lldelay");
   }, 1000);
 </script>
-    <main><div class="posted-on">Posted on </div><article posted-on="" class="sectioning">
+    <main><div class="posted-on">Posted on 01/14/2022</div><article posted-on="01/14/2022" class="sectioning">
     <h1 class="contextual-heading"> What even is a web browser?</h1>
-    <p class="segue">
+    <p class="segue">  
         A number of things (some of which I will share later this month) have me thinking about this question.  It probably seems silly at first, but it's suprisingly kind of interesting - and maybe important question.</p>
  
     <p>The other day, Chris Coyier wrote a post called <a href="https://twitter.com/css/status/1480661472644833281">What is Chromium without Chrome on top</a> that hit on some things I've been thinking about/discussing recently too, so I thought I'd share a bit more.</p>
@@ -427,8 +427,8 @@ America (art for sale)</a></li>
     </section>
 
     <section class="sectioning">
-        <h2 class="contextual-heading">No True Scottsman</h2>
-        <p>You might have had that experience where you are in some "regular program" and clikcing around, reading - and everything is pretty much fine.  And then you click a link to read something and are asked to login.  But wait... you _are_ logged in, in your browser!  That kind of stuff is painful for users, and some people say that that is because it isn't a "real browser".  However, that this is what happens if you have more than one "real browser" installed too.  An important distinction here, perhaps, is the concept of a "default browser".</p>
+        <h2 class="contextual-heading">No True Scotsman</h2>
+        <p>You might have had that experience where you are in some "regular program" and clikcing around, reading - and everything is pretty much fine.  And then you click a link to read something and are asked to login.  But wait... you <em>are</em> logged in, in your browser!  That kind of stuff is painful for users, and some people say that that is because it isn't a "real browser".  However, that this is what happens if you have more than one "real browser" installed too.  An important distinction here, perhaps, is the concept of a "default browser".</p>
 
         <p>But now we get into a very uncanny valley and a lot of intersting challenges and further distinctions.</p>
 
@@ -441,7 +441,8 @@ America (art for sale)</a></li>
         <p>One common technique when making a "real program" with a WebView is to just not have it handle HTTP requests at all.  All of the "program stuff" uses some local, non-HTTP scheme.  When a user clicks a regular HTTP-based hyperlink, then, most GUI operating systems recieve the notification of an effort to open a HTTP URL.  To deal with this, they the program registered as the default handler for that - the default browser. </p>
     </section>
 
-    <section>Are you a browser? If you are, you have to tell me.</section>
+    <section class="sectioning">
+        <h2 class="contextual-heading">Are you a browser? If you are, you have to tell me.</h2>
 
         <p>In other words, applications built like this have to decide: "should you be handling this?" and provide an answer to the question "are you really a browser?".</p>
 
@@ -453,9 +454,9 @@ America (art for sale)</a></li>
         <p>But operating systems vary too, and they change over time, learning lessons and adapting along the way. It's kind of hard to pin down.</p>
 
         <section class="sectioning">
-            <h2 class="contextual-heading">Default WebView</h2>
+            <h3 class="contextual-heading">Default WebView</h3>
 
-        <p>Since WebViews are super useful for all apps, every GUI OS/desktop today also ships with a default WebView that programs can use.  That makes a lot of sense, because there's no point in everyone independently packing up and managing their own - and this way you _could_ share logins and stuff.</p>
+        <p>Since WebViews are super useful for all apps, every GUI OS/desktop today also ships with a default WebView that programs can use.  That makes a lot of sense, because there's no point in everyone independently packing up and managing their own - and this way you <em>could</em> share logins and stuff.</p>
 
         <p>It makes even more sense when you realize how intertwined the OS and the rendering engine are.</p>
 
@@ -467,7 +468,7 @@ America (art for sale)</a></li>
 
         <p>So, WebViews (or evolutions of them) are an even higher level abstraction.  They're more like a kit car which is pretty much drivable - it just doesn't look like much.</p>
         </section>
-    
+    </section>
 
     <section class="sectioning">
         <h2 class="contextual-heading">Whose job is it anyways?</h2>
@@ -477,7 +478,7 @@ America (art for sale)</a></li>
             <h3 class="contextual-heading">The OS uncanny valley</h3>
             <p>So... OSes pretty much always also ship a default <em>browser</em>, and you can change what the default browser is.  Lots of apps use WebViews, so the OSes provide a default WebView that they can use instead of shipping their own.</p>
 
-            <p>At some level, it would make sense if the default browser would used the default OS level WebView.  That would make our initial statement almost true: The browser handles the stuff on the outside, and the WebView handles the stuff on the inside.</p>
+            <p>At some level, it would make sense if the default browser itself used the default OS level WebView.  That would make our initial statement almost true: The browser handles the stuff on the outside, and the WebView handles the stuff on the inside.</p>
 
             <p>Wait... But... <em>Do they work that way?!</em></p>
 
@@ -492,7 +493,7 @@ America (art for sale)</a></li>
 
             <p>But... is it?  I mean, everyday humans don't really choose engines.  They choose something higher level: A device. They use what that device makes available to them unless it gets real bad. IE won the first browser wars because they were the default, and they more than met expectations.  There was no need to go elsewhere - you had, at the time, the best browser.  A browser with a synergy with the OS too.</p>
 
-            <p>People only began looking beyond IE when lots of stuff just stopped working. Is it great that there was a competitor who could step in on the same OS - sure.  Definitely but a _lot_ of things have changed too.</p>
+            <p>People only began looking beyond IE when lots of stuff just stopped working. Is it great that there was a competitor who could step in on the same OS - sure.  Definitely but a <em>lot</em> of things have changed too.</p>
 
             <p>Contrast this with Android today. The default browser has the lion's share for lots of reasons - some of them are pretty good ones even.  Most of what isn't that is still Chromium based.  Gecko technically "there" but it exists only at a non-trivial cost which ultimately hasn't amounted to much in terms of users. I guess this is important for Mozilla because they don't have a default OS, but you'll note that there's not a WebKit option there (yet), and there wasn't an Edge option when that was it's own engine either - until sharing the burden through Chromium made that a lot easier.</p>
 
@@ -506,13 +507,13 @@ America (art for sale)</a></li>
                 <h4 class="contextual-heading">From another angle ...</h4> 
                 <p>Of course, there are those that claim that WebKit <em>is</em> too bad and people <em>would</em> choose differently on iOS if they could. I am biased, of course, but I don't see any anecdotal data that the general public actually agrees.  I know very few iOS users who aren't engineers who complain about Safari - and I know very few engineers who won't admit that WebKit has made huge strides in the last few years.  </p>
 
-                <p>If there's a random person I know who has installed another browser on Safari, it's not been about shortcommings, but everything to do with seamlessless integration with other Google products they own, or the payment model on Brave, or something.</p>
+                <p>If there's a random person I know who has installed another browser on iOS, it's not been about shortcommings, but everything to do with seamless integration with other Google products they own, or the payment model on Brave, or something.</p>
 
                 <p>What's so interesting about all of this, to me, is that if I think about this from another angle: While it's easy to agree with diversity of choice - keeping a competitive market of <em>actual choices around in the first place</em> is maybe even trickier with the current model we've built.  It's interesting to think about how differently things might have played out if everything had followed the "browser is built on the OS level default WebView" model, where those WebViews were spaces of great collaboration and flexible architectures allowing differentiation.</p>
 
                 <p>The cost to making the standard stuff would go way down - the cost toward providing the actual products would go way down.  As long as there is variety of OS (there definitely will continue to be, with so many devices and uses floating out there) there would be a diversity of engines, and competition on more or less equal footing at the space of the stuff around them.  </p>
 
-                <p>I'm not suggesting that's the way it should be, but -- kind of interesting to think about.</p>
+                <p>I'm not suggesting that's the way it should be, but -- it's kind of interesting to think about.</p>
                 </section>
             </section>
 </section></article></main>
