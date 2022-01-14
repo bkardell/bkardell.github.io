@@ -415,7 +415,7 @@ America (art for sale)</a></li>
 
     <section class="sectioning">
         <h2 class="contextual-heading">The un-browser</h2>
-        <p>Most browsers can be launched, from the terminal, in a "full screen" (or "kiosk") mode with none of the typical "browser" user interface parts at all.  What if someone released a product that <em>only</em> did that.... Is that still a browser?</p>
+        <p>Most browsers can be launched, from the terminal, in a "full screen"  mode.  Many can be launched in a true "kiosk" mode, even. In both cases, with none of the typical "browser" user interface parts at all.  What if someone released a product that <em>only</em> did that.... Is that still a browser?</p>
 
         <p>Given a good start page (any popular search engine, for example), the web would still work pretty darn well.  If there is some fundamental need for something (back in history, seems important), providing it via a typical window chrome with a URL bar and so on isn't the <em>only</em> possible way to provide that.</p>
 
@@ -438,7 +438,7 @@ America (art for sale)</a></li>
 
         <p>We really haven't entirely sorted this out.</p>
 
-        <p>One common technique when making a "real program" with a WebView is to just not have it handle HTTP requests at all.  All of the "program stuff" uses some local, non-HTTP scheme.  When a user clicks a regular HTTP-based hyperlink, then, most GUI operating systems recieve the notification of an effort to open a HTTP URL.  To deal with this, they the program registered as the default handler for that - the default browser. </p>
+        <p>One common technique when making a "real program" with a WebView is to just not have it handle HTTP requests at all.  All of the "program stuff" uses some local, non-HTTP scheme.  When a user clicks a regular HTTP-based hyperlink, then, most GUI operating systems receive the notification of an effort to open a HTTP URL.  To deal with this, they launch the program registered as the default handler for that - the default browser. </p>
     </section>
 
     <section class="sectioning">
@@ -449,7 +449,7 @@ America (art for sale)</a></li>
         <p>Nearly all "regular programs" built with WebViews  don't actually claim to <em>be</em> a browser, and don't offer the ability to be registered as the default browser. The first question though is often stickier - especially on mobile.</p>
 
         <p>"Should you be handling this?" is often a kind of tricky question. They are after all, mostly capable of rendering anything your "real browser" can and there are valid reasons to open their own content, like documentation, that actually lives on the web, at least.
-        The percieved cost of leaving the experience on mobile is also much higher. So, it gets tricky.</p>
+        The perceived cost of leaving the experience on mobile is also much higher. So, it gets tricky.</p>
 
         <p>But operating systems vary too, and they change over time, learning lessons and adapting along the way. It's kind of hard to pin down.</p>
 
@@ -495,7 +495,7 @@ America (art for sale)</a></li>
 
             <p>People only began looking beyond IE when lots of stuff just stopped working. Is it great that there was a competitor who could step in on the same OS - sure.  Definitely but a <em>lot</em> of things have changed too.</p>
 
-            <p>Contrast this with Android today. The default browser has the lion's share for lots of reasons - some of them are pretty good ones even.  Most of what isn't that is still Chromium based.  Gecko technically "there" but it exists only at a non-trivial cost which ultimately hasn't amounted to much in terms of users. I guess this is important for Mozilla because they don't have a default OS, but you'll note that there's not a WebKit option there (yet), and there wasn't an Edge option when that was it's own engine either - until sharing the burden through Chromium made that a lot easier.</p>
+            <p>Contrast this with Android today. The default browser has the lion's share for lots of reasons - some of them are pretty good ones even.  Most of what isn't that is still Chromium based.  Gecko is technically "there" but it exists only at a non-trivial cost which ultimately hasn't amounted to much in terms of users. I guess this is important for Mozilla because they don't have a default OS, but you'll note that there's not a WebKit option there (yet), and there wasn't an Edge option when that was it's own engine either - until sharing the burden through Chromium made that a lot easier.</p>
 
             <p>If tomorrow, Google disbanded the Chrome team though - one has to imagine that the natural successor on Android is still chromium based.</p>
 
@@ -507,9 +507,9 @@ America (art for sale)</a></li>
                 <h4 class="contextual-heading">From another angle ...</h4> 
                 <p>Of course, there are those that claim that WebKit <em>is</em> too bad and people <em>would</em> choose differently on iOS if they could. I am biased, of course, but I don't see any anecdotal data that the general public actually agrees.  I know very few iOS users who aren't engineers who complain about Safari - and I know very few engineers who won't admit that WebKit has made huge strides in the last few years.  </p>
 
-                <p>If there's a random person I know who has installed another browser on iOS, it's not been about shortcommings, but everything to do with seamless integration with other Google products they own, or the payment model on Brave, or something.</p>
+                <p>If there's a random person I know who has installed another browser on iOS, it's not been about shortcomings, but everything to do with seamless integration with other Google products they own, or the payment model on Brave, or something.</p>
 
-                <p>What's so interesting about all of this, to me, is that if I think about this from another angle: While it's easy to agree with diversity of choice - keeping a competitive market of <em>actual choices around in the first place</em> is maybe even trickier with the current model we've built.  It's interesting to think about how differently things might have played out if everything had followed the "browser is built on the OS level default WebView" model, where those WebViews were spaces of great collaboration and flexible architectures allowing differentiation.</p>
+                <p>What's interesting to me about all of this is that one can think about it from another angle: While it's easy to agree with diversity of choice - keeping a competitive market of <em>actual choices around in the first place</em> is maybe even trickier with the current model we've built.  It's interesting to think about how differently things might have played out if everything had followed the "browser is built on the OS level default WebView" model, where those WebViews were spaces of great collaboration and flexible architectures allowing differentiation.</p>
 
                 <p>The cost to making the standard stuff would go way down - the cost toward providing the actual products would go way down.  As long as there is variety of OS (there definitely will continue to be, with so many devices and uses floating out there) there would be a diversity of engines, and competition on more or less equal footing at the space of the stuff around them.  </p>
 
