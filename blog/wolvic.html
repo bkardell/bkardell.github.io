@@ -1,0 +1,1014 @@
+<html lang="en" resource-type="blogpost"><head>  
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@briankardell">
+    <meta name="twitter:creator" content="@briankardell">
+    <meta name="twitter:title" content="Enter: Wolvic">
+    <meta name="twitter:description" content="Today Igalia announced that we're taking over the browser project formerly known as &quot;Firefox Reality&quot; and re-introducing it with a new browser brand: Wolvic.  You can read more det">
+    
+    <meta name="monetization" content="$ilp.uphold.com/kKU4GXiRwhnf ">
+
+    <link rel="alternate" type="application/rss+xml" href="https://bkardell.com/blog/feed.rss" title="bkardell.com/blog rss feed">
+    <title>Enter: Wolvic</title> 
+    <style>.captioned-image {
+    background-color: #eaeaea;
+    display: block;
+    overflow: hidden;
+    padding: 1rem;
+    text-align: center;
+    font-style: italic;
+}
+
+.captioned-image.p-attached {
+    width: 40%;
+    display: inline-block;
+    margin: 0 1rem 2rem 1rem;
+}
+
+section > .captioned-image.p-attached {
+    margin-top: 1.5rem; /* correct for heading size*/
+}
+
+ pre { overflow-x: auto }
+
+.captioned-image.p-attached.p-attached-left {
+    float: left;
+}
+
+.captioned-image.p-attached.p-attached-right {
+    float: right;
+}
+
+.captioned-image.p-attached + * + * {
+    clear: both;
+    margin-top: 2rem;
+}
+
+
+.captioned-image img, .captioned-image video {
+    display: block;
+    max-width: 100%;
+    margin: 0 auto 1em auto;
+}
+.source {
+    font-style: italic;
+}
+body {
+    display: grid;
+    grid-template-columns: 25rem auto;
+    font: 1.1rem "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-weight: 400;
+    line-height: 1.625;
+    margin: 0;
+}
+h1 { margin: 0.5rem; }
+code-format {
+    border-left: 0.5rem solid rgba(123,115,209,0.35);
+    display: block;
+    padding: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+contextual-heading {
+    display: block;
+    margin-top: 2rem;
+}
+
+h1, [aria-level="1"] {
+    color: #43686b;
+    font-size: 1.45rem;
+}
+
+h2, [aria-level="2"] {
+    color: #856363;
+    font-size: 1.35rem;
+}
+
+h3, [aria-level="3"] {
+    color: #856363;
+    font-size: 1.25rem;
+}
+
+h4, [aria-level="4"] {
+    color: #856363;
+    font-size: 1.2rem;
+}
+
+h5, h6, [aria-level="5"], [aria-level="6"] {
+    color: #667496;
+    font-size: 1.2rem;
+    font-weight: bolder;
+}
+
+.posted-on {
+    font-style: italic;
+    font-size: 0.8rem; 
+    text-align: right;
+    margin-bottom: 1rem;
+}
+
+ul, li {
+    margin: 0.5rem;
+    text-align: left;
+}
+
+.authorinfo {
+    height: 100%;
+    padding-top: 1rem;
+    padding-right: 0;
+    background-color: #fbf5e9; 
+    display: block;
+    background-image: linear-gradient(to right, #dde0e8 , #ffffff);
+}
+
+.tagline {
+    font-style: italic;
+    text-align: center;
+}
+
+[tag-esc] {
+    color: maroon;
+    font-family: Courier, "Lucida Console", monospace;
+}
+
+[tag-esc]::before {
+    content: '<';
+}
+
+[tag-esc]::after {
+    content: '>';
+}
+
+main {
+    min-width: 50%;
+    width: 80%;
+    padding: 1rem;
+}
+header .title {
+    background-color: rgba(123,115,209,0.35);
+    padding: 0.3rem;
+    padding-left: 0.25rem;
+    font-weight: bolder;
+    font-size: 1rem;
+    border-left: 1rem solid #999298;
+}
+
+header .profile {
+    width: 50%;
+    margin: 1rem 25%;
+}
+
+header .title + nav {
+    font-size: 0.9rem;
+}
+
+header .blurb {
+    font-size: 0.9rem;
+    text-align: center;
+}
+header .name {
+    text-align: center;
+    font-size: xx-large;
+}
+.segue {
+    font-style: italic;
+}
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  border: 0;
+}
+
+#aboutMeToggle {
+    display: none;
+}
+
+spicy-sections:not([affordance]) > h2 {
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+}
+
+main article { max-width: 100em; margin: auto; }
+/* this needs rethinking, it wants a selector like 'not flow content' */
+article>*:not(contextual-heading,a), section>*:not(contextual-heading,a) {
+    margin-left: 0.45rem;
+}
+
+blockquote {
+  font-family: serif;
+  background: #f9f9f9;
+  border-left: 10px solid #ccc;
+  margin: 1.5em 10px;
+  padding: 0.5em 10px;
+}
+blockquote:before {
+  color: #ccc;
+  content: open-quote;
+  font-size: 2em;
+  line-height: 0.1em;
+  margin-right: 0.25em;
+  vertical-align: -0.4em;
+}
+
+blockquote:after {
+  color: #ccc;
+  content: close-quote;
+  font-size: 2em;
+  line-height: 0.1em;
+  margin-left: 0.25em;
+  vertical-align: -0.4em;
+}
+ 
+
+@media (max-width: 800px){
+    body {
+        grid-template-columns: 1fr;
+    }
+    .authorinfo {
+        height: auto;
+        border-bottom: 1px solid #afafff;
+        padding-top:  0;
+    } 
+
+    main { width: 95%; margin: 0 auto;}
+
+    .captioned-image.p-attached {
+        width: 100%;
+        margin: 1rem 0;
+    }
+
+    .captioned-image.p-attached.p-attached-left,
+    .captioned-image.p-attached.p-attached-right {
+        float: none;
+    }
+
+    #aboutMeToggle {
+        display: block;
+        background-color: #675e5e;
+        color: white;
+        padding: 0.25rem;
+        padding-left: 0.5rem;
+        border-left: 1rem solid black;
+    }
+
+    header li { display: inline; margin-left: -0.5em; }
+    header .blurb li::after { content: '; '; }
+    header  nav li {
+        display: inline-block;
+        margin-left: 0.35rem;
+        margin-right: 0.35rem;
+    }
+    header .title {
+        width: 100%;
+    }
+    main li .source { display: block; }
+
+} 
+
+spicy-sections {
+    --const-mq-affordances:
+      [screen and (min-width: 600px) ] collapse |
+      [screen and (min-width: 801px) ] tab-bar
+    ;
+    display: block;
+}
+
+spicy-sections.authorinfo {
+    --const-mq-affordances:
+      [screen and (max-width: 801px) ] collapse
+    ;
+}
+
+
+spicy-sections.single {
+    --const-mq-affordances:
+      [screen ] collapse 
+;
+}
+
+[role="tab"] {
+    margin-right:  1.5rem;
+}
+
+</style>
+    <style>
+      .captioned-image { font-size: 0.9rem; }
+      .thanksTo { font-style: italic; font-size: 0.8rem; }
+    </style>
+    <script>
+      var activateOptional = function (media) {
+        var source = media.getAttribute('data-src'),
+            temp,
+            container = media.parentElement;
+
+          if (media.nextSibling && media.nextSibling.matches) {
+            if (media.nextSibling.matches('.clickToSee')) {
+              media.parentElement.removeChild(media.nextSibling);
+            }
+          }
+ 
+          if (media.tagName === 'VIDEO') {
+            temp = document.createElement('video')
+            temp.setAttribute('autoplay','')
+            temp.setAttribute('controls','')
+            temp.setAttribute('loop','')
+            temp.innerHTML = '<source src="' + source + '.webm" type="video/webm">'
+                    + '<source src="' + source + '.mp4" type="video/mp4">';
+            media.parentElement.replaceChild(temp, media);
+            setTimeout(function () {
+              temp.play()
+            }, 0);
+          } else {
+            media.src = media.getAttribute('data-src');
+          }
+
+          container.classList.add('active');
+      }
+    </script>
+  </head>
+  <body>
+    <spicy-sections class="authorinfo">
+<h2 id="aboutMeToggle" defaults-on-match="">Author Information</h2>
+  
+<header>
+    <div class="name">
+        Brian Kardell
+    </div>
+    <img class="profile" src="/profile.jpg" alt="">
+    <div class="tagline"><a href="/">Betterifying the Web</a></div>
+    <div class="blurb">
+        <ul>
+            <li>Developer Advocate at Igalia</li>
+            <li>Original Co-author/Co-signer of The Extensible Web Manifesto</li>
+            <li>Co-Founder/Chair, W3C Extensible Web CG</li>
+            <li>Member, W3C (OpenJS Foundation)</li>
+            <li>Co-author of HitchJS</li>
+            <li>Blogger</li>
+            <li>Art, Science &amp; History Lover</li>
+            <li>Standards Geek</li>
+        </ul>
+    </div>
+    <div class="title">Follow Me On...</div>
+    <nav>
+        <ul>
+            <li><a rel="me" href="https://briankardell.wordpress.com">Wordpress</a></li>
+            <li><a rel="me" href="https://medium.com/@briankardell">Medium</a></li>
+            <li><a rel="me" href="https://twitter.com/briankardell">Twitter</a></li>
+            <li><a rel="me" href="https://github.com/bkardell/">Github</a></li>
+            <li><a rel="me" href="https://codepen.io/bkardell">Codepen</a></li>
+            <li><a rel="me" href="https://www.linkedin.com/in/brian-kardell-08a4264">LinkedIn</a></li>
+            <li><a rel="me" href="https://www.instagram.com/kardellbrian">Instagram (for
+art)</a></li>
+            <li><a rel="me" href="http://fineartamerica.com/profiles/brian-kardell?">Fine Art
+America (art for sale)</a></li>
+        </ul>
+    </nav>
+</header>
+</spicy-sections>
+<script>
+  /*
+    You're probably wondering "Do I need to write this?""
+    "Is this part of it?"  No... If you're interested tho - 
+    Custom elements have a FOUC/PE gap 
+    (see https://github.com/whatwg/html/issues/6231).
+    This is a slightly better experience: It 
+    will be hidden _if JS is enabled_, and 
+    will be shown as it is defined, 
+    or after 1 sec, whichever is first.
+  */
+  let ss = document.createElement("style");
+
+  ss.innerHTML = `html:not(.lldelay) :not(:defined) { visibility: hidden; }`;
+  document.head.appendChild(ss);
+
+  setTimeout(() => {
+    document.documentElement.classList.add("lldelay");
+  }, 1000);
+</script>
+    <main><div class="posted-on">Posted on null</div><article class="sectioning">
+	<h1 class="contextual-heading">Enter: Wolvic</h1>
+    <p class="segue">
+        Today Igalia announced that we're taking over the browser project formerly known as "Firefox Reality" and re-introducing it with a new browser brand: <a href="https://wolvic.com" target="_blank" rel="noopener">Wolvic</a>.  You can read more details on this (including what the name is about) in 
+        <a href="...tbd" target="_blank" rel="noopener">Igalia's announcement post</a>
+        , as well as why we're intentionally leaving the door to this browser's evolution pretty wide open.  However, it might surprise you to learn that I am (somewhat newly) 
+        <em>personally really excited</em> 
+         by this as I'm not a long-time XR superfan - let me tell you what changed things for me.
+    </p>
+
+    <p>VR has had a long history of passionate promoters.  Even before the W3C was formed, a web interest group was established to work on bringing VR to the web.  Over the years I've heard a lot, occasionally read a lot, seen videos of demos and tried a few things now and then.  But, to be completely honest, I've also kind of "meh'ed" a lot.  Really, I just never found it personally <em>broadly exciting</em>, and I couldn't understand why others did.</p>
+    <p>However, with some of my peers doing work in this space at Igalia, over the past year I got my hands on an Oculus Quest 2 to check it out and suddenly... Wow.  I get it.</p>
+    <p>
+        Really: There have been 
+        <em>very few things</em>
+         in my life where I've experienced something so different and exciting that I just 
+        <em>had</em>
+         to show people.  This was definitely one.  Each person I've showed so far has been just people taking turns using it and sharing their excitement as they experienced it and watching them reacting...
+    </p>
+    <blockquote>"Wow". "Oh my god". "Get... out.."</blockquote>
+
+    <p>The experience itself has been pretty cool, but there seems to also be a universal agreement with the people I've talked to: We weren't prepared for that - and we can suddenly see why this is exciting as hell.</p>
+
+    <p>On the other hand, in retrospect, I guess this is kind of typical in a way.</p>
+
+    <section class="sectioning">
+    	<h2 class="contextual-heading">It happened with the Web, in fact</h2>
+    	<p>
+        In November of 1990, Tim Berners-Lee approached a man named Ian Ritchie and tried to hand the idea of a web browser to him. Ritchie's company made a popular piece of hypermedia software which was 
+        <em>almost exactly a web browser</em>
+         already.  It dealt with networking, multimedia, and had a serialized form for documents. That serialized form was even called called Hypertext Markup Language (.hml).  
+        <em>Literally all that was missing was the URL</em>
+         and Tim tried to convince him what a huge leap URLs would be and convince him to add support, even offering to provide code.  But no dice. He didn't get it.
+    </p>
+    <p>Tim's 1992 paper on the web it was rejected from the world wide Hypertext Conference.  None of them got it.</p>
+    <p>Tim had to build it and show it and build a small community of people to help him do it.  At the hypertext confernce in Seatle in 1993 Ian Ritchie recounts seeing a demo of Mosaic and thinking</p>
+    <blockquote>
+        Yep... that's it.  I get it.
+    </blockquote>
+    <p>He gave a brief TED Talk on the subject, if you'd like to watch...</p>
+
+    <div style="max-width:854px"><div style="position:relative;height:0;padding-bottom:56.25%"><iframe src="https://embed.ted.com/talks/lang/en/ian_ritchie_the_day_i_turned_down_tim_berners_lee" width="854" height="480" style="position:absolute;left:0;top:0;width:100%;height:100%" frameborder="0" scrolling="no" allowfullscreen=""></iframe></div></div>
+
+    <p>That's pretty much how it was for me with the Oculus Quest 2 and XR, and I expect that's how it will be for a lot of people. Like so many other things, many of us will have to experience it first hand. Pictures and videos of XR, or even some not-so-long ago tries give you entirely the wrong impression. Additionally, XR is a big space so descriptions aren't universal even, so let me tell you what I think is pretty key for me and why devices like the Quest 2 (though not exclusively that at all) that really convince me that there's something big and exciting here.</p>
+
+    <section>
+    <h3 id="The-Immersive-OS">The Immersive OS</h3>
+    <p>
+        Probably the biggest thing I failed to imagine the most is that when you're putting on a lot of these standalone headsets, what you're really doing is entering an 
+        <em>immersive operating system</em>
+        .
+    </p>
+    <p>
+	        The initial of this, of course, is the stuff that is relatively easier to imagine: A game where you can swing light sabers, shoot targets, box, ski orâ€¦ whatever, and it 
+	        <em>feels</em>
+	         pretty real.  That is a thing you really just have to experience, there's really no subsitute.
+	    </p>
+	    <p>
+	        <em>But what really surprised me was how interesting it was for stuff that isn't that.</em>
+	    </p>
+	    <p>But, again, in resospect, I guess this isn't the first time it was just hard to see from where we were sitting.  We've done "Why would someone choose to read the web on their tiny little phone?" or "Why would someone watch videos on their phone?".  But... Then you try it and after a while, you realize: Wow, yeah... There are, of course, tons of reasons.  Literally tons.  So many that they sometimes eclipse the old ways of consuming.</p>
+	    <p>It wass really the same with both points here for me.  I mean,  "Why would someone choose to watch a non-immersive movie with this headset on their face?" seemed like a pretty obvious question to me. I was incredibly dubious.</p>
+	    <p>
+	        But now that I've seen it - I can definitely see that there are plenty of use cases where this is really compelling.  Watching a movie in a small, cluttered and overly bright room was... amazing.  It made me see a massive theatrical sized screen, where I had the perfect seat, without challenges of ambient light, angle or glare.  You could have a nearly perfect viewing experience, from a cramped airplane seat.  You can also attend a watch party with friends you can't meet up with becase, for example, there is a global panemic or because they live thousands of miles away and share something 
+	        <em>very much</em>
+	         like the movie theater experience.
+	    </p>
+	    <p>And, really, that's the case with lots of apps in that kind of OS.  You can get all kinds of interesting new UI mechanisms too - heads up display features and so on.  There's still a lot being sorted out, but you can easily see where this is going and the potential.</p>
+	</section>
+	<section class="sectioning">
+		<h3 class="contextual-heading">The Web, in XR</h3>
+		    <p>
+		        Even more amazing to me was how obvious, in retrospect, the need for the web is here - I mean, even the regular old 2d, non-immersive web. 
+		        <em>Just think about how much you turn to the web</em>
+		        .   I found myself using the the browser 
+		        <em>constantly</em>
+		         while doing things like reporting bugs, checking out links, quickly replying to a message, looking something up - all without leaving the immersive OS.
+		    </p>
+		    <p>
+		        Of course that's just the start - because things get 
+		        <em>even more interesting</em>
+		         when we mash these two superpowers together with WebXR.  Suddenly we can have non-app store links 
+		        <em>to</em>
+		         XR experiences and jump 
+		        <em>into</em>
+		         immersive experiences from the web.  Suddenly we have 
+		        <strong>a way of or</strong>
+		        <em>a way of getting to them and sharing them across platforms</em>
+		        . Amazing, really.
+		    </p>
+		    <p>The basic usefulness of the web in XR seems to be lost on no one who makes such a device: Each one ships with a default browser.  Stats seem to suggest that I'm not alone in that:  People spend a lot of time in the browser here.</p>
+	</section>
+    <section class="sectioning">
+    	<h3 class="contextual-heading">Enter: Wolvic</h3>
+	    <p>The trouble is, there's just not a lot of choice.  I'm not just talking about a a choice of rendering engines, it's even lack of a choice of open source browsers.  In fact, for most of these standalone headsets, without Firefox Reality, there wouldn't any.  We can't let that happen.  Now feels like a critically important moment to make sure the Web has the same kinds of opportunities it does in other, similar ecocystems.</p>
+	    <p>We, at Igalia, been interested for a while in all of the problems and opportunies in the  ecosystem.  Last year we demoed a prototype browser for Android which merged our own WPE WebKit rendering engine with Firefox Reality, and provided some updates and fixes to Firefox Reality itself.   When most of us think about Android, we primarily think about mobile devices - but the truth is that the open part of Android serves as the basis for the OS on most of these standalone devices too.</p>
+	    <p>Our initial focus with Wolvic is toward taking custody of, updating, and nurturing the Firefox Reality codebase.  Our beta today launches with a large number of patches and improvements from Firefox Reality, and surely a few growing pains as well.  Wherever we start, we're chosing a new name, in part to make it clear that this project will will follow its own evolutionary path, wherever that leads, to survive as a choice in bringing another quality browser to these devices.  Looking forward to see where it leads.</p> 
+	</section>
+</section>
+
+</article></main>
+ 
+   
+  <script>
+    //import { MediaAffordancesElement } from "./MediaAffordancesElement.js";
+    class MediaAffordancesElement extends HTMLElement {
+      constructor() {
+        super();
+        // todo: this should be a private field
+        this.__matching = new Set()
+        this.mqls = [];
+        this.observers = [];
+
+        this.supportedAffordances = new Set();
+      }
+
+      observeAffordanceChange(cb) {
+        this.observers.push(cb);
+      }
+
+      notifyChange() {
+        let intersection = new Set();
+        for (let elem of this.__matching) {
+          if (this.supportedAffordances.has(elem)) {
+            intersection.add(elem);
+          }
+        }
+
+        if (this.__matching.size > 0) {
+          this.setAttribute("mq-matched", [...this.__matching].join(" "));
+        } else {
+          this.removeAttribute("mq-matched");
+        }
+        let arr =  [...intersection]
+        let affordance = arr[arr.length - 1];
+        if (affordance) {
+          this.setAttribute("affordance", affordance);
+        } else {
+          this.removeAttribute("affordance");
+        }
+        this.observers.forEach(cb => {
+          cb(intersection, this.__matching);
+        });
+      }
+
+      static get observedAttributes() {
+        return ["mq-affordances"];
+      }
+
+      connectedCallback() {
+        let newValue = getComputedStyle(this).getPropertyValue(
+          "--const-mq-affordances"
+        );
+        this.connectListeners(newValue);
+      }
+
+      connectListeners(newValue = "") {
+        if (newValue.trim().length === 0) {
+          return;
+        }
+        
+        newValue.split("|").forEach(segment => {
+          let mq = segment.trim().match(/\[([^\]]*)/)[1];
+          let names = segment
+            .replace(`[${mq}]`, "")
+            .trim()
+            .split(" ");
+          let mql = window.matchMedia(mq);
+          let mqh = evt => {
+            names.forEach(name => {
+              this.__matching[mql.matches ? "add" : "delete"](name);
+            });
+
+            this.notifyChange();
+          };
+          mqh();
+          mql.addEventListener("change", mqh);
+          this.mqls.push(mql);
+        }, this);
+      }
+
+      attributeChangedCallback(name, oldValue, newValue) {
+        this.connectListeners(newValue);
+      }
+    }
+
+    //-----------------------------------------------------
+
+    (function() {
+      let lastUId = 0;
+      let nextUId = () => {
+        return `cp${++lastUId}`;
+      };
+
+      let getLabels = regionset => {
+        return [...regionset.children].filter(el => /^H\d$/.test(el.tagName));
+      };
+
+      let getContentEls = regionset => {
+        return [...regionset.children].filter(el => !/^H\d$/.test(el.tagName));
+      };
+
+      let ensureId = el => {
+        el.id = el.id || nextUId();
+        return el.id;
+      };
+
+      let getDisclosureButton = label => {
+        return label.shadowRoot.querySelector("button");
+      };
+
+     
+      let style = document.createElement('style')
+      style.innerHTML = `
+          
+        :where(spicy-sections > [affordance*="collapse"])::before { 
+          content: ' ';
+          display: inline-block;
+          width: 0.5em;
+          height: 0.75em;
+          margin: 0 0.4em 0 0;
+          transform: rotate(90deg);
+          background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' x='0px' y='0px' width='10px' height='10px' viewBox='0 0 270 240' enable-background='new 0 0 270 240' xml:space='preserve'%3e%3cpolygon fill='black' points='5,235 135,10 265,235 '/%3e%3c/svg%3e ");
+          background-size: 100% 100%;
+        } 
+
+        :where(spicy-sections > [affordance*="collapse"][aria-expanded="true"])::before, 
+        :where(spicy-sections > [affordance*="collapse"][aria-expanded="true"])::after {
+          transform: rotate(180deg);
+        }
+      `
+      document.head.prepend(style)
+      
+      const template = `
+            <style>
+              :root {
+                font-size: 1rem;
+              }
+
+              :host([hidden]),
+              ::slotted([hidden]) {
+                display: none;
+              }
+              
+              ::slotted(h1),
+              ::slotted(h2),
+              ::slotted(h3),
+              ::slotted(h4),
+              ::slotted(h5),
+              ::slotted(h6) {
+                 margin-right: 1rem;
+              }
+              
+              tab-bar ::slotted([tabindex="0"]) {
+                border-bottom: 1px solid blue;
+              }
+              
+              tab-list { 
+                display: flex; 
+                overflow: hidden;
+                white-space: nowrap;
+              }
+            </style>
+            <tab-bar part="tab-bar">
+              <!-- The region/tablist should have a  label -->
+              <tab-list part="tab-list" role="tablist"
+              ><slot name="tabListSlot"></slot></tab-list>
+            </tab-bar>
+            <content part="content-panels">
+              <slot default></slot>
+            </content>
+        `;
+
+      class RegionSet extends MediaAffordancesElement {
+        __defaults;
+        __tabListEl;
+
+        // tabs and exclusive collapses should have the same affordance object?
+        __affordanceConf = {
+          collapse: {
+            // can take a condition to force, check-like
+            toggle: (label, condition) => {
+              let state =
+                typeof condition === "boolean"
+                  ? condition
+                  : !label.affordanceState.expanded;
+              let contentEl = label.nextElementSibling;
+              label.affordanceState.expanded = state;
+              label.affordanceState.nonExclusiveExpanded = state;
+              label.setAttribute("aria-expanded", state);
+              if (state) {
+                label.setAttribute("expanded", "");
+                contentEl.style.display = "block";
+              } else {
+                label.removeAttribute("expanded");
+                contentEl.style.display = "none";
+              }
+            }
+          },
+          "exclusive-collapse": {
+            // ignores condition, radio-like
+            toggle: label => {
+              let labels = getLabels(label.parentElement);
+              let siblings = labels.filter(c => c !== label);
+              let index = labels.findIndex(c => c === label);
+
+              siblings.forEach((sibLabel, i) => {
+                let relatedContent = sibLabel.nextElementSibling;
+                sibLabel.tabIndex = -1;
+                relatedContent.style.display = "none";
+                label.setAttribute("aria-expanded", "false");
+                sibLabel.affordanceState.exclusiveExpanded = false;
+              });
+              label.tabIndex = 0;
+              //nope - todo, fix/remove this?
+              label.parentElement.affordanceState.exclusiveSelection.index = index;
+              label.nextElementSibling.style.display = "block";
+              label.setAttribute("aria-expanded", "true");
+              label.affordanceState.exclusiveExpanded = true;
+              label.focus();
+            }
+          },
+          "tab-bar": {
+            // ignores condition, radio-like
+            toggle: label => {
+              let labels = getLabels(label.parentElement);
+              let siblings = labels.filter(c => c !== label);
+              let index = labels.findIndex(c => c === label);
+
+              siblings.forEach((sibLabel, i) => {
+                let relatedContent = sibLabel.nextElementSibling;
+                sibLabel.tabIndex = -1;
+                relatedContent.style.display = "none";
+                sibLabel.setAttribute("aria-expanded", "false");
+                sibLabel.affordanceState.exclusiveExpanded = false;
+              });
+              label.tabIndex = 0;
+              label.parentElement.affordanceState.exclusiveSelection.index = index;
+              label.nextElementSibling.style.display = "block";
+              label.setAttribute("aria-expanded", "true");
+              label.affordanceState.exclusiveExpanded = true;
+              label.focus();
+            }
+          }
+        };
+        __setSize = (labelEls, contentEls) => {
+          this.__size = Math.min(labelEls.length, contentEls.length);
+
+          if (labelEls.length !== this.__size) {
+            console.warn("mismatch in tab-set label/content pairs...");
+          }
+
+          labelEls.forEach((labelEl, i) => {
+            let contentEl = contentEls[i];
+            if (!labelEl.initialized) {
+              labelEl.initialized = true; // todo: this used to be shadow, do i need it?
+              let defs = this.__defaults.defaultActive;
+
+              // this assumes it is about collapses
+              labelEl.affordanceState = {
+                expanded: defs.includes(labelEl),
+                active: false,
+                // activate in the current mode
+                activate: () => {
+                  if (this.affordanceState.current) {
+                    this.__affordanceConf[this.affordanceState.current].toggle(
+                      labelEl
+                    );
+                  }
+                }
+              };
+
+              let defaultExclusive =
+                defs.length === 0 ? labelEls[0] : defs[defs.length - 1];
+
+              this.affordanceState.exclusiveSelection.index = labelEls.indexOf(
+                defaultExclusive
+              );
+            }
+            labelEl.setMode = mode => {
+              if (mode === "non-exclusive") {
+                let isExpanded = labelEl.affordanceState.expanded;
+                labelEl.setAttribute("affordance", "collapse");
+                labelEl.setAttribute("tabindex", "0");
+                labelEl.setAttribute("aria-controls", contentEl.id);
+                labelEl.setAttribute("role", "button");
+                labelEl.setAttribute("aria-expanded", isExpanded);
+                labelEl.nextElementSibling.style.display = isExpanded
+                  ? "block"
+                  : "none";
+              } else if (mode === "exclusive") {
+                let isExpanded =
+                  labelEls.indexOf(labelEl) ===
+                  this.affordanceState.exclusiveSelection.index;
+                labelEl.setAttribute("affordance", "collapse");
+                labelEl.setAttribute("tabindex", isExpanded ? 0 : -1);
+                labelEl.setAttribute("role", "button");
+                labelEl.setAttribute("aria-expanded", isExpanded);
+                labelEl.setAttribute("aria-controls", contentEl.id);
+                labelEl.nextElementSibling.style.display = isExpanded
+                  ? "block"
+                  : "none";
+              } else {
+                labelEl.removeAttribute("tabIndex");
+                labelEl.removeAttribute("affordance");
+                labelEl.removeAttribute("aria-expanded");
+                labelEl.removeAttribute("role");
+              }
+            };
+          });
+        };
+
+        __projectTabBar = () => {
+          this.__removeProjections();
+          getLabels(this).forEach((tabSource, i) => {
+            let selected = false,
+              tabIndex = -1,
+              display = "none";
+
+            tabSource.setMode();
+            tabSource.slot = "tabListSlot";
+            tabSource.setAttribute("role", "tab");
+            let tabId = ensureId(tabSource);
+            let contentSource = tabSource.nextElementSibling;
+            contentSource.tabIndex = 0;
+            tabSource.setAttribute("aria-controls", ensureId(contentSource));
+            contentSource.setAttribute("role", "tabpanel");
+            contentSource.setAttribute("aria-labelledby", tabSource.id);
+            if (i === this.affordanceState.exclusiveSelection.index) {
+              tabIndex = 0;
+              selected = true;
+              display = "block";
+            }
+            tabSource.setAttribute("aria-selected", selected);
+            tabSource.tabIndex = tabIndex;
+            contentSource.style.display = display;
+
+            // TODO: aria-orientation :(
+          });
+        };
+
+        __projectCollapses = exclusive => {
+          // TODO - remove projections and... ??
+          this.__removeProjections();
+          getLabels(this).forEach(label => {
+            label.setMode(exclusive ? "exclusive" : "non-exclusive");
+          });
+        };
+
+        __removeProjections = () => {
+          [...this.children].forEach(child => {
+            child.removeAttribute("slot");
+            child.removeAttribute("affordance")
+            child.removeAttribute("role");
+            child.removeAttribute("aria-selected");
+            child.removeAttribute("aria-controls");
+            child.removeAttribute("tabindex");
+            child.removeAttribute("aria-expanded")
+            child.style.display = "block";
+          });
+        };
+
+        // matching pairs
+        __size = 0;
+
+        __configure = () => {
+          ///hmmm
+
+          this.__setSize(getLabels(this), getContentEls(this));
+
+          if (this.affordanceState.current === "tab-bar") {
+            this.affordanceState.currentMode = "exclusive";
+            this.__projectTabBar();
+          } else if (this.affordanceState.current === "collapse") {
+            this.affordanceState.currentMode = "non-exclusive";
+            this.__projectCollapses();
+          } else if (this.affordanceState.current === "exclusive-collapse") {
+            this.affordanceState.currentMode = "exclusive";
+            this.__projectCollapses(true);
+          } else {
+            this.affordanceState.currentMode = undefined;
+            this.__removeProjections();
+          }
+
+          let specifiedIndex = this.activeTabIndex || 0;
+          // TODO: hmm, these are DOM changes, we could cache them
+          let labelEls = getLabels(this);
+          let contentEls = getContentEls(this);
+
+          for (let i = 0; i < this.__size; i++) {
+            let label = labelEls[i];
+            // probably add one handler that decides
+            if (!label._inited) {
+              label.addEventListener("click", evt => {
+                evt.target.affordanceState.activate();
+              });
+              label._inited = true;
+            }
+          }
+        };
+        
+        __childListObserver = new MutationObserver(mutationList => {
+          // we have to wire up new elements
+          let labelEls = getLabels(this);
+          let contentEls = getContentEls(this);
+
+          // what if there is a mismatch?
+          this.__setSize(labelEls, contentEls);
+          this.__configure();
+        });
+
+        __tabset;
+
+        affordanceState = {
+          exclusiveSelection: { index: undefined },
+          current: undefined,
+          currentMode: undefined,
+          getLabels: () => {
+            return getLabels(this);
+          }
+        };
+
+        /*
+          Wires up suppored affordances...
+        */
+        constructor() {
+          super();
+          this.supportedAffordances.add("tab-bar");
+          this.supportedAffordances.add("collapse");
+          this.supportedAffordances.add("exclusive-collapse");
+
+          this.observeAffordanceChange((matching, all) => {
+            if (!this.__defaults) {
+              this.__defaults = {
+                onMatch: this.hasAttribute("defaults-on-match"),
+                defaultActive: getLabels(this).filter(l =>
+                  l.hasAttribute("default-activate")
+                )
+              };
+            }
+            this.affordanceState.current = this.getAttribute("affordance");
+            this.__configure();
+          });
+
+          this.attachShadow({ mode: "open" });
+          this.shadowRoot.innerHTML = template;
+     
+          this.__tabListEl = this.shadowRoot.querySelector("tab-list");
+          this.addEventListener(
+            "keydown",
+            evt => {
+              let labels = getLabels(this);
+              let size = labels.length;
+              let cur = this.affordanceState.exclusiveSelection.index;
+              let prev = cur === 0 ? size - 1 : cur - 1;
+              let next = cur === size - 1 ? 0 : cur + 1;
+
+              if (
+                this.affordanceState.current === "tab-bar" ||
+                this.affordanceState.current === "exclusive-collapse"
+              ) { 
+                if (evt.keyCode == 37 || evt.keyCode == 38) {
+                  labels[prev].affordanceState.activate();
+                } else if (evt.keyCode == 39 || evt.keyCode == 40) {
+                  labels[next].affordanceState.activate();
+                }
+              } else if (evt.keyCode == 32 && this.affordanceState.current === 'collapse') {
+                evt.preventDefault()
+              }
+            },
+            false
+          );
+          this.addEventListener(
+            "keyup", 
+            evt => {
+              if (evt.keyCode == 32 && this.affordanceState.current === 'collapse') {
+                evt.target.closest('[affordance]').affordanceState.activate()
+                evt.preventDefault()
+              }
+            })
+        }
+
+        connectedCallback() {
+          super.connectedCallback();
+
+          //TODO: check whether there is a hash/handle selection
+          
+          // If you append a fragment with a pair, it should work
+          this.__childListObserver.observe(this, { childList: true });
+        }
+      }
+      customElements.define("spicy-sections", RegionSet);
+    })();
+    </script>
+  <script>
+    Array.prototype.slice.call(document.querySelectorAll('.optional [data-src]')).forEach(function (optional) {
+      var prefs = window.localStorage.downloadsPrefs,
+          clickToSee;
+      if (prefs === 'true') {
+        activateOptional(optional);
+      } else {
+        clickToSee = document.createElement('div');
+        clickToSee.classList.add('clickToSee')
+        clickToSee.innerHTML = '<button>Click to see media</button>';
+        clickToSee.style.textAlign = 'center';
+        clickToSee.style.border = 'none';
+        optional.parentElement.insertBefore(clickToSee, optional.nextSibling);
+        clickToSee.firstElementChild.addEventListener('click', function () {
+          activateOptional(optional);
+        })
+      }
+
+    })
+  </script>
+
+</body></html>
