@@ -4,7 +4,7 @@
         <title>bkardell.com rss feed</title>
         <link>http://bkardell.com/</link>
         <description>Just the bkardell.com rss feed</description>
-        <lastBuildDate>Wed, 16 Mar 2022 15:14:50 GMT</lastBuildDate>
+        <lastBuildDate>Wed, 16 Mar 2022 15:36:38 GMT</lastBuildDate>
         <docs>http://blogs.law.harvard.edu/tech/rss</docs>
         <generator>awesome mix</generator>
         <image>
@@ -24,7 +24,7 @@
 	<h1 class="contextual-heading" style="font-size: 2rem;">A case for CSS-Like Languages</h1>
 	<p class="segue">For many years now, it seems that almost not a week goes by where I don't wind up thinking about the same topic while reading threads.  Occasionally, I bring it up in private conversations, and recently it seems some others are starting to discuss something around the edges, so I thought that I should probably write a post...</p>
 
-	<p>The second "S" in CSS ("Style") governs a lot its design in both theory and practice.  Much about it, ultimately, is designed toward, and limited by constraints around potentially fast-changing visual style.  As my colleage Eric Meyer cleverly noted:</p>
+	<p>The first "S" in CSS ("Style") governs a lot its design in both theory and practice.  Much about it, ultimately, is designed toward, and limited by constraints around potentially fast-changing visual style.  As my colleage Eric Meyer cleverly noted:</p>
 
 	<blockquote>[W]eb browsers are actually 60fps+ rendering environments. They’re First-Person Scrollers.</blockquote>
 
@@ -34,7 +34,7 @@
 
 	<section class="sectioning">
 		<h2 class="contextual-heading" style="font-size: 2.5rem;">Some of many examples</h2>
-	<p>Over the years, this has taken many shapes.  Sometimes we try to rationalize about how it is style, sometimes we try to shoehorn a solution.  Occasionally we have even had  proposals and experiments that tried to somehow attempted to tap some aspect of this problem and some of those same concepts to bear on a different problem. Before CSS, <a href="https://www.w3.org/TR/NOTE-AS">Action Sheets</a> proposed that actions and styles should be considered.  Shortly after, there was an attempt to add <a href="https://www.w3.org/TR/1999/WD-becss-19990804">behavioral extensions</a> to CSS - Microsoft even implemented some stuff.  Another take on this introduced <a href="https://www.w3.org/TR/xbl/">XBL</a> to creating a 'binding' that could be applied via CSS. Public Web Components discussion began when trying to decide what to do with XBL, and they initially included a similar concept to bind in CSS via <a href="https://www.w3.org/TR/2012/WD-components-intro-20120522/#decorator-section">decorators</a>.</p>
+	<p>Over the years, this has taken many shapes.  Sometimes we try to rationalize about how it is style, sometimes we try to shoehorn a solution.  Occasionally we have even had  proposals and experiments that tried to somehow attempted to tap some aspect of this problem and some of those same concepts to bear on a different problem. Before CSS, <a href="https://www.w3.org/TR/NOTE-AS">Action Sheets</a> proposed that actions and styles should be considered. <a href="https://www.w3.org/TR/NOTE-STTS3">Simple Tree Transformation Sheets</a> offered ways to transform the DOM (that would be mentioned in Håkon's thesis on CSS itself).  Shortly after, there was an attempt to add <a href="https://www.w3.org/TR/1999/WD-becss-19990804">behavioral extensions</a> to CSS - Microsoft even implemented some stuff.  Another take on this introduced <a href="https://www.w3.org/TR/xbl/">XBL</a> to creating a 'binding' that could be applied via CSS. Public Web Components discussion began when trying to decide what to do with XBL, and they initially included a similar concept to bind in CSS via <a href="https://www.w3.org/TR/2012/WD-components-intro-20120522/#decorator-section">decorators</a>.</p>
 
 	<p>A completely different angle of this was <a href="https://www.w3.org/TR/2018/NOTE-css3-speech-20180605/">CSS Speech</a> which reasoned that this was simply "aural styles".</p>
 
