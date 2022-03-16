@@ -4,7 +4,7 @@
         <title>bkardell.com rss feed</title>
         <link>http://bkardell.com/</link>
         <description>Just the bkardell.com rss feed</description>
-        <lastBuildDate>Thu, 03 Feb 2022 14:44:29 GMT</lastBuildDate>
+        <lastBuildDate>Wed, 16 Mar 2022 14:31:20 GMT</lastBuildDate>
         <docs>http://blogs.law.harvard.edu/tech/rss</docs>
         <generator>awesome mix</generator>
         <image>
@@ -14,6 +14,67 @@
         </image>
         <copyright>All rights reserved 2018, Brian Kardell</copyright>
         <atom:link href="https://bkardell.com/blog/feed.atom" rel="self" type="application/rss+xml"/>
+        <item>
+            <title><![CDATA[A case for CSS-Like Languages]]></title>
+            <link>https://bkardell.com/blog/CSSLike.html</link>
+            <guid>https://bkardell.com/blog/CSSLike.html</guid>
+            <pubDate>Wed, 16 Mar 2022 04:00:00 GMT</pubDate>
+            <description><![CDATA[For many years now, it seems that almost not a week goes by where I don't wind up thinking about the same topic while reading threads.  Occasionally, I bring it up in private conversations, and recently it seems some others are starting to discuss something around the edges, so I thought that I should probably write a post...]]></description>
+            <content:encoded><![CDATA[
+	<h1 class="contextual-heading" style="font-size: 2rem;">A case for CSS-Like Languages</h1>
+	<p class="segue">For many years now, it seems that almost not a week goes by where I don't wind up thinking about the same topic while reading threads.  Occasionally, I bring it up in private conversations, and recently it seems some others are starting to discuss something around the edges, so I thought that I should probably write a post...</p>
+
+	<p>The second "S" in CSS ("Style") governs a lot its design in both theory and practice.  Much about it, ultimately, is designed toward, and limited by constraints around potentially fast-changing visual style.  As my colleage Eric Meyer cleverly noted:</p>
+
+	<blockquote>[W]eb browsers are actually 60fps+ rendering environments. They’re First-Person Scrollers.</blockquote>
+
+	<p>What's interesting though, is how natural it seems to want to write things "in CSS" that don't fit into those neat little constraints.  CSS is literally full of concepts which <em>could</em> be deployed toward other problems: Separation of concerns, sheets, media queries, selectors, pseduos, rules, ua-stylesheets, properties, functions, computed values and the complex and automatic application of all of those things.</p>
+
+	<p>It's been an almost regular occurence that people desire to somehow deploy those concepts toward ends that are not, strictly speaking, about potentially fast-changing visual style.</p>
+
+	<section class="sectioning">
+		<h2 class="contextual-heading" style="font-size: 2.5rem;">Some of many examples</h2>
+	<p>Over the years, this has taken many shapes.  Sometimes we try to rationalize about how it is style, sometimes we try to shoehorn a solution.  Occasionally we have even had  proposals and experiments that tried to somehow attempted to tap some aspect of this problem and some of those same concepts to bear on a different problem. Before CSS, <a href="https://www.w3.org/TR/NOTE-AS">Action Sheets</a> proposed that actions and styles should be considered.  Shortly after, there was an attempt to add <a href="https://www.w3.org/TR/1999/WD-becss-19990804">behavioral extensions</a> to CSS - Microsoft even implemented some stuff.  Another take on this introduced <a href="https://www.w3.org/TR/xbl/">XBL</a> to creating a 'binding' that could be applied via CSS. Public Web Components discussion began when trying to decide what to do with XBL, and they initially included a similar concept to bind in CSS via <a href="https://www.w3.org/TR/2012/WD-components-intro-20120522/#decorator-section">decorators</a>.</p>
+
+	<p>A completely different angle of this was <a href="https://www.w3.org/TR/2018/NOTE-css3-speech-20180605/">CSS Speech</a> which reasoned that this was simply "aural styles".</p>
+
+	<p>Except, of course, in each of those cases the particular needs and constraints are a bit different. They <em>shouldn't</em> change at 60fps, in fact.  Things that are kind of verbotten or impossible in CSS today might be totally solvable and fine, if only it weren't somehow shoe-horned into CSS, proper.</p>
+	</section>
+
+	<section class="sectioning">
+		<h2 class="contextual-heading" style="font-size: 2.5rem;">CSS...ish</h2>
+
+		<p>Several years ago, discussions like these led Elika Etemad (aka Fantasai) of the CSS Working Group to make a suggestion to Tab Atkins (now a prolific CSS editor) which yielded a sketch for something called <a href="https://www.xanthir.com/blog/b4K_0">Cascading Attribute Sheets</a>. As he says, it's not the first such take, it's just a nicely linkable, well-informed and dated illustration of a proposal to create a <em>CSS-like</em> language which repurposes major concepts and parts of the architecture toward other aims.  As Tab noted in his CAS post, internally, browsers do this to an extent already.</p>
+
+		<p>In 2012, I was on a very similar page.  I was doing things at my company which did exactly this.  My partner and I went about trying to decouple what we could in order to share this with Tab and others in order to hopefully participate in the discussion.  We began creating a version of this called <a href="https://github.com/bkardell/bess">Bess</a> on Github, but it was incomplete and full of some bad internal ideas. It did, ultimately lead us to sharing something far more limited (<a href="https://css-tricks.com/an-intro-to-hitch-js-and-the-extensible-web/">HitchJS</a>) and allow us to begin a much bigger discussion about what made this and a whole lot of other useful things (like, polyfilling something in CSS) way too hard. I even used this to create a kind of <a href="https://github.com/bkardell/cas">polyfill for Tab's CAS Proposal</a>.  I don't think it's particularly a great proposal as it stands - but there's clearly something <em>there</em>.</p>
+
+		<p>These discussions also led to the establishment of a new joint task force between members of the W3C Technical Architecture Group and the CSS Working Group: Houdini. In the very first meeting of this task force, the group agreed that making it possible for us to repurpose architectural aspects in order to explore "CSS-like languages" was ideal.</p>
+	</section>
+	<section class="sectioning">
+		<h2 class="contextual-heading" style="font-size: 2.5rem;">Now...</h2>
+		<p>A lot has happened since that time, but realistically, we really haven't had a lot of time to talk about or pursue the stuff that would better enable us to explore CSS-like languages.</p>
+
+		<p>I think that's a real shame because we continue to have problems and ideas where at least advancing discussions on this would seem very useful.</p>
+
+		<section class="sectioning">
+			<h3 class="contextual-heading" style="font-size: 3rem;">Cascading Spicy Stuff</h3>
+			<p>Consider our <a href="https://github.com/tabvengers/spicy-sections"><code>&lt;spicy-sections&gt;</code></a> work in OpenUI, for example.  It seems very natural to use the basic language and paradigms of CSS to express this.  We're not entirely sure about some things, so we're waiting to see what pans out with the <a href="https://css.oddbird.net/toggles/explainer/">CSS Toggles</a>.</p>
+
+			<p>This is also (I think naturally) shaping up larger conversations and ideas about whether we could just have "state machines" in CSS, and how we can share state and so on.</p>
+
+			<p>However, at the same time, it is also very unclear whether something which changes semantics and interactions at fixed points really belongs in CSS and the 60fps profile itself.</p>
+
+			<p>I pretty much agree with Mia <a href="https://twitter.com/TerribleMia/status/1499495556451692564?ref_src=twsrc%5Etfw">here</a></p>
+
+			<blockquote class="twitter-tweet"><p lang="en" dir="ltr">I get very excited by the idea of a declarative language for managing state on the web.<br><br>And I get very excited about CSS being able to manage basic presentation states.<br><br>And I think we need to draw a line between those two ideas, or each one will end up complicating the other.</p>— Mia (but older) (@TerribleMia) <a href="https://twitter.com/TerribleMia/status/1499495556451692564?ref_src=twsrc%5Etfw">March 3, 2022</a></blockquote> <script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+			<p>There probably are things that work just fine in CSS - but at some point, we've entered something of an uncanny valley, and things get harder.  We can't know where things should develop and live without a larger conversation.</p>
+
+			<p>I guess what I am trying to say, in the end, is that I love all of the convesations that <em>are</em> suddenly happening, and I'd love it even more if we spent some time thinking about how we might draw these lines and explore CSS-<em>like</em> solutions.</p>
+		</section>
+	</section>
+]]></content:encoded>
+        </item>
         <item>
             <title><![CDATA[Enter: Wolvic]]></title>
             <link>https://bkardell.com/blog/wolvic.html</link>
@@ -3054,40 +3115,6 @@ export const _internalPromise =
 ]]></content:encoded>
         </item>
         <item>
-            <title><![CDATA[Moving Math Forward, Thoughts and Experiments]]></title>
-            <link>https://bkardell.com/blog/MathForward.html</link>
-            <guid>https://bkardell.com/blog/MathForward.html</guid>
-            <pubDate>Tue, 09 Jul 2019 04:00:00 GMT</pubDate>
-            <description><![CDATA[
-		In this piece, I explain details on thoughts on experiments and conversations around moving Math forward on the Web.
-	]]></description>
-            <content:encoded><![CDATA[
-	<h1 class="contextual-heading" style="font-size: 2rem;">Moving Math Forward, Thoughts and Experiments</h1>
-	<p class="segue">
-		In this piece, I explain details on thoughts on experiments and conversations around moving Math forward on the Web.
-	</p>
-		
-	<p>For some context, <a href="https://mathml.igalia.com" rel="nofollow">my team is actively working on implementing MathML in Chromium</a> (the engine Chrome, Edge, Samsung, Brave, UC Browser and lots of other share), more specifically MathML Core.  MathML has long had implementations in Safari and Firefox and has an 
-	intersting history that leaves it in a very unique spot.
-	</p>
-	<p>MathML Core, defines the comparatively small, but well defined and mostly interoperable subset of MathML - with an aim of resolving uniqueness.  It provides details about how it actually <em>fits</em> into the layers platform in well defined ways and to explain their existing magic in terms of the platform - to expose it if is it new.  As such, in indirectly aims to provide a basis for moving <em>many</em> things forward.</p>
-
-	<section class="sectioning">
-		<h2 class="contextual-heading" style="font-size: 2.5rem;">A thought experiment</h2>
-	<p>Recently conversations in the web platform at large have begun about <a href="https://github.com/whatwg/html/issues/4696">moving HTML forward and polyfilling elements</a>.   Since we are actively working on a 'core' ourselves, we thought this would be an interesting discussion and experiment:  We asked "What if MathML Core was largely 'done' and you would import other support to move forward?"  Those things <em>could</em> potentially be shipped by a browser, but there's no guarantee they ever would.  However, they could also be loaded as polyfills and in standard means that help omit many of the problems that traditional polyfills create.</p>
-	<p>To explain this, we took some elements that <em>aren't</em> in MathML Core, but are specified elsewhere, as an interesting stand in.  One such example is an element called <code>mfenced</code>.  <code>mfenced</code> is just a "more convenient way" of writing some math that has a lot of 'fences' (parens, pipes, braces, and so on).  The original spec even said "It is strictly equivalent to this expanded, longer form".</p>
-	<p>Today, 'polyfills' exist for it if your browser doesn't support it, and today, those work by (if your browser doesn't support it) destroying your tree and replacing it with the equivalent version, at some undefined point in time.</p>
-	<p>We experimentally changed very little in our implementation and it now considers any MathML 'unknown element' as on the whitelist of elements which can have a Shadow DOM.  We used a simple stand-in using Mutation Observer to allow any of those to be defined without a dash, and wrote a polyfill for <code>mfenced</code> which simply expands it into Shadow DOM.</p>
-	<p>For purposes of discussion, we illustrated how we could, in theory, use MathML Core, import some new vocabulary (potentially a future proposal, or just some slang) and easily expand it into some Shadow DOM, leaving you with the tree that you authored and all of the things just fitting together nicely and predictably. Below is a screenshot from our actual implementation experiment.</p>
-	<p><a target="_blank" rel="noopener noreferrer" href="https://camo.githubusercontent.com/8e0c8bf38ccd6fa1a20a3d3fa2299a7e32291d32/68747470733a2f2f63646e2e676c697463682e636f6d2f39303035373538332d326137392d343662372d623565662d36636566336265383764613625324653637265656e73686f7425323066726f6d253230323031392d30372d303725323031322d35322d35302e706e673f763d31353632353138353030313933"><img src="https://camo.githubusercontent.com/8e0c8bf38ccd6fa1a20a3d3fa2299a7e32291d32/68747470733a2f2f63646e2e676c697463682e636f6d2f39303035373538332d326137392d343662372d623565662d36636566336265383764613625324653637265656e73686f7425323066726f6d253230323031392d30372d303725323031322d35322d35302e706e673f763d31353632353138353030313933" alt="screenshot of element and shadow dom in experimental browser build" data-canonical-src="https://cdn.glitch.com/90057583-2a79-46b7-b5ef-6cef3be87da6%2FScreenshot%20from%202019-07-07%2012-52-50.png?v=1562518500193" style="max-width:100%;"></a></p>
-	<p>We think that these sorts of experiments are useful and informative and help us ask better questions about how we are fitting into the platform itself: Have we answered the necessary questions?  How does the introduction of a ShadowRoot impact rendering and namespacing, for example?  Could developers really 'plug in' to all the necessary bits?  Could they properly layer atop?  To test this, we also created elements that expand shorthands like TeX and ASCII Math.  In the end, can we ultimately resolve a great a stable core that allows us to move math forward using these things similar in ways similar to Knuth's TeX book/engine - but in a way that is properly "of the platform"?  We think the answer is yes.</p>
-
-	<p>While we're not entirely sure where larger conversations about how HTML will move forward will go, and we aren't claiming that this implementation is anything more than a quick experiment for discussion and testing, the MathML community itself is very excited that such talks are even happening in HTML and <em>very</em> interested in being a part of that conversation, and sorting out how we can move forward together as One Platform™, with less 'specialness'.</p>
-	</section>
-	
-]]></content:encoded>
-        </item>
-        <item>
             <title><![CDATA[One Platform™]]></title>
             <link>https://bkardell.com/blog/OnePlatform.html</link>
             <guid>https://bkardell.com/blog/OnePlatform.html</guid>
@@ -3126,6 +3153,40 @@ export const _internalPromise =
 		<p>While the MathML Community Group is aware that these questions are far from settled, they were universally excited to see such talks begin in HTML and <em>very</em> interested in making sure that they're thinking about those things too: Being a part of that conversation, and sorting out how we can move forward together as One Platform™, with less 'specialness'.</p>
 		<p>If you think this is interesting or useful, please share your support and let someone know.</p>
 		</section></section>]]></content:encoded>
+        </item>
+        <item>
+            <title><![CDATA[Moving Math Forward, Thoughts and Experiments]]></title>
+            <link>https://bkardell.com/blog/MathForward.html</link>
+            <guid>https://bkardell.com/blog/MathForward.html</guid>
+            <pubDate>Tue, 09 Jul 2019 04:00:00 GMT</pubDate>
+            <description><![CDATA[
+		In this piece, I explain details on thoughts on experiments and conversations around moving Math forward on the Web.
+	]]></description>
+            <content:encoded><![CDATA[
+	<h1 class="contextual-heading" style="font-size: 2rem;">Moving Math Forward, Thoughts and Experiments</h1>
+	<p class="segue">
+		In this piece, I explain details on thoughts on experiments and conversations around moving Math forward on the Web.
+	</p>
+		
+	<p>For some context, <a href="https://mathml.igalia.com" rel="nofollow">my team is actively working on implementing MathML in Chromium</a> (the engine Chrome, Edge, Samsung, Brave, UC Browser and lots of other share), more specifically MathML Core.  MathML has long had implementations in Safari and Firefox and has an 
+	intersting history that leaves it in a very unique spot.
+	</p>
+	<p>MathML Core, defines the comparatively small, but well defined and mostly interoperable subset of MathML - with an aim of resolving uniqueness.  It provides details about how it actually <em>fits</em> into the layers platform in well defined ways and to explain their existing magic in terms of the platform - to expose it if is it new.  As such, in indirectly aims to provide a basis for moving <em>many</em> things forward.</p>
+
+	<section class="sectioning">
+		<h2 class="contextual-heading" style="font-size: 2.5rem;">A thought experiment</h2>
+	<p>Recently conversations in the web platform at large have begun about <a href="https://github.com/whatwg/html/issues/4696">moving HTML forward and polyfilling elements</a>.   Since we are actively working on a 'core' ourselves, we thought this would be an interesting discussion and experiment:  We asked "What if MathML Core was largely 'done' and you would import other support to move forward?"  Those things <em>could</em> potentially be shipped by a browser, but there's no guarantee they ever would.  However, they could also be loaded as polyfills and in standard means that help omit many of the problems that traditional polyfills create.</p>
+	<p>To explain this, we took some elements that <em>aren't</em> in MathML Core, but are specified elsewhere, as an interesting stand in.  One such example is an element called <code>mfenced</code>.  <code>mfenced</code> is just a "more convenient way" of writing some math that has a lot of 'fences' (parens, pipes, braces, and so on).  The original spec even said "It is strictly equivalent to this expanded, longer form".</p>
+	<p>Today, 'polyfills' exist for it if your browser doesn't support it, and today, those work by (if your browser doesn't support it) destroying your tree and replacing it with the equivalent version, at some undefined point in time.</p>
+	<p>We experimentally changed very little in our implementation and it now considers any MathML 'unknown element' as on the whitelist of elements which can have a Shadow DOM.  We used a simple stand-in using Mutation Observer to allow any of those to be defined without a dash, and wrote a polyfill for <code>mfenced</code> which simply expands it into Shadow DOM.</p>
+	<p>For purposes of discussion, we illustrated how we could, in theory, use MathML Core, import some new vocabulary (potentially a future proposal, or just some slang) and easily expand it into some Shadow DOM, leaving you with the tree that you authored and all of the things just fitting together nicely and predictably. Below is a screenshot from our actual implementation experiment.</p>
+	<p><a target="_blank" rel="noopener noreferrer" href="https://camo.githubusercontent.com/8e0c8bf38ccd6fa1a20a3d3fa2299a7e32291d32/68747470733a2f2f63646e2e676c697463682e636f6d2f39303035373538332d326137392d343662372d623565662d36636566336265383764613625324653637265656e73686f7425323066726f6d253230323031392d30372d303725323031322d35322d35302e706e673f763d31353632353138353030313933"><img src="https://camo.githubusercontent.com/8e0c8bf38ccd6fa1a20a3d3fa2299a7e32291d32/68747470733a2f2f63646e2e676c697463682e636f6d2f39303035373538332d326137392d343662372d623565662d36636566336265383764613625324653637265656e73686f7425323066726f6d253230323031392d30372d303725323031322d35322d35302e706e673f763d31353632353138353030313933" alt="screenshot of element and shadow dom in experimental browser build" data-canonical-src="https://cdn.glitch.com/90057583-2a79-46b7-b5ef-6cef3be87da6%2FScreenshot%20from%202019-07-07%2012-52-50.png?v=1562518500193" style="max-width:100%;"></a></p>
+	<p>We think that these sorts of experiments are useful and informative and help us ask better questions about how we are fitting into the platform itself: Have we answered the necessary questions?  How does the introduction of a ShadowRoot impact rendering and namespacing, for example?  Could developers really 'plug in' to all the necessary bits?  Could they properly layer atop?  To test this, we also created elements that expand shorthands like TeX and ASCII Math.  In the end, can we ultimately resolve a great a stable core that allows us to move math forward using these things similar in ways similar to Knuth's TeX book/engine - but in a way that is properly "of the platform"?  We think the answer is yes.</p>
+
+	<p>While we're not entirely sure where larger conversations about how HTML will move forward will go, and we aren't claiming that this implementation is anything more than a quick experiment for discussion and testing, the MathML community itself is very excited that such talks are even happening in HTML and <em>very</em> interested in being a part of that conversation, and sorting out how we can move forward together as One Platform™, with less 'specialness'.</p>
+	</section>
+	
+]]></content:encoded>
         </item>
         <item>
             <title><![CDATA[Interesting Custom Element Data Begins]]></title>
