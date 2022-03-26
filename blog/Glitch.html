@@ -402,7 +402,7 @@ America (art for sale)</a></li>
 		Today marks exactly one month since I started playing with Glitch, and I'd like to tell you about why I love it and can't stop playing with it.
 	</p>
 
-	<p>I want to say up front that this piece about <a href="https://bkardell.com/blog/The-Glory-Days-Of-The-Web.html" rel="nofollow">pining for glory days that I don't actally remember existing</a> when all you needed to know was HTML and CSS.  If that was all you needed then, it's all you need now too.  The truth though is that even in the early days of the Web, it often wasn't: We wanted to do things  with the Web that would have made hand-authoring pages an untenable solution.  In fact, the first real, practical use of HTML at CERN by Sir Tim-Berners Lee and team generated that HTML by way of C and database services.  Perhaps there has been a decrease in the number of sites that could even be realistically hand authored without more than that because of increased expectations or something, but by and large, it seems to me that complexity in delievering a website isn't so much "new" as it is "shifted".</p>
+	<p>I want to say up front that this piece isn't about <a href="https://bkardell.com/blog/The-Glory-Days-Of-The-Web.html" rel="nofollow">pining for glory days that I don't actally remember existing</a> when all you needed to know was HTML and CSS.  If that was all you needed then, it's all you need now too.  The truth though is that even in the early days of the Web, it often wasn't: We wanted to do things  with the Web that would have made hand-authoring pages an untenable solution.  In fact, the first real, practical use of HTML at CERN by Sir Tim-Berners Lee and team generated that HTML by way of C and database services.  Perhaps there has been a decrease in the number of sites that could even be realistically hand authored without more than that because of increased expectations or something, but by and large, it seems to me that complexity in delievering a website isn't so much "new" as it is "shifted".</p>
 
 	<p>Along the way there were a ton of complex things, and each was rooted in whole different languages:  Java frameworks and .NET frameworks and PHP and so on.  Because of that, each of those had their own build systems (sometimes a few), application servers, package managers and so on.  So, the idea that we could do these things in the same language (JavaScript) and protocols seems like actually a really good thing to me.</p>
 
@@ -475,7 +475,7 @@ America (art for sale)</a></li>
 	</section>
 </article></main>
  
-  
+   
   <script>
     //import { MediaAffordancesElement } from "./MediaAffordancesElement.js";
     class MediaAffordancesElement extends HTMLElement {
@@ -933,16 +933,26 @@ America (art for sale)</a></li>
               if (
                 this.affordanceState.current === "tab-bar" ||
                 this.affordanceState.current === "exclusive-collapse"
-              ) {
+              ) { 
                 if (evt.keyCode == 37 || evt.keyCode == 38) {
                   labels[prev].affordanceState.activate();
                 } else if (evt.keyCode == 39 || evt.keyCode == 40) {
                   labels[next].affordanceState.activate();
                 }
+              } else if (evt.keyCode == 32 && this.affordanceState.current === 'collapse') {
+                evt.preventDefault()
               }
             },
             false
           );
+          this.addEventListener(
+            "keyup", 
+            evt => {
+              if (evt.keyCode == 32 && this.affordanceState.current === 'collapse') {
+                evt.target.closest('[affordance]').affordanceState.activate()
+                evt.preventDefault()
+              }
+            })
         }
 
         connectedCallback() {
