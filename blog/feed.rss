@@ -4,7 +4,7 @@
         <title>bkardell.com rss feed</title>
         <link>http://bkardell.com/</link>
         <description>Just the bkardell.com rss feed</description>
-        <lastBuildDate>Mon, 02 May 2022 15:48:22 GMT</lastBuildDate>
+        <lastBuildDate>Fri, 03 Jun 2022 12:54:49 GMT</lastBuildDate>
         <docs>http://blogs.law.harvard.edu/tech/rss</docs>
         <generator>awesome mix</generator>
         <image>
@@ -14,6 +14,94 @@
         </image>
         <copyright>All rights reserved 2018, Brian Kardell</copyright>
         <atom:link href="https://bkardell.com/blog/feed.atom" rel="self" type="application/rss+xml"/>
+        <item>
+            <title><![CDATA[Spicy Progress]]></title>
+            <link>https://bkardell.com/blog/SpicyUpdate.html</link>
+            <guid>https://bkardell.com/blog/SpicyUpdate.html</guid>
+            <pubDate>Thu, 02 Jun 2022 04:00:00 GMT</pubDate>
+            <description><![CDATA[For a while, we had lots of updates and excitement on our "spicy-sections" proposal - but you've probably noticed it's gotten a little quiet.  In this post, I'll explain why and lay out where I think we are and how I hope we can move foward.]]></description>
+            <content:encoded><![CDATA[
+  <h1 class="contextual-heading" style="font-size: 2rem;">Spicy Progress</h1>
+
+  <p class="segue">For a while, we had lots of updates and excitement on our "spicy-sections" proposal - but you've probably noticed it's gotten a little quiet.  In this post, I'll explain why and lay out where I think we are and how I hope we can move foward.</p>
+  
+  <p>A month or so ago, the Tabvengers were working hard to advance some open issues, work out details (including the name 'oui-panelset') and create a stable, high-parity version of what our actual proposal would look like so that we could hand ownership of it to OpenUI officially and work with a more official proposal. Jon Neal, in particular, worked very hard to make something pretty great.</p>
+
+  <p>However, as is often the case, with more brains and eyeballs comes new scrutiny and feedback.  In particular, during accesibility reviews to make sure we hadn't messed something up along the way (we did, because it was a total rewrite that broke all of the tests), we hit a  new perspective.</p>
+
+  <p>Based on some questions asked during that review about examples of where it could be used, we quickly assembled a series of about 50 links to content in public home pages where we believed our "spicy-sections" (aka "oui-panelset") proposal could be used to great effect, as some supporting history in order to discuss.</p>
+
+  <p>In this discussion, one of the co-chairs of the ARIA Working Group suggested that <em>perhaps</em> most of those <em>shouldn't</em> even be using ARIA tabs.  Worse, there was some concern that <em>if that was true</em>, then making it exceptionally easy for them to do just that is potentially <em>actively harmful</em>.</p>
+
+  <p>Suspend any opinion on what you might think that means, or your own thoughts for a moment... It's definitely worth slowing down and trying to understand and take some care. It's already led to a number of interesting conversations.  We need to understand "why not?" and try to articulate some specifics. At the moment, we're still working to sort out a lot here, but you can expect more on that soon.</p>
+
+  <p>In some further discussion we began discussing that there are sort of distinct "kinds" of intefaces that many people would refer to as tabs.  This is somewhat unsuprising as our research points out that many/most modern UI kits actually have more than one control for tab-like things.  My own posts and notes also make sure to note that examples like browser tabs are a different control than the kind that spicy-sections/panelset are talking about - those  kinds of tabs are sort of window-managers with additional features that even users understand differently. No one would ever expect Ctrl+F, for example to search all the open windows. We expect close buttons, perhaps status indicators, the ability to reorder them.</p>
+
+  <p>So, first thing was to introduce some separate terminolgy for clarity. The things we've been doing with "spicy sections" (and perhaps the sorts of things you'll be able to build with CSS Toggles) could be classified as "content tabs" (I believe it was Sarah Higley that offered the term). Again, this makes sense of past dicssions - Hixie said many years ago "tabs are a matter of overflow".  That makes a lot of sense for "content tabs" and absolutely none for something like browser tabs.</p>
+  
+  <section class="sectioning">
+    <h2 class="contextual-heading" style="font-size: 2.5rem;">If not that...?</h2>
+    <p>Ok, but... Assume, for the moment, that ARIA tabs are not always appropriate.  Assume that we can articulate the right specifics about when they are and are not.  It kind of begs the question "if not that, what?".  Because, it's not like those pages will cease to have interfaces that generally look and act like that. It's very clear that "content tabs" exist in the wild and have plenty of benefits, and in order to judge whether it is true that some other, non-ARIA using solution is better, we need something concrete to compare it with, and that we can do user testing with.  If it <em>is</em> true that something else is better, we have to be very careful in describing how to do the better thing to we prevent authors from merely falling into a different series of pitfalls, maybe even still give them that element.</p>
+
+    <p>But what is that other thing <em>specifically</em>?</p>
+
+
+
+    <section class="sectioning">
+      <h3 class="contextual-heading" style="font-size: 3rem;">Further thought and experiments</h3>
+      <p>So... I've been thinking about this a lot.  I found several examples of "not ARIA tabs" which have <em>very</em> different characteristics, including from an accessibility standpoint.  There are a lot of ways we can get these wrong. I've been looking for something without glaring issues.</p>
+
+      <p>To this end, and through some discussion with Adam Argyle and Jon Neal, I have created this very rough functional sketch of what I am thinking makes a good springboard for discussing specifics and trying to work through problems. Just like with the original, if your window is wide enough, this will display as 'content tabs' otherwise it will just show plain content.</p>
+
+      <p class="codepen" data-height="300" data-default-tab="html,result" data-slug-hash="zYRpBMJ" data-user="briankardell" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;">
+        <span>See the Pen <a href="https://codepen.io/briankardell/pen/zYRpBMJ">
+        spicy-alternative-sketch</a> by вкαя∂εℓℓ (<a href="https://codepen.io/briankardell">@briankardell</a>)
+        on <a href="https://codepen.io">CodePen</a>.</span>
+      </p>
+      <script async="" src="https://cpwebassets.codepen.io/assets/embed/ei.js"></script>
+
+      <p class="note">As of this posting, please don't use the code in this pen. It needs additional testing and discussion, but perhaps more importantly it is affected by one (or two, depending on your system) bugs in Firefox, being worked on now.</p>
+
+      <section class="sectioning">
+        <h4 class="contextual-heading" style="font-size: 3.5rem;">What it is..</h4>
+        <p>Is it a somewhat reduced version of the current oui-panelset which simply lets you specify only a 'content-tabs' affordance (or not).  The markup, parts, etc are identical.  However, instead of realizing this as ARIA tabs, it turns these into a TOC of links and uses a scroll-port and scroll-snapping to create the tab-like presentation, based on one of Adam's experiments.</p>
+      </section>
+      <section class="sectioning">
+        <h4 class="contextual-heading" style="font-size: 3.5rem;">What I like about it</h4>
+        <p>Well, it is pretty simple, and it doubles down on all of the original points and observations. It's now not just a case that it is "similar to scroll" - it is <em>literally</em> scroll. But with that comes some other interesting good qualities right out of the box: Find-in-page Just Works™. Headings aren't "turned into" tabs, they continue to exist - so screen reader users experience this as normal content and it is navigable by headings. We could probably apply it even to something like a carosel or paging if we're not fighting about the strict semantics of "what it is".  You can leave the headings visible or easily hide them (assuming something isn't busted, see below) with a simple rule like</p>
+        <pre><code>/* you can use a negative margin to hide */
+oui-panelset h2 {
+  margin-top: -4rem;
+}  
+        </code></pre>
+        <p>If it turned out to be useful, then this is <em>the</em> proof for CSS Toggles and it makes the job of what they need to accomplish much clearer and easier.</p>
+      </section>
+      </section>
+      <section class="sectioning">
+        <h3 class="contextual-heading" style="font-size: 3rem;">What I am not so sure of...</h3>
+        <p>As I say often: the devil is in the details. This is a crude pen prototype, we have to do a lot of additional questioning and make sure this is resilient, and we have to test and improve it - a lot, probably, to know if it is really viable. For example, currently it 'jumps' the content when you click a link - I'm not sure how much we can accurately avoid this and remain resilient - but maybe.</p>
+
+        <p>It raises other new questions though too: What happens if you do 'select all' -- currently it will literally select everything. Is that right? Or should that limit to the scrollport - and so on.  It doesn't 'project' the headings into slots, it 'mirrors' them - as far as I know, that isn't something anything else does. Is it a deal breaker? I don't know!</p>
+
+        <p>These 'tabs' are really links and as such they have all of the qualities of regular links. For example, one navigates them with the tab key and they have to manually activate - there is no roving focus or automatic activation. Some people see this as a pro, some as a con. We'll need to do A/B testing.</p>
+
+        <p><strong>Finally - most importantly - do I think it is actually 'better?'.</strong></p>
+
+        <p>To be honest, I'm somewhat unconvinced, that there is a "right" answer here.  It would not surprise me at all if the results was that we learn that <em>some</em> users prefer for tabs to use automatic activation and roving tab index, and <em>others</em> don't.  It would not suprise me at all if some users prefer that <em>all</em> of these present as ARIA tabs, and others are confused by it. I expect that <em>many</em> of these questions have something to do with classes of users and individual preferences.</p>
+
+        <p>That said, we've been working to find ways to answer all the problems and we think we have some ideas</p>
+      </section>
+      <section class="sectioning">
+        <h3 class="contextual-heading" style="font-size: 3rem;">What I am hoping</h3>
+        <p>What I am hoping is that having something concrete to discuss and debate, even if it is somewhat sketchy, actually lets us do that.</p>
+
+        <p>I would like to see us focus on ::parts and styling specification that is largely shared for both "kinds" of tabs (I think we're actually very close) such that even if they wind up being two different things, we can reuse much learning and code.</p>
+        
+        <p>I would like to see us figure out how we sort this out via a custom element (or elements) when we don't know the final answer.  Perhaps one option would be to add this affordance as an option to our <code>&lt;oui-panelset&gt;</code> proposal, perhaps even discuss whether it should be the <em>only</em> tabs-like affordance it supports initially.  However, I would like to keep the door open to having the current use of ARIA as option too, since the truth is we don't know yet..</p>
+        <p>What I think _could_ be idea is that we could expose a user preference in browsers and let users pick what they prefer.  This means that if we get it wrong by default, remediation is as simple as changing a single attribute value or CSS property.</p>
+      </section>
+</section>]]></content:encoded>
+        </item>
         <item>
             <title><![CDATA[Slightly Random Interface Thoughts]]></title>
             <link>https://bkardell.com/blog/OnInterfaces.html</link>
