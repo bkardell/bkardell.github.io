@@ -1,0 +1,1037 @@
+<html lang="en" resource-type="blogpost"><head>  
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@briankardell">
+    <meta name="twitter:creator" content="@briankardell">
+    <meta name="twitter:title" content="Where Browsers Come From">
+    <meta name="twitter:description" content="In this post, I’ll talk about the evolution of the economics around browsers, and what we should think about as we move forward.">
+    
+    <meta name="monetization" content="$ilp.uphold.com/kKU4GXiRwhnf ">
+
+    <link rel="alternate" type="application/rss+xml" href="https://bkardell.com/blog/feed.rss" title="bkardell.com/blog rss feed">
+    <title>Where Browsers Come From</title> 
+    <style>.captioned-image {
+    background-color: #eaeaea;
+    display: block;
+    overflow: hidden;
+    padding: 1rem;
+    text-align: center;
+    font-style: italic;
+}
+
+.captioned-image.p-attached {
+    width: 40%;
+    display: inline-block;
+    margin: 0 1rem 2rem 1rem;
+}
+
+section > .captioned-image.p-attached {
+    margin-top: 1.5rem; /* correct for heading size*/
+}
+
+ pre { overflow-x: auto }
+
+.captioned-image.p-attached.p-attached-left {
+    float: left;
+}
+
+.captioned-image.p-attached.p-attached-right {
+    float: right;
+}
+
+.captioned-image.p-attached + * + * {
+    clear: both;
+    margin-top: 2rem;
+}
+
+
+.captioned-image img, .captioned-image video {
+    display: block;
+    max-width: 100%;
+    margin: 0 auto 1em auto;
+}
+.source {
+    font-style: italic;
+}
+body {
+    display: grid;
+    grid-template-columns: 25rem auto;
+    font: 1.1rem "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-weight: 400;
+    line-height: 1.625;
+    margin: 0;
+}
+h1 { margin: 0.5rem; }
+code-format {
+    border-left: 0.5rem solid rgba(123,115,209,0.35);
+    display: block;
+    padding: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+contextual-heading {
+    display: block;
+    margin-top: 2rem;
+}
+
+h1, [aria-level="1"] {
+    color: #43686b;
+    font-size: 1.45rem;
+}
+
+h2, [aria-level="2"] {
+    color: #856363;
+    font-size: 1.35rem;
+}
+
+h3, [aria-level="3"] {
+    color: #856363;
+    font-size: 1.25rem;
+}
+
+h4, [aria-level="4"] {
+    color: #856363;
+    font-size: 1.2rem;
+}
+
+h5, h6, [aria-level="5"], [aria-level="6"] {
+    color: #667496;
+    font-size: 1.2rem;
+    font-weight: bolder;
+}
+
+.posted-on {
+    font-style: italic;
+    font-size: 0.8rem; 
+    text-align: right;
+    margin-bottom: 1rem;
+}
+
+ul, li {
+    margin: 0.5rem;
+    text-align: left;
+}
+
+.authorinfo {
+    height: 100%;
+    padding-top: 1rem;
+    padding-right: 0;
+    background-color: #fbf5e9; 
+    display: block;
+    background-image: linear-gradient(to right, #dde0e8 , #ffffff);
+}
+
+.tagline {
+    font-style: italic;
+    text-align: center;
+}
+
+[tag-esc] {
+    color: maroon;
+    font-family: Courier, "Lucida Console", monospace;
+}
+
+[tag-esc]::before {
+    content: '<';
+}
+
+[tag-esc]::after {
+    content: '>';
+}
+
+main {
+    min-width: 50%;
+    width: 80%;
+    padding: 1rem;
+}
+header .title {
+    background-color: rgba(123,115,209,0.35);
+    padding: 0.3rem;
+    padding-left: 0.25rem;
+    font-weight: bolder;
+    font-size: 1rem;
+    border-left: 1rem solid #999298;
+}
+
+header .profile {
+    width: 50%;
+    margin: 1rem 25%;
+}
+
+header .title + nav {
+    font-size: 0.9rem;
+}
+
+header .blurb {
+    font-size: 0.9rem;
+    text-align: center;
+}
+header .name {
+    text-align: center;
+    font-size: xx-large;
+}
+.segue {
+    font-style: italic;
+}
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  border: 0;
+}
+
+#aboutMeToggle {
+    display: none;
+}
+
+spicy-sections:not([affordance]) > h2 {
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+}
+
+main article { max-width: 100em; margin: auto; }
+/* this needs rethinking, it wants a selector like 'not flow content' */
+article>*:not(contextual-heading,a), section>*:not(contextual-heading,a) {
+    margin-left: 0.45rem;
+}
+
+blockquote {
+  font-family: serif;
+  background: #f9f9f9;
+  border-left: 10px solid #ccc;
+  margin: 1.5em 10px;
+  padding: 0.5em 10px;
+}
+blockquote:before {
+  color: #ccc;
+  content: open-quote;
+  font-size: 2em;
+  line-height: 0.1em;
+  margin-right: 0.25em;
+  vertical-align: -0.4em;
+}
+
+blockquote:after {
+  color: #ccc;
+  content: close-quote;
+  font-size: 2em;
+  line-height: 0.1em;
+  margin-left: 0.25em;
+  vertical-align: -0.4em;
+}
+ 
+
+@media (max-width: 800px){
+    body {
+        grid-template-columns: 1fr;
+    }
+    .authorinfo {
+        height: auto;
+        border-bottom: 1px solid #afafff;
+        padding-top:  0;
+    } 
+
+    main { width: 95%; margin: 0 auto;}
+
+    .captioned-image.p-attached {
+        width: 100%;
+        margin: 1rem 0;
+    }
+
+    .captioned-image.p-attached.p-attached-left,
+    .captioned-image.p-attached.p-attached-right {
+        float: none;
+    }
+
+    #aboutMeToggle {
+        display: block;
+        background-color: #675e5e;
+        color: white;
+        padding: 0.25rem;
+        padding-left: 0.5rem;
+        border-left: 1rem solid black;
+    }
+
+    header li { display: inline; margin-left: -0.5em; }
+    header .blurb li::after { content: '; '; }
+    header  nav li {
+        display: inline-block;
+        margin-left: 0.35rem;
+        margin-right: 0.35rem;
+    }
+    header .title {
+        width: 100%;
+    }
+    main li .source { display: block; }
+
+} 
+
+spicy-sections {
+    --const-mq-affordances:
+      [screen and (min-width: 600px) ] collapse |
+      [screen and (min-width: 801px) ] tab-bar
+    ;
+    display: block;
+}
+
+spicy-sections.authorinfo {
+    --const-mq-affordances:
+      [screen and (max-width: 801px) ] collapse
+    ;
+}
+
+
+spicy-sections.single {
+    --const-mq-affordances:
+      [screen ] collapse 
+;
+}
+
+[role="tab"] {
+    margin-right:  1.5rem;
+}
+
+</style>
+    <style>
+      .captioned-image { font-size: 0.9rem; }
+      .thanksTo { font-style: italic; font-size: 0.8rem; }
+    </style>
+    <script>
+      var activateOptional = function (media) {
+        var source = media.getAttribute('data-src'),
+            temp,
+            container = media.parentElement;
+
+          if (media.nextSibling && media.nextSibling.matches) {
+            if (media.nextSibling.matches('.clickToSee')) {
+              media.parentElement.removeChild(media.nextSibling);
+            }
+          }
+ 
+          if (media.tagName === 'VIDEO') {
+            temp = document.createElement('video')
+            temp.setAttribute('autoplay','')
+            temp.setAttribute('controls','')
+            temp.setAttribute('loop','')
+            temp.innerHTML = '<source src="' + source + '.webm" type="video/webm">'
+                    + '<source src="' + source + '.mp4" type="video/mp4">';
+            media.parentElement.replaceChild(temp, media);
+            setTimeout(function () {
+              temp.play()
+            }, 0);
+          } else {
+            media.src = media.getAttribute('data-src');
+          }
+
+          container.classList.add('active');
+      }
+    </script>
+  </head>
+  <body>
+    <spicy-sections class="authorinfo">
+<h2 id="aboutMeToggle" defaults-on-match="">Author Information</h2>
+  
+<header>
+    <div class="name">
+        Brian Kardell
+    </div>
+    <img class="profile" src="/profile.jpg" alt="">
+    <div class="tagline"><a href="/">Betterifying the Web</a></div>
+    <div class="blurb">
+        <ul>
+            <li>Developer Advocate at Igalia</li>
+            <li>Original Co-author/Co-signer of The Extensible Web Manifesto</li>
+            <li>Co-Founder/Chair, W3C Extensible Web CG</li>
+            <li>Member, W3C (OpenJS Foundation)</li>
+            <li>Co-author of HitchJS</li>
+            <li>Blogger</li>
+            <li>Art, Science &amp; History Lover</li>
+            <li>Standards Geek</li>
+        </ul>
+    </div>
+    <div class="title">Follow Me On...</div>
+    <nav>
+        <ul>
+            <li><a rel="me" href="https://briankardell.wordpress.com">Wordpress</a></li>
+            <li><a rel="me" href="https://medium.com/@briankardell">Medium</a></li>
+            <li><a rel="me" href="https://twitter.com/briankardell">Twitter</a></li>
+            <li><a rel="me" href="https://github.com/bkardell/">Github</a></li>
+            <li><a rel="me" href="https://codepen.io/bkardell">Codepen</a></li>
+            <li><a rel="me" href="https://www.linkedin.com/in/brian-kardell-08a4264">LinkedIn</a></li>
+            <li><a rel="me" href="https://www.instagram.com/kardellbrian">Instagram (for
+art)</a></li>
+            <li><a rel="me" href="http://fineartamerica.com/profiles/brian-kardell?">Fine Art
+America (art for sale)</a></li>
+        </ul>
+    </nav>
+</header>
+</spicy-sections>
+<script>
+  /*
+    You're probably wondering "Do I need to write this?""
+    "Is this part of it?"  No... If you're interested tho - 
+    Custom elements have a FOUC/PE gap 
+    (see https://github.com/whatwg/html/issues/6231).
+    This is a slightly better experience: It 
+    will be hidden _if JS is enabled_, and 
+    will be shown as it is defined, 
+    or after 1 sec, whichever is first.
+  */
+  let ss = document.createElement("style");
+
+  ss.innerHTML = `html:not(.lldelay) :not(:defined) { visibility: hidden; }`;
+  document.head.appendChild(ss);
+
+  setTimeout(() => {
+    document.documentElement.classList.add("lldelay");
+  }, 1000);
+</script>
+    <main><div class="posted-on">Posted on null</div><article class="sectioning">
+    <h1 class="contextual-heading">Where Browsers Come From</h1>
+    <p class="segue">In this post, I’ll talk about the evolution of the economics around browsers, and what we should think about as we move forward.</p>
+
+    <p>The very first web browsers were rather small, single-person affairs. The source for Tim Berners-Lee’s original WorldWideWeb (which included a WYSIWYG editor!) was rougly a third larger than the unminified build of jQuery. Tim even abstracted the HTTP bits so you could build your own browser more easily, or a server (or both/all in one). For the most part, we can say these were created in academia.</p>
+
+    <p>There was at least some assumption at the time that like most other available software, someone could monetize a good one as a product. In fact, before building his own, Tim famously tried to give the idea away to a company doing just that.</p>
+
+    <p>For a while we flirted with that idea in various forms, creating companies “around” browsers. These companies largely never “just sold the browser” but involved lots of experimenting with ways to keep browsers “free” for individuals by subsidizing them in other ways: coporate sales, licences, support, server sales, and so on. With these concerted effort, and money, it was soon impractical for a 1 person affair to keep up or compete. Instead, the competition pretty quickly became between Netscape and Microsoft.</p>
+
+    <p>Microsoft, on the other hand, subsidized the browser through products people were already buying. They were already spending money to add similar web features to many those products, so why not just centralize it? They eventually just shipped it with the OS.</p>
+
+    <p>When it became clear that Netscape’s model was losing, the people there who really cared about the web had a real problem: Now what? Unless someone could do something radical, Microsoft’s way would be the only way.</p>
+
+    <section class="sectioning">
+        <h2 class="contextual-heading">And then, two interesting things happened…</h2>
+        
+        <p>In 1998, as a result, Mozilla was spun off from Netscape and Open Source in the modern sense was born. The browser known as Firefox wouldn’t even launch its 1.0 version until 2004.</p>
+
+        <p>At literally the same time, Google (the search engine) was developing and getting users. It existed for 6 years before it launched its IPO – <em>also</em> in 2004. The web had indexes and search engines before Google, and had some clear winners. But, it would be an understatement to say that Google was game-changing. It just absolutely nailed search with some totally new ideas. They made it simple and accurate.</p>
+
+        <p>Google was banking on what really good search meant to the Web: It made it practical and easy. The easier they made it, the more people turned to the web for answers, and so on. That meant people would just be searching, literally all the all the time - and each of those searches came with ad opportunities!</p>
+
+        <p>You can see just how important this is to getting around on the web today. We’ve replaced the URL bar with the Wonder Bar (integrated search). If it doesn’t look like a URL, it goes to a search engine - automatically… But it wasn’t always like that.</p>
+
+        <p>Just before Firefox 1.0, Mozilla signed a landmark “default search” deal which would pay for 85% of their total budget. It wasn’t the intent for that to be the only means forever. In fact, they tried to expand into product ideas too. However, this dependency has generally only increased, recently accounting for up to 95% of the total Mozilla budget. Over time, this model would become the dominant approach.</p>
+
+        <p>Also, by the release of Firefox 1.0 its codebase was up to 2.1 million lines of code.</p>
+    </section>
+
+
+    <section class="sectioning">
+        <h2 class="contextual-heading">How we pay for the web</h2>
+        <p>Step back and look at the growth in the size and complexity of the 3 remaining engines over time…</p>
+
+        <table>
+        <thead>
+        <tr>
+        <th>browser</th>
+        <th style="text-align:right">~lines of code</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+        <td>OG WWW</td>
+        <td style="text-align:right">13,000</td>
+        </tr>
+        <tr>
+        <td>Firefox 1.0</td>
+        <td style="text-align:right">2,100,000</td>
+        </tr>
+        <tr>
+        <td>Chromium 2022</td>
+        <td style="text-align:right">34,900,821</td>
+        </tr>
+        </tbody>
+        </table>
+
+        <p>Today, the cost to develop and maintain a browser is measured in the many hundreds of millions of dollars per year – each. And here’s the thing…</p>
+
+        <p>Most of the actual, practical revenue that has made the whole thing possible ever since is in a large sense driven by the model of monetizing browsers through default search.</p>
+
+        <p>In some cases this is pretty direct and easy to point to. In other cases, it’s a little obscured. However, I ask you to consider that companies (no matter how profitable) don’t voluntarily commit to bleeding hundreds of millions of dollars per year (and rising), forever. Something has to make it more economically viable - and today that thing is lots and lots of default search revenue.</p>
+
+        <p>Without it, the ledgers would suddenly go red, but default search deals ensure the books aren’t being drained of massive piles of money. In fact, they’re generating revenue.</p>
+
+        <p>It’s tempting to think “Well, so? It seems to be working pretty well? This is the way”.</p>
+
+        <p>…But, is it? Is it the <em>only way</em>? Should it always be the only way?</p>
+
+        <p>I kind of think not.</p>
+
+    </section>
+    <section class="sectioning">
+        <h2 class="contextual-heading">Starting a conversation about our future</h2>
+
+        <p>We’ve never really just sold the browser, we’ve always subsidized browser development in other ways. I’m definitely not suggesting that users should have to pay to download and use a web browser, but I do think it’s useful to realize that that doesn’t <em>exactly</em> make browsers free either. Instead, it spreads out costs some other way that obscures those details from the conversation. From that angle, it might be a useful thought exercise to consider: <em>What does the browser commons cost, per-user, per-year?</em></p>
+
+        <p>Based on what we know of team sizes, scales and budgets - several people seem to have arrived on a similar ballpark figure: Somewhere around 2 billion dollars per year. Those are current costs to maintain all the current engines and make/keep them competive. I expect that for many this will induce a kind of “sticker shock” and it will be tempting to think “wow, that’s inefficient, maybe we don’t need 3 engines after all.” However, let’s dig in a little further.</p>
+
+        <p>The web currently has about 5 billion users. So, a hyptothetical per-user, per-year cost is less than 50 cents per year. As I said earlier, we’ve never required that, and we shouldn’t. We spread costs and subsidize them. But, let’s continue our thought exercise a bit further: If the wealthiest 1/5th of users instead paid $2 per year, that would still meet costs. If we keep going ‘up’, at $10 per year it would take a representative number of users comparative to the population Brazil. Going further, if the the wealthiest 1,000 companies equally subsidized the web, that would cost them $2 million each.</p>
+
+        <p>All of this is just to illustrate a few pretty simple things: The more we spread it out, the less it costs anyone.</p>
+
+        <p>Today, the search-ads-based model spreads those costs to everyone who advertises - which, it turns out, is pretty large population with money. Fractions of fractions of the revenue generated from this actually makes it back down to cover those enormous browser costs today.</p>
+
+        <p>They do this in exhange for certain things: At a minimum, this is in exchange for showing you lots of ads. However, many advertisers also think it’s valuable for them to know as much as possible about you in the process. And, well, at some level - it’s worth keeping in mind that currently, they’re paying. If we want to change any aspect of that, we’ve got to reckon with that fact.</p>
+
+        <p>But there are lots of opportunities to spread out those costs beyond that, aren’t there?</p>
+
+        <section class="sectioning">
+            <h3 class="contextual-heading">Downstream</h3>
+
+            <p>Open Source has a lot of great qualities. Among them, it lets ideas smash together and new projects can get spun up which wouldn’t otherwise be economically possible.</p>
+
+            <p>It’s important to realize that the engines/open source browser projects are all cost. It’s the actual deployed browsers that are built with them that are currently monetizable in this way at all. But there are lots of other things built with these projects too, many of which have also become lucritive projects.</p>
+
+            <p>The current open source model doesn’t require them to give anything back. That’s not to say none do - some do (substantially even), but it’s entirely voluntary and many don’t at all. It just so happens that the flagship browsers who sponsor an engine/open source browser project have so many users that they can lose quite a lot to people only taking without upsetting this delicate balance.</p>
+
+            <p>You’ll note that while I said those flagship browsers not only pay for development, they generate revenue with default search - there’s still only a tiny few organizations on the planet willing to maintain an engine/browser. A big part of that is that that’s only possible if you are a flagship browser.</p>
+
+            <p>In my view, we need to work on that on several fronts. First, we need to acknowledge it’s a problem and begin trying to change the conversation. Thankfully, we’re seeing lots of things developing here like Open Collective, and we’re starting to see people increasingly pointing that out. A few weeks ago, Nicholas C. Zakas (@slicknet) wrote Sponsoring dependencies: The next step in open source sustainability which is worth a read. However, no matter how we make money trickle through the system, we also need to find new ways of making it appealing to put it in in the first place. Making business investment into the commons tax-deductable would probably go a long way.</p>
+        </section>
+        <section class="sectioning">
+            <h3 class="contextual-heading">Ads</h3>
+            <p>Another interesting part of that is that many of those who make those lucrative products but don’t give back do then advertise them. One is a very easy pitch (ads), the other is hard to justify even at a fraction of the cost. So, advertising can tap from completely different departments in the same company, for different reasons. I think there’s something important in that distinction that we should look at too.</p>
+
+            <p>For example, “plentiful ads” isn’t even the only ads model! Conversely, some kinds of ad opportunies are worth a lot more because they aren’t plentiful. They are exclusive. The Super Bowl, for example, lasts only a few hours and raises more money than Firefox’s current annual budget in that time. It’s worth noting that even with its currently reduced marketshare, more people use Firefox than watch the Super Bowl! (Google search makes about 2 orders of magnitude more in a quarter than that, btw). Maybe there’s something there worth thinking about.</p>
+        </section>
+        <section class="sectioning">
+            <h3 class="contextual-heading">But… search?</h3>
+            <p>You might have noticed a huge flaw in all of this discussion: It’s been focused entirely on how the browser commons is funded by search, but it’s left off the fact that even if we funded browsers a completely different way - they still need to search, and that is where all the money currently is. Attacking only one end of this would sort of make it worse.</p>
+
+            <p>Yeah, this is kind of the perfect mousetrap we’ve built for ourselves.</p>
+
+            <p>That original search deal was so killer because they realized just how fundamental integrated search would be to just using the web and … I hate to point it out again, but that is also not free. In fact, Google’s search engine costs a lot more than their web browser engine… And someone has to pay for that too, and it is again, the central money spigot.</p>
+
+            <p>I’m genuinely not sure how to address that. It’s harder to call search engines we have today “the commons”, though search integration is clearly fundamental to it. That seems much more challenging to tackle. It is something of an optimization problem and involves businesses and incentives and users making choices about things I think most people are not even especially well equipped to understand.</p>
+    </section>
+
+
+    <p><em>The one thing I can say for sure though is: If we don’t talk about problems, or even begin to agree they might be problems, it’s pretty hard to improve them. So, let’s start doing that.</em></p>
+</section>
+</article></main>
+ 
+   
+  <script>
+    //import { MediaAffordancesElement } from "./MediaAffordancesElement.js";
+    class MediaAffordancesElement extends HTMLElement {
+      constructor() {
+        super();
+        // todo: this should be a private field
+        this.__matching = new Set()
+        this.mqls = [];
+        this.observers = [];
+
+        this.supportedAffordances = new Set();
+      }
+
+      observeAffordanceChange(cb) {
+        this.observers.push(cb);
+      }
+
+      notifyChange() {
+        let intersection = new Set();
+        for (let elem of this.__matching) {
+          if (this.supportedAffordances.has(elem)) {
+            intersection.add(elem);
+          }
+        }
+
+        if (this.__matching.size > 0) {
+          this.setAttribute("mq-matched", [...this.__matching].join(" "));
+        } else {
+          this.removeAttribute("mq-matched");
+        }
+        let arr =  [...intersection]
+        let affordance = arr[arr.length - 1];
+        if (affordance) {
+          this.setAttribute("affordance", affordance);
+        } else {
+          this.removeAttribute("affordance");
+        }
+        this.observers.forEach(cb => {
+          cb(intersection, this.__matching);
+        });
+      }
+
+      static get observedAttributes() {
+        return ["mq-affordances"];
+      }
+
+      connectedCallback() {
+        let newValue = getComputedStyle(this).getPropertyValue(
+          "--const-mq-affordances"
+        );
+        this.connectListeners(newValue);
+      }
+
+      connectListeners(newValue = "") {
+        if (newValue.trim().length === 0) {
+          return;
+        }
+        
+        newValue.split("|").forEach(segment => {
+          let mq = segment.trim().match(/\[([^\]]*)/)[1];
+          let names = segment
+            .replace(`[${mq}]`, "")
+            .trim()
+            .split(" ");
+          let mql = window.matchMedia(mq);
+          let mqh = evt => {
+            names.forEach(name => {
+              this.__matching[mql.matches ? "add" : "delete"](name);
+            });
+
+            this.notifyChange();
+          };
+          mqh();
+          mql.addEventListener("change", mqh);
+          this.mqls.push(mql);
+        }, this);
+      }
+
+      attributeChangedCallback(name, oldValue, newValue) {
+        this.connectListeners(newValue);
+      }
+    }
+
+    //-----------------------------------------------------
+
+    (function() {
+      let lastUId = 0;
+      let nextUId = () => {
+        return `cp${++lastUId}`;
+      };
+
+      let getLabels = regionset => {
+        return [...regionset.children].filter(el => /^H\d$/.test(el.tagName));
+      };
+
+      let getContentEls = regionset => {
+        return [...regionset.children].filter(el => !/^H\d$/.test(el.tagName));
+      };
+
+      let ensureId = el => {
+        el.id = el.id || nextUId();
+        return el.id;
+      };
+
+      let getDisclosureButton = label => {
+        return label.shadowRoot.querySelector("button");
+      };
+
+     
+      let style = document.createElement('style')
+      style.innerHTML = `
+          
+        :where(spicy-sections > [affordance*="collapse"])::before { 
+          content: ' ';
+          display: inline-block;
+          width: 0.5em;
+          height: 0.75em;
+          margin: 0 0.4em 0 0;
+          transform: rotate(90deg);
+          background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' x='0px' y='0px' width='10px' height='10px' viewBox='0 0 270 240' enable-background='new 0 0 270 240' xml:space='preserve'%3e%3cpolygon fill='black' points='5,235 135,10 265,235 '/%3e%3c/svg%3e ");
+          background-size: 100% 100%;
+        } 
+
+        :where(spicy-sections > [affordance*="collapse"][aria-expanded="true"])::before, 
+        :where(spicy-sections > [affordance*="collapse"][aria-expanded="true"])::after {
+          transform: rotate(180deg);
+        }
+      `
+      document.head.prepend(style)
+      
+      const template = `
+            <style>
+              :root {
+                font-size: 1rem;
+              }
+
+              :host([hidden]),
+              ::slotted([hidden]) {
+                display: none;
+              }
+              
+              ::slotted(h1),
+              ::slotted(h2),
+              ::slotted(h3),
+              ::slotted(h4),
+              ::slotted(h5),
+              ::slotted(h6) {
+                 margin-right: 1rem;
+              }
+              
+              tab-bar ::slotted([tabindex="0"]) {
+                border-bottom: 1px solid blue;
+              }
+              
+              tab-list { 
+                display: flex; 
+                overflow: hidden;
+                white-space: nowrap;
+              }
+            </style>
+            <tab-bar part="tab-bar">
+              <!-- The region/tablist should have a  label -->
+              <tab-list part="tab-list" role="tablist"
+              ><slot name="tabListSlot"></slot></tab-list>
+            </tab-bar>
+            <content part="content-panels">
+              <slot default></slot>
+            </content>
+        `;
+
+      class RegionSet extends MediaAffordancesElement {
+        __defaults;
+        __tabListEl;
+
+        // tabs and exclusive collapses should have the same affordance object?
+        __affordanceConf = {
+          collapse: {
+            // can take a condition to force, check-like
+            toggle: (label, condition) => {
+              let state =
+                typeof condition === "boolean"
+                  ? condition
+                  : !label.affordanceState.expanded;
+              let contentEl = label.nextElementSibling;
+              label.affordanceState.expanded = state;
+              label.affordanceState.nonExclusiveExpanded = state;
+              label.setAttribute("aria-expanded", state);
+              if (state) {
+                label.setAttribute("expanded", "");
+                contentEl.style.display = "block";
+              } else {
+                label.removeAttribute("expanded");
+                contentEl.style.display = "none";
+              }
+            }
+          },
+          "exclusive-collapse": {
+            // ignores condition, radio-like
+            toggle: label => {
+              let labels = getLabels(label.parentElement);
+              let siblings = labels.filter(c => c !== label);
+              let index = labels.findIndex(c => c === label);
+
+              siblings.forEach((sibLabel, i) => {
+                let relatedContent = sibLabel.nextElementSibling;
+                sibLabel.tabIndex = -1;
+                relatedContent.style.display = "none";
+                label.setAttribute("aria-expanded", "false");
+                sibLabel.affordanceState.exclusiveExpanded = false;
+              });
+              label.tabIndex = 0;
+              //nope - todo, fix/remove this?
+              label.parentElement.affordanceState.exclusiveSelection.index = index;
+              label.nextElementSibling.style.display = "block";
+              label.setAttribute("aria-expanded", "true");
+              label.affordanceState.exclusiveExpanded = true;
+              label.focus();
+            }
+          },
+          "tab-bar": {
+            // ignores condition, radio-like
+            toggle: label => {
+              let labels = getLabels(label.parentElement);
+              let siblings = labels.filter(c => c !== label);
+              let index = labels.findIndex(c => c === label);
+
+              siblings.forEach((sibLabel, i) => {
+                let relatedContent = sibLabel.nextElementSibling;
+                sibLabel.tabIndex = -1;
+                relatedContent.style.display = "none";
+                sibLabel.setAttribute("aria-expanded", "false");
+                sibLabel.affordanceState.exclusiveExpanded = false;
+              });
+              label.tabIndex = 0;
+              label.parentElement.affordanceState.exclusiveSelection.index = index;
+              label.nextElementSibling.style.display = "block";
+              label.setAttribute("aria-expanded", "true");
+              label.affordanceState.exclusiveExpanded = true;
+              label.focus();
+            }
+          }
+        };
+        __setSize = (labelEls, contentEls) => {
+          this.__size = Math.min(labelEls.length, contentEls.length);
+
+          if (labelEls.length !== this.__size) {
+            console.warn("mismatch in tab-set label/content pairs...");
+          }
+
+          labelEls.forEach((labelEl, i) => {
+            let contentEl = contentEls[i];
+            if (!labelEl.initialized) {
+              labelEl.initialized = true; // todo: this used to be shadow, do i need it?
+              let defs = this.__defaults.defaultActive;
+
+              // this assumes it is about collapses
+              labelEl.affordanceState = {
+                expanded: defs.includes(labelEl),
+                active: false,
+                // activate in the current mode
+                activate: () => {
+                  if (this.affordanceState.current) {
+                    this.__affordanceConf[this.affordanceState.current].toggle(
+                      labelEl
+                    );
+                  }
+                }
+              };
+
+              let defaultExclusive =
+                defs.length === 0 ? labelEls[0] : defs[defs.length - 1];
+
+              this.affordanceState.exclusiveSelection.index = labelEls.indexOf(
+                defaultExclusive
+              );
+            }
+            labelEl.setMode = mode => {
+              if (mode === "non-exclusive") {
+                let isExpanded = labelEl.affordanceState.expanded;
+                labelEl.setAttribute("affordance", "collapse");
+                labelEl.setAttribute("tabindex", "0");
+                labelEl.setAttribute("aria-controls", contentEl.id);
+                labelEl.setAttribute("role", "button");
+                labelEl.setAttribute("aria-expanded", isExpanded);
+                labelEl.nextElementSibling.style.display = isExpanded
+                  ? "block"
+                  : "none";
+              } else if (mode === "exclusive") {
+                let isExpanded =
+                  labelEls.indexOf(labelEl) ===
+                  this.affordanceState.exclusiveSelection.index;
+                labelEl.setAttribute("affordance", "collapse");
+                labelEl.setAttribute("tabindex", isExpanded ? 0 : -1);
+                labelEl.setAttribute("role", "button");
+                labelEl.setAttribute("aria-expanded", isExpanded);
+                labelEl.setAttribute("aria-controls", contentEl.id);
+                labelEl.nextElementSibling.style.display = isExpanded
+                  ? "block"
+                  : "none";
+              } else {
+                labelEl.removeAttribute("tabIndex");
+                labelEl.removeAttribute("affordance");
+                labelEl.removeAttribute("aria-expanded");
+                labelEl.removeAttribute("role");
+              }
+            };
+          });
+        };
+
+        __projectTabBar = () => {
+          this.__removeProjections();
+          getLabels(this).forEach((tabSource, i) => {
+            let selected = false,
+              tabIndex = -1,
+              display = "none";
+
+            tabSource.setMode();
+            tabSource.slot = "tabListSlot";
+            tabSource.setAttribute("role", "tab");
+            let tabId = ensureId(tabSource);
+            let contentSource = tabSource.nextElementSibling;
+            contentSource.tabIndex = 0;
+            tabSource.setAttribute("aria-controls", ensureId(contentSource));
+            contentSource.setAttribute("role", "tabpanel");
+            contentSource.setAttribute("aria-labelledby", tabSource.id);
+            if (i === this.affordanceState.exclusiveSelection.index) {
+              tabIndex = 0;
+              selected = true;
+              display = "block";
+            }
+            tabSource.setAttribute("aria-selected", selected);
+            tabSource.tabIndex = tabIndex;
+            contentSource.style.display = display;
+
+            // TODO: aria-orientation :(
+          });
+        };
+
+        __projectCollapses = exclusive => {
+          // TODO - remove projections and... ??
+          this.__removeProjections();
+          getLabels(this).forEach(label => {
+            label.setMode(exclusive ? "exclusive" : "non-exclusive");
+          });
+        };
+
+        __removeProjections = () => {
+          [...this.children].forEach(child => {
+            child.removeAttribute("slot");
+            child.removeAttribute("affordance")
+            child.removeAttribute("role");
+            child.removeAttribute("aria-selected");
+            child.removeAttribute("aria-controls");
+            child.removeAttribute("tabindex");
+            child.removeAttribute("aria-expanded")
+            child.style.display = "block";
+          });
+        };
+
+        // matching pairs
+        __size = 0;
+
+        __configure = () => {
+          ///hmmm
+
+          this.__setSize(getLabels(this), getContentEls(this));
+
+          if (this.affordanceState.current === "tab-bar") {
+            this.affordanceState.currentMode = "exclusive";
+            this.__projectTabBar();
+          } else if (this.affordanceState.current === "collapse") {
+            this.affordanceState.currentMode = "non-exclusive";
+            this.__projectCollapses();
+          } else if (this.affordanceState.current === "exclusive-collapse") {
+            this.affordanceState.currentMode = "exclusive";
+            this.__projectCollapses(true);
+          } else {
+            this.affordanceState.currentMode = undefined;
+            this.__removeProjections();
+          }
+
+          let specifiedIndex = this.activeTabIndex || 0;
+          // TODO: hmm, these are DOM changes, we could cache them
+          let labelEls = getLabels(this);
+          let contentEls = getContentEls(this);
+
+          for (let i = 0; i < this.__size; i++) {
+            let label = labelEls[i];
+            // probably add one handler that decides
+            if (!label._inited) {
+              label.addEventListener("click", evt => {
+                evt.target.affordanceState.activate();
+              });
+              label._inited = true;
+            }
+          }
+        };
+        
+        __childListObserver = new MutationObserver(mutationList => {
+          // we have to wire up new elements
+          let labelEls = getLabels(this);
+          let contentEls = getContentEls(this);
+
+          // what if there is a mismatch?
+          this.__setSize(labelEls, contentEls);
+          this.__configure();
+        });
+
+        __tabset;
+
+        affordanceState = {
+          exclusiveSelection: { index: undefined },
+          current: undefined,
+          currentMode: undefined,
+          getLabels: () => {
+            return getLabels(this);
+          }
+        };
+
+        /*
+          Wires up suppored affordances...
+        */
+        constructor() {
+          super();
+          this.supportedAffordances.add("tab-bar");
+          this.supportedAffordances.add("collapse");
+          this.supportedAffordances.add("exclusive-collapse");
+
+          this.observeAffordanceChange((matching, all) => {
+            if (!this.__defaults) {
+              this.__defaults = {
+                onMatch: this.hasAttribute("defaults-on-match"),
+                defaultActive: getLabels(this).filter(l =>
+                  l.hasAttribute("default-activate")
+                )
+              };
+            }
+            this.affordanceState.current = this.getAttribute("affordance");
+            this.__configure();
+          });
+
+          this.attachShadow({ mode: "open" });
+          this.shadowRoot.innerHTML = template;
+     
+          this.__tabListEl = this.shadowRoot.querySelector("tab-list");
+          this.addEventListener(
+            "keydown",
+            evt => {
+              let labels = getLabels(this);
+              let size = labels.length;
+              let cur = this.affordanceState.exclusiveSelection.index;
+              let prev = cur === 0 ? size - 1 : cur - 1;
+              let next = cur === size - 1 ? 0 : cur + 1;
+
+              if (
+                this.affordanceState.current === "tab-bar" ||
+                this.affordanceState.current === "exclusive-collapse"
+              ) { 
+                if (evt.keyCode == 37 || evt.keyCode == 38) {
+                  labels[prev].affordanceState.activate();
+                } else if (evt.keyCode == 39 || evt.keyCode == 40) {
+                  labels[next].affordanceState.activate();
+                }
+              } else if (evt.keyCode == 32 && this.affordanceState.current === 'collapse') {
+                evt.preventDefault()
+              }
+            },
+            false
+          );
+          this.addEventListener(
+            "keyup", 
+            evt => {
+              if (evt.keyCode == 32 && this.affordanceState.current === 'collapse') {
+                evt.target.closest('[affordance]').affordanceState.activate()
+                evt.preventDefault()
+              }
+            })
+        }
+
+        connectedCallback() {
+          super.connectedCallback();
+
+          //TODO: check whether there is a hash/handle selection
+          
+          // If you append a fragment with a pair, it should work
+          this.__childListObserver.observe(this, { childList: true });
+        }
+      }
+      customElements.define("spicy-sections", RegionSet);
+    })();
+    </script>
+  <script>
+    Array.prototype.slice.call(document.querySelectorAll('.optional [data-src]')).forEach(function (optional) {
+      var prefs = window.localStorage.downloadsPrefs,
+          clickToSee;
+      if (prefs === 'true') {
+        activateOptional(optional);
+      } else {
+        clickToSee = document.createElement('div');
+        clickToSee.classList.add('clickToSee')
+        clickToSee.innerHTML = '<button>Click to see media</button>';
+        clickToSee.style.textAlign = 'center';
+        clickToSee.style.border = 'none';
+        optional.parentElement.insertBefore(clickToSee, optional.nextSibling);
+        clickToSee.firstElementChild.addEventListener('click', function () {
+          activateOptional(optional);
+        })
+      }
+
+    })
+  </script>
+
+</body></html>
