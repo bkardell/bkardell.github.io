@@ -4,7 +4,7 @@
         <title>bkardell.com rss feed</title>
         <link>http://bkardell.com/</link>
         <description>Just the bkardell.com rss feed</description>
-        <lastBuildDate>Thu, 17 Nov 2022 15:43:27 GMT</lastBuildDate>
+        <lastBuildDate>Thu, 17 Nov 2022 16:39:46 GMT</lastBuildDate>
         <docs>http://blogs.law.harvard.edu/tech/rss</docs>
         <generator>awesome mix</generator>
         <image>
@@ -14,63 +14,6 @@
         </image>
         <copyright>All rights reserved 2018, Brian Kardell</copyright>
         <atom:link href="https://bkardell.com/blog/feed.atom" rel="self" type="application/rss+xml"/>
-        <item>
-            <title><![CDATA[The Cool Thing You Didn’t Know Existed]]></title>
-            <link>https://bkardell.com/blog/&lt;article posted-on=&quot;11:17:2022&quot;&gt;.html</link>
-            <guid>https://bkardell.com/blog/&lt;article posted-on=&quot;11:17:2022&quot;&gt;.html</guid>
-            <pubDate>Thu, 17 Nov 2022 05:00:00 GMT</pubDate>
-            <description><![CDATA[Recently, in discussions with my colleague Eric Meyer, we struck on an idea that we thought would be really helpful - even built a thing for our own use to try it out. Turned out it kind of already exists and I’d like to tell you about it, and how we hope to make it better.]]></description>
-            <content:encoded><![CDATA[
-  <h1 class="contextual-heading" style="font-size: 2rem;">The Cool Thing You Didn’t Know Existed</h1>
-
-  <p class="segue">Recently, in discussions with my colleague Eric Meyer, we struck on an idea that we thought would be really helpful - even built a thing for our own use to try it out. Turned out it <em>kind of</em> already exists and I’d like to tell you about it, and how we hope to make it better.</p>
-
-  <p class="part">
-  	Information about web related things are just one among many, many kinds of information flying at us through various channels a mile a minute (or ~ 1.61km per minute, if you prefer). <em>Some</em> of those things are about “standards”.  I say “standards” in quotes because <em>much</em> of what we hear about are things we <em>hope</em> will someday be universally implemented.
-  </p>
-
-  <p>Many ulimately fail, take wrong turns and ultimately are re-imagined.  Those that ultimately do get universally implmented and reach Definitely A Standard™ status often take years to do so. This presents numerous challenges, so it’s really helpful to be able to really quickly understand what it is you’re investing your time in, and make sure you don’t miss the important stuff.</p>
-
-  <p>Luckily there are some kind of more newsworthy ‘events’ along the way - mainly, implementations landing. The more implementations there are, the more confidence you can have that this valuable - whether that is just taking a few minutes to find out about it, or actually taking some time to try to learn it and put it to use. But… the <em>last one is special</em>.  It is the finish line.  There aren’t more questions or doubts.  Ironically though, the timeframes and noise before this point make it sometimes easy to miss.</p>
-
-  <p>That is, in fact, a pretty rare occurence.  Wouldn’t it be nice if there was something that would only tell you <em>that</em>? That would be a pretty quiet channel, and if you saw something there you could say “oh, that’s important”. Interestingly, it <em>kind of already exists</em>…</p>
-
-  <p>The <a href="https://github.com/mdn/browser-compat-data/" target="_blank" rel="noopener">MDN browser-comapt-data</a> repo is a community maintained source that all of the browser implmenters and standards folks keep up. I think most people know this already, but what you might not know is that they create a release update to it regularly (currently twice a week) with, actually very good release notes.</p>
-
-  <p>GitHub, it seems, also has a built in pattern for providing an RSS Feed for project releases.  The practical upshot of this is that you can <a href="https://github.com/mdn/browser-compat-data/releases.atom" target="_blank" rel="noopener">Subscribe to the RSS Feed</a> of the browser compat data releases.</p>
-  <p>Wow, cool.</p>
-
-  <section class="sectioning">
-  	<h2 class="contextual-heading" style="font-size: 2.5rem;">We can do better...</h2>
-
-  	<p>This feed is great, but it still contains some noise you probably don’t care about, and because of that it can be a little confusing… 
-  </p>
-
-  <figure class="captioned-image p-attached share-image" style="margin-top:0">
-	  <img src="/media/bcd-rss-og.png" alt="">
-	  <figcaption>A screenshot of some <a href="https://github.com/mdn/browser-compat-data/releases/tag/v5.2.13">recent release notes</a> from the BCD RSS feed as viewed in Feedly</figcaption>
-  </figure>
-
-   <p>All of these updates are additions to BCD data <em>features</em> and renamings and removals along the way, for example.  Those are just metadata that ultimately implementations might or might not be connected to.  There is no new implementation news in this release, but it's not especially obvious.  There are folks (like me) who like to follow that, but really it’s the <em>implementations</em> that are the high order bit here (even for me).</p>
-
-  <p>My colleague Eric Meyer and I were talking about all this, and ways to make the information coming out of BCD versions more digestable for ourselves and the public at large… and decided <em>what the heck, let’s build something rough and see where it lands</em>.  So, in the thing we built, it's more focused.</p>
-
-
-  <figure class="captioned-image p-attached" style="margin-top:0">
-	  <img src="/media/igalia-experiment-bcd.png" alt="">
-	  <figcaption>A screenshot of a similar page we made (described below)</figcaption>
-  </figure>
- 
- <p>In this view, additions/removals sort of data are summarized as a count on a single line.  Further details collapsed by default. You can open them if you want, of course, but they don’t get in the way when you are trying to quickly visually scan it.</p>
-
- <p>The main content that is expanded by default is about  the addition (or removals) of implementations - and those are organized, linked to relevant MDN reference, and you’re told who added it and visually, and easily able to see if it's reached fully complete implementation status.</p>
-
-  <p>Our experiments led to us reaching out to our peers at MDN and we’re currently working with them to see if we can make improvements some improvements like these.  In the meantime - subscribe to that RSS feed and check it every week, I think you’ll be happy you did.</p>
-
-</section>]]></content:encoded>
-            <enclosure url="file:///media/bcd-rss-og.png">
-            </enclosure>
-        </item>
         <item>
             <title><![CDATA[The Cool Thing You Didn’t Know Existed]]></title>
             <link>https://bkardell.com/blog/CoolTool.html</link>
@@ -117,7 +60,7 @@
 	  <img src="/media/igalia-experiment-bcd.png" alt="">
 	  <figcaption>A screenshot of a similar page we made (described below)</figcaption>
   </figure>
-  
+   
  <p>In this view, additions/removals sort of data are summarized as a count on a single line.  Further details collapsed by default. You can open them if you want, of course, but they don’t get in the way when you are trying to quickly visually scan it.</p>
 
  <p>The main content that is expanded by default is about  the addition (or removals) of implementations - and those are organized, linked to relevant MDN reference, and you’re told who added it and visually, and easily able to see if it's reached fully complete implementation status.</p>
