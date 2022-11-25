@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://bkardell.com/</id>
     <title>bkardell.com rss feed</title>
-    <updated>2022-11-17T16:39:46.648Z</updated>
+    <updated>2022-11-25T18:50:34.376Z</updated>
     <generator>awesome mix</generator>
     <author>
         <name>Brian Kardell</name>
@@ -14,6 +14,61 @@
     <subtitle>Just the bkardell.com rss feed</subtitle>
     <logo>http://bkardell.com/profile.jpg</logo>
     <rights>All rights reserved 2018, Brian Kardell</rights>
+    <entry>
+        <title type="html"><![CDATA[Alice 2023]]></title>
+        <id>https://bkardell.com/blog/Alice-2023.html</id>
+        <link href="https://bkardell.com/blog/Alice-2023.html">
+        </link>
+        <updated>2022-11-25T05:00:00.000Z</updated>
+        <summary type="html"><![CDATA[There's an upcomming election in the W3C...]]></summary>
+        <content type="html"><![CDATA[
+	<h1 class="contextual-heading" style="font-size: 2rem;">Alice 2023</h1>
+	<p class="segue">There's an upcomming election in the W3C...</p>
+
+
+	<p class="note">
+	 If you're not familliar with W3C elections already, I wrote a brief (~400 word) "<a href="https://bkardell.com/blog/W3CPrimer.html">Primer for Busy People</a>" on the general "parts" of the W3C and introducing the two main elected bodies, including the Technical Architecture Group (TAG), a kind of steering committee for the W3C/Web at large.</p>
+
+	 <p>
+	 	The W3C TAG is charged with overseeing and helping direct and hold together the broad view and direction of the web over time.  While that sounds perhaps a little abstract and esoteric, it is mostly grounded in very concrete things. Proposals go through TAG review and the TAG discusses and asks questions at many levels to enure that things are safe, ethical, well designed, forward looking, and consistently reasoned across APIs and working groups.  As part of this they also try to gather and publish articulations of principles and advice which can be reapplied and referred back to. These principles help shape the web that we'll all be developing on in significant ways, for the rest of our lives. So, I think it matters that we have a good TAG.
+	 </p>
+
+	<p>
+		The TAG has changed a lot since 2012 when I first started advocating that it needed reform and that regular developers should publicly support candidates and lobby member orgs to vote on our behalf.  I think that a lot of that change is because <em>it worked</em>.  A concerted effort was made to ensure that we had as good a slate of candidates as we could muster.  Candidates threw their support to other candidates they believed were great choices too, etc.  For the next few years, those candidates were elected something like 25:2 in terms of seats. I'm happy to say that I think that most of those changes have been really positive.  The TAG is relevant again, it is productive and useful. They do outreach in the community. It is much more diverse on many levels. The work is better connected to practice. However, another outcome of this is that the W3C also changed how elections work.  I'm not going to get into why I think this is complicated and a net loss (I do that in several other posts like <a href="https://bkardell.com/blog/W3C-Sandwiches.html">Optimizing The W3C Sandwiches
+</a> if you're really curious), but it means that each member has only one vote counted and candidates are left to convince you that they are the <em>best</em> candidate.  The net result is that  I've pretty much stepped away from advocating for candidates like I used to and focused instead on just helping to make sure there are good nominees, at least.
+	</p>
+
+	<p>A notable exception to this was in 2019 when Alice Boxhall (<a href="https://twitter.com/sundress" rel="nofollow">@sundress</a> on Twitter) ran. I <a href="https://bkardell.com/blog/Alice-2019.html">wrote about why I was excited and supported her</a>. She is truly a unique candidate in my mind.  After her stint on the TAG, she stepped away from Google and took a sabbatical only to return this year to work with me at Igalia!  In this election, she's running again and I couldn't support it more.  All of the rationale I had in 2019 holds true today, and additionally now you can say she'll have experience and bring perspective from a very unique organization that represents a lot that is good and positive change in the web ecosystem.</p>
+
+		<p>I really wish I could say more about this election in a productive way, but all I can offer is these two points:</p>
+
+		<p><strong>First... I hope you're similarly excited for Alice to run</strong> and join me in supporting her.</p>
+
+		<figure class="captioned-image">
+			<img src="https://bkardell.com/media/Vote_Alice.png">
+			<figcaption>Vote for Alice</figcaption>
+		</figure>
+
+		<p><strong>Second... Encourage people to actually vote, and vote <em>together</em></strong></p>
+
+		<p>We have a surplus of good candidates. There are many permutations of choices that would be arguably good. However, the truth is that with this voting system, if turnout is low (it often is, amazingly few orgs vote), it is very likely that someone at the very bottom of the preferences of the vast majority gets a one of those seats.  Instead of optimizing one of the many good permutations, it can ensure that we lose one of those seats. Just having people turn up at all makes that kind of failure harder, so please - send a DM, tweet something, remind people - make sure they vote.</p>
+
+		<p>To be a little stronger, while you're at it - discuss with some other members in a community that you belong to.  Get their thoughts and insights, and see if you can build some concensus on an order of preference - in doing so you'll greatly help the odds of being happy with the results.</p>
+
+		<p>But, also, again...</p>
+
+		<figure class="captioned-image">
+			<img src="https://bkardell.com/media/Vote_Alice.png">
+			<figcaption>Vote for Alice</figcaption>
+		</figure>
+
+		<p>Polls close at 04:59 UTC on 2022-12-14 (23:59, Boston time on 2022-12-13).</p>
+
+
+		
+	
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[The Cool Thing You Didn’t Know Existed]]></title>
         <id>https://bkardell.com/blog/CoolTool.html</id>
