@@ -16,11 +16,9 @@
         
         lastVersion = window.localStorage.getItem('lastVersion')
 
-        if(
-          !lastVersion
-          || 
-          lastVersion != curVersion
-        ) {
+        if(lastVersion == null || lastVersion == curVersion) {
+          window.location.href = 'https://news.google.com'
+        } else {
           // update the version
           window.localStorage.setItem('lastVersion', curVersion)
 
@@ -29,7 +27,6 @@
             let v = document.getElementById('v')
             v.innerHTML = `Hey there's a newer version available! <a href="${curVersion}">Get it?</a>`
           } else {
-            window.location.href = 'https://news.google.com'
           }
         }
 
