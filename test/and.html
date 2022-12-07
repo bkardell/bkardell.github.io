@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html pseudo-observe-fallback>
+<head>
+    <meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no">
+    <title>Silly Personal Thingy</title>
+    <script>
+
+
+      async function run() {
+        let resp = await fetch('https://api.github.com/repos/igalia/wpe-android/actions/artifacts')
+        let data = await resp.json()
+        let curVersion = data
+          .artifacts
+          .find(o => o.name == 'minibrowser-Release')
+          .archive_download_url
+        
+        lastVersion = window.localStorage.getItem('lastVersion')
+
+        if(
+          !lastVersion
+          || 
+          lastVersion != curVersion
+        ) {
+          // update the version
+          window.localStorage.setItem('lastVersion', curVersion)
+
+          if (lastVersion != curVersion) {
+            // show a link
+            let v = document.getElementById('v')
+            v.innerHTML = `Hey there's a newer version available! <a href="${curVersion}">Get it?</a>`
+          }
+        }
+
+        temp = data
+        console.log(data[0])
+
+      }
+      run()
+      
+    </script>
+    <style>
+    </style>
+  </head>
+  <body>
+    
+    <p id="v">Checking the current version...</p>
+
+    <p>
+      Give me second or check out some <a href="https://news.google.com">news</a>.
+    </p>
+
+  </body>
+  </html>
+    
