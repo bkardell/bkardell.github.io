@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://bkardell.com/</id>
     <title>bkardell.com rss feed</title>
-    <updated>2022-11-25T21:18:35.332Z</updated>
+    <updated>2022-12-30T16:33:35.654Z</updated>
     <generator>awesome mix</generator>
     <author>
         <name>Brian Kardell</name>
@@ -14,6 +14,75 @@
     <subtitle>Just the bkardell.com rss feed</subtitle>
     <logo>http://bkardell.com/profile.jpg</logo>
     <rights>All rights reserved 2018, Brian Kardell</rights>
+    <entry>
+        <title type="html"><![CDATA[Surreal Holiday]]></title>
+        <id>https://bkardell.com/blog/WeirdHoliday.html</id>
+        <link href="https://bkardell.com/blog/WeirdHoliday.html">
+        </link>
+        <updated>2022-12-30T05:00:00.000Z</updated>
+        <summary type="html"><![CDATA[Hello, yes, I had a heart attack.]]></summary>
+        <content type="html"><![CDATA[
+	<h1 class="contextual-heading" style="font-size: 2rem;">Surreal Holiday</h1>
+ 
+<p class="segue">Hello, yes, I had a heart attack.</p>
+<p>
+	In the middle of the night last Tuesday (technically Wednesday morning), I had a heart attack.  Ambulance, EKGs - you get the idea.  In the end they placed two stents in my heart and I spent two days in the ICU, one more in the general hospital before being sent home Friday afternoon.
+</p>
+
+<p>
+	Mainly I just wanted to say...
+
+	</p><ul>
+		<li>Sorry if I haven't replied somewhere</li>
+		<li>That's why</li>
+		<li>Thanks for the concern if you were worried</li>
+		<li>I'm gonna be ok</li>
+		<li>I am <em>mostly</em> ok now. I just happen to also have planned holidays, so it's been a good spot to disconnect for a bit.</li>
+		<li>Yes, I quit smoking (8 days cold and counting).</li>
+		<li>... The whole thing was just... very weird</li>
+	</ul>
+<p></p>
+
+<section class="sectioning">
+	<h2 class="contextual-heading" style="font-size: 2.5rem;">Surreal</h2>
+
+	<p>In my experience - our brains are actually not very good at imagining the big "smack you in the face" things like this.  When they happen I'm often like "Oh <strong>wow!</strong>... That was <em>nothing</em> like I imagined it would be."</p>
+
+	<p>Yes, I have imagined many of the bits here many times (I have an anxiety disoder) and this wasn't an exception.  Literally no aspect of what unfolded was anything like I imagined it would be.</p>
+
+	<p>Short of literally sitting and imagining bad scenarios: I'm sure you think you have some idea of what a heart attack would feel like. Like, vaguely, at least.  But... maybe you don't? Maybe it is <em>very</em> diffrent from that? It certainly was for me.</p>
+
+	<p>I guess the natural question is "different how?" and the answer is "yes".</p>
+
+	<p>Different like zuchini and cucumber, maybe? Superficially similar, but much different.  If you bit into something thinking it contained lots of cucumber and that turned out to be zucchini (or vice versa) you would say "Oh <strong>wow!</strong>... That was <em>nothing</em> like I imagined it would be."
+	</p>
+
+	<p>Anyway... I've been sitting here for way too long trying to think of how to explain all of the ways in which none of this was what I expected or how surreal it all felt, but honestly, I think I can't.</p>
+
+	<p>I spent a lot of time thinking about my family.  Would they be ok, even if I wasnt?  Pretty shitty for them to have this happen at Christmas.  It was the middle of the night, most of them wouldn't find out for a while still probably.  What would they be finding out?</p>
+
+	<p>I don't know, it was just many layers of strange, really.</p>
+
+	<p>One especially surreal moment I'd like to write down: As the doctors who were getting ready to put a stint in my heart were chatting, one of them said something like...</p>
+
+	<blockquote>
+		Man, can you imagine?  So sad.  Just before 50. He was  looking great just yesterday, and then you just die.  So sad.
+	</blockquote>
+
+	<p>Here's the thing: They <em>weren't talking about me and I knew it</em>.  But, lying there on the table, not so short of 50 myself, at that moment... It totally could have...  It still might, you know? They hadn't gone in yet. Did they just not think of that?</p>
+
+	<p>What they were talking about was the fact that Franco Harris had <em>just</em> died the same morning.  It was just a few days shy of the 50th anniversay of <a href="https://en.wikipedia.org/wiki/Immaculate_Reception">The Immaculate Reception</a>, a rematch game and so many events planned around it and him.</p>
+
+	<p>You don't really have to know about any of this, I guess - except that Franco's impact in Pittsburgh was huge and began just before I was born.  My grandparents were part of the large Italian community that loved the Steelers - "Franco's Italian Army". I have a lot of memories of shared moments with family around the Steelers - ultimately because of all of this.  I always felt a kind of connection with him.  It was very strange to think that we we both seemed pretty great just yesterday, and now here we were.</p>
+
+	<p>Anyways.... It was weird.</p>
+
+	<p>Happily for my family, I made it through and I'm doing great.</p>
+
+	<p>I was home for the game too, which I was able to watch with my son.  It was great - and happily for Pittsburgh, we won.</p>
+
+</section>]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[Alice 2023]]></title>
         <id>https://bkardell.com/blog/Alice-2023.html</id>
