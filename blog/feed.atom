@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://bkardell.com/</id>
     <title>bkardell.com rss feed</title>
-    <updated>2023-01-04T19:33:40.603Z</updated>
+    <updated>2023-01-04T21:24:08.195Z</updated>
     <generator>awesome mix</generator>
     <author>
         <name>Brian Kardell</name>
@@ -73,7 +73,7 @@
 
 		<p>Those sponsorships, on the other hand, are often marketing dollars (just like default search). Entirely different budgets/intents.</p>
 
-		<p>But, if you think about it, <em>shouldn't</em> those companies get some NASCAR-style credit for their browser support?  Don't you think it's worth mentioning that Bloomberg Tech was really key to making CSS Grid Happen? Or that EyeO was really key to making `:has()` happen?  Isn't that a kind of marketing?  Don't we kind of need both kinds of investment?</p>
+		<p>But, if you think about it, <em>shouldn't</em> those companies get some NASCAR-style credit for their browser support?  Don't you think it's worth mentioning that Bloomberg Tech was really key to making CSS Grid Happen? Or that EyeO was really key to making <code>:has()</code> happen?  Isn't that a kind of marketing?  Don't we kind of need both kinds of investment?</p>
 	</section>
 	<section class="sectioning">
 		<h2 class="contextual-heading" style="font-size: 2.5rem;">Hey, there it is!</h2>
