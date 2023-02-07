@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://bkardell.com/</id>
     <title>bkardell.com rss feed</title>
-    <updated>2023-01-04T21:24:08.195Z</updated>
+    <updated>2023-02-07T15:12:53.731Z</updated>
     <generator>awesome mix</generator>
     <author>
         <name>Brian Kardell</name>
@@ -14,6 +14,86 @@
     <subtitle>Just the bkardell.com rss feed</subtitle>
     <logo>http://bkardell.com/profile.jpg</logo>
     <rights>All rights reserved 2018, Brian Kardell</rights>
+    <entry>
+        <title type="html"><![CDATA[Superb Howl]]></title>
+        <id>https://bkardell.com/blog/SuperbHowl.html</id>
+        <link href="https://bkardell.com/blog/SuperbHowl.html">
+        </link>
+        <updated>2023-02-07T05:00:00.000Z</updated>
+        <summary type="html"><![CDATA[We are rapidly approaching Sunday, Feburary 12th, or in America "Super Bowl Sunday". There's something interesting about the Super Bowl that I wish we could emulate there for the Web.]]></summary>
+        <content type="html"><![CDATA[
+  <h1 class="contextual-heading" style="font-size: 2rem;">Superb Howl</h1>
+  <p class="segue">We are rapidly approaching Sunday, Feburary 12th, or in America "Super Bowl Sunday". There's something interesting about the Super Bowl that I wish we could emulate there for the Web.</p>
+
+  <p>Chances are pretty good that even if you don't care at all about American football or watch broadcast TV, you're still going to wind up hearing about the Super Bowl.  Or, at least, the commercials.</p>
+
+  <p>In fact, there's a pretty good chance you'll even see them.  They'll be written about by media and talked about on social media. The Super Bowl is the only event that I know of that is like that. The commercials aren't just an annoyance. In fact, it is the only one I know of where where a segment of the audience is tuning in <em>for the commercials</em>.  They want to see them live, as they air.  The commercials are <em>part of the event</em>.</p>
+
+  <p>That is... <strong><em>unique</em></strong></p>
+
+  <p>Maybe the web needs that.</p>
+
+  <p><em>Wait, don't run away! Please!! Let me explain!!</em></p>
+
+  <p>Check this out...</p>
+
+  <figure class="captioned-image">
+    <img src="https://notes.igalia.com/uploads/7376833c-9939-4a1e-8d99-5d129ec54c64.png">
+    <figcaption>A screenshot of a tab in Firefox with something about Pocket, explained below.</figcaption>
+  </figure>
+
+<p>Most people I show this to don't realize what they're seeing, but this is the "What's New" page.  Whever Firefox updates it <en>can</en> launch a "What's new?" page, and it <em>can</em> put whatever it wants on there.  This isn't really about what's new in this release of Firefox at all - it is a full page advertisement!  This particular advertisement is for a product that Mozilla acquired called Pocket, but I believe it was also a place where they highlighted the partnership with the Going Red movie.  That's pretty interesting and like a lot of things Mozilla has done, pretty innovative.  I guess now we'll see if like a lot of other Mozilla things, they were just a little too early or got a few details wrong.</p>
+
+<p>It requires Firefox to sell that space, and, I'm pretty sure they're not selling it successfully right now.  Maybe they never tried. Maybe they've stopped trying.  But, what's very interesting to me is that while their numbers have been declining for years, <em>even <strong>right now</strong>  "Firefox users" is more than twice the audience that the Super Bowl will next week.</em></p>
+
+<p>Wow.</p>
+
+<p>That could be a valuable ad spot, right? And not just for Firefox — it’s valuable in just about every browser. For example, Brave’s user numbers are right now getting close to half the audience of the Super Bowl.</p>
+
+<p>In fact, even Brave's numbers are, at this point, approaching about half the audience of the Super Bowl.</p>
+
+<p>Maybe this approach could be compelling for them too?  Imagine if they did a thing like Firefox.. Oh wait..</p>
+
+<figure class="captioned-image">
+  <img src="https://notes.igalia.com/uploads/db04208d-2563-4c0d-bd84-83566fc97861.jpeg">
+  <figcaption>A screenshot of the 'new tab' interface - the background photo of which is a full page advertisement.</figcaption>
+</figure>
+
+<p>Yeah, look at that.  Brave also recognizes this is valuable, though they are offering something similar, but a little different, more repeatable - the whole start backdrop.</p>
+
+<p>That's a pretty interesting idea which one could argue is just a <em>better</em> version of something that came before.  Opera, I think, was the first one to introduce a start page with "speed dial".  That's sort of like "default bookmarks on the start page" and for both Vivaldi or Opera <a href="https://vivaldi.com/blog/vivaldi-business-model/">their funding sources can include default bookmarks</a>.
+
+</p><figure class="captioned-image">
+  <img src="https://notes.igalia.com/uploads/00d2dc73-2f6d-422c-be3a-ed9e14daa121.png">
+  <figcaption>A screenshot of Vivaldi's new tab start page "speed dial", full of icons to web properties.</figcaption>
+</figure>
+
+ <p>Microsoft, I think has had some of their own product stuff in their start page at various times. Google's browser, unsuprisingly places Search almost alone on the new tab page, despite the fact that the wonderbar will also search with Google. Search is their main money making business, after all. There is still, however, an drawer you can open which will link you to all of the other Google properties too.</p>
+
+  <section class="sectioning">
+    <h2 class="contextual-heading" style="font-size: 2.5rem;">Changing ideas</h2>
+    <p>As I wrote in <a href="https://bkardell.com/blog/NascarModel.html">The NASCAR Model</a> we need better ways to fund browser development and to incentivize direct investement, and for better or worse, <strong>that is way more practical if we can find a way to involve marketing budgets</strong>... Or just charging users somehow (they're charged now, they just don't realize it).</p>
+
+  <p>So, all of those ideas above are kind of interesting attempts to do just that.</p>
+
+  <p>In Wolvic we also have an environment around us, and we've effectively put up ads for Wolvic in those so far...</p>
+
+  <figure class="captioned-image">
+    <img src="https://notes.igalia.com/uploads/72a764d6-e5cf-4ede-8127-d72411ada773.jpeg">
+    <figcaption>A screenshot of Wolvic's "cyberpunk" environment, it's a city background at night and on the buildings are numerous digital signs or illuminated billboards.</figcaption>
+  </figure>
+
+  <p>But, the same thing holds there: There's no <em>real</em> reason we couldn't put some small amount of marking in the environment there.  There's no reason that one there couldn't be a billboard there for a new Star Wars show or Avengers movie...</p>
+
+  <p><em>(psst... Disney, call me)</em>.</p>
+
+  <p>Somehow, I feel like they're all worth exploring - or at least worth discussing as we figure out how to collectively come to grips with the fact that ultimately we need to find new funding models for browsers (and their underlying engines). You can also consider <a href="https://opencollective.com/wolvic">adding some sponsorship via the collective</a>, right now, and read more about that.</p>
+
+  <p>I'd love to hear your thoughts on any of this. Could we really somehow convince marketing dollars to be spent on this? What would it take?  Is there a way, like the Super Bowl, we can design create "just the right thing" where it's very valuable and not something users loathe.  How could we get ads worthy of the opportunity and not turn into another vector for attention stealing?  That's difficult.  There are, of course, way more questions than answers - but if you'd like to talk or share your thoughts, hit me up.  Especially if you are in Disney's marketing department, for example.</p>
+
+
+</section>]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[The NASCAR Model]]></title>
         <id>https://bkardell.com/blog/NascarModel.html</id>
