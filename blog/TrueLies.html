@@ -442,21 +442,39 @@ America (art for sale)</a></li>
   <p>Or maybe you use a library which tries to make it simple to give all different devices as good an experience as they can.  Again, there is some kind of attempt at categorizing in order to determine the ‘best’ experience — and it often involves (just a little maybe!) the UA string. And again, does that hold up forever?</p>
   <p>Even if this works perfectly with every device in the whole world (it probably doesn’t!), as soon as something changes, or doesn’t neatly fit those definitions anymore, this is probably going to give users a pretty bad result.</p>
   <p>And guess what? We’re all users! You can imagine how it might be frustrating if you are, for example, a user of some new device or browser.  Like, hypothetically, one who has bought an XR device, running an immersive operating system, and browsing the web in a broswer <em>built for that</em>, and the cool immersive experience link someone sent you is giving you the non-immersive experience instead.  The site thinks your totally capable browser just isn’t.</p>
+  
   <p><img src="https://i.imgflip.com/79med9.jpg" alt="" class=""></p>
+
   <p>That kind of shit happens, a lot, and when it happens in popular libraries or CMSes or whatever, it can affect thousands of sites.</p>
+
   <p>In fact, that’s a thing that happened with Wolvic.  A lot.</p>
+  
   <p>You know who users get mad at when that happens?  Not the site, nor the library.  They get mad at the browser.  When that happens, browsers will start lying to your site because that makes the user happy, and stops their hate.  At the end of the day, making users happy is their job.</p>
-  <p>That’s tricky though, right? Because the site or CMS or library maker probably introduced something there <em>because</em> they cared about users. They wanted to make sure that some browser that falls through the logic cracks gets at least the basic mobile experience or something.  Which is great, until it sucks.</p>
+
+  <p>And this isn't a new thing. My colleague Eric Meyer wrote a great post about <a href="https://meyerweb.com/eric/thoughts/2008/01/24/almost-target/">something similar from 2002</a>, and we did a whole Igalia chats episode about all of this.</p>
+  
+  <p>"Making users happy is their job" is tricky though, right? Because in our case, the site or CMS or library maker probably introduced something there <em>because</em> they cared about users. They wanted to make sure that some browser that falls through the logic cracks gets at least the basic mobile experience or something.  Which is great, until it sucks.</p>
+
   <p>Ugh.</p>
+
   <p>Even if you aren’t looking at the UA string <em>functionally</em> somehow, you probably still care about it for functional reasons, if you think about it.</p>
+
   <p>Let’s just take a for example: Should you care about how your site looks on these XR headsets? Is it worth doing something specially interesting on those? How do you decide what is worth your energy? Probably by asking “how many users of that are there?” in general, and more specifically “how many users are using that to visit my website?”</p>
+
   <p>In both cases, you’re <em>probably</em> relying on the UA string. Either by looking through your own server logs and trying to see, or else by looking at market share numbers, which are literally a summary of other people’s server logs.</p>
+
   <p>But, it’s possible you have 1000 people all visiting your site with Wolvic or the OculusBrowser <em>right now</em>, and you see <em>none</em> of that in your logs, because the browser makers have already figured out that we have to lie about what they are.</p>
+
   <p>So, this is an especially frustrating thing for new browsers and new classes of devices.</p>
+
   <p>Say, for example, you’re building a new browser. Maybe you have a logo that looks like a Wolf. Hypothetically. And you’re trying to fund a handful of developers to implement features which will serve the needs of your users.</p>
+
   <p>The main way that a browser can pull in some income to pay said developers, historically, is by signing a default/integrated a search deal with a search engine.  However, this presents something of a chicken and egg problem.  To be a worthwhile deal, the search engine wants to know what kind of market share you have —&nbsp;in other words, how many users?  And, well, they’re certainly not going to trust your private data on this.  Metrics based on the UA string are the most obvious and public ones, but as a new browser you have to lie about what you are so that your users can, you know, use websites.</p>
+
   <p>So… cool. Cool cool cool.</p>
+  
   <p><img src="https://media.tenor.com/images/1fb9e8629921d9a5e53ccb93f5c6530a/tenor.gif" alt="" class=""></p>
+
   <p>I wish none of this was the way it was, but I also don’t know how to fix it except to say “we really need to talk about the funding model”.</p>
   <p>So, please be careful.  Try not to make it worse.</p>
   <p>Use Wolvic if you can.</p>
