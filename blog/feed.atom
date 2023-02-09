@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://bkardell.com/</id>
     <title>bkardell.com rss feed</title>
-    <updated>2023-02-09T18:08:17.133Z</updated>
+    <updated>2023-02-09T18:20:20.562Z</updated>
     <generator>awesome mix</generator>
     <author>
         <name>Brian Kardell</name>
@@ -111,7 +111,7 @@
   
   <p>So, please be careful.  Try not to make it worse.</p>
   
-  <p>Use Wolvic if you can.</p>
+  <p>Use Wolvic if you can.</p> 
   
   <p>Test with it if you can.</p>
 
@@ -119,102 +119,6 @@
 
   <p>Maybe toss some money at our <a href="https://opencollective.com/wolvic" target="_blank" rel="noopener">collective efforts</a> if you can and help instigate the kind of change we need… or, if not, maybe just tell someone about it.</p>
 
-  <p>Thanks.</p>
-
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[A Few Good Lies]]></title>
-        <id>https://bkardell.com/blog/TrueLies.html</id>
-        <link href="https://bkardell.com/blog/TrueLies.html">
-        </link>
-        <updated>2023-02-09T05:00:00.000Z</updated>
-        <summary type="html"><![CDATA[On Wolvic’s new UA string in 1.3, things working, and frustrating intertwined problems.]]></summary>
-        <content type="html"><![CDATA[
-  <h1 class="contextual-heading" style="font-size: 2rem;">A Few Good Lies</h1>
-  <p class="segue">On Wolvic’s new UA string in <a href="https://wolvic.com/blog/release_1.3/">1.3</a>, things working, and frustrating intertwined problems.</p>
-
-  <p>Ok, let’s play a game…  Imagine that you look at your server logs and see this UA string.  Which browser sent it to you?</p>
-
-  <pre><code>Mozilla/5.0 (Linux; Android 10; Quest 2) AppleWebKit/537.36 (KHTML, like Gecko) OculusBrowser/24.2.0.0.16.408393304 SamsungBrowser/4.0 Chrome/106.0.5249.79 VR Safari/537.36
-  </code></pre>
-
-  <p>I won’t blame you if you don’t immediately recognize the browser that sends that string by default (it’s the OculusBrowser).  It’s already a giant set of lies and there’s no intuitive way to decide which one to believe.</p>
-
-  <p>But... Maybe you should believe <em>none of them</em>!  <a href="https://wolvic.com/" target="_blank" rel="noopener">Wolvic</a>, for example, will send that string sometimes.  And sometimes the OculusBrowser will send <em>some other string</em>. Eek.</p>
-
-
-  <p>Okay, maybe that was just a particularly complicated example. How about this one:</p>
-  <pre><code>Mozilla/5.0 (Android 10; Mobile VR; rv:81.0) Gecko/81.0 Firefox/81.0
-  </code></pre>
-
-  <p>Ah, Firefox for Android? Sort of! Firefox <em>Reality</em> used to send that. Yes, it was for AOS-based devices, but not really for your Pixel phone’s Android.</p>
-
-  <p>Alright, alright — this one should be easy given the last one, right? Look how similar it is…</p>
-  
-  <pre><code>Mozilla/5.0 (Android 10; Mobile VR; rv:105.0) Gecko/105.0 Firefox/105.0
-  </code></pre>
-  
-  <p>That is… Wolvic.</p>
-  
-  <p>At least by default.  Anything where one of those numbers was over ‘81’ was probably Wolvic.  At least before this week’s release.</p>
-
-  <p>Starting with this release, Wolvic will normally send:</p>
-  <pre><code>Mozilla/5.0 (Android 10; Mobile VR; rv:105.0) Gecko/105.0 Firefox/105.0 Wolvic/1.3
-  </code></pre>
-
-  <p>Ah finally - the text “Wolvic” appears in the string! But also, still, some lies. And then, of course, sometimes we’ll have to tell a completely different lie.</p>
-
-  <p>But... I mean...<strong><em>WHO CARES</em>, right!?</strong></p>
-
-  <p>You might imagine that <em>nobody</em> cares about the UA stirng, but you would be <em>very</em> wrong.  Everybody seems to care about it, somehow.</p>
-
-  <h2 class="" id="The-lies-we-need-to-tell-ourselves"><a class="anchor hidden-xs" href="#The-lies-we-need-to-tell-ourselves" title="The-lies-we-need-to-tell-ourselves" smoothhashscroll=""><i class="fa fa-link"></i></a>The lies we need to tell ourselves</h2>
-  <p>It’s not just about an app that suddenly starts refusing to service HTTPS requests, except to tell them to use a different browser (maybe, for example, the one they just so happen to make).</p>
-  <p>It’s <em>all kinds of things that people try to reason about that ultimately somehow involves the UA string</em> — and it affects <em>so much</em>.</p>
-  <p>Maybe, for example, you use some CMS or tool that lets you think in simpler terms: Is it “mobile” or is it a “tablet” or is it a “desktop”? Cool, but how does it know, and by what definition? Does that definition hold forever?</p>
-  <p>Or maybe you use a library which tries to make it simple to give all different devices as good an experience as they can.  Again, there is some kind of attempt at categorizing in order to determine the ‘best’ experience — and it often involves (just a little maybe!) the UA string. And again, does that hold up forever?</p>
-  <p>Even if this works perfectly with every device in the whole world (it probably doesn’t!), as soon as something changes, or doesn’t neatly fit those definitions anymore, this is probably going to give users a pretty bad result.</p>
-  <p>And guess what? We’re all users! You can imagine how it might be frustrating if you are, for example, a user of some new device or browser.  Like, hypothetically, one who has bought an XR device, running an immersive operating system, and browsing the web in a broswer <em>built for that</em>, and the cool immersive experience link someone sent you is giving you the non-immersive experience instead.  The site thinks your totally capable browser just isn’t.</p>
-  
-  <p><img src="https://i.imgflip.com/79med9.jpg" alt="" class=""></p>
-
-  <p>That kind of shit happens, a lot, and when it happens in popular libraries or CMSes or whatever, it can affect thousands of sites.</p>
-
-  <p>In fact, that’s a thing that happened with Wolvic.  A lot.</p>
-  
-  <p>You know who users get mad at when that happens?  Not the site, nor the library.  They get mad at the browser.  When that happens, browsers will start lying to your site because that makes the user happy, and stops their hate.  At the end of the day, making users happy is their job.</p>
-
-  <p>And this isn't a new thing. My colleague Eric Meyer wrote a great post about <a href="https://meyerweb.com/eric/thoughts/2008/01/24/almost-target/">something similar from 2002</a>, and we did a whole <a href="https://www.igalia.com/chats/ua-chat">Igalia chats episode</a> about all of this.</p>
-  
-  <p>"Making users happy is their job" is tricky though, right? Because in our case, the site or CMS or library maker probably introduced something there <em>because</em> they cared about users. They wanted to make sure that some browser that falls through the logic cracks gets at least the basic mobile experience or something.  Which is great, until it sucks.</p>
-
-  <p>Ugh.</p>
-
-  <p>Even if you aren’t looking at the UA string <em>functionally</em> somehow, you probably still care about it for functional reasons, if you think about it.</p>
-
-  <p>Let’s just take a for example: Should you care about how your site looks on these XR headsets? Is it worth doing something specially interesting on those? How do you decide what is worth your energy? Probably by asking “how many users of that are there?” in general, and more specifically “how many users are using that to visit my website?”</p>
-
-  <p>In both cases, you’re <em>probably</em> relying on the UA string. Either by looking through your own server logs and trying to see, or else by looking at market share numbers, which are literally a summary of other people’s server logs.</p>
-
-  <p>But, it’s possible you have 1000 people all visiting your site with Wolvic or the OculusBrowser <em>right now</em>, and you see <em>none</em> of that in your logs, because the browser makers have already figured out that we have to lie about what they are.</p>
-
-  <p>So, this is an especially frustrating thing for new browsers and new classes of devices.</p>
-
-  <p>Say, for example, you’re building a new browser. Maybe you have a logo that looks like a Wolf. Hypothetically. And you’re trying to fund a handful of developers to implement features which will serve the needs of your users.</p>
-
-  <p>The main way that a browser can pull in some income to pay said developers, historically, is by signing a default/integrated a search deal with a search engine.  However, this presents something of a chicken and egg problem.  To be a worthwhile deal, the search engine wants to know what kind of market share you have —&nbsp;in other words, how many users?  And, well, they’re certainly not going to trust your private data on this.  Metrics based on the UA string are the most obvious and public ones, but as a new browser you have to lie about what you are so that your users can, you know, use websites.</p>
-
-  <p>So… cool. Cool cool cool.</p>
-  
-  <p><img src="https://media.tenor.com/images/1fb9e8629921d9a5e53ccb93f5c6530a/tenor.gif" alt="" class=""></p>
-
-  <p>I wish none of this was the way it was, but I also don’t know how to fix it except to say “we really need to talk about the funding model”.</p>
-  <p>So, please be careful.  Try not to make it worse.</p>
-  <p>Use Wolvic if you can.</p>
-  <p>Test with it if you can.</p>
-  <p>Please definitely report bugs, but also please be patient with us if you’re a user, we’re fighting systemic problems sometimes.</p>
-  <p>Maybe toss some money at our <a href="https://opencollective.com/wolvic" target="_blank" rel="noopener">collective efforts</a> if you can and help instigate the kind of change we need… or, if not, maybe just tell someone about it.</p>
   <p>Thanks.</p>
 
 ]]></content>
