@@ -4,7 +4,7 @@
         <title>bkardell.com rss feed</title>
         <link>http://bkardell.com/</link>
         <description>Just the bkardell.com rss feed</description>
-        <lastBuildDate>Wed, 03 May 2023 19:08:24 GMT</lastBuildDate>
+        <lastBuildDate>Wed, 03 May 2023 19:10:00 GMT</lastBuildDate>
         <docs>http://blogs.law.harvard.edu/tech/rss</docs>
         <generator>awesome mix</generator>
         <image>
@@ -75,7 +75,7 @@ You’re probably wondering how I got here…
     <p>For a young browser, app store reviews matter <em>a lot</em><sup><a href="#footnote2">[2]</a></sup>. And reviews will typically skew negative, because happy users don’t really have a good motivation to give you a positive review; they just want to do whatever they do in the browser, not jump over to the app store to say 
 
     </p><blockquote>
-      <p>It got right out of my way. ☆☆☆☆☆five stars</p>. 
+      <p>It got right out of my way. ☆☆☆☆☆ five stars</p>. 
     </blockquote>
 
     <p>Unhappy users, though: <em>they’ll</em> leave a review, because they’re frustrated and this is the only real chance they have to do anything about it.</p>
