@@ -396,20 +396,20 @@ America (art for sale)</a></li>
     document.documentElement.classList.add("lldelay");
   }, 1000);
 </script>
-    <main><div class="posted-on">Posted on </div><article posted-on="" class="sectioning">
+    <main><div class="posted-on">Posted on 05/03/2023</div><article posted-on="05/03/2023" class="sectioning">
   <h1 class="contextual-heading">Wolvic Behind-the-Scenes</h1> 
  
   <p class="segue">A little post about power dynamics, frustrations, mistakes and things I’m still learning along the way about the challenges of making The World’s Greatest Cross Device Open Source Browser for XR (or any browser, really).</p>
 
-  <p>The upcoming Wolvic release includes a fairly major API addition, but you won’t even find it in the release notes.</p>
+  <p>The next minor (not patch) release of Wolvic will very likely include a fairly major API addition, but if it does, you won’t even find it in the release notes.  Still I find myself wanting to write about it.</p>
 
-  <p>We are … {drum roll} … <strong>re</strong>-adding support for the WebVR API.</p>
+  <p>We are … {drum roll} … very probably <sup><a href="#footnote1">[1]</a></sup> <strong>re</strong>-adding support for the WebVR API.</p>
 
   <p>Sigh.</p>
 
   <p>If you're not familliar: The Web<strong>VR</strong> API was first conceived in 2014 and shipped in Firefox in 2015. It ran as an <em>origin trial</em> in Chrome itself from 2016 until 2018, but was enabled in some downstream browsers.  It has been superseded since 2018 by WebXR, which supports a superset of its use cases and addresses some UX issues caused by WebVR. It was removed from Firefox and Wolvic in early 2022.</p>
 
-  <p>And now, in spite of all of that, we're re-enabling it in Wolvic. For now, at least.</p>
+  <p>And now, in spite of all of that, we're very probably <sup><a href="#footnote1">[1]</a></sup> re-enabling it in Wolvic. For now, at least.</p>
 
   <pre>record scratch
 Freeze Frame
@@ -438,13 +438,15 @@ Yup, that’s me. You’re probably wondering how I got here…
 
     <p>But also, if we don’t tell those lies, people will give us bad ratings in the stores.</p>
 
-    <p>It makes sense, right? I don’t really blame them.  At the end of the day <em>users just don’t care who did The Bad Thing</em>. They don’t care that websites shouldn’t try use the UA string like that.  What they care about is that from their perspective it just</p>
+    <p>It makes sense, right? I don’t really blame them.  At the end of the day <em>users just don’t care who did <span style="font-family: fantasy">The Bad Thing™</span></em>.</p>
+
+    <p>They don’t care that websites shouldn’t try use the UA string like that, or any of that other unseen stuff.  What they care about is that from their perspective it just</p>
 
     <blockquote>
-      <p><em>doesn’t work in your shitty upstart browser. 1 star</em>.</p>
+      <p><em>doesn’t work in your shitty upstart browser. ☆ 1 star</em>.</p>
     </blockquote>
 
-    <p>For a young browser, app store reviews matter <em>a lot</em><sup><a href="#footnote1">[1]</a></sup>. And reviews will typically skew negative, because happy users don’t really have a good motivation to give you a positive review; they just want to do whatever they do in the browser, not jump over to the app store to say “It got right out of my way, five stars”. Unhappy users, though: <em>they’ll</em> leave a review, because they’re frustrated and this is the only real chance they have to do anything about it.</p>
+    <p>For a young browser, app store reviews matter <em>a lot</em><sup><a href="#footnote2">[2]</a></sup>. And reviews will typically skew negative, because happy users don’t really have a good motivation to give you a positive review; they just want to do whatever they do in the browser, not jump over to the app store to say “It got right out of my way, five stars”. Unhappy users, though: <em>they’ll</em> leave a review, because they’re frustrated and this is the only real chance they have to do anything about it.</p>
 
     <p>On the one hand, that kind of mechanism can be generally helpful: It gives users at least some way to apply pressure on apps to make users happy. Stores also give us ways to reply and ask questions, and to let them know their issue is fixed so that hopefully they can update their review. That happens, and in an ideal world, maybe that’s fine.</p>
 
@@ -485,7 +487,8 @@ Yup, that’s me. You’re probably wondering how I got here…
   <section> 
     <p>Footnotes</p>
     <ol>
-      <li id="footnote1">I think about these rating things in stores every time I’m shopping. It feels like they generally not great. They are a dull instrument and full of problems and bad incentives and ways to game.  <em>We should be able to do better than that</em>. For example, a small number of reviews from people I have some reason to trust is worth thousands from random internet accounts I have plenty of reason to <em>mistrust</em>.  I’m not sure how we build that yet, but maybe one of you can figure it out. Please :) If you don’t mind, and share it with the rest of the class. Thanks.</li>
+      <li id="footnote1">Assuming that we ultimately judge that this won't actually cause even worse problems after some more research.  Part of the reason we were eager to remove it early in the life of Wolvic was that there are so many of exactly the kinds of problems described here with websites or libraries <em>trying</em> to make a good accomodation but making a poor assumption.  We suspect that many things were checking for WebVR before WebXR, which would prevent the preferred APIs from being used and further entrench the focus on the deprecated ones!</li>
+      <li id="footnote2">I think about these rating things in stores every time I’m shopping. It feels like they generally not great. They are a dull instrument and full of problems and bad incentives and ways to game.  <em>We should be able to do better than that</em>. For example, a small number of reviews from people I have some reason to trust is worth thousands from random internet accounts I have plenty of reason to <em>mistrust</em>.  I’m not sure how we build that yet, but maybe one of you can figure it out. Please :) If you don’t mind, and share it with the rest of the class. Thanks.</li>
     </ol>
   </section>
 </article></main>

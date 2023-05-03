@@ -4,7 +4,7 @@
         <title>bkardell.com rss feed</title>
         <link>http://bkardell.com/</link>
         <description>Just the bkardell.com rss feed</description>
-        <lastBuildDate>Thu, 09 Feb 2023 18:20:20 GMT</lastBuildDate>
+        <lastBuildDate>Wed, 03 May 2023 18:47:10 GMT</lastBuildDate>
         <docs>http://blogs.law.harvard.edu/tech/rss</docs>
         <generator>awesome mix</generator>
         <image>
@@ -14,6 +14,109 @@
         </image>
         <copyright>All rights reserved 2018, Brian Kardell</copyright>
         <atom:link href="https://bkardell.com/blog/feed.atom" rel="self" type="application/rss+xml"/>
+        <item>
+            <title><![CDATA[Wolvic Behind-the-Scenes]]></title>
+            <link>https://bkardell.com/blog/WolvicBTS.html</link>
+            <guid>https://bkardell.com/blog/WolvicBTS.html</guid>
+            <pubDate>Wed, 03 May 2023 04:00:00 GMT</pubDate>
+            <description><![CDATA[A little post about power dynamics, frustrations, mistakes and things I’m still learning along the way about the challenges of making The World’s Greatest Cross Device Open Source Browser for XR (or any browser, really).]]></description>
+            <content:encoded><![CDATA[
+  <h1 class="contextual-heading" style="font-size: 2rem;">Wolvic Behind-the-Scenes</h1> 
+ 
+  <p class="segue">A little post about power dynamics, frustrations, mistakes and things I’m still learning along the way about the challenges of making The World’s Greatest Cross Device Open Source Browser for XR (or any browser, really).</p>
+
+  <p>The next minor (not patch) release of Wolvic will very likely include a fairly major API addition, but if it does, you won’t even find it in the release notes.  Still I find myself wanting to write about it.</p>
+
+  <p>We are … {drum roll} … very probably <sup><a href="#footnote1">[1]</a></sup> <strong>re</strong>-adding support for the WebVR API.</p>
+
+  <p>Sigh.</p>
+
+  <p>If you're not familliar: The Web<strong>VR</strong> API was first conceived in 2014 and shipped in Firefox in 2015. It ran as an <em>origin trial</em> in Chrome itself from 2016 until 2018, but was enabled in some downstream browsers.  It has been superseded since 2018 by WebXR, which supports a superset of its use cases and addresses some UX issues caused by WebVR. It was removed from Firefox and Wolvic in early 2022.</p>
+
+  <p>And now, in spite of all of that, we're very probably <sup><a href="#footnote1">[1]</a></sup> re-enabling it in Wolvic. For now, at least.</p>
+
+  <pre>record scratch
+Freeze Frame
+Yup, that’s me. You’re probably wondering how I got here…
+  </pre>
+
+  <section class="sectioning">
+    <h2 class="contextual-heading" style="font-size: 2.5rem;">Reality is Messy</h2>
+
+    <p>To reiterate, this technology</p>
+    <ul>
+      <li>Was supposed to be experimental</li>
+      <li>Was superseded <em>five years ago</em> by WebXR, which is under active development and/or partly shipping in multiple browser engines;</li>
+      <li>Has an <em>easy</em> replacement (many cases just need a library update).</li>
+    </ul>
+
+    <p>However, <em>none</em> of that really matters if you’re a “young” browser and your users complain in the app stores, because that really hampers your ability to grow.</p>
+
+    <p>And at least currently, too many do.</p>
+  </section>
+
+  <section class="sectioning">
+    <h2 class="contextual-heading" style="font-size: 2.5rem;">“user-agent” cuts browsers both ways</h2>
+
+    <p>I’ve written before (a few times actually) about our <a href="https://bkardell.com/blog/UAGottaBeKidding.html" target="_blank" rel="noopener">trials with the user agent string</a>, and sites just blocking our browser from getting immersive content and why we have to tell <a href="https://bkardell.com/blog/AFewGoodLies.html" target="_blank" rel="noopener">A Few Good Lies</a> on behalf of the user. We are the <em>user agent</em>, that’s our job.</p>
+
+    <p>But also, if we don’t tell those lies, people will give us bad ratings in the stores.</p>
+
+    <p>It makes sense, right? I don’t really blame them.  At the end of the day <em>users just don’t care who did <span style="font-family: fantasy">The Bad Thing™</span></em>.</p>
+
+    <p>They don’t care that websites shouldn’t try use the UA string like that, or any of that other unseen stuff.  What they care about is that from their perspective it just</p>
+
+    <blockquote>
+      <p><em>doesn’t work in your shitty upstart browser. ☆ 1 star</em>.</p>
+    </blockquote>
+
+    <p>For a young browser, app store reviews matter <em>a lot</em><sup><a href="#footnote2">[2]</a></sup>. And reviews will typically skew negative, because happy users don’t really have a good motivation to give you a positive review; they just want to do whatever they do in the browser, not jump over to the app store to say “It got right out of my way, five stars”. Unhappy users, though: <em>they’ll</em> leave a review, because they’re frustrated and this is the only real chance they have to do anything about it.</p>
+
+    <p>On the one hand, that kind of mechanism can be generally helpful: It gives users at least some way to apply pressure on apps to make users happy. Stores also give us ways to reply and ask questions, and to let them know their issue is fixed so that hopefully they can update their review. That happens, and in an ideal world, maybe that’s fine.</p>
+
+  </section>
+
+  <section class="sectioning">
+    <h2 class="contextual-heading" style="font-size: 2.5rem;">At the same time: You might not want to tell everyone exactly what you were doing...</h2>
+
+    <p><em>However</em>, users don’t always want to give details on what precise thing they were doing that led to them to getting frustrated enough to leave a bad review.</p>
+
+    <p>So, for example, a surprising number of sites which offer streaming video <em>don’t</em> use the <code>&lt;video&gt;</code> element. Often, instead they’ll use some library which rolls its own video streaming support, usually with device feature targeting, based on some lower-level APIs.  So, they'll offer you an immersive experience if they think that's possible.  If support for those APIs is dropped, it <em>looks like</em> video streaming broke, with no warning.  Libraries might have updates available, but sites don't always get updates like that.</p>
+
+    <p>So... For example, if your upstart browser appears to have problems with some sexually explicit streaming video sites, those people might be <em>highly motivated</em> to tell you that your browser is shitty or broken.</p>
+
+    <p>But also, that’s about all they will tell you.</p>
+
+    <p>Again, I get it!  I mean, they don’t care why it’s broken, and they don’t want to tell you what they were looking at. I can respect both of those things!</p>
+
+    <p>But… that also means it’s very hard to actually do anything about it.</p>
+
+    <p>Look, the web is really terribly, mind-bogglingly <em>huge</em> place and certainly by far the vast majority of it appears to be working just fine.  If we can identify a thing that isn’t working, we’d like to fix it. But we’re unlikely to just stumble across it ourselves.</p>
+
+    <p>The worst part about this is that I imagine it will be very hard to get those people to reconsider because it’s impossible to know when to tell them their issue is fixed, and I assume at some point they’ll just stop looking.</p>
+
+    <p>Wolvic is adding a new way to report a broken site, optionally anonoyously.  Maybe that will help this specific problem, but I’m not sure.</p>
+  </section>
+
+  <section class="sectioning">
+    <h2 class="contextual-heading" style="font-size: 2.5rem;">Help a browser out...</h2>
+    <p>I hope it’s interesting to come on this adventure of building The World’s Greatest Cross Device Open Source Browser for XR with me.</p>
+
+    <p>I hope if you know of any WebVR stuff floating around out there you’ll encourage people to update their libraries already so we can hopefully all get rid of it someday.</p>
+
+    <p>If you have Wolvic, maybe you’ll think about popping over and give it an honest rating if you haven’t already - or tell someone to try it out.</p>
+  </section>
+  <hr>
+
+  <section> 
+    <p>Footnotes</p>
+    <ol>
+      <li id="footnote1">Assuming that we ultimately judge that this won't actually cause even worse problems after some more research.  Part of the reason we were eager to remove it early in the life of Wolvic was that there are so many of exactly the kinds of problems described here with websites or libraries <em>trying</em> to make a good accomodation but making a poor assumption.  We suspect that many things were checking for WebVR before WebXR, which would prevent the preferred APIs from being used and further entrench the focus on the deprecated ones!</li>
+      <li id="footnote2">I think about these rating things in stores every time I’m shopping. It feels like they generally not great. They are a dull instrument and full of problems and bad incentives and ways to game.  <em>We should be able to do better than that</em>. For example, a small number of reviews from people I have some reason to trust is worth thousands from random internet accounts I have plenty of reason to <em>mistrust</em>.  I’m not sure how we build that yet, but maybe one of you can figure it out. Please :) If you don’t mind, and share it with the rest of the class. Thanks.</li>
+    </ol>
+  </section>
+]]></content:encoded>
+        </item>
         <item>
             <title><![CDATA[A Few Good Lies]]></title>
             <link>https://bkardell.com/blog/AFewGoodLies.html</link>
