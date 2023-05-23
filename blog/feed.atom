@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://bkardell.com/</id>
     <title>bkardell.com rss feed</title>
-    <updated>2023-05-03T19:10:00.706Z</updated>
+    <updated>2023-05-23T23:14:58.629Z</updated>
     <generator>awesome mix</generator>
     <author>
         <name>Brian Kardell</name>
@@ -14,6 +14,73 @@
     <subtitle>Just the bkardell.com rss feed</subtitle>
     <logo>http://bkardell.com/profile.jpg</logo>
     <rights>All rights reserved 2018, Brian Kardell</rights>
+    <entry>
+        <title type="html"><![CDATA[Says Who?]]></title>
+        <id>https://bkardell.com/blog/SaysWho.html</id>
+        <link href="https://bkardell.com/blog/SaysWho.html">
+        </link>
+        <updated>2023-05-23T04:00:00.000Z</updated>
+        <summary type="html"><![CDATA[Thoughts on standards and the new baseline effort.]]></summary>
+        <content type="html"><![CDATA[
+  <h1 class="contextual-heading" style="font-size: 2rem;">Says Who?</h1> 
+  <p class="segue">Thoughts on standards and the new baseline effort.</p>
+
+  <p>If you've been around me, or my writing, for any time at all, you've probably heard me ask "but what really makes it a standard"?</p>
+
+  <p>It is, for example, possible to have words approved in a standards body for which there are, for all intents and purposes, not much in the way of actual implementation or users. Conversely, it is possible to have things that had nothing to do with standards bodies and yet have dozens or hundreds of interoperable implementations and open licenses and are, in reality, much more universal.</p>
+
+  <p>At the end of the day, any real judgement kind of involves looking at the reality on the ground. It is a standard... when it is a standard.</p>  
+
+  <p>I come from Pittsburgh, and in the Steel City, outside the locker room of the Steelers (our amazing football team) it says...</p>
+
+  <figure>
+    <img src="/media/steelers-standard.jpg" alt="Text painted on the wall that says 'The standard... is the standard'.">
+  </figure>
+
+  <p>See? It's right there on the wall.</p>
+
+  <p>Still, if this makes you uncomfortable, think about an english dictionary.  The words in it are simply recognized as standards... because they are.</p>
+
+  <section class="sectioning">
+    <h2 class="contextual-heading" style="font-size: 2.5rem;">Where is the invisible line?</h2>
+
+    <p>At some point, it seems, a thing crosses an invisible line and then it's standard. But only after a gradual process to reach that point. The <em>very end</em> of that process is really rather boring because it's really just stating the obvious.</p>
+
+    <p>But where is that magical line when it comes to "the reality on the ground" for web standards?</p>
+
+    <p>There's a new effort by the WebDX Community Group called "Baseline" which attempts to idenitfy it and I'm excited because feels like it could be really valuable in several ways.</p>
+
+    <p>One that I am most keen on is using it to create a really high signal-to-noise channel for developers to subscribe to.  If we define a line right, then something <em>reaching</em> that line is very newsworthy and pretty rare, so we can <em>all</em> afford to pay some attention to it.  Imagine an RSS Feed and social media accounts that posted very rarely and only told you this Very Serious Amazing News. Yes, please, give that access to my notifcations!  I feel like that would make everything feel a lot less overwhelming and also probably markedly speed <em>real</em> adoption at scale.</p>
+
+    <p>The really tricky thing here seems to be, mainly, that it's just really hard to define where that line is in a way everyone agrees with that is actually still useful as more than a kind of historical artifact. That's not to say that such an artifact <em>isn't</em> useful to future learners, but again, by that point this will just be common knowledge.</p>
+  </section>
+  <section class="sectioning">
+    <h2 class="contextual-heading" style="font-size: 2.5rem;">Stage {x}?</h2>
+
+    <p>The new Baseline idea has a definition (as of the time of this writing, that is "supported in the last 2 major releases of certain popular browsers (Firefox, Samsung Internet, Safari and Chrome).  There was a lot of debate about it before arriving at that.  It also currently has a whole slew of issues about why that definition isn't great.</p>
+
+    <p>But maybe that's because there are actually several different lines and all of them are interesting in different ways. Think about a progress meter: there can be lots of lines along the way to "done".</p>
+
+    <p>The thing I like about the ECMA "Stages" model is that it's easy to visualize like that, and has no clever names: Just 0, 1, 2, 3, 4.  Each of those is a 'line' you pass on the way to done.  Maybe that kind of model works to discuss here too - we just need more numbers, because those are about ECMA 'done-ness' and not something like what baseline is trying to convey.</p>
+
+    <p>Something reaching stage 4 is a huge day, but it doesn't mean the on-the-ground-reality of "all users have support on their devices". In theory, at least, that could still take years to reach.</p>
+
+    <p>Conceptually speaking, we could imagine more interesting "lines" (plural) a thing would cross on the way to that day.</p>
+
+    <p>For example, the day we learn there is a final engine implementation in experimental builds passing tests is an interesting line. Maybe that's "Stage 5" in my analogy.</p>
+
+    <p>The day when it "ships without caveat in the last of the 'steward' browsers" is, in my opinion, a <strong><em>super</em></strong> interesting line (that is, the steward browser that primarily maintains the engine itself). That seems like an especially newsworthy day we should pay attention to because many people will be working on projects that won't ship for a long time, and maybe it's worth considering using it. Maybe that's like "Stage 6" in my analogy.</p>
+
+    <p>But that also doesn't mean all of the downstream browsers have released support - that can take time. If you're just starting on a months or year long project, that's probably pretty safe.  There's always also a risk that downstream browsers can choose not to adopt a new feature for some reason. Many downstream browsers have considerable support differences with certain APIs (web speech, for example).  Not much you can do about that, but what does it mean? Is Web Speech a standard? Is it “baseline”? There are at least tens of millions of browser instances out there that lack support, but a few billion that don't.</p>
+
+    <p>Even in the steward's own browser (ie, Chrome, Firefox or Safari), it's not as if releasing a new version is a lightswitch that updates all of the devices in the world. There are lots of things that prevent or delay updating:  Corporate controls, OS limits/settings. In some cases, a user interaction is simply required and for whatever reason, people just... don't, for long stretches of time.</p>
+
+    <p>So, what should baseline use?  Any of them? There probably several useful 'lines' (or stages, if that is easier to imagine) worth discussing.  I guess one of those can be called "baseline" - I'm just not really sure where that is in this spectrum. I'm curious for more your thoughts!</p>
+
+    <p>Feel free to hit me up on any of the social medias. Tweet, toot or skeet at me if you like.  Or, even better: If you're interested in contributing to the thinking around this, it's part of the <a href="https://www.w3.org/community/webdx/">Web Platform DX Community Group</a> which you can participate in.  This work is being tracked and discussed mainly in its <a href="https://github.com/web-platform-dx/feature-set">Feature-Set Repository</a> on GitHub.  Participation is welcome.</p>
+ </section>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[Wolvic Behind-the-Scenes]]></title>
         <id>https://bkardell.com/blog/WolvicBTS.html</id>
