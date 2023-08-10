@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://bkardell.com/</id>
     <title>bkardell.com rss feed</title>
-    <updated>2023-05-23T23:14:58.629Z</updated>
+    <updated>2023-08-10T12:14:53.980Z</updated>
     <generator>awesome mix</generator>
     <author>
         <name>Brian Kardell</name>
@@ -14,6 +14,206 @@
     <subtitle>Just the bkardell.com rss feed</subtitle>
     <logo>http://bkardell.com/profile.jpg</logo>
     <rights>All rights reserved 2018, Brian Kardell</rights>
+    <entry>
+        <title type="html"><![CDATA[Igalia: Mid-season Power Rankings]]></title>
+        <id>https://bkardell.com/blog/2023-Mid-Season-Power-Rankings.html</id>
+        <link href="https://bkardell.com/blog/2023-Mid-Season-Power-Rankings.html">
+        </link>
+        <updated>2023-08-10T04:00:00.000Z</updated>
+        <summary type="html"><![CDATA[Let’s take a look at how the year is stacking up in terms of Open Source contributions. If this were an episode of Friends its title would be "The One With the Charts".]]></summary>
+        <content type="html"><![CDATA[
+  <h1 class="contextual-heading" style="font-size: 2rem;">Igalia: Mid-season Power Rankings</h1>
+  
+
+  <p class="segue">Let’s take a look at how the year is stacking up in terms of Open Source contributions. If this were an episode of Friends its title would be "The One With the Charts".</p>
+
+  <p>I’ve written before about how I have personally come to really appreciate the act of making a simple list of “things recently accomplished”. It’s always eye opening, and for me at least, usually therapeutic.</p>
+
+  <p>For me personally, it’s been super weird first half of the year and… I feel like I could use a nice list.</p>
+
+  <section class="sectioning">
+    <h2 class="contextual-heading" style="font-size: 2.5rem;">It's been a weird year, right?</h2>
+     
+    <p>I mean, not just for me personally, for all of us I guess, right?</p>
+ 
+    <p>Mass layoffs everywhere for a while, new shuffling of people we know from Google to Shopify, Mozilla to Google, Google to Igalia, Mozilla to Igalia, Mozilla to Apple, Google to Meta… <a href="https://en.wikipedia.org/wiki/Who's_on_First%3F" target="_blank" rel="noopener">Who’s on first?  Third base!</a></p>
+
+    <p>LLMs are suddenly everywhere.  All of the “big” CSS features people have been clamouring for forever are suddenly right here.  HTML finally got <code>&lt;dialog&gt;</code> and now is getting a popover (via attributes). Apple’s got some funky XR glasses coming.  There is suddenly significant renewed interest in <em>two</em> novel web engines. And that’s just <em>some</em> of the <em>tech</em> stuff.</p>
+
+    <p>So yeah… Let’s see what, if any, impacts all of this are having on the state of projects Igalia works on by looking at our commits so far this year…  Note that Igalia's slice of the pie is separated in each of the charts for quick identification...</p>
+
+    <details>
+      <summary>Quick disclaimers</summary>
+      <p>All of these stats are based on commits publicly available through their respective gits.  This is of course an imperfect measure for many reasons - some commits are huge, some are small. Some small commits are really hard while some large commits are easy, but verbose. Finally, the biggest challenge, even if we accept these metrics is mapping commits to organizations. We use a fairly elaborate system and many checkpoints - we collaborate annually with several of the projects to cross check these mappings. Still, you'll see lots of entries in these charts with just an individual's name.  Often these <em>are</em> individual contractors or contributors, but sometimes it's just that we cannot currently map them some other way. If you see one that should be counted differently, please let me know!  </p>
+    </details>
+  </section>
+  <section class="sectioning">
+    <h2 class="contextual-heading" style="font-size: 2.5rem;">The Big Web Projects</h2>
+    <p>Igalia is still the one (<a href="https://www.youtube.com/watch?v=S5aMMRes2u4" target="_blank" rel="noopener">and still having fun</a>) with the most commits in Chromium and WebKit after Google and Apple, respectively, as we'll see... But we can add some more #1’s this year - even some where we’re not excluding the steward…</p>
+
+    <section class="sectioning">
+      <h3 class="contextual-heading" style="font-size: 3rem;">Chromium</h3>
+      <p>Igalia claims a whopping 41.9% of the (non-Google) commits so far in 2023!! That’s more than Microsoft, Intel, Opera, Samsung and ARM combined!!! Yowza!</p>
+
+      <figure>
+          <img src="/media/2023/chromium.svg" alt="">
+          <details>
+            <summary>data</summary>
+            <div><h3>Top 10 contributors</h3><table><tbody><tr><th>Contributor</th><th>Contributions</th></tr><tr><td>Igalia</td><td>41.56%</td></tr><tr><td>Microsoft</td><td>16.42%</td></tr><tr><td>Intel</td><td>11.74%</td></tr><tr><td>Opera</td><td>4.88%</td></tr><tr><td>Ho Cheung</td><td>3.92%</td></tr><tr><td>Samsung</td><td>2.08%</td></tr><tr><td>Stephan Hartmann</td><td>1.62%</td></tr><tr><td>ARM</td><td>1.58%</td></tr><tr><td>Naver Corporation</td><td>1.48%</td></tr><tr><td>Bytedance</td><td>1.12%</td></tr><tr></tr><tr><td>127 other committers</td><td>14%</td></tr></tbody></table></div>
+          </details>
+      </figure>
+
+      <p>As you read the others, keep in mind that the chromium repository actually has more than chrome inside it, so comparisons of these aren't Apples-to-Apples (or, Googles or foxes).</p>
+    </section>
+
+    <section class="sectioning">
+      <h3 class="contextual-heading" style="font-size: 3rem;">WebKit</h3>
+      <p>52.6% of the non-Apple commits in WebKit so far this year are from Igalians. It's interesting to note that a huge 4.9% of 
+      all of these are from accounts with less than 10 commits this year! As a percentage, that's the most of any of the 3 main web engines!!</p>
+      <figure>
+          <img src="/media/2023/webkit.svg" alt="">
+      </figure>   
+      <details>
+        <summary>data</summary>
+        <div><h3>Top 10 contributors</h3><table><tbody><tr><th>Contributor</th><th>Contributions</th></tr><tr><td>Igalia</td><td>54.94%</td></tr><tr><td>Sony</td><td>18.29%</td></tr><tr><td>Ahmad Saleem</td><td>8.81%</td></tr><tr><td>Red Hat</td><td>5.50%</td></tr><tr><td>Rose</td><td>2.69%</td></tr><tr><td>open-tec.co.jp</td><td>1.96%</td></tr><tr><td>warlow.dev</td><td>1.91%</td></tr><tr><td>umich.edu</td><td>0.62%</td></tr><tr><td>Alexey Knyazev</td><td>0.51%</td></tr><tr><td>Google</td><td>0.45%</td></tr><tr><td>40 other committers</td><td>4%</td></tr></tbody></table></div>
+      </details>
+    </section>
+
+    <section class="sectioning">
+      <h3 class="contextual-heading" style="font-size: 3rem;">Firefox</h3>
+      <p>We're sitting at the #5 spot (excluding Mozilla) with 6.5% of commits.  Firefox is, in a lot of ways, the trickiest to describe, but just look at it: It's very diverse!  As the inventors of modern open source, I guess it makes sense.  The mozilla-central repository has the most indidivual significant contributors as well as a really long line of tiny contributors.  The tiny contributors (less than 10 commits) contributed 3.85% (compared to 4.85% in WebKit, for example).  However, there are also a few external contributors who are just astoundingly profilfic (some of these bigger slices represent hundreds of commits) and such a number of significant indivial contributors, it amounts to a lot.</p>
+      <figure>
+        <img src="/media/2023/firefox.svg" alt="">
+        <details>
+          <summary>data</summary>
+          <div><h3>Top 10 contributors</h3><table><tbody><tr><th>Contributor</th><th>Contributions</th></tr><tr><td>André Bargull</td><td>10.82%</td></tr><tr><td>Red Hat</td><td>9.26%</td></tr><tr><td>Birchill</td><td>7.77%</td></tr><tr><td>Greg Tatum</td><td>6.87%</td></tr><tr><td>Gregory Pappas</td><td>6.81%</td></tr><tr><td>Igalia</td><td>6.67%</td></tr><tr><td>Robert Longson</td><td>3.85%</td></tr><tr><td>CanadaHonk</td><td>3.22%</td></tr><tr><td>drnd.me</td><td>3.02%</td></tr><tr><td>lissyx.dyndns.org</td><td>2.36%</td></tr><tr><td>201 other committers</td><td>39%</td></tr></tbody></table></div>
+        </details>
+      </figure> 
+    </section>
+
+
+    <section class="sectioning">
+      <h3 class="contextual-heading" style="font-size: 3rem;">Pause for a Note</h3>
+      <p>When you look at these charts, it's really heartening to 
+      see how many people and organizations care and contribute.  
+      Especially when you look at the Mozilla/Firefox example, it
+      really gives the impression that that project is just a million
+      volunteers.  But, it's important to keep it all in perspective too.  WebKit has about 50 contributing orgs and individuals, Chrome about 140 and Firefox about 200.  A lot more significant a % of contributions come from individuals in Mozilla.  Importantly: In <em>all of these projects, the steward org's contributions absolutely dwarf the rest of the world's contributions combined:</em></p>
+      <figure> 
+          <div style="display: grid; grid-template-columns: 1fr 1fr 1fr;">
+              <img src="/media/2023/moz.svg" style="width: 100%" title="mozilla-central - mozilla contributed 87.2% of commits">
+              <img src="/media/2023/apple-webkit.svg" style="width: 100%" title="webkit - apple contributed 78.1% of commits">
+              <img src="/media/2023/google-chrome.svg" style="width: 100%" title="chromium - google committed 95.5% of commits">
+          </div>
+          <figcaption>A version of the pies showing the steward's contributions, for scale (Mozilla contributed 87.2% of all commits, Apple 78.1% and Google 95.5% to their respective projects).</figcaption>
+      </figure> 
+      <p>If you think this is astounding, please check out my post <a href="https://bkardell.com/blog/Webrise.html">Webrise</a> and our Web Ecosystem Health series on the <a href="https://www.igalia.com/24-7/chats">Igalia Chats Podcast</a></p>
+    </section>
+
+
+    <section class="sectioning">
+      <h3 class="contextual-heading" style="font-size: 3rem;">Wolvic</h3>
+      <p>A new #1 in the reports.  I guess it should come as no suprise at all that we're #1 in terms of commits to our Wolvic XR browser.  It looks at lot like other projects in terms of the steward's balance.  What's more interesting, I think, is that its funding model is based on <a href="https://wolvic.com/en/pack/">partnerships with several organizations and a collective</a> rather than Igalia as a "go it alone" source.  
+      </p>
+      <figure>
+          <img src="/media/2023/wolvic.svg" alt="">
+          <details>
+            <summary>data</summary>
+            <div><h3>Top 10 contributors</h3><table><tbody><tr><th>Contributor</th><th>Contributions</th></tr><tr><td>Igalia</td><td>94.90%</td></tr><tr><td>opensuse.org</td><td>0.77%</td></tr><tr><td>ratcliffefamily.org</td><td>0.77%</td></tr><tr><td>gallegonovato</td><td>0.51%</td></tr><tr><td>net-c.ca</td><td>0.51%</td></tr><tr><td>Ayaskant Panigrahi</td><td>0.51%</td></tr><tr><td>Anushka Chakraborty</td><td>0.26%</td></tr><tr><td>Ana2k</td><td>0.26%</td></tr><tr><td>Luna Jernberg</td><td>0.26%</td></tr><tr><td>zohocorp.com</td><td>0.26%</td></tr></tbody></table></div>
+          </details>
+      </figure>   
+    </section>
+
+    <section class="sectioning">
+      <h3 class="contextual-heading" style="font-size: 3rem;">Servo</h3>
+      <p>This year, thanks to some new funding and internal investment we can add Servo to a very special #1 list!  Igalia is second to no one in terms of commits there either with 51.5% of <em>all commits</em>!  16.1% of commits in servo are from unmappable committers with less than 10 commits so far this year.</p>
+      <figure>
+          <img src="/media/2023/servo.svg" alt="">
+          <details>
+            <summary>data</summary>
+            <div><h3>Top 10 contributors</h3><table><tbody><tr><th>Contributor</th><th>Contributions</th></tr><tr><td>Igalia</td><td>52.19%</td></tr><tr><td>Mozilla</td><td>25.68%</td></tr><tr><td>sagudev</td><td>5.09%</td></tr><tr><td>Pu Xingyu</td><td>2.72%</td></tr><tr><td>michaelgrigoryan25</td><td>2.01%</td></tr><tr><td>Alex Touchet</td><td>1.66%</td></tr><tr><td>2shiori17</td><td>1.54%</td></tr><tr><td>cybai (Haku)</td><td>1.18%</td></tr><tr><td>Yutaro Ohno</td><td>0.71%</td></tr><tr><td>switchpiggy</td><td>0.59%</td></tr></tbody></table></div>
+          </details>
+      </figure>   
+    </section>
+
+
+    <section class="sectioning">
+      <h3 class="contextual-heading" style="font-size: 3rem;">Test-262</h3>
+      <p>Test-262 is the conformance test suite for ECMA work (JavaScript).  I guess you could say we're doing a lot of work there as well, because guess who's got the most commits there? If you guessed Igalia, you'd be right, with 53.4% of all commits!</p>
+      <figure>
+          <img src="/media/2023/262.svg" alt="">
+      </figure>
+      <details>
+        <summary>data</summary>
+        <div><h3>Top 10 contributors</h3><table><tbody><tr><th>Contributor</th><th>Contributions</th></tr><tr><td>Igalia</td><td>53.64%</td></tr><tr><td>Google</td><td>11.26%</td></tr><tr><td>Justin Grant</td><td>10.60%</td></tr><tr><td>Richard Gibson</td><td>3.97%</td></tr><tr><td>André Bargull</td><td>3.31%</td></tr><tr><td>Jordan Harband</td><td>3.31%</td></tr><tr><td>Bocoup</td><td>3.31%</td></tr><tr><td>Veera</td><td>2.65%</td></tr><tr><td>Huáng Jùnliàng</td><td>1.99%</td></tr><tr><td>José Julián Espina</td><td>1.32%</td></tr></tbody></table></div>
+      </details>
+      <p>Note that total number of commits in Test262 is comparatively rather small as compared to many of the other projects here.</p>
+    </section>
+ 
+    <section class="sectioning">
+      <h3 class="contextual-heading" style="font-size: 3rem;">Babel</h3>
+      <p>Igalians are now the #1 contributors to Babel, contributing 46.6% of all commits so far this year!</p>
+      <figure>
+          <img src="/media/2023/babel.svg" alt="">
+          <details>
+            <summary>data</summary>
+            <div><h3>Top 10 contributors</h3><table><tbody><tr><th>Contributor</th><th>Contributions</th></tr><tr><td>Igalia</td><td>46.35%</td></tr><tr><td>Huáng Jùnliàng</td><td>22.32%</td></tr><tr><td>liuxingbaoyu</td><td>19.31%</td></tr><tr><td>Jonathan Browne</td><td>0.86%</td></tr><tr><td>Avery</td><td>0.86%</td></tr><tr><td>fisker Cheung</td><td>0.86%</td></tr><tr><td>Dimitri Papadopoulos Orfanos</td><td>0.43%</td></tr><tr><td>FabianWarnecke</td><td>0.43%</td></tr><tr><td>Abdulaziz Ghuloum</td><td>0.43%</td></tr><tr><td>magic-akari</td><td>0.43%</td></tr></tbody></table></div>
+          </details>
+      </figure> 
+    </section>  
+
+    <section class="sectioning">
+      <h3 class="contextual-heading" style="font-size: 3rem;">V8</h3>
+      <p>Igalia is the #7 contributor to V8 (exclulding Google)! This is a pretty busy repo and it's interesting that 6.36% of these commits are from the unmapped/individual contributors with less than ten commits so far this year.</p>
+      <figure>
+          <img src="/media/2023/v8.svg" alt="">
+          <details>
+            <summary>data</summary>
+            <div><h3>Top 10 contributors</h3><table><tbody><tr><th>Contributor</th><th>Contributions</th></tr><tr><td>Google</td><td>85.66%</td></tr><tr><td>Red Hat</td><td>2.98%</td></tr><tr><td>Intel</td><td>2.57%</td></tr><tr><td>loongson.cn</td><td>2.09%</td></tr><tr><td>iscas.ac.cn</td><td>1.66%</td></tr><tr><td>Microsoft</td><td>1.13%</td></tr><tr><td>ARM</td><td>0.86%</td></tr><tr><td>Igalia</td><td>0.79%</td></tr><tr><td>Bytedance</td><td>0.41%</td></tr><tr><td>eswincomputing.com</td><td>0.34%</td></tr></tbody></table></div>
+          </details>
+      </figure> 
+      <p>Google's contributions account for a giant 87.5% of all commits here as well.</p>
+    </section>  
+  </section>
+
+  <section class="sectioning">
+    <h2 class="contextual-heading" style="font-size: 2.5rem;">But that's not all!</h2>
+    <p>All of the above is just looking specifically at the big web projects because, you know, the web is sort of my thing.  If you're reading my blog, there's a pretty good chance it's your thing too.  But Igalia does <em>way more than that</em>, if you can believe it. I probably don't talk about it enough, but it's pretty amazing.  I suppose I can't give a million more charts, but here are just a few more highlights of other notable projects and specifications where Igalia has been playing a big role... (Keep in mind that specifications move a lot more slowly and so have generally far less commits)
+    </p>
+
+    <ul>
+      
+      <li><strong>HTML</strong>: Igalians were #3 among contribtor commits to HTML with 8.94% so far this year (behind Google and Apple).</li>
+
+      <li><strong>Web Assembly</strong>: Igalia is the #3 contributor to Web Assembly with 8.75% of the commits so far this year!</li>
+
+      <li><strong>ARIA</strong>: So far this year, Igalia is the #1  contributor to the ARIA repo with 19.4% of commits!</li>
+
+      <li><strong>NativeScript</strong>: Igalia is currently the #1 contributor so far this year to the NativeScript repository with 58.3% of all commits!</li>
+
+      <li><strong>GStreamer</strong> GStreamer is widely used and powerful open source multimedia framework. Igalia is the #2 contributor there!</li>
+
+      <li><strong>VK-GL-CTS: </strong> The official Kronos OpenGL and Vulkan conformance test suite (graphics).  It would be a massive understatement to say that Igalia has been a major contributor: We're the #1 contributor there with 31.1% of all commits.</li>
+
+      <li><strong>Mesa: </strong> The Mesa 3D Graphics Library is huge and contains open source implementations of pretty much every graphical standard (Vulkan, as mentioned above, for example).  Igalia is the #5 contributor there so far this year, contributing 6.62% of all commits.</li>
+
+      <li><strong>Piglit</strong>: Piglit is an open-source test suite for OpenGL implementations.  Igalia is the #5 contributor there with 6.86%<p></p></li>
+
+
+    </ul>
+  </section>
+
+  <section class="sectioning">
+    <h2 class="contextual-heading" style="font-size: 2.5rem;">Wrapping up...</h2>
+    <p>It's always amazing to me to look at the data.  I hope it's interesting to others too.  There are, of course, lots of reasons that all of the committers do what they do, but ultimately, open source development and maintenance benefits us all.  The reason that Igalia is able to do all of this is that we are funded by a diverse array of clients making things downstream with needs.</p>
+
+    <p>You know where to find us...</p>
+  </section>
+
+   
+
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[Says Who?]]></title>
         <id>https://bkardell.com/blog/SaysWho.html</id>
@@ -4169,30 +4369,6 @@ customElements.define('x-counter', Counter);</code></pre>
 ]]></content>
     </entry>
     <entry>
-        <title type="html"><![CDATA[2 Minute Standards]]></title>
-        <id>https://bkardell.com/blog/2MinuteStandards.html</id>
-        <link href="https://bkardell.com/blog/2MinuteStandards.html">
-        </link>
-        <updated>2019-08-20T04:00:00.000Z</updated>
-        <summary type="html"><![CDATA[A short explanation of a new effort]]></summary>
-        <content type="html"><![CDATA[
-    <h1 class="contextual-heading" style="font-size: 2rem;">2 Minute Standards</h1>
-    <p class="segue">A short explanation of a new effort</p>
-
-    <p>For a while now, we've been running some 'outreach groups'.  Originally started informally by my colleague at <a href="https://igalia.com" rel="nofollow">Igalia, </a><a href="https://twitter.com/littledan" rel="nofollow">Dan Ehrenberg</a>, it's become a set of monthly meetings with various groups of stakeholders in <a href="https://tc39.github.io" rel="nofollow">TC39</a> and the Web at large which I really look forward to.  The <a href="https://github.com/js-outreach/js-outreach-groups" rel="nofollow">groups</a> are meetings of people who work on Tooling, people who work on Frameworks and Libraries and Educators, with folks who work on standards.  The goals of all of them, at the end of the day, is to figure out how we all work better, together.</p>
-    
-    <p>The Educators Group has talked a bit about a number of efforts, but there's one conversation we've been having that I think is pretty interesting. I dont know of any developer who isn't interested in what is going on in standards, but the economics of this is currently kind of hard. We're interested in a whole bunch of other things too. There's lots of good content - too much in fact, coming at us from a million directions and it's all competing for our time and attention. We have jobs, and families, and pets, hobbies and lives. I love a lot of long form things, I'm excited when I see them in my stream, but they pile up and I have to choose. I only have so many slots of time where I can actually afford to consume 10, 15, 30 or 40 minutes worth of information. It can feel a little overwhelming sometimes.</p>
-
-    <p>So, we're going to try something new: 2 Minute Standards.  Think of it as "standards news, in brief".  The basic idea is pretty simple: Like a news segment, it's got to contain pertinent facts, more than a tweet - but it's air time is limited, as the name would suggest, to 2 Minutes.  That can come in a number of forms: An article that is 500 words or less, a two minute video, or a short web comic/zine.  The idea though is to ultimately give developers some channel with reasonable economics for staying 'generally informed'.  In the end, that's frequently what we want anyways: We can't know everything, we just need to know <em>enough</em> to know what it is, why it is, and that it is there when we're ready to learn more.  We'd like to be able to roughly understand it if it comes up. A maximum of 2 minutes per day, and almost certainly not even that much, seems... unintimidating and managable.</p>
-
-    <p>So, that's the idea.  We're still discussing many of the details about how to make this really 'click' in a bigger way: How to create as a sort of channel you can follow?  For now, it seems better to start with something simple and perhaps to begin to get feedback on the idea.  To this end, we'll post things with the hashtag #StandardsIn2Min, and others can too. If you see something fly by with the hashtag you can always find it again later on the twitter feed and, hopefully, expect that it will take no more than 2 minutes to consume.  However, we will also manage the Twitter account <a href="https://twitter.com/StandardsIn2Min" rel="nofollow">@StandardsIn2Min</a>, where we'll work to curate those hashtags too and create a manageable (honestly, probably slow) pace that never asks for more than two minutes of your attention in a day to keep up. Let us know what you think about the idea!</p>
-    
-
-    <p class="thanks-to">Thanks to the <a href="https://github.com/js-outreach/js-outreach-groups" rel="nofollow">educators group</a> for all of their help discussing and creating, and especially to <a href="https://twitter.com/laurieontech" rel="nofollow">Laurie Barth</a> and <a href="https://twitter.com/jorydotcom" rel="nofollow">Jory Burson</a> for helping get this post put together quickly!
-    </p>
-]]></content>
-    </entry>
-    <entry>
         <title type="html"><![CDATA[Top Level Await: 2 Minute Standards]]></title>
         <id>https://bkardell.com/blog/TopLevelAwaitIn2m.html</id>
         <link href="https://bkardell.com/blog/TopLevelAwaitIn2m.html">
@@ -4259,6 +4435,30 @@ export const _internalPromise =
 		});</code></pre>
 	<p>The net result is that modules are fetched in parallel and executed in order until the first await, and then waits until they are all complete before resolving the module itself.</p>
 	</section>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[2 Minute Standards]]></title>
+        <id>https://bkardell.com/blog/2MinuteStandards.html</id>
+        <link href="https://bkardell.com/blog/2MinuteStandards.html">
+        </link>
+        <updated>2019-08-20T04:00:00.000Z</updated>
+        <summary type="html"><![CDATA[A short explanation of a new effort]]></summary>
+        <content type="html"><![CDATA[
+    <h1 class="contextual-heading" style="font-size: 2rem;">2 Minute Standards</h1>
+    <p class="segue">A short explanation of a new effort</p>
+
+    <p>For a while now, we've been running some 'outreach groups'.  Originally started informally by my colleague at <a href="https://igalia.com" rel="nofollow">Igalia, </a><a href="https://twitter.com/littledan" rel="nofollow">Dan Ehrenberg</a>, it's become a set of monthly meetings with various groups of stakeholders in <a href="https://tc39.github.io" rel="nofollow">TC39</a> and the Web at large which I really look forward to.  The <a href="https://github.com/js-outreach/js-outreach-groups" rel="nofollow">groups</a> are meetings of people who work on Tooling, people who work on Frameworks and Libraries and Educators, with folks who work on standards.  The goals of all of them, at the end of the day, is to figure out how we all work better, together.</p>
+    
+    <p>The Educators Group has talked a bit about a number of efforts, but there's one conversation we've been having that I think is pretty interesting. I dont know of any developer who isn't interested in what is going on in standards, but the economics of this is currently kind of hard. We're interested in a whole bunch of other things too. There's lots of good content - too much in fact, coming at us from a million directions and it's all competing for our time and attention. We have jobs, and families, and pets, hobbies and lives. I love a lot of long form things, I'm excited when I see them in my stream, but they pile up and I have to choose. I only have so many slots of time where I can actually afford to consume 10, 15, 30 or 40 minutes worth of information. It can feel a little overwhelming sometimes.</p>
+
+    <p>So, we're going to try something new: 2 Minute Standards.  Think of it as "standards news, in brief".  The basic idea is pretty simple: Like a news segment, it's got to contain pertinent facts, more than a tweet - but it's air time is limited, as the name would suggest, to 2 Minutes.  That can come in a number of forms: An article that is 500 words or less, a two minute video, or a short web comic/zine.  The idea though is to ultimately give developers some channel with reasonable economics for staying 'generally informed'.  In the end, that's frequently what we want anyways: We can't know everything, we just need to know <em>enough</em> to know what it is, why it is, and that it is there when we're ready to learn more.  We'd like to be able to roughly understand it if it comes up. A maximum of 2 minutes per day, and almost certainly not even that much, seems... unintimidating and managable.</p>
+
+    <p>So, that's the idea.  We're still discussing many of the details about how to make this really 'click' in a bigger way: How to create as a sort of channel you can follow?  For now, it seems better to start with something simple and perhaps to begin to get feedback on the idea.  To this end, we'll post things with the hashtag #StandardsIn2Min, and others can too. If you see something fly by with the hashtag you can always find it again later on the twitter feed and, hopefully, expect that it will take no more than 2 minutes to consume.  However, we will also manage the Twitter account <a href="https://twitter.com/StandardsIn2Min" rel="nofollow">@StandardsIn2Min</a>, where we'll work to curate those hashtags too and create a manageable (honestly, probably slow) pace that never asks for more than two minutes of your attention in a day to keep up. Let us know what you think about the idea!</p>
+    
+
+    <p class="thanks-to">Thanks to the <a href="https://github.com/js-outreach/js-outreach-groups" rel="nofollow">educators group</a> for all of their help discussing and creating, and especially to <a href="https://twitter.com/laurieontech" rel="nofollow">Laurie Barth</a> and <a href="https://twitter.com/jorydotcom" rel="nofollow">Jory Burson</a> for helping get this post put together quickly!
+    </p>
 ]]></content>
     </entry>
     <entry>
