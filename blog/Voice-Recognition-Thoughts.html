@@ -1,14 +1,16 @@
 <html lang="en" resource-type="blogpost"><head>  
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="view-transition" content="same-origin"> 
+
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:site" content="@briankardell">
     <meta name="twitter:creator" content="@briankardell">
     <meta name="twitter:title" content="Thoughts on Voice Recognition: Web Speech APIs Part IV">
     <meta name="twitter:description" content="This is part of a series about making the browser speak and listen to speech. In my last post You Don't Say: Web Speech APIs Part III, I talked about the recognition interfaces: li">
     
-    <meta name="monetization" content="$ilp.uphold.com/kKU4GXiRwhnf ">
-
+    <!-- meta name="monetization" content="$ilp.uphold.com/kKU4GXiRwhnf " -->
+    
     <link rel="alternate" type="application/rss+xml" href="https://bkardell.com/blog/feed.rss" title="bkardell.com/blog rss feed">
     <title>Thoughts on Voice Recognition: Web Speech APIs Part IV</title> 
     <style>.captioned-image {
@@ -302,7 +304,7 @@ spicy-sections.single {
 }
 
 </style>
-    <style>
+    <style> 
       .captioned-image { font-size: 0.9rem; }
       .thanksTo { font-style: italic; font-size: 0.8rem; }
     </style>
@@ -366,6 +368,8 @@ spicy-sections.single {
             <li><a rel="me" href="https://medium.com/@briankardell">Medium</a></li>
             <li><a rel="me" href="https://twitter.com/briankardell">Twitter</a></li>
             <li><a rel="me" href="https://github.com/bkardell/">Github</a></li>
+            <li><a rel="me" href="https://toot.cafe/@bkardell">Mastodon</a></li>
+            <li><a rel="me" href="https://bsky.app/profile/bkardell.com">Bluesky</a></li>
             <li><a rel="me" href="https://codepen.io/bkardell">Codepen</a></li>
             <li><a rel="me" href="https://www.linkedin.com/in/brian-kardell-08a4264">LinkedIn</a></li>
             <li><a rel="me" href="https://www.instagram.com/kardellbrian">Instagram (for
@@ -722,7 +726,7 @@ speechRecognizer.audioContext.stop()</code></pre>
 
 </article></main>
  
-  
+   
   <script>
     //import { MediaAffordancesElement } from "./MediaAffordancesElement.js";
     class MediaAffordancesElement extends HTMLElement {
@@ -1180,16 +1184,26 @@ speechRecognizer.audioContext.stop()</code></pre>
               if (
                 this.affordanceState.current === "tab-bar" ||
                 this.affordanceState.current === "exclusive-collapse"
-              ) {
+              ) { 
                 if (evt.keyCode == 37 || evt.keyCode == 38) {
                   labels[prev].affordanceState.activate();
                 } else if (evt.keyCode == 39 || evt.keyCode == 40) {
                   labels[next].affordanceState.activate();
                 }
+              } else if (evt.keyCode == 32 && this.affordanceState.current === 'collapse') {
+                evt.preventDefault()
               }
             },
             false
           );
+          this.addEventListener(
+            "keyup", 
+            evt => {
+              if (evt.keyCode == 32 && this.affordanceState.current === 'collapse') {
+                evt.target.closest('[affordance]').affordanceState.activate()
+                evt.preventDefault()
+              }
+            })
         }
 
         connectedCallback() {
