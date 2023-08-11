@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://bkardell.com/</id>
     <title>bkardell.com rss feed</title>
-    <updated>2023-08-11T18:18:06.596Z</updated>
+    <updated>2023-08-11T19:36:16.555Z</updated>
     <generator>awesome mix</generator>
     <author>
         <name>Brian Kardell</name>
@@ -69,7 +69,7 @@
     <section class="sectioning">
       <h3 class="contextual-heading" style="font-size: 3rem;">WebKit</h3>
       <p>52.6% of the non-Apple commits in WebKit so far this year are from Igalians. It's interesting to note that a huge 4.9% of 
-      all of these are from accounts with less than 10 commits this year! As a percentage, that's the most of any of the 3 main web engines!!</p>
+      all of these are from accounts with less than 10 commits this year - pretty close to what it was in Firefox!</p>
       <figure>
           <img src="/media/2023/webkit.svg" alt="">
       </figure>   
@@ -81,12 +81,12 @@
 
     <section class="sectioning">
       <h3 class="contextual-heading" style="font-size: 3rem;">Firefox</h3>
-      <p>We're sitting at the #6 spot (excluding Mozilla) with 7.61% of commits.  Firefox is, in a lot of ways, the trickiest to describe, but just look at it: It's very diverse!  As the inventors of modern open source, I guess it makes sense.  The mozilla-central repository has the most indidivual significant contributors as well as a really long line of tiny contributors.  The tiny contributors (less than 10 commits) contributed 3.85% (compared to 4.85% in WebKit, for example).  However, there are also a few external contributors who are just astoundingly profilfic (some of these bigger slices represent hundreds of commits) and such a number of significant indivial contributors, it amounts to a lot.</p>
+      <p>We're sitting at the #5 spot (excluding Mozilla) with 8.8% of commits.  Firefox is, in a lot of ways, the trickiest to describe, but just look at it: It's very diverse!  As the inventors of modern open source, I guess it makes sense.  The mozilla-central repository has the most indidivual significant contributors as well as a really long line of tiny contributors.  The tiny contributors (less than 10 commits) contributed 5.2% (compared to 4.85% in WebKit, for example).  However, there are also a few external contributors who are just astoundingly profilfic (some of these bigger slices represent hundreds of commits) and such a number of significant indivial contributors, it amounts to a lot.</p>
       <figure>
         <img src="/media/2023/firefox.svg" alt="">
         <details>
           <summary>data</summary>
-          <div><h3>Top 10 contributors</h3><table><tbody><tr><th>Contributor</th><th>Contributions</th></tr><tr><td>André Bargull</td><td>12.34%</td></tr><tr><td>Red Hat</td><td>10.56%</td></tr><tr><td>Birchill</td><td>8.86%</td></tr><tr><td>Greg Tatum</td><td>7.84%</td></tr><tr><td>Gregory Pappas</td><td>7.76%</td></tr><tr><td>Igalia</td><td>7.61%</td></tr><tr><td>Robert Longson</td><td>4.39%</td></tr><tr><td>CanadaHonk</td><td>3.67%</td></tr><tr><td>Masatoshi Kimura</td><td>2.27%</td></tr><tr><td>ganna</td><td>1.89%</td></tr><tr><td>190 other committers</td><td>33%</td></tr></tbody></table>
+          <div><h3>Top 10 contributors</h3><table><tbody><tr><th>Contributor</th><th>Contributions</th></tr><tr><td>André Bargull</td><td>14.28%</td></tr><tr><td>Red Hat</td><td>12.22%</td></tr><tr><td>Birchill</td><td>10.25%</td></tr><tr><td>Gregory Pappas</td><td>8.98%</td></tr><tr><td>Igalia</td><td>8.80%</td></tr><tr><td>Robert Longson</td><td>5.08%</td></tr><tr><td>CanadaHonk</td><td>4.25%</td></tr><tr><td>Masatoshi Kimura</td><td>2.63%</td></tr><tr><td>ganna</td><td>2.19%</td></tr><tr><td>Itiel</td><td>1.66%</td></tr><tr><td>175 other committers</td><td>30%</td></tr></tbody></table>
         </div></details>
       </figure> 
     </section>
@@ -98,7 +98,7 @@
       see how many people and organizations care and contribute.  
       Especially when you look at the Mozilla/Firefox example, it
       really gives the impression that that project is just a million
-      volunteers.  But, it's important to keep it all in perspective too.  WebKit has about 50 contributing orgs and individuals, Chrome about 140 and Firefox about 200.  A lot more significant a % of contributions come from individuals in Mozilla.  Importantly: In <em>all of these projects, the steward org's contributions absolutely dwarf the rest of the world's contributions combined:</em></p>
+      volunteers.  But, it's important to keep it all in perspective too.  WebKit has about 50 contributing orgs and individuals, Chrome about 140 and Firefox about 185.  A lot more significant a % of contributions come from individuals in Mozilla.  Importantly: In <em>all of these projects, the steward org's contributions absolutely dwarf the rest of the world's contributions combined:</em></p>
       <figure> 
           <div style="display: grid; grid-template-columns: 1fr 1fr 1fr;">
               <img src="/media/2023/moz.svg" style="width: 100%" title="mozilla-central - mozilla contributed 87.2% of commits">
