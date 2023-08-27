@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://bkardell.com/</id>
     <title>bkardell.com rss feed</title>
-    <updated>2023-08-15T20:28:17.219Z</updated>
+    <updated>2023-08-27T21:10:08.907Z</updated>
     <generator>awesome mix</generator>
     <author>
         <name>Brian Kardell</name>
@@ -14,6 +14,79 @@
     <subtitle>Just the bkardell.com rss feed</subtitle>
     <logo>http://bkardell.com/profile.jpg</logo>
     <rights>All rights reserved 2018, Brian Kardell</rights>
+    <entry>
+        <title type="html"><![CDATA[Completely Random Car and Design Stuff]]></title>
+        <id>https://bkardell.com/blog/cars.html</id>
+        <link href="https://bkardell.com/blog/cars.html">
+        </link>
+        <updated>2023-08-27T04:00:00.000Z</updated>
+        <summary type="html"><![CDATA[This is a kind of "off brand" post for me.  It's very, very random and just for fun.  It's just a whole bunch of mental wandering literally all over place about cars, design, AI and only a very little bit about the web.  Many of these observations are probably extermely specific to America, but perhaps still interesting.  There is no overarching "point" here, it's just thoughts.]]></summary>
+        <content type="html"><![CDATA[
+  <h1 class="contextual-heading" style="font-size: 2rem;">Completely Random Car and Design Stuff</h1>
+  
+
+  <p class="segue">This is a kind of "off brand" post for me.  It's very, very random and just for fun.  It's just a whole bunch of mental wandering literally all over place about cars, design, AI and only a very little bit about the web.  Many of these observations are probably extermely specific to America, but perhaps still interesting.  There is no overarching "point" here, it's just thoughts.</p>
+
+  <p>There are certain trends that I notice in the design of everyday things.  Sometimes I think I notice them developing early and have lots of conversations pointing them out to other people (especially my son) and wondering aloud about how all of this will look in retrospect: Is this one of those things that will come to represent this "era"?</p>
+
+  <p>If it's not clear what I mean, basically every single thing in the photo below screams 1970s:</p>
+
+
+  <figure>
+    <img src="/media/2023/frigidare-70s.jpeg" alt="">
+    <figcaption>A Frigidare ad from the 1970s. A woman standanding in a kitchen with avacado Frigidare appliances and countertop, a green and yellow flowered wallpaper, she's wearing 70's attire, the cabinet design is somehow also unique to the era, the quality of the film is also reminscant of the 1970s.</figcaption>
+  </figure>
+
+  <p>It seems like there are some things that come to become associated with an era... Stuff that got really popular for a period of time and then left behind.</p>
+
+  <p>Several years ago I pointed out two changes I thought I saw happening in new car colors, and I started to point them out to my son.  If you haven't noticed it, it's real.  For a lot of years the mainstream of automobiles might have varied in real ways (you'd realize how much if you ever tried to match paint on your car), it's still been a fairly common range and palette of colors that I think mainly would be described with words like "shiny" or "glossy".  I think this has been generally true since the 70's or 80's where it seems I remember some more different reds and oranges and earthy colors (<a href="https://twitter.com/briankardell/status/1444398423449427968">my dad's old truck maybe was interesting in both ways</a>). In any case, now we have all of these new "ceramic colors" which look more "baked in" to the materials and matte. More often than not they're grays but there are some beautiful turquoises and reds.  Also a new common thing is "blacked out" emblems.  I think both of these things began with trendsetting aftermarket people.</p>
+
+  <p>Another thing that this made me think about and try to explain to my son was that that's kind of true of automobile body styles and some other characteristics too.  I found it surprisingly hard to describe because it's not as if there is a single kind of car in any era - it's just that there are a smaller array of characteristics that you can recognize as belonging to that era.</p>
+
+  <p>Don't you think a lot of cars today have similar characteristics?  I do. But... They also feel like they are increasingly resembling a car developed at the end of the 1970's, by a car company that doesn't even exist anymore.  The car company is AMC (American Motors Corporation) and the car was the Eagle SX/4. Below is an advertisement</p>
+
+  <figure>
+    <img src="/media/2023/sx4.jpg" alt="">
+    <figcaption>Advertisement for the Eagle SX/4 in 1979</figcaption>
+  </figure>
+
+
+  <p>Basically, it was sort of the first crossover vehicle that combined a car and 4 wheel (later all wheel) drive.  But also, just visually: Do you see a resemblance to a lot of popular cars today?  I do.  I think this car looks much more similar to many cars I see on the road today than most of what I saw for the 40 years or so between them.  Also interesting, it was available in one of those interesting earthy yellow/tan (and kind of matte!) colors with dark gray/black accents that kind of mostly disappeared, but I could imagine being reborn today.</p>
+
+  <figure>
+    <img src="/media/2023/sx4_2.jpg" alt="">
+    <figcaption>Advertisement for the Eagle SX/4 in 1979</figcaption>
+  </figure>
+
+
+  <p>So, I was thinking about this and the fact it was kind of ahead of its time.  In fact, I searched for exactly that and found this article with a title that is pretty much that: <a href="https://silodrome.com/amc-eagle-sx-4/?utm_source=pocket_saves">The AMC Eagle SX/4 – An American 4×4 Sports Car That Was Ahead Of Its Time"</a>.</p>
+
+
+  <p>That's cool, but I was also wondering how much of that came from the fact that it was not (yet) part of "The Big 3". There used to be a lot more American car companies, but we just kept consolidating into those 3. Lots of those became "brands" of the Big 3 for a while, but eventually homogenized.  A huge number of them no longer exist.  My first car was a Pontiac. The last Pontiac produced rolled off the line in January 2010. Saturn, same.  My mom drove a Plymouth Voyager.  Plymouth was discontinued in 2001.  In fact, the car I drive now sometimes (not even American: an Isuzo Amigo) hasn't been sold in the US since 2000. And so on.</p>
+
+  <p>I was thinking that most of the diversity today that drives anything about automobiles, pretty much doesn't really come from those Big 3.  And wondering if maybe that meant something for web engines too.  Does it? I don't know. For sure we can see outside (but still standards compliant) innovation in browsers like Arc or Vivaldi or Polypane. I suppose the open source nature makes that more easily possible, but it's worth noting too that this is kept alive mainly through ~80% of that bill being footed by the Web Engines Big 3.</p>
+
+  <p>Anyway... This is already all over the place (sorry, that's how my mind works!), but in sitting down this morning to write this I had an idea that perhaps AI could help me "illustrate" if not explain the "look" of body styles associated with different decades.  Here's what I found out:  Midjourney is pretty bad at it!</p>
+
+  <p>The photo below was generated with the prompt "photo of a typical 2010's automobile in America with the most common body style of cars built between 2000 and 2009".</p>
+
+
+  <figure>
+    <img src="/media/2023/special.png" alt="">
+    <figcaption>
+      A picture that is, for all intents and purposes, almost literally <a href="https://pin.it/6v4tnwY">an early 1950's Buick</a> but with a different emblem.
+    </figcaption>
+  </figure>
+
+
+  <p>I tried several variations and wound up with something like this as one of the 4 options no matter how explicit it was.  I wonder why?  I'd kind of think that identifing and sort of recyling the "trends" like that would be very much what AI models like this would be really good at - but apparently not as good as I'd imagine!</p>
+
+  <p>I decided to check the other way round, just for giggles.  The inverse worked better. Giving it the first image in this article mentioned the 1970's in its explanation!  Interesting!</p>
+
+  <p>Anyway, like I said at the get-go: There's no overall point here :)</p>
+
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[Igalia: Mid-season Power Rankings]]></title>
         <id>https://bkardell.com/blog/2023-Mid-Season-Power-Rankings.html</id>
