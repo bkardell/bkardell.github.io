@@ -2,7 +2,7 @@
 <html lang="en" >
 <head>
   <meta charset="UTF-8">
-  <style>
+  <style>/*
     x-slider { 
       width: 20em;
       height: 1.25em;
@@ -50,12 +50,19 @@
 
     <p>Inside, the Shadow DOM looks like this...</p>
 
-    <pre><code>&lt;div part="container">
-  &lt;div part="track">&lt;/div>
-  &lt;div part="fill">&lt;/div>
-  &lt;div part="thumb">&lt;/div>
-  &lt;div class="visually-hidden">&lt;slot>&lt;/slot>&lt;/div>
-&lt;/div></code></pre>
+    <pre><code>&lt;div class="projected-range"&gt;&lt;slot&gt;&lt;/slot&gt;&lt;/div&gt;
+      &lt;div part="track" class="comp--track"&gt;&lt;/div&gt;
+      &lt;div part="fill" class="comp--fill"&gt;&lt;/div&gt;
+      &lt;div class="comp--mover"&gt;
+        &lt;div part="thumb" class="comp--thumb"&gt;&lt;/div&gt;
+      &lt;/div&gt;
+      &lt;div part="value"&gt;&lt;/div&gt;
+      &lt;div part="ruler" slot="ruler"&gt;
+        &lt;div part="mark"&gt;&lt;/div&gt;
+        &lt;div part="mark"&gt;&lt;/div&gt;
+        &lt;div part="mark"&gt;&lt;/div&gt;
+        &lt;div part="mark"&gt;&lt;/div&gt;
+      &lt;/div&gt;</code></pre>
 
     <p>The important (perhaps questionable?) concept is that the input <em>remains</em> the actual input and all that is replaced is the visual rendering (attempting to kind of draw inspiration from canvas a11y).</p>
 

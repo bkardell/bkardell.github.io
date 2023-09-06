@@ -4,161 +4,99 @@ class XSlider extends HTMLElement {
     super();
     this.attachShadow({ mode: "open" });
     this.shadowRoot.innerHTML = `
-      <style>
-        .visually-hidden {
-          background-color: pink;
-          position: absolute;
-          width: 1px;
-          height: 1px;
-          padding: 0;
-          margin: -1px;
-          overflow: hidden;
-          clip: rect(0, 0, 0, 0);
-          white-space: nowrap;
-          border-width: 0;
-        }
+<style>
+:host {
+  /* how far along the track is the thumb, 
+   * a value between 0 (min) and 1 (max) */
+  --k: calc((var(--val) - var(--min))/(var(--max) - var(--min)));
+  --dark: 0;
+  --perc: calc(var(--dark)*100%);
+  display: grid;
+  width: 100%;
+  max-width: 25rem;
+  /* should this just be accentcolor instead? */
+  color: color-mix(in srgb, #be95c4 var(--perc), #3c096c);
+}
+@media (prefers-color-scheme: dark) {
+  :host {
+    --dark: 1 ;
+  }
+}
 
-        [part=container] {
-          height: 1em;
-          padding: 0;
-          margin: 0;
-        }
-        :host {
-          display: block;
-          background-color: none;
-          margin: 2px;
-          cursor: default;
-          padding: unset;
-          border: unset;
-          user-select: none !important;
-          height: 1em;
-        }
-        [part=track] {
-          border: 1px dashed blue;
-          background-color: lightgray;
-          display: block !important;
-          float: none !important;
-          position: static !important;
-          writing-mode: unset !important;
-          direction: unset !important;
-          block-size: 1em;
-          box-sizing: border-box;
-          user-select: none !important;
-        }
-        [part=fill] {
-          border: 1px solid transparent;
-          display: block !important;
-          float: none !important;
-          position: absolute !important;  
-          margin: var(--dif);  
-          top: calc(var(--dif) * 0.7);
-          writing-mode: unset !important;
-          direction: unset !important;
-          block-size: 1em;
-          width: 1em;
-          box-sizing: border-box;
-          background-color: blue;
-          user-select: none !important;
-        }
-        [part=thumb] {
-          display: block !important;
-          float: none !important;
-          position: absolute !important;
-          writing-mode: unset !important;
-          direction: unset !important;
-          aspect-ratio: 1 / 1;
-          height: 1em;
-          width: 1em;
-          top: calc(var(--dif) * 1.25);
-          left: 0.7em;
-          border: 0.1em solid pink;
-          border-radius: 50%;
-          background: currentColor;
-          user-select: none !important;
-        }
-        .focused {
-          border-color: lime;
-        }
+[class*=comp] {
+  grid-area: 1/1;
+}
+
+.comp--track {
+  align-self: center;
+  /* depends on thumb size */
+  margin: auto calc(0.625rem + -1*3px);
+  height: 6px;
+  border-radius: 3px;
+  background: color-mix(in srgb, #333333 var(--perc), #cccccc);
+}
+.comp--fill {
+  align-self: center;
+  /* depends on thumb size and track height */
+  margin-left: calc(0.625rem + -1*3px);
+  /* depends on thumb size and track height */
+  margin-right: calc(0.625rem + -1*3px + (1 - var(--k))*(100% - 1.25rem));
+  /* depends on track height */
+  height: 6px;
+  /* depends on track height */
+  border-radius: 3px;
+  background: currentcolor;
+}
+.comp--thumb {
+  /* depends on its own size */
+  margin-left: calc(var(--k)*(100% - 1.25rem));
+  width: 1.25rem;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  /* opacity just for testing purposes *
+  opacity: .5; /**/
+  background: currentcolor;
+}
+
+.projected-range { display: grid; }
+
+.projected-range, input[type=range] {
+  grid-area: 1/1;
+  z-index: 1;
+  opacity: 0.3;
+}
+
       </style>
-      <div part="container">
-        <div part="track"></div>
-        <div part="fill"></div>
-        <div part="thumb"></div>
-        <div class="visually-hidden"><slot></slot></div>
+
+      <div class="projected-range"><slot></slot></div>
+      <div part="track" class="comp--track"></div>
+      <div part="fill" class="comp--fill"></div>
+      <div class="comp--mover">
+        <div part="thumb" class="comp--thumb"></div>
       </div>
+      <!--.comp--value-->
+      <!--.comp--ruler-->
     `;
-    let self = this;
-    let thumb = this.shadowRoot.querySelector("[part=thumb]");
-    let track = this.shadowRoot.querySelector("[part=track]");
-    let fill = this.shadowRoot.querySelector("[part=fill]");
-    let slot = this.shadowRoot.querySelector("slot");
-    let container = this.shadowRoot.querySelector("[part=container]");
-    this.thumb = thumb;
-    this.fill = fill;
-    this.container = container;
+    let projectionContainer = 
+      this.shadowRoot.querySelector('.projected-range')
 
-
-    let setWidthFromInput = (input) => {
-      let unit = (this.offsetWidth - 12) / parseInt(input.max, 10);
-      let newValue = (unit * input.value);
-      setWidth({
-        clientX: newValue
-      }, true);
-
-    }
-
-    let divCoordsToRangeCoords = (e) => {
-      return ((thumb.offsetLeft + 12) / this.offsetWidth) * 100;
-    }
-
-    let setWidth = (e, keys=false) => {
-      if ((keys || this.isDragging) && (e.clientX <= (this.offsetWidth - 12))) {
-      
-
-        requestAnimationFrame(()=> {
-          this.thumb.style.left = e.clientX + "px";
-          this.fill.style.width = e.clientX + "px";
-          slot.assignedElements()[0].value = divCoordsToRangeCoords(e);
-
-        })
-      }
-    }
-
-    container.addEventListener("slotchange", (e) => {
-      console.log('slotchange')
-      let inp = e.target.assignedElements()[0]
-      setWidthFromInput(inp)
+    this.addEventListener("input",  (e) => {
+      let _t = this.querySelector('input[type=range]')
+      this.style.setProperty('--val', + _t.value)
     })
 
-    this.addEventListener("mousedown", (e) => {
-      //e.preventDefault();
-      this.isDragging = true;
-      setWidth(e)
-    });
-
-    container.onmouseout = (e) => {
-      if (e.relatedTarget && !e.relatedTarget.matches("x-slider, [part=container] > *")) {
-        this.isDragging = false;
-      }
-    };
-    this.onmousemove = (e) => {
-      setWidth(e)
-    };
-    this.onmouseup = this.stopDragging.bind(this);
-    this.addEventListener("focus", (e) => {
-      console.log('hey')
-      this.thumb.classList.add("focused")
-    }, true)
-    this.addEventListener("change",  (e) => {
-      let input = e.target
-      setWidthFromInput(input)
-    });
-  }
-
-  moveElement(e) {}
-  stopDragging() {
-    this.isDragging = false;
-  }
+    let updateStyle = (inp) => {
+      this.setAttribute("style", `--min: ${inp.min}; --val: ${inp.value}; --max: ${inp.max}`)
+    }
+    
+    let inp = this.querySelector('input[type=range]')
+    if (inp) {
+      updateStyle(inp)
+    }
+    projectionContainer.addEventListener("slotchange", (e) => {
+      updateStyle(e.target.assignedElements()[0])
+    })
+ }   
 }
 
 customElements.define("x-slider", XSlider);
