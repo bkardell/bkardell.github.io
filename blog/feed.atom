@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://bkardell.com/</id>
     <title>bkardell.com rss feed</title>
-    <updated>2023-08-28T14:37:30.683Z</updated>
+    <updated>2023-10-01T00:41:18.614Z</updated>
     <generator>awesome mix</generator>
     <author>
         <name>Brian Kardell</name>
@@ -14,6 +14,90 @@
     <subtitle>Just the bkardell.com rss feed</subtitle>
     <logo>http://bkardell.com/profile.jpg</logo>
     <rights>All rights reserved 2018, Brian Kardell</rights>
+    <entry>
+        <title type="html"><![CDATA[Florence Discovery]]></title>
+        <id>https://bkardell.com/blog/cosimo.html</id>
+        <link href="https://bkardell.com/blog/cosimo.html">
+        </link>
+        <updated>2023-09-30T04:00:00.000Z</updated>
+        <summary type="html"><![CDATA[Last week, on my way back from TPAC I took a holiday in Florence, Italy.  It was an awesome experience all around, but one thing was really personal and I wanted to write it down..]]></summary>
+        <content type="html"><![CDATA[
+	<h1 class="contextual-heading" style="font-size: 2rem;">Florence Discovery</h1>
+	<p class="segue">Last week, on my way back from TPAC I took a holiday in Florence, Italy.  It was an awesome experience all around, but one thing was really personal and I wanted to write it down..</p>
+	
+	<p>So... I am Italian.</p>  
+
+	<p>I know, "Kardell" doesn't sound Italian - and that's because it isn't.  Kardell is my biological father's name and it has, as best I know, a mix of German and Irish roots.  But my from even my very youngest memories, I was raised with/by my maternal side.  My parents divorced when I was all of 5.</p>
+
+	<p>My mother's maiden name is <em>Frediani</em>, and both of her parents were first born generations in America, shortly after their parents arrived.   My maternal grandfather's family (Muzio Frediani) was from Tuscany.  His father was a printer (and all of his kids were later).  Their print shop  was a historic landmark in Pittsburgh's strip district.  He also founded the <a href="https://orderisda.org">Italian Sons and Daughters of America</a>.  Among a lot of other things, they did a lot with Italian Americans, unions and political campaigns. My maternal grandmother's family name was Casale and they were from Silcily.  Her father (Giuseppe Casale) was a contractor/mason and he built many of the houses in the neighborhood my grandparents lived in, and my mom now lives in.</p>
+
+	<p>This side of the family had a very strong culture. There was a lot of community. Some people in the family even still spoke Italian. They were constantly instilling this in me: You are Italian. And so, these are the roots that have always resonated in me.</p>
+
+	<p>When I learn about Michelangelo, Galileo, Dante,  Leonardo, Raphael or Donatello (and so many more) - I felt... Actually <em>connected to it somehow</em>.  I don't know, maybe that's silly. But the result was that Italy was the one place I've always wanted to go since I was a child.</p>
+
+	<p>I never really managed to get very far in making a family tree (lots of those services to help you feel outrageously expensive to me).  Florence, where I went, is part of Tuscany.  I went to Florence because my sister had been there kind of actively looking for connections to our family.  Frediani isn't a super common name -  I've never met another myself.</p>
+
+	<p>Anyway... I went to Florence.</p>
+
+	<section class="sectioning">
+		<h2 class="contextual-heading" style="font-size: 2.5rem;">A series of fortunate events.</h2>
+		<p>I wasted no time, I spent pretty much all of the waking hours touring <em>something</em>: some church, garden, museum, street, bridge, etc.  In a lucky coincidence, some friend from TPAC was also in Florence and we met up for dinner.  They asked me if I had been to the church where Michelangelo was buried. No! They said "I think maybe Dante is also buried there?".</p>
+
+		<p>Wow I wanted to go so much - I'm so fortunate that I wound up in a situation where they were there and we had dinner and they could mention it!  They had me at Michelangelo, I was very keen to go.</p>
+
+		<p>I went the next afternoon, but I was in shorts and that's not allowed and I'd have to shift my schedule and come back the following day.</p>
+
+		<p>So, on my very last day I went to this <a href="https://en.wikipedia.org/wiki/Santa_Croce,_Florence">church at Sante Croce</a>.  Unlike every other thing I'd been to, there was no line.  Because it was the last day, I had nowhere else I really wanted to go afterward.  This was my last "big" stop.  So, I decided I would really take my time, soak it all in, and pay my respects.  Given this, I also decided to pay extra and do the audio guided tour.</p>
+
+		<figure class="captioned-image">
+			<img src="/media/sante-croce-1.jpg">
+			<figcaption>Looking down the nave of the main church.</figcaption>
+		</figure>
+
+		<p>Inside I was surprised to see there were tombs in the floor everywhere - people were walking on them. A few were roped off - I think they were damaged, but mainly there were just occasionally these tombs in the floor. Around the outer wall of the church were bigger memorials to a number of important Italians (mainly Florentine, but not exclusively).  Yeah, wow. Michelangelo, Fermi, Galileo, Dante, Machiavelli - so many.</p>
+
+		<p>I really took my time. I learned a ton of interesting stuff and took a lot of pictures.</p>
+
+		<p>Before leaving the main part of the church I sat down and listened to more about how all of the people buried here were somehow "important".</p>
+
+		<p>I had this fleeting thought that maybe I should go through carefully and see if I can find my family name, but I dismissed this very quickly. Florence is a huge place inside the huge place that is Tuscany - there can't be more than 70 people buried here.  The odds would be astronautical. I decided to plod on.</p>
+	</section>
+	<section class="sectioning">
+		<h2 class="contextual-heading" style="font-size: 2.5rem;">And just then...</h2>
+
+		<p>As the tour turns from the main church, it points you to a marble corridor leading to the Medici chapel (and more).  On the floor down the hall are numerous engraved marble slabs, many are worn to unreadable condition.  As I looked down the hallway my audio suddenly said</p>
+
+		<blockquote>
+		<p>The corridor is paved with white marble tomb slabs with gray frames, which bear names and coats-of-arms erased by time. <strong>One inscription is more clearly legible than the others, almost as if time itself had obeyed the wish it expresses; see if you can find it, it's the tomb of Cosimo Frediani, and on it is written: "Don't tread on me".</strong></p>
+		</blockquote>
+
+		<p>Wait what?  Surely that is just my mind playing tricks on me.</p>
+
+		<p>I rewound it and listened again. It sure <em>sounded</em> like my family name.</p> 
+
+		<p>I found how to switch and look at the transcript.. It was!</p>
+
+		<p>It kind of gave me a chill.</p>
+
+		<p>I searched the stones, even enlisting the help of the museum personel.  There it was: It was also the only one with a relief carved on it.</p>
+
+		<figure class="captioned-image">
+			<img src="/media/cosimo-1.jpg">
+			<figcaption>The marble tomb of Cosimo Frediani.</figcaption>
+		</figure>
+
+		<p>Wow.</p>
+
+		<p>Very cool.</p>  
+
+		<p>But... Who was he?  What did he do?  How far are we related? I spent some time searching and I'm not totally sure yet!  We've found a bit, but it will surely be a new family quest to find out.</p>
+
+		<p>But, I mean... How amazing is it that maybe someone in my family he is buried perhaps 50-100 meters from all of those famous Italians that I feel so connected with 🖤.</p>
+
+		<p>What a great experience :)</p>
+	</section>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[Completely Random Car and Design Stuff]]></title>
         <id>https://bkardell.com/blog/cars.html</id>
