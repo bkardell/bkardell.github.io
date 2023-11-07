@@ -4,7 +4,7 @@
         <title>bkardell.com rss feed</title>
         <link>http://bkardell.com/</link>
         <description>Just the bkardell.com rss feed</description>
-        <lastBuildDate>Thu, 05 Oct 2023 18:51:31 GMT</lastBuildDate>
+        <lastBuildDate>Tue, 07 Nov 2023 23:25:52 GMT</lastBuildDate>
         <docs>http://blogs.law.harvard.edu/tech/rss</docs>
         <generator>awesome mix</generator>
         <image>
@@ -14,6 +14,52 @@
         </image>
         <copyright>All rights reserved 2018, Brian Kardell</copyright>
         <atom:link href="https://bkardell.com/blog/feed.atom" rel="self" type="application/rss+xml"/>
+        <item>
+            <title><![CDATA[Wolvic Store Experiment]]></title>
+            <link>https://bkardell.com/blog/WolvicSwag.html</link>
+            <guid>https://bkardell.com/blog/WolvicSwag.html</guid>
+            <pubDate>Tue, 07 Nov 2023 05:00:00 GMT</pubDate>
+            <description><![CDATA[A post about cool stuff for a  cause.]]></description>
+            <content:encoded><![CDATA[
+	<h1 class="contextual-heading" style="font-size: 2rem;">Wolvic Store Experiment</h1>
+	<p class="segue">A post about cool stuff for a  cause.</p>
+
+	
+
+	<p>As of today, you can <a href="https://wolvic.creator-spring.com/" target="_blank" rel="noopener">purchase some cool Wolvic swag</a>, and proceeds will go to supporting development of the browser:</p>
+
+	<figure class="captioned-image">
+		<img src="/media/wolvic-store.png" alt="">
+		<figcaption>There’s mugs, and water bottles and shirts and sweatshirts and … You know, stuff.</figcaption>
+	</figure>
+
+	<section class="sectioning">
+		<h2 class="contextual-heading" style="font-size: 2.5rem;">Why?</h2>
+		<p>For the last few years I’ve been writing about the health of the whole web ecosystem, and talking about it on <a href="https://www.igalia.com/24-7/chats" target="_blank" rel="noopener">our podcast</a>. We just assume that the “search revenue pays for browsers”&nbsp;model that got us here is fine and will last forever.  I’m pretty sure it won’t.</p>
+
+		<p>When you <a href="https://bkardell.com/blog/WhereBrowsersComeFrom.html" target="_blank" rel="noopener">look at how engines and browsers are funded</a>, it’s way too centralized on search funding.  Of course, this is not a way to fund a new browser - rather it rewards those that are already making really significant entry.  The whole thing is <a href="https://bkardell.com/blog/Webrise.html" target="_blank" rel="noopener">actually kind of fragile when you step back and look at it</a>.</p>
+
+		<p>It would be nice to change that, and we only achieve that by trying.</p>
+
+		<p>So, in general at Igalia we’re trying several ways to diversify funding.  Specifically for Wolvic, we’re looking into how we might explore <a href="https://bkardell.com/blog/SuperbHowl.html" target="_blank" rel="noopener">other kinds of advertising</a>, but we’ve got this far with investment from Igalia, <a href="https://bkardell.com/blog/NascarModel.html" target="_blank" rel="noopener">a partnership model</a> and an <a href="https://opencollective.com/wolvic" target="_blank" rel="noopener">Open Collective</a>.</p>
+
+		<p>It’s kind of easy to get applause when I talk about this, but the truth is very few people put money into our collectives.  It reminded me of… Well… Every charity, ever.</p>
+
+		<p>Lots of charities (or even NPR) give you some swag with a donation. For some reason, that’s helpful in expanding the base of people making any kind of donation at all.  For some reason, offering swag makes people consider putting <em>some</em> donation toward the cause.</p>
+
+		<p>Of course, this isn’t especially <em>efficient</em>: If you buy a product from our store, maybe only a few dollars of that becomes an the actual donation.  It would be far more efficient to just donate a couple of dollars to the collective, but very few do.  So we’re trying something new.</p>
+
+		<div class="btn-group">
+			<div><a class="btn" href="https://opencollective.com/wolvic">Make a donation!</a></div>
+			<div><a class="btn" href="https://wolvic.creator-spring.com/">Get some swag!</a></div>
+		</div>
+
+		<p>Will offering swag help here too?  Is this a model that could help us pay for things?  I don’t know, but I’m always looking for new ways to talk about this problem and new experiments we could try to keep the discussion going. So, what do you think?</p>
+
+	</section>
+	
+]]></content:encoded>
+        </item>
         <item>
             <title><![CDATA[tel:me.about.it.]]></title>
             <link>https://bkardell.com/blog/tel-me.html</link>
