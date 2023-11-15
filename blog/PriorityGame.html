@@ -1,0 +1,943 @@
+<html lang="en" resource-type="blogpost"><head>  
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="view-transition" content="same-origin"> 
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@briankardell">
+    <meta name="twitter:creator" content="@briankardell">
+    <meta name="twitter:title" content="Let's Play a Game">
+    <meta name="twitter:description" content="It's Interop 24 planning time!  Let's play a game: Tell me what you prioritize, or don't and why?">
+    
+    <!-- meta name="monetization" content="$ilp.uphold.com/kKU4GXiRwhnf " -->
+    
+    <link rel="alternate" type="application/rss+xml" href="https://bkardell.com/blog/feed.rss" title="bkardell.com/blog rss feed">
+    <title>Let's Play a Game</title> 
+    <style>.captioned-image {
+    background-color: #eaeaea;
+    display: block;
+    overflow: hidden;
+    padding: 1rem;
+    text-align: center;
+    font-style: italic;
+}
+
+.captioned-image.p-attached {
+    width: 40%;
+    display: inline-block;
+    margin: 0 1rem 2rem 1rem;
+}
+
+section > .captioned-image.p-attached {
+    margin-top: 1.5rem; /* correct for heading size*/
+}
+
+ pre { overflow-x: auto }
+
+.captioned-image.p-attached.p-attached-left {
+    float: left;
+}
+
+.captioned-image.p-attached.p-attached-right {
+    float: right;
+}
+
+.captioned-image.p-attached + * + * {
+    clear: both;
+    margin-top: 2rem;
+}
+
+
+.captioned-image img, .captioned-image video {
+    display: block;
+    max-width: 100%;
+    margin: 0 auto 1em auto;
+}
+.source {
+    font-style: italic;
+}
+body {
+    display: grid;
+    grid-template-columns: 25rem auto;
+    font: 1.1rem "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-weight: 400;
+    line-height: 1.625;
+    margin: 0;
+}
+h1 { margin: 0.5rem; }
+code-format {
+    border-left: 0.5rem solid rgba(123,115,209,0.35);
+    display: block;
+    padding: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+contextual-heading {
+    display: block;
+    margin-top: 2rem;
+}
+
+h1, [aria-level="1"] {
+    color: #43686b;
+    font-size: 1.45rem;
+}
+
+h2, [aria-level="2"] {
+    color: #856363;
+    font-size: 1.35rem;
+}
+
+h3, [aria-level="3"] {
+    color: #856363;
+    font-size: 1.25rem;
+}
+
+h4, [aria-level="4"] {
+    color: #856363;
+    font-size: 1.2rem;
+}
+
+h5, h6, [aria-level="5"], [aria-level="6"] {
+    color: #667496;
+    font-size: 1.2rem;
+    font-weight: bolder;
+}
+
+.posted-on {
+    font-style: italic;
+    font-size: 0.8rem; 
+    text-align: right;
+    margin-bottom: 1rem;
+}
+
+ul, li {
+    margin: 0.5rem;
+    text-align: left;
+}
+
+.authorinfo {
+    height: 100%;
+    padding-top: 1rem;
+    padding-right: 0;
+    background-color: #fbf5e9; 
+    display: block;
+    background-image: linear-gradient(to right, #dde0e8 , #ffffff);
+}
+
+.tagline {
+    font-style: italic;
+    text-align: center;
+}
+
+[tag-esc] {
+    color: maroon;
+    font-family: Courier, "Lucida Console", monospace;
+}
+
+[tag-esc]::before {
+    content: '<';
+}
+
+[tag-esc]::after {
+    content: '>';
+}
+
+main {
+    min-width: 50%;
+    width: 80%;
+    padding: 1rem;
+}
+header .title {
+    background-color: rgba(123,115,209,0.35);
+    padding: 0.3rem;
+    padding-left: 0.25rem;
+    font-weight: bolder;
+    font-size: 1rem;
+    border-left: 1rem solid #999298;
+}
+
+header .profile {
+    width: 50%;
+    margin: 1rem 25%;
+}
+
+header .title + nav {
+    font-size: 0.9rem;
+}
+
+header .blurb {
+    font-size: 0.9rem;
+    text-align: center;
+}
+header .name {
+    text-align: center;
+    font-size: xx-large;
+}
+.segue {
+    font-style: italic;
+}
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  border: 0;
+}
+
+#aboutMeToggle {
+    display: none;
+}
+
+spicy-sections:not([affordance]) > h2 {
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+}
+
+main article { max-width: 100em; margin: auto; }
+/* this needs rethinking, it wants a selector like 'not flow content' */
+article>*:not(contextual-heading,a), section>*:not(contextual-heading,a) {
+    margin-left: 0.45rem;
+}
+
+blockquote {
+  font-family: serif;
+  background: #f9f9f9;
+  border-left: 10px solid #ccc;
+  margin: 1.5em 10px;
+  padding: 0.5em 10px;
+}
+blockquote:before {
+  color: #ccc;
+  content: open-quote;
+  font-size: 2em;
+  line-height: 0.1em;
+  margin-right: 0.25em;
+  vertical-align: -0.4em;
+}
+
+blockquote:after {
+  color: #ccc;
+  content: close-quote;
+  font-size: 2em;
+  line-height: 0.1em;
+  margin-left: 0.25em;
+  vertical-align: -0.4em;
+}
+ 
+
+@media (max-width: 800px){
+    body {
+        grid-template-columns: 1fr;
+    }
+    .authorinfo {
+        height: auto;
+        border-bottom: 1px solid #afafff;
+        padding-top:  0;
+    } 
+
+    main { width: 95%; margin: 0 auto;}
+
+    .captioned-image.p-attached {
+        width: 100%;
+        margin: 1rem 0;
+    }
+
+    .captioned-image.p-attached.p-attached-left,
+    .captioned-image.p-attached.p-attached-right {
+        float: none;
+    }
+
+    #aboutMeToggle {
+        display: block;
+        background-color: #675e5e;
+        color: white;
+        padding: 0.25rem;
+        padding-left: 0.5rem;
+        border-left: 1rem solid black;
+    }
+
+    header li { display: inline; margin-left: -0.5em; }
+    header .blurb li::after { content: '; '; }
+    header  nav li {
+        display: inline-block;
+        margin-left: 0.35rem;
+        margin-right: 0.35rem;
+    }
+    header .title {
+        width: 100%;
+    }
+    main li .source { display: block; }
+
+} 
+
+spicy-sections {
+    --const-mq-affordances:
+      [screen and (min-width: 600px) ] collapse |
+      [screen and (min-width: 801px) ] tab-bar
+    ;
+    display: block;
+}
+
+spicy-sections.authorinfo {
+    --const-mq-affordances:
+      [screen and (max-width: 801px) ] collapse
+    ;
+}
+
+
+spicy-sections.single {
+    --const-mq-affordances:
+      [screen ] collapse 
+;
+}
+
+[role="tab"] {
+    margin-right:  1.5rem;
+}
+
+</style>
+    <style> 
+      .captioned-image { font-size: 0.9rem; }
+      .thanksTo { font-style: italic; font-size: 0.8rem; }
+    </style>
+    <script>
+      var activateOptional = function (media) {
+        var source = media.getAttribute('data-src'),
+            temp,
+            container = media.parentElement;
+
+          if (media.nextSibling && media.nextSibling.matches) {
+            if (media.nextSibling.matches('.clickToSee')) {
+              media.parentElement.removeChild(media.nextSibling);
+            }
+          }
+ 
+          if (media.tagName === 'VIDEO') {
+            temp = document.createElement('video')
+            temp.setAttribute('autoplay','')
+            temp.setAttribute('controls','')
+            temp.setAttribute('loop','')
+            temp.innerHTML = '<source src="' + source + '.webm" type="video/webm">'
+                    + '<source src="' + source + '.mp4" type="video/mp4">';
+            media.parentElement.replaceChild(temp, media);
+            setTimeout(function () {
+              temp.play()
+            }, 0);
+          } else {
+            media.src = media.getAttribute('data-src');
+          }
+
+          container.classList.add('active');
+      }
+    </script>
+  </head>
+  <body>
+    <spicy-sections class="authorinfo">
+<h2 id="aboutMeToggle" defaults-on-match="">Author Information</h2>
+  
+<header>
+    <div class="name">
+        Brian Kardell
+    </div>
+    <img class="profile" src="/profile.jpg" alt="">
+    <div class="tagline"><a href="/">Betterifying the Web</a></div>
+    <div class="blurb">
+        <ul>
+            <li>Developer Advocate at Igalia</li>
+            <li>Original Co-author/Co-signer of The Extensible Web Manifesto</li>
+            <li>Co-Founder/Chair, W3C Extensible Web CG</li>
+            <li>Member, W3C (OpenJS Foundation)</li>
+            <li>Co-author of HitchJS</li>
+            <li>Blogger</li>
+            <li>Art, Science &amp; History Lover</li>
+            <li>Standards Geek</li>
+        </ul>
+    </div>
+    <div class="title">Follow Me On...</div>
+    <nav>
+        <ul>
+            <li><a rel="me" href="https://briankardell.wordpress.com">Wordpress</a></li>
+            <li><a rel="me" href="https://medium.com/@briankardell">Medium</a></li>
+            <li><a rel="me" href="https://twitter.com/briankardell">Twitter</a></li>
+            <li><a rel="me" href="https://github.com/bkardell/">Github</a></li>
+            <li><a rel="me" href="https://toot.cafe/@bkardell">Mastodon</a></li>
+            <li><a rel="me" href="https://bsky.app/profile/bkardell.com">Bluesky</a></li>
+            <li><a rel="me" href="https://codepen.io/bkardell">Codepen</a></li>
+            <li><a rel="me" href="https://www.linkedin.com/in/brian-kardell-08a4264">LinkedIn</a></li>
+            <li><a rel="me" href="https://www.instagram.com/kardellbrian">Instagram (for
+art)</a></li>
+            <li><a rel="me" href="http://fineartamerica.com/profiles/brian-kardell?">Fine Art
+America (art for sale)</a></li>
+        </ul>
+    </nav>
+</header>
+</spicy-sections>
+<script>
+  /*
+    You're probably wondering "Do I need to write this?""
+    "Is this part of it?"  No... If you're interested tho - 
+    Custom elements have a FOUC/PE gap 
+    (see https://github.com/whatwg/html/issues/6231).
+    This is a slightly better experience: It 
+    will be hidden _if JS is enabled_, and 
+    will be shown as it is defined, 
+    or after 1 sec, whichever is first.
+  */
+  let ss = document.createElement("style");
+
+  ss.innerHTML = `html:not(.lldelay) :not(:defined) { visibility: hidden; }`;
+  document.head.appendChild(ss);
+
+  setTimeout(() => {
+    document.documentElement.classList.add("lldelay");
+  }, 1000);
+</script>
+    <main><div class="posted-on">Posted on null</div><article class="sectioning">
+	<h1 class="contextual-heading">Let's Play a Game</h1>
+	<p class="segue">It's Interop 24 planning time!  Let's play a game: Tell me what you prioritize, or don't and why?
+	</p>
+
+	<p>I've written before about how prioritization is hard.  Just inthe most tanglible of terms, there are differing finite resources, distributed differently across organizations.  That is, not all teams have the same size or composition, or current availability.  They're all also generally managed and planned indepdently with several other factors in mind, and in totally different architectures.  That's a big part of what makes standards often take so long to get sorted out to where everyone can just use them without siginificant concerns.</p>
+
+	<p>Conversely, occasionally we see things ship at what seems by comparison amazing speed.  Sometimes that's a bit of an illusion: They've been brewing and aligning hard parts for years and we're only counting the end bits. But other times it's just because we've aligned.  A nice way to think about this, if you're a developer,  is to compare it to web page performance. If all of the resources just load as discovered and there's no thought put into optimization, things can get really out of control.  When you do some optimization and coordionation, you can get things many times faster pretty quickly.  The big difference here is mainly that instead of milliseconds, with standards substitute weeks or something.</p>
+
+	<p>I think that's one of the best things about Interop.  While it isn't a promise by anyone or anything, it does seem to serve as a function to get us to focus together on some things and align - doing that optimization work.</p>
+
+	<p>It's a damned tricky exersize though, I'm not going to lie. There are so many things to consider and align.  I kind of like sharing insight into this because I spent a really long time as a developer myself with a significantly different perspective.  Seeing all of this from the inside the last few years has been really eye-opening.  So, I thought, let's play a game... It might be useful to both of us.</p>
+
+	<p>Below is a list of links to all of the 2024 proposals.  It would, of course, be a huge time suck for you to spend your unpaid time carefully researching all of them - so that's not the game.  Note that this represents a tiny fraction of the open issues in the platform - so you can start to see how this is challenging.</p>
+
+	<p>So, the game is: Bubble sort as many of these as you can (at least 5-10 would be great) and, optionally, share something back about why you prioritized or deprioritized something.  That can be in a reply blog post, a few messages on social media of your choice, share a gist... Whatever you like.</p>
+
+	<p>Here's the list (note there is a bit more prose afterward)</p>
+
+	<table class="waffle" cellspacing="0" cellpadding="0"><thead><tr><th class="row-header freezebar-origin-ltr"></th><th id="2024379725C0" style="width:546px;" class="column-headers-background">A</th></tr></thead><tbody><tr style="height: 20px"><th id="2024379725R0" style="height: 20px;" class="row-headers-background"><div class="row-header-wrapper" style="line-height: 20px">1</div></th><td class="s0" dir="ltr">Proposal</td></tr><tr style="height: 20px"><th id="2024379725R1" style="height: 20px;" class="row-headers-background"><div class="row-header-wrapper" style="line-height: 20px">2</div></th><td class="s1" dir="ltr"><a target="_blank" href="https://github.com/web-platform-tests/interop/issues/420">CSS Nesting</a></td></tr><tr style="height: 20px"><th id="2024379725R2" style="height: 20px;" class="row-headers-background"><div class="row-header-wrapper" style="line-height: 20px">3</div></th><td class="s1" dir="ltr"><a target="_blank" href="https://github.com/web-platform-tests/interop/issues/553">&lt;details&gt; and &lt;summary&gt; elements</a></td></tr><tr style="height: 20px"><th id="2024379725R3" style="height: 20px;" class="row-headers-background"><div class="row-header-wrapper" style="line-height: 20px">4</div></th><td class="s1" dir="ltr"><a target="_blank" href="https://github.com/web-platform-tests/interop/issues/568">display: contents</a></td></tr><tr style="height: 20px"><th id="2024379725R4" style="height: 20px;" class="row-headers-background"><div class="row-header-wrapper" style="line-height: 20px">5</div></th><td class="s1" dir="ltr"><a target="_blank" href="https://github.com/web-platform-tests/interop/issues/572">&lt;search&gt;</a></td></tr><tr style="height: 20px"><th id="2024379725R5" style="height: 20px;" class="row-headers-background"><div class="row-header-wrapper" style="line-height: 20px">6</div></th><td class="s1" dir="ltr"><a target="_blank" href="https://github.com/web-platform-tests/interop/issues/423">Popover</a></td></tr><tr style="height: 20px"><th id="2024379725R6" style="height: 20px;" class="row-headers-background"><div class="row-header-wrapper" style="line-height: 20px">7</div></th><td class="s1" dir="ltr"><a target="_blank" href="https://github.com/web-platform-tests/interop/issues/434">CSS Logical Properties and Values</a></td></tr><tr style="height: 20px"><th id="2024379725R7" style="height: 20px;" class="row-headers-background"><div class="row-header-wrapper" style="line-height: 20px">8</div></th><td class="s1" dir="ltr"><a target="_blank" href="https://github.com/web-platform-tests/interop/issues/555">EXPAND :has() to include support for more pseudo-classes</a></td></tr><tr style="height: 20px"><th id="2024379725R8" style="height: 20px;" class="row-headers-background"><div class="row-header-wrapper" style="line-height: 20px">9</div></th><td class="s1" dir="ltr"><a target="_blank" href="https://github.com/web-platform-tests/interop/issues/533">WebRTC “end-to-end-encryption”</a></td></tr><tr style="height: 20px"><th id="2024379725R9" style="height: 20px;" class="row-headers-background"><div class="row-header-wrapper" style="line-height: 20px">10</div></th><td class="s1" dir="ltr"><a target="_blank" href="https://github.com/web-platform-tests/interop/issues/536">Fetch Web API</a></td></tr><tr style="height: 20px"><th id="2024379725R10" style="height: 20px;" class="row-headers-background"><div class="row-header-wrapper" style="line-height: 20px">11</div></th><td class="s1" dir="ltr"><a target="_blank" href="https://github.com/web-platform-tests/interop/issues/544">Web Audio API</a></td></tr><tr style="height: 20px"><th id="2024379725R11" style="height: 20px;" class="row-headers-background"><div class="row-header-wrapper" style="line-height: 20px">12</div></th><td class="s1" dir="ltr"><a target="_blank" href="https://github.com/web-platform-tests/interop/issues/556">CSS box sizing properties with MathML Core</a></td></tr><tr style="height: 20px"><th id="2024379725R12" style="height: 20px;" class="row-headers-background"><div class="row-header-wrapper" style="line-height: 20px">13</div></th><td class="s1" dir="ltr"><a target="_blank" href="https://github.com/web-platform-tests/interop/issues/527">input[type="range"] styling</a></td></tr><tr style="height: 20px"><th id="2024379725R13" style="height: 20px;" class="row-headers-background"><div class="row-header-wrapper" style="line-height: 20px">14</div></th><td class="s1" dir="ltr"><a target="_blank" href="https://github.com/web-platform-tests/interop/issues/564">backdrop-filter</a></td></tr><tr style="height: 20px"><th id="2024379725R14" style="height: 20px;" class="row-headers-background"><div class="row-header-wrapper" style="line-height: 20px">15</div></th><td class="s1" dir="ltr"><a target="_blank" href="https://github.com/web-platform-tests/interop/issues/429">margin-trim</a></td></tr><tr style="height: 20px"><th id="2024379725R15" style="height: 20px;" class="row-headers-background"><div class="row-header-wrapper" style="line-height: 20px">16</div></th><td class="s1" dir="ltr"><a target="_blank" href="https://github.com/web-platform-tests/interop/issues/561">text-wrap: balance</a></td></tr><tr style="height: 20px"><th id="2024379725R16" style="height: 20px;" class="row-headers-background"><div class="row-header-wrapper" style="line-height: 20px">17</div></th><td class="s1" dir="ltr"><a target="_blank" href="https://github.com/web-platform-tests/interop/issues/562">text-wrap: pretty</a></td></tr><tr style="height: 20px"><th id="2024379725R17" style="height: 20px;" class="row-headers-background"><div class="row-header-wrapper" style="line-height: 20px">18</div></th><td class="s1" dir="ltr"><a target="_blank" href="https://github.com/web-platform-tests/interop/issues/529">Text Fragments</a></td></tr><tr style="height: 20px"><th id="2024379725R18" style="height: 20px;" class="row-headers-background"><div class="row-header-wrapper" style="line-height: 20px">19</div></th><td class="s1" dir="ltr"><a target="_blank" href="https://github.com/web-platform-tests/interop/issues/437">View Transitions Level 1</a></td></tr><tr style="height: 20px"><th id="2024379725R19" style="height: 20px;" class="row-headers-background"><div class="row-header-wrapper" style="line-height: 20px">20</div></th><td class="s1" dir="ltr"><a target="_blank" href="https://github.com/web-platform-tests/interop/issues/540">Custom Highlight API</a></td></tr><tr style="height: 20px"><th id="2024379725R20" style="height: 20px;" class="row-headers-background"><div class="row-header-wrapper" style="line-height: 20px">21</div></th><td class="s1" dir="ltr"><a target="_blank" href="https://github.com/web-platform-tests/interop/issues/563">requestIdleCallback</a></td></tr><tr style="height: 20px"><th id="2024379725R21" style="height: 20px;" class="row-headers-background"><div class="row-header-wrapper" style="line-height: 20px">22</div></th><td class="s1" dir="ltr"><a target="_blank" href="https://github.com/web-platform-tests/interop/issues/426">Relative Color Syntax</a></td></tr><tr style="height: 20px"><th id="2024379725R22" style="height: 20px;" class="row-headers-background"><div class="row-header-wrapper" style="line-height: 20px">23</div></th><td class="s1" dir="ltr"><a target="_blank" href="https://github.com/web-platform-tests/interop/issues/513">Unit division and multiplication for mixed units of the same type within calc()</a></td></tr><tr style="height: 20px"><th id="2024379725R23" style="height: 20px;" class="row-headers-background"><div class="row-header-wrapper" style="line-height: 20px">24</div></th><td class="s1" dir="ltr"><a target="_blank" href="https://github.com/web-platform-tests/interop/issues/501">Declarative Shadow DOM</a></td></tr><tr style="height: 20px"><th id="2024379725R24" style="height: 20px;" class="row-headers-background"><div class="row-header-wrapper" style="line-height: 20px">25</div></th><td class="s1" dir="ltr"><a target="_blank" href="https://github.com/web-platform-tests/interop/issues/428">User activation (2024 edition)</a></td></tr><tr style="height: 20px"><th id="2024379725R25" style="height: 20px;" class="row-headers-background"><div class="row-header-wrapper" style="line-height: 20px">26</div></th><td class="s1" dir="ltr"><a target="_blank" href="https://github.com/web-platform-tests/interop/issues/573">Allowing &lt;hr&gt; inside of &lt;select&gt;</a></td></tr><tr style="height: 20px"><th id="2024379725R26" style="height: 20px;" class="row-headers-background"><div class="row-header-wrapper" style="line-height: 20px">27</div></th><td class="s1" dir="ltr"><a target="_blank" href="https://github.com/web-platform-tests/interop/issues/559">P3 All The Things</a></td></tr><tr style="height: 20px"><th id="2024379725R27" style="height: 20px;" class="row-headers-background"><div class="row-header-wrapper" style="line-height: 20px">28</div></th><td class="s1" dir="ltr"><a target="_blank" href="https://github.com/web-platform-tests/interop/issues/430">JPEG XL image format</a></td></tr><tr style="height: 20px"><th id="2024379725R28" style="height: 20px;" class="row-headers-background"><div class="row-header-wrapper" style="line-height: 20px">29</div></th><td class="s1" dir="ltr"><a target="_blank" href="https://github.com/web-platform-tests/interop/issues/542">size-adjust</a></td></tr><tr style="height: 20px"><th id="2024379725R29" style="height: 20px;" class="row-headers-background"><div class="row-header-wrapper" style="line-height: 20px">30</div></th><td class="s1" dir="ltr"><a target="_blank" href="https://github.com/web-platform-tests/interop/issues/541">font-size-adjust</a></td></tr><tr style="height: 20px"><th id="2024379725R30" style="height: 20px;" class="row-headers-background"><div class="row-header-wrapper" style="line-height: 20px">31</div></th><td class="s1" dir="ltr"><a target="_blank" href="https://github.com/web-platform-tests/interop/issues/427">Canvas text rendering and metrics (2024 edition)</a></td></tr><tr style="height: 20px"><th id="2024379725R31" style="height: 20px;" class="row-headers-background"><div class="row-header-wrapper" style="line-height: 20px">32</div></th><td class="s1" dir="ltr"><a target="_blank" href="https://github.com/web-platform-tests/interop/issues/554">Standardize SVG properties in CSS to support unitless geometry</a></td></tr><tr style="height: 20px"><th id="2024379725R32" style="height: 20px;" class="row-headers-background"><div class="row-header-wrapper" style="line-height: 20px">33</div></th><td class="s1" dir="ltr"><a target="_blank" href="https://github.com/web-platform-tests/interop/issues/567">HTTP(S) URLs for WebSocket</a></td></tr><tr style="height: 20px"><th id="2024379725R33" style="height: 20px;" class="row-headers-background"><div class="row-header-wrapper" style="line-height: 20px">34</div></th><td class="s1" dir="ltr"><a target="_blank" href="https://github.com/web-platform-tests/interop/issues/535">CSS :dir() selectors and dir=auto interoperability</a></td></tr><tr style="height: 20px"><th id="2024379725R34" style="height: 20px;" class="row-headers-background"><div class="row-header-wrapper" style="line-height: 20px">35</div></th><td class="s1" dir="ltr"><a target="_blank" href="https://github.com/web-platform-tests/interop/issues/558">text-transform: full-size-kana &amp; text-transform: full-width</a></td></tr><tr style="height: 20px"><th id="2024379725R35" style="height: 20px;" class="row-headers-background"><div class="row-header-wrapper" style="line-height: 20px">36</div></th><td class="s1" dir="ltr"><a target="_blank" href="https://github.com/web-platform-tests/interop/issues/538">CSS text-indent</a></td></tr><tr style="height: 20px"><th id="2024379725R36" style="height: 20px;" class="row-headers-background"><div class="row-header-wrapper" style="line-height: 20px">37</div></th><td class="s1" dir="ltr"><a target="_blank" href="https://github.com/web-platform-tests/interop/issues/517">CSS background-clip</a></td></tr><tr style="height: 20px"><th id="2024379725R37" style="height: 20px;" class="row-headers-background"><div class="row-header-wrapper" style="line-height: 20px">38</div></th><td class="s1" dir="ltr"><a target="_blank" href="https://github.com/web-platform-tests/interop/issues/486">CSS box-decoration-break</a></td></tr><tr style="height: 20px"><th id="2024379725R38" style="height: 20px;" class="row-headers-background"><div class="row-header-wrapper" style="line-height: 20px">39</div></th><td class="s1" dir="ltr"><a target="_blank" href="https://github.com/web-platform-tests/interop/issues/560">overscroll-behavior on the root scroller</a></td></tr><tr style="height: 20px"><th id="2024379725R39" style="height: 20px;" class="row-headers-background"><div class="row-header-wrapper" style="line-height: 20px">40</div></th><td class="s1" dir="ltr"><a target="_blank" href="https://github.com/web-platform-tests/interop/issues/571">scrollbar-width CSS property</a></td></tr><tr style="height: 20px"><th id="2024379725R40" style="height: 20px;" class="row-headers-background"><div class="row-header-wrapper" style="line-height: 20px">41</div></th><td class="s1" dir="ltr"><a target="_blank" href="https://github.com/web-platform-tests/interop/issues/532">MediaCapture device enumeration</a></td></tr><tr style="height: 20px"><th id="2024379725R41" style="height: 20px;" class="row-headers-background"><div class="row-header-wrapper" style="line-height: 20px">42</div></th><td class="s1" dir="ltr"><a target="_blank" href="https://github.com/web-platform-tests/interop/issues/534">Notifications API</a></td></tr><tr style="height: 20px"><th id="2024379725R42" style="height: 20px;" class="row-headers-background"><div class="row-header-wrapper" style="line-height: 20px">43</div></th><td class="s1" dir="ltr"><a target="_blank" href="https://github.com/web-platform-tests/interop/issues/516">Indexed DB v3</a></td></tr><tr style="height: 20px"><th id="2024379725R43" style="height: 20px;" class="row-headers-background"><div class="row-header-wrapper" style="line-height: 20px">44</div></th><td class="s1" dir="ltr"><a target="_blank" href="https://github.com/web-platform-tests/interop/issues/526">Accessibility (computed role + accname)</a></td></tr><tr style="height: 20px"><th id="2024379725R44" style="height: 20px;" class="row-headers-background"><div class="row-header-wrapper" style="line-height: 20px">45</div></th><td class="s1" dir="ltr"><a target="_blank" href="https://github.com/web-platform-tests/interop/issues/525">URLPattern</a></td></tr><tr style="height: 20px"><th id="2024379725R45" style="height: 20px;" class="row-headers-background"><div class="row-header-wrapper" style="line-height: 20px">46</div></th><td class="s1" dir="ltr"><a target="_blank" href="https://github.com/web-platform-tests/interop/issues/523">blocking="render" attribute on scripts and style sheets</a></td></tr><tr style="height: 20px"><th id="2024379725R46" style="height: 20px;" class="row-headers-background"><div class="row-header-wrapper" style="line-height: 20px">47</div></th><td class="s1" dir="ltr"><a target="_blank" href="https://github.com/web-platform-tests/interop/issues/549">WebTransport API</a></td></tr><tr style="height: 20px"><th id="2024379725R47" style="height: 20px;" class="row-headers-background"><div class="row-header-wrapper" style="line-height: 20px">48</div></th><td class="s1" dir="ltr"><a target="_blank" href="https://github.com/web-platform-tests/interop/issues/548">WasmGC</a></td></tr><tr style="height: 20px"><th id="2024379725R48" style="height: 20px;" class="row-headers-background"><div class="row-header-wrapper" style="line-height: 20px">49</div></th><td class="s1" dir="ltr"><a target="_blank" href="https://github.com/web-platform-tests/interop/issues/546">JavaScript Promise Integration</a></td></tr><tr style="height: 20px"><th id="2024379725R49" style="height: 20px;" class="row-headers-background"><div class="row-header-wrapper" style="line-height: 20px">50</div></th><td class="s1" dir="ltr"><a target="_blank" href="https://github.com/web-platform-tests/interop/issues/531">WebRTC peer connections and codecs</a></td></tr><tr style="height: 20px"><th id="2024379725R50" style="height: 20px;" class="row-headers-background"><div class="row-header-wrapper" style="line-height: 20px">51</div></th><td class="s1" dir="ltr"><a target="_blank" href="https://github.com/web-platform-tests/interop/issues/522">WebXR</a></td></tr><tr style="height: 20px"><th id="2024379725R51" style="height: 20px;" class="row-headers-background"><div class="row-header-wrapper" style="line-height: 20px">52</div></th><td class="s1" dir="ltr"><a target="_blank" href="https://github.com/web-platform-tests/interop/issues/539">document.caretPostitionFromPoint</a></td></tr><tr style="height: 20px"><th id="2024379725R52" style="height: 20px;" class="row-headers-background"><div class="row-header-wrapper" style="line-height: 20px">53</div></th><td class="s1" dir="ltr"><a target="_blank" href="https://github.com/web-platform-tests/interop/issues/528">Scrollend Events</a></td></tr><tr style="height: 20px"><th id="2024379725R53" style="height: 20px;" class="row-headers-background"><div class="row-header-wrapper" style="line-height: 20px">54</div></th><td class="s1" dir="ltr"><a target="_blank" href="https://github.com/web-platform-tests/interop/issues/521">attr() support extended capabilities</a></td></tr><tr style="height: 20px"><th id="2024379725R54" style="height: 20px;" class="row-headers-background"><div class="row-header-wrapper" style="line-height: 20px">55</div></th><td class="s1" dir="ltr"><a target="_blank" href="https://github.com/web-platform-tests/interop/issues/520">CSS Multi-Column Layout block element breaking</a></td></tr><tr style="height: 20px"><th id="2024379725R55" style="height: 20px;" class="row-headers-background"><div class="row-header-wrapper" style="line-height: 20px">56</div></th><td class="s1" dir="ltr"><a target="_blank" href="https://github.com/web-platform-tests/interop/issues/519">Local Network Access and Mixed Content specification</a></td></tr><tr style="height: 20px"><th id="2024379725R56" style="height: 20px;" class="row-headers-background"><div class="row-header-wrapper" style="line-height: 20px">57</div></th><td class="s1" dir="ltr"><a target="_blank" href="https://github.com/web-platform-tests/interop/issues/518">Detect UA Transitions on same-document Navigations</a></td></tr><tr style="height: 20px"><th id="2024379725R57" style="height: 20px;" class="row-headers-background"><div class="row-header-wrapper" style="line-height: 20px">58</div></th><td class="s1" dir="ltr"><a target="_blank" href="https://github.com/web-platform-tests/interop/issues/512">Accessibility issues with display properties (not including display: contents)</a></td></tr><tr style="height: 20px"><th id="2024379725R58" style="height: 20px;" class="row-headers-background"><div class="row-header-wrapper" style="line-height: 20px">59</div></th><td class="s1" dir="ltr"><a target="_blank" href="https://github.com/web-platform-tests/interop/issues/511">Ready-made counter styles</a></td></tr><tr style="height: 20px"><th id="2024379725R59" style="height: 20px;" class="row-headers-background"><div class="row-header-wrapper" style="line-height: 20px">60</div></th><td class="s2 softmerge" dir="ltr"><div class="softmerge-inner" style="width:644px;left:-1px"><a target="_blank" href="https://github.com/web-platform-tests/interop/issues/510">Media pseudo classes: :paused/:playing/:seeking/:buffering/:stalled/:muted/:volume-locked</a></div></td></tr><tr style="height: 20px"><th id="2024379725R60" style="height: 20px;" class="row-headers-background"><div class="row-header-wrapper" style="line-height: 20px">61</div></th><td class="s1" dir="ltr"><a target="_blank" href="https://github.com/web-platform-tests/interop/issues/508">video-dynamic-range Media Query</a></td></tr><tr style="height: 20px"><th id="2024379725R61" style="height: 20px;" class="row-headers-background"><div class="row-header-wrapper" style="line-height: 20px">62</div></th><td class="s1" dir="ltr"><a target="_blank" href="https://github.com/web-platform-tests/interop/issues/506">inverted-colors Media Query</a></td></tr><tr style="height: 20px"><th id="2024379725R62" style="height: 20px;" class="row-headers-background"><div class="row-header-wrapper" style="line-height: 20px">63</div></th><td class="s1" dir="ltr"><a target="_blank" href="https://github.com/web-platform-tests/interop/issues/503">CSS object-view-box</a></td></tr><tr style="height: 20px"><th id="2024379725R63" style="height: 20px;" class="row-headers-background"><div class="row-header-wrapper" style="line-height: 20px">64</div></th><td class="s1" dir="ltr"><a target="_blank" href="https://github.com/web-platform-tests/interop/issues/500">Trusted Types</a></td></tr><tr style="height: 20px"><th id="2024379725R64" style="height: 20px;" class="row-headers-background"><div class="row-header-wrapper" style="line-height: 20px">65</div></th><td class="s1" dir="ltr"><a target="_blank" href="https://github.com/web-platform-tests/interop/issues/499">font-family keywords</a></td></tr><tr style="height: 20px"><th id="2024379725R65" style="height: 20px;" class="row-headers-background"><div class="row-header-wrapper" style="line-height: 20px">66</div></th><td class="s1" dir="ltr"><a target="_blank" href="https://github.com/web-platform-tests/interop/issues/498">Streams</a></td></tr><tr style="height: 20px"><th id="2024379725R66" style="height: 20px;" class="row-headers-background"><div class="row-header-wrapper" style="line-height: 20px">67</div></th><td class="s1" dir="ltr"><a target="_blank" href="https://github.com/web-platform-tests/interop/issues/496">CSS Painting API Level 1 (houdini)</a></td></tr><tr style="height: 20px"><th id="2024379725R67" style="height: 20px;" class="row-headers-background"><div class="row-header-wrapper" style="line-height: 20px">68</div></th><td class="s1" dir="ltr"><a target="_blank" href="https://github.com/web-platform-tests/interop/issues/495">Top Layer Animations</a></td></tr><tr style="height: 20px"><th id="2024379725R68" style="height: 20px;" class="row-headers-background"><div class="row-header-wrapper" style="line-height: 20px">69</div></th><td class="s1" dir="ltr"><a target="_blank" href="https://github.com/web-platform-tests/interop/issues/494">HTMLVideoElement.requestVideoFrameCallback()</a></td></tr><tr style="height: 20px"><th id="2024379725R69" style="height: 20px;" class="row-headers-background"><div class="row-header-wrapper" style="line-height: 20px">70</div></th><td class="s1" dir="ltr"><a target="_blank" href="https://github.com/web-platform-tests/interop/issues/493">Canvas2D filter and reset</a></td></tr><tr style="height: 20px"><th id="2024379725R70" style="height: 20px;" class="row-headers-background"><div class="row-header-wrapper" style="line-height: 20px">71</div></th><td class="s1" dir="ltr"><a target="_blank" href="https://github.com/web-platform-tests/interop/issues/491">hidden=until-found and auto-expanding details</a></td></tr><tr style="height: 20px"><th id="2024379725R71" style="height: 20px;" class="row-headers-background"><div class="row-header-wrapper" style="line-height: 20px">72</div></th><td class="s1" dir="ltr"><a target="_blank" href="https://github.com/web-platform-tests/interop/issues/490">CSS Typed OM Level 1 (houdini)</a></td></tr><tr style="height: 20px"><th id="2024379725R72" style="height: 20px;" class="row-headers-background"><div class="row-header-wrapper" style="line-height: 20px">73</div></th><td class="s1" dir="ltr"><a target="_blank" href="https://github.com/web-platform-tests/interop/issues/489">Full support of background properties and remove of prefixes</a></td></tr><tr style="height: 20px"><th id="2024379725R73" style="height: 20px;" class="row-headers-background"><div class="row-header-wrapper" style="line-height: 20px">74</div></th><td class="s1" dir="ltr"><a target="_blank" href="https://github.com/web-platform-tests/interop/issues/485">WebM AV1 video codec</a></td></tr><tr style="height: 20px"><th id="2024379725R74" style="height: 20px;" class="row-headers-background"><div class="row-header-wrapper" style="line-height: 20px">75</div></th><td class="s1" dir="ltr"><a target="_blank" href="https://github.com/web-platform-tests/interop/issues/484">WebM Opus audio codec</a></td></tr><tr style="height: 20px"><th id="2024379725R75" style="height: 20px;" class="row-headers-background"><div class="row-header-wrapper" style="line-height: 20px">76</div></th><td class="s1" dir="ltr"><a target="_blank" href="https://github.com/web-platform-tests/interop/issues/465">CSS image() function</a></td></tr><tr style="height: 20px"><th id="2024379725R76" style="height: 20px;" class="row-headers-background"><div class="row-header-wrapper" style="line-height: 20px">77</div></th><td class="s1" dir="ltr"><a target="_blank" href="https://github.com/web-platform-tests/interop/issues/464">Web Share API</a></td></tr><tr style="height: 20px"><th id="2024379725R77" style="height: 20px;" class="row-headers-background"><div class="row-header-wrapper" style="line-height: 20px">78</div></th><td class="s1" dir="ltr"><a target="_blank" href="https://github.com/web-platform-tests/interop/issues/451">WebDriver BiDi</a></td></tr><tr style="height: 20px"><th id="2024379725R78" style="height: 20px;" class="row-headers-background"><div class="row-header-wrapper" style="line-height: 20px">79</div></th><td class="s1" dir="ltr"><a target="_blank" href="https://github.com/web-platform-tests/interop/issues/443">Gamut mapping</a></td></tr><tr style="height: 20px"><th id="2024379725R79" style="height: 20px;" class="row-headers-background"><div class="row-header-wrapper" style="line-height: 20px">80</div></th><td class="s1" dir="ltr"><a target="_blank" href="https://github.com/web-platform-tests/interop/issues/442">CSS element() function</a></td></tr><tr style="height: 20px"><th id="2024379725R80" style="height: 20px;" class="row-headers-background"><div class="row-header-wrapper" style="line-height: 20px">81</div></th><td class="s1" dir="ltr"><a target="_blank" href="https://github.com/web-platform-tests/interop/issues/441">Intersection Observer v2</a></td></tr><tr style="height: 20px"><th id="2024379725R81" style="height: 20px;" class="row-headers-background"><div class="row-header-wrapper" style="line-height: 20px">82</div></th><td class="s1" dir="ltr"><a target="_blank" href="https://github.com/web-platform-tests/interop/issues/440">css fill/stroke</a></td></tr><tr style="height: 20px"><th id="2024379725R82" style="height: 20px;" class="row-headers-background"><div class="row-header-wrapper" style="line-height: 20px">83</div></th><td class="s1" dir="ltr"><a target="_blank" href="https://github.com/web-platform-tests/interop/issues/439">Scroll-driven Animations</a></td></tr><tr style="height: 20px"><th id="2024379725R83" style="height: 20px;" class="row-headers-background"><div class="row-header-wrapper" style="line-height: 20px">84</div></th><td class="s1" dir="ltr"><a target="_blank" href="https://github.com/web-platform-tests/interop/issues/436">import attributes / JSON modules / CSS modules</a></td></tr><tr style="height: 20px"><th id="2024379725R84" style="height: 20px;" class="row-headers-background"><div class="row-header-wrapper" style="line-height: 20px">85</div></th><td class="s1" dir="ltr"><a target="_blank" href="https://github.com/web-platform-tests/interop/issues/435">Navigation API</a></td></tr><tr style="height: 20px"><th id="2024379725R85" style="height: 20px;" class="row-headers-background"><div class="row-header-wrapper" style="line-height: 20px">86</div></th><td class="s1" dir="ltr"><a target="_blank" href="https://github.com/web-platform-tests/interop/issues/433">CSS style container queries (custom properties)</a></td></tr><tr style="height: 20px"><th id="2024379725R86" style="height: 20px;" class="row-headers-background"><div class="row-header-wrapper" style="line-height: 20px">87</div></th><td class="s1" dir="ltr"><a target="_blank" href="https://github.com/web-platform-tests/interop/issues/431">CSS caret, caret-color and caret-shape properties</a></td></tr><tr style="height: 20px"><th id="2024379725R87" style="height: 20px;" class="row-headers-background"><div class="row-header-wrapper" style="line-height: 20px">88</div></th><td class="s1" dir="ltr"><a target="_blank" href="https://github.com/web-platform-tests/interop/issues/422">text-box-trim</a></td></tr><tr style="height: 20px"><th id="2024379725R88" style="height: 20px;" class="row-headers-background"><div class="row-header-wrapper" style="line-height: 20px">89</div></th><td class="s1" dir="ltr"><a target="_blank" href="https://github.com/web-platform-tests/interop/issues/421">Custom Media Queries</a></td></tr><tr style="height: 20px"><th id="2024379725R89" style="height: 20px;" class="row-headers-background"><div class="row-header-wrapper" style="line-height: 20px">90</div></th><td class="s1" dir="ltr"><a target="_blank" href="https://github.com/web-platform-tests/interop/issues/419">CSS scrollbar-gutter</a></td></tr><tr style="height: 20px"><th id="2024379725R90" style="height: 20px;" class="row-headers-background"><div class="row-header-wrapper" style="line-height: 20px">91</div></th><td class="s1" dir="ltr"><a target="_blank" href="https://github.com/web-platform-tests/interop/issues/417">scrollbar-color CSS property</a></td></tr></tbody></table>
+
+	<p>The tricky thing is that there is no 'right' answer here, and one can easily make several cases.  For example, perhaps we should prioritize things that cannot be polyfilled or done with pre-processors over things that can.  That sounds reasonable enough, but given that the queue never empties: Do you just do that forever? Does it eventually lead to larger areas that are ignored?  Similarly, do you focus on the things that are sure to be used by everyone, or do you assume those already get the most priority and focus on the things that don't.  Do you pick certain compat pain points/bugs, or focus on launching new features quickly and very interoperably?</p>
+
+	<p>It's a hard game! Looking forward to your answers.</p>
+
+</article></main>
+ 
+   
+  <script>
+    //import { MediaAffordancesElement } from "./MediaAffordancesElement.js";
+    class MediaAffordancesElement extends HTMLElement {
+      constructor() {
+        super();
+        // todo: this should be a private field
+        this.__matching = new Set()
+        this.mqls = [];
+        this.observers = [];
+
+        this.supportedAffordances = new Set();
+      }
+
+      observeAffordanceChange(cb) {
+        this.observers.push(cb);
+      }
+
+      notifyChange() {
+        let intersection = new Set();
+        for (let elem of this.__matching) {
+          if (this.supportedAffordances.has(elem)) {
+            intersection.add(elem);
+          }
+        }
+
+        if (this.__matching.size > 0) {
+          this.setAttribute("mq-matched", [...this.__matching].join(" "));
+        } else {
+          this.removeAttribute("mq-matched");
+        }
+        let arr =  [...intersection]
+        let affordance = arr[arr.length - 1];
+        if (affordance) {
+          this.setAttribute("affordance", affordance);
+        } else {
+          this.removeAttribute("affordance");
+        }
+        this.observers.forEach(cb => {
+          cb(intersection, this.__matching);
+        });
+      }
+
+      static get observedAttributes() {
+        return ["mq-affordances"];
+      }
+
+      connectedCallback() {
+        let newValue = getComputedStyle(this).getPropertyValue(
+          "--const-mq-affordances"
+        );
+        this.connectListeners(newValue);
+      }
+
+      connectListeners(newValue = "") {
+        if (newValue.trim().length === 0) {
+          return;
+        }
+        
+        newValue.split("|").forEach(segment => {
+          let mq = segment.trim().match(/\[([^\]]*)/)[1];
+          let names = segment
+            .replace(`[${mq}]`, "")
+            .trim()
+            .split(" ");
+          let mql = window.matchMedia(mq);
+          let mqh = evt => {
+            names.forEach(name => {
+              this.__matching[mql.matches ? "add" : "delete"](name);
+            });
+
+            this.notifyChange();
+          };
+          mqh();
+          mql.addEventListener("change", mqh);
+          this.mqls.push(mql);
+        }, this);
+      }
+
+      attributeChangedCallback(name, oldValue, newValue) {
+        this.connectListeners(newValue);
+      }
+    }
+
+    //-----------------------------------------------------
+
+    (function() {
+      let lastUId = 0;
+      let nextUId = () => {
+        return `cp${++lastUId}`;
+      };
+
+      let getLabels = regionset => {
+        return [...regionset.children].filter(el => /^H\d$/.test(el.tagName));
+      };
+
+      let getContentEls = regionset => {
+        return [...regionset.children].filter(el => !/^H\d$/.test(el.tagName));
+      };
+
+      let ensureId = el => {
+        el.id = el.id || nextUId();
+        return el.id;
+      };
+
+      let getDisclosureButton = label => {
+        return label.shadowRoot.querySelector("button");
+      };
+
+     
+      let style = document.createElement('style')
+      style.innerHTML = `
+          
+        :where(spicy-sections > [affordance*="collapse"])::before { 
+          content: ' ';
+          display: inline-block;
+          width: 0.5em;
+          height: 0.75em;
+          margin: 0 0.4em 0 0;
+          transform: rotate(90deg);
+          background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' x='0px' y='0px' width='10px' height='10px' viewBox='0 0 270 240' enable-background='new 0 0 270 240' xml:space='preserve'%3e%3cpolygon fill='black' points='5,235 135,10 265,235 '/%3e%3c/svg%3e ");
+          background-size: 100% 100%;
+        } 
+
+        :where(spicy-sections > [affordance*="collapse"][aria-expanded="true"])::before, 
+        :where(spicy-sections > [affordance*="collapse"][aria-expanded="true"])::after {
+          transform: rotate(180deg);
+        }
+      `
+      document.head.prepend(style)
+      
+      const template = `
+            <style>
+              :root {
+                font-size: 1rem;
+              }
+
+              :host([hidden]),
+              ::slotted([hidden]) {
+                display: none;
+              }
+              
+              ::slotted(h1),
+              ::slotted(h2),
+              ::slotted(h3),
+              ::slotted(h4),
+              ::slotted(h5),
+              ::slotted(h6) {
+                 margin-right: 1rem;
+              }
+              
+              tab-bar ::slotted([tabindex="0"]) {
+                border-bottom: 1px solid blue;
+              }
+              
+              tab-list { 
+                display: flex; 
+                overflow: hidden;
+                white-space: nowrap;
+              }
+            </style>
+            <tab-bar part="tab-bar">
+              <!-- The region/tablist should have a  label -->
+              <tab-list part="tab-list" role="tablist"
+              ><slot name="tabListSlot"></slot></tab-list>
+            </tab-bar>
+            <content part="content-panels">
+              <slot default></slot>
+            </content>
+        `;
+
+      class RegionSet extends MediaAffordancesElement {
+        __defaults;
+        __tabListEl;
+
+        // tabs and exclusive collapses should have the same affordance object?
+        __affordanceConf = {
+          collapse: {
+            // can take a condition to force, check-like
+            toggle: (label, condition) => {
+              let state =
+                typeof condition === "boolean"
+                  ? condition
+                  : !label.affordanceState.expanded;
+              let contentEl = label.nextElementSibling;
+              label.affordanceState.expanded = state;
+              label.affordanceState.nonExclusiveExpanded = state;
+              label.setAttribute("aria-expanded", state);
+              if (state) {
+                label.setAttribute("expanded", "");
+                contentEl.style.display = "block";
+              } else {
+                label.removeAttribute("expanded");
+                contentEl.style.display = "none";
+              }
+            }
+          },
+          "exclusive-collapse": {
+            // ignores condition, radio-like
+            toggle: label => {
+              let labels = getLabels(label.parentElement);
+              let siblings = labels.filter(c => c !== label);
+              let index = labels.findIndex(c => c === label);
+
+              siblings.forEach((sibLabel, i) => {
+                let relatedContent = sibLabel.nextElementSibling;
+                sibLabel.tabIndex = -1;
+                relatedContent.style.display = "none";
+                label.setAttribute("aria-expanded", "false");
+                sibLabel.affordanceState.exclusiveExpanded = false;
+              });
+              label.tabIndex = 0;
+              //nope - todo, fix/remove this?
+              label.parentElement.affordanceState.exclusiveSelection.index = index;
+              label.nextElementSibling.style.display = "block";
+              label.setAttribute("aria-expanded", "true");
+              label.affordanceState.exclusiveExpanded = true;
+              label.focus();
+            }
+          },
+          "tab-bar": {
+            // ignores condition, radio-like
+            toggle: label => {
+              let labels = getLabels(label.parentElement);
+              let siblings = labels.filter(c => c !== label);
+              let index = labels.findIndex(c => c === label);
+
+              siblings.forEach((sibLabel, i) => {
+                let relatedContent = sibLabel.nextElementSibling;
+                sibLabel.tabIndex = -1;
+                relatedContent.style.display = "none";
+                sibLabel.setAttribute("aria-expanded", "false");
+                sibLabel.affordanceState.exclusiveExpanded = false;
+              });
+              label.tabIndex = 0;
+              label.parentElement.affordanceState.exclusiveSelection.index = index;
+              label.nextElementSibling.style.display = "block";
+              label.setAttribute("aria-expanded", "true");
+              label.affordanceState.exclusiveExpanded = true;
+              label.focus();
+            }
+          }
+        };
+        __setSize = (labelEls, contentEls) => {
+          this.__size = Math.min(labelEls.length, contentEls.length);
+
+          if (labelEls.length !== this.__size) {
+            console.warn("mismatch in tab-set label/content pairs...");
+          }
+
+          labelEls.forEach((labelEl, i) => {
+            let contentEl = contentEls[i];
+            if (!labelEl.initialized) {
+              labelEl.initialized = true; // todo: this used to be shadow, do i need it?
+              let defs = this.__defaults.defaultActive;
+
+              // this assumes it is about collapses
+              labelEl.affordanceState = {
+                expanded: defs.includes(labelEl),
+                active: false,
+                // activate in the current mode
+                activate: () => {
+                  if (this.affordanceState.current) {
+                    this.__affordanceConf[this.affordanceState.current].toggle(
+                      labelEl
+                    );
+                  }
+                }
+              };
+
+              let defaultExclusive =
+                defs.length === 0 ? labelEls[0] : defs[defs.length - 1];
+
+              this.affordanceState.exclusiveSelection.index = labelEls.indexOf(
+                defaultExclusive
+              );
+            }
+            labelEl.setMode = mode => {
+              if (mode === "non-exclusive") {
+                let isExpanded = labelEl.affordanceState.expanded;
+                labelEl.setAttribute("affordance", "collapse");
+                labelEl.setAttribute("tabindex", "0");
+                labelEl.setAttribute("aria-controls", contentEl.id);
+                labelEl.setAttribute("role", "button");
+                labelEl.setAttribute("aria-expanded", isExpanded);
+                labelEl.nextElementSibling.style.display = isExpanded
+                  ? "block"
+                  : "none";
+              } else if (mode === "exclusive") {
+                let isExpanded =
+                  labelEls.indexOf(labelEl) ===
+                  this.affordanceState.exclusiveSelection.index;
+                labelEl.setAttribute("affordance", "collapse");
+                labelEl.setAttribute("tabindex", isExpanded ? 0 : -1);
+                labelEl.setAttribute("role", "button");
+                labelEl.setAttribute("aria-expanded", isExpanded);
+                labelEl.setAttribute("aria-controls", contentEl.id);
+                labelEl.nextElementSibling.style.display = isExpanded
+                  ? "block"
+                  : "none";
+              } else {
+                labelEl.removeAttribute("tabIndex");
+                labelEl.removeAttribute("affordance");
+                labelEl.removeAttribute("aria-expanded");
+                labelEl.removeAttribute("role");
+              }
+            };
+          });
+        };
+
+        __projectTabBar = () => {
+          this.__removeProjections();
+          getLabels(this).forEach((tabSource, i) => {
+            let selected = false,
+              tabIndex = -1,
+              display = "none";
+
+            tabSource.setMode();
+            tabSource.slot = "tabListSlot";
+            tabSource.setAttribute("role", "tab");
+            let tabId = ensureId(tabSource);
+            let contentSource = tabSource.nextElementSibling;
+            contentSource.tabIndex = 0;
+            tabSource.setAttribute("aria-controls", ensureId(contentSource));
+            contentSource.setAttribute("role", "tabpanel");
+            contentSource.setAttribute("aria-labelledby", tabSource.id);
+            if (i === this.affordanceState.exclusiveSelection.index) {
+              tabIndex = 0;
+              selected = true;
+              display = "block";
+            }
+            tabSource.setAttribute("aria-selected", selected);
+            tabSource.tabIndex = tabIndex;
+            contentSource.style.display = display;
+
+            // TODO: aria-orientation :(
+          });
+        };
+
+        __projectCollapses = exclusive => {
+          // TODO - remove projections and... ??
+          this.__removeProjections();
+          getLabels(this).forEach(label => {
+            label.setMode(exclusive ? "exclusive" : "non-exclusive");
+          });
+        };
+
+        __removeProjections = () => {
+          [...this.children].forEach(child => {
+            child.removeAttribute("slot");
+            child.removeAttribute("affordance")
+            child.removeAttribute("role");
+            child.removeAttribute("aria-selected");
+            child.removeAttribute("aria-controls");
+            child.removeAttribute("tabindex");
+            child.removeAttribute("aria-expanded")
+            child.style.display = "block";
+          });
+        };
+
+        // matching pairs
+        __size = 0;
+
+        __configure = () => {
+          ///hmmm
+
+          this.__setSize(getLabels(this), getContentEls(this));
+
+          if (this.affordanceState.current === "tab-bar") {
+            this.affordanceState.currentMode = "exclusive";
+            this.__projectTabBar();
+          } else if (this.affordanceState.current === "collapse") {
+            this.affordanceState.currentMode = "non-exclusive";
+            this.__projectCollapses();
+          } else if (this.affordanceState.current === "exclusive-collapse") {
+            this.affordanceState.currentMode = "exclusive";
+            this.__projectCollapses(true);
+          } else {
+            this.affordanceState.currentMode = undefined;
+            this.__removeProjections();
+          }
+
+          let specifiedIndex = this.activeTabIndex || 0;
+          // TODO: hmm, these are DOM changes, we could cache them
+          let labelEls = getLabels(this);
+          let contentEls = getContentEls(this);
+
+          for (let i = 0; i < this.__size; i++) {
+            let label = labelEls[i];
+            // probably add one handler that decides
+            if (!label._inited) {
+              label.addEventListener("click", evt => {
+                evt.target.affordanceState.activate();
+              });
+              label._inited = true;
+            }
+          }
+        };
+        
+        __childListObserver = new MutationObserver(mutationList => {
+          // we have to wire up new elements
+          let labelEls = getLabels(this);
+          let contentEls = getContentEls(this);
+
+          // what if there is a mismatch?
+          this.__setSize(labelEls, contentEls);
+          this.__configure();
+        });
+
+        __tabset;
+
+        affordanceState = {
+          exclusiveSelection: { index: undefined },
+          current: undefined,
+          currentMode: undefined,
+          getLabels: () => {
+            return getLabels(this);
+          }
+        };
+
+        /*
+          Wires up suppored affordances...
+        */
+        constructor() {
+          super();
+          this.supportedAffordances.add("tab-bar");
+          this.supportedAffordances.add("collapse");
+          this.supportedAffordances.add("exclusive-collapse");
+
+          this.observeAffordanceChange((matching, all) => {
+            if (!this.__defaults) {
+              this.__defaults = {
+                onMatch: this.hasAttribute("defaults-on-match"),
+                defaultActive: getLabels(this).filter(l =>
+                  l.hasAttribute("default-activate")
+                )
+              };
+            }
+            this.affordanceState.current = this.getAttribute("affordance");
+            this.__configure();
+          });
+
+          this.attachShadow({ mode: "open" });
+          this.shadowRoot.innerHTML = template;
+     
+          this.__tabListEl = this.shadowRoot.querySelector("tab-list");
+          this.addEventListener(
+            "keydown",
+            evt => {
+              let labels = getLabels(this);
+              let size = labels.length;
+              let cur = this.affordanceState.exclusiveSelection.index;
+              let prev = cur === 0 ? size - 1 : cur - 1;
+              let next = cur === size - 1 ? 0 : cur + 1;
+
+              if (
+                this.affordanceState.current === "tab-bar" ||
+                this.affordanceState.current === "exclusive-collapse"
+              ) { 
+                if (evt.keyCode == 37 || evt.keyCode == 38) {
+                  labels[prev].affordanceState.activate();
+                } else if (evt.keyCode == 39 || evt.keyCode == 40) {
+                  labels[next].affordanceState.activate();
+                }
+              } else if (evt.keyCode == 32 && this.affordanceState.current === 'collapse') {
+                evt.preventDefault()
+              }
+            },
+            false
+          );
+          this.addEventListener(
+            "keyup", 
+            evt => {
+              if (evt.keyCode == 32 && this.affordanceState.current === 'collapse') {
+                evt.target.closest('[affordance]').affordanceState.activate()
+                evt.preventDefault()
+              }
+            })
+        }
+
+        connectedCallback() {
+          super.connectedCallback();
+
+          //TODO: check whether there is a hash/handle selection
+          
+          // If you append a fragment with a pair, it should work
+          this.__childListObserver.observe(this, { childList: true });
+        }
+      }
+      customElements.define("spicy-sections", RegionSet);
+    })();
+    </script>
+  <script>
+    Array.prototype.slice.call(document.querySelectorAll('.optional [data-src]')).forEach(function (optional) {
+      var prefs = window.localStorage.downloadsPrefs,
+          clickToSee;
+      if (prefs === 'true') {
+        activateOptional(optional);
+      } else {
+        clickToSee = document.createElement('div');
+        clickToSee.classList.add('clickToSee')
+        clickToSee.innerHTML = '<button>Click to see media</button>';
+        clickToSee.style.textAlign = 'center';
+        clickToSee.style.border = 'none';
+        optional.parentElement.insertBefore(clickToSee, optional.nextSibling);
+        clickToSee.firstElementChild.addEventListener('click', function () {
+          activateOptional(optional);
+        })
+      }
+
+    })
+  </script>
+
+</body></html>
