@@ -4,7 +4,7 @@
         <title>bkardell.com rss feed</title>
         <link>http://bkardell.com/</link>
         <description>Just the bkardell.com rss feed</description>
-        <lastBuildDate>Thu, 16 Nov 2023 15:54:19 GMT</lastBuildDate>
+        <lastBuildDate>Fri, 01 Dec 2023 20:27:46 GMT</lastBuildDate>
         <docs>http://blogs.law.harvard.edu/tech/rss</docs>
         <generator>awesome mix</generator>
         <image>
@@ -14,6 +14,165 @@
         </image>
         <copyright>All rights reserved 2018, Brian Kardell</copyright>
         <atom:link href="https://bkardell.com/blog/feed.atom" rel="self" type="application/rss+xml"/>
+        <item>
+            <title><![CDATA[The Effects of Nuclear Maths]]></title>
+            <link>https://bkardell.com/blog/NuclearMaths.html</link>
+            <guid>https://bkardell.com/blog/NuclearMaths.html</guid>
+            <pubDate>Fri, 01 Dec 2023 05:00:00 GMT</pubDate>
+            <description><![CDATA[Carrying on Eric's work on “The Effects of Nuclear Weapons” - with native MathML.]]></description>
+            <content:encoded><![CDATA[
+  <h1 class="contextual-heading" style="font-size: 2rem;">The Effects of Nuclear Maths</h1>
+  <p class="segue">Carrying on Eric's work on “The Effects of Nuclear Weapons” - with native MathML.</p>
+  <script src="../prism.js"></script>
+  <link rel="stylesheet" href="../prism.css">
+  
+  <p>As I have explained a few times since first writing about it in <a href="https://bkardell.com/blog/Math.html" target="_blank" rel="noopener">Harold Crick and the Web Platform</a> in Jan 2019, I'm interested in MathML (and SVG).  I'm interested in them because they are historically special: integrated into the HTML specification/parser even.  Additionally, their lineage makes them unnecessarily weird and "other".  Worse, they're dramatically under-invested in/de-prioritized.  I believe all that really needs to change.  Note that none of that says that <em>I</em> need MathML, personally, for the stuff that I write - but rather that I understand why it is that way and the importance <em>for the web at large</em> (and society).  This is also the first time I've helped advocate for a thing I didn't have a bunch of first-hand experience with.</p>
+
+  <p>Since then, I've worked with the Math Community Group to create MathML-Core to resolve those historical issues, get a W3C TAG review, an implementation in Chromium (also done by Igalians) and recharter the MathML Working Group (which I now co-chair).</p>
+
+  <p>For authors, the status of things is <em>way better</em>.  Practically speaking, you can use MathML and render some pretty darn nice looking maths for a whole lot of stuff.  Some of the integrations with CSS specifically aren't aligned, but they didn't exist at all before, so maybe that’s ok.</p>
+
+  <p>Despite all of this, it seems lots of people and systems still use MathJax to render as SVG, sometimes also rendering MathML for accessibility reasons.  But, why? It's not great for performance if you don't have to.</p>
+
+  <p>I really wanted to better understand.  So I decided to tackle some test projects myself and to take you all along with me by documenting what I do, as I do it.</p>
+
+  <section id="Nuking-all-the-MathJax" class="sectioning">
+    <h2 class="contextual-heading" style="font-size: 2.5rem;">Nuking all the MathJax (references)</h2>
+
+    <p>Last year, my colleague Eric Meyer wrote a piece about some work he'd been doing on a passion project <a href="https://meyerweb.com/eric/thoughts/2022/08/09/recreating-the-effects-of-nuclear-weapons-for-the-web/" target="_blank" rel="noopener">Recreating “The Effects of Nuclear Weapons” for the Web</a>, in which they bring a famous book to the web as faithfully as they can.</p>
+
+    <p>This piece includes a lot of math - hundreds of equations.</p>
+    <p>You can see <a href="https://atomicarchive.com/resources/documents/effects/glasstone-dolan/" target="_blank" rel="noopener">the result of their work on atomicarchive.com</a>.  The first two chapters aren't so math heavy, but Chapter 3 alone contains 179 equations!</p>
+<p>It looks good!</p>
+
+    <p>Luckily, <a href="https://github.com/chrisgriffith/glasstone-dolan" target="_blank" rel="noopener">it's on github</a>.</p>
+
+    <p>Oh hey! These are just static HTML files!</p>
+    
+    <p>Inside, I see that each file contains a block like this:</p>
+
+    <pre><code class="language-html">&lt;script id="MathJax-script" async src="mathjax/tex-chtml.js"&gt;&lt;/script&gt;
+&lt;script&gt;
+MathJax = {
+  tex: {
+    inlineMath: [['$', '$'], ['\\(', '\\)']]
+  },
+  svg: {
+    fontCache: 'global'
+  }
+};
+MathJax.Hub.Config({
+  CommonHTML: {
+    linebreaks: {automatic: true}
+  }
+});
+&lt;/script&gt;</code></pre>
+
+<p>These lines configure how MathJax works, including <em>how it is identified in the page</em>.  If you scan through the source of, say, chapter 3, you will see lots of things like this:</p>
+
+<figure>
+<pre><code class="language-html">&lt;p&gt;where $c_0$ is the ambient speed of sound (ahead of the shock front), $p$ is the peak overpressure (behind the shock front), $P_0$ is the ambient pressure (ahead of the shock), and $\gamma$ is the ratio of the specific heats of the medium, i.e., air. If $\gamma$ is taken as 1.4, which is the value at moderate temperatures, the equation for the shock velocity becomes&lt;/p&gt;
+    
+\[
+U = c_0 \left( 1 + \frac{6p}{7P_0} \right)^{1/2},
+\]</code></pre>
+
+<figcaption>Code sample from chapter 3</figcaption>
+</figure>
+
+<p>What you can see here is that the text is peppered with those delimiters from the configuration, and inside is TeX.</p>
+
+
+<div class="note" id="People-don’t-like-writing-ML">
+  <strong>People don't like writing *ML</strong>
+  <p>I just want to take a minute and address the elephant in the room: Most people don't want to write MathML, and that's not as damning as it sounds.  Case in point, as I am writing this post, I am not writing <code>&lt;p&gt;</code> and <code>&lt;h1&gt;</code> and <code>&lt;section&gt;</code>s and so on…  I'm writing markdown, as the gods intended.</p>
+
+  <p>TimBL’s original idea for HTML wasn't that people would write it - it was that machines would write it. His first browser was an editor too - but a relatively basic rich text editor, a lot like the ones you use every day on github issues or a million other places. The very first project Tim did with HTML was the CERN phone book which did all kinds of complicated stuff to dynamically write HTML - the same way we do today.  In fact, it feels like 90% of engineering seems to be transforming strings into other strings: And it's nothing new.  TeX has been around almost as long as I've been alive and it's a fine thing to process.</p>
+</div>
+  
+  <p>This format, of text tokens being anywhere in the document is way more ideally suited to processing on a build or server than on the client.  On the client we'd more ideally work with the tree and manage re-flow and so on.  Here the tree is irrelevant - in the way even -  because there are some conflicting escapes or encodings… But, it's just a string... And there are <em>lots of things that can process that string and turn it into MathML.</em></p>
+
+  <p>My colleague Fred Wang has an open source project called <a href="https://github.com/fred-wang/TeXZilla" target="_blank" rel="noopener">TeXZilla</a>, so I'm going to use that.</p><h2 id="Nuking-the-scripts">Nuking the scripts</h2><p>First thing first, let's get rid of those script tags.  Since they contain the tokens they'd be searching the body for, but well be processing the whole document, they'll just cause problems anyways.</p>
+
+  <p>Ok. Done.</p>
+
+  <p>Next, I checkout the TeXZilla project parallel to my book project and try to use the ‘streamfilter’ which lets me just <code>cat</code> and <code>|</code> (pipe) a file to process it…</p>
+
+  <p></p><pre><code class="terminal"> &gt;cat chapter1.html | node "../../texzilla/node_modules/texzilla/TeXZilla.js" streamfilter</code></pre><p></p>
+<p>Hmm… It fails with an error that looks something like this (not exactly if you're following along, this is from a different file):</p>
+
+  <pre><code class="terminal">&gt;cat chapter1.html | node "../../texzilla/node_modules/texzilla/TeXZilla.js" streamfilter
+
+Error: Parse error on line 145:
+...}\text{Neutron + }&amp;\!\left\{\enspace
+---------------------^
+Expecting 'ENDMATH1', got 'COLSEP'
+.....
+</code></pre>
+
+<p>I don’t know TeX, so this is kind of a mystery to me. I search for the quoted line and have a look. I find some code surrounded by <code>\begin{align}</code>  and <code>\end{align}</code>.  I turn to the interwebs and find some examples where it says  <code>\begin{aligned}</code>  and <code>\end{aligned}</code>, so I try just grep/changing it across the files and, sure enough, it processes further.  Which is right? Who knows - let's move on...</p>
+
+<p>I find a similar error like...</p>
+
+<pre><code class="terminal">Error: Parse error on line 759:
+...xt{ rads. } \; \textit{Answer}\]&lt;/asi
+-----------------------^
+Expecting '{', got 'TEXTARG'</code></pre>
+
+<p>Once again on the interwebs I find some code like <code>Textit{...}</code> (uppercase <code>T</code>) - so, I try that.  Sure enough, it works fine.  Or wait... Does it?  No, it just leaves that code untransformed now.</p>
+
+<p>But… Now we have MathML! At least in some chapters!</p>
+
+<p>With a little more looking, I find that this is a primary sort of TeX thing, it's just a quirk of TeXZilla, and I turn those those <code>textit{...}</code> into <code>mathit{...}</code> and now we're good. Finally.  Burned some time on that, but not too bad.</p>
+
+<p>I encounter two other problems along the way: First, escaping.  The source contains ampersand escapes for a few Unicode characters which aren't a problem when you're accessing it from <code>body.innerText</code> or something maybe, but are a problem here.  Still, it takes only a couple of minutes more to replace them with their actual Unicode counterparts: <code>&amp;phi;</code> ⇒ <code>φ</code>, <code>&amp;lambda;</code> ⇒ Λ, <code>&amp;&amp;times;</code> ⇒ ×).</p>
+
+<p>When I’m done I can send that to a file, something like this…</p>
+
+<p></p><pre><code class="terminal">&gt;cat chapter3.html | node "../../texzilla/node_modules/texzilla/TeXZilla.js" streamfilter &gt; output.html</code></pre><p></p>
+
+<p>And then just open it in a browser.</p>
+
+<p>There are some differences.  MathJax adds a margin to math that's on its own line (block) that isn't there natively.  The math formulas that are ‘tabular’ aren't aligning their text (the <code>=</code>), and the font is maybe a little small.  After a little fooling around, I add this snip to the stylesheet:</p>
+
+<pre><code class="language-css">math[display="block" i] {
+  margin: 1rem 0;
+}
+
+math {
+    font-size: 1rem;
+}
+
+mfrac {
+    padding-inline-start: 0.275rem;
+    padding-inline-end: 0.275rem;
+}
+
+mtd {
+  text-align: left;
+}</code></pre>
+
+<p>And the last problem I hit?  An error in the actual inline TeX in the source, I think, where it was missing a <code>$</code>.  MathJax simply left that un-transformed, just like my previous example because it lacked the closing <code>$</code>, but TeXZilla was all errory about it. I sent <a href="https://github.com/chrisgriffith/glasstone-dolan/pull/64">a pull request</a>, and I guess we'll see.</p>  
+<p>And like… that's it.</p>
+
+<p>All in all, the processing time here including learning the tools and figuring out the quirks in a language I'm unfamiliar with is maybe half a day - but that's scattered across short bits of free time here and there.</p>
+
+<p>Is it done? Is it good enough? It definitely needs some proofing to see what I've missed (I'm sure there's some!), and good scrutiny generally, but... It looks pretty good at first glance, right (below)?</p>
+
+<figure class="captioned-image">
+    <img src="/media/mathml-and-jax-atomic.png">
+    <figcaption>Native MathML on the left, MathJax on the right</figcaption>
+</figure>
+
+<p>You can browse it at:</p>
+<p><a href="https://bkardell.com/effects-of-nuclear-math/html/" target="_blank" rel="noopener">https://bkardell.com/effects-of-nuclear-math/html/</a>. </p>
+
+<p>And, <a href="https://github.com/bkardell/effects-of-nuclear-math">send me an issue</a> if you find anything that should be improved before I eventually send a pull request, or you see something that looks bad enough that you wouldn't switch to native MathML for this.</p>
+
+<p>But, all in all: I feel like you can make pretty good use of native MathML at this point.</p>
+</section>
+]]></content:encoded>
+        </item>
         <item>
             <title><![CDATA[Let's Play a Game]]></title>
             <link>https://bkardell.com/blog/PriorityGame.html</link>
@@ -820,85 +979,6 @@ You’re probably wondering how I got here…
 ]]></content:encoded>
             <enclosure url="https://i.imgflip.com/79med9.jpg">
             </enclosure>
-        </item>
-        <item>
-            <title><![CDATA[Superb Howl]]></title>
-            <link>https://bkardell.com/blog/SuperbHowl.html</link>
-            <guid>https://bkardell.com/blog/SuperbHowl.html</guid>
-            <pubDate>Tue, 07 Feb 2023 05:00:00 GMT</pubDate>
-            <description><![CDATA[We are rapidly approaching Sunday, Feburary 12th, or in America "Super Bowl Sunday". There's something interesting about the Super Bowl that I wish we could emulate there for the Web.]]></description>
-            <content:encoded><![CDATA[
-  <h1 class="contextual-heading" style="font-size: 2rem;">Superb Howl</h1>
-  <p class="segue">We are rapidly approaching Sunday, Feburary 12th, or in America "Super Bowl Sunday". There's something interesting about the Super Bowl that I wish we could emulate there for the Web.</p>
-
-  <p>Chances are pretty good that even if you don't care at all about American football or watch broadcast TV, you're still going to wind up hearing about the Super Bowl.  Or, at least, the commercials.</p>
-
-  <p>In fact, there's a pretty good chance you'll even see them.  They'll be written about by media and talked about on social media. The Super Bowl is the only event that I know of that is like that. The commercials aren't just an annoyance. In fact, it is the only one I know of where where a segment of the audience is tuning in <em>for the commercials</em>.  They want to see them live, as they air.  The commercials are <em>part of the event</em>.</p>
-
-  <p>That is... <strong><em>unique</em></strong></p>
-
-  <p>Maybe the web needs that.</p>
-
-  <p><em>Wait, don't run away! Please!! Let me explain!!</em></p>
-
-  <p>Check this out...</p>
-
-  <figure class="captioned-image">
-    <img src="https://notes.igalia.com/uploads/7376833c-9939-4a1e-8d99-5d129ec54c64.png">
-    <figcaption>A screenshot of a tab in Firefox with something about Pocket, explained below.</figcaption>
-  </figure>
-
-<p>Most people I show this to don't realize what they're seeing, but this is the "What's New" page.  Whever Firefox updates it <en>can</en> launch a "What's new?" page, and it <em>can</em> put whatever it wants on there.  This isn't really about what's new in this release of Firefox at all - it is a full page advertisement!  This particular advertisement is for a product that Mozilla acquired called Pocket, but I believe it was also a place where they highlighted the partnership with the Going Red movie.  That's pretty interesting and like a lot of things Mozilla has done, pretty innovative.  I guess now we'll see if like a lot of other Mozilla things, they were just a little too early or got a few details wrong.</p>
-
-<p>It requires Firefox to sell that space, and, I'm pretty sure they're not selling it successfully right now.  Maybe they never tried. Maybe they've stopped trying.  But, what's very interesting to me is that while their numbers have been declining for years, <em>even <strong>right now</strong>  "Firefox users" is more than twice the audience that the Super Bowl will next week.</em></p>
-
-<p>Wow.</p>
-
-<p>That could be a valuable ad spot, right? And not just for Firefox — it’s valuable in just about every browser. For example, Brave’s user numbers are right now getting close to half the audience of the Super Bowl.</p>
-
-<p>In fact, even Brave's numbers are, at this point, approaching about half the audience of the Super Bowl.</p>
-
-<p>Maybe this approach could be compelling for them too?  Imagine if they did a thing like Firefox.. Oh wait..</p>
-
-<figure class="captioned-image">
-  <img src="https://notes.igalia.com/uploads/db04208d-2563-4c0d-bd84-83566fc97861.jpeg">
-  <figcaption>A screenshot of the 'new tab' interface - the background photo of which is a full page advertisement.</figcaption>
-</figure>
-
-<p>Yeah, look at that.  Brave also recognizes this is valuable, though they are offering something similar, but a little different, more repeatable - the whole start backdrop.</p>
-
-<p>That's a pretty interesting idea which one could argue is just a <em>better</em> version of something that came before.  Opera, I think, was the first one to introduce a start page with "speed dial".  That's sort of like "default bookmarks on the start page" and for both Vivaldi or Opera <a href="https://vivaldi.com/blog/vivaldi-business-model/">their funding sources can include default bookmarks</a>.
-
-</p><figure class="captioned-image">
-  <img src="https://notes.igalia.com/uploads/00d2dc73-2f6d-422c-be3a-ed9e14daa121.png">
-  <figcaption>A screenshot of Vivaldi's new tab start page "speed dial", full of icons to web properties.</figcaption>
-</figure>
-
- <p>Microsoft, I think has had some of their own product stuff in their start page at various times. Google's browser, unsuprisingly places Search almost alone on the new tab page, despite the fact that the wonderbar will also search with Google. Search is their main money making business, after all. There is still, however, an drawer you can open which will link you to all of the other Google properties too.</p>
-
-  <section class="sectioning">
-    <h2 class="contextual-heading" style="font-size: 2.5rem;">Changing ideas</h2>
-    <p>As I wrote in <a href="https://bkardell.com/blog/NascarModel.html">The NASCAR Model</a> we need better ways to fund browser development and to incentivize direct investement, and for better or worse, <strong>that is way more practical if we can find a way to involve marketing budgets</strong>... Or just charging users somehow (they're charged now, they just don't realize it).</p>
-
-  <p>So, all of those ideas above are kind of interesting attempts to do just that.</p>
-
-  <p>In Wolvic we also have an environment around us, and we've effectively put up ads for Wolvic in those so far...</p>
-
-  <figure class="captioned-image">
-    <img src="https://notes.igalia.com/uploads/72a764d6-e5cf-4ede-8127-d72411ada773.jpeg">
-    <figcaption>A screenshot of Wolvic's "cyberpunk" environment, it's a city background at night and on the buildings are numerous digital signs or illuminated billboards.</figcaption>
-  </figure>
-
-  <p>But, the same thing holds there: There's no <em>real</em> reason we couldn't put some small amount of marking in the environment there.  There's no reason that one there couldn't be a billboard there for a new Star Wars show or Avengers movie...</p>
-
-  <p><em>(psst... Disney, call me)</em>.</p>
-
-  <p>Somehow, I feel like they're all worth exploring - or at least worth discussing as we figure out how to collectively come to grips with the fact that ultimately we need to find new funding models for browsers (and their underlying engines). You can also consider <a href="https://opencollective.com/wolvic">adding some sponsorship via the collective</a>, right now, and read more about that.</p>
-
-  <p>I'd love to hear your thoughts on any of this. Could we really somehow convince marketing dollars to be spent on this? What would it take?  Is there a way, like the Super Bowl, we can design create "just the right thing" where it's very valuable and not something users loathe.  How could we get ads worthy of the opportunity and not turn into another vector for attention stealing?  That's difficult.  There are, of course, way more questions than answers - but if you'd like to talk or share your thoughts, hit me up.  Especially if you are in Disney's marketing department, for example.</p>
-
-
-</section>]]></content:encoded>
         </item>
     </channel>
 </rss>
