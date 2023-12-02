@@ -434,10 +434,13 @@ America (art for sale)</a></li>
       display: block;
       margin: 1rem;
   }
-  pre:has(code[class^="language"]) {
+  :where(pre:has(code[class^="language"])) {
     display: block;
     background-color: black; 
     padding: 0.5rem;
+  }
+
+  code[class^="language"] {
     min-width: fit-content;
   }
   </style>
