@@ -10,7 +10,7 @@
     <meta name="twitter:description" content="Part of #StandardsIn2Min, an effort to provide short, but useful information about standards. Follow @StandardsIn2Min for a low-stress way to keep up, 2 minutes at a time.">
     
     <!-- meta name="monetization" content="$ilp.uphold.com/kKU4GXiRwhnf " -->
-    
+     
     <link rel="alternate" type="application/rss+xml" href="https://bkardell.com/blog/feed.rss" title="bkardell.com/blog rss feed">
     <title>Numeric Literal Separators: 2 Minute Standards</title> 
     <style>.captioned-image {
@@ -191,6 +191,17 @@ header .name {
     display: none;
 }
 
+
+:where(pre:has(code[class*="language"])) {
+    display: block;
+    background-color: black; 
+    padding: 0.5rem;
+}
+
+code[class*="language"] {
+    min-width: fit-content;
+}
+
 spicy-sections:not([affordance]) > h2 {
   clip: rect(0 0 0 0);
   clip-path: inset(50%);
@@ -303,6 +314,7 @@ spicy-sections.single {
     margin-right:  1.5rem;
 }
 
+
 </style>
     <style> 
       .captioned-image { font-size: 0.9rem; }
@@ -378,7 +390,7 @@ art)</a></li>
 America (art for sale)</a></li>
         </ul>
     </nav>
-</header>
+</header> 
 </spicy-sections>
 <script>
   /*

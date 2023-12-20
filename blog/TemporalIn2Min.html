@@ -12,7 +12,7 @@
     #StandardsIn2Min explaination of it...">
     <meta name="twitter:image" content="https://tc39.es/proposal-temporal/docs/object-model.svg">
     <!-- meta name="monetization" content="$ilp.uphold.com/kKU4GXiRwhnf " -->
-    
+     
     <link rel="alternate" type="application/rss+xml" href="https://bkardell.com/blog/feed.rss" title="bkardell.com/blog rss feed">
     <title>ES Temporal: 2 Minute Standards</title> 
     <style>.captioned-image {
@@ -193,6 +193,17 @@ header .name {
     display: none;
 }
 
+
+:where(pre:has(code[class*="language"])) {
+    display: block;
+    background-color: black; 
+    padding: 0.5rem;
+}
+
+code[class*="language"] {
+    min-width: fit-content;
+}
+
 spicy-sections:not([affordance]) > h2 {
   clip: rect(0 0 0 0);
   clip-path: inset(50%);
@@ -305,6 +316,7 @@ spicy-sections.single {
     margin-right:  1.5rem;
 }
 
+
 </style>
     <style> 
       .captioned-image { font-size: 0.9rem; }
@@ -380,7 +392,7 @@ art)</a></li>
 America (art for sale)</a></li>
         </ul>
     </nav>
-</header>
+</header> 
 </spicy-sections>
 <script>
   /*
