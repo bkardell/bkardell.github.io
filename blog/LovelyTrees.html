@@ -433,21 +433,25 @@ America (art for sale)</a></li>
 	</figure>
 
 	<p>
-		But, stick with me.  We're gonna make it and this is gonna be a good post.
+		But, stick with me.  It won't be that bad, I promise.
 	</p>
 
 	<p>
-		 The simple light DOM way is, yes, good, but a poor illusion.  That ilusion holds up until the component wants to create DOM, or intersperse its DOM with the page's DOM. Or until the page author thinks they're reasoning about the markup they <em>wrote</em> but what's there in the DOM is different.  Where there is any kind of real complexity: It's cases like that that Shadow DOM <em>should</em> serve us very well for. 
+		The simple light DOM way is, yes, good.  But it's a poor illusion.  That ilusion only holds up until the component wants to create it's own DOM, or intersperse its DOM with the page's DOM. Or until the page author thinks they're reasoning about the markup they <em>wrote</em> but what's there in the DOM is different. And then <em>everything</em> starts breaking down, not just CSS. Script too, uses selectors and tree relationships.  Where there is any kind of real complexity: It's cases like that that Shadow DOM <em>should</em> serve us very well for. 
 	</p>
 
 	<section class="sectioning">
-		<h2 class="contextual-heading">Falling Short</h2>
+		<h2 class="contextual-heading">But it falls short</h2>
 		<p>
-			Despite this, it seems that for plenty of people who have tried, it's falling short.  When one steps back and looks at all of the calls (from people who have been trying to use Shadow DOM for a while) for a few variations of "open stylable roots", or "slots in the light DOM", or "ability to use IDREFs across shadow roots" - or even the fact that we're bringing back scoped styles: It really starts to seem like maybe we've missed (or at least not recognized or prioritized) potentially multiple important use cases along the way.
+			Despite this, it seems that for plenty of people who have tried, it's falling short.  All of the posts I'm reading show that people are so put off by the current state that they'd flipped the bit until now on Custom Elements too.  When one steps back and looks at all of the calls (from people who have been trying to use Shadow DOM for a while) for a few variations of "open stylable roots", or "slots in the light DOM", or "ability to use IDREFs across shadow roots" - or even the fact that we're bringing back scoped styles: It really starts to seem like maybe we've missed (or at least not recognized or prioritized) potentially multiple important use cases along the way.
 		</p>
 		
 		<p>
-			We've focused, mainly on giving developers a capability to build and share something that is pretty similar to native widgets.  But we've not wrestled with some differences that seem clear - and I.  For example: Browsers are <em>extremely</em> careful to not expose internals because with millions (or even billions) of users, people <em>will</em> find them and use them somehow. And then, when browsers go to make some otherwise innocuous, even welcome change, everything goes wrong: Users suddenly experience problems in tons of apps.  People start filing bugs on those websites and writing hate filled blog posts, browser makers are left in a hard place.  That's very <em>unlike</em> how libraries work in many ways though.   In library land, we're still figuing things out.  It's very possible that neither end of that needs (or wants) that kind of extreme upgrade guarantees.  It's the sites themselves, not the browser or the library, that are in charge of deploying upgrades to libraries, which involves testing and avoids the worst. The two just aren't really the same.
+			I think this is because we've focused, mainly on giving developers a capability to build and share something that is pretty similar to native widgets - and that's not what most people want.
+		</p>
+
+		<p>
+			I think we've failed to wrestle with differences that seem clear. For example: Browsers are <em>extremely</em> careful to not expose internals because with millions (or even billions) of users, people <em>will</em> find them and use them somehow. And then, when browsers go to make some otherwise innocuous, even welcome change, everything goes wrong: Users suddenly experience problems in tons of apps.  People start filing bugs on those websites and writing hate filled blog posts, browser makers are left in a hard place.  That's very <em>unlike</em> how libraries work in many ways though.   In library land, we're still figuing things out.  It's very possible that neither end of that needs (or wants) that kind of extreme upgrade guarantees.  It's the sites themselves, not the browser or the library, that are in charge of deploying upgrades to libraries, which involves testing and avoids the worst. The two just aren't really the same.
 		</p>
 
 		<p>
