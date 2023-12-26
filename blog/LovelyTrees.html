@@ -458,12 +458,12 @@ America (art for sale)</a></li>
 	<link rel="stylesheet" href="../prism.css">
 	<style>dt { font-weight:bold; font-style:italic; }</style>
    <p>
-		I'm <em>thrilled</em> that so many people are suddenly learning about, and falling in love with Custom Elements separately from Shadow DOM. That is, in my mind, the best way to learn about Custom Elements vs Shadow DOM anyways (first). And, if your goals are to use it in some simple, static sites, or blogs - then, well, that might be all you need.  It's just a better version of what we used to do with jQuery, really.  
+		I'm <em>thrilled</em> that so many people are suddenly learning about, and falling in love with Custom Elements separately from Shadow DOM. It is, in my mind, best to learn about Custom Elements first anyways. And, if your goals are to use it in some simple, static sites, or blogs - then, well, that might be all you need.  It's just a better version of what we used to do with jQuery, really.  
 	</p>  
 
 	<p>But…</p>
 
-	<p>See here is where I want to say something about Shadow DOM, and I expect it will go something like this:</p>
+	<p>Here is where I want to say something about Shadow DOM, and I expect it will go something like this:</p>
 
 
 	<figure class="captioned-image optional">
@@ -476,35 +476,35 @@ America (art for sale)</a></li>
 	</p>
 
 	<p>
-		The simple light DOM way is, yes, good.  But it's a poor illusion, easy shattered as neither component authors, nor page authors can reason well about the tree. And then, <em>everything</em> starts breaking down quickly, not just CSS. Script too, uses selectors and tree relationships.  Where there is any kind of real complexity: It's cases like that that Shadow DOM <em>should</em> serve us very well for. 
+		The simple light DOM way is, yes, good.  But it creates a poor illusion if the component manipulates the DOM.  That illusion is easy shattered as neither component authors, nor page authors can reason well about the tree in potentially important ways, because it is a transform of the page author's tree to some tree of the component author's making, with no designed coordination. And then, <em>everything</em> starts breaking down quickly, not just CSS. Script too, uses selectors and tree relationships.  Where there is any kind of real complexity: It's cases like that that Shadow DOM <em>should</em> serve us very well for. 
 	</p>
 
 	<section class="sectioning">
 		<h2 class="contextual-heading">But it falls short</h2>
 		<p>
-			Despite this, it seems that for plenty of people who have tried, it's falling short.  All of the posts I'm reading show that people are so put off by the current state that they'd flipped the bit until now on Custom Elements too.  When one steps back and looks at all of the calls (from people who have been trying to use Shadow DOM for a while) for a few variations of "open style-able roots", or "slots in the light DOM", or "ability to use IDREFs across shadow roots" - or even the fact that we're bringing back scoped styles: It really starts to seem like maybe we've missed (or at least not recognized or prioritized) potentially multiple important use cases along the way.
+			Despite this, it seems that for plenty of people who have tried, Shadow DOM is falling short.  All of the posts I'm reading show that people are so put off by the current state that they'd flipped the bit until now on Custom Elements too.  When one steps back and looks at all of the calls (from people who have been trying to use Shadow DOM for a while) for a few variations of "open style-able roots", or "slots in the light DOM", or "ability to use IDREFs across shadow roots" - or even the fact that we're bringing back scoped styles: It really starts to seem like maybe we've missed (or at least not recognized or prioritized)  multiple important use cases along the way.
 		</p>
 		
 		<p>
-			I think this is because we've focused, mainly on giving developers a capability to build and share something that is pretty similar to native widgets - and that's not what most people think they need.  Indeed, I think we've failed to wrestle with differences that seem clear. 
+			I think this is because we've focused mainly on giving developers a capability to build and share something that is pretty similar to native widgets - and that's not what most people think they need.  Indeed, I think we've failed to wrestle with differences that seem sharp. 
 		</p>
 
 		<p>
-			For example: Browsers are <em>extremely</em> careful to not expose internals because the consequences of not doing that are literally dire. If they don't, then when browsers go to make some otherwise innocuous, even welcome change, everything goes wrong. Users suddenly experience problems in tons of apps.  Maybe they suddenly can't activate a control.  Perhaps that prevents them from getting the information they need for their bank, or their insurance.  It can be a very big deal.  People start filing bugs on those websites and writing hate filled blog posts.  Devs from those websites do the same in kind.  And so on.  No one wins.</p>
+			For example: Browsers are <em>extremely</em> careful to not expose their "Shadow DOM" internals because the consequences of doing so could be dire. If they didn't, then when browsers try to push an update that makes some otherwise innocuous, even welcome change, everything goes wrong. Users suddenly experience problems in tons of apps.  Maybe they suddenly can't activate a control.  Perhaps that prevents them from getting the information they need for their bank, or their insurance.  It can be a very big deal.  People start filing bugs on those websites and writing hate filled blog posts.  Devs from those websites do the same in kind.  And so on.  No one wins.</p>
 
 		<p>
-			However, libraries (of custom elements or anything else) are different. It's sites themselves, not the browser or the library, that are in charge of deploying upgrades to libraries, which involves testing and avoids the worst. Neither the site author, nor the library author, it seems, generally prefers those kind of extreme upgrade guarantees over everything else.
+			However, code libraries (of custom elements or anything else) are different. It's sites themselves, not the browser or the library, that are in charge of deploying upgrades to libraries, which involves testing and avoids the worst surprises. Neither the site author, nor the library author, it seems, generally requires the kind of extreme upgrade guarantees that current Shadow DOM is built to grant.  Largely, it seems they would provide other trade-offs instead.
 		</p>
 
 		<p>
-			We also haven't focused too much on collaboration.  I believe (as I have since the beginnings) that <em>most</em> uses are about some kind of collaboration -- more about preventing <a href="https://bkardell.com/blog/FriendlyFire.html">friendly fire</a>.  But what we've created is, perhaps more like a programming language with only <code>private</code> - no <code>protected</code> or "friendly" concepts.
+			The design of Shadow DOM also hasn't focused enough on collaboration.  I believe (as I have since the beginning) that <em>most</em> uses of Shadow DOM are about some kind of collaboration -- more about preventing <a href="https://bkardell.com/blog/FriendlyFire.html">friendly fire</a>.  But what we've created is perhaps more like a programming language with only <code>private</code> — no <code>protected</code> or "friendly" concepts.
 		</p>
 
 		<p>
 			If you think that all of this sounds kind of damning of standards, it's more complicated than it seems.  There are no cow paths to pave here.  But, what if there were? Because, at this point, it sure seems like there could be.
 		</p>
 
-		<p><em>I'm not saying I'd like to build a summer home there, but the Shadow Trees are actually quite lovely</em> as fundamentals to trod some down.</p>
+		<p><em>I'm not saying I'd like to build a summer home there, but the Shadow Trees are actually quite lovely</em>.</p>
 	</section>
 
 	
@@ -512,11 +512,11 @@ America (art for sale)</a></li>
 	<section class="sectioning">
 		<h2 class="contextual-heading">Treading Some Cow Paths</h2>
 		<p>
-			<em>Lots</em> of coordination is totally possible, it is simply requires jumping through hoops and isn't standard.  The community can, probably should, spend some time proving out and living with a few different ideas.  That would make standardizing one of them all the easier (standards are at their best, in my take, when they are mostly <a href="https://bkardell.com/blog/Dropping-The-F-Bomb-On-Standards.html">writing down the slang that developed and was tested naturally, in the wild</a>). Better still it taps into the creative power of the commons to get us <em>functional</em> solutions now, rather than making us wait forever for solutions that might not arrive for years - or even ever! This is how we got things like <code>.querySelector()</code> <code>.matches()</code> and <code>.closest()</code>.
+			<em>Lots</em> of coordination is totally possible, it simply requires jumping through hoops and isn't standard.  The community can, probably should, spend some time proving out and living with a few different ideas.  That would make standardizing one of them much easier (standards are at their best, in my take, when they are mostly <a href="https://bkardell.com/blog/Dropping-The-F-Bomb-On-Standards.html">writing down the slang that developed and was tested naturally, in the wild</a>). Better still it taps into the creative power of the commons to get us <em>functional</em> solutions now, rather than making us wait forever for solutions that might not arrive for years - or even ever! This sort of approach is how we got things like <code>.querySelector()</code> <code>.matches()</code> and <code>.closest()</code>.
 		</p>
 
 		<p>
-			Today, if you create a Shadow DOM, styles inside don't leak out, and (non-inherited ones, anyway) don't "leak in" from the page.  There are a lot of people who dislike that second part.  Tricky thing is, they don't all seem to dislike it the same way, or want the same kind of solution(s).  What we need here, I think, is practical experience and, luckily, we have the raw materials to try solutions to some of this in the wild ourselves and see what pains it creates (and probably, also realize some that it causes). 
+			Today, if you create a Shadow DOM, style rules inside don't leak out to the rest of the page, and don't "leak in" from the page.  There are a lot of people who dislike that second part.  Tricky thing is, they don't all seem to dislike it the same way, or want the same kind of solution(s).  What we need here, I think, is practical experience and, luckily, we have the raw materials to try solutions to some of this in the wild ourselves and see what pains it soothes (and probably, also realize some that it causes). 
 		</p>
 
 		<p>
@@ -531,12 +531,15 @@ America (art for sale)</a></li>
 			only styles specifically marked by the page. The practical upshot here is mainly about performance, clarity, and more careful decision-making.</dd>
 
 			<dt>Let page authors decide</dt> 
-			<dd>Let's the page say "these are the base, simple styles for all components" regardless of what they extend. I think this is kind of key because one of the really nice things about custom elements is that many of us might like to share and find and mix and match, and that's hard to do if it only works for components that extend a particular base class.</dd>
+			<dd>Lets the page say "these are the base, simple styles for all components" regardless of what they extend. I think this is kind of key because one of the really nice things about custom elements is that many of us might like to share and find and mix and match, which is pretty hard to do while also basing a solution on extending a particular base class.</dd>
 		</dl>
 
-		<p>But now ask me which one is "right"? All of them feel more natural for some use cases/scenarios. All of them are probably just terrible for others. Maybe there are more variants! Maybe what we need is a "pick one, that's how your page will work" idea.  Or, maybe we need all of them to work!  I think we can only learn and try through use and experimentation.</p>
 
-		<p>So.. Go forth. Pick one. Try it. Love it or hate it.  Let it inspire better ideas.  But, most importantly - share your thoughts - regardless!</p>
+		<p>But which one is "right"? All of them feel more natural for some use cases/scenarios. All of them are probably just terrible for others. Maybe there are more variants! Maybe what we need is a "pick one, that's how your page will work" idea.  Or, maybe we need all of them to work!  I think we can only learn through use and experimentation, so...</p>
+
+		<p><a href="https://github.com/bkardell/shadow-boxing/">Here's a tiny library to let you try each those things</a>!</p>
+
+		<p>Go on... Pick one. Try it. Make a glitch, make a pen, try it on your site. Love it or hate it.  Let it inspire better ideas.  But, most importantly - share your thoughts - regardless!</p>
 
 	</section>
 		
