@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://bkardell.com/</id>
     <title>bkardell.com rss feed</title>
-    <updated>2023-12-02T16:20:11.734Z</updated>
+    <updated>2023-12-26T18:58:05.325Z</updated>
     <generator>awesome mix</generator>
     <author>
         <name>Brian Kardell</name>
@@ -14,6 +14,107 @@
     <subtitle>Just the bkardell.com rss feed</subtitle>
     <logo>http://bkardell.com/profile.jpg</logo>
     <rights>All rights reserved 2018, Brian Kardell</rights>
+    <entry>
+        <title type="html"><![CDATA[Lovely Trees]]></title>
+        <id>https://bkardell.com/blog/LovelyTrees.html</id>
+        <link href="https://bkardell.com/blog/LovelyTrees.html">
+        </link>
+        <updated>2023-12-26T05:00:00.000Z</updated>
+        <summary type="html"><![CDATA[You've read lots of Web Components posts lately, I think this one is a little different.]]></summary>
+        <content type="html"><![CDATA[ 
+	<h1 class="contextual-heading" style="font-size: 2rem;">Lovely Trees</h1>
+	<p class="segue">You've read lots of Web Components posts lately, I think this one is a little different.</p> 
+	<script src="../prism.js"></script>
+	<link rel="stylesheet" href="../prism.css">
+	
+   <p>
+		I'm <em>thrilled</em> that so many people are suddenly learning about, and falling in love with Custom Elements separately from Shadow DOM. It is, in my mind, best to learn about Custom Elements first anyways. And, if your goals are to use it in some simple, static sites, or blogs - then, well, that might be all you need.  It's just a better version of what we used to do with jQuery, really.  
+	</p>  
+
+	<p>But…</p>
+
+	<p>Here is where I want to say something about Shadow DOM, and I expect it will go something like this:</p>
+
+
+	<figure class="captioned-image optional">
+		<video src="/media/PB_Fire_Swamp.mp4" controls="" style="max-width: 600px; width: 100%; display: block; margin: 2rem auto 3rem;"></video>
+		<figcaption>It's not so bad.</figcaption>
+	</figure>
+
+	<p>
+		But, stick with me.  It won't be that bad, I promise.
+	</p>
+
+	<p>
+		The simple light DOM way is, yes, good.  But it creates a poor illusion if the component manipulates the DOM.  That illusion is easy shattered as neither component authors, nor page authors can reason well about the tree in potentially important ways, because it is a transform of the page author's tree to some tree of the component author's making, with no designed coordination. And then, <em>everything</em> starts breaking down quickly, not just CSS. Script too, uses selectors and tree relationships.  Where there is any kind of real complexity: It's cases like that that Shadow DOM <em>should</em> serve us very well for. 
+	</p>
+
+	<section class="sectioning">
+		<h2 class="contextual-heading" style="font-size: 2.5rem;">But it falls short</h2>
+		<p>
+			Despite this, it seems that for plenty of people who have tried, Shadow DOM is falling short.  All of the posts I'm reading show that people are so put off by the current state that they'd flipped the bit until now on Custom Elements too.  When one steps back and looks at all of the calls (from people who have been trying to use Shadow DOM for a while) for a few variations of "open style-able roots", or "slots in the light DOM", or "ability to use IDREFs across shadow roots" - or even the fact that we're bringing back scoped styles: It really starts to seem like maybe we've missed (or at least not recognized or prioritized)  multiple important use cases along the way.
+		</p>
+		
+		<p>
+			I think this is because we've focused mainly on giving developers a capability to build and share something that is pretty similar to native widgets - and that's not what most people think they need.  Indeed, I think we've failed to wrestle with differences that seem sharp. 
+		</p>
+
+		<p>
+			For example: Browsers are <em>extremely</em> careful to not expose their "Shadow DOM" internals because the consequences of doing so could be dire. If they didn't, then when browsers try to push an update that makes some otherwise innocuous, even welcome change, everything goes wrong. Users suddenly experience problems in tons of apps.  Maybe they suddenly can't activate a control.  Perhaps that prevents them from getting the information they need for their bank, or their insurance.  It can be a very big deal.  People start filing bugs on those websites and writing hate filled blog posts.  Devs from those websites do the same in kind.  And so on.  No one wins.</p>
+
+		<p>
+			However, code libraries (of custom elements or anything else) are different. It's sites themselves, not the browser or the library, that are in charge of deploying upgrades to libraries, which involves testing and avoids the worst surprises. Neither the site author, nor the library author, it seems, generally requires the kind of extreme upgrade guarantees that current Shadow DOM is built to grant.  Largely, it seems they would provide other trade-offs instead.
+		</p>
+
+		<p>
+			The design of Shadow DOM also hasn't focused enough on collaboration.  I believe (as I have since the beginning) that <em>most</em> uses of Shadow DOM are about some kind of collaboration -- more about preventing <a href="https://bkardell.com/blog/FriendlyFire.html">friendly fire</a>.  But what we've created is perhaps more like a programming language with only <code>private</code> — no <code>protected</code> or "friendly" concepts.
+		</p>
+
+		<p>
+			If you think that all of this sounds kind of damning of standards, it's more complicated than it seems.  There are no cow paths to pave here.  But, what if there were? Because, at this point, it sure seems like there could be.
+		</p>
+
+		<p><em>I'm not saying I'd like to build a summer home there, but the Shadow Trees are actually quite lovely</em>.</p>
+	</section>
+
+	
+
+	<section class="sectioning">
+		<h2 class="contextual-heading" style="font-size: 2.5rem;">Treading Some Cow Paths</h2>
+		<p>
+			<em>Lots</em> of coordination is totally possible, it simply requires jumping through hoops and isn't standard.  The community can, probably should, spend some time proving out and living with a few different ideas.  That would make standardizing one of them much easier (standards are at their best, in my take, when they are mostly <a href="https://bkardell.com/blog/Dropping-The-F-Bomb-On-Standards.html">writing down the slang that developed and was tested naturally, in the wild</a>). Better still it taps into the creative power of the commons to get us <em>functional</em> solutions now, rather than making us wait forever for solutions that might not arrive for years - or even ever! This sort of approach is how we got things like <code>.querySelector()</code> <code>.matches()</code> and <code>.closest()</code>.
+		</p>
+
+		<p>
+			Today, if you create a Shadow DOM, style rules inside don't leak out to the rest of the page, and don't "leak in" from the page.  There are a lot of people who dislike that second part.  Tricky thing is, they don't all seem to dislike it the same way, or want the same kind of solution(s).  What we need here, I think, is practical experience and, luckily, we have the raw materials to try solutions to some of this in the wild ourselves and see what pains it soothes (and probably, also realize some that it causes). 
+		</p>
+
+		<p>
+			For example, here are few major potential philosophies: 
+		</p> 
+		<dl>
+			<dt>Let components decide</dt> 
+			<dd>Authors extend a new base class which then automatically pulls down a copy of some, or all of the styles provided by the page.</dd>
+
+			<dt>Let page authors decide</dt> 
+			<dd>Lets the page say "these are the base, simple styles for all components" regardless of what they extend. I think this is kind of key because one of the really nice things about custom elements is that many of us might like to share and find and mix and match, which is pretty hard to do while also basing a solution on extending a particular base class.</dd>
+		</dl>
+
+
+		<p>But which one is "right"? All of them feel more natural for some use cases/scenarios. All of them are probably just terrible for others. Maybe there are more variants! Maybe what we need is a "pick one, that's how your page will work" idea.  Or, maybe we need all of them to work!  I think we can only learn through use and experimentation, so...</p>
+
+		<p><a href="https://github.com/bkardell/shadow-boxing/">Here's a tiny library to let you try each those things</a>!</p>
+
+		<p><a href="https://shadow-boxing.glitch.me/">And a little glitch you can poke around, inspect, remix, play with, and tweak</a>.</p>
+
+		<p>Go on... Pick one. Try it. Remix the glitch, make a pen, try it on your site. Love it or hate it.  Let it inspire better ideas.  But, most importantly - share your thoughts - regardless! Did it do good things for you? Was it tricky? I want to know!</p>
+
+	</section>
+		
+
+
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[The Effects of Nuclear Maths]]></title>
         <id>https://bkardell.com/blog/NuclearMaths.html</id>
@@ -468,7 +569,7 @@ mtd {
 
   <figure>
     <img src="/media/2023/sx4_2.jpg" alt="">
-    <figcaption>Photo of the Eagle SX/4 in an earthy, somewhat matte tan/yellow with interesting dark trims.</figcaption>
+    <figcaption>Photo of the Eagle SX/4 in an earthy, somewhat matte tan/yellow with interesting dark trims</figcaption>
   </figure>
 
 
@@ -877,115 +978,6 @@ You’re probably wondering how I got here…
       <li id="footnote2">I think about these rating things in stores every time I’m shopping. It feels like they generally not great. They are a dull instrument and full of problems and bad incentives and ways to game.  <em>We should be able to do better than that</em>. For example, a small number of reviews from people I have some reason to trust is worth thousands from random internet accounts I have plenty of reason to <em>mistrust</em>.  I’m not sure how we build that yet, but maybe one of you can figure it out. Please :) If you don’t mind, and share it with the rest of the class. Thanks.</li>
     </ol>
   </section>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[A Few Good Lies]]></title>
-        <id>https://bkardell.com/blog/AFewGoodLies.html</id>
-        <link href="https://bkardell.com/blog/AFewGoodLies.html">
-        </link>
-        <updated>2023-02-09T05:00:00.000Z</updated>
-        <summary type="html"><![CDATA[On Wolvic’s new UA string in 1.3, things working, and frustrating intertwined problems.]]></summary>
-        <content type="html"><![CDATA[
-  <h1 class="contextual-heading" style="font-size: 2rem;">A Few Good Lies</h1>
-  <p class="segue">On Wolvic’s new UA string in <a href="https://wolvic.com/blog/release_1.3/">1.3</a>, things working, and frustrating intertwined problems.</p>
-
-  <p>Ok, let’s play a game…  Imagine that you look at your server logs and see this UA string.  Which browser sent it to you?</p>
-
-  <pre><code>Mozilla/5.0 (Linux; Android 10; Quest 2) AppleWebKit/537.36 (KHTML, like Gecko) OculusBrowser/24.2.0.0.16.408393304 SamsungBrowser/4.0 Chrome/106.0.5249.79 VR Safari/537.36
-  </code></pre>
-
-  <p>I won’t blame you if you don’t immediately recognize the browser that sends that string by default (it’s the OculusBrowser).  It’s already a giant set of lies and there’s no intuitive way to decide which one to believe.</p>
-
-  <p>But... Maybe you should believe <em>none of them</em>!  <a href="https://wolvic.com/" target="_blank" rel="noopener">Wolvic</a>, for example, will send that string sometimes.  And sometimes the OculusBrowser will send <em>some other string</em>. Eek.</p>
-
-
-  <p>Okay, maybe that was just a particularly complicated example. How about this one:</p>
-  <pre><code>Mozilla/5.0 (Android 10; Mobile VR; rv:81.0) Gecko/81.0 Firefox/81.0
-  </code></pre>
-
-  <p>Ah, Firefox for Android? Sort of! Firefox <em>Reality</em> used to send that. Yes, it was for AOS-based devices, but not really for your Pixel phone’s Android.</p>
-
-  <p>Alright, alright — this one should be easy given the last one, right? Look how similar it is…</p>
-  
-  <pre><code>Mozilla/5.0 (Android 10; Mobile VR; rv:105.0) Gecko/105.0 Firefox/105.0
-  </code></pre>
-  
-  <p>That is… Wolvic.</p>
-  
-  <p>At least by default.  Anything where one of those numbers was over ‘81’ was probably Wolvic.  At least before this week’s release.</p>
-
-  <p>Starting with this release, Wolvic will normally send:</p>
-  <pre><code>Mozilla/5.0 (Android 10; Mobile VR; rv:105.0) Gecko/105.0 Firefox/105.0 Wolvic/1.3
-  </code></pre>
-
-  <p>Ah finally - the text “Wolvic” appears in the string! But also, still, some lies. And then, of course, sometimes we’ll have to tell a completely different lie.</p>
-
-  <p>But... I mean...<strong><em>WHO CARES</em>, right!?</strong></p>
-
-  <p>You might imagine that <em>nobody</em> cares about the UA stirng, but you would be <em>very</em> wrong.  Everybody seems to care about it, somehow.</p>
-
-  <h2 class="" id="The-lies-we-need-to-tell-ourselves"><a class="anchor hidden-xs" href="#The-lies-we-need-to-tell-ourselves" title="The-lies-we-need-to-tell-ourselves" smoothhashscroll=""><i class="fa fa-link"></i></a>The lies we need to tell ourselves</h2>
-  <p>It’s not just about an app that suddenly starts refusing to service HTTPS requests, except to tell them to use a different browser (maybe, for example, the one they just so happen to make).</p>
-  <p>It’s <em>all kinds of things that people try to reason about that ultimately somehow involves the UA string</em> — and it affects <em>so much</em>.</p>
-  <p>Maybe, for example, you use some CMS or tool that lets you think in simpler terms: Is it “mobile” or is it a “tablet” or is it a “desktop”? Cool, but how does it know, and by what definition? Does that definition hold forever?</p>
-  <p>Or maybe you use a library which tries to make it simple to give all different devices as good an experience as they can.  Again, there is some kind of attempt at categorizing in order to determine the ‘best’ experience — and it often involves (just a little maybe!) the UA string. And again, does that hold up forever?</p>
-  <p>Even if this works perfectly with every device in the whole world (it probably doesn’t!), as soon as something changes, or doesn’t neatly fit those definitions anymore, this is probably going to give users a pretty bad result.</p>
-  <p>And guess what? We’re all users! You can imagine how it might be frustrating if you are, for example, a user of some new device or browser.  Like, hypothetically, one who has bought an XR device, running an immersive operating system, and browsing the web in a broswer <em>built for that</em>, and the cool immersive experience link someone sent you is giving you the non-immersive experience instead.  The site thinks your totally capable browser just isn’t.</p>
-  
-  <figure class="captioned-image share-image">
-    <img src="https://i.imgflip.com/79med9.jpg" alt="Jack Nicholson's character in famous scene from A Few Good Men">
-    <figcaption>You want the immersive?! You can't handle the Immersive!!</figcaption>
-  </figure>
-
-  <p>That kind of shit happens, a lot, and when it happens in popular libraries or CMSes or whatever, it can affect thousands of sites.</p>
-
-  <p>In fact, that’s a thing that happened with Wolvic.  A lot.</p>
-  
-  <p>You know who users get mad at when that happens?  Not the site, nor the library.  They get mad at the browser.  When that happens, browsers will start lying to your site because that makes the user happy, and stops their hate.  At the end of the day, making users happy is their job.</p>
-
-  <p>And this isn't a new thing. My colleague Eric Meyer wrote a great post about <a href="https://meyerweb.com/eric/thoughts/2008/01/24/almost-target/">something similar from 2002</a>, and we did a whole <a href="https://www.igalia.com/chats/ua-chat">Igalia chats episode</a> about all of this.</p>
-  
-  <p>"Making users happy is their job" is tricky though, right? Because in our case, the site or CMS or library maker probably introduced something there <em>because</em> they cared about users. They wanted to make sure that some browser that falls through the logic cracks gets at least the basic mobile experience or something.  Which is great, until it sucks.</p>
-
-  <p>Ugh.</p>
-
-  <p>Even if you aren’t looking at the UA string <em>functionally</em> somehow, you probably still care about it for functional reasons, if you think about it.</p>
-
-  <p>Let’s just take a for example: Should you care about how your site looks on these XR headsets? Is it worth doing something specially interesting on those? How do you decide what is worth your energy? Probably by asking “how many users of that are there?” in general, and more specifically “how many users are using that to visit my website?”</p>
-
-  <p>In both cases, you’re <em>probably</em> relying on the UA string. Either by looking through your own server logs and trying to see, or else by looking at market share numbers, which are literally a summary of other people’s server logs.</p>
-
-  <p>But, it’s possible you have 1000 people all visiting your site with Wolvic or the OculusBrowser <em>right now</em>, and you see <em>none</em> of that in your logs, because the browser makers have already figured out that we have to lie about what they are.</p>
-
-  <p>So, this is an especially frustrating thing for new browsers and new classes of devices.</p>
-
-  <p>Say, for example, you’re building a new browser. Maybe you have a logo that looks like a Wolf. Hypothetically. And you’re trying to fund a handful of developers to implement features which will serve the needs of your users.</p>
-
-  <p>The main way that a browser can pull in some income to pay said developers, historically, is by signing a default/integrated a search deal with a search engine.  However, this presents something of a chicken and egg problem.  To be a worthwhile deal, the search engine wants to know what kind of market share you have —&nbsp;in other words, how many users?  And, well, they’re certainly not going to trust your private data on this.  Metrics based on the UA string are the most obvious and public ones, but as a new browser you have to lie about what you are so that your users can, you know, use websites.</p>
-
-
-  <p>Sooooo… Cool, cool, cool, cool.</p>
-
-  <figure class="captioned-image">
-    <img src="https://media.tenor.com/images/1fb9e8629921d9a5e53ccb93f5c6530a/tenor.gif" alt="Brooklyn Nine Nine Jake saying cool cool meme" class="">
-  </figure>
-
-
-  <p>I wish none of this was the way it was, but I also don’t know how to fix it except to say “we really need to talk about the funding model”.</p>
-  
-  <p>So, please be careful.  Try not to make it worse.</p>
-  
-  <p>Use Wolvic if you can.</p> 
-  
-  <p>Test with it if you can.</p>
-
-  <p>Please definitely report bugs, but also please be patient with us if you’re a user, we’re fighting systemic problems sometimes.</p>
-
-  <p>Maybe toss some money at our <a href="https://opencollective.com/wolvic" target="_blank" rel="noopener">collective efforts</a> if you can and help instigate the kind of change we need… or, if not, maybe just tell someone about it.</p>
-
-  <p>Thanks.</p>
-
 ]]></content>
     </entry>
 </feed>
