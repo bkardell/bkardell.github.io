@@ -6,13 +6,13 @@
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:site" content="@briankardell">
     <meta name="twitter:creator" content="@briankardell">
-    <meta name="twitter:title" content="You Don't Say: Web Speech APIs Part II">
-    <meta name="twitter:description" content="This is part of a series about making the browser speak and listen to speech.  In my last post Greetings, Professor Falken: Web Speech APIs Part I, I talked about the existing APIs">
-    
+    <meta name="twitter:title" content="Canvas and the Evolution of Platform">
+    <meta name="twitter:description" content="There is a lot more that I think is exciting about OffscreenCanvas that I could fit in my last post...">
+    <meta name="twitter:image" content="https://km.support.apple.com/library/content/dam/edam/applecare/images/en_US/osx/mavs_dashboard.png">
     <!-- meta name="monetization" content="$ilp.uphold.com/kKU4GXiRwhnf " -->
      
     <link rel="alternate" type="application/rss+xml" href="https://bkardell.com/blog/feed.rss" title="bkardell.com/blog rss feed">
-    <title>You Don't Say: Web Speech APIs Part II</title> 
+    <title>Canvas and the Evolution of Platform</title> 
     <style>/*!
  * Web Fonts from Fontspring.com
  *
@@ -451,329 +451,181 @@ America (art for sale)</a></li>
     document.documentElement.classList.add("lldelay");
   }, 1000);
 </script>
-    <main><div class="posted-on">Posted on 08/24/2017</div><article posted-on="08/24/2017" class="sectioning">
-    <h1 class="contextual-heading">You Don't Say: Web Speech APIs Part II</h1>
-    <p class="segue">This is part of a series about making the browser speak and listen to speech.  In my last post <a href="https://bkardell.com/blog/Greetings-Professor-Falken.html">Greetings, Professor Falken: Web Speech APIs Part I</a>, I talked about the existing APIs we "have" for speaking (as well as why the air quotes) and all the many ways that they are wonky today.  In this post I'll share some of my own opinions on that API, as well as how I'm dealing with the <em>speaking</em> part IRL.</p>
+    <main><div class="posted-on">Posted on null</div><article class="sectioning">
+    <h1 class="contextual-heading">Canvas and the Evolution of Platform</h1>
+    <p class="segue">There is a lot more that I think is exciting about <code>OffscreenCanvas</code> that I could fit in my last post...</p>
 
-    <script src="../prism.js"></script>
-    <link rel="stylesheet" href="../prism.css">
-    <script src="../test/speaking/basic-voice-speaker-ii.js"></script>
-    <style>
-    .note {
-        background-color: rgba(255,255,0,0.24);
-        padding: 1rem;
-        font-style: italic;
-    }
-    .note::before {
-        content: 'Note';
-        font-size: 0.8rem;
-        background-color: black;
-        color: white;
-        padding: 0.25rem;
-        margin-right: 0.5rem;
-    }
-    .output {
-        margin-left: 1rem;
-        font-family: "Courier New", Courier, monospace
-    }
-    .spec-quote {
-        display: block;
-        margin: 1rem;
-    }
-    </style>
-    <script>
-        document.body.addEventListener('click', function (evt) {
-            if (evt.target.classList.contains('run')) {
-                let clone = document.importNode(evt.target.previousElementSibling.content, true)
-                document.body.appendChild(clone)
-            } else if (evt.target.classList.contains('cancel')) {
-                speechSynthesis.cancel()
-                speechSynthesis.speak(new SpeechSynthesisUtterance('normalcy should be restored'))
-            }
-        })
-    </script>
+    <p>I recently published a post explaining how <code>OffscreenCanvas</code> is important and interesting, in very practical ways, to far more users than most developers probably imagine. However, there's a bigger story here too, I think, about the evolution of the platform itself.  I recently gave a talk at <a href="https://webdirections.org/code/">Web Directions: Code</a> which went into a whole lot of this (below), but I thought I'd like to put some of it down in blog form too.</p>
 
-    <p>So, we have these wonky APIs implemented inconsistently in a lot of browsers.  We know how to deal with that, we've done it before.  I'd like to review our options to explain how I think it makes sense to approach this:</p>
+    <video src="https://videos.igalia.com/conferences/Web%20Directions%20Code%202021/Brian_Kardell_-_The_Evolution_of_the_Web_and_OffscreenCanvas.webm"></video>
 
-    <ul id="options">
-        <li>We could just monkeypatch something which makes these precise APIs (or at least some subset) actually work consistently in all browsers.  It's way too early to consider doing this in my opinion and probably does more harm than good as we begin to eliminate options for real implementations/standards.  Let's not do that.</li>
-        <li>We could develop an alternately named polyfill which does just that - instead of dealing with <code>speechSynthesis</code> for example, you'd deal with <code>_speechSynthesis</code>.  That could be interesting, but I'm not sure the API is actually that great to begin with as I'll explain below, so maybe that's not a great option at this stage either.</li>
-        <li>We could develop a new proposal with its own "speculative polyfill" or "prollyfill" following <a href="https://www.w3.org/2001/tag/doc/polyfills/#advice-for-polyfill-authors">excellent advice by the W3C TAG</a> in how we do that and <a href="https://extensiblewebmanifesto.org">#extendthewebforward</a>. This seems very plausible, but I think we're getting kind of ahead of ourselves even there.</li>
-        <li>We could make some libraries following the same advice that hope to become proposals after initiating a lot of discussion and showing that they are, in fact, pretty well thought out and handy.  This is where I think we are.</li>
-    </ul>
+    <h2>Missing Layers</h2>
+    <p>Shortly after publishing the Extensible Web Manifesto, Alex Russell, Yehuda Katz and I <a href="https://www.smashingmagazine.com/2013/11/laying-the-groundwork-for-extensibility/">co-authored a piece for smashing magazine</a>, trying to explain a little better what it was (and wasn't) about.</p>
+
+    <p>In it, we pointed out that the web was, at the time, made up of a somwhat random collection of APIs, both high level and low (primarily high, then), which usually lacked connections and introduced inconsistencies.  While it was easy to <em>imagine</em> many strata of APIs that described how a higher level feature worked, those APIs didn't actually exist.</p>
+
+    <p>Think about how much is happening to make a simple <code>&lt;img&gt;</code> element work. As just a few examples: It's an element - it presents a specific API.  Things happen when it is inserted into the DOM.  It can reason about <code>srcset</code>, and asynchronously fetch data, stream, decode, work with CSS and ultimately paint on to the screen. It could also magically provide accessible placeholder and failure without your DOM itself changing. At the time we wrote that piece developers could do almost none of that - JavaScript was still developing async concepts, even.</p>
+
+    <p>During the HTML5 era, pretty close to when it took up WebKit - Apple introduced <code>&lt;canvas&gt;</code>, explaining it as ~"an image, with a programatic API drawing surface".  However, it did, nor exposed any of that stuff. In fact, all work done to draw on this surface would even block the main thread.  In practice, any relationship to <code>&lt;img&gt;</code> was mainly conceptual.</p>
+
+    <p>A more ideal web, we argued, was one in which these strata <em>do</em> exist, and parts can be referenced, reused, tweaked and composed - even in creating new high level standards.  This would also allow easier  experiment at the edges, and polyfilling.  It would require less code and clearer paths from experiment to  standardization.</p>
+
+    <h2>Fast Forward</h2>
+    <p>The pace of things in standards moves considerably more slowly than most of us are used to.  Bigger shifts can be almost imperceptable.  Thankfully, we can look back after a while and take stock of where we are today compared to where we were then.</p>
+
+    <p>In our piece, we asked people to imagine that there was something that they wanted that was "almost an image".  Perhaps that might be something they imagine would be a small improvement to <code>&lt;img&gt;</code> itself. Perhaps it might just be an idea that has an awfully lot in common with an <code>&lt;img&gt;</code>.  Ideally, we argued, a developer should be able to  experiment with that idea.  They should be able to build it, in a manner that makes it have most of the same great qualities it would have natively.  Ideally, that would be doable without having to reimplement everything.  They should be able to try what they built, share it, and see if it meets needs as well as they imagine (many of my own first takes fall short). Ideally we could plug into the fact that outside of standards, ideas <em>rapidly</em> evolve an as people share experiments, they are tested, forked, remixed and improved.  And, ideally, all of this would make it very easy to standardize successful things because they would inherently be 'close to the platform'.</p>
+
+    <p>Of course, at the time, absolutely none of this was true.</p>
+
+    <p>So let's take an example:  Panning an zooming an image.  On the web, an image can be embedded in a page, or it can be opened on its own.  You can pan and zoom the page itself, but not an image.  It seems pretty obvious to me that there is a common problem here.  Every shopping site in the world wants you to be able to see detailed images somehow 'inline'.  Artists, photographers and museums often have something similiar. If you squint at it a bit, there are other use cases like maps and schematics views, or even datavis which seem similar.  If we wanted to explore some standardization here, what would it look like?</p>
+
+    <p>To be honest, I don't know. This isn't a proposed solution, but today 
+
+    it would be very easy to standardize the results because it would be very close to the platform.  But at the time, none of this was true.</p>
+
+
+
+
+
+    -------------left off here---------------
+
+      We tried to explain the impossibly bad choices you'd be left 
+
+
+
+
+
+    <h2>An image element, kinda</h2>
+
+    
+
+   
+
+    <p>In our piece, we held up several examples of why this mattered.  One that I think is interesting and easy enough to think about is: Imagine that you wanted something
+
+    </p><h2>Fast Forward</h2>
+
+
+      magine that you had an idea for something awfully <em>like</em> an <code>img</code>, but just a little different. This sort of thing happens all the time.  You'd like to build out a solution and share it, hoping to show that it was a good idea and worth standardizing.  How would you go about doing that?<p></p>
+
+    <p>In stark contrast to almost everything that came before it, other than how to put <em>an element</em> into the DOM, <code>&lt;canvas&gt;</code> wasn't high level at all. In fact, - it <em>required</em> JavaScript and it <em>only</em> provided a low level API.</p>
+
+    <p>Over the years people have developed increasingly amazing things with <code>&lt;canvas&gt;</code>.  That's unsurprising - and incorporated into even more complex ideas.</p>
+
+    <p>However, a disconnect with abilities that exist within the platform means that even practically close problems begin kind of far from their platform cousins, and quickly drift further and further.  Re-integrating ideas into the platform is considerably hard.  Photoshop in the browser exists, complex mapping applications in the browser exist
+
+      there's often no neat way to get something that far from their platform cousins back into standards.
+
+      they just get further and further from their platform cousins.
+
+
+    </p><p>One of the things I remember being highlighted here was using it in MacOS dashboard widgets.</p>
+
+    <img src="https://km.support.apple.com/library/content/dam/edam/applecare/images/en_US/osx/mavs_dashboard.png">
+
+
+
+   
+
+  
+  
+  <p>At the time we wrote that article, the answer was pretty abysmal.  We had several high and low-level APIs that we could potentially attempt to abuse, but in the end it wouldn't be very good in just about any respect.  It would often require mountains of JavaScript, many times just to provide a very rough approximation of something the browser could already do, and do better. <code>XMLHTTPRequest</code> was, ultimately, not a lot like how images fetch their data. The canvas on which it would paint was main thread blocking. If more elements were necessary, script would inevitably muck with the users' DOM tree and create other problems.  And so on.</p>
+
+  <p>All of these things also mean the 'proposed idea' requires a whole lot of squinting and interpretation.</p>
+
+  <p>But maybe that sounds like it's academic.  Do developers really even have needs that are "almost an  <code>&lt;img&gt;</code>"?</p>
+
+  <p>A lot has happened since then which I think we can use to illustrate.,
+
+
+
+    The platform had thusfar mainly presented things in disconnected either/or fashion.  There were a number of very high level things, and there were a smaller number of lower level things.
+
+
+    Sometimes there was a low level API, more often, a high level one.  But ideally, there would be some architecture connecting it all - an extensible one.  Having such a thing would enable us to 
+
+
+  </p><section>
+    <h2>The canvas context was unique...</h2>
+
+    <p>ASounds cool, but... for what? 
+    </p>
+
+    <p>One of the things I remember being highlighted here was using it in MacOS dashboard widgets.</p>
+
+    <img src="https://km.support.apple.com/library/content/dam/edam/applecare/images/en_US/osx/mavs_dashboard.png">
+
+    <p>Perhaps one of the more interesting things about canvas was that it in stark contrast to almost everything that came before it, other than how to put <em>an element</em> into the DOM, it wasn't high level at all. In fact, - it <em>required</em> JavaScript. It <em>only</em> provided a low level API.  In fact, it provded no only a low-level for drawing on with shapes and paths, but even a low-low-level API (where you could get or set actual pixels). It didn't have narrow use cases at all either.</p>
+  </section>
+
+  <section>
+    <h2>Paving the cowpaths and paying down tech debt</h2>
+    
+   
+     and needed to pay some some attention to it and lay good groundwork for the future.<p></p>
+
+    <p><code>&lt;canvas&gt;</code> was an illustration we used. That's because while you can <em>imagine</em> the sort of relationship with <code>&lt;img&gt;</code> as described in its introduction, it didn't exactly exist. In fact, while one probably imagined many strata of architecture empowering an <code>&lt;img&gt;</code>'s magic (fetching, decoding, painting pixels on a canvas, etc), it wasn't clear that really existed at all. From the outside, in fact, there appeared to be many inconsistencies. If such an architecture <em>did</em> exist, it was certainly unavailable to developers. This, we explained, was probably not great for the future.</p>
+
+    <p></p>
+
+    <p>Even during the authoring of that document, we tried to be very clear that that wasn't the idea.  </p>
+  </section>
+
+    <p>But I think what is even more interesting here is actually beneath the surface...</p>
+
+    <p>My friend and co-worker at Igalia <a href="https://twitter.com/cwiiis">Chris Lord</a> has been working on <code>OffscreenCanvas</code> in WebKit. While you might not be thinking of this day to day, there are a tiny (and historically not growing) number of companies in the world who (voluntarily) make whole browser engines.  At the same time, there are whole world of people asking for different things.  What gets done (or doesn't) is ultimately in large part a function of this fact.
+
+     has to give priority or else they can't get done - that's pretty hard to do because there are a million things asking for priority, and only a few companies who make browser engines.</p>  
+
+
+    <p>Another thing that excites me is how Igalia is getting this work done and the impacts it has.</p>
+
+    <p>Lots of good people in the web community are constantly pushing us to please pay attention to people who don't have expensive phones. However, not only is this not working out so well - it is really only scratching the surface of it.</p>
 
     <section class="sectioning">
-        <h2 class="contextual-heading">What's wrong with the current API?</h2>
-        <p><em>Note: These are just my personal opinions after using it a lot for the past couple of months.</em></p>
-        <p>Let's assume that the API worked consistently, as advertised by the existing draft, across browsers and devices.  Would it be what we really want or need.  I think that, actually, the answer is no.  </p>
+      <h2 class="contextual-heading">For whom the bell tolls</h2>
+     Cheap tablets also abound, for example.  But, far more than that: embedded devices are <em>everywhere</em>! Game consoles, the TVs they play on, the cable boxes and streaming devices that are hooked up to them: <em>All of them</em> are embedded hardware, and most of those are presenting interfaces with web rendering engines.  Wow!  And <em>those are just the ones that are probably in front of your face as you sit on the livingroom couch</em>.<p></p>
 
-        <section class="sectioning">
-            <h3 class="contextual-heading">How low can you go?</h3>
-            <p>On the one hand, it's intending to be a low level API, but here I feel like it still falls a little short.  Speech is sound, and yet it's not clear to me how this really fits into the audio architecture.  There was very brief disussion of this, but to not seems like a failure to me.  For example, here's a nifty demo from MDN that allows you to <a href="https://mdn.github.io/voice-change-o-matic/">add effects to your voice with input from the mic</a> by connecting it to an audio stream which gets processed to add things like reverb.  However, the draft nor implementation seem to have no way to intercept the audio stream generated by <code>speechSynthesis</code>.  This seems like a shame because the set of things that you could do there is nearly unbounded, whereas the set of things you can do with the existing levers is exceptionally finite.  In my own use cases, I really wanted those abilitites.  Similarly, the most handy of them (pitch, rate, volume) overlap.  Surely there is something 'down there' that deserves explanation.  If these were done 'in post' there's no reason that any voice shouldn't support those.  So, I think we need more there.</p>
+    <p>Walk into a modern kitchen and you'll find more: Smart appliances from refrigerators to stoves to cooking devices... Same thing.  </p>
 
-            <p>It seems to me there could easily be an 'audiocreated' callback or something which gave you a chance to deal with the audio itself instead of just piping it to the speakers.</p>
-        </section>
+    <p>Travel somewhere, you'll find web engine based interfaces in just about every form of transportation these days: Infotainment systems in cars, airplanes, trains and vehicle dashboards too.</p>
 
-        <section class="sectioning">
-            <h3 class="contextual-heading">Off to the races</h3>
-            <p>Ok, so it's not the low-level API I'd like it to be, but there's a lot of room for improvement at higher levels too...</p>
-            <p>As I explained, <code>.getVoices</code> is weird.  It's kind of typical Web weird in that listeners for events like <code>DOMContentLoaded</code> are also historically racey.  The rationale, I believe, is that remote voices may or may not be available and that can actually change through the duration of your program.  If you've ever used Google Maps Navigation you might have heard the speech change - I beleive that's what's going on there.  But it feels like we should be past this as we have had <code>Promises</code> for some time and the two can co-exist.  Most of the time what we really want to know is "have some voices loaded or not" and managing and guarding against that seems unnecessarily complicated.  You can't put something into the queue with <code>speechSynthesis.speak()</code> until you have an utterance.  You can't create an utterance until you have voices.  You can't simply grab voices because they might not be loaded yet, you can't listen for voices to change if they <em>are</em> already loaded and, in theory, even once something is queued you could lose it before it is actually processed.</p>
-            <p>This is a lot to ask the average author to understand how to get right in my opinion.</p>
-            <p>It seems to me that since we can't 'speak' without a voice, whatever logic you are going to use to choose a voice from the available set should be available to the queue itself so that it can choose at the moment just before creating the audio.  This would solve a whole lot.  It also seems to me that <code>speechSynthesis.speak()</code> should return a promise representing completion or failure of the whole transaction (basically, end or error).  For many common cases, this is all we really care about and is kind of analogus to the fact that XHR contains many 'shades of gray' status changes, but the most successful AJAX abstractions had a simpler pass/fail promise on the entire transaction.</p>
-        </section>
+    <p>While you're looking out the window in transit, you'll see some more in digital signage. You'll find them in the stores you visit in point of sale systems, kiosks, at gas pumps - I mean, they are <em>literally everywhere</em>.</p>
 
-        <section class="sectioning">
-            <h3 class="contextual-heading">Immutable?</h3>
-            <p>The fact that you create an instance of an utterance and then set properties seems to lead to a lot of confusion, it's kind of hard to read too.  It definitely seems to me that it would be very handy for it to take an options/config object like <code>MutationObserver</code> and then be immutable properties. Generally speaking, I'm not sure what you would hope to 'do' with an utterance once it has been created except put it in the queue or take it out of the queue and having it present you with an API that throws at some times and not others seems to be begging for classes of problems we don't really neeed.</p>
-        </section>
+    <p>For that one <em>maybe powerful</em> device you call a "phone" and look at a bunch during the day, you probably encounter half a dozen or more (and growing) embedded systems using web tech. And, with a few rare exceptions, they are almost universally underpowered, and replaced really slowly.</p>
 
-        <section class="sectioning">
-            <h3 class="contextual-heading">Reuse</h3>
-            <p>Think for a moment of the choice of voice, the pitch, rate and volume as a "speaker".  In my own
-            uses I found that I wanted to reuse these - either to have a single speaker I used all the time, or
-            a few speakers that I wanted to variously "say" things. In the current incarnation, this was kind of more painful than I would like because I had to build up things aware of all the quirks above.</p>
-        </section>
+    <p>Ask not for whom the hardware is slow - it is for you!</p>
 
-        <section class="sectioning">
-            <h3 class="contextual-heading">What I did</h3>
-            <p>So, for me, I ended up building something very close to the above that allows me to do simple things simply... Here are some examples.
-            </p>
+    <p>Plenty of things which are at least usefully functional on a higher-end device can quickly drop the framerate (and resposiveness to user input) all the way down to ~1ps on some of these devices.</p>
 
-            <section class="sectioning">
-                <h4 class="contextual-heading">Look, just say something...</h4>
-                <p>The simplest case is that you just want to say something and you don't care about anything else.  To be honest, that was pretty simple before too, unless you wanted to say something long, because there were problems with that, or you cared that it might be defaulting you to some voice that wasn't even in the right language.. but here's what it looks like for me, and it works with long text by chopping it up at hopefully sensible points and chaining them together, selecting
-                a voice by default that is at least in the same major language as the document.</p>
-                <pre><code class="language-javascript">
-new BasicVoiceSpeaker().say(`
-    To be, or not to be, that is the question:
-    Whether 'tis nobler in the mind to suffer
-    The slings and arrows of outrageous fortune,
-    Or to take Arms against a Sea of troubles,
-    And by opposing end them: to die, to sleep
-    No more; and by a sleep, to say we end
-    the heart-ache, and the thousand natural shocks
-    that Flesh is heir to? 'Tis a consummation
-    devoutly to be wished. To die, to sleep,
-    To sleep, perchance to Dream; aye, there's the rub.
-`)
-                </code></pre>
-                <template>
-                    <script>new BasicVoiceSpeaker().say(`
-    To be, or not to be, that is the question:
-    Whether 'tis nobler in the mind to suffer
-    The slings and arrows of outrageous fortune,
-    Or to take Arms against a Sea of troubles,
-    And by opposing end them: to die, to sleep
-    No more; and by a sleep, to say we end
-    the heart-ache, and the thousand natural shocks
-    that Flesh is heir to? 'Tis a consummation
-    devoutly to be wished. To die, to sleep,
-    To sleep, perchance to Dream; aye, there's the rub.
-`)</script>
-                </template>
-                <button class="run">Run this</button>
-            </section>
+    <p>More interestingly still - many of those devices are <em>precisely</em> the ones that really <em>want</em> the ability to make splashy visualization with canvas and SVG.</p>
 
-            <section class="sectioning">
-                <h4 class="contextual-heading">Can you take me higher?</h4>
-                <p>But I can configure my speaker as described above, and reuse it.  They queue in order.</p>
-                <pre><code class="language-javascript">
-let speaker = new BasicVoiceSpeaker({
-    rate: 0.8,
-    pitch: 1.2
-})
-speaker.say(`Greetings, Professor Faulken.`)
-speaker.say(`Would you like to play a game?`)
-                </code></pre>
-                <template>
-                    <script>let speaker = new BasicVoiceSpeaker({
-    rate: 0.8,
-    pitch: 1.2
-})
-speaker.say(`Greetings, Professor Faulken.`)
-speaker.say(`Would you like to play a game?`)
-</script>
-                </template>
-                <button class="run">Run this</button>
-            </section>
-        </section>
+    <p>Our work on <code>OffscreenCanvas</code> at Igalia helped create new priotitization pressures and diversified investments through things like cable boxes and cooking devices.  Lots of our tests that bog those systems down to near 1ps now run a fluid 60fps... And they make things better for <em>all of these devices</em> along the way.</p>
 
-        <section class="sectioning">
-            <h3 class="contextual-heading">Voices</h3>
-            <p>Of course, all the crap with loading the voices/finding one
-            are what you really want to be easier, so there is a <code>.filter</code>
-            property that passes you the voices at the right time and lets you
-            use whatever means you like to find one and return the one you want.
-            If it doesn't return anything, it'll just use the first voice in voices that
-            matches the preferred language of the document. If it can't find even that,
-            It'll just pick the first voice.</p>
-            <pre><code class="language-javascript">let joshua = new BasicVoiceSpeaker({
-    rate: 0.8,
-    pitch: 1.2,
-    filter: (voices) =&gt; {
-        // keeping this overly simple for the example
-        return voices.find((v) =&gt; { return /vox/.test(v.name) })
-    }
-})
-joshua.say('A strange game.')
-joshua.say('The only winning move is not to play...')
-joshua.say('How about a nice game of chess?')
-</code></pre>
-            <template>
-                <script>(function () {
-                    let joshua = new BasicVoiceSpeaker({
-                        rate: 0.8,
-                        pitch: 1.2,
-                        filter: (voices) => {
-                            // In here you can do whatever complex stuff you like
-                            // to find the voice you're going to use... I'm
-                            // keeping it simple here for the example.  If this
-                            // voice isn't found, it will just use the first voice
-                            // in voices
-                            return voices.find((v) => { return /vox/.test(v.name) })
-                        }
-                    })
-                    joshua.say('A strange game.')
-                    joshua.say('The only winning move is not to play...')
-                    joshua.say('How about a nice game of chess?')
+    <p>I think that's <em>hella</em> cool.</p>
+  </section>
+ 
+  <section class="sectioning">
+    <h2 class="contextual-heading">Paying down Web Tech Debt</h2>
 
-                    }())</script>
-            </template>
-            <button class="run">Run this</button>
+    <p>Here's <em>another</em> reason it excites me:  S
+    </p><p>While I don't know that we've created a system that literally makes Apple's introduction <em>true</em>, there have been <em>lots</em> of developments and improvements to this story to make the web platform actually <em>have</em> some kind of stata of architecture that authors can understand, plug into, hack and extend - and the arrival of <code>OffscreenCanvas</code> is just the latest and greatest addition..  </p>
 
+    <p>There are potentially many things that are <em>like</em> an <code>&lt;img&gt;</code> in some ways, and a myriad of ideas that could extend this or borrow features  I'm excited that this allows us to entertain lot of interesting experiments that we can rapidly share, compare, critique, break down, recompose nd reassemble in order to find  some really great ideas which a lot of people (and a diverse number of businesses) could support... And very importantly, it can share all fo the same platform "stuff" because it didn't have to reinvent the entire stack beneath it, making for much easier cow-paths to pave and create standards out of.</p>
 
-            <p>For what it's worth though, I found that most of the time what I really want
-                 to do is test against a number of regexps in preferential order searching
-                 for something and it's verbose and redundant... To be honest, I'm not
-                 really sure what else you <em>could do</em>.  Because of this, I added some
-                 sugar where you can pass an array of objects with critera about
-                 which property (name or lang) you want to check and a regular expressions.
-                 It uses these to search, in order and just avoids all that redundant/potentially
-                 complicated/verbose function writing. What I'd really
-                 write, most of the time, is something more like this..</p>
-                 <pre><code class="language-javascript">
-let speaker = new BasicVoiceSpeaker({
-    // Here are several options, in order
-    filter: [{name: /vox/}, {name: /noids/}, {name: /en-us/i}],
-    pitch: 1.2
-})
-speaker.say(`D.O.D. pension files indicate current mailing as:`)
-speaker.say(`Dr. Robert Hume, a.k.a. Stephen W. Falken, 5 Tall Cedar Road, Goose Island, Oregon 97`)
-                </code></pre>
-                <template>
-                    <script>(function () {
-let speaker = new BasicVoiceSpeaker({
-    // Here are several options, in order
-    filter: [{name: /vox/}, {name: /noids/}, {name: /en-us/i}],
-    pitch: 1.2
-})
-speaker.say(`D.O.D. pension files indicate current mailing as:`)
-speaker.say(`Dr. Robert Hume, a.k.a. Stephen W. Falken, 5 Tall Cedar Road, Goose Island, Oregon 97`)
-}())
-                   </script>
-                </template>
-                <button class="run">Run this</button>
+    <p>What will they be? I don't know yet! I have some ideas, of course:  New patterns for data visualizations and rendering controls, for sure.  Some new ideas for image manipulation tools feel almost certain.  Perhaps customized image elements with register-able image decoders?  Perhaps ideas that integrate new concepts of panning and zooming an actual bitmap, potentially loading higher resolution one?</p>
 
-        </section>
+    <figure class="captioned-image">  
+      <iframe style="height: 644px" width="1145" height="644" src="https://www.youtube.com/embed/huLhOQM7pVA" title="YouTube video player" frameborder="0" allowfullscreen=""></iframe>
+      <figcaption>An example of a progressively enhanced, independently pan-and-zoomable image which can lazily load higer-def image in action.</figcaption>
+    </figure>
 
-        <section class="sectioning">
-            <h3 class="contextual-heading">Queing and Promises</h3>
-            <p>Each call to <code>.say(..)</code> also returns a promise, which is
-            resolved when the entire text is spoken (even if it had to be chopped up),
-            so you can kind of mostly have a synchronous looking block of calls that
-            do what you expect them to do, but do it async, and you can still
-            then do whatever larger coordination with those promises too...</p>
+    <p>Or, maybe whole elements that manage the stitching together together of <em>many</em> tiles of a larger, and partially loaded conceptual image - like the technique used in mapping. </p>
 
-              <pre><code class="language-javascript">
-// Just a simple conversation back and forth between
-// two actors: An en-US person and one I've given
-// several acceptable voices to search for, in order
+    <p>Providing these new abilities unlocks all kinds of potential and my own imagination is limited. </p>
 
-let englishSpeaker = new BasicVoiceSpeaker({
-    filter: [{ lang: /en-US/ })
-})
-
-let italianSpeaker = new BasicVoiceSpeaker({
-    filter: [
-        {lang: /it/},
-        {name: /victoria/},
-        {name: /vicki/},
-        {name: /female/}
-    ]
-})
-
-Promise.all([
-    englishSpeaker.say(`How do you say "Good evening" in Italian?`),
-    italianSpeaker.say(`We say "Buonasera"`),
-    englishSpeaker.say(`Baynostera?`),
-    italianSpeaker.say(`No, "Buonasera", try again.`),
-    englishSpeaker.say(`Bwohnah sehrah?`),
-    italianSpeaker.say(`si!! Molto bene!! Very good!!`)
-]).then(() =&gt; {
-    document.querySelector('#convo-sample-out').innerText = 'All done speaking'
-})
-              </code></pre>
-              <template><script>
-                (function () {
-                    let englishSpeaker = new BasicVoiceSpeaker({
-                        filter: (voices) => {
-                            // this one just has to be en-US
-                            return voices.find((v) => { return /en-US/.test(v.lang) })
-                        }
-                    })
-                    let italianSpeaker = new BasicVoiceSpeaker({
-                        filter: (voices) => {
-                            // Mostly, I just want an italian voice
-                            let italianVoice = voices.find((v) => {
-                                return /it/.test(v.lang)
-                            })
-                            // If I can't have that, here are some fallbacks..
-                            if (!italianVoice) {
-                                italianVoice = voices.find((v) => {
-                                    return /vicki|victoria|female/i.test(v.name)
-                                })
-                            }
-                            return italianVoice
-                        }
-                    })
-                    Promise.all([
-                        englishSpeaker.say(`How do you say "Good evening" in Italian?`),
-                        italianSpeaker.say(`We say "Buonasera"`),
-                        englishSpeaker.say(`Baynostera?`),
-                        italianSpeaker.say(`No, "Buonasera", try again.`),
-                        englishSpeaker.say(`Bwohnah sehrah?`),
-                        italianSpeaker.say(`si!! Molto bene!! Very good!!`)
-                    ]).then(() => {
-                        document.querySelector('#convo-sample-out').innerText = 'All done speaking'
-                    })
-
-                }())
-              </script></template>
-              <button class="run">Run this</button><span class="output" id="convo-sample-out">Some output should show here</span>
-
-        </section>
-
-        <section class="sectioning">
-            <h3 class="contextual-heading">Wrapping up</h3>
-            <p>So, this is 'at the bottom' of what I'm using and why.
-            It still doesn't even attempt to deal with the
-            whole audio stream thing. I'm not sure how to deal with that, but one thing I considered
-            through all this is that you could probably record from the mic and then also offer the
-            ability to capture that as bits you could then write out and save and then reload
-            as simple sound.  This might have uses if you have a tight script and really want to
-            guarantee the voices are what you want them to be and even have the ability to
-            mix or post process them, but... meh.</p>
-
-            <p>The <a href="https://gist.github.com/bkardell/abd9edf8ae80ec06eef13ee2d63b3b61">code</a> is still early, it's not a 'finished piece'.  It's still rough around the edges and evolving, but that's ok because I'm really just trying to start a conversation and get people thinking and
-            talking about speech again.  In my <a href="https://bkardell.com/blog/Listen-Up.html">next post</a> I'll start dissussing the more complex
-            end of all this, <em>listening</em> and how that actually also potentially complicates this
-            problem in intersting way.</p>
-
-
-        </section>
-
-    </section>
-    <p class="thanksTo">Special thanks to my friend, the great Chris Wilson for proofing/commenting on pieces in this series.</p>
+    <p>I can't wait to see what ideas develop here!</p>
+  </section>
 
 </article></main>
  
