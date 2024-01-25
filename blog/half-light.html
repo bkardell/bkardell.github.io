@@ -459,21 +459,26 @@ America (art for sale)</a></li>
 	<script src="../prism.js"></script>
 	<link rel="stylesheet" href="../prism.css">
 
-	<p>Recently I wrote a piece called <a href="https://bkardell.com/blog/LovelyTrees.html">Lovely Trees</a> in which I described how the Shadow DOM puts a lot of people off and why that's a shame because there's something very useful there, but also understandable because the specifics of the use case it's designed around thusfar aren't the one most authors feel like they have.</p>
+	<p>Recently I wrote a piece called <a href="https://bkardell.com/blog/LovelyTrees.html">Lovely Trees</a> in which I described how the Shadow DOM puts a lot of people off because the use case it's designed around thusfar aren't the one most authors feel like they have. That's a real shame because there is a lot of usefulness there that is just lost.  People seem to want something just a little <em>less</em> shadowy.</p>
 
-	<p>I noted that there are <em>several</em> "proposals" on ways to provide styles for shadow roots, from the page itself.  Each of them seems to present a simple solution, but with significantly different details and implications.  I also noted that we can make this possible through script and we should do that in order to actually explore the space.  We need to gain experience and see what really works, and iterate.</p>
+	<p>However, there are <em>several</em> slightly different visions for what it is we want, and how to achieve it.  Each offers significantly different details and implications.</p>
 
-	<p>To this end I offered a library with 4 possible "modes".  After some <a href="https://github.com/bkardell/shadow-boxing/issues/1">initial feedback from Mia I added some more modes</a>.</p>
+	<p>In that piece I also noted that we can make any of these possible through script in order to explore the space, gain practical experience with and iterate on until we at least have a pretty good idea what will work really well.</p>
+
+	<p>To this end I offered a library that I called "shadow-boxing" with several possible "modes" authors could explore.</p>
 
 	<section class="sectioning">
 		<h2 class="contextual-heading">"Feels like the wrong place"</h2>
-		<p>However, many people seemed to think this would be way better to express in CSS itself somehow. There is a long history here. Originally there were combinators for crossing the shadow boundary, but these were problematic and removed. Still, the fact that this kept coming up in different ways made me continue to 
-		discuss and bounce possible ideas around.  I made a few rough takes, and thanks to Mia and Dave Rupert for some good comments on that, today I'm adding a separate library which I think is probably will make people much happier.  But, I don't know, so let's see!</p>
+		<p>Many people seemed to think this would be way better expressed in CSS itself somehow, rather than metadata in your HTML.</p>
+
+		<p>There is a long history here. Originally there were combinators for crossing the shadow boundary, but these were problematic and removed.</p>
+
+		<p>However, the fact that this kept coming up in different ways made me continue to discuss and bounce possible ideas around.  I made a few rough takes, shared them with some people, and thanks to Mia and Dave Rupert for some good comments, today I'm adding a separate library which I think will make people much happier.</p>
 	</section>
 
 	<section class="sectioning">
 		<h2 class="contextual-heading">Take 2: <code>half-light.js</code></h2>
-		<p><code>half-light.js</code> is a very tiny (~100 LoC) library that lets you express styles for shadow doms in your page <em>in your CSS</em> (it should be CSS inline or linked in the head). You can specify whether those rules apply to both your page and shadow roots, or just shadow roots, or just certain shadow roots, etc. Let's have a look.. All of these make use of CSS <code>@media</code> rules containing a custom <code>--crossroot</code> which can be functional. The easist way to understand it is with code, let's have a look...</p>
+		<p><code><a href="https://github.com/bkardell/half-light">half-light.js</a></code> is a very tiny (~100 LoC) library that lets you express styles for shadow doms in your page <em>in your CSS</em> (it should be CSS inline or linked in the head). You can specify whether those rules apply to both your page and shadow roots, or just shadow roots, or just certain shadow roots, etc. Let's have a look.. All of these make use of CSS <code>@media</code> rules containing a custom <code>--crossroot</code> which can be functional. The easist way to understand it is with code, let's have a look...</p>
 
 		<section class="sectioning">
 			<h3 class="contextual-heading">Rules for shadows, not the page...</h3>
@@ -521,6 +526,13 @@ America (art for sale)</a></li>
 </p>
 <script async="" src="https://cpwebassets.codepen.io/assets/embed/ei.js"></script>
 
+	</section>
+
+	<section class="sectioning">
+		<h2 class="contextual-heading">Is this a proposal?</h2>
+		<p>No, not yet, it's just a library that should allow us to experiment with something "close enough" to what "features" a real proposal might need to support, and very vaguesly what it might look like.</p>
+
+		<p>A real proposal, if it came from this would certainly not use this syntax, which is simply trying to strike a balance between being totally valid and easy to process, and "close enough" for us to get an idea if it's got the right moving parts.</p>
 	</section>
 	
 
