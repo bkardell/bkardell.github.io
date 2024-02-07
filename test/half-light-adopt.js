@@ -1,6 +1,6 @@
 (function() {
 let targetedStyles
-const openStylableElements = new Set())
+const openStylableElements = new Set()
 
 function refreshTargetedStyles() {
   targetedStyles = [];
@@ -63,4 +63,4 @@ Element.prototype.attachShadow = function () {
   Promise.resolve().then(() => setStyles(this))
   return r
 }
-}())
+}()
