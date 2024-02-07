@@ -63,4 +63,4 @@ Element.prototype.attachShadow = function () {
   Promise.resolve().then(() => setStyles(this))
   return r
 }
-}()
+}())
