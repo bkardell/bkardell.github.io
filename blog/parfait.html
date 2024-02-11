@@ -461,7 +461,7 @@ America (art for sale)</a></li>
 
 	<p>If you're not familliar with adopted stylesheets, they're a way that your shadow roots can <em>share</em> literal styesheet instances by reference.  That's a cool idea, right?</p>
 
-	<p>It's fairly early days for this still and I'm sure we'll layer many improvements on this (some of that I'll talk about in a bit). So, let's look at the basic idea:  Effectively, every shadow root has a <code>.adoptedStyleSheets</code> property, which is an array.  You can push stylesheets onto it or just assign an array of stylesheets.  Currently those stylesheets have to be instances  created via the recently introduced constructor <code>new CSSStyleSheet()</code>.</p>
+	<p>It's fairly early days for this still and I'm sure we'll put many improvements on top of this, so keep in mind that it's pretty basic.  Effectively, every shadow root now has an <code>.adoptedStyleSheets</code> property, which is an array.  You can push stylesheets onto it or just assign an array of stylesheets.  Currently those stylesheets have to be instances  created via the recently introduced constructor <code>new CSSStyleSheet()</code>.</p>
 
 	<p>Cool.</p>
 
@@ -469,17 +469,17 @@ America (art for sale)</a></li>
 
 	<section class="sectioning">
 		<h2 class="contextual-heading">Whoopsie</h2>
-		<p>However, there's an important bit that I missed (which is strange because I am on the record discussing it in CSSWG): adopted stylesheets are treated as if they come <em>after</em> any stylesheets in the root.</p>
+		<p>However, there's an important bit that I forgot about when I implemented this intially (which is strange because I am on the record discussing it in CSSWG): adopted stylesheets are treated as if they come <em>after</em> any stylesheets in the root.</p>
 
-		<p>Previously, half-light (and earlier experiements) took great care to put those stylesheets <em>before</em> any that the component itself. That seems right to me, and what the adopted stylesheets were doing seemed wrong...</p>
+		<p>Previously, half-light (and earlier experiements) took great care to put stylesheets from the outer page <em>before</em> any that the component itself. That seems right to me, and what the adopted stylesheets were doing now with adopted stylesheets seemed wrong...</p>
 	</section>
 
 
 	<section class="sectioning">
 		<h2 class="contextual-heading">Enter: Layers</h2>
-		<p>A solution that's fairly easy and achieves roughly the same thing (actually, better) is to wrap the rules that are adopted with <code>@layer</code>.</p>
+		<p>A solution that's fairly easy and achieves roughly the same thing as my original approach (better, actually) is to wrap the rules that are adopted with <code>@layer</code>.</p>
 
-		<p>Then, if your component has a style element, the rules in there will, by default, win -- even if the page's rules had higher specificity!  That's a pretty nice improvement. If some code helps you understand, here's a pen that illustrates it all:</p>
+		<p>Then, if your component has a style element, the rules in there will, by default, win -- even if the rules that the page author pushed in had higher specificity!  That's a pretty nice improvement. If some code helps you understand, here's a pen that illustrates it all:</p>
 
 		<p class="codepen" data-height="300" data-default-tab="html,result" data-slug-hash="ExMdWdq" data-user="briankardell" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;">
 		  <span>See the Pen <a href="https://codepen.io/briankardell/pen/ExMdWdq">
@@ -488,9 +488,10 @@ America (art for sale)</a></li>
 		</p>
 		<script async="" src="https://cpwebassets.codepen.io/assets/embed/ei.js"></script>
 	</section>
+
 	<section class="sectioning">
-		<h2 class="contextual-heading">ogre protocol</h2>
-		<a href="https://www.igalia.com/chats/a-lighter-shade-of-dom">Eric and I recently did a podcast on the Open Styleable shadow roots topic with Mia</a>, and some of her thoughts there, and conversation that followed with Westbrook and Nolan kind of inspired me that maybe it's worth exploring how we make it nice to make use of layers here.<p></p>
+		<h2 class="contextual-heading">Layers... Like an ogre.</h2>
+		<a href="https://www.igalia.com/chats/a-lighter-shade-of-dom">Eric and I recently did a podcast on the Open Styleable shadow roots topic with Mia</a>.  Some of her thoughts, and later conversations that followed with Westbrook and Nolan,  convinced me to try to explore how we could use layers in half-light.<p></p>
 
 		<p>It had me thinking that the way that adopted stylesheets and layers both work seems to allow that we could develop some kind of 'shadow styling protocol' here.  Maybe the simplest way to do this is to just give the layer a well-known name: I called it <code>shadow-defaults</code></p>
 
@@ -506,7 +507,7 @@ America (art for sale)</a></li>
   h1 { ... }
 }</code></pre>
 
-		<p>That is a lower layer than anything in the default layer of a component's shadow root (stylesheets or adopted stylesheets).</p>
+		<p>That is a lower layer than anything in the default layer of a component's shadow root (both stylesheets or adopted stylesheets).</p>
 
 		<p>The maybe interesting part this adds is that it means  that the component itself can consciously manage it's layers if it chooses to do so!  For example..</p>
 
