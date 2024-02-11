@@ -459,17 +459,17 @@ America (art for sale)</a></li>
 	<script src="../prism.js"></script>
 	<link rel="stylesheet" href="../prism.css">
 
-	<p>If you're not familliar with adopted stylesheets, they're a way that your shadow roots can <em>share</em> literal styesheet instances by reference.  That's a cool idea, right?</p>
+	<p>If you're not familliar with adopted stylesheets, they're a way that your shadow roots can <em>share</em> literal styesheet instances by reference.  That's a cool idea, right?  If you have 10 <code>fancy-input</code>s on the same page, it makes so sense for <em>each</em> of them to have their own copy of the whole stylesheet.</p>
 
-	<p>It's fairly early days for this still and I'm sure we'll put many improvements on top of this, so keep in mind that it's pretty basic.  Effectively, every shadow root now has an <code>.adoptedStyleSheets</code> property, which is an array.  You can push stylesheets onto it or just assign an array of stylesheets.  Currently those stylesheets have to be instances  created via the recently introduced constructor <code>new CSSStyleSheet()</code>.</p>
+	<p>It's fairly early days for this still (in standards and support terms, at least) and we'll put many improvements on top of this, but for now this is a pretty basic JavaScript API: Every shadow root now has an <code>.adoptedStyleSheets</code> property, which is an array.  You can push stylesheets onto it or just assign an array of stylesheets.  Currently those stylesheets have to be instances  created via the recently introduced constructor <code>new CSSStyleSheet()</code>.</p>
 
 	<p>Cool.</p>
 
-	<p>Someone opened an issue suggesting that I make <a href="https://github.com/bkardell/half-light">half-light</a> use adopted stylesheets.  Sure, why not.  In fact, it made the code more concise as well.</p>
+	<p>Someone opened an issue suggesting that I make <a href="https://github.com/bkardell/half-light">half-light</a> use adopted stylesheets.  Sure, why not.  In practice what this really saves is mainly the parse time, since browsers are pretty good at optimzing this otherwise, but that's still important and, in fact, it made the code more concise as well.</p>
 
 	<section class="sectioning">
 		<h2 class="contextual-heading">Whoopsie</h2>
-		<p>However, there's an important bit that I forgot about when I implemented this intially (which is strange because I am on the record discussing it in CSSWG): adopted stylesheets are treated as if they come <em>after</em> any stylesheets in the root.</p>
+		<p>However, there is an important bit about adopted stylesheets that I forgot about when I implemented this intially (which is strange because I am on the record discussing it in CSSWG): adopted stylesheets are treated as if they come <em>after</em> any stylesheets in the (shadow) root.</p>
 
 		<p>Previously, half-light (and earlier experiements) took great care to put stylesheets from the outer page <em>before</em> any that the component itself. That seems right to me, and what the adopted stylesheets were doing now with adopted stylesheets seemed wrong...</p>
 	</section>
@@ -477,9 +477,7 @@ America (art for sale)</a></li>
 
 	<section class="sectioning">
 		<h2 class="contextual-heading">Enter: Layers</h2>
-		<p>A solution that's fairly easy and achieves roughly the same thing as my original approach (better, actually) is to wrap the rules that are adopted with <code>@layer</code>.</p>
-
-		<p>Then, if your component has a style element, the rules in there will, by default, win -- even if the rules that the page author pushed in had higher specificity!  That's a pretty nice improvement. If some code helps you understand, here's a pen that illustrates it all:</p>
+		<p>A solution to this newly created problem that's fairly easy is to wrap the rules that are adopted with <code>@layer</code>.  Then, if your component has a style element, the rules in there will, by default, win.  And that's true even if the rules that the page author pushed in had higher specificity!  That's a pretty nice improvement. If some code helps you understand, here's a pen that illustrates it all:</p>
 
 		<p class="codepen" data-height="300" data-default-tab="html,result" data-slug-hash="ExMdWdq" data-user="briankardell" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;">
 		  <span>See the Pen <a href="https://codepen.io/briankardell/pen/ExMdWdq">
@@ -491,9 +489,9 @@ America (art for sale)</a></li>
 
 	<section class="sectioning">
 		<h2 class="contextual-heading">Layers... Like an ogre.</h2>
-		<a href="https://www.igalia.com/chats/a-lighter-shade-of-dom">Eric and I recently did a podcast on the Open Styleable shadow roots topic with Mia</a>.  Some of her thoughts, and later conversations that followed with Westbrook and Nolan,  convinced me to try to explore how we could use layers in half-light.<p></p>
+		<a href="https://www.igalia.com/chats/a-lighter-shade-of-dom">Eric and I recently did a podcast on the Open Styleable shadow roots topic with Mia</a>.  Some of the thoughts she shared, and later conversations that followed with Westbrook and Nolan,  convinced me to try to explore how we could use layers in half-light.<p></p>
 
-		<p>It had me thinking that the way that adopted stylesheets and layers both work seems to allow that we could develop some kind of 'shadow styling protocol' here.  Maybe the simplest way to do this is to just give the layer a well-known name: I called it <code>shadow-defaults</code></p>
+		<p>It had me thinking that the way that adopted stylesheets and layers both work seems to allow that we could develop some kind of 'shadow styling protocol' here.  Maybe the simplest way to do this is to just give the layer a well-known name: I called it <code>--crossroot</code></p>
 
 		<p>Now, when a page author uses half-light to set a style like:</p> 
 
@@ -503,7 +501,7 @@ America (art for sale)</a></li>
 
 		<p>This is adopted into shadow roots as:</p>
 
-		<pre><code class="language-css">@layer shadow-defaults { 
+		<pre><code class="language-css">@layer --crossroot { 
   h1 { ... }
 }</code></pre>
 
@@ -513,7 +511,7 @@ America (art for sale)</a></li>
 
 		<pre><code class="language-javascript">this.shadowRoot.innerHTML = `
 &lt;style&gt;
-	@layer base, shadow-defaults, main;
+	@layer base, --crossroot, main;
 	... 
 	/* add rules to those layers  */
 	... 
@@ -526,15 +524,26 @@ ${some_html}
 		<ol>
 			<li>User Agent styles.</li>
 			<li>Page authored rules that inherit into the Shadow DOM.</li>
-			<li>@layers (including <code>shadow-defaults</code> half-light provides) in the shadow</li>
+			<li>@layers (including <code>--crossroot</code> half-light provides) in the shadow</li>
 			<li>Rules in style elements in the shadow that aren't in a layer.</li>
 		</ol> 
 
 	</section>
 
+	<section class="sectioning">
+		<h2 class="contextual-heading">Combining ideas...</h2>
+		<p>There was some additional feedback from Nolan that this approach was a non-starter for some use cases - like pushing Bootstrap down to all of the shadow roots.  The previous shadow-boxing library would have supported that better. Luckily, CSS has this whole Media Query thing pretty well figured out, so I added support in half-light for adding them to link and style tags (in the head) as well.</p>
+
+		<pre><code class="language-html">&lt;link rel="stylesheet" href="../prism.css" media="screen, --crossroot"&gt;&lt;/link&gt;
+
+&lt;!-- or to target shadows of specific elements, add a selector... --&gt;
+
+&lt;link rel="stylesheet" href="../prism.css" media="screen, (--crossroot x-foo)"&gt;&lt;/link&gt;
+`</code></pre>
+	</section>
 
 
-	<p>So... That's it, this is all in half-light now... Wdyt?
+	<p>So... That's it, this is all in half-light now... And guess what? <em>It's still only 95 lines of code</em>.  Thanks for all the feedback so far!  So, wdyt?
 		Don't forget to leave me an indication of how you're feeling about it with an emjoi (and/or comment) on the <a href="https://github.com/bkardell/half-light/issues/1">Emoji sentiment or short comment issue</a>.</p>
 	
 
