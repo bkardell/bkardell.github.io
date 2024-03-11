@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://bkardell.com/</id>
     <title>bkardell.com rss feed</title>
-    <updated>2024-02-12T16:55:52.509Z</updated>
+    <updated>2024-03-11T14:50:09.833Z</updated>
     <generator>awesome mix</generator>
     <author>
         <name>Brian Kardell</name>
@@ -14,6 +14,56 @@
     <subtitle>Just the bkardell.com rss feed</subtitle>
     <logo>http://bkardell.com/profile.jpg</logo>
     <rights>All rights reserved 2018, Brian Kardell</rights>
+    <entry>
+        <title type="html"><![CDATA[The Darkening]]></title>
+        <id>https://bkardell.com/blog/darkening.html</id>
+        <link href="https://bkardell.com/blog/darkening.html">
+        </link>
+        <updated>2024-03-11T04:00:00.000Z</updated>
+        <summary type="html"><![CDATA[Some additions to my half-light library for styling Shadow DOM.]]></summary>
+        <content type="html"><![CDATA[ 
+	<h1 class="contextual-heading" style="font-size: 2rem;">The Darkening</h1>
+	<p class="segue">Some additions to my half-light library for styling Shadow DOM.</p> 
+
+	<p>In case you haven't followed, a number of my recent posts have been thinking about how Shadow DOM falls short, and how we can can use the tools we have today to explore potential solutions and improvements.  This has led to good feedback and quick iteration on a tiny library called <a href="https://github.com/bkardell/half-light">half-light</a>.</p>
+
+	<p>This library lets page authors selectively "push" styles down into shadow roots as adopted <code>@layer</code>s. It plugs into CSS's media queries, and allows selectivity on both ends: Which styles and which specific shadow roots.  I'm not going to recap the whole concept and interface here because it would just be regurgitating the stuff that's already in the link above.  What I want to write about is the latest set of improvements to half-light.</p>
+ 
+	<section class="sectioning">
+		<h2 class="contextual-heading" style="font-size: 2.5rem;">no-light</h2>
+		<p>An important point "feature" of half-light is that it doesn't require web components to be built in a special way in order to achieve this.  Alternative/Previous ideas required elements to subclass a special element, for example, to say "Yes, I am styleable from above".  However, I don't believe that that seems practical for reasons I explained in <a href="https://bkardell.com/blog/LovelyTrees.html">Lovely Trees</a>.  Effectively, it is very difficult to grow iterations on that approach naturally, and there are already so many wonderful components out there which a number of people say "I wish I could use, but alas I cannot provide some basic styling".  This library just lets them do exactly that: Provide styling from the outside (with some caveats below), to see what it's like to actually live with that possibility.  Do they love it?  Ultimately regret it?</p>
+
+		<p>I don't believe that this is some kind of breach of contract to allow that kind of styling from the outside in open shadow roots. The simple fact that the library has to do hardly anything shows just how easy it is, technically, for any page author to do it already today.  No "new powers" have been added.</p>
+
+		<p>It's harder to make this case with closed shadow roots.  While it is entirely possible for page authors to take control of closed shadow roots too, they have to achieve this by changing their nature and, effectively saying "sorry, no your closed shadow roots will be open roots in my page".  However much I am not a fan of the closed roots, I do think that someone who made their root closed gave a pretty strong opinion that you're not supposed to touch the inside, even if you think you want to.</p>
+
+		<p>What I hadn't considered is that open roots could exist inside of closed roots, and with my pattern you could still have styled them the same way. That felt wrong, so I fixed that by making the whole subtree "darkened". That is, half-light can't get any light past it.</p>
+
+		<p>I also made a check for an attribute (or property) <em>called</em> <code>darkened</code> which can achieve this for a light DOM as well.  You set it on the shadow host.  Thus, if you write <code>myElement.darkened = true</code> or <code>&lt;my-element darkened&gt;</code> it will prevent half-light from applying to the whole subtree.  That trick can be used by both custom elements and page authors directly if they find it helpful. Similarly, it's benign otherwise, so component authors can start adding it if they want to and whether page authors happen to be using half-light or not doesn't matter.</p>
+	</section>
+
+	<section class="sectioning">
+		<h2 class="contextual-heading" style="font-size: 2.5rem;">Optimizations</h2>
+
+		<p>The very first edition of half-light was a little greedy as to processing and probably was doing a little too much work.  I didn't hear anyone say that they actually experienced a problem, but it was clearly not as efficient as it could be, so, I improved that generally.</p>
+
+		<p>But I also built half-light to be a little resilient to where in the head it was loaded, and to conveniently to work with dev tools.  That means you can go ahead and live-change the CSS its aware of that and will propagate changes down into your components.  This is achieved via a MutationObserver.</p>
+
+		<p>Now, in practice I don't think this is likely to be much of a problem in most cases. Once the document has settled down enough to start rendering, I'm not sure how heavy head mutations are these days - but it seems pretty reasonable to be able to say "you don't have to keep observing", so I added that ability too.  If you include the 
+		<code>disable-live-half-light</code> attribute on the script tag that you use to include half-light, it will stop monitoring.</p>
+
+		<p>There's a practical upshot to that as well: This means it can also disengage some book keeping which technically leaks memory (this won't practically cause you issues on your blog or something, it's really mainly if you are doing a lot of dynamic stuff in a long-lived application).</p>
+
+	</section>
+	<section class="sectioning">
+		<h2 class="contextual-heading" style="font-size: 2.5rem;">Feedback and evolution</h2>
+		<p>What I've appreciated most about this effort is the feedback and iteration.  It's kind of amazing to look over such a brief period of time all of the evolution and improvements toward solving a problem.  I hope that more and more people find it valuable to explore and let us know how it goes.  Real world experimentation and feedback is so valuable toward ultimately developing a standard solution.  Thanks to everyone who has reached out, filed issues, written a blog post, or discussed it on a podcast.</p>
+
+		<p>If you haven't already, please leave an emoji or a comment on this <a href="https://github.com/bkardell/half-light/issues/1">github issue</a> to help me collect sentiment toward a solution like this in a central place.</p>
+	</section>
+
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[StyleSheet Parfait]]></title>
         <id>https://bkardell.com/blog/parfait.html</id>
@@ -751,79 +801,6 @@ mtd {
 
 		<p>What a great experience :)</p>
 	</section>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Completely Random Car and Design Stuff]]></title>
-        <id>https://bkardell.com/blog/cars.html</id>
-        <link href="https://bkardell.com/blog/cars.html">
-        </link>
-        <updated>2023-08-27T04:00:00.000Z</updated>
-        <summary type="html"><![CDATA[This is a kind of "off brand" post for me.  It's very, very random and just for fun.  It's just a whole bunch of mental wandering literally all over place about cars, design, AI and only a very little bit about the web.  Many of these observations are probably extermely specific to America, but perhaps still interesting.  There is no overarching "point" here, it's just thoughts.]]></summary>
-        <content type="html"><![CDATA[
-  <h1 class="contextual-heading" style="font-size: 2rem;">Completely Random Car and Design Stuff</h1>
-  
-
-  <p class="segue">This is a kind of "off brand" post for me.  It's very, very random and just for fun.  It's just a whole bunch of mental wandering literally all over place about cars, design, AI and only a very little bit about the web.  Many of these observations are probably extermely specific to America, but perhaps still interesting.  There is no overarching "point" here, it's just thoughts.</p>
-
-  <p>There are certain trends that I notice in the design of everyday things.  Sometimes I think I notice them developing early and have lots of conversations pointing them out to other people (especially my son) and wondering aloud about how all of this will look in retrospect: Is this one of those things that will come to represent this "era"?</p>
-
-  <p>If it's not clear what I mean, basically every single thing in the photo below screams 1970s:</p>
-
-
-  <figure>
-    <img src="/media/2023/frigidare-70s.jpeg" alt="">
-    <figcaption>A Frigidare ad from the 1970s. A woman standanding in a kitchen with avacado Frigidare appliances and countertop, a green and yellow flowered wallpaper, she's wearing 70's attire, the cabinet design is somehow also unique to the era, the quality of the film is also reminscant of the 1970s.</figcaption>
-  </figure>
-
-  <p>It seems like there are some things that come to become associated with an era... Stuff that got really popular for a period of time and then left behind.</p>
-
-  <p>Several years ago I pointed out two changes I thought I saw happening in new car colors, and I started to point them out to my son.  If you haven't noticed it, it's real.  For a lot of years the mainstream of automobiles might have varied in real ways (you'd realize how much if you ever tried to match paint on your car), it's still been a fairly common range and palette of colors that I think mainly would be described with words like "shiny" or "glossy".  I think this has been generally true since the 70's or 80's where it seems I remember some more different reds and oranges and earthy colors (<a href="https://twitter.com/briankardell/status/1444398423449427968">my dad's old truck maybe was interesting in both ways</a>). In any case, now we have all of these new "ceramic colors" which look more "baked in" to the materials and matte. More often than not they're grays but there are some beautiful turquoises and reds.  Also a new common thing is "blacked out" emblems.  I think both of these things began with trendsetting aftermarket people.</p>
-
-  <p>Another thing that this made me think about and try to explain to my son was that that's kind of true of automobile body styles and some other characteristics too.  I found it surprisingly hard to describe because it's not as if there is a single kind of car in any era - it's just that there are a smaller array of characteristics that you can recognize as belonging to that era.</p>
-
-  <p>Don't you think a lot of cars today have similar characteristics?  I do. But... They also feel like they are increasingly resembling a car developed at the end of the 1970's, by a car company that doesn't even exist anymore.  The car company is AMC (American Motors Corporation) and the car was the Eagle SX/4. Below is an advertisement</p>
-
-  <figure>
-    <img src="/media/2023/sx4.jpg" alt="">
-    <figcaption>Advertisement for the Eagle SX/4 around 1979</figcaption>
-  </figure>
-
-
-  <p>Basically, it was sort of the first crossover vehicle that combined a car and 4 wheel (later all wheel) drive.  But also, just visually: Do you see a resemblance to a lot of popular cars today?  I do.  I think this car looks much more similar to many cars I see on the road today than most of what I saw for the 40 years or so between them.  Also interesting, it was available in one of those interesting earthy yellow/tan (and kind of matte!) colors with dark gray/black accents that kind of mostly disappeared, but I could imagine being reborn today.</p>
-
-  <figure>
-    <img src="/media/2023/sx4_2.jpg" alt="">
-    <figcaption>Photo of the Eagle SX/4 in an earthy, somewhat matte tan/yellow with interesting dark trims</figcaption>
-  </figure>
-
-
-  <p>So, I was thinking about this and the fact it was kind of ahead of its time.  In fact, I searched for exactly that and found this article with a title that is pretty much that: <a href="https://silodrome.com/amc-eagle-sx-4/?utm_source=pocket_saves">The AMC Eagle SX/4 – An American 4×4 Sports Car That Was Ahead Of Its Time"</a>.</p>
-
-
-  <p>That's cool, but I was also wondering how much of that came from the fact that it was not (yet) part of "The Big 3". There used to be a lot more American car companies, but we just kept consolidating into those 3. Lots of those became "brands" of the Big 3 for a while, but eventually homogenized.  A huge number of them no longer exist.  My first car was a Pontiac. The last Pontiac produced rolled off the line in January 2010. Saturn, same.  My mom drove a Plymouth Voyager.  Plymouth was discontinued in 2001.  In fact, the car I drive now sometimes (not even American: an Isuzo Amigo) hasn't been sold in the US since 2000. And so on.</p>
-
-  <p>I was thinking that most of the diversity today that drives anything about automobiles, pretty much doesn't really come from those Big 3.  And wondering if maybe that meant something for web engines too.  Does it? I don't know. For sure we can see outside (but still standards compliant) innovation in browsers like Arc or Vivaldi or Polypane. I suppose the open source nature makes that more easily possible, but it's worth noting too that this is kept alive mainly through ~80% of that bill being footed by the Web Engines Big 3.</p>
-
-  <p>Anyway... This is already all over the place (sorry, that's how my mind works!), but in sitting down this morning to write this I had an idea that perhaps AI could help me "illustrate" if not explain the "look" of body styles associated with different decades.  Here's what I found out:  Midjourney is pretty bad at it!</p>
-
-  <p>The photo below was generated with the prompt "photo of a typical 2010's automobile in America with the most common body style of cars built between 2000 and 2009".</p>
-
-
-  <figure>
-    <img src="/media/2023/special.png" alt="">
-    <figcaption>
-      A picture that is, for all intents and purposes, almost literally <a href="https://pin.it/6v4tnwY">an early 1950's Buick</a> but with a different emblem.
-    </figcaption>
-  </figure>
-
-
-  <p>I tried several variations and wound up with something like this as one of the 4 options no matter how explicit it was.  I wonder why?  I'd kind of think that identifing and sort of recyling the "trends" like that would be very much what AI models like this would be really good at - but apparently not as good as I'd imagine!</p>
-
-  <p>I decided to check the other way round, just for giggles.  The inverse worked better. Giving it the first image in this article mentioned the 1970's in its explanation!  Interesting!</p>
-
-  <p>Anyway, like I said at the get-go: There's no overall point here :)</p>
-
 ]]></content>
     </entry>
 </feed>
