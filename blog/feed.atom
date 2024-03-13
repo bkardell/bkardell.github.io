@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://bkardell.com/</id>
     <title>bkardell.com rss feed</title>
-    <updated>2024-03-11T14:50:09.833Z</updated>
+    <updated>2024-03-13T22:44:45.378Z</updated>
     <generator>awesome mix</generator>
     <author>
         <name>Brian Kardell</name>
@@ -14,6 +14,54 @@
     <subtitle>Just the bkardell.com rss feed</subtitle>
     <logo>http://bkardell.com/profile.jpg</logo>
     <rights>All rights reserved 2018, Brian Kardell</rights>
+    <entry>
+        <title type="html"><![CDATA[How We Fund the Web Ecosystem]]></title>
+        <id>https://bkardell.com/blog/HowWeFund.html</id>
+        <link href="https://bkardell.com/blog/HowWeFund.html">
+        </link>
+        <updated>2024-03-13T04:00:00.000Z</updated>
+        <summary type="html"><![CDATA[On Tuesday (March 12th, 2024), Robin Berjon and Eric Meyer and I organized, led and scribed a session during W3C breakouts day about how we fund the web ecosystem…]]></summary>
+        <content type="html"><![CDATA[
+	<h1 class="contextual-heading" style="font-size: 2rem;">How We Fund the Web Ecosystem</h1>
+	<p class="segue">On Tuesday (March 12th, 2024), Robin Berjon and Eric Meyer and I organized, led and scribed a session during W3C breakouts day about how we fund the web ecosystem…</p>
+
+
+	<p>Every year the W3C has a week long giant set of in-person meetings called TPAC. A nice feature of those meetings has always been “Breakouts Day” which is a day where people can propose sessions about pretty much anything and we try to organize a schedule around the ones that seem interesting to enough people.</p>
+
+	<p>This year, the W3C decided to try a second Breakouts Day that is not at the same time as TPAC, and was purely online.</p>
+
+	<p>Over the last several years, I’ve written several pieces about different aspects of the health of the web ecosystem and led a podcast series with quite a few episodes about that.  In those pieces I’ve argued that while the web ecosystem has become the infrastructure for nearly everything, our models for funding and prioritization of the last 20 years have proven not only inadequate, and problematic, but ultimately fragile and cannot last.  The only questions, I’ve argued, are how soon and what happens next. Are we ready for it? (hint: no).</p>
+
+
+	<p>So, I talked to a few people and we proposed this as a topic. It was well attended. We began with a short presentation (we made a very detailed outline together, but credit goes to Robin for the <a href="https://bkardell.com/media/2024/How_We_Fund_The_Web.pdf" rel="noopener">great slides</a>).</p>
+
+	<p>We organized the presentation into sort of 2 parts. First I presented explaining the problems and why we believe this requires our attention and action.  First we have to admit that we have a problem, right?  And that this is a problem that <em>we</em> should be concerned with… If not us, who?  If not now, when?</p>
+
+	<p>Then I outlined that there are many possible solutions and elements of solutions that we can discuss (or try), but all of them share some common elements:</p>
+
+	<ol>
+		<li>We need a way to take in common money, and a way to actually encourage money into the pot.</li>
+		<li>We need a way to <em>efficiently</em> and <em>fairly</em> prioritize the money in the pot toward actual work.</li>
+	</ol>
+
+	<p>I highlighted that there are existing things we can already try (and are trying), and that we should really start trying more.</p>
+
+	<p>After this, Robin presented a bigger possible vision we tried to lay out with lots of still fuzzy areas and questions - but effectively: We create an institution which is (through one of a few possibilities) able to compel participation into a system which enforces more sustainable (and fairer) characteristics which guarantee support for the infrastructure of the web.</p>
+
+	<p>You can get a very good idea of what was actually presented from the <a href="https://github.com/w3c/breakouts-day-2024/issues/20#issuecomment-1992539848" rel="noopener">detailed outline</a> that we shared too.</p>
+
+	<p>But all of this was only the initial short presentation which I think was only maybe 5-10 minutes.  The rest was the point of the breakout: Actual discussion.</p>
+
+	<p>I think it was <em>very</em> positive actually.  The main thing that impressed me is that there was seemingly no push back or questioning at at all in the premise.  We agree with the fundamentals - that as I explained in <a href="https://bkardell.com/blog/Webrise.html" rel="noopener">Webrise</a>, it’s fragile from this perspective, and we need to care about it.</p>
+
+	<p>Rick Beyers (from Google, but not speaking for Google) mentioned what they observed in Chromium contributions and that they also had concerns about diversity, both in terms of contributions to a single engine, and multiple engines.  He also mentioned that Chromium was spinning up a new collective idea (not yet announced).</p>
+
+	<p>Just this morning, we helped launch the <a href="https://servo.org/blog/2024/03/12/sponsoring-servo/" rel="noopener">Servo collective</a>.  The timing is purely coincidental.  I’d also note that in part of my presentation I mentioned exploring ways that governments can incentivize and forgot to mention that there have been interesting developments in some open source funding happening this way recently, and to note that the White House recently made a statement that <a href="https://www.whitehouse.gov/oncd/briefing-room/2024/02/26/press-release-technical-report/" rel="noopener">Future Software Should Be Memory Safe</a>.  If anyone has a good ‘in’ at the White House please make the case that if you want to know a good place to invest to be sure a lot of future stuff is memory safe, it’s probably browsers - and especially the one written in Rust :). The collective would be happy to accept the White House’s check.</p>
+
+	<p>There were also some interesting questions about whether Web Monetization could be related to this, or is just a wholly separate problem, about how the advertising model is exceptionally progressive, and where other investment comes from currently.</p>
+	<p>Happily <a href="https://www.w3.org/2024/03/12-ecosystem-funding-minutes.html" rel="noopener">minutes are available</a> if you’re interested - and we’ll be trying to organize some immediate discussions on where we go from here through <a href="https://github.com/darobin/wise/" rel="noopener">this repo</a> which also has <a href="https://darobin.github.io/wise/" rel="noopener">a rough outline of how one solution might work</a>.</p>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[The Darkening]]></title>
         <id>https://bkardell.com/blog/darkening.html</id>
@@ -716,90 +764,6 @@ mtd {
 		<p>The <a href="https://developer.mozilla.org/en-US/docs/Web/API/Web_Share_API" target="_blank" rel="noopener">Web Share API</a> splits things along a similar joint.  It just shares an <em>intent</em> to share some content.  It doesn’t need to know anything about which ways you have to available to share, or reason about things in the current time.  Splitting things this way lets all of the ways to share develop entirely independently.  If new social media comes along, or goes away, or we develop new physical ways of sharing involving USB or Bluetooth or HandWaveyMagicWand - it will all JustWork™.</p>
 
 		<p>Both of these seem to me generally better than many of the protocol based solutions.  I’m not suggesting protocol based solutions are useless, I’m just suggesting that it seems like there is benefit in continuing to question why and how we’re approaching things.</p>
-	</section>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Florence Discovery]]></title>
-        <id>https://bkardell.com/blog/cosimo.html</id>
-        <link href="https://bkardell.com/blog/cosimo.html">
-        </link>
-        <updated>2023-09-30T04:00:00.000Z</updated>
-        <summary type="html"><![CDATA[Last week, on my way back from TPAC I took a holiday in Florence, Italy.  It was an awesome experience all around, but one thing was really personal and I wanted to write it down..]]></summary>
-        <content type="html"><![CDATA[
-	<h1 class="contextual-heading" style="font-size: 2rem;">Florence Discovery</h1>
-	<p class="segue">Last week, on my way back from TPAC I took a holiday in Florence, Italy.  It was an awesome experience all around, but one thing was really personal and I wanted to write it down..</p>
-	
-	<p>So... I am Italian.</p>  
-
-	<p>I know, "Kardell" doesn't sound Italian - and that's because it isn't.  Kardell is my biological father's name and it has, as best I know, a mix of German and Irish roots.  But my from even my very youngest memories, I was raised with/by my maternal side.  My parents divorced when I was all of 5.</p>
-
-	<p>My mother's maiden name is <em>Frediani</em>, and both of her parents were first born generations in America, shortly after their parents arrived.   My maternal grandfather's family (Muzio Frediani) was from Tuscany.  His father was a printer (and all of his kids were later).  Their print shop  was a historic landmark in Pittsburgh's strip district.  He also founded the <a href="https://orderisda.org">Italian Sons and Daughters of America</a>.  Among a lot of other things, they did a lot with Italian Americans, unions and political campaigns. My maternal grandmother's family name was Casale and they were from Silcily.  Her father (Giuseppe Casale) was a contractor/mason and he built many of the houses in the neighborhood my grandparents lived in, and my mom now lives in.</p>
-
-	<p>This side of the family had a very strong culture. There was a lot of community. Some people in the family even still spoke Italian. They were constantly instilling this in me: You are Italian. And so, these are the roots that have always resonated in me.</p>
-
-	<p>When I learn about Michelangelo, Galileo, Dante,  Leonardo, Raphael or Donatello (and so many more) - I felt... Actually <em>connected to it somehow</em>.  I don't know, maybe that's silly. But the result was that Italy was the one place I've always wanted to go since I was a child.</p>
-
-	<p>I never really managed to get very far in making a family tree (lots of those services to help you feel outrageously expensive to me).  Florence, where I went, is part of Tuscany.  I went to Florence because my sister had been there kind of actively looking for connections to our family.  Frediani isn't a super common name -  I've never met another myself.</p>
-
-	<p>Anyway... I went to Florence.</p>
-
-	<section class="sectioning">
-		<h2 class="contextual-heading" style="font-size: 2.5rem;">A series of fortunate events.</h2>
-		<p>I wasted no time, I spent pretty much all of the waking hours touring <em>something</em>: some church, garden, museum, street, bridge, etc.  In a lucky coincidence, some friend from TPAC was also in Florence and we met up for dinner.  They asked me if I had been to the church where Michelangelo was buried. No! They said "I think maybe Dante is also buried there?".</p>
-
-		<p>Wow I wanted to go so much - I'm so fortunate that I wound up in a situation where they were there and we had dinner and they could mention it!  They had me at Michelangelo, I was very keen to go.</p>
-
-		<p>I went the next afternoon, but I was in shorts and that's not allowed and I'd have to shift my schedule and come back the following day.</p>
-
-		<p>So, on my very last day I went to this <a href="https://en.wikipedia.org/wiki/Santa_Croce,_Florence">church at Sante Croce</a>.  Unlike every other thing I'd been to, there was no line.  Because it was the last day, I had nowhere else I really wanted to go afterward.  This was my last "big" stop.  So, I decided I would really take my time, soak it all in, and pay my respects.  Given this, I also decided to pay extra and do the audio guided tour.</p>
-
-		<figure class="captioned-image">
-			<img src="/media/sante-croce-1.jpg">
-			<figcaption>Looking down the nave of the main church.</figcaption>
-		</figure>
-
-		<p>Inside I was surprised to see there were tombs in the floor everywhere - people were walking on them. A few were roped off - I think they were damaged, but mainly there were just occasionally these tombs in the floor. Around the outer wall of the church were bigger memorials to a number of important Italians (mainly Florentine, but not exclusively).  Yeah, wow. Michelangelo, Fermi, Galileo, Dante, Machiavelli - so many.</p>
-
-		<p>I really took my time. I learned a ton of interesting stuff and took a lot of pictures.</p>
-
-		<p>Before leaving the main part of the church I sat down and listened to more about how all of the people buried here were somehow "important".</p>
-
-		<p>I had this fleeting thought that maybe I should go through carefully and see if I can find my family name, but I dismissed this very quickly. Florence is a huge place inside the huge place that is Tuscany - there can't be more than 70 people buried here.  The odds would be astronautical. I decided to plod on.</p>
-	</section>
-	<section class="sectioning">
-		<h2 class="contextual-heading" style="font-size: 2.5rem;">And just then...</h2>
-
-		<p>As the tour turns from the main church, it points you to a marble corridor leading to the Medici chapel (and more).  On the floor down the hall are numerous engraved marble slabs, many are worn to unreadable condition.  As I looked down the hallway my audio suddenly said</p>
-
-		<blockquote>
-		<p>The corridor is paved with white marble tomb slabs with gray frames, which bear names and coats-of-arms erased by time. <strong>One inscription is more clearly legible than the others, almost as if time itself had obeyed the wish it expresses; see if you can find it, it's the tomb of Cosimo Frediani, and on it is written: "Don't tread on me".</strong></p>
-		</blockquote>
-
-		<p>Wait what?  Surely that is just my mind playing tricks on me.</p>
-
-		<p>I rewound it and listened again. It sure <em>sounded</em> like my family name.</p> 
-
-		<p>I found how to switch and look at the transcript.. It was!</p>
-
-		<p>It kind of gave me a chill.</p>
-
-		<p>I searched the stones, even enlisting the help of the museum personel.  There it was: It was also the only one with a relief carved on it.</p>
-
-		<figure class="captioned-image">
-			<img src="/media/cosimo-1.jpg">
-			<figcaption>The marble tomb of Cosimo Frediani.</figcaption>
-		</figure>
-
-		<p>Wow.</p>
-
-		<p>Very cool.</p>  
-
-		<p>But... Who was he?  What did he do?  How far are we related? I spent some time searching and I'm not totally sure yet!  We've found a bit, but it will surely be a new family quest to find out.</p>
-
-		<p>But, I mean... How amazing is it that maybe someone in my family he is buried perhaps 50-100 meters from all of those famous Italians that I feel so connected with 🖤.</p>
-
-		<p>What a great experience :)</p>
 	</section>
 ]]></content>
     </entry>
