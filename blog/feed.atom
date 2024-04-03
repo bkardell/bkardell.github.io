@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://bkardell.com/</id>
     <title>bkardell.com rss feed</title>
-    <updated>2024-04-03T20:23:10.593Z</updated>
+    <updated>2024-04-03T20:41:14.849Z</updated>
     <generator>awesome mix</generator>
     <author>
         <name>Brian Kardell</name>
@@ -27,7 +27,7 @@
     <script src="../prism.js"></script>
     <link rel="stylesheet" href="../prism.css">
     
-    <p>The Trusted Types proposal rides atop Content Security Policy (CSP) and allows website maintainers to say "require trusted-types". Once required, lots of the Web Platform's dangerous API surfaces ("sinks") which currently require a string will now require... well, a <em>different</em> type.</p>
+    <p>The Trusted Types proposal is about preventing Cross-site scripting (XSS), and rides atop Content Security Policy (CSP) and allows website maintainers to say "require trusted-types". Once required, lots of the Web Platform's dangerous API surfaces ("sinks") which currently require a string will now require... well, a <em>different</em> type.</p>
     <p><code>myElement.innerHTML</code> (and a whole lot of other APIs) for example, would now require a <code>TrustedHTML</code> object instead of just a string.</p>
     <p>You can think of <code>TrustedHTML</code> as an interface indicating that a string has been somehow specially "blessed" as safe... Sanitized.</p>
     <figure class="captioned-image">
@@ -36,7 +36,7 @@
     </figure>
     <section class="sectioning">
         <h2 class="contextual-heading" id="blessing-strings" style="font-size: 2.5rem;">Granting Blessings</h2>
-        <p>The interesting thing about this is how one goes about blessing strings, and how this changes the dynamics of development and safety.</p>
+        <p>The interesting thing about this is how one goes about blessing strings, and how this changes the dynamics of development and safety to protect from XSS.</p>
         <p>To start with, there is a new global <code>trustedTypes</code> object (available in both window and workers) with a method called <code>.createPolicy</code> which can be used to create "policies" for blessing various kinds of input (<code>createHTML</code>, <code>createScript</code>, and <code>createScriptURL</code>). Trusted Types comes with the concept of a <em>default</em> policy, and the ability for you to register a specially named "default"...</p>
         <pre><code class="language-javascript">//returns a policy, but you 
 // don't really need to do anything 
