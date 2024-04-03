@@ -4,7 +4,7 @@
         <title>bkardell.com rss feed</title>
         <link>http://bkardell.com/</link>
         <description>Just the bkardell.com rss feed</description>
-        <lastBuildDate>Wed, 13 Mar 2024 22:44:45 GMT</lastBuildDate>
+        <lastBuildDate>Wed, 03 Apr 2024 20:23:10 GMT</lastBuildDate>
         <docs>http://blogs.law.harvard.edu/tech/rss</docs>
         <generator>awesome mix</generator>
         <image>
@@ -14,6 +14,146 @@
         </image>
         <copyright>All rights reserved 2018, Brian Kardell</copyright>
         <atom:link href="https://bkardell.com/blog/feed.atom" rel="self" type="application/rss+xml"/>
+        <item>
+            <title><![CDATA[The Blessing of the Strings]]></title>
+            <link>https://bkardell.com/blog/blessing-strings.html</link>
+            <guid>https://bkardell.com/blog/blessing-strings.html</guid>
+            <pubDate>Wed, 03 Apr 2024 04:00:00 GMT</pubDate>
+            <description><![CDATA[Trusted Types have been a proposal by Google for quite some time at this point, but it's currently getting a lot of attention and work in all browsers (Igalia is working on implementations in WebKit and Gecko, sponsored by Salesforce and Google, respectively). I've been looking at it a lot and thought it's probably something worth writing about.]]></description>
+            <content:encoded><![CDATA[
+    <h1 class="contextual-heading" style="font-size: 2rem;">The Blessing of the Strings</h1>
+    <p class="segue">Trusted Types have been a proposal by Google for quite some time at this point, but it's currently getting a lot of attention and work in all browsers (Igalia is working on implementations in WebKit and Gecko, sponsored by Salesforce and Google, respectively). I've been looking at it a lot and thought it's probably something worth writing about.</p>
+    <script src="../prism.js"></script>
+    <link rel="stylesheet" href="../prism.css">
+    
+    <p>The Trusted Types proposal rides atop Content Security Policy (CSP) and allows website maintainers to say "require trusted-types". Once required, lots of the Web Platform's dangerous API surfaces ("sinks") which currently require a string will now require... well, a <em>different</em> type.</p>
+    <p><code>myElement.innerHTML</code> (and a whole lot of other APIs) for example, would now require a <code>TrustedHTML</code> object instead of just a string.</p>
+    <p>You can think of <code>TrustedHTML</code> as an interface indicating that a string has been somehow specially "blessed" as safe... Sanitized.</p>
+    <figure class="captioned-image">
+    	<img src="/media/2024/holy.gif" style="width:100%;max-width:800px;" alt="the Holy Hand grenade scene from Monty Python's Holy Grail">
+    	<figcaption>And Saint Attila raised the string up on high, saying, 'O Lord, bless this thy string, that with it we may trust that it is free of XSS...' <a href="https://www.youtube.com/watch?v=xOrgLj9lOwk">[ref]</a>.</figcaption>
+    </figure>
+    <section class="sectioning">
+        <h2 class="contextual-heading" id="blessing-strings" style="font-size: 2.5rem;">Granting Blessings</h2>
+        <p>The interesting thing about this is how one goes about blessing strings, and how this changes the dynamics of development and safety.</p>
+        <p>To start with, there is a new global <code>trustedTypes</code> object (available in both window and workers) with a method called <code>.createPolicy</code> which can be used to create "policies" for blessing various kinds of input (<code>createHTML</code>, <code>createScript</code>, and <code>createScriptURL</code>). Trusted Types comes with the concept of a <em>default</em> policy, and the ability for you to register a specially named "default"...</p>
+        <pre><code class="language-javascript">//returns a policy, but you 
+// don't really need to do anything 
+// with the default one
+trustedTypes.createPolicy(
+    "default", 
+    {
+      createHTML: s =&gt; { 
+          return DOMPurify.sanitize(s) 
+      } 
+    }
+);</code></pre>
+        <p>And now, the practical upshot is that <em>all attempts to set HTML will be sanitized</em>... So if there's some code that tries to do:</p>
+        <pre><code class="language-javascript">// if str contains
+// `&amp;lt;img src="no" onerror="&lt;em&gt;dangerous code&lt;/em&gt;" &amp;gt;`;
+target.innerHTML =  str;</code></pre>
+        <p>Then the <code>onerror</code> attribute will be <em>automatically</em> stripped (sanitized) before <code>.innerHTML</code> gets it.</p>
+        
+        <p><strong><em>Hey that's pretty cool!</em></strong></p>
+
+        <figure class="captioned-image">
+    		<img src="/media/2024/monty.gif" style="width:100%;max-width:400px;" alt="one of the scenes where the castle guard is mocking arthur and his men">
+    		<figcaption>It's almost like you just put defenses around all that stuff and can just peer over the wall at would be attackers and make faces at them....</figcaption>
+    	</figure>
+
+        <p>But wait... can't someone come along then and just create a more lenient policy called default?</p>
+        
+        <p>No! That will throw an exception!</p>
+
+        <p>Also, you don't <em>have</em> to create a default. If you don't, and someone tries to use one of those methods to assign a string, it will throw.</p>
+
+        <p>The only thing this enforcement cares about is that it is one of these "blessed" types. Website administrators can also provide (in the header) the name of 1 or more policies which should be created. </p>
+
+        <p>Any attempts to define a policy not in that list will throw (it's a bit more complicated than that, see <a href="#name-your-policy">Name your Policy</a> below). Let's imagine that in the header we specified that a policy named "sanitize" is allowed to be created. </p>
+        <p>Maybe you can see some of why that starts to get really interesting. In order to use any of those APIs (at all), you'd need access to a policy in order to bless the string. But because the policy which can do that blessing is a handle, it's up to you what code you give it to... </p>
+        <pre><code class="language-javascript">{
+  const sanitizerPolicy = 
+      trustedTypes.createPolicy(
+        "sanitize",
+        {
+          createHTML: s =&gt; { 
+            return DOMPurify.sanitize(s) 
+        } 
+  );
+
+
+    // give someOtherModule access to a sanitization policy
+    someOtherModule.init(sanitizerPolicy)
+
+    // yetAnotherModule can't even sanitize, any use of those
+    // APIs will throw
+    yetAnotherModule.foo()
+}
+
+// Anything out here also doesn't have 
+// access to a sanitization policy
+</code></pre>
+        <p>What's interesting about this is that the thing doing the trusting on the client, is actually <em>on</em> the client as well - but the pattern ensures that this becomes a considerably more finite problem. It is much easier to audit whether the "trust" is warranted. That is, we can look at the above to see that there is only one policy and it only supports creating HTML. We can see that the trust there is placed in DOMPurify, and even that amount of trust is only provided to select modules.</p>
+        <p>Finally, most importantly: It is a pattern that is machine enforceable. Anything that tries to use any of those APIs without a blessed string (a Trusted Type) will fail... Unless you ask it not to.</p>
+    </section>
+    <section class="sectioning">
+        <h2 class="contextual-heading" id="dont-throw-just-help" style="font-size: 2.5rem;">Don't Throw, Just Help?</h2>
+        <p>Shutting down all of those APIs after the fact is hard because all of those dangerous APIs are also really useful and therefore widely used. As I said earlier, auditing to find and understand all uses of them all is pretty difficult. Chances are pretty good that there might just be a lot more unsafe stuff floating around in your site than you expected.</p>
+        <p>Instead of <code>Content-Security-Policy</code> CSP headers, you can send <code>Content-Security-Policy-Report-Only</code> and include a directive that includes <code>report-to /csp-violation-report-endpoint/</code> where <code>/csp-violation-report-endpoint/</code> is an endpoint path (on the same origin). If set, whenever violations occur, browsers should send a request to <a href="https://w3c.github.io/webappsec-csp/#report-violation">report a violation</a> to that endpoint (JSON formatted with lots of data). </p>
+        <p>The general idea is that it is then pretty easy to turn this on and monitor your site to discover where you might have some problems, and begin to work through them. This should be especially good for your QA environment. Just keep in mind that the report doesn't actually prevent the potentially bad things from happening, it just lets you know they exist.</p>
+    </section>
+    <section class="sectioning">
+        <h2 class="contextual-heading" id="shouldnt-there-just-be-a-standard-santizer-too" style="font-size: 2.5rem;">Shouldn't there just <em>be</em> a standard santizer too?</h2>
+        <p><a href="https://github.com/WICG/sanitizer-api">Yes!! That is also a thing that is being worked on</a>.</p>
+    </section>
+    <section class="sectioning">
+        <h2 class="contextual-heading" id="name-your-policy" style="font-size: 2.5rem;">Name Your Policy</h2>
+        <p>I'm not going to lie, I found CSP/headers to be both a little confusing to read and to figure out their relationships. You might see a header set up to report only....</p>
+        <p><code>Content-Security-Policy-Report-Only: report-uri /csp-violation-report-endpoint; default-src 'self'; require-trusted-types-for 'script'; trusted-types one two;</code></p>
+        <p>Believe it or not that's a fairly simple one. Basically though, you split it up on semi-colons and each of those is a directive. The directive has a name like "report-uri" followed by whitespace and then a list of values (potentially containing only 1) which are whitespace separated. There are also keyword values which are quoted.</p>
+        <p>So, the last two parts of this are about Trusted Types. The first, <code>require-trusted-types-for</code> is about what gets some kind of enforcement and really the only thing you can put there currently is the keyword <code>'script'</code>. The second, <code>trusted-types</code> is about what policies can be created.</p>
+        <p>Note that I said "some kind of enforcement" because the above is "report only" which means those things will report, but not actually throw, while if we just change the name of the header from <code>Content-Security-Policy-Report-Only</code> to <code>Content-Security-Policy</code> lots of things might start throwing - which didn't greatly help my exploration. So, here's a little table that might help..</p>
+        <table>
+            <thead>
+                <tr>
+                    <th>If the directives are...</th>
+                    <th>then...</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><em>(missing)</em></td>
+                    <td>You can create whatever policies you want (except duplicates), but they aren't enforced in any way.</td>
+                </tr>
+                <tr>
+                    <td><code>require-trusted-types-for 'script';</code></td>
+                    <td>You can create whatever policies you want (except duplicates), and they are enforced. All attempts to assign strings to those sinks will throw. This means if you create a policy named default, it will 'bless' strings through that automatically, but it also means anyone can create any policy to 'bless' strings too.</td>
+                </tr>
+                <tr>
+                    <td><code>trusted-types</code></td>
+                    <td>You cannot create any policies whatsoever. Attempts to will throw.</td>
+                </tr>
+                <tr>
+                    <td><code>trusted-types 'none'</code></td>
+                    <td>Same as with no value.</td>
+                </tr>
+                <tr>
+                    <td><code>trusted-types a b</code></td>
+                    <td>You can call <code>createPolicy</code> with names 'a' and 'b' exactly once. Attempts to call with other names (including 'default'), or repeatedly will throw.</td>
+                </tr>
+                <tr>
+                    <td><code>trusted-types default</code></td>
+                    <td>You can call <code>createPolicy</code> with names 'default' exactly once. Attempts to call with other names, or repeatedly will throw.</td>
+                </tr>
+                <tr>
+                    <td><code>require-trusted-types-for 'script'; trusted-types a</code></td>
+                    <td>You can call <code>createPolicy</code> with names 'a' exactly once. Attempts to call with other names (including default), or repeatedly will throw. All attempts to assign strings to those sinks will throw unless they are 'blessed' from a function in a policy named 'a'</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+]]></content:encoded>
+        </item>
         <item>
             <title><![CDATA[How We Fund the Web Ecosystem]]></title>
             <link>https://bkardell.com/blog/HowWeFund.html</link>
@@ -645,7 +785,7 @@ mtd {
 	</figure>
 
 	<section class="sectioning">
-		<h2 class="contextual-heading" style="font-size: 2.5rem;">Why?</h2>
+		<h2 class="contextual-heading" id="Why" style="font-size: 2.5rem;">Why?</h2>
 		<p>For the last few years I’ve been writing about the health of the whole web ecosystem, and talking about it on <a href="https://www.igalia.com/24-7/chats" target="_blank" rel="noopener">our podcast</a>. We just assume that the “search revenue pays for browsers”&nbsp;model that got us here is fine and will last forever.  I’m pretty sure it won’t.</p>
 
 		<p>When you <a href="https://bkardell.com/blog/WhereBrowsersComeFrom.html" target="_blank" rel="noopener">look at how engines and browsers are funded</a>, it’s way too centralized on search funding.  Of course, this is not a way to fund a new browser - rather it rewards those that are already making really significant entry.  The whole thing is <a href="https://bkardell.com/blog/Webrise.html" target="_blank" rel="noopener">actually kind of fragile when you step back and look at it</a>.</p>
@@ -669,92 +809,6 @@ mtd {
 
 	</section>
 	
-]]></content:encoded>
-        </item>
-        <item>
-            <title><![CDATA[tel:me.about.it.]]></title>
-            <link>https://bkardell.com/blog/tel-me.html</link>
-            <guid>https://bkardell.com/blog/tel-me.html</guid>
-            <pubDate>Thu, 05 Oct 2023 04:00:00 GMT</pubDate>
-            <description><![CDATA[Let’s talk about protocols. I’ve been repeating most of what is in this post in conversations for a while now, so I thought I should write it down.  They are thoughts around what it means to add new protocols to the platform, and how we go about it in practice.  The main extensibility mechanism that we have comes from the HTML5 era: registerProtocolHandler(). In this post I’ll explain where I think that’s kind of OK, where it falls (sometimes very) short, and some things I think we learned along the way. The purpose of this post isn’t to make suggestions, it’s simply to have a look at the space and the things I think we need to keep in mind.]]></description>
-            <content:encoded><![CDATA[
-	<h1 class="contextual-heading" style="font-size: 2rem;">tel:me.about.it.</h1>
-	<p class="segue">Let’s talk about protocols. I’ve been repeating most of what is in this post in conversations for a while now, so I thought I should write it down.  They are thoughts around what it means to add new protocols to the platform, and how we go about it in practice.  The main extensibility mechanism that we have comes from the HTML5 era: <code>registerProtocolHandler()</code>. In this post I’ll explain where I think that’s kind of OK, where it falls (sometimes very) short, and some things I think we learned along the way. The purpose of this post isn’t to make suggestions, it’s simply to have a look at the space and the things I think we need to keep in mind.</p>
-
-
-	<p>Most of the URLs we type these days begin with <code>https:</code> - or before that, <code>http:</code>.  We changed the main protocol of the web to be more secure.  It’s not inconceivable we could want to have that level of change again, but there are plenty of things short of that where protocols develop and somehow find their way into the platform.</p>
-
-	<p>A few popular examples from the HTTPArchive data: Over 30% of websites include at least one <code>mailto:</code> link. Almost as many sites include a <code>tel:</code> link. There’s plenty of <a href="https://en.wikipedia.org/wiki/Webcal" target="_blank" rel="noopener"><code>webcal:</code></a> and <a href="https://www.rfc-editor.org/rfc/rfc2806#section-2.3" target="_blank" rel="noopener"><code>fax:</code></a>. <a href="https://en.wikipedia.org/wiki/Geo_URI_scheme" target="_blank" rel="noopener"><code>geo:</code></a> is used on over 20,300 sites. <code>sms:</code> is used on 42,600+ websites. These are just a few examples of protocols that are trying to do something useful.</p>
-
-	<section class="sectioning">
-		<h2 class="contextual-heading" style="font-size: 2.5rem;">Things That Go “Click”</h2>
-
-		<p>When you click a link that has one of those protocol identifiers, the browser says “Do I know how to handle that protocol?”  If the answer is no, it passes responsibility along to the OS.  So, if you have Skype installed, and click on a <code>skype:</code> link, the OS might launch Skype for you.</p>
-
-		<p>Protocol handlers really are just built on the idea that over time, we build web-based services and it should be possible to say that the way to handle them can be by rerouting handling to a domain (say, gmail.com for <code>mailto:</code> links).</p>
-
-		<p>So, for those, things it works… Kind of.</p>
-
-	</section>
-	<section class="sectioning">
-		<h2 class="contextual-heading" style="font-size: 2.5rem;">The mistakes we made along the way…</h2>
-
-		<p>On the surface, all of those protocols that turn up in the HTTP Archive data seem like success stories. However, I’d like to tell you why they haven’t been so great, and why we already have better solutions.</p>
-
-		<p>Consider the second most widely used of those, the <code>tel:</code> protocol.  Not because this one is especially bad, but because it is very easy to illustrate many problems in a concise example.</p>
-
-		<p>Before <code>tel:</code>, authors would put some text in their web page, like:</p>
-
-		<p><code>Phone: (555)123-4567</code></p>
-
-		<p>With <code>tel:</code>, authors could now put something like this into their HTML:</p>
-
-		<pre><code class="html hljs"><span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"tel:123.456.7890"</span>&gt;</span>Call now<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
-	</code></pre>
-
-		<p>Yay!  Except, no… wait… That is kind of terrible.</p>
-
-		<p>Sure, for <em>some</em> users, where all of the stars align, that will be a nice convenience.  But there are just <em>way</em> too many cases where this is more of a barrier than a convenience. Let’s look at some of the failure modes of that line of code, starting with the simplest:</p>
-
-		<section class="sectioning">
-			<h3 class="contextual-heading" style="font-size: 3rem;">Hidden information</h3>
-
-			<p>Because we’ve made it a link, it’s far too common that authors don’t actually display the phone number.  They <em>assume</em> that the device I’m <em>looking at</em> is the device I want to dial from.  There are many cases where that is not true!</p>
-
-			<p>Perhaps I’m on my office desktop and I want to dial with the handy office <em>phone</em> that is next to me, or the conference system, or even just my cell phone.  Maybe I want to read the number out to someone else, or write it down for later.  Just show me the !@$!@ number!</p>
-
-			<p>This isn’t a problem inherent to the protocol, but it’s still a problem.</p>
-		</section>
-		<section class="sectioning">
-			<h3 class="contextual-heading" style="font-size: 3rem;">Theoretically capable, practically incapable</h3>
-
-			<p>Sometimes a device can be physically capable of dialing out, but currently not have that service available. This happened to me while traveling abroad in 2018, where I was able to use my cell with WiFi but couldn’t dial out (I didn’t have WiFi calling at the time).</p>
-
-			<p>This problem still comes up I use that same 2018 cell phone to control my media in my house, and occasionally to look something up, but since it isn’t on my cell plan, I can’t use any <code>tel:</code> links.</p>
-		</section>
-		<section class="sectioning">
-			<h3 class="contextual-heading" style="font-size: 3rem;">No registered handler at all</h3>
-
-			<p>On some machines, there is no registered <code>tel:</code> protocol handler.  What happens in this case? Unspecified.  Each OS will do something a little different.  For years <a href="https://stackoverflow.com/questions/1164004/how-to-mark-up-phone-numbers" target="_blank" rel="noopener"><code>tel:</code> would often do nothing at all</a> <em>which is very confusing to users</em>.  Some operating systems will, to various degrees, offer to help you find something capable of handling the protocol, but even that can be confusing (see next point).</p>
-		</section>
-		<section class="sectioning">
-			<h3 class="contextual-heading" style="font-size: 3rem;">Registered a Complex Program</h3>
-
-			<p>Some devices will launch a program that’s registered to handle the <code>tel:</code> protocol, <em>even if it can’t currently dial</em>.  There are many examples of this.  Apps like Google Hangouts or Skype were chat programs with some VoIP support. They could dial out if users paid a special recurring fee – but <em>most</em> users didn’t pay that fee.  When those users clicked a link and it launched their chat program, or told them they have to pay to dial, that’s confusing and frustrating.</p>
-
-			<p>In fact, lots of users of those apps just use them for text chat.  Not so long ago, many users on office desktops didn’t have cameras, mics or speakers. If users clicked a <code>tel:</code> link and it launched their <em>chat</em> program and implied that they could pay money to dial out, but actually couldn’t do that: <em>This is very confusing to users</em>.</p>
-		</section>
-	</section>
-	<section class="sectioning">
-		<h2 class="contextual-heading" style="font-size: 2.5rem;">The Un-Protocol…</h2>
-		<p>Contrast that with this:  Today, if you use your smartphone and you select some text - regular text - there are some built in ways to assist in order to do smart selection.  That is, work has gone into making it easier for it to recognize that you’re trying to select a phone number or an email, as two examples. And if you select it, the context menu will offer “Call” or “Email”, respectively.</p>
-
-		<p>You know what’s wild? No author had to do anything special at all, and it works even on content written in the 90s.  That’s… Pretty great. That’s not to say markup couldn’t <em>help</em> here, but it gets at whether it needs to  <em>fundamentally</em> be a link.</p>
-
-		<p>The <a href="https://developer.mozilla.org/en-US/docs/Web/API/Web_Share_API" target="_blank" rel="noopener">Web Share API</a> splits things along a similar joint.  It just shares an <em>intent</em> to share some content.  It doesn’t need to know anything about which ways you have to available to share, or reason about things in the current time.  Splitting things this way lets all of the ways to share develop entirely independently.  If new social media comes along, or goes away, or we develop new physical ways of sharing involving USB or Bluetooth or HandWaveyMagicWand - it will all JustWork™.</p>
-
-		<p>Both of these seem to me generally better than many of the protocol based solutions.  I’m not suggesting protocol based solutions are useless, I’m just suggesting that it seems like there is benefit in continuing to question why and how we’re approaching things.</p>
-	</section>
 ]]></content:encoded>
         </item>
     </channel>
