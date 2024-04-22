@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://bkardell.com/</id>
     <title>bkardell.com rss feed</title>
-    <updated>2024-04-03T20:41:14.849Z</updated>
+    <updated>2024-04-22T14:38:27.335Z</updated>
     <generator>awesome mix</generator>
     <author>
         <name>Brian Kardell</name>
@@ -14,6 +14,42 @@
     <subtitle>Just the bkardell.com rss feed</subtitle>
     <logo>http://bkardell.com/profile.jpg</logo>
     <rights>All rights reserved 2018, Brian Kardell</rights>
+    <entry>
+        <title type="html"><![CDATA[Mirror Effects]]></title>
+        <id>https://bkardell.com/blog/mirror-effects.html</id>
+        <link href="https://bkardell.com/blog/mirror-effects.html">
+        </link>
+        <updated>2024-04-22T04:00:00.000Z</updated>
+        <summary type="html"><![CDATA[Today I had this thought about "AI" that felt more like a short blog post than a social media thread, so I thought I'd share it.]]></summary>
+        <content type="html"><![CDATA[
+	<h1 class="contextual-heading" style="font-size: 2rem;">Mirror Effects</h1>
+	<p class="segue">Today I had this thought about "AI" that felt more like a short blog post than a social media thread, so I thought I'd share it.</p>
+
+	<p>I love learning and thinking about weird indirect connections like how thing X made things Y and Z suddenly possible, and given some time these had secondary or tertiary impacts that were really unexpected.</p>
+
+	<p>There are so many possible examples:  We didn't really expect the web and social media to give rise to the Arab Spring.  Nor to such disinformation.  Nor the 2016 American election (or several others similarly around the world).  Maybe Carrier didn't expect that the invention of air conditioning would help reshape the American political map, but it did.</p>
+
+	<p>One of the things that came to my mind today  was a thing I read about mirrors.  Ian Mortimer explains how improvements to and the spread of mirrors radically changed lots of things. Here's a quote from the piece:
+
+	</p><blockquote>
+	The very act of a person seeing himself in a mirror or being represented in a portrait as the center of attention encouraged him to think of himself in a different way. He began to see himself as unique. Previously the parameters of individual identity had been limited to an individual’s interaction with the people around him and the religious insights he had over the course of his life. Thus individuality as we understand it today did not exist;  people only understood their identity in relation to groups—their household, their manor, their town or parish—and in relation to God... 
+	<cite><a href="https://www.laphamsquarterly.org/roundtable/mirror-effect">The Mirror Effect</a></cite>
+	</blockquote>
+
+	<p>It's pretty interesting to look back and observe all of the changes that this began to stir - from the way people literally lived (more privacy), to changes in the types of writing and art, and how we thought about fitting in to the larger world (and thus the societies we built).</p>
+
+	<p>So, today I had this random thought that I wonder what sorts of effects like these will come from all of the "AI" focus. That is, not the common/direct sorts of things we're talking about but the ones that maybe have very little to do with any actual technology even.  Which things will some future us look back on in 20 or 100 years and say "huh, interesting".</p>
+
+	<p>In particular, the thing that brought this to mind is that I am suddenly seeing lots of more people suddenly having conversations like "What is consciousness though, really?" and "What is intelligence, really?". I don't mean from technologists, I just mean it seems to be causing lots more people to suddenly think about that kind of thing.</p>
+
+	<p>So it made me think: I wonder if we will see increased signups for philosophy courses? Or,  sales of more books along these lines?  Could that ultimately lead to another, similar sort of changing in how we collectively see ourselves?  I wonder what effects this has in the long term on literature, film, or even science and government.</p>
+
+	<p>This isn't a "take" - it's not trying to be optimistic or pessimistic.  It's more of a "huh... I hadn't thought much about that before, but it's kind of interesting to think about."  Don't you think?  Outside of the normal sorts of things we're obviously thinking about - what are some you could imagine?</p>
+
+	<p>As a kind of final interesting note: Stephen Johnson is a great storyteller, and his work is full of connections like these.  If you want to read more, <a href="https://en.wikipedia.org/wiki/Steven_Johnson_(author)#Books">check out his books</a>.  Part of the reason that I mention him is that interestingly, it seems that he <a href="https://stevenberlinjohnson.com/writing-at-the-speed-of-thought-21dfb7f689e4">has recently gone to work with Google on a LM project about writing himself</a>. I bet he's got some notes and ideas on this already too.</p> 
+
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[The Blessing of the Strings]]></title>
         <id>https://bkardell.com/blog/blessing-strings.html</id>
@@ -772,53 +808,6 @@ mtd {
 
 	<p>It's a hard game! Looking forward to your answers.</p>
 
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Wolvic Store Experiment]]></title>
-        <id>https://bkardell.com/blog/WolvicSwag.html</id>
-        <link href="https://bkardell.com/blog/WolvicSwag.html">
-        </link>
-        <updated>2023-11-08T05:00:00.000Z</updated>
-        <summary type="html"><![CDATA[A post about cool stuff for a  cause.]]></summary>
-        <content type="html"><![CDATA[
-	<h1 class="contextual-heading" style="font-size: 2rem;">Wolvic Store Experiment</h1>
-	<p class="segue">A post about cool stuff for a  cause.</p>
-
-	
-
-	<p>As of today, you can <a href="https://wolvic.creator-spring.com/" target="_blank" rel="noopener">purchase some cool Wolvic swag</a>, and proceeds will go to supporting development of the browser:</p>
-
-	<figure class="captioned-image">
-		<img src="/media/wolvic-store.png" alt="">
-		<figcaption>There’s mugs, and water bottles and shirts and sweatshirts and … You know, stuff.</figcaption>
-	</figure>
-
-	<section class="sectioning">
-		<h2 class="contextual-heading" id="Why" style="font-size: 2.5rem;">Why?</h2>
-		<p>For the last few years I’ve been writing about the health of the whole web ecosystem, and talking about it on <a href="https://www.igalia.com/24-7/chats" target="_blank" rel="noopener">our podcast</a>. We just assume that the “search revenue pays for browsers”&nbsp;model that got us here is fine and will last forever.  I’m pretty sure it won’t.</p>
-
-		<p>When you <a href="https://bkardell.com/blog/WhereBrowsersComeFrom.html" target="_blank" rel="noopener">look at how engines and browsers are funded</a>, it’s way too centralized on search funding.  Of course, this is not a way to fund a new browser - rather it rewards those that are already making really significant entry.  The whole thing is <a href="https://bkardell.com/blog/Webrise.html" target="_blank" rel="noopener">actually kind of fragile when you step back and look at it</a>.</p>
-
-		<p>It would be nice to change that, and we only achieve that by trying.</p>
-
-		<p>So, in general at Igalia we’re trying several ways to diversify funding.  Specifically for Wolvic, we’re looking into how we might explore <a href="https://bkardell.com/blog/SuperbHowl.html" target="_blank" rel="noopener">other kinds of advertising</a>, but we’ve got this far with investment from Igalia, <a href="https://bkardell.com/blog/NascarModel.html" target="_blank" rel="noopener">a partnership model</a> and an <a href="https://opencollective.com/wolvic" target="_blank" rel="noopener">Open Collective</a>.</p>
-
-		<p>It’s kind of easy to get applause when I talk about this, but the truth is very few people put money into our collectives.  It reminded me of… Well… Every charity, ever.</p>
-
-		<p>Lots of charities (or even NPR) give you some swag with a donation. For some reason, that’s helpful in expanding the base of people making any kind of donation at all.  For some reason, offering swag makes people consider putting <em>some</em> donation toward the cause.</p>
-		
-		<p>Of course, this isn’t especially <em>efficient</em>: If you buy a product from our store, maybe only a few dollars of that becomes an the actual donation.  It would be far more efficient to just donate a couple of dollars to the collective, but very few do.  So we’re trying something new.</p>
-
-		<div class="btn-group">
-			<div><a class="btn" href="https://opencollective.com/wolvic">Make a donation!</a></div>
-			<div><a class="btn" href="https://wolvic.creator-spring.com/">Get some swag!</a></div>
-		</div>
-
-		<p>Will offering swag help here too?  Is this a model that could help us pay for things?  I don’t know, but I’m always looking for new ways to talk about this problem and new experiments we could try to keep the discussion going. So, what do you think?</p>
-
-	</section>
-	
 ]]></content>
     </entry>
 </feed>
