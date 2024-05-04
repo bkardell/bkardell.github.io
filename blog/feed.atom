@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://bkardell.com/</id>
     <title>bkardell.com rss feed</title>
-    <updated>2024-04-22T15:10:04.356Z</updated>
+    <updated>2024-05-04T16:06:43.781Z</updated>
     <generator>awesome mix</generator>
     <author>
         <name>Brian Kardell</name>
@@ -14,6 +14,167 @@
     <subtitle>Just the bkardell.com rss feed</subtitle>
     <logo>http://bkardell.com/profile.jpg</logo>
     <rights>All rights reserved 2018, Brian Kardell</rights>
+    <entry>
+        <title type="html"><![CDATA[Known Knowns]]></title>
+        <id>https://bkardell.com/blog/known-knowns.html</id>
+        <link href="https://bkardell.com/blog/known-knowns.html">
+        </link>
+        <updated>2024-05-04T04:00:00.000Z</updated>
+        <summary type="html"><![CDATA[Fun with the DOM, the parser, illogical trees and "unknowns"...]]></summary>
+        <content type="html"><![CDATA[
+    <h1 class="contextual-heading" style="font-size: 2rem;">Known Knowns</h1>
+    <p class="segue">Fun with the DOM, the parser, illogical trees and "unknowns"...</p>
+    <script src="../prism.js"></script>
+    <link rel="stylesheet" href="../prism.css">
+    
+    
+    <p>HTML has this very tricky parser that does 'corrections' and things on the fly. So if you create a page like:</p>
+    <pre><code class="language-html">&lt;table&gt;
+   Hello
+   &lt;td&gt;
+      Look below...
+   &lt;/td&gt;
+&lt;/table&gt;
+</code></pre>
+    <p>And load it in your browser, what you'll actually get parsed as a tree will be </p>
+    <ul class="domTree">
+        <li class="t1"><code class="language-html">HTML</code>
+            <ul>
+                <li class="t1"><code class="language-html">HEAD</code></li>
+                <li class="t1"><code class="language-html">BODY</code>
+                    <ul>
+                        <li class="t3"><code class="language-html">#text</code>: <span>
+                                Hello
+                            </span></li>
+                        <li class="t1"><code class="language-html">TABLE</code>
+                            <ul>
+                                <li class="t1"><code class="language-html">TBODY</code>
+                                    <ul>
+                                        <li class="t1"><code class="language-html">TR</code>
+                                            <ul>
+                                                <li class="t1"><code class="language-html">TD</code>
+                                                    <ul>
+                                                        <li class="t3"><code class="language-html">#text</code>: <span>
+                                                                Look below...
+                                                            </span></li>
+                                                    </ul>
+                                                </li>
+                                                <li class="t3"><code class="language-html">#text</code>: <span>
+                                                    </span></li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </li>
+    </ul>
+    <p>Things can literally be moved around, implied elements added and so on. </p>
+    <section class="sectioning">
+        <h2 class="contextual-heading" style="font-size: 2.5rem;">Illogical trees</h2>
+        <p>But it's not impossible to create trees that are impossible to create with the parser itself, if you do it dynamically. With the DOM API, you can create whatever wild constructs you want: Paragraphs inside of paragraphs? Sure, why not.</p>
+        <p>Or, <a href="https://software.hixie.ch/utilities/js/live-dom-viewer/?%3C!DOCTYPE%20html%3E%0A%3Ctable%20id%3D%22one%22%3E%3C%2Ftable%3E%0A%0A%3Cscript%3E%0A%20%20%20one.appendChild(%0A%20%20%20%20%20document.createTextNode(%22test%22)%0A%20%20%20)%0A%3C%2Fscript%3E">text that is a direct child of a table</a>. Note this still renders the text in every browser engine.</p>
+        <p>You can even add children to 'void' elements that way too. Here's an interesting one: <a href="https://software.hixie.ch/utilities/js/live-dom-viewer/?%3C!DOCTYPE%20html%3E%0A%3Chr%20id%3D%22one%22%3E%0A%0A%3Cscript%3E%0A%20%20%20one.appendChild(%0A%20%20%20%20%20document.createTextNode(%22test%22)%0A%20%20%20)%0A%3C%2Fscript%3E">An <code>&lt;hr&gt;</code> with a text node child</a>. Again, It renders the text in every browser engine (the color varies).</p>
+        <p>You can also put unknown elements into your markup and the text content is shown... By default, it is basically a <code>&lt;span&gt;</code>.</p>
+        <p>In <em>most cases</em>, HTML wants to show something... or at least leave CSS in control. For example, you can dynamically add children to a <code>&lt;script&gt;</code>. While that won't be shown by default, it's simply because the UA style sheet has script set to <code>display: none;</code>. If we change that, <a href="https://software.hixie.ch/utilities/js/live-dom-viewer/?%3C!DOCTYPE%20html%3E%0A%3Cstyle%3E%0A%20%20%20script%20%7B%20display%3A%20block%3B%20%7D%0A%3C%2Fstyle%3E%0A%3Cbody%3E%0A%20%20%3Cdiv%20id%3Dtwo%20style%3D%22background%3A%20pink%22%3EInteresting!%3C%2Fdiv%3E%0A%3Cscript%20id%3D%22one%22%3E%0A%20%20%20one.appendChild(two)%0A%3C%2Fscript%3E">we can totally see it</a>.</p>
+        <p>But this isn't universal: In some cases there are other renderers that are in control - mainly when it comes to form controls. But also, for example, if you switch the <code>&lt;hr&gt;</code> in the example above to a <code>&lt;br&gt;</code> it won't render the text. It doesn't generate a box that you can do anything with with CSS as far as I can tell, except make it <code>display: none</code> (useful if they’re in <code>white-space: pre</code> blocks to keep them from forcing open extra lines).
+    </p></section>
+    <section class="sectioning">
+        <h2 class="contextual-heading" style="font-size: 2.5rem;">SVG</h2>
+        <p>The HTML parser has fix ups for embedding SVG too, there are kind of integration points. But, in SVG you can have an unknown element too... For example:</p>
+        <pre><code class="language-html">&lt;svg&gt;
+    &lt;unknown&gt;Test&lt;unknown&gt;
+    &lt;rect width="150" height="150" x="10" y="10" style="fill:blue;stroke:pink;stroke-width:5;opacity:0.5" /&gt;
+&lt;/svg&gt;
+</code></pre>
+        <p>The unknown element won't render the text, nor additional SVG children inside it. For example:</p>
+        <pre><code class="language-html">&lt;svg id=one width="300" height="170"&gt;
+  &lt;unknown&gt;&lt;ellipse cx="120" cy="80" rx="100" ry="50" style="fill:yellow;stroke:green;stroke-width:3" /&gt;&lt;/unknown&gt;
+&nbsp; &lt;rect width="150" height="150" x="10" y="10" style="fill:blue;stroke:pink;stroke-width:5;opacity:0.5" /&gt;
+&lt;/svg&gt;
+</code></pre>
+    </section>
+    <section class="sectioning">
+        <h2 class="contextual-heading" style="font-size: 2.5rem;">MathML</h2>
+        <p>As you might expect, there are parser integrations for MathML too, and you can have an unknown elements in MathML too. In MathML, all elements (including unknown ones) generate a "math content box", but only <em>token</em> elements (like <code>&lt;mi&gt;</code>, <code>&lt;mo&gt;</code>, <code>&lt;mn&gt;</code>) render text. For example, the <code>&lt;math&gt;</code> element itself - if you try to put text in it, the text won't render, but it will still generate a box and other content.</p>
+        <pre><code class="language-html">&lt;math&gt;
+   Not a token. Doesn't render.
+   &lt;mi&gt;X&lt;/mi&gt;
+&lt;/math&gt;
+</code></pre>
+        <p>MathML has other elements too like <code>&lt;mrow&gt;</code> and <code>&lt;mspace&gt;</code> and <code>&lt;mphantom&gt;</code> which are just containers. Same story there, if you try to put text in them, the text won't render... </p>
+        <pre><code class="language-html">&lt;math&gt;
+   &lt;mrow&gt;Not a token. Doesn't render.&lt;/mrow&gt;
+   &lt;mi&gt;X&lt;/mi&gt;
+&lt;/math&gt;
+</code></pre>
+        <p><em>But</em> if you put the text inside a token element (like <code>&lt;mi&gt;</code>) inside that same <code>&lt;mrow&gt;</code>, then the text will render..</p>
+        <pre><code class="language-html">&lt;math&gt;
+   &lt;mrow&gt;&lt;mi&gt;ok&lt;/mi&gt;&lt;/mrow&gt;
+   &lt;mi&gt;X&lt;/mi&gt;
+&lt;/math&gt;
+</code></pre>
+        <p>In MathML, unknown elements are basically treated just like <code>&lt;mrow&gt;</code>. In the above examples, you could replace <code>&lt;mrow&gt;</code> with <code>&lt;unknown&gt;</code> and it'd be the same.</p>
+    </section>
+    <section class="sectioning">
+        <h2 class="contextual-heading" style="font-size: 2.5rem;">Unknown Unknowns</h2>
+        <p>Ok, here's something you don't think about every day: Given this markup:</p>
+        <pre><code class="language-html">&lt;unknown id=one&gt;One&lt;/unknown&gt;
+&lt;math&gt;
+  &lt;unknown id=two&gt;Two&lt;/unknown&gt;
+&lt;/math&gt;
+&lt;svg&gt;
+  &lt;unknown id=three&gt;Three&lt;/unknown&gt;
+&lt;/svg&gt;
+</code></pre>
+        <p><code>One</code>, <code>Two</code> and <code>Three</code> are <strong><em>three different kinds of unknowns</em></strong>!</p>
+        <pre><code class="language-javascript">console.log(one.namespaceURI, one.constructor.name)
+// logs 'http://www.w3.org/1999/xhtml HTMLUnknownElement'
+
+console.log(two.namespaceURI, two.constructor.name)
+// logs 'http://www.w3.org/1998/Math/MathML MathMLElement'
+
+console.log(three.namespaceURI, three.constructor.name)
+// logs 'http://www.w3.org/2000/svg SVGElement`
+</code></pre>
+        <p>In CSS, these can also (theoretically) be styled via namespaces. The following will only style the first of those:</p>
+        <pre><code class="language-css">@namespace html url(http://www.w3.org/1999/xhtml);
+html|unknown { color: blue; }
+</code></pre>
+    </section>
+    <section class="sectioning">
+        <h2 class="contextual-heading" style="font-size: 2.5rem;">Under-defined Unknowns</h2>
+        <p>Remember how in the beginning we created nonsensical constructs dynamically? Well, we can do that here too. We can move an unknown <code>MathMLElement</code> right into HTML, or an unknown <code>HTMLElement</code> right into MathML, and so on - and it's not currently well-defined, universal, or consistent what actually happens here.</p>
+        <p><a href="https://codepen.io/briankardell/pen/ExJzOXK">Here's an interesting example</a> moves an unknown <code>MathMLElement</code> and a <code>SVGElement</code> into HTML, and an <code>HTMLElement</code> into MathML and so on</p>
+        <p class="codepen" data-height="300" data-default-tab="html,result" data-slug-hash="ExJzOXK" data-user="briankardell" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;">
+            <span>See the Pen <a href="https://codepen.io/briankardell/pen/ExJzOXK">
+                    Untitled</a> by вкαя∂εℓℓ (<a href="https://codepen.io/briankardell">@briankardell</a>)
+                on <a href="https://codepen.io">CodePen</a>.</span>
+        </p>
+        <script async="" src="https://cpwebassets.codepen.io/assets/embed/ei.js"></script>
+        <p> Here's how that renders in the various today:</p>
+        <figure>
+            <img src="https://notes.igalia.com/uploads/331613fd-0d93-4126-a746-646b3aa114f9.png">
+            <figcaption>Left to right: Chrome, Firefox, Safari all render differently</figcaption>
+        </figure>
+        <p>So, I guess we should probably fix that. I'll have to start creating some issues and tentative tests (feel free to beat me to it 😉)</p>
+    </section>
+    <section class="sectioning">
+        <h2 class="contextual-heading" style="font-size: 2.5rem;">Semi-related Rabbit Holes</h2>
+        <p>Not specifically these issues, but related namespace stuff has caused a lot of problems that we're remedying as shown by a recent flurry of activity started by my colleague Luke Warlow to fix MathML-Core support in various libraries/frameworks:</p>
+        <ul>
+            <li><a href="https://github.com/sveltejs/svelte/pull/11387">Svelte 5</a></li>
+            <li><a href="https://github.com/preactjs/preact/pull/4364">Preact</a> </li>
+            <li><a href="https://github.com/angular/angular/issues/55608">Angular</a></li>
+            <li><a href="https://github.com/lit/lit/pull/4637">Lit</a></li>
+        </ul>
+        <p>Who's next? :)</p>
+    </section>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[Mirror Effects]]></title>
         <id>https://bkardell.com/blog/mirror-effects.html</id>
@@ -773,41 +934,6 @@ mtd {
 
 <p>But, all in all: I feel like you can make pretty good use of native MathML at this point.</p>
 </section>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Let's Play a Game]]></title>
-        <id>https://bkardell.com/blog/PriorityGame.html</id>
-        <link href="https://bkardell.com/blog/PriorityGame.html">
-        </link>
-        <updated>2023-11-16T05:00:00.000Z</updated>
-        <summary type="html"><![CDATA[It's Interop 24 planning time!  Let's play a game: Tell me what you prioritize, or don't and why?
-	]]></summary>
-        <content type="html"><![CDATA[
-	<h1 class="contextual-heading" style="font-size: 2rem;">Let's Play a Game</h1>
-	<p class="segue">It's Interop 24 planning time!  Let's play a game: Tell me what you prioritize, or don't and why?
-	</p>
-
-	<p>I've written before about how prioritization is hard.  Just in the most tangible of terms, there are differing finite resources, distributed differently across organizations.  That is, not all teams have the same size or composition, or current availability.  They're all also generally managed and planned independently with several other factors in mind, and in totally different architectures.  That's a big part of what makes standards often take so long to get sorted out to where everyone can just use them without significant concerns.</p>
-
-	<p>Conversely, occasionally we see things ship at what seems by comparison amazing speed.  Sometimes that's a bit of an illusion: They've been brewing and aligning hard parts for years and we're only counting the end bits. But other times it's just because we've aligned.  A nice way to think about this, if you're a developer,  is to compare it to web page performance. If all of the resources just load as discovered and there's no thought put into optimization, things can get really out of control.  When you do some optimization and coordination, you can get things many times faster pretty quickly.  The big difference here is mainly that instead of milliseconds, with standards substitute weeks or something.</p>
-
-	<p>I think that's one of the best things about Interop.  While it isn't a promise by anyone or anything, it does seem to serve as a function to get us to focus together on some things and align - doing that optimization work.</p>
-
-	<p>It's a damned tricky exercise though, I'm not going to lie. There are so many things to consider and align.  I kind of like sharing insight into this because I spent a really long time as a developer myself with a significantly different perspective.  Seeing all of this from the inside the last few years has been really eye-opening.  So, I thought, let's play a game... It might be useful to both of us.</p>
-
-	<p>Below is a list of links to about 90 2024 proposals. It's not carefully complete and I have excluded a few that I personally feel perhaps don't fit the necessary criteria for inclusion.  It would, of course, be a huge time suck for you to spend your unpaid time carefully researching all of them - so that's not the game.  Note that this represents a tiny fraction of the open issues in the platform - so you can start to see how this is challenging.</p>
-
-	<p>So, the game is: Bubble sort as many of these as you can (at least 5-10 would be great) and, optionally, share something back about why you prioritized or de-prioritized something.  That can be in a reply blog post, a few messages on social media of your choice, share a gist... Whatever you like.</p>
-
-	<p>Here's the list (note there is a bit more prose afterward)</p>
-
-	<ol><li><a target="_blank" href="https://github.com/web-platform-tests/interop/issues/532">MediaCapture device enumeration</a></li><li><a target="_blank" href="https://github.com/web-platform-tests/interop/issues/554">Standardize SVG properties in CSS to support unitless geometry</a></li><li><a target="_blank" href="https://github.com/web-platform-tests/interop/issues/536">Fetch Web API</a></li><li><a target="_blank" href="https://github.com/web-platform-tests/interop/issues/464">Web Share API</a></li><li><a target="_blank" href="https://github.com/web-platform-tests/interop/issues/489">Full support of background properties and remove of prefixes</a></li><li><a target="_blank" href="https://github.com/web-platform-tests/interop/issues/427">Canvas text rendering and metrics (2024 edition)</a></li><li><a target="_blank" href="https://github.com/web-platform-tests/interop/issues/439">Scroll-driven Animations</a></li><li><a target="_blank" href="https://github.com/web-platform-tests/interop/issues/528">Scrollend Events</a></li><li><a target="_blank" href="https://github.com/web-platform-tests/interop/issues/572">&lt;search&gt;</a></li><li><a target="_blank" href="https://github.com/web-platform-tests/interop/issues/422">text-box-trim</a></li><li><a target="_blank" href="https://github.com/web-platform-tests/interop/issues/544">Web Audio API</a></li><li><a target="_blank" href="https://github.com/web-platform-tests/interop/issues/535">CSS :dir() selectors and dir=auto interoperability</a></li><li><a target="_blank" href="https://github.com/web-platform-tests/interop/issues/420">CSS Nesting</a></li><li><a target="_blank" href="https://github.com/web-platform-tests/interop/issues/531">WebRTC peer connections and codecs</a></li><li><a target="_blank" href="https://github.com/web-platform-tests/interop/issues/571">scrollbar-width CSS property</a></li><li><a target="_blank" href="https://github.com/web-platform-tests/interop/issues/546">JavaScript Promise Integration</a></li><li><a target="_blank" href="https://github.com/web-platform-tests/interop/issues/433">CSS style container queries (custom properties)</a></li><li><a target="_blank" href="https://github.com/web-platform-tests/interop/issues/573">Allowing &lt;hr&gt; inside of &lt;select&gt;</a></li><li><a target="_blank" href="https://github.com/web-platform-tests/interop/issues/517">CSS background-clip</a></li><li><a target="_blank" href="https://github.com/web-platform-tests/interop/issues/562">text-wrap: pretty</a></li><li><a target="_blank" href="https://github.com/web-platform-tests/interop/issues/541">font-size-adjust</a></li><li><a target="_blank" href="https://github.com/web-platform-tests/interop/issues/563">requestIdleCallback</a></li><li><a target="_blank" href="https://github.com/web-platform-tests/interop/issues/553">&lt;details&gt; and &lt;summary&gt; elements</a></li><li><a target="_blank" href="https://github.com/web-platform-tests/interop/issues/538">CSS text-indent</a></li><li><a target="_blank" href="https://github.com/web-platform-tests/interop/issues/426">Relative Color Syntax</a></li><li><a target="_blank" href="https://github.com/web-platform-tests/interop/issues/417">scrollbar-color CSS property</a></li><li><a target="_blank" href="https://github.com/web-platform-tests/interop/issues/527">input[type="range"] styling</a></li><li><a target="_blank" href="https://github.com/web-platform-tests/interop/issues/495">Top Layer Animations</a></li><li><a target="_blank" href="https://github.com/web-platform-tests/interop/issues/443">Gamut mapping</a></li><li><a target="_blank" href="https://github.com/web-platform-tests/interop/issues/493">Canvas2D filter and reset</a></li><li><a target="_blank" href="https://github.com/web-platform-tests/interop/issues/522">WebXR</a></li><li><a target="_blank" href="https://github.com/web-platform-tests/interop/issues/428">User activation (2024 edition)</a></li><li><a target="_blank" href="https://github.com/web-platform-tests/interop/issues/558">text-transform: full-size-kana &amp; text-transform: full-width</a></li><li><a target="_blank" href="https://github.com/web-platform-tests/interop/issues/539">document.caretPostitionFromPoint</a></li><li><a target="_blank" href="https://github.com/web-platform-tests/interop/issues/513">Unit division and multiplication for mixed units of the same type within calc()</a></li><li><a target="_blank" href="https://github.com/web-platform-tests/interop/issues/555">EXPAND :has() to include support for more pseudo-classes</a></li><li><a target="_blank" href="https://github.com/web-platform-tests/interop/issues/485">WebM AV1 video codec</a></li><li><a target="_blank" href="https://github.com/web-platform-tests/interop/issues/465">CSS image() function</a></li><li><a target="_blank" href="https://github.com/web-platform-tests/interop/issues/451">WebDriver BiDi</a></li><li><a target="_blank" href="https://github.com/web-platform-tests/interop/issues/486">CSS box-decoration-break</a></li><li><a target="_blank" href="https://github.com/web-platform-tests/interop/issues/561">text-wrap: balance</a></li><li><a target="_blank" href="https://github.com/web-platform-tests/interop/issues/506">inverted-colors Media Query</a></li><li><a target="_blank" href="https://github.com/web-platform-tests/interop/issues/526">Accessibility (computed role + accname)</a></li><li><a target="_blank" href="https://github.com/web-platform-tests/interop/issues/568">display: contents</a></li><li><a target="_blank" href="https://github.com/web-platform-tests/interop/issues/512">Accessibility issues with display properties (not including display: contents)</a></li><li><a target="_blank" href="https://github.com/web-platform-tests/interop/issues/494">HTMLVideoElement.requestVideoFrameCallback()</a></li><li><a target="_blank" href="https://github.com/web-platform-tests/interop/issues/529">Text Fragments</a></li><li><a target="_blank" href="https://github.com/web-platform-tests/interop/issues/523">blocking="render" attribute on scripts and style sheets</a></li><li><a target="_blank" href="https://github.com/web-platform-tests/interop/issues/516">Indexed DB v3</a></li><li><a target="_blank" href="https://github.com/web-platform-tests/interop/issues/501">Declarative Shadow DOM</a></li><li><a target="_blank" href="https://github.com/web-platform-tests/interop/issues/521">attr() support extended capabilities</a></li><li><a target="_blank" href="https://github.com/web-platform-tests/interop/issues/534">Notifications API</a></li><li><a target="_blank" href="https://github.com/web-platform-tests/interop/issues/567">HTTP(S) URLs for WebSocket</a></li><li><a target="_blank" href="https://github.com/web-platform-tests/interop/issues/548">WasmGC</a></li><li><a target="_blank" href="https://github.com/web-platform-tests/interop/issues/542">size-adjust</a></li><li><a target="_blank" href="https://github.com/web-platform-tests/interop/issues/508">video-dynamic-range Media Query</a></li><li><a target="_blank" href="https://github.com/web-platform-tests/interop/issues/419">CSS scrollbar-gutter</a></li><li><a target="_blank" href="https://github.com/web-platform-tests/interop/issues/490">CSS Typed OM Level 1 (houdini)</a></li><li><a target="_blank" href="https://github.com/web-platform-tests/interop/issues/436">import attributes / JSON modules / CSS modules</a></li><li><a target="_blank" href="https://github.com/web-platform-tests/interop/issues/442">CSS element() function</a></li><li><a target="_blank" href="https://github.com/web-platform-tests/interop/issues/437">View Transitions Level 1</a></li><li><a target="_blank" href="https://github.com/web-platform-tests/interop/issues/519">Local Network Access and Mixed Content specification</a></li><li><a target="_blank" href="https://github.com/web-platform-tests/interop/issues/484">WebM Opus audio codec</a></li><li><a target="_blank" href="https://github.com/web-platform-tests/interop/issues/421">Custom Media Queries</a></li><li><a target="_blank" href="https://github.com/web-platform-tests/interop/issues/500">Trusted Types</a></li><li><a target="_blank" href="https://github.com/web-platform-tests/interop/issues/549">WebTransport API</a></li><li><a target="_blank" href="https://github.com/web-platform-tests/interop/issues/503">CSS object-view-box</a></li><li><a target="_blank" href="https://github.com/web-platform-tests/interop/issues/441">Intersection Observer v2</a></li><li><a target="_blank" href="https://github.com/web-platform-tests/interop/issues/540">Custom Highlight API</a></li><li><a target="_blank" href="https://github.com/web-platform-tests/interop/issues/564">backdrop-filter</a></li><li><a target="_blank" href="https://github.com/web-platform-tests/interop/issues/533">WebRTC “end-to-end-encryption”</a></li><li><a target="_blank" href="https://github.com/web-platform-tests/interop/issues/498">Streams</a></li><li><a target="_blank" href="https://github.com/web-platform-tests/interop/issues/510">Media pseudo classes: :paused/:playing/:seeking/:buffering/:stalled/:muted/:volume-locked</a></li><li><a target="_blank" href="https://github.com/web-platform-tests/interop/issues/556">CSS box sizing properties with MathML Core</a></li><li><a target="_blank" href="https://github.com/web-platform-tests/interop/issues/518">Detect UA Transitions on same-document Navigations</a></li><li><a target="_blank" href="https://github.com/web-platform-tests/interop/issues/440">css fill/stroke</a></li><li><a target="_blank" href="https://github.com/web-platform-tests/interop/issues/430">JPEG XL image format</a></li><li><a target="_blank" href="https://github.com/web-platform-tests/interop/issues/499">font-family keywords</a></li><li><a target="_blank" href="https://github.com/web-platform-tests/interop/issues/520">CSS Multi-Column Layout block element breaking</a></li><li><a target="_blank" href="https://github.com/web-platform-tests/interop/issues/435">Navigation API</a></li><li><a target="_blank" href="https://github.com/web-platform-tests/interop/issues/511">Ready-made counter styles</a></li><li><a target="_blank" href="https://github.com/web-platform-tests/interop/issues/491">hidden=until-found and auto-expanding details</a></li><li><a target="_blank" href="https://github.com/web-platform-tests/interop/issues/423">Popover</a></li><li><a target="_blank" href="https://github.com/web-platform-tests/interop/issues/559">P3 All The Things</a></li><li><a target="_blank" href="https://github.com/web-platform-tests/interop/issues/525">URLPattern</a></li><li><a target="_blank" href="https://github.com/web-platform-tests/interop/issues/429">margin-trim</a></li><li><a target="_blank" href="https://github.com/web-platform-tests/interop/issues/560">overscroll-behavior on the root scroller</a></li><li><a target="_blank" href="https://github.com/web-platform-tests/interop/issues/496">CSS Painting API Level 1 (houdini)</a></li><li><a target="_blank" href="https://github.com/web-platform-tests/interop/issues/434">CSS Logical Properties and Values</a></li><li><a target="_blank" href="https://github.com/web-platform-tests/interop/issues/431">CSS caret, caret-color and caret-shape properties</a></li></ol>
-
-	<p>The tricky thing is that there is no 'right' answer here, and one can easily make several cases.  For example, perhaps we should prioritize things that cannot be polyfilled or done with pre-processors over things that can.  That sounds reasonable enough, but given that the queue never empties: Do you just do that forever? Does it eventually lead to larger areas that are ignored?  Similarly, do you focus on the things that are sure to be used by everyone, or do you assume those already get the most priority and focus on the things that don't.  Do you pick certain compat pain points/bugs, or focus on launching new features quickly and very interoperably?</p>
-
-	<p>It's a hard game! Looking forward to your answers.</p>
-
 ]]></content>
     </entry>
 </feed>
