@@ -453,12 +453,33 @@ America (art for sale)</a></li>
     document.documentElement.classList.add("lldelay");
   }, 1000);
 </script>
-    <main><div class="posted-on">Posted on null</div><article class="sectioning">
+    <main><div class="posted-on">Posted on 05/09/2024</div><article posted-on="05/09/2024" class="sectioning">
     <h1 class="contextual-heading">Brian Specific Failures</h1>
     <style>
     	article table { margin: auto; }
     	article td, article th { padding: .25rem 1rem; border: 1px solid lightgray; }
-    </style>
+        .note {
+          background-color: rgba(255, 255, 0, 0.24);
+          padding: 1rem;
+          font-style: italic;
+        }
+        .note::before {
+          content: 'Note';
+          font-size: 0.8rem;
+          background-color: black;
+          color: white;
+          padding: 0.25rem;
+          margin-right: 0.5rem;
+        }
+        :not(pre)>code,
+        :not(pre)>code[class*="language-"] {
+            color: maroon;
+            background-color: #f7f3d5c2;
+            padding: 0.15rem 0.5rem;
+            border: 1px dotted #6b1c6d;
+            text-shadow: none;
+        }
+  </style>
     <p class="segue">Through my work in Interop, I've been I've been learning stuff about WPT.  Part of this has been driven by a desire to really understand the graph on the main page about browser specific failures (like: which tests?). You might think this is stuff I'd already know, but I didn't.  So, I thought I'd share some of the things I learned along the way, just incase you didn't know either.</p>
 
 	<p>Did you know that <a href="https://github.com/web-platform-tests/wpt.fyi/blob/main/api/query/README.md">wpt.fyi has lots of ways to query it</a>? It does!</p>
@@ -470,7 +491,7 @@ America (art for sale)</a></li>
 
     	<p>It seemed like an interesting question:  Are there tests that fail in <em>every single browser?</em></p>  		
  
-    	<p>A query for that looks like: <code>chrome:fail firefox:fail edge:fail safari:fail</code>.  And, as of this writing, it tells me...</p>  
+    	<p>A query for that might look like: <code>chrome:fail firefox:fail edge:fail safari:fail</code> (using the browsers that are part of Interop, for example).  And, as of this writing, it tells me...</p>  
 	    <blockquote> 
 	        <p><a href="https://wpt.fyi/results/?label=master&amp;label=experimental&amp;aligned&amp;q=chrome%3Afail%20firefox%3Afail%20edge%3Afail%20safari%3Afail%20">There are 2,724 tests (15,718 subtests) which fail in <em>every single browser</em></a>!</p>
 	    </blockquote>
@@ -482,22 +503,26 @@ America (art for sale)</a></li>
 
     		<p>The purpose of WPT is to test conformance to a standard, but this is... tricky.  Tests can be used to discuss specs as they are being written - or highlight things that are yet to be implemented, and WPT doesn't have the same kind of guardrails as specs. Things can get committed there that aren't "real" or yet agreed upon. Frequently the first implementers and experimenters write tests. And, it's not uncommon that then things change - or sometimes the specs just never go anywhere. Maybe those tests sit in a limbo "hoping" to advance?</p>
 
-    		<p>By convention it's common to put <code>.tentative</code> in the names of early things like that which don't have agreement.</p>
+    		<p><a href="https://web-platform-tests.org/writing-tests/file-names.html">WPT asks</a> that files of early things like this be placed in a <code>/tentative</code> directory or have a <code>.tentative</code> in the names of early things like that which don't have agreement.</p>
 
     		<p>Luckily thanks to the query API we can see which of the tests above fall into that category by adding <code>is:tentative</code> to our query: <code>chrome:fail firefox:fail edge:fail safari:fail is:tentative</code>). We can see that indeed </p>
 
     <blockquote>
         <p><a href="https://wpt.fyi/results/?label=master&amp;label=experimental&amp;aligned&amp;q=chrome%3Afail%20firefox%3Afail%20edge%3Afail%20safari%3Afail%20is%3Atentative">348 of the tests (1,911 subtests) that fail in every single browser are marked as tentative</a>. </p>
     </blockquote>
-    <p>The query language supports negating parameters with an exclamation, so we can adjust the query (<code>chrome:fail firefox:fail edge:fail safari:fail *!is:tentative</code>*) and see...</p>
+    <p>The query language supports negating parameters with an exclamation, so we can adjust the query (<code>chrome:fail firefox:fail edge:fail safari:fail <em>!is:tentative</em></code>) and see...</p>
     <blockquote>
         <p><a href="https://wpt.fyi/results/?label=master&amp;label=experimental&amp;aligned&amp;q=chrome%3Afail%20firefox%3Afail%20edge%3Afail%20safari%3Afail%20%21is%3Atentative">2,372 tests (13,797 subtests) of the tests that fail in every single browser are not marked as tentative</a>. </p>
     </blockquote>
 
-    <p>So, I guess <code>.tentative</code> doesn't explain most of it. What does? I don't know!</p>
+    <p>So, I guess <code>.tentative</code> doesn't explain most of it (or maybe some of those just didn't follow that guidance). What does? I don't know!</p>
 
-    <p>Poking around, I see there's 1 ACID test that literally everyone fails. Maybe that's just a bad test at this point? Maybe all of the tests that match this query need reviewed? I don't know!</p>
+    <p>Poking around, I see there's even 1 ACID test that literally everyone fails. Maybe that's just a bad test at this point? Maybe all of the tests that match this query need reviewed? I don't know!</p>
 	</section>
+
+    <p class="note">
+        You can also query simply <code>all(status:fail)</code> which will show pretty much the same thing for whatever browsers you happen to be showing.  I like the explicit version for introducing this though as it's very clear from the query itself which "all" I'm referring to about.
+    </p>
 	</section>
 
 	<section class="sectioning">
@@ -560,15 +585,15 @@ America (art for sale)</a></li>
 
     <p>It's pretty complicated to pull any of this off actually. Things go wrong with tests and runs, and so on. I also realized that all of these scores are inherently a little imperfect.</p>
 
-	<p>For example, if you at the top of the page, it says (as I am writing this) there are 55176 tests (1866346 subtests)</p>
+	<p>For example, if you at the top of the page, it says (as I am writing this) there are 55,176 tests (1,866,346 subtests)</p>
 
     <figure class="captioned-image">
-    	<img src="https://notes.igalia.com/uploads/ecfe7555-f1a9-4610-a827-eaf7eb6da8d8.png" alt="&quot;Showing 55176 tests (1866346 subtests)&quot;">
+    	<img src="/media/2024/wpt-1.png" alt="&quot;Showing 55176 tests (1866346 subtests)&quot;">
     </figure>
     
     <p>But if you look to the bottom of the screen, the table has a summary with the passing/total subtests for each browser. As I am writing this it says: </p>
     
-    <figure class="captioned-image"><img src="https://notes.igalia.com/uploads/134b545a-cde4-432e-8f10-9cc4b88bfca5.png" alt="chrome: 1836812 / 1890027, edge: 1834777 / 1887771, firefox: 1786949 / 1868316, safari: 1787112 / 1879926">
+    <figure class="captioned-image"><img src="/media/2024/wpt-2.png" alt="chrome: 1836812 / 1890027, edge: 1834777 / 1887771, firefox: 1786949 / 1868316, safari: 1787112 / 1879926">
     </figure>
 
     <p>You might note that <em>none of those lists the same number of subtests</em>!</p>
