@@ -490,7 +490,7 @@ America (art for sale)</a></li>
         <p>If you think about it, Interop is about trying to achieve thematically, basically the same thing as BSF: Make more things "green across the board". But it is a <em>very</em> different thing than BSF. </p>
         <p>I've really learned a lot from the process of helping organize Interop every year about why this takes so long to happen naturally. There are so many limits and signals and opinions. One of the things we do as part of the process is to take all of the submissions and independently order them in terms of what we think are their priorities. There are 6 organizations doing that: Apple, Bocoup, Google, Igalia, Microsoft and Mozilla. How many do you think chose the same #1? The answer is 0.</p>
         <p>It really highlights how waiting for all of the stars to align by chance winds up often being a painfully slow process and full of problems. </p>
-        <p>However, a <em>huge</em> part of interop is dedicated to dealing with the stuff BCD doesn't really consider - aligning agreement on:
+        <p>However, a <em>huge</em> part of interop is dedicated to dealing with the stuff BSF doesn't really consider - aligning agreement on:
             1. what features are most important
             2. which tests regarding those are valid/important
             3. are all the spec questions really answered?
@@ -565,16 +565,18 @@ America (art for sale)</a></li>
                 <td></td>
             </tr>
         </tbody></table>
-        <p>In fact, here's a <a href="https://wpt.fyi/results/svg/types/scripted?label=master&amp;label=experimental&amp;aligned&amp;q=svg%5D">real world example of exactly this kind of misleading view in a set of SVG tests</a>. If we look at the numbers across the bottom:</p>
+        <p>In fact, here's a <a href="https://wpt.fyi/results/svg/types/scripted?q=svg&amp;run_id=5095555055484928&amp;run_id=5174632751824896&amp;run_id=5155156954185728&amp;run_id=5128162447196160">real world example of exactly this kind of misleading view in a set of SVG tests</a>. If we look at the numbers across the bottom:</p>
         <ul>
-            <li>chrome: 164 / 189 </li>
-            <li>edge: 163 / 189 </li>
-            <li>firefox: 171 / 189 </li>
-            <li>safari: 132 / 189</li>
+            <li>chrome: 166 / 191 </li>
+            <li>edge: 166 / 191 </li>
+            <li>firefox: 175 / 191 </li>
+            <li>safari: 132 / 191</li>
         </ul>
-        <p>It's not <em>terrible</em> if you're only looking at those numbers. But, if you scroll down through that table you'll see that there are ragged failures all over that. In fact, <strong><em>only 52 of 189 pass in all browsers</em></strong>! </p>
+        <p>It's not <em>terrible</em> if you're only looking at those numbers. But, if you scroll down through that table you'll see that there are ragged failures all over that. In fact, <strong><em>only 52 of 189 are "green across the board"</em></strong>! </p>
         <p>We can only realistically solve by having a more holistic view and working together.</p>
-        <h3>What about a focus on Universally Passing?</h3>
+
+        <section class="sectioning">
+        <h4 class="contextual-heading">What about a focus on Universally Passing?</h4>
         <p>In the Interop project we track the difference above as its own data point: The Interop number, and we put it as a separate column in the test tables:</p>
         
         <figure class="captioned-image">
@@ -601,6 +603,7 @@ America (art for sale)</a></li>
         <p>We do better when we are. In my mind, that's an explicit goal, and this would be a view into it.</p>
     </section>
   </section>
+</section>
 </article></main>
  
    
