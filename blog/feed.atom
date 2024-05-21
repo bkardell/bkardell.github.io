@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://bkardell.com/</id>
     <title>bkardell.com rss feed</title>
-    <updated>2024-05-09T13:32:32.709Z</updated>
+    <updated>2024-05-21T14:42:26.862Z</updated>
     <generator>awesome mix</generator>
     <author>
         <name>Brian Kardell</name>
@@ -14,6 +14,146 @@
     <subtitle>Just the bkardell.com rss feed</subtitle>
     <logo>http://bkardell.com/profile.jpg</logo>
     <rights>All rights reserved 2018, Brian Kardell</rights>
+    <entry>
+        <title type="html"><![CDATA[Improving the WPT Dashboard]]></title>
+        <id>https://bkardell.com/blog/WPT-Dashboard.html</id>
+        <link href="https://bkardell.com/blog/WPT-Dashboard.html">
+        </link>
+        <updated>2024-05-21T04:00:00.000Z</updated>
+        <summary type="html"><![CDATA[Thoughts on things I'd like to see as part of the WPT dashboard.]]></summary>
+        <content type="html"><![CDATA[
+    <h1 class="contextual-heading" style="font-size: 2rem;">Improving the WPT Dashboard</h1>
+    <p class="segue">Thoughts on things I'd like to see as part of the WPT dashboard.</p>
+    
+    <p>In my <a href="https://bkardell.com/blog/BSF.html">last post</a> I dug into the data behind <a href="https://wpt.fyi/">wpt.fyi</a>'s Browser Specific Failures chart (below) and the site's general reporting capabilities. </p>
+    <figure class="captioned-image">
+        <img src="/media/2024/BSF.png" alt="">
+    </figure>
+    <p>I suggested that linking to data on specifically what failed (at least what is queryable) would probably be really helpful (perhaps some kind of "understanding this chart" link as well).</p>
+    <p>While these aren't part of the design today, I think this is mainly because the primary audience of that chart was originally mainly the vendors themselves. It was intended to allow for certain simple kinds of tracking, planning and prioritization. For example "Let's set a goal to not let the failure exceed such and such threshold" or "Let's aim to lower the failures by X this quarter". It wasn't critical to link to the tests because the audience knew how to interrogate the data - the purpose was just to get a quantifiable number you can easily report on.</p>
+    <p>But, now we see this chart shared a lot and it's pretty clear that people are curious so we should probably adjust it for the wider audience.</p>
+    <p>Additionally though, that's also only a single view of the data, and I'd like to argue that we could some other improvements too.</p>
+    <section class="sectioning">
+        <h2 class="contextual-heading" style="font-size: 2.5rem;">Prioritization</h2>
+        <p>BSF made the observation that if we can identify a test that fails in only 1 browser, then that browser's team can easily prioritize something that has significant impact. That browser is the boat anchor holding things back. Except, it's not quite that cut and dry in reality.</p>
+        <p>Real management of software projects is hard. I think that anyone who's worked on software projects can relate to this, at least a bit, if we take some time to consider all of the things that go into choosing how to apply our limited resources. Obviously, not all failures are equal - especially when we're talking about projects which are a quarter of a century old. The reality is that all of that decisioning and prioritization is happening independently across different organizations, with different views on the web, different budgets, different legacy challenges, etc. </p>
+        <p>That's where I think there are some things to learn from Interop.</p>
+    </section>
+    <section class="sectioning">
+        <h2 class="contextual-heading" style="font-size: 2.5rem;">What I learned from Interop Is...</h2>
+        <p>If you think about it, Interop is about trying to achieve thematically, basically the same thing as BSF: Make more things "green across the board". But it is a <em>very</em> different thing than BSF. </p>
+        <p>I've really learned a lot from the process of helping organize Interop every year about why this takes so long to happen naturally. There are so many limits and signals and opinions. One of the things we do as part of the process is to take all of the submissions and independently order them in terms of what we think are their priorities. There are 6 organizations doing that: Apple, Bocoup, Google, Igalia, Microsoft and Mozilla. How many do you think chose the same #1? The answer is 0.</p>
+        <p>It really highlights how waiting for all of the stars to align by chance winds up often being a painfully slow process and full of problems. </p>
+        <p>However, a <em>huge</em> part of interop is dedicated to dealing with the stuff BSF doesn't really consider - aligning agreement on:
+            1. what features are most important
+            2. which tests regarding those are valid/important
+            3. are all the spec questions really answered?
+            4. is this actually (hopefully) achievable in the next year?</p>
+        <p>In that, I believe it has been extremely successful in creating way more "green across the board" than anything else. I think this is true beyond even what is <em>officially</em> part of Interop, because we're all able to kind of discuss and see where others are probably going to invest in work because things that were important for them didn't make the cut.</p>
+        <p>In a way, each year is sort of like doing what we used to do with "CSS2" and "HTML4"... Creating a more focused discussion that is the goal floor, not the ceiling.</p>
+        <details class="note">
+            <summary>It's not enough...</summary>
+            Sure, I believe this gives us <em>much better results</em> by helping alignment. I think this is obvious given how rapid and smoothly we've found so much high-quality alignment in recent years. However, there's something I want stress in all of this: Choosing what to prioritize is also inherently choosing what to collectively <em>deprioritize</em>. It is inevitable because <strong>at the end of the day there is just too much.</strong>
+            <p>The only <em>real</em> solution to this problem is wider investment in the platform and, ultimately, almost certainly, changing how we fund it.</p>
+        </details>
+        <section class="sectioning">
+            <h3 class="contextual-heading" style="font-size: 3rem;">Alignment vs Passing</h3>
+            <p>Interop <em>also</em> showed us that a simple, individual pass/fail can be incomplete and misleading. If 3 browsers reach a point of passing 50% of measured tests, the number of tests that pass in <em>all</em> browsers might actually be 0, as illustrated in the table below...</p>
+            <figure class="captioned-image">
+                <table>
+                    <tbody><tr>
+                        <th>Chrome
+                        </th>
+                        <th>Firefox</th>
+                        <th>WebKit</th>
+                    </tr>
+                    <tr>
+                        <td>✅</td>
+                        <td></td>
+                        <td>✅</td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>✅</td>
+                        <td>✅</td>
+                    </tr>
+                    <tr>
+                        <td>✅</td>
+                        <td></td>
+                        <td>✅</td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>✅</td>
+                        <td>✅</td>
+                    </tr>
+                    <tr>
+                        <td>✅</td>
+                        <td></td>
+                        <td>✅</td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>✅</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>✅</td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>✅</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>✅</td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>✅</td>
+                        <td></td>
+                    </tr>
+                </tbody></table>
+                <figcaption>Lots of tests pass, but not even one passes universally!</figcaption>
+            </figure>
+            <p>In fact, here's a <a href="https://wpt.fyi/results/svg/types/scripted?q=svg&amp;run_id=5095555055484928&amp;run_id=5174632751824896&amp;run_id=5155156954185728&amp;run_id=5128162447196160">real world example of exactly this kind of misleading view in a set of SVG tests</a>. If we look at the numbers across the bottom:</p>
+            <ul>
+                <li>chrome: 166 / 191 </li>
+                <li>edge: 166 / 191 </li>
+                <li>firefox: 175 / 191 </li>
+                <li>safari: 132 / 191</li>
+            </ul>
+            <p>It's not <em>terrible</em> if you're only looking at those numbers. But, if you scroll down through that table you'll see that there are ragged failures all over that. In fact, <strong><em>only 52 of 189 are "green across the board"</em></strong>! </p>
+            <p>We can only realistically solve by having a more holistic view and working together. BSF is just the slice that is theoretically actionable individually, not everything that matters.</p>
+            <section class="sectioning">
+                <h4 class="contextual-heading" style="font-size: 3.5rem;">What about a focus on Universally Passing?</h4>
+                <p>In the Interop project we track the difference above as its own data point: The Interop number, and we put it as a separate column in the test tables:</p>
+                <figure class="captioned-image">
+                    <img src="/media/2024/interop-table.png" alt="a table containing a column for each individual browser scores on different features, and a column for the number that pass in all">
+                    <figcaption>The interop column reports how many tests pass on <em>all</em> of the tracked browsers</figcaption>
+                </figure>
+                <p>Similarly, we track it over time:</p>
+                <figure class="captioned-image">
+                    <img src="/media/2024/interop-graph.png" alt="">
+                    <figcaption>A graph showing scores of each browser over time as well as an "interop line"</figcaption>
+                </figure>
+                <p>Could we learn something from this? Wouldn't something like that be great to have <em>in general</em>? </p>
+                <p>For example, in the wpt.fyi tables? Now, it couldn't look just like that because those numbers are all in percentages, and this only really works because the interop process carefully sets a governance process for defining/agreeing to what the tests are. It would be enough to add a column to the table in the same form, something like this:</p>
+                <figure class="captioned-image">
+                    <img src="/media/2024/universally-passing-table.png" alt="">
+                </figure>
+                <p>That might help us uncover situations like the SVG one above and present opportunites <em>like</em> interop for us to collectively decide to try to address that.</p>
+                <p>Similarly, we could track it over time. Sort of the opposite of BSF. We want to see the simple number of subtests <em>passing</em> in browsers and it should always be going up (even as new tests are added, no existing ones should <em>stop</em> passing - those are just more opportunities to go up). Further, ideally the Universally Passing number shouldn't ever be drawing significantly further away from that over time or we're making less of the platform universal. That is, you could see, over time when we are cooperating better, and when we are not. </p>
+                <p>We do better when we are. In my mind, that's an explicit goal, and this would be a view into it.</p>
+            </section>
+        </section>
+    </section>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[Brian Specific Failures]]></title>
         <id>https://bkardell.com/blog/BSF.html</id>
@@ -807,107 +947,6 @@ target.innerHTML =  str;</code></pre>
 	<p>Normally, around this time, I'd have wrapped up working on the latest Web Almanac and there would be lots of data flying at me which scratches a little bit of the kind of itch I've got - but this year we didn't do one, so I find myself wondering: How are people getting along with all of those things we've been delivering since 2019 or so?</p>
 
   	<p>So, let me know!</p>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Lovely Trees]]></title>
-        <id>https://bkardell.com/blog/LovelyTrees.html</id>
-        <link href="https://bkardell.com/blog/LovelyTrees.html">
-        </link>
-        <updated>2023-12-26T05:00:00.000Z</updated>
-        <summary type="html"><![CDATA[You've read lots of Web Components posts lately, I think this one is a little different.]]></summary>
-        <content type="html"><![CDATA[ 
-	<h1 class="contextual-heading" style="font-size: 2rem;">Lovely Trees</h1>
-	<p class="segue">You've read lots of Web Components posts lately, I think this one is a little different.</p> 
-	<script src="../prism.js"></script>
-	<link rel="stylesheet" href="../prism.css">
-	
-   <p>
-		I'm <em>thrilled</em> that so many people are suddenly learning about, and falling in love with Custom Elements separately from Shadow DOM. It is, in my mind, best to learn about Custom Elements first anyways. And, if your goals are to use it in some simple, static sites, or blogs - then, well, that might be all you need.  It's just a better version of what we used to do with jQuery, really.  
-	</p>  
-
-	<p>But…</p>
-
-	<p>Here is where I want to say something about Shadow DOM, and I expect it will go something like this:</p>
-
-
-	<figure class="captioned-image optional">
-		<video src="/media/PB_Fire_Swamp.mp4" controls="" style="max-width: 600px; width: 100%; display: block; margin: 2rem auto 3rem;"></video>
-		<figcaption>It's not so bad.</figcaption>
-	</figure>
-
-	<p>
-		But, stick with me.  It won't be that bad, I promise.
-	</p>
-
-	<p>
-		The simple light DOM way is, yes, good.  But it creates a poor illusion if the component manipulates the DOM.  That illusion is easy shattered as neither component authors, nor page authors can reason well about the tree in potentially important ways, because it is a transform of the page author's tree to some tree of the component author's making, with no designed coordination. And then, <em>everything</em> starts breaking down quickly, not just CSS. Script too, uses selectors and tree relationships.  Where there is any kind of real complexity: It's cases like that that Shadow DOM <em>should</em> serve us very well for. 
-	</p>
-
-	<section class="sectioning">
-		<h2 class="contextual-heading" style="font-size: 2.5rem;">But it falls short</h2>
-		<p>
-			Despite this, it seems that for plenty of people who have tried, Shadow DOM is falling short.  All of the posts I'm reading show that people are so put off by the current state that they'd flipped the bit until now on Custom Elements too.  When one steps back and looks at all of the calls (from people who have been trying to use Shadow DOM for a while) for a few variations of "open style-able roots", or "slots in the light DOM", or "ability to use IDREFs across shadow roots" - or even the fact that we're bringing back scoped styles: It really starts to seem like maybe we've missed (or at least not recognized or prioritized)  multiple important use cases along the way.
-		</p>
-		
-		<p>
-			I think this is because we've focused mainly on giving developers a capability to build and share something that is pretty similar to native widgets - and that's not what most people think they need.  Indeed, I think we've failed to wrestle with differences that seem sharp. 
-		</p>
-
-		<p>
-			For example: Browsers are <em>extremely</em> careful to not expose their "Shadow DOM" internals because the consequences of doing so could be dire. If they didn't, then when browsers try to push an update that makes some otherwise innocuous, even welcome change, everything goes wrong. Users suddenly experience problems in tons of apps.  Maybe they suddenly can't activate a control.  Perhaps that prevents them from getting the information they need for their bank, or their insurance.  It can be a very big deal.  People start filing bugs on those websites and writing hate filled blog posts.  Devs from those websites do the same in kind.  And so on.  No one wins.</p>
-
-		<p>
-			However, code libraries (of custom elements or anything else) are different. It's sites themselves, not the browser or the library, that are in charge of deploying upgrades to libraries, which involves testing and avoids the worst surprises. Neither the site author, nor the library author, it seems, generally requires the kind of extreme upgrade guarantees that current Shadow DOM is built to grant.  Largely, it seems they would provide other trade-offs instead.
-		</p>
-
-		<p>
-			The design of Shadow DOM also hasn't focused enough on collaboration.  I believe (as I have since the beginning) that <em>most</em> uses of Shadow DOM are about some kind of collaboration -- more about preventing <a href="https://bkardell.com/blog/FriendlyFire.html">friendly fire</a>.  But what we've created is perhaps more like a programming language with only <code>private</code> — no <code>protected</code> or "friendly" concepts.
-		</p>
-
-		<p>
-			If you think that all of this sounds kind of damning of standards, it's more complicated than it seems.  There are no cow paths to pave here.  But, what if there were? Because, at this point, it sure seems like there could be.
-		</p>
-
-		<p><em>I'm not saying I'd like to build a summer home there, but the Shadow Trees are actually quite lovely</em>.</p>
-	</section>
-
-	
-
-	<section class="sectioning">
-		<h2 class="contextual-heading" style="font-size: 2.5rem;">Treading Some Cow Paths</h2>
-		<p>
-			<em>Lots</em> of coordination is totally possible, it simply requires jumping through hoops and isn't standard.  The community can, probably should, spend some time proving out and living with a few different ideas.  That would make standardizing one of them much easier (standards are at their best, in my take, when they are mostly <a href="https://bkardell.com/blog/Dropping-The-F-Bomb-On-Standards.html">writing down the slang that developed and was tested naturally, in the wild</a>). Better still it taps into the creative power of the commons to get us <em>functional</em> solutions now, rather than making us wait forever for solutions that might not arrive for years - or even ever! This sort of approach is how we got things like <code>.querySelector()</code> <code>.matches()</code> and <code>.closest()</code>.
-		</p>
-
-		<p>
-			Today, if you create a Shadow DOM, style rules inside don't leak out to the rest of the page, and don't "leak in" from the page.  There are a lot of people who dislike that second part.  Tricky thing is, they don't all seem to dislike it the same way, or want the same kind of solution(s).  What we need here, I think, is practical experience and, luckily, we have the raw materials to try solutions to some of this in the wild ourselves and see what pains it soothes (and probably, also realize some that it causes). 
-		</p>
-
-		<p>
-			For example, here are few major potential philosophies: 
-		</p> 
-		<dl>
-			<dt>Let components decide</dt> 
-			<dd>Authors extend a new base class which then automatically pulls down a copy of some, or all of the styles provided by the page.</dd>
-
-			<dt>Let page authors decide</dt> 
-			<dd>Lets the page say "these are the base, simple styles for all components" regardless of what they extend. I think this is kind of key because one of the really nice things about custom elements is that many of us might like to share and find and mix and match, which is pretty hard to do while also basing a solution on extending a particular base class.</dd>
-		</dl>
-
-
-		<p>But which one is "right"? All of them feel more natural for some use cases/scenarios. All of them are probably just terrible for others. Maybe there are more variants! Maybe what we need is a "pick one, that's how your page will work" idea.  Or, maybe we need all of them to work!  I think we can only learn through use and experimentation, so...</p>
-
-		<p><a href="https://github.com/bkardell/shadow-boxing/">Here's a tiny library to let you try each those things</a>!</p>
-
-		<p><a href="https://shadow-boxing.glitch.me/">And a little glitch you can poke around, inspect, remix, play with, and tweak</a>.</p>
-
-		<p>Go on... Pick one. Try it. Remix the glitch, make a pen, try it on your site. Love it or hate it.  Let it inspire better ideas.  But, most importantly - share your thoughts - regardless! Did it do good things for you? Was it tricky? I want to know!</p>
-
-	</section>
-		
-
-
 ]]></content>
     </entry>
 </feed>
