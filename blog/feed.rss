@@ -4,7 +4,7 @@
         <title>bkardell.com rss feed</title>
         <link>http://bkardell.com/</link>
         <description>Just the bkardell.com rss feed</description>
-        <lastBuildDate>Tue, 21 May 2024 14:42:26 GMT</lastBuildDate>
+        <lastBuildDate>Tue, 21 May 2024 17:21:44 GMT</lastBuildDate>
         <docs>http://blogs.law.harvard.edu/tech/rss</docs>
         <generator>awesome mix</generator>
         <image>
@@ -26,7 +26,7 @@
     
     <p>In my <a href="https://bkardell.com/blog/BSF.html">last post</a> I dug into the data behind <a href="https://wpt.fyi/">wpt.fyi</a>'s Browser Specific Failures chart (below) and the site's general reporting capabilities. </p>
     <figure class="captioned-image">
-        <img src="/media/2024/BSF.png" alt="">
+        <img src="/media/2024/bsf.png" alt="">
     </figure>
     <p>I suggested that linking to data on specifically what failed (at least what is queryable) would probably be really helpful (perhaps some kind of "understanding this chart" link as well).</p>
     <p>While these aren't part of the design today, I think this is mainly because the primary audience of that chart was originally mainly the vendors themselves. It was intended to allow for certain simple kinds of tracking, planning and prioritization. For example "Let's set a goal to not let the failure exceed such and such threshold" or "Let's aim to lower the failures by X this quarter". It wasn't critical to link to the tests because the audience knew how to interrogate the data - the purpose was just to get a quantifiable number you can easily report on.</p>
