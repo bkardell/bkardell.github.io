@@ -1,0 +1,1094 @@
+<html lang="en" resource-type="blogpost"><head>  
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="view-transition" content="same-origin"> 
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@briankardell">
+    <meta name="twitter:creator" content="@briankardell">
+    <meta name="twitter:title" content="927: Thoughts on a Global Design System">
+    <meta name="twitter:description" content="My thoughts on &quot;A Global Design System&quot; as is being discussed in OpenUI.">
+    <meta name="twitter:image" content="https://imgs.xkcd.com/comics/standards.png">
+    <!-- meta name="monetization" content="$ilp.uphold.com/kKU4GXiRwhnf " -->
+     
+    <link rel="alternate" type="application/rss+xml" href="https://bkardell.com/blog/feed.rss" title="bkardell.com/blog rss feed">
+    <title>927: Thoughts on a Global Design System</title> 
+    <style>/*!
+ * Web Fonts from Fontspring.com
+ *
+ * All OpenType features and all extended glyphs have been removed.
+ * Fully installable fonts can be purchased at https://www.fontspring.com
+ *
+ * The fonts included in this stylesheet are subject to the End User License you purchased
+ * from Fontspring. The fonts are protected under domestic and international trademark and 
+ * copyright law. You are prohibited from modifying, reverse engineering, duplicating, or
+ * distributing this font software.
+ *
+ * (c) 2010-2023 Fontspring
+ *
+ *
+ *
+ *
+ * The fonts included are copyrighted by the vendor listed below.
+ *
+ * Vendor:      Horizon Type
+ * License URL: https://www.fontspring.com/licenses/horizon-type/webfont
+ *
+ *
+ */
+
+@font-face {
+    font-family: 'acherus_militant_1_-_light.otf';
+    src: url('/acherus_militant_1_-_light.otf-webfont.woff2') format('woff2'),
+         url('/acherus_militant_1_-_light.otf-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+
+.captioned-image {
+    background-color: #eaeaea;
+    display: block;
+    overflow: hidden;
+    padding: 1rem;
+    text-align: center;
+    font-style: italic;
+}
+
+.captioned-image.p-attached {
+    width: 40%;
+    display: inline-block;
+    margin: 0 1rem 2rem 1rem;
+}
+
+section > .captioned-image.p-attached {
+    margin-top: 1.5rem; /* correct for heading size*/
+}
+
+ pre { overflow-x: auto }
+
+.captioned-image.p-attached.p-attached-left {
+    float: left;
+}
+
+.captioned-image.p-attached.p-attached-right {
+    float: right;
+}
+
+.captioned-image.p-attached + * + * {
+    clear: both;
+    margin-top: 2rem;
+}
+
+
+.captioned-image img, .captioned-image video {
+    display: block;
+    max-width: 100%;
+    
+    margin: 0 auto 1em auto;
+}
+.source {
+    font-style: italic;
+}
+body {
+    display: grid;
+    grid-template-columns: 25rem auto;
+    font-size: 1.1rem;
+    font-family: 'acherus_militant_1_-_light.otf';
+    font-weight: 400;
+    font-size: 1.25rem;
+    line-height: 1.625;
+    margin: 0;
+    background-color: rgb(249, 246, 246);
+}
+h1 { margin: 0.5rem; }
+code-format {
+    border-left: 0.5rem solid rgba(123,115,209,0.35);
+    display: block;
+    padding: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+contextual-heading {
+    display: block;
+    margin-top: 2rem;
+}
+
+h1, [aria-level="1"] {
+    color: black;
+    font-size: 1.45rem;
+}
+
+h2, [aria-level="2"] {
+    color: black;
+    font-size: 1.35rem;
+}
+
+h3, [aria-level="3"] {
+    color: black;
+    font-size: 1.25rem;
+}
+
+h4, [aria-level="4"] {
+    color: black;
+    font-size: 1.2rem;
+}
+
+h5, h6, [aria-level="5"], [aria-level="6"] {
+    color: black;
+    font-size: 1.2rem;
+    font-weight: bolder;
+}
+
+
+.posted-on {
+    font-style: italic;
+    font-size: 0.8rem; 
+    text-align: right;
+    margin-bottom: 1rem;
+}
+
+ul, li {
+    margin: 0.5rem;
+    text-align: left;
+}
+
+.authorinfo {
+    height: 100%;
+    padding-top: 1rem;
+    padding-right: 0;
+    background-color: #fbf5e9; 
+    display: block;
+    background-image: linear-gradient(to right, #c7cccc, #dde0e8 );
+    border-right-width: 1px;
+    border-right-style: dotted;
+}
+
+.tagline {
+    font-style: italic;
+    text-align: center;
+}
+ 
+[tag-esc] {
+    color: maroon;
+    font-family: Courier, "Lucida Console", monospace;
+}
+
+[tag-esc]::before {
+    content: '<';
+}
+
+[tag-esc]::after {
+    content: '>';
+}
+
+main {
+    min-width: 50%;
+    width: 80%;
+    padding: 1rem;
+}
+header .title {
+    background-color: rgba(123,115,209,0.35);
+    padding: 0.3rem;
+    padding-left: 0.25rem;
+    font-weight: bolder;
+    font-size: 1rem;
+    border-left: 1rem solid #999298;
+}
+
+header .profile {
+    width: 50%;
+    margin: 1rem 25%;
+}
+
+header .title + nav {
+    font-size: 0.9rem;
+}
+
+header .blurb {
+    font-size: 0.9rem;
+    text-align: center;
+}
+header .name {
+    text-align: center;
+    font-size: xx-large;
+}
+.segue {
+    font-style: italic;
+}
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  border: 0;
+}
+
+#aboutMeToggle {
+    display: none;
+}
+
+
+:where(pre:has(code[class*="language"])) {
+    display: block;
+    background-color: black; 
+    padding: 0.5rem;
+}
+
+code[class*="language"] {
+    min-width: fit-content;
+}
+
+spicy-sections:not([affordance]) > h2 {
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+}
+
+main article { max-width: 100em; margin: auto; }
+/* this needs rethinking, it wants a selector like 'not flow content' */
+article>*:not(contextual-heading,a), section>*:not(contextual-heading,a) {
+    margin-left: 0.45rem;
+}
+
+blockquote {
+  font-family: serif;
+  background: #f9f9f9;
+  border-left: 10px solid #ccc;
+  margin: 1.5em 10px;
+  padding: 0.5em 10px;
+}
+blockquote:before {
+  color: #ccc;
+  content: open-quote;
+  font-size: 2em;
+  line-height: 0.1em;
+  margin-right: 0.25em;
+  vertical-align: -0.4em;
+}
+
+blockquote:after {
+  color: #ccc;
+  content: close-quote;
+  font-size: 2em;
+  line-height: 0.1em;
+  margin-left: 0.25em;
+  vertical-align: -0.4em;
+}
+ 
+
+@media (max-width: 800px){
+    body {
+        grid-template-columns: 1fr;
+    }
+    .authorinfo {
+        height: auto;
+        border-bottom: 1px solid #afafff;
+        padding-top:  0;
+    } 
+
+    main { width: 95%; margin: 0 auto;}
+
+    .captioned-image.p-attached {
+        width: 100%;
+        margin: 1rem 0;
+    }
+
+    .captioned-image.p-attached.p-attached-left,
+    .captioned-image.p-attached.p-attached-right {
+        float: none;
+    }
+
+    #aboutMeToggle {
+        display: block;
+        background-color: #675e5e;
+        color: white;
+        padding: 0.25rem;
+        padding-left: 0.5rem;
+        border-left: 1rem solid black;
+    }
+
+    header li { display: inline; margin-left: -0.5em; }
+    header .blurb li::after { content: '; '; }
+    header  nav li {
+        display: inline-block;
+        margin-left: 0.35rem;
+        margin-right: 0.35rem;
+    }
+    header .title {
+        width: 100%;
+    }
+    main li .source { display: block; }
+
+} 
+
+spicy-sections {
+    --const-mq-affordances:
+      [screen and (min-width: 600px) ] collapse |
+      [screen and (min-width: 801px) ] tab-bar
+    ;
+    display: block;
+}
+
+spicy-sections.authorinfo {
+    --const-mq-affordances:
+      [screen and (max-width: 801px) ] collapse
+    ;
+}
+
+
+spicy-sections.single {
+    --const-mq-affordances:
+      [screen ] collapse 
+;
+}
+
+[role="tab"] {
+    margin-right:  1.5rem;
+}
+
+
+</style>
+    <style> 
+      .captioned-image { font-size: 0.9rem; }
+      .thanksTo { font-style: italic; font-size: 0.8rem; }
+    </style>
+    <script>
+      var activateOptional = function (media) {
+        var source = media.getAttribute('data-src'),
+            temp,
+            container = media.parentElement;
+
+          if (media.nextSibling && media.nextSibling.matches) {
+            if (media.nextSibling.matches('.clickToSee')) {
+              media.parentElement.removeChild(media.nextSibling);
+            }
+          }
+ 
+          if (media.tagName === 'VIDEO') {
+            temp = document.createElement('video')
+            temp.setAttribute('autoplay','')
+            temp.setAttribute('controls','')
+            temp.setAttribute('loop','')
+            temp.innerHTML = '<source src="' + source + '.webm" type="video/webm">'
+                    + '<source src="' + source + '.mp4" type="video/mp4">';
+            media.parentElement.replaceChild(temp, media);
+            setTimeout(function () {
+              temp.play()
+            }, 0);
+          } else {
+            media.src = media.getAttribute('data-src');
+          }
+
+          container.classList.add('active');
+      }
+    </script>
+  </head>
+  <body>
+    <spicy-sections class="authorinfo">
+<h2 id="aboutMeToggle" defaults-on-match="">Author Information</h2>
+  
+<header>
+    <div class="name">
+        Brian Kardell
+    </div>
+    <img class="profile" src="/profile.jpg" alt="">
+    <div class="tagline"><a href="/">Betterifying the Web</a></div>
+    <div class="blurb">
+        <ul>
+            <li>Developer Advocate at Igalia</li>
+            <li>Original Co-author/Co-signer of The Extensible Web Manifesto</li>
+            <li>Co-Founder/Chair, W3C Extensible Web CG</li>
+            <li>Member, W3C (OpenJS Foundation)</li>
+            <li>Co-author of HitchJS</li>
+            <li>Blogger</li>
+            <li>Art, Science &amp; History Lover</li>
+            <li>Standards Geek</li>
+        </ul>
+    </div>
+    <div class="title">Follow Me On...</div>
+    <nav>
+        <ul>
+            <li><a rel="me" href="https://briankardell.wordpress.com">Wordpress</a></li>
+            <li><a rel="me" href="https://medium.com/@briankardell">Medium</a></li>
+            <li><a rel="me" href="https://twitter.com/briankardell">Twitter</a></li>
+            <li><a rel="me" href="https://github.com/bkardell/">Github</a></li>
+            <li><a rel="me" href="https://toot.cafe/@bkardell">Mastodon</a></li>
+            <li><a rel="me" href="https://bsky.app/profile/bkardell.com">Bluesky</a></li>
+            <li><a rel="me" href="https://codepen.io/bkardell">Codepen</a></li>
+            <li><a rel="me" href="https://www.linkedin.com/in/brian-kardell-08a4264">LinkedIn</a></li>
+            <li><a rel="me" href="https://www.instagram.com/kardellbrian">Instagram (for
+art)</a></li>
+            <li><a rel="me" href="http://fineartamerica.com/profiles/brian-kardell?">Fine Art
+America (art for sale)</a></li>
+        </ul>
+    </nav>
+</header> 
+</spicy-sections>
+<script>
+  /*
+    You're probably wondering "Do I need to write this?""
+    "Is this part of it?"  No... If you're interested tho - 
+    Custom elements have a FOUC/PE gap 
+    (see https://github.com/whatwg/html/issues/6231).
+    This is a slightly better experience: It 
+    will be hidden _if JS is enabled_, and 
+    will be shown as it is defined, 
+    or after 1 sec, whichever is first.
+  */
+  let ss = document.createElement("style");
+
+  ss.innerHTML = `html:not(.lldelay) :not(:defined) { visibility: hidden; }`;
+  document.head.appendChild(ss);
+
+  setTimeout(() => {
+    document.documentElement.classList.add("lldelay");
+  }, 1000);
+</script>
+    <main><div class="posted-on">Posted on </div><article posted-on="" class="sectioning">
+    <h1 class="contextual-heading">927: Thoughts on a Global Design System</h1>
+    <p class="segue">My thoughts on "A Global Design System" as is being discussed in OpenUI.</p>
+    <style>
+        figure > * { font-style: italic; font-size: 0.6rem; }
+        .waste > * { font-size: 0.6rem; overflow: clip; }
+        .comparison { display: grid; grid-template-columns: 1fr 1fr; }
+        .comparison > * { padding: 1rem;  }
+    </style>
+
+    <p>As you may or may not be aware, there's been recent discussion in OpenUI, brought forward by an effort by my fellow Pittsburgher Brad Frost, about the group taking on the effort of creating a <a href="https://bradfrost.com/blog/post/a-global-design-system/">global design system</a>.</p>
+
+
+    <p>First, let me say that the problem that Brad describes is real, and also not new.  He and I have discussed this in the past as well.  I've spent a lot (the majority maybe) of my career (which began in the 90s) working on projects that were either using, evaluating or making their own common controls.</p>
+
+
+    <section class="sectioning">
+        <h2 class="contextual-heading">So much wasted energy</h2>
+        <p>While explaining this, Brad frequently notes that inventing and reinventing the same things over and over wastes an enormous amount of human potential. We could be spending that time better.</p>
+
+        <p>I mean... Yes.  I agree.</p>
+
+        <p>But, even more than that, the time spent re-inventing is only part of the story.  The status quo is good for approximately no one.  It also has multiplicative effects.</p>
+
+        <p>Sure, there might be 100 toolkits/components which combined have 100k worth of invested hours, and those might be <em>wildly</em> skewed. 1 might have 10x or even 100x the thought, care, review and testing than another.  Together, they add up to huge amounts of time...</p>
+
+        <div class="waste">
+        <div style="background: gray; height: 100px;">Library 1</div>
+        <div style="background: seagreen; height: 10px;">Library 2</div>
+        <div style="background: khaki; height: 140px;">Library 3</div>
+        <div style="background: aliceblue; height: 200px;">Library 4</div>
+        <div style="background: paleturquoise; height: 50px;">Library 5</div>
+        <div style="background: hotpink; height: 10px;">Library 6</div>
+        </div>
+
+        <p>Yeah, that's a lot of wasted time... But consider that while there might be thousands of people spending time re-inventing, there are <em>millions of authors</em> who need components - and they're spending hours, or maybe days searching for suitable components.  And <strong><em>it's hard</em></strong>:  Evaluating them for accessibility, responsiveness, and internationalization is not only time-consuming, we often don't have the skills to do it. One of the selling points of a component is that authors <em>don't</em> have to know all that stuff.  But then, how do we expect authors make a good choice?</p>
+
+        <p>In fact, the ones with the least effort put into them can have a great looking web site, nice documentation, charismatic promotion, or be somehow associated with a big tech company.  Too often we wind up choosing components by proxy and just assuming that something else must mean it's good, and will last a long time.  However, Microsoft and Google have both had multiple component toolkits and design systems, which are not similar in many ways and there are cases where those proxies have proven not great
+        </p>
+
+        <p>But yeah - multiply that time out... What all of this currently creates is bad all around.  All of the millions of developers looking and ultimately unable to make well-informed choices is probably tens of millions of hours, by comparison.</p>
+
+
+        <div class="waste comparison">
+            <div style="background: deeppink; height: 1500px;">Authors collectively searching, researching, learning/re-learning</div>
+            <div style="background: seagreen; height: 30px;">Reinventing</div>
+        </div>
+
+
+        <p>In the end, many give up and re-implement again, making the problem even worse.</p>
+
+        <p>Each one might introduce tiny variations and accidentally invent something subtly new and create new challenges for users that we'll spend years sorting out too.</p>
+
+        <p>Ugh. It's bad.  We should want a better future.</p>
+    </section>
+
+    <section class="sectioning">
+        <h2 class="contextual-heading">Imagining a Better Future</h2>
+        <p>Here's where I believe we get into trouble though:  We have to be clear on what are we imagining, and whether it is practical/pragmatic to deliver adequate value in a reasonable timeframe.</p>
+
+        <p>We <em>could</em>, for example, choose to imagine that HTML can be given a great and complete set of elements representing a complete UI toolkit.  In addition to correcting all of the issues with the elements we've added so far, this means adding powerful grids connected to data, tabsets, notifications, carousels, charts, and so on.  I hope it is not controversial to suggest that it is extremely unlikely that we could accomplish this with the necessary qualities and in a reasonable timeframe. There's just no information or insight I have that gives me hope that focusing only on that scenario is a good idea.</p>
+
+        <p>I believe that is a good end-goal for many components, but what we need is a better way to get to that state... And for us to develop things that don't necessarily reach that state but that we can easily reach for with confidence.</p>
+
+        <p>Alternatively, it's been suggested that we could work on a single standard with a reference implementation for each component.  The challenges to this are less, but still huge.  Instead of needing to convince 3 browser vendors to act in concert, we have to convince several UI kit vendors to participate and developers to participate, and choose it.  We still need to have people (probably many of the same people as if it were native) participate for accessibility, usability, internationalization, etc.  In practice, there are very finite resources available to put toward large scale cooperation.  It's likely we could only focus on a couple of components at a time and the process would move slowly largely because of those kinds of limits.</p>
+
+        <p>Plus, you know... How we we avoid XKCD 927 territory?</p>
+        <figure>
+            <img src="https://imgs.xkcd.com/comics/standards.png">
+            <figcaption><a href="https://xkcd.com/927/">XKCD 927</a> 
+                    <div>Situation: There are 14 Competing Standards</div>
+                    <div>Person 1: 14? Ridiculous! We need to develop one universal standard that covers everyone's use cases!</div>
+                    <div>Person 2: Yeah!</div>
+                    <div>Situation: There are 15 Competing Standards</div>
+            </figcaption>
+        </figure>
+
+        <p>Again, I think having a reference implementation is a good <em>goal</em>, perhaps on the way to more, but what we really need is a better way to get to that state.</p>
+
+        <p>It's been suggested that we could take up a library as a kind of a 'donation' project to provide a starting point.  Specifically, maintainers from Shoelace/Web Awesome (also formerly MS components) have volunteered components for this purpose. Not as a "this is the thing" but a "this is a start".  That would give us a nice leap forward.</p>
+
+        <p>Except... I think that's really getting ahead of ourselves just because there is an attractive looking opportunity on the table.  Why that one?  Why this way? <em>Note carefully that I am not saying <strong>not that one</strong>!</em>. Maybe, in fact, it <strong>should</strong> be that one.  What I am saying is that if we're going to call it a global design system, there should be some kind of care taken here.</p>
+
+        <p>We should be able to articulate: How would it work?  Why would we take this?  Do we <em>want</em> a whole library is submitted?  Is it modular?  One component at a time?  Should it have no dependencies?  Given that we're likely to finish components at a time - how do we distribute it?  Also, how do we convince people to take <em>these</em> tabs, for example, if they have to get the rest of their library somewhere else?  We definitely don't want to 'bless' a whole library that hasn't passed a muster we haven't even defined yet.  Right?  Just... How do we want it to work?  And like, we had no open call for them?</p>
+
+        <p>The most obvious thing we could have ever done that with was jQuery, and we didn't.  We don't have a great way to <em>evolve</em> the web - but I keep saying that I think we should.</p>
+    </section>
+
+    <section class="sectioning">
+        <h2 class="contextual-heading">How I think we could get there...</h2>
+
+        <p>So like, this is what I want more than anything:  A plan to get there. Reasonable steps of value along the way, comparatively quickly.</p>
+
+        <p>It is effectively what I thought in 2013-2014 too.  I suggested to the W3C Advisory Committee that we needed to rethink how we approach standards to include this sort of idea, which could work <a href="https://bkardell.com/blog/Dropping-The-F-Bomb-On-Standards.html">more like languages/dictionaries</a>.  I tried to suggest the W3C should create such a process/listing/review process.</p>
+
+        <p>But... What I think we need is to get a number of relevant partners to sign on to participation in a new process.</p>
+
+        <p>I'd like to create a central place (maybe it is OpenUI?) where we lay out some new rules and a process where (after exceeding some not totally easy to hit criteria) you can submit a component, with a IP/license agreement we agree to, in a basic form that we agree to (it is as a module, should it use shadow dom or not, etc).</p>
+
+        <p>Once submitted it will undergo wide review and get some kind of 'verification stamps' for each kind.  But, really key here is getting <em>participation commitments from orgs</em> because we need many specialists for wide review here. Practically speaking, this is probably the biggest gating factor, really.</p>
+
+
+        <p>I would really love to try to include the authors of government tools here specifically because they are legally mandated and funded to solve the problem already and seem highly incentivized to participate.  A collective of government efforts also lends immediate credibility and sense of independence to it.</p>
+    </section>
+
+    <section class="sectioning">
+        <h2 class="contextual-heading">How this would help immediately</h2>
+
+        <p>I mean, imagine that we had a nice central catalog somewhere - webcomponents.org, but better. Maybe there are still 3 possible choices of tabs, but I know that these 3 have shown themselves to be serious already, and I can see which stamps/reviews they've had.</p>
+
+        <p>Maybe there isn't a 'the one', yet.  Maybe all 3 of them are ... fine?  That's not the worst thing, we can sit back and evaluate it for a while while already saving ourselves collectively millions of hours and our users a lot of pain.</p>
+
+        <p>In fact, collecting data and a little variation is <em>good</em>.</p>
+
+        <p>But what I believe is this also <em>forces</em> increasing cooperation and efficiencies.  Why <em>doesn't</em> a thing pass review?  How can we make these things testable?  One way is to begin to increase API and parts commonalities.  Maybe we can work together (not from day 1) to define a blueprint which can be tested that gives authors the same part names and APIs, that's another stamp then.</p>
+
+        <p>As we go we are slowly (but without stopping major progress at any point!) centralizing on what is good, what is important, and what developers are actually choosing.</p>
+
+        <p>Then, maybe we can get somewhere where we have a single reference implementation of all of those things - or even a standard almost identical to them.</p>
+
+        <p>In any case, that's a kind of huge difference in how I would prefer to approach it. I wouldn't call it a "global design system" to start, because I wouldn't start assuming there would be only one of anything initially.</p>
+    </section>
+
+</article></main>
+ 
+   
+  <script>
+    //import { MediaAffordancesElement } from "./MediaAffordancesElement.js";
+    class MediaAffordancesElement extends HTMLElement {
+      constructor() {
+        super();
+        // todo: this should be a private field
+        this.__matching = new Set()
+        this.mqls = [];
+        this.observers = [];
+
+        this.supportedAffordances = new Set();
+      }
+
+      observeAffordanceChange(cb) {
+        this.observers.push(cb);
+      }
+
+      notifyChange() {
+        let intersection = new Set();
+        for (let elem of this.__matching) {
+          if (this.supportedAffordances.has(elem)) {
+            intersection.add(elem);
+          }
+        }
+
+        if (this.__matching.size > 0) {
+          this.setAttribute("mq-matched", [...this.__matching].join(" "));
+        } else {
+          this.removeAttribute("mq-matched");
+        }
+        let arr =  [...intersection]
+        let affordance = arr[arr.length - 1];
+        if (affordance) {
+          this.setAttribute("affordance", affordance);
+        } else {
+          this.removeAttribute("affordance");
+        }
+        this.observers.forEach(cb => {
+          cb(intersection, this.__matching);
+        });
+      }
+
+      static get observedAttributes() {
+        return ["mq-affordances"];
+      }
+
+      connectedCallback() {
+        let newValue = getComputedStyle(this).getPropertyValue(
+          "--const-mq-affordances"
+        );
+        this.connectListeners(newValue);
+      }
+
+      connectListeners(newValue = "") {
+        if (newValue.trim().length === 0) {
+          return;
+        }
+        
+        newValue.split("|").forEach(segment => {
+          let mq = segment.trim().match(/\[([^\]]*)/)[1];
+          let names = segment
+            .replace(`[${mq}]`, "")
+            .trim()
+            .split(" ");
+          let mql = window.matchMedia(mq);
+          let mqh = evt => {
+            names.forEach(name => {
+              this.__matching[mql.matches ? "add" : "delete"](name);
+            });
+
+            this.notifyChange();
+          };
+          mqh();
+          mql.addEventListener("change", mqh);
+          this.mqls.push(mql);
+        }, this);
+      }
+
+      attributeChangedCallback(name, oldValue, newValue) {
+        this.connectListeners(newValue);
+      }
+    }
+
+    //-----------------------------------------------------
+
+    (function() {
+      let lastUId = 0;
+      let nextUId = () => {
+        return `cp${++lastUId}`;
+      };
+
+      let getLabels = regionset => {
+        return [...regionset.children].filter(el => /^H\d$/.test(el.tagName));
+      };
+
+      let getContentEls = regionset => {
+        return [...regionset.children].filter(el => !/^H\d$/.test(el.tagName));
+      };
+
+      let ensureId = el => {
+        el.id = el.id || nextUId();
+        return el.id;
+      };
+
+      let getDisclosureButton = label => {
+        return label.shadowRoot.querySelector("button");
+      };
+
+     
+      let style = document.createElement('style')
+      style.innerHTML = `
+          
+        :where(spicy-sections > [affordance*="collapse"])::before { 
+          content: ' ';
+          display: inline-block;
+          width: 0.5em;
+          height: 0.75em;
+          margin: 0 0.4em 0 0;
+          transform: rotate(90deg);
+          background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' x='0px' y='0px' width='10px' height='10px' viewBox='0 0 270 240' enable-background='new 0 0 270 240' xml:space='preserve'%3e%3cpolygon fill='black' points='5,235 135,10 265,235 '/%3e%3c/svg%3e ");
+          background-size: 100% 100%;
+        } 
+
+        :where(spicy-sections > [affordance*="collapse"][aria-expanded="true"])::before, 
+        :where(spicy-sections > [affordance*="collapse"][aria-expanded="true"])::after {
+          transform: rotate(180deg);
+        }
+      `
+      document.head.prepend(style)
+      
+      const template = `
+            <style>
+              :root {
+                font-size: 1rem;
+              }
+
+              :host([hidden]),
+              ::slotted([hidden]) {
+                display: none;
+              }
+              
+              ::slotted(h1),
+              ::slotted(h2),
+              ::slotted(h3),
+              ::slotted(h4),
+              ::slotted(h5),
+              ::slotted(h6) {
+                 margin-right: 1rem;
+              }
+              
+              tab-bar ::slotted([tabindex="0"]) {
+                border-bottom: 1px solid blue;
+              }
+              
+              tab-list { 
+                display: flex; 
+                overflow: hidden;
+                white-space: nowrap;
+              }
+            </style>
+            <tab-bar part="tab-bar">
+              <!-- The region/tablist should have a  label -->
+              <tab-list part="tab-list" role="tablist"
+              ><slot name="tabListSlot"></slot></tab-list>
+            </tab-bar>
+            <content part="content-panels">
+              <slot default></slot>
+            </content>
+        `;
+
+      class RegionSet extends MediaAffordancesElement {
+        __defaults;
+        __tabListEl;
+
+        // tabs and exclusive collapses should have the same affordance object?
+        __affordanceConf = {
+          collapse: {
+            // can take a condition to force, check-like
+            toggle: (label, condition) => {
+              let state =
+                typeof condition === "boolean"
+                  ? condition
+                  : !label.affordanceState.expanded;
+              let contentEl = label.nextElementSibling;
+              label.affordanceState.expanded = state;
+              label.affordanceState.nonExclusiveExpanded = state;
+              label.setAttribute("aria-expanded", state);
+              if (state) {
+                label.setAttribute("expanded", "");
+                contentEl.style.display = "block";
+              } else {
+                label.removeAttribute("expanded");
+                contentEl.style.display = "none";
+              }
+            }
+          },
+          "exclusive-collapse": {
+            // ignores condition, radio-like
+            toggle: label => {
+              let labels = getLabels(label.parentElement);
+              let siblings = labels.filter(c => c !== label);
+              let index = labels.findIndex(c => c === label);
+
+              siblings.forEach((sibLabel, i) => {
+                let relatedContent = sibLabel.nextElementSibling;
+                sibLabel.tabIndex = -1;
+                relatedContent.style.display = "none";
+                label.setAttribute("aria-expanded", "false");
+                sibLabel.affordanceState.exclusiveExpanded = false;
+              });
+              label.tabIndex = 0;
+              //nope - todo, fix/remove this?
+              label.parentElement.affordanceState.exclusiveSelection.index = index;
+              label.nextElementSibling.style.display = "block";
+              label.setAttribute("aria-expanded", "true");
+              label.affordanceState.exclusiveExpanded = true;
+              label.focus();
+            }
+          },
+          "tab-bar": {
+            // ignores condition, radio-like
+            toggle: label => {
+              let labels = getLabels(label.parentElement);
+              let siblings = labels.filter(c => c !== label);
+              let index = labels.findIndex(c => c === label);
+
+              siblings.forEach((sibLabel, i) => {
+                let relatedContent = sibLabel.nextElementSibling;
+                sibLabel.tabIndex = -1;
+                relatedContent.style.display = "none";
+                sibLabel.setAttribute("aria-expanded", "false");
+                sibLabel.affordanceState.exclusiveExpanded = false;
+              });
+              label.tabIndex = 0;
+              label.parentElement.affordanceState.exclusiveSelection.index = index;
+              label.nextElementSibling.style.display = "block";
+              label.setAttribute("aria-expanded", "true");
+              label.affordanceState.exclusiveExpanded = true;
+              label.focus();
+            }
+          }
+        };
+        __setSize = (labelEls, contentEls) => {
+          this.__size = Math.min(labelEls.length, contentEls.length);
+
+          if (labelEls.length !== this.__size) {
+            console.warn("mismatch in tab-set label/content pairs...");
+          }
+
+          labelEls.forEach((labelEl, i) => {
+            let contentEl = contentEls[i];
+            if (!labelEl.initialized) {
+              labelEl.initialized = true; // todo: this used to be shadow, do i need it?
+              let defs = this.__defaults.defaultActive;
+
+              // this assumes it is about collapses
+              labelEl.affordanceState = {
+                expanded: defs.includes(labelEl),
+                active: false,
+                // activate in the current mode
+                activate: () => {
+                  if (this.affordanceState.current) {
+                    this.__affordanceConf[this.affordanceState.current].toggle(
+                      labelEl
+                    );
+                  }
+                }
+              };
+
+              let defaultExclusive =
+                defs.length === 0 ? labelEls[0] : defs[defs.length - 1];
+
+              this.affordanceState.exclusiveSelection.index = labelEls.indexOf(
+                defaultExclusive
+              );
+            }
+            labelEl.setMode = mode => {
+              if (mode === "non-exclusive") {
+                let isExpanded = labelEl.affordanceState.expanded;
+                labelEl.setAttribute("affordance", "collapse");
+                labelEl.setAttribute("tabindex", "0");
+                labelEl.setAttribute("aria-controls", contentEl.id);
+                labelEl.setAttribute("role", "button");
+                labelEl.setAttribute("aria-expanded", isExpanded);
+                labelEl.nextElementSibling.style.display = isExpanded
+                  ? "block"
+                  : "none";
+              } else if (mode === "exclusive") {
+                let isExpanded =
+                  labelEls.indexOf(labelEl) ===
+                  this.affordanceState.exclusiveSelection.index;
+                labelEl.setAttribute("affordance", "collapse");
+                labelEl.setAttribute("tabindex", isExpanded ? 0 : -1);
+                labelEl.setAttribute("role", "button");
+                labelEl.setAttribute("aria-expanded", isExpanded);
+                labelEl.setAttribute("aria-controls", contentEl.id);
+                labelEl.nextElementSibling.style.display = isExpanded
+                  ? "block"
+                  : "none";
+              } else {
+                labelEl.removeAttribute("tabIndex");
+                labelEl.removeAttribute("affordance");
+                labelEl.removeAttribute("aria-expanded");
+                labelEl.removeAttribute("role");
+              }
+            };
+          });
+        };
+
+        __projectTabBar = () => {
+          this.__removeProjections();
+          getLabels(this).forEach((tabSource, i) => {
+            let selected = false,
+              tabIndex = -1,
+              display = "none";
+
+            tabSource.setMode();
+            tabSource.slot = "tabListSlot";
+            tabSource.setAttribute("role", "tab");
+            let tabId = ensureId(tabSource);
+            let contentSource = tabSource.nextElementSibling;
+            contentSource.tabIndex = 0;
+            tabSource.setAttribute("aria-controls", ensureId(contentSource));
+            contentSource.setAttribute("role", "tabpanel");
+            contentSource.setAttribute("aria-labelledby", tabSource.id);
+            if (i === this.affordanceState.exclusiveSelection.index) {
+              tabIndex = 0;
+              selected = true;
+              display = "block";
+            }
+            tabSource.setAttribute("aria-selected", selected);
+            tabSource.tabIndex = tabIndex;
+            contentSource.style.display = display;
+
+            // TODO: aria-orientation :(
+          });
+        };
+
+        __projectCollapses = exclusive => {
+          // TODO - remove projections and... ??
+          this.__removeProjections();
+          getLabels(this).forEach(label => {
+            label.setMode(exclusive ? "exclusive" : "non-exclusive");
+          });
+        };
+
+        __removeProjections = () => {
+          [...this.children].forEach(child => {
+            child.removeAttribute("slot");
+            child.removeAttribute("affordance")
+            child.removeAttribute("role");
+            child.removeAttribute("aria-selected");
+            child.removeAttribute("aria-controls");
+            child.removeAttribute("tabindex");
+            child.removeAttribute("aria-expanded")
+            child.style.display = "block";
+          });
+        };
+
+        // matching pairs
+        __size = 0;
+
+        __configure = () => {
+          ///hmmm
+
+          this.__setSize(getLabels(this), getContentEls(this));
+
+          if (this.affordanceState.current === "tab-bar") {
+            this.affordanceState.currentMode = "exclusive";
+            this.__projectTabBar();
+          } else if (this.affordanceState.current === "collapse") {
+            this.affordanceState.currentMode = "non-exclusive";
+            this.__projectCollapses();
+          } else if (this.affordanceState.current === "exclusive-collapse") {
+            this.affordanceState.currentMode = "exclusive";
+            this.__projectCollapses(true);
+          } else {
+            this.affordanceState.currentMode = undefined;
+            this.__removeProjections();
+          }
+
+          let specifiedIndex = this.activeTabIndex || 0;
+          // TODO: hmm, these are DOM changes, we could cache them
+          let labelEls = getLabels(this);
+          let contentEls = getContentEls(this);
+
+          for (let i = 0; i < this.__size; i++) {
+            let label = labelEls[i];
+            // probably add one handler that decides
+            if (!label._inited) {
+              label.addEventListener("click", evt => {
+                evt.target.affordanceState.activate();
+              });
+              label._inited = true;
+            }
+          }
+        };
+        
+        __childListObserver = new MutationObserver(mutationList => {
+          // we have to wire up new elements
+          let labelEls = getLabels(this);
+          let contentEls = getContentEls(this);
+
+          // what if there is a mismatch?
+          this.__setSize(labelEls, contentEls);
+          this.__configure();
+        });
+
+        __tabset;
+
+        affordanceState = {
+          exclusiveSelection: { index: undefined },
+          current: undefined,
+          currentMode: undefined,
+          getLabels: () => {
+            return getLabels(this);
+          }
+        };
+
+        /*
+          Wires up suppored affordances...
+        */
+        constructor() {
+          super();
+          this.supportedAffordances.add("tab-bar");
+          this.supportedAffordances.add("collapse");
+          this.supportedAffordances.add("exclusive-collapse");
+
+          this.observeAffordanceChange((matching, all) => {
+            if (!this.__defaults) {
+              this.__defaults = {
+                onMatch: this.hasAttribute("defaults-on-match"),
+                defaultActive: getLabels(this).filter(l =>
+                  l.hasAttribute("default-activate")
+                )
+              };
+            }
+            this.affordanceState.current = this.getAttribute("affordance");
+            this.__configure();
+          });
+
+          this.attachShadow({ mode: "open" });
+          this.shadowRoot.innerHTML = template;
+     
+          this.__tabListEl = this.shadowRoot.querySelector("tab-list");
+          this.addEventListener(
+            "keydown",
+            evt => {
+              let labels = getLabels(this);
+              let size = labels.length;
+              let cur = this.affordanceState.exclusiveSelection.index;
+              let prev = cur === 0 ? size - 1 : cur - 1;
+              let next = cur === size - 1 ? 0 : cur + 1;
+
+              if (
+                this.affordanceState.current === "tab-bar" ||
+                this.affordanceState.current === "exclusive-collapse"
+              ) { 
+                if (evt.keyCode == 37 || evt.keyCode == 38) {
+                  labels[prev].affordanceState.activate();
+                } else if (evt.keyCode == 39 || evt.keyCode == 40) {
+                  labels[next].affordanceState.activate();
+                }
+              } else if (evt.keyCode == 32 && this.affordanceState.current === 'collapse') {
+                evt.preventDefault()
+              }
+            },
+            false
+          );
+          this.addEventListener(
+            "keyup", 
+            evt => {
+              if (evt.keyCode == 32 && this.affordanceState.current === 'collapse') {
+                evt.target.closest('[affordance]').affordanceState.activate()
+                evt.preventDefault()
+              }
+            })
+        }
+
+        connectedCallback() {
+          super.connectedCallback();
+
+          //TODO: check whether there is a hash/handle selection
+          
+          // If you append a fragment with a pair, it should work
+          this.__childListObserver.observe(this, { childList: true });
+        }
+      }
+      customElements.define("spicy-sections", RegionSet);
+    })();
+    </script>
+  <script>
+    Array.prototype.slice.call(document.querySelectorAll('.optional [data-src]')).forEach(function (optional) {
+      var prefs = window.localStorage.downloadsPrefs,
+          clickToSee;
+      if (prefs === 'true') {
+        activateOptional(optional);
+      } else {
+        clickToSee = document.createElement('div');
+        clickToSee.classList.add('clickToSee')
+        clickToSee.innerHTML = '<button>Click to see media</button>';
+        clickToSee.style.textAlign = 'center';
+        clickToSee.style.border = 'none';
+        optional.parentElement.insertBefore(clickToSee, optional.nextSibling);
+        clickToSee.firstElementChild.addEventListener('click', function () {
+          activateOptional(optional);
+        })
+      }
+
+    })
+  </script>
+
+</body></html>
