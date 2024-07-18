@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://bkardell.com/</id>
     <title>bkardell.com rss feed</title>
-    <updated>2024-05-21T17:21:44.583Z</updated>
+    <updated>2024-07-18T16:44:13.790Z</updated>
     <generator>awesome mix</generator>
     <author>
         <name>Brian Kardell</name>
@@ -14,6 +14,212 @@
     <subtitle>Just the bkardell.com rss feed</subtitle>
     <logo>http://bkardell.com/profile.jpg</logo>
     <rights>All rights reserved 2018, Brian Kardell</rights>
+    <entry>
+        <title type="html"><![CDATA[927: Thoughts on a Global Design System]]></title>
+        <id>https://bkardell.com/blog/927.html</id>
+        <link href="https://bkardell.com/blog/927.html">
+        </link>
+        <updated>2024-07-18T04:00:00.000Z</updated>
+        <summary type="html"><![CDATA[My thoughts on "A Global Design System" as is being discussed in OpenUI.]]></summary>
+        <content type="html"><![CDATA[
+    <h1 class="contextual-heading" style="font-size: 2rem;">927: Thoughts on a Global Design System</h1>
+    <p class="segue">My thoughts on "A Global Design System" as is being discussed in OpenUI.</p>
+    
+    
+
+    <p>As you may or may not be aware, there's been recent discussion in OpenUI, brought forward by an effort by my fellow Pittsburgher Brad Frost, about the group taking on the effort of creating a <a href="https://bradfrost.com/blog/post/a-global-design-system/">global design system</a>.</p>
+
+
+    <p>First, let me say that the problem that Brad describes is real, and also not new.  He and I have discussed this in the past as well.  I've spent a lot (the majority maybe) of my career (which began in the 90s) working on projects that were either using, evaluating or making their own common controls.</p>
+
+
+    <section class="sectioning">
+        <h2 class="contextual-heading" style="font-size: 2.5rem;">So much wasted energy</h2>
+        <p>While explaining this, Brad frequently notes that inventing and reinventing the same things over and over wastes an enormous amount of human potential. We could be spending that time better.</p>
+
+        <p>I mean... Yes.  I agree.</p>
+
+        <p>But, even more than that, the time spent re-inventing is only part of the story.  The status quo is good for approximately no one.  It also has multiplicative effects far beyond just the actual reinvention..</p>
+
+        <p>There might be 100 toolkits/component libraries which combined have 100k worth of invested hours, and yeah, that's a huge amount of time... Those hours are also <em>wildly</em> skewed. 1 might have 10x or even 100x the thought, care, review and testing than another.</p>
+
+        <p>But while there might be thousands of people spending time re-inventing, there are <em>millions of authors</em> who need components - and so many are spending at least a few hours, or maybe in some cases days searching for suitable components.  I've been involved in corporate evaluations that were weeks of time.  And <strong><em>it's hard</em> to evaluate them</strong> and make good choices that consider accessibility, responsiveness, design, and internationalization.  It is not only time-consuming, we often don't have the skills to do it. That is, after all, one of the reasons we want them: So that we <em>don't</em> each have to know all that stuff.</p>
+
+        <p>But then, how do we expect authors make a good choice?</p>
+
+        <p>Sometimes the ones with the least effort put into them can have a great looking web site, nice documentation, charismatic promotion, or be somehow associated with a big tech company.  Too often we wind up choosing components by proxy and just assuming that something else must mean it's good, and will last a long time.  However, history has not borne that out — see the various component toolkits and design systems from even big orgs like Microsoft and Google, for example, that fell by the wayside.
+        </p>
+
+        <p>But yeah - multiply that time out... What all of this currently creates is bad all around.  All of the millions of developers looking and ultimately unable to make well-informed choices is probably tens of millions of hours, by comparison.</p>
+
+        <p>In the end, many give up and re-implement again, making the problem even worse.</p>
+
+        <p>Each one might introduce tiny variations and accidentally invent something subtly new and create new challenges for users that we'll spend years sorting out too.</p>
+
+        <p>Ugh. It's bad.  We should want a better future, and <strong>we should act on that</strong>.</p>
+    </section>
+
+    <section class="sectioning">
+        <h2 class="contextual-heading" style="font-size: 2.5rem;">Imagining a Better Future</h2>
+        <p>Here's where I believe we get into trouble though:  We have to be clear on what are we imagining, and whether it is practical/pragmatic to deliver adequate value in a reasonable timeframe.</p>
+
+        <section class="sectioning">
+            <h3 class="contextual-heading" style="font-size: 3rem;">Native HTML?</h3>
+            <p>We <em>could</em>, for example, choose to imagine that HTML can be given a great and complete set of elements representing a complete UI toolkit.  In addition to correcting all of the issues with the elements we've added so far, this means adding powerful grids connected to data, tabsets, notifications, carousels, charts, and so on. </p>
+
+            <p>Can it? Eventually, maybe, but I hope it is not controversial to suggest that it is extremely unlikely that we could accomplish this with the necessary qualities and in a reasonable timeframe. There's just no information or insight I have that gives me hope that focusing only on that scenario is a good idea.</p>
+
+            <p>This is a good end-goal for many components, but it's not where to start.  It's hard and time consuming and gated on very specific and limited participation of a small number of people. HTML itself moves slow, on purpose.</p>
+
+            <figure class="container"><svg viewBox="0 0 500 30" version="1.1" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet">
+              <line x1="0" y1="20" x2="500" y2="20" stroke="black"></line>
+             <circle cx="496" cy="20" r="4"></circle>
+            </svg>
+              <figcaption>I think HTML is at the end of 99 other steps...</figcaption>
+            </figure>
+
+            <p><em>The real question, I believe, is about improving how we get there, and deliver iterative partial value along the way</em>.</p>
+        </section>
+
+        <section class="sectioning">
+            <h3 class="contextual-heading" style="font-size: 3rem;">New Web Components Reference Implementations?</h3>
+
+            <p>It's been suggested that we could work on a single standard with a reference implementation for each component.</p>
+
+            <p>I <em>do</em> believe that ultimately this is a good goal, but I'd like to suggest that it's not where to start either.</p> 
+
+            <p>The challenges to this are less than trying to add it to HTML in some ways, it doesn't require browser vendorts to act in concert, sure.  We can iterate on it, sure.  But the challenges are still huge and trading knowns for unknowns.</p>
+
+            <p>Instead of needing to convince 3 browser vendors to act in concert, we have to convince several UI kit vendors and developers to participate.  We also have to convince everyone to use it and try to avoid XKCD 927 territory...</p>
+
+            <figure>
+                <img src="https://imgs.xkcd.com/comics/standards.png">
+                <figcaption><a href="https://xkcd.com/927/">XKCD 927</a> 
+                        <div>Situation: There are 14 Competing Standards</div>
+                        <div>Person 1: 14? Ridiculous! We need to develop one universal standard that covers everyone's use cases!</div>
+                        <div>Person 2: Yeah!</div>
+                        <div>Situation: There are 15 Competing Standards</div>
+                </figcaption>
+            </figure>
+
+
+            <p>This is exacerbated by the fact that it won't come all at once.  It'll still be a non-trivial amount of time before we have a whole library of components which could reasonably be promoted for use.  It still requires people with expertise (probably many of the same people as if it were native) to participate for reviewing accessibility, usability, internationalization, etc.  In practice, there are just very finite resources available to put toward large scale, long term cooperation. Practically speaking, it seems likely we could only focus on a couple of components at a time.</p>
+
+            <p>Let's say we finish and ship the first component: Tabs.  Can we really call it a global design system if it has just one component?  Won't that really limit who can/will adopt it?</p>
+
+            <section class="sectioning">
+                <h4 class="contextual-heading" style="font-size: 3.5rem;">Adopt, modify and bless an library</h4>
+
+                <p>It's been suggested that we could take up a library as a kind of a 'donation' project to provide a starting point.  Specifically, maintainers from Shoelace/Web Awesome (also formerly MS components) have volunteered components for this purpose. Not as a "this is the thing" but a "this is a start".  That would give us a nice leap forward.</p>
+
+                <p>Yeah, it would.</p>
+
+                <p>Except... Doesn't it raise a lot of questions we have to answer anyways?</p>
+
+                <p>First, but maybe not as importantly: Why that one? That goes to legitimacy.  We should be able to explain why this is not just the first attractive looking opportunity that presented itself.</p>
+
+                <p>More importantly, it seems to me that the rest of the situation decribed above remains largely unchanged.  We can't seriously promote that until it is deemed "good", and practically speaking it seems that we will approve them individually, not as a library.  So, can't we define how we think it should work before we worry about picking a library?</p>
+
+                <p>The most obvious thing we could have ever done that with was jQuery, and we didn't.</p>
+
+
+                <figure class="container"><svg viewBox="0 0 500 30" version="1.1" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet">
+                  <line x1="0" y1="20" x2="500" y2="20" stroke="black"></line>
+                 <circle cx="375" cy="20" r="4"></circle>
+                </svg>
+                  <figcaption>I think that a library of reference implementations that we can agree to and recommend is still very far along the timeline...</figcaption>
+                </figure>
+
+
+                <p><em>The real question, I believe, is about improving how we get there, and deliver iterative partial value along the way</em>.</p>
+
+                <p>We still don't have a great way to <em>evolve</em> the web - but I keep saying that I think we should.</p>
+
+            </section>
+    </section>
+
+    <section class="sectioning">
+        <h3 class="contextual-heading" style="font-size: 3rem;">How I think we could get there...</h3>
+
+        <p>This is what I want more than anything:  A plan to get there. Reasonable steps of value along the way, comparatively quickly.</p>
+
+        <p>It is effectively what I thought in 2013-2014 too.  I suggested to the W3C Advisory Committee that we needed to rethink how we approach standards to include this sort of idea, which could work <a href="https://bkardell.com/blog/Dropping-The-F-Bomb-On-Standards.html">more like languages/dictionaries</a>.  I tried to suggest the W3C should create such a process/listing/review process.</p>
+
+        <p>What follows is a vague outline of what I imagine:</p>
+
+        <p>I'd like to create a central place where we lay out some new rules and a process where components, in a basic form that we agree to (it is as a module, should it use shadow dom or not, etc) can be submitted.</p>
+
+        <figure class="container"><svg viewBox="0 0 500 30" version="1.1" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet">
+          <line x1="0" y1="20" x2="500" y2="20" stroke="black"></line>
+         <circle cx="50" cy="20" r="4"></circle>
+        </svg>
+          <figcaption>What are the criteria? That's the first few steps...</figcaption>
+        </figure>
+
+        <p>We'd define some criteria gating submission, first with IP/license agreements we agree to, possibly some kind of bar for contributors or stars or something, but mainly: A commitment of participation in this new process, especially from experts. Honestly, participation is a bigger part of the limiting factor than anyone really imagines.</p>
+
+
+        <p>Once submitted it would undergo wide review and get some kind of 'verification stamps' for each kind (a11y, i18n, etc).</p>
+
+        <p>For this reason, I would really love to try to include the authors of government tools here.  They are legally mandated and funded to solve the problem already and seem highly incentivized to participate.  A collective of government efforts also lends immediate credibility and sense of independence to it.</p>
+
+        <p>To me, ideally, we would begin with a call for components/participation.</p>
+
+        <figure class="container"><svg viewBox="0 0 500 30" version="1.1" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet">
+          <line x1="0" y1="20" x2="500" y2="20" stroke="black"></line>
+         <circle cx="100" cy="20" r="4"></circle>
+        </svg>
+          <figcaption>A call for particpation/submissions...</figcaption>
+        </figure>
+    </section>
+
+    <section class="sectioning">
+        <h3 class="contextual-heading" style="font-size: 3rem;">You might have noticed...</h3>
+
+        <p>You might have noticed that I didn't answer the question of "how do we pick one?"  That's because I think that's like 99 steps down the road and will come naturally.</p>
+
+        <p>We can get a set of people who can contribute tabs, and a set of people who can review, and we can all discuss several of them at the same time.  We can begin to lay out conformance criteria, and give each one little 'conformance stamps' along the way.  Inevitably we can more easily get implementations to align and develop universal definitions and tests -- new stamps to be had.</p>
+        
+        <figure class="container"><svg viewBox="0 0 500 30" version="1.1" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet">
+          <line x1="0" y1="20" x2="500" y2="20" stroke="black"></line>
+         <circle cx="200" cy="20" r="4"></circle>
+         <circle cx="240" cy="20" r="4"></circle>
+         <circle cx="270" cy="20" r="4"></circle>
+        </svg>
+          <figcaption>Component get conformance stamps...</figcaption>
+        </figure>
+
+        <p>For authors, along the way, there's a nice central catalog somewhere, like webcomponents.org, but better. You'll know those have been submitted, and which ones have which conformance stamps.  Maybe there isn't a 'the one', yet.  But, it's ok?  You have a smaller set, and the information you really need to choose one.  Maybe all 3 of them are ... fine?</p>
+
+        <p>That's not the worst thing, we can sit back and evaluate it for a while while already saving ourselves collectively millions of hours and our users a lot of pain.</p>
+
+
+        <p>In fact, collecting data and a little variation is <em>good</em>. Probably, they continue to align, or one begins to be the clearer winner.</p>
+
+        <figure class="container"><svg viewBox="0 0 500 30" version="1.1" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet">
+          <line x1="0" y1="20" x2="500" y2="20" stroke="black"></line>
+         <circle cx="325" cy="20" r="4"></circle>
+        </svg>
+          <figcaption>We have very well defined, portable criteria for testing and more or less 1 definition...</figcaption>
+        </figure>
+
+         <p>And, that's the point: As we go we would slowly, but without stopping major progress at any point.  Even if nothing more happens, each of those steps has had real value.  No one has just <em>wasted</em> time.</p>
+
+        <p>Then, maybe we can get somewhere where we have a single reference implementation of all of those things - or even a standard almost identical to them.</p>
+
+        <figure class="container"><svg viewBox="0 0 500 30" version="1.1" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet">
+          <line x1="0" y1="20" x2="500" y2="20" stroke="black"></line>
+         <circle cx="400" cy="20" r="4"></circle>
+        </svg>
+          <figcaption>We have a true global reference implementation... Should we bake it into HTML?</figcaption>
+        </figure>
+
+        <p>In any case, that's how I would prefer to approach it. I wouldn't call it a "global design system" to start, because I  wouldn't even start out assuming there would be only one of anything initially... But eventually.</p>
+
+    </section>
+
+</section>]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[Improving the WPT Dashboard]]></title>
         <id>https://bkardell.com/blog/WPT-Dashboard.html</id>
@@ -919,34 +1125,6 @@ target.innerHTML =  str;</code></pre>
 	
 
 
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[What's Good?]]></title>
-        <id>https://bkardell.com/blog/WhatsGood.html</id>
-        <link href="https://bkardell.com/blog/WhatsGood.html">
-        </link>
-        <updated>2024-01-03T05:00:00.000Z</updated>
-        <summary type="html"><![CDATA[I think this is a question worth asking, let me explain why…]]></summary>
-        <content type="html"><![CDATA[
-	<h1 class="contextual-heading" style="font-size: 2rem;">What's Good?</h1>
-	<p class="segue">I think this is a question worth asking, let me explain why…</p>
-
-	<p>A few times a year, every developer advocate will ask developers about what developing features they're interested in or what pain points they experience most. That is a good thing. We should keep doing that.</p>
-  
-  	<p>While we don't often present it in this light, one thing this does is inform prioritization. The simple truth is that resources are way too finite, so we have to look for good signals about what should be prioritized.</p>
-  
-  	<p>I think it's similarly important to have feedback on the other end too: What's your satisfaction like on the web features you've gotten in the last few years? Can you name any that you use all the time? Can you name some that you over-estimated your need for? Something that you thought you needed/wanted but then ultimately didn't end up using so much? Something that you had high hopes for, but failed you?</p>
-  
-  	<p>But why ask that?</p>
-  	
-  	<p>Well, it seems quite probable that there are things we can learn from that.</p>
-  
-  	<p>Maybe we can look at where we should have listened more, or pushed more. Maybe we can learn things about the processes that successful things took that unsuccessful things didn't (did they go through WICG? Were there polyfills? Origin trials? Did they stay in experimental builds behind a flag for a long time? Were they done at roughly the same time in all browsers?). Can we compare the amount of resources and time required between them? Maybe those things could also inform prioritization somehow?</p>
-
-	<p>Normally, around this time, I'd have wrapped up working on the latest Web Almanac and there would be lots of data flying at me which scratches a little bit of the kind of itch I've got - but this year we didn't do one, so I find myself wondering: How are people getting along with all of those things we've been delivering since 2019 or so?</p>
-
-  	<p>So, let me know!</p>
 ]]></content>
     </entry>
 </feed>
