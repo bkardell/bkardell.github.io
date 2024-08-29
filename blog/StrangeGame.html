@@ -85,6 +85,7 @@ section > .captioned-image.p-attached {
 .captioned-image img, .captioned-image video {
     display: block;
     max-width: 100%;
+    
     margin: 0 auto 1em auto;
 }
 .source {
@@ -122,6 +123,7 @@ h1, [aria-level="1"] {
 h2, [aria-level="2"] {
     color: black;
     font-size: 1.35rem;
+    background: linear-gradient(55deg, transparent, #e5eef9);
 }
 
 h3, [aria-level="3"] {
@@ -677,7 +679,7 @@ To win the game.</pre>
  
 
     <section class="sectioning">
-      <h5 class="contextual-heading"><pre class="wargames">Shall we play a (different) game?</pre></h5>
+      <h5 class="contextual-heading" id="different"><pre class="wargames">Shall we play a (different) game?</pre></h5>
 
     <p>
       Ok, but hold on.... Let's talk about <em>non-form related interactive controls</em> now.  Realistically, we've come up with really only 1 strictly generic non-form-related UI control in 30 years: <code>&lt;details&gt;</code>.  That "other" one in my intial list.  Wow... And we've had that done for like 10 years, right?  Let's see, it's been supported universally since... <em>checks notes...</em>
@@ -717,7 +719,7 @@ To win the game.</pre>
     </section>
 
     <section class="sectioning">
-      <h5 class="contextual-heading"><pre class="wargames">How about a nice game of chess?</pre></h5>
+      <h5 class="contextual-heading" id="chess"><pre class="wargames">How about a nice game of chess?</pre></h5>
     <p>
       So, here's the basic idea: What if we just created a resilient pattern
       focused on mainly <em>function</em> and <em>meaning</em> -- and

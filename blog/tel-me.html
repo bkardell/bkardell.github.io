@@ -85,6 +85,7 @@ section > .captioned-image.p-attached {
 .captioned-image img, .captioned-image video {
     display: block;
     max-width: 100%;
+    
     margin: 0 auto 1em auto;
 }
 .source {
@@ -122,6 +123,7 @@ h1, [aria-level="1"] {
 h2, [aria-level="2"] {
     color: black;
     font-size: 1.35rem;
+    background: linear-gradient(55deg, transparent, #e5eef9);
 }
 
 h3, [aria-level="3"] {
@@ -452,7 +454,7 @@ America (art for sale)</a></li>
   }, 1000);
 </script>
     <main><div class="posted-on">Posted on 10/5/2023</div><article posted-on="10/5/2023" class="sectioning">
-	<h1 class="contextual-heading">tel:me.about.it.</h1>
+	<h1 class="contextual-heading" id="telmeaboutit">tel:me.about.it.</h1>
 	<p class="segue">Let’s talk about protocols. I’ve been repeating most of what is in this post in conversations for a while now, so I thought I should write it down.  They are thoughts around what it means to add new protocols to the platform, and how we go about it in practice.  The main extensibility mechanism that we have comes from the HTML5 era: <code>registerProtocolHandler()</code>. In this post I’ll explain where I think that’s kind of OK, where it falls (sometimes very) short, and some things I think we learned along the way. The purpose of this post isn’t to make suggestions, it’s simply to have a look at the space and the things I think we need to keep in mind.</p>
 
 
@@ -461,7 +463,7 @@ America (art for sale)</a></li>
 	<p>A few popular examples from the HTTPArchive data: Over 30% of websites include at least one <code>mailto:</code> link. Almost as many sites include a <code>tel:</code> link. There’s plenty of <a href="https://en.wikipedia.org/wiki/Webcal" target="_blank" rel="noopener"><code>webcal:</code></a> and <a href="https://www.rfc-editor.org/rfc/rfc2806#section-2.3" target="_blank" rel="noopener"><code>fax:</code></a>. <a href="https://en.wikipedia.org/wiki/Geo_URI_scheme" target="_blank" rel="noopener"><code>geo:</code></a> is used on over 20,300 sites. <code>sms:</code> is used on 42,600+ websites. These are just a few examples of protocols that are trying to do something useful.</p>
 
 	<section class="sectioning">
-		<h2 class="contextual-heading">Things That Go “Click”</h2>
+		<h2 class="contextual-heading" id="Things-That-Go-“Click”">Things That Go “Click”</h2>
 
 		<p>When you click a link that has one of those protocol identifiers, the browser says “Do I know how to handle that protocol?”  If the answer is no, it passes responsibility along to the OS.  So, if you have Skype installed, and click on a <code>skype:</code> link, the OS might launch Skype for you.</p>
 
@@ -471,7 +473,7 @@ America (art for sale)</a></li>
 
 	</section>
 	<section class="sectioning">
-		<h2 class="contextual-heading">The mistakes we made along the way…</h2>
+		<h2 class="contextual-heading" id="The-mistakes-we-made-along-the-way…">The mistakes we made along the way…</h2>
 
 		<p>On the surface, all of those protocols that turn up in the HTTP Archive data seem like success stories. However, I’d like to tell you why they haven’t been so great, and why we already have better solutions.</p>
 
@@ -491,7 +493,7 @@ America (art for sale)</a></li>
 		<p>Sure, for <em>some</em> users, where all of the stars align, that will be a nice convenience.  But there are just <em>way</em> too many cases where this is more of a barrier than a convenience. Let’s look at some of the failure modes of that line of code, starting with the simplest:</p>
 
 		<section class="sectioning">
-			<h3 class="contextual-heading">Hidden information</h3>
+			<h3 class="contextual-heading" id="Hidden-information">Hidden information</h3>
 
 			<p>Because we’ve made it a link, it’s far too common that authors don’t actually display the phone number.  They <em>assume</em> that the device I’m <em>looking at</em> is the device I want to dial from.  There are many cases where that is not true!</p>
 
@@ -500,19 +502,19 @@ America (art for sale)</a></li>
 			<p>This isn’t a problem inherent to the protocol, but it’s still a problem.</p>
 		</section>
 		<section class="sectioning">
-			<h3 class="contextual-heading">Theoretically capable, practically incapable</h3>
+			<h3 class="contextual-heading" id="Theoretically-capable-practically-incapable">Theoretically capable, practically incapable</h3>
 
 			<p>Sometimes a device can be physically capable of dialing out, but currently not have that service available. This happened to me while traveling abroad in 2018, where I was able to use my cell with WiFi but couldn’t dial out (I didn’t have WiFi calling at the time).</p>
 
 			<p>This problem still comes up I use that same 2018 cell phone to control my media in my house, and occasionally to look something up, but since it isn’t on my cell plan, I can’t use any <code>tel:</code> links.</p>
 		</section>
 		<section class="sectioning">
-			<h3 class="contextual-heading">No registered handler at all</h3>
+			<h3 class="contextual-heading" id="No-registered-handler-at-all">No registered handler at all</h3>
 
 			<p>On some machines, there is no registered <code>tel:</code> protocol handler.  What happens in this case? Unspecified.  Each OS will do something a little different.  For years <a href="https://stackoverflow.com/questions/1164004/how-to-mark-up-phone-numbers" target="_blank" rel="noopener"><code>tel:</code> would often do nothing at all</a> <em>which is very confusing to users</em>.  Some operating systems will, to various degrees, offer to help you find something capable of handling the protocol, but even that can be confusing (see next point).</p>
 		</section>
 		<section class="sectioning">
-			<h3 class="contextual-heading">Registered a Complex Program</h3>
+			<h3 class="contextual-heading" id="Registered-a-Complex-Program">Registered a Complex Program</h3>
 
 			<p>Some devices will launch a program that’s registered to handle the <code>tel:</code> protocol, <em>even if it can’t currently dial</em>.  There are many examples of this.  Apps like Google Hangouts or Skype were chat programs with some VoIP support. They could dial out if users paid a special recurring fee – but <em>most</em> users didn’t pay that fee.  When those users clicked a link and it launched their chat program, or told them they have to pay to dial, that’s confusing and frustrating.</p>
 
@@ -520,7 +522,7 @@ America (art for sale)</a></li>
 		</section>
 	</section>
 	<section class="sectioning">
-		<h2 class="contextual-heading">The Un-Protocol…</h2>
+		<h2 class="contextual-heading" id="The-Un-Protocol…">The Un-Protocol…</h2>
 		<p>Contrast that with this:  Today, if you use your smartphone and you select some text - regular text - there are some built in ways to assist in order to do smart selection.  That is, work has gone into making it easier for it to recognize that you’re trying to select a phone number or an email, as two examples. And if you select it, the context menu will offer “Call” or “Email”, respectively.</p>
 
 		<p>You know what’s wild? No author had to do anything special at all, and it works even on content written in the 90s.  That’s… Pretty great. That’s not to say markup couldn’t <em>help</em> here, but it gets at whether it needs to  <em>fundamentally</em> be a link.</p>

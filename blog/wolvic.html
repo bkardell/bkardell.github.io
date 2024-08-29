@@ -85,6 +85,7 @@ section > .captioned-image.p-attached {
 .captioned-image img, .captioned-image video {
     display: block;
     max-width: 100%;
+    
     margin: 0 auto 1em auto;
 }
 .source {
@@ -122,6 +123,7 @@ h1, [aria-level="1"] {
 h2, [aria-level="2"] {
     color: black;
     font-size: 1.35rem;
+    background: linear-gradient(55deg, transparent, #e5eef9);
 }
 
 h3, [aria-level="3"] {
@@ -452,7 +454,7 @@ America (art for sale)</a></li>
   }, 1000);
 </script>
     <main><div class="posted-on">Posted on 02/03/2022</div><article posted-on="02/03/2022" class="sectioning">
-	<h1 class="contextual-heading">Enter: Wolvic</h1>
+	<h1 class="contextual-heading" id="Enter-Wolvic">Enter: Wolvic</h1>
     <p class="segue">
         Today Igalia announced that we're taking over the browser project formerly known as "Firefox Reality" and re-introducing it with a new browser brand: <a href="https://wolvic.com" target="_blank" rel="noopener">Wolvic</a>.  You can read more details on this (including what the name is about) in 
         <a href="https://www.igalia.com/2022/02/03/Introducing-Wolvic.html" target="_blank" rel="noopener">Igalia's announcement post</a>
@@ -477,7 +479,7 @@ America (art for sale)</a></li>
     <p>On the other hand, in retrospect, I guess this is kind of typical in a way.</p>
 
     <section class="sectioning">
-    	<h2 class="contextual-heading">It happened with the Web, in fact</h2>
+    	<h2 class="contextual-heading" id="It-happened-with-the-Web">It happened with the Web, in fact</h2>
     	<p>
         In November of 1990, Tim Berners-Lee approached a man named Ian Ritchie and tried to hand the idea of a web browser to him. Ritchie's company made a popular piece of hypermedia software which was 
         <em>almost exactly a web browser</em>
@@ -521,7 +523,7 @@ America (art for sale)</a></li>
 	    <p>And, really, that's the case with lots of apps in that kind of OS.  You can get all kinds of interesting new UI mechanisms too - heads up display features and so on.  There's still a lot being sorted out, but you can easily see where this is going and the potential.</p>
 	</section>
 	<section class="sectioning">
-		<h3 class="contextual-heading">The Web, in XR</h3>
+		<h3 class="contextual-heading" id="The-Web-in-XR">The Web, in XR</h3>
 		    <p>
 		        Even more amazing to me was how obvious, in retrospect, the need for the web is here - I mean, even the regular old 2d, non-immersive web. 
 		        <em>Just think about how much you turn to the web</em>
@@ -542,7 +544,7 @@ America (art for sale)</a></li>
 		    <p>The basic usefulness of the web in XR seems to be lost on no one who makes such a device: Each one ships with a default browser.  Stats seem to suggest that I'm not alone in that:  People spend a lot of time in the browser here.</p>
 	</section>
     <section class="sectioning">
-    	<h3 class="contextual-heading">Enter: Wolvic</h3>
+    	<h3 class="contextual-heading" id="Enter-Wolvic1">Enter: Wolvic</h3>
 	    <p>The trouble is, there's just not a lot of choice.  I'm not just talking about a a choice of rendering engines, it's even lack of a choice of open source browsers.  In fact, for most of these standalone headsets, without Firefox Reality, there wouldn't any.  We can't let that happen.  Now feels like a critically important moment to make sure the Web has the same kinds of opportunities it does in other, similar ecocystems.</p>
 	    <p>We, at Igalia, been interested for a while in all of the problems and opportunies in the  ecosystem.  Last year we demoed a prototype browser for Android which merged our own WPE WebKit rendering engine with Firefox Reality, and provided some updates and fixes to Firefox Reality itself.   When most of us think about Android, we primarily think about mobile devices - but the truth is that the open part of Android serves as the basis for the OS on most of these standalone devices too.</p>
 	    <p>Our initial focus with Wolvic is toward taking custody of, updating, and nurturing the Firefox Reality codebase.  Our beta today launches with a large number of patches and improvements from Firefox Reality, and surely a few growing pains as well.  Wherever we start, we're chosing a new name, in part to make it clear that this project will will follow its own evolutionary path, wherever that leads, to survive as a choice in bringing another quality browser to these devices.  Looking forward to see where it leads.</p> 
