@@ -4,7 +4,7 @@
         <title>bkardell.com rss feed</title>
         <link>http://bkardell.com/</link>
         <description>Just the bkardell.com rss feed</description>
-        <lastBuildDate>Thu, 29 Aug 2024 17:40:26 GMT</lastBuildDate>
+        <lastBuildDate>Thu, 29 Aug 2024 18:08:38 GMT</lastBuildDate>
         <docs>http://blogs.law.harvard.edu/tech/rss</docs>
         <generator>awesome mix</generator>
         <image>
@@ -52,7 +52,7 @@
   	<img src="/media/2024/batman-thinking.png" alt="Batman, thinking...">
   	<figcaption>Hmmmmm...</figcaption>
   </figure>
-  <p>And, indeed, recently someone from the Servo community create a GitHub repo which will be a browser based on Servo (named <a href="https://github.com/versotile-org/verso">Verso</a> - great name!) and the crowd seemingly <em>did</em> go wild on that (double the points of almost any other Servo related post on the orange website), despite the fact that at the time, it was effectively still a mostly-not-function repo.</p>
+  <p>And, indeed, recently someone from the Servo community created a GitHub repo which <em>will be</em> a browser based on Servo (named <a href="https://github.com/versotile-org/verso">Verso</a> - great name!) and the crowd seemingly <em>did</em> go wild on that (double the points of almost any other Servo related post on the orange website), despite the fact that at the time, it was effectively still a mostly-not-function repo.</p>
   <p>So, anyway... I just wanted to step back and say... </p>
   <section class="sectioning">
     <h2 class="contextual-heading" style="font-size: 2.5rem;">Are you not entertained?</h2>

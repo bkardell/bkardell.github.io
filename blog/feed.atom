@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://bkardell.com/</id>
     <title>bkardell.com rss feed</title>
-    <updated>2024-08-29T17:40:26.078Z</updated>
+    <updated>2024-08-29T18:08:38.617Z</updated>
     <generator>awesome mix</generator>
     <author>
         <name>Brian Kardell</name>
@@ -53,7 +53,7 @@
   	<img src="/media/2024/batman-thinking.png" alt="Batman, thinking...">
   	<figcaption>Hmmmmm...</figcaption>
   </figure>
-  <p>And, indeed, recently someone from the Servo community create a GitHub repo which will be a browser based on Servo (named <a href="https://github.com/versotile-org/verso">Verso</a> - great name!) and the crowd seemingly <em>did</em> go wild on that (double the points of almost any other Servo related post on the orange website), despite the fact that at the time, it was effectively still a mostly-not-function repo.</p>
+  <p>And, indeed, recently someone from the Servo community created a GitHub repo which <em>will be</em> a browser based on Servo (named <a href="https://github.com/versotile-org/verso">Verso</a> - great name!) and the crowd seemingly <em>did</em> go wild on that (double the points of almost any other Servo related post on the orange website), despite the fact that at the time, it was effectively still a mostly-not-function repo.</p>
   <p>So, anyway... I just wanted to step back and say... </p>
   <section class="sectioning">
     <h2 class="contextual-heading" style="font-size: 2.5rem;">Are you not entertained?</h2>
