@@ -4,7 +4,7 @@
         <title>bkardell.com rss feed</title>
         <link>http://bkardell.com/</link>
         <description>Just the bkardell.com rss feed</description>
-        <lastBuildDate>Thu, 29 Aug 2024 18:08:38 GMT</lastBuildDate>
+        <lastBuildDate>Fri, 06 Sep 2024 18:47:10 GMT</lastBuildDate>
         <docs>http://blogs.law.harvard.edu/tech/rss</docs>
         <generator>awesome mix</generator>
         <image>
@@ -14,6 +14,40 @@
         </image>
         <copyright>All rights reserved 2018, Brian Kardell</copyright>
         <atom:link href="https://bkardell.com/blog/feed.atom" rel="self" type="application/rss+xml"/>
+        <item>
+            <title><![CDATA[1.3 Million Subtests]]></title>
+            <link>https://bkardell.com/blog/1_3M-WPTMilestone.html</link>
+            <guid>https://bkardell.com/blog/1_3M-WPTMilestone.html</guid>
+            <pubDate>Fri, 06 Sep 2024 04:00:00 GMT</pubDate>
+            <description><![CDATA[Today the Servo project crossed a milestone.]]></description>
+            <content:encoded><![CDATA[
+	<h1 class="contextual-heading" style="font-size: 2rem;">1.3 Million Subtests</h1>
+	<p class="segue">Today the Servo project crossed a milestone.</p>
+
+	<p>If you're not aware, all of the mainstream browsers that exist today use one of three browser projects/engines (Chromium/Blink, Firefox/Gecko or WebKit).  These in turn both have their roots in projects begun in the late 1990's (Gecko and KHTML).  Further, they have only 1 funding model, and largely 1 funding source.  Over the years, the projects have grown to tens of millions of lines of code and have now had tens of thousands of person years worth of investment.</p>
+
+	<p>All of this is just to underscore that getting a new one is incredibly challenging. Microsoft, a web giant, tried and eventually gave up and embraced Chromium.</p> 
+
+	<p><strong><em>But...</em></strong> If you haven't been paying attention, something very fun and exciting has been developing over the last couple of years.  New life has been breathed into a movement for what we call "novel engines" - that is, engines that don't come from those initial two (khtml/Gecko).</p>
+
+	<p>What's more is that most of the life at least comes from 2 engines which are being developed and funded differently - and they're making rapid progress now.</p>
+
+	<p>As of today, one of those novel engines - Servo (stewarded by Igalia) passes 1.3 <em>million</em> subtests in Web Platform Tests! Specfically: 1,303,530 as of this writing! Congratulations Servo project!</p>
+
+	<figure class="captioned-image">
+		<video src="/media/2024/nbc-the-good-place.mp4" loop="" controls="">
+	</video></figure>
+
+	<p>For perspective, that's over 73% of the subtests that it's currently running.  Of course, that's a totally arbitrary threshold, but it's nice to track progress and celebrate milestones and that's a big sounding round number to stop, raise a glass and say "well done!" and "keep up the good work".</p>
+
+	<figure class="captioned-image">
+		<img src="/media/2024/Leo_Toasting_meme_banner.jpg">
+	</figure>
+
+	<p>Speaking of keeping up the good work: You can join a growing number of others in helping to support the work on Servo directly by donating through <a href="https://github.com/sponsors/servo">GitHub sponsors</a> or our <a href="https://opencollective.com/servo">open collective</a>.  The Servo Technical Steering Committee collectively discusses how to prioritize the spending of available funds in <a href="https://github.com/servo/project/blob/main/governance/tsc/README.md">the public monthly calls</a>. You can also contribute code, reviews and other effort <a href="https://github.com/servo/servo/">via the Servo GitHub repository</a>.  Let's see how quickly we can reach 1.4 million :)</p>
+
+]]></content:encoded>
+        </item>
         <item>
             <title><![CDATA[What makes it exciting?]]></title>
             <link>https://bkardell.com/blog/IsThisExciting.html</link>
@@ -61,7 +95,7 @@
     </figure>
     <p>That's the Servo mini-browser running 3 tabs. And you know how I got it? I went to servo.org, downloaded it, installed it and launched it. I can currently use keyboard commands to launch and close tabs. It's also open source, so anyone could in theory have a better downstream one (maybe Verso?) or help grow a browser in Servo itself (more like Firefox, I guess).</p>
     <p>So... Is Servo a browser?</p>
-    <p>I mean... no. But also... yes and it's super exiting.</p>
+    <p>I mean... no. But also... yes and it's super exciting.</p>
     <p>You should be excited about it, I think. </p>
     <p>You can help support it with some funding through <a href="https://github.com/sponsors/servo">GitHub</a> or <a href="https://opencollective.com/servo">Open Collective</a> (wealthy donors and business support is welcome too :)).  How to choose and prioritize the work funded by donations is decided through collective discussions on the <a href="https://github.com/servo/project/blob/main/governance/tsc/README.md">public monthly calls of the Servo Technical Steering Committee</a>.</p>
   </section>
@@ -542,162 +576,6 @@
 
 	<p>Anyway, it was an interesting rabbit hole to dive into!  I have further thoughts on the WPT.fyi dashboard page which I'll share in another post, but I'd love to hear of any interesting queries that you come up with or questions you have. I probably don't know the answers, but I'll try to help find them!</p>
 
-]]></content:encoded>
-        </item>
-        <item>
-            <title><![CDATA[Known Knowns]]></title>
-            <link>https://bkardell.com/blog/do-not-commit.html</link>
-            <guid>https://bkardell.com/blog/do-not-commit.html</guid>
-            <pubDate>Sat, 04 May 2024 04:00:00 GMT</pubDate>
-            <description><![CDATA[Fun with the DOM, the parser, illogical trees and "unknowns"...]]></description>
-            <content:encoded><![CDATA[
-    <h1 class="contextual-heading" style="font-size: 2rem;">Known Knowns</h1>
-    <p class="segue">Fun with the DOM, the parser, illogical trees and "unknowns"...</p>
-    <script src="../prism.js"></script>
-    <link rel="stylesheet" href="../prism.css">
-    
-    
-    <p>HTML has this very tricky parser that does 'corrections' and things on the fly. So if you create a page like:</p>
-    <pre class=" language-html"><code class=" language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>table</span><span class="token punctuation">&gt;</span></span>
-   Hello
-   <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>td</span><span class="token punctuation">&gt;</span></span>
-      Look below...
-   <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>td</span><span class="token punctuation">&gt;</span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>table</span><span class="token punctuation">&gt;</span></span>
-</code></pre>
-    <p>And load it in your browser, what you'll actually get parsed as a tree will be </p>
-    <ul class="domTree">
-        <li class="t1"><code class=" language-html">HTML</code>
-            <ul>
-                <li class="t1"><code class=" language-html">HEAD</code></li>
-                <li class="t1"><code class=" language-html">BODY</code>
-                    <ul>
-                        <li class="t3"><code class=" language-html">#text</code>: <span>
-                                Hello
-                            </span></li>
-                        <li class="t1"><code class=" language-html">TABLE</code>
-                            <ul>
-                                <li class="t1"><code class=" language-html">TBODY</code>
-                                    <ul>
-                                        <li class="t1"><code class=" language-html">TR</code>
-                                            <ul>
-                                                <li class="t1"><code class=" language-html">TD</code>
-                                                    <ul>
-                                                        <li class="t3"><code class=" language-html">#text</code>: <span>
-                                                                Look below...
-                                                            </span></li>
-                                                    </ul>
-                                                </li>
-                                                <li class="t3"><code class=" language-html">#text</code>: <span>
-                                                    </span></li>
-                                            </ul>
-                                        </li>
-                                    </ul>
-                                </li>
-                            </ul>
-                        </li>
-                    </ul>
-                </li>
-            </ul>
-        </li>
-    </ul>
-    <p>Things can literally be moved around, implied elements added and so on. </p>
-    <section class="sectioning" headingoffset="1">
-        <h1 class="contextual-heading" style="font-size: 2rem;">Illogical trees</h1>
-        <p>But it's not impossible to create trees that are impossible to create with the parser itself, if you do it dynamically. With the DOM API, you can create whatever wild constructs you want: Paragraphs inside of paragraphs? Sure, why not.</p>
-        <p>Or, <a href="https://software.hixie.ch/utilities/js/live-dom-viewer/?%3C!DOCTYPE%20html%3E%0A%3Ctable%20id%3D%22one%22%3E%3C%2Ftable%3E%0A%0A%3Cscript%3E%0A%20%20%20one.appendChild(%0A%20%20%20%20%20document.createTextNode(%22test%22)%0A%20%20%20)%0A%3C%2Fscript%3E">text that is a direct child of a table</a>. Note this still renders the text in every browser engine.</p>
-        <p>You can even add children to 'void' elements that way too. Here's an interesting one: <a href="https://software.hixie.ch/utilities/js/live-dom-viewer/?%3C!DOCTYPE%20html%3E%0A%3Chr%20id%3D%22one%22%3E%0A%0A%3Cscript%3E%0A%20%20%20one.appendChild(%0A%20%20%20%20%20document.createTextNode(%22test%22)%0A%20%20%20)%0A%3C%2Fscript%3E">An <code>&lt;hr&gt;</code> with a text node child</a>. Again, It renders the text in every browser engine (the color varies).</p>
-        <p>You can also put unknown elements into your markup and the text content is shown... By default, it is basically a <code>&lt;span&gt;</code>.</p>
-        <p>In <em>most cases</em>, HTML wants to show something... or at least leave CSS in control. For example, you can dynamically add children to a <code>&lt;script&gt;</code>. While that won't be shown by default, it's simply because the UA style sheet has script set to <code>display: none;</code>. If we change that, <a href="https://software.hixie.ch/utilities/js/live-dom-viewer/?%3C!DOCTYPE%20html%3E%0A%3Cstyle%3E%0A%20%20%20script%20%7B%20display%3A%20block%3B%20%7D%0A%3C%2Fstyle%3E%0A%3Cbody%3E%0A%20%20%3Cdiv%20id%3Dtwo%20style%3D%22background%3A%20pink%22%3EInteresting!%3C%2Fdiv%3E%0A%3Cscript%20id%3D%22one%22%3E%0A%20%20%20one.appendChild(two)%0A%3C%2Fscript%3E">we can totally see it</a>.</p>
-        <p>But this isn't universal: In some cases there are other renderers that are in control - mainly when it comes to form controls. But also, for example, if you switch the <code>&lt;hr&gt;</code> in the example above to a <code>&lt;br&gt;</code> it won't render the text. It doesn't generate a box that you can do anything with with CSS as far as I can tell, except make it <code>display: none</code> (useful if they’re in <code>white-space: pre</code> blocks to keep them from forcing open extra lines).
-    </p></section>
-    <section class="sectioning" headingoffset="1">
-        <h1 class="contextual-heading" style="font-size: 2rem;">SVG</h1>
-        <p>The HTML parser has fix ups for embedding SVG too, there are kind of integration points. But, in SVG you can have an unknown element too... For example:</p>
-        <pre class=" language-html"><code class=" language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>svg</span><span class="token punctuation">&gt;</span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>unknown</span><span class="token punctuation">&gt;</span></span>Test<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>unknown</span><span class="token punctuation">&gt;</span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>rect</span> <span class="token attr-name">width</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>150<span class="token punctuation">"</span></span> <span class="token attr-name">height</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>150<span class="token punctuation">"</span></span> <span class="token attr-name">x</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>10<span class="token punctuation">"</span></span> <span class="token attr-name">y</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>10<span class="token punctuation">"</span></span><span class="token style-attr language-css"><span class="token attr-name"> <span class="token attr-name">style</span></span><span class="token punctuation">="</span><span class="token attr-value"><span class="token property">fill</span><span class="token punctuation">:</span>blue<span class="token punctuation">;</span><span class="token property">stroke</span><span class="token punctuation">:</span>pink<span class="token punctuation">;</span><span class="token property">stroke-width</span><span class="token punctuation">:</span>5<span class="token punctuation">;</span><span class="token property">opacity</span><span class="token punctuation">:</span>0.5</span><span class="token punctuation">"</span></span> <span class="token punctuation">/&gt;</span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>svg</span><span class="token punctuation">&gt;</span></span>
-</code></pre>
-        <p>The unknown element won't render the text, nor additional SVG children inside it. For example:</p>
-        <pre class=" language-html"><code class=" language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>svg</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation">=</span>one</span> <span class="token attr-name">width</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>300<span class="token punctuation">"</span></span> <span class="token attr-name">height</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>170<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
-  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>unknown</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>ellipse</span> <span class="token attr-name">cx</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>120<span class="token punctuation">"</span></span> <span class="token attr-name">cy</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>80<span class="token punctuation">"</span></span> <span class="token attr-name">rx</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>100<span class="token punctuation">"</span></span> <span class="token attr-name">ry</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>50<span class="token punctuation">"</span></span><span class="token style-attr language-css"><span class="token attr-name"> <span class="token attr-name">style</span></span><span class="token punctuation">="</span><span class="token attr-value"><span class="token property">fill</span><span class="token punctuation">:</span>yellow<span class="token punctuation">;</span><span class="token property">stroke</span><span class="token punctuation">:</span>green<span class="token punctuation">;</span><span class="token property">stroke-width</span><span class="token punctuation">:</span>3</span><span class="token punctuation">"</span></span> <span class="token punctuation">/&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>unknown</span><span class="token punctuation">&gt;</span></span>
-  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>rect</span> <span class="token attr-name">width</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>150<span class="token punctuation">"</span></span> <span class="token attr-name">height</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>150<span class="token punctuation">"</span></span> <span class="token attr-name">x</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>10<span class="token punctuation">"</span></span> <span class="token attr-name">y</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>10<span class="token punctuation">"</span></span><span class="token style-attr language-css"><span class="token attr-name"> <span class="token attr-name">style</span></span><span class="token punctuation">="</span><span class="token attr-value"><span class="token property">fill</span><span class="token punctuation">:</span>blue<span class="token punctuation">;</span><span class="token property">stroke</span><span class="token punctuation">:</span>pink<span class="token punctuation">;</span><span class="token property">stroke-width</span><span class="token punctuation">:</span>5<span class="token punctuation">;</span><span class="token property">opacity</span><span class="token punctuation">:</span>0.5</span><span class="token punctuation">"</span></span> <span class="token punctuation">/&gt;</span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>svg</span><span class="token punctuation">&gt;</span></span>
-</code></pre>
-    </section>
-    <section class="sectioning" headingoffset="1">
-        <h1 class="contextual-heading" style="font-size: 2rem;">MathML</h1>
-        <p>As you might expect, there are parser integrations for MathML too, and you can have an unknown elements in MathML too. In MathML, all elements (including unknown ones) generate a "math content box", but only <em>token</em> elements (like <code>&lt;mi&gt;</code>, <code>&lt;mo&gt;</code>, <code>&lt;mn&gt;</code>) render text. For example, the <code>&lt;math&gt;</code> element itself - if you try to put text in it, the text won't render, but it will still generate a box and other content.</p>
-        <pre class=" language-html"><code class=" language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>math</span><span class="token punctuation">&gt;</span></span>
-   Not a token. Doesn't render.
-   <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>mi</span><span class="token punctuation">&gt;</span></span>X<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>mi</span><span class="token punctuation">&gt;</span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>math</span><span class="token punctuation">&gt;</span></span>
-</code></pre>
-        <p>MathML has other elements too like <code>&lt;mrow&gt;</code> and <code>&lt;mspace&gt;</code> and <code>&lt;mphantom&gt;</code> which are just containers. Same story there, if you try to put text in them, the text won't render... </p>
-        <pre class=" language-html"><code class=" language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>math</span><span class="token punctuation">&gt;</span></span>
-   <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>mrow</span><span class="token punctuation">&gt;</span></span>Not a token. Doesn't render.<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>mrow</span><span class="token punctuation">&gt;</span></span>
-   <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>mi</span><span class="token punctuation">&gt;</span></span>X<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>mi</span><span class="token punctuation">&gt;</span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>math</span><span class="token punctuation">&gt;</span></span>
-</code></pre>
-        <p><em>But</em> if you put the text inside a token element (like <code>&lt;mi&gt;</code>) inside that same <code>&lt;mrow&gt;</code>, then the text will render..</p>
-        <pre class=" language-html"><code class=" language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>math</span><span class="token punctuation">&gt;</span></span>
-   <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>mrow</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>mi</span><span class="token punctuation">&gt;</span></span>ok<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>mi</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>mrow</span><span class="token punctuation">&gt;</span></span>
-   <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>mi</span><span class="token punctuation">&gt;</span></span>X<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>mi</span><span class="token punctuation">&gt;</span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>math</span><span class="token punctuation">&gt;</span></span>
-</code></pre>
-        <p>In MathML, unknown elements are basically treated just like <code>&lt;mrow&gt;</code>. In the above examples, you could replace <code>&lt;mrow&gt;</code> with <code>&lt;unknown&gt;</code> and it'd be the same.</p>
-    </section>
-    <section class="sectioning" headingoffset="1">
-        <h1 class="contextual-heading" style="font-size: 2rem;">Unknown Unknowns</h1>
-        <p>Ok, here's something you don't think about every day: Given this markup:</p>
-        <pre class=" language-html"><code class=" language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>unknown</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation">=</span>one</span><span class="token punctuation">&gt;</span></span>One<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>unknown</span><span class="token punctuation">&gt;</span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>math</span><span class="token punctuation">&gt;</span></span>
-  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>unknown</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation">=</span>two</span><span class="token punctuation">&gt;</span></span>Two<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>unknown</span><span class="token punctuation">&gt;</span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>math</span><span class="token punctuation">&gt;</span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>svg</span><span class="token punctuation">&gt;</span></span>
-  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>unknown</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation">=</span>three</span><span class="token punctuation">&gt;</span></span>Three<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>unknown</span><span class="token punctuation">&gt;</span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>svg</span><span class="token punctuation">&gt;</span></span>
-</code></pre>
-        <p><code>One</code>, <code>Two</code> and <code>Three</code> are <strong><em>three different kinds of unknowns</em></strong>!</p>
-        <pre class=" language-javascript"><code class=" language-javascript">console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>one<span class="token punctuation">.</span>namespaceURI<span class="token punctuation">,</span> one<span class="token punctuation">.</span>constructor<span class="token punctuation">.</span>name<span class="token punctuation">)</span>
-<span class="token comment" spellcheck="true">// logs 'http://www.w3.org/1999/xhtml HTMLUnknownElement'</span>
-
-console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>two<span class="token punctuation">.</span>namespaceURI<span class="token punctuation">,</span> two<span class="token punctuation">.</span>constructor<span class="token punctuation">.</span>name<span class="token punctuation">)</span>
-<span class="token comment" spellcheck="true">// logs 'http://www.w3.org/1998/Math/MathML MathMLElement'</span>
-
-console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>three<span class="token punctuation">.</span>namespaceURI<span class="token punctuation">,</span> three<span class="token punctuation">.</span>constructor<span class="token punctuation">.</span>name<span class="token punctuation">)</span>
-<span class="token comment" spellcheck="true">// logs 'http://www.w3.org/2000/svg SVGElement`</span>
-</code></pre>
-        <p>In CSS, these can also (theoretically) be styled via namespaces. The following will only style the first of those:</p>
-        <pre class=" language-css"><code class=" language-css"><span class="token atrule"><span class="token rule">@namespace</span> html <span class="token url">url(http://www.w3.org/1999/xhtml)</span><span class="token punctuation">;</span></span>
-<span class="token selector">html|unknown</span> <span class="token punctuation">{</span> <span class="token property">color</span><span class="token punctuation">:</span> blue<span class="token punctuation">;</span> <span class="token punctuation">}</span>
-</code></pre>
-    </section>
-    <section class="sectioning" headingoffset="1">
-        <h1 class="contextual-heading" style="font-size: 2rem;">Under-defined Unknowns</h1>
-        <p>Remember how in the beginning we created nonsensical constructs dynamically? Well, we can do that here too. We can move an unknown <code>MathMLElement</code> right into HTML, or an unknown <code>HTMLElement</code> right into MathML, and so on - and it's not currently well-defined, universal, or consistent what actually happens here.</p>
-        <p><a href="https://codepen.io/briankardell/pen/ExJzOXK">Here's an interesting example</a> moves an unknown <code>MathMLElement</code> and a <code>SVGElement</code> into HTML, and an <code>HTMLElement</code> into MathML and so on</p>
-        <div class="cp_embed_wrapper"><iframe allowfullscreen="true" allowpaymentrequest="true" allowtransparency="true" class="cp_embed_iframe " frameborder="0" height="300" width="100%" name="cp_embed_1" scrolling="no" src="https://codepen.io/briankardell/embed/ExJzOXK?height=300&amp;default-tab=html%2Cresult&amp;slug-hash=ExJzOXK&amp;user=briankardell&amp;name=cp_embed_1" style="width: 100%; overflow:hidden; display:block;" title="CodePen Embed" loading="lazy" id="cp_embed_ExJzOXK"></iframe></div>
-        <script async="" src="https://cpwebassets.codepen.io/assets/embed/ei.js"></script>
-        <p> Here's how that renders in the various today:</p>
-        <figure>
-            <img src="https://notes.igalia.com/uploads/331613fd-0d93-4126-a746-646b3aa114f9.png">
-            <figcaption>Left to right: Chrome, Firefox, Safari all render differently</figcaption>
-        </figure>
-        <p>So, I guess we should probably fix that. I'll have to start creating some issues and tentative tests (feel free to beat me to it 😉)</p>
-    </section>
-    <section class="sectioning" headingoffset="1">
-        <h1 class="contextual-heading" style="font-size: 2rem;">Semi-related Rabbit Holes</h1>
-        <p>Not specifically these issues, but related namespace stuff has caused a lot of problems that we're remedying as shown by a recent flurry of activity started by my colleague Luke Warlow to fix MathML-Core support in various libraries/frameworks:</p>
-        <ul>
-            <li><a href="https://github.com/sveltejs/svelte/pull/11387">Svelte 5</a></li>
-            <li><a href="https://github.com/preactjs/preact/pull/4364">Preact</a> </li>
-            <li><a href="https://github.com/angular/angular/issues/55608">Angular</a></li>
-            <li><a href="https://github.com/lit/lit/pull/4637">Lit</a></li>
-        </ul>
-        <p>Who's next? :)</p>
-    </section>
 ]]></content:encoded>
         </item>
         <item>
