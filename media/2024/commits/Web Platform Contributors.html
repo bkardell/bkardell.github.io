@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<!-- saved from url=(0069)https://teams.pages.igalia.com/webplatform/web-platform-contributors/ -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Web Platform Contributors</title>
+    
+  </head>
+  <body>
+    <h1>Web Platform Contributors</h1>
+
+    <p><a href="https://teams.pages.igalia.com/webplatform/web-platform-contributors/summaries.html">Summaries</a> | <a href="https://teams.pages.igalia.com/webplatform/web-platform-contributors/reports/">Raw reports</a> | <a href="https://gitlab.igalia.com/teams/webplatform/web-platform-contributors">gitlab</a></p>
+    <p>Year:
+      <select id="year">
+        <option>2024</option>
+        <option>2023</option>
+        <option>2022</option>
+        <option>2021</option>
+        <option>2020</option>
+        <option>2019</option>
+        <option>2018</option>
+        <option>2017</option>
+      </select>
+    </p>
+    <p>Repository: <select id="repositories"><option>Any</option><option>accerciser</option><option>accname</option><option>aria</option><option>at-spi2-atk</option><option>at-spi2-core</option><option>atk</option><option>babel</option><option>bikeshed</option><option>chromium</option><option>cog</option><option>coga</option><option>compat</option><option>console</option><option>core-aam</option><option>css-aam</option><option>css-houdini-drafts</option><option>csswg-drafts</option><option>dom</option><option>dpub-aam</option><option>dpub-aria</option><option>ecmarkup</option><option>encoding</option><option>epiphany</option><option>fdo</option><option>fetch</option><option>fullscreen</option><option>graphics-aam</option><option>graphics-aria</option><option>gstreamer</option><option>html</option><option>html-aam</option><option>html-aria</option><option>infra</option><option>libsoup</option><option>libwpe</option><option>linux-next</option><option>math-aam</option><option>math-aria</option><option>mathml</option><option>mathml-aam</option><option>mathml-core</option><option>mdn</option><option>mesa</option><option>mimesniff</option><option>mozilla-central</option><option>NativeScript</option><option>networking</option><option>notifications</option><option>orca</option><option>proposal-temporal</option><option>proposal-top-level-await</option><option>pyatspi2</option><option>quirks</option><option>rfcs</option><option>servo</option><option>servo-web-render</option><option>storage</option><option>streams</option><option>svg-aam</option><option>test-results</option><option>test262</option><option>three.js</option><option>url</option><option>v8</option><option>valve</option><option>VK-GL-CTS</option><option>web-platform-tests</option><option>webassembly</option><option>webidl</option><option>webkit</option><option>webxr</option><option>webxr-test-api</option><option>wolvic</option><option>wolvic-chromium</option><option>wpe-android</option><option>xhr</option><option>xserver</option><option>yaa</option></select></p>
+    <p>Filters:</p> <ul id="filters"><li>company: <select id="select_filter_company"><option>Any</option><option>Unknown</option><option>sagudev</option><option>Mozilla</option><option>Streamlabs</option><option>Huawei</option><option>Zesty</option><option>Igalia</option><option>Microsoft</option><option>Facebook</option><option>Google</option><option>Apple</option><option>ARM</option><option>Intel</option><option>Birchill</option><option>Pengutronix</option><option>Adobe</option><option>Collabora</option><option>The Paciello Group</option><option>Opera</option><option>Itiel</option><option>EasyBit</option><option>Red Hat</option><option>Bocoup</option><option>Oblong Industries</option><option>Salesforce</option><option>AMD</option><option>Frontiers</option><option>Linaro</option><option>Sony</option><option>GitHub</option><option>Hypra</option><option>deque.com</option><option>Paciello Group</option><option>Open Directive</option><option>VMWare</option><option>Masatoshi Kimura</option><option>Crab Nebula</option><option>Apache</option><option>Bytedance</option><option>Tencent</option><option>Samsung</option><option>Naver Corporation</option><option>LGE</option><option>NVIDIA</option><option>Dolby</option><option>Brave</option><option>Xperi Corporation</option><option>Yandex</option><option>Meta</option><option>Amazon</option><option>Canonical Limited</option><option>Vivaldi</option><option>Alibaba</option><option>Centricular</option><option>OneStream Live</option><option>LTN</option><option>Netflix</option><option>asymptotic</option><option>Oracle</option><option>Hewlett-Packard</option><option>Imagination Technologies</option><option>GlobalLogic</option></select></li><li>team: <select id="select_filter_team"><option>Any</option><option>Unknown</option><option>Multimedia</option><option>compilers</option><option>chromium</option><option>web-platform</option><option>multimedia</option><option>webkit</option><option>graphics</option><option>core</option><option>support</option><option>Core</option></select></li><li>pronoun: <select id="select_filter_pronoun"><option>Any</option><option>Unknown</option><option>maybe-She</option><option>maybe-He</option><option>He</option><option>They/He</option><option>She</option><option>she</option><option>he</option><option>They</option></select></li></ul>
+
+    <textarea cols="80" rows="40" id="output"></textarea>
+
+    <script>
+      let select_year = document.getElementById("year");
+      async function update_year() {
+          let textarea = document.getElementById("output");
+          textarea.value = "";
+
+          let response = await fetch(`reports/${select_year.value}/report.json`);
+          let json = await response.json();
+
+          let select_repositories = document.getElementById("repositories");
+          select_repositories.innerHTML = "<option>Any</option>"
+          for (var name in json.repositories)
+              select_repositories.insertAdjacentHTML('beforeend', `<option>${name}</option>`)
+
+          let filters = document.getElementById("filters");
+          filters.innerHTML = "";
+          for (var filter_name in json.filters) {
+              filters.insertAdjacentHTML('beforeend', `<li>${filter_name}: <select id="select_filter_${filter_name}"><option>Any</option><option>Unknown</option></select></li>`);
+              let select = filters.lastElementChild.lastElementChild;
+              for (var value in json.filters[filter_name]) {
+                  select.insertAdjacentHTML('beforeend', `<option>${json.filters[filter_name][value]}</option></li>`);
+              }
+              select.addEventListener("change", update_output);
+          }
+
+          function include_contributor(contributor) {
+              for (var filter_name in json.filters) {
+                  var select = document.getElementById(`select_filter_${filter_name}`);
+                  if (select.value === "Any")
+                      continue;
+                  if (select.value === "Unknown") {
+                      if (contributor.hasOwnProperty(filter_name))
+                          return false;
+                      continue;
+                  }
+                  if (contributor[filter_name] !== select.value)
+                      return false;
+              }
+              return true;
+          }
+
+          function append_output_for_repository(repository_name) {
+              let repository = json.repositories[repository_name];
+              let total_commits = 0;
+              let text = "";
+              if (!repository.skip) {
+                  repository.committers.forEach(email => {
+
+                      let contributor = json.contributors[email];
+                      let emails = [email];
+                      if (contributor.aliases)
+                          emails.push.apply(emails, contributor.aliases);
+                      if (include_contributor(contributor)) {
+                          text += `${contributor.commits[repository_name]} ${contributor.name || 'Unknown'} <${emails}>\n`;
+                          total_commits += contributor.commits[repository_name];
+                      }
+                  });
+              }
+              textarea.value += `******** ${repository_name} ******* (TOTAL: ${total_commits})\n${text}\n`;
+          }
+
+          function update_output() {
+              let repository_name = select_repositories.value;
+              textarea.value = "";
+              if (repository_name === "Any") {
+                  for (var name in json.repositories)
+                      append_output_for_repository(name);
+              } else {
+                  append_output_for_repository(repository_name);
+              }
+          }
+
+          select_repositories.addEventListener("change", update_output);
+          update_output();
+      }
+
+      select_year.addEventListener("change", update_year);
+      update_year();
+    </script>
+  
+
+</body></html>

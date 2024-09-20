@@ -1,0 +1,1200 @@
+<html lang="en" resource-type="blogpost"><head>  
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="view-transition" content="same-origin"> 
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@briankardell">
+    <meta name="twitter:creator" content="@briankardell">
+    <meta name="twitter:title" content="Igalia: 2024 Mid-season Power Rankings">
+    <meta name="twitter:description" content="Let’s take the good old annual look at how Igalia is stacking up so far in terms of Open Source contributions - you know, &quot;The One With the Charts&quot;">
+    <meta name="twitter:image" content="https://bkardell.com/media/2024/commits/chromium.svg">
+    <!-- meta name="monetization" content="$ilp.uphold.com/kKU4GXiRwhnf " -->
+     
+    <link rel="alternate" type="application/rss+xml" href="https://bkardell.com/blog/feed.rss" title="bkardell.com/blog rss feed">
+    <title>Igalia: 2024 Mid-season Power Rankings</title> 
+    <style>/*!
+ * Web Fonts from Fontspring.com
+ *
+ * All OpenType features and all extended glyphs have been removed.
+ * Fully installable fonts can be purchased at https://www.fontspring.com
+ *
+ * The fonts included in this stylesheet are subject to the End User License you purchased
+ * from Fontspring. The fonts are protected under domestic and international trademark and 
+ * copyright law. You are prohibited from modifying, reverse engineering, duplicating, or
+ * distributing this font software.
+ *
+ * (c) 2010-2023 Fontspring
+ *
+ *
+ *
+ *
+ * The fonts included are copyrighted by the vendor listed below.
+ *
+ * Vendor:      Horizon Type
+ * License URL: https://www.fontspring.com/licenses/horizon-type/webfont
+ *
+ *
+ */
+
+@font-face {
+    font-family: 'acherus_militant_1_-_light.otf';
+    src: url('/acherus_militant_1_-_light.otf-webfont.woff2') format('woff2'),
+         url('/acherus_militant_1_-_light.otf-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+
+.captioned-image {
+    background-color: #eaeaea;
+    display: block;
+    overflow: hidden;
+    padding: 1rem;
+    text-align: center;
+    font-style: italic;
+}
+
+.captioned-image.p-attached {
+    width: 40%;
+    display: inline-block;
+    margin: 0 1rem 2rem 1rem;
+}
+
+section > .captioned-image.p-attached {
+    margin-top: 1.5rem; /* correct for heading size*/
+}
+
+ pre { overflow-x: auto }
+
+.captioned-image.p-attached.p-attached-left {
+    float: left;
+}
+
+.captioned-image.p-attached.p-attached-right {
+    float: right;
+}
+
+.captioned-image.p-attached + * + * {
+    clear: both;
+    margin-top: 2rem;
+}
+
+
+.captioned-image img, .captioned-image video {
+    display: block;
+    max-width: 100%;
+    
+    margin: 0 auto 1em auto;
+}
+.source {
+    font-style: italic;
+}
+body {
+    display: grid;
+    grid-template-columns: 25rem auto;
+    font-size: 1.1rem;
+    font-family: 'acherus_militant_1_-_light.otf';
+    font-weight: 400;
+    font-size: 1.25rem;
+    line-height: 1.625;
+    margin: 0;
+    background-color: rgb(249, 246, 246);
+}
+h1 { margin: 0.5rem; }
+code-format {
+    border-left: 0.5rem solid rgba(123,115,209,0.35);
+    display: block;
+    padding: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+contextual-heading {
+    display: block;
+    margin-top: 2rem;
+}
+
+h1, [aria-level="1"] {
+    color: black;
+    font-size: 1.45rem;
+}
+
+h2, [aria-level="2"] {
+    color: black;
+    font-size: 1.35rem;
+}
+
+h3, [aria-level="3"] {
+    color: black;
+    font-size: 1.25rem;
+}
+
+h4, [aria-level="4"] {
+    color: black;
+    font-size: 1.2rem;
+}
+
+h5, h6, [aria-level="5"], [aria-level="6"] {
+    color: black;
+    font-size: 1.2rem;
+    font-weight: bolder;
+}
+
+
+.posted-on {
+    font-style: italic;
+    font-size: 0.8rem; 
+    text-align: right;
+    margin-bottom: 1rem;
+}
+
+ul, li {
+    margin: 0.5rem;
+    text-align: left;
+}
+
+.authorinfo {
+    height: 100%;
+    padding-top: 1rem;
+    padding-right: 0;
+    background-color: #fbf5e9; 
+    display: block;
+    background-image: linear-gradient(to right, #c7cccc, #dde0e8 );
+    border-right-width: 1px;
+    border-right-style: dotted;
+}
+
+.tagline {
+    font-style: italic;
+    text-align: center;
+}
+ 
+[tag-esc] {
+    color: maroon;
+    font-family: Courier, "Lucida Console", monospace;
+}
+
+[tag-esc]::before {
+    content: '<';
+}
+
+[tag-esc]::after {
+    content: '>';
+}
+
+main {
+    min-width: 50%;
+    width: 80%;
+    padding: 1rem;
+}
+header .title {
+    background-color: rgba(123,115,209,0.35);
+    padding: 0.3rem;
+    padding-left: 0.25rem;
+    font-weight: bolder;
+    font-size: 1rem;
+    border-left: 1rem solid #999298;
+}
+
+header .profile {
+    width: 50%;
+    margin: 1rem 25%;
+}
+
+header .title + nav {
+    font-size: 0.9rem;
+}
+
+header .blurb {
+    font-size: 0.9rem;
+    text-align: center;
+}
+header .name {
+    text-align: center;
+    font-size: xx-large;
+}
+.segue {
+    font-style: italic;
+}
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  border: 0;
+}
+
+#aboutMeToggle {
+    display: none;
+}
+
+
+:where(pre:has(code[class*="language"])) {
+    display: block;
+    background-color: black; 
+    padding: 0.5rem;
+}
+
+code[class*="language"] {
+    min-width: fit-content;
+}
+
+spicy-sections:not([affordance]) > h2 {
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+}
+
+main article { max-width: 100em; margin: auto; }
+/* this needs rethinking, it wants a selector like 'not flow content' */
+article>*:not(contextual-heading,a), section>*:not(contextual-heading,a) {
+    margin-left: 0.45rem;
+}
+
+blockquote {
+  font-family: serif;
+  background: #f9f9f9;
+  border-left: 10px solid #ccc;
+  margin: 1.5em 10px;
+  padding: 0.5em 10px;
+}
+blockquote:before {
+  color: #ccc;
+  content: open-quote;
+  font-size: 2em;
+  line-height: 0.1em;
+  margin-right: 0.25em;
+  vertical-align: -0.4em;
+}
+
+blockquote:after {
+  color: #ccc;
+  content: close-quote;
+  font-size: 2em;
+  line-height: 0.1em;
+  margin-left: 0.25em;
+  vertical-align: -0.4em;
+}
+ 
+
+@media (max-width: 800px){
+    body {
+        grid-template-columns: 1fr;
+    }
+    .authorinfo {
+        height: auto;
+        border-bottom: 1px solid #afafff;
+        padding-top:  0;
+    } 
+
+    main { width: 95%; margin: 0 auto;}
+
+    .captioned-image.p-attached {
+        width: 100%;
+        margin: 1rem 0;
+    }
+
+    .captioned-image.p-attached.p-attached-left,
+    .captioned-image.p-attached.p-attached-right {
+        float: none;
+    }
+
+    #aboutMeToggle {
+        display: block;
+        background-color: #675e5e;
+        color: white;
+        padding: 0.25rem;
+        padding-left: 0.5rem;
+        border-left: 1rem solid black;
+    }
+
+    header li { display: inline; margin-left: -0.5em; }
+    header .blurb li::after { content: '; '; }
+    header  nav li {
+        display: inline-block;
+        margin-left: 0.35rem;
+        margin-right: 0.35rem;
+    }
+    header .title {
+        width: 100%;
+    }
+    main li .source { display: block; }
+
+} 
+
+spicy-sections {
+    --const-mq-affordances:
+      [screen and (min-width: 600px) ] collapse |
+      [screen and (min-width: 801px) ] tab-bar
+    ;
+    display: block;
+}
+
+spicy-sections.authorinfo {
+    --const-mq-affordances:
+      [screen and (max-width: 801px) ] collapse
+    ;
+}
+
+
+spicy-sections.single {
+    --const-mq-affordances:
+      [screen ] collapse 
+;
+}
+
+[role="tab"] {
+    margin-right:  1.5rem;
+}
+
+
+</style>
+    <style> 
+      .captioned-image { font-size: 0.9rem; }
+      .thanksTo { font-style: italic; font-size: 0.8rem; }
+    </style>
+    <script>
+      var activateOptional = function (media) {
+        var source = media.getAttribute('data-src'),
+            temp,
+            container = media.parentElement;
+
+          if (media.nextSibling && media.nextSibling.matches) {
+            if (media.nextSibling.matches('.clickToSee')) {
+              media.parentElement.removeChild(media.nextSibling);
+            }
+          }
+ 
+          if (media.tagName === 'VIDEO') {
+            temp = document.createElement('video')
+            temp.setAttribute('autoplay','')
+            temp.setAttribute('controls','')
+            temp.setAttribute('loop','')
+            temp.innerHTML = '<source src="' + source + '.webm" type="video/webm">'
+                    + '<source src="' + source + '.mp4" type="video/mp4">';
+            media.parentElement.replaceChild(temp, media);
+            setTimeout(function () {
+              temp.play()
+            }, 0);
+          } else {
+            media.src = media.getAttribute('data-src');
+          }
+
+          container.classList.add('active');
+      }
+    </script>
+  </head>
+  <body>
+    <spicy-sections class="authorinfo">
+<h2 id="aboutMeToggle" defaults-on-match="">Author Information</h2>
+  
+<header>
+    <div class="name">
+        Brian Kardell
+    </div>
+    <img class="profile" src="/profile.jpg" alt="">
+    <div class="tagline"><a href="/">Betterifying the Web</a></div>
+    <div class="blurb">
+        <ul>
+            <li>Developer Advocate at Igalia</li>
+            <li>Original Co-author/Co-signer of The Extensible Web Manifesto</li>
+            <li>Co-Founder/Chair, W3C Extensible Web CG</li>
+            <li>Member, W3C (OpenJS Foundation)</li>
+            <li>Co-author of HitchJS</li>
+            <li>Blogger</li>
+            <li>Art, Science &amp; History Lover</li>
+            <li>Standards Geek</li>
+        </ul>
+    </div>
+    <div class="title">Follow Me On...</div>
+    <nav>
+        <ul>
+            <li><a rel="me" href="https://briankardell.wordpress.com">Wordpress</a></li>
+            <li><a rel="me" href="https://medium.com/@briankardell">Medium</a></li>
+            <li><a rel="me" href="https://twitter.com/briankardell">Twitter</a></li>
+            <li><a rel="me" href="https://github.com/bkardell/">Github</a></li>
+            <li><a rel="me" href="https://toot.cafe/@bkardell">Mastodon</a></li>
+            <li><a rel="me" href="https://bsky.app/profile/bkardell.com">Bluesky</a></li>
+            <li><a rel="me" href="https://codepen.io/bkardell">Codepen</a></li>
+            <li><a rel="me" href="https://www.linkedin.com/in/brian-kardell-08a4264">LinkedIn</a></li>
+            <li><a rel="me" href="https://www.instagram.com/kardellbrian">Instagram (for
+art)</a></li>
+            <li><a rel="me" href="http://fineartamerica.com/profiles/brian-kardell?">Fine Art
+America (art for sale)</a></li>
+        </ul>
+    </nav>
+</header> 
+</spicy-sections>
+<script>
+  /*
+    You're probably wondering "Do I need to write this?""
+    "Is this part of it?"  No... If you're interested tho - 
+    Custom elements have a FOUC/PE gap 
+    (see https://github.com/whatwg/html/issues/6231).
+    This is a slightly better experience: It 
+    will be hidden _if JS is enabled_, and 
+    will be shown as it is defined, 
+    or after 1 sec, whichever is first.
+  */
+  let ss = document.createElement("style");
+
+  ss.innerHTML = `html:not(.lldelay) :not(:defined) { visibility: hidden; }`;
+  document.head.appendChild(ss);
+
+  setTimeout(() => {
+    document.documentElement.classList.add("lldelay");
+  }, 1000);
+</script>
+    <main><div class="posted-on">Posted on null</div><article class="sectioning">
+  <h1 class="contextual-heading">Igalia: 2024 Mid-season Power Rankings</h1>
+  <style>
+    figure > details {
+      margin-left: 2rem;
+    }
+
+    figure > details > div > * {
+      margin: auto;
+    }
+
+    figure > img {
+      width: 100%;
+    }  
+  </style>
+
+  <p class="segue">Let’s take the good old annual look at how Igalia is stacking up so far in terms of Open Source contributions - you know, "The One With the Charts"</p>
+
+  <p>Igalia is involved in <em>so many</em> things it's honestly hard for me to keep track.  So, every now and then, I like to step back and take stock of it, and what it means to the open source ecosystem.  Let's have a look...</p>
+
+  <section class="sectioning">
+    <h2 class="contextual-heading">The Big Browser Projects</h2>
+    <p>Some interesting shifts this year in browser projects and where we've made the biggest impacts.</p>
+
+    <section class="sectioning">
+      <h3 class="contextual-heading">chromium</h3>
+
+      <p>In <a href="https://thenextweb.com/news/microsoft-edge-is-officially-switching-to-chromium-in-2019-heres-why-thats-a-good-thing">in 2018 Microsoft announced that they were switching to a Chromium based engine</a>. However, in 2019 it was Igalia (not Microsoft) who wound up with the most commits to Chromium (after Google).  We thought for sure that they would overtake us in 2020, but we also had the most commits in 2020. And in 2021, 2022 and 2023.  5 years later, after increases on their end and some shifts on ours, Microsoft has finally eclipsed us as the one with the most commits after Google.   Congratulations Microsoft!... Enjoy it!  For now :)</p>
+    
+      <figure>
+          <img src="/media/2024/commits/chromium.svg" alt="">
+          <details>
+            <summary>data</summary>
+            <div><h3>Top 10 contributors</h3><table><tbody><tr><th>Contributor</th><th>Contributions</th></tr><tr><td>Microsoft</td><td>37.26%</td></tr><tr><td>Igalia</td><td>17.94%</td></tr><tr><td>Intel</td><td>12.41%</td></tr><tr><td>januschka.com</td><td>6.72%</td></tr><tr><td>Opera</td><td>6.09%</td></tr><tr><td>Samsung</td><td>1.69%</td></tr><tr><td>Bytedance</td><td>1.48%</td></tr><tr><td>LGE</td><td>0.90%</td></tr><tr><td>Anton Bershanskyi</td><td>0.79%</td></tr><tr><td>Md Hasibul Hasan</td><td>0.74%</td></tr></tbody></table></div>
+          </details>
+      </figure>
+   
+      <p>It's nice to see Intel and Opera stepping up more this year.</p>
+
+      <p>It seems impossible to not comment on the fact that &gt; 6.7% of commits this year are from a single individual, <a href="https://github.com/hjanuschka">Helmut Januschka</a> as mostly unpaid work. On the one hand, that's heroic but also, it feels a little exploitative, right? Multi-million, billion or even trillion dollar corporations with products built on chromium could surely fund a little more. If you work for one of those and would like to help change that...</p>
+
+      <figure style="display:grid;">
+        <img style="max-width: 400px;margin: auto;" src="/media/2024/commits/callme.gif" alt="">
+      </figure>
+
+      <p>Another distinction that is perhaps worth making is that this is measuring commits to the whole chromium project which is kind of a super project. The majority of the code (and commits) are in support of the browser (chromium is a also base browser implementation without some of the "Google" stuff that is in Chrome). These include graphics/rendering related standalone projects like SKIA, or wildvine for DRM, or things that deal with the different OS windowing systems (X/Wayland on Linux, for example), abstract plumbing for chromium based downstream.  On the engine itself, it's mainly just Google, Microsoft, Igalia, Intel and Opera.</p>
+
+    </section>
+
+    <section>
+      <conextual-heading>WebKit</conextual-heading>
+      <p>Still the number one contributors after Apple to WebKit.</p>
+
+      <figure>
+          <img src="/media/2024/commits/webkit.svg" alt="">
+          <details>
+            <summary>data</summary>
+            <div><h3>Top 10 contributors</h3><table><tbody><tr><th>Contributor</th><th>Contributions</th></tr><tr><td>Igalia</td><td>65.65%</td></tr><tr><td>Sony</td><td>16.40%</td></tr><tr><td>Ubie</td><td>3.19%</td></tr><tr><td>Red Hat</td><td>2.63%</td></tr><tr><td>softathome.com</td><td>1.16%</td></tr><tr><td>Rose</td><td>0.99%</td></tr><tr><td>Alexey Knyazev</td><td>0.73%</td></tr><tr><td>GitHub</td><td>0.73%</td></tr><tr><td>Ian Grunert</td><td>0.69%</td></tr><tr><td>cox.net</td><td>0.65%</td></tr></tbody></table></div>
+          </details>
+      </figure>
+
+    </section>
+
+    <section>
+      <conextual-heading>Gecko</conextual-heading>
+      <p>Hey look at that after Mozilla and, well, a whole bunch of gmail addresses, <em>Igalia</em> is the #1 identifiable contributor to Mozilla-Central this year!  Scoring contributions to mozilla-central is pretty difficult - almost 600 individual contributors and so many of them are attached to personal accounts that aren't identifiable (for example, commits associated with an account whose email is <code><em>something</em>@igalia.com</code> is credited to Igalia).</p>
+
+      <figure>
+          <img src="/media/2024/commits/mozilla-central.svg" alt="">
+          <details>
+            <summary>data</summary>
+            <div><h3>Top 10 contributors</h3><table><tbody><tr><th>Contributor</th><th>Contributions</th></tr><tr><td>André Bargull</td><td>23.75%</td></tr><tr><td>Igalia</td><td>10.71%</td></tr><tr><td>Red Hat</td><td>8.74%</td></tr><tr><td>Birchill</td><td>6.19%</td></tr><tr><td>protonmail.com</td><td>5.66%</td></tr><tr><td>longsonr</td><td>3.38%</td></tr><tr><td>Jonatan Klemets</td><td>2.43%</td></tr><tr><td>yahoo.com</td><td>1.82%</td></tr><tr><td>Debadree Chatterjee</td><td>1.63%</td></tr><tr><td>Mugurell</td><td>1.52%</td></tr></tbody></table></div>
+          </details>
+      </figure>
+
+    </section>
+
+  </section>
+
+
+    <section>
+      <conextual-heading>Servo</conextual-heading>
+      <p>#1 in servo 🔥🔥!</p>
+      <p>It's still recent history that Igalia got involved in Servo, but it's been exciting to watch it develop!  If you or your organization would be interested in funding some work, reach out to me. You can also donate via <a href="https://github.com/servo">GitHub sponsors</a> or <a href="https://opencollective.com/servo">open collective</a>.</p>
+      <figure>
+          <img src="/media/2024/commits/servo.svg" alt="">
+          <details>
+            <summary>data</summary>
+            <div><h3>Top 10 contributors</h3><table><tbody><tr><th>Contributor</th><th>Contributions</th></tr><tr><td>Igalia</td><td>43.94%</td></tr><tr><td>sagudev</td><td>7.96%</td></tr><tr><td>Huawei</td><td>4.16%</td></tr><tr><td>inventati.org</td><td>3.71%</td></tr><tr><td>Taym Haddadi</td><td>3.54%</td></tr><tr><td>Oluwatobi Sofela</td><td>3.45%</td></tr><tr><td>Zesty</td><td>2.83%</td></tr><tr><td>Rosemary Ajayi</td><td>2.12%</td></tr><tr><td>Mozilla</td><td>1.77%</td></tr><tr><td>Crab Nebula</td><td>1.68%</td></tr></tbody></table></div>
+          </details>
+      </figure>
+    </section>
+
+
+    <section>
+      <conextual-heading>Babel</conextual-heading>
+      <p>Igalia is also #1 in Babel commits 🔥🔥!</p>
+      <figure>
+          <img src="/media/2024/commits/babel.svg" alt="">
+          <details>
+            <summary>data</summary>
+            <div><h3>Top 10 contributors</h3><table><tbody><tr><th>Contributor</th><th>Contributions</th></tr><tr><td>Igalia</td><td>38.58%</td></tr><tr><td>liuxingbaoyu</td><td>28.19%</td></tr><tr><td>Huáng Jùnliàng</td><td>20.18%</td></tr><tr><td>renovate[bot]</td><td>2.08%</td></tr><tr><td>Amjad Yahia Robeen Hassan</td><td>1.48%</td></tr><tr><td>Sukka</td><td>1.19%</td></tr><tr><td>blake.id</td><td>0.59%</td></tr><tr><td>fisker Cheung</td><td>0.59%</td></tr><tr><td>samual.uk</td><td>0.59%</td></tr><tr><td>ynnsuis</td><td>0.30%</td></tr></tbody></table></div>
+          </details>
+      </figure>
+    </section>
+
+    <section>
+      <conextual-heading>Wolvic</conextual-heading>
+      <p>Of course, as the stewards of Wolvic, we're the #1 in contributors there too! 91.6% of commits! There's also now the wolvic-chromium </p>
+      <figure>
+          <img src="/media/2024/commits/wolvic.svg" alt="">
+          <details>
+            <summary>data</summary>
+            <div><h3>Top 10 contributors</h3><table><tbody><tr><th>Contributor</th><th>Contributions</th></tr><tr><td>Igalia</td><td>91.64%</td></tr><tr><td>weblate.org</td><td>1.55%</td></tr><tr><td>reimu.nl</td><td>1.24%</td></tr><tr><td>сэр Аноним</td><td>1.24%</td></tr><tr><td>Felipe Erias</td><td>0.93%</td></tr><tr><td>hotmail.es</td><td>0.93%</td></tr><tr><td>opensuse.org</td><td>0.62%</td></tr><tr><td>Ha Anh Vu</td><td>0.31%</td></tr><tr><td>Houssem Nasri</td><td>0.31%</td></tr><tr><td>HoussemNasri</td><td>0.31%</td></tr></tbody></table></div>
+          </details>
+      </figure>
+    </section>
+
+
+    <section>
+      <conextual-heading>Web Platform Tests</conextual-heading>
+      <p></p>
+      <figure>
+          <img src="/media/2024/commits/wpt.svg" alt="">
+          <details>
+            <summary>data</summary>
+            <div><h3>Top 10 contributors</h3><table><tbody><tr><th>Contributor</th><th>Contributions</th></tr><tr><td>Google</td><td>45.51%</td></tr><tr><td>Mozilla</td><td>18.49%</td></tr><tr><td>Apple</td><td>7.62%</td></tr><tr><td>Igalia</td><td>6.15%</td></tr><tr><td>Intel</td><td>4.09%</td></tr><tr><td>Microsoft</td><td>3.69%</td></tr><tr><td>Opera</td><td>0.99%</td></tr><tr><td>Maksim Sadym</td><td>0.96%</td></tr><tr><td>Jonathan Lee</td><td>0.88%</td></tr><tr><td>longsonr</td><td>0.78%</td></tr></tbody></table></div>
+          </details>
+      </figure>
+    </section>
+
+    <section>
+      <conextual-heading>HTML</conextual-heading>
+      <p></p>
+      <figure>
+          <img src="/media/2024/commits/html.svg" alt="">
+          <details>
+            <summary>data</summary>
+            <div><h3>Top 10 contributors</h3><table><tbody><tr><th>Contributor</th><th>Contributions</th></tr><tr><td>Google</td><td>40.12%</td></tr><tr><td>Igalia</td><td>14.37%</td></tr><tr><td>Apple</td><td>12.57%</td></tr><tr><td>Mozilla</td><td>3.59%</td></tr><tr><td>ibiblio.org</td><td>2.99%</td></tr><tr><td>w3.org</td><td>2.99%</td></tr><tr><td>Alex Rudenko</td><td>2.40%</td></tr><tr><td>serenityos.org</td><td>1.80%</td></tr><tr><td>meiert.com</td><td>1.80%</td></tr><tr><td>Tawanda Moyo</td><td>1.80%</td></tr></tbody></table></div>
+          </details>
+      </figure>
+    </section>
+
+    <section>
+      <conextual-heading>DOM</conextual-heading>
+      <p></p>
+      <figure>
+          <img src="/media/2024/commits/dom.svg" alt="">
+          <details>
+            <summary>data</summary>
+            <div><h3>Top 10 contributors</h3><table><tbody><tr><th>Contributor</th><th>Contributions</th></tr><tr><td>Google</td><td>40.12%</td></tr><tr><td>Igalia</td><td>14.37%</td></tr><tr><td>Apple</td><td>12.57%</td></tr><tr><td>Mozilla</td><td>3.59%</td></tr><tr><td>ibiblio.org</td><td>2.99%</td></tr><tr><td>w3.org</td><td>2.99%</td></tr><tr><td>Alex Rudenko</td><td>2.40%</td></tr><tr><td>serenityos.org</td><td>1.80%</td></tr><tr><td>meiert.com</td><td>1.80%</td></tr><tr><td>Tawanda Moyo</td><td>1.80%</td></tr></tbody></table></div>
+          </details>
+      </figure>
+    </section>
+    
+
+    <section>
+      <conextual-heading>CORE-AAM</conextual-heading>
+      <p></p>
+      <figure>
+          <img src="/media/2024/commits/core-aam.svg" alt="">
+          <details>
+            <summary>data</summary>
+            <div><h3>Top 10 contributors</h3><table><tbody><tr><th>Contributor</th><th>Contributions</th></tr><tr><td>github-actions[bot]</td><td>28.57%</td></tr><tr><td>Igalia</td><td>28.57%</td></tr><tr><td>w3.org</td><td>28.57%</td></tr><tr><td>Paciello Group</td><td>14.29%</td></tr></tbody></table></div>
+          </details>
+      </figure>
+    </section>
+
+    <section>
+      <conextual-heading>aria</conextual-heading>
+      <p></p>
+      <figure>
+          <img src="/media/2024/commits/aria.svg" alt="">
+          <details>
+            <summary>data</summary>
+            <div><h3>Top 10 contributors</h3><table><tbody><tr><th>Contributor</th><th>Contributions</th></tr><tr><td>Paciello Group</td><td>21.51%</td></tr><tr><td>w3.org</td><td>17.74%</td></tr><tr><td>Igalia</td><td>16.13%</td></tr><tr><td>github-actions[bot]</td><td>9.68%</td></tr><tr><td>Daniel Montalvo</td><td>7.53%</td></tr><tr><td>Peter Krautzberger</td><td>5.38%</td></tr><tr><td>Adobe</td><td>4.84%</td></tr><tr><td>Matt Garrish</td><td>4.30%</td></tr><tr><td>usablenet.com</td><td>1.61%</td></tr><tr><td>pkra</td><td>1.61%</td></tr></tbody></table></div>
+          </details>
+      </figure>
+    </section>
+    
+    <section>
+      <conextual-heading>Orca</conextual-heading>
+      <p></p>
+      <figure>
+          <img src="/media/2024/commits/orca.svg" alt="">
+          <details>
+            <summary>data</summary>
+            <div><h3>Top 10 contributors</h3><table><tbody><tr><th>Contributor</th><th>Contributions</th></tr><tr><td>Igalia</td><td>76.43%</td></tr><tr><td>ubuntu.com</td><td>2.42%</td></tr><tr><td>gnome.org</td><td>2.17%</td></tr><tr><td>Andy Holmes</td><td>1.78%</td></tr><tr><td>bk.ru</td><td>1.15%</td></tr><tr><td>pickup.hu</td><td>1.15%</td></tr><tr><td>gtu.ge</td><td>1.15%</td></tr><tr><td>Yaron Shahrabani</td><td>1.15%</td></tr><tr><td>ukr.net</td><td>0.89%</td></tr><tr><td>Sabri Ünal</td><td>0.89%</td></tr></tbody></table></div>
+          </details>
+      </figure>
+    </section>
+
+    <section>
+      <conextual-heading>GStreamer</conextual-heading>
+      <p></p>
+      <figure>
+          <img src="/media/2024/commits/gstreamer.svg" alt="">
+          <details>
+            <summary>data</summary>
+            <div><h3>Top 10 contributors</h3><table><tbody><tr><th>Contributor</th><th>Contributions</th></tr><tr><td>Centricular</td><td>55.15%</td></tr><tr><td>Igalia</td><td>14.32%</td></tr><tr><td>Intel</td><td>6.87%</td></tr><tr><td>Collabora</td><td>6.13%</td></tr><tr><td>OneStream Live</td><td>1.49%</td></tr><tr><td>nxp.com</td><td>1.43%</td></tr><tr><td>fluendo.com</td><td>0.97%</td></tr><tr><td>henneberg-systemdesign.com</td><td>0.92%</td></tr><tr><td>jadarve</td><td>0.92%</td></tr><tr><td>freebox.fr</td><td>0.69%</td></tr></tbody></table></div>
+          </details>
+      </figure>
+    </section>
+
+    <section>
+      <conextual-heading>Vulkan GL CTS</conextual-heading>
+      <p></p>
+      <figure>
+          <img src="/media/2024/commits/vk-gl-cts.svg" alt="">
+          <details>
+            <summary>data</summary>
+            <div><h3>Top 10 contributors</h3><table><tbody><tr><th>Contributor</th><th>Contributions</th></tr><tr><td>Igalia</td><td>15.76%</td></tr><tr><td>mobica.com</td><td>14.94%</td></tr><tr><td>lunarg.com</td><td>13.14%</td></tr><tr><td>Google</td><td>12.97%</td></tr><tr><td>khronosgroup.org</td><td>8.87%</td></tr><tr><td>broadcom.com</td><td>5.42%</td></tr><tr><td>ARM</td><td>4.76%</td></tr><tr><td>NVIDIA</td><td>4.27%</td></tr><tr><td>Imagination Technologies</td><td>3.12%</td></tr><tr><td>Intel</td><td>3.12%</td></tr></tbody></table></div>
+          </details>
+      </figure>
+    </section>
+
+    <section>
+      <conextual-heading>Valve</conextual-heading>
+      <p></p>
+      <figure>
+          <img src="/media/2024/commits/valve.svg" alt="">
+          <details>
+            <summary>data</summary>
+            <div><h3>Top 10 contributors</h3><table><tbody><tr><th>Contributor</th><th>Contributions</th></tr><tr><td>mupuf.org</td><td>77.52%</td></tr><tr><td>Igalia</td><td>13.95%</td></tr><tr><td>linaro.org</td><td>6.59%</td></tr><tr><td>Christian Gmeiner</td><td>0.78%</td></tr><tr><td>Imagination Technologies</td><td>0.78%</td></tr><tr><td>flightlessmango</td><td>0.39%</td></tr></tbody></table></div>
+          </details>
+      </figure>
+    </section>
+
+    
+</article></main>
+ 
+   
+  <script>
+    //import { MediaAffordancesElement } from "./MediaAffordancesElement.js";
+    class MediaAffordancesElement extends HTMLElement {
+      constructor() {
+        super();
+        // todo: this should be a private field
+        this.__matching = new Set()
+        this.mqls = [];
+        this.observers = [];
+
+        this.supportedAffordances = new Set();
+      }
+
+      observeAffordanceChange(cb) {
+        this.observers.push(cb);
+      }
+
+      notifyChange() {
+        let intersection = new Set();
+        for (let elem of this.__matching) {
+          if (this.supportedAffordances.has(elem)) {
+            intersection.add(elem);
+          }
+        }
+
+        if (this.__matching.size > 0) {
+          this.setAttribute("mq-matched", [...this.__matching].join(" "));
+        } else {
+          this.removeAttribute("mq-matched");
+        }
+        let arr =  [...intersection]
+        let affordance = arr[arr.length - 1];
+        if (affordance) {
+          this.setAttribute("affordance", affordance);
+        } else {
+          this.removeAttribute("affordance");
+        }
+        this.observers.forEach(cb => {
+          cb(intersection, this.__matching);
+        });
+      }
+
+      static get observedAttributes() {
+        return ["mq-affordances"];
+      }
+
+      connectedCallback() {
+        let newValue = getComputedStyle(this).getPropertyValue(
+          "--const-mq-affordances"
+        );
+        this.connectListeners(newValue);
+      }
+
+      connectListeners(newValue = "") {
+        if (newValue.trim().length === 0) {
+          return;
+        }
+        
+        newValue.split("|").forEach(segment => {
+          let mq = segment.trim().match(/\[([^\]]*)/)[1];
+          let names = segment
+            .replace(`[${mq}]`, "")
+            .trim()
+            .split(" ");
+          let mql = window.matchMedia(mq);
+          let mqh = evt => {
+            names.forEach(name => {
+              this.__matching[mql.matches ? "add" : "delete"](name);
+            });
+
+            this.notifyChange();
+          };
+          mqh();
+          mql.addEventListener("change", mqh);
+          this.mqls.push(mql);
+        }, this);
+      }
+
+      attributeChangedCallback(name, oldValue, newValue) {
+        this.connectListeners(newValue);
+      }
+    }
+
+    //-----------------------------------------------------
+
+    (function() {
+      let lastUId = 0;
+      let nextUId = () => {
+        return `cp${++lastUId}`;
+      };
+
+      let getLabels = regionset => {
+        return [...regionset.children].filter(el => /^H\d$/.test(el.tagName));
+      };
+
+      let getContentEls = regionset => {
+        return [...regionset.children].filter(el => !/^H\d$/.test(el.tagName));
+      };
+
+      let ensureId = el => {
+        el.id = el.id || nextUId();
+        return el.id;
+      };
+
+      let getDisclosureButton = label => {
+        return label.shadowRoot.querySelector("button");
+      };
+
+     
+      let style = document.createElement('style')
+      style.innerHTML = `
+          
+        :where(spicy-sections > [affordance*="collapse"])::before { 
+          content: ' ';
+          display: inline-block;
+          width: 0.5em;
+          height: 0.75em;
+          margin: 0 0.4em 0 0;
+          transform: rotate(90deg);
+          background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' x='0px' y='0px' width='10px' height='10px' viewBox='0 0 270 240' enable-background='new 0 0 270 240' xml:space='preserve'%3e%3cpolygon fill='black' points='5,235 135,10 265,235 '/%3e%3c/svg%3e ");
+          background-size: 100% 100%;
+        } 
+
+        :where(spicy-sections > [affordance*="collapse"][aria-expanded="true"])::before, 
+        :where(spicy-sections > [affordance*="collapse"][aria-expanded="true"])::after {
+          transform: rotate(180deg);
+        }
+      `
+      document.head.prepend(style)
+      
+      const template = `
+            <style>
+              :root {
+                font-size: 1rem;
+              }
+
+              :host([hidden]),
+              ::slotted([hidden]) {
+                display: none;
+              }
+              
+              ::slotted(h1),
+              ::slotted(h2),
+              ::slotted(h3),
+              ::slotted(h4),
+              ::slotted(h5),
+              ::slotted(h6) {
+                 margin-right: 1rem;
+              }
+              
+              tab-bar ::slotted([tabindex="0"]) {
+                border-bottom: 1px solid blue;
+              }
+              
+              tab-list { 
+                display: flex; 
+                overflow: hidden;
+                white-space: nowrap;
+              }
+            </style>
+            <tab-bar part="tab-bar">
+              <!-- The region/tablist should have a  label -->
+              <tab-list part="tab-list" role="tablist"
+              ><slot name="tabListSlot"></slot></tab-list>
+            </tab-bar>
+            <content part="content-panels">
+              <slot default></slot>
+            </content>
+        `;
+
+      class RegionSet extends MediaAffordancesElement {
+        __defaults;
+        __tabListEl;
+
+        // tabs and exclusive collapses should have the same affordance object?
+        __affordanceConf = {
+          collapse: {
+            // can take a condition to force, check-like
+            toggle: (label, condition) => {
+              let state =
+                typeof condition === "boolean"
+                  ? condition
+                  : !label.affordanceState.expanded;
+              let contentEl = label.nextElementSibling;
+              label.affordanceState.expanded = state;
+              label.affordanceState.nonExclusiveExpanded = state;
+              label.setAttribute("aria-expanded", state);
+              if (state) {
+                label.setAttribute("expanded", "");
+                contentEl.style.display = "block";
+              } else {
+                label.removeAttribute("expanded");
+                contentEl.style.display = "none";
+              }
+            }
+          },
+          "exclusive-collapse": {
+            // ignores condition, radio-like
+            toggle: label => {
+              let labels = getLabels(label.parentElement);
+              let siblings = labels.filter(c => c !== label);
+              let index = labels.findIndex(c => c === label);
+
+              siblings.forEach((sibLabel, i) => {
+                let relatedContent = sibLabel.nextElementSibling;
+                sibLabel.tabIndex = -1;
+                relatedContent.style.display = "none";
+                label.setAttribute("aria-expanded", "false");
+                sibLabel.affordanceState.exclusiveExpanded = false;
+              });
+              label.tabIndex = 0;
+              //nope - todo, fix/remove this?
+              label.parentElement.affordanceState.exclusiveSelection.index = index;
+              label.nextElementSibling.style.display = "block";
+              label.setAttribute("aria-expanded", "true");
+              label.affordanceState.exclusiveExpanded = true;
+              label.focus();
+            }
+          },
+          "tab-bar": {
+            // ignores condition, radio-like
+            toggle: label => {
+              let labels = getLabels(label.parentElement);
+              let siblings = labels.filter(c => c !== label);
+              let index = labels.findIndex(c => c === label);
+
+              siblings.forEach((sibLabel, i) => {
+                let relatedContent = sibLabel.nextElementSibling;
+                sibLabel.tabIndex = -1;
+                relatedContent.style.display = "none";
+                sibLabel.setAttribute("aria-expanded", "false");
+                sibLabel.affordanceState.exclusiveExpanded = false;
+              });
+              label.tabIndex = 0;
+              label.parentElement.affordanceState.exclusiveSelection.index = index;
+              label.nextElementSibling.style.display = "block";
+              label.setAttribute("aria-expanded", "true");
+              label.affordanceState.exclusiveExpanded = true;
+              label.focus();
+            }
+          }
+        };
+        __setSize = (labelEls, contentEls) => {
+          this.__size = Math.min(labelEls.length, contentEls.length);
+
+          if (labelEls.length !== this.__size) {
+            console.warn("mismatch in tab-set label/content pairs...");
+          }
+
+          labelEls.forEach((labelEl, i) => {
+            let contentEl = contentEls[i];
+            if (!labelEl.initialized) {
+              labelEl.initialized = true; // todo: this used to be shadow, do i need it?
+              let defs = this.__defaults.defaultActive;
+
+              // this assumes it is about collapses
+              labelEl.affordanceState = {
+                expanded: defs.includes(labelEl),
+                active: false,
+                // activate in the current mode
+                activate: () => {
+                  if (this.affordanceState.current) {
+                    this.__affordanceConf[this.affordanceState.current].toggle(
+                      labelEl
+                    );
+                  }
+                }
+              };
+
+              let defaultExclusive =
+                defs.length === 0 ? labelEls[0] : defs[defs.length - 1];
+
+              this.affordanceState.exclusiveSelection.index = labelEls.indexOf(
+                defaultExclusive
+              );
+            }
+            labelEl.setMode = mode => {
+              if (mode === "non-exclusive") {
+                let isExpanded = labelEl.affordanceState.expanded;
+                labelEl.setAttribute("affordance", "collapse");
+                labelEl.setAttribute("tabindex", "0");
+                labelEl.setAttribute("aria-controls", contentEl.id);
+                labelEl.setAttribute("role", "button");
+                labelEl.setAttribute("aria-expanded", isExpanded);
+                labelEl.nextElementSibling.style.display = isExpanded
+                  ? "block"
+                  : "none";
+              } else if (mode === "exclusive") {
+                let isExpanded =
+                  labelEls.indexOf(labelEl) ===
+                  this.affordanceState.exclusiveSelection.index;
+                labelEl.setAttribute("affordance", "collapse");
+                labelEl.setAttribute("tabindex", isExpanded ? 0 : -1);
+                labelEl.setAttribute("role", "button");
+                labelEl.setAttribute("aria-expanded", isExpanded);
+                labelEl.setAttribute("aria-controls", contentEl.id);
+                labelEl.nextElementSibling.style.display = isExpanded
+                  ? "block"
+                  : "none";
+              } else {
+                labelEl.removeAttribute("tabIndex");
+                labelEl.removeAttribute("affordance");
+                labelEl.removeAttribute("aria-expanded");
+                labelEl.removeAttribute("role");
+              }
+            };
+          });
+        };
+
+        __projectTabBar = () => {
+          this.__removeProjections();
+          getLabels(this).forEach((tabSource, i) => {
+            let selected = false,
+              tabIndex = -1,
+              display = "none";
+
+            tabSource.setMode();
+            tabSource.slot = "tabListSlot";
+            tabSource.setAttribute("role", "tab");
+            let tabId = ensureId(tabSource);
+            let contentSource = tabSource.nextElementSibling;
+            contentSource.tabIndex = 0;
+            tabSource.setAttribute("aria-controls", ensureId(contentSource));
+            contentSource.setAttribute("role", "tabpanel");
+            contentSource.setAttribute("aria-labelledby", tabSource.id);
+            if (i === this.affordanceState.exclusiveSelection.index) {
+              tabIndex = 0;
+              selected = true;
+              display = "block";
+            }
+            tabSource.setAttribute("aria-selected", selected);
+            tabSource.tabIndex = tabIndex;
+            contentSource.style.display = display;
+
+            // TODO: aria-orientation :(
+          });
+        };
+
+        __projectCollapses = exclusive => {
+          // TODO - remove projections and... ??
+          this.__removeProjections();
+          getLabels(this).forEach(label => {
+            label.setMode(exclusive ? "exclusive" : "non-exclusive");
+          });
+        };
+
+        __removeProjections = () => {
+          [...this.children].forEach(child => {
+            child.removeAttribute("slot");
+            child.removeAttribute("affordance")
+            child.removeAttribute("role");
+            child.removeAttribute("aria-selected");
+            child.removeAttribute("aria-controls");
+            child.removeAttribute("tabindex");
+            child.removeAttribute("aria-expanded")
+            child.style.display = "block";
+          });
+        };
+
+        // matching pairs
+        __size = 0;
+
+        __configure = () => {
+          ///hmmm
+
+          this.__setSize(getLabels(this), getContentEls(this));
+
+          if (this.affordanceState.current === "tab-bar") {
+            this.affordanceState.currentMode = "exclusive";
+            this.__projectTabBar();
+          } else if (this.affordanceState.current === "collapse") {
+            this.affordanceState.currentMode = "non-exclusive";
+            this.__projectCollapses();
+          } else if (this.affordanceState.current === "exclusive-collapse") {
+            this.affordanceState.currentMode = "exclusive";
+            this.__projectCollapses(true);
+          } else {
+            this.affordanceState.currentMode = undefined;
+            this.__removeProjections();
+          }
+
+          let specifiedIndex = this.activeTabIndex || 0;
+          // TODO: hmm, these are DOM changes, we could cache them
+          let labelEls = getLabels(this);
+          let contentEls = getContentEls(this);
+
+          for (let i = 0; i < this.__size; i++) {
+            let label = labelEls[i];
+            // probably add one handler that decides
+            if (!label._inited) {
+              label.addEventListener("click", evt => {
+                evt.target.affordanceState.activate();
+              });
+              label._inited = true;
+            }
+          }
+        };
+        
+        __childListObserver = new MutationObserver(mutationList => {
+          // we have to wire up new elements
+          let labelEls = getLabels(this);
+          let contentEls = getContentEls(this);
+
+          // what if there is a mismatch?
+          this.__setSize(labelEls, contentEls);
+          this.__configure();
+        });
+
+        __tabset;
+
+        affordanceState = {
+          exclusiveSelection: { index: undefined },
+          current: undefined,
+          currentMode: undefined,
+          getLabels: () => {
+            return getLabels(this);
+          }
+        };
+
+        /*
+          Wires up suppored affordances...
+        */
+        constructor() {
+          super();
+          this.supportedAffordances.add("tab-bar");
+          this.supportedAffordances.add("collapse");
+          this.supportedAffordances.add("exclusive-collapse");
+
+          this.observeAffordanceChange((matching, all) => {
+            if (!this.__defaults) {
+              this.__defaults = {
+                onMatch: this.hasAttribute("defaults-on-match"),
+                defaultActive: getLabels(this).filter(l =>
+                  l.hasAttribute("default-activate")
+                )
+              };
+            }
+            this.affordanceState.current = this.getAttribute("affordance");
+            this.__configure();
+          });
+
+          this.attachShadow({ mode: "open" });
+          this.shadowRoot.innerHTML = template;
+     
+          this.__tabListEl = this.shadowRoot.querySelector("tab-list");
+          this.addEventListener(
+            "keydown",
+            evt => {
+              let labels = getLabels(this);
+              let size = labels.length;
+              let cur = this.affordanceState.exclusiveSelection.index;
+              let prev = cur === 0 ? size - 1 : cur - 1;
+              let next = cur === size - 1 ? 0 : cur + 1;
+
+              if (
+                this.affordanceState.current === "tab-bar" ||
+                this.affordanceState.current === "exclusive-collapse"
+              ) { 
+                if (evt.keyCode == 37 || evt.keyCode == 38) {
+                  labels[prev].affordanceState.activate();
+                } else if (evt.keyCode == 39 || evt.keyCode == 40) {
+                  labels[next].affordanceState.activate();
+                }
+              } else if (evt.keyCode == 32 && this.affordanceState.current === 'collapse') {
+                evt.preventDefault()
+              }
+            },
+            false
+          );
+          this.addEventListener(
+            "keyup", 
+            evt => {
+              if (evt.keyCode == 32 && this.affordanceState.current === 'collapse') {
+                evt.target.closest('[affordance]').affordanceState.activate()
+                evt.preventDefault()
+              }
+            })
+        }
+
+        connectedCallback() {
+          super.connectedCallback();
+
+          //TODO: check whether there is a hash/handle selection
+          
+          // If you append a fragment with a pair, it should work
+          this.__childListObserver.observe(this, { childList: true });
+        }
+      }
+      customElements.define("spicy-sections", RegionSet);
+    })();
+    </script>
+  <script>
+    Array.prototype.slice.call(document.querySelectorAll('.optional [data-src]')).forEach(function (optional) {
+      var prefs = window.localStorage.downloadsPrefs,
+          clickToSee;
+      if (prefs === 'true') {
+        activateOptional(optional);
+      } else {
+        clickToSee = document.createElement('div');
+        clickToSee.classList.add('clickToSee')
+        clickToSee.innerHTML = '<button>Click to see media</button>';
+        clickToSee.style.textAlign = 'center';
+        clickToSee.style.border = 'none';
+        optional.parentElement.insertBefore(clickToSee, optional.nextSibling);
+        clickToSee.firstElementChild.addEventListener('click', function () {
+          activateOptional(optional);
+        })
+      }
+
+    })
+  </script>
+
+</body></html>
