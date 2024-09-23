@@ -453,7 +453,7 @@ America (art for sale)</a></li>
     document.documentElement.classList.add("lldelay");
   }, 1000);
 </script>
-    <main><div class="posted-on">Posted on null</div><article class="sectioning">
+    <main><div class="posted-on">Posted on 09/23/2024</div><article posted-on="09/23/2024" class="sectioning">
     <h1 class="contextual-heading">Keeping up: Signal to Noise</h1>
     <p class="segue">Last year in December, Eric Meyer and I did an episode of Igalia Chats titled <a href="https://www.igalia.com/chats/keeping-up">"The Struggle to Keep Up with Web Tech"</a>. It recounts the multi-dimensional challenges that developers can face in trying to keep up with developments in the web platform.</p>
     <p>I've thought for a long time now that we all need better ways to keep up, and especially to <em>not miss the most important stuff</em>. Today, I'm happy to annouce what we think is a real help at that.</p>
@@ -462,29 +462,7 @@ America (art for sale)</a></li>
         <p>If you're not familiar, "bcd" is short for "browser compatibility data". <a href="https://github.com/mdn/browser-compat-data">The browser-compat-data repository</a> is the source of what is shown on MDN and used for many other critical things as well. All of the browser vendors, contributors and tech writers strive together to keep the information there accurate and up to date.</p>
         <p>Back in 2022, Eric and I had the idea to write a tool which would fetch this data from time to time, compare it with the previous data and put together a brief report that you could view, and an RSS feed you could subscribe to. <a href="https://bkardell.com/blog/CoolTool.html">I wrote a thing about BCD</a> and the fact that you could actually even use GitHub's API to subscribe to the release notes, which are already pretty nice. This was November 2022, and it was teasing a few screenshots from the prototype we had.</p>
         <p>A month and 5 days later, <a href="https://bkardell.com/blog/WeirdHoliday.html">I unexpectedly had a heart attack</a>.</p>
-        <p>So, it got shoved to the back burner for a while - but we slowly worked on it here and there when we found the time. This extra time was useful. We used it ourselves and made improvements based on that experience. A few people we showed it to started using it and that led to feedback and improvements that I believe make it much better too. Recently, we decided it's probably "ready" and, we hope, hella useful - so here is...</p>
-
-        <div style="border: 2px dashed gray; font-size: 2.2rem; /* padding: 2rem; */ display: grid; margin-top: 2rem; background-image: url('https://bcd-watch.igalia.com/imgs/binoculars.png'); background-size: contain; background-repeat: no-repeat;"><a style="margin: 2rem auto; display: block; /* background-image: url('https://bcd-watch.igalia.com/imgs/binoculars.png'); */" href="https://bcd-watch.igalia.com">bcd-watch.igalia.com</a></div>
-
-        <p>It contains two reports with the 'latest' reports (as well as an archive of both for the last year or so), both which have RSS feed links at the bottom. They are for different audiences, really.</p>  
-        <section class="sectioning">
-            <h3 class="contextual-heading">New Baselines: Headline news</h3>
-            <p>The <a href="https://bcd-watch.igalia.com/weekly-completed/">weekly-completed / new baselines</a> page is what we believe <em>everyone</em> could afford to subscribe to, and what most web developers are most interested in. Many weeks, the whole report will be: </p>
-            <blockquote>
-                <p>No new Baseline implementations to report 🙁</p>
-            </blockquote>
-            <p>But <a href="https://bcd-watch.igalia.com/weekly-completed/Jul-19-2024.html">other weeks will have interesting data - some of which you very likely would have missed</a>. </p>
-            <p>The data from all engines, is right there in one place, distilled as much as it possibly can be. If there are links in the data to MDN document and/or the specification, they are provided for you to be able to learn more about if you wish.</p>
-            <p>You might note that this report often has predominantly one engine in it. If you step back and think about it, that makes sense, since it's often just one engine with real good release and the last implementation in that timeframe.</p>
-            <h2>The Regular Weekly Report: Beyond prime time</h2>
-            <p>The regular weekly report tries to give you a lot more information about positive steps <em>toward</em> baseline. This means that any change in added (or removed) implementations are reported as well as telling you how many engines of 3 support the thing.</p>
-            <p>It also has the same timing issues in terms of releases in each report window. That is, when there's a Chrome release, there's gonna be a lot of Chrome in there —&nbsp;a lot of first implementations reported are going to be in Chrome, and so on. But again, you can look to the <a href="https://bcd-watch.igalia.com/weekly/Jul-26-2024.html">report from July 26th, 2024</a> to see the examples arranged and summarized.</p>
-        </section>
-        <section class="sectioning">
-            <h3 class="contextual-heading">The filtered stuff...</h3>
-            <p>This report also contains a <code>&lt;details&gt;</code> element called "BCD Metadata Changes" where we have filtered out the kinds of changes which <em>most</em> people probably don't care about. That is, metadata changes for all kinds of reasons. We're still backfilling stuff that is many years old, for example. Or, something is added early in the process, but then the name or place in bcd has to change. Maybe there is just new MDN documentation. </p>
-            <p>All of that stuff is potentially important to those of us who work on the platform itself - in fact, it's helped us find gaps... But to most people it's probably just confusing noise, so we keep that stuff hidden by default.</p>
-        </section>
+        <p>So, it got shoved to the back burner for a while but today we're finally sharing it. My colleage Eric Meyer has a a much better post annoucing this that I'll just point you to: <a href="https://meyerweb.com/eric/thoughts/2024/09/23/announcing-bcd-watch/">Annoucing BCD-Watch.</a>.</p>  
     </section>
 </article></main>
  

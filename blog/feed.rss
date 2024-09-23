@@ -4,7 +4,7 @@
         <title>bkardell.com rss feed</title>
         <link>http://bkardell.com/</link>
         <description>Just the bkardell.com rss feed</description>
-        <lastBuildDate>Mon, 16 Sep 2024 18:31:10 GMT</lastBuildDate>
+        <lastBuildDate>Mon, 23 Sep 2024 17:20:45 GMT</lastBuildDate>
         <docs>http://blogs.law.harvard.edu/tech/rss</docs>
         <generator>awesome mix</generator>
         <image>
@@ -14,6 +14,25 @@
         </image>
         <copyright>All rights reserved 2018, Brian Kardell</copyright>
         <atom:link href="https://bkardell.com/blog/feed.atom" rel="self" type="application/rss+xml"/>
+        <item>
+            <title><![CDATA[Keeping up: Signal to Noise]]></title>
+            <link>https://bkardell.com/blog/BCD-Watch.html</link>
+            <guid>https://bkardell.com/blog/BCD-Watch.html</guid>
+            <pubDate>Mon, 23 Sep 2024 04:00:00 GMT</pubDate>
+            <description><![CDATA[Last year in December, Eric Meyer and I did an episode of Igalia Chats titled "The Struggle to Keep Up with Web Tech". It recounts the multi-dimensional challenges that developers can face in trying to keep up with developments in the web platform.]]></description>
+            <content:encoded><![CDATA[
+    <h1 class="contextual-heading" style="font-size: 2rem;">Keeping up: Signal to Noise</h1>
+    <p class="segue">Last year in December, Eric Meyer and I did an episode of Igalia Chats titled <a href="https://www.igalia.com/chats/keeping-up">"The Struggle to Keep Up with Web Tech"</a>. It recounts the multi-dimensional challenges that developers can face in trying to keep up with developments in the web platform.</p>
+    <p>I've thought for a long time now that we all need better ways to keep up, and especially to <em>not miss the most important stuff</em>. Today, I'm happy to annouce what we think is a real help at that.</p>
+    <section class="sectioning">
+        <h2 class="contextual-heading" style="font-size: 2.5rem;">Introducing bcd-watch</h2>
+        <p>If you're not familiar, "bcd" is short for "browser compatibility data". <a href="https://github.com/mdn/browser-compat-data">The browser-compat-data repository</a> is the source of what is shown on MDN and used for many other critical things as well. All of the browser vendors, contributors and tech writers strive together to keep the information there accurate and up to date.</p>
+        <p>Back in 2022, Eric and I had the idea to write a tool which would fetch this data from time to time, compare it with the previous data and put together a brief report that you could view, and an RSS feed you could subscribe to. <a href="https://bkardell.com/blog/CoolTool.html">I wrote a thing about BCD</a> and the fact that you could actually even use GitHub's API to subscribe to the release notes, which are already pretty nice. This was November 2022, and it was teasing a few screenshots from the prototype we had.</p>
+        <p>A month and 5 days later, <a href="https://bkardell.com/blog/WeirdHoliday.html">I unexpectedly had a heart attack</a>.</p>
+        <p>So, it got shoved to the back burner for a while but today we're finally sharing it. My colleage Eric Meyer has a a much better post annoucing this that I'll just point you to: <a href="https://meyerweb.com/eric/thoughts/2024/09/23/announcing-bcd-watch/">Annoucing BCD-Watch.</a>.</p>  
+    </section>
+]]></content:encoded>
+        </item>
         <item>
             <title><![CDATA[Micropayments History]]></title>
             <link>https://bkardell.com/blog/MicropaymentsHistory.html</link>
@@ -949,53 +968,6 @@ target.innerHTML =  str;</code></pre>
             </tbody>
         </table>
     </section>
-]]></content:encoded>
-        </item>
-        <item>
-            <title><![CDATA[How We Fund the Web Ecosystem]]></title>
-            <link>https://bkardell.com/blog/HowWeFund.html</link>
-            <guid>https://bkardell.com/blog/HowWeFund.html</guid>
-            <pubDate>Wed, 13 Mar 2024 04:00:00 GMT</pubDate>
-            <description><![CDATA[On Tuesday (March 12th, 2024), Robin Berjon and Eric Meyer and I organized, led and scribed a session during W3C breakouts day about how we fund the web ecosystem…]]></description>
-            <content:encoded><![CDATA[
-	<h1 class="contextual-heading" style="font-size: 2rem;">How We Fund the Web Ecosystem</h1>
-	<p class="segue">On Tuesday (March 12th, 2024), Robin Berjon and Eric Meyer and I organized, led and scribed a session during W3C breakouts day about how we fund the web ecosystem…</p>
-
-
-	<p>Every year the W3C has a week long giant set of in-person meetings called TPAC. A nice feature of those meetings has always been “Breakouts Day” which is a day where people can propose sessions about pretty much anything and we try to organize a schedule around the ones that seem interesting to enough people.</p>
-
-	<p>This year, the W3C decided to try a second Breakouts Day that is not at the same time as TPAC, and was purely online.</p>
-
-	<p>Over the last several years, I’ve written several pieces about different aspects of the health of the web ecosystem and led a podcast series with quite a few episodes about that.  In those pieces I’ve argued that while the web ecosystem has become the infrastructure for nearly everything, our models for funding and prioritization of the last 20 years have proven not only inadequate, and problematic, but ultimately fragile and cannot last.  The only questions, I’ve argued, are how soon and what happens next. Are we ready for it? (hint: no).</p>
-
-
-	<p>So, I talked to a few people and we proposed this as a topic. It was well attended. We began with a short presentation (we made a very detailed outline together, but credit goes to Robin for the <a href="https://bkardell.com/media/2024/How_We_Fund_The_Web.pdf" rel="noopener">great slides</a>).</p>
-
-	<p>We organized the presentation into sort of 2 parts. First I presented explaining the problems and why we believe this requires our attention and action.  First we have to admit that we have a problem, right?  And that this is a problem that <em>we</em> should be concerned with… If not us, who?  If not now, when?</p>
-
-	<p>Then I outlined that there are many possible solutions and elements of solutions that we can discuss (or try), but all of them share some common elements:</p>
-
-	<ol>
-		<li>We need a way to take in common money, and a way to actually encourage money into the pot.</li>
-		<li>We need a way to <em>efficiently</em> and <em>fairly</em> prioritize the money in the pot toward actual work.</li>
-	</ol>
-
-	<p>I highlighted that there are existing things we can already try (and are trying), and that we should really start trying more.</p>
-
-	<p>After this, Robin presented a bigger possible vision we tried to lay out with lots of still fuzzy areas and questions - but effectively: We create an institution which is (through one of a few possibilities) able to compel participation into a system which enforces more sustainable (and fairer) characteristics which guarantee support for the infrastructure of the web.</p>
-
-	<p>You can get a very good idea of what was actually presented from the <a href="https://github.com/w3c/breakouts-day-2024/issues/20#issuecomment-1992539848" rel="noopener">detailed outline</a> that we shared too.</p>
-
-	<p>But all of this was only the initial short presentation which I think was only maybe 5-10 minutes.  The rest was the point of the breakout: Actual discussion.</p>
-
-	<p>I think it was <em>very</em> positive actually.  The main thing that impressed me is that there was seemingly no push back or questioning at at all in the premise.  We agree with the fundamentals - that as I explained in <a href="https://bkardell.com/blog/Webrise.html" rel="noopener">Webrise</a>, it’s fragile from this perspective, and we need to care about it.</p>
-
-	<p>Rick Beyers (from Google, but not speaking for Google) mentioned what they observed in Chromium contributions and that they also had concerns about diversity, both in terms of contributions to a single engine, and multiple engines.  He also mentioned that Chromium was spinning up a new collective idea (not yet announced).</p>
-
-	<p>Just this morning, we helped launch the <a href="https://servo.org/blog/2024/03/12/sponsoring-servo/" rel="noopener">Servo collective</a>.  The timing is purely coincidental.  I’d also note that in part of my presentation I mentioned exploring ways that governments can incentivize and forgot to mention that there have been interesting developments in some open source funding happening this way recently, and to note that the White House recently made a statement that <a href="https://www.whitehouse.gov/oncd/briefing-room/2024/02/26/press-release-technical-report/" rel="noopener">Future Software Should Be Memory Safe</a>.  If anyone has a good ‘in’ at the White House please make the case that if you want to know a good place to invest to be sure a lot of future stuff is memory safe, it’s probably browsers - and especially the one written in Rust :). The collective would be happy to accept the White House’s check.</p>
-
-	<p>There were also some interesting questions about whether Web Monetization could be related to this, or is just a wholly separate problem, about how the advertising model is exceptionally progressive, and where other investment comes from currently.</p>
-	<p>Happily <a href="https://www.w3.org/2024/03/12-ecosystem-funding-minutes.html" rel="noopener">minutes are available</a> if you’re interested - and we’ll be trying to organize some immediate discussions on where we go from here through <a href="https://github.com/darobin/wise/" rel="noopener">this repo</a> which also has <a href="https://darobin.github.io/wise/" rel="noopener">a rough outline of how one solution might work</a>.</p>
 ]]></content:encoded>
         </item>
     </channel>
