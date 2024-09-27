@@ -4,7 +4,7 @@
         <title>bkardell.com rss feed</title>
         <link>http://bkardell.com/</link>
         <description>Just the bkardell.com rss feed</description>
-        <lastBuildDate>Mon, 23 Sep 2024 17:20:45 GMT</lastBuildDate>
+        <lastBuildDate>Fri, 27 Sep 2024 14:48:40 GMT</lastBuildDate>
         <docs>http://blogs.law.harvard.edu/tech/rss</docs>
         <generator>awesome mix</generator>
         <image>
@@ -14,6 +14,226 @@
         </image>
         <copyright>All rights reserved 2018, Brian Kardell</copyright>
         <atom:link href="https://bkardell.com/blog/feed.atom" rel="self" type="application/rss+xml"/>
+        <item>
+            <title><![CDATA[Igalia: 2024 Mid-season Power Rankings]]></title>
+            <link>https://bkardell.com/blog/2024-Midseason.html</link>
+            <guid>https://bkardell.com/blog/2024-Midseason.html</guid>
+            <pubDate>Fri, 27 Sep 2024 04:00:00 GMT</pubDate>
+            <description><![CDATA[Let’s take the good old annual look at how Igalia is stacking up so far in terms of Open Source contributions - you know, "The One With the Charts"]]></description>
+            <content:encoded><![CDATA[
+  <h1 class="contextual-heading" style="font-size: 2rem;">Igalia: 2024 Mid-season Power Rankings</h1>
+  
+
+  <p class="segue">Let’s take the good old annual look at how Igalia is stacking up so far in terms of Open Source contributions - you know, "The One With the Charts"</p>
+
+  <p>Igalia is involved in <em>so many</em> things it's honestly hard for me to keep track.  So, every now and then, I like to step back and take stock of it, and what it means to the open source ecosystem.  Let's have a look...</p>
+
+  <section class="sectioning">
+    <h2 class="contextual-heading" style="font-size: 2.5rem;">The Big Browser Projects</h2>
+    <p>Some interesting shifts this year in browser projects and where we've made the biggest impacts.</p>
+
+    <section class="sectioning">
+      <h3 class="contextual-heading" style="font-size: 3rem;">chromium</h3>
+
+      <p>In <a href="https://thenextweb.com/news/microsoft-edge-is-officially-switching-to-chromium-in-2019-heres-why-thats-a-good-thing">in 2018 Microsoft announced that they were switching to a Chromium based engine</a>. However, in 2019 it was Igalia (not Microsoft) who wound up with the most commits to Chromium (after Google).  We thought for sure that they would overtake us in 2020, but we also had the most commits in 2020. And in 2021, 2022 and 2023.  5 years later, after increases on their end and some shifts on ours, Microsoft has finally eclipsed us as the one with the most commits after Google.   Congratulations Microsoft!... Enjoy it!  For now :)</p>
+    
+      <figure>
+          <img src="/media/2024/commits/chromium.svg" alt="">
+          <details>
+            <summary>data</summary>
+            <div><h3>Top 10 contributors</h3><table><tbody><tr><th>Contributor</th><th>Contributions</th></tr><tr><td>Microsoft</td><td>37.26%</td></tr><tr><td>Igalia</td><td>17.94%</td></tr><tr><td>Intel</td><td>12.41%</td></tr><tr><td>januschka.com</td><td>6.72%</td></tr><tr><td>Opera</td><td>6.09%</td></tr><tr><td>Samsung</td><td>1.69%</td></tr><tr><td>Bytedance</td><td>1.48%</td></tr><tr><td>LGE</td><td>0.90%</td></tr><tr><td>Anton Bershanskyi</td><td>0.79%</td></tr><tr><td>Md Hasibul Hasan</td><td>0.74%</td></tr></tbody></table></div>
+          </details>
+      </figure>
+   
+      <p>It's nice to see Intel and Opera stepping it up this year too!</p>
+
+      <p>It seems impossible to not comment on the fact that &gt; 6.7% of commits this year are from a single individual, <a href="https://github.com/hjanuschka">Helmut Januschka</a> as mostly unpaid work. On the one hand, that's heroic but also, it feels a little exploitative, right? Multi-million, billion or even trillion dollar corporations with products built on chromium could surely fund a little more. If you work for one of those and would like to help change that...</p>
+
+      <figure style="display:grid;">
+        <img style="max-width: 400px;margin: auto;" src="/media/2024/commits/callme.gif" alt="">
+      </figure>
+
+      <p>Another distinction that is perhaps worth making is that this is measuring commits to the whole chromium project which is kind of a super project. The majority of the code (and commits) are in support of the browser (chromium is a also base browser implementation without some of the "Google" stuff that is in Chrome). These include graphics/rendering related standalone projects like SKIA, or wildvine for DRM, or things that deal with the different OS windowing systems (X/Wayland on Linux, for example), abstract plumbing for chromium based downstream.  On the engine itself, it's mainly just Google, Microsoft, Igalia, Intel and Opera.</p>
+
+    </section>
+
+    <section>
+      <conextual-heading>WebKit</conextual-heading>
+      <p>Still the number one contributors after Apple to WebKit 💪🏻💪🏼💪🏽💪🏾💪🏿.</p>
+
+      <figure>
+          <img src="/media/2024/commits/webkit.svg" alt="">
+          <details>
+            <summary>data</summary>
+            <div><h3>Top 10 contributors</h3><table><tbody><tr><th>Contributor</th><th>Contributions</th></tr><tr><td>Igalia</td><td>65.65%</td></tr><tr><td>Sony</td><td>16.40%</td></tr><tr><td>Ubie</td><td>3.19%</td></tr><tr><td>Red Hat</td><td>2.63%</td></tr><tr><td>softathome.com</td><td>1.16%</td></tr><tr><td>Rose</td><td>0.99%</td></tr><tr><td>Alexey Knyazev</td><td>0.73%</td></tr><tr><td>GitHub</td><td>0.73%</td></tr><tr><td>Ian Grunert</td><td>0.69%</td></tr><tr><td>cox.net</td><td>0.65%</td></tr></tbody></table></div>
+          </details>
+      </figure>
+
+    </section>
+
+    <section>
+      <conextual-heading>Gecko</conextual-heading>
+      <p>Hey look at that - Igalia moves into second place after Mozilla! I'm not sure how anyone could not observe that André Bargull
+(@anba, a <a href="https://bugzilla.mozilla.org/user_profile?user_id=339940">contributor to Mozilla for 16 years!</a>) is just amazingly prolific and important to the project.  Mozilla has a long tail of almost 600 individual/unaffliated contributors!
+</p>
+
+      <figure>
+          <img src="/media/2024/commits/mozilla-central.svg" alt="">
+          <details>
+            <summary>data</summary>
+            <div><h3>Top 10 contributors</h3><table><tbody><tr><th>Contributor</th><th>Contributions</th></tr><tr><td>André Bargull</td><td>23.75%</td></tr><tr><td>Igalia</td><td>10.71%</td></tr><tr><td>Red Hat</td><td>8.74%</td></tr><tr><td>Birchill</td><td>6.19%</td></tr><tr><td>protonmail.com</td><td>5.66%</td></tr><tr><td>longsonr</td><td>3.38%</td></tr><tr><td>Jonatan Klemets</td><td>2.43%</td></tr><tr><td>yahoo.com</td><td>1.82%</td></tr><tr><td>Debadree Chatterjee</td><td>1.63%</td></tr><tr><td>Mugurell</td><td>1.52%</td></tr></tbody></table></div>
+          </details>
+      </figure>
+
+    </section>
+
+  </section>
+
+  <section class="sectioning">
+    <h2 class="contextual-heading" style="font-size: 2.5rem;">WHATWG Stuff</h2>
+     <section>
+      <conextual-heading>HTML</conextual-heading>
+      <p>Would you expect Igalia to be #2 in HTML?  We are, this year! It's astounding the size of the role Google plays in a lot of this stuff, really.  Then again, they have the only economic model for it so it makes a lot of sense that they invest heavily - this is peanuts comparatively.</p>
+      <figure>
+          <img src="/media/2024/commits/html.svg" alt="">
+          <details>
+            <summary>data</summary>
+            <div><h3>Top 10 contributors</h3><table><tbody><tr><th>Contributor</th><th>Contributions</th></tr><tr><td>Google</td><td>40.12%</td></tr><tr><td>Igalia</td><td>14.37%</td></tr><tr><td>Apple</td><td>12.57%</td></tr><tr><td>Mozilla</td><td>3.59%</td></tr><tr><td>ibiblio.org</td><td>2.99%</td></tr><tr><td>w3.org</td><td>2.99%</td></tr><tr><td>Alex Rudenko</td><td>2.40%</td></tr><tr><td>serenityos.org</td><td>1.80%</td></tr><tr><td>meiert.com</td><td>1.80%</td></tr><tr><td>Tawanda Moyo</td><td>1.80%</td></tr></tbody></table></div>
+          </details>
+      </figure>
+    </section>
+
+    <section>
+      <conextual-heading>DOM</conextual-heading>
+      <p>What about DOM? Hey-o it's us again!  Good job Igalia!</p>
+      <figure>
+          <img src="/media/2024/commits/dom.svg" alt="">
+          <details>
+            <summary>data</summary>
+            <div><h3>Top 10 contributors</h3><table><tbody><tr><th>Contributor</th><th>Contributions</th></tr><tr><td>Google</td><td>40.12%</td></tr><tr><td>Igalia</td><td>14.37%</td></tr><tr><td>Apple</td><td>12.57%</td></tr><tr><td>Mozilla</td><td>3.59%</td></tr><tr><td>ibiblio.org</td><td>2.99%</td></tr><tr><td>w3.org</td><td>2.99%</td></tr><tr><td>Alex Rudenko</td><td>2.40%</td></tr><tr><td>serenityos.org</td><td>1.80%</td></tr><tr><td>meiert.com</td><td>1.80%</td></tr><tr><td>Tawanda Moyo</td><td>1.80%</td></tr></tbody></table></div>
+          </details>
+      </figure>
+    </section>
+  </section>
+
+  <section>
+      <conextual-heading>Web Platform Tests</conextual-heading>
+      <p>It's almost like we're the 4th browser engine - #4 in contributions to Web Platform Tests, after Google, Mozilla, Apple. Go us!</p>
+      <figure>
+          <img src="/media/2024/commits/wpt.svg" alt="">
+          <details>
+            <summary>data</summary>
+            <div><h3>Top 10 contributors</h3><table><tbody><tr><th>Contributor</th><th>Contributions</th></tr><tr><td>Google</td><td>45.51%</td></tr><tr><td>Mozilla</td><td>18.49%</td></tr><tr><td>Apple</td><td>7.62%</td></tr><tr><td>Igalia</td><td>6.15%</td></tr><tr><td>Intel</td><td>4.09%</td></tr><tr><td>Microsoft</td><td>3.69%</td></tr><tr><td>Opera</td><td>0.99%</td></tr><tr><td>Maksim Sadym</td><td>0.96%</td></tr><tr><td>Jonathan Lee</td><td>0.88%</td></tr><tr><td>longsonr</td><td>0.78%</td></tr></tbody></table></div>
+          </details>
+      </figure>
+    </section>
+
+  <section class="sectioning">
+    <h2 class="contextual-heading" style="font-size: 2.5rem;">We are champions</h2>
+    <p>There are also a few related projects where <em>Igalia</em> is now the champion: Servo, the independent, parallel, memory safe, Rust based engine - and Wolvic, the XR browser formerly known as Firefox Reality, and Babel where we have been playing a huge role. In each of these projects Igalia is doing sponsored work, and our own investment because we believe they are important to the ecosystem right now.</p>
+
+    <section>
+      <conextual-heading>Servo</conextual-heading>
+      <p>#1 in servo 🔥🔥!</p>
+      <p>It's still recent history that Igalia got involved in Servo, but it's been exciting to watch it develop!  If you or your organization would be interested in funding some work, reach out to me. You can also donate via <a href="https://github.com/servo">GitHub sponsors</a> or <a href="https://opencollective.com/servo">open collective</a>.</p>
+      <figure>
+          <img src="/media/2024/commits/servo.svg" alt="">
+          <details>
+            <summary>data</summary>
+            <div><h3>Top 10 contributors</h3><table><tbody><tr><th>Contributor</th><th>Contributions</th></tr><tr><td>Igalia</td><td>43.94%</td></tr><tr><td>sagudev</td><td>7.96%</td></tr><tr><td>Huawei</td><td>4.16%</td></tr><tr><td>inventati.org</td><td>3.71%</td></tr><tr><td>Taym Haddadi</td><td>3.54%</td></tr><tr><td>Oluwatobi Sofela</td><td>3.45%</td></tr><tr><td>Zesty</td><td>2.83%</td></tr><tr><td>Rosemary Ajayi</td><td>2.12%</td></tr><tr><td>Mozilla</td><td>1.77%</td></tr><tr><td>Crab Nebula</td><td>1.68%</td></tr></tbody></table></div>
+          </details>
+      </figure>
+    </section>
+
+    <section>
+      <conextual-heading>Babel</conextual-heading>
+      <p>Igalia is also #1 in Babel commits 🔥🔥!  Did you expect it? <a href="https://tech.lgbt/@nic">Nicolò Ribaudo</a> has been busy!</p>
+      <figure>
+          <img src="/media/2024/commits/babel.svg" alt="">
+          <details>
+            <summary>data</summary>
+            <div><h3>Top 10 contributors</h3><table><tbody><tr><th>Contributor</th><th>Contributions</th></tr><tr><td>Igalia</td><td>38.58%</td></tr><tr><td>liuxingbaoyu</td><td>28.19%</td></tr><tr><td>Huáng Jùnliàng</td><td>20.18%</td></tr><tr><td>renovate[bot]</td><td>2.08%</td></tr><tr><td>Amjad Yahia Robeen Hassan</td><td>1.48%</td></tr><tr><td>Sukka</td><td>1.19%</td></tr><tr><td>blake.id</td><td>0.59%</td></tr><tr><td>fisker Cheung</td><td>0.59%</td></tr><tr><td>samual.uk</td><td>0.59%</td></tr><tr><td>ynnsuis</td><td>0.30%</td></tr></tbody></table></div>
+          </details>
+      </figure>
+    </section>
+
+    <section>
+      <conextual-heading>Wolvic</conextual-heading>
+      <p>Of course, as the stewards of Wolvic, we're the #1 in contributors there too! 91.6% of commits! There's also now the wolvic-chromium </p>
+      <figure>
+          <img src="/media/2024/commits/wolvic.svg" alt="">
+          <details>
+            <summary>data</summary>
+            <div><h3>Top 10 contributors</h3><table><tbody><tr><th>Contributor</th><th>Contributions</th></tr><tr><td>Igalia</td><td>91.64%</td></tr><tr><td>weblate.org</td><td>1.55%</td></tr><tr><td>reimu.nl</td><td>1.24%</td></tr><tr><td>сэр Аноним</td><td>1.24%</td></tr><tr><td>Felipe Erias</td><td>0.93%</td></tr><tr><td>hotmail.es</td><td>0.93%</td></tr><tr><td>opensuse.org</td><td>0.62%</td></tr><tr><td>Ha Anh Vu</td><td>0.31%</td></tr><tr><td>Houssem Nasri</td><td>0.31%</td></tr><tr><td>HoussemNasri</td><td>0.31%</td></tr></tbody></table></div>
+          </details>
+      </figure>
+    </section>
+
+
+    <section class="sectioning">
+      <h3 class="contextual-heading" style="font-size: 3rem;">Accessibility</h3>
+      <p>Igalia has had an investment in accessibility for years. We've got a lot of expertise, and play an important role in some key projects:</p>
+
+      <section>
+      <conextual-heading>Orca</conextual-heading>
+      <p>Realisically this should be above as we're pretty much the maintainers of Orca, the screen reader for Linux (shout out to my colleague Joanie!).</p>
+      <figure>
+          <img src="/media/2024/commits/orca.svg" alt="">
+          <details>
+            <summary>data</summary>
+            <div><h3>Top 10 contributors</h3><table><tbody><tr><th>Contributor</th><th>Contributions</th></tr><tr><td>Igalia</td><td>76.43%</td></tr><tr><td>ubuntu.com</td><td>2.42%</td></tr><tr><td>gnome.org</td><td>2.17%</td></tr><tr><td>Andy Holmes</td><td>1.78%</td></tr><tr><td>bk.ru</td><td>1.15%</td></tr><tr><td>pickup.hu</td><td>1.15%</td></tr><tr><td>gtu.ge</td><td>1.15%</td></tr><tr><td>Yaron Shahrabani</td><td>1.15%</td></tr><tr><td>ukr.net</td><td>0.89%</td></tr><tr><td>Sabri Ünal</td><td>0.89%</td></tr></tbody></table></div>
+          </details>
+      </figure>
+    </section>
+
+    <section>
+      <conextual-heading>aria</conextual-heading>
+      <p>Igalia is #3 in commits to the aria repo - unsurprising as our colleague Valerie Young is co-chair of the working group!</p>
+      <figure>
+          <img src="/media/2024/commits/aria.svg" alt="">
+          <details>
+            <summary>data</summary>
+            <div><h3>Top 10 contributors</h3><table><tbody><tr><th>Contributor</th><th>Contributions</th></tr><tr><td>Paciello Group</td><td>21.51%</td></tr><tr><td>w3.org</td><td>17.74%</td></tr><tr><td>Igalia</td><td>16.13%</td></tr><tr><td>github-actions[bot]</td><td>9.68%</td></tr><tr><td>Daniel Montalvo</td><td>7.53%</td></tr><tr><td>Peter Krautzberger</td><td>5.38%</td></tr><tr><td>Adobe</td><td>4.84%</td></tr><tr><td>Matt Garrish</td><td>4.30%</td></tr><tr><td>usablenet.com</td><td>1.61%</td></tr><tr><td>pkra</td><td>1.61%</td></tr></tbody></table></div>
+          </details>
+      </figure>
+    </section>
+
+    <section>
+      <conextual-heading>CORE-AAM</conextual-heading>
+      <p>The AAMs are what actually map the standards to the accessibility layer, there are several of them. Very few people work on these, and guess who is pretty important there too? If you guessed Igalia, you'd be right.  Igalia is the #1 contributor in CORE-AAM, Graphics-AAM and MathML-AAMs.</p>
+      <figure>
+          <img src="/media/2024/commits/core-aam.svg" alt="">
+          <details>
+            <summary>data</summary>
+            <div><h3>Top 10 contributors</h3><table><tbody><tr><th>Contributor</th><th>Contributions</th></tr><tr><td>github-actions[bot]</td><td>28.57%</td></tr><tr><td>Igalia</td><td>28.57%</td></tr><tr><td>w3.org</td><td>28.57%</td></tr><tr><td>Paciello Group</td><td>14.29%</td></tr></tbody></table></div>
+          </details>
+      </figure>
+    </section>
+
+    </section>
+
+    <section class="sectioning">
+      <h3 class="contextual-heading" style="font-size: 3rem;">That's not remotely all</h3>
+      <p>These are just some that I am closer to and feel are interesting to highlight, but the list of open source repositories in which Igalia is playing an important to critical role is way longer than this. For example:
+
+      </p><ol>
+        <li>Igalia #2 in commits to GStreamer, the powerful multimedia framework.  We're the main maintainers of the GStreamer ports of WebKit used in Linux browsers on desktops as well as on a plethora of embedded devices.</li>
+        <li>We've been very involved in work on GL, and contributing to Khronos Vulkan, OpenGL, and OpenGL ES Conformance Tests.  In fact, we are the #1 contributor to the <a href="https://github.com/KhronosGroup/VK-GL-CTS">Vulkan GL Conformance Test Suite Repository</a>!</li>
+        <li>Igalia is the #2 contributor to the CI-tron project, which was started by Valve and is currently developed mostly by Valve contractors. CI-tron lets developers easily create CI systems based on bare metal computers, which is particularly important for Mesa and other open-source graphics projects.</li>
+        <li>Igalia is the #1 contributor to <a href="https://gitlab.gnome.org/GNOME/libsoup">libsoup</a> the HTTP client/server library for GNOME.</li>
+        <li>Igalia is the #3 contributor to <a href="https://gitlab.freedesktop.org/mesa/mesa.git">Mesa</a> the 3D Graphics Library</li>
+      </ol>
+    </section>
+
+    <p>Anyway, I love to take the time to look at these every year and see how we're doing. It's easy to get lost in the bustle of everything that's going on and miss how much we really do - it's good to take stock.  I hope that others find this interesting too, and maybe learn something about Igalia.  Most of the work that we do is funded by companies. If your organization has some needs, you know where to find me :)</p>
+
+    </section>    
+    
+   
+
+    
+]]></content:encoded>
+        </item>
         <item>
             <title><![CDATA[Keeping up: Signal to Noise]]></title>
             <link>https://bkardell.com/blog/BCD-Watch.html</link>
@@ -828,146 +1048,6 @@ html|unknown { color: blue; }
 
 	<p>As a kind of final interesting note: Stephen Johnson is a great storyteller, and his work is full of connections like these.  If you want to read more, <a href="https://en.wikipedia.org/wiki/Steven_Johnson_(author)#Books">check out his books</a>.  Part of the reason that I mention him is that interestingly, it seems that he <a href="https://stevenberlinjohnson.com/writing-at-the-speed-of-thought-21dfb7f689e4">has recently gone to work with Google on a LM project about writing himself</a>. I bet he's got some notes and ideas on this already too.</p> 
 
-]]></content:encoded>
-        </item>
-        <item>
-            <title><![CDATA[The Blessing of the Strings]]></title>
-            <link>https://bkardell.com/blog/blessing-strings.html</link>
-            <guid>https://bkardell.com/blog/blessing-strings.html</guid>
-            <pubDate>Wed, 03 Apr 2024 04:00:00 GMT</pubDate>
-            <description><![CDATA[Trusted Types have been a proposal by Google for quite some time at this point, but it's currently getting a lot of attention and work in all browsers (Igalia is working on implementations in WebKit and Gecko, sponsored by Salesforce and Google, respectively). I've been looking at it a lot and thought it's probably something worth writing about.]]></description>
-            <content:encoded><![CDATA[
-    <h1 class="contextual-heading" style="font-size: 2rem;">The Blessing of the Strings</h1>
-    <p class="segue">Trusted Types have been a proposal by Google for quite some time at this point, but it's currently getting a lot of attention and work in all browsers (Igalia is working on implementations in WebKit and Gecko, sponsored by Salesforce and Google, respectively). I've been looking at it a lot and thought it's probably something worth writing about.</p>
-    <script src="../prism.js"></script>
-    <link rel="stylesheet" href="../prism.css">
-    
-    <p>The Trusted Types proposal is about preventing Cross-site scripting (XSS), and rides atop Content Security Policy (CSP) and allows website maintainers to say "require trusted-types". Once required, lots of the Web Platform's dangerous API surfaces ("sinks") which currently require a string will now require... well, a <em>different</em> type.</p>
-    <p><code>myElement.innerHTML</code> (and a whole lot of other APIs) for example, would now require a <code>TrustedHTML</code> object instead of just a string.</p>
-    <p>You can think of <code>TrustedHTML</code> as an interface indicating that a string has been somehow specially "blessed" as safe... Sanitized.</p>
-    <figure class="captioned-image">
-    	<img src="/media/2024/holy.gif" style="width:100%;max-width:800px;" alt="the Holy Hand grenade scene from Monty Python's Holy Grail">
-    	<figcaption>And Saint Attila raised the string up on high, saying, 'O Lord, bless this thy string, that with it we may trust that it is free of XSS...' <a href="https://www.youtube.com/watch?v=xOrgLj9lOwk">[ref]</a>.</figcaption>
-    </figure>
-    <section class="sectioning">
-        <h2 class="contextual-heading" id="blessing-strings" style="font-size: 2.5rem;">Granting Blessings</h2>
-        <p>The interesting thing about this is how one goes about blessing strings, and how this changes the dynamics of development and safety to protect from XSS.</p>
-        <p>To start with, there is a new global <code>trustedTypes</code> object (available in both window and workers) with a method called <code>.createPolicy</code> which can be used to create "policies" for blessing various kinds of input (<code>createHTML</code>, <code>createScript</code>, and <code>createScriptURL</code>). Trusted Types comes with the concept of a <em>default</em> policy, and the ability for you to register a specially named "default"...</p>
-        <pre><code class="language-javascript">//returns a policy, but you 
-// don't really need to do anything 
-// with the default one
-trustedTypes.createPolicy(
-    "default", 
-    {
-      createHTML: s =&gt; { 
-          return DOMPurify.sanitize(s) 
-      } 
-    }
-);</code></pre>
-        <p>And now, the practical upshot is that <em>all attempts to set HTML will be sanitized</em>... So if there's some code that tries to do:</p>
-        <pre><code class="language-javascript">// if str contains
-// `&amp;lt;img src="no" onerror="&lt;em&gt;dangerous code&lt;/em&gt;" &amp;gt;`;
-target.innerHTML =  str;</code></pre>
-        <p>Then the <code>onerror</code> attribute will be <em>automatically</em> stripped (sanitized) before <code>.innerHTML</code> gets it.</p>
-        
-        <p><strong><em>Hey that's pretty cool!</em></strong></p>
-
-        <figure class="captioned-image">
-    		<img src="/media/2024/monty.gif" style="width:100%;max-width:400px;" alt="one of the scenes where the castle guard is mocking arthur and his men">
-    		<figcaption>It's almost like you just put defenses around all that stuff and can just peer over the wall at would be attackers and make faces at them....</figcaption>
-    	</figure>
-
-        <p>But wait... can't someone come along then and just create a more lenient policy called default?</p>
-        
-        <p>No! That will throw an exception!</p>
-
-        <p>Also, you don't <em>have</em> to create a default. If you don't, and someone tries to use one of those methods to assign a string, it will throw.</p>
-
-        <p>The only thing this enforcement cares about is that it is one of these "blessed" types. Website administrators can also provide (in the header) the name of 1 or more policies which should be created. </p>
-
-        <p>Any attempts to define a policy not in that list will throw (it's a bit more complicated than that, see <a href="#name-your-policy">Name your Policy</a> below). Let's imagine that in the header we specified that a policy named "sanitize" is allowed to be created. </p>
-        <p>Maybe you can see some of why that starts to get really interesting. In order to use any of those APIs (at all), you'd need access to a policy in order to bless the string. But because the policy which can do that blessing is a handle, it's up to you what code you give it to... </p>
-        <pre><code class="language-javascript">{
-  const sanitizerPolicy = 
-      trustedTypes.createPolicy(
-        "sanitize",
-        {
-          createHTML: s =&gt; { 
-            return DOMPurify.sanitize(s) 
-        } 
-  );
-
-
-    // give someOtherModule access to a sanitization policy
-    someOtherModule.init(sanitizerPolicy)
-
-    // yetAnotherModule can't even sanitize, any use of those
-    // APIs will throw
-    yetAnotherModule.foo()
-}
-
-// Anything out here also doesn't have 
-// access to a sanitization policy
-</code></pre>
-        <p>What's interesting about this is that the thing doing the trusting on the client, is actually <em>on</em> the client as well - but the pattern ensures that this becomes a considerably more finite problem. It is much easier to audit whether the "trust" is warranted. That is, we can look at the above to see that there is only one policy and it only supports creating HTML. We can see that the trust there is placed in DOMPurify, and even that amount of trust is only provided to select modules.</p>
-        <p>Finally, most importantly: It is a pattern that is machine enforceable. Anything that tries to use any of those APIs without a blessed string (a Trusted Type) will fail... Unless you ask it not to.</p>
-    </section>
-    <section class="sectioning">
-        <h2 class="contextual-heading" id="dont-throw-just-help" style="font-size: 2.5rem;">Don't Throw, Just Help?</h2>
-        <p>Shutting down all of those APIs after the fact is hard because all of those dangerous APIs are also really useful and therefore widely used. As I said earlier, auditing to find and understand all uses of them all is pretty difficult. Chances are pretty good that there might just be a lot more unsafe stuff floating around in your site than you expected.</p>
-        <p>Instead of <code>Content-Security-Policy</code> CSP headers, you can send <code>Content-Security-Policy-Report-Only</code> and include a directive that includes <code>report-to /csp-violation-report-endpoint/</code> where <code>/csp-violation-report-endpoint/</code> is an endpoint path (on the same origin). If set, whenever violations occur, browsers should send a request to <a href="https://w3c.github.io/webappsec-csp/#report-violation">report a violation</a> to that endpoint (JSON formatted with lots of data). </p>
-        <p>The general idea is that it is then pretty easy to turn this on and monitor your site to discover where you might have some problems, and begin to work through them. This should be especially good for your QA environment. Just keep in mind that the report doesn't actually prevent the potentially bad things from happening, it just lets you know they exist.</p>
-    </section>
-    <section class="sectioning">
-        <h2 class="contextual-heading" id="shouldnt-there-just-be-a-standard-santizer-too" style="font-size: 2.5rem;">Shouldn't there just <em>be</em> a standard santizer too?</h2>
-        <p><a href="https://github.com/WICG/sanitizer-api">Yes!! That is also a thing that is being worked on</a>.</p>
-    </section>
-    <section class="sectioning">
-        <h2 class="contextual-heading" id="name-your-policy" style="font-size: 2.5rem;">Name Your Policy</h2>
-        <p>I'm not going to lie, I found CSP/headers to be both a little confusing to read and to figure out their relationships. You might see a header set up to report only....</p>
-        <p><code>Content-Security-Policy-Report-Only: report-uri /csp-violation-report-endpoint; default-src 'self'; require-trusted-types-for 'script'; trusted-types one two;</code></p>
-        <p>Believe it or not that's a fairly simple one. Basically though, you split it up on semi-colons and each of those is a directive. The directive has a name like "report-uri" followed by whitespace and then a list of values (potentially containing only 1) which are whitespace separated. There are also keyword values which are quoted.</p>
-        <p>So, the last two parts of this are about Trusted Types. The first, <code>require-trusted-types-for</code> is about what gets some kind of enforcement and really the only thing you can put there currently is the keyword <code>'script'</code>. The second, <code>trusted-types</code> is about what policies can be created.</p>
-        <p>Note that I said "some kind of enforcement" because the above is "report only" which means those things will report, but not actually throw, while if we just change the name of the header from <code>Content-Security-Policy-Report-Only</code> to <code>Content-Security-Policy</code> lots of things might start throwing - which didn't greatly help my exploration. So, here's a little table that might help..</p>
-        <table>
-            <thead>
-                <tr>
-                    <th>If the directives are...</th>
-                    <th>then...</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td><em>(missing)</em></td>
-                    <td>You can create whatever policies you want (except duplicates), but they aren't enforced in any way.</td>
-                </tr>
-                <tr>
-                    <td><code>require-trusted-types-for 'script';</code></td>
-                    <td>You can create whatever policies you want (except duplicates), and they are enforced. All attempts to assign strings to those sinks will throw. This means if you create a policy named default, it will 'bless' strings through that automatically, but it also means anyone can create any policy to 'bless' strings too.</td>
-                </tr>
-                <tr>
-                    <td><code>trusted-types</code></td>
-                    <td>You cannot create any policies whatsoever. Attempts to will throw.</td>
-                </tr>
-                <tr>
-                    <td><code>trusted-types 'none'</code></td>
-                    <td>Same as with no value.</td>
-                </tr>
-                <tr>
-                    <td><code>trusted-types a b</code></td>
-                    <td>You can call <code>createPolicy</code> with names 'a' and 'b' exactly once. Attempts to call with other names (including 'default'), or repeatedly will throw.</td>
-                </tr>
-                <tr>
-                    <td><code>trusted-types default</code></td>
-                    <td>You can call <code>createPolicy</code> with names 'default' exactly once. Attempts to call with other names, or repeatedly will throw.</td>
-                </tr>
-                <tr>
-                    <td><code>require-trusted-types-for 'script'; trusted-types a</code></td>
-                    <td>You can call <code>createPolicy</code> with names 'a' exactly once. Attempts to call with other names (including default), or repeatedly will throw. All attempts to assign strings to those sinks will throw unless they are 'blessed' from a function in a policy named 'a'</td>
-                </tr>
-            </tbody>
-        </table>
-    </section>
 ]]></content:encoded>
         </item>
     </channel>
