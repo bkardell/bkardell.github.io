@@ -453,13 +453,13 @@ America (art for sale)</a></li>
     document.documentElement.classList.add("lldelay");
   }, 1000);
 </script>
-    <main><div class="posted-on">Posted on null</div><article class="sectioning">
+    <main><div class="posted-on">Posted on 11/24/2024</div><article posted-on="11/24/2024" class="sectioning">
 	<h1 class="contextual-heading">Interop and Hard Problems</h1>
 	<p class="segue">Let's talk about priorities, technical debt and hard problems in the Web Platform...</p>
 
 	<p>In many ways, browser engine projects are not that different from most other software projects.  The "stewards" still have teams with managers and specializations and budgets and people out on leave, and so on.  They have to prioritize and plan.  And just like every other project I've ever seen, they face the same kinds of pressures and problems:  There are never enough resources for everything, there are always new asks, and they always accumulate tech debt, and sometimes there are hard problems.</p>
 
-	<p>What <em>is</em> perhaps special about them is that they are trying to contribute to a standard platform.  The catch, for us, is that we only reap the benefit when something makes it all the way through <em>all</em> of the team's independent priority guantlets, shipped widely, and so on.</p>
+	<p>What <em>is</em> perhaps special about them is that they are trying to be more than just an isolated program: They're trying to contribute to a standard, interoperable platform.  The catch, for us, is that we only reap the benefit when something makes it all the way through <em>all</em> of the team's independent priority guantlets, shipped widely, and so on.</p>
 
 	<p>This can be kind of painful to experience.</p>
 	
@@ -477,7 +477,7 @@ America (art for sale)</a></li>
 	<p>And that's just the <em>initial</em> and <em>appealing</em> part. Then there are, of course, bugs discovered, new tests added, and ultimately feature improvements and iterations and so on.  Even currently there are newly failing tests that make support for <code>&lt;details&gt;</code> ragged as we've tried to improve things like find-in-page and and add new concepts like invokers.</p>
 
 
-	<p>As time goes by, we're accumulating squares in the feature grid and gaps in it faster than we're filling them.  We're accumulating tech debt. </p>
+	<p>As time goes by, we're accumulating squares in the feature grid and new "gaps" in it faster than we're filling them.  We're accumulating tech debt. </p>
 
 
 	<section class="sectioning">
@@ -487,19 +487,21 @@ America (art for sale)</a></li>
 
 		<p>We'll get <em>very roughly</em> around 100 submissions of what we should focus on every year.  But Interop is merely allowing browser makers to agree on how to focus and prioritize on some of the same things.  The resources themselves are still finite.  That means that prioritizing some things inevitably means <em>not</em> prioritizing something else.</p>
 
-		<p>It means that there are a lot of competing pressures here too about what to prioritize and why.</p>
+		<p>And, there are a lot of competing pressures about what to prioritize, and why.</p>
 
-		<p>For example: It is <em>super</em> effective for developers if we can focus <em>initial</em> developments together.  Imagine if we could have delivered <code>&lt;details&gt;</code> across the board and very high quality in 2011, or 2012.  Tracking a few new features has other added benefits too.  People are more excited to work on it for one, we get everyone talking about the same things at the same time, use grows faster, etc.  It gives us something almost like ECMA annual editions.  So, it's a little unsurprising that <a href="https://wpt.fyi/interop-2024">last year, interop</a> included areas like CSS nesting, popover, relative color syntax, declarative shadow DOM.</p>
+		<p>For example: It is <em>super</em> effective for developers if we can focus <em>initial</em> developments together.  Imagine if we could have delivered <code>&lt;details&gt;</code> across the board and very high quality in 2011, or 2012.</p>
 
-		<p>At the other end of the spectrum, there are lots of things which are already very ragged.  These things are damned hard to prioritize. They're all over the map. They are of obviously different, and debatable kinds of value. They incur different costs on different engines, and so on.</p>
+		<p>Focusing together on a few new features has other added benefits too.  People are more excited to work on it for one.  We also get everyone talking about the same things at the same time, that's helpful - nobody misses the big event. It means use will grow faster, etc.  It gives us something a like ECMA annual editions.  So, it's a little unsurprising that <a href="https://wpt.fyi/interop-2024">last year, interop</a> included areas like CSS nesting, popover, relative color syntax, declarative shadow DOM.</p>
 
-		<p>All of this means that we wind up with perennially hard problems which, for whatever reasons, just never make the priority cut, even with Interop. They continue to be needs, sometimes for <em>exceedingly</em> long times.</p>
+		<p>However - at the other end of the spectrum, there are lots of things which are already very ragged.  These things are damned hard to prioritize. They're all over the map. They are of obviously different, and debatable kinds of value, to sometimes very different communities. They can also incur different costs on different engines, and so on.</p>
+
+		<p>All of this conspires together to create  some perennially hard problems.  They continue to be needs, sometimes for <em>exceedingly</em> long times.</p>
 
 	</section>
 	<section class="sectioning">
 		<h2 class="contextual-heading">Perennially Hard Problems</h2>
 		
-		<p>This year, I'm making the case that we need to find a way to prioritize those perennially hard problems which, for whatever reason, we can never seem to prioritize.  Perhaps every 5, 7 or 10 years we we should focus on these kinds of projects.</p>
+		<p>This year, I'm making the case that we <em>need</em> to find a way to prioritize those perennially hard problems which, for whatever reason, we can never seem to prioritize.  Perhaps every 5, 7 or 10 years we we should focus on these kinds of projects.</p>
 
 		<p>If you've been reading my blog or listening to our podcast, then you're already aware that MathML and SVG are probably the biggest examples of this kind of problem.  Both are among the oldest web specifications, having their first versions published about the same time as HTML 4.0 and CSS 2.  They were specially integrated with the HTML parser, and are integrated into the HTML Living Standard (<a href="https://html.spec.whatwg.org/#mathml">MathML</a>, <a href="https://html.spec.whatwg.org/#svg-0">SVG</a>).</p>
 
@@ -508,13 +510,15 @@ America (art for sale)</a></li>
 
 		<p>Thus, every year, we have submissions about both for Interop.</p> 
 
-		<p>The 2024 State of HTML survey found that &lt;svg&gt; was the <a href="https://state-of-html-2024.onrender.com/en-US/features/content/">top content pain point cited by developers</a>, with almost double the pain attributed to “browser support”.  <code>&lt;svg&gt;</code> - that is the literal <code>&lt;svg&gt;</code> element, not including the other ways SVGs can be used - is used on <a href="https://rainy-periwinkle.glitch.me/permalink/831113a2f130c21a753ff9404067a47eaa893bc7fbc3f973a012d50e67123cf2.html">over 55% of HTML pages in the HTTP archive data</a>. Only 27 of HTML's roughly 130 elements are more popular.</p>
+		<p>The 2024 State of HTML survey found that &lt;svg&gt; was the <a href="https://state-of-html-2024.onrender.com/en-US/features/content/">top content pain point cited by developers</a>, with almost double the pain attributed to “browser support”.  <code>&lt;svg&gt;</code> - that is the literal <code>&lt;svg&gt;</code> element, not including the other ways SVGs can be used - is used on <a href="https://rainy-periwinkle.glitch.me/permalink/831113a2f130c21a753ff9404067a47eaa893bc7fbc3f973a012d50e67123cf2.html">over 55% of HTML pages in the HTTP archive data</a>. Only 27 of HTML's roughly 130 elements are more popular.  SVG is also used heavily in embedded applications powered by Web engines.</p>
 
-		<p>A lot of math content is in more specific sites like arXiv and Wikipedia, which each have millions and millions of equations, or in online education or books.  The HttpArchive crawl isn't the best way to measure that since it is focused mainly on public home pages where there's not likely to be a lot of math.  However, even in the crawl, we still see thousands of pages do load 2 of the most popular JavaScript libraries which are bridging the gaps instead of rendering native math - <a href="https://lookerstudio.google.com/reporting/55bc8fad-44c2-4280-aa0b-5f3f0cd3d2be/page/M6ZPC?s=msnflcbYFs4&amp;params=%7B%22df44%22:%22include%25EE%2580%25800%25EE%2580%2580IN%25EE%2580%2580MathJax%25EE%2580%2580KaTeX%22%7D">and we see what this does to their scores.</a>.  We know that numerous document editing tools like Adobe Indesign and Micosoft Word support MathML. SVG is also used heavily in embedded applications powered by Web engines. </p>
+		<p>A lot of math content is in more specific sites like arXiv and Wikipedia, which each have millions and millions of equations, or in online education or books.  The HttpArchive crawl isn't the best way to measure that since it is focused mainly on public home pages where there's not likely to be a lot of math.  However, even in the crawl, we still see thousands of pages do load 2 of the most popular JavaScript libraries which are bridging the gaps instead of rendering native math.  This hurts performance and is unique - we don't require JavaScript to render <em>text</em>.  We also know that numerous document editing tools like Adobe Indesign and Micosoft Word support MathML.  Those are complex applications which require a lot of script already, and lacking good support means that they have to load even more.</p>
 
-		<p>Every year Igalia has invested a bit in this work to keep things moving forward, slowly - but what we really need are some concerted efforts.  We'd go a lot farther, a lot faster, together. Or at least with some funding.</p>
+		<p>Igalia has contributed implementations and improvements with funding from others and ourselves.  Every year we have invested a bit ourselves to keep things moving forward.  But it moves <em>slowly</em> this way.  What we really need are some concerted efforts to push us across those last miles.  We'd go a lot farther, a lot faster, together.</p>
 
-		<p>If you support that idea, let us know. It might help. You can also <a href="https://opencollective.com/mathml-core-support">help fund work on MathML directly</a>, or contact us if you're interested in helping to financially sponsor any of this.</p>
+		<p>If you support the idea of some focus and push on thse, please let us know - let vendors know. It might help.</p>
+
+		<p>Of course, it might not too.  Historically, it's been difficult.  What we <em>know</em> works is for someone outside of vendors to do the work - or fund it.  Igalia will keep plugging away, but without external funding our own investments only go so far.  If your organization would benefirt from these, consider financially sponsoring some work.  Alternatively, you can also <a href="https://opencollective.com/mathml-core-support">help fund work on MathML directly</a>.</p>
 	</section>
 </article></main>
  
