@@ -5,15 +5,28 @@
     <title>Brian Kardell's links</title>
 
     <style>
+      @font-face {
+          font-family: 'acherus_militant_1_-_light.otf';
+          src: url('/acherus_militant_1_-_light.otf-webfont.woff2') format('woff2'),
+               url('/acherus_militant_1_-_light.otf-webfont.woff') format('woff');
+          font-weight: normal;
+          font-style: normal;
+
+      }
       body {
-        background: linear-gradient(#5ccdd0, #ebebeb);
+        background: linear-gradient(to right, #c7cccc, #dde0e8 );
+        font-family: 'acherus_militant_1_-_light.otf';
         /* border: solid 1px salmon; */
       }
       body, main {
         margin: 4rem auto;
-        width: 48rem;
+        max-width: 48rem;
       }
 
+      .profile {
+        display: block;
+        margin: auto;
+      }
 
       .wrapper {
         font-size: 1.3rem;
@@ -27,7 +40,8 @@
         margin: 3rem;
         padding: 1rem;
         text-align: center;
-        background-color: papayawhip;
+        background-color: rgb(216, 213, 255);
+        border: 1px solid;
       }
 
       .wrapper > *:hover {
@@ -73,6 +87,7 @@
   </head>
 
   <body>
+  <img class="profile" src="/profile.jpg" alt="">
   <main class="linktree">
     <div class="linktree-content">
       <div class="wrapper h-card">
