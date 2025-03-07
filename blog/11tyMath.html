@@ -475,45 +475,83 @@ America (art for sale)</a></li>
     </style>
 	<p>Very nearly none of the content that we encounter online is entirely hand authored from opening doctype to closing HTML tag - it's assembled.  We have layouts, and includes and templates and so on.  And, most of the actual <em>content</em> that we produce and consume is written in some more familiar or easier to write shorthand.  For most of the people reading this, it's probably mostly markdown.</p>
 
-	<p>But did you know that lots of the places that you use markdown <a href="https://docs.github.com/en/get-started/writing-on-github/working-with-advanced-formatting/writing-mathematical-expressions">support embedding mathematical expressions written in LaTex</a> surrounded by <code>$</code> (inline) or <code>$$</code> (block)?  Those are then transformed into MathML with MathJax.</p>
+	<p>But did you know that lots of the places that you use markdown <a href="https://docs.github.com/en/get-started/writing-on-github/working-with-advanced-formatting/writing-mathematical-expressions">like GitHub</a> and GitLab, and <a href="https://code.visualstudio.com/docs/languages/markdown">Visual Studio</a>support embedding mathematical expressions written in LaTex surrounded by <code>$</code> (inline) or <code>$$</code> (block)? Those are then transformed for you to rendered Math with MathML?</p>
 
-	<p>It got me thinking that we should have a kind of similarly standard easy setup for 11ty.  It would be a huge win to process it on the server, MathML will render natively, fast, without FOUC. It will be accessible, styleable, scale appropriately and so on.</p>
+	<p>It got me thinking that we should have a kind of similarly standard easy setup for 11ty.  It would be a huge win to process it on the server, MathML will render natively, fast, without FOUC. It will be accessible, styleable, scale appropriately with text-size and zoom and so on.</p>
 
-	<p>So, I looked to see what exists for this already.  It didn't take me long to find <a href="https://mallonbacka.com/blog/2023/03/simple-11ty-mathml-authoring/
-">a blog post explaining how to add a shortcode for AsciiMath</a>.  I didn't, personally, so I'm sharing an alternative similar to what works in other markdown places. The key to it really, is that most of these use <a href="https://github.com/markdown-it/markdown-it">markdown-it</a>, which includes means of extension.  Hooking this up to MathJax to render the MathML on the server was trivial:
+	<p>The super interesting thing to note about most of the tools where you can use markup is that so many of them are built on common infrastructure: <a href="https://github.com/markdown-it/markdown-it">markdown-it</a>.  The architectural pattern of markdown-it allows people to write plugins, and if you're looking to match those above, you can do it pretty easily with the <a href="https://www.npmjs.com/package/@mdit/plugin-katex">@mdit/plugin-katex</a>:
 
 	</p><pre><code class="language-javascript">/* eleventy.config.js */
 const markdownIt = require("markdown-it");
-const markdownItMath = require("markdown-it-mathjax3");
 
-module.exports = (eleventyConfig) =&gt; {
-    eleventyConfig.setLibrary("md", markdownIt().use(markdownItMath));
+module.exports = async function (eleventyConfig) {
+
+  const { katex } = (await import("@mdit/plugin-katex"));
+  eleventyConfig.setLibrary(
+  	"md", 
+  	markdownIt().use(katex, {output: "mathml"})
+  );
+
 }</code></pre>
 
-	<p>And... That's it.  Now you can embed LaTeX math in your markdown just as you can in those other places...
+	<p>And... That's it.  Now you can embed LaTeX math in your markdown just as you can in those other places and it will do the work of generating fast, native, accessible, and styleable MathML...
 
-	</p><pre><code class="language-html">Some math inline $\sqrt{3x-1}+(1+x)^2$ whee.</code></pre>
+	</p><pre><code class="language-html">Some math  $ $\frac{x^2}{a^2} + \frac{y^2}{b^2} = 1$ whee.</code></pre>
+
+	<p>Yields...</p>
+	<pre><code class="language-html">&lt;p&gt;Some math <span class="katex">&lt;math xmlns="http://www.w3.org/1998/Math/MathML"&gt;&lt;semantics&gt;&lt;mrow&gt;&lt;mfrac&gt;&lt;msup&gt;&lt;mi&gt;x&lt;/mi&gt;&lt;mn&gt;2&lt;/mn&gt;&lt;/msup&gt;&lt;msup&gt;&lt;mi&gt;a&lt;/mi&gt;&lt;mn&gt;2&lt;/mn&gt;&lt;/msup&gt;&lt;/mfrac&gt;&lt;mo&gt;+&lt;/mo&gt;&lt;mfrac&gt;&lt;msup&gt;&lt;mi&gt;y&lt;/mi&gt;&lt;mn&gt;2&lt;/mn&gt;&lt;/msup&gt;&lt;msup&gt;&lt;mi&gt;b&lt;/mi&gt;&lt;mn&gt;2&lt;/mn&gt;&lt;/msup&gt;&lt;/mfrac&gt;&lt;mo&gt;=&lt;/mo&gt;&lt;mn&gt;1&lt;/mn&gt;&lt;/mrow&gt;&lt;annotation encoding="application/x-tex"&gt;\frac{x^2}{a^2} + \frac{y^2}{b^2} = 1&lt;/annotation&gt;&lt;/semantics&gt;&lt;/math&gt;&lt;/span&gt; whee.&lt;/p&gt;</span></code></pre>
+
+	<p>Which your browser renders as...</p>
+
+	<div class="example">
+		<p>Some math inline <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mfrac><msup><mi>x</mi><mn>2</mn></msup><msup><mi>a</mi><mn>2</mn></msup></mfrac><mo>+</mo><mfrac><msup><mi>y</mi><mn>2</mn></msup><msup><mi>b</mi><mn>2</mn></msup></mfrac><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">\frac{x^2}{a^2} + \frac{y^2}{b^2} = 1</annotation></semantics></math></span> whee.</p>
+	</div>
+
+	<p>Surrounding the math part alone with <code>$$</code> instead yields block math, which renders as..</p>
+
+	<p class="katex-block"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mfrac><msup><mi>x</mi><mn>2</mn></msup><msup><mi>a</mi><mn>2</mn></msup></mfrac><mo>+</mo><mfrac><msup><mi>y</mi><mn>2</mn></msup><msup><mi>b</mi><mn>2</mn></msup></mfrac><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">\frac{x^2}{a^2} + \frac{y^2}{b^2} = 1</annotation></semantics></math></p>
+
+
 
 	<section class="sectioning">
 		<h2 class="contextual-heading">AsciiMath Math</h2>
-		There do seem to be a lot of people who prefer AsciiMath.  Rúnar Berg Baugsson Sigríðarson (<a href="https://github.com/runarberg">@runarberg</a>) has a nice <a href="https://github.com/runarberg/mathup">library for it called mathup</a>.  Here's <a href="https://runarberg.github.io/mathup/#why-not-tex">their own explanation as to why they prefer to not use TeX</a>.  
+		While LaTeX is by far the most common way that people author math, there are people who prefer AsciiMath.  Rúnar Berg Baugsson Sigríðarson (<a href="https://github.com/runarberg">@runarberg</a>) has a nice <a href="https://runarberg.github.io/mathup/#why-not-tex">explanation as to why they prefer to not use TeX</a>.  
 
-		<p>If you prefer mathup/AsciiMath, it's not much harder to configure instead...</p>
+		<p>His mathup package seems pretty nice and there is also a corresponding  <a href="https://github.com/runarberg/markdown-it-math">markdown-it-math</a> which is similarly easy to use...</p>
 
 	<pre><code class="language-javascript">/* eleventy.config.js */
 const markdownIt = require("markdown-it");
-const markdownItMath = require("markdown-it-mathjax3");
 
-module.exports = async (eleventyConfig) =&gt; {
-    const mathup = (await import("mathup")).default;
-    
-    eleventyConfig.setLibrary("md", markdownIt().use(markdownItMath, {
-      inlineRenderer: (c) =&gt; { return mathup(c).toString() },
-      blockRenderer:  (c) =&gt; { return mathup(c).toString() }
-    }));
-};</code></pre>
+module.exports = async function (eleventyConfig) {
+  const markdownItMath = 
+  	(await import('markdown-it-math')).default;
+
+  eleventyConfig.setLibrary(
+    "md", 
+    markdownIt().use(markdownItMath)
+  );
+}</code></pre>
 	
-	<p>Then, you can embed mathup/AsciiMath in your markdown, fenced by the same <code>$</code> or <code>$$</code> and it will generate some nice MathML. You might also consider including <a href="https://cdn.jsdelivr.net/npm/mathup/dist/mathup.css">their stylesheet</a>.</p>
+	<p>Then, you can embed AsciiMath in your markdown, fenced by the same <code>$</code> or <code>$$</code> and it will generate some nice MathML. For example...</p>
+
+	<pre><code class="language-html">$$
+e = sum_(n=0)^oo 1/n!
+$$</code></pre>
+
+
+	<p>Will be transformed at build time and render in your browser as...</p>
+
+	<math display="block"><mi>$</mi><mi>e</mi><mo>=</mo><munderover><mo>∑</mo><mrow><mi>n</mi><mo>=</mo><mn>0</mn></mrow><mi mathvariant="normal">∞</mi></munderover><mfrac><mn>1</mn><mrow><mi>n</mi><mo>!</mo></mrow></mfrac><mi>$</mi></math>
+
+	<p>Make sure you get markdown-it-math 5.0.0-rc.0 or above or this won't work.  You might also consider including <a href="https://cdn.jsdelivr.net/npm/mathup/dist/mathup.css">their stylesheet</a>.</p>
+	</section>
+
+
+	<section class="sectioning">
+		<h2 class="contextual-heading">Unicode Math</h2>
+		<p>There is also Unicode Math, which Murray Sargent III developed and had integrated into all of the Microsoft products.  It's pretty nifty too if you ask me. This repo has a nice <a href="https://github.com/MurrayIII/UnicodeMathML/tree/main?tab=readme-ov-file#how-does-its-syntax-compare-to-asciimath-latex-and-mathml">comparison of the three</a>.</p>
+
+		<p>Unfortunately there is no npm module for it (<a href="https://github.com/doersino/UnicodeMathML/issues/5">yet</a>) and thus also no markdown-it module, so for now, unfortunately that remains an open wish.</p> 
 	</section>
 
 	<p>So, that's it.  Enjoy.  Mathify your static sites.</p>
