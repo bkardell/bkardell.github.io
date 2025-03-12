@@ -453,7 +453,7 @@ America (art for sale)</a></li>
     document.documentElement.classList.add("lldelay");
   }, 1000);
 </script>
-    <main><div class="posted-on">Posted on null</div><article class="sectioning">
+    <main><div class="posted-on">Posted on 03/12/2025</div><article posted-on="03/12/2025" class="sectioning">
 	<h1 class="contextual-heading">11ty Math</h1>
 	<p class="segue">Markdown, LaTex and ASCII - who writes HTML?</p>
 	<script src="../prism.js"></script>
@@ -494,7 +494,7 @@ module.exports = async function (eleventyConfig) {
 
 }</code></pre>
 
-	<p>And... That's it.  Now you can embed LaTeX math in your markdown just as you can in those other places and it will do the work of generating fast, native, accessible, and styleable MathML...
+	<p>And... That's it.  Now you can embed LaTex math in your markdown just as you can in those other places and it will do the work of generating fast, native, accessible, and styleable MathML...
 
 	</p><pre><code class="language-html">Some math  $ $\frac{x^2}{a^2} + \frac{y^2}{b^2} = 1$ whee.</code></pre>
 
@@ -514,10 +514,10 @@ module.exports = async function (eleventyConfig) {
 
 
 	<section class="sectioning">
-		<h2 class="contextual-heading">AsciiMath Math</h2>
-		While LaTeX is by far the most common way that people author math, there are people who prefer AsciiMath.  Rúnar Berg Baugsson Sigríðarson (<a href="https://github.com/runarberg">@runarberg</a>) has a nice <a href="https://runarberg.github.io/mathup/#why-not-tex">explanation as to why they prefer to not use TeX</a>.  
+		<h2 class="contextual-heading">AsciiMath Math / Mathup</h2>
+		<p>While LaTeX is by far the most common way that people author math, there are people who prefer AsciiMath.  Rúnar Berg Baugsson Sigríðarson (<a href="https://github.com/runarberg">@runarberg</a>) has a nice <a href="https://runarberg.github.io/mathup/#why-not-tex">explanation as to why they prefer to not use TeX</a>.</p>
 
-		<p>His mathup package seems pretty nice and there is also a corresponding  <a href="https://github.com/runarberg/markdown-it-math">markdown-it-math</a> which is similarly easy to use...</p>
+		<p>His mathup package seems pretty nice (an AsciiMath dialect more than just AsciiMath), and there is also a corresponding  <a href="https://github.com/runarberg/markdown-it-math">markdown-it-math</a> which is similarly easy to use...</p>
 
 	<pre><code class="language-javascript">/* eleventy.config.js */
 const markdownIt = require("markdown-it");
@@ -543,7 +543,10 @@ $$</code></pre>
 
 	<math display="block"><mi>e</mi><mo>=</mo><munderover><mo>∑</mo><mrow><mi>n</mi><mo>=</mo><mn>0</mn></mrow><mi mathvariant="normal">∞</mi></munderover><mfrac><mn>1</mn><mrow><mi>n</mi><mo>!</mo></mrow></mfrac></math>
 
-	<p>Make sure you get markdown-it-math 5.0.0-rc.0 or above or this won't work.  You might also consider including <a href="https://cdn.jsdelivr.net/npm/mathup/dist/mathup.css">their stylesheet</a>.</p>
+	<p class="note">Make sure you get markdown-it-math 5.0.0-rc.0 or above or this won't work.  You might also consider including <a href="https://cdn.jsdelivr.net/npm/mathup/dist/mathup.css">their stylesheet</a>.</p>
+
+	<p class="note">markdown-it-math also supports a nice pattern for easily integrating other engines for embedded transformations like Ron Kok's <a href="https://temml.org/">Temml</a> or Fred Wang's <a href="https://fred-wang.github.io/TeXZilla/">TeXZilla</a>.</p>
+
 	</section>
 
 
@@ -551,12 +554,12 @@ $$</code></pre>
 		<h2 class="contextual-heading">Unicode Math</h2>
 		<p>There is also Unicode Math, which Murray Sargent III developed and had integrated into all of the Microsoft products.  It's pretty nifty too if you ask me. This repo has a nice <a href="https://github.com/MurrayIII/UnicodeMathML/tree/main?tab=readme-ov-file#how-does-its-syntax-compare-to-asciimath-latex-and-mathml">comparison of the three</a>.</p>
 
-		<p>Unfortunately there is no npm module for it (<a href="https://github.com/doersino/UnicodeMathML/issues/5">yet</a>) and thus also no markdown-it module, so for now, unfortunately that remains an open wish.</p> 
+		<p>Unfortunately there is no npm module for it (<a href="https://github.com/doersino/UnicodeMathML/issues/5">yet</a>), so for now, unfortunately that remains an open wish.</p> 
 	</section>
 
 	<p>So, that's it.  Enjoy.  Mathify your static sites.</p>
 
-	<p class="note">Before you go... The work of Math rendering in browsers is <em>severly</em> under funded.  Almost none of the effort or funding over the last 30 years to make this possible has come from browser vendors, but rather from individual contributors and those willing to help fund them.  If you appreciate the importance of this work, please consider helping to <a href="https://opencollective.com/mathml-core-support">support the work</a> with a small monthly donation, and please help us to publicly lobby implementers to invest in it.</p>
+	<p class="note">Before you go... The work of Math rendering in browsers is <em>severely</em> under funded.  Almost none of the effort or funding over the last 30 years to make this possible has come from browser vendors, but rather from individual contributors and those willing to help fund them.  If you appreciate the importance of this work, please consider helping to <a href="https://opencollective.com/mathml-core-support">support the work</a> with a small monthly donation, and please help us to publicly lobby implementers to invest in it.</p>
 
 </article></main>
  
