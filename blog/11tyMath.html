@@ -496,7 +496,7 @@ module.exports = async function (eleventyConfig) {
 
 	<p>And... That's it.  Now you can embed LaTex math in your markdown just as you can in those other places and it will do the work of generating fast, native, accessible, and styleable MathML...
 
-	</p><pre><code class="language-html">Some math  $ $\frac{x^2}{a^2} + \frac{y^2}{b^2} = 1$ whee.</code></pre>
+	</p><pre><code class="language-html">Some math  $\frac{x^2}{a^2} + \frac{y^2}{b^2} = 1$ whee.</code></pre>
 
 	<p>Yields...</p>
 	<pre><code class="language-html">&lt;p&gt;Some math <span class="katex">&lt;math xmlns="http://www.w3.org/1998/Math/MathML"&gt;&lt;semantics&gt;&lt;mrow&gt;&lt;mfrac&gt;&lt;msup&gt;&lt;mi&gt;x&lt;/mi&gt;&lt;mn&gt;2&lt;/mn&gt;&lt;/msup&gt;&lt;msup&gt;&lt;mi&gt;a&lt;/mi&gt;&lt;mn&gt;2&lt;/mn&gt;&lt;/msup&gt;&lt;/mfrac&gt;&lt;mo&gt;+&lt;/mo&gt;&lt;mfrac&gt;&lt;msup&gt;&lt;mi&gt;y&lt;/mi&gt;&lt;mn&gt;2&lt;/mn&gt;&lt;/msup&gt;&lt;msup&gt;&lt;mi&gt;b&lt;/mi&gt;&lt;mn&gt;2&lt;/mn&gt;&lt;/msup&gt;&lt;/mfrac&gt;&lt;mo&gt;=&lt;/mo&gt;&lt;mn&gt;1&lt;/mn&gt;&lt;/mrow&gt;&lt;annotation encoding="application/x-tex"&gt;\frac{x^2}{a^2} + \frac{y^2}{b^2} = 1&lt;/annotation&gt;&lt;/semantics&gt;&lt;/math&gt;&lt;/span&gt; whee.&lt;/p&gt;</span></code></pre>
