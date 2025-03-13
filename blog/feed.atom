@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://bkardell.com/</id>
     <title>bkardell.com rss feed</title>
-    <updated>2025-03-13T13:24:19.190Z</updated>
+    <updated>2025-03-13T18:57:20.201Z</updated>
     <generator>awesome mix</generator>
     <author>
         <name>Brian Kardell</name>
@@ -66,6 +66,14 @@ module.exports = async function (eleventyConfig) {
 
 	<p class="katex-block"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mfrac><msup><mi>x</mi><mn>2</mn></msup><msup><mi>a</mi><mn>2</mn></msup></mfrac><mo>+</mo><mfrac><msup><mi>y</mi><mn>2</mn></msup><msup><mi>b</mi><mn>2</mn></msup></mfrac><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">\frac{x^2}{a^2} + \frac{y^2}{b^2} = 1</annotation></semantics></math></p>
 
+
+	<div class="note">
+  	Mathematical fonts are critical for rendering.  We <strong>almost</strong> have universally good default math fonts, but <strong>some</strong> operating systems (eyes Android disapprovingly) still don't.  However, like me you can include some CSS to help. On this page I've included 
+  	<pre><code class="language-html">&lt;link  href="https://fred-wang.github.io/MathFonts/STIX/mathfonts.css" /&gt;</code></pre>.
+  	<br> You can <a href="https://developer.mozilla.org/en-US/docs/Web/MathML/Authoring#mathematical_fonts">read a lot more about this on MDN</a>. 
+
+
+	</div>
 
 
 	<section class="sectioning">
