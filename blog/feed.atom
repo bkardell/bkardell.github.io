@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://bkardell.com/</id>
     <title>bkardell.com rss feed</title>
-    <updated>2025-03-12T16:17:49.714Z</updated>
+    <updated>2025-03-13T13:24:19.190Z</updated>
     <generator>awesome mix</generator>
     <author>
         <name>Brian Kardell</name>
@@ -26,6 +26,7 @@
 	<p class="segue">Markdown, LaTex and ASCII - who writes HTML?</p>
 	<script src="../prism.js"></script>
     <link rel="stylesheet" href="../prism.css">
+    <link rel="stylesheet" href="https://fred-wang.github.io/MathFonts/STIX/mathfonts.css">
     
 	<p>Very nearly none of the content that we encounter online is entirely hand authored from opening doctype to closing HTML tag - it's assembled.  We have layouts, and includes and templates and so on.  And, most of the actual <em>content</em> that we produce and consume is written in some more familiar or easier to write shorthand.  For most of the people reading this, it's probably mostly markdown.</p>
 
