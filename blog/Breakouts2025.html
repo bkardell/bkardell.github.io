@@ -494,13 +494,15 @@ America (art for sale)</a></li>
 <li><a href="https://github.com/w3c/breakouts-day-2025/issues/11">Collective funding, governance and prioritization of a browser engine projects</a>, led by myself and Stephanie Stimac</li>
 </ul>
 <p>There were actually several in that timeslot that I wanted to attend but the choice was pretty straightforward: I'd attend mine and Eric's. Unfortunately I did a bad job chairing and forgot to assign a scribe or record a presentation.</p>
-<p>Eric's session told the story of SVG and how it just didn't get a lot of love or investment from the browser vendors. Amelia Belamy-Royd's (former editor/chair) told us about how ultimately stalled out around 2020 with so much left undone, burnout, disappointments, and a W3C working group that was almost closed up with a note last year before being sort of "rescued" at the last minute with a very targeted rechartering which still hasn't resulted in new meetings, etc.  We talked about how Igalia has been investing, along with companies like Wix, in trying to help move things forward.  Then the question was: How can we move it forward, together?  One idea was a collective around SVG.</p>
-<p>So, while might they <em>seem</em> at first like pretty different topics, Eric's session and my own are really just two aspects of the same overarching question: <em>Why have we built the infrastructure of the whole web ecosystem to be fundamentally dependent on the funding and prioritization of a few private organizations?</em>. And - <em>how can we fix that?</em>.</p>
+<p>Eric's session told the story of SVG and how, despite it getting a lot of love from developers and designers and other working group participants, it just didn't get a lot of love or investment from the browser vendors themselves. Amelia Belamy-Royd's (former editor/chair) told us about how things ultimately stalled out around 2020 with so much left undone, burnout, disappointments, and a W3C working group that was almost closed up with a note last year before being sort of "rescued" at the last minute with a very targeted rechartering. However, that rechartering still hasn't resulted in much - no new meetings, etc.  We talked about how Igalia has been investing, along with companies like Wix, in trying to help move things forward.  Then the question was: How can we move it forward, together?  You can read the minutes for more, but one idea was a collective around SVG.</p>
+
+<p>I mention this because while might they <em>seem</em> at first like pretty different topics, Eric's session and my own are really just two things raising the same overarching question: <em>Why have we built the infrastructure of the whole web ecosystem to be fundamentally dependent on the funding and prioritization of a few private organizations?</em>. And - <em>how can we fix that?</em>.</p>
+
 <p>My session presented some things we've done, or tried so far</p>
 
 <section class="sectioning">
 	<h2 class="contextual-heading">Things we're trying...</h2>
-	<p>First, just moving from proprietary projects to open source has helped a bit.  As you probably already know, if you're reading this, my company Igalia is among the top few committers to all of the web engine projects every year for at least half a decade.  Igalia has many ways that we try to diversify work upstream. The result of all of this though is that the stewards themselves still contribute ~80 to 95% of the commits.</p>
+	<p>First, just moving from proprietary projects to open source has helped a bit.  Instead of one organization being 100% responsible, the stewards themselves today contribute "only" ~80 to 95% of the commits.</p>
 
 	<div style="display: grid; grid-template-columns: 1fr 1fr 1fr;">
       <img src="/media/2023/moz.svg" style="width: 100%" title="mozilla-central - mozilla contributed 87.2% of commits">
@@ -508,15 +510,16 @@ America (art for sale)</a></li>
       <img src="/media/2023/google-chrome.svg" style="width: 100%" title="chromium - google committed 95.5% of commits">
     </div>
 
-	<p>What's interesting is that there is a kind of a spectrum here relating to the scope and how well understood the approach is...</p>
+
+	<p>My company Igalia is among the top few committers to all of the web engine projects every year for at least half a decade, and we have many ways that we try to diversify work upstream.  What's interesting about attempts to diversify funding thought is that is that there is a kind of a spectrum here relating to both the scope of what we're tackling and how well understood the approach is...</p>
 
 	<div class="spectrum">
 		<span>one sponsor/single issue</span>
 		<span>collective/whole project</span>
 	</div>
 	
+	<p>On the left is a single sponsor with very specific/measurable tasks. This could be a list of bugs, or implementation of a pretty stable feature in a single engine.  You can contract Igalia for stuff like this - The <code>:has()</code> implementation and POC that moved the needle in Chromium, for example, was sponsored by EyeO.  CSS Grid in Blink and WebKit was sponsored by Bloomberg Tech.  <em>We know how to do this</em>.  We've got lots of practice.</p>
 
-	<p>On the left is a single sponsor with very specific/measurable tasks. This could be a list of bugs, or implementation of a pretty stable feature in a single engine.  We know how to do this - you can contract Igalia for stuff like this - The <code>:has()</code> implementation and POC that moved the needle in Chromium, for example, was sponsored by EyeO.  CSS Grid in Blink and WebKit was sponsored by Bloomberg Tech.  We've got a ton of examples like this.</p>
 	<p>Moving slightly more 'right' we have things like our <a href="https://www.smashingmagazine.com/2020/07/crowdfunding-web-platform-features-open-prioritization/">Open Priortization</a> which is trying to decide how to prioritize and share a funding burden.  We know less of how to do this, we learned things with the experiment, but we've not repeated it because it involved a lot of "extra" work.</p>
 	<p>Then there's our efforts with MathML, funded by grants, then partnerships, then a collective aimed at generally advancing and maintaining MathML support in browsers.  That's now involving more decision making - there's not a tight list of tasks or even a specific browser.  You need to take in money to find out how much budget you have, and then try to figure out how to use it.  In this case, there's a steering committee made up of the biggest funders. Every 6 months or so there is a <a href="https://opencollective.com/mathml-core-support/updates/mathml-h1-report-2024">report of the work that was done submitted for payment</a>. Is that a great model?</p>
 	<p>We also have Wolvic, which attempted to have partnerships and a collective, with a model where if you put in a kind of minimum amount every 6 months then you would get invited to a town hall to discuss how we'd prioritize the spending of available funds.  Is that a great model?  The thing I like about it is that it binds things to some kind of reality. It's great if someone gave $500, for example, but if so did 10 other orgs and they all want different things, none of which we can do with the available funds... At least they can all help decide what to do.  In that model, the input is still only informative - it's ultimately Igalia who decides.</p>
@@ -550,7 +553,7 @@ America (art for sale)</a></li>
 		<p>But does it mean there <em>shouldn't</em> be more general funds?  Currently the general funds come from default search and wind up with a single org to decide - is it what we want?</p>
 	</section>
 </section>
-	<p>So, that's all that was discussed. All in all, it was pretty good - but I'm slightly disappointed there wasn't a little more discussion of how we could collectively govern or priortize, or even if we all agreed that that's something that we want.  I'd love to hear any of your thoughts!</p>
+	<p>So, that's all that was discussed. All in all, it was pretty good - but I'm slightly disappointed there wasn't a little more discussion of how we could collectively govern or priortize, or even if we all agreed that that's something that we want.  I'd love to hear any of your thoughts! </p>
 </article></main>
  
    
