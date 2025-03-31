@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://bkardell.com/</id>
     <title>bkardell.com rss feed</title>
-    <updated>2025-03-13T18:57:20.201Z</updated>
+    <updated>2025-03-31T19:39:35.513Z</updated>
     <generator>awesome mix</generator>
     <author>
         <name>Brian Kardell</name>
@@ -14,6 +14,98 @@
     <subtitle>Just the bkardell.com rss feed</subtitle>
     <logo>http://bkardell.com/profile.jpg</logo>
     <rights>All rights reserved 2018, Brian Kardell</rights>
+    <entry>
+        <title type="html"><![CDATA[Breakouts 2025: Collective]]></title>
+        <id>https://bkardell.com/blog/Breakouts2025.html</id>
+        <link href="https://bkardell.com/blog/Breakouts2025.html">
+        </link>
+        <updated>2025-03-31T04:00:00.000Z</updated>
+        <summary type="html"><![CDATA[The other day was W3C Breakouts Day: Effectively, an opportunity for people to create sessions to talk about or work on anything related to the Web.  We do this twice a year.  Once entirely virtually (last week) and then again during hybrid meetings in association with W3C's biggest event of the year, called "TPAC".]]></summary>
+        <content type="html"><![CDATA[
+	<h1 class="contextual-heading" style="font-size: 2rem;">Breakouts 2025: Collective</h1>
+<p class="segue">The other day was <a href="https://www.w3.org/2025/03/breakouts-day-2025/">W3C Breakouts Day</a>: Effectively, an opportunity for people to create sessions to talk about or work on anything related to the Web.  We do this twice a year.  Once entirely virtually (last week) and then again during hybrid meetings in association with W3C's biggest event of the year, called "TPAC".</p>
+
+<p>This year there were 4 blocks of sessions with 4-5 sessions competing concurrently for the same time slot. There were 2 in the morning that I'd chosen, but then realized that I had calendar conflicts with other meetings and wound up missing them.</p>
+
+<p>In the afternoon there were 3 sessions proposed by Igalians - unfortunately two of them simulteneously:</p>
+<ul>
+<li><a href="https://github.com/w3c/breakouts-day-2025/issues/12">Vectors of Neglect</a> - about SVG, led by Eric Meyer.</li>
+<li><a href="https://github.com/w3c/breakouts-day-2025/issues/14">Revisiting in-band text tracks in MediaSource Extensions</a>, led by Alicia Boya Garcia</li>
+<li><a href="https://github.com/w3c/breakouts-day-2025/issues/11">Collective funding, governance and prioritization of a browser engine projects</a>, led by myself and Stephanie Stimac</li>
+</ul>
+<p>There were actually several in that timeslot that I wanted to attend but the choice was pretty straightforward: I'd attend mine and Eric's. Unfortunately I did a bad job chairing and forgot to assign a scribe or record a presentation.</p>
+
+<p>Eric's session told the story of SVG and how, despite it getting a lot of love from developers and designers and other working group participants, it just didn't get a lot of love or investment from the browser vendors themselves. Amelia Belamy-Royd's (former editor/chair) told us about how things ultimately stalled out around 2020 with so much left undone, burnout, disappointments, and a W3C working group that was almost closed up with a note last year before being sort of "rescued" at the last minute with a very targeted rechartering. However, that rechartering still hasn't resulted in much - no new meetings, etc. We talked about how Igalia has been investing, along with companies like Wix, in trying to help move things forward. Then the question was: How can we move it forward, together? You can read <a href="https://www.w3.org/2025/03/26-svg-neglect-minutes.html">the minutes</a> for more, but one idea was a collective around SVG.</p>
+
+<p>I mention this because while might they <em>seem</em> at first like pretty different topics, Eric's session and my own are really just two things raising the same overarching question: <em>Why have we built the infrastructure of the whole web ecosystem to be fundamentally dependent on the funding and prioritization of a few private organizations?</em>. And - <em>how can we fix that?</em>.</p>
+
+<p>My session presented some things we've done, or tried so far.</p>
+
+<section class="sectioning">
+	<h2 class="contextual-heading" style="font-size: 2.5rem;">Things we're trying...</h2>
+	<p>First, just moving from proprietary projects to open source has helped a bit.  Instead of one organization being 100% responsible, the stewards themselves today contribute "only" ~80 to 95% of the commits.</p>
+
+	<div style="display: grid; grid-template-columns: 1fr 1fr 1fr;">
+      <img src="/media/2023/moz.svg" style="width: 100%" title="mozilla-central - mozilla contributed 87.2% of commits">
+      <img src="/media/2023/apple-webkit.svg" style="width: 100%" title="webkit - apple contributed 78.1% of commits">
+      <img src="/media/2023/google-chrome.svg" style="width: 100%" title="chromium - google committed 95.5% of commits">
+    </div>
+
+
+	<p>My company Igalia is among the top few committers to all of the web engine projects every year for at least half a decade, and we have many ways that we try to diversify work upstream. What's interesting about attempts to diversify funding is that there is a kind of a spectrum here relating to both the scope of what we're tackling and how well understood the approach is...</p>
+
+	<div class="spectrum">
+		<span>one sponsor/single issue</span>
+		<span>collective/whole project</span>
+	</div>
+	
+	<p>On the left is a single sponsor with very specific/measurable tasks. This could be a list of bugs, or implementation of a pretty stable feature in a single engine. You can contract Igalia for stuff like this - The <code>:has()</code> implementation and proof-of-concept that moved the needle in Chromium, for example, was sponsored by EyeO. CSS Grid in Blink and WebKit was sponsored by Bloomberg Tech. <em>We know how to do this</em>. We've got lots of practice.</p>
+
+	<p>Moving slightly more 'right', we have things like our <a href="https://www.smashingmagazine.com/2020/07/crowdfunding-web-platform-features-open-prioritization/">Open Priortization</a> which is trying to decide how to prioritize and share a funding burden. We know less of how to do this, we learned things with the experiment, but we've not repeated it because it involved a lot of "extra" work.</p>
+
+	<p>Then there's our efforts with MathML, funded by grants, then partnerships, then a collective aimed at generally advancing and maintaining MathML support in browsers.  That's now involving more decision making - there's not a tight list of tasks or even a specific browser.  You need to take in money to find out how much budget you have, and then try to figure out how to use it.  In this case, there's a steering committee made up of the biggest funders. Every 6 months or so there is a <a href="https://opencollective.com/mathml-core-support/updates/mathml-h1-report-2024">report of the work that was done submitted for payment</a>. Is that a great model?</p>
+	
+
+	<p>We also have Wolvic, which attempted to have partnerships and a collective, with a model where if you put in a kind of minimum amount every 6 months then you would get invited to a town hall to discuss how we'd prioritize the spending of available funds.  Is that a great model?  The thing I like about it is that it binds things to some kind of reality. It's great if someone gave $500, for example, but if 10 other orgs also did so and they all want different things, none of which we can do with the available funds... At least they can all help decide what to do.  In that model, the input is still only informative - it's ultimately Igalia who decides.</p>
+	
+	<p>Or, you might have seen a new thing hosted at the Linux Foundation for <a href="https://www.linuxfoundation.org/press/linux-foundation-announces-the-launch-of-supporters-of-chromium-based-browsers">funding work in Chromium</a>.  That's more formal, but kind of similar in challenges. Unfortunately there was no one attending our sessions who could talk about it - I know a bit more, but I'm not going to break news on my blog :). We'll have a podcast about it when we can.</p>
+	
+	<p>Or, a little further right there's <a href="https://openwebdocs.org">Open Web Docs (OWD)</a>, which I'm pleased <em>does</em> seem to be succeeding at sponsoring some real work and doing real prioritization.  Florian from OWD was there and was able to give us some real thoughts.  They too are drawing now from grants like Soverign Tech Fund.  They produce as part of this an <a href="https://openwebdocs.org/content/reports/2024/">Impact Report</a>.</p>
+
+	<p>Or, maybe all the way to the right you have a general browser fund like <a href="https://servo.org/sponsorship/">Servo</a>.  There it is the Technical Steering Committee that decides what to do with the funds.</p>
+
+	<p>A lot of this thinking is currently still pretty esoteric because, for example, through the <em>collective</em>, Servo isn't taking in enough money for even a single full time employee. I also mentioned our work with Interop, and the fact that even with that level of effort to priortize, it is very difficult to not wind up taking resources away from actual work in order to figure out which work to potentially do! It's hard to not add admin costs that eat away at the overall progress. But that's exactly why we should be talking about these things now. How can we make this work?</p>
+</section>
+
+<section class="sectioning">
+	<h2 class="contextual-heading" style="font-size: 2.5rem;">The Actual Discussion</h2>
+	<p>As I said, we didn't have a scribe, but there was some discussion I can attempt to summarize from the queue I can still see in IRC.</p>
+
+	<section class="q sectioning">
+		<h3 class="contextual-heading" style="font-size: 3rem;">Q. Do you think the W3C has a role to play?</h3>
+		<p>That's why I brought it here. My own <em>desire</em> would be yes.  There are some venues where working groups and interest groups are encouraged to pool funds and so on - but the W3C isn't currently one of them and I'm unsure how others feel. It's a thing I have been trying to pitch for a few years now that we could figure out.</p>
+		
+		<p>The Wolvic model that I described above was born from thoughts around this. What if W3C groups had the ability to put money into a common fund and then at the end of the year they could decide how to deploy it. Maybe sometimes that would be for tools. Maybe sometimes that would be for fixing bugs. Maybe sometimes that would be for new implementation, or last implementation, or supporting spec authorship. But it would always be grounded on something real about collaboration that puts at <em>some</em> degree of power beyond the implementers. Maybe that would mean that print CSS would inch along at a snail's pace - but at least it's better than not at all, and it shows a way. At least it doesn't seem like the group isn't even picking up the phone.</p>
+
+	</section>
+
+	<section class="q sectioning">
+		<h3 class="contextual-heading" style="font-size: 3rem;">Q. Are engines like Servo and Ladybird filing implementation reports? WPT?</h3>
+
+		<p>Basically... Not exactly. The main thrust is that both engines <em>do</em> make themselves available on Web Platform Tests and closely track their scores. That said, the models differ quite a bit in their approach and Ladybird, for example, generally is more focused from the outside in. It's possible they only start with 25% of the standard required to load a certain page. So, at what point would they submit an impact report? Both projects <em>do</em> currently open issues when they find implementation related questions or problems, and both have the ability to expand the test suites in response to those issues. So, effectively: Nobody has time for that level of formality, but they're following the spirit of it.</p>
+	</section>
+
+	<section class="q sectioning">
+		<h3 class="contextual-heading" style="font-size: 3rem;">Q. Doesn't it help to have a thing you can measure if you approach someone to ask for money?</h3>
+
+		<p>Yes, that is the whole point of my spectrum above. The further right you move, the more of a question this is. On our podcast, for example, we've asked people "Why don't you donate to Mozilla?" and the main answer given is always "I don't know what they'll spend it on, but probably not things I would agree with".  The more people putting in, the more there is to balance or require trust. Currently a lot of these work for grants or more specific/finite problems which do reports of success - like the one I provided above for MathML or the implementation report in OWD.</p>
+
+		<p>But does it mean there <em>shouldn't</em> be more general funds?  Currently the general funds come from default search and wind up with a single org to decide - is it what we want?</p>
+	</section>
+</section>
+	<p>So, that's all that was discussed. All in all, it was pretty good - but I'm slightly disappointed there wasn't a little more discussion of how we could collectively govern or priortize, or even if we all agreed that that's something that we want.  I'd love to hear any of your thoughts! </p>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[11ty Math]]></title>
         <id>https://bkardell.com/blog/11tyMath.html</id>
@@ -807,145 +899,5 @@ $$</code></pre>
     </section>
 
 </section>]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Improving the WPT Dashboard]]></title>
-        <id>https://bkardell.com/blog/WPT-Dashboard.html</id>
-        <link href="https://bkardell.com/blog/WPT-Dashboard.html">
-        </link>
-        <updated>2024-05-21T04:00:00.000Z</updated>
-        <summary type="html"><![CDATA[Thoughts on things I'd like to see as part of the WPT dashboard.]]></summary>
-        <content type="html"><![CDATA[
-    <h1 class="contextual-heading" style="font-size: 2rem;">Improving the WPT Dashboard</h1>
-    <p class="segue">Thoughts on things I'd like to see as part of the WPT dashboard.</p>
-    
-    <p>In my <a href="https://bkardell.com/blog/BSF.html">last post</a> I dug into the data behind <a href="https://wpt.fyi/">wpt.fyi</a>'s Browser Specific Failures chart (below) and the site's general reporting capabilities. </p>
-    <figure class="captioned-image">
-        <img src="/media/2024/bsf.png" alt="">
-    </figure>
-    <p>I suggested that linking to data on specifically what failed (at least what is queryable) would probably be really helpful (perhaps some kind of "understanding this chart" link as well).</p>
-    <p>While these aren't part of the design today, I think this is mainly because the primary audience of that chart was originally mainly the vendors themselves. It was intended to allow for certain simple kinds of tracking, planning and prioritization. For example "Let's set a goal to not let the failure exceed such and such threshold" or "Let's aim to lower the failures by X this quarter". It wasn't critical to link to the tests because the audience knew how to interrogate the data - the purpose was just to get a quantifiable number you can easily report on.</p>
-    <p>But, now we see this chart shared a lot and it's pretty clear that people are curious so we should probably adjust it for the wider audience.</p>
-    <p>Additionally though, that's also only a single view of the data, and I'd like to argue that we could some other improvements too.</p>
-    <section class="sectioning">
-        <h2 class="contextual-heading" style="font-size: 2.5rem;">Prioritization</h2>
-        <p>BSF made the observation that if we can identify a test that fails in only 1 browser, then that browser's team can easily prioritize something that has significant impact. That browser is the boat anchor holding things back. Except, it's not quite that cut and dry in reality.</p>
-        <p>Real management of software projects is hard. I think that anyone who's worked on software projects can relate to this, at least a bit, if we take some time to consider all of the things that go into choosing how to apply our limited resources. Obviously, not all failures are equal - especially when we're talking about projects which are a quarter of a century old. The reality is that all of that decisioning and prioritization is happening independently across different organizations, with different views on the web, different budgets, different legacy challenges, etc. </p>
-        <p>That's where I think there are some things to learn from Interop.</p>
-    </section>
-    <section class="sectioning">
-        <h2 class="contextual-heading" style="font-size: 2.5rem;">What I learned from Interop Is...</h2>
-        <p>If you think about it, Interop is about trying to achieve thematically, basically the same thing as BSF: Make more things "green across the board". But it is a <em>very</em> different thing than BSF. </p>
-        <p>I've really learned a lot from the process of helping organize Interop every year about why this takes so long to happen naturally. There are so many limits and signals and opinions. One of the things we do as part of the process is to take all of the submissions and independently order them in terms of what we think are their priorities. There are 6 organizations doing that: Apple, Bocoup, Google, Igalia, Microsoft and Mozilla. How many do you think chose the same #1? The answer is 0.</p>
-        <p>It really highlights how waiting for all of the stars to align by chance winds up often being a painfully slow process and full of problems. </p>
-        <p>However, a <em>huge</em> part of interop is dedicated to dealing with the stuff BSF doesn't really consider - aligning agreement on:
-            1. what features are most important
-            2. which tests regarding those are valid/important
-            3. are all the spec questions really answered?
-            4. is this actually (hopefully) achievable in the next year?</p>
-        <p>In that, I believe it has been extremely successful in creating way more "green across the board" than anything else. I think this is true beyond even what is <em>officially</em> part of Interop, because we're all able to kind of discuss and see where others are probably going to invest in work because things that were important for them didn't make the cut.</p>
-        <p>In a way, each year is sort of like doing what we used to do with "CSS2" and "HTML4"... Creating a more focused discussion that is the goal floor, not the ceiling.</p>
-        <details class="note">
-            <summary>It's not enough...</summary>
-            Sure, I believe this gives us <em>much better results</em> by helping alignment. I think this is obvious given how rapid and smoothly we've found so much high-quality alignment in recent years. However, there's something I want stress in all of this: Choosing what to prioritize is also inherently choosing what to collectively <em>deprioritize</em>. It is inevitable because <strong>at the end of the day there is just too much.</strong>
-            <p>The only <em>real</em> solution to this problem is wider investment in the platform and, ultimately, almost certainly, changing how we fund it.</p>
-        </details>
-        <section class="sectioning">
-            <h3 class="contextual-heading" style="font-size: 3rem;">Alignment vs Passing</h3>
-            <p>Interop <em>also</em> showed us that a simple, individual pass/fail can be incomplete and misleading. If 3 browsers reach a point of passing 50% of measured tests, the number of tests that pass in <em>all</em> browsers might actually be 0, as illustrated in the table below...</p>
-            <figure class="captioned-image">
-                <table>
-                    <tbody><tr>
-                        <th>Chrome
-                        </th>
-                        <th>Firefox</th>
-                        <th>WebKit</th>
-                    </tr>
-                    <tr>
-                        <td>✅</td>
-                        <td></td>
-                        <td>✅</td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td>✅</td>
-                        <td>✅</td>
-                    </tr>
-                    <tr>
-                        <td>✅</td>
-                        <td></td>
-                        <td>✅</td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td>✅</td>
-                        <td>✅</td>
-                    </tr>
-                    <tr>
-                        <td>✅</td>
-                        <td></td>
-                        <td>✅</td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td>✅</td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td>✅</td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td>✅</td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td>✅</td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td>✅</td>
-                        <td></td>
-                    </tr>
-                </tbody></table>
-                <figcaption>Lots of tests pass, but not even one passes universally!</figcaption>
-            </figure>
-            <p>In fact, here's a <a href="https://wpt.fyi/results/svg/types/scripted?q=svg&amp;run_id=5095555055484928&amp;run_id=5174632751824896&amp;run_id=5155156954185728&amp;run_id=5128162447196160">real world example of exactly this kind of misleading view in a set of SVG tests</a>. If we look at the numbers across the bottom:</p>
-            <ul>
-                <li>chrome: 166 / 191 </li>
-                <li>edge: 166 / 191 </li>
-                <li>firefox: 175 / 191 </li>
-                <li>safari: 132 / 191</li>
-            </ul>
-            <p>It's not <em>terrible</em> if you're only looking at those numbers. But, if you scroll down through that table you'll see that there are ragged failures all over that. In fact, <strong><em>only 52 of 189 are "green across the board"</em></strong>! </p>
-            <p>We can only realistically solve by having a more holistic view and working together. BSF is just the slice that is theoretically actionable individually, not everything that matters.</p>
-            <section class="sectioning">
-                <h4 class="contextual-heading" style="font-size: 3.5rem;">What about a focus on Universally Passing?</h4>
-                <p>In the Interop project we track the difference above as its own data point: The Interop number, and we put it as a separate column in the test tables:</p>
-                <figure class="captioned-image">
-                    <img src="/media/2024/interop-table.png" alt="a table containing a column for each individual browser scores on different features, and a column for the number that pass in all">
-                    <figcaption>The interop column reports how many tests pass on <em>all</em> of the tracked browsers</figcaption>
-                </figure>
-                <p>Similarly, we track it over time:</p>
-                <figure class="captioned-image">
-                    <img src="/media/2024/interop-graph.png" alt="">
-                    <figcaption>A graph showing scores of each browser over time as well as an "interop line"</figcaption>
-                </figure>
-                <p>Could we learn something from this? Wouldn't something like that be great to have <em>in general</em>? </p>
-                <p>For example, in the wpt.fyi tables? Now, it couldn't look just like that because those numbers are all in percentages, and this only really works because the interop process carefully sets a governance process for defining/agreeing to what the tests are. It would be enough to add a column to the table in the same form, something like this:</p>
-                <figure class="captioned-image">
-                    <img src="/media/2024/universally-passing-table.png" alt="">
-                </figure>
-                <p>That might help us uncover situations like the SVG one above and present opportunites <em>like</em> interop for us to collectively decide to try to address that.</p>
-                <p>Similarly, we could track it over time. Sort of the opposite of BSF. We want to see the simple number of subtests <em>passing</em> in browsers and it should always be going up (even as new tests are added, no existing ones should <em>stop</em> passing - those are just more opportunities to go up). Further, ideally the Universally Passing number shouldn't ever be drawing significantly further away from that over time or we're making less of the platform universal. That is, you could see, over time when we are cooperating better, and when we are not. </p>
-                <p>We do better when we are. In my mind, that's an explicit goal, and this would be a view into it.</p>
-            </section>
-        </section>
-    </section>
-]]></content>
     </entry>
 </feed>
