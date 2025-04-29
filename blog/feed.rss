@@ -4,7 +4,7 @@
         <title>bkardell.com rss feed</title>
         <link>http://bkardell.com/</link>
         <description>Just the bkardell.com rss feed</description>
-        <lastBuildDate>Fri, 25 Apr 2025 15:04:18 GMT</lastBuildDate>
+        <lastBuildDate>Tue, 29 Apr 2025 13:09:23 GMT</lastBuildDate>
         <docs>http://blogs.law.harvard.edu/tech/rss</docs>
         <generator>awesome mix</generator>
         <image>
@@ -41,7 +41,7 @@
 <p>This image (credited to Aurich Lawson) kind of hit the nail on its head for me: I deeply hope they will be absoltely <em>surgical</em> about this intervention, because the patient I'm worried about isn't Google, it's the whole Web Platform.</p>
 
 <p class="note">
-  If this is interesting to you, my colleague Eric Meyer and I will be posting a podcast episode on the topic early next week... stay tuned.
+  If this is interesting to you, my colleague Eric Meyer and I posted an Igalia Chats podcast episode on the topic: <a href="https://www.igalia.com/chats/adpocalypseNow">Adpocalypse Now?</a>
 </p>
 
 ]]></content:encoded>
