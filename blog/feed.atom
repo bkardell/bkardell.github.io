@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://bkardell.com/</id>
     <title>bkardell.com rss feed</title>
-    <updated>2025-05-02T16:00:54.720Z</updated>
+    <updated>2025-05-02T18:07:18.927Z</updated>
     <generator>awesome mix</generator>
     <author>
         <name>Brian Kardell</name>
@@ -21,12 +21,12 @@
         </link>
         <updated>2025-05-02T04:00:00.000Z</updated>
         <summary type="html"><![CDATA[Recent presentations at BlinkOn strike some familliar notes. Seems a common theme, ideas come back.]]></summary>
-        <content type="html"><![CDATA[
+        <content type="html"><![CDATA[ 
   <h1 class="contextual-heading" style="font-size: 2rem;">Houdini Re-Revisted</h1>
   <p class="segue">Recent presentations at BlinkOn strike some familliar notes. Seems a common theme, ideas come back.</p>
   <p>Since I joined Igalia in 2019, I don't think I've missed a BlinkOn. This year, however, there was a conflict with the W3C AC meetings and we felt that it was more useful that I attend those, since Igalia already had a sizable contingent at BlinkOn itself and my <a href="https://youtu.be/ptXY45HlQ6U">Web History talk with Chris Lilley</a> was pre-recorded. </p>
 
-  <p>When I returned, and videos of the event began landing, I was keen to see what people talked about. There were lots of interesting talks, but one jumped out at me right away: Bramus gave one called "<a href="https://www.smashingmagazine.com/2016/03/houdini-maybe-the-most-exciting-development-in-css-youve-never-heard-of/">CSS Parser Extensions</a>" - which I wasn't familliar with, so was keen to see. Turns out it was just very beginnings of him exploring ideas to make CSS polyfillable. </p>
+  <p>When I returned, and videos of the event began landing, I was keen to see what people talked about. There were lots of interesting talks, but one jumped out at me right away: Bramus gave one called "<a href="https://www.youtube.com/watch?v=njdiu83do0M">CSS Parser Extensions</a>" - which I wasn't familliar with, so was keen to see. Turns out it was just very beginnings of him exploring ideas to make CSS polyfillable. </p>
 
   <p>This talk made me sit up and pay attention because, actually, it's really how I came to be involved in standards. It's the thing that started a lot of the conversations that eventually became the Extensible Web Community Group and the <a href="https://extensiblewebmanifesto.org">Extensible Web Manifesto</a>, and ultimately <a href="https://www.youtube.com/watch?v=sE3ttkP15f8">Houdini</a>, a joint Task Force of the W3C TAG and CSS Working Group (in fact, I am also the one who proposed the name ✨). In his talk, he hit on many of the same notes that led me there too.</p>
 
