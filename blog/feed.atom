@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://bkardell.com/</id>
     <title>bkardell.com rss feed</title>
-    <updated>2025-05-02T18:07:18.927Z</updated>
+    <updated>2025-07-01T16:39:24.140Z</updated>
     <generator>awesome mix</generator>
     <author>
         <name>Brian Kardell</name>
@@ -14,6 +14,31 @@
     <subtitle>Just the bkardell.com rss feed</subtitle>
     <logo>http://bkardell.com/profile.jpg</logo>
     <rights>All rights reserved 2018, Brian Kardell</rights>
+    <entry>
+        <title type="html"><![CDATA[Web Bucks]]></title>
+        <id>https://bkardell.com/blog/WebBucks.html</id>
+        <link href="https://bkardell.com/blog/WebBucks.html">
+        </link>
+        <updated>2025-07-01T04:00:00.000Z</updated>
+        <summary type="html"><![CDATA[Back in September 2024 I wrote a piece about the history of attempts at standardizing some kind of Micropayments going back to the late 90s. Like a lot of things I write, it's the outcome of looking at history and background for things that I'm actively thinking about. An announcement the other day made me think that perhaps now is a good time for a follow up post.]]></summary>
+        <content type="html"><![CDATA[
+  <h1 class="contextual-heading" style="font-size: 2rem;">Web Bucks</h1>
+  <p class="segue">Back in September 2024 I wrote a piece about the <a href="https://bkardell.com/blog/MicropaymentsHistory.html">history of attempts at standardizing some kind of Micropayments going back to the late 90s</a>. Like a lot of things I write, it's the outcome of looking at history and background for things that I'm actively thinking about. An announcement the other day made me think that perhaps now is a good time for a follow up post.</p>
+  <p>As you probably already know if you're reading this, I write and think a lot about the health of the web ecosystem. We've even got a whole <a href="https://www.youtube.com/watch?v=Nsej-VSS9aI&amp;list=PL_BRVuWxk8spg9XL-XUPSptJNrC6y3y9e">playlist of videos (lots of podcast episodes) on the topic</a> on YouTube. Today, that's nearly all paid for, on all sides, by advertising. In several important respects, it's safe to say that the status quo is under many threats. In several ways it's also worth questioning if the status quo is even <em>good</em>.</p>
+  <p>When Ted Nelson first imagined Micropayments in the 1960s, he was imaging a fair economic model for digital publishing. We've had many ideas and proposals since then. Web Monetization is one idea which isn't dead yet. Its main ideas involve embedding a declarative link to a "payment pointer" (like a wallet address) where payments can be sent via Interledger. I say "sent", but "streamed" might be more accurate. Interledger is a novel idea which treats money as "packets" and routes small amounts around. Full disclosure: Igalia has been working on some prototype work in Chromium to help see what a native implementation would look like, what its architecture would be and what options this opens (or closes). Our work has been funded by the Interledger Foundation. It does not amount to an endorsement, and it does not mean something will ship. That said, it doesn't mean the opposite either. </p>
+  <p>You might know that Brave, another Chromium-based browser, has system for creators too. In their model, publishers/creators sign up and verify their domain (or social accounts!), and people browsing those with Brave browsers sort of keep track of that locally, and at the end of the month Brave can batch up and settle accounts of Basic Attention Tokens ("BAT") which they can then pay out to creators in lump sums. As of the time of this writing, Brave has 88 million monthly active users (<a href="https://brave.com/transparency/">source</a>) who could be paying its 1.67 million plus content creators and publishers (<a href="https://creators.brave.com/">source</a>).</p>
+  <p>Finally, in India, UPI offers most transactions free of charge and can also be used for micro payments - it's being used in $240 billion USD / month worth of transactions!</p>
+  <p>But there's also some "adjacent" stuff that doesn't claim to be micro transactions but somehow are similar:</p>
+  <p>If you've ever used Microsoft's Bing search engine, they also give you "points" (I like to call them "Bing Bucks") which you can trade in for other stuff (the payment is going in a different direction!). There was also <a href="https://en.wikipedia.org/wiki/Scroll_(web_service)">Scroll</a>, years ago, which was aimed to be a kind of <a href="https://www.theverge.com/2020/1/29/21113003/scroll-subscription-service-publisher-web-cookie-hack">universal service you could pay into to remove ads on many properties</a> (it was bought by Twitter and shut down.)</p>
+  <section class="sectioning">
+    <h2 class="contextual-heading" style="font-size: 2.5rem;">Enter: Offerwall</h2>
+    <p>Just the other day, Google Ad Manager gave a new idea a potentially <em>really</em> signficant boost. I think it's worth looking at: <a href="https://blog.google/products/ads-commerce/offerwall-gives-publishers-more-options-audiences-more-control/">Offerwall</a>. Offerwall lets sites provide potentially <em>a few</em> ways to monetize content, and for users to choose the one that they prefer. For example, a publisher can set up to allow reading their site in exchange for watching an ad (similar to YouTube's model). That's pretty interesting, but far more interesting to me, is that it integrates with a third-party service called <a href="https://www.supertab.co/faq">Supertab</a>. Supertab lets people provide their own subscriptions - including a tiny fee for this page, or access to the site for some timed pass - 4 hours, 24 hours, a week, etc. It does this with pretty friction-less wallet integration and by 'pooling' the funds until it makes sense to do a real, regular transaction. Perhaps the easiest thing is to <a href="https://www.supertab.co/examples">look at some of their own examples</a>.</p>
+    <p>Offerwall also allows other integrations, so maybe we'll see some of these begin to come together somehow too.</p>
+    <p>It's a very interesting way to split the difference and address a few complaints of micro transaction critics and generally people skeptical that something could gain significant traction. More than that even, it seems to me that by integrating with Google Ad manager it's got about as much advantage as anyone could get (the vast majority of ads are already served with Google Ad manager and this actually tries to expand that).</p>
+  </section>
+  <p>I'm <em>very</em> keen to see how this all plays out! What do you think will happen? Share your thoughts with me on <a href="https://bkardell.com/links">social media</a>.</p>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[Houdini Re-Revisted]]></title>
         <id>https://bkardell.com/blog/HoudiniReRe.html</id>
@@ -663,41 +688,6 @@ $$</code></pre>
 	<p>Anyway, it was an interesting rabbit hole to dive down, prompted by a number of recent discussions I've had on the health of the web ecosystem and the number of times that something <em>like</em> micropayments seems to come up.  I'll write more about some of those discussions and thoughts in a future post.</p>
 
 	<p class="thanksto">Thanks to my good friend Coralie Mercier for pointing at the rabbit hole and pushing me into it :) And also for a number of pointers and links.</p>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[1.3 Million Subtests]]></title>
-        <id>https://bkardell.com/blog/1_3M-WPTMilestone.html</id>
-        <link href="https://bkardell.com/blog/1_3M-WPTMilestone.html">
-        </link>
-        <updated>2024-09-06T04:00:00.000Z</updated>
-        <summary type="html"><![CDATA[Today the Servo project crossed a milestone.]]></summary>
-        <content type="html"><![CDATA[
-	<h1 class="contextual-heading" style="font-size: 2rem;">1.3 Million Subtests</h1>
-	<p class="segue">Today the Servo project crossed a milestone.</p>
-
-	<p>If you're not aware, all of the mainstream browsers that exist today use one of three browser projects/engines (Chromium/Blink, Firefox/Gecko or WebKit).  These in turn both have their roots in projects begun in the late 1990's (Gecko and KHTML).  Further, they have only 1 funding model, and largely 1 funding source.  Over the years, the projects have grown to tens of millions of lines of code and have now had tens of thousands of person years worth of investment.</p>
-
-	<p>All of this is just to underscore that getting a new one is incredibly challenging. Microsoft, a web giant, tried and eventually gave up and embraced Chromium.</p> 
-
-	<p><strong><em>But...</em></strong> If you haven't been paying attention, something very fun and exciting has been developing over the last couple of years.  New life has been breathed into a movement for what we call "novel engines" - that is, engines that don't come from those initial two (khtml/Gecko).</p>
-
-	<p>What's more is that most of the life at least comes from 2 engines which are being developed and funded differently - and they're making rapid progress now.</p>
-
-	<p>As of today, one of those novel engines - Servo (stewarded by Igalia) passes 1.3 <em>million</em> subtests in Web Platform Tests! Specfically: 1,303,530 as of this writing! Congratulations Servo project!</p>
-
-	<figure class="captioned-image">
-		<video src="/media/2024/nbc-the-good-place.mp4" loop="" controls="">
-	</video></figure>
-
-	<p>For perspective, that's over 73% of the subtests that it's currently running.  Of course, that's a totally arbitrary threshold (kind of a like a birthday), but it's nice to track progress and celebrate milestones and that's a big sounding round number to stop, raise a glass and say "well done!" and "keep up the good work".</p>
-
-	<figure class="captioned-image">
-		<img src="/media/2024/Leo_Toasting_meme_banner.jpg">
-	</figure>
-
-	<p>Speaking of keeping up the good work: You can join a growing number of others in helping to support the work on Servo directly by donating through <a href="https://github.com/sponsors/servo">GitHub sponsors</a> or our <a href="https://opencollective.com/servo">open collective</a>.  The Servo Technical Steering Committee collectively discusses how to prioritize the spending of available funds in <a href="https://github.com/servo/project/blob/main/governance/tsc/README.md">the public monthly calls</a>. You can also contribute code, reviews and other effort <a href="https://github.com/servo/servo/">via the Servo GitHub repository</a>.  Let's see how quickly we can reach 1.4 million :)</p>
-
 ]]></content>
     </entry>
 </feed>
