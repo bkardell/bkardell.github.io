@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>offscreen-canvas element</title>
+    <script
+      src="https://unpkg.com/@generic-components/components@1.0.0-rc.4/tabs.js"
+      type="module"
+    ></script>
+    <style>
+      button {
+        font-size: 2rem;
+        width: 2rem;
+        text-align: center;
+        border-radius: 25%;
+      }
+      
+      offscreen-canvas { 
+        display: inline-block;
+        border:  12px solid gray; 
+      }
+      
+      pan-zoom-img {
+        display: block;
+        width: 70% !important;
+        margin: 1rem auto;
+      }
+      
+      pan-zoom-img::part(wrapper), 
+        pan-zoom-img::part(canvas) {
+          width: 100%;
+      }
+      .touched {
+        border-color: blue;
+      }
+      
+      /* On screens that are 992px or less, set the background color to blue */
+      @media screen and (max-width: 992px) {
+        pan-zoom-img, 
+        pan-zoom-img::part(wrapper), 
+        pan-zoom-img::part(canvas) {
+          width: 100%;
+      }
+    </style>
+    <link type="text/css" rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <h1>
+      Pannable/Zoomable images with hi-def lazy load
+    </h1>
+    <p>
+      Below is an image from unspash.com of a green lizard on a branch by <a href="https://unsplash.com/@rigels">@rigels</a>.
+      It is available in several sizes.  Initially, a 640x427 is loaded and streched into 
+      a proportional size space.  Depending on whether your device has multi-touch gestrures
+      it should provide you either button-like affordances at the top right to zoom or 
+      support "pinch zoom" <em>on the image, not the page</em>.  
+      In both versions you should be able to "pan" the image around inside the image canvas.</p>
+    
+    <p>
+      As one zooms in, it will lazily load an extremely higher resolution version of the image,
+      so that you can see all of the beautiful details... 
+    </p>
+    
+    <p>
+      <strong>All of this (save for some messaging) is done off the main thread in a worker via OffscreenCanvas.</strong>
+    </p>
+    
+    
+    <output id="outp"></output>
+    
+    
+
+    <pan-zoom-img  style="touch-action:none;display: block; width: auto;">
+      <img
+          crossorigin="Anonymous"
+          width="640"
+          height="427"
+          src="https://cdn.glitch.com/13ec82d2-bbc3-4025-8608-b0d095d98e61%2Frigel-Qx18LzMEAlY-unsplash.jpg?v=1618858087840"
+          full-res-src="https://cdn.glitch.com/13ec82d2-bbc3-4025-8608-b0d095d98e61%2Frigel-Qx18LzMEAlY-unsplash%20(1).jpg?v=1618858099164"
+          alt="interesting decorative art by https://unsplash.com/@lavinhha" 
+        />
+    </pan-zoom-img>
+
+    <p>
+      While this is naievely implemented, and not really production ready, 
+      it's an interesting experiment in the sorts of things you can achieve with 
+      OffscreenCanvas and workers, wrapped up in a custom element.
+    </p>
+    
+    <section>
+      <h2>
+        <code>&lt;pan-zoom-canvas&gt;</code>
+      </h2>
+      <p>
+        The <code>&lt;pan-zoom-canvas&gt;</code> code can be included via:
+      </p>
+      <pre><code>&lt;script src="pan-zoom-canvas.js" type="module"&gt;&lt;/script&gt;</code></pre>
+      <p>
+        You use it by wrapping around an image element and (optionally) providing a <code>full-res-src</code>
+        attribute to load as the user zooms in.
+      </p>
+      <pre><code>&lt;pan-zoom-img  style="touch-action:none;display: block; width: auto;"&gt;
+  &lt;img
+    crossorigin="Anonymous"
+    width="640"
+    height="427"
+    src="https://cdn.glitch.com/13ec82d2-bbc3-4025-8608-b0d095d98e61%2Frigel-Qx18LzMEAlY-unsplash.jpg?v=1618858087840"
+    full-res-src="https://cdn.glitch.com/13ec82d2-bbc3-4025-8608-b0d095d98e61%2Frigel-Qx18LzMEAlY-unsplash%20(1).jpg?v=1618858099164"
+    alt="interesting decorative art by https://unsplash.com/@lavinhha" 
+        /&gt;
+&lt;/pan-zoom-img&gt;</code></pre>
+      
+      <p>
+        The image is transferred to a canvas in the ShadowDOM which can be controlled offscreen, 
+        in a worker.  The element also exports two named parts a <code>::part(wrapper)</code> around
+        it and a <code>::part(canvas)</code> for the canvas which you can use for special styling.
+      </p>
+    </section>
+    
+  </body>
+  <script src="pan-zoom-canvas.js" type="module"></script>
+</html>
