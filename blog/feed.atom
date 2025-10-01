@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://bkardell.com/</id>
     <title>bkardell.com rss feed</title>
-    <updated>2025-07-01T16:39:24.140Z</updated>
+    <updated>2025-10-01T17:08:43.709Z</updated>
     <generator>awesome mix</generator>
     <author>
         <name>Brian Kardell</name>
@@ -14,6 +14,86 @@
     <subtitle>Just the bkardell.com rss feed</subtitle>
     <logo>http://bkardell.com/profile.jpg</logo>
     <rights>All rights reserved 2018, Brian Kardell</rights>
+    <entry>
+        <title type="html"><![CDATA[Under-investment]]></title>
+        <id>https://bkardell.com/blog/underinvestment.html</id>
+        <link href="https://bkardell.com/blog/underinvestment.html">
+        </link>
+        <updated>2025-10-01T04:00:00.000Z</updated>
+        <summary type="html"><![CDATA[A lot more words on a short statement I made last week on social media...]]></summary>
+        <content type="html"><![CDATA[
+  <h1 class="contextual-heading" style="font-size: 2rem;">Under-investment</h1>
+  <p class="segue"><em>A lot more words on a short statement I made last week on social media...</em></p>
+  <p>A couple of weeks ago I posted on social media that</p>
+  <blockquote>
+    <p>It never ceases to amaze me how much stuff there is on the web platform that needs more attention than it gets in practice, despite vendors spending tons already.</p>
+  </blockquote>
+  <p>Dave Rupert replied asking</p>
+  <blockquote>
+    <p>could you itemize that list? i'd be curious. seems like new shiny consumes a lot of the efforts.</p>
+  </blockquote>
+  <p>I said "no" at the time because it's true it would be a very long list and exceptionally time consuming task if exhaustive, but... It is probably worth rattling off a bunch that I know more or less off the top of my head from experience - so here goes (in no particular order)... I'll comment on a few:</p>
+  <section class="sectioning">
+    <h2 class="contextual-heading" style="font-size: 2.5rem;">Big general <em>areas</em>...</h2>
+    <p>There are certain areas of focus that just always get shoved to the back burner.</p>
+    <section class="sectioning">
+      <h3 class="contextual-heading" style="font-size: 3rem;">Print</h3>
+      <p>It's almost absurd to me that printing and print related APIs have the problems and concerns that they still do given that so much of enterprise and government are web based. For example: Will your images be loaded? Who knows! Did you know there is a <code>.print()</code> and it doesn't act the same in several respects as choosing print from the menu? Shouldn't the browser support many of the CSS based features that print pioneered? Like... paging? Or at least actually investing in considering it in the browser at the same time could have helped us determine if those were even good ideas or shape APIs.</p>
+    </section>
+    <section class="sectioning">
+      <h3 class="contextual-heading" style="font-size: 3rem;">Accessibility</h3>
+      <p>In theory all of the processes are supposed to help create standards and browsers that are accessible - in practice, we miss on this more often than is comfortable to admit. This is mainly because - for whatever reason - so much of this, from reviews to testing to standards work in designing APIs in the first place, is largely done by volunteers or people disconnected from vendors themselves and just trying to keep up. </p>
+    </section>
+    <section class="sectioning">
+      <h3 class="contextual-heading" style="font-size: 3rem;">Internationalization</h3>
+      <p>Probably in better shape than accessibility in many ways, but the same basic sorts of things apply here. </p>
+    </section>
+    <section class="sectioning">
+      <h3 class="contextual-heading" style="font-size: 3rem;">Testing Infrastructure</h3>
+      <p>The amount of things that we are incapable of actually testing is way higher than we should be comfortable with. The web actually spent the first 15 years or so of its life without any actual shared testing like web platform tests. Today, lots and lots of that infrastructure is just Google provided, so not community owned or anything.</p>
+    </section>
+  </section>
+  <section class="sectioning">
+    <h2 class="contextual-heading" style="font-size: 2.5rem;">Forgotten tech</h2>
+    <p>Then there aere are certain big, important projects that were developed and have been widely deployed for ten, or even close to twenty years at this point, but were maybe a little wonky or buggy and then just sort of walked away from.</p>
+    <section class="sectioning">
+      <h3 class="contextual-heading" style="font-size: 3rem;">SVG</h3>
+      <p>After some (like <a href="https://front-end.social/@AmeliaBR">Amelia</a>) doing amazing work to begin to normalize SVG and CSS, the working group effectively disbanded for years with very little investment from vendors.</p>
+    </section>
+    <section class="sectioning">
+      <h3 class="contextual-heading" style="font-size: 3rem;">MathML</h3>
+      <p>From its integration in HTML5 until today, almost none of the work done in browsers has been by the browser vendors themselves. Google is the only vendor who has even joined the working group, and not so much to participate as an org as much as to allow someone interested on their own to participate.</p>
+    </section>
+    <section class="sectioning">
+      <h3 class="contextual-heading" style="font-size: 3rem;">Web Speech</h3>
+      <p>Google and others were so excited to do this back in (checks watch)... 2012. But they did it too early, and in a community group. It's not even a Recommendation Track thing. I can easily see an argument to be made that this is the result of things swinging pretty far in the other direction - this is more than a decade after W3C had put together the <a href="https://www.w3.org/TR/voice-intro/">W3C Speech Interface Framework</a> with lots of XML. But meanwhile there is simple and obvious bugs and improvements that can and should be made - there is lots of be rethought here and very little invested from then till now.</p>
+    </section>
+  </section>
+  <section class="sectioning">
+    <h2 class="contextual-heading" style="font-size: 2.5rem;">The "wish list"</h2>
+    <p>There is a long list of things that we, as a larger community, aren't investing in in the sense of wider particpation and real funding from browsers, but I think we should... Here are a few of my top ones:</p>
+    <section class="sectioning">
+      <h3 class="contextual-heading" style="font-size: 3rem;">Study of the web (and ability to)</h3>
+      <p>The HTTPArchive and chrome status are about the best tools we have, but they're again mainly Google - but even other data sources are biased and incomplete. Until 2019 the study of elements on the web was just running a regexp on home pages in the archive. Until just a year or two ago our study of CSS was kind of similar. It just feels like we should have more here.</p>
+      <h3 class="contextual-heading" style="font-size: 3rem;">Polyfill ability for CSS</h3>
+      <p>A number of us have been saying this for a long time. Even some small things could go a long way here (like, just really exposing what's parsed). After a lot of efforts we got Houdini, which should have helped answer a lot of this. It fizzled out after choosing probably the least interesting first project in my opinion. I don't know that we were looking at it just right, or that we would have done the right things - but I know that not really investing in trying isn't going to get it done either. To be really honest, I'd like a more perfect polyfill story for HTML as well. Once upon a time there was discussion down that road, but when <code>&lt;std-toast&gt;</code>-gate happened, all of the connected discussions died along with it. That's a shame. We <em>are</em> getting there slowly with some important things like custom media queries and so on, but a lot of these things we were starting to pitch a decade ago.</p>
+      <h3 class="contextual-heading" style="font-size: 3rem;">Protocols</h3>
+      <p>The web has thus far been built a very particular way - but there are many ideas (distributed web ideas, for example) which it's very hard for the web to currently adapt toward because it's full of hard problems that really need involvement from vendors. I'd love to see many of those ideas really have an opportunity to take off, but I don't see good evolutionary paths to allow something to really do that. We had some earlier ideas like protocol handlers and content handlers for how this might work. Unfortunately content handlers were removed, and prototcol handlers are extremely limited and incomplete. Trying to imagine how a distributed web could work is pretty difficult with the tools we have. <em>Perhaps</em> part of this is related other items on my list like powerful features or monetization</p>
+      <h3 class="contextual-heading" style="font-size: 3rem;">"Web Views" / "Powerful features"</h3>
+      <p>A ton of stuff is built with web technology as <em>apps</em> to get around some of the things that are currently difficult security-wide or privacy wise in the browser itself. Maybe that's how it should be, maybe it isn't. I'm not here to say "ship all the fugu stuff" or something, but it it definitely seems silly that there aren't <em>some</em> efforts to even think "above" the browser engines and standardize some APIs, a bit in the vein of what is now the Winter TC. What people are doing today doesn't seem better. I guesss there is a common theme here that I'd like to really invest in finding better ways to let the platform evolve a bit on its own and then pick it up and run with it.</p>
+      <h3 class="contextual-heading" style="font-size: 3rem;">"monetization"</h3>
+      <p> I mean, this is a really tough one for so many reasons, both tehnical and political, but I just don't see a thing that could have bigger impact than a way to pay creators that isn't limited to ads and a way to fund new ideas. It just seems at the very core of a lot of things. I put it in quotes because I don't mean specifically the proposal called web monetization. There are lots of other ideas and a wide range of attempts happening, some of them seem less directly like money and more like ways to express licencing agreements or earn discounts.</p>
+      <h3 class="contextual-heading" style="font-size: 3rem;">Maps</h3>
+      <p>We seem to have mostly just written off maps entirely as something which you just rely on Google Maps or Apple Maps for. That's a shame because there has been interest at several levels - there was a joint OGC/W3C workshop a few years ago, and many ideas. Almost all of them would benefit more than just those few proprietary map systems. There are even simple primitive ideas like adding the concept of pan and zoom to the platform, maybe in CSS. <em>Surely</em> we can do better than where things are right now, but who is going to invest to get it there?</p>
+    </section>
+  </section>
+  <section class="sectioning"> 
+    <h2 class="contextual-heading" style="font-size: 2.5rem;">There's a long list</h2>
+    <p>There's way more things we could list here... Drag and drop needs work and improvements. Editing (see Contenteditable/execCommand/EditContext) is terribly hard. Given the importance, you'd think it would be one of the bigger areas of investment, but it's not really. Hit testing is a big area that needs defining. I mean, you can see that this year we got <a href="https://github.com/web-platform-tests/interop/issues?q=is%3Aissue%20state%3Aopen%20label%3Afocus-area-proposal">134 focus area proposals for Interop 2026</a>. Those aren't all areas that are under-invested in, exactly, but whatever we choose to focus on there is time and budget we can't spend on the things in this list...</p>
+    <p>In the past, I might have said documentation, but I feel like were just doing a lot better with that. We also now have the collectively funded, transparent and independent <a href="https://openwebdocs.org/">openwebdocs.org</a> which Igalia has helped fund since its inception and, to my mind, is one of the most positive things. So many things on this list even <em>could</em> take a similar approach. It would be great to see.</p>
+  </section>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[Web Bucks]]></title>
         <id>https://bkardell.com/blog/WebBucks.html</id>
@@ -649,45 +729,6 @@ $$</code></pre>
         <p>A month and 5 days later, <a href="https://bkardell.com/blog/WeirdHoliday.html">I unexpectedly had a heart attack</a>.</p>
         <p>So, it got shoved to the back burner for a while but today we're finally sharing it. My colleage Eric Meyer has a a much better post annoucing this that I'll just point you to: <a href="https://meyerweb.com/eric/thoughts/2024/09/23/announcing-bcd-watch/">Annoucing BCD-Watch.</a>.</p>  
     </section>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Micropayments History]]></title>
-        <id>https://bkardell.com/blog/MicropaymentsHistory.html</id>
-        <link href="https://bkardell.com/blog/MicropaymentsHistory.html">
-        </link>
-        <updated>2024-09-16T04:00:00.000Z</updated>
-        <summary type="html"><![CDATA[Hey, remember that period when there were like a ton of online 'coins' that people are trying to make happen? And they all kind of wanted to be 'the one', they all involved some kind of crypto thing you didn't totally understand, and they'd all enable micropayments and also solve all of these interesting problems about money. Remember when people were like "let's make an IETF standard!" and others were like "this is a thing we should do at the W3C"?  And then some really big companies got involved?   Do you remember that time... in the mid to late 90s?]]></summary>
-        <content type="html"><![CDATA[
-	<h1 class="contextual-heading" style="font-size: 2rem;">Micropayments History</h1>
-
-	<p class="segue">Hey, remember that period when there were like a ton of online 'coins' that people are trying to make happen? And they all kind of wanted to be 'the one', they all involved some kind of crypto thing you didn't totally understand, and they'd all enable micropayments and also solve all of these interesting problems about money. Remember when people were like "let's make an IETF standard!" and others were like "this is a thing we should do at the W3C"?  And then some really big companies got involved?   Do you remember that time... in the mid to late 90s?</p>
-	
-	<p>Because, it totally happened.</p>
-	
-	<p>Check out this draft of <a href="https://www.w3.org/TR/WD-mptp-951122">Micro Payment Transfer Protocol (MPTP) Version 0.1 from November 1995</a>, and just have a look at the abstract and references section and note how many proposals there already were in 1995. They're pretty hard to find today, unfortunately, lost to the bit rot of time, but here's <a href="https://bkardell.com/media/RivestShamir-mpay.pdf">one, probably slightly updated version (it's dated May 7, 1996) that I was able to dig up as a postscript file and convert to pdf</a>.  It's focused on how you can mint coins cryptographically, and the cost of it and how you can prevent forgery and theft of coins and so on. </p>
-	<p>There are minutes from a <a href="https://www.w3.org/ECommerce/JEPI/951218-minutes.html">joint CommerceNet/W3C Electronic Payments Initiative Kickoff meeting which took place in Paris December 18, 1995</a> which was attended by 50+ people from a wide variety of companies from banking and credit cards to telecom and hardwardware systems. In it there is a mention already of "the people looking at micropayments" and pointing out that "with credit card systems there's usually a minimum dollar amount below which a transaction isn't profitable."</p>
-	<p>There's this Jan 1996 IETF draft for <a href="https://www.ietf.org/archive/id/draft-eastlake-internet-payment-01.txt">Application Level Internet Payment Syntax</a>, and in Feb 1997 there was another meeting in Paris in which they discussed <a href="https://www.w3.org/ECommerce/Micropayments/Group/micropay-minutes.htm">micropayments</a> and then again in Brussels in Sept 1997.  There's this grab from <a href="https://web.archive.org/web/19970605015010/http://www.w3.org/pub/WWW/Payments/roadmap.html">W3C's Payments Roadmap (the oldest grab here is from 1997, but it's probably older)</a>. Look how much there is!</p>
-	<p>There's also <a href="https://web.archive.org/web/19980703170917/http://www12.w3.org/ECommerce/Micropayments/">this link is to a public w3c page</a> which has a lot of links to things which were "already working (more or less)".</p>
-	<p>IBM tried this <a href="https://research.ibm.com/publications/minipay-charging-per-click-on-the-web">minipay thing</a>. Carnegie Mellon developed this <a href="https://www.researchgate.net/publication/2417475_NetBill_Security_and_Transaction_Protocol">NETBILL PROJECT in 1997</a>.  </p>
-	<p>Jakob Nielsen's Alertbox had a piece in early 1998: <a href="https://web.archive.org/web/20010203213200/http://www.useit.com/alertbox/980125.html">The Case for Micropayments</a> - in which he said "I predict that most sites that are not financed through traditional product sales will move to micropayments in less than two years." Then about <a href="https://web.archive.org/web/20001208142100/http://www.useit.com/alertbox/991226.html">two years later he doubled down saying</a> "I now finally believe that the first wave of micropayment services will hit in 2000."</p>
-	<p>He wasn't totally wrong, because then there was Beanz.  </p>
-	<p>It was huge.  Here's <a href="https://www.youtube.com/embed/5o9HEjuXsc0?si=vObMl6suQKAtbGMU">a whole 20 minute video someone did on Beanz</a>. But, in short, it earned multiple big rounds of tens of million dollar funding, even $5m just from Larry Ellison.  It had posh offices worldwide and really got a lot of attention.  I guess it started out as mainly a thing like "loyalty points" but that you could spend anywhere. Everyone had loyalty points, but you could only spend them there. So maybe you smoked Marlboro - you earned "Marlboro Miles" and could trade them in for stuff in their catalog. The idea was "why not let me spend my Marlboro miles toward kinda whatever I want".  In the end, that sounds a lot like "almost money".  Today, I guess credit cards have subsumed this a bit, you can get cash back rewards or other things.</p>
-	<p>But, it was also totally new and it had a lot of competitors.  Around 2000 we got a big one: Flooz with Whoopi making commercials!  </p>
-	<iframe width="560" height="315" src="https://www.youtube.com/embed/AIEpiUJNi5M?si=CsqfZFiaBk3xPoEE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen=""></iframe>
- 
-	<p>And in that same year we also got My Points (<a href="https://www.mypoints.com/">still around</a>), Netscentives, CyberGold (<a href="https://www.forbes.com/2000/04/17/mu1.html">quickly aquired by MyPoints for $157m</a>), <a href="https://en.wikipedia.org/wiki/InternetCash.com">internetcash.com</a> and even  <a href="https://en.wikipedia.org/wiki/PayPal"><del>Confinity</del> <del>x.com</del> PayPal</a>.  At the same time all of the new tech was helping regular old transaction costs come down too.</p>
-	<p>And then the internet bubble burst.  </p>
-	<p>And then <a href="https://web.archive.org/web/20010127094100/http://www.oreillynet.com/lpt/a/515">Clay Shirky wrote "The case against micropayments"</a> which argued pretty strongly that they're just a bad idea.</p>
-	<p>It seems the W3C work on this also stopped around that time, in 2001.</p>
-	<p>I guess it's never totally stopped. There was, for a minute, <a href="https://www.theguardian.com/technology/2004/may/27/phones.creditcards">Simpay</a> - a consortium formed in 2003 by Orange, T-Mobile, Vodafone, and Telefónica to promote mobile payment solutions across Europe (wow that was 20 years ago?!), and as I say some of those things above still exist, as do other things like <a href="https://fetch.com">fetch.com</a> and, others have been integrated into existing systems more as Clay Shirky predicted.  And, well, of course, there was Bitcoin in 2008 and tons of crypto coins that followed.</p>
-
-	<p>Along the way, in March 2014 the W3C had <a href="https://www.w3.org/2013/10/payments/">a workshop on web payments in Paris</a> which discussed also "new virtual currencies".  Ultimately, the W3C work restarted in 2015 to streamline the online “check-out” process and make payments easier and more secure on the Web under the new "<a href="https://www.w3.org/press-releases/2015/webpaymentswg/">Web Payments Working Group</a>."</p>
-
-
-	<p>Anyway, it was an interesting rabbit hole to dive down, prompted by a number of recent discussions I've had on the health of the web ecosystem and the number of times that something <em>like</em> micropayments seems to come up.  I'll write more about some of those discussions and thoughts in a future post.</p>
-
-	<p class="thanksto">Thanks to my good friend Coralie Mercier for pointing at the rabbit hole and pushing me into it :) And also for a number of pointers and links.</p>
 ]]></content>
     </entry>
 </feed>
