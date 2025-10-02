@@ -4,7 +4,7 @@
         <title>bkardell.com rss feed</title>
         <link>http://bkardell.com/</link>
         <description>Just the bkardell.com rss feed</description>
-        <lastBuildDate>Wed, 01 Oct 2025 17:12:49 GMT</lastBuildDate>
+        <lastBuildDate>Thu, 02 Oct 2025 14:15:15 GMT</lastBuildDate>
         <docs>http://blogs.law.harvard.edu/tech/rss</docs>
         <generator>awesome mix</generator>
         <image>
@@ -41,7 +41,7 @@
     </section>
     <section class="sectioning">
       <h3 class="contextual-heading" style="font-size: 3rem;">Accessibility</h3>
-      <p>In theory all of the processes are supposed to help create standards and browsers that are accessible - in practice, we miss on this more often than is comfortable to admit. This is mainly because - for whatever reason - so much of this, from reviews to testing to standards work in designing APIs in the first place, is largely done by volunteers or people disconnected from vendors themselves and just trying to keep up. </p>
+      <p>In theory all of the processes are supposed to help create standards and browsers that are accessible - in practice, we miss on this more often than is comfortable to admit. This is mainly because - for whatever reason - so much of this, from reviews to testing to standards work in designing APIs in the first place, is largely done by volunteers or people disconnected from vendors themselves and just trying to keep up. My colleague Alice Boxhall wrote <a href="https://alice.boxhall.au/articles/a-threat-model-for-accessibility-on-the-web/ ">a piece that touches on this, and more</a>. </p>
     </section>
     <section class="sectioning">
       <h3 class="contextual-heading" style="font-size: 3rem;">Internationalization</h3>
