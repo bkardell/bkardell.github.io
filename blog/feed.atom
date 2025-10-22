@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://bkardell.com/</id>
     <title>bkardell.com rss feed</title>
-    <updated>2025-10-02T14:15:15.140Z</updated>
+    <updated>2025-10-22T16:20:25.406Z</updated>
     <generator>awesome mix</generator>
     <author>
         <name>Brian Kardell</name>
@@ -14,6 +14,29 @@
     <subtitle>Just the bkardell.com rss feed</subtitle>
     <logo>http://bkardell.com/profile.jpg</logo>
     <rights>All rights reserved 2018, Brian Kardell</rights>
+    <entry>
+        <title type="html"><![CDATA[The Juice]]></title>
+        <id>https://bkardell.com/blog/Juice.html</id>
+        <link href="https://bkardell.com/blog/Juice.html">
+        </link>
+        <updated>2025-10-22T04:00:00.000Z</updated>
+        <summary type="html"><![CDATA[What's worth the squeeze?]]></summary>
+        <content type="html"><![CDATA[
+	<h1 class="contextual-heading" style="font-size: 2rem;">The Juice</h1>
+	<p class="segue"><em>What's worth the squeeze?</em></p>
+
+	<p>Every day, for both my physical and mental heath, I get away from the computer for a while and for a walk (or two) and listen to some podcast. Sometimes a title suprises me.</p>
+	<p>This week's Shop Talk (#687) is a good example. It's titled <a href="https://shoptalkshow.com/687/">"Ben Frain on Responsive Design"</a> and to be honest, I wondered if I'd get anything out of it.  Responsive Design... Haven't we been doing that for... Well, a really long time?  Sure.  And they talk about that.</p>
+	<p>But what interested me most was more of a sidequest: There were some "spicy" but thoughtful takes. There was some discussion about which things were actually valuable. And how valuable?  In what ways?  There was discussion about whether some of "the juice was worth the squeeze?"</p>
+	<p>Was <code>@scope</code> really worth it?  Is <code>&lt;picture&gt;</code> as valuable as we thought it would be? What about Container Queries? Or <code>@layer</code>? Or are View Transitions too confusing? Or are you actually using <code>:has</code> as much as you imagined?  Honestly, I love hearing some of this discussion from developers because the question isn't "does it have value?" because the answer is "yes, of course".  The questions are more like "At what cost?"  or "Did we have give something else up in order to get that?" or "Do we sometimes try to land a 'quick win' and then come back and really solve the problem, and sort of make it more confusing?"  They are great questions - and reasonable people can disagree!</p>
+	<p>Projects like Interop are us trying to do our best to balance lots of inputs and help us make good choices.  Choosing to prioritize something from a list is, inherently, not choosing something else. This year my friend Jake Archibald put together <a href="https://interop-rank.jakearchibald.com/">this prioritization survey tool</a> which lets you try to participate in what is effectively like a step of our process: Order them as you'd personally asign priority if you were in charge. It's hard, and this process is over-simplified in the sense that you are not constrained by the sorts of things real engineering teams are.  Maybe you sort 10 items to the top, but half of them are very expensive and also involve the same expertise.  Maybe that means that realistically we can only pick 2 of those 10, and then we can also pick several more items outside your "top 10".</p>
+	<p>There are debatable signals.  Only a few people will pick <code>OffscreenCanvas</code> but most people deal with canvas via only a few primary libraries - so it doesn't take much to lift performance of lots of sites.  MathML isn't going to make you a lot of money - but actually sharing mathematical text is <em>super</em> important.  Or, maybe something seems only mildly valuable, but someone is actually willing to pay for the work to get done.  That changes the calculus about what kind of standards effort it will require from engine stewards themselves.</p>
+	<p>And, at the end of the day, in a way, all of us are speculating about perceived value.  The truth is that we often just can't know.  Sometimes, only time will tell.  Sometimes a feature lands flat, only to take off years later.  Sometimes the features we were really excited about turn out to be not so great.</p>
+	<p>Once upon a time I imagined a future where the web community did a lot more of this kind of discussion, a lot earlier. I imagined that we should be trying to give people answers in terms of polyfills and origin trials and including their actual feedback with time to use it before we went forward.</p>
+	<p>We have done it more than we did, but not nearly as much as I'd hoped.  I still kind of want us to get there.  It means standards might go a little slower sometimes, I guess - but you could get solutions and input faster and have more opportunity for course corrections.</p>
+	<p>Anyway, fun episode.  I'd love to hear your critiques too - send them!</p>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[Under-investment]]></title>
         <id>https://bkardell.com/blog/underinvestment.html</id>
@@ -709,26 +732,6 @@ $$</code></pre>
    
 
     
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Keeping up: Signal to Noise]]></title>
-        <id>https://bkardell.com/blog/BCD-Watch.html</id>
-        <link href="https://bkardell.com/blog/BCD-Watch.html">
-        </link>
-        <updated>2024-09-23T04:00:00.000Z</updated>
-        <summary type="html"><![CDATA[Last year in December, Eric Meyer and I did an episode of Igalia Chats titled "The Struggle to Keep Up with Web Tech". It recounts the multi-dimensional challenges that developers can face in trying to keep up with developments in the web platform.]]></summary>
-        <content type="html"><![CDATA[
-    <h1 class="contextual-heading" style="font-size: 2rem;">Keeping up: Signal to Noise</h1>
-    <p class="segue">Last year in December, Eric Meyer and I did an episode of Igalia Chats titled <a href="https://www.igalia.com/chats/keeping-up">"The Struggle to Keep Up with Web Tech"</a>. It recounts the multi-dimensional challenges that developers can face in trying to keep up with developments in the web platform.</p>
-    <p>I've thought for a long time now that we all need better ways to keep up, and especially to <em>not miss the most important stuff</em>. Today, I'm happy to annouce what we think is a real help at that.</p>
-    <section class="sectioning">
-        <h2 class="contextual-heading" style="font-size: 2.5rem;">Introducing bcd-watch</h2>
-        <p>If you're not familiar, "bcd" is short for "browser compatibility data". <a href="https://github.com/mdn/browser-compat-data">The browser-compat-data repository</a> is the source of what is shown on MDN and used for many other critical things as well. All of the browser vendors, contributors and tech writers strive together to keep the information there accurate and up to date.</p>
-        <p>Back in 2022, Eric and I had the idea to write a tool which would fetch this data from time to time, compare it with the previous data and put together a brief report that you could view, and an RSS feed you could subscribe to. <a href="https://bkardell.com/blog/CoolTool.html">I wrote a thing about BCD</a> and the fact that you could actually even use GitHub's API to subscribe to the release notes, which are already pretty nice. This was November 2022, and it was teasing a few screenshots from the prototype we had.</p>
-        <p>A month and 5 days later, <a href="https://bkardell.com/blog/WeirdHoliday.html">I unexpectedly had a heart attack</a>.</p>
-        <p>So, it got shoved to the back burner for a while but today we're finally sharing it. My colleage Eric Meyer has a a much better post annoucing this that I'll just point you to: <a href="https://meyerweb.com/eric/thoughts/2024/09/23/announcing-bcd-watch/">Annoucing BCD-Watch.</a>.</p>  
-    </section>
 ]]></content>
     </entry>
 </feed>
