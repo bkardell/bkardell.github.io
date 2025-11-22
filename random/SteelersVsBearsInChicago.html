@@ -3,25 +3,31 @@
 <head>
   <meta charset="UTF-8">
   <title>Steelers vs. Bears – Super Bowl Era Matchups</title>
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
     body {
       font-family: Arial, sans-serif;
-      margin: 2em;
+      margin: 1em;
       background-color: #f9f9f9;
       color: #333;
     }
     h1, h2 {
       color: #2c3e50;
     }
+    .table-container {
+      overflow-x: auto; /* allows horizontal scroll on small screens */
+      margin-bottom: 1.5em;
+    }
     table {
       width: 100%;
       border-collapse: collapse;
-      margin-bottom: 2em;
+      min-width: 600px; /* ensures table doesn’t squish too much */
     }
     th, td {
       border: 1px solid #ccc;
-      padding: 8px 12px;
+      padding: 6px 8px;
       text-align: center;
+      font-size: 0.9em;
     }
     th {
       background-color: #34495e;
@@ -33,8 +39,9 @@
     .summary {
       background-color: #e8f6f3;
       border-left: 4px solid #1abc9c;
-      padding: 1em;
-      margin-bottom: 2em;
+      padding: 0.8em;
+      margin-bottom: 1.5em;
+      font-size: 0.95em;
     }
   </style>
 </head>
