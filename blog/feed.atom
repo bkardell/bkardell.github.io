@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://bkardell.com/</id>
     <title>bkardell.com rss feed</title>
-    <updated>2025-12-04T20:07:51.864Z</updated>
+    <updated>2026-01-06T15:45:06.470Z</updated>
     <generator>awesome mix</generator>
     <author>
         <name>Brian Kardell</name>
@@ -14,6 +14,248 @@
     <subtitle>Just the bkardell.com rss feed</subtitle>
     <logo>http://bkardell.com/profile.jpg</logo>
     <rights>All rights reserved 2018, Brian Kardell</rights>
+    <entry>
+        <title type="html"><![CDATA[The Secret Life of Custom Elements]]></title>
+        <id>https://bkardell.com/blog/SecretLifeOfCustomElements.html</id>
+        <link href="https://bkardell.com/blog/SecretLifeOfCustomElements.html">
+        </link>
+        <updated>2026-01-06T05:00:00.000Z</updated>
+        <summary type="html"><![CDATA[Twenty years ago last month, Google published an analysis of "slightly over a billion documents," a snapshot of the web that helped shape the early direction of HTML5. It followed a lineage of smaller, more personal studies — individuals poking at the web to answer some narrow question, often with datasets that would easily fit on a thumb drive today. For about half those two decades, I’ve been arguing that we need more study of the web, not less. The platform evolves faster than our understanding of it, and the only way to know what the web actually is — not what we imagine it to be — is to look.]]></summary>
+        <content type="html"><![CDATA[
+	<h1 class="contextual-heading" style="font-size: 2rem;">The Secret Life of Custom Elements</h1>
+
+<p class="segue">Twenty years ago last month, Google published <a href="https://web.archive.org/web/20060203035414/http://code.google.com/webstats/index.html">an analysis of "slightly over a billion documents,"</a> a snapshot of the web that helped shape the early direction of HTML5. It followed a lineage of smaller, more personal studies — individuals poking at the web to answer some narrow question, often with datasets that would easily fit on a thumb drive today. For about half those two decades, I’ve been arguing that we need <strong>more</strong> study of the web, not less. The platform evolves faster than our understanding of it, and the only way to know what the web actually is — not what we imagine it to be — is to look.</p>
+<p>Every month the <a href="https://en.wikipedia.org/wiki/Internet_Archive">HTTP Archive</a> quietly captures a snapshot of the web as it actually exists—not the idealized web that we hope for, but the messy, improvised, duct‑taped reality of millions of sites in the wild.  I’ve been collecting and studying these elements for the last six years. </p>
+<p>This new dataset is the largest I’ve ever worked with: Billions of pages, hundreds of thousands of distinct non-standard element names, and a long tail that stretches into places no standards body has ever seriously examined. And unlike the Google study, which looked for patterns in class names, this dataset captures the long tail of non‑standard elements — the names people invent for actual elements when the platform doesn’t give them what they need.</p>
+<p>What emerges is a portrait of the web as it is lived: messy, inventive, repetitive, global, and full of reinvention. It’s also a mirror held up to the platform itself.</p>
+<p>But, it's also much more complex to study than I could have imagined a decade ago, and I really wish that the W3C (and member orgs which include academia) had taken up the charge to begin to figure out how to really study the web and use that information to inform standards work.</p>
+<section class="sectioning">
+<h2 class="contextual-heading" style="font-size: 2.5rem;">What's difficult about it...</h2>
+<p>One problem is that the dataset itself has some fairly extreme bias.  The crawl doesn't hit anything that isn't on the public internet - that means it excludes intranets which are <em>massive</em>.  In fact, most of my career was spent working on intranets.  The crawl captures only home pages, plus the target of whatever it interprets as the largest link on that page.  It also can't get to anything that requires login - which means that for a site like twitter or bluesky or mastodon, you're going to get something very unrepresentative of any of those.  So, one challenge I'd love to see us trying to tackle is how to get even better data representation.  It's hard to "pave cowpaths" if they're in a country we can't even see into.</p>
+<p>Initially I had this idea that we could watch for the adoption of tags - imagining that we'd get some that would become <em>very</em> popular, just like we did with JavaScript libraries and frameworks.  However, it turns out that this is not the signal it might first appear to be.  An element appearing in tens of thousands or even hundreds of thousands of pages is often simply because they are part of a larger successful system.  If Wix or Shopify create some custom elements that work behind the WYSIWYG tooling, and lots of people use it to create their pages - then suddenly that element gets very very popular - even if it isn't actually particularly good.  In fact, we can see shifts in the data where the teams themselves changed their minds and another version supplants the first very quickly because it's simply internal.</p>
+<p>Then, I thought that perhaps what we can do with the dataset instead, is to squint at it and look a little more abstractly at what people are naming their elements and see if people are re-solving similar problems.  Do we find, for example, multiple non-standard element names that appear to be about tabs?  Yes! Clearly that is indicative that we need a native element, right?  <em>Maybe</em>.  It's a bit more nuanced than that.  Here are the most commonly re-created/repeated non-standard element themes:</p>
+<ul>
+<li>Navigation  </li>
+<li>Headers and footers  </li>
+<li>Carousels and sliders</li>
+<li>Modals  </li>
+<li>Search bars  </li>
+<li>Product cards  </li>
+<li>Login forms  </li>
+<li>Cookie banners  </li>
+<li>Accordions  </li>
+<li>Tabs   </li>
+<li>Toasts  </li>
+<li>Breadcrumbs</li>
+</ul>
+<p>While we don't have several of these in standard HTML, we <em>do</em> have native <code>&lt;header&gt;</code>, <code>&lt;footer&gt;</code>, <code>&lt;nav&gt;</code>, <code>&lt;dialog&gt;</code>, and <code>&lt;search&gt;</code> elements, and even accordions via the <code>name</code> attribute of <code>&lt;details&gt;</code>.  And yet, the wild still contains hundreds or thousands of custom elements with names like <code>&lt;app-header&gt;</code>, <code>&lt;site-footer&gt;</code>, <code>&lt;main-nav&gt;</code>, <code>&lt;modal-dialog&gt;</code>, <code>&lt;search-box&gt;</code>, and <code>&lt;accordion-panel&gt;</code>.</p>
+<p>Native primitives may exist, but not at the same level of abstraction as these.  <code>&lt;header&gt;</code> and <code>&lt;footer&gt;</code> in HTML are structural, not behavioral.  <code>&lt;dialog&gt;</code> is behavioral, but not styled.  <code>&lt;search&gt;</code> exists, but doesn’t solve autocomplete, filtering, or results.</p>
+<p>So developers build those - and, if you stop and think about it, not all non-standard elements are equally as undesirable.  Many of them will be simple decorations or thin wrappers that <em>do</em> use their native counterparts.  Where there is definitely some interesting thing to study is where there is clear generic need where the platform doesn't provide anything close.  Above, tabs, for example.</p>
+</section>
+<section class="sectioning">
+	<h2 class="contextual-heading" style="font-size: 2.5rem;">Observations..</h2>
+<p>Here are many observations from the data, in no real particular order of importance.</p>
+	<section class="sectioning">
+		<h3 class="contextual-heading" style="font-size: 3rem;">Forms and Inputs: Tweaked, Wrapped, and Re‑Wrapped</h3>
+<p>Forms and inputs are a great example of the constant re-invention I just described.  Sometimes it's because the native element is insufficient, but that's not <em>necessarily</em> the case.  In some cases they're just slight wrappers.  Among them are lots and lots of "pickers" and "selecters" that show up...</p>
+<ul>
+<li><code>&lt;custom-select&gt;</code></li>
+<li><code>&lt;date-picker&gt;</code></li>
+<li><code>&lt;variant-picker&gt;</code></li>
+<li><code>&lt;quantity-selector&gt;</code></li>
+</ul>
+<p>There is already a lot of ongoing work to make native form elements (including selects) require less code and just be more stylable and flexible, and the data at least suggests that such efforts will be very welcome.</p>
+</section>
+<section class="sectioning">
+<h3 class="contextual-heading" style="font-size: 3rem;">Hidden Machinery</h3>
+<p>A surprising number of elements aren’t UI components at all. They’re runtime markers:</p>
+<ul>
+<li><code>&lt;ng-container&gt;</code></li>
+<li><code>&lt;router-outlet&gt;</code></li>
+<li><code>&lt;astro-island&gt;</code></li>
+<li><code>&lt;ion-router-outlet&gt;</code></li>
+<li><code>&lt;next-route-announcer&gt;</code></li>
+</ul>
+<p>These exist because frameworks need declarative boundaries for hydration, routing, rendering or template expansion. I suppose it is debatable wither these are an indicator of “missing HTML features”, or just how much.  </p>
+</section>
+<section class="sectioning">
+
+<h3 class="contextual-heading" style="font-size: 3rem;">Carousels (and sliders... and toasts)</h3>
+<p>I don't love carousels, but it's hard to deny that they are popular.  There are <em>dozens</em> of distinct and identifiable carousel/slider elements in the dataset and they appear <em>a lot</em>.  I really dislike a few bits of Google's attempt to make CSS-only carousels possible, but it's pretty clear why they chose to tackle that problem. I guess it is worth stressing again the bias in the dataset here - if there is a page I most expect to see a carousel, it is exactly the primary one the archive crawls.  So, while it is the most popular in the dataset, I don't know that it is the most popular all-around. You can see why Google winds up with their proposals though, toasts are on that top list too.</p>
+</section>
+
+<section class="sectioning">
+<h3 class="contextual-heading" style="font-size: 3rem;">Structural semantics?</h3>
+<p>There are a few broad categories where the main point seems to be "semantics". That is, very often many of these don't actually <em>do</em> anything, beyond provide some hooks, mainly for styling.  They aren't actually even custom elements sometimes (or maybe even often) - just non-standard elements. </p>
+<section class="sectioning">
+<h4 class="contextual-heading" style="font-size: 3.5rem;">e-commerce</h4>
+<p>Dozens of these surround e-commerce.  There are tens of thousands of sites that use elements with names (and variants).</p>
+<details>
+<summary>Product &amp; merchandising</summary>
+<ul>
+<li><code>&lt;product-card&gt;</code></li>
+<li><code>&lt;product-title&gt;</code></li>
+<li><code>&lt;product-price&gt;</code></li>
+<li><code>&lt;product-rating&gt;</code></li>
+<li><code>&lt;product-variant&gt;</code></li>
+<li><code>&lt;product-gallery&gt;</code></li>
+<li><code>&lt;product-description&gt;</code></li>
+<li><code>&lt;product-badge&gt;</code></li>
+</ul>
+</details>
+<details>
+<summary>Pricing &amp; money</summary>
+<ul>
+<li><code>&lt;price-money&gt;</code></li>
+<li><code>&lt;sale-price&gt;</code></li>
+<li><code>&lt;compare-at-price&gt;</code></li>
+<li><code>&lt;discount-amount&gt;</code></li>
+<li><code>&lt;currency-display&gt;</code></li>
+</ul>
+</details>
+<details>
+<summary>Inventory &amp; availability</summary>
+<ul>
+<li><code>&lt;stock-status&gt;</code></li>
+<li><code>&lt;pickup-availability&gt;</code></li>
+<li><code>&lt;delivery-estimate&gt;</code></li>
+<li><code>&lt;inventory-level&gt;</code></li>
+</ul>
+</details>
+
+<details>
+<summary>Cart &amp; checkout</summary>
+<ul>
+<li><code>&lt;cart-items&gt;</code></li>
+<li><code>&lt;cart-count&gt;</code></li>
+<li><code>&lt;checkout-button&gt;</code></li>
+<li><code>&lt;order-summary&gt;</code></li>
+</ul>
+</details>
+
+<p>Very interestingly they are often used alongside actual machine readable semantics via jsonLD in the same markup.  </p>
+<p>While the vast majority of these elements appear because of common tooling, the fact that there are dozens of variants of similar names appearing on smaller numbers of sites indicates there is something widely interesting here. It's hard to say what it is other than that it would be nice to have a common structural semantic that would work for both purposes.</p>
+<p>I guess the biggest surprise here is that if it's true, why hasn't such a thing arisen already? It is entirely within the community's power to develop such a thing.  Perhaps the answer is that there is just so much variance it isn't easily plausible.  Maybe templating would somehow allow us to achieve a common pattern which achieved this based on the shared jsonLD semantics.</p>
+</section>
+<section class="sectioning">
+<h4 class="contextual-heading" style="font-size: 3.5rem;">Publishing &amp; Editorial Semantics</h4>
+<p>CMSes and news sites often invent tags for editorial structure, and many of these are sticking around.</p>
+<details>
+<summary>Content structure</summary>
+<ul>
+<li><code>&lt;article-header&gt;</code></li>
+<li><code>&lt;article-summary&gt;</code></li>
+<li><code>&lt;article-author&gt;</code></li>
+<li><code>&lt;article-date&gt;</code></li>
+<li><code>&lt;article-tags&gt;</code></li>
+<li><code>&lt;article-tag&gt;</code></li>
+<li><code>&lt;article-category&gt;</code></li>
+<li><code>&lt;byline&gt;</code></li>
+<li><code>&lt;dateline&gt;</code></li>
+<li><code>&lt;pullquote&gt;</code></li>
+<li><code>&lt;footnote&gt;</code></li>
+</ul>
+</details>
+<details>
+<summary>Taxonomy</summary>
+<ul>
+<li><code>&lt;tag-list&gt;</code></li>
+<li><code>&lt;category-label&gt;</code></li>
+<li><code>&lt;topic-header&gt;</code></li>
+</ul>
+</details>
+<p>These reflect the needs of journalism and long‑form content.</p>
+</section>
+<section class="sectioning">
+	<h4 class="contextual-heading" style="font-size: 3.5rem;">Social &amp; Community Semantics</h4>
+<p>These show up in comment systems, forums, and social platforms.</p>
+	
+<details>
+	<summary>User‑generated content</summary>
+<ul>
+<li><code>&lt;comment&gt;</code></li>
+<li><code>&lt;comment-list&gt;</code></li>
+<li><code>&lt;comment-item&gt;</code></li>
+<li><code>&lt;comment-author&gt;</code></li>
+<li><code>&lt;comment-content&gt;</code></li>
+<li><code>&lt;comment-date&gt;</code></li>
+<li><code>&lt;comment-form&gt;</code></li>
+</ul>
+</details>
+
+<details>
+<summary>Identity</summary>
+<ul>
+<li><code>&lt;user-avatar&gt;</code></li>
+<li><code>&lt;user-name&gt;</code></li>
+<li><code>&lt;profile-card&gt;</code></li>
+</ul>
+<p>These encode relationships and interactions, not UI patterns.</p>
+</details>
+
+<details>
+<summary>Events</summary>
+<ul>
+<li><code>&lt;event-date&gt;</code></li>
+<li><code>&lt;event-location&gt;</code></li>
+<li><code>&lt;event-schedule&gt;</code></li>
+<li><code>&lt;event-details&gt;</code></li>
+</ul>
+<p>Again, these are domain objects, not widgets - and they have well established schema.org or microformats as well. </p>
+</details>
+
+<details>
+<summary>Invoicing</summary>
+<ul>
+<li><code>&lt;invoice&gt;</code></li>
+<li><code>&lt;invoice-line&gt;</code></li>
+<li><code>&lt;invoice-total&gt;</code></li>
+<li><code>&lt;invoice-summary&gt;</code></li>
+</ul>
+</details>
+
+<p>Before the web came along, there were already national and international standards around electronically trading informtation like invoices - and when XML was sold, invoices were a common example.  Here we are again.</p>
+</section>
+
+</section>
+
+<section class="sectioning">
+	<h3 class="contextual-heading" style="font-size: 3rem;">"Namespaced" Elements</h3>
+
+<p>Several elements like `o:p`, `rdf:rdf`, `dc:format`, `cc:work`, `fb:like`, `g:plusone` appear in the top 100.  These basically were thinking of an XHTML future (namespacing) that never really arrived.  However, HTML has always allowed it - so that's just the tag name.  In many ways, it's just as good.  Interestingly, these may be some of the better examples of what I'd like to see happen - they are widely understood.</p>
+
+<p>Conversely, while hugely successful, the share buttons are more an indication of a desire than something we could actually standardize in precisely that way.  They also point to a desire _in time_.  Google Plus doesn't even exist anymore, `fb:like` is from a time when Facebook was at the top of the most interesting places to be.  Maybe one of the things we've learned is that this is way handier to do at the browser/OS levels?  I suppose the Web Share API was a part of thinking how we'd deal with this.</p>
+
+<p>The fact that they both still appear so much is also kind of an indication of age of the page and slow replacement of underlying tools.</p>
+
+</section>
+
+<section class="sectioning">
+	<h3 class="contextual-heading" style="font-size: 3rem;">Typos, Encoding Errors, and the Weird Stuff</h3>
+<p>One of the most delightful parts of the dataset is the long tail of what are almost certainly just typos:</p>
+<ul>
+<li><code>&lt;prodcut-card&gt;</code></li>
+<li><code>&lt;navgation&gt;</code></li>
+<li><code>&lt;contianer&gt;</code></li>
+</ul>
+<p>The fact that these can appear on tens of thousands of sites because they are part of common tooling helps re-enforce that not every non-standard element is a signal. :)</p>
+</section>
+<section class="sectioning">
+<h3 class="contextual-heading" style="font-size: 3rem;">In conclusion...</h3>
+<p>I wish that I could say "Ah ha - the data says very clearly that <em>these</em> are the specific things we should definitely 'just write down' now" in the way that I imagined a decade ago, but I don't think we're there yet.  I guess if I had to give three things I'd like to see happen from here they'd be:</p>
+<ol>
+<li><p>We need lots more effort in thinking about how to study these things.  I would love to see real investment in this space.  This year, at last, the W3C is hiring someone to study the web.  I'm not yet sure what that looks like but I look forward to trying to discuss more with them.</p>
+</li>
+<li><p>We need a real community effort - an <a href="https://ul.org/about/our-history/">Underwriters Labs</a> for custom elements, with participation and funding from orgs with money.  We don't necessarily need "the one true tabs" as much as we need a place to find what I expect will be a very few sets of tabs as custom elements which we can trust like we trust native elements.  Given a little bit of time, I have faith that this will naturally sort itself into a few 'winners'.  </p>
+</li>
+<li><p>That community effort might also include things which won't ever have native implmentations, but which lay down some kind of light semantic meaning or compound styling structure that we all begin to agree on - like product cards or breadcrumbs.</p>
+</li>
+</ol>
+<p>A lot of this is pretty adjacent/close to the ideas behind OpenUI and it's possible some of this could just happen there.  However, due mainly to limits and participation, OpenUI has really not really produced custom elements or worked to somehow list or grade and promote them (though we did study them quite a bit in the tabs research).  The effort led by Brad Frost to think about a "global design system" in particular might be closer to some of these ideas.</p>
+</section>
+</section>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[Standards Queues]]></title>
         <id>https://bkardell.com/blog/Queues.html</id>
@@ -484,82 +726,6 @@ $$</code></pre>
   </figure>
 
 
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Interop and Hard Problems]]></title>
-        <id>https://bkardell.com/blog/debt.html</id>
-        <link href="https://bkardell.com/blog/debt.html">
-        </link>
-        <updated>2024-11-24T05:00:00.000Z</updated>
-        <summary type="html"><![CDATA[Let's talk about priorities, technical debt and hard problems in the Web Platform...]]></summary>
-        <content type="html"><![CDATA[
-	<h1 class="contextual-heading" style="font-size: 2rem;">Interop and Hard Problems</h1>
-	<p class="segue">Let's talk about priorities, technical debt and hard problems in the Web Platform...</p>
-
-	<p>In many ways, browser engine projects are not that different from most other software projects.  The "stewards" still have teams with managers and specializations and budgets and people out on leave, and so on.  They have to prioritize and plan.  And just like every other project I've ever seen, they face the same kinds of pressures and problems:  There are never enough resources for everything, there are always new asks, they always accumulate tech debt, and sometimes there are really hard problems.</p>
-
-	<p>What <em>is</em> perhaps special about them is that they are trying to be more than just an isolated program: They're trying to contribute to a standard, interoperable platform.  The catch, for us, is that we only reap the benefit when something makes it all the way through <em>all</em> of the team's independent priority gauntlets, get shipped widely, and so on.</p>
-
-	<p>This can be kind of painful to experience.</p>
-	
-	<p>For example, consider the <code>&lt;details&gt;</code> element. It's literally the simplest possible interactive element. Here's how we got it:</p>
-
-	<ul>
-	<li>In June 2011, Chrome shipped <code>&lt;details&gt;</code>.</li>
-	<li>A year later, in July 2012, Safari shipped it.</li>
-	<li>Another year later in July 2013, Opera shipped it.</li>
-	<li>Still another three years later, in September 2016, Firefox shipped it</li>
-	<li>Microsoft <em>never</em> implemented it - we finally got the last implementation when Edge moved to Chromium in 2020.</li>
-	</ul>
-	<p>If you're counting, that's <em>nine</em> years it took to reach shipping in all browsers. The newly defined "<a href="https://web.dev/baseline">Baseline Widely Available</a>" which indicates roughly when something should have reached as close to 100% market-share/deployment as possible would take another three... So, more or less, that happened last year.</p>
-
-	<p>And that's just the <em>initial</em> and <em>appealing</em> part. Then there are, of course, bugs discovered, new tests added, and ultimately feature improvements and iterations and so on.  Even currently there are newly failing tests that make support for <code>&lt;details&gt;</code> ragged as we've tried to improve things like find-in-page and and add new concepts like invokers.</p>
-
-
-	<p>As time goes by, we're accumulating squares in the feature grid and new "gaps" in it faster than we're filling them.  We're accumulating tech debt. </p>
-
-
-	<section class="sectioning">
-		<h2 class="contextual-heading" style="font-size: 2.5rem;">Enter Interop</h2>
-		
-		<p>Interop <em>was</em> originally intended as a way to pay down, that debt:  Let's pick some things to prioritize together and turn all of the little red failure squares green.  But prioritizing is tricky.</p>
-
-		<p>We'll get <em>very roughly</em> around 100 submissions of what we should focus on every year.  But Interop is merely allowing browser makers to agree on how to focus and prioritize on some of the same things.  The resources themselves are still finite.  That means that prioritizing some things inevitably means <em>not</em> prioritizing something else.</p>
-
-		<p>And, there are a lot of competing pressures about what to prioritize, and why.</p>
-
-		<p>For example: It is <em>super</em> effective for developers if we can focus <em>initial</em> developments together.  Imagine if we could have delivered <code>&lt;details&gt;</code> across the board and very high quality in 2011, or 2012.</p>
-
-		<p>Focusing together on a few new features has other added benefits too.  People are more excited to work on it for one.  We also get everyone talking about the same things at the same time, that's helpful - nobody misses the big event. It means use will grow faster, etc.  It gives us something a like ECMA annual editions.  So, it's a little unsurprising that <a href="https://wpt.fyi/interop-2024">last year, Interop</a> included areas like CSS nesting, popover, relative color syntax, declarative shadow DOM.</p>
-
-		<p>However - at the other end of the spectrum, there are lots of things which are already very ragged.  These things are damned hard to prioritize. They're all over the map. They are of obviously different, and debatable kinds of value, to sometimes very different communities. They can also incur different costs on different engines, and so on.</p>
-
-		<p>All of this conspires together to create  some perennially hard problems.  They continue to be needs, sometimes for <em>exceedingly</em> long times.</p>
-
-	</section>
-	<section class="sectioning">
-		<h2 class="contextual-heading" style="font-size: 2.5rem;">Perennially Hard Problems</h2>
-		
-		<p>This year, I'm making the case that we <em>need</em> to find a way to prioritize those perennially hard problems which, for whatever reason, we can never seem to prioritize.  Perhaps every 5, 7 or 10 years we we should focus on these kinds of projects.</p>
-
-		<p>If you've been reading my blog or listening to our podcast, then you're already aware that MathML and SVG are probably the biggest examples of this kind of problem.  Both are among the oldest web specifications, having their first versions published about the same time as HTML 4.0 and CSS 2.  They were specially integrated with the HTML parser, and are integrated into the HTML Living Standard (<a href="https://html.spec.whatwg.org/#mathml">MathML</a>, <a href="https://html.spec.whatwg.org/#svg-0">SVG</a>).</p>
-
-
-		<p style="font-weight: bolder;">Yet both are historically dramatically under-funded and much of the actual work on them have been funded by volunteers and non-steward organizations!  26 years later we're still struggling to find the will to cross some important last miles.</p>  
-
-		<p>Thus, every year, we have submissions about both for Interop.</p> 
-
-		<p>The 2024 State of HTML survey found that &lt;svg&gt; was the <a href="https://state-of-html-2024.onrender.com/en-US/features/content/">top content pain point cited by developers</a>, with almost double the pain attributed to “browser support”.  <code>&lt;svg&gt;</code> - that is the literal <code>&lt;svg&gt;</code> element, not including the other ways SVGs can be used - is used on <a href="https://rainy-periwinkle.glitch.me/permalink/831113a2f130c21a753ff9404067a47eaa893bc7fbc3f973a012d50e67123cf2.html">over 55% of HTML pages in the HTTP archive data</a>. Only 27 of HTML's roughly 130 elements are more popular.  SVG is also used heavily in embedded applications powered by Web engines.</p>
-
-		<p>A lot of math content is in more specific sites like arXiv and Wikipedia, which each have millions and millions of equations, or in online education or books.  The HttpArchive crawl isn't the best way to measure that since it is focused mainly on public home pages where there's not likely to be a lot of math.  However, even in the crawl, we still see thousands of pages do load 2 of the most popular JavaScript libraries which are bridging the gaps instead of rendering native math.  This hurts performance and is unique - we don't require JavaScript to render <em>text</em>.  We also know that numerous document editing tools like Adobe Indesign and Microsoft Word support MathML.  Those are complex applications which require a lot of script already, and lacking good support means that they have to load even more.</p>
-
-		<p>Igalia has contributed implementations and improvements with funding from others and ourselves.  Every year we have invested a bit ourselves to keep things moving forward.  But it moves <em>slowly</em> this way.  What we really need are some concerted efforts to push us across those last miles.  We'd go a lot farther, a lot faster, together.</p>
-
-		<p>If you support the idea of some focus and push on these, please let us know - let vendors know. It might help.</p>
-
-		<p>Of course, it might not too.  Historically, it's been difficult.  What we <em>know</em> works is for someone outside of vendors to do the work - or fund it.  Igalia will keep plugging away, but without external funding our own investments only go so far.  If your organization would benefit from these, consider financially sponsoring some work.  Alternatively, you can also <a href="https://opencollective.com/mathml-core-support">help fund work on MathML directly</a>.</p>
-	</section>
 ]]></content>
     </entry>
 </feed>
