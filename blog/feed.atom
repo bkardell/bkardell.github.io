@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://bkardell.com/</id>
     <title>bkardell.com rss feed</title>
-    <updated>2026-01-06T15:45:06.470Z</updated>
+    <updated>2026-02-02T18:17:47.648Z</updated>
     <generator>awesome mix</generator>
     <author>
         <name>Brian Kardell</name>
@@ -14,6 +14,56 @@
     <subtitle>Just the bkardell.com rss feed</subtitle>
     <logo>http://bkardell.com/profile.jpg</logo>
     <rights>All rights reserved 2018, Brian Kardell</rights>
+    <entry>
+        <title type="html"><![CDATA[Maintaining the Bridges]]></title>
+        <id>https://bkardell.com/blog/Bridges.html</id>
+        <link href="https://bkardell.com/blog/Bridges.html">
+        </link>
+        <updated>2026-02-02T05:00:00.000Z</updated>
+        <summary type="html"><![CDATA[Thoughts and analogies about infrastructure...]]></summary>
+        <content type="html"><![CDATA[
+    <h1 class="contextual-heading" style="font-size: 2rem;">Maintaining the Bridges</h1>
+<p class="segue">Thoughts and analogies about infrastructure...</p>
+
+<p>I live in Pittsburgh, Pennsylvania — “The Steel City,” once the beating heart of American steelmaking. In 1902, U.S. Steel’s first full year of operation, it produced 67% of all steel in the United States. By 1943, the company employed more than 340,000 people. We burned so much coal that Pittsburgh earned the nickname “Hell with the lid off.” Streetlights sometimes ran at noon because the sky was that dark. </p>
+
+<figure class="captioned-image">
+    <img src="/media/2026/pittsburgh-midday.jpg">
+    <figcaption>A photo of Pittsburgh dark with smoke at midday. (You can search more about this it if that interests you, here's <a href="https://www.treehugger.com/think-air-quality-doesnt-matter-look-at-pittsburgh-in-the-s-4862509">one nice piece with a few pictures</a>).</figcaption>
+</figure>
+
+
+<p>The city’s geography didn’t make things any easier. Pittsburgh is carved by mountains, valleys, and the three rivers — the Allegheny and Monongahela merging to form the Ohio. That topography, combined with the industrial boom, meant we built <em>a lot of bridges</em>.  It helps that when your city is literally manufacturing the materials, you get a hometown discount. </p>
+<figure class="captioned-image">
+    <img src="/media/2026/3-sisters.jpg" alt=""><p></p>
+    <figcaption>A view down river of Pittsburgh's <a href="https://en.wikipedia.org/wiki/Three_Sisters_(Pittsburgh)">3 sisters" bridges</a> and several others.</figcaption>
+</figure>
+<p>One of them, the Hot Metal Bridge — just a mile or two from my house — once carried ladle cars full of molten iron between the blast furnaces and mills of J&amp;L Steel. During World War II, 15% of America’s steelmaking capacity crossed that bridge, up to 180 tons per hour.</p>
+<p>These bridges were originally built by private companies with a clear profit motive: to move coal, ore, steel, or workers. Others were toll bridges, run by private companies the way you’d run a turnpike or ferry.</p>
+<p>But more bridges meant more industry, which meant more people, which meant more bridges. You can see where this goes.</p>
+<p>Even by the late 1800s we were beginning to publicly fund them.  By the 1920s–1930s Allegheny County’s bridge program bought out many of the private bridges and replaced many of them.  By the time the New Deal and Interstate era arrived, the private‑toll era was basically over - and since then over 90% of Pittsburgh's public bridges were funded by federal programs (we still have some private industry use bridges).</p>
+<section class="sectioning">
+<h2 class="contextual-heading" style="font-size: 2.5rem;">So what does any of this have to do with software?</h2>
+<p>Aside from giving me an excuse to talk about my city (which I enjoy), Pittsburgh’s bridges are a useful metaphor for the infrastructure we rely on in tech, in two important ways:</p>
+<ol>
+<li><p><em>Becoming</em> a public good
+Private investment built early bridges, just like private companies built much of what we've got now in terms of browser engines, search index, foundational libraries and so on - but eventually they stopped becoming optional.  I think we're only now starting to really understand that we need a lot of this to be a public good in the same kind of way.   These are the roads and bridges of the modern world.</p>
+</li>
+<li><p>Building something new is exciting. Maintaining it, not so much.
+A lot of my city's physical infrastructure is aging and some of it has been neglected.  It's somehow way easier to get people to build new things than to take care of the old stuff.  The public notices a new bridge!  The ribbon-cutting gets a photo op and celebration.  The maintenance budgets and crews struggle to even get funding.</p>
+</li>
+</ol>
+<p>In fact, even when things are fairly well funded, it doesn't mean they're kept up to date.  While researching to write this piece I realized that a lot of the Wikipedia data about Pittsburgh (and many topics!) is actually <em>really</em> out of date.  It's cool to write the article with these cool facts, but it's not so cool to do the work to keep it up... Or, maybe thats just not what you want to do anymore.  Or maybe you were incarcerated, or you died, or you went to Mars - idk. </p>
+<p>The point is that writing the thing in the first place is only half the battle. If most of your entry on a city was written two decades ago, a lot of what it details about the economics, population, jobs, and so on are probably not very accurate!</p>
+<p>It's no different with software.  It's cool and fun to build a new thing or add a new feature to an existing thing, but keeping them maintained is annoying.  New mechanisms arrive that you might need to adapt to.  Underlying code bit rots.  All of it needs release teams and Q&amp;A and reviews and fixes and updates at global scales, even if no new features were added.  But very few people actually want to do that, and almost nobody wants to pay for it.</p>
+</section>
+<section class="sectioning">
+<h2 class="contextual-heading" style="font-size: 2.5rem;">More Public Funding</h2>
+<p>I'd really love for societies around the world to come to the realization that a lot of the online things we've built are, like roads and bridges, now <em>necessary</em> - and figure out how we can publicly fund enough of them that important things without an obvious and direct profit motive can get done. MathML and SVG are two easy examples of this, but there are plenty more. Maybe XSLT is another example.  Perhaps if we had good funding for those things, their ongoing survival wouldn't be questioned.</p>
+<p>I feel like there is a lot of room here for improvement from the status quo.  It doesn't even have to start with governments. Any ways that we expand the pool of funding avilable and diversifying, it helps.</p>
+</section>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[The Secret Life of Custom Elements]]></title>
         <id>https://bkardell.com/blog/SecretLifeOfCustomElements.html</id>
@@ -694,37 +744,6 @@ $$</code></pre>
 	<p>So, that's it.  Enjoy.  Mathify your static sites.</p>
 
 	<p class="note">Before you go... The work of Math rendering in browsers is <em>severely</em> under funded.  Almost none of the effort or funding over the last 30 years to make this possible has come from browser vendors, but rather from individual contributors and those willing to help fund them.  If you appreciate the importance of this work, please consider helping to <a href="https://opencollective.com/mathml-core-support">support the work</a> with a small monthly donation, and please help us to publicly lobby implementers to invest in it.</p>
-
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Link in Bio]]></title>
-        <id>https://bkardell.com/blog/LinkInBio.html</id>
-        <link href="https://bkardell.com/blog/LinkInBio.html">
-        </link>
-        <updated>2025-02-06T05:00:00.000Z</updated>
-        <summary type="html"><![CDATA[Embracing an IndieWeb thing...]]></summary>
-        <content type="html"><![CDATA[
-  <h1 class="contextual-heading" style="font-size: 2rem;">Link in Bio</h1>
-  <p class="segue">Embracing an IndieWeb thing...</p>
-
-  <p>Over the years, I've been there as things have come and gone on the interwebs. I had accounts on AIM, MySpace, Blogger, FaceBook, WordPress, Google Plus, Twitter, Instagram, and plenty more.  On each one, I wind up with a profile where I want to link people to other places I am online - and those places don't always make it easy to do that.  So, something short and memorable that you could even type if you had to is ideal - like a handle: @briankardell or @bkardell or, in the end: bkardell.com is pretty great.</p>
-
-  <p>Back in 2016, some folks felt the same frustration and instead created this <a href="https://en.wikipedia.org/wiki/Linktree">Linktree</a> thing.  But... It's just like, a fremium thing that gives you <em>the most basic single page website ever</em>?  Yes, and today they have 50 million users and are valued at $1.3 billion - that's a value of $26/user. I mean, I found that amazing.</p>
-
-  <p>But, here's the thing: After a while I realized that there's something to it.  Not the business model, specifically, but the link in bio idea.  The link in bio is generally not a great website on its own, but it's a page where people can pretty quickly navigate to the thing they're looking for without other noise or fluff.  Which is something that a home page often isn't.  So,  I've learned to really appreciate them, actually.</p>
-
-  <p>Back in about 2020, some IndieWeb folks began <a href="https://indieweb.org/Linktree">thinking about, criticizing and brainstorming around it too</a>.  They began writing about <a href="https://indieweb.org/link_in_bio">Link in Bio</a>, and why it might be useful to have your own version.  There are several examples of people doing something similar.</p>
-
-  <p>Recently a bunch of things smashed together in my mind.  First, on ShopTalk, I heard Chris and Dave talking about "<a href="https://shoptalkshow.com/647/">slash pages</a>" (pages right off the root domain with <a href="https://slashpages.net/">well known names</a>).  Second, I've been working on social media plans - getting away from some platforms and moving to others and thinking about these problems.  An IndieWeb style `/links` page, that adds <code>rel="me"</code> links is a really nice, simple way to achieve a whole lot of things if we'd all adopt it - not the least of which is that it's an evergreen link, almost as simple as a handle, to where people can find you should you choose to leave...</p>
-
-  <p>So, starting with me, and Igalia, you can find our links at <a href="https://bkardell.com/links">bkardell.com/links</a> and <a href="https://igalia.com/links">igalia.com/links</a> respectively.</p>
-
-  <figure class="captioned-image">
-    <img src="/media/2025/bye.png">
-    <figcaption>A screenshot of Igalia's post with a sunset and birds flying away, linking to our /links page</figcaption>
-  </figure>
-
 
 ]]></content>
     </entry>
