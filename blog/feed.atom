@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://bkardell.com/</id>
     <title>bkardell.com rss feed</title>
-    <updated>2026-02-02T18:17:47.648Z</updated>
+    <updated>2026-02-04T19:02:47.368Z</updated>
     <generator>awesome mix</generator>
     <author>
         <name>Brian Kardell</name>
@@ -14,6 +14,35 @@
     <subtitle>Just the bkardell.com rss feed</subtitle>
     <logo>http://bkardell.com/profile.jpg</logo>
     <rights>All rights reserved 2018, Brian Kardell</rights>
+    <entry>
+        <title type="html"><![CDATA[What if we just]]></title>
+        <id>https://bkardell.com/blog/WhatIfYouJustTellMe.html</id>
+        <link href="https://bkardell.com/blog/WhatIfYouJustTellMe.html">
+        </link>
+        <updated>2026-02-04T05:00:00.000Z</updated>
+        <summary type="html"><![CDATA[What if a better answer to a question I've been struggling with for more than a decade is just... Way simpler?  Sharing a potentially half-baked idea for discussion.]]></summary>
+        <content type="html"><![CDATA[
+	<h1 class="contextual-heading" style="font-size: 2rem;">What if we just</h1>
+<p class="segue">What if a better answer to a question I've been struggling with for more than a decade is just... Way simpler?  Sharing a potentially half-baked idea for discussion.</p>
+
+<p>Back in 2013 I wrote <a href="https://bkardell.com/blog/Dropping-The-F-Bomb-On-Standards.html">Dropping the F-Bomb on Web Standards</a>.  The core argument was simple: the web works best when developers can invent “slang,” and standards bodies behave more like dictionary editors — watching what people actually say, then paving the cow paths that clearly matter.</p>
+<p>It fed into the <a href="https://extensiblewebmanifesto.org/">Extensible Web Manifesto</a> (which followed)  and over the years I've continued to push for study of what people are really doing.  I have helped add features to the  HTTPArchive crawl and built tools to analyze this data.  </p>
+<p>But it's hard. It's <a href="https://bkardell.com/blog/SecretLifeOfCustomElements.html#:~:text=What's%20difficult%20about%20it...">biased</a>. It's incomplete.  Even the best crawl misses huge swaths of the web — anything behind logins, paywalls, dashboards, internal tools, or private deployments.  And all of them have limits.  It requires a ton of follow-up analysis and raises almost as many questions as it answers.</p>
+<p>So lately I've been wondering (a bit like <a href="https://www.youtube.com/watch?v=L2DqcXeGTyc">Kramer</a>):</p>
+<blockquote>
+<p>What if we just... voluntarily shared this information?</p>
+</blockquote>
+<p>We don't need a formal standard or anyone's permission, we could just... share it, and build tools to share it easily in a well known format at a well known URL.</p>
+<p>It could give us insight into the use of custom elements behind logins and paywalls and so on too, and tell us where they come from (a git repo, for example)... </p>
+<p>Lots of things that are common happened through community effort and adoption. Normally you <em>get</em> something from it - <code>robots.txt</code> helped your site from being aggressively scraped in problematic ways, <code>ads.txt</code> helped say something about monetization, <code>feed.rss</code> helped syndicate, and so on.  What do you get out of sharing this kind of info? </p>
+<p>Individually, I'm not sure.  But, collectively the benefit is clear:  We'd finally have a real, ecosystem‑wide index of custom elements and how they're used. and hopefully a way to shape useful standards on them easily.</p>
+<p>As to what that would look like, I'm not sure.</p> 
+<p>The community defined <a href="https://github.com/webcomponents/custom-elements-manifest/">Custom Element Manifest</a> already has a bit of uptake and tooling - we <em>could</em> just publish that to a well known URL.  It might be too much, or too little.. A simpler manifest of just element names and URLs of packages/repositories that supply them would even be nice.</p>
+<p>Is it too much? Too little? Maybe.</p>
+<p>Is it worth trying?  I think so.</p>
+<p>What do you think? Is this worth trying somehow?</p>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[Maintaining the Bridges]]></title>
         <id>https://bkardell.com/blog/Bridges.html</id>
@@ -633,118 +662,6 @@ A lot of my city's physical infrastructure is aging and some of it has been negl
 	</section>
 </section>
 	<p>So, that's all that was discussed. All in all, it was pretty good - but I'm slightly disappointed there wasn't a little more discussion of how we could collectively govern or priortize, or even if we all agreed that that's something that we want.  I'd love to hear any of your thoughts! </p>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[11ty Math]]></title>
-        <id>https://bkardell.com/blog/11tyMath.html</id>
-        <link href="https://bkardell.com/blog/11tyMath.html">
-        </link>
-        <updated>2025-03-12T04:00:00.000Z</updated>
-        <summary type="html"><![CDATA[Markdown, LaTex and ASCII - who writes HTML?]]></summary>
-        <content type="html"><![CDATA[
-	<h1 class="contextual-heading" style="font-size: 2rem;">11ty Math</h1>
-	<p class="segue">Markdown, LaTex and ASCII - who writes HTML?</p>
-	<script src="../prism.js"></script>
-    <link rel="stylesheet" href="../prism.css">
-    <link rel="stylesheet" href="https://fred-wang.github.io/MathFonts/STIX/mathfonts.css">
-    
-	<p>Very nearly none of the content that we encounter online is entirely hand authored from opening doctype to closing HTML tag - it's assembled.  We have layouts, and includes and templates and so on.  And, most of the actual <em>content</em> that we produce and consume is written in some more familiar or easier to write shorthand.  For most of the people reading this, it's probably mostly markdown.</p>
-
-	<p>But did you know that lots of the places that you use markdown <a href="https://docs.github.com/en/get-started/writing-on-github/working-with-advanced-formatting/writing-mathematical-expressions">like GitHub</a> and GitLab, and <a href="https://code.visualstudio.com/docs/languages/markdown">Visual Studio</a> support embedding mathematical expressions written in LaTex surrounded by <code>$</code> (inline) or <code>$$</code> (block)? Those are then transformed for you to rendered Math with MathML?</p>
-
-	<p>It got me thinking that we should have a kind of similarly standard easy setup for 11ty.  It would be a huge win to process it on the server, MathML will render natively, fast, without FOUC. It will be accessible, styleable, scale appropriately with text-size and zoom and so on.</p>
-
-	<p>The super interesting thing to note about most of the tools where you can use markup is that so many of them are built on common infrastructure: <a href="https://github.com/markdown-it/markdown-it">markdown-it</a>.  The architectural pattern of markdown-it allows people to write plugins, and if you're looking to match those above, you can do it pretty easily with the <a href="https://www.npmjs.com/package/@mdit/plugin-katex">@mdit/plugin-katex</a>:
-
-	</p><pre><code class="language-javascript">/* eleventy.config.js */
-const markdownIt = require("markdown-it");
-
-module.exports = async function (eleventyConfig) {
-
-  const { katex } = (await import("@mdit/plugin-katex"));
-  eleventyConfig.setLibrary(
-  	"md", 
-  	markdownIt().use(katex, {output: "mathml"})
-  );
-
-}</code></pre>
-
-	<p>And... That's it.  Now you can embed LaTex math in your markdown just as you can in those other places and it will do the work of generating fast, native, accessible, and styleable MathML...
-
-	</p><pre><code class="language-html">Some math  $\frac{x^2}{a^2} + \frac{y^2}{b^2} = 1$ whee.</code></pre>
-
-	<p>Yields...</p>
-	<pre><code class="language-html">&lt;p&gt;Some math <span class="katex">&lt;math xmlns="http://www.w3.org/1998/Math/MathML"&gt;&lt;semantics&gt;&lt;mrow&gt;&lt;mfrac&gt;&lt;msup&gt;&lt;mi&gt;x&lt;/mi&gt;&lt;mn&gt;2&lt;/mn&gt;&lt;/msup&gt;&lt;msup&gt;&lt;mi&gt;a&lt;/mi&gt;&lt;mn&gt;2&lt;/mn&gt;&lt;/msup&gt;&lt;/mfrac&gt;&lt;mo&gt;+&lt;/mo&gt;&lt;mfrac&gt;&lt;msup&gt;&lt;mi&gt;y&lt;/mi&gt;&lt;mn&gt;2&lt;/mn&gt;&lt;/msup&gt;&lt;msup&gt;&lt;mi&gt;b&lt;/mi&gt;&lt;mn&gt;2&lt;/mn&gt;&lt;/msup&gt;&lt;/mfrac&gt;&lt;mo&gt;=&lt;/mo&gt;&lt;mn&gt;1&lt;/mn&gt;&lt;/mrow&gt;&lt;annotation encoding="application/x-tex"&gt;\frac{x^2}{a^2} + \frac{y^2}{b^2} = 1&lt;/annotation&gt;&lt;/semantics&gt;&lt;/math&gt;&lt;/span&gt; whee.&lt;/p&gt;</span></code></pre>
-
-	<p>Which your browser renders as...</p>
-
-	<div class="example">
-		<p>Some math inline <span class="katex"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mfrac><msup><mi>x</mi><mn>2</mn></msup><msup><mi>a</mi><mn>2</mn></msup></mfrac><mo>+</mo><mfrac><msup><mi>y</mi><mn>2</mn></msup><msup><mi>b</mi><mn>2</mn></msup></mfrac><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">\frac{x^2}{a^2} + \frac{y^2}{b^2} = 1</annotation></semantics></math></span> whee.</p>
-	</div>
-
-	<p>Surrounding the math part alone with <code>$$</code> instead yields block math, which renders as..</p>
-
-	<p class="katex-block"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mfrac><msup><mi>x</mi><mn>2</mn></msup><msup><mi>a</mi><mn>2</mn></msup></mfrac><mo>+</mo><mfrac><msup><mi>y</mi><mn>2</mn></msup><msup><mi>b</mi><mn>2</mn></msup></mfrac><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">\frac{x^2}{a^2} + \frac{y^2}{b^2} = 1</annotation></semantics></math></p>
-
-
-	<div class="note">
-  	Mathematical fonts are critical for rendering.  We <strong>almost</strong> have universally good default math fonts, but <strong>some</strong> operating systems (eyes Android disapprovingly) still don't.  However, like me you can include some CSS to help. On this page I've included 
-  	<pre><code class="language-html">&lt;link  href="https://fred-wang.github.io/MathFonts/STIX/mathfonts.css" /&gt;</code></pre>.
-  	<br> You can <a href="https://developer.mozilla.org/en-US/docs/Web/MathML/Authoring#mathematical_fonts">read a lot more about this on MDN</a>. 
-
-
-	</div>
-
-
-	<section class="sectioning">
-		<h2 class="contextual-heading" style="font-size: 2.5rem;">AsciiMath Math / Mathup</h2>
-		<p>While LaTeX is by far the most common way that people author math, there are people who prefer AsciiMath.  Rúnar Berg Baugsson Sigríðarson (<a href="https://github.com/runarberg">@runarberg</a>) has a nice <a href="https://runarberg.github.io/mathup/#why-not-tex">explanation as to why they prefer to not use TeX</a>.</p>
-
-		<p>His mathup package seems pretty nice (an AsciiMath dialect more than just AsciiMath), and there is also a corresponding  <a href="https://github.com/runarberg/markdown-it-math">markdown-it-math</a> which is similarly easy to use...</p>
-
-	<pre><code class="language-javascript">/* eleventy.config.js */
-const markdownIt = require("markdown-it");
-
-module.exports = async function (eleventyConfig) {
-  const markdownItMath = 
-  	(await import('markdown-it-math')).default;
-
-  eleventyConfig.setLibrary(
-    "md", 
-    markdownIt().use(markdownItMath)
-  );
-}</code></pre>
-	
-	<p>Then, you can embed AsciiMath in your markdown, fenced by the same <code>$</code> or <code>$$</code> and it will generate some nice MathML. For example...</p>
-
-	<pre><code class="language-html">$$
-e = sum_(n=0)^oo 1/n!
-$$</code></pre>
-
-
-	<p>Will be transformed at build time and render in your browser as...</p>
-
-	<math display="block"><mi>e</mi><mo>=</mo><munderover><mo>∑</mo><mrow><mi>n</mi><mo>=</mo><mn>0</mn></mrow><mi mathvariant="normal">∞</mi></munderover><mfrac><mn>1</mn><mrow><mi>n</mi><mo>!</mo></mrow></mfrac></math>
-
-	<p class="note">Make sure you get markdown-it-math 5.0.0-rc.0 or above or this won't work.  You might also consider including <a href="https://cdn.jsdelivr.net/npm/mathup/dist/mathup.css">their stylesheet</a>.</p>
-
-	<p class="note">markdown-it-math also supports a nice pattern for easily integrating other engines for embedded transformations like Ron Kok's <a href="https://temml.org/">Temml</a> or Fred Wang's <a href="https://fred-wang.github.io/TeXZilla/">TeXZilla</a>.</p>
-
-	</section>
-
-
-	<section class="sectioning">
-		<h2 class="contextual-heading" style="font-size: 2.5rem;">Unicode Math</h2>
-		<p>There is also Unicode Math, which Murray Sargent III developed and had integrated into all of the Microsoft products.  It's pretty nifty too if you ask me. This repo has a nice <a href="https://github.com/MurrayIII/UnicodeMathML/tree/main?tab=readme-ov-file#how-does-its-syntax-compare-to-asciimath-latex-and-mathml">comparison of the three</a>.</p>
-
-		<p>Unfortunately there is no npm module for it (<a href="https://github.com/doersino/UnicodeMathML/issues/5">yet</a>), so for now, unfortunately that remains an open wish.</p> 
-	</section>
-
-	<p>So, that's it.  Enjoy.  Mathify your static sites.</p>
-
-	<p class="note">Before you go... The work of Math rendering in browsers is <em>severely</em> under funded.  Almost none of the effort or funding over the last 30 years to make this possible has come from browser vendors, but rather from individual contributors and those willing to help fund them.  If you appreciate the importance of this work, please consider helping to <a href="https://opencollective.com/mathml-core-support">support the work</a> with a small monthly donation, and please help us to publicly lobby implementers to invest in it.</p>
-
 ]]></content>
     </entry>
 </feed>
