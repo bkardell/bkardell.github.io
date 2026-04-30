@@ -1,0 +1,1059 @@
+<html lang="en" resource-type="blogpost"><head>  
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="view-transition" content="same-origin"> 
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@briankardell">
+    <meta name="twitter:creator" content="@briankardell">
+    <meta name="twitter:title" content="Browsers and Language Features">
+    <meta name="twitter:description" content="Web browsers do an astounding amount of stuff with language - and we're always trying to do more.  Like most things that we get &quot;for free&quot; and don't give a lot of attention to, the">
+    
+    <!-- meta name="monetization" content="$ilp.uphold.com/kKU4GXiRwhnf " -->
+     
+    <link rel="alternate" type="application/rss+xml" href="https://bkardell.com/blog/feed.rss" title="bkardell.com/blog rss feed">
+    <title>Browsers and Language Features</title> 
+    <style>/*!
+ * Web Fonts from Fontspring.com
+ *
+ * All OpenType features and all extended glyphs have been removed.
+ * Fully installable fonts can be purchased at https://www.fontspring.com
+ *
+ * The fonts included in this stylesheet are subject to the End User License you purchased
+ * from Fontspring. The fonts are protected under domestic and international trademark and 
+ * copyright law. You are prohibited from modifying, reverse engineering, duplicating, or
+ * distributing this font software.
+ *
+ * (c) 2010-2023 Fontspring
+ *
+ *
+ *
+ *
+ * The fonts included are copyrighted by the vendor listed below.
+ *
+ * Vendor:      Horizon Type
+ * License URL: https://www.fontspring.com/licenses/horizon-type/webfont
+ *
+ *
+ */
+
+@font-face {
+    font-family: 'acherus_militant_1_-_light.otf';
+    src: url('/acherus_militant_1_-_light.otf-webfont.woff2') format('woff2'),
+         url('/acherus_militant_1_-_light.otf-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+
+.captioned-image {
+    background-color: #eaeaea;
+    display: block;
+    overflow: hidden;
+    padding: 1rem;
+    text-align: center;
+    font-style: italic;
+}
+
+.captioned-image.p-attached {
+    width: 40%;
+    display: inline-block;
+    margin: 0 1rem 2rem 1rem;
+}
+
+section > .captioned-image.p-attached {
+    margin-top: 1.5rem; /* correct for heading size*/
+}
+
+ pre { overflow-x: auto }
+
+.captioned-image.p-attached.p-attached-left {
+    float: left;
+}
+
+.captioned-image.p-attached.p-attached-right {
+    float: right;
+}
+
+.captioned-image.p-attached + * + * {
+    clear: both;
+    margin-top: 2rem;
+}
+
+
+.captioned-image img, .captioned-image video {
+    display: block;
+    max-width: 100%;
+    
+    margin: 0 auto 1em auto;
+}
+.source {
+    font-style: italic;
+}
+body {
+    display: grid;
+    grid-template-columns: 25rem auto;
+    font-size: 1.1rem;
+    font-family: 'acherus_militant_1_-_light.otf';
+    font-weight: 400;
+    font-size: 1.25rem;
+    line-height: 1.625;
+    margin: 0;
+    background-color: rgb(249, 246, 246);
+}
+h1 { margin: 0.5rem; }
+code-format {
+    border-left: 0.5rem solid rgba(123,115,209,0.35);
+    display: block;
+    padding: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+contextual-heading {
+    display: block;
+    margin-top: 2rem;
+}
+
+h1, [aria-level="1"] {
+    color: black;
+    font-size: 1.45rem;
+}
+
+h2, [aria-level="2"] {
+    color: black;
+    font-size: 1.35rem;
+}
+
+h3, [aria-level="3"] {
+    color: black;
+    font-size: 1.25rem;
+}
+
+h4, [aria-level="4"] {
+    color: black;
+    font-size: 1.2rem;
+}
+
+h5, h6, [aria-level="5"], [aria-level="6"] {
+    color: black;
+    font-size: 1.2rem;
+    font-weight: bolder;
+}
+
+
+.posted-on {
+    font-style: italic;
+    font-size: 0.8rem; 
+    text-align: right;
+    margin-bottom: 1rem;
+}
+
+ul, li {
+    margin: 0.5rem;
+    text-align: left;
+}
+
+.authorinfo {
+    height: 100%;
+    padding-top: 1rem;
+    padding-right: 0;
+    background-color: #fbf5e9; 
+    display: block;
+    background-image: linear-gradient(to right, #c7cccc, #dde0e8 );
+    border-right-width: 1px;
+    border-right-style: dotted;
+}
+
+.tagline {
+    font-style: italic;
+    text-align: center;
+}
+ 
+[tag-esc] {
+    color: maroon;
+    font-family: Courier, "Lucida Console", monospace;
+}
+
+[tag-esc]::before {
+    content: '<';
+}
+
+[tag-esc]::after {
+    content: '>';
+}
+
+main {
+    min-width: 50%;
+    width: 80%;
+    padding: 1rem;
+}
+header .title {
+    background-color: rgba(123,115,209,0.35);
+    padding: 0.3rem;
+    padding-left: 0.25rem;
+    font-weight: bolder;
+    font-size: 1rem;
+    border-left: 1rem solid #999298;
+}
+
+header .profile {
+    width: 50%;
+    margin: 1rem 25%;
+}
+
+header .title + nav {
+    font-size: 0.9rem;
+}
+
+header .blurb {
+    font-size: 0.9rem;
+    text-align: center;
+}
+header .name {
+    text-align: center;
+    font-size: xx-large;
+}
+.segue {
+    font-style: italic;
+}
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  border: 0;
+}
+
+#aboutMeToggle {
+    display: none;
+}
+
+
+:where(pre:has(code[class*="language"])) {
+    display: block;
+    background-color: black; 
+    padding: 0.5rem;
+}
+
+code[class*="language"] {
+    min-width: fit-content;
+}
+
+spicy-sections:not([affordance]) > h2 {
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+}
+
+main article { max-width: 100em; margin: auto; }
+/* this needs rethinking, it wants a selector like 'not flow content' */
+article>*:not(contextual-heading,a), section>*:not(contextual-heading,a) {
+    margin-left: 0.45rem;
+}
+
+blockquote {
+  font-family: serif;
+  background: #f9f9f9;
+  border-left: 10px solid #ccc;
+  margin: 1.5em 10px;
+  padding: 0.5em 10px;
+}
+blockquote:before {
+  color: #ccc;
+  content: open-quote;
+  font-size: 2em;
+  line-height: 0.1em;
+  margin-right: 0.25em;
+  vertical-align: -0.4em;
+}
+
+blockquote:after {
+  color: #ccc;
+  content: close-quote;
+  font-size: 2em;
+  line-height: 0.1em;
+  margin-left: 0.25em;
+  vertical-align: -0.4em;
+}
+ 
+
+@media (max-width: 800px){
+    body {
+        grid-template-columns: 1fr;
+    }
+    .authorinfo {
+        height: auto;
+        border-bottom: 1px solid #afafff;
+        padding-top:  0;
+    } 
+
+    main { width: 95%; margin: 0 auto;}
+
+    .captioned-image.p-attached {
+        width: 100%;
+        margin: 1rem 0;
+    }
+
+    .captioned-image.p-attached.p-attached-left,
+    .captioned-image.p-attached.p-attached-right {
+        float: none;
+    }
+
+    #aboutMeToggle {
+        display: block;
+        background-color: #675e5e;
+        color: white;
+        padding: 0.25rem;
+        padding-left: 0.5rem;
+        border-left: 1rem solid black;
+    }
+
+    header li { display: inline; margin-left: -0.5em; }
+    header .blurb li::after { content: '; '; }
+    header  nav li {
+        display: inline-block;
+        margin-left: 0.35rem;
+        margin-right: 0.35rem;
+    }
+    header .title {
+        width: 100%;
+    }
+    main li .source { display: block; }
+
+} 
+
+spicy-sections {
+    --const-mq-affordances:
+      [screen and (min-width: 600px) ] collapse |
+      [screen and (min-width: 801px) ] tab-bar
+    ;
+    display: block;
+}
+
+spicy-sections.authorinfo {
+    --const-mq-affordances:
+      [screen and (max-width: 801px) ] collapse
+    ;
+}
+
+
+spicy-sections.single {
+    --const-mq-affordances:
+      [screen ] collapse 
+;
+}
+
+[role="tab"] {
+    margin-right:  1.5rem;
+}
+
+.note {
+    background-color: rgba(255,255,0,0.24);
+    padding: 1rem;
+    font-style: italic;
+}
+.note::before {
+    content: 'Note';
+    font-size: 0.8rem;
+    background-color: black;
+    color: white;
+    padding: 0.25rem;
+    margin-right: 0.5rem;
+}
+
+</style>
+    <style> 
+      .captioned-image { font-size: 0.9rem; }
+      .thanksTo { font-style: italic; font-size: 0.8rem; }
+    </style>
+    <script>
+      var activateOptional = function (media) {
+        var source = media.getAttribute('data-src'),
+            temp,
+            container = media.parentElement;
+
+          if (media.nextSibling && media.nextSibling.matches) {
+            if (media.nextSibling.matches('.clickToSee')) {
+              media.parentElement.removeChild(media.nextSibling);
+            }
+          }
+ 
+          if (media.tagName === 'VIDEO') {
+            temp = document.createElement('video')
+            temp.setAttribute('autoplay','')
+            temp.setAttribute('controls','')
+            temp.setAttribute('loop','')
+            temp.innerHTML = '<source src="' + source + '.webm" type="video/webm">'
+                    + '<source src="' + source + '.mp4" type="video/mp4">';
+            media.parentElement.replaceChild(temp, media);
+            setTimeout(function () {
+              temp.play()
+            }, 0);
+          } else {
+            media.src = media.getAttribute('data-src');
+          }
+
+          container.classList.add('active');
+      }
+    </script>
+  </head>
+  <body>
+    <spicy-sections class="authorinfo">
+<h2 id="aboutMeToggle" defaults-on-match="">Author Information</h2>
+  
+<header>
+    <div class="name">
+        Brian Kardell
+    </div>
+    <img class="profile" src="/profile.jpg" alt="">
+    <div class="tagline"><a href="/">Betterifying the Web</a></div>
+    <div class="blurb">
+        <ul>
+            <li>Developer Advocate at Igalia</li>
+            <li>Original Co-author/Co-signer of The Extensible Web Manifesto</li>
+            <li>Co-Founder/Chair, W3C Extensible Web CG</li>
+            <li>Member, W3C (OpenJS Foundation)</li>
+            <li>Co-author of HitchJS</li>
+            <li>Blogger</li>
+            <li>Art, Science &amp; History Lover</li>
+            <li>Standards Geek</li>
+        </ul>
+    </div>
+    <div class="title">Follow Me On...</div>
+    <nav>
+        <ul>
+            <li><a rel="me" href="https://briankardell.wordpress.com">Wordpress</a></li>
+            <li><a rel="me" href="https://medium.com/@briankardell">Medium</a></li>
+            <li><a rel="me" href="https://twitter.com/briankardell">Twitter</a></li>
+            <li><a rel="me" href="https://github.com/bkardell/">Github</a></li>
+            <li><a rel="me" href="https://toot.cafe/@bkardell">Mastodon</a></li>
+            <li><a rel="me" href="https://bsky.app/profile/bkardell.com">Bluesky</a></li>
+            <li><a rel="me" href="https://codepen.io/bkardell">Codepen</a></li>
+            <li><a rel="me" href="https://www.linkedin.com/in/brian-kardell-08a4264">LinkedIn</a></li>
+            <li><a rel="me" href="https://www.instagram.com/kardellbrian">Instagram (for
+art)</a></li>
+            <li><a rel="me" href="http://fineartamerica.com/profiles/brian-kardell?">Fine Art
+America (art for sale)</a></li>
+        </ul>
+    </nav>
+</header> 
+</spicy-sections>
+<script>
+  /*
+    You're probably wondering "Do I need to write this?""
+    "Is this part of it?"  No... If you're interested tho - 
+    Custom elements have a FOUC/PE gap 
+    (see https://github.com/whatwg/html/issues/6231).
+    This is a slightly better experience: It 
+    will be hidden _if JS is enabled_, and 
+    will be shown as it is defined, 
+    or after 1 sec, whichever is first.
+  */
+  let ss = document.createElement("style");
+
+  ss.innerHTML = `html:not(.lldelay) :not(:defined) { visibility: hidden; }`;
+  document.head.appendChild(ss);
+
+  setTimeout(() => {
+    document.documentElement.classList.add("lldelay");
+  }, 1000);
+</script>
+    <main><div class="posted-on">Posted on null</div><article class="sectioning">
+	<h1 class="contextual-heading">Browsers and Language Features</h1>
+	<p class="segue">Web browsers do an astounding amount of stuff with language - and we're always trying to do more.  Like most things that we get "for free" and don't give a lot of attention to, there is a lot more to it than you might realize.</p>
+	<style>
+		pre { display: block; padding: 2rem; border: 1px solid gray; }
+	</style>
+	<p>Recently, I've been bouncing around looking at several browser language features.  Today, our web browsers can listen to us and transcribe our words, they can speak to us, they can do spell checking, and grammar checking. At a surface level there is just a seeming "need to understand words", right?  But what exactly that <em>means</em> is actually really  variant!</p>
+	<section class="sectioning">
+		<h2 class="contextual-heading">Speech to Text... but more.</h2>
+	<p>Today, your browser can talk to you via the Web Speech API. That's not new.  Recently there was a W3C workshop on Voice Interaction. All of the presentations are <a href="https://www.youtube.com/watch?v=gB7IHey8o_Q&amp;list=PLNhYw8KaLq2U_6YPLm6UitxQyXzGcy6jQ">available on the W3C's playlist</a>.  For some reason the sound on some of them seems pretty bad, and unfortunately many very good discusions aren't recorded.  One presentation <a href="https://youtu.be/Bc04fXrR1U4?si=jL7suHS-v1kye_KY">Solving Lead vs. Lead: Consistent Pronunciation for Web Content</a> was very interesting to me. In my 2017 post <a href="https://bkardell.com/blog/Greetings-Professor-Falken.html">Greetings, Professor Falken</a> I talked about how the underlying speech system was able to gather a <em>lot</em> from context. For example, even back then, all of the browsers and OSes I could try got these "right" in that they were not naively read but rather read as the correct "forms".</p>
+	<pre><code>1. Pi is about 3.14
+2. We loaded the 4x4
+3. Please meet me at 3.14pm EST
+4. My birthday is 2/17/1974
+</code></pre>
+	<p>Going on 10 years later, today's speech systems would get <em>most</em> "lead" (the heavy element) vs "lead" (being out in front) examples correct because of context.  But, in the talk and later discussion, there <em>are</em> plenty of examples where you shouldn't really rely on that. For example, if we're trying to <em>teach</em> someone how something is said.  That isn't really just about academics, instances abound.</p>
+	<p>In that same 2017 post I also mentioned that what the speech subsystems didn't get right was "Greetings, Professor Falken".  They didn't pronounce it like the movie. I overcame that in the post by feeding it a misspelling, but this was sort of non-deterministic too, and solved by trial and error.  Sarah (the presenter of the W3C talk) lays into a lot of examples like this - we discussed way more examples than I was initially considering where either there was no great context, or where no amount of context is actually likely to help.  A lot of these cases are proper nouns or regional pronunciations.  Montpelier, VT and Montpelier in the south of France are pronounced very differently.  Barre, VT and Martin Barre the lead guitarist for Jethro Tull are pronounced very differently.  These are somewhat famous examples.  Ana can be pronounced several ways - which one is this?  How do you pronounce the names of fictional characters? Or companies and products? And so on.</p>
+	<p>Sarah is from ETS, who also participated in an earlier "Spoken Presentation Task Force" which <a href="https://www.w3.org/TR/spoken-html/">produced a proposal for Spoken HTML</a> - and in <em>theory</em> Web Speech should support SSML too.  So, that's the proposed solution for that kind of problem. Keep that in the back of your mind for now. </p>
+	<p>As you can imagine, this is all true in the reverse direction as well.  That is, if you are transcribing speech there are sound-alike words and so on - which do I transcribe? “cache” or “cash”? Is it "Barre" or "Barry" or "Berry" Vermont? Do I write "4 by 4" or "4x4" or "Four by Four"?  Again, today's models will do very well, generally - but you'll have problems with most of those same things, including especially all of those proper nouns.</p>
+	<p>At the end of the day all of the listening part is statistics based.  The listening machine is this many % confident that it heard X, a little less confident that it heard Y and so on... Then it's sort of a lot like an LLM.  So, given context it can do better.  Contextual biasing is a simple, common way to improve the result: Just tell it a list of words you might be more likely to use and it'll bias toward them (optionally, provide a weight as to how much more likely it is to be this word, vs something that sounds similar).  So, in our example above, if your page is a discussion forum about Vermont politics, it's probably going to hear what is pronounced like "berry" but we want it to write "Barre" and not "Barry" or "bury" or "berry" or anything else, even if it's just a single word without a larger context.  Like a host asks "where was that?" and someone replies "Barre".</p>
+	<p>That functionality was recently added to the Web Speech API in Chrome.</p>
+</section>
+<section class="sectioning">
+	<h2 class="contextual-heading">More Different Than You Might Think...</h2>
+	<p>Listening, and speaking both <em>feel</em> so related, but the approach to the two is actually <em>very</em> different.   In one it's just a word and optionally a number, and in the other is more complex -  you need specialized knowledge about SSML and IPA (International Phonetic Alphabet), some mapping and... in practice more.  That's because while SSML <em>seems</em> very deterministic compared to an arbitrary number and statistics, in practice, results vary.  In <em>theory</em>, providing the IPA to pronounce "tomato" both of the popular ways- <code>/təˈmɑːtəʊ/</code> and <code>/təˈmeɪtoʊ/</code> (think of the old song <a href="https://www.youtube.com/watch?v=J2oEmPP5dTM">Let's Call the Whole Thing Off</a>) should make them be pronounced as expected.  However, sending this to different speech engines yields unpredictable results.  There isn't a way to check the authoritativeness.  If the engine doesn't support IPA, it may read contents of the SSML itself, <em>if</em> it exists.  If you Give it a name like <a href="https://en.wikipedia.org/wiki/Saoirse_Ronan">Saoirse Ronan</a> - even with SSML and a very good engine that supports phonemes and IPA - it <em>often</em>  still won't actually pronounce it properly unless it has a good Irish voice... And there aren't actually a lot of them.  </p>
+	<p>Contextual biasing is clearly no help on the pronunciation side of things.  But, flip it around and you might think that IPA would be a good input as to how to <em>hear</em> words too - but I've not really found anyone who even tries to do that.</p>
+</section>
+<section class="sectioning">
+	<h2 class="contextual-heading">And now for something completely different</h2>
+	<p>As I hinted at the beginning, those are only two examples. We also have things like spell checking - that's the part that marks things as spelled incorrectly - or grammar checking.  You can independently style these two cases with the CSS <code>:spelling-error</code> and <code>:grammar-error</code> pseudo-classes independently, <a href="https://blogs.igalia.com/schenney/css-spelling-and-grammar-styling/">as written about by my colleague Stephen Chenney</a> who did the work at Igalia thanks to funding from Bloomberg.  </p>
+	<p>Note that neither of these <em>suggests</em> words in any way - there is also autosuggest or autocorrect and autofill and hints and maybe soon even stuff to indicate and generate text rewrites. </p>
+	<p>None of these are the same thing. Many of them <em>also</em> inevitably have this same general specialized domains problem. For example, if I am editing some Hitchhiker's Guide to the Galaxy wiki and it contains a quote of Vogon poetry:</p>
+	<blockquote>Oh freddled gruntbuggly,
+Thy micturations are to me, (with big yawning)
+As plurdled gabbleblotchits,
+On a lurgid bee,
+That mordiously hath blurted out,
+Its earted jurtles, grumbling
+Into a rancid festering confectious organ squealer. 
+[drowned out by moaning and screaming]</blockquote>
+
+	<p>None of those words are actually spelling errors in this context, and highlighting them as such entirely ruins the experience - there are so many false positives, you miss the real errors.</p>
+	<p>And almost all of these problems are also somehow still differently handled. </p>
+	<p>For example, spell check dictionaries are located at potentially several levels.  Sometimes you have one in a browser, sometimes the browser is just integrated with the OS level one. Sometimes a browser has 1 per profile. In Android, virtual keyboards have their own dictionaries.</p>
+	<p>But what does that even mean, "dictionaries"?  </p>
+	<p>Just as is in the cases of speech to text, or text to speech, it can mean something different. A lot of things use a thing called <a href="https://hunspell.github.io/">Hunspell</a> which packs up language "dictionaries" that work for all languages and more efficiently can encode complexities like plural rules, autosuggestion help and all sorts of things.  For example, here is the LibreOffice <a href="https://github.com/LibreOffice/dictionaries/blob/master/en/en_GB.dic">en_GB.dic</a>. In this file you'll find simple words like <code>ablaze</code> but most words have some kind of 'affixes' and you'll find similar words in runs that look something like this</p>
+	<pre><code>spoon-feed/SG
+spoon/D6GSM
+spoonbill/MS
+Spooner/M
+spoonerism/SM
+spoonful/MS
+spoonier
+spooniest
+spooniness/M	Noun: uncountable
+spoonsful
+spoony/SMY</code></pre>
+	<p>These connect to affix definitions in an parallel <a href="https://github.com/LibreOffice/dictionaries/blob/master/en/en_GB.aff">".aff" file</a>.  This is full of entries like </p>
+	<pre><code>SFX n e ations [^ckt]e 
+SFX n 0 ations [^e]r 
+SFX n e ations [iou]te 
+SFX n y ations py 
+SFX n ke cation ke 
+SFX n ke cation's ke 
+SFX n ke cations ke 
+SFX n y ication [^p]y 
+SFX n y ication's [^p]y </code></pre>
+	<p>In other words... It's complicated, but covers a lot.</p>
+	<p>If you ever right clicked something and selected "learn word" or "add to dictionary" or something,  you're doing the equivalent of adding <code>ablaze</code> in the ".dic" file - just a simple string.  But, unlike Hunspell or other complex formats, it's simple enough that even an <em>end</em> user can do it.</p>
+	<p>Bloomberg is also sponsoring our work on a proposal called the <code>SpellCheckCustomDictionary</code> API. We've been working on <a href="https://github.com/Igalia/explainers/blob/main/spell-check-dictionary/README.md">an explainer</a>.  Realistically maybe we should call it <code>SpellCheckExclusions</code> to be clearer that all it really does is allow a site to provide a list of words to not match as <code>:spelling-error</code>. We also let you do that in groups so that any active spellchecking can just re-run once.</p>
+	<p>There was a lot of debate and thought about how much of this should be shared or centralized, but starting with a simple list that can be well defined in terms of standard exclusion seems like a nice first step.  It does mean that you would need to potentially add both <code>"Gandalf"</code> and <code>"Gandalf's"</code> as valid, and <code>"hobbit"</code> and <code>"hobbits"</code> and <code>"hobbit's"</code> and <code>"hobbits'"</code>.  But at least this is simple and understandable, works in every language and widens the pool of developers who might do it.  A nice trade-off here might be to allow some sense of regexp in this list - though, for practical purposes it should probably be a limited subset (() for grouping, | for alternation, ? for optional, plus maybe an <code>:i</code> sigil for case insensitivity).  This would potentially help make it easier for some authors to express more with less and help shrink the memory initially required, while still not getting too specialized and fairly easy to make performant enough.</p>
+	<p>It would also be nice to follow this with a purely declarative solution.</p>
+	<p>I'm pleased that this went to Stage 1 in WHATWG this week and looking forward to figuring out how we move this forward.</p>
+	<p>Anyway, it's been really interesting and fun to dig into all of this and it's always eye-opening to look behind another curtain... I'm looking forward to continuing these conversations and ultimately getting something useful into all of the browsers!  Thanks again to Bloomberg Tech for the sponsorship!</p>
+	</section>
+</article></main>
+ 
+   
+  <script>
+    //import { MediaAffordancesElement } from "./MediaAffordancesElement.js";
+    class MediaAffordancesElement extends HTMLElement {
+      constructor() {
+        super();
+        // todo: this should be a private field
+        this.__matching = new Set()
+        this.mqls = [];
+        this.observers = [];
+
+        this.supportedAffordances = new Set();
+      }
+
+      observeAffordanceChange(cb) {
+        this.observers.push(cb);
+      }
+
+      notifyChange() {
+        let intersection = new Set();
+        for (let elem of this.__matching) {
+          if (this.supportedAffordances.has(elem)) {
+            intersection.add(elem);
+          }
+        }
+
+        if (this.__matching.size > 0) {
+          this.setAttribute("mq-matched", [...this.__matching].join(" "));
+        } else {
+          this.removeAttribute("mq-matched");
+        }
+        let arr =  [...intersection]
+        let affordance = arr[arr.length - 1];
+        if (affordance) {
+          this.setAttribute("affordance", affordance);
+        } else {
+          this.removeAttribute("affordance");
+        }
+        this.observers.forEach(cb => {
+          cb(intersection, this.__matching);
+        });
+      }
+
+      static get observedAttributes() {
+        return ["mq-affordances"];
+      }
+
+      connectedCallback() {
+        let newValue = getComputedStyle(this).getPropertyValue(
+          "--const-mq-affordances"
+        );
+        this.connectListeners(newValue);
+      }
+
+      connectListeners(newValue = "") {
+        if (newValue.trim().length === 0) {
+          return;
+        }
+        
+        newValue.split("|").forEach(segment => {
+          let mq = segment.trim().match(/\[([^\]]*)/)[1];
+          let names = segment
+            .replace(`[${mq}]`, "")
+            .trim()
+            .split(" ");
+          let mql = window.matchMedia(mq);
+          let mqh = evt => {
+            names.forEach(name => {
+              this.__matching[mql.matches ? "add" : "delete"](name);
+            });
+
+            this.notifyChange();
+          };
+          mqh();
+          mql.addEventListener("change", mqh);
+          this.mqls.push(mql);
+        }, this);
+      }
+
+      attributeChangedCallback(name, oldValue, newValue) {
+        this.connectListeners(newValue);
+      }
+    }
+
+    //-----------------------------------------------------
+
+    (function() {
+      let lastUId = 0;
+      let nextUId = () => {
+        return `cp${++lastUId}`;
+      };
+
+      let getLabels = regionset => {
+        return [...regionset.children].filter(el => /^H\d$/.test(el.tagName));
+      };
+
+      let getContentEls = regionset => {
+        return [...regionset.children].filter(el => !/^H\d$/.test(el.tagName));
+      };
+
+      let ensureId = el => {
+        el.id = el.id || nextUId();
+        return el.id;
+      };
+
+      let getDisclosureButton = label => {
+        return label.shadowRoot.querySelector("button");
+      };
+
+     
+      let style = document.createElement('style')
+      style.innerHTML = `
+          
+        :where(spicy-sections > [affordance*="collapse"])::before { 
+          content: ' ';
+          display: inline-block;
+          width: 0.5em;
+          height: 0.75em;
+          margin: 0 0.4em 0 0;
+          transform: rotate(90deg);
+          background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' x='0px' y='0px' width='10px' height='10px' viewBox='0 0 270 240' enable-background='new 0 0 270 240' xml:space='preserve'%3e%3cpolygon fill='black' points='5,235 135,10 265,235 '/%3e%3c/svg%3e ");
+          background-size: 100% 100%;
+        } 
+
+        :where(spicy-sections > [affordance*="collapse"][aria-expanded="true"])::before, 
+        :where(spicy-sections > [affordance*="collapse"][aria-expanded="true"])::after {
+          transform: rotate(180deg);
+        }
+      `
+      document.head.prepend(style)
+      
+      const template = `
+            <style>
+              :root {
+                font-size: 1rem;
+              }
+
+              :host([hidden]),
+              ::slotted([hidden]) {
+                display: none;
+              }
+              
+              ::slotted(h1),
+              ::slotted(h2),
+              ::slotted(h3),
+              ::slotted(h4),
+              ::slotted(h5),
+              ::slotted(h6) {
+                 margin-right: 1rem;
+              }
+              
+              tab-bar ::slotted([tabindex="0"]) {
+                border-bottom: 1px solid blue;
+              }
+              
+              tab-list { 
+                display: flex; 
+                overflow: hidden;
+                white-space: nowrap;
+              }
+            </style>
+            <tab-bar part="tab-bar">
+              <!-- The region/tablist should have a  label -->
+              <tab-list part="tab-list" role="tablist"
+              ><slot name="tabListSlot"></slot></tab-list>
+            </tab-bar>
+            <content part="content-panels">
+              <slot default></slot>
+            </content>
+        `;
+
+      class RegionSet extends MediaAffordancesElement {
+        __defaults;
+        __tabListEl;
+
+        // tabs and exclusive collapses should have the same affordance object?
+        __affordanceConf = {
+          collapse: {
+            // can take a condition to force, check-like
+            toggle: (label, condition) => {
+              let state =
+                typeof condition === "boolean"
+                  ? condition
+                  : !label.affordanceState.expanded;
+              let contentEl = label.nextElementSibling;
+              label.affordanceState.expanded = state;
+              label.affordanceState.nonExclusiveExpanded = state;
+              label.setAttribute("aria-expanded", state);
+              if (state) {
+                label.setAttribute("expanded", "");
+                contentEl.style.display = "block";
+              } else {
+                label.removeAttribute("expanded");
+                contentEl.style.display = "none";
+              }
+            }
+          },
+          "exclusive-collapse": {
+            // ignores condition, radio-like
+            toggle: label => {
+              let labels = getLabels(label.parentElement);
+              let siblings = labels.filter(c => c !== label);
+              let index = labels.findIndex(c => c === label);
+
+              siblings.forEach((sibLabel, i) => {
+                let relatedContent = sibLabel.nextElementSibling;
+                sibLabel.tabIndex = -1;
+                relatedContent.style.display = "none";
+                label.setAttribute("aria-expanded", "false");
+                sibLabel.affordanceState.exclusiveExpanded = false;
+              });
+              label.tabIndex = 0;
+              //nope - todo, fix/remove this?
+              label.parentElement.affordanceState.exclusiveSelection.index = index;
+              label.nextElementSibling.style.display = "block";
+              label.setAttribute("aria-expanded", "true");
+              label.affordanceState.exclusiveExpanded = true;
+              label.focus();
+            }
+          },
+          "tab-bar": {
+            // ignores condition, radio-like
+            toggle: label => {
+              let labels = getLabels(label.parentElement);
+              let siblings = labels.filter(c => c !== label);
+              let index = labels.findIndex(c => c === label);
+
+              siblings.forEach((sibLabel, i) => {
+                let relatedContent = sibLabel.nextElementSibling;
+                sibLabel.tabIndex = -1;
+                relatedContent.style.display = "none";
+                sibLabel.setAttribute("aria-expanded", "false");
+                sibLabel.affordanceState.exclusiveExpanded = false;
+              });
+              label.tabIndex = 0;
+              label.parentElement.affordanceState.exclusiveSelection.index = index;
+              label.nextElementSibling.style.display = "block";
+              label.setAttribute("aria-expanded", "true");
+              label.affordanceState.exclusiveExpanded = true;
+              label.focus();
+            }
+          }
+        };
+        __setSize = (labelEls, contentEls) => {
+          this.__size = Math.min(labelEls.length, contentEls.length);
+
+          if (labelEls.length !== this.__size) {
+            console.warn("mismatch in tab-set label/content pairs...");
+          }
+
+          labelEls.forEach((labelEl, i) => {
+            let contentEl = contentEls[i];
+            if (!labelEl.initialized) {
+              labelEl.initialized = true; // todo: this used to be shadow, do i need it?
+              let defs = this.__defaults.defaultActive;
+
+              // this assumes it is about collapses
+              labelEl.affordanceState = {
+                expanded: defs.includes(labelEl),
+                active: false,
+                // activate in the current mode
+                activate: () => {
+                  if (this.affordanceState.current) {
+                    this.__affordanceConf[this.affordanceState.current].toggle(
+                      labelEl
+                    );
+                  }
+                }
+              };
+
+              let defaultExclusive =
+                defs.length === 0 ? labelEls[0] : defs[defs.length - 1];
+
+              this.affordanceState.exclusiveSelection.index = labelEls.indexOf(
+                defaultExclusive
+              );
+            }
+            labelEl.setMode = mode => {
+              if (mode === "non-exclusive") {
+                let isExpanded = labelEl.affordanceState.expanded;
+                labelEl.setAttribute("affordance", "collapse");
+                labelEl.setAttribute("tabindex", "0");
+                labelEl.setAttribute("aria-controls", contentEl.id);
+                labelEl.setAttribute("role", "button");
+                labelEl.setAttribute("aria-expanded", isExpanded);
+                labelEl.nextElementSibling.style.display = isExpanded
+                  ? "block"
+                  : "none";
+              } else if (mode === "exclusive") {
+                let isExpanded =
+                  labelEls.indexOf(labelEl) ===
+                  this.affordanceState.exclusiveSelection.index;
+                labelEl.setAttribute("affordance", "collapse");
+                labelEl.setAttribute("tabindex", isExpanded ? 0 : -1);
+                labelEl.setAttribute("role", "button");
+                labelEl.setAttribute("aria-expanded", isExpanded);
+                labelEl.setAttribute("aria-controls", contentEl.id);
+                labelEl.nextElementSibling.style.display = isExpanded
+                  ? "block"
+                  : "none";
+              } else {
+                labelEl.removeAttribute("tabIndex");
+                labelEl.removeAttribute("affordance");
+                labelEl.removeAttribute("aria-expanded");
+                labelEl.removeAttribute("role");
+              }
+            };
+          });
+        };
+
+        __projectTabBar = () => {
+          this.__removeProjections();
+          getLabels(this).forEach((tabSource, i) => {
+            let selected = false,
+              tabIndex = -1,
+              display = "none";
+
+            tabSource.setMode();
+            tabSource.slot = "tabListSlot";
+            tabSource.setAttribute("role", "tab");
+            let tabId = ensureId(tabSource);
+            let contentSource = tabSource.nextElementSibling;
+            contentSource.tabIndex = 0;
+            tabSource.setAttribute("aria-controls", ensureId(contentSource));
+            contentSource.setAttribute("role", "tabpanel");
+            contentSource.setAttribute("aria-labelledby", tabSource.id);
+            if (i === this.affordanceState.exclusiveSelection.index) {
+              tabIndex = 0;
+              selected = true;
+              display = "block";
+            }
+            tabSource.setAttribute("aria-selected", selected);
+            tabSource.tabIndex = tabIndex;
+            contentSource.style.display = display;
+
+            // TODO: aria-orientation :(
+          });
+        };
+
+        __projectCollapses = exclusive => {
+          // TODO - remove projections and... ??
+          this.__removeProjections();
+          getLabels(this).forEach(label => {
+            label.setMode(exclusive ? "exclusive" : "non-exclusive");
+          });
+        };
+
+        __removeProjections = () => {
+          [...this.children].forEach(child => {
+            child.removeAttribute("slot");
+            child.removeAttribute("affordance")
+            child.removeAttribute("role");
+            child.removeAttribute("aria-selected");
+            child.removeAttribute("aria-controls");
+            child.removeAttribute("tabindex");
+            child.removeAttribute("aria-expanded")
+            child.style.display = "block";
+          });
+        };
+
+        // matching pairs
+        __size = 0;
+
+        __configure = () => {
+          ///hmmm
+
+          this.__setSize(getLabels(this), getContentEls(this));
+
+          if (this.affordanceState.current === "tab-bar") {
+            this.affordanceState.currentMode = "exclusive";
+            this.__projectTabBar();
+          } else if (this.affordanceState.current === "collapse") {
+            this.affordanceState.currentMode = "non-exclusive";
+            this.__projectCollapses();
+          } else if (this.affordanceState.current === "exclusive-collapse") {
+            this.affordanceState.currentMode = "exclusive";
+            this.__projectCollapses(true);
+          } else {
+            this.affordanceState.currentMode = undefined;
+            this.__removeProjections();
+          }
+
+          let specifiedIndex = this.activeTabIndex || 0;
+          // TODO: hmm, these are DOM changes, we could cache them
+          let labelEls = getLabels(this);
+          let contentEls = getContentEls(this);
+
+          for (let i = 0; i < this.__size; i++) {
+            let label = labelEls[i];
+            // probably add one handler that decides
+            if (!label._inited) {
+              label.addEventListener("click", evt => {
+                evt.target.affordanceState.activate();
+              });
+              label._inited = true;
+            }
+          }
+        };
+        
+        __childListObserver = new MutationObserver(mutationList => {
+          // we have to wire up new elements
+          let labelEls = getLabels(this);
+          let contentEls = getContentEls(this);
+
+          // what if there is a mismatch?
+          this.__setSize(labelEls, contentEls);
+          this.__configure();
+        });
+
+        __tabset;
+
+        affordanceState = {
+          exclusiveSelection: { index: undefined },
+          current: undefined,
+          currentMode: undefined,
+          getLabels: () => {
+            return getLabels(this);
+          }
+        };
+
+        /*
+          Wires up suppored affordances...
+        */
+        constructor() {
+          super();
+          this.supportedAffordances.add("tab-bar");
+          this.supportedAffordances.add("collapse");
+          this.supportedAffordances.add("exclusive-collapse");
+
+          this.observeAffordanceChange((matching, all) => {
+            if (!this.__defaults) {
+              this.__defaults = {
+                onMatch: this.hasAttribute("defaults-on-match"),
+                defaultActive: getLabels(this).filter(l =>
+                  l.hasAttribute("default-activate")
+                )
+              };
+            }
+            this.affordanceState.current = this.getAttribute("affordance");
+            this.__configure();
+          });
+
+          this.attachShadow({ mode: "open" });
+          this.shadowRoot.innerHTML = template;
+     
+          this.__tabListEl = this.shadowRoot.querySelector("tab-list");
+          this.addEventListener(
+            "keydown",
+            evt => {
+              let labels = getLabels(this);
+              let size = labels.length;
+              let cur = this.affordanceState.exclusiveSelection.index;
+              let prev = cur === 0 ? size - 1 : cur - 1;
+              let next = cur === size - 1 ? 0 : cur + 1;
+
+              if (
+                this.affordanceState.current === "tab-bar" ||
+                this.affordanceState.current === "exclusive-collapse"
+              ) { 
+                if (evt.keyCode == 37 || evt.keyCode == 38) {
+                  labels[prev].affordanceState.activate();
+                } else if (evt.keyCode == 39 || evt.keyCode == 40) {
+                  labels[next].affordanceState.activate();
+                }
+              } else if (evt.keyCode == 32 && this.affordanceState.current === 'collapse') {
+                evt.preventDefault()
+              }
+            },
+            false
+          );
+          this.addEventListener(
+            "keyup", 
+            evt => {
+              if (evt.keyCode == 32 && this.affordanceState.current === 'collapse') {
+                evt.target.closest('[affordance]').affordanceState.activate()
+                evt.preventDefault()
+              }
+            })
+        }
+
+        connectedCallback() {
+          super.connectedCallback();
+
+          //TODO: check whether there is a hash/handle selection
+          
+          // If you append a fragment with a pair, it should work
+          this.__childListObserver.observe(this, { childList: true });
+        }
+      }
+      customElements.define("spicy-sections", RegionSet);
+    })();
+    </script>
+  <script>
+    Array.prototype.slice.call(document.querySelectorAll('.optional [data-src]')).forEach(function (optional) {
+      var prefs = window.localStorage.downloadsPrefs,
+          clickToSee;
+      if (prefs === 'true') {
+        activateOptional(optional);
+      } else {
+        clickToSee = document.createElement('div');
+        clickToSee.classList.add('clickToSee')
+        clickToSee.innerHTML = '<button>Click to see media</button>';
+        clickToSee.style.textAlign = 'center';
+        clickToSee.style.border = 'none';
+        optional.parentElement.insertBefore(clickToSee, optional.nextSibling);
+        clickToSee.firstElementChild.addEventListener('click', function () {
+          activateOptional(optional);
+        })
+      }
+
+    })
+  </script>
+
+</body></html>
