@@ -4,7 +4,7 @@
         <title>bkardell.com rss feed</title>
         <link>http://bkardell.com/</link>
         <description>Just the bkardell.com rss feed</description>
-        <lastBuildDate>Fri, 17 Apr 2026 20:55:39 GMT</lastBuildDate>
+        <lastBuildDate>Mon, 04 May 2026 12:58:21 GMT</lastBuildDate>
         <docs>http://blogs.law.harvard.edu/tech/rss</docs>
         <generator>awesome mix</generator>
         <image>
@@ -49,6 +49,87 @@
 	</blockquote>
 	<p>But, again, it must be acknowledged that this is a <em>principle</em> and not an absolute mechanism.  It bumps up against reality in several ways without additional nuance.  To take one example:  Users, and authors benefit from good MathML support.  I've argued before that the ability to share native mathematical text is <em>societally</em> important.  You could say that its weight in a simplified Priority of Consituencies should be pretty high. But it's also pretty complex, and expensive and harder to appreciate.  In practice, browsers don't prioritize it.  In fact, they don't even belong to the Working Group.  Nearly all of the work on MathML has been the work of volunteers or outside sponsorships.  The recent work on MathML-Core has been successful largely because it has taken a more pragmatic approach wrestling with these sorts of optimizations: The MathML (or insert whatever feature you like) we <em>can</em> get is considerably better than the one that we cannot.  </p>
 	<p>Lately I’ve been thinking the web’s constituencies are broader than the familiar list suggests. I’m not arguing we should rewrite the principle, but I do think there’s value in drawing a map of the parts of the web ecosystem, asking who else is affected, who else is missing, and how our mental models shape the choices we make. I feel like, if the Priority of Constituencies has taught us anything, it’s that the way we understand the players and frame the statement  can certainly have a positive influence on the way we approach it.</p>
+]]></content:encoded>
+        </item>
+        <item>
+            <title><![CDATA[Browsers and Language Features]]></title>
+            <link>https://bkardell.com/blog/language.html</link>
+            <guid>https://bkardell.com/blog/language.html</guid>
+            <pubDate>Sat, 04 Apr 2026 04:00:00 GMT</pubDate>
+            <description><![CDATA[Web browsers do an astounding amount of stuff with language - and we're always trying to do more.  Like most things that we get "for free" and don't give a lot of attention to, there is a lot more to it than you might realize.]]></description>
+            <content:encoded><![CDATA[
+	<h1 class="contextual-heading" style="font-size: 2rem;">Browsers and Language Features</h1>
+	<p class="segue">Web browsers do an astounding amount of stuff with language - and we're always trying to do more.  Like most things that we get "for free" and don't give a lot of attention to, there is a lot more to it than you might realize.</p>
+	
+	<p>Recently, I've been bouncing around looking at several browser language features.  Today, our web browsers can listen to us and transcribe our words, they can speak to us, they can do spell checking, and grammar checking. At a surface level there is just a seeming "need to understand words", right?  But what exactly that <em>means</em> is actually really  variant!</p>
+	<section class="sectioning">
+		<h2 class="contextual-heading" style="font-size: 2.5rem;">Speech to Text... but more.</h2>
+	<p>Today, your browser can talk to you via the Web Speech API. That's not new.  Recently there was a W3C workshop on Voice Interaction. All of the presentations are <a href="https://www.youtube.com/watch?v=gB7IHey8o_Q&amp;list=PLNhYw8KaLq2U_6YPLm6UitxQyXzGcy6jQ">available on the W3C's playlist</a>.  For some reason the sound on some of them seems pretty bad, and unfortunately many very good discusions aren't recorded.  One presentation <a href="https://youtu.be/Bc04fXrR1U4?si=jL7suHS-v1kye_KY">Solving Lead vs. Lead: Consistent Pronunciation for Web Content</a> was very interesting to me. In my 2017 post <a href="https://bkardell.com/blog/Greetings-Professor-Falken.html">Greetings, Professor Falken</a> I talked about how the underlying speech system was able to gather a <em>lot</em> from context. For example, even back then, all of the browsers and OSes I could try got these "right" in that they were not naively read but rather read as the correct "forms".</p>
+	<pre><code>1. Pi is about 3.14
+2. We loaded the 4x4
+3. Please meet me at 3.14pm EST
+4. My birthday is 2/17/1974
+</code></pre>
+	<p>Going on 10 years later, today's speech systems would get <em>most</em> "lead" (the heavy element) vs "lead" (being out in front) examples correct because of context.  But, in the talk and later discussion, there <em>are</em> plenty of examples where you shouldn't really rely on that. For example, if we're trying to <em>teach</em> someone how something is said.  That isn't really just about academics, instances abound.</p>
+	<p>In that same 2017 post I also mentioned that what the speech subsystems didn't get right was "Greetings, Professor Falken".  They didn't pronounce it like the movie. I overcame that in the post by feeding it a misspelling, but this was sort of non-deterministic too, and solved by trial and error.  Sarah (the presenter of the W3C talk) lays into a lot of examples like this - we discussed way more examples than I was initially considering where either there was no great context, or where no amount of context is actually likely to help.  A lot of these cases are proper nouns or regional pronunciations.  Montpelier, VT and Montpelier in the south of France are pronounced very differently.  Barre, VT and Martin Barre the lead guitarist for Jethro Tull are pronounced very differently.  These are somewhat famous examples.  Ana can be pronounced several ways - which one is this?  How do you pronounce the names of fictional characters? Or companies and products? And so on.</p>
+	<p>Sarah is from ETS, who also participated in an earlier "Spoken Presentation Task Force" which <a href="https://www.w3.org/TR/spoken-html/">produced a proposal for Spoken HTML</a> - and in <em>theory</em> Web Speech should support SSML too.  So, that's the proposed solution for that kind of problem. Keep that in the back of your mind for now. </p>
+	<p>As you can imagine, this is all true in the reverse direction as well.  That is, if you are transcribing speech there are sound-alike words and so on - which do I transcribe? “cache” or “cash”? Is it "Barre" or "Barry" or "Berry" Vermont? Do I write "4 by 4" or "4x4" or "Four by Four"?  Again, today's models will do very well, generally - but you'll have problems with most of those same things, including especially all of those proper nouns.</p>
+	<p>At the end of the day all of the listening part is statistics based.  The listening machine is this many % confident that it heard X, a little less confident that it heard Y and so on... Then it's sort of a lot like an LLM.  So, given context it can do better.  Contextual biasing is a simple, common way to improve the result: Just tell it a list of words you might be more likely to use and it'll bias toward them (optionally, provide a weight as to how much more likely it is to be this word, vs something that sounds similar).  So, in our example above, if your page is a discussion forum about Vermont politics, it's probably going to hear what is pronounced like "berry" but we want it to write "Barre" and not "Barry" or "bury" or "berry" or anything else, even if it's just a single word without a larger context.  Like a host asks "where was that?" and someone replies "Barre".</p>
+	<p>That functionality was recently added to the Web Speech API in Chrome.</p>
+</section>
+<section class="sectioning">
+	<h2 class="contextual-heading" style="font-size: 2.5rem;">More Different Than You Might Think...</h2>
+	<p>Listening, and speaking both <em>feel</em> so related, but the approach to the two is actually <em>very</em> different.   In one it's just a word and optionally a number, and in the other is more complex -  you need specialized knowledge about SSML and IPA (International Phonetic Alphabet), some mapping and... in practice more.  That's because while SSML <em>seems</em> very deterministic compared to an arbitrary number and statistics, in practice, results vary.  In <em>theory</em>, providing the IPA to pronounce "tomato" both of the popular ways- <code>/təˈmɑːtəʊ/</code> and <code>/təˈmeɪtoʊ/</code> (think of the old song <a href="https://www.youtube.com/watch?v=J2oEmPP5dTM">Let's Call the Whole Thing Off</a>) should make them be pronounced as expected.  However, sending this to different speech engines yields unpredictable results.  There isn't a way to check the authoritativeness.  If the engine doesn't support IPA, it may read contents of the SSML itself, <em>if</em> it exists.  If you Give it a name like <a href="https://en.wikipedia.org/wiki/Saoirse_Ronan">Saoirse Ronan</a> - even with SSML and a very good engine that supports phonemes and IPA - it <em>often</em>  still won't actually pronounce it properly unless it has a good Irish voice... And there aren't actually a lot of them.  </p>
+	<p>Contextual biasing is clearly no help on the pronunciation side of things.  But, flip it around and you might think that IPA would be a good input as to how to <em>hear</em> words too - but I've not really found anyone who even tries to do that.</p>
+</section>
+<section class="sectioning">
+	<h2 class="contextual-heading" style="font-size: 2.5rem;">And now for something completely different</h2>
+	<p>As I hinted at the beginning, those are only two examples. We also have things like spell checking - that's the part that marks things as spelled incorrectly - or grammar checking.  You can independently style these two cases with the CSS <code>:spelling-error</code> and <code>:grammar-error</code> pseudo-classes independently, <a href="https://blogs.igalia.com/schenney/css-spelling-and-grammar-styling/">as written about by my colleague Stephen Chenney</a> who did the work at Igalia thanks to funding from Bloomberg.  </p>
+	<p>Note that neither of these <em>suggests</em> words in any way.  None of them deal with the concepts of autosuggest or autocorrect or autofill or hints or maybe soon even stuff to indicate and generate text rewrites in the future. </p>
+	<p>None of these are the same thing. Many of them <em>also</em> inevitably have this same general specialized domains problem. For example, if I am editing some Hitchhiker's Guide to the Galaxy wiki and it contains a quote of Vogon poetry:</p>
+	<blockquote>Oh freddled gruntbuggly,
+Thy micturations are to me, (with big yawning)
+As plurdled gabbleblotchits,
+On a lurgid bee,
+That mordiously hath blurted out,
+Its earted jurtles, grumbling
+Into a rancid festering confectious organ squealer. 
+[drowned out by moaning and screaming]</blockquote>
+
+	<p>None of those words are actually spelling errors in this context, and highlighting them as such entirely ruins the experience - there are so many false positives, you miss the real errors.</p>
+	<p>And almost all of these problems are also somehow still differently handled. </p>
+	<p>For example, spell check dictionaries are located at potentially several levels.  Sometimes you have one in a browser, sometimes the browser is just integrated with the OS level one. Sometimes a browser has 1 per profile. In Android, virtual keyboards have their own dictionaries.</p>
+	<p>But what does that even mean, "dictionaries"?  </p>
+	<p>Just as is in the cases of speech to text, or text to speech, it can mean something different. A lot of things use a thing called <a href="https://hunspell.github.io/">Hunspell</a> which packs up language "dictionaries" that work for all languages and more efficiently can encode complexities like plural rules, autosuggestion help and all sorts of things.  For example, here is the LibreOffice <a href="https://github.com/LibreOffice/dictionaries/blob/master/en/en_GB.dic">en_GB.dic</a>. In this file you'll find simple words like <code>ablaze</code> but most words have some kind of 'affixes' and you'll find similar words in runs that look something like this</p>
+	<pre><code>spoon-feed/SG
+spoon/D6GSM
+spoonbill/MS
+Spooner/M
+spoonerism/SM
+spoonful/MS
+spoonier
+spooniest
+spooniness/M	Noun: uncountable
+spoonsful
+spoony/SMY</code></pre>
+	<p>These connect to affix definitions in an parallel <a href="https://github.com/LibreOffice/dictionaries/blob/master/en/en_GB.aff">".aff" file</a>.  This is full of entries like </p>
+	<pre><code>SFX n e ations [^ckt]e 
+SFX n 0 ations [^e]r 
+SFX n e ations [iou]te 
+SFX n y ations py 
+SFX n ke cation ke 
+SFX n ke cation's ke 
+SFX n ke cations ke 
+SFX n y ication [^p]y 
+SFX n y ication's [^p]y </code></pre>
+	<p>In other words... It's complicated, but covers a lot.</p>
+	<p>If you ever right clicked something and selected "learn word" or "add to dictionary" or something,  you're doing the equivalent of adding <code>ablaze</code> in the ".dic" file - just a simple string.  But, unlike Hunspell or other complex formats, it's simple enough that even an <em>end</em> user can do it.</p>
+	<p>Bloomberg is also sponsoring our work on a proposal called the <code>SpellCheckCustomDictionary</code> API. We've been working on <a href="https://github.com/Igalia/explainers/blob/main/spell-check-dictionary/README.md">an explainer</a>.  Realistically maybe we should call it <code>SpellCheckExclusions</code> to be clearer that all it really does is allow a site to provide a list of words to not match as <code>:spelling-error</code>. We also let you do that in groups so that any active spellchecking can just re-run once.</p>
+	<p>There was a lot of debate and thought about how much of this should be shared or centralized, but starting with a simple list that can be well defined in terms of standard exclusion seems like a nice first step.  It does mean that you would need to potentially add both <code>"Gandalf"</code> and <code>"Gandalf's"</code> as valid, and <code>"hobbit"</code> and <code>"hobbits"</code> and <code>"hobbit's"</code> and <code>"hobbits'"</code>.  But at least this is simple and understandable, works in every language and widens the pool of developers who might do it.  A nice trade-off here might be to allow some sense of regexp in this list - though, for practical purposes it should probably be a limited subset (() for grouping, | for alternation, ? for optional, plus maybe an <code>:i</code> sigil for case insensitivity).  This would potentially help make it easier for some authors to express more with less and help shrink the memory initially required, while still not getting too specialized and fairly easy to make performant enough.</p>
+	<p>It would also be nice to follow this with a purely declarative solution.</p>
+	<p>I'm pleased that this went to Stage 1 in WHATWG this week and looking forward to figuring out how we move this forward.</p>
+	<p>Anyway, it's been really interesting and fun to dig into all of this and it's always eye-opening to look behind another curtain... I'm looking forward to continuing these conversations and ultimately getting something useful into all of the browsers!  Thanks again to Bloomberg Tech for the sponsorship!</p>
+	</section>
 ]]></content:encoded>
         </item>
         <item>
@@ -566,38 +647,6 @@ A lot of my city's physical infrastructure is aging and some of it has been negl
   <p>Anyway, the real challenge with most polyfills is performance. Any time that we're going to step out of "60 fps scrollers" into JS land that's iffy... But not impossible, and if we're honest, we'd have to admit that the truth is that our current/actual attempts to polyfill are definitely worse than something <em>closer</em> to native. With effort, surely we can at least improve things by looking at where there are some nice "joints" where we can cleave the problem.</p>
   <p>This is why in recent years I've suggested that perhaps what would really benefit us is a few custom things (like functions) and then just enabling CSS-like languages, which can handle the fetch/parse problems and perhaps give us some of the most basic primitive ideas.</p>
   <p>So, where will all of this go? Who knows - but I'm glad some others are interested and talking about some of it again. </p>
-]]></content:encoded>
-        </item>
-        <item>
-            <title><![CDATA[Operation]]></title>
-            <link>https://bkardell.com/blog/Operation.html</link>
-            <guid>https://bkardell.com/blog/Operation.html</guid>
-            <pubDate>Fri, 25 Apr 2025 04:00:00 GMT</pubDate>
-            <description><![CDATA[Some short thoughts on recent antitrust and the future of the web platform...]]></description>
-            <content:encoded><![CDATA[
-  <h1 class="contextual-heading" style="font-size: 2rem;">Operation</h1>
-<p class="segue">Some short thoughts on recent antitrust and the future of the web platform...</p>
-
-<p>Last week, in a <a href="https://www.documentcloud.org/documents/25900111-google-ad-antitrust-ruling/">115 page US Antitrust ruling</a> a federal judge in Virginia found that Google had  <em>two more</em> monopolies, this time with relation to advertising technolgies.  Previously, you'll recall that we had rulings related to search.  There are still more open cases related to Android.  And it's not <em>only</em> in the US that similar actions are playing out.</p>
-<p>All of these cases kind of mention one another because the problems themselves are all deeply intertwined - but this one is really at the heart of it: That sweet, sweet ad money. I think that you could argue, reasonably, that pretty much everything else was somehow in service of that.  </p>
-<p>Initially, they made a ton of money showing ads <em>every time someone searches</em>, and pretty quickly signed a default search deal with Mozilla to drive the number of searches way up.</p>
-<p>Why make a browser of your own?  To drive the searches that show the ads, but also keep more of the money.</p>
-<p>Why make OSes of your own, and deals around things that need to be installed? To guarantee that all of those devices drive the searches to show the ads.</p>
-<p>And so on...</p>
-<p>For a long time now, I've been trying to discuss what, to me, is a rather worrying problem: That those default search dollars are, in the end, what funds the whole web ecosystem.  Don't forget that it's not <em>just</em> about the web itself, it's about the platform which provides the underlying technology for just about everything else at this point too.  </p>
-<p>Between years of blog posts, a <a href="https://youtube.com/playlist?list=PL_BRVuWxk8spg9XL-XUPSptJNrC6y3y9e&amp;feature=shared">podcast series</a>, several talks, experiments like <a href="https://bkardell.com/blog/OpenPrioritization.html">Open Prioritization</a> I have been thinking about this <em>a lot</em>.  Untangling it all is going to be quite complex. </p>
-<p>In the US, the governments proposed remedies touch just about every part of this.  I've been trying to think about how I could sum up my feelings and concerns, but it's quite complex.  Then, the other day <a href="https://arstechnica.com/tech-policy/2025/04/chrome-on-the-chopping-block-as-googles-search-antitrust-trial-moves-forward/?utm_source=bsky&amp;utm_medium=social">an article on arstechnica</a> contained an illustration which seemed pretty perfect..</p>
-<figure class="captioned-image">
-  <img src="https://cdn.arstechnica.net/wp-content/uploads/2025/04/google-monoperation-game-2048x1152.jpg">
-    <figcaption>A "game" board that looks like the game Operation, but instead of pieces of internal anatomy there are logos for chrome, gmail, ads, adsense, android and on the board it says "Monoperation: Skill game where you are the DOJ" and the person is removing chrome, and a buzzer is going ff</figcaption>
-</figure>
-
-<p>This image (credited to Aurich Lawson) kind of hit the nail on its head for me: I deeply hope they will be absoltely <em>surgical</em> about this intervention, because the patient I'm worried about isn't Google, it's the whole Web Platform.</p>
-
-<p class="note">
-  If this is interesting to you, my colleague Eric Meyer and I posted an Igalia Chats podcast episode on the topic: <a href="https://www.igalia.com/chats/adpocalypseNow">Adpocalypse Now?</a>
-</p>
-
 ]]></content:encoded>
         </item>
     </channel>
