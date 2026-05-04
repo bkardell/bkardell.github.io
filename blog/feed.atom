@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://bkardell.com/</id>
     <title>bkardell.com rss feed</title>
-    <updated>2026-05-04T12:58:21.351Z</updated>
+    <updated>2026-05-04T13:00:17.084Z</updated>
     <generator>awesome mix</generator>
     <author>
         <name>Brian Kardell</name>
@@ -15,49 +15,11 @@
     <logo>http://bkardell.com/profile.jpg</logo>
     <rights>All rights reserved 2018, Brian Kardell</rights>
     <entry>
-        <title type="html"><![CDATA[Priority of Constituencies]]></title>
-        <id>https://bkardell.com/blog/PriorityOfConstituencies.html</id>
-        <link href="https://bkardell.com/blog/PriorityOfConstituencies.html">
-        </link>
-        <updated>2026-04-17T04:00:00.000Z</updated>
-        <summary type="html"><![CDATA[I've been thinking a lot recently about the W3C's Priority of Constituencies...]]></summary>
-        <content type="html"><![CDATA[
-	<h1 class="contextual-heading" style="font-size: 2rem;">Priority of Constituencies</h1>
-
-	<p class="segue">I've been thinking a lot recently about the W3C's Priority of Constituencies...</p>
-	<p>You've probably heard it cited before, the Priority of Constituencies.  And what you've probably heard is </p>
-	<blockquote>
-	<p>User needs come before the needs of web page authors, which come before the needs of user agent implementors, which come before the needs of specification writers, which come before theoretical purity.</p>
-	</blockquote>
-	<p>Everyone loves this principle. It's almost poetic right?  I often hear it cited as if it were part of a founding W3C document from 1995, so it might be surprising to learn that it wasn’t.</p>
-	<p>Back in 2004 there was a kind of a schism in the W3C that led to the creation of WHATWG and the effort to create "HTML5".  In many ways it was a bit of a left turn from what was happening in the W3C at the time.  In 2007 there was a kind of admission that maybe the WHATWG was on to something, and a rechartering of HTML and, (inspired by a requirement suggested by David Baron), a group of people (Maciej Stachowiak, Anne van Kesteren, Marcos Caceres, Henri Sivonen and Ian Hickson) got together and drafted some <a href="https://lists.w3.org/Archives/Public/public-html/2007Mar/0601.html">Proposed Design Principles - March 2007</a>... The <a href="https://web.archive.org/web/20070503044841/http://esw.w3.org/topic/HTML/ProposedDesignPrinciples">original text</a> is available from the wayback machine.</p>
-
-	<p>However, it wasn't "done".  People have had further thoughts on refinement over the years. For example, David Baron has some thoughts that he blogged about in 2015  <a href="https://dbaron.org/log/20150318-priority-of-constituencies">questioning what the nuances this principle originally left out</a>.</p>
-
-	<p>The main statement was added to the W3C TAG's Design Principles in 2020 with minor tweaks and then later in 2020, Alice Boxhall (currently at Igalia, but at the time with Google) added some additional clarifications (incorporating David's thoughts) to be more or less <a href="https://w3ctag.github.io/design-principles/#priority-of-constituencies">what it reads today</a>.</p>
-	<p>I've been thinking a lot about these additions because I think they're important, but somehow not talked about as much.  They're less "poetic", but nevertheless actually critically pragmatic:</p>
-	<blockquote>
-	<p>Like all principles, this isn’t absolute. Ease of authoring affects how content reaches users. User agents have to prioritize finite engineering resources, which affects how features reach authors. Specification writers also have finite resources, and theoretical concerns reflect underlying needs of all of these groups.</p>
-	</blockquote>
-	<p>I really appreciate the nuance these bits add because it really isn't just about some statement - it needs to be grounded in realities.  It really is about considering tradeoffs and looking for how to optimize the application of this principle.  At some level, for example, a decent feature that vendors agree they can deliver is of considerably more practical value to end users than a "better" one that we cannot.</p>
-	<p>The edits also add the most simple version, a one-liner: </p>
-	<blockquote>
-	<p>If a trade-off needs to be made, always put user needs above all.</p>
-	</blockquote>
-	<p>The <a href="https://www.w3.org/TR/w3c-vision/#user-first">W3C Vision document also expresses something <em>similar</em></a> </p>
-	<blockquote>
-	<p>User-first: We prioritize the needs of users over other constituencies, including over those of W3C Members.</p>
-	</blockquote>
-	<p>But, again, it must be acknowledged that this is a <em>principle</em> and not an absolute mechanism.  It bumps up against reality in several ways without additional nuance.  To take one example:  Users, and authors benefit from good MathML support.  I've argued before that the ability to share native mathematical text is <em>societally</em> important.  You could say that its weight in a simplified Priority of Consituencies should be pretty high. But it's also pretty complex, and expensive and harder to appreciate.  In practice, browsers don't prioritize it.  In fact, they don't even belong to the Working Group.  Nearly all of the work on MathML has been the work of volunteers or outside sponsorships.  The recent work on MathML-Core has been successful largely because it has taken a more pragmatic approach wrestling with these sorts of optimizations: The MathML (or insert whatever feature you like) we <em>can</em> get is considerably better than the one that we cannot.  </p>
-	<p>Lately I’ve been thinking the web’s constituencies are broader than the familiar list suggests. I’m not arguing we should rewrite the principle, but I do think there’s value in drawing a map of the parts of the web ecosystem, asking who else is affected, who else is missing, and how our mental models shape the choices we make. I feel like, if the Priority of Constituencies has taught us anything, it’s that the way we understand the players and frame the statement  can certainly have a positive influence on the way we approach it.</p>
-]]></content>
-    </entry>
-    <entry>
         <title type="html"><![CDATA[Browsers and Language Features]]></title>
         <id>https://bkardell.com/blog/language.html</id>
         <link href="https://bkardell.com/blog/language.html">
         </link>
-        <updated>2026-04-04T04:00:00.000Z</updated>
+        <updated>2026-05-04T04:00:00.000Z</updated>
         <summary type="html"><![CDATA[Web browsers do an astounding amount of stuff with language - and we're always trying to do more.  Like most things that we get "for free" and don't give a lot of attention to, there is a lot more to it than you might realize.]]></summary>
         <content type="html"><![CDATA[
 	<h1 class="contextual-heading" style="font-size: 2rem;">Browsers and Language Features</h1>
@@ -132,6 +94,44 @@ SFX n y ication's [^p]y </code></pre>
 	<p>I'm pleased that this went to Stage 1 in WHATWG this week and looking forward to figuring out how we move this forward.</p>
 	<p>Anyway, it's been really interesting and fun to dig into all of this and it's always eye-opening to look behind another curtain... I'm looking forward to continuing these conversations and ultimately getting something useful into all of the browsers!  Thanks again to Bloomberg Tech for the sponsorship!</p>
 	</section>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Priority of Constituencies]]></title>
+        <id>https://bkardell.com/blog/PriorityOfConstituencies.html</id>
+        <link href="https://bkardell.com/blog/PriorityOfConstituencies.html">
+        </link>
+        <updated>2026-04-17T04:00:00.000Z</updated>
+        <summary type="html"><![CDATA[I've been thinking a lot recently about the W3C's Priority of Constituencies...]]></summary>
+        <content type="html"><![CDATA[
+	<h1 class="contextual-heading" style="font-size: 2rem;">Priority of Constituencies</h1>
+
+	<p class="segue">I've been thinking a lot recently about the W3C's Priority of Constituencies...</p>
+	<p>You've probably heard it cited before, the Priority of Constituencies.  And what you've probably heard is </p>
+	<blockquote>
+	<p>User needs come before the needs of web page authors, which come before the needs of user agent implementors, which come before the needs of specification writers, which come before theoretical purity.</p>
+	</blockquote>
+	<p>Everyone loves this principle. It's almost poetic right?  I often hear it cited as if it were part of a founding W3C document from 1995, so it might be surprising to learn that it wasn’t.</p>
+	<p>Back in 2004 there was a kind of a schism in the W3C that led to the creation of WHATWG and the effort to create "HTML5".  In many ways it was a bit of a left turn from what was happening in the W3C at the time.  In 2007 there was a kind of admission that maybe the WHATWG was on to something, and a rechartering of HTML and, (inspired by a requirement suggested by David Baron), a group of people (Maciej Stachowiak, Anne van Kesteren, Marcos Caceres, Henri Sivonen and Ian Hickson) got together and drafted some <a href="https://lists.w3.org/Archives/Public/public-html/2007Mar/0601.html">Proposed Design Principles - March 2007</a>... The <a href="https://web.archive.org/web/20070503044841/http://esw.w3.org/topic/HTML/ProposedDesignPrinciples">original text</a> is available from the wayback machine.</p>
+
+	<p>However, it wasn't "done".  People have had further thoughts on refinement over the years. For example, David Baron has some thoughts that he blogged about in 2015  <a href="https://dbaron.org/log/20150318-priority-of-constituencies">questioning what the nuances this principle originally left out</a>.</p>
+
+	<p>The main statement was added to the W3C TAG's Design Principles in 2020 with minor tweaks and then later in 2020, Alice Boxhall (currently at Igalia, but at the time with Google) added some additional clarifications (incorporating David's thoughts) to be more or less <a href="https://w3ctag.github.io/design-principles/#priority-of-constituencies">what it reads today</a>.</p>
+	<p>I've been thinking a lot about these additions because I think they're important, but somehow not talked about as much.  They're less "poetic", but nevertheless actually critically pragmatic:</p>
+	<blockquote>
+	<p>Like all principles, this isn’t absolute. Ease of authoring affects how content reaches users. User agents have to prioritize finite engineering resources, which affects how features reach authors. Specification writers also have finite resources, and theoretical concerns reflect underlying needs of all of these groups.</p>
+	</blockquote>
+	<p>I really appreciate the nuance these bits add because it really isn't just about some statement - it needs to be grounded in realities.  It really is about considering tradeoffs and looking for how to optimize the application of this principle.  At some level, for example, a decent feature that vendors agree they can deliver is of considerably more practical value to end users than a "better" one that we cannot.</p>
+	<p>The edits also add the most simple version, a one-liner: </p>
+	<blockquote>
+	<p>If a trade-off needs to be made, always put user needs above all.</p>
+	</blockquote>
+	<p>The <a href="https://www.w3.org/TR/w3c-vision/#user-first">W3C Vision document also expresses something <em>similar</em></a> </p>
+	<blockquote>
+	<p>User-first: We prioritize the needs of users over other constituencies, including over those of W3C Members.</p>
+	</blockquote>
+	<p>But, again, it must be acknowledged that this is a <em>principle</em> and not an absolute mechanism.  It bumps up against reality in several ways without additional nuance.  To take one example:  Users, and authors benefit from good MathML support.  I've argued before that the ability to share native mathematical text is <em>societally</em> important.  You could say that its weight in a simplified Priority of Consituencies should be pretty high. But it's also pretty complex, and expensive and harder to appreciate.  In practice, browsers don't prioritize it.  In fact, they don't even belong to the Working Group.  Nearly all of the work on MathML has been the work of volunteers or outside sponsorships.  The recent work on MathML-Core has been successful largely because it has taken a more pragmatic approach wrestling with these sorts of optimizations: The MathML (or insert whatever feature you like) we <em>can</em> get is considerably better than the one that we cannot.  </p>
+	<p>Lately I’ve been thinking the web’s constituencies are broader than the familiar list suggests. I’m not arguing we should rewrite the principle, but I do think there’s value in drawing a map of the parts of the web ecosystem, asking who else is affected, who else is missing, and how our mental models shape the choices we make. I feel like, if the Priority of Constituencies has taught us anything, it’s that the way we understand the players and frame the statement  can certainly have a positive influence on the way we approach it.</p>
 ]]></content>
     </entry>
     <entry>
