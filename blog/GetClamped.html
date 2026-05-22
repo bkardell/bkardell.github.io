@@ -8,7 +8,7 @@
     <meta name="twitter:creator" content="@briankardell">
     <meta name="twitter:title" content="Get Clamped: Unwinding Some Difficult CSS History">
     <meta name="twitter:description" content="Sometimes features take a long and winding road on the way to a good solution. We could use your help testing improvements for something that's been somehow developing for about a ">
-    
+    <meta name="twitter:image" content="https://bkardell.com/media/2026/mbb.gif">
     <!-- meta name="monetization" content="$ilp.uphold.com/kKU4GXiRwhnf " -->
      
     <link rel="alternate" type="application/rss+xml" href="https://bkardell.com/blog/feed.rss" title="bkardell.com/blog rss feed">
@@ -466,7 +466,7 @@ America (art for sale)</a></li>
     document.documentElement.classList.add("lldelay");
   }, 1000);
 </script>
-    <main><div class="posted-on">Posted on null</div><article class="sectioning">
+    <main><div class="posted-on">Posted on 5/21/2026</div><article posted-on="5/21/2026" class="sectioning">
   <h1 class="contextual-heading">Get Clamped: Unwinding Some Difficult CSS History</h1>
   <p class="segue">Sometimes features take a long and winding road on the way to a good solution. We could use your help testing improvements for something that's been somehow developing for about a quarter of a century...</p>
   <script src="../prism.js"></script>
@@ -479,13 +479,15 @@ America (art for sale)</a></li>
   <p>This created <code>-webkit-box</code> which was an earlier take on Flexbox.</p>
   <section class="sectioning">
     <h2 class="contextual-heading">This is <em>not</em> flexbox's story.</h2>
-    <p>It is instead the strange story of the origins of <em>line clamping</em>, if you can believe it! That's because given this internal ability, Apple added some support for line clamping which used it. It internally supported <code>-apple-line-clamp</code> (and later <code>-khtml-line-clamp</code>). This became <code>-webkit-box</code> and in June 2010 it accidentally escaped the lab and made it into the public release of Safari 5.</p>
-    <p>Given it, authors could suddenly have a few lines that would show ellipsis if it went beyond that.</p>
-    <pre><code class="language-css">overflow: hidden;
-   display: -webkit-box;
-   -webkit-line-clamp: 2;
-   -webkit-box-orient: vertical;</code></pre>
-    <p>That was useful enough that lots of people used it and it became something of a de facto standard. This is before the WebKit/Blink fork, and so it wound up in Chrome and later in other chromium flavored browsers, all with the <code>-webkit-</code> prefixes. In the Project Spartan/EdgeHTML era Microsoft found that they needed to support it for compatibility and added support for the <code>-webkit-</code> prefix in April 2018. Firefox added support in July 2019. The fact that it was flex related at all changed in most browsers a while back, but this weird winding road led through lot of pains.. Chris Coyier wrote a piece about the state of it <a href="https://css-tricks.com/line-clampin/">in 2013</a>. A few years later, in 2016 Nils Rasmusson wrote <a href="https://medium.com/mofed/css-line-clamp-the-good-the-bad-and-the-straight-up-broken-865413f16e5">CSS Line-Clamp — The Good, the Bad and the Straight-up Broken</a>.</p>
+    <p>It is instead the strange story of the origins of <em>line clamping</em>, if you can believe it! That's because given this internal ability, Apple added some support for line clamping which used it. Internally, WebKit supported <code>-apple-line-clamp</code> (and later <code>-khtml-line-clamp</code>). This became <code>-webkit-line-clamp</code> and it accidentally escaped the lab and made it into the public releases of Safari.</p>
+    <p>Given it, one could suddenly have a few lines that would show ellipsis if rendering went beyond that.</p>
+    <pre><code class="language-css">.things {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}</code></pre>
+    <p>As far as I can tell, it was never actually publicized by Apple.  Despite this, it was useful enough that as people learned about it, they shared (as we do) and eventually so many people used it that it became something of a de facto standard. This is before the WebKit/Blink fork, and so it wound up in Chrome and later in other chromium flavored browsers, all with the <code>-webkit-</code> prefixes. In the Project Spartan/EdgeHTML era Microsoft found that they needed to support it for compatibility and added support for the <code>-webkit-</code> prefix in April 2018. Firefox added support in July 2019. The fact that it was flex related at all changed in most browsers a while back, but this weird winding road led through lot of pains.. Chris Coyier wrote a piece about the state of it <a href="https://css-tricks.com/line-clampin/">in 2013</a>. A few years later, in 2016 Nils Rasmusson wrote <a href="https://medium.com/mofed/css-line-clamp-the-good-the-bad-and-the-straight-up-broken-865413f16e5">CSS Line-Clamp — The Good, the Bad and the Straight-up Broken</a>.</p>
     <p>Today, according to <a href="https://chromestatus.com/metrics/css/timeline/popularity/260">chromestatus</a>, it's in over 40% of page loads, and on over 30% of pages in the HTTPArchive crawl — and popularity is <em>still</em> growing.</p>
   </section>
   <section class="sectioning">
@@ -493,24 +495,26 @@ America (art for sale)</a></li>
     <p>Despite all of that, lots of it was not consistent or interoperable.</p>
     <p>Lots of it didn't even really make sense internally.</p>
     <p>It wasn't well designed.</p>
-    <p>So, there has been a real effort to create a good solution here for the past few years. Igalia (primarily my colleague Andreu Botella) has been working on it, and started with <a href="https://github.com/WebKit/standards-positions/issues/316">an explainer that is still pretty good and includes images and lots more info</a>. It is now part of <a href="https://drafts.csswg.org/css-overflow-4/">CSS Overflow Level 4</a>, and there is an updated implementation in Chromium — you can try it today by enabling experimental web platform features at <code>chrome://flags/#enable-experimental-web-platform-features</code>. If you flip that flag, you're using it!</p>
+    <p>So, there has been a real effort to create a good solution here for the past few years. Igalia (primarily my colleague <a href="https://www.igalia.com/team/abotella">Andreu Botella</a>) has been working on it, and started with <a href="https://github.com/WebKit/standards-positions/issues/316">an explainer that is still pretty good and includes images and lots more info</a>. It is now part of <a href="https://drafts.csswg.org/css-overflow-4/">CSS Overflow Level 4</a>, and there is an updated implementation in Chromium — you can try it today by enabling experimental web platform features at <code>chrome://flags/#enable-experimental-web-platform-features</code>. If you flip that flag, you're using it!</p>
     <p>Guess what it lets you do now....</p>
     <pre><code class="language-css">.thingr {
-      line-clamp: 3;
-   }</code></pre>
-    <iframe src="https://giphy.com/embed/3o8dFn5CXJlCV9ZEsg" width="480" height="360" style="" frameborder="0" class="giphy-embed" allowfullscreen=""></iframe>
-    <p><a href="https://giphy.com/gifs/converse-3o8dFn5CXJlCV9ZEsg">via GIPHY</a></p>
+  line-clamp: 3;
+}</code></pre>
+   <figure class="captioned-image"> 
+    <img src="/media/2026/mbb.gif">
+    <figcaption>So cool that Millie Bobby Brown's mind is blown... (<a href="https://giphy.com/gifs/converse-3o8dFn5CXJlCV9ZEsg">via GIPHY</a>)</figcaption>
+   </figure>
     <p>It's so simple by default. So good, right?</p>
     <p>You can also use the <code>auto</code> value to do this based on some kind of measured value — a <code>max-height</code>, for example:</p>
     <pre><code class="language-css">.thingr {
-      max-height: 400px;
-      line-clamp: auto;
-   }</code></pre>
+  max-height: 400px;
+  line-clamp: auto;
+}</code></pre>
   </section>
   <section class="sectioning">
     <h2 class="contextual-heading">Great, how can I help?</h2>
     <p>Excellent, I'm glad you asked!</p>
-    <p>Well, for one you can try out the new unprefixed <code>line-clamp</code> — it's way nicer. You can read about it in <a href="https://github.com/Igalia/explainers/blob/main/css/line-clamp/README.md#implementation">the explainer</a>.</p>
+    <p>Well, for one you can try out the new unprefixed <code>line-clamp</code>, it's way nicer. You can read about it in <a href="https://github.com/Igalia/explainers/blob/main/css/line-clamp/README.md#implementation">the explainer</a>.</p>
     <p>Ask questions (you can send them to Andreu on <a href="https://bsky.app/profile/andreubotella.com">bluesky</a> or <a href="https://mastodon.andreubotella.com/@andreu">mastodon</a>), or report issues if you find them.</p>
 
     <p>Maybe say "thanks" to Bloomberg Tech for funding the work!</p>
