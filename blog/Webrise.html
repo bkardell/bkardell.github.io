@@ -123,7 +123,6 @@ h1, [aria-level="1"] {
 h2, [aria-level="2"] {
     color: black;
     font-size: 1.35rem;
-    background: linear-gradient(55deg, transparent, #e5eef9);
 }
 
 h3, [aria-level="3"] {
@@ -142,9 +141,10 @@ h5, h6, [aria-level="5"], [aria-level="6"] {
     font-weight: bolder;
 }
 
+
 .posted-on {
     font-style: italic;
-    font-size: 0.8rem; 
+    font-size: 1rem; 
     text-align: right;
     margin-bottom: 1rem;
 }
@@ -355,6 +355,19 @@ spicy-sections.single {
     margin-right:  1.5rem;
 }
 
+.note {
+    background-color: rgba(255,255,0,0.24);
+    padding: 1rem;
+    font-style: italic;
+}
+.note::before {
+    content: 'Note';
+    font-size: 0.8rem;
+    background-color: black;
+    color: white;
+    padding: 0.25rem;
+    margin-right: 0.5rem;
+}
 
 </style>
     <style> 
