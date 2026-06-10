@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://bkardell.com/</id>
     <title>bkardell.com rss feed</title>
-    <updated>2026-05-24T22:01:32.074Z</updated>
+    <updated>2026-06-10T16:23:50.792Z</updated>
     <generator>awesome mix</generator>
     <author>
         <name>Brian Kardell</name>
@@ -14,6 +14,37 @@
     <subtitle>Just the bkardell.com rss feed</subtitle>
     <logo>http://bkardell.com/profile.jpg</logo>
     <rights>All rights reserved 2018, Brian Kardell</rights>
+    <entry>
+        <title type="html"><![CDATA[Fine. What Is the Web?]]></title>
+        <id>https://bkardell.com/blog/FWIW.html</id>
+        <link href="https://bkardell.com/blog/FWIW.html">
+        </link>
+        <updated>2026-06-10T04:00:00.000Z</updated>
+        <summary type="html"><![CDATA[In which I am drawn into an unexpected sort of conversation...]]></summary>
+        <content type="html"><![CDATA[
+	<h1 class="contextual-heading" style="font-size: 2rem;">Fine. What Is the Web?</h1>
+	<p class="segue">In which I am drawn into an unexpected sort of conversation...</p>
+	<p>I like to feel like I'm working on — or at least toward — something concrete. When things begin to seem too academic or esoteric, or feel disconnected from what appear to be obvious realities, I find it much less interesting. There are clear examples of things I've worked on (or am working on): custom elements, <code>:has</code>, <code>:focus-visible</code>, Custom Properties or even Container Queries. All of these are very concrete, and as such, now that we have them we're also starting to be able to see how successful they are (or aren't). Things take a long time, so in the end, even very concrete proposals can start to feel a bit esoteric when they're so far out ahead of our skis, leaning more and more onto foundations that aren't yet solid.</p>
+	<p>Anyway... In contrast to this, if you asked me to professionally come up with a definition for "What is the web, exactly?" I have this almost <em>visceral</em> feeling that it's esoteric and I don't want to spend my limited energy on it. I want to run away from it. Far away. Who cares? It means whatever we collectively want it to mean. That's not my jam. It's stuff with URLs. It is <em>not</em> a thing I relish discussing.</p>
+	<p>But...</p>
+	<p>Circumstances have put me in a time and place where the question keeps coming up — and I hate to admit it, but I think there are a few reasons to engage with it.</p>
+	<p>The question surfaced concretely around what belongs as a W3C Recommendation, and more broadly, what belongs at the W3C at all. Its catalog is pretty diverse, actually. Is it all equally "the Web"? The stuff in the browser certainly seems like a special <em>kind</em> of thing. It carries special obligations around privacy, security, internationalization, and accessibility. It runs on just about every device imaginable. But then there's stuff like ActivityPub, JSON-LD, or XML — the browser doesn't do much with those. It <em>could</em>, maybe, but that would come with its own considerations. And yet they're totally relevant, and they're totally the web.</p>
+	<p>Then there's a whole category of things that have emerged over the past decade pointing toward something... <em>more</em>. Special kinds of apps that come preinstalled (on your TV or your smart toaster), or Electron apps you install yourself, or "super apps" that use web tech for UI while talking to things that aren't really the "drive-by" web we know from the browser. Different rules, but no standards. Yet.</p>
+	<p>Which of these do the words "web platform" and "web" actually apply to?</p>
+	<p>If we had a few more names, would it help us organize our thoughts, sharpen our priorities, and shape the overall architecture? Probably.</p>
+
+	<section class="sectioning">
+		<h2 class="contextual-heading" style="font-size: 2.5rem;">My current thinking</h2>
+	<p>My current thinking is: I don't know that it is worth defining "the web" very specifically. "The Web Platform," however, I think is best used to describe what lives inside a web engine. And the embedded stuff? I feel like we need a group dedicated to that — an Embedded Web that tries to define something fairly minimal, grounded in the same concerns as the main web engines. We're working on getting people together to talk about this, because it really does affect what we prioritize and the direction we take things.</p>
+	<hr>
+	<p>I recently recorded a podcast on this topic with Dan Appelquist and Eric Meyer called <a href="https://www.igalia.com/chats/isthistheweb">Is this the web?</a>.</p>
+	<p>I'd love to hear your thoughts.</p>
+	<figure class="captioned-image"><a href="https://www.igalia.com/chats/isthistheweb"><img alt="" src="https://notes.igalia.com/uploads/749e496f-76a3-400d-83e3-ff8064cd3c31.png"></a>
+	</figure>
+	<hr>
+	</section>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[Get Clamped: Unwinding Some Difficult CSS History]]></title>
         <id>https://bkardell.com/blog/GetClamped.html</id>
@@ -41,8 +72,8 @@
   display: -webkit-box;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
-}</code></pre>
-    <p>As far as I can tell, it was never actually publicized by Apple.  Despite this, it was useful enough that as people learned about it, they shared (as we do) and eventually so many people used it that it became something of a de facto standard. This is before the WebKit/Blink fork, and so it wound up in Chrome and later in other chromium flavored browsers, all with the <code>-webkit-</code> prefixes. In the Project Spartan/EdgeHTML era Microsoft found that they needed to support it for compatibility and added support for the <code>-webkit-</code> prefix in April 2018. Firefox added support in July 2019. The fact that it was internally flex related at all changed in most browsers a while back, but this weird winding road led through lot of pains.. Chris Coyier wrote a piece about the state of it <a href="https://css-tricks.com/line-clampin/">in 2013</a>. A few years later, in 2016 Nils Rasmusson wrote <a href="https://medium.com/mofed/css-line-clamp-the-good-the-bad-and-the-straight-up-broken-865413f16e5">CSS Line-Clamp — The Good, the Bad and the Straight-up Broken</a>.</p>
+}</code></pre> 
+    <p>As far as I can tell, it was never actually publicized by Apple.  Despite this, it was useful enough that as people learned about it, they shared (as we do) and eventually so many people used it that it became something of a de facto standard. This is before the WebKit/Blink fork, and so it wound up in Chrome and later in other chromium flavored browsers, all with the <code>-webkit-</code> prefixes. In the Project Spartan/EdgeHTML era Microsoft found that they needed to support it for compatibility and added support for the <code>-webkit-</code> prefix in April 2018. Firefox added support in July 2019. The fact that it was internally  flex related at all changed in most browsers a while back, but this weird winding road led through lot of pains.. Chris Coyier wrote a piece about the state of it <a href="https://css-tricks.com/line-clampin/">in 2013</a>. A few years later, in 2016 Nils Rasmusson wrote <a href="https://medium.com/mofed/css-line-clamp-the-good-the-bad-and-the-straight-up-broken-865413f16e5">CSS Line-Clamp — The Good, the Bad and the Straight-up Broken</a>.</p>
     <p>Today, according to <a href="https://chromestatus.com/metrics/css/timeline/popularity/260">chromestatus</a>, it's in over 40% of page loads, and on over 30% of pages in the HTTPArchive crawl — and popularity is <em>still</em> growing.</p>
   </section>
   <section class="sectioning">
@@ -669,31 +700,6 @@ A lot of my city's physical infrastructure is aging and some of it has been negl
     <p>There's way more things we could list here... Drag and drop needs work and improvements. Editing (see Contenteditable/execCommand/EditContext) is terribly hard. Given the importance, you'd think it would be one of the bigger areas of investment, but it's not really. Hit testing is a big area that needs defining. I mean, you can see that this year we got <a href="https://github.com/web-platform-tests/interop/issues?q=is%3Aissue%20state%3Aopen%20label%3Afocus-area-proposal">134 focus area proposals for Interop 2026</a>. Those aren't all areas that are under-invested in, exactly, but whatever we choose to focus on there is time and budget we can't spend on the things in this list...</p>
     <p>In the past, I might have said documentation, but I feel like were just doing a lot better with that. We also now have the collectively funded, transparent and independent <a href="https://openwebdocs.org/">openwebdocs.org</a> which Igalia has helped fund since its inception and, to my mind, is one of the most positive things. So many things on this list even <em>could</em> take a similar approach. It would be great to see.</p>
   </section>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Web Bucks]]></title>
-        <id>https://bkardell.com/blog/WebBucks.html</id>
-        <link href="https://bkardell.com/blog/WebBucks.html">
-        </link>
-        <updated>2025-07-01T04:00:00.000Z</updated>
-        <summary type="html"><![CDATA[Back in September 2024 I wrote a piece about the history of attempts at standardizing some kind of Micropayments going back to the late 90s. Like a lot of things I write, it's the outcome of looking at history and background for things that I'm actively thinking about. An announcement the other day made me think that perhaps now is a good time for a follow up post.]]></summary>
-        <content type="html"><![CDATA[
-  <h1 class="contextual-heading" style="font-size: 2rem;">Web Bucks</h1>
-  <p class="segue">Back in September 2024 I wrote a piece about the <a href="https://bkardell.com/blog/MicropaymentsHistory.html">history of attempts at standardizing some kind of Micropayments going back to the late 90s</a>. Like a lot of things I write, it's the outcome of looking at history and background for things that I'm actively thinking about. An announcement the other day made me think that perhaps now is a good time for a follow up post.</p>
-  <p>As you probably already know if you're reading this, I write and think a lot about the health of the web ecosystem. We've even got a whole <a href="https://www.youtube.com/watch?v=Nsej-VSS9aI&amp;list=PL_BRVuWxk8spg9XL-XUPSptJNrC6y3y9e">playlist of videos (lots of podcast episodes) on the topic</a> on YouTube. Today, that's nearly all paid for, on all sides, by advertising. In several important respects, it's safe to say that the status quo is under many threats. In several ways it's also worth questioning if the status quo is even <em>good</em>.</p>
-  <p>When Ted Nelson first imagined Micropayments in the 1960s, he was imaging a fair economic model for digital publishing. We've had many ideas and proposals since then. Web Monetization is one idea which isn't dead yet. Its main ideas involve embedding a declarative link to a "payment pointer" (like a wallet address) where payments can be sent via Interledger. I say "sent", but "streamed" might be more accurate. Interledger is a novel idea which treats money as "packets" and routes small amounts around. Full disclosure: Igalia has been working on some prototype work in Chromium to help see what a native implementation would look like, what its architecture would be and what options this opens (or closes). Our work has been funded by the Interledger Foundation. It does not amount to an endorsement, and it does not mean something will ship. That said, it doesn't mean the opposite either. </p>
-  <p>You might know that Brave, another Chromium-based browser, has system for creators too. In their model, publishers/creators sign up and verify their domain (or social accounts!), and people browsing those with Brave browsers sort of keep track of that locally, and at the end of the month Brave can batch up and settle accounts of Basic Attention Tokens ("BAT") which they can then pay out to creators in lump sums. As of the time of this writing, Brave has 88 million monthly active users (<a href="https://brave.com/transparency/">source</a>) who could be paying its 1.67 million plus content creators and publishers (<a href="https://creators.brave.com/">source</a>).</p>
-  <p>Finally, in India, UPI offers most transactions free of charge and can also be used for micro payments - it's being used in $240 billion USD / month worth of transactions!</p>
-  <p>But there's also some "adjacent" stuff that doesn't claim to be micro transactions but somehow are similar:</p>
-  <p>If you've ever used Microsoft's Bing search engine, they also give you "points" (I like to call them "Bing Bucks") which you can trade in for other stuff (the payment is going in a different direction!). There was also <a href="https://en.wikipedia.org/wiki/Scroll_(web_service)">Scroll</a>, years ago, which was aimed to be a kind of <a href="https://www.theverge.com/2020/1/29/21113003/scroll-subscription-service-publisher-web-cookie-hack">universal service you could pay into to remove ads on many properties</a> (it was bought by Twitter and shut down.)</p>
-  <section class="sectioning">
-    <h2 class="contextual-heading" style="font-size: 2.5rem;">Enter: Offerwall</h2>
-    <p>Just the other day, Google Ad Manager gave a new idea a potentially <em>really</em> signficant boost. I think it's worth looking at: <a href="https://blog.google/products/ads-commerce/offerwall-gives-publishers-more-options-audiences-more-control/">Offerwall</a>. Offerwall lets sites provide potentially <em>a few</em> ways to monetize content, and for users to choose the one that they prefer. For example, a publisher can set up to allow reading their site in exchange for watching an ad (similar to YouTube's model). That's pretty interesting, but far more interesting to me, is that it integrates with a third-party service called <a href="https://www.supertab.co/faq">Supertab</a>. Supertab lets people provide their own subscriptions - including a tiny fee for this page, or access to the site for some timed pass - 4 hours, 24 hours, a week, etc. It does this with pretty friction-less wallet integration and by 'pooling' the funds until it makes sense to do a real, regular transaction. Perhaps the easiest thing is to <a href="https://www.supertab.co/examples">look at some of their own examples</a>.</p>
-    <p>Offerwall also allows other integrations, so maybe we'll see some of these begin to come together somehow too.</p>
-    <p>It's a very interesting way to split the difference and address a few complaints of micro transaction critics and generally people skeptical that something could gain significant traction. More than that even, it seems to me that by integrating with Google Ad manager it's got about as much advantage as anyone could get (the vast majority of ads are already served with Google Ad manager and this actually tries to expand that).</p>
-  </section>
-  <p>I'm <em>very</em> keen to see how this all plays out! What do you think will happen? Share your thoughts with me on <a href="https://bkardell.com/links">social media</a>.</p>
 ]]></content>
     </entry>
 </feed>
