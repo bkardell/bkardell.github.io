@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://bkardell.com/</id>
     <title>bkardell.com rss feed</title>
-    <updated>2026-07-10T13:25:27.575Z</updated>
+    <updated>2026-08-18T14:19:06.121Z</updated>
     <generator>awesome mix</generator>
     <author>
         <name>Brian Kardell</name>
@@ -14,6 +14,51 @@
     <subtitle>Just the bkardell.com rss feed</subtitle>
     <logo>http://bkardell.com/profile.jpg</logo>
     <rights>All rights reserved 2018, Brian Kardell</rights>
+    <entry>
+        <title type="html"><![CDATA[Enhanced Spell Checking on the Web]]></title>
+        <id>https://bkardell.com/blog/EnhancedSpellchecking.html</id>
+        <link href="https://bkardell.com/blog/EnhancedSpellchecking.html">
+        </link>
+        <updated>2026-08-18T04:00:00.000Z</updated>
+        <summary type="html"><![CDATA[Here's some interesting stuff about browsers you might not know, and a new API proposal that might interest you...]]></summary>
+        <content type="html"><![CDATA[
+  <h1 class="contextual-heading" style="font-size: 2rem;">Enhanced Spell Checking on the Web</h1>
+  <script src="../prism.js"></script>
+  <link rel="stylesheet" href="../prism.css">
+  
+  
+  <p class="segue">Here's some interesting stuff about browsers you might not know, and a new API proposal that might interest you...</p>
+
+  <p>You probably already know that if you have an editable area in a page with the <code>spellcheck=true</code> attribute set on it, then when a user clicks inside that area, it marks words as spelling errors, and you can style spelling errors with CSS. What you might not know is that feature is carefully designed and implemnted to avoid the huge fingerprinting risk of letting people know what's in your dictionary. A lot of the actual details are left to implementations and this means that not only will each OS/language highlight different spelling errors, but so will different browsers on the same machine, or even different profiles in the same browser!</p> 
+  
+  <p>But, if you think about websites and apps, they are highly likely to be accepting input related to something fairly <em>specific</em>, and highly unlikely to be in a common dictionary. Right? Online education is a great example where you'll find students writing words in different domains that are very common in that domain, but aren't in the common dictionary. Mathematics has its own words, so does chemistry, astronomy, and law. But schools are just one example. There are sites related to the stock market - lots of things there might look like gibberish otherwise. Or your hospital and doctor reports. The sites and apps for wine afficianados, or coffee lovers. There are sites where you submit fan fiction. There are forums where you discuss web development or cloud infrastructure. <em>All of these will have common words that aren't in a general purpose dictionary.</em></p>
+  
+  <p> That's a problem because it means we're marking lots of words as misspelled, but they aren't. Too many false positives and we easily overlook the ones that really are missspelled. In fact, in some cases it can even feel like more of an annoyance than a help.</p>
+  
+  <p>So, there is a <a href="https://github.com/Igalia/explainers/blob/main/spell-check-dictionary/README.md">proposal currently in HTML for a new API called SpellCheck Custom Dictionary</a>. For v1 the proposal is dead simple. It introduces a new <code>document.spellCheckCustomDictionary</code> with exactly two methods: <code>.addWords(listOfWords)</code> and <code>.removeWords(listOfWords)</code> - where <code>listOfWords</code> is an array of Strings. Those words are simply added to (or removed from) a Set internally which is consulted before consulting any other dictionaries (remember, there can be several) <em>for the lifetime of that document</em>. It doesn't affect other pages or the profile dictionary, or the browser dictionary or the OS dictionary, or any other things. </p>
+  
+  <p><em>This is currently implemented by Igalia, with funding from Bloomberg Tech. It is currently available in Chrome Canary behind the experimental web platform features flag, and is scheduled to be shipping in on September 8, 2026 behind the same flag.</em></p>
+
+  <p>Because of its simplicity, it also works with JSON pretty nicely, you can just fetch a JSON array and call <code>.addWords</code> with the result.  Of course, in practice you'll probably want to do this as a kind of progressive enhancement,  not load the JSON immediately, and maybe handle and report various errors.  For a whole lot of developers and use cases, it seems to me that a declarative API would be ideal. But we're not there yet. We have more to figure out with regard to how to express more than exact matches and so on. So, we'll get there... I hope.</p>
+
+  <p>In the meantime, however, I've made a tiny, but handy <a href="https://github.com/bkardell/words#domain-dictionaries">library which speculatively polyfills the basic outline of a declarative form in a safe way</a>. With this, you just include the script and then you can add
+    a <code>&lt;link&gt;</code> tag (or tags) pointing to JSON serializations of arrays of words, and adorn them with a <code>data-spellcheck-dictionary</code> marker-attribute.</p>
+
+  <pre><code class="language-html">&lt;script src="dist/spellcheck-dictionary-loader.min.js"&gt;&lt;/script&gt;
+&lt;link href="terms/domain-terms.json" data-spellcheck-dictionary&gt;
+&lt;link href="terms/stocks.json" data-spellcheck-dictionary&gt;</code></pre>
+  <p>The script will wait until the initial parse is complete and then check for support. If the browser supports the custom dictionary API, it will load and add the words.</p>
+
+  <p>There is a <code>/src</code> and <code>/dist</code> version of this and it's very tiny (441 bytes over the wire with Brotli) and I expect it works for most common stuff.</p>
+  <p>It's "rough" though and not exactly how we'd probably expect a real implementation to work. For example, if you remove the link, it doesn't remove the words. If you change the <code>href</code>, it doesn't do anything, and so on. A real implementation would probably do those things. So, if you're interested in playing with something more complete, I've also included a <code>-complete</code> version of each:  <code>src/spellcheck-dictionary-loader-complete.js</code> and <code>dist/spellcheck-dictionary-loader-complete.min.js</code>. The latter is still only <code>770</code> bytes over the wire with Brotli, but it's up to you how important that use is to you.</p>
+  
+  <p>You can get all of the versions from <a href="https://github.com/bkardell/words#domain-dictionaries">this repo</a> where there is also a start on several domain dictionaries to play with. What I think would be really great is to have some shared dictionaries that we work on together, so feel free to send PRs for additional words, this is really only a mostly generated starting list for demonstration purposes.</p>
+
+  <p>Please, let us know what you think - and thanks again to Bloomberg Tech for the funding!</p>
+
+
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[A New Browser Vision?]]></title>
         <id>https://bkardell.com/blog/NewBrowserVision.html</id>
@@ -624,29 +669,6 @@ A lot of my city's physical infrastructure is aging and some of it has been negl
 		</section>
 	</section>
 	<p>Timely coordination — and investment to make it plausible — is still the single biggest problem we face in standards.  I'd love to see us find ways to improve that.</p>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[The Juice]]></title>
-        <id>https://bkardell.com/blog/Juice.html</id>
-        <link href="https://bkardell.com/blog/Juice.html">
-        </link>
-        <updated>2025-10-22T04:00:00.000Z</updated>
-        <summary type="html"><![CDATA[What's worth the squeeze?]]></summary>
-        <content type="html"><![CDATA[
-	<h1 class="contextual-heading" style="font-size: 2rem;">The Juice</h1>
-	<p class="segue"><em>What's worth the squeeze?</em></p>
-
-	<p>Every day, for both my physical and mental heath, I get away from the computer for a while and for a walk (or two) and listen to some podcast. Sometimes a title suprises me.</p>
-	<p>This week's Shop Talk (#687) is a good example. It's titled <a href="https://shoptalkshow.com/687/">"Ben Frain on Responsive Design"</a> and to be honest, I wondered if I'd get anything out of it.  Responsive Design... Haven't we been doing that for... Well, a really long time?  Sure.  And they talk about that.</p>
-	<p>But what interested me most was more of a sidequest: There were some "spicy" but thoughtful takes. There was some discussion about which things were actually valuable. And how valuable?  In what ways?  There was discussion about whether some of "the juice was worth the squeeze?"</p>
-	<p>Was <code>@scope</code> really worth it?  Is <code>&lt;picture&gt;</code> as valuable as we thought it would be? What about Container Queries? Or <code>@layer</code>? Or are View Transitions too confusing? Or are you actually using <code>:has</code> as much as you imagined?  Honestly, I love hearing some of this discussion from developers because the question isn't "does it have value?" because the answer is "yes, of course".  The questions are more like "At what cost?"  or "Did we have give something else up in order to get that?" or "Do we sometimes try to land a 'quick win' and then come back and really solve the problem, and sort of make it more confusing?"  They are great questions - and reasonable people can disagree!</p>
-	<p>Projects like Interop are us trying to do our best to balance lots of inputs and help us make good choices.  Choosing to prioritize something from a list is, inherently, not choosing something else. This year my friend Jake Archibald put together <a href="https://interop-rank.jakearchibald.com/">this prioritization survey tool</a> which lets you try to participate in what is effectively like a step of our process: Order them as you'd personally asign priority if you were in charge. It's hard, and this process is over-simplified in the sense that you are not constrained by the sorts of things real engineering teams are.  Maybe you sort 10 items to the top, but half of them are very expensive and also involve the same expertise.  Maybe that means that realistically we can only pick 2 of those 10, and then we can also pick several more items outside your "top 10".</p>
-	<p>There are debatable signals.  Only a few people will pick <code>OffscreenCanvas</code> but most people deal with canvas via only a few primary libraries - so it doesn't take much to lift performance of lots of sites.  MathML isn't going to make you a lot of money - but actually sharing mathematical text is <em>super</em> important.  Or, maybe something seems only mildly valuable, but someone is actually willing to pay for the work to get done.  That changes the calculus about what kind of standards effort it will require from engine stewards themselves.</p>
-	<p>And, at the end of the day, in a way, all of us are speculating about perceived value.  The truth is that we often just can't know.  Sometimes, only time will tell.  Sometimes a feature lands flat, only to take off years later.  Sometimes the features we were really excited about turn out to be not so great.</p>
-	<p>Once upon a time I imagined a future where the web community did a lot more of this kind of discussion, a lot earlier. I imagined that we should be trying to give people answers in terms of polyfills and origin trials and including their actual feedback with time to use it before we went forward.</p>
-	<p>We have done it more than we did, but not nearly as much as I'd hoped.  I still kind of want us to get there.  It means standards might go a little slower sometimes, I guess - but you could get solutions and input faster and have more opportunity for course corrections.</p>
-	<p>Anyway, fun episode.  I'd love to hear your critiques too - send them!</p>
 ]]></content>
     </entry>
 </feed>
