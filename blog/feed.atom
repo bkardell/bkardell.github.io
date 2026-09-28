@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://bkardell.com/</id>
     <title>bkardell.com rss feed</title>
-    <updated>2026-09-28T19:08:59.885Z</updated>
+    <updated>2026-09-28T19:18:13.547Z</updated>
     <generator>awesome mix</generator>
     <author>
         <name>Brian Kardell</name>
@@ -35,9 +35,9 @@
 
 	<p>To me, that feels worth talking about, because it sometimes feels like there are impractical gaps that it's not clear how to fill.  On the one hand, it feels unreasonable to expect a small improvement to spell checking to be held to a higher standard than the mature specification and existing implementations.  On the other hand, I fully agree that these are important questions.  The difficulty, at some level, is that all of these uniquely important questions are also somehow dramatically underfunded. Accessibility, Internationalization, Privacy - or even just integrating and normalizing MathML and SVG into <a href="https://bkardell.com/blog/OnePlatform.html">One Platform</a> being just a few obvious examples.</p>
 
-	<p>It's hard to live up to ideals if we're not funding them well enough.</p>
+	<p>It's hard to live up to ideals if we're not funding them well enough, or if they aren't pragmatic enough (for example, demanding the the spec is right).</p>
 
-	<p>I don't really know how to fix it except to continue to lobby vendors to allocate more budget to those things (or, in come cases, maybe just any budget at all) and to suggest that we need more experiments in collectively funding and prioritizing those ideals in implementation work.  Lots of features are like fast food or desserts - someone needs to make sure that we eat our vegetables.</p>
+	<p>I don't really know how to fix the funding bit except to continue to lobby vendors to allocate more budget to those things (or, in come cases, maybe just any budget at all) and to suggest that we need more experiments in collectively funding and prioritizing those ideals in implementation work.  Lots of features are like fast food or desserts - someone needs to make sure that we eat our vegetables.</p>
 
 
 ]]></content>
