@@ -4,7 +4,7 @@
         <title>bkardell.com rss feed</title>
         <link>http://bkardell.com/</link>
         <description>Just the bkardell.com rss feed</description>
-        <lastBuildDate>Tue, 18 Aug 2026 14:19:06 GMT</lastBuildDate>
+        <lastBuildDate>Mon, 28 Sep 2026 19:08:59 GMT</lastBuildDate>
         <docs>http://blogs.law.harvard.edu/tech/rss</docs>
         <generator>awesome mix</generator>
         <image>
@@ -14,6 +14,33 @@
         </image>
         <copyright>All rights reserved 2018, Brian Kardell</copyright>
         <atom:link href="https://bkardell.com/blog/feed.atom" rel="self" type="application/rss+xml"/>
+        <item>
+            <title><![CDATA[Ideals]]></title>
+            <link>https://bkardell.com/blog/Ideals.html</link>
+            <guid>https://bkardell.com/blog/Ideals.html</guid>
+            <pubDate>Mon, 28 Sep 2026 04:00:00 GMT</pubDate>
+            <description><![CDATA[I thought it would be interesting to talk a little bit about the standards process given a few events that lined up last week in my mind...]]></description>
+            <content:encoded><![CDATA[
+	<h1 class="contextual-heading" style="font-size: 2rem;">Ideals</h1>
+	<p class="segue">I thought it would be interesting to talk a little bit about the standards process given a few events that lined up last week in my mind...</p>
+
+	<p>Last week my colleague Rakhi wrote a <a href="https://www.atbrakhi.dev/blog/browsers-situationship">great piece</a> about how standardization at the edges sometimes (maybe even often) works backwards because there are fallable humans all along the way - writing the spec, interpreting the spec, writing tests, and so on.  The very next day, another such case was brought to the CSS Working Group.  A lot of people found this very interesting.</p> 
+
+	<p>Around the same time, we published a new episode of Igalia Chats about <a href="https://www.igalia.com/chats/gpc">Global Privacy Control</a>, which, at the end of the day, is mainly a boolean header that a browser can send. As we discussed in the Chat, it probably feels suprising to learn that the efforts to do something like this wind up spanning _many years_ (there are some helpful links there to the history of Do Not Track as well) and what makes people believe that this time it will be different (that the pressure kind of came from outside first is a big one).  Anyway, it's kind of fascinating if you don't know any of this stuff.</p>
+
+	<p>Then, on Thursday, the SpellCheckCustomDictionary proposal advanced to stage 2 in WHATWG. If you're not familliar with it, I wrote a <a href="https://bkardell.com/blog/EnhancedSpellchecking.html">short post about it</a> not too long ago.  The reason I mention this is that it's been stuck for months at stage 1, because we needed to talk a lot about Internationalization concerns.</p>
+
+	<p>This is a potentially important discussion, to be sure. However, only "potentially" so because while spell check has existed in browsers for more than 10 years, for the most part, the `lang` attribute remains unconsulted.  Where it is, it's not really specified how that should work in terms of general spell checking.</p>  
+
+	<p>To me, that feels worth talking about, because it sometimes feels like there are impractical gaps that it's not clear how to fill.  On the one hand, it feels unreasonable to expect a small improvement to spell checking to be held to a higher standard than the mature specification and existing implementations.  On the other hand, I fully agree that these are important questions.  The difficulty, at some level, is that all of these uniquely important questions are also somehow dramatically underfunded. Accessibility, Internationalization, Privacy - or even just integrating and normalizing MathML and SVG into <a href="https://bkardell.com/blog/OnePlatform.html">One Platform</a> being just a few obvious examples.</p>
+
+	<p>It's hard to live up to ideals if we're not funding them well enough.</p>
+
+	<p>I don't really know how to fix it except to continue to lobby vendors to allocate more budget to those things (or, in come cases, maybe just any budget at all) and to suggest that we need more experiments in collectively funding and prioritizing those ideals in implementation work.  Lots of features are like fast food or desserts - someone needs to make sure that we eat our vegetables.</p>
+
+
+]]></content:encoded>
+        </item>
         <item>
             <title><![CDATA[Enhanced Spell Checking on the Web]]></title>
             <link>https://bkardell.com/blog/EnhancedSpellchecking.html</link>
@@ -611,54 +638,6 @@ A lot of my city's physical infrastructure is aging and some of it has been negl
 <p>A lot of this is pretty adjacent/close to the ideas behind OpenUI and it's possible some of this could just happen there.  However, due mainly to limits and participation, OpenUI has really not really produced custom elements or worked to somehow list or grade and promote them (though we did study them quite a bit in the tabs research).  The effort led by Brad Frost to think about a "global design system" in particular might be closer to some of these ideas.</p>
 </section>
 </section>
-]]></content:encoded>
-        </item>
-        <item>
-            <title><![CDATA[Standards Queues]]></title>
-            <link>https://bkardell.com/blog/Queues.html</link>
-            <guid>https://bkardell.com/blog/Queues.html</guid>
-            <pubDate>Thu, 04 Dec 2025 05:00:00 GMT</pubDate>
-            <description><![CDATA[The hardest part of web standards isn’t even the technology — it’s the queues. And that’s the real problem I keep coming back to.]]></description>
-            <content:encoded><![CDATA[
-	<h1 class="contextual-heading" style="font-size: 2rem;">Standards Queues</h1>
-<p class="segue">The hardest part of web standards isn’t even the technology — it’s the queues. And that’s the real problem I keep coming back to.</p>
-
-	<section class="sectioning">
-		<h2 class="contextual-heading" style="font-size: 2.5rem;">Pools, Queues, and Bottlenecks</h2>
-		<p>As programmers, we’re familiar with these kinds of problems: if things enter faster than they leave, they back up. We often need to prioritize among the backlog. The standards process is like several of those queues stacked together.</p>
-		<p>Ideas enter the system far faster than they leave — and they can come from anywhere. But to progress, you need implementers. They are finite, already busy, and often advancing their own priorities. On top of that, every proposal competes for wide review in privacy, security, architecture, accessibility, and internationalization. Each of those specialties is even more finite, even more busy, and even more backed up.</p>
-		<p>So an idea lands in hundreds — even thousands — of inboxes, waiting for attention. We might not even notice it as it whips past among all the others. Even if we do, it might just get starred in email or left open in a tab for “later.” Sometimes that idea is a book, or an explainer, or suddenly has 20 replies. Instead of needing five minutes to read and consider, it becomes intimidating.</p>
-		<p>At some point it just sits. It might wait weeks, months, or even years before someone comments. Why? Because everyone has jobs with other tasks. The queues are full.</p>
-		<p>And the longer it sits, the more things change around it. The more it unloads from memory. The more intimidating it becomes to return to. It has to get through a whole lot of asynchronous back-and-forth between implementers, spec writers, and test writers before reaching baseline usability.</p>
-		<p>Along the way, if coordination isn’t strong (and historically it hasn’t been), once work is invested it’s hard to throw away. It’s hard to propose breaking changes or add stop energy.</p>
-	</section>
-	<section class="sectioning">
-		<h2 class="contextual-heading" style="font-size: 2.5rem;">Real Impacts</h2>
-		<p>This is why something like :focus-visible can take seven years. Realistically, it required only a few days of effective discussion. The tests and development weren’t that hard.</p>
-		<p>The hard part was agreeing on what it should do and which tests it should pass. Most of that difficulty came from the fact that you couldn’t get everyone to sit down and focus concurrently. Implementations — and thus real focus — were years apart.</p>
-	</section>
-	<section class="sectioning">
-		<h2 class="contextual-heading" style="font-size: 2.5rem;">Checking Fitness</h2>
-		<p>Getting “unstuck” isn’t just about moving something forward. One major appeal of the standards process is wide review, but for this to work we need ways for things to fail early enough to shift efforts.</p>
-		<p>Sometimes failure happens after months or even years. That’s frustrating and demoralizing. It’s like standing in a long DMV line, inching forward, only to discover at the end that you’re in the wrong building.</p>
-		<p>All of this is made worse by the fact that queues keep getting fuller.</p>
-	</section>
-	<section class="sectioning">
-		<h2 class="contextual-heading" style="font-size: 2.5rem;">Things that help</h2>
-		<section class="sectioning">
-			<h3 class="contextual-heading" style="font-size: 3rem;">Interop</h3>
-			<p>The Interop project illustrates the very end of the process, and in many ways the simplest.</p>
-			<p>Without intervention, each implementer historically built their own priority queue from all possible shortcomings of their browser engine. There’s a huge pool of things to choose from. I’ve written before about how WPT and the dashboard aren’t the best way to view this, but there are currently almost 23k subtests that fail in every browser (or almost 11k that fail and aren’t marked tentative).</p>
-			<p>Interop coordinates efforts to choose an achievable set of things from this gigantic pool that meet strict criteria: all that’s left is implementation work. It’s been hugely successful because it ensures delivery. It also helps us deliver early when people are excited about common priorities. In those cases, the impact is huge — we can go from mostly words to three interoperable implementations in one year. Amazing.</p>
-			<p>Still, every year a huge number of things remain in the pool that we can’t afford to take up. The pool keeps growing.</p>
-		</section>
-		<section class="sectioning">
-			<h3 class="contextual-heading" style="font-size: 3rem;">Joint Meetings</h3>
-			<p>The WHATWG has started holding regular joint meetings with groups like OpenUI and CSSWG. This is valuable because it allows the right people to agree on an agenda and discuss directly, rather than leaving issues to sit unnoticed or requiring endless pings for attention.</p>
-			<p>W3C's TPAC is an annual event with five days of meetings (both W3C and WHATWG), many of them joint with wide-review specialists. These are dedicated times to get a lot of people in the same rooms for extended periods.  The availability for hallway conversations also matters a lot: You can corner people there in ways that are much harder when everyone is remote. More progress happens at TPAC than in half the rest of the year combined.</p>
-		</section>
-	</section>
-	<p>Timely coordination — and investment to make it plausible — is still the single biggest problem we face in standards.  I'd love to see us find ways to improve that.</p>
 ]]></content:encoded>
         </item>
     </channel>
